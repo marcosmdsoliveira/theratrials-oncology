@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sobre · TheraTrials Oncology</title>
+<meta name="description" content="Mission, metodologia, fontes e glossário do TheraTrials Oncology — plataforma de evidências em oncologia moderna.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/theratrials.css">
+<link rel="icon" type="image/png" href="assets/img/logo-app.png">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+<style>
+  .about-hero { padding: 3rem 0 2rem; text-align: center; }
+  .about-hero h1 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; letter-spacing: -0.025em; margin-bottom: 0.75rem; }
+  .about-hero h1 .text-amber { color: var(--amber); }
+  .about-hero p { color: var(--stone); max-width: 700px; margin: 0 auto; font-size: 1rem; }
+
+  .prose { max-width: 760px; margin: 0 auto; }
+  .prose section { margin-bottom: 3.5rem; scroll-margin-top: 100px; }
+  .prose h2 {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--off-white);
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-soft);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .prose h2 .icon-box {
+    width: 32px; height: 32px;
+    background: rgba(255, 132, 0, 0.1);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--amber);
+  }
+  .prose h3 {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--off-white);
+    letter-spacing: -0.01em;
+    margin: 1.5rem 0 0.75rem;
+  }
+  .prose p {
+    color: var(--stone);
+    line-height: 1.7;
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+  }
+  .prose strong { color: var(--off-white); font-weight: 600; }
+  .prose em { color: var(--amber); font-style: normal; }
+  .prose a { color: var(--amber); border-bottom: 1px solid transparent; transition: border-color 0.15s; }
+  .prose a:hover { border-bottom-color: var(--amber); }
+  .prose ul { list-style: none; padding: 0; margin-bottom: 1rem; }
+  .prose ul li {
+    padding-left: 1.5rem;
+    position: relative;
+    margin-bottom: 0.6rem;
+    color: var(--stone);
+    line-height: 1.65;
+  }
+  .prose ul li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--amber);
+    font-weight: 600;
+  }
+
+  /* Pillars cards */
+  .pillars-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+  .pillar-card {
+    background: var(--graphite-2);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-md);
+    padding: 1.25rem;
+  }
+  .pillar-icon {
+    color: var(--amber);
+    margin-bottom: 0.75rem;
+  }
+  .pillar-card h4 {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--off-white);
+    letter-spacing: -0.01em;
+    margin-bottom: 0.5rem;
+  }
+  .pillar-card p {
+    font-size: 0.82rem;
+    color: var(--stone);
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  /* Disclaimer */
+  .disclaimer {
+    background: rgba(251, 191, 36, 0.08);
+    border: 1px solid rgba(251, 191, 36, 0.25);
+    border-radius: var(--radius-md);
+    padding: 1.25rem;
+    color: var(--off-white);
+    font-size: 0.88rem;
+    line-height: 1.6;
+    margin: 1rem 0;
+  }
+  .disclaimer strong { color: #FCD34D; }
+
+  /* Glossário */
+  .glossary {
+    background: var(--graphite-2);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+  }
+  .glossary table { width: 100%; border-collapse: collapse; }
+  .glossary th, .glossary td {
+    text-align: left;
+    padding: 0.6rem 1rem;
+    font-size: 0.85rem;
+    border-bottom: 1px solid var(--border-soft);
+  }
+  .glossary th {
+    background: var(--graphite-3);
+    color: var(--stone);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+  }
+  .glossary td:first-child {
+    font-family: var(--font-mono);
+    font-weight: 600;
+    color: var(--amber);
+    width: 130px;
+    white-space: nowrap;
+  }
+  .glossary td:last-child { color: var(--off-white); line-height: 1.55; }
+  .glossary tr:last-child td { border-bottom: none; }
+  .glossary tr:hover td { background: rgba(255, 132, 0, 0.04); }
+
+  /* Quick TOC */
+  .toc {
+    position: sticky;
+    top: 100px;
+    background: var(--graphite-2);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-md);
+    padding: 1rem;
+  }
+  .toc-title {
+    font-size: 0.7rem;
+    color: var(--stone);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+  }
+  .toc a {
+    display: block;
+    padding: 0.4rem 0.6rem;
+    border-radius: var(--radius-sm);
+    color: var(--stone);
+    font-size: 0.85rem;
+    text-decoration: none;
+    transition: all 0.15s ease;
+    border-left: 2px solid transparent;
+    margin-bottom: 0.15rem;
+  }
+  .toc a:hover { background: rgba(143, 148, 156, 0.06); color: var(--off-white); border-left-color: var(--amber); }
+
+  .layout-with-toc {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 3rem;
+  }
+  @media (max-width: 968px) {
+    .layout-with-toc { grid-template-columns: 1fr; }
+    .toc { position: static; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="brand">
+      <img src="assets/img/logo-app.png" alt="TheraTrials" class="brand-logo">
+      <div class="brand-text">
+        <span class="brand-name">TheraTrials</span>
+        <span class="brand-sub">Oncology</span>
+      </div>
+    </a>
+    <button class="nav-toggle" aria-label="Menu"><i data-lucide="menu" style="width:18px;height:18px"></i></button>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="database.html">Database</a>
+      <a href="estudos-ativos.html">Estudos ativos</a>
+      <a href="tumor-boards.html">Tumor boards</a>
+      <a href="modalidades.html">Modalidades</a>
+      <a href="ferramentas.html">Ferramentas</a>
+      <a href="fundamentos.html">Fundamentos</a>
+      <a href="about.html">Sobre</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="about-hero">
+  <div class="container">
+    <span class="eyebrow">Sobre o projeto</span>
+    <h1>Evidência <span class="text-amber">como ferramenta</span> clínica</h1>
+    <p>O TheraTrials Oncology nasceu de uma necessidade prática: transformar publicações densas em respostas rápidas para tumor boards e tomadas de decisão.</p>
+  </div>
+</section>
+
+<!-- LAYOUT COM TOC -->
+<section style="padding: 1rem 0 4rem">
+  <div class="container">
+    <div class="layout-with-toc">
+
+      <!-- TOC -->
+      <aside>
+        <div class="toc">
+          <div class="toc-title">Nesta página</div>
+          <a href="#missao">Missão</a>
+          <a href="#metodologia">Metodologia</a>
+          <a href="#pilares">Pilares conceituais</a>
+          <a href="#fontes">Fontes e seleção</a>
+          <a href="#disclaimer">Aviso clínico</a>
+          <a href="#glossario">Glossário</a>
+          <a href="#contato">Contato</a>
+        </div>
+      </aside>
+
+      <!-- PROSE -->
+      <div class="prose">
+
+        <section id="missao">
+          <h2><span class="icon-box"><i data-lucide="compass" style="width:16px;height:16px"></i></span> Missão</h2>
+          <p>O <strong>TheraTrials Oncology</strong> é uma plataforma para conectar <em>tumor</em>, <em>biomarcador</em>, <em>terapia</em> e <em>evidência</em>. Foi pensada para o uso real do dia a dia — discussões em tumor boards, journal clubs, atualização rápida e ensino — onde a velocidade de acesso à informação correta importa tanto quanto a profundidade dos dados.</p>
+          <p>O foco é a <strong>oncologia moderna</strong>: terapias-alvo, imunoterapia, biomarcadores, imagem molecular e teranóstico. Cada estudo é mais que uma referência — é uma síntese que cabe na rotina clínica sem perder rigor.</p>
+        </section>
+
+        <section id="metodologia">
+          <h2><span class="icon-box"><i data-lucide="microscope" style="width:16px;height:16px"></i></span> Metodologia</h2>
+          <p>Cada um dos <strong>83 ensaios selecionados</strong> passa por um processo padronizado de extração e síntese:</p>
+          <ul>
+            <li><strong>Identificação</strong>: nome, acrônimo completo, NCT, sponsor, fase, desenho, centros, período de recrutamento.</li>
+            <li><strong>População</strong>: indicação clínica, critérios de inclusão e exclusão, estratificadores, características basais, n planejado / randomizado / analisado.</li>
+            <li><strong>Critérios moleculares e imagem</strong>: PSMA-PET (com SUV thresholds, critério VISION), Krenning score, biomarcadores (PSA, CgA, ctDNA, HRR, KRAS).</li>
+            <li><strong>Intervenção e radiofarmácia</strong>: radiofármaco específico, esquema completo (atividade × ciclos × intervalo), atividade cumulativa típica, preparo e pré-medicação contextualizada por tipo de radiofármaco, comparador detalhado.</li>
+            <li><strong>Desenho estatístico</strong>: hipótese (poder, HR esperado, α), tipo de análise (ITT/PP, ajuste cross-over IPCW/RPSFT).</li>
+            <li><strong>Desfechos</strong>: primário e secundários com resultados quantitativos (HR, IC, p-values), análises de subgrupo.</li>
+            <li><strong>Toxicidade</strong>: eventos ≥G3 quantificados por evento, eventos de interesse específico (xerostomia, mielotoxicidade, hepatotoxicidade, SOS, hipotireoidismo).</li>
+            <li><strong>Impacto</strong>: regulatório (FDA, EMA, ANVISA), inclusão em diretrizes (NCCN, EAU, ESMO), comentário prático e limitações.</li>
+          </ul>
+          <p>Quando há atualização posterior à publicação inicial — como o OS final do PSMAfore (2025), o follow-up do NETTER-1 (Lancet Oncol 2021) ou os dados ESMO 2025 do PSMAddition — a tabela apresenta a <strong>versão mais recente</strong>. Estudos sem dados publicados estão sinalizados como "em andamento" sem invenção de informações.</p>
+        </section>
+
+        <section id="pilares">
+          <h2><span class="icon-box"><i data-lucide="layers" style="width:16px;height:16px"></i></span> Pilares conceituais</h2>
+          <p>O design da plataforma reflete a metáfora orbital da identidade visual — evidência que orbita o paciente e o alvo molecular como centros gravitacionais.</p>
+          <div class="pillars-grid">
+            <div class="pillar-card">
+              <div class="pillar-icon">
+                <svg width="32" height="32" viewBox="0 0 56 56" fill="none">
+                  <ellipse cx="28" cy="28" rx="22" ry="10" stroke="currentColor" stroke-width="1.5" opacity="0.85"/>
+                  <circle cx="28" cy="28" r="3" fill="currentColor"/>
+                </svg>
+              </div>
+              <h4>Elegant motion</h4>
+              <p>Movimento orbital elíptico = terapia guiada e progresso contínuo. Adaptabilidade e cuidado em cada trajetória.</p>
+            </div>
+            <div class="pillar-card">
+              <div class="pillar-icon">
+                <svg width="32" height="32" viewBox="0 0 56 56" fill="none">
+                  <circle cx="28" cy="28" r="6" fill="currentColor" opacity="0.95"/>
+                  <circle cx="28" cy="28" r="14" stroke="currentColor" stroke-width="1.2" stroke-dasharray="2 3" opacity="0.55"/>
+                </svg>
+              </div>
+              <h4>Precision orbit</h4>
+              <p>Núcleo amber = paciente e alvo molecular. Anéis ao redor = precisão, dados e evidência.</p>
+            </div>
+            <div class="pillar-card">
+              <div class="pillar-icon" style="color: var(--teal)">
+                <svg width="32" height="32" viewBox="0 0 56 56" fill="none">
+                  <ellipse cx="28" cy="28" rx="22" ry="10" stroke="currentColor" stroke-width="1.4"/>
+                  <circle cx="48" cy="28" r="3.5" fill="currentColor"/>
+                </svg>
+              </div>
+              <h4>Clarity & focus</h4>
+              <p>Forma orbital aberta transmite clareza e descoberta moderna. Foco em ensaios pacient-centric.</p>
+            </div>
+            <div class="pillar-card">
+              <div class="pillar-icon">
+                <svg width="32" height="32" viewBox="0 0 56 56" fill="none">
+                  <path d="M28 6 L31 25 L50 28 L31 31 L28 50 L25 31 L6 28 L25 25 Z" fill="currentColor" opacity="0.95"/>
+                </svg>
+              </div>
+              <h4>Insight & impact</h4>
+              <p>Estrela representa breakthrough e busca pelo possível. Contraste de luz e espaço = esperança e impacto real.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="fontes">
+          <h2><span class="icon-box"><i data-lucide="book-open" style="width:16px;height:16px"></i></span> Fontes e seleção</h2>
+          <p>Os dados são extraídos de publicações primárias <strong>peer-reviewed</strong> em periódicos de alto impacto (NEJM, Lancet, JCO, JNM, Annals of Oncology, Hepatology) e de apresentações em congressos majores (ASCO, ESMO, SNMMI, EANM, ENETS, AUA). Quando aplicável, atualizações em comunicados regulatórios (FDA, EMA) também são incorporadas.</p>
+          <p>Cada estudo da plataforma tem <strong>hyperlinks diretos</strong>:</p>
+          <ul>
+            <li>Nome do estudo → <a href="https://pubmed.ncbi.nlm.nih.gov/" target="_blank" rel="noopener">PubMed</a> (PMID quando disponível, busca automática caso contrário).</li>
+            <li>NCT → <a href="https://clinicaltrials.gov/" target="_blank" rel="noopener">ClinicalTrials.gov</a> (registro oficial).</li>
+          </ul>
+          <p>Para diretrizes oficiais, sempre consulte:</p>
+          <ul>
+            <li><a href="https://www.nccn.org" target="_blank" rel="noopener">NCCN Guidelines</a> — National Comprehensive Cancer Network</li>
+            <li><a href="https://www.esmo.org/guidelines" target="_blank" rel="noopener">ESMO Guidelines</a> — European Society for Medical Oncology</li>
+            <li><a href="https://uroweb.org/guidelines" target="_blank" rel="noopener">EAU Guidelines</a> — European Association of Urology</li>
+            <li><a href="https://www.enets.org" target="_blank" rel="noopener">ENETS Guidelines</a> — para tumores neuroendócrinos</li>
+            <li><a href="https://www.snmmi.org" target="_blank" rel="noopener">SNMMI</a> e <a href="https://www.eanm.org" target="_blank" rel="noopener">EANM</a> — para procedimentos de medicina nuclear</li>
+          </ul>
+        </section>
+
+        <section id="disclaimer">
+          <h2><span class="icon-box"><i data-lucide="alert-triangle" style="width:16px;height:16px"></i></span> Aviso clínico</h2>
+          <div class="disclaimer">
+            <strong>⚠ Esta plataforma é uma ferramenta educacional e de revisão científica rápida.</strong>
+            Os dados são extraídos e revisados com rigor a partir das publicações primárias, mas <strong>não substituem</strong> a leitura completa dos artigos originais nem as diretrizes oficiais (NCCN, EAU, ESMO, ENETS, EANM, SNMMI).
+            Decisões clínicas devem sempre considerar o contexto individual do paciente, o protocolo institucional, a disponibilidade local de medicamentos e tecnologias, e o julgamento clínico do time multidisciplinar.
+            Em caso de discrepância entre os dados aqui apresentados e a publicação primária, prevalece a publicação.
+          </div>
+        </section>
+
+        <section id="glossario">
+          <h2><span class="icon-box"><i data-lucide="book-marked" style="width:16px;height:16px"></i></span> Glossário</h2>
+          <p>Termos e siglas frequentes na plataforma. Use Ctrl+F para encontrar rapidamente.</p>
+          <div class="glossary">
+            <table>
+              <thead>
+                <tr><th>Sigla / Termo</th><th>Definição</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>ADT</td><td>Androgen deprivation therapy (privação androgênica).</td></tr>
+                <tr><td>ARPi</td><td>Androgen receptor pathway inhibitor: abiraterona, enzalutamida, apalutamida, darolutamida.</td></tr>
+                <tr><td>BCR</td><td>Recidiva bioquímica (PSA).</td></tr>
+                <tr><td>BCLC</td><td>Barcelona Clinic Liver Cancer (estadiamento HCC).</td></tr>
+                <tr><td>CHAARTED</td><td>Critério de volume em mHSPC: alto = ≥4 mets ósseas com ≥1 fora de coluna/pelve, ou viscerais.</td></tr>
+                <tr><td>CR / PR / SD / PD</td><td>Resposta completa / parcial / estável / progressiva (RECIST).</td></tr>
+                <tr><td>ctDNA</td><td>DNA tumoral circulante.</td></tr>
+                <tr><td>DCR</td><td>Disease control rate (CR + PR + SD).</td></tr>
+                <tr><td>DOTATATE</td><td>Análogo de octreotida (DOTA-Tyr3-octreotate); alvo SSTR-2.</td></tr>
+                <tr><td>Edotreotide</td><td>DOTATOC = DOTA-Tyr3-octreotide; alvo SSTR-2.</td></tr>
+                <tr><td>FDG</td><td>18F-fluorodesoxiglicose (PET metabólico).</td></tr>
+                <tr><td>GEP-NET</td><td>Tumor neuroendócrino gastroenteropancreático.</td></tr>
+                <tr><td>HCC</td><td>Carcinoma hepatocelular.</td></tr>
+                <tr><td>HRR</td><td>Homologous recombination repair (BRCA1/2, ATM etc.).</td></tr>
+                <tr><td>HRLPC</td><td>Câncer de próstata localizado de alto risco.</td></tr>
+                <tr><td>hPFS</td><td>Hepatic progression-free survival (em mCRC pós-TARE).</td></tr>
+                <tr><td>ICI</td><td>Inibidor de checkpoint imunológico.</td></tr>
+                <tr><td>IPCW / RPSFT</td><td>Métodos de ajuste de OS para cross-over.</td></tr>
+                <tr><td>Krenning score</td><td>Escala 0-4 de captação SSTR (≥3 = ≥ fígado).</td></tr>
+                <tr><td>LAR</td><td>Long-acting release (octreotide depot).</td></tr>
+                <tr><td>mCRC</td><td>Câncer colorretal metastático.</td></tr>
+                <tr><td>mCRPC</td><td>Próstata metastático resistente à castração.</td></tr>
+                <tr><td>mHSPC</td><td>Próstata metastático hormônio-sensível.</td></tr>
+                <tr><td>MTD / RP2D</td><td>Maximum tolerated dose / Recommended phase 2 dose.</td></tr>
+                <tr><td>MAA</td><td>99mTc-macroagregados de albumina (mapeamento angio Y-90).</td></tr>
+                <tr><td>OS</td><td>Sobrevida global.</td></tr>
+                <tr><td>ORR</td><td>Taxa de resposta objetiva (CR + PR).</td></tr>
+                <tr><td>pCR</td><td>Resposta patológica completa.</td></tr>
+                <tr><td>PCWG3</td><td>Prostate Cancer Working Group 3 — critérios de resposta.</td></tr>
+                <tr><td>PDA / SDA</td><td>Personalized / Standard dosimetry approach (TARE Y-90).</td></tr>
+                <tr><td>PFS</td><td>Sobrevida livre de progressão.</td></tr>
+                <tr><td>PHEO/PGL (PPGL)</td><td>Feocromocitoma / paraganglioma.</td></tr>
+                <tr><td>PNET</td><td>Tumor neuroendócrino pancreático.</td></tr>
+                <tr><td>PRRT</td><td>Peptide receptor radionuclide therapy (177Lu-DOTATATE).</td></tr>
+                <tr><td>PSA50/80/90</td><td>Redução ≥50/80/90% do PSA basal.</td></tr>
+                <tr><td>PSMA</td><td>Prostate-specific membrane antigen.</td></tr>
+                <tr><td>rPFS</td><td>Radiographic progression-free survival.</td></tr>
+                <tr><td>RIT</td><td>Radioimunoterapia (anticorpo radiomarcado).</td></tr>
+                <tr><td>RLT</td><td>Radioligand therapy (radioligante).</td></tr>
+                <tr><td>RPT</td><td>Prostatectomia radical.</td></tr>
+                <tr><td>SBRT</td><td>Stereotactic body radiotherapy.</td></tr>
+                <tr><td>SoC</td><td>Standard of care.</td></tr>
+                <tr><td>SOS</td><td>Síndrome de obstrução sinusoidal hepática.</td></tr>
+                <tr><td>SSE / SSE-FS</td><td>Symptomatic skeletal event / SSE-free survival.</td></tr>
+                <tr><td>SSTR</td><td>Receptor de somatostatina (alvo de DOTATATE).</td></tr>
+                <tr><td>TARE / SIRT</td><td>Trans-arterial radioembolization / Selective internal radiation therapy (Y-90).</td></tr>
+                <tr><td>TACE / cTACE / DEB-TACE</td><td>Quimioembolização: convencional / drug-eluting beads.</td></tr>
+                <tr><td>TKI</td><td>Inibidor de tirosina-quinase.</td></tr>
+                <tr><td>TVP</td><td>Trombose de veia porta.</td></tr>
+                <tr><td>VHL</td><td>Gene Von Hippel-Lindau (mutado em ccRCC).</td></tr>
+                <tr><td>ECOG PS</td><td>Performance status do Eastern Cooperative Oncology Group (0-5).</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="contato">
+          <h2><span class="icon-box"><i data-lucide="mail" style="width:16px;height:16px"></i></span> Contato e contribuições</h2>
+          <p>O projeto é mantido por <strong>Marcos Oliveira</strong>, médico nuclear com foco em PET/CT, teranóstico e oncologia. Sugestões de novos estudos para inclusão, correções ou parcerias são bem-vindas.</p>
+          <p>Esta é a versão <strong>1.0</strong> da plataforma, atualizada em <strong>abril/2026</strong>. Próximas expansões previstas:</p>
+          <ul>
+            <li>Imunoterapia em pulmão (CheckMate, KEYNOTE) e melanoma.</li>
+            <li>ADCs (antibody-drug conjugates) em mama (DESTINY-Breast).</li>
+            <li>Terapias-alvo em câncer renal e gástrico (mutações específicas).</li>
+            <li>Modo de busca avançada por mutação molecular.</li>
+            <li>Visualizações adicionais (forest plots interativos, timelines comparativas).</li>
+          </ul>
+          <p>Para feedback ou sugestões: <a href="mailto:marcosmdsoliveira@gmail.com">marcosmdsoliveira@gmail.com</a>.</p>
+        </section>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>© 2026 TheraTrials Oncology · v1.0 · 83 estudos analisados</span>
+      <span>elegance · clarity · impact</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/common.js"></script>
+<script>
+  document.addEventListener('DOMContent

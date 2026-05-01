@@ -1,0 +1,1361 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>177Lu-PSMA-617 · TheraTrials Oncology</title>
+<meta name="description" content="Página profunda sobre 177Lu-PSMA-617: história, mecanismo molecular, esquema terapêutico, ensaios pivotais (VISION, TheraP, PSMAfore), dosimetria, toxicidade e perspectivas alfa.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/theratrials.css">
+<link rel="stylesheet" href="assets/css/radiofarmaco.css">
+<link rel="icon" type="image/png" href="assets/img/logo-app.png">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+<style>
+  /* Estilos específicos da página Lu-PSMA (vazio — usa radiofarmaco.css) */
+  /* Bloco preservado para sobrescritas futuras
+     ------------------------------------------------------------
+  .rf-hero {
+    padding: 4rem 0 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .rf-hero::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 700px; height: 700px;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle, rgba(255, 132, 0, 0.08) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .rf-hero .container { position: relative; z-index: 1; }
+
+  .rf-eyebrow {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.4rem 0.85rem;
+    background: var(--amber-soft);
+    border: 1px solid rgba(255, 132, 0, 0.25);
+    border-radius: 100px;
+    color: var(--amber);
+    font-size: 0.78rem; font-weight: 500;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    margin-bottom: 1.25rem;
+  }
+
+  .rf-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.05;
+    margin: 0 0 1rem;
+  }
+  .rf-title .accent { color: var(--amber); }
+  .rf-title .iso-up { font-size: 0.55em; vertical-align: 0.7em; color: var(--amber); font-weight: 600; }
+
+  .rf-subtitle {
+    color: var(--stone);
+    font-size: 1.1rem;
+    max-width: 700px;
+    margin-bottom: 2rem;
+  }
+
+  /* ID card do isótopo */
+  .iso-card {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 2rem;
+    align-items: center;
+    background: linear-gradient(135deg, rgba(255, 132, 0, 0.06) 0%, rgba(14, 165, 183, 0.04) 100%);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem;
+    margin-top: 1.5rem;
+  }
+  @media (max-width: 720px) { .iso-card { grid-template-columns: 1fr; } }
+
+  .iso-symbol {
+    width: 140px; height: 140px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, var(--amber-glow) 0%, var(--amber) 55%, #B85D00 100%);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    color: #0E0F12; font-family: var(--font-display);
+    box-shadow: 0 0 50px rgba(255, 132, 0, 0.35);
+    flex-shrink: 0;
+    position: relative;
+  }
+  .iso-symbol::before {
+    content: '';
+    position: absolute;
+    top: -8px; right: -8px; bottom: -8px; left: -8px;
+    border: 1px dashed rgba(255, 132, 0, 0.4);
+    border-radius: 50%;
+    animation: rotate 24s linear infinite;
+  }
+  @keyframes rotate { to { transform: rotate(360deg); } }
+  .iso-mass { font-size: 0.85rem; font-weight: 600; opacity: 0.7; line-height: 1; }
+  .iso-element { font-size: 2.6rem; font-weight: 700; line-height: 1; }
+  .iso-name { font-size: 0.7rem; opacity: 0.7; margin-top: 0.15rem; }
+
+  .iso-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1rem;
+  }
+  .iso-grid .item { }
+  .iso-grid .lbl { font-size: 0.7rem; color: var(--stone); text-transform: uppercase; letter-spacing: 0.08em; }
+  .iso-grid .val { font-family: var(--font-mono); font-size: 1.05rem; color: var(--off-white); margin-top: 0.2rem; font-weight: 500; }
+
+  /* Sumário lateral */
+  .toc {
+    position: sticky; top: 90px;
+    background: var(--graphite-2);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-md);
+    padding: 1.25rem;
+  }
+  .toc h4 { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--stone); margin: 0 0 0.85rem; font-weight: 600; }
+  .toc a {
+    display: block;
+    color: var(--off-white); opacity: 0.7;
+    font-size: 0.9rem; padding: 0.4rem 0.5rem;
+    border-radius: var(--radius-sm); margin-bottom: 0.15rem;
+    transition: all 0.15s;
+    border-left: 2px solid transparent;
+  }
+  .toc a:hover { opacity: 1; background: var(--graphite-3); border-left-color: var(--amber); }
+
+  .rf-layout {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 3rem;
+    padding: 2rem 0;
+  }
+  @media (max-width: 968px) {
+    .rf-layout { grid-template-columns: 1fr; }
+    .toc { position: static; }
+  }
+
+  /* Sections */
+  .rf-section { margin-bottom: 3.5rem; scroll-margin-top: 90px; }
+  .rf-section h2 {
+    font-family: var(--font-display);
+    font-size: 1.85rem; font-weight: 600;
+    letter-spacing: -0.015em;
+    margin: 0 0 0.5rem;
+    display: flex; align-items: center; gap: 0.85rem;
+  }
+  .rf-section h2 .num {
+    font-size: 0.9rem;
+    font-family: var(--font-mono);
+    color: var(--amber);
+    background: var(--amber-soft);
+    padding: 0.2rem 0.6rem;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 132, 0, 0.25);
+    font-weight: 500;
+  }
+  .rf-section .lead { color: var(--stone); font-size: 1rem; margin-bottom: 1.75rem; max-width: 720px; }
+
+  /* Cronologia */
+  .timeline {
+    position: relative;
+    padding: 1rem 0 1rem 0;
+    margin-top: 1rem;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 22px; top: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, transparent 0%, var(--amber) 8%, var(--teal) 92%, transparent 100%);
+  }
+  .tl-item {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 1.25rem;
+    margin-bottom: 1.5rem;
+    align-items: flex-start;
+  }
+  .tl-dot {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: var(--graphite-2);
+    border: 2px solid var(--amber);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--amber); font-family: var(--font-mono);
+    font-size: 0.78rem; font-weight: 600;
+    box-shadow: 0 0 16px rgba(255, 132, 0, 0.3);
+    flex-shrink: 0;
+  }
+  .tl-card {
+    background: var(--graphite-2);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-md);
+    padding: 1.1rem 1.25rem;
+  }
+  .tl-card h4 { margin: 0 0 0.35rem; font-size: 1.05rem; color: var(--off-white); font-weight: 600; }
+  .tl-card p { margin: 0; color: var(--stone); font-size: 0.92rem; line-height: 1.55; }
+
+  /* Mecanismo - diagrama */
+  .mech-diagram {
+    background: var(--graphite-2);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    margin: 1.5rem 0;
+  }
+  .mech-stages {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+  .mech-stage {
+    background: var(--graphite-3);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-md);
+    padding: 1.25rem;
+    text-align: center;
+    position: relative;
+  }
+  .mech-stage .mech-num {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: var(--amber);
+    color: #0E0F12;
+    font-weight: 700;
+    display: inline-flex; align-items: center; justify-content: center;
+    margin-bottom: 0.75rem;
+  }
+  .mech-stage h5 { margin: 0 0 0.4rem; font-size: 0.95rem; color: var(--off-white); font-weight: 600; }
+  .mech-stage p { margin: 0; font-size: 0.82rem; color: var(--stone); line-height: 1.5; }
+
+  /* Esquema terapêutico */
+  .scheme-box {
+    background: linear-gradient(135deg, rgba(255, 132, 0, 0.07) 0%, rgba(14, 165, 183, 0.05) 100%);
+    border: 1px solid rgba(255, 132, 0, 0.25);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    margin: 1.5rem 0;
+  }
+  .scheme-pills {
+    display: flex; flex-wrap: wrap; gap: 0.75rem;
+    margin: 1rem 0 1.5rem;
+  }
+  .scheme-pill {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: var(--graphite-2);
+    border: 1px solid var(--border-soft);
+    padding: 0.6rem 1rem;
+    border-radius: 100px;
+    font-family: var(--font-mono);
+    font-size: 0.88rem;
+  }
+  .scheme-pill .pill-lbl { color: var(--stone); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; }
+  .scheme-pill .pill-val { color: var(--amber); font-weight: 600; }
+
+  /* Cycle bar */
+  .cycle-bar {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+  }
+  .cycle {
+    background: var(--graphite-3);
+    border: 1px solid rgba(255, 132, 0, 0.3);
+    border-radius: var(--radius-sm);
+    padding: 0.85rem 0.5rem;
+    text-align: center;
+  }
+  .cycle .cy-num { color: var(--amber); font-weight: 700; font-family: var(--font-mono); font-size: 1rem; }
+  .cycle .cy-week { color: var(--stone); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; margin-top: 0.25rem; }
+  .cycle .cy-dose { font-family: var(--font-mono); font-size: 0.78rem; color: var(--off-white); margin-top: 0.4rem; }
+
+  /* Ensaios pivotais */
+  .trials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+  }
+  .trial-card {
+    background: var(--graphite-2);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    transition: all 0.2s;
+  }
+  .trial-card:hover { border-color: rgba(255, 132, 0, 0.4); transform: translateY(-2px); }
+  .trial-name {
+    display: flex; align-items: baseline; gap: 0.6rem;
+    margin-bottom: 0.6rem;
+  }
+  .trial-name .name { font-size: 1.15rem; font-weight: 700; color: var(--amber); font-family: var(--font-display); }
+  .trial-name .year { color: var(--stone); font-size: 0.85rem; font-family: var(--font-mono); }
+  .trial-card .pop { color: var(--stone); font-size: 0.88rem; margin: 0 0 0.85rem; }
+  .trial-card .results { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-bottom: 0.75rem; }
+  .trial-card .stat-row { background: var(--graphite-3); padding: 0.55rem 0.75rem; border-radius: var(--radius-sm); }
+  .trial-card .stat-row .lbl { font-size: 0.7rem; color: var(--stone); text-transform: uppercase; letter-spacing: 0.05em; }
+  .trial-card .stat-row .val { font-family: var(--font-mono); font-size: 0.92rem; color: var(--off-white); margin-top: 0.15rem; font-weight: 500; }
+  .trial-card .takeaway {
+    color: var(--off-white); font-size: 0.88rem;
+    margin: 0; padding-top: 0.75rem;
+    border-top: 1px solid var(--border-soft);
+  }
+
+  /* Critérios PSMA-PET */
+  .criteria-box {
+    background: var(--graphite-2);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin: 1.5rem 0;
+  }
+  @media (max-width: 768px) { .criteria-box { grid-template-columns: 1fr; } }
+  .criteria-col h5 { font-size: 1rem; margin: 0 0 0.85rem; display: flex; align-items: center; gap: 0.5rem; }
+  .criteria-col.include h5 { color: var(--success); }
+  .criteria-col.exclude h5 { color: #F87171; }
+  .criteria-list { list-style: none; padding: 0; margin: 0; }
+  .criteria-list li {
+    padding: 0.55rem 0 0.55rem 1.6rem;
+    position: relative;
+    font-size: 0.9rem; color: var(--off-white);
+    border-bottom: 1px solid var(--border-soft);
+  }
+  .criteria-list li:last-child { border-bottom: 0; }
+  .criteria-list li::before {
+    position: absolute; left: 0; top: 0.55rem;
+    font-family: var(--font-mono); font-weight: 700;
+  }
+  .criteria-col.include .criteria-list li::before { content: '✓'; color: var(--success); }
+  .criteria-col.exclude .criteria-list li::before { content: '✕'; color: #F87171; }
+
+  /* Dosimetria - gauge bars */
+  .dose-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--graphite-2);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    margin: 1.5rem 0;
+  }
+  .dose-table th, .dose-table td {
+    padding: 0.85rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-soft);
+    font-size: 0.92rem;
+  }
+  .dose-table th { background: var(--graphite-3); color: var(--stone); font-weight: 600; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; }
+  .dose-table tr:last-child td { border-bottom: 0; }
+  .dose-table tr:hover { background: var(--graphite-3); }
+  .dose-bar {
+    position: relative;
+    height: 8px;
+    background: var(--graphite-4);
+    border-radius: 4px;
+    overflow: hidden;
+    min-width: 100px;
+  }
+  .dose-bar-fill {
+    position: absolute; left: 0; top: 0; bottom: 0;
+    background: linear-gradient(90deg, var(--amber), var(--amber-glow));
+    border-radius: 4px;
+  }
+  .dose-bar.high .dose-bar-fill { background: linear-gradient(90deg, #F87171, #FBA876); }
+  .dose-bar.med .dose-bar-fill { background: linear-gradient(90deg, var(--warn), #FCD34D); }
+  .dose-bar.low .dose-bar-fill { background: linear-gradient(90deg, var(--success), #6EE7B7); }
+
+  /* Toxicidade */
+  .tox-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 0.85rem;
+    margin: 1.5rem 0;
+  }
+  .tox-item {
+    background: var(--graphite-2);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-md);
+    padding: 1rem 1.15rem;
+  }
+  .tox-item .tox-name { font-size: 0.92rem; font-weight: 500; margin-bottom: 0.5rem; }
+  .tox-item .tox-pct {
+    display: flex; align-items: baseline; gap: 0.6rem;
+    margin-bottom: 0.4rem;
+  }
+  .tox-item .tox-all { font-family: var(--font-mono); font-size: 1.4rem; font-weight: 700; color: var(--off-white); }
+  .tox-item .tox-g3 { font-family: var(--font-mono); font-size: 0.85rem; color: #F87171; }
+  .tox-item .tox-bar {
+    height: 6px;
+    background: var(--graphite-4);
+    border-radius: 3px;
+    overflow: hidden;
+    position: relative;
+  }
+  .tox-item .tox-bar-all {
+    position: absolute; left: 0; top: 0; bottom: 0;
+    background: linear-gradient(90deg, var(--amber), var(--amber-glow));
+    border-radius: 3px;
+  }
+
+  /* Box destaque (key fact) */
+  .key-fact {
+    background: var(--graphite-2);
+    border-left: 3px solid var(--amber);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    padding: 1.15rem 1.5rem;
+    margin: 1.5rem 0;
+  }
+  .key-fact .lbl {
+    font-size: 0.7rem; color: var(--amber);
+    text-transform: uppercase; letter-spacing: 0.1em;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+  }
+  .key-fact p { margin: 0; color: var(--off-white); font-size: 0.95rem; line-height: 1.55; }
+
+  /* Comparação alfa vs beta */
+  .ab-compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+    margin: 1.5rem 0;
+  }
+  @media (max-width: 700px) { .ab-compare { grid-template-columns: 1fr; } }
+  .ab-card {
+    background: var(--graphite-2);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+  }
+  .ab-card.beta { border-color: rgba(255, 132, 0, 0.3); }
+  .ab-card.alpha { border-color: rgba(192, 132, 252, 0.35); }
+  .ab-card h4 {
+    margin: 0 0 0.85rem;
+    font-size: 1.1rem;
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  .ab-card.beta h4 { color: var(--amber); }
+  .ab-card.alpha h4 { color: #C084FC; }
+  .ab-card ul { margin: 0; padding: 0; list-style: none; }
+  .ab-card li {
+    padding: 0.45rem 0;
+    border-bottom: 1px solid var(--border-soft);
+    font-size: 0.88rem;
+    color: var(--off-white);
+    display: flex; justify-content: space-between; gap: 1rem;
+  }
+  .ab-card li:last-child { border-bottom: 0; }
+  .ab-card li .v { font-family: var(--font-mono); color: var(--stone); }
+
+  /* Orbital divider */
+  .orbital-divider {
+    display: flex; justify-content: center; align-items: center;
+    padding: 2.5rem 0;
+  }
+
+  /* Link cards no fim */
+  .next-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+  .next-card {
+    background: var(--graphite-2);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-md);
+    padding: 1.25rem;
+    transition: all 0.2s;
+    text-decoration: none;
+    color: var(--off-white);
+    display: block;
+  }
+  .next-card:hover { border-color: rgba(255, 132, 0, 0.4); transform: translateY(-2px); color: var(--off-white); }
+  .next-card .lbl { font-size: 0.7rem; color: var(--amber); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; margin-bottom: 0.3rem; }
+  .next-card .name { font-size: 1.05rem; font-weight: 600; margin-bottom: 0.2rem; }
+  .next-card .desc { font-size: 0.82rem; color: var(--stone); }
+  ------------------------------------------------------------ */
+</style>
+</head>
+<body>
+
+<!-- ============== HEADER ============== -->
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="brand">
+      <img src="assets/img/logo-app.png" alt="TheraTrials" class="brand-logo">
+      <div class="brand-text">
+        <span class="brand-name">TheraTrials</span>
+        <span class="brand-sub">Oncology</span>
+      </div>
+    </a>
+    <button class="nav-toggle" aria-label="Menu"><i data-lucide="menu" style="width:18px;height:18px"></i></button>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="database.html">Database</a>
+      <a href="estudos-ativos.html">Estudos ativos</a>
+      <a href="tumor-boards.html">Tumor boards</a>
+      <a href="modalidades.html">Modalidades</a>
+      <a href="ferramentas.html">Ferramentas</a>
+      <a href="fundamentos.html">Fundamentos</a>
+      <a href="about.html">Sobre</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ============== HERO ============== -->
+<section class="rf-hero">
+  <div class="container">
+    <span class="rf-eyebrow"><i data-lucide="atom" style="width:12px;height:12px"></i> Radiofármaco · Beta-emissor</span>
+    <h1 class="rf-title">
+      <span class="iso-up">177</span>Lu-PSMA-617
+      <br><span class="accent">Pluvicto</span> · a peça que mudou o mCRPC
+    </h1>
+    <p class="rf-subtitle">
+      Radioligante terapêutico que combina um vetor pequeno-molecular ligado ao antígeno prostático específico de membrana (PSMA) com o emissor beta lutécio-177. Aprovado pelo FDA em março de 2022 para mCRPC PSMA-positivo após progressão a ARPi e taxano.
+    </p>
+
+    <div class="iso-card">
+      <div class="iso-symbol">
+        <span class="iso-mass">177</span>
+        <span class="iso-element">Lu</span>
+        <span class="iso-name">Lutécio</span>
+      </div>
+      <div class="iso-grid">
+        <div class="item">
+          <div class="lbl">Meia-vida</div>
+          <div class="val">6.65 d</div>
+        </div>
+        <div class="item">
+          <div class="lbl">Decaimento</div>
+          <div class="val">β⁻ + γ</div>
+        </div>
+        <div class="item">
+          <div class="lbl">Energia β máx</div>
+          <div class="val">498 keV</div>
+        </div>
+        <div class="item">
+          <div class="lbl">Alcance β máx</div>
+          <div class="val">~ 2 mm</div>
+        </div>
+        <div class="item">
+          <div class="lbl">γ útil (SPECT)</div>
+          <div class="val">208 keV (10%)</div>
+        </div>
+        <div class="item">
+          <div class="lbl">Vetor</div>
+          <div class="val">PSMA-617</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== LAYOUT ============== -->
+<section style="padding: 0">
+  <div class="container">
+    <div class="rf-layout">
+
+      <!-- TOC -->
+      <aside class="toc">
+        <h4>Nesta página</h4>
+        <a href="#cronologia">Cronologia</a>
+        <a href="#mecanismo">Mecanismo molecular</a>
+        <a href="#esquema">Esquema terapêutico</a>
+        <a href="#imagem">Imagem teranóstica</a>
+        <a href="#criterios">Critérios PSMA-PET</a>
+        <a href="#ensaios">Ensaios pivotais</a>
+        <a href="#dosimetria">Dosimetria</a>
+        <a href="#toxicidade">Toxicidade</a>
+        <a href="#perspectivas">Perspectivas alfa</a>
+        <a href="#proximos">Continue lendo</a>
+      </aside>
+
+      <!-- CONTEÚDO -->
+      <main>
+
+        <!-- ============== CRONOLOGIA ============== -->
+        <div id="cronologia" class="rf-section">
+          <h2><span class="num">01</span> Cronologia</h2>
+          <p class="lead">De ligantes peptídicos preliminares ao primeiro radioligante aprovado para câncer de próstata: 25 anos entre ciência básica, registro e adoção clínica.</p>
+
+          <div class="timeline">
+            <div class="tl-item">
+              <div class="tl-dot">1993</div>
+              <div class="tl-card">
+                <h4>Identificação do antígeno PSMA</h4>
+                <p>Horoszewicz e Heston caracterizam o glutamate carboxypeptidase II como antígeno específico da membrana prostática. Expresso em &gt;95% dos cânceres de próstata, com superexpressão em doença avançada e resistente a castração.</p>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot">2010</div>
+              <div class="tl-card">
+                <h4>Primeiros ligantes PSMA pequenos-moleculares</h4>
+                <p>Eder, Haberkorn e o grupo de Heidelberg (DKFZ) desenvolvem ligantes baseados em ureia (Glu-CO-Lys), que se ligam ao bolso ativo da PSMA com alta afinidade e internalização.</p>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot">2015</div>
+              <div class="tl-card">
+                <h4>PSMA-617 e primeiros tratamentos compassivos</h4>
+                <p>Benesova e cols. publicam o PSMA-617 com farmacocinética otimizada — captação salivar reduzida e maior retenção tumoral. Heidelberg trata os primeiros pacientes com mCRPC em uso compassivo: respostas de PSA &gt;50% em ~40-60%.</p>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot">2018</div>
+              <div class="tl-card">
+                <h4>Hofman et al. (Lancet Oncol) — proof of concept prospectivo</h4>
+                <p>Primeiro estudo prospectivo unicêntrico (Australia, Hofman): 30 pacientes, PSA50 57%, rPFS 7.6m. Dados que abrem caminho para o desenho do TheraP e, em paralelo, do VISION.</p>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot">2021</div>
+              <div class="tl-card">
+                <h4>VISION (NEJM) e TheraP (Lancet) — fase 3 e fase 2 randomizada</h4>
+                <p>VISION confirma ganho de OS (15.3 vs 11.3m) em mCRPC pós-ARPi e pós-taxano. TheraP mostra superioridade vs cabazitaxel em PSA50 (66 vs 37%), mantendo rPFS comparável e perfil de toxicidade favorável.</p>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot">2022</div>
+              <div class="tl-card">
+                <h4>Aprovação FDA do Pluvicto · 23 mar 2022</h4>
+                <p>Primeiro radioligante terapêutico para mCRPC: 7.4 GBq IV q6w × 6 ciclos em pacientes pós-ARPi e pós-taxano, com PSMA-PET positivo conforme critérios VISION.</p>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot">2024</div>
+              <div class="tl-card">
+                <h4>PSMAfore (Lancet Oncol) e ENZA-p (Lancet Oncol)</h4>
+                <p>PSMAfore valida o uso pré-taxano (rPFS 12.0 vs 5.6m). ENZA-p mostra benefício de combinar Lu-PSMA com enzalutamida em primeira linha mCRPC. Em paralelo, SPLASH valida o segundo produto comercial (177Lu-PSMA-I&T, Curium).</p>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot">2025</div>
+              <div class="tl-card">
+                <h4>Expansão FDA pré-taxano + dados mHSPC</h4>
+                <p>FDA expande indicação para mCRPC pré-taxano com base no PSMAfore (mar 2025). UpFrontPSMA (Lancet Oncol) demonstra benefício em mHSPC de novo de alto volume com Lu-PSMA + docetaxel. PSMAddition em recrutamento para mHSPC.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="orbital-divider">
+          <svg width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="60" cy="20" r="3" fill="#FF8400"/>
+            <ellipse cx="60" cy="20" rx="40" ry="10" fill="none" stroke="#FF8400" stroke-width="0.8" opacity="0.4"/>
+            <ellipse cx="60" cy="20" rx="55" ry="13" fill="none" stroke="#0EA5B7" stroke-width="0.6" stroke-dasharray="2 4" opacity="0.5"/>
+            <circle cx="100" cy="20" r="1.5" fill="#0EA5B7"/>
+            <circle cx="20" cy="20" r="1.5" fill="#0EA5B7"/>
+          </svg>
+        </div>
+
+        <!-- ============== MECANISMO ============== -->
+        <div id="mecanismo" class="rf-section">
+          <h2><span class="num">02</span> Mecanismo molecular</h2>
+          <p class="lead">Ligação ao bolso ativo da PSMA na superfície da célula tumoral, internalização endolisossomal e entrega de radiação beta no núcleo da célula e suas vizinhas.</p>
+
+          <div class="mech-diagram">
+            <svg viewBox="0 0 800 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+              <!-- Membrana celular -->
+              <rect x="0" y="190" width="800" height="60" fill="#1B1E25"/>
+              <line x1="0" y1="190" x2="800" y2="190" stroke="#FF8400" stroke-width="1" opacity="0.3"/>
+              <line x1="0" y1="250" x2="800" y2="250" stroke="#FF8400" stroke-width="1" opacity="0.3"/>
+              <text x="20" y="225" fill="#8E949C" font-size="10" font-family="JetBrains Mono">membrana plasmática</text>
+
+              <!-- PSMA receptors -->
+              <g transform="translate(100, 170)">
+                <rect x="-12" y="0" width="24" height="50" rx="2" fill="#0EA5B7" opacity="0.7"/>
+                <circle cx="0" cy="-8" r="10" fill="#0EA5B7"/>
+                <text x="0" y="-15" fill="#0EA5B7" font-size="9" text-anchor="middle">PSMA</text>
+              </g>
+              <g transform="translate(220, 170)">
+                <rect x="-12" y="0" width="24" height="50" rx="2" fill="#0EA5B7" opacity="0.7"/>
+                <circle cx="0" cy="-8" r="10" fill="#0EA5B7"/>
+              </g>
+              <g transform="translate(340, 170)">
+                <rect x="-12" y="0" width="24" height="50" rx="2" fill="#0EA5B7" opacity="0.7"/>
+                <circle cx="0" cy="-8" r="10" fill="#0EA5B7"/>
+              </g>
+
+              <!-- 177Lu-PSMA-617 ligando -->
+              <g transform="translate(100, 100)">
+                <circle cx="0" cy="0" r="14" fill="#FF8400"/>
+                <text x="0" y="3" fill="#0E0F12" font-size="9" text-anchor="middle" font-weight="700">¹⁷⁷Lu</text>
+                <line x1="0" y1="14" x2="0" y2="50" stroke="#FF8400" stroke-width="2"/>
+                <rect x="-8" y="50" width="16" height="10" fill="#FF8400" opacity="0.6"/>
+                <text x="35" y="3" fill="#FF8400" font-size="9">⁻ DOTA</text>
+                <text x="35" y="55" fill="#FF8400" font-size="9">⁻ Glu-CO-Lys</text>
+              </g>
+
+              <!-- Internalização -->
+              <g transform="translate(450, 220)">
+                <circle cx="0" cy="0" r="22" fill="none" stroke="#FF8400" stroke-width="1.5" stroke-dasharray="3 2"/>
+                <circle cx="-6" cy="-3" r="5" fill="#FF8400"/>
+                <circle cx="6" cy="3" r="5" fill="#FF8400"/>
+                <text x="0" y="40" fill="#8E949C" font-size="9" text-anchor="middle">endossoma</text>
+              </g>
+
+              <!-- Núcleo + radiação β -->
+              <g transform="translate(630, 220)">
+                <circle cx="0" cy="0" r="35" fill="#0EA5B7" opacity="0.15" stroke="#0EA5B7" stroke-width="1"/>
+                <text x="0" y="3" fill="#0EA5B7" font-size="11" text-anchor="middle">núcleo</text>
+
+                <!-- partículas beta -->
+                <g stroke="#FF8400" stroke-width="1.2" fill="none">
+                  <path d="M -25,-20 Q -10,-30 5,-15" />
+                  <path d="M -30,5 Q -15,15 0,5" />
+                  <path d="M 25,-20 Q 35,-5 25,15" />
+                  <path d="M 0,30 Q 15,25 25,30" />
+                </g>
+                <text x="-20" y="-35" fill="#FF8400" font-size="9">β⁻</text>
+                <text x="40" y="-15" fill="#FF8400" font-size="9">β⁻</text>
+              </g>
+
+              <!-- DNA quebra -->
+              <g transform="translate(630, 220)">
+                <line x1="-8" y1="-2" x2="-2" y2="-8" stroke="#F87171" stroke-width="1.2"/>
+                <line x1="2" y1="-2" x2="8" y2="-8" stroke="#F87171" stroke-width="1.2"/>
+                <line x1="-8" y1="2" x2="-2" y2="8" stroke="#F87171" stroke-width="1.2"/>
+                <line x1="2" y1="2" x2="8" y2="8" stroke="#F87171" stroke-width="1.2"/>
+              </g>
+
+              <!-- Setas de progressão -->
+              <g stroke="#8E949C" stroke-width="1" fill="none" marker-end="url(#arrow)">
+                <line x1="160" y1="120" x2="200" y2="155"/>
+                <line x1="280" y1="200" x2="420" y2="220"/>
+                <line x1="490" y1="220" x2="585" y2="220"/>
+              </g>
+              <defs>
+                <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+                  <path d="M0,0 L0,6 L8,3 z" fill="#8E949C"/>
+                </marker>
+              </defs>
+
+              <!-- Stage labels -->
+              <text x="180" y="145" fill="#FF8400" font-size="10" font-weight="600">1 · ligação</text>
+              <text x="350" y="195" fill="#FF8400" font-size="10" font-weight="600">2 · internalização</text>
+              <text x="535" y="215" fill="#FF8400" font-size="10" font-weight="600">3 · radiação β</text>
+              <text x="720" y="220" fill="#FF8400" font-size="10" font-weight="600">4 · dano DNA</text>
+            </svg>
+
+            <div class="mech-stages">
+              <div class="mech-stage">
+                <div class="mech-num">1</div>
+                <h5>Ligação</h5>
+                <p>O ligante Glu-CO-Lys se liga ao bolso ativo da PSMA com Kd nanomolar. Internalização rápida via endocitose mediada por clatrina.</p>
+              </div>
+              <div class="mech-stage">
+                <div class="mech-num">2</div>
+                <h5>Endocitose</h5>
+                <p>Complexo PSMA-ligante é translocado para endossomas tardios e lisossomas, onde permanece retido por dias devido ao chelator DOTA.</p>
+              </div>
+              <div class="mech-stage">
+                <div class="mech-num">3</div>
+                <h5>Emissão β⁻</h5>
+                <p>O ¹⁷⁷Lu emite elétrons com energia média de 134 keV e alcance médio de ~0,67 mm — dose homogênea no microambiente tumoral, com efeito crossfire.</p>
+              </div>
+              <div class="mech-stage">
+                <div class="mech-num">4</div>
+                <h5>Dano duplo de DNA</h5>
+                <p>Quebras simples e duplas do DNA, sobrecarga de reparo e morte celular por apoptose ou catástrofe mitótica. Fotobomba de imagem γ permite SPECT pós-terapia.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="key-fact">
+            <div class="lbl">Por que o PSMA-617 e não PSMA-I&T?</div>
+            <p>Ambos são Glu-CO-Lys com chelator DOTA, mas o PSMA-617 incorpora um espaçador 2-naftilalanina-tranexâmico que aumenta a afinidade pelo PSMA e reduz a captação salivar e renal. O PSMA-I&T (substrato do produto Curium / SPLASH) tem chelator DOTAGA e perfil farmacocinético comparável.</p>
+          </div>
+        </div>
+
+        <div class="orbital-divider">
+          <svg width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="60" cy="20" r="3" fill="#FF8400"/>
+            <ellipse cx="60" cy="20" rx="40" ry="10" fill="none" stroke="#FF8400" stroke-width="0.8" opacity="0.4"/>
+            <ellipse cx="60" cy="20" rx="55" ry="13" fill="none" stroke="#0EA5B7" stroke-width="0.6" stroke-dasharray="2 4" opacity="0.5"/>
+            <circle cx="100" cy="20" r="1.5" fill="#0EA5B7"/>
+            <circle cx="20" cy="20" r="1.5" fill="#0EA5B7"/>
+          </svg>
+        </div>
+
+        <!-- ============== ESQUEMA ============== -->
+        <div id="esquema" class="rf-section">
+          <h2><span class="num">03</span> Esquema terapêutico</h2>
+          <p class="lead">Padrão internacional do PSMA-617: 7,4 GBq por ciclo, intervalo de 6 semanas, 6 ciclos planejados, com possibilidade de redução por toxicidade.</p>
+
+          <div class="scheme-box">
+            <div class="scheme-pills">
+              <div class="scheme-pill">
+                <span class="pill-lbl">Atividade</span>
+                <span class="pill-val">7,4 GBq · 200 mCi</span>
+              </div>
+              <div class="scheme-pill">
+                <span class="pill-lbl">Via</span>
+                <span class="pill-val">EV em 30 min</span>
+              </div>
+              <div class="scheme-pill">
+                <span class="pill-lbl">Intervalo</span>
+                <span class="pill-val">6 semanas</span>
+              </div>
+              <div class="scheme-pill">
+                <span class="pill-lbl">Ciclos</span>
+                <span class="pill-val">até 6</span>
+              </div>
+              <div class="scheme-pill">
+                <span class="pill-lbl">Acumulado</span>
+                <span class="pill-val">44,4 GBq</span>
+              </div>
+            </div>
+
+            <h4 style="margin: 0 0 0.5rem; color: var(--off-white); font-size: 1rem; font-weight: 600">Ciclos planejados</h4>
+            <div class="cycle-bar">
+              <div class="cycle"><div class="cy-num">C1</div><div class="cy-week">Sem 0</div><div class="cy-dose">7,4 GBq</div></div>
+              <div class="cycle"><div class="cy-num">C2</div><div class="cy-week">Sem 6</div><div class="cy-dose">7,4 GBq</div></div>
+              <div class="cycle"><div class="cy-num">C3</div><div class="cy-week">Sem 12</div><div class="cy-dose">7,4 GBq</div></div>
+              <div class="cycle"><div class="cy-num">C4</div><div class="cy-week">Sem 18</div><div class="cy-dose">7,4 GBq</div></div>
+              <div class="cycle"><div class="cy-num">C5</div><div class="cy-week">Sem 24</div><div class="cy-dose">7,4 GBq</div></div>
+              <div class="cycle"><div class="cy-num">C6</div><div class="cy-week">Sem 30</div><div class="cy-dose">7,4 GBq</div></div>
+            </div>
+
+            <div style="margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid var(--border-soft); display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem">
+              <div>
+                <div style="font-size: 0.75rem; color: var(--stone); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.35rem">Pré-medicação</div>
+                <div style="font-size: 0.9rem; color: var(--off-white); line-height: 1.55">Antiemético padrão · hidratação oral · resfriamento ou ácido cítrico em pastilhas para reduzir captação salivar é opcional.</div>
+              </div>
+              <div>
+                <div style="font-size: 0.75rem; color: var(--stone); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.35rem">Não-aplicável</div>
+                <div style="font-size: 0.9rem; color: var(--off-white); line-height: 1.55">Nefroproteção com aminoácidos (lisina/arginina) <strong>não</strong> é rotina em PSMA — perfil dosimétrico renal é mais favorável que DOTATATE.</div>
+              </div>
+              <div>
+                <div style="font-size: 0.75rem; color: var(--stone); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.35rem">Imagem pós-terapia</div>
+                <div style="font-size: 0.9rem; color: var(--off-white); line-height: 1.55">SPECT/CT 24h pós-administração para verificação de captação tumoral e dosimetria opcional (foto γ 208 keV).</div>
+              </div>
+              <div>
+                <div style="font-size: 0.75rem; color: var(--stone); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.35rem">Reduções de dose</div>
+                <div style="font-size: 0.9rem; color: var(--off-white); line-height: 1.55">Para 5,5 GBq se toxicidade hematológica G3/G4 ou nefrotoxicidade. Adiamento até 4 semanas. Suspender se persistir &gt;6 semanas.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="orbital-divider">
+          <svg width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="60" cy="20" r="3" fill="#FF8400"/>
+            <ellipse cx="60" cy="20" rx="40" ry="10" fill="none" stroke="#FF8400" stroke-width="0.8" opacity="0.4"/>
+            <ellipse cx="60" cy="20" rx="55" ry="13" fill="none" stroke="#0EA5B7" stroke-width="0.6" stroke-dasharray="2 4" opacity="0.5"/>
+            <circle cx="100" cy="20" r="1.5" fill="#0EA5B7"/>
+            <circle cx="20" cy="20" r="1.5" fill="#0EA5B7"/>
+          </svg>
+        </div>
+
+        <!-- ============== IMAGEM TERANÓSTICA ============== -->
+        <div id="imagem" class="rf-section">
+          <h2><span class="num">04</span> Imagem teranóstica</h2>
+          <p class="lead">A seleção de pacientes para Lu-PSMA depende de PSMA-PET/CT diagnóstico — princípio teranóstico em sua forma mais pura: ver é critério para tratar.</p>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin: 1.5rem 0">
+            <div style="background: var(--graphite-2); border: 1px solid var(--border-soft); border-radius: var(--radius-md); padding: 1.25rem">
+              <div style="font-family: var(--font-mono); color: var(--amber); font-size: 0.85rem; margin-bottom: 0.4rem">⁶⁸Ga-PSMA-11</div>
+              <div style="font-size: 0.95rem; color: var(--off-white); margin-bottom: 0.35rem">Pioneiro · gerador-dependente</div>
+              <div style="font-size: 0.82rem; color: var(--stone); line-height: 1.5">Imagem 60 min pós-injeção. Limite: meia-vida curta (68 min) e produção em gerador.</div>
+            </div>
+            <div style="background: var(--graphite-2); border: 1px solid var(--border-soft); border-radius: var(--radius-md); padding: 1.25rem">
+              <div style="font-family: var(--font-mono); color: var(--amber); font-size: 0.85rem; margin-bottom: 0.4rem">¹⁸F-DCFPyL</div>
+              <div style="font-size: 0.95rem; color: var(--off-white); margin-bottom: 0.35rem">Pylarify · cíclotron</div>
+              <div style="font-size: 0.82rem; color: var(--stone); line-height: 1.5">Aprovado FDA 2021. Logística mais simples (T½ 110 min), maior estatística por imagem.</div>
+            </div>
+            <div style="background: var(--graphite-2); border: 1px solid var(--border-soft); border-radius: var(--radius-md); padding: 1.25rem">
+              <div style="font-family: var(--font-mono); color: var(--amber); font-size: 0.85rem; margin-bottom: 0.4rem">¹⁸F-PSMA-1007</div>
+              <div style="font-size: 0.95rem; color: var(--off-white); margin-bottom: 0.35rem">Hepatobiliar</div>
+              <div style="font-size: 0.82rem; color: var(--stone); line-height: 1.5">Excreção hepatobiliar — ótimo para visualização da pelve, mas confunde lesões hepáticas/abdome.</div>
+            </div>
+            <div style="background: var(--graphite-2); border: 1px solid var(--border-soft); border-radius: var(--radius-md); padding: 1.25rem">
+              <div style="font-family: var(--font-mono); color: var(--amber); font-size: 0.85rem; margin-bottom: 0.4rem">⁶⁴Cu / ⁸⁹Zr-PSMA</div>
+              <div style="font-size: 0.95rem; color: var(--off-white); margin-bottom: 0.35rem">Imagem tardia</div>
+              <div style="font-size: 0.82rem; color: var(--stone); line-height: 1.5">Investigacional. Permite imagem 24-48 h pós-injeção, útil para lesões pequenas e dosimetria preditiva.</div>
+            </div>
+          </div>
+
+          <div class="key-fact">
+            <div class="lbl">PROMISE v2 · padronização de leitura</div>
+            <p>Recomendação 2023: descrição estruturada usando miTNM (molecular imaging TNM) + PSMA expression score (PSMA-RADS). A captação hepática é o referencial para definir lesão "PSMA-positiva" significativa.</p>
+          </div>
+        </div>
+
+        <div class="orbital-divider">
+          <svg width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="60" cy="20" r="3" fill="#FF8400"/>
+            <ellipse cx="60" cy="20" rx="40" ry="10" fill="none" stroke="#FF8400" stroke-width="0.8" opacity="0.4"/>
+            <ellipse cx="60" cy="20" rx="55" ry="13" fill="none" stroke="#0EA5B7" stroke-width="0.6" stroke-dasharray="2 4" opacity="0.5"/>
+            <circle cx="100" cy="20" r="1.5" fill="#0EA5B7"/>
+            <circle cx="20" cy="20" r="1.5" fill="#0EA5B7"/>
+          </svg>
+        </div>
+
+        <!-- ============== CRITÉRIOS PSMA-PET ============== -->
+        <div id="criterios" class="rf-section">
+          <h2><span class="num">05</span> Critérios PSMA-PET para elegibilidade</h2>
+          <p class="lead">Critérios VISION são os adotados pela FDA. PSMAfore usa critério qualitativamente similar com pequena variação.</p>
+
+          <h4 style="margin: 1.5rem 0 0.5rem; font-size: 1rem; color: var(--off-white)">Critérios VISION</h4>
+          <div class="criteria-box">
+            <div class="criteria-col include">
+              <h5><i data-lucide="check-circle-2" style="width:16px;height:16px"></i> Inclusão (PSMA-positivo)</h5>
+              <ul class="criteria-list">
+                <li>Pelo menos 1 lesão metastática com captação PSMA &gt; captação hepática normal</li>
+                <li>Avaliação em PET/CT com ⁶⁸Ga-PSMA-11 ou ¹⁸F-DCFPyL</li>
+                <li>Captação dominante em qualquer sítio metastático suficiente para qualificar</li>
+              </ul>
+            </div>
+            <div class="criteria-col exclude">
+              <h5><i data-lucide="x-circle" style="width:16px;height:16px"></i> Exclusão (PSMA-negativo dominante)</h5>
+              <ul class="criteria-list">
+                <li>Lesão metastática &gt; 1 cm de partes moles com PSMA ≤ fígado</li>
+                <li>Lesão linfonodal &gt; 2,5 cm em eixo curto com PSMA ≤ fígado</li>
+                <li>Lesão visceral &gt; 1 cm com PSMA ≤ fígado</li>
+                <li>Qualquer lesão óssea &gt; 1 cm de partes moles associadas com PSMA ≤ fígado</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="key-fact">
+            <div class="lbl">Cenário clínico real</div>
+            <p>Cerca de 13% dos pacientes triados para o VISION foram excluídos por critérios de PSMA-negatividade, uma taxa relevante que reforça a obrigatoriedade do PSMA-PET diagnóstico antes de indicar o tratamento. Em centros teranósticos brasileiros essa taxa varia entre 10-18%.</p>
+          </div>
+        </div>
+
+        <div class="orbital-divider">
+          <svg width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="60" cy="20" r="3" fill="#FF8400"/>
+            <ellipse cx="60" cy="20" rx="40" ry="10" fill="none" stroke="#FF8400" stroke-width="0.8" opacity="0.4"/>
+            <ellipse cx="60" cy="20" rx="55" ry="13" fill="none" stroke="#0EA5B7" stroke-width="0.6" stroke-dasharray="2 4" opacity="0.5"/>
+            <circle cx="100" cy="20" r="1.5" fill="#0EA5B7"/>
+            <circle cx="20" cy="20" r="1.5" fill="#0EA5B7"/>
+          </svg>
+        </div>
+
+        <!-- ============== ENSAIOS PIVOTAIS ============== -->
+        <div id="ensaios" class="rf-section">
+          <h2><span class="num">06</span> Ensaios pivotais</h2>
+          <p class="lead">Lu-PSMA caminhou da última linha do mCRPC pós-taxano para combinações em mHSPC em apenas 4 anos. Resumo dos estudos que sustentam cada cenário.</p>
+
+          <div class="trials-grid">
+            <div class="trial-card">
+              <div class="trial-name">
+                <span class="name">VISION</span>
+                <span class="year">2021 · NEJM</span>
+              </div>
+              <p class="pop">mCRPC pós-ARPi e pós-taxano · n=831 · randomizado 2:1 vs SOC</p>
+              <div class="results">
+                <div class="stat-row"><div class="lbl">rPFS</div><div class="val">8,7 vs 3,4 m</div></div>
+                <div class="stat-row"><div class="lbl">OS</div><div class="val">15,3 vs 11,3 m</div></div>
+                <div class="stat-row"><div class="lbl">PSA50</div><div class="val">46 vs 7,1%</div></div>
+                <div class="stat-row"><div class="lbl">HR OS</div><div class="val">0,62</div></div>
+              </div>
+              <p class="takeaway">Base regulatória do FDA. Estabeleceu Lu-PSMA como padrão pós-ARPi pós-taxano.</p>
+            </div>
+
+            <div class="trial-card">
+              <div class="trial-name">
+                <span class="name">TheraP</span>
+                <span class="year">2021 · Lancet</span>
+              </div>
+              <p class="pop">mCRPC pós-docetaxel · n=200 · fase 2, randomizado vs cabazitaxel</p>
+              <div class="results">
+                <div class="stat-row"><div class="lbl">PSA50</div><div class="val">66 vs 37%</div></div>
+                <div class="stat-row"><div class="lbl">rPFS</div><div class="val">5,1 vs 5,2 m</div></div>
+                <div class="stat-row"><div class="lbl">G3-4 AE</div><div class="val">33 vs 53%</div></div>
+                <div class="stat-row"><div class="lbl">OS final</div><div class="val">19,1 vs 19,6 m</div></div>
+              </div>
+              <p class="takeaway">Superioridade em resposta de PSA com toxicidade menor. OS comparável foi influenciada por crossover.</p>
+            </div>
+
+            <div class="trial-card">
+              <div class="trial-name">
+                <span class="name">PSMAfore</span>
+                <span class="year">2024 · Lancet Oncol</span>
+              </div>
+              <p class="pop">mCRPC pós-ARPi, pré-taxano · n=468 · fase 3 vs ARPi switch</p>
+              <div class="results">
+                <div class="stat-row"><div class="lbl">rPFS</div><div class="val">12,0 vs 5,6 m</div></div>
+                <div class="stat-row"><div class="lbl">PSA50</div><div class="val">58 vs 20%</div></div>
+                <div class="stat-row"><div class="lbl">HR rPFS</div><div class="val">0,43</div></div>
+                <div class="stat-row"><div class="lbl">OS</div><div class="val">crossover (84%)</div></div>
+              </div>
+              <p class="takeaway">Expansão FDA mar/2025 para uso pré-taxano. OS confundida pelo alto crossover.</p>
+            </div>
+
+            <div class="trial-card">
+              <div class="trial-name">
+                <span class="name">SPLASH</span>
+                <span class="year">2024 · ESMO</span>
+              </div>
+              <p class="pop">mCRPC pós-ARPi pré-taxano · n=412 · ¹⁷⁷Lu-PSMA-I&T (Curium) vs ARPi switch</p>
+              <div class="results">
+                <div class="stat-row"><div class="lbl">rPFS</div><div class="val">9,5 vs 6,0 m</div></div>
+                <div class="stat-row"><div class="lbl">PSA50</div><div class="val">38 vs 12%</div></div>
+                <div class="stat-row"><div class="lbl">HR rPFS</div><div class="val">0,71</div></div>
+                <div class="stat-row"><div class="lbl">Produto</div><div class="val">PSMA-I&T</div></div>
+              </div>
+              <p class="takeaway">Validação de segundo radioligante PSMA (Curium). Permite acesso adicional ao tratamento.</p>
+            </div>
+
+            <div class="trial-card">
+              <div class="trial-name">
+                <span class="name">ENZA-p</span>
+                <span class="year">2024 · Lancet Oncol</span>
+              </div>
+              <p class="pop">mCRPC primeira linha · n=162 · Lu-PSMA + enzalutamida vs enza só</p>
+              <div class="results">
+                <div class="stat-row"><div class="lbl">PSA-PFS</div><div class="val">13,0 vs 7,8 m</div></div>
+                <div class="stat-row"><div class="lbl">rPFS</div><div class="val">16,0 vs 12,0 m</div></div>
+                <div class="stat-row"><div class="lbl">PSA50</div><div class="val">93 vs 68%</div></div>
+                <div class="stat-row"><div class="lbl">HR PSA-PFS</div><div class="val">0,43</div></div>
+              </div>
+              <p class="takeaway">Primeira evidência randomizada de combinação Lu-PSMA + ARPi em mCRPC 1L.</p>
+            </div>
+
+            <div class="trial-card">
+              <div class="trial-name">
+                <span class="name">UpFrontPSMA</span>
+                <span class="year">2024 · Lancet Oncol</span>
+              </div>
+              <p class="pop">mHSPC de novo de alto volume · n=130 · Lu-PSMA + docetaxel</p>
+              <div class="results">
+                <div class="stat-row"><div class="lbl">PSA &lt; 0,2 (48s)</div><div class="val">41 vs 16%</div></div>
+                <div class="stat-row"><div class="lbl">PFS castração</div><div class="val">30,0 vs 20,3 m</div></div>
+                <div class="stat-row"><div class="lbl">PSA-PFS</div><div class="val">não atingido vs 20,0 m</div></div>
+                <div class="stat-row"><div class="lbl">OS</div><div class="val">imaturo</div></div>
+              </div>
+              <p class="takeaway">Sinal forte em mHSPC de novo. Aguarda confirmação fase 3 (PSMAddition).</p>
+            </div>
+
+            <div class="trial-card">
+              <div class="trial-name">
+                <span class="name">PSMAddition</span>
+                <span class="year">em curso</span>
+              </div>
+              <p class="pop">mHSPC · n=1126 · Lu-PSMA + ARPi + ADT vs ARPi + ADT</p>
+              <div class="results">
+                <div class="stat-row"><div class="lbl">Endpoint</div><div class="val">rPFS, OS</div></div>
+                <div class="stat-row"><div class="lbl">Status</div><div class="val">recrutando</div></div>
+                <div class="stat-row"><div class="lbl">Resultados</div><div class="val">2026-2027</div></div>
+                <div class="stat-row"><div class="lbl">NCT</div><div class="val">04720157</div></div>
+              </div>
+              <p class="takeaway">Estudo definidor para mHSPC. Pode posicionar Lu-PSMA na primeira linha.</p>
+            </div>
+          </div>
+
+          <div style="text-align: center; margin-top: 2rem">
+            <a href="database.html" class="rf-eyebrow" style="cursor:pointer">
+              <i data-lucide="database" style="width:14px;height:14px"></i>
+              Ver todos os estudos no Database
+              <i data-lucide="arrow-right" style="width:14px;height:14px"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="orbital-divider">
+          <svg width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="60" cy="20" r="3" fill="#FF8400"/>
+            <ellipse cx="60" cy="20" rx="40" ry="10" fill="none" stroke="#FF8400" stroke-width="0.8" opacity="0.4"/>
+            <ellipse cx="60" cy="20" rx="55" ry="13" fill="none" stroke="#0EA5B7" stroke-width="0.6" stroke-dasharray="2 4" opacity="0.5"/>
+            <circle cx="100" cy="20" r="1.5" fill="#0EA5B7"/>
+            <circle cx="20" cy="20" r="1.5" fill="#0EA5B7"/>
+          </svg>
+        </div>
+
+        <!-- ============== DOSIMETRIA ============== -->
+        <div id="dosimetria" class="rf-section">
+          <h2><span class="num">07</span> Dosimetria</h2>
+          <p class="lead">Tumor recebe ordens de magnitude mais radiação que qualquer órgão de risco. Glândulas salivares e lacrimais limitam mais que rins ou medula.</p>
+
+          <table class="dose-table">
+            <thead>
+              <tr>
+                <th>Órgão / tecido</th>
+                <th>Dose por GBq (Gy/GBq)</th>
+                <th>Visualização</th>
+                <th>Limite cumulativo (referência)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Tumor</strong> (mediana)</td>
+                <td>10 — 30</td>
+                <td><div class="dose-bar high"><div class="dose-bar-fill" style="width:100%"></div></div></td>
+                <td>—</td>
+              </tr>
+              <tr>
+                <td>Glândulas lacrimais</td>
+                <td>~ 2,8</td>
+                <td><div class="dose-bar med"><div class="dose-bar-fill" style="width:55%"></div></div></td>
+                <td>40 Gy (referência)</td>
+              </tr>
+              <tr>
+                <td>Parótidas</td>
+                <td>~ 1,4</td>
+                <td><div class="dose-bar med"><div class="dose-bar-fill" style="width:35%"></div></div></td>
+                <td>40 Gy (refêrencia)</td>
+              </tr>
+              <tr>
+                <td>Submandibulares</td>
+                <td>~ 1,5</td>
+                <td><div class="dose-bar med"><div class="dose-bar-fill" style="width:38%"></div></div></td>
+                <td>40 Gy (referência)</td>
+              </tr>
+              <tr>
+                <td>Rins</td>
+                <td>~ 0,7</td>
+                <td><div class="dose-bar low"><div class="dose-bar-fill" style="width:18%"></div></div></td>
+                <td>23 Gy (BED)</td>
+              </tr>
+              <tr>
+                <td>Medula óssea (vermelha)</td>
+                <td>~ 0,03</td>
+                <td><div class="dose-bar low"><div class="dose-bar-fill" style="width:5%"></div></div></td>
+                <td>2 Gy</td>
+              </tr>
+              <tr>
+                <td>Fígado</td>
+                <td>~ 0,1</td>
+                <td><div class="dose-bar low"><div class="dose-bar-fill" style="width:8%"></div></div></td>
+                <td>30 Gy</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="key-fact">
+            <div class="lbl">Dosimetria personalizada — vale a pena?</div>
+            <p>O ensaio LuTectomy e o programa PRINCE mostraram correlação entre dose tumoral absorvida e resposta. Calculadoras simples (3 SPECT/CT — 4 h, 24 h, 48 h ou 72 h) permitem estimar dose tumoral e dose renal. Em centros com infraestrutura, dose-personalizada pode otimizar resposta sem aumentar toxicidade.</p>
+          </div>
+        </div>
+
+        <div class="orbital-divider">
+          <svg width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="60" cy="20" r="3" fill="#FF8400"/>
+            <ellipse cx="60" cy="20" rx="40" ry="10" fill="none" stroke="#FF8400" stroke-width="0.8" opacity="0.4"/>
+            <ellipse cx="60" cy="20" rx="55" ry="13" fill="none" stroke="#0EA5B7" stroke-width="0.6" stroke-dasharray="2 4" opacity="0.5"/>
+            <circle cx="100" cy="20" r="1.5" fill="#0EA5B7"/>
+            <circle cx="20" cy="20" r="1.5" fill="#0EA5B7"/>
+          </svg>
+        </div>
+
+        <!-- ============== TOXICIDADE ============== -->
+        <div id="toxicidade" class="rf-section">
+          <h2><span class="num">08</span> Eventos adversos · perfil VISION</h2>
+          <p class="lead">Toxicidade overall manejável. Hematológica é dose-limitante; xerostomia é a queixa crônica mais frequente.</p>
+
+          <div class="tox-grid">
+            <div class="tox-item">
+              <div class="tox-name">Xerostomia / boca seca</div>
+              <div class="tox-pct">
+                <span class="tox-all">39%</span>
+                <span class="tox-g3">G3 &lt;1%</span>
+              </div>
+              <div class="tox-bar"><div class="tox-bar-all" style="width:39%"></div></div>
+            </div>
+            <div class="tox-item">
+              <div class="tox-name">Fadiga</div>
+              <div class="tox-pct">
+                <span class="tox-all">43%</span>
+                <span class="tox-g3">G3 6%</span>
+              </div>
+              <div class="tox-bar"><div class="tox-bar-all" style="width:43%"></div></div>
+            </div>
+            <div class="tox-item">
+              <div class="tox-name">Náusea</div>
+              <div class="tox-pct">
+                <span class="tox-all">35%</span>
+                <span class="tox-g3">G3 1%</span>
+              </div>
+              <div class="tox-bar"><div class="tox-bar-all" style="width:35%"></div></div>
+            </div>
+            <div class="tox-item">
+              <div class="tox-name">Anemia</div>
+              <div class="tox-pct">
+                <span class="tox-all">32%</span>
+                <span class="tox-g3">G3-4 13%</span>
+              </div>
+              <div class="tox-bar"><div class="tox-bar-all" style="width:32%"></div></div>
+            </div>
+            <div class="tox-item">
+              <div class="tox-name">Trombocitopenia</div>
+              <div class="tox-pct">
+                <span class="tox-all">17%</span>
+                <span class="tox-g3">G3-4 8%</span>
+              </div>
+              <div class="tox-bar"><div class="tox-bar-all" style="width:17%"></div></div>
+            </div>
+            <div class="tox-item">
+              <div class="tox-name">Neutropenia</div>
+              <div class="tox-pct">
+                <span class="tox-all">8%</span>
+                <span class="tox-g3">G3-4 3%</span>
+              </div>
+              <div class="tox-bar"><div class="tox-bar-all" style="width:8%"></div></div>
+            </div>
+            <div class="tox-item">
+              <div class="tox-name">Disfunção renal</div>
+              <div class="tox-pct">
+                <span class="tox-all">9%</span>
+                <span class="tox-g3">G3 &lt;2%</span>
+              </div>
+              <div class="tox-bar"><div class="tox-bar-all" style="width:9%"></div></div>
+            </div>
+            <div class="tox-item">
+              <div class="tox-name">Diarreia</div>
+              <div class="tox-pct">
+                <span class="tox-all">19%</span>
+                <span class="tox-g3">G3 1%</span>
+              </div>
+              <div class="tox-bar"><div class="tox-bar-all" style="width:19%"></div></div>
+            </div>
+          </div>
+
+          <div class="key-fact">
+            <div class="lbl">Manejo prático</div>
+            <p>Hemograma antes de cada ciclo é mandatório. Reduzir para 5,5 GBq se Hb &lt; 9, plaquetas &lt; 75 mil ou neutrófilos &lt; 1.500. Xerostomia raramente é dose-limitante mas afeta qualidade de vida — pilocarpina e saliva artificial podem ajudar. Função renal estável após 6 ciclos no VISION (mediana de variação de TFG &lt; 5 mL/min/1,73 m²).</p>
+          </div>
+        </div>
+
+        <div class="orbital-divider">
+          <svg width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="60" cy="20" r="3" fill="#FF8400"/>
+            <ellipse cx="60" cy="20" rx="40" ry="10" fill="none" stroke="#FF8400" stroke-width="0.8" opacity="0.4"/>
+            <ellipse cx="60" cy="20" rx="55" ry="13" fill="none" stroke="#0EA5B7" stroke-width="0.6" stroke-dasharray="2 4" opacity="0.5"/>
+            <circle cx="100" cy="20" r="1.5" fill="#0EA5B7"/>
+            <circle cx="20" cy="20" r="1.5" fill="#0EA5B7"/>
+          </svg>
+        </div>
+
+        <!-- ============== PERSPECTIVAS ALFA ============== -->
+        <div id="perspectivas" class="rf-section">
+          <h2><span class="num">09</span> Perspectivas: alfa, terbio, combinações</h2>
+          <p class="lead">A próxima geração explora maior densidade de ionização (alfa), eficiência por evento (Auger) e combinações com inibidores do reparo de DNA.</p>
+
+          <div class="ab-compare">
+            <div class="ab-card beta">
+              <h4><i data-lucide="zap" style="width:18px;height:18px"></i> ¹⁷⁷Lu (β⁻)</h4>
+              <ul>
+                <li>Energia média <span class="v">134 keV</span></li>
+                <li>Alcance médio <span class="v">~ 0,7 mm</span></li>
+                <li>LET <span class="v">0,2 keV/μm</span></li>
+                <li>Eficiência por evento <span class="v">moderada</span></li>
+                <li>Crossfire <span class="v">amplo (mm)</span></li>
+                <li>Lesões pequenas <span class="v">menos eficaz</span></li>
+              </ul>
+            </div>
+            <div class="ab-card alpha">
+              <h4><i data-lucide="zap" style="width:18px;height:18px"></i> ²²⁵Ac / ²¹²Pb (α)</h4>
+              <ul>
+                <li>Energia <span class="v">5-9 MeV</span></li>
+                <li>Alcance <span class="v">50-100 μm</span></li>
+                <li>LET <span class="v">80 keV/μm</span></li>
+                <li>Eficiência por evento <span class="v">muito alta</span></li>
+                <li>Crossfire <span class="v">restrito (poucas células)</span></li>
+                <li>Lesões pequenas <span class="v">excelente alvo</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin: 1.5rem 0">
+            <div style="background: var(--graphite-2); border: 1px solid rgba(192, 132, 252, 0.3); border-radius: var(--radius-md); padding: 1.25rem">
+              <div style="font-family: var(--font-mono); color: #C084FC; font-size: 0.85rem; margin-bottom: 0.4rem">²²⁵Ac-PSMA-617</div>
+              <div style="font-size: 0.95rem; color: var(--off-white); margin-bottom: 0.35rem">Alfa-emissor</div>
+              <div style="font-size: 0.82rem; color: var(--stone); line-height: 1.5">Resposta em pacientes refratários ao β. Xerostomia mais intensa. Series de Heidelberg + AcTION trial.</div>
+            </div>
+            <div style="background: var(--graphite-2); border: 1px solid rgba(192, 132, 252, 0.3); border-radius: var(--radius-md); padding: 1.25rem">
+              <div style="font-family: var(--font-mono); color: #C084FC; font-size: 0.85rem; margin-bottom: 0.4rem">¹⁶¹Tb-PSMA</div>
+              <div style="font-size: 0.95rem; color: var(--off-white); margin-bottom: 0.35rem">β⁻ + Auger</div>
+              <div style="font-size: 0.82rem; color: var(--stone); line-height: 1.5">Combina elétrons Auger (alta LET local) com β⁻. Pode ser superior ao Lu para micrometástases. Faseaberta no REALITY.</div>
+            </div>
+            <div style="background: var(--graphite-2); border: 1px solid rgba(192, 132, 252, 0.3); border-radius: var(--radius-md); padding: 1.25rem">
+              <div style="font-family: var(--font-mono); color: #C084FC; font-size: 0.85rem; margin-bottom: 0.4rem">²¹²Pb-PSMA</div>
+              <div style="font-size: 0.95rem; color: var(--off-white); margin-bottom: 0.35rem">Alfa-emissor</div>
+              <div style="font-size: 0.82rem; color: var(--stone); line-height: 1.5">Meia-vida 10,6h favorece logística regional. Estudos fase 1 (Perspective Therapeutics) em andamento.</div>
+            </div>
+            <div style="background: var(--graphite-2); border: 1px solid rgba(192, 132, 252, 0.3); border-radius: var(--radius-md); padding: 1.25rem">
+              <div style="font-family: var(--font-mono); color: #C084FC; font-size: 0.85rem; margin-bottom: 0.4rem">Lu-PSMA + PARPi</div>
+              <div style="font-size: 0.95rem; color: var(--off-white); margin-bottom: 0.35rem">Combinações</div>
+              <div style="font-size: 0.82rem; color: var(--stone); line-height: 1.5">LuPARP, BULLSEYE: testando sinergia com olaparib em mCRPC HRR-mutado e não-mutado.</div>
+            </div>
+          </div>
+
+          <div class="key-fact">
+            <div class="lbl">Olhando para 2027</div>
+            <p>O cenário 2027 deve incluir: (1) Lu-PSMA em mHSPC (PSMAddition), (2) escolha racional entre β e α por carga tumoral e padrão dosimétrico, (3) primeiras combinações com PARPi e imunoterapia, e (4) introdução do ¹⁶¹Tb como possível substituto do ¹⁷⁷Lu para lesões pequenas.</p>
+          </div>
+        </div>
+
+        <div class="orbital-divider">
+          <svg width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="60" cy="20" r="3" fill="#FF8400"/>
+            <ellipse cx="60" cy="20" rx="40" ry="10" fill="none" stroke="#FF8400" stroke-width="0.8" opacity="0.4"/>
+            <ellipse cx="60" cy="20" rx="55" ry="13" fill="none" stroke="#0EA5B7" stroke-width="0.6" stroke-dasharray="2 4" opacity="0.5"/>
+            <circle cx="100" cy="20" r="1.5" fill="#0EA5B7"/>
+            <circle cx="20" cy="20" r="1.5" fill="#0EA5B7"/>
+          </svg>
+        </div>
+
+        <!-- ============== PRÓXIMAS PÁGINAS ============== -->
+        <div id="proximos" class="rf-section">
+          <h2><span class="num">10</span> Continue lendo</h2>
+          <div class="next-grid">
+            <a href="lu-dotatate.html" class="next-card">
+              <div class="lbl">Próximo radiofármaco</div>
+              <div class="name">¹⁷⁷Lu-DOTATATE</div>
+              <div class="desc">PRRT em tumores neuroendócrinos. NETTER-1, COMPETE, COMPOSE.</div>
+            </a>
+            <a href="ra-223.html" class="next-card">
+              <div class="lbl">Alfa-emissor</div>
+              <div class="name">²²³Ra-Cloreto</div>
+              <div class="desc">ALSYMPCA, PEACE-3, COMRADE — só osso, alta especificidade.</div>
+            </a>
+            <a href="database.html" class="next-card">
+              <div class="lbl">Database</div>
+              <div class="name">Todos os estudos</div>
+              <div class="desc">83 ensaios clínicos com filtros por tumor, modalidade e fase.</div>
+            </a>
+            <a href="ferramentas.html#dose" class="next-card">
+              <div class="lbl">Ferramenta</div>
+              <div class="name">Calculadora de dose</div>
+              <div class="desc">Cálculo de atividade e cronograma de ciclos para Lu-PSMA.</div>
+            </a>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+</section>
+
+<!-- ============== FOOTER ============== -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>© 2026 TheraTrials Oncology · Plataforma de evidências em oncologia moderna</span>
+      <span style="color: var(--stone); font-size: 0.82rem; margin-left: 1rem">Dados extraídos de publicações peer-reviewed e bases regulatórias. Conteúdo educacional, não substitui julgamento clínico.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    if (typeof lucide !== 'undefined') lucide.createIcons();
+  });
+</script>
+
+</body>
+</html>

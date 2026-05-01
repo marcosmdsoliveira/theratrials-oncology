@@ -1,0 +1,496 @@
+/* ============================================================
+   TheraTrials Oncology — Páginas profundas por radiofármaco
+   Estilo compartilhado entre Lu-PSMA, Lu-DOTATATE, Ra-223,
+   Y-90, MIBG, Novos Alfa-emissores
+   ============================================================ */
+
+.rf-hero {
+  padding: 4rem 0 3rem;
+  position: relative;
+  overflow: hidden;
+}
+.rf-hero::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 700px; height: 700px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(255, 132, 0, 0.08) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+.rf-hero .container { position: relative; z-index: 1; }
+
+.rf-eyebrow {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.4rem 0.85rem;
+  background: var(--amber-soft);
+  border: 1px solid rgba(255, 132, 0, 0.25);
+  border-radius: 100px;
+  color: var(--amber);
+  font-size: 0.78rem; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  margin-bottom: 1.25rem;
+}
+
+.rf-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+  margin: 0 0 1rem;
+}
+.rf-title .accent { color: var(--amber); }
+.rf-title .iso-up { font-size: 0.55em; vertical-align: 0.7em; color: var(--amber); font-weight: 600; }
+
+.rf-subtitle {
+  color: var(--stone);
+  font-size: 1.1rem;
+  max-width: 700px;
+  margin-bottom: 2rem;
+}
+
+/* ID card do isótopo */
+.iso-card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 2rem;
+  align-items: center;
+  background: linear-gradient(135deg, rgba(255, 132, 0, 0.06) 0%, rgba(14, 165, 183, 0.04) 100%);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  margin-top: 1.5rem;
+}
+@media (max-width: 720px) { .iso-card { grid-template-columns: 1fr; } }
+
+.iso-symbol {
+  width: 140px; height: 140px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, var(--amber-glow) 0%, var(--amber) 55%, #B85D00 100%);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  color: #0E0F12; font-family: var(--font-display);
+  box-shadow: 0 0 50px rgba(255, 132, 0, 0.35);
+  flex-shrink: 0;
+  position: relative;
+}
+.iso-symbol.alpha {
+  background: radial-gradient(circle at 35% 35%, #D9A6FF 0%, #C084FC 55%, #7E3FB8 100%);
+  box-shadow: 0 0 50px rgba(192, 132, 252, 0.35);
+}
+.iso-symbol.alpha::before { border-color: rgba(192, 132, 252, 0.4) !important; }
+.iso-symbol::before {
+  content: '';
+  position: absolute;
+  top: -8px; right: -8px; bottom: -8px; left: -8px;
+  border: 1px dashed rgba(255, 132, 0, 0.4);
+  border-radius: 50%;
+  animation: rotate 24s linear infinite;
+}
+@keyframes rotate { to { transform: rotate(360deg); } }
+.iso-mass { font-size: 0.85rem; font-weight: 600; opacity: 0.7; line-height: 1; }
+.iso-element { font-size: 2.6rem; font-weight: 700; line-height: 1; }
+.iso-name { font-size: 0.7rem; opacity: 0.7; margin-top: 0.15rem; }
+
+.iso-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1rem;
+}
+.iso-grid .item { }
+.iso-grid .lbl { font-size: 0.7rem; color: var(--stone); text-transform: uppercase; letter-spacing: 0.08em; }
+.iso-grid .val { font-family: var(--font-mono); font-size: 1.05rem; color: var(--off-white); margin-top: 0.2rem; font-weight: 500; }
+
+/* Sumário lateral */
+.toc {
+  position: sticky; top: 90px;
+  background: var(--graphite-2);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+}
+.toc h4 { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--stone); margin: 0 0 0.85rem; font-weight: 600; }
+.toc a {
+  display: block;
+  color: var(--off-white); opacity: 0.7;
+  font-size: 0.9rem; padding: 0.4rem 0.5rem;
+  border-radius: var(--radius-sm); margin-bottom: 0.15rem;
+  transition: all 0.15s;
+  border-left: 2px solid transparent;
+}
+.toc a:hover { opacity: 1; background: var(--graphite-3); border-left-color: var(--amber); }
+
+.rf-layout {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 3rem;
+  padding: 2rem 0;
+}
+@media (max-width: 968px) {
+  .rf-layout { grid-template-columns: 1fr; }
+  .toc { position: static; }
+}
+
+/* Sections */
+.rf-section { margin-bottom: 3.5rem; scroll-margin-top: 90px; }
+.rf-section h2 {
+  font-family: var(--font-display);
+  font-size: 1.85rem; font-weight: 600;
+  letter-spacing: -0.015em;
+  margin: 0 0 0.5rem;
+  display: flex; align-items: center; gap: 0.85rem;
+}
+.rf-section h2 .num {
+  font-size: 0.9rem;
+  font-family: var(--font-mono);
+  color: var(--amber);
+  background: var(--amber-soft);
+  padding: 0.2rem 0.6rem;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 132, 0, 0.25);
+  font-weight: 500;
+}
+.rf-section .lead { color: var(--stone); font-size: 1rem; margin-bottom: 1.75rem; max-width: 720px; }
+
+/* Cronologia */
+.timeline {
+  position: relative;
+  padding: 1rem 0 1rem 0;
+  margin-top: 1rem;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 22px; top: 0; bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, transparent 0%, var(--amber) 8%, var(--teal) 92%, transparent 100%);
+}
+.tl-item {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+  align-items: flex-start;
+}
+.tl-dot {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: var(--graphite-2);
+  border: 2px solid var(--amber);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--amber); font-family: var(--font-mono);
+  font-size: 0.78rem; font-weight: 600;
+  box-shadow: 0 0 16px rgba(255, 132, 0, 0.3);
+  flex-shrink: 0;
+}
+.tl-card {
+  background: var(--graphite-2);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  padding: 1.1rem 1.25rem;
+}
+.tl-card h4 { margin: 0 0 0.35rem; font-size: 1.05rem; color: var(--off-white); font-weight: 600; }
+.tl-card p { margin: 0; color: var(--stone); font-size: 0.92rem; line-height: 1.55; }
+
+/* Mecanismo - diagrama */
+.mech-diagram {
+  background: var(--graphite-2);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  margin: 1.5rem 0;
+}
+.mech-stages {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+.mech-stage {
+  background: var(--graphite-3);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  text-align: center;
+  position: relative;
+}
+.mech-stage .mech-num {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: var(--amber);
+  color: #0E0F12;
+  font-weight: 700;
+  display: inline-flex; align-items: center; justify-content: center;
+  margin-bottom: 0.75rem;
+}
+.mech-stage h5 { margin: 0 0 0.4rem; font-size: 0.95rem; color: var(--off-white); font-weight: 600; }
+.mech-stage p { margin: 0; font-size: 0.82rem; color: var(--stone); line-height: 1.5; }
+
+/* Esquema terapêutico */
+.scheme-box {
+  background: linear-gradient(135deg, rgba(255, 132, 0, 0.07) 0%, rgba(14, 165, 183, 0.05) 100%);
+  border: 1px solid rgba(255, 132, 0, 0.25);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  margin: 1.5rem 0;
+}
+.scheme-pills {
+  display: flex; flex-wrap: wrap; gap: 0.75rem;
+  margin: 1rem 0 1.5rem;
+}
+.scheme-pill {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: var(--graphite-2);
+  border: 1px solid var(--border-soft);
+  padding: 0.6rem 1rem;
+  border-radius: 100px;
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+}
+.scheme-pill .pill-lbl { color: var(--stone); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; }
+.scheme-pill .pill-val { color: var(--amber); font-weight: 600; }
+
+/* Cycle bar */
+.cycle-bar {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+.cycle {
+  background: var(--graphite-3);
+  border: 1px solid rgba(255, 132, 0, 0.3);
+  border-radius: var(--radius-sm);
+  padding: 0.85rem 0.5rem;
+  text-align: center;
+}
+.cycle .cy-num { color: var(--amber); font-weight: 700; font-family: var(--font-mono); font-size: 1rem; }
+.cycle .cy-week { color: var(--stone); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; margin-top: 0.25rem; }
+.cycle .cy-dose { font-family: var(--font-mono); font-size: 0.78rem; color: var(--off-white); margin-top: 0.4rem; }
+
+/* Ensaios pivotais */
+.trials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+.trial-card {
+  background: var(--graphite-2);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  transition: all 0.2s;
+}
+.trial-card:hover { border-color: rgba(255, 132, 0, 0.4); transform: translateY(-2px); }
+.trial-name {
+  display: flex; align-items: baseline; gap: 0.6rem;
+  margin-bottom: 0.6rem;
+}
+.trial-name .name { font-size: 1.15rem; font-weight: 700; color: var(--amber); font-family: var(--font-display); }
+.trial-name .year { color: var(--stone); font-size: 0.85rem; font-family: var(--font-mono); }
+.trial-card .pop { color: var(--stone); font-size: 0.88rem; margin: 0 0 0.85rem; }
+.trial-card .results { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-bottom: 0.75rem; }
+.trial-card .stat-row { background: var(--graphite-3); padding: 0.55rem 0.75rem; border-radius: var(--radius-sm); }
+.trial-card .stat-row .lbl { font-size: 0.7rem; color: var(--stone); text-transform: uppercase; letter-spacing: 0.05em; }
+.trial-card .stat-row .val { font-family: var(--font-mono); font-size: 0.92rem; color: var(--off-white); margin-top: 0.15rem; font-weight: 500; }
+.trial-card .takeaway {
+  color: var(--off-white); font-size: 0.88rem;
+  margin: 0; padding-top: 0.75rem;
+  border-top: 1px solid var(--border-soft);
+}
+
+/* Critérios PSMA-PET / outras eligibilidades */
+.criteria-box {
+  background: var(--graphite-2);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin: 1.5rem 0;
+}
+@media (max-width: 768px) { .criteria-box { grid-template-columns: 1fr; } }
+.criteria-col h5 { font-size: 1rem; margin: 0 0 0.85rem; display: flex; align-items: center; gap: 0.5rem; }
+.criteria-col.include h5 { color: var(--success); }
+.criteria-col.exclude h5 { color: #F87171; }
+.criteria-list { list-style: none; padding: 0; margin: 0; }
+.criteria-list li {
+  padding: 0.55rem 0 0.55rem 1.6rem;
+  position: relative;
+  font-size: 0.9rem; color: var(--off-white);
+  border-bottom: 1px solid var(--border-soft);
+}
+.criteria-list li:last-child { border-bottom: 0; }
+.criteria-list li::before {
+  position: absolute; left: 0; top: 0.55rem;
+  font-family: var(--font-mono); font-weight: 700;
+}
+.criteria-col.include .criteria-list li::before { content: '✓'; color: var(--success); }
+.criteria-col.exclude .criteria-list li::before { content: '✕'; color: #F87171; }
+
+/* Dosimetria */
+.dose-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--graphite-2);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin: 1.5rem 0;
+}
+.dose-table th, .dose-table td {
+  padding: 0.85rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border-soft);
+  font-size: 0.92rem;
+}
+.dose-table th { background: var(--graphite-3); color: var(--stone); font-weight: 600; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; }
+.dose-table tr:last-child td { border-bottom: 0; }
+.dose-table tr:hover { background: var(--graphite-3); }
+.dose-bar {
+  position: relative;
+  height: 8px;
+  background: var(--graphite-4);
+  border-radius: 4px;
+  overflow: hidden;
+  min-width: 100px;
+}
+.dose-bar-fill {
+  position: absolute; left: 0; top: 0; bottom: 0;
+  background: linear-gradient(90deg, var(--amber), var(--amber-glow));
+  border-radius: 4px;
+}
+.dose-bar.high .dose-bar-fill { background: linear-gradient(90deg, #F87171, #FBA876); }
+.dose-bar.med .dose-bar-fill { background: linear-gradient(90deg, var(--warn), #FCD34D); }
+.dose-bar.low .dose-bar-fill { background: linear-gradient(90deg, var(--success), #6EE7B7); }
+
+/* Toxicidade */
+.tox-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.85rem;
+  margin: 1.5rem 0;
+}
+.tox-item {
+  background: var(--graphite-2);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.15rem;
+}
+.tox-item .tox-name { font-size: 0.92rem; font-weight: 500; margin-bottom: 0.5rem; }
+.tox-item .tox-pct {
+  display: flex; align-items: baseline; gap: 0.6rem;
+  margin-bottom: 0.4rem;
+}
+.tox-item .tox-all { font-family: var(--font-mono); font-size: 1.4rem; font-weight: 700; color: var(--off-white); }
+.tox-item .tox-g3 { font-family: var(--font-mono); font-size: 0.85rem; color: #F87171; }
+.tox-item .tox-bar {
+  height: 6px;
+  background: var(--graphite-4);
+  border-radius: 3px;
+  overflow: hidden;
+  position: relative;
+}
+.tox-item .tox-bar-all {
+  position: absolute; left: 0; top: 0; bottom: 0;
+  background: linear-gradient(90deg, var(--amber), var(--amber-glow));
+  border-radius: 3px;
+}
+
+/* Box destaque (key fact) */
+.key-fact {
+  background: var(--graphite-2);
+  border-left: 3px solid var(--amber);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  padding: 1.15rem 1.5rem;
+  margin: 1.5rem 0;
+}
+.key-fact .lbl {
+  font-size: 0.7rem; color: var(--amber);
+  text-transform: uppercase; letter-spacing: 0.1em;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+.key-fact p { margin: 0; color: var(--off-white); font-size: 0.95rem; line-height: 1.55; }
+
+/* Comparação alfa vs beta */
+.ab-compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin: 1.5rem 0;
+}
+@media (max-width: 700px) { .ab-compare { grid-template-columns: 1fr; } }
+.ab-card {
+  background: var(--graphite-2);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+}
+.ab-card.beta { border-color: rgba(255, 132, 0, 0.3); }
+.ab-card.alpha { border-color: rgba(192, 132, 252, 0.35); }
+.ab-card h4 {
+  margin: 0 0 0.85rem;
+  font-size: 1.1rem;
+  display: flex; align-items: center; gap: 0.6rem;
+}
+.ab-card.beta h4 { color: var(--amber); }
+.ab-card.alpha h4 { color: #C084FC; }
+.ab-card ul { margin: 0; padding: 0; list-style: none; }
+.ab-card li {
+  padding: 0.45rem 0;
+  border-bottom: 1px solid var(--border-soft);
+  font-size: 0.88rem;
+  color: var(--off-white);
+  display: flex; justify-content: space-between; gap: 1rem;
+}
+.ab-card li:last-child { border-bottom: 0; }
+.ab-card li .v { font-family: var(--font-mono); color: var(--stone); }
+
+/* Orbital divider */
+.orbital-divider {
+  display: flex; justify-content: center; align-items: center;
+  padding: 2.5rem 0;
+}
+
+/* Link cards no fim */
+.next-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+.next-card {
+  background: var(--graphite-2);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  transition: all 0.2s;
+  text-decoration: none;
+  color: var(--off-white);
+  display: block;
+}
+.next-card:hover { border-color: rgba(255, 132, 0, 0.4); transform: translateY(-2px); color: var(--off-white); }
+.next-card .lbl { font-size: 0.7rem; color: var(--amber); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; margin-bottom: 0.3rem; }
+.next-card .name { font-size: 1.05rem; font-weight: 600; margin-bottom: 0.2rem; }
+.next-card .desc { font-size: 0.82rem; color: var(--stone); }
+
+/* Cards genéricos para imagem teranóstica */
+.imaging-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+.imaging-card {
+  background: var(--graphite-2);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+}
+.imaging-card .tag { font-family: var(--font-mono); color: var(--amber); font-size: 0.85rem; margin-bottom: 0.4rem; }
+.imaging-card .title { font-size: 0.95rem; color: var(--off-white); margin-bottom: 0.35rem; }
+.imaging-card .desc { font-size: 0.82rem; color: var(--stone); line-height: 1.5; }

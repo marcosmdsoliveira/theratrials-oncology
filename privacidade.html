@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Política de privacidade · TheraTrials Oncology</title>
+<meta name="description" content="Política de privacidade da plataforma TheraTrials Oncology — coleta, uso, armazenamento e compartilhamento de dados conforme a LGPD.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/theratrials.css">
+<link rel="icon" type="image/png" href="assets/img/logo-app.png">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+<style>
+  .legal-hero { padding: 3rem 0 1.5rem; text-align: center; }
+  .legal-hero .eyebrow {
+    display: inline-block; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--teal); font-weight: 600; margin-bottom: 0.75rem;
+  }
+  .legal-hero h1 {
+    font-family: var(--font-display); font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    font-weight: 700; letter-spacing: -0.025em; color: var(--off-white); margin-bottom: 0.6rem;
+  }
+  .legal-hero p { color: var(--stone); max-width: 640px; margin: 0 auto; font-size: 0.95rem; line-height: 1.6; }
+
+  .legal-meta {
+    max-width: 760px; margin: 1rem auto 0; padding: 0.75rem 1rem;
+    background: var(--graphite-2); border: 1px solid var(--border-soft);
+    border-radius: var(--radius-sm); font-size: 0.78rem; color: var(--stone);
+    display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;
+    font-family: var(--font-mono);
+  }
+  .legal-meta strong { color: var(--off-white); }
+
+  .prose { max-width: 760px; margin: 0 auto; padding: 2rem 0 4rem; }
+  .prose section { margin-bottom: 3rem; scroll-margin-top: 100px; }
+  .prose h2 {
+    font-family: var(--font-display); font-size: 1.4rem; font-weight: 700;
+    color: var(--off-white); letter-spacing: -0.02em; margin-bottom: 1rem;
+    padding-bottom: 0.5rem; border-bottom: 1px solid var(--border-soft);
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  .prose h2 .num {
+    background: rgba(14,165,183,0.15); color: var(--teal);
+    width: 28px; height: 28px; border-radius: 6px;
+    display: grid; place-items: center;
+    font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700;
+  }
+  .prose h3 { font-family: var(--font-display); font-size: 1rem; font-weight: 600; color: var(--off-white); margin: 1.5rem 0 0.6rem; }
+  .prose p { color: var(--stone); line-height: 1.7; font-size: 0.92rem; margin-bottom: 0.9rem; }
+  .prose strong { color: var(--off-white); font-weight: 600; }
+  .prose a { color: var(--teal); border-bottom: 1px solid transparent; transition: border-color 0.15s; }
+  .prose a:hover { border-bottom-color: var(--teal); }
+  .prose ul { list-style: none; padding: 0; margin-bottom: 1rem; }
+  .prose ul li {
+    padding-left: 1.5rem; position: relative; margin-bottom: 0.5rem;
+    color: var(--stone); line-height: 1.6; font-size: 0.92rem;
+  }
+  .prose ul li::before { content: '→'; position: absolute; left: 0; color: var(--teal); font-weight: 600; }
+
+  .draft-notice {
+    max-width: 760px; margin: 0 auto 2rem;
+    background: rgba(14,165,183,0.06); border: 1px dashed rgba(14,165,183,0.4);
+    border-radius: var(--radius-md); padding: 0.9rem 1.2rem;
+    color: var(--off-white); font-size: 0.85rem; line-height: 1.5;
+  }
+  .draft-notice strong { color: var(--teal); }
+
+  .legal-toc {
+    max-width: 760px; margin: 0 auto 2rem; padding: 1rem 1.25rem;
+    background: var(--graphite-2); border: 1px solid var(--border-soft);
+    border-radius: var(--radius-md);
+  }
+  .legal-toc h4 {
+    margin: 0 0 0.6rem; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--stone); font-weight: 600;
+  }
+  .legal-toc ol { list-style: none; padding: 0; margin: 0; counter-reset: toc; }
+  .legal-toc ol li { counter-increment: toc; font-size: 0.88rem; padding: 0.35rem 0; }
+  .legal-toc ol li::before { content: counter(toc, decimal-leading-zero) '. '; color: var(--teal); font-family: var(--font-mono); margin-right: 0.4rem; }
+  .legal-toc ol li a { color: var(--off-white); }
+  .legal-toc ol li a:hover { color: var(--teal); }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="brand">
+      <img src="assets/img/logo-app.png" alt="TheraTrials" class="brand-logo">
+      <div class="brand-text">
+        <span class="brand-name">TheraTrials</span>
+        <span class="brand-sub">Oncology</span>
+      </div>
+    </a>
+    <button class="nav-toggle" aria-label="Menu"><i data-lucide="menu" style="width:18px;height:18px"></i></button>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="database.html">Database</a>
+      <a href="estudos-ativos.html">Estudos ativos</a>
+      <a href="tumor-boards.html">Tumor boards</a>
+      <a href="modalidades.html">Modalidades</a>
+      <a href="ferramentas.html">Ferramentas</a>
+      <a href="fundamentos.html">Fundamentos</a>
+      <a href="about.html">Sobre</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="legal-hero">
+  <div class="container">
+    <span class="eyebrow">Documento legal</span>
+    <h1>Política de privacidade</h1>
+    <p>Como coletamos, tratamos e protegemos dados na plataforma TheraTrials Oncology, conforme a LGPD (Lei nº 13.709/2018).</p>
+    <div class="legal-meta">
+      <span><strong>Versão:</strong> 0.1 (esboço)</span>
+      <span><strong>Vigência:</strong> a definir</span>
+      <span><strong>Última atualização:</strong> mai/2026</span>
+    </div>
+  </div>
+</section>
+
+<!-- ESBOÇO + TOC -->
+<div class="container">
+  <div class="draft-notice">
+    <strong>Esboço em construção.</strong> Esta página apresenta a estrutura das seções que serão finalizadas. O conteúdo definitivo será publicado após revisão de conformidade com a LGPD.
+  </div>
+
+  <nav class="legal-toc" aria-label="Sumário">
+    <h4>Sumário</h4>
+    <ol>
+      <li><a href="#identificacao">Identificação do controlador</a></li>
+      <li><a href="#dados-coletados">Dados coletados</a></li>
+      <li><a href="#finalidades">Finalidades do tratamento</a></li>
+      <li><a href="#bases-legais">Bases legais (LGPD art. 7º)</a></li>
+      <li><a href="#cookies">Cookies e tecnologias semelhantes</a></li>
+      <li><a href="#compartilhamento">Compartilhamento com terceiros</a></li>
+      <li><a href="#armazenamento">Armazenamento e segurança</a></li>
+      <li><a href="#retencao">Retenção e descarte</a></li>
+      <li><a href="#direitos">Direitos do titular dos dados</a></li>
+      <li><a href="#menores">Dados de menores</a></li>
+      <li><a href="#transferencia">Transferência internacional</a></li>
+      <li><a href="#alteracoes">Alterações desta política</a></li>
+      <li><a href="#contato">Contato e encarregado (DPO)</a></li>
+    </ol>
+  </nav>
+
+  <article class="prose">
+    <section id="identificacao">
+      <h2><span class="num">01</span>Identificação do controlador</h2>
+      <p><em>[A redigir]</em> · Identificação da pessoa física/jurídica responsável pelo tratamento dos dados (controlador) e dados de contato.</p>
+    </section>
+
+    <section id="dados-coletados">
+      <h2><span class="num">02</span>Dados coletados</h2>
+      <p><em>[A redigir]</em> · Descrever quais dados são coletados — por exemplo: dados de navegação (IP, user agent, páginas visitadas), dados informados em formulários, eventuais credenciais de login se houver área restrita, preferências armazenadas em <code>localStorage</code> (favoritos, filtros).</p>
+    </section>
+
+    <section id="finalidades">
+      <h2><span class="num">03</span>Finalidades do tratamento</h2>
+      <p><em>[A redigir]</em> · Para que cada dado é usado: prestar o serviço, melhorar o conteúdo, métricas agregadas de uso, segurança, comunicação com usuários cadastrados.</p>
+    </section>
+
+    <section id="bases-legais">
+      <h2><span class="num">04</span>Bases legais (LGPD art. 7º)</h2>
+      <p><em>[A redigir]</em> · Consentimento, legítimo interesse, cumprimento de obrigação legal, etc., para cada finalidade.</p>
+    </section>
+
+    <section id="cookies">
+      <h2><span class="num">05</span>Cookies e tecnologias semelhantes</h2>
+      <p><em>[A redigir]</em> · Tipos de cookies usados (essenciais, analíticos, preferência), opções de gerenciamento e impacto se forem desabilitados. Possível banner de consentimento.</p>
+    </section>
+
+    <section id="compartilhamento">
+      <h2><span class="num">06</span>Compartilhamento com terceiros</h2>
+      <p><em>[A redigir]</em> · Provedores de hospedagem, CDN (fontes Google, Lucide, etc.), eventuais ferramentas de analytics. Garantias contratuais.</p>
+    </section>
+
+    <section id="armazenamento">
+      <h2><span class="num">07</span>Armazenamento e segurança</h2>
+      <p><em>[A redigir]</em> · Onde os dados são armazenados, medidas técnicas e organizacionais de proteção, controle de acesso, criptografia em trânsito.</p>
+    </section>
+
+    <section id="retencao">
+      <h2><span class="num">08</span>Retenção e descarte</h2>
+      <p><em>[A redigir]</em> · Por quanto tempo cada categoria de dado é mantida e como o descarte é feito.</p>
+    </section>
+
+    <section id="direitos">
+      <h2><span class="num">09</span>Direitos do titular dos dados</h2>
+      <p><em>[A redigir]</em> · Confirmação, acesso, correção, anonimização, portabilidade, eliminação, oposição, revogação do consentimento (LGPD art. 18).</p>
+    </section>
+
+    <section id="menores">
+      <h2><span class="num">10</span>Dados de menores</h2>
+      <p><em>[A redigir]</em> · Plataforma destinada a profissionais de saúde adultos. Política de não coleta deliberada de dados de menores.</p>
+    </section>
+
+    <section id="transferencia">
+      <h2><span class="num">11</span>Transferência internacional</h2>
+      <p><em>[A redigir]</em> · Eventual transferência para países onde há servidores de hospedagem ou serviços terceiros. Salvaguardas aplicadas.</p>
+    </section>
+
+    <section id="alteracoes">
+      <h2><span class="num">12</span>Alterações desta política</h2>
+      <p><em>[A redigir]</em> · Critérios para atualização e versionamento.</p>
+    </section>
+
+    <section id="contato">
+      <h2><span class="num">13</span>Contato e encarregado (DPO)</h2>
+      <p><em>[A redigir]</em> · Canal de contato para exercer direitos do titular e nome/contato do encarregado pela proteção de dados.</p>
+    </section>
+  </article>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>© 2026 TheraTrials Oncology · uso educacional · não substitui diretrizes oficiais ou leitura primária</span>
+      <span>v1.1 · Atualizado mai 2026</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/common.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    if (typeof lucide !== 'undefined') lucide.createIcons();
+  });
+</script>
+</body>
+</html>

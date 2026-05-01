@@ -1,0 +1,63 @@
+# ====== TheraTrials Oncology — gitignore ======
+
+# OS
+.DS_Store
+.AppleDouble
+.LSOverride
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+[Dd]esktop.ini
+$RECYCLE.BIN/
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.settings/
+
+# Logs e temporários
+*.log
+*.tmp
+*.bak
+*.old
+*.orig
+*.rej
+
+# Node / build (caso seja adicionado no futuro)
+node_modules/
+dist/
+build/
+.cache/
+.parcel-cache/
+.next/
+.nuxt/
+.output/
+
+# Python (caso scripts auxiliares sejam adicionados)
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+ENV/
+
+# Senstivel — nunca subir
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+secrets.json
+credentials.json
+
+# Outputs de teste / scratch
+/tmp/
+/scratch/
+*.scratch.html
+DEBUG_*

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Termos de uso · TheraTrials Oncology</title>
+<meta name="description" content="Termos de uso da plataforma TheraTrials Oncology — condições, escopo educacional e limitações de responsabilidade.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/theratrials.css">
+<link rel="icon" type="image/png" href="assets/img/logo-app.png">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+<style>
+  .legal-hero { padding: 3rem 0 1.5rem; text-align: center; }
+  .legal-hero .eyebrow {
+    display: inline-block; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--amber); font-weight: 600; margin-bottom: 0.75rem;
+  }
+  .legal-hero h1 {
+    font-family: var(--font-display); font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    font-weight: 700; letter-spacing: -0.025em; color: var(--off-white); margin-bottom: 0.6rem;
+  }
+  .legal-hero p { color: var(--stone); max-width: 640px; margin: 0 auto; font-size: 0.95rem; line-height: 1.6; }
+
+  .legal-meta {
+    max-width: 760px; margin: 1rem auto 0; padding: 0.75rem 1rem;
+    background: var(--graphite-2); border: 1px solid var(--border-soft);
+    border-radius: var(--radius-sm); font-size: 0.78rem; color: var(--stone);
+    display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;
+    font-family: var(--font-mono);
+  }
+  .legal-meta strong { color: var(--off-white); }
+
+  .prose { max-width: 760px; margin: 0 auto; padding: 2rem 0 4rem; }
+  .prose section { margin-bottom: 3rem; scroll-margin-top: 100px; }
+  .prose h2 {
+    font-family: var(--font-display); font-size: 1.4rem; font-weight: 700;
+    color: var(--off-white); letter-spacing: -0.02em; margin-bottom: 1rem;
+    padding-bottom: 0.5rem; border-bottom: 1px solid var(--border-soft);
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  .prose h2 .num {
+    background: rgba(255,132,0,0.12); color: var(--amber);
+    width: 28px; height: 28px; border-radius: 6px;
+    display: grid; place-items: center;
+    font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700;
+  }
+  .prose h3 { font-family: var(--font-display); font-size: 1rem; font-weight: 600; color: var(--off-white); margin: 1.5rem 0 0.6rem; }
+  .prose p { color: var(--stone); line-height: 1.7; font-size: 0.92rem; margin-bottom: 0.9rem; }
+  .prose strong { color: var(--off-white); font-weight: 600; }
+  .prose a { color: var(--amber); border-bottom: 1px solid transparent; transition: border-color 0.15s; }
+  .prose a:hover { border-bottom-color: var(--amber); }
+  .prose ul { list-style: none; padding: 0; margin-bottom: 1rem; }
+  .prose ul li {
+    padding-left: 1.5rem; position: relative; margin-bottom: 0.5rem;
+    color: var(--stone); line-height: 1.6; font-size: 0.92rem;
+  }
+  .prose ul li::before { content: '→'; position: absolute; left: 0; color: var(--amber); font-weight: 600; }
+
+  .draft-notice {
+    max-width: 760px; margin: 0 auto 2rem;
+    background: rgba(255,132,0,0.06); border: 1px dashed rgba(255,132,0,0.4);
+    border-radius: var(--radius-md); padding: 0.9rem 1.2rem;
+    color: var(--off-white); font-size: 0.85rem; line-height: 1.5;
+  }
+  .draft-notice strong { color: var(--amber); }
+
+  .legal-toc {
+    max-width: 760px; margin: 0 auto 2rem; padding: 1rem 1.25rem;
+    background: var(--graphite-2); border: 1px solid var(--border-soft);
+    border-radius: var(--radius-md);
+  }
+  .legal-toc h4 {
+    margin: 0 0 0.6rem; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--stone); font-weight: 600;
+  }
+  .legal-toc ol { list-style: none; padding: 0; margin: 0; counter-reset: toc; }
+  .legal-toc ol li { counter-increment: toc; font-size: 0.88rem; padding: 0.35rem 0; }
+  .legal-toc ol li::before { content: counter(toc, decimal-leading-zero) '. '; color: var(--amber); font-family: var(--font-mono); margin-right: 0.4rem; }
+  .legal-toc ol li a { color: var(--off-white); }
+  .legal-toc ol li a:hover { color: var(--amber); }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="brand">
+      <img src="assets/img/logo-app.png" alt="TheraTrials" class="brand-logo">
+      <div class="brand-text">
+        <span class="brand-name">TheraTrials</span>
+        <span class="brand-sub">Oncology</span>
+      </div>
+    </a>
+    <button class="nav-toggle" aria-label="Menu"><i data-lucide="menu" style="width:18px;height:18px"></i></button>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="database.html">Database</a>
+      <a href="estudos-ativos.html">Estudos ativos</a>
+      <a href="tumor-boards.html">Tumor boards</a>
+      <a href="modalidades.html">Modalidades</a>
+      <a href="ferramentas.html">Ferramentas</a>
+      <a href="fundamentos.html">Fundamentos</a>
+      <a href="about.html">Sobre</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="legal-hero">
+  <div class="container">
+    <span class="eyebrow">Documento legal</span>
+    <h1>Termos de uso</h1>
+    <p>Condições aplicáveis ao acesso e ao uso do conteúdo da plataforma TheraTrials Oncology.</p>
+    <div class="legal-meta">
+      <span><strong>Versão:</strong> 0.1 (esboço)</span>
+      <span><strong>Vigência:</strong> a definir</span>
+      <span><strong>Última atualização:</strong> mai/2026</span>
+    </div>
+  </div>
+</section>
+
+<!-- ESBOÇO + TOC -->
+<div class="container">
+  <div class="draft-notice">
+    <strong>Esboço em construção.</strong> Esta página apresenta a estrutura das seções que serão finalizadas. O conteúdo definitivo será publicado após revisão jurídica e clínica.
+  </div>
+
+  <nav class="legal-toc" aria-label="Sumário">
+    <h4>Sumário</h4>
+    <ol>
+      <li><a href="#aceitacao">Aceitação dos termos</a></li>
+      <li><a href="#objeto">Objeto e escopo da plataforma</a></li>
+      <li><a href="#publico">Público-alvo</a></li>
+      <li><a href="#uso-permitido">Uso permitido</a></li>
+      <li><a href="#uso-vedado">Condutas vedadas</a></li>
+      <li><a href="#disclaimer">Limitação de responsabilidade clínica</a></li>
+      <li><a href="#propriedade">Propriedade intelectual e atribuição</a></li>
+      <li><a href="#disponibilidade">Disponibilidade do serviço</a></li>
+      <li><a href="#mudancas">Alterações dos termos</a></li>
+      <li><a href="#legislacao">Legislação aplicável e foro</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ol>
+  </nav>
+
+  <article class="prose">
+    <section id="aceitacao">
+      <h2><span class="num">01</span>Aceitação dos termos</h2>
+      <p><em>[A redigir]</em> · O acesso à plataforma implica concordância com estes termos.</p>
+    </section>
+
+    <section id="objeto">
+      <h2><span class="num">02</span>Objeto e escopo da plataforma</h2>
+      <p><em>[A redigir]</em> · Descrição do TheraTrials Oncology como repositório curado de evidências em oncologia moderna, com finalidade educacional e de apoio à decisão clínica.</p>
+    </section>
+
+    <section id="publico">
+      <h2><span class="num">03</span>Público-alvo</h2>
+      <p><em>[A redigir]</em> · Profissionais de saúde, médicos, residentes, pesquisadores e estudantes da área. A plataforma não se destina ao público leigo.</p>
+    </section>
+
+    <section id="uso-permitido">
+      <h2><span class="num">04</span>Uso permitido</h2>
+      <p><em>[A redigir]</em> · Consulta, citação acadêmica, uso em tumor boards e atividades educacionais.</p>
+    </section>
+
+    <section id="uso-vedado">
+      <h2><span class="num">05</span>Condutas vedadas</h2>
+      <p><em>[A redigir]</em> · Reprodução comercial não autorizada, redistribuição em massa, uso para promoção de produtos, marketing direto a pacientes etc.</p>
+    </section>
+
+    <section id="disclaimer">
+      <h2><span class="num">06</span>Limitação de responsabilidade clínica</h2>
+      <p><em>[A redigir]</em> · O conteúdo é educacional. Não substitui diretrizes oficiais, leitura primária dos artigos, julgamento clínico individualizado ou prescrição médica. Decisões assistenciais permanecem responsabilidade do médico assistente.</p>
+    </section>
+
+    <section id="propriedade">
+      <h2><span class="num">07</span>Propriedade intelectual e atribuição</h2>
+      <p><em>[A redigir]</em> · Direitos sobre os textos, código, marca e identidade visual da plataforma. Tratamento de citações de fontes terceiras (artigos, diretrizes, ClinicalTrials.gov, PubMed). Ver também <a href="direitos-autorais.html">Aviso de direitos autorais</a>.</p>
+    </section>
+
+    <section id="disponibilidade">
+      <h2><span class="num">08</span>Disponibilidade do serviço</h2>
+      <p><em>[A redigir]</em> · Ausência de garantia de disponibilidade contínua. Possibilidade de manutenção, atualização ou descontinuação a qualquer tempo.</p>
+    </section>
+
+    <section id="mudancas">
+      <h2><span class="num">09</span>Alterações dos termos</h2>
+      <p><em>[A redigir]</em> · Critérios para atualização dos termos. Notificação aos usuários e versionamento.</p>
+    </section>
+
+    <section id="legislacao">
+      <h2><span class="num">10</span>Legislação aplicável e foro</h2>
+      <p><em>[A redigir]</em> · Jurisdição brasileira. Foro da comarca a ser definido.</p>
+    </section>
+
+    <section id="contato">
+      <h2><span class="num">11</span>Contato</h2>
+      <p><em>[A redigir]</em> · Canal de contato para dúvidas sobre estes termos.</p>
+    </section>
+  </article>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>© 2026 TheraTrials Oncology · uso educacional · não substitui diretrizes oficiais ou leitura primária</span>
+      <span>v1.1 · Atualizado mai 2026</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/common.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    if (typeof lucide !== 'undefined') lucide.createIcons();
+  });
+</script>
+</body>
+</html>

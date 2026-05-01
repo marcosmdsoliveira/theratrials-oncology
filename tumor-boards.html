@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tumor Boards · TheraTrials Oncology</title>
+<meta name="description" content="Evidências organizadas por tipo tumoral. Próstata, NET, HCC, ccRCC, neuroblastoma, PPGL — para uso em tumor boards.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/theratrials.css">
+<link rel="icon" type="image/png" href="assets/img/logo-app.png">
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.5/dist/cdn.min.js"></script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+<style>
+  .tb-hero {
+    padding: 3rem 0 2rem;
+    text-align: center;
+  }
+  .tb-hero h1 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    margin-bottom: 0.75rem;
+  }
+  .tb-hero h1 .text-amber { color: var(--amber); }
+  .tb-hero p {
+    color: var(--stone);
+    max-width: 680px;
+    margin: 0 auto;
+    font-size: 1rem;
+  }
+
+  /* Grid de tumores */
+  .tumor-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.25rem;
+    padding: 2rem 0 4rem;
+  }
+  .tumor-card {
+    background: var(--graphite-2);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .tumor-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--accent-color, var(--amber));
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+  .tumor-card:hover {
+    border-color: var(--accent-color, var(--amber));
+    background: var(--graphite-3);
+    transform: translateY(-3px);
+  }
+  .tumor-card:hover::before { opacity: 1; }
+  .tumor-card.selected {
+    border-color: var(--accent-color, var(--amber));
+    background: var(--graphite-3);
+  }
+  .tumor-card.selected::before { opacity: 1; }
+
+  .tumor-icon {
+    width: 56px; height: 56px;
+    border-radius: var(--radius-md);
+    background: rgba(255, 132, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    color: var(--accent-color, var(--amber));
+    background: rgba(var(--accent-rgb, 255, 132, 0), 0.1);
+  }
+  .tumor-name {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--off-white);
+    letter-spacing: -0.015em;
+    margin-bottom: 0.35rem;
+    line-height: 1.2;
+  }
+  .tumor-tagline {
+    font-size: 0.82rem;
+    color: var(--stone);
+    margin-bottom: 1rem;
+  }
+  .tumor-stats {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border-soft);
+  }
+  .tumor-count {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent-color, var(--amber));
+  }
+  .tumor-count-label {
+    font-size: 0.65rem;
+    color: var(--stone);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .tumor-arrow {
+    color: var(--stone);
+    transition: transform 0.2s ease, color 0.2s ease;
+  }
+  .tumor-card:hover .tumor-arrow {
+    color: var(--accent-color, var(--amber));
+    transform: translateX(4px);
+  }
+
+  /* Detail view */
+  .detail-view {
+    background: var(--graphite-2);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-xl);
+    padding: 2rem;
+    margin-top: 2rem;
+    margin-bottom: 4rem;
+    scroll-margin-top: 100px;
+  }
+  .detail-back {
+    background: transparent;
+    border: 1px solid var(--border-soft);
+    color: var(--stone);
+    padding: 0.4rem 0.85rem;
+    border-radius: var(--radius-sm);
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-bottom: 1.5rem;
+    transition: all 0.15s ease;
+  }
+  .detail-back:hover { background: var(--graphite-3); color: var(--off-white); border-color: var(--stone); }
+
+  .detail-header {
+    margin-bottom: 2rem;
+  }
+  .detail-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    font-weight: 700;
+    color: var(--off-white);
+    letter-spacing: -0.025em;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .detail-title-icon {
+    color: var(--accent-color, var(--amber));
+    flex-shrink: 0;
+  }
+  .detail-tagline {
+    color: var(--stone);
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .detail-meta {
+    display: inline-flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 0.75rem 1rem;
+    background: rgba(var(--accent-rgb, 255, 132, 0), 0.06);
+    border: 1px solid rgba(var(--accent-rgb, 255, 132, 0), 0.2);
+    border-radius: var(--radius-md);
+    font-size: 0.85rem;
+  }
+  .detail-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--off-white);
+  }
+  .detail-meta-item span:first-child { color: var(--stone); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; }
+  .detail-meta-item span:last-child { font-weight: 600; font-size: 1rem; color: var(--accent-color, var(--amber)); font-family: var(--font-display); }
+
+  /* Grupo por modalidade */
+  .modality-group {
+    margin-bottom: 2.5rem;
+  }
+  .modality-group:last-child { margin-bottom: 0; }
+  .modality-title {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-soft);
+  }
+  .modality-icon-box {
+    width: 36px; height: 36px;
+    border-radius: var(--radius-sm);
+    background: var(--graphite-3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .modality-name {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--off-white);
+    letter-spacing: -0.015em;
+    flex: 1;
+  }
+  .modality-count {
+    font-size: 0.75rem;
+    color: var(--stone);
+    background: var(--graphite-3);
+    padding: 0.25rem 0.6rem;
+    border-radius: 100px;
+    font-family: var(--font-mono);
+  }
+
+  /* Mini cards de estudo na detail view */
+  .study-mini-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 0.875rem;
+  }
+  .study-mini {
+    background: var(--graphite-3);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-md);
+    padding: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .study-mini:hover {
+    border-color: rgba(255, 132, 0, 0.4);
+    background: var(--graphite-4);
+    transform: translateY(-1px);
+  }
+  .study-mini-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  .study-mini-title {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--off-white);
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+  }
+  .study-mini:hover .study-mini-title { color: var(--amber-glow); }
+  .study-mini-nct {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--stone-2);
+  }
+  .study-mini-result {
+    font-size: 0.78rem;
+    color: var(--stone);
+    line-height: 1.5;
+    border-left: 2px solid var(--amber);
+    padding-left: 0.6rem;
+    margin-top: 0.25rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .study-mini-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 0.5rem;
+    margin-top: auto;
+    border-top: 1px solid var(--border-soft);
+    font-size: 0.7rem;
+    color: var(--stone-2);
+  }
+  .study-mini-actions {
+    display: flex;
+    gap: 0.4rem;
+  }
+  .study-mini-actions a {
+    color: var(--stone);
+    padding: 0.2rem 0.4rem;
+    border-radius: var(--radius-sm);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    text-decoration: none;
+    transition: all 0.15s ease;
+  }
+  .study-mini-actions a:hover { color: var(--amber); background: rgba(255, 132, 0, 0.06); }
+
+  /* Phase badges */
+  .pb {
+    display: inline-block;
+    padding: 0.15rem 0.45rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    border: 1px solid;
+    flex-shrink: 0;
+  }
+  .pb-3 { background: rgba(52, 211, 153, 0.12); color: #6EE7B7; border-color: rgba(52, 211, 153, 0.3); }
+  .pb-2 { background: rgba(96, 165, 250, 0.12); color: #93C5FD; border-color: rgba(96, 165, 250, 0.3); }
+  .pb-1 { background: rgba(192, 132, 252, 0.12); color: #DDB4F9; border-color: rgba(192, 132, 252, 0.3); }
+  .pb-other { background: rgba(251, 191, 36, 0.12); color: #FCD34D; border-color: rgba(251, 191, 36, 0.3); }
+
+  [x-cloak] { display: none !important; }
+</style>
+</head>
+<body x-data="tumorBoardsApp()" x-init="init()">
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="brand">
+      <img src="assets/img/logo-app.png" alt="TheraTrials" class="brand-logo">
+      <div class="brand-text">
+        <span class="brand-name">TheraTrials</span>
+        <span class="brand-sub">Oncology</span>
+      </div>
+    </a>
+    <button class="nav-toggle" aria-label="Menu"><i data-lucide="menu" style="width:18px;height:18px"></i></button>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="database.html">Database</a>
+      <a href="estudos-ativos.html">Estudos ativos</a>
+      <a href="tumor-boards.html">Tumor boards</a>
+      <a href="modalidades.html">Modalidades</a>
+      <a href="ferramentas.html">Ferramentas</a>
+      <a href="fundamentos.html">Fundamentos</a>
+      <a href="about.html">Sobre</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="tb-hero">
+  <div class="container">
+    <span class="eyebrow">Evidência por tipo tumoral</span>
+    <h1>Tumor <span class="text-amber">boards</span></h1>
+    <p>Evidências organizadas para discussão clínica. Selecione o tumor e veja os ensaios agrupados por modalidade terapêutica e linha de tratamento — sem precisar filtrar manualmente o banco.</p>
+  </div>
+</section>
+
+<!-- GRID DE TUMORES -->
+<section style="padding: 0">
+  <div class="container">
+    <div class="tumor-grid">
+      <template x-for="tumor in tumors" :key="tumor.id">
+        <article class="tumor-card"
+                 :class="{ selected: selectedTumor === tumor.id }"
+                 :style="`--accent-color: ${tumor.color}; --accent-rgb: ${hexToRgb(tumor.color)}`"
+                 @click="selectTumor(tumor.id)">
+          <div class="tumor-icon">
+            <i :data-lucide="tumor.icon" style="width:28px;height:28px"></i>
+          </div>
+          <h3 class="tumor-name" x-text="tumor.name"></h3>
+          <p class="tumor-tagline" x-text="tumor.tagline"></p>
+          <div class="tumor-stats">
+            <div>
+              <div class="tumor-count" x-text="getStudiesForTumor(tumor.id).length"></div>
+              <div class="tumor-count-label">estudos</div>
+            </div>
+            <div class="tumor-arrow">
+              <i data-lucide="arrow-right" style="width:18px;height:18px"></i>
+            </div>
+          </div>
+        </article>
+      </template>
+    </div>
+  </div>
+</section>
+
+<!-- DETAIL VIEW -->
+<section x-show="selectedTumor" x-cloak id="detail" style="padding: 0">
+  <div class="container">
+    <div class="detail-view"
+         :style="`--accent-color: ${currentTumor?.color}; --accent-rgb: ${hexToRgb(currentTumor?.color || '#FF8400')}`">
+
+      <button class="detail-back" @click="selectedTumor = null">
+        <i data-lucide="arrow-left" style="width:14px;height:14px"></i>
+        Voltar a todos os tumores
+      </button>
+
+      <template x-if="currentTumor">
+        <div>
+          <div class="detail-header">
+            <h2 class="detail-title">
+              <span class="detail-title-icon"><i :data-lucide="currentTumor.icon" style="width:32px;height:32px"></i></span>
+              <span x-text="currentTumor.name"></span>
+            </h2>
+            <p class="detail-tagline" x-text="currentTumor.tagline"></p>
+            <div class="detail-meta">
+              <div class="detail-meta-item">
+                <span>Total de estudos</span>
+                <span x-text="getStudiesForTumor(currentTumor.id).length"></span>
+              </div>
+              <div class="detail-meta-item">
+                <span>Fase 3</span>
+                <span x-text="getStudiesForTumor(currentTumor.id).filter(s => (s.fase || '').toLowerCase().includes('fase 3')).length"></span>
+              </div>
+              <div class="detail-meta-item">
+                <span>Em andamento</span>
+                <span x-text="getStudiesForTumor(currentTumor.id).filter(s => s.status === 'Em andamento').length"></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Grupos por modalidade -->
+          <template x-for="modality in modalitiesForTumor(currentTumor.id)" :key="modality.key">
+            <div class="modality-group">
+              <div class="modality-title">
+                <div class="modality-icon-box" :style="`color: ${modality.color}`">
+                  <i :data-lucide="modality.icon" style="width:18px;height:18px"></i>
+                </div>
+                <h3 class="modality-name" x-text="modality.name"></h3>
+                <span class="modality-count" x-text="`${modality.studies.length} ${modality.studies.length === 1 ? 'estudo' : 'estudos'}`"></span>
+              </div>
+              <div class="study-mini-grid">
+                <template x-for="s in modality.studies" :key="s.uid">
+                  <article class="study-mini" @click="goToDatabase(s)">
+                    <div class="study-mini-top">
+                      <div style="flex: 1; min-width: 0">
+                        <h4 class="study-mini-title" x-text="TheraTrials.studyTitle(s.estudo)"></h4>
+                        <div class="study-mini-nct" x-text="s.nct"></div>
+                      </div>
+                      <span class="pb" :class="phaseClassShort(s.fase)" x-text="phaseShort(s.fase)"></span>
+                    </div>
+                    <p class="study-mini-result" x-text="TheraTrials.cleanText(s.primario)"></p>
+                    <div class="study-mini-footer">
+                      <span x-text="TheraTrials.extractN(s.n)"></span>
+                      <div class="study-mini-actions" @click.stop>
+                        <a x-show="s.pubmed_url" :href="s.pubmed_url" target="_blank" rel="noopener" title="Abrir PubMed">
+                          <i data-lucide="book-open" style="width:11px;height:11px"></i> PubMed
+                        </a>
+                        <a x-show="s.nct_url" :href="s.nct_url" target="_blank" rel="noopener" title="Abrir ClinicalTrials.gov">
+                          <i data-lucide="external-link" style="width:11px;height:11px"></i> CT.gov
+                        </a>
+                      </div>
+                    </div>
+                  </article>
+                </template>
+              </div>
+            </div>
+          </template>
+
+          <!-- CTA para ver tudo no database -->
+          <div style="text-align: center; padding-top: 1rem; border-top: 1px solid var(--border-soft); margin-top: 2rem">
+            <a :href="`database.html?cat=${currentTumor.id}`" class="btn btn-secondary">
+              Ver todos no banco completo
+              <i data-lucide="arrow-right" style="width:14px;height:14px"></i>
+            </a>
+          </div>
+        </div>
+      </template>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>© 2026 TheraTrials Oncology · Tumor boards · 7 tumores cobertos</span>
+      <span>Para uso educacional. Não substitui diretrizes oficiais.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/common.js"></script>
+<script>
+  function tumorBoardsApp() {
+    return {
+      data: window.THERA_DATA || { studies: [] },
+      selectedTumor: null,
+
+      tumors: [
+        { id: 'prostata', name: 'Câncer de próstata', tagline: 'mHSPC, mCRPC, nmCRPC, oligometastático e localizado de alto risco', icon: 'circle-dot', color: '#FF8400',
+          match: (s) => ['lupsma_prostata', 'ra223_prostata', 'novos_psma', 'prostata_contexto'].includes(s.category_id) },
+        { id: 'net', name: 'Tumores neuroendócrinos', tagline: 'GEP-NET, midgut, pancreático e pulmonar (well-differentiated)', icon: 'activity', color: '#0EA5B7',
+          match: (s) => s.category_id === 'lu_dotatate_net' && !/(pheo|paragangli|neuroblastoma|ppgl)/i.test(s.indicacao || '') },
+        { id: 'pheo_pgl', name: 'Feocromocitoma e paraganglioma', tagline: 'PPGL maligno · 131I-MIBG e 177Lu-DOTATATE', icon: 'heart-pulse', color: '#F472B6',
+          match: (s) => /(pheo|paragangli|ppgl|feocromo)/i.test((s.indicacao || '') + ' ' + (s.estudo || '')) },
+        { id: 'neuroblastoma', name: 'Neuroblastoma (pediatria)', tagline: 'Alto risco refratário/recidivado · 131I-MIBG e PRRT pediátrica', icon: 'baby', color: '#C084FC',
+          match: (s) => /neuroblastoma|pediátric|pediatric/i.test((s.indicacao || '') + ' ' + (s.estudo || '')) && !/(pheo|paragangli|ppgl)/i.test(s.indicacao || '') },
+        { id: 'hcc', name: 'Carcinoma hepatocelular', tagline: 'BCLC A/B/C · radioembolização Y-90 e dosimetria personalizada', icon: 'droplet', color: '#FBBF24',
+          match: (s) => /(hcc|hepatocelular)/i.test(s.indicacao || '') },
+        { id: 'mcrc', name: 'Câncer colorretal metastático', tagline: 'Mets hepáticas dominantes · TARE com Y-90', icon: 'activity-square', color: '#F87171',
+          match: (s) => /(mcrc|colorretal)/i.test(s.indicacao || '') },
+        { id: 'ccrcc', name: 'Carcinoma renal de células claras', tagline: '2ª/3ª linha pós-TKI/ICI · 177Lu-PSMA', icon: 'circle-dashed', color: '#38BDF8',
+          match: (s) => s.category_id === 'lupsma_ccrcc' },
+        { id: 'pulmao', name: 'Câncer de pulmão', tagline: 'NSCLC drivers (EGFR/ALK/KRAS) · imuno 1L · perioperatório · SCLC · radiofármacos', icon: 'wind', color: '#22d3ee',
+          match: (s) => ['nsclc_imuno', 'nsclc_alvo', 'nsclc_periop', 'sclc', 'lung_radio_dev'].includes(s.category_id) },
+        { id: 'mama', name: 'Câncer de mama', tagline: 'HER2+, HR+/HER2- (CDK4/6, PI3K, AKT), TNBC, BRCA-mutado, ADCs e imagem molecular', icon: 'flower-2', color: '#ec4899',
+          match: (s) => ['breast_her2', 'breast_hrpos', 'breast_tnbc_brca', 'breast_radio_dev'].includes(s.category_id) },
+      ],
+
+      get currentTumor() {
+        return this.tumors.find(t => t.id === this.selectedTumor);
+      },
+
+      init() {
+        this.$nextTick(() => lucide.createIcons());
+        this.$watch('selectedTumor', () => {
+          this.$nextTick(() => {
+            lucide.createIcons();
+            if (this.selectedTumor) {
+              setTimeout(() => document.getElementById('detail')?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 80);
+            }
+          });
+        });
+      },
+
+      selectTumor(id) {
+        this.selectedTumor = (this.selectedTumor === id) ? null : id;
+      },
+
+      getStudiesForTumor(tumorId) {
+        const tumor = this.tumors.find(t => t.id === tumorId);
+        if (!tumor) return [];
+        return (this.data.studies || []).filter(tumor.match);
+      },
+
+      modalitiesForTumor(tumorId) {
+        const studies = this.getStudiesForTumor(tumorId);
+        const groups = {};
+        studies.forEach(s => {
+          const m = this.classifyModality(s);
+          if (!groups[m.key]) groups[m.key] = { ...m, studies: [] };
+          groups[m.key].studies.push(s);
+        });
+        return Object.values(groups).sort((a, b) => a.order - b.order);
+      },
+
+      classifyModality(s) {
+        const rfa = (s.radiofarmaco || '').toLowerCase();
+        const cat = s.category_id || '';
+
+        if (cat === 'lupsma_prostata' || cat === 'lupsma_ccrcc') {
+          return { key: 'teranostico_psma', name: 'Teranóstico — 177Lu-PSMA', icon: 'atom', color: '#FF8400', order: 1 };
+        }
+        if (cat === 'novos_psma') {
+          return { key: 'teranostico_psma_novos', name: 'Novos PSMA (α / 161Tb / RIT)', icon: 'zap', color: '#F87171', order: 2 };
+        }
+        if (cat === 'ra223_prostata') {
+          if (rfa.includes('psma') || rfa.includes('lu')) return { key: 'teranostico_combo', name: 'Combinações teranósticas', icon: 'shuffle', color: '#A855F7', order: 3 };
+          return { key: 'teranostico_alfa', name: 'Teranóstico — 223Ra (α-emissor)', icon: 'radiation', color: '#A855F7', order: 4 };
+        }
+        if (cat === 'lu_dotatate_net') {
+          return { key: 'teranostico_prrt', name: 'Teranóstico — PRRT (177Lu-DOTATATE / Edotreotide)', icon: 'activity', color: '#0EA5B7', order: 1 };
+        }
+        if (cat === 'y90_tare') {
+          return { key: 'teranostico_y90', name: 'Radioembolização — 90Y', icon: 'droplet', color: '#FBBF24', order: 1 };
+        }
+        if (cat === 'mibg_pediatria_pheo') {
+          if (rfa.includes('dotatate')) return { key: 'teranostico_prrt', name: 'PRRT — 177Lu-DOTATATE (em PPGL/NB)', icon: 'activity', color: '#0EA5B7', order: 2 };
+          return { key: 'mibg', name: 'Teranóstico — 131I-MIBG / Iobenguano', icon: 'heart-pulse', color: '#F472B6', order: 1 };
+        }
+        if (cat === 'prostata_contexto') {
+          if (rfa.includes('docetaxel') || rfa.includes('cabazitaxel')) return { key: 'qt', name: 'Quimioterapia citotóxica (QT)', icon: 'flask-conical', color: '#FBBF24', order: 7 };
+          if (rfa.includes('olaparib') || rfa.includes('rucaparib') || rfa.includes('niraparib') || rfa.includes('talazoparib')) return { key: 'parp', name: 'PARP inibidores (HRR-mutados)', icon: 'shield', color: '#34D399', order: 6 };
+          if (rfa.includes('sipuleucel') || rfa.includes('vacina')) return { key: 'imuno', name: 'Imunoterapia', icon: 'shield-plus', color: '#10B981', order: 8 };
+          if (rfa.includes('abiraterona') || rfa.includes('enzalutamida') || rfa.includes('apalutamida') || rfa.includes('darolutamida')) return { key: 'arpi', name: 'ARPi (inibidores do receptor de androgênio)', icon: 'target', color: '#0EA5B7', order: 5 };
+          return { key: 'outros', name: 'Outras terapias sistêmicas', icon: 'circle', color: '#8E949C', order: 9 };
+        }
+
+        // ============== PULMÃO ==============
+        if (cat === 'nsclc_imuno') {
+          return { key: 'lung_imuno', name: 'NSCLC · Imunoterapia 1L (ICIs)', icon: 'shield-plus', color: '#22d3ee', order: 1 };
+        }
+        if (cat === 'nsclc_alvo') {
+          if (/osi|gefit|erlot|afatin|amivantamab|lazertinib/i.test(rfa)) return { key: 'lung_egfr', name: 'NSCLC · EGFR (TKIs)', icon: 'target', color: '#0EA5B7', order: 2 };
+          if (/alect|crizo|lorla|brigatin/i.test(rfa)) return { key: 'lung_alk', name: 'NSCLC · ALK (TKIs)', icon: 'target', color: '#0EA5B7', order: 3 };
+          if (/sotorasib|adagrasib/i.test(rfa)) return { key: 'lung_kras', name: 'NSCLC · KRAS G12C', icon: 'target', color: '#0EA5B7', order: 4 };
+          if (/selperc|prals/i.test(rfa)) return { key: 'lung_ret', name: 'NSCLC · RET (TKIs)', icon: 'target', color: '#0EA5B7', order: 5 };
+          if (/capmatinib|tepotinib/i.test(rfa)) return { key: 'lung_met', name: 'NSCLC · MET ex14', icon: 'target', color: '#0EA5B7', order: 6 };
+          if (/trastuzumab deruxtecan|t-dxd/i.test(rfa)) return { key: 'lung_her2', name: 'NSCLC · HER2 (T-DXd)', icon: 'target', color: '#0EA5B7', order: 7 };
+          if (/entrectinib|larotrectinib/i.test(rfa)) return { key: 'lung_ros1_ntrk', name: 'NSCLC · ROS1 / NTRK', icon: 'target', color: '#0EA5B7', order: 8 };
+          return { key: 'lung_alvo_outros', name: 'NSCLC · Outros drivers', icon: 'target', color: '#0EA5B7', order: 9 };
+        }
+        if (cat === 'nsclc_periop') {
+          if (/osi|alect/i.test(rfa)) return { key: 'lung_periop_alvo', name: 'NSCLC · Adjuvante alvo (EGFR/ALK)', icon: 'scissors', color: '#34d399', order: 10 };
+          return { key: 'lung_periop_io', name: 'NSCLC · Perioperatório (IO ± QT)', icon: 'scissors', color: '#34d399', order: 11 };
+        }
+        if (cat === 'sclc') {
+          if (/tarlatamab/i.test(rfa)) return { key: 'sclc_dll3', name: 'SCLC · DLL3 BiTE (tarlatamab)', icon: 'flame', color: '#fbbf24', order: 13 };
+          return { key: 'sclc_imuno', name: 'SCLC · Imuno + QT (ES/LS)', icon: 'flame', color: '#fbbf24', order: 12 };
+        }
+        if (cat === 'lung_radio_dev') {
+          return { key: 'lung_radio', name: 'Pulmão · Radiofármacos experimentais (DLL3, FAPI)', icon: 'atom', color: '#a855f7', order: 14 };
+        }
+
+        // ============== MAMA ==============
+        if (cat === 'breast_her2') {
+          if (/(t-dxd|trastuzumab deruxtecan|deruxtecan)/i.test(rfa)) return { key: 'breast_tdxd', name: 'Mama · T-DXd (HER2+ e HER2-low/ultralow)', icon: 'shield-check', color: '#f472b6', order: 21 };
+          if (/(t-dm1|trastuzumab emtansine|emtansine)/i.test(rfa)) return { key: 'breast_tdm1', name: 'Mama · T-DM1 (HER2+)', icon: 'shield-check', color: '#f472b6', order: 22 };
+          if (/(tucatinib|lapatinib|neratinib)/i.test(rfa)) return { key: 'breast_her2tki', name: 'Mama · HER2-TKI (tucatinib, neratinib)', icon: 'target', color: '#f472b6', order: 23 };
+          if (/(pertuzumab.*trastuzumab|trastuzumab.*pertuzumab|HP)/i.test(rfa)) return { key: 'breast_dual', name: 'Mama · Duplo bloqueio HER2 (HP)', icon: 'shield', color: '#f472b6', order: 24 };
+          return { key: 'breast_her2_outros', name: 'Mama · Outras anti-HER2', icon: 'shield', color: '#f472b6', order: 25 };
+        }
+        if (cat === 'breast_hrpos') {
+          if (/(palbocicl|ribocicl|abemacicl)/i.test(rfa)) return { key: 'breast_cdk', name: 'Mama · CDK4/6 inibidores (HR+)', icon: 'sliders', color: '#ec4899', order: 26 };
+          if (/(elacestrant|fulvestrant|tamoxif|letrozol|anastrozol|exemestano)/i.test(rfa) && !/cdk|cicl/i.test(rfa)) return { key: 'breast_endo', name: 'Mama · Endocrinoterapia (ET, SERDs)', icon: 'flower', color: '#ec4899', order: 27 };
+          if (/(alpelisib|inavolisib|pi3k)/i.test(rfa)) return { key: 'breast_pi3k', name: 'Mama · PI3K inibidores (PIK3CA-mut)', icon: 'beaker', color: '#ec4899', order: 28 };
+          if (/(capivasertib|akt)/i.test(rfa)) return { key: 'breast_akt', name: 'Mama · AKT inibidores', icon: 'beaker', color: '#ec4899', order: 29 };
+          return { key: 'breast_hrpos_outros', name: 'Mama · Outras HR+/HER2-', icon: 'flower', color: '#ec4899', order: 30 };
+        }
+        if (cat === 'breast_tnbc_brca') {
+          if (/pembrolizumab|pembro/i.test(rfa)) return { key: 'breast_io', name: 'Mama · Imunoterapia (TNBC)', icon: 'shield-plus', color: '#db2777', order: 31 };
+          if (/(sacituzumab|trodelvy)/i.test(rfa)) return { key: 'breast_trop2', name: 'Mama · ADCs Trop-2 (sacituzumab)', icon: 'shield', color: '#db2777', order: 32 };
+          if (/(olapar|talazop|ruca|nirap)/i.test(rfa)) return { key: 'breast_parp', name: 'Mama · PARP inibidores (BRCA+)', icon: 'shield', color: '#db2777', order: 33 };
+          return { key: 'breast_tnbc_outros', name: 'Mama · Outras TNBC/BRCA', icon: 'shield-x', color: '#db2777', order: 34 };
+        }
+        if (cat === 'breast_radio_dev') {
+          return { key: 'breast_radio', name: 'Mama · Imagem molecular e radiofármacos exp', icon: 'atom', color: '#a855f7', order: 35 };
+        }
+
+        return { key: 'outros', name: 'Outras', icon: 'circle', color: '#8E949C', order: 99 };
+      },
+
+      goToDatabase(s) {
+        // Abre o database e foca o estudo via UID na URL hash
+        window.location.href = `database.html#${s.uid}`;
+      },
+
+      phaseShort(fase) { return TheraTrials.phaseShort(fase); },
+      phaseClassShort(fase) {
+        const c = TheraTrials.phaseClass(fase);
+        if (c === 'phase-3') return 'pb-3';
+        if (c === 'phase-2') return 'pb-2';
+        if (c === 'phase-1') return 'pb-1';
+        return 'pb-other';
+      },
+
+      hexToRgb(hex) {
+        if (!hex) return '255, 132, 0';
+        const r = parseInt(hex.slice(1, 3), 16);
+        const g = parseInt(hex.slice(3, 5), 16);
+        const b = parseInt(hex.slice(5, 7), 16);
+        return `${r}, ${g}, ${b}`;
+      },
+    };
+  }
+</script>
+
+</body>
+</html>

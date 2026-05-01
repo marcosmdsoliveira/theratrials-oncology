@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" fill="none">
+  <defs>
+    <radialGradient id="coreGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFE5B0" stop-opacity="1"/>
+      <stop offset="40%" stop-color="#FFA640" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#FF8400" stop-opacity="0.85"/>
+    </radialGradient>
+    <radialGradient id="haloGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FF8400" stop-opacity="0.45"/>
+      <stop offset="60%" stop-color="#FF8400" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#FF8400" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFE5B0" stop-opacity="1"/>
+      <stop offset="50%" stop-color="#FF8400" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#B85F00" stop-opacity="0.6"/>
+    </linearGradient>
+    <filter id="glowAmber" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="glowSoft" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="1.5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Halo difuso ao redor do núcleo -->
+  <circle cx="120" cy="120" r="90" fill="url(#haloGrad)" opacity="0.6"/>
+
+  <!-- Anel orbital sólido âmbar (elipse principal inclinada) -->
+  <g transform="translate(120 120) rotate(-20)">
+    <ellipse cx="0" cy="0" rx="90" ry="42" fill="none" stroke="url(#ringGrad)" stroke-width="2.4" filter="url(#glowAmber)" opacity="0.95"/>
+  </g>
+
+  <!-- Anel pontilhado (precisão / dados) -->
+  <g transform="translate(120 120) rotate(15)">
+    <ellipse cx="0" cy="0" rx="80" ry="36" fill="none" stroke="#FF8400" stroke-width="1.2" stroke-dasharray="1.5 4" opacity="0.7" filter="url(#glowSoft)"/>
+  </g>
+
+  <!-- Núcleo central com brilho -->
+  <circle cx="120" cy="120" r="13" fill="url(#coreGrad)" filter="url(#glowAmber)"/>
+  <circle cx="120" cy="120" r="5" fill="#FFFAEC" opacity="0.95"/>
+
+  <!-- Esfera âmbar (caminho da terapia) -->
+  <g transform="translate(120 120) rotate(-20)">
+    <circle cx="-72" cy="34" r="6.5" fill="#FF8400" filter="url(#glowAmber)"/>
+    <circle cx="-72" cy="34" r="2.5" fill="#FFE5B0"/>
+  </g>
+
+  <!-- Esfera teal (insight) -->
+  <g transform="translate(120 120) rotate(15)">
+    <circle cx="74" cy="22" r="5.5" fill="#0EA5B7" filter="url(#glowSoft)"/>
+    <circle cx="74" cy="22" r="2" fill="#9FE1EA"/>
+  </g>
+
+  <!-- Estrela de 4 pontas (insight & impact) -->
+  <g transform="translate(170 64)" filter="url(#glowAmber)">
+    <path d="M0,-12 L2,-2 L12,0 L2,2 L0,12 L-2,2 L-12,0 L-2,-2 Z" fill="#FFE5B0" opacity="0.95"/>
+  </g>
+</svg>

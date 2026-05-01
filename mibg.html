@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>131I-MIBG · TheraTrials Oncology</title>
+<meta name="description" content="Página profunda sobre 131I-MIBG (Iobenguane I-131 / Azedra): história Wieland-Beierwaltes, mecanismo NET, neuroblastoma e PPGL maligno, bloqueio tireoidiano, ensaios MIBG-MIDAS e Azedra.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/theratrials.css">
+<link rel="stylesheet" href="assets/css/radiofarmaco.css">
+<link rel="icon" type="image/png" href="assets/img/logo-app.png">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<style>
+  /* Cor MIBG: rosa */
+  .iso-symbol.pink {
+    background: radial-gradient(circle at 35% 35%, #F9A8D4 0%, #F472B6 55%, #BE185D 100%);
+    box-shadow: 0 0 50px rgba(244, 114, 182, 0.35);
+  }
+  .iso-symbol.pink::before { border-color: rgba(244, 114, 182, 0.4) !important; }
+</style>
+</head>
+<body>
+
+<!-- ============== HEADER ============== -->
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="brand">
+      <img src="assets/img/logo-app.png" alt="TheraTrials" class="brand-logo">
+      <div class="brand-text">
+        <span class="brand-name">TheraTrials</span>
+        <span class="brand-sub">Oncology</span>
+      </div>
+    </a>
+    <button class="nav-toggle" aria-label="Menu"><i data-lucide="menu" style="width:18px;height:18px"></i></button>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="database.html">Database</a>
+      <a href="estudos-ativos.html">Estudos ativos</a>
+      <a href="tumor-boards.html">Tumor boards</a>
+      <a href="modalidades.html">Modalidades</a>
+      <a href="ferramentas.html">Ferramentas</a>
+      <a href="fundamentos.html">Fundamentos</a>
+      <a href="about.html">Sobre</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ============== HERO ============== -->
+<section class="rf-hero">
+  <div class="container">
+    <span class="rf-eyebrow" style="background:rgba(244,114,182,0.12);border-color:rgba(244,114,182,0.3);color:#F472B6">
+      <i data-lucide="atom" style="width:12px;height:12px"></i> Radiofármaco · Beta + gama · Sistema simpático
+    </span>
+    <h1 class="rf-title">
+      <span class="iso-up" style="color:#F472B6">131</span>I-MIBG
+      <br><span style="color:#F472B6">Iobenguano</span> · o pioneiro da teranóstica catecolaminérgica
+    </h1>
+    <p class="rf-subtitle">
+      Análogo da noradrenalina marcado com iodo-131. Concentra-se em células que expressam o transportador de noradrenalina (NET) — fenótipo característico de tumores derivados da crista neural: neuroblastoma, feocromocitoma e paraganglioma. Primeiro radiofármaco teranóstico em uso clínico amplo (desde 1981) e ainda referência em PPGL maligno e neuroblastoma de alto risco.
+    </p>
+
+    <div class="iso-card">
+      <div class="iso-symbol pink">
+        <span class="iso-mass">131</span>
+        <span class="iso-element">I</span>
+        <span class="iso-name">Iodo</span>
+      </div>
+      <div class="iso-grid">
+        <div class="item"><div class="lbl">Meia-vida</div><div class="val">8,02 d</div></div>
+        <div class="item"><div class="lbl">Decaimento</div><div class="val">β⁻ + γ</div></div>
+        <div class="item"><div class="lbl">Energia β máx</div><div class="val">606 keV</div></div>
+        <div class="item"><div class="lbl">Alcance β máx</div><div class="val">~ 2 mm</div></div>
+        <div class="item"><div class="lbl">γ útil</div><div class="val">364 keV (81%)</div></div>
+        <div class="item"><div class="lbl">Vetor</div><div class="val">meta-iodo-benzilguanidina</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding: 0">
+  <div class="container">
+    <div class="rf-layout">
+
+      <aside class="toc">
+        <h4>Nesta página</h4>
+        <a href="#cronologia">Cronologia</a>
+        <a href="#mecanismo">Mecanismo molecular</a>
+        <a href="#esquema">Esquema terapêutico</a>
+        <a href="#bloqueio">Bloqueio tireoidiano</a>
+        <a href="#imagem">Imagem · Curie score</a>
+        <a href="#ensaios">Ensaios pivotais</a>
+        <a href="#dosimetria">Dosimetria</a>
+        <a href="#toxicidade">Toxicidade</a>
+        <a href="#perspectivas">Perspectivas</a>
+        <a href="#proximos">Continue lendo</a>
+      </aside>
+
+      <main>
+
+        <!-- ============== CRONOLOGIA ============== -->
+        <div id="cronologia" class="rf-section">
+          <h2><span class="num">01</span> Cronologia</h2>
+          <p class="lead">Da síntese pioneira de Wieland & Beierwaltes (1980) à aprovação Azedra (2018) e às combinações modernas com epigenética e imunoterapia: 45 anos de evolução em pediatria oncológica e endocrinologia.</p>
+
+          <div class="timeline">
+            <div class="tl-item">
+              <div class="tl-dot">1980</div>
+              <div class="tl-card">
+                <h4>Síntese do MIBG · Wieland & Beierwaltes</h4>
+                <p>Donald Wieland e William Beierwaltes na Universidade de Michigan sintetizam o ¹²³I-MIBG e ¹³¹I-MIBG, buscando análogos da noradrenalina captados pelas células cromafins da medula adrenal. Estrutura: meta-iodo-benzilguanidina — combina anel benzeno com carga radioiodada e cadeia guanidínica.</p>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot">1981</div>
+              <div class="tl-card">
+                <h4>Primeiras imagens em feocromocitoma · Sisson</h4>
+                <p>Sisson, Wieland, Beierwaltes e cols. publicam as primeiras imagens diagnósticas de feocromocitoma com ¹³¹I-MIBG (NEJM 1981). Marca o nascimento da imagem molecular catecolaminérgica.</p>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot">1983</div>
+              <div class="tl-card">
+                <h4>Primeiro uso terapêutico · Hoefnagel</h4>
+                <p>Cor van Hoefnagel (Holanda) trata o primeiro paciente com PPGL maligno usando ¹³¹I-MIBG em altas atividades. Resposta sintomática e bioquímica notável. Início do conceito teranóstico moderno.</p>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot">1985-1995</div>
+              <div class="tl-card">
+                <h4>Adoção em neuroblastoma pediátrico</h4>
+                <p>Grupos europeus e americanos passam a usar ¹³¹I-MIBG em neuroblastoma alto-risco refratário/recidivado. Esquemas iniciais empíricos: 18 mCi/kg em dose única. Resposta objetiva 30-40% em situação refratária.</p>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot">2000-2010</div>
+              <div class="tl-card">
+                <h4>Padronização e dose-escalada</h4>
+                <p>Refinamento dos esquemas: 18 mCi/kg dose única vs 12+12 mCi/kg fracionado vs dose ablativa com resgate de células-tronco. Studies do Children's Oncology Group (COG) e SIOPEN europeu definem protocolos.</p>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot">2018</div>
+              <div class="tl-card">
+                <h4>Aprovação FDA do Azedra (Iobenguano I-131)</h4>
+                <p>FDA aprova o Azedra — formulação comercial no-carrier-added do ¹³¹I-MIBG (atividade específica muito maior, sem MIBG frio competidor) — para PPGL maligno irressecável que requer terapia sistêmica. Base no estudo Phase II de Pryma e cols. (J Clin Oncol 2019).</p>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot">2018-2024</div>
+              <div class="tl-card">
+                <h4>NANT, MIBG-MIDAS, combinações epigenéticas</h4>
+                <p>New Approaches to Neuroblastoma Therapy (NANT) testa MIBG + vorinostat (HDAC inhibitor — aumenta expressão NET). Estudo MIBG-MIDAS na pediatria avalia sequenciamento e dose. MiNivAN/OnDApp combina MIBG ± nivolumab em PPGL.</p>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot">2024-25</div>
+              <div class="tl-card">
+                <h4>MIBG vs DOTATATE em PPGL · OnDApp</h4>
+                <p>Discussão clínica atual: em PPGL com captação dual (NET + SSTR2), Lu-DOTATATE pode ser preferido pela menor logística (sem internação radiometabólica) e melhor perfil hematológico. MIBG mantém papel em tumores NET+/SSTR− e em neuroblastoma.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="orbital-divider">
+          <svg width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="60" cy="20" r="3" fill="#F472B6"/>
+            <ellipse cx="60" cy="20" rx="40" ry="10" fill="none" stroke="#F472B6" stroke-width="0.8" opacity="0.4"/>
+            <ellipse cx="60" cy="20" rx="55" ry="13" fill="none" stroke="#0EA5B7" stroke-width="0.6" stroke-dasharray="2 4" opacity="0.5"/>
+            <circle cx="100" cy="20" r="1.5" fill="#0EA5B7"/>
+            <circle cx="20" cy="20" r="1.5" fill="#0EA5B7"/>
+          </svg>
+        </div>
+
+        <!-- ============== MECANISMO ============== -->
+        <div id="mecanismo" class="rf-section">
+          <h2><span class="num">02</span> Mecanismo molecular</h2>
+          <p class="lead">O MIBG é estruturalmente similar à noradrenalina e usa a mesma porta de entrada celular: o transportador de noradrenalina (NET / hNET / SLC6A2). Uma vez dentro da célula, é armazenado em vesículas catecolaminérgicas via VMAT (transportador vesicular de monoaminas).</p>
+
+          <div class="mech-diagram">
+            <svg viewBox="0 0 800 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+              <!-- Membrana -->
+              <rect x="0" y="190" width="800" height="60" fill="#1B1E25"/>
+              <line x1="0" y1="190" x2="800" y2="190" stroke="#F472B6" stroke-width="1" opacity="0.3"/>
+              <line x1="0" y1="250" x2="800" y2="250" stroke="#F472B6" stroke-width="1" opacity="0.3"/>
+              <text x="20" y="225" fill="#8E949C" font-size="10" font-family="JetBrains Mono">membrana plasmática · célula cromafim / neuroblástica</text>
+
+              <!-- NET transporter -->
+              <g transform="translate(180, 170)">
+                <path d="M -10,0 Q -10,30 -5,50 M 5,0 Q 5,30 10,50 M -5,0 Q -5,30 0,50" stroke="#F472B6" stroke-width="2" fill="none" opacity="0.7"/>
+                <ellipse cx="0" cy="-5" rx="14" ry="8" fill="#F472B6"/>
+                <text x="0" y="-15" fill="#F472B6" font-size="9" text-anchor="middle">NET</text>
+              </g>
+
+              <!-- 131I-MIBG fora -->
+              <g transform="translate(120, 90)">
+                <circle cx="0" cy="0" r="14" fill="#F472B6"/>
+                <text x="0" y="3" fill="#0E0F12" font-size="9" text-anchor="middle" font-weight="700">¹³¹I</text>
+                <line x1="0" y1="14" x2="0" y2="40" stroke="#F472B6" stroke-width="2"/>
+                <rect x="-12" y="40" width="24" height="14" rx="3" fill="#F472B6" opacity="0.6"/>
+                <text x="0" y="50" fill="#0E0F12" font-size="7" text-anchor="middle">MIBG</text>
+                <text x="35" y="3" fill="#F472B6" font-size="9">benzilguanidina</text>
+              </g>
+
+              <!-- Vesículas (VMAT) intracelular -->
+              <g transform="translate(380, 220)">
+                <circle cx="0" cy="0" r="22" fill="none" stroke="#F472B6" stroke-width="1.5"/>
+                <text x="0" y="-30" fill="#F472B6" font-size="9" text-anchor="middle">vesícula</text>
+                <text x="0" y="40" fill="#8E949C" font-size="9" text-anchor="middle">catecolaminérgica</text>
+                <circle cx="-7" cy="-3" r="5" fill="#F472B6"/>
+                <circle cx="6" cy="4" r="5" fill="#F472B6"/>
+              </g>
+              <text x="320" y="195" fill="#F472B6" font-size="9" font-weight="600">VMAT</text>
+
+              <!-- Núcleo + radiação β + γ -->
+              <g transform="translate(620, 220)">
+                <circle cx="0" cy="0" r="35" fill="#0EA5B7" opacity="0.15" stroke="#0EA5B7" stroke-width="1"/>
+                <text x="0" y="3" fill="#0EA5B7" font-size="11" text-anchor="middle">núcleo</text>
+                <g stroke="#F472B6" stroke-width="1.2" fill="none">
+                  <path d="M -25,-20 Q -10,-30 5,-15"/>
+                  <path d="M -30,5 Q -15,15 0,5"/>
+                </g>
+                <text x="-30" y="-35" fill="#F472B6" font-size="9">β⁻</text>
+                <!-- γ -->
+                <g stroke="#FBBF24" stroke-width="1" stroke-dasharray="3 2" fill="none">
+                  <path d="M 0,0 L 60,-30"/>
+                  <path d="M 0,0 L -60,40"/>
+                </g>
+                <text x="55" y="-35" fill="#FBBF24" font-size="9">γ 364 keV</text>
+              </g>
+
+              <!-- Setas -->
+              <g stroke="#8E949C" stroke-width="1" fill="none" marker-end="url(#arrowM)">
+                <line x1="160" y1="120" x2="200" y2="155"/>
+                <line x1="220" y1="200" x2="350" y2="220"/>
+                <line x1="420" y1="220" x2="585" y2="220"/>
+              </g>
+              <defs>
+                <marker id="arrowM" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+                  <path d="M0,0 L0,6 L8,3 z" fill="#8E949C"/>
+                </marker>
+              </defs>
+
+              <text x="225" y="145" fill="#F472B6" font-size="10" font-weight="600">1 · NET uptake</text>
+              <text x="290" y="195" fill="#F472B6" font-size="10" font-weight="600">2 · armazenamento vesicular</text>
+              <text x="490" y="215" fill="#F472B6" font-size="10" font-weight="600">3 · radiação β⁻ + γ</text>
+            </svg>
+
+            <div class="mech-stages">
+              <div class="mech-stage">
+                <div class="mech-num" style="background:#F472B6">1</div>
+                <h5>Captação NET</h5>
+                <p>O MIBG é reconhecido como noradrenalina pelo transportador NET (SLC6A2) na membrana das células cromafins. Mecanismo idêntico ao da recaptação de noradrenalina sináptica.</p>
+              </div>
+              <div class="mech-stage">
+                <div class="mech-num" style="background:#F472B6">2</div>
+                <h5>Armazenamento vesicular</h5>
+                <p>Já no citoplasma, o MIBG é importado para vesículas catecolaminérgicas via VMAT, onde permanece retido por horas a dias — análogo ao armazenamento da noradrenalina endógena.</p>
+              </div>
+              <div class="mech-stage">
+                <div class="mech-num" style="background:#F472B6">3</div>
+                <h5>Emissão β⁻ + γ</h5>
+                <p>O ¹³¹I emite β⁻ (606 keV máx) com alcance de ~2 mm e γ útil de 364 keV (81%) — usado para imagem cintilográfica de pré-tratamento e SPECT pós-terapia. Dose efetiva variável por carga tumoral.</p>
+              </div>
+              <div class="mech-stage">
+                <div class="mech-num" style="background:#F472B6">4</div>
+                <h5>Crossfire e dano de DNA</h5>
+                <p>Radiação β quebra DNA das células tumorais. Crossfire de 2 mm cobre microambiente celular. Tumores heterogêneos com NET+ misto a NET− respondem por proximidade.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="key-fact">
+            <div class="lbl">No-carrier-added (Azedra) vs MIBG tradicional</div>
+            <p>O MIBG tradicional (compounding) tem MIBG frio em concentração relativamente alta (carrier), competindo com o radioativo pelos sítios NET. O Azedra é produzido sem carrier — atividade específica até 100× maior — o que melhora captação tumoral, especialmente em pacientes com massa tumoral pequena ou expressão NET reduzida. Efeito clínico: maior eficácia em PPGL com tumores menores.</p>
+          </div>
+        </div>
+
+        <div class="orbital-divider">
+          <svg width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="60" cy="20" r="3" fill="#F472B6"/>
+            <ellipse cx="60" cy="20" rx="40" ry="10" fill="none" stroke="#F472B6" stroke-width="0.8" opacity="0.4"/>
+            <ellipse cx="60" cy="20" rx="55" ry="13" fill="none" stroke="#0EA5B7" stroke-width="0.6" stroke-dasharray="2 4" opacity="0.5"/>
+            <circle cx="100" cy="20" r="1.5" fill="#0EA5B7"/>
+            <circle cx="20" cy="20" r="1.5" fill="#0EA5B7"/>
+          </svg>
+        </div>
+
+        <!-- ============== ESQUEMA ============== -->
+        <div id="esquema" class="rf-section">
+          <h2><span class="num">03</span> Esquema terapêutico</h2>
+          <p class="lead">Diferentemente de Lu-PSMA / Lu-DOTATATE / Ra-223, o MIBG exige internação em quarto blindado por 4-7 dias devido à alta atividade administrada e à radiação γ de 364 keV. Esquema varia por indicação (PPGL adulto vs neuroblastoma pediátrico).</p>
+
+          <div class="scheme-box">
+            <h4 style="margin: 0 0 0.85rem; color: #F472B6; font-size: 1.05rem; font-weight: 600">PPGL maligno (Azedra · adulto)</h4>
+            <div class="scheme-pills">
+              <div class="scheme-pill"><span class="pill-lbl">Dose teste</span><span class="pill-val" style="color:#F472B6">222 MBq · 6 mCi</span></div>
+              <div class="scheme-pill"><span class="pill-lbl">Dose terapêutica</span><span class="pill-val" style="color:#F472B6">~ 18,5 GBq · 500 mCi</span></div>
+              <div class="scheme-pill"><span class="pill-lbl">Intervalo</span><span class="pill-val" style="color:#F472B6">~ 90 dias</span></div>
+              <div class="scheme-pill"><span class="pill-lbl">Ciclos</span><span class="pill-val" style="color:#F472B6">2 terapêuticos</span></div>
+              <div class="scheme-pill"><span class="pill-lbl">Internação</span><span class="pill-val" style="color:#F472B6">4-7 dias / ciclo</span></div>
+            </div>
+
+            <h4 style="margin: 1.5rem 0 0.85rem; color: #F472B6; font-size: 1.05rem; font-weight: 600">Neuroblastoma alto-risco (pediatria)</h4>
+            <div class="scheme-pills">
+              <div class="scheme-pill"><span class="pill-lbl">Dose padrão</span><span class="pill-val" style="color:#F472B6">18 mCi/kg · 666 MBq/kg</span></div>
+              <div class="scheme-pill"><span class="pill-lbl">Esquemas</span><span class="pill-val" style="color:#F472B6">dose única ou 12+12 mCi/kg</span></div>
+              <div class="scheme-pill"><span class="pill-lbl">Dose ablativa</span><span class="pill-val" style="color:#F472B6">+ resgate hematopoiético</span></div>
+              <div class="scheme-pill"><span class="pill-lbl">Combinação</span><span class="pill-val" style="color:#F472B6">± vorinostat (NANT)</span></div>
+            </div>
+
+            <div style="margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid var(--border-soft); display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem">
+              <div>
+                <div style="font-size: 0.75rem; color: var(--stone); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.35rem">Pré-medicação</div>
+                <div style="font-size: 0.9rem; color: var(--off-white); line-height: 1.55">Antiemético 5-HT3 + dexametasona. Hidratação EV abundante para excreção urinária do MIBG não captado.</div>
+              </div>
+              <div>
+                <div style="font-size: 0.75rem; color: var(--stone); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.35rem">Suspensão de fármacos</div>
+                <div style="font-size: 0.9rem; color: var(--off-white); line-height: 1.55">Antidepressivos tricíclicos, simpaticomiméticos, labetalol, reserpina, cocaína, opioides — interferem com NET. Suspender 1-3 semanas antes.</div>
+              </div>
+              <div>
+                <div style="font-size: 0.75rem; color: var(--stone); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.35rem">Internação radiometabólica</div>
+                <div style="font-size: 0.9rem; color: var(--off-white); line-height: 1.55">Quarto blindado individual por 4-7 dias até taxa de exposição cair abaixo de limites regulatórios (varia por país).</div>
+              </div>
+              <div>
+                <div style="font-size: 0.75rem; color: var(--stone); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.35rem">Imagem pós-terapia</div>
+                <div style="font-size: 0.9rem; color: var(--off-white); line-height: 1.55">Cintilografia 24-72 h pós-injeção (γ 364 keV). Curie/SIOPEN score para neuroblastoma. SPECT/CT opcional para localização.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="orbital-divider">
+          <svg width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="60" cy="20" r="3" fill="#F472B6"/>
+            <ellipse cx="60" cy="20" rx="40" ry="10" fill="none" stroke="#F472B6" stroke-width="0.8" opacity="0.4"/>
+            <ellipse cx="60" cy="20" rx="55" ry="13" fill="none" stroke="#0EA5B7" stroke-width="0.6" stroke-dasharray="2 4" opacity="0.5"/>
+            <circle cx="100" cy="20" r="1.5" fill="#0EA5B7"/>
+            <circle cx="20" cy="20" r="1.5" fill="#0EA5B7"/>
+          </svg>
+        </div>
+
+        <!-- ============== BLOQUEIO TIREOIDIANO ============== -->
+        <div id="bloqueio" class="rf-section">
+          <h2><span class="num">04</span> Bloqueio tireoidiano · obrigatório</h2>
+          <p class="lead">Iodo-131 livre liberado do MIBG é avidamente captado pela tireoide via simporter sódio-iodeto (NIS). Sem bloqueio, a dose tireoidiana ultrapassa 20-30 Gy por sessão — risco quase certo de hipotireoidismo permanente e, em adolescentes/jovens, risco oncogênico aumentado.</p>
+
+          <div class="scheme-box">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem">
+              <div>
+                <div style="font-size: 0.75rem; color: #F472B6; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.35rem">Iodeto de potássio (KI / SSKI)</div>
+                <div style="font-size: 0.92rem; color: var(--off-white); line-height: 1.55">Adulto: 130 mg/dia (gotas SSKI ou comprimidos). Pediátrico: 1 mg/kg/dia (máx 130). Iniciar 24-48 h antes da injeção.</div>
+              </div>
+              <div>
+                <div style="font-size: 0.75rem; color: #F472B6; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.35rem">Lugol (alternativa)</div>
+                <div style="font-size: 0.92rem; color: var(--off-white); line-height: 1.55">Solução de iodeto de potássio + iodo molecular. Adulto: 0,1-0,3 mL × 3/dia. Disponibilidade variável por país.</div>
+              </div>
+              <div>
+                <div style="font-size: 0.75rem; color: #F472B6; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.35rem">Duração</div>
+                <div style="font-size: 0.92rem; color: var(--off-white); line-height: 1.55">Manter por 7-14 dias após a injeção. Iodo-131 livre continua sendo liberado durante esse período pelo metabolismo do MIBG.</div>
+              </div>
+              <div>
+                <div style="font-size: 0.75rem; color: #F472B6; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.35rem">Sem bloqueio</div>
+                <div style="font-size: 0.92rem; color: var(--off-white); line-height: 1.55">Hipotireoidismo subclínico em &gt; 50% e clínico em 5-30% dos pacientes. Avaliar TSH em todo seguimento.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="key-fact">
+            <div class="lbl">Hipotireoidismo · seguimento longo</div>
+            <p>Mesmo com bloqueio adequado, hipotireoidismo subclínico ocorre em 5-15% dos pacientes adultos e até 30% das crianças tratadas com MIBG. Avaliação de TSH/T4 livre semestral por pelo menos 5 anos é recomendada. Em sobreviventes pediátricos de neuroblastoma, surveillance estendida (incluindo crescimento e desenvolvimento) é mandatória.</p>
+          </div>
+        </div>
+
+        <div class="orbital-divider">
+          <svg width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="60" cy="20" r="3" fill="#F472B6"/>
+            <ellipse cx="60" cy="20" rx="40" ry="10" fill="none" stroke="#F472B6" stroke-width="0.8" opacity="0.4"/>
+            <ellipse cx="60" cy="20" rx="55" ry="13" fill="none" stroke="#0EA5B7" stroke-width="0.6" stroke-dasharray="2 4" opacity="0.5"/>
+            <circle cx="100" cy="20" r="1.5" fill="#0EA5B7"/>
+            <circle cx="20" cy="20" r="1.5" fill="#0EA5B7"/>
+          </svg>
+        </div>
+
+        <!-- ============== IMAGEM ============== -->
+        <div id="imagem" class="rf-section">
+          <h2><span class="num">05</span> Imagem teranóstica · Curie e SIOPEN scores</h2>
+          <p class="lead">A imagem MIBG diagnóstica é mandatória antes da terapia — apenas pacientes com captação demonstrada são candidatos. Sistemas de scoring quantitativo (Curie / SIOPEN) são padrão para monitorar resposta no neuroblastoma.</p>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin: 1.5rem 0">
+            <div style="background: var(--graphite-2); border: 1px solid var(--border-soft); border-radius: var(--radius-md); padding: 1.25rem">
+              <div style="font-family: var(--font-mono); color: #F472B6; font-size: 0.85rem; margin-bottom: 0.4rem">¹²³I-MIBG (preferida)</div>
+              <div style="font-size: 0.95rem; color: var(--off-white); margin-bottom: 0.35rem">Diagnóstica · γ 159 keV</div>
+              <div style="font-size: 0.82rem; color: var(--stone); line-height: 1.5">T½ 13 h, dosimetria favorável, qualidade SPECT/CT excelente. Padrão para selecionar pacientes para MIBG terapêutico.</div>
+            </div>
+            <div style="background: var(--graphite-2); border: 1px solid var(--border-soft); border-radius: var(--radius-md); padding: 1.25rem">
+              <div style="font-family: var(--font-mono); color: #F472B6; font-size: 0.85rem; margin-bottom: 0.4rem">¹³¹I-MIBG diagnóstico</div>
+              <div style="font-size: 0.95rem; color: var(--off-white); margin-bottom: 0.35rem">γ 364 keV · imagem inferior</div>
+              <div style="font-size: 0.82rem; color: var(--stone); line-height: 1.5">Alternativa quando ¹²³I-MIBG indisponível. Imagem com colimador de alta energia. Hoje pouco usada para diagnóstico.</div>
+            </div>
+            <div style="background: var(--graphite-2); border: 1px solid var(--border-soft); border-radius: var(--radius-md); padding: 1.25rem">
+              <div style="font-family: var(--font-mono); color: #F472B6; font-size: 0.85rem; margin-bottom: 0.4rem">⁶⁸Ga-DOTATATE PET</div>
+              <div style="font-size: 0.95rem; color: var(--off-white); margin-bottom: 0.35rem">Alternativa em PPGL</div>
+              <div style="font-size: 0.82rem; color: var(--stone); line-height: 1.5">Sensibilidade frequentemente superior em PPGL (especialmente SDHB-mutado). Permite teranóstica com Lu-DOTATATE.</div>
+            </div>
+            <div style="background: var(--graphite-2); border: 1px solid var(--border-soft); border-radius: var(--radius-md); padding: 1.25rem">
+              <div style="font-family: var(--font-mono); color: #F472B6; font-size: 0.85rem; margin-bottom: 0.4rem">¹⁸F-FDOPA PET</div>
+              <div style="font-size: 0.95rem; color: var(--off-white); margin-bottom: 0.35rem">Pediátrico · cromafim</div>
+              <div style="font-size: 0.82rem; color: var(--stone); line-height: 1.5">Análogo de DOPA. Excelente em PPGL pediátrico e em paragangliomas de cabeça-pescoço. Alternativa onde MIBG é equívoca.</div>
+            </div>
+          </div>
+
+          <div class="key-fact">
+            <div class="lbl">Curie score (neuroblastoma)</div>
+            <p>Sistema de Matthay e cols. (1995): divide o esqueleto em 9 segmentos + tecidos moles. Cada sítio recebe score 0 (sem captação), 1 (1 lesão), 2 (&gt;1 lesão pequena), 3 (lesão grande). Soma total = score Curie. Reduções de pelo menos 50% após terapia indicam resposta. SIOPEN score (12 segmentos esqueléticos) é variante europeia mais granular. Ambos são reprodutíveis e mantêm valor prognóstico mesmo na era pós-imunoterapia.</p>
+          </div>
+        </div>
+
+        <div class="orbital-divider">
+          <svg width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="60" cy="20" r="3" fill="#F472B6"/>
+            <ellipse cx="60" cy="20" rx="40" ry="10" fill="none" stroke="#F472B6" stroke-width="0.8" opacity="0.4"/>
+            <ellipse cx="60" cy="20" rx="55" ry="13" fill="none" stroke="#0EA5B7" stroke-width="0.6" stroke-dasharray="2 4" opacity="0.5"/>
+            <circle cx="100" cy="20" r="1.5" fill="#0EA5B7"/>
+            <circle cx="20" cy="20" r="1.5" fill="#0EA5B7"/>
+          </svg>
+        </div>
+
+        <!-- ============== ENSAIOS ============== -->
+        <div id="ensaios" class="rf-section">
+          <h2><span class="num">06</span> Ensaios pivotais</h2>
+          <p class="lead">Aprovação Azedra em PPGL maligno (2018), papel histórico em neuroblastoma alto-risco e estudos modernos de combinação com epigenética e imuno.</p>
+
+          <div class="trials-grid">
+            <div class="trial-card">
+              <div class="trial-name">
+                <span class="name">Azedra Phase II</span>
+                <span class="year">2019 · J Clin Oncol</span>
+              </div>
+              <p class="pop">PPGL maligno · n=68 · Pryma e cols. · Iobenguano I-131 (no-carrier-added)</p>
+              <div class="results">
+                <div class="stat-row"><div class="lbl">Anti-HTN ↓ ≥ 50%</div><div class="val">25%</div></div>
+                <div class="stat-row"><div class="lbl">Benefício clínico</div><div class="val">92%</div></div>
+                <div class="stat-row"><div class="lbl">PFS mediano</div><div class="val">~ 18,9 m</div></div>
+                <div class="stat-row"><div class="lbl">Aprovação FDA</div><div class="val">jul/2018</div></div>
+              </div>
+              <p class="takeaway">Base regulatória do Azedra. Primeiro radiofármaco aprovado especificamente para PPGL maligno.</p>
+            </div>
+
+            <div class="trial-card">
+              <div class="trial-name">
+                <span class="name">NANT 2011-01</span>
+                <span class="year">2018 · J Clin Oncol</span>
+              </div>
+              <p class="pop">Neuroblastoma alto-risco recidivado · n=99 · MIBG ± vorinostat</p>
+              <div class="results">
+                <div class="stat-row"><div class="lbl">ORR</div><div class="val">38 vs 32%</div></div>
+                <div class="stat-row"><div class="lbl">PFS</div><div class="val">+ tendência com vorinostat</div></div>
+                <div class="stat-row"><div class="lbl">Tox</div><div class="val">comparável</div></div>
+                <div class="stat-row"><div class="lbl">Mensagem</div><div class="val">HDACi + MIBG viável</div></div>
+              </div>
+              <p class="takeaway">Vorinostat aumenta NET expression. Combinação racional, sinal positivo a confirmar.</p>
+            </div>
+
+            <div class="trial-card">
+              <div class="trial-name">
+                <span class="name">VERITAS</span>
+                <span class="year">em curso · pediátrico</span>
+              </div>
+              <p class="pop">Neuroblastoma alto-risco recidivado · MIBG vs busulfan/melfalan · cooperative</p>
+              <div class="results">
+                <div class="stat-row"><div class="lbl">Endpoint</div><div class="val">EFS · resposta</div></div>
+                <div class="stat-row"><div class="lbl">Status</div><div class="val">recrutando</div></div>
+                <div class="stat-row"><div class="lbl">Idade</div><div class="val">1-21 anos</div></div>
+                <div class="stat-row"><div class="lbl">Lugar</div><div class="val">internacional</div></div>
+              </div>
+              <p class="takeaway">Comparação direta MIBG vs QT mieloablativa em recidiva. Estudo definidor.</p>
+            </div>
+
+            <div class="trial-card">
+              <div class="trial-name">
+                <span class="name">COG ANBL1531</span>
+                <span class="year">em curso · pediátrico</span>
+              </div>
+              <p class="pop">Neuroblastoma alto-risco · 1L · indução com MIBG no esquema multimodal</p>
+              <div class="results">
+                <div class="stat-row"><div class="lbl">Endpoint</div><div class="val">EFS</div></div>
+                <div class="stat-row"><div class="lbl">Status</div><div class="val">acrual completo · análise</div></div>
+                <div class="stat-row"><div class="lbl">Resultados</div><div class="val">2026</div></div>
+                <div class="stat-row"><div class="lbl">NCT</div><div class="val">03126916</div></div>
+              </div>
+              <p class="takeaway">Posicionamento do MIBG na primeira linha do neuroblastoma alto-risco. Definição de papel.</p>
+            </div>
+
+            <div class="trial-card">
+              <div class="trial-name">
+                <span class="name">MIBG-MIDAS</span>
+                <span class="year">em curso · pediátrico</span>
+              </div>
+              <p class="pop">Neuroblastoma · MIBG dose-aumentada + drogas adjuvantes · multicentro</p>
+              <div class="results">
+                <div class="stat-row"><div class="lbl">Endpoint</div><div class="val">resposta + dosimetria</div></div>
+                <div class="stat-row"><div class="lbl">Status</div><div class="val">recrutando</div></div>
+                <div class="stat-row"><div class="lbl">Foco</div><div class="val">dosimetria personalizada</div></div>
+                <div class="stat-row"><div class="lbl">Tipo</div><div class="val">fase 2</div></div>
+              </div>
+              <p class="takeaway">Aplicação de dosimetria individualizada na pediatria. Conceito alinhado ao DOSISPHERE em Y-90.</p>
+            </div>
+
+            <div class="trial-card">
+              <div class="trial-name">
+                <span class="name">OnDApp / MiNivAN</span>
+                <span class="year">em curso · adulto</span>
+              </div>
+              <p class="pop">PPGL maligno · MIBG ± nivolumab · combinação imuno-radioterapia</p>
+              <div class="results">
+                <div class="stat-row"><div class="lbl">Endpoint</div><div class="val">ORR · PFS</div></div>
+                <div class="stat-row"><div class="lbl">Status</div><div class="val">recrutando</div></div>
+                <div class="stat-row"><div class="lbl">Hipótese</div><div class="val">efeito abscopal</div></div>
+                <div class="stat-row"><div class="lbl">Tipo</div><div class="val">fase 2</div></div>
+              </div>
+              <p class="takeaway">Sinergia imuno + radioterapia em PPGL. Conceito moderno aplicado a tumor raro.</p>
+            </div>
+
+            <div class="trial-card">
+              <div class="trial-name">
+                <span class="name">Iobenguane vs Lu-DOTATATE</span>
+                <span class="year">retrospectivos · 2023-25</span>
+              </div>
+              <p class="pop">PPGL maligno · comparações observacionais · n variável</p>
+              <div class="results">
+                <div class="stat-row"><div class="lbl">Resposta</div><div class="val">comparável em SSTR+/NET+</div></div>
+                <div class="stat-row"><div class="lbl">Tox hema</div><div class="val">menor com Lu-DOTATATE</div></div>
+                <div class="stat-row"><div class="lbl">Logística</div><div class="val">simpler com Lu-DOTATATE</div></div>
+                <div class="stat-row"><div class="lbl">Conclusão</div><div class="val">complementares</div></div>
+              </div>
+              <p class="takeaway">Em PPGL com captação dual, Lu-DOTATATE tem ganhado preferência. MIBG mantém papel em NET+/SSTR−.</p>
+            </div>
+
+            <div class="trial-card">
+              <div class="trial-name">
+                <span class="name">Hoefnagel série</span>
+                <span class="year">1985-2010 · histórica</span>
+              </div>
+              <p class="pop">PPGL maligno e neuroblastoma · &gt; 350 pacientes · NKI Amsterdam</p>
+              <div class="results">
+                <div class="stat-row"><div class="lbl">ORR PPGL</div><div class="val">25-40%</div></div>
+                <div class="stat-row"><div class="lbl">Resposta sintomática</div><div class="val">60-70%</div></div>
+                <div class="stat-row"><div class="lbl">PFS mediano</div><div class="val">12-24 m</div></div>
+                <div class="stat-row"><div class="lbl">Tox</div><div class="val">manejável</div></div>
+              </div>
+              <p class="takeaway">Maior experiência mundial com MIBG terapêutico. Base prática que inspirou registros e ensaios fase 2/3.</p>
+            </div>
+          </div>
+
+          <div style="text-align: center; margin-top: 2rem">
+            <a href="database.html" class="rf-eyebrow" style="cursor:pointer; background:rgba(244,114,182,0.12);border-color:rgba(244,114,182,0.3);color:#F472B6">
+              <i data-lucide="database" style="width:14px;height:14px"></i>
+              Ver todos os estudos no Database
+              <i data-lucide="arrow-right" style="width:14px;height:14px"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="orbital-divider">
+          <svg width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="60" cy="20" r="3" fill="#F472B6"/>
+            <ellipse cx="60" cy="20" rx="40" ry="10" fill="none" stroke="#F472B6" stroke-width="0.8" opacity="0.4"/>
+            <ellipse cx="60" cy="20" rx="55" ry="13" fill="none" stroke="#0EA5B7" stroke-width="0.6" stroke-dasharray="2 4" opacity="0.5"/>
+            <circle cx="100" cy="20" r="1.5" fill="#0EA5B7"/>
+            <circle cx="20" cy="20" r="1.5" fill="#0EA5B7"/>
+          </svg>
+        </div>
+
+        <!-- ============== DOSIMETRIA ============== -->
+        <div id="dosimetria" class="rf-section">
+          <h2><span class="num">07</span> Dosimetria</h2>
+          <p class="lead">Dose para tumor é alta e heterogênea (depende de captação NET). Bexiga é o órgão mais irradiado pela excreção urinária. Tireoide bloqueada recebe pouca dose; sem bloqueio, é o órgão crítico.</p>
+
+          <table class="dose-table">
+            <thead>
+              <tr>
+                <th>Órgão / tecido</th>
+                <th>Dose por MBq (mGy/MBq)</th>
+                <th>Visualização</th>
+                <th>Observação</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Tumor</strong> (mediana)</td><td>variável · 5-50 Gy/dose</td><td><div class="dose-bar high"><div class="dose-bar-fill" style="width:100%"></div></div></td><td>Heterogeneidade alta</td></tr>
+              <tr><td>Bexiga (parede)</td><td>~ 0,18</td><td><div class="dose-bar med"><div class="dose-bar-fill" style="width:55%"></div></div></td><td>Excreção urinária · hidratação reduz</td></tr>
+              <tr><td>Glândulas salivares</td><td>~ 0,07</td><td><div class="dose-bar med"><div class="dose-bar-fill" style="width:30%"></div></div></td><td>Captação NET intrínseca</td></tr>
+              <tr><td>Coração</td><td>~ 0,07</td><td><div class="dose-bar med"><div class="dose-bar-fill" style="width:30%"></div></div></td><td>Inervação simpática miocárdica</td></tr>
+              <tr><td>Fígado</td><td>~ 0,07</td><td><div class="dose-bar med"><div class="dose-bar-fill" style="width:30%"></div></div></td><td>Metabolismo hepático</td></tr>
+              <tr><td>Medula vermelha</td><td>~ 0,07</td><td><div class="dose-bar med"><div class="dose-bar-fill" style="width:30%"></div></div></td><td>Citopenia é dose-limitante</td></tr>
+              <tr><td>Tireoide (com bloqueio)</td><td>~ 0,01</td><td><div class="dose-bar low"><div class="dose-bar-fill" style="width:5%"></div></div></td><td>KI/Lugol mandatório</td></tr>
+              <tr><td>Tireoide (sem bloqueio)</td><td>~ 1,5 — 3,0</td><td><div class="dose-bar high"><div class="dose-bar-fill" style="width:90%"></div></div></td><td>Hipotireoidismo quase certo</td></tr>
+            </tbody>
+          </table>
+
+          <div class="key-fact">
+            <div class="lbl">Dosimetria de medula em pediatria</div>
+            <p>Em neuroblastoma alto-risco com extensa carga óssea, a dose absorvida na medula pode atingir 2-3 Gy por sessão de MIBG terapêutico — limítrofe com toxicidade hematológica. Dose ablativa (&gt;500 mCi total cumulativo) requer resgate de células-tronco hematopoiéticas autólogas. Centros de pediatria oncológica que oferecem MIBG terapêutico devem ter banco de stem cells e UTI pediátrica disponíveis.</p>
+          </div>
+        </div>
+
+        <div class="orbital-divider">
+          <svg width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="60" cy="20" r="3" fill="#F472B6"/>
+            <ellipse cx="60" cy="20" rx="40" ry="10" fill="none" stroke="#F472B6" stroke-width="0.8" opacity="0.4"/>
+            <ellipse cx="60" cy="20" rx="55" ry="13" fill="none" stroke="#0EA5B7" stroke-width="0.6" stroke-dasharray="2 4" opacity="0.5"/>
+            <circle cx="100" cy="20" r="1.5" fill="#0EA5B7"/>
+            <circle cx="20" cy="20" r="1.5" fill="#0EA5B7"/>
+          </svg>
+        </div>
+
+        <!-- ============== TOXICIDADE ============== -->
+        <div id="toxicidade" class="rf-section">
+          <h2><span class="num">08</span> Eventos adversos</h2>
+          <p class="lead">Hematológica é dose-limitante (especialmente em neuroblastoma com doses altas). Hipotireoidismo é a sequela tardia mais frequente. Crise hipertensiva é raro mas grave em PPGL não bloqueado.</p>
+
+          <div class="tox-grid">
+            <div class="tox-item">
+              <div class="tox-name">Náusea peri-injeção</div>
+              <div class="tox-pct"><span class="tox-all">~ 50%</span><span class="tox-g3">G3 &lt; 5%</span></div>
+              <div class="tox-bar"><div class="tox-bar-all" style="width:50%; background:#F472B6"></div></div>
+            </div>
+            <div class="tox-item">
+              <div class="tox-name">Trombocitopenia</div>
+              <div class="tox-pct"><span class="tox-all">~ 35%</span><span class="tox-g3">G3-4 ~ 15%</span></div>
+              <div class="tox-bar"><div class="tox-bar-all" style="width:35%; background:#F472B6"></div></div>
+            </div>
+            <div class="tox-item">
+              <div class="tox-name">Anemia</div>
+              <div class="tox-pct"><span class="tox-all">~ 30%</span><span class="tox-g3">G3-4 ~ 10%</span></div>
+              <div class="tox-bar"><div class="tox-bar-all" style="width:30%; background:#F472B6"></div></div>
+            </div>
+            <div class="tox-item">
+              <div class="tox-name">Linfopenia</div>
+              <div class="tox-pct"><span class="tox-all">~ 50%</span><span class="tox-g3">G3-4 ~ 20%</span></div>
+              <div class="tox-bar"><div class="tox-bar-all" style="width:50%; background:#F472B6"></div></div>
+            </div>
+            <div class="tox-item">
+              <div class="tox-name">Hipotireoidismo</div>
+              <div class="tox-pct"><span class="tox-all">~ 15%</span><span class="tox-g3">manejável (levotiroxina)</span></div>
+              <div class="tox-bar"><div class="tox-bar-all" style="width:15%; background:#F472B6"></div></div>
+            </div>
+            <div class="tox-item">
+              <div class="tox-name">Sialoadenite / xerostomia</div>
+              <div class="tox-pct"><span class="tox-all">~ 10%</span><span class="tox-g3">leve</span></div>
+              <div class="tox-bar"><div class="tox-bar-all" style="width:10%; background:#F472B6"></div></div>
+            </div>
+            <div class="tox-item">
+              <div class="tox-name">Crise hipertensiva (PPGL)</div>
+              <div class="tox-pct"><span class="tox-all">&lt; 5%</span><span class="tox-g3">grave se não bloqueado</span></div>
+              <div class="tox-bar"><div class="tox-bar-all" style="width:5%; background:#F87171"></div></div>
+            </div>
+            <div class="tox-item">
+              <div class="tox-name">SMD/leucemia secundária</div>
+              <div class="tox-pct"><span class="tox-all">~ 1-7% pediatria</span><span class="tox-g3">grave · longo prazo</span></div>
+              <div class="tox-bar"><div class="tox-bar-all" style="width:5%; background:#F87171"></div></div>
+            </div>
+          </div>
+
+          <div class="key-fact">
+            <div class="lbl">Bloqueio adrenérgico em PPGL</div>
+            <p>Em pacientes com PPGL funcionante, bloqueio alfa-adrenérgico (fenoxibenzamina, doxazosina) por 10-14 dias antes do MIBG é mandatório. A liberação de catecolaminas pelo dano celular induzido pela radiação pode precipitar crise hipertensiva. Beta-bloqueador só após bloqueio alfa estabelecido. Hidratação EV abundante peri-procedimento.</p>
+          </div>
+        </div>
+
+        <div class="orbital-divider">
+          <svg width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="60" cy="20" r="3" fill="#F472B6"/>
+            <ellipse cx="60" cy="20" rx="40" ry="10" fill="none" stroke="#F472B6" stroke-width="0.8" opacity="0.4"/>
+            <ellipse cx="60" cy="20" rx="55" ry="13" fill="none" stroke="#0EA5B7" stroke-width="0.6" stroke-dasharray="2 4" opacity="0.5"/>
+            <circle cx="100" cy="20" r="1.5" fill="#0EA5B7"/>
+            <circle cx="20" cy="20" r="1.5" fill="#0EA5B7"/>
+          </svg>
+        </div>
+
+        <!-- ============== PERSPECTIVAS ============== -->
+        <div id="perspectivas" class="rf-section">
+          <h2><span class="num">09</span> Perspectivas</h2>
+          <p class="lead">A frente MIBG caminha em três direções: aumentar expressão NET com epigenética, combinar com imunoterapia em PPGL, e migrar para alfa-emissores no longo prazo.</p>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin: 1.5rem 0">
+            <div style="background: var(--graphite-2); border: 1px solid rgba(244,114,182,0.3); border-radius: var(--radius-md); padding: 1.25rem">
+              <div style="font-family: var(--font-mono); color: #F472B6; font-size: 0.85rem; margin-bottom: 0.4rem">MIBG + HDAC inhibitor</div>
+              <div style="font-size: 0.95rem; color: var(--off-white); margin-bottom: 0.35rem">Vorinostat, panobinostat</div>
+              <div style="font-size: 0.82rem; color: var(--stone); line-height: 1.5">HDAC inhibitors aumentam expressão de NET — convertendo tumores frios em quentes para MIBG. NANT consortium liderou estudos.</div>
+            </div>
+            <div style="background: var(--graphite-2); border: 1px solid rgba(244,114,182,0.3); border-radius: var(--radius-md); padding: 1.25rem">
+              <div style="font-family: var(--font-mono); color: #F472B6; font-size: 0.85rem; margin-bottom: 0.4rem">MIBG + nivolumab</div>
+              <div style="font-size: 0.95rem; color: var(--off-white); margin-bottom: 0.35rem">PPGL · OnDApp / MiNivAN</div>
+              <div style="font-size: 0.82rem; color: var(--stone); line-height: 1.5">Combinação imunorradiação. Hipótese: efeito abscopal mediado por liberação de antígenos. Resultados aguardados 2026-27.</div>
+            </div>
+            <div style="background: var(--graphite-2); border: 1px solid rgba(244,114,182,0.3); border-radius: var(--radius-md); padding: 1.25rem">
+              <div style="font-family: var(--font-mono); color: #F472B6; font-size: 0.85rem; margin-bottom: 0.4rem">²¹¹At-MABG</div>
+              <div style="font-size: 0.95rem; color: var(--off-white); margin-bottom: 0.35rem">Alfa-emissor · MABG</div>
+              <div style="font-size: 0.82rem; color: var(--stone); line-height: 1.5">Astato-211 ligado ao MABG (análogo do MIBG). Fase 1 piloto em PPGL e neuroblastoma. Logística limitada por T½ 7,2 h.</div>
+            </div>
+            <div style="background: var(--graphite-2); border: 1px solid rgba(244,114,182,0.3); border-radius: var(--radius-md); padding: 1.25rem">
+              <div style="font-family: var(--font-mono); color: #F472B6; font-size: 0.85rem; margin-bottom: 0.4rem">Sequenciamento MIBG ↔ Lu-DOTATATE</div>
+              <div style="font-size: 0.95rem; color: var(--off-white); margin-bottom: 0.35rem">PPGL com captação dual</div>
+              <div style="font-size: 0.82rem; color: var(--stone); line-height: 1.5">Em PPGL com NET+ e SSTR+, alguns centros sequenciam: MIBG primeiro, Lu-DOTATATE em progressão (ou inversa). Estratégia ainda observacional.</div>
+            </div>
+          </div>
+
+          <div class="key-fact">
+            <div class="lbl">Quando escolher MIBG hoje?</div>
+            <p>Em 2026, MIBG terapêutico mantém papel definitivo em (1) neuroblastoma alto-risco refratário/recidivado com captação MIBG positiva, (2) PPGL maligno com captação MIBG dominante e SSTR− ou variável, e (3) cenários de combinação (epigenética, imuno) em centros de pesquisa. Perdeu espaço para Lu-DOTATATE em PPGL com SSTR alta, especialmente em centros sem infraestrutura de internação radiometabólica prolongada.</p>
+          </div>
+        </div>
+
+        <div class="orbital-divider">
+          <svg width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="60" cy="20" r="3" fill="#F472B6"/>
+            <ellipse cx="60" cy="20" rx="40" ry="10" fill="none" stroke="#F472B6" stroke-width="0.8" opacity="0.4"/>
+            <ellipse cx="60" cy="20" rx="55" ry="13" fill="none" stroke="#0EA5B7" stroke-width="0.6" stroke-dasharray="2 4" opacity="0.5"/>
+            <circle cx="100" cy="20" r="1.5" fill="#0EA5B7"/>
+            <circle cx="20" cy="20" r="1.5" fill="#0EA5B7"/>
+          </svg>
+        </div>
+
+        <!-- ============== PRÓXIMOS ============== -->
+        <div id="proximos" class="rf-section">
+          <h2><span class="num">10</span> Continue lendo</h2>
+          <div class="next-grid">
+            <a href="lu-dotatate.html" class="next-card">
+              <div class="lbl">Alternativa em PPGL</div>
+              <div class="name">¹⁷⁷Lu-DOTATATE</div>
+              <div class="desc">PRRT em NET e PPGL com SSTR2+. Comparação direta em pacientes dual-positivos.</div>
+            </a>
+            <a href="novos-alfa.html" class="next-card">
+              <div class="lbl">Próxima geração α</div>
+              <div class="name">Novos alfa-emissores</div>
+              <div class="desc">²²⁵Ac, ¹⁶¹Tb, ²²¹At — substituições futuras para β em micrometástases.</div>
+            </a>
+            <a href="database.html" class="next-card">
+              <div class="lbl">Database</div>
+              <div class="name">Estudos MIBG</div>
+              <div class="desc">Filtre por 'MIBG' ou 'Iobenguano' no Database.</div>
+            </a>
+            <a href="tumor-boards.html#pheo_pgl" class="next-card">
+              <div class="lbl">Tumor board</div>
+              <div class="name">PPGL e neuroblastoma</div>
+              <div class="desc">Veja todos os estudos por tumor com fluxo decisório clínico.</div>
+            </a>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>© 2026 TheraTrials Oncology · Plataforma de evidências em oncologia moderna</span>
+      <span style="color: var(--stone); font-size: 0.82rem; margin-left: 1rem">Dados extraídos de publicações peer-reviewed e bases regulatórias. Conteúdo educacional, não substitui julgamento clínico.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    if (typeof lucide !== 'undefined') lucide.createIcons();
+  });
+</script>
+
+</body>
+</html>

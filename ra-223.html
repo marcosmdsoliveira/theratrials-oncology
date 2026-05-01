@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>223Ra-Cloreto · TheraTrials Oncology</title>
+<meta name="description" content="Página profunda sobre 223Ra-Cloreto (Xofigo): história desde Marie Curie, mecanismo cálcio-mimético, esquema 55 kBq/kg q4w x 6, ALSYMPCA, PEACE-3, COMRADE, dosimetria e toxicidade.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/theratrials.css">
+<link rel="stylesheet" href="assets/css/radiofarmaco.css">
+<link rel="icon" type="image/png" href="assets/img/logo-app.png">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<style>
+  /* Override iso-symbol para violeta (alpha-emitter) */
+  .iso-symbol.alpha-purple {
+    background: radial-gradient(circle at 35% 35%, #D9A6FF 0%, #C084FC 55%, #7E3FB8 100%);
+    box-shadow: 0 0 50px rgba(192, 132, 252, 0.35);
+  }
+  .iso-symbol.alpha-purple::before { border-color: rgba(192, 132, 252, 0.4) !important; }
+</style>
+</head>
+<body>
+
+<!-- ============== HEADER ============== -->
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="brand">
+      <img src="assets/img/logo-app.png" alt="TheraTrials" class="brand-logo">
+      <div class="brand-text">
+        <span class="brand-name">TheraTrials</span>
+        <span class="brand-sub">Oncology</span>
+      </div>
+    </a>
+    <button class="nav-toggle" aria-label="Menu"><i data-lucide="menu" style="width:18px;height:18px"></i></button>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="database.html">Database</a>
+      <a href="estudos-ativos.html">Estudos ativos</a>
+      <a href="tumor-boards.html">Tumor boards</a>
+      <a href="modalidades.html">Modalidades</a>
+      <a href="ferramentas.html">Ferramentas</a>
+      <a href="fundamentos.html">Fundamentos</a>
+      <a href="about.html">Sobre</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ============== HERO ============== -->
+<section class="rf-hero">
+  <div class="container">
+    <span class="rf-eyebrow" style="background:rgba(192,132,252,0.12);border-color:rgba(192,132,252,0.3);color:#C084FC">
+      <i data-lucide="atom" style="width:12px;height:12px"></i> Radiofármaco · Alfa-emissor
+    </span>
+    <h1 class="rf-title">
+      <span class="iso-up" style="color:#C084FC">223</span>Ra-Cloreto
+      <br><span style="color:#C084FC">Xofigo</span> · o primeiro alfa aprovado em oncologia
+    </h1>
+    <p class="rf-subtitle">
+      Cátion cálcio-mimético que se concentra em sítios de remodelação óssea aumentada — exatamente o microambiente das metástases osteoblásticas do câncer de próstata. Primeira aprovação ampla de alfa-emissor em oncologia (FDA, maio 2013) com base no ALSYMPCA, demonstrando ganho de sobrevida global em mCRPC com metástases ósseas sintomáticas.
+    </p>
+
+    <div class="iso-card">
+      <div class="iso-symbol alpha-purple">
+        <span class="iso-mass">223</span>
+        <span class="iso-element">Ra</span>
+        <span class="iso-name">Rádio</span>
+      </div>
+      <div class="iso-grid">
+        <div class="item"><div class="lbl">Meia-vida</div><div class="val">11,4 d</div></div>
+        <div class="item"><div class="lbl">Decaimento</div><div class="val">α (4 emissões)</div></div>
+        <div class="item"><div class="lbl">Energia α</div><div class="val">~ 5,78 MeV</div></div>
+        <div class="item"><div class="lbl">Alcance α</div><div class="val">50-100 μm</div></div>
+        <div class="item"><div class="lbl">LET</div><div class="val">80 keV/μm</div></div>
+        <div class="item"><div class="lbl">Excreção</div><div class="val">fecal (TGI)</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding: 0">
+  <div class="container">
+    <div class="rf-layout">
+
+      <aside class="toc">
+        <h4>Nesta página</h4>
+        <a href="#cronologia">Cronologia</a>
+        <a href="#mecanismo">Mecanismo molecular</a>
+        <a href="#esquema">Esquema terapêutico</a>
+        <a href="#selecao">Seleção de pacientes</a>
+        <a href="#ensaios">Ensaios pivotais</a>
+        <a href="#dosimetria">Dosimetria</a>
+        <a href="#toxicidade">Toxicidade</a>
+        <a href="#perspectivas">Perspectivas</a>
+        <a href="#proximos">Continue lendo</a>
+      </aside>
+
+      <main>
+
+        <!-- ============== CRONOLOGIA ============== -->
+        <div id="cronologia" class="rf-section">
+          <h2><span class="num">01</span> Cronologia</h2>
+          <p class="lead">De Marie Curie ao ALSYMPCA: 115 anos entre a descoberta do rádio e a primeira aprovação de alfa-emissor para câncer.</p>
+
+          <div class="timeline">
+            <div class="tl-item">
+              <div class="tl-dot">1898</div>
+              <div class="tl-card">
+                <h4>Descoberta do rádio</h4>
+                <p>Marie e Pierre Curie isolam o rádio do uranita, em Paris. Décadas depois, isótopos do rádio (²²⁶Ra) seriam usados em terapias diversas — incluindo pacientes que desenvolveriam osteossarcomas pelas longas meias-vidas.</p>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot">1995</div>
+              <div class="tl-card">
+                <h4>Hipótese ²²³Ra</h4>
+                <p>Larsen e colaboradores na Noruega propõem o ²²³Ra como alternativa ao ²²⁶Ra: meia-vida curta (11,4 d) reduz dose comprometedora, e a cadeia de decaimento gera 4 emissões alfa concentradas em sítios osteoblásticos.</p>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot">2005</div>
+              <div class="tl-card">
+                <h4>Primeiro estudo clínico</h4>
+                <p>Nilsson e cols. publicam dados de fase 1: pacientes com mCRPC e metástases ósseas, dose-escalada, mostrando segurança e atividade promissora em alívio de dor e marcadores ósseos.</p>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot">2013</div>
+              <div class="tl-card">
+                <h4>ALSYMPCA (NEJM) e aprovação FDA</h4>
+                <p>Parker e cols. publicam o estudo fase 3: 921 pacientes com mCRPC, metástases ósseas sintomáticas, sem visceral. OS 14,9 vs 11,3 m (HR 0,70). Aprovação FDA em maio de 2013 — primeiro alfa-emissor em oncologia.</p>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot">2018</div>
+              <div class="tl-card">
+                <h4>ERA-223 e o sinal de fraturas</h4>
+                <p>ERA-223 (Ra + abiraterona vs abiraterona) é interrompido precocemente por aumento de fraturas (29 vs 11%) e mortes. Mudança de bula passou a exigir agente protetor ósseo (denosumabe ou ác. zoledrônico) em qualquer combinação.</p>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot">2024</div>
+              <div class="tl-card">
+                <h4>PEACE-3 (Lancet)</h4>
+                <p>Saad e cols.: Ra-223 + enzalutamida + protetor ósseo vs enzalutamida + protetor. rPFS 19,5 vs 16,4 m (HR 0,69), OS positiva. Reabilita combinações com ARPi se houver proteção óssea adequada.</p>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot">2024-25</div>
+              <div class="tl-card">
+                <h4>COMRADE, AlphaBet, sequenciamento</h4>
+                <p>COMRADE: Ra + olaparib em HRR-mutados. AlphaBet: Ra-223 → Lu-PSMA sequencial. Estudos de retreatment definindo papel em pacientes com bom desempenho após 6 ciclos.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="orbital-divider">
+          <svg width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="60" cy="20" r="3" fill="#C084FC"/>
+            <ellipse cx="60" cy="20" rx="40" ry="10" fill="none" stroke="#C084FC" stroke-width="0.8" opacity="0.4"/>
+            <ellipse cx="60" cy="20" rx="55" ry="13" fill="none" stroke="#0EA5B7" stroke-width="0.6" stroke-dasharray="2 4" opacity="0.5"/>
+            <circle cx="100" cy="20" r="1.5" fill="#0EA5B7"/>
+            <circle cx="20" cy="20" r="1.5" fill="#0EA5B7"/>
+          </svg>
+        </div>
+
+        <!-- ============== MECANISMO ============== -->
+        <div id="mecanismo" class="rf-section">
+          <h2><span class="num">02</span> Mecanismo molecular</h2>
+          <p class="lead">O rádio é químicamente análogo ao cálcio: ambos cátions divalentes do grupo II. Em sítios de remodelação óssea aumentada — característica das metástases osteoblásticas — o rádio é incorporado como o cálcio na hidroxiapatita.</p>
+
+          <div class="mech-diagram">
+            <svg viewBox="0 0 800 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+              <!-- Trabécula óssea -->
+              <g transform="translate(0, 100)">
+                <rect x="50" y="20" width="700" height="60" fill="#1B1E25"/>
+                <text x="20" y="55" fill="#8E949C" font-size="10" font-family="JetBrains Mono">trabécula óssea</text>
+                <!-- hidroxiapatita texture -->
+                <g fill="#252932">
+                  <circle cx="120" cy="35" r="3"/>
+                  <circle cx="155" cy="50" r="3"/>
+                  <circle cx="190" cy="42" r="3"/>
+                  <circle cx="220" cy="58" r="3"/>
+                  <circle cx="270" cy="38" r="3"/>
+                  <circle cx="310" cy="50" r="3"/>
+                  <circle cx="350" cy="62" r="3"/>
+                  <circle cx="400" cy="42" r="3"/>
+                  <circle cx="450" cy="55" r="3"/>
+                  <circle cx="500" cy="38" r="3"/>
+                </g>
+              </g>
+
+              <!-- Sítio osteoblástico (metástase) -->
+              <g transform="translate(400, 100)">
+                <ellipse cx="0" cy="50" rx="80" ry="28" fill="rgba(192, 132, 252, 0.2)" stroke="#C084FC" stroke-width="1.5"/>
+                <text x="0" y="20" fill="#C084FC" font-size="10" text-anchor="middle">metástase osteoblástica</text>
+                <!-- 223Ra integrado -->
+                <g fill="#C084FC">
+                  <circle cx="-40" cy="55" r="4"/>
+                  <circle cx="-15" cy="42" r="4"/>
+                  <circle cx="10" cy="60" r="4"/>
+                  <circle cx="35" cy="48" r="4"/>
+                  <circle cx="-25" cy="65" r="4"/>
+                </g>
+                <!-- Setas alfa -->
+                <g stroke="#C084FC" stroke-width="1.5" fill="none">
+                  <path d="M -40,55 L -55,40" />
+                  <path d="M -15,42 L -5,28" />
+                  <path d="M 10,60 L 25,75" />
+                  <path d="M 35,48 L 50,35" />
+                </g>
+                <text x="-65" y="35" fill="#C084FC" font-size="9">α</text>
+                <text x="55" y="32" fill="#C084FC" font-size="9">α</text>
+                <text x="0" y="25" fill="#C084FC" font-size="9">α</text>
+              </g>
+
+              <!-- ²²³Ra na corrente sanguínea -->
+              <g transform="translate(120, 50)">
+                <circle cx="0" cy="0" r="14" fill="#C084FC"/>
+                <text x="0" y="3" fill="#0E0F12" font-size="9" text-anchor="middle" font-weight="700">²²³Ra</text>
+                <text x="0" y="-22" fill="#C084FC" font-size="9" text-anchor="middle">Ra²⁺</text>
+              </g>
+              <text x="120" y="80" fill="#8E949C" font-size="9" text-anchor="middle">corrente sanguínea</text>
+
+              <!-- Setas -->
+              <g stroke="#8E949C" stroke-width="1" fill="none" marker-end="url(#arrow2)">
+                <line x1="140" y1="60" x2="320" y2="130"/>
+              </g>
+              <defs>
+                <marker id="arrow2" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+                  <path d="M0,0 L0,6 L8,3 z" fill="#8E949C"/>
+                </marker>
+              </defs>
+              <text x="220" y="92" fill="#C084FC" font-size="10" font-weight="600">incorporação na hidroxiapatita</text>
+            </svg>
+
+            <div class="mech-stages">
+              <div class="mech-stage">
+                <div class="mech-num" style="background: #C084FC">1</div>
+                <h5>Análogo do cálcio</h5>
+                <p>Cátion Ra²⁺ é incorporado no lugar do Ca²⁺ no cristal de hidroxiapatita pelos osteoblastos em formação ativa de matriz óssea.</p>
+              </div>
+              <div class="mech-stage">
+                <div class="mech-num" style="background: #C084FC">2</div>
+                <h5>Concentração na metástase</h5>
+                <p>Lesões osteoblásticas têm taxa de turnover ósseo &gt;10× a do osso normal. O Ra-223 se acumula seletivamente nesses sítios de alta atividade.</p>
+              </div>
+              <div class="mech-stage">
+                <div class="mech-num" style="background: #C084FC">3</div>
+                <h5>Cadeia de 4 alfas</h5>
+                <p>Decaimento sequencial gera 4 partículas α (²²³Ra → ²¹⁹Rn → ²¹⁵Po → ²¹¹Pb → ²¹¹Bi → ²⁰⁷Pb). Energia total ~28 MeV depositada localmente.</p>
+              </div>
+              <div class="mech-stage">
+                <div class="mech-num" style="background: #C084FC">4</div>
+                <h5>Quebras duplas de DNA</h5>
+                <p>Alta LET (80 keV/μm) gera quebras duplas de DNA difíceis de reparar. Curto alcance (50-100 μm) poupa medula adjacente.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="key-fact">
+            <div class="lbl">Por que o ²²³Ra poupa a medula?</div>
+            <p>O alcance das partículas alfa em tecido (50-100 μm) é da ordem de poucas células. As trabéculas ósseas tipicamente têm 100-200 μm de espessura, e a medula vermelha hematopoiética está localizada a distâncias maiores. Resultado: o dano alfa concentra-se nas células tumorais aderidas à superfície óssea, com poupança relativa da medula. Daí o perfil hematológico mais favorável que da maioria dos β⁻ ósseos (Sm-153, Sr-89).</p>
+          </div>
+        </div>
+
+        <div class="orbital-divider">
+          <svg width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="60" cy="20" r="3" fill="#C084FC"/>
+            <ellipse cx="60" cy="20" rx="40" ry="10" fill="none" stroke="#C084FC" stroke-width="0.8" opacity="0.4"/>
+            <ellipse cx="60" cy="20" rx="55" ry="13" fill="none" stroke="#0EA5B7" stroke-width="0.6" stroke-dasharray="2 4" opacity="0.5"/>
+            <circle cx="100" cy="20" r="1.5" fill="#0EA5B7"/>
+            <circle cx="20" cy="20" r="1.5" fill="#0EA5B7"/>
+          </svg>
+        </div>
+
+        <!-- ============== ESQUEMA ============== -->
+        <div id="esquema" class="rf-section">
+          <h2><span class="num">03</span> Esquema terapêutico</h2>
+          <p class="lead">Dose ajustada por peso, intervalo de 4 semanas, 6 ciclos. Sem necessidade de hospitalização — pacientes vão para casa após a injeção. Excreção fecal demanda algumas precauções domésticas.</p>
+
+          <div class="scheme-box">
+            <div class="scheme-pills">
+              <div class="scheme-pill"><span class="pill-lbl">Atividade</span><span class="pill-val">55 kBq/kg</span></div>
+              <div class="scheme-pill"><span class="pill-lbl">Via</span><span class="pill-val">EV bólus lento (1 min)</span></div>
+              <div class="scheme-pill"><span class="pill-lbl">Intervalo</span><span class="pill-val">4 semanas</span></div>
+              <div class="scheme-pill"><span class="pill-lbl">Ciclos</span><span class="pill-val">6 fixos</span></div>
+              <div class="scheme-pill"><span class="pill-lbl">Total</span><span class="pill-val">~ 23 MBq (paciente 70 kg)</span></div>
+              <div class="scheme-pill"><span class="pill-lbl">Hospitalização</span><span class="pill-val">não necessária</span></div>
+            </div>
+
+            <h4 style="margin: 0 0 0.5rem; color: var(--off-white); font-size: 1rem; font-weight: 600">Ciclos planejados</h4>
+            <div class="cycle-bar">
+              <div class="cycle"><div class="cy-num">C1</div><div class="cy-week">Sem 0</div><div class="cy-dose">55 kBq/kg</div></div>
+              <div class="cycle"><div class="cy-num">C2</div><div class="cy-week">Sem 4</div><div class="cy-dose">55 kBq/kg</div></div>
+              <div class="cycle"><div class="cy-num">C3</div><div class="cy-week">Sem 8</div><div class="cy-dose">55 kBq/kg</div></div>
+              <div class="cycle"><div class="cy-num">C4</div><div class="cy-week">Sem 12</div><div class="cy-dose">55 kBq/kg</div></div>
+              <div class="cycle"><div class="cy-num">C5</div><div class="cy-week">Sem 16</div><div class="cy-dose">55 kBq/kg</div></div>
+              <div class="cycle"><div class="cy-num">C6</div><div class="cy-week">Sem 20</div><div class="cy-dose">55 kBq/kg</div></div>
+            </div>
+
+            <div style="margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid var(--border-soft); display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem">
+              <div>
+                <div style="font-size: 0.75rem; color: var(--stone); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.35rem">Pré-medicação</div>
+                <div style="font-size: 0.9rem; color: var(--off-white); line-height: 1.55">Não há pré-medicação obrigatória. Não requer infusão de aminoácidos.</div>
+              </div>
+              <div>
+                <div style="font-size: 0.75rem; color: var(--stone); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.35rem">Protetor ósseo (mandatório)</div>
+                <div style="font-size: 0.9rem; color: var(--off-white); line-height: 1.55">Denosumabe 120 mg q4w SC ou ácido zoledrônico 4 mg q4w EV. Reduz risco de fratura — especialmente importante quando associado a ARPi.</div>
+              </div>
+              <div>
+                <div style="font-size: 0.75rem; color: var(--stone); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.35rem">Cuidados pós-injeção</div>
+                <div style="font-size: 0.9rem; color: var(--off-white); line-height: 1.55">Lavar mãos após uso do banheiro, vaso descarga 2× por 7 dias, evitar contato íntimo com gestantes/crianças nas primeiras 1-2 semanas. Excreção fecal majoritária.</div>
+              </div>
+              <div>
+                <div style="font-size: 0.75rem; color: var(--stone); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.35rem">Reduções de dose</div>
+                <div style="font-size: 0.9rem; color: var(--off-white); line-height: 1.55">Diferentemente de Lu-PSMA, redução de dose individual não é prática rotineira. Adiar para o ciclo seguinte ou suspender se citopenias persistentes G3/G4.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="orbital-divider">
+          <svg width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="60" cy="20" r="3" fill="#C084FC"/>
+            <ellipse cx="60" cy="20" rx="40" ry="10" fill="none" stroke="#C084FC" stroke-width="0.8" opacity="0.4"/>
+            <ellipse cx="60" cy="20" rx="55" ry="13" fill="none" stroke="#0EA5B7" stroke-width="0.6" stroke-dasharray="2 4" opacity="0.5"/>
+            <circle cx="100" cy="20" r="1.5" fill="#0EA5B7"/>
+            <circle cx="20" cy="20" r="1.5" fill="#0EA5B7"/>
+          </svg>
+        </div>
+
+        <!-- ============== SELEÇÃO ============== -->
+        <div id="selecao" class="rf-section">
+          <h2><span class="num">04</span> Seleção de pacientes</h2>
+          <p class="lead">Ra-223 trata exclusivamente o compartimento ósseo. Doença visceral significativa contra-indica formalmente o tratamento.</p>
+
+          <div class="criteria-box">
+            <div class="criteria-col include">
+              <h5><i data-lucide="check-circle-2" style="width:16px;height:16px"></i> Inclusão (perfil ALSYMPCA / PEACE-3)</h5>
+              <ul class="criteria-list">
+                <li>mCRPC com pelo menos 2 metástases ósseas em cintilografia</li>
+                <li>Doença sintomática (dor moderada-severa ou uso de analgésicos)</li>
+                <li>Pós-docetaxel ou inelegível para taxano</li>
+                <li>ECOG 0-2, expectativa de vida &gt; 6 meses</li>
+                <li>Função medular adequada: Hb ≥ 10, plaquetas ≥ 100, neutrófilos ≥ 1.500</li>
+              </ul>
+            </div>
+            <div class="criteria-col exclude">
+              <h5><i data-lucide="x-circle" style="width:16px;height:16px"></i> Exclusão (contraindicações)</h5>
+              <ul class="criteria-list">
+                <li>Metástases viscerais (fígado, pulmão, SNC)</li>
+                <li>Linfonodos &gt; 3 cm em eixo curto (peri-aórticos / pélvicos)</li>
+                <li>Doença óssea predominantemente lítica</li>
+                <li>Compressão medular iminente (RT prévia indicada)</li>
+                <li>Combinação com abiraterona sem agente protetor ósseo (após ERA-223)</li>
+                <li>Função medular comprometida significativa</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="key-fact">
+            <div class="lbl">Cintilografia óssea ou PSMA-PET para seleção?</div>
+            <p>A indicação clássica de Ra-223 vinha da cintilografia óssea com ⁹⁹ᵐTc-MDP (ALSYMPCA). Hoje, com a difusão do PSMA-PET, é comum diagnosticar metástases viscerais ou linfonodais antes invisíveis. Isso impacta a elegibilidade: pacientes "bone-only" na cintilografia mas com captação visceral no PSMA-PET podem não ser candidatos a Ra-223 e devem ser considerados para Lu-PSMA. O PEACE-3 permitiu doença linfonodal &lt; 3 cm desde que sem visceral.</p>
+          </div>
+        </div>
+
+        <div class="orbital-divider">
+          <svg width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="60" cy="20" r="3" fill="#C084FC"/>
+            <ellipse cx="60" cy="20" rx="40" ry="10" fill="none" stroke="#C084FC" stroke-width="0.8" opacity="0.4"/>
+            <ellipse cx="60" cy="20" rx="55" ry="13" fill="none" stroke="#0EA5B7" stroke-width="0.6" stroke-dasharray="2 4" opacity="0.5"/>
+            <circle cx="100" cy="20" r="1.5" fill="#0EA5B7"/>
+            <circle cx="20" cy="20" r="1.5" fill="#0EA5B7"/>
+          </svg>
+        </div>
+
+        <!-- ============== ENSAIOS ============== -->
+        <div id="ensaios" class="rf-section">
+          <h2><span class="num">05</span> Ensaios pivotais</h2>
+          <p class="lead">ALSYMPCA estabelece. ERA-223 alerta. PEACE-3 reabilita combinações. COMRADE e AlphaBet apontam o futuro.</p>
+
+          <div class="trials-grid">
+            <div class="trial-card">
+              <div class="trial-name">
+                <span class="name">ALSYMPCA</span>
+                <span class="year">2013 · NEJM</span>
+              </div>
+              <p class="pop">mCRPC bone-mets sintomático · n=921 · vs placebo + best supportive care</p>
+              <div class="results">
+                <div class="stat-row"><div class="lbl">OS</div><div class="val">14,9 vs 11,3 m</div></div>
+                <div class="stat-row"><div class="lbl">HR OS</div><div class="val">0,70</div></div>
+                <div class="stat-row"><div class="lbl">SSE prim</div><div class="val">15,6 vs 9,8 m</div></div>
+                <div class="stat-row"><div class="lbl">Toxicidade hema</div><div class="val">manejável</div></div>
+              </div>
+              <p class="takeaway">Aprovação FDA. Primeiro alfa-emissor em oncologia com ganho de OS.</p>
+            </div>
+
+            <div class="trial-card">
+              <div class="trial-name">
+                <span class="name">ERA-223</span>
+                <span class="year">2018 · descontinuado</span>
+              </div>
+              <p class="pop">mCRPC + abiraterona vs abiraterona · n=806 · interrompido precocemente</p>
+              <div class="results">
+                <div class="stat-row"><div class="lbl">Fraturas</div><div class="val">29 vs 11%</div></div>
+                <div class="stat-row"><div class="lbl">Mortes</div><div class="val">+ Ra-223</div></div>
+                <div class="stat-row"><div class="lbl">SSE</div><div class="val">22 vs 26 m</div></div>
+                <div class="stat-row"><div class="lbl">Lição</div><div class="val">protetor ósseo</div></div>
+              </div>
+              <p class="takeaway">Sinal de fratura inesperado. Mudança de bula: protetor ósseo mandatório em combinações.</p>
+            </div>
+
+            <div class="trial-card">
+              <div class="trial-name">
+                <span class="name">PEACE-3</span>
+                <span class="year">2024 · Lancet</span>
+              </div>
+              <p class="pop">mCRPC + enzalutamida + protetor vs enzalutamida + protetor · n=446</p>
+              <div class="results">
+                <div class="stat-row"><div class="lbl">rPFS</div><div class="val">19,5 vs 16,4 m</div></div>
+                <div class="stat-row"><div class="lbl">HR rPFS</div><div class="val">0,69</div></div>
+                <div class="stat-row"><div class="lbl">OS</div><div class="val">42,3 vs 35,0 m (HR 0,73)</div></div>
+                <div class="stat-row"><div class="lbl">Fraturas</div><div class="val">comparável</div></div>
+              </div>
+              <p class="takeaway">Reabilita Ra-223 + ARPi. Combinação segura quando há proteção óssea.</p>
+            </div>
+
+            <div class="trial-card">
+              <div class="trial-name">
+                <span class="name">COMRADE</span>
+                <span class="year">em curso</span>
+              </div>
+              <p class="pop">mCRPC HRR-mutado · n=200 · Ra-223 + olaparib vs Ra-223</p>
+              <div class="results">
+                <div class="stat-row"><div class="lbl">Endpoint</div><div class="val">rPFS</div></div>
+                <div class="stat-row"><div class="lbl">Status</div><div class="val">recrutando</div></div>
+                <div class="stat-row"><div class="lbl">Resultados</div><div class="val">2026</div></div>
+                <div class="stat-row"><div class="lbl">NCT</div><div class="val">03317392</div></div>
+              </div>
+              <p class="takeaway">Sinergia teórica entre dano de DNA por α e bloqueio de reparo (PARPi).</p>
+            </div>
+
+            <div class="trial-card">
+              <div class="trial-name">
+                <span class="name">AlphaBet</span>
+                <span class="year">em curso</span>
+              </div>
+              <p class="pop">mCRPC sequencial · Ra-223 → Lu-PSMA-617</p>
+              <div class="results">
+                <div class="stat-row"><div class="lbl">Tipo</div><div class="val">fase 2 piloto</div></div>
+                <div class="stat-row"><div class="lbl">Lugar</div><div class="val">Australia</div></div>
+                <div class="stat-row"><div class="lbl">Status</div><div class="val">recrutando</div></div>
+                <div class="stat-row"><div class="lbl">NCT</div><div class="val">05383079</div></div>
+              </div>
+              <p class="takeaway">Combinação alfa-óssea + beta-sistêmico. Conceito 'osso-mais-tudo'.</p>
+            </div>
+
+            <div class="trial-card">
+              <div class="trial-name">
+                <span class="name">DORA</span>
+                <span class="year">2024 · ASCO</span>
+              </div>
+              <p class="pop">mCRPC · Ra-223 + docetaxel · n=70 · fase 2</p>
+              <div class="results">
+                <div class="stat-row"><div class="lbl">SSE</div><div class="val">+5 m vs histórico</div></div>
+                <div class="stat-row"><div class="lbl">PSA50</div><div class="val">comparável</div></div>
+                <div class="stat-row"><div class="lbl">Tox</div><div class="val">manejável</div></div>
+                <div class="stat-row"><div class="lbl">Posicionamento</div><div class="val">conceito</div></div>
+              </div>
+              <p class="takeaway">Combinação sequencial com docetaxel. Sinal positivo, aguarda fase 3.</p>
+            </div>
+          </div>
+
+          <div style="text-align: center; margin-top: 2rem">
+            <a href="database.html" class="rf-eyebrow" style="cursor:pointer; background:rgba(192,132,252,0.12);border-color:rgba(192,132,252,0.3);color:#C084FC">
+              <i data-lucide="database" style="width:14px;height:14px"></i>
+              Ver todos os estudos no Database
+              <i data-lucide="arrow-right" style="width:14px;height:14px"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="orbital-divider">
+          <svg width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="60" cy="20" r="3" fill="#C084FC"/>
+            <ellipse cx="60" cy="20" rx="40" ry="10" fill="none" stroke="#C084FC" stroke-width="0.8" opacity="0.4"/>
+            <ellipse cx="60" cy="20" rx="55" ry="13" fill="none" stroke="#0EA5B7" stroke-width="0.6" stroke-dasharray="2 4" opacity="0.5"/>
+            <circle cx="100" cy="20" r="1.5" fill="#0EA5B7"/>
+            <circle cx="20" cy="20" r="1.5" fill="#0EA5B7"/>
+          </svg>
+        </div>
+
+        <!-- ============== DOSIMETRIA ============== -->
+        <div id="dosimetria" class="rf-section">
+          <h2><span class="num">06</span> Dosimetria</h2>
+          <p class="lead">Concentração extrema em superfícies ósseas (sítios osteoblásticos), poupança relativa de medula. Excreção fecal explica a pequena dose colônica.</p>
+
+          <table class="dose-table">
+            <thead>
+              <tr>
+                <th>Órgão / tecido</th>
+                <th>Dose por MBq (Gy/MBq)</th>
+                <th>Visualização</th>
+                <th>Observação</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Superfícies ósseas</strong></td><td>~ 11,0</td><td><div class="dose-bar high"><div class="dose-bar-fill" style="width:100%"></div></div></td><td>Sítio terapêutico — meta da terapia</td></tr>
+              <tr><td>Cólon (porção inferior)</td><td>~ 0,018</td><td><div class="dose-bar med"><div class="dose-bar-fill" style="width:35%"></div></div></td><td>Excreção fecal</td></tr>
+              <tr><td>Cólon (porção superior)</td><td>~ 0,012</td><td><div class="dose-bar med"><div class="dose-bar-fill" style="width:25%"></div></div></td><td>Trânsito fecal</td></tr>
+              <tr><td>Medula óssea</td><td>~ 0,18</td><td><div class="dose-bar low"><div class="dose-bar-fill" style="width:18%"></div></div></td><td>Modesta — alfa não atinge médula central</td></tr>
+              <tr><td>Fígado</td><td>~ 0,002</td><td><div class="dose-bar low"><div class="dose-bar-fill" style="width:3%"></div></div></td><td>Captação mínima</td></tr>
+              <tr><td>Rim</td><td>~ 0,002</td><td><div class="dose-bar low"><div class="dose-bar-fill" style="width:3%"></div></div></td><td>Excreção urinária mínima (<2%)</td></tr>
+              <tr><td>Outros tecidos</td><td>&lt; 0,001</td><td><div class="dose-bar low"><div class="dose-bar-fill" style="width:1%"></div></div></td><td>Distribuição limitada</td></tr>
+            </tbody>
+          </table>
+
+          <div class="key-fact">
+            <div class="lbl">Dose absorvida no tumor (estimada)</div>
+            <p>Difícil de estimar diretamente porque ²²³Ra não emite γ úteis para SPECT. Estimativas indiretas com ⁹⁹ᵐTc-MDP em paralelo sugerem doses tumorais &gt;100 Gy (BED) por curso de 6 ciclos em metástases osteoblásticas ávidas. A heterogeneidade explica boa parte da variação de resposta entre pacientes.</p>
+          </div>
+        </div>
+
+        <div class="orbital-divider">
+          <svg width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="60" cy="20" r="3" fill="#C084FC"/>
+            <ellipse cx="60" cy="20" rx="40" ry="10" fill="none" stroke="#C084FC" stroke-width="0.8" opacity="0.4"/>
+            <ellipse cx="60" cy="20" rx="55" ry="13" fill="none" stroke="#0EA5B7" stroke-width="0.6" stroke-dasharray="2 4" opacity="0.5"/>
+            <circle cx="100" cy="20" r="1.5" fill="#0EA5B7"/>
+            <circle cx="20" cy="20" r="1.5" fill="#0EA5B7"/>
+          </svg>
+        </div>
+
+        <!-- ============== TOXICIDADE ============== -->
+        <div id="toxicidade" class="rf-section">
+          <h2><span class="num">07</span> Eventos adversos · perfil ALSYMPCA</h2>
+          <p class="lead">Toxicidade hematológica modesta. Excreção fecal explica os sintomas gastrointestinais. Sem xerostomia (alvo é osso, não glândula).</p>
+
+          <div class="tox-grid">
+            <div class="tox-item">
+              <div class="tox-name">Anemia</div>
+              <div class="tox-pct"><span class="tox-all">31%</span><span class="tox-g3">G3-4 13%</span></div>
+              <div class="tox-bar"><div class="tox-bar-all" style="width:31%; background:#C084FC"></div></div>
+            </div>
+            <div class="tox-item">
+              <div class="tox-name">Trombocitopenia</div>
+              <div class="tox-pct"><span class="tox-all">12%</span><span class="tox-g3">G3-4 6%</span></div>
+              <div class="tox-bar"><div class="tox-bar-all" style="width:12%; background:#C084FC"></div></div>
+            </div>
+            <div class="tox-item">
+              <div class="tox-name">Neutropenia</div>
+              <div class="tox-pct"><span class="tox-all">5%</span><span class="tox-g3">G3-4 3%</span></div>
+              <div class="tox-bar"><div class="tox-bar-all" style="width:5%; background:#C084FC"></div></div>
+            </div>
+            <div class="tox-item">
+              <div class="tox-name">Linfopenia</div>
+              <div class="tox-pct"><span class="tox-all">~ 30%</span><span class="tox-g3">G3-4 ~ 10%</span></div>
+              <div class="tox-bar"><div class="tox-bar-all" style="width:30%; background:#C084FC"></div></div>
+            </div>
+            <div class="tox-item">
+              <div class="tox-name">Náusea</div>
+              <div class="tox-pct"><span class="tox-all">36%</span><span class="tox-g3">G3 1%</span></div>
+              <div class="tox-bar"><div class="tox-bar-all" style="width:36%; background:#C084FC"></div></div>
+            </div>
+            <div class="tox-item">
+              <div class="tox-name">Diarreia</div>
+              <div class="tox-pct"><span class="tox-all">25%</span><span class="tox-g3">G3 1%</span></div>
+              <div class="tox-bar"><div class="tox-bar-all" style="width:25%; background:#C084FC"></div></div>
+            </div>
+            <div class="tox-item">
+              <div class="tox-name">Fadiga</div>
+              <div class="tox-pct"><span class="tox-all">26%</span><span class="tox-g3">G3 4%</span></div>
+              <div class="tox-bar"><div class="tox-bar-all" style="width:26%; background:#C084FC"></div></div>
+            </div>
+            <div class="tox-item">
+              <div class="tox-name">Pain flare</div>
+              <div class="tox-pct"><span class="tox-all">~ 18%</span><span class="tox-g3">leve · transitório</span></div>
+              <div class="tox-bar"><div class="tox-bar-all" style="width:18%; background:#C084FC"></div></div>
+            </div>
+          </div>
+
+          <div class="key-fact">
+            <div class="lbl">Manejo do pain flare e citopenias</div>
+            <p>Pain flare ocorre nos primeiros 7-14 dias do primeiro ciclo, devido à reação inflamatória peri-lesional. Manejo com analgésicos comuns; raramente é dose-limitante. Hemograma seriado antes de cada ciclo é mandatório — adiar até recuperação se Hb &lt; 9, plaquetas &lt; 75 mil ou neutrófilos &lt; 1.000. Fraturas: 5% no ALSYMPCA, mas até 29% no ERA-223 (em combinação com abiraterona sem protetor). Prevenção com denosumabe ou bisfosfonato é hoje padrão em qualquer combinação.</p>
+          </div>
+        </div>
+
+        <div class="orbital-divider">
+          <svg width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="60" cy="20" r="3" fill="#C084FC"/>
+            <ellipse cx="60" cy="20" rx="40" ry="10" fill="none" stroke="#C084FC" stroke-width="0.8" opacity="0.4"/>
+            <ellipse cx="60" cy="20" rx="55" ry="13" fill="none" stroke="#0EA5B7" stroke-width="0.6" stroke-dasharray="2 4" opacity="0.5"/>
+            <circle cx="100" cy="20" r="1.5" fill="#0EA5B7"/>
+            <circle cx="20" cy="20" r="1.5" fill="#0EA5B7"/>
+          </svg>
+        </div>
+
+        <!-- ============== PERSPECTIVAS ============== -->
+        <div id="perspectivas" class="rf-section">
+          <h2><span class="num">08</span> Perspectivas</h2>
+          <p class="lead">A frente Ra-223 caminha em três direções: combinações racionais (ARPi + protetor ósseo), sinergia com inibidores de reparo de DNA (PARPi) e sequenciamento estratégico com Lu-PSMA.</p>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin: 1.5rem 0">
+            <div style="background: var(--graphite-2); border: 1px solid rgba(192, 132, 252, 0.3); border-radius: var(--radius-md); padding: 1.25rem">
+              <div style="font-family: var(--font-mono); color: #C084FC; font-size: 0.85rem; margin-bottom: 0.4rem">Ra-223 + ARPi</div>
+              <div style="font-size: 0.95rem; color: var(--off-white); margin-bottom: 0.35rem">PEACE-3 valida</div>
+              <div style="font-size: 0.82rem; color: var(--stone); line-height: 1.5">Padrão futuro em mCRPC bone-only com sintomas. Protetor ósseo é mandatório.</div>
+            </div>
+            <div style="background: var(--graphite-2); border: 1px solid rgba(192, 132, 252, 0.3); border-radius: var(--radius-md); padding: 1.25rem">
+              <div style="font-family: var(--font-mono); color: #C084FC; font-size: 0.85rem; margin-bottom: 0.4rem">Ra-223 + PARPi</div>
+              <div style="font-size: 0.95rem; color: var(--off-white); margin-bottom: 0.35rem">COMRADE (em curso)</div>
+              <div style="font-size: 0.82rem; color: var(--stone); line-height: 1.5">Sinergia conceitual: alfa quebra DNA, PARPi bloqueia reparo. Resultados aguardados em 2026.</div>
+            </div>
+            <div style="background: var(--graphite-2); border: 1px solid rgba(192, 132, 252, 0.3); border-radius: var(--radius-md); padding: 1.25rem">
+              <div style="font-family: var(--font-mono); color: #C084FC; font-size: 0.85rem; margin-bottom: 0.4rem">Ra-223 → Lu-PSMA</div>
+              <div style="font-size: 0.95rem; color: var(--off-white); margin-bottom: 0.35rem">AlphaBet, sequencial</div>
+              <div style="font-size: 0.82rem; color: var(--stone); line-height: 1.5">Estratégia 'osso-primeiro, sistêmico-depois' em pacientes com bone-mets dominantes ao diagnóstico.</div>
+            </div>
+            <div style="background: var(--graphite-2); border: 1px solid rgba(192, 132, 252, 0.3); border-radius: var(--radius-md); padding: 1.25rem">
+              <div style="font-family: var(--font-mono); color: #C084FC; font-size: 0.85rem; margin-bottom: 0.4rem">Outros tumores</div>
+              <div style="font-size: 0.95rem; color: var(--off-white); margin-bottom: 0.35rem">Mama, RCC, multipla mieloma</div>
+              <div style="font-size: 0.82rem; color: var(--stone); line-height: 1.5">Estudos exploratórios em mama com mets ósseas dominantes mostraram sinal modesto. Sem aprovação.</div>
+            </div>
+          </div>
+
+          <div class="key-fact">
+            <div class="lbl">Onde Ra-223 ainda brilha</div>
+            <p>Em pacientes com mCRPC bone-only sintomático, comorbidades múltiplas e contraindicação a quimioterapia, Ra-223 mantém papel único: ganho de OS, perfil de toxicidade favorável (sem alopecia, sem mucosite, sem nefrotoxicidade), administração ambulatorial sem hospitalização. É a primeira escolha em pacientes idosos frágeis com doença bone-only. A ascensão do Lu-PSMA não eliminou o Ra-223 — ambos cobrem nichos clínicos diferentes.</p>
+          </div>
+        </div>
+
+        <div class="orbital-divider">
+          <svg width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="60" cy="20" r="3" fill="#C084FC"/>
+            <ellipse cx="60" cy="20" rx="40" ry="10" fill="none" stroke="#C084FC" stroke-width="0.8" opacity="0.4"/>
+            <ellipse cx="60" cy="20" rx="55" ry="13" fill="none" stroke="#0EA5B7" stroke-width="0.6" stroke-dasharray="2 4" opacity="0.5"/>
+            <circle cx="100" cy="20" r="1.5" fill="#0EA5B7"/>
+            <circle cx="20" cy="20" r="1.5" fill="#0EA5B7"/>
+          </svg>
+        </div>
+
+        <!-- ============== PRÓXIMOS ============== -->
+        <div id="proximos" class="rf-section">
+          <h2><span class="num">09</span> Continue lendo</h2>
+          <div class="next-grid">
+            <a href="lu-psma.html" class="next-card">
+              <div class="lbl">Próximo radiofármaco</div>
+              <div class="name">¹⁷⁷Lu-PSMA-617</div>
+              <div class="desc">Beta-emissor sistêmico em mCRPC. VISION, PSMAfore.</div>
+            </a>
+            <a href="novos-alfa.html" class="next-card">
+              <div class="lbl">Próxima geração α</div>
+              <div class="name">Novos alfa-emissores</div>
+              <div class="desc">²²⁵Ac-PSMA, ²¹²Pb-DOTAMTATE, ¹⁶¹Tb. Comparações racionais.</div>
+            </a>
+            <a href="database.html" class="next-card">
+              <div class="lbl">Database</div>
+              <div class="name">Todos os estudos Ra-223</div>
+              <div class="desc">Filtre por '223Ra' ou 'próstata' no Database.</div>
+            </a>
+            <a href="ferramentas.html#decay" class="next-card">
+              <div class="lbl">Ferramenta</div>
+              <div class="name">Decaimento de ²²³Ra</div>
+              <div class="desc">Calcule a atividade restante por intervalo entre ciclos.</div>
+            </a>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>© 2026 TheraTrials Oncology · Plataforma de evidências em oncologia moderna</span>
+      <span style="color: var(--stone); font-size: 0.82rem; margin-left: 1rem">Dados extraídos de publicações peer-reviewed e bases regulatórias. Conteúdo educacional, não substitui julgamento clínico.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    if (typeof lucide !== 'undefined') lucide.createIcons();
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TheraTrials Oncology · Clinical evidence for targeted, immune and theranostic cancer therapy</title>
+<meta name="description" content="Plataforma de evidências em oncologia moderna. Curadoria de ensaios clínicos em terapias-alvo, imunoterapia, biomarcadores, imagem molecular e teranóstico.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/theratrials.css">
+<link rel="icon" type="image/png" href="assets/img/logo-app.png">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+<style>
+  /* ============================================================
+     Index — Hub unificado de blocos
+     ============================================================ */
+
+  /* Home · fundo preto puro casando com a imagem do hero (sem quebra visual) */
+  body { background: #000 !important; }
+  body::before { display: none !important; } /* remove ornamento de grid sutil para manter pretidão limpa */
+
+  /* Hero banner contido · imagem unificada (orbital + wordmark) */
+  .hero {
+    background: #000;
+    padding: 1.25rem 0 0.5rem !important;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero .container {
+    max-width: 1280px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .hero-banner {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 720px;
+    margin: 0 auto;
+    object-fit: contain;
+    /* aspect-ratio nativo da imagem (1672x941) */
+  }
+
+  /* === Garantias contra overflow horizontal global === */
+  html, body { max-width: 100vw; overflow-x: hidden; }
+  img { max-width: 100%; height: auto; }
+
+  /* === Mobile: tablet pequeno e abaixo === */
+  @media (max-width: 768px) {
+    .hero-banner { max-width: 100%; }
+    .hero-after { padding: 0.85rem 1rem 1.75rem; }
+  }
+
+  /* === Smartphone (≤480px) === */
+  @media (max-width: 480px) {
+    .container { padding: 0 1rem; }
+    .hero .container { padding: 0 0.5rem; }
+    .hero-banner { max-width: 100%; }
+    .hero-after { padding: 0.75rem 1rem 1.25rem; }
+    .hero-after .hero-sub { font-size: 0.9rem; }
+    .hero-after .hero-tagline { font-size: 0.78rem; gap: 0.25rem 0.7rem; }
+    .stat-grid { grid-template-columns: 1fr !important; }
+    /* Brand do header não pode quebrar a viewport */
+    .site-header .brand { gap: 0.55rem; min-width: 0; }
+    .site-header .brand-text { min-width: 0; }
+    .site-header .brand-name,
+    .site-header .brand-sub { font-size: 0.92rem; line-height: 1.1; }
+    .site-header .brand-logo { width: 32px; height: 32px; }
+  }
+  @media (max-width: 360px) {
+    .hero-after .hero-tagline span:not(:last-child)::after { display: none; }
+    .site-header .brand-name { font-size: 0.85rem; }
+  }
+  /* Tagline reposicionada abaixo do banner, mantém a hierarquia de mensagem */
+  .hero-after {
+    text-align: center;
+    padding: 1rem 1.5rem 2.5rem;
+    background: #000;
+  }
+  .hero-after .hero-sub {
+    color: var(--stone);
+    font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+    margin: 0 0 0.85rem;
+    max-width: 760px;
+    margin-left: auto; margin-right: auto;
+  }
+  .hero-after .hero-tagline {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 0.4rem 1.25rem;
+    margin: 0;
+    color: var(--off-white);
+    font-family: var(--font-display);
+    font-size: 0.92rem;
+    font-weight: 500;
+  }
+  .hero-after .hero-tagline span {
+    position: relative;
+    padding: 0 0.15rem;
+  }
+  .hero-after .hero-tagline span:not(:last-child)::after {
+    content: '·';
+    position: absolute; right: -0.85rem; top: 50%; transform: translateY(-50%);
+    color: var(--amber);
+    font-weight: 600;
+  }
+  /* Transição suave do hero (preto) para o resto da página (que volta ao preto também) */
+  @media (max-width: 720px) {
+    .hero-after { padding: 0.5rem 1rem 1.75rem; }
+    .hero-after .hero-tagline { font-size: 0.82rem; gap: 0.3rem 0.85rem; }
+  }
+
+  /* Mapa da plataforma — 6 entradas principais */
+  .platform-map {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 0.75rem;
+    margin: 2rem 0 1rem;
+  }
+  @media (max-width: 1180px) { .platform-map { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 720px) { .platform-map { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 520px) { .platform-map { grid-template-columns: 1fr; } }
+
+  .pmap-card {
+    background: var(--graphite-2);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-md);
+    padding: 1.15rem 1rem;
+    text-decoration: none;
+    color: var(--off-white);
+    display: flex; flex-direction: column; gap: 0.4rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.2s;
+  }
+  .pmap-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 2px;
+    background: var(--accent, var(--amber));
+    opacity: 0.6;
+  }
+  .pmap-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent, var(--amber));
+    color: var(--off-white);
+  }
+  .pmap-card .pmap-num { font-family: var(--font-mono); font-size: 0.7rem; color: var(--stone); letter-spacing: 0.08em; }
+  .pmap-card .pmap-icon { color: var(--accent, var(--amber)); margin-bottom: 0.1rem; }
+  .pmap-card .pmap-name { font-size: 1rem; font-weight: 600; line-height: 1.2; }
+  .pmap-card .pmap-desc { font-size: 0.78rem; color: var(--stone); line-height: 1.4; }
+
+  /* Bloco section frame */
+  .block-section { padding: 4rem 0 2rem; position: relative; }
+  .block-section:nth-child(odd)::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(255, 132, 0, 0.04) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .block-header {
+    display: flex; align-items: baseline; justify-content: space-between;
+    flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem;
+  }
+  .block-header .left { max-width: 720px; }
+  .block-header .num-badge {
+    display: inline-block;
+    font-family: var(--font-mono); font-size: 0.72rem;
+    color: var(--amber); background: var(--amber-soft);
+    padding: 0.25rem 0.65rem; border-radius: 100px;
+    border: 1px solid rgba(255, 132, 0, 0.25);
+    margin-bottom: 0.6rem;
+  }
+  .block-header h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 600;
+    margin: 0 0 0.5rem; letter-spacing: -0.015em;
+  }
+  .block-header p { color: var(--stone); margin: 0; font-size: 1rem; max-width: 640px; }
+
+  /* Database showcase */
+  .db-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0.85rem;
+    margin: 1.5rem 0;
+  }
+  .db-feat {
+    background: var(--graphite-2);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-md);
+    padding: 1rem 1.1rem;
+  }
+  .db-feat i { color: var(--amber); margin-bottom: 0.5rem; }
+  .db-feat .name { font-weight: 600; font-size: 0.92rem; margin-bottom: 0.25rem; }
+  .db-feat .d { font-size: 0.78rem; color: var(--stone); line-height: 1.45; }
+
+  /* Radiofármaco hub — 6 cards */
+  .rf-hub {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+  @media (max-width: 880px) { .rf-hub { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 520px) { .rf-hub { grid-template-columns: 1fr; } }
+
+  .rf-tile {
+    background: var(--graphite-2);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-md);
+    padding: 1.4rem 1.3rem;
+    text-decoration: none; color: var(--off-white);
+    display: block; position: relative; overflow: hidden;
+    transition: all 0.2s;
+  }
+  .rf-tile.disabled { pointer-events: none; opacity: 0.55; }
+  .rf-tile:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent, var(--amber));
+    box-shadow: 0 0 30px rgba(255, 132, 0, 0.08);
+    color: var(--off-white);
+  }
+  .rf-tile .ribbon {
+    position: absolute; top: 12px; right: 12px;
+    font-family: var(--font-mono); font-size: 0.62rem;
+    padding: 0.2rem 0.5rem; border-radius: 4px;
+    text-transform: uppercase; letter-spacing: 0.07em;
+  }
+  .rf-tile .ribbon.ready { background: var(--success-soft); color: var(--success); border: 1px solid rgba(52, 211, 153, 0.3); }
+  .rf-tile .ribbon.soon { background: rgba(143, 148, 156, 0.15); color: var(--stone); border: 1px solid var(--border-soft); }
+
+  .rf-tile .iso-mini {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, var(--accent-light, var(--amber-glow)) 0%, var(--accent, var(--amber)) 60%, #B85D00 100%);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    color: #0E0F12; font-family: var(--font-display);
+    margin-bottom: 1rem;
+  }
+  .rf-tile .iso-mini .m { font-size: 0.62rem; font-weight: 600; opacity: 0.8; line-height: 1; }
+  .rf-tile .iso-mini .e { font-size: 1.2rem; font-weight: 700; line-height: 1; }
+  .rf-tile h3 { margin: 0 0 0.35rem; font-size: 1.1rem; font-weight: 600; }
+  .rf-tile h3 .accent { color: var(--accent, var(--amber)); }
+  .rf-tile .role { font-size: 0.72rem; color: var(--stone); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.6rem; }
+  .rf-tile .desc { font-size: 0.85rem; color: var(--stone); line-height: 1.5; margin-bottom: 0.75rem; }
+  .rf-tile .trials { font-size: 0.78rem; color: var(--off-white); display: flex; flex-wrap: wrap; gap: 0.35rem; }
+  .rf-tile .trials span {
+    background: var(--graphite-3);
+    padding: 0.18rem 0.5rem;
+    border-radius: 4px;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+  }
+
+  /* Tools showcase */
+  .tools-showcase {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 0.85rem;
+    margin: 1.5rem 0;
+  }
+  .ts-item {
+    background: var(--graphite-2);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-md);
+    padding: 1.1rem;
+    text-align: center;
+    text-decoration: none;
+    color: var(--off-white);
+    display: block;
+    transition: all 0.2s;
+  }
+  .ts-item:hover { border-color: var(--amber); transform: translateY(-2px); color: var(--off-white); }
+  .ts-item i { color: var(--amber); }
+  .ts-item .ts-name { font-size: 0.92rem; font-weight: 600; margin: 0.55rem 0 0.25rem; }
+  .ts-item .ts-d { font-size: 0.75rem; color: var(--stone); line-height: 1.4; }
+
+  /* Fundamentos preview */
+  .fund-preview {
+    background: var(--graphite-2);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2rem;
+    align-items: center;
+    margin: 1.5rem 0;
+  }
+  @media (max-width: 720px) { .fund-preview { grid-template-columns: 1fr; } }
+  .fund-preview .topics { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+  .fund-preview .topics span {
+    background: var(--graphite-3); padding: 0.35rem 0.75rem;
+    border-radius: 100px; font-size: 0.78rem;
+    color: var(--off-white);
+    border: 1px solid var(--border-soft);
+  }
+
+  /* Orbital divider entre seções */
+  .home-divider {
+    display: flex; justify-content: center; align-items: center;
+    padding: 1.5rem 0;
+  }
+</style>
+</head>
+<body>
+
+<!-- ============== HEADER ============== -->
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="brand">
+      <img src="assets/img/logo-app.png" alt="TheraTrials" class="brand-logo">
+      <div class="brand-text">
+        <span class="brand-name">TheraTrials</span><span class="brand-sub">Oncology</span>
+      </div>
+    </a>
+    <button class="nav-toggle" aria-label="Menu"><i data-lucide="menu" style="width:18px;height:18px"></i></button>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="database.html">Database</a>
+      <a href="estudos-ativos.html">Estudos ativos</a>
+      <a href="tumor-boards.html">Tumor boards</a>
+      <a href="modalidades.html">Modalidades</a>
+      <a href="ferramentas.html">Ferramentas</a>
+      <a href="fundamentos.html">Fundamentos</a>
+      <a href="about.html">Sobre</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ============== HERO ============== -->
+<section class="hero">
+  <div class="container">
+    <img src="assets/img/hero-banner.png" alt="TheraTrials Oncology" class="hero-banner animate-fade">
+  </div>
+  <div class="hero-after">
+    <p class="hero-sub animate-fade delay-1">
+      Evidência clínica para terapia-alvo, imunoterapia e teranóstico em oncologia
+    </p>
+    <p class="hero-tagline animate-fade delay-1">
+      <span>Melhor evidência.</span>
+      <span>Melhores decisões.</span>
+      <span>Melhores resultados.</span>
+    </p>
+  </div>
+</section>
+
+
+<!-- ============== STATS ============== -->
+<section class="compact" style="padding-top: 2rem">
+  <div class="container">
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="stat-label"><i data-lucide="flask-conical" style="width:14px;height:14px"></i> Ensaios analisados</div>
+        <div class="stat-value" id="stat-total">144</div>
+        <div class="stat-suffix" id="stat-categories">em 17 categorias terapêuticas</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label"><i data-lucide="medal" style="width:14px;height:14px"></i> Fase 3 pivotais</div>
+        <div class="stat-value" id="stat-phase3">—</div>
+        <div class="stat-suffix">com poder regulatório</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label"><i data-lucide="loader-circle" style="width:14px;height:14px"></i> Em andamento</div>
+        <div class="stat-value" id="stat-ongoing">—</div>
+        <div class="stat-suffix">recrutamento ativo / aguardando</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============== MAPA DA PLATAFORMA ============== -->
+<section style="padding: 2rem 0 0">
+  <div class="container">
+    <div class="section-header" style="text-align: center">
+      <span class="eyebrow">Mapa da plataforma</span>
+      <h2 style="margin-top: 0.5rem; font-weight: 600">Seis portas de entrada para a evidência</h2>
+      <p class="subtitle">Banco de evidência publicada, recrutamento ativo no Brasil, visões por tumor e por modalidade, ferramentas clínicas e fundamentos — cada bloco resolve uma necessidade clínica diferente.</p>
+    </div>
+
+    <div class="platform-map">
+      <a href="database.html" class="pmap-card" style="--accent:#FF8400">
+        <div class="pmap-num">01</div>
+        <div class="pmap-icon"><i data-lucide="database" style="width:22px;height:22px"></i></div>
+        <div class="pmap-name">Database</div>
+        <div class="pmap-desc">144 ensaios filtráveis · favoritos · citações · CSV</div>
+      </a>
+      <a href="estudos-ativos.html" class="pmap-card" style="--accent:#34d399">
+        <div class="pmap-num">02</div>
+        <div class="pmap-icon"><i data-lucide="map-pin" style="width:22px;height:22px"></i></div>
+        <div class="pmap-name">Estudos ativos · BR</div>
+        <div class="pmap-desc">Recrutamento aberto no Brasil · 14 estudos curados</div>
+      </a>
+      <a href="tumor-boards.html" class="pmap-card" style="--accent:#0EA5B7">
+        <div class="pmap-num">03</div>
+        <div class="pmap-icon"><i data-lucide="layout-grid" style="width:22px;height:22px"></i></div>
+        <div class="pmap-name">Tumor boards</div>
+        <div class="pmap-desc">Visão por tumor · próstata, pulmão, mama, NET, HCC</div>
+      </a>
+      <a href="modalidades.html" class="pmap-card" style="--accent:#C084FC">
+        <div class="pmap-num">04</div>
+        <div class="pmap-icon"><i data-lucide="layers" style="width:22px;height:22px"></i></div>
+        <div class="pmap-name">Modalidades</div>
+        <div class="pmap-desc">Teranóstico, alvo, IO, ADC, PARP, QT, plataformas</div>
+      </a>
+      <a href="ferramentas.html" class="pmap-card" style="--accent:#FBBF24">
+        <div class="pmap-num">05</div>
+        <div class="pmap-icon"><i data-lucide="calculator" style="width:22px;height:22px"></i></div>
+        <div class="pmap-name">Ferramentas</div>
+        <div class="pmap-desc">Dose · decaimento · estatística · fluxogramas</div>
+      </a>
+      <a href="fundamentos.html" class="pmap-card" style="--accent:#F472B6">
+        <div class="pmap-num">06</div>
+        <div class="pmap-icon"><i data-lucide="graduation-cap" style="width:22px;height:22px"></i></div>
+        <div class="pmap-name">Fundamentos</div>
+        <div class="pmap-desc">Como funcionam ensaios clínicos · visual e direto</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============== 3 PILARES ============== -->
+<section class="block-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">Três pilares da oncologia moderna</span>
+      <h2 style="margin-top: 0.5rem">Tumor, biomarcador, terapia · evidência conectada</h2>
+      <p class="subtitle">A plataforma organiza estudos em três eixos complementares, refletindo a forma como decisões reais são tomadas em tumor boards.</p>
+    </div>
+
+    <div class="grid-3">
+      <div class="card card-pillar card-glow">
+        <div style="color: var(--amber); margin-bottom: 1rem">
+          <i data-lucide="atom" style="width:32px;height:32px"></i>
+        </div>
+        <h3 style="color: var(--amber); margin-bottom: 0.5rem">Teranóstico</h3>
+        <p class="text-stone" style="margin-bottom: 1rem">PSMA-RLT em próstata, PRRT em NET/PPGL, radioembolização Y-90 em HCC/mCRC, MIBG em NB. Imagem molecular guiando terapia.</p>
+        <ul style="list-style:none; padding:0; margin:0; font-size: 0.85rem; color: var(--stone)">
+          <li style="margin-bottom: 0.4rem">→ <span class="text-off-white">VISION, PSMAfore, PSMAddition</span> · 177Lu-PSMA</li>
+          <li style="margin-bottom: 0.4rem">→ <span class="text-off-white">NETTER-1/2, COMPETE</span> · PRRT</li>
+          <li style="margin-bottom: 0.4rem">→ <span class="text-off-white">DOSISPHERE-01, EPOCH</span> · Y-90 TARE</li>
+          <li>→ <span class="text-off-white">VIOLET, 225Ac-PSMA</span> · novos α/Tb</li>
+        </ul>
+        <a href="modalidades.html#teranostico" class="btn btn-ghost btn-sm" style="margin-top: 1rem; padding-left: 0">
+          Ver modalidade <i data-lucide="arrow-right" style="width:14px;height:14px"></i>
+        </a>
+      </div>
+
+      <div class="card card-pillar card-glow">
+        <div style="color: var(--teal); margin-bottom: 1rem">
+          <i data-lucide="target" style="width:32px;height:32px"></i>
+        </div>
+        <h3 style="color: var(--teal); margin-bottom: 0.5rem">Terapias-alvo molecular</h3>
+        <p class="text-stone" style="margin-bottom: 1rem">Inibidores específicos por biomarcador em 3 tumores: próstata (ARPi, PARP), pulmão (EGFR/ALK/KRAS/RET/MET/HER2) e mama (CDK4/6, PI3K/AKT, HER2-TKI, ADCs).</p>
+        <ul style="list-style:none; padding:0; margin:0; font-size: 0.85rem; color: var(--stone)">
+          <li style="margin-bottom: 0.4rem">→ <span class="text-off-white">DESTINY-Breast03/04/06, KATHERINE</span> · ADCs anti-HER2</li>
+          <li style="margin-bottom: 0.4rem">→ <span class="text-off-white">PALOMA-2, MONALEESA, MonarchE, NATALEE</span> · CDK4/6</li>
+          <li style="margin-bottom: 0.4rem">→ <span class="text-off-white">FLAURA, MARIPOSA, ALEX, CROWN</span> · drivers NSCLC</li>
+          <li>→ <span class="text-off-white">PROfound, PROpel, OlympiAD, OlympiA</span> · PARP</li>
+        </ul>
+        <a href="modalidades.html#terapia-alvo" class="btn btn-ghost btn-sm" style="margin-top: 1rem; padding-left: 0; color: var(--teal)">
+          Ver modalidade <i data-lucide="arrow-right" style="width:14px;height:14px"></i>
+        </a>
+      </div>
+
+      <div class="card card-pillar card-glow">
+        <div style="color: #34D399; margin-bottom: 1rem">
+          <i data-lucide="shield-plus" style="width:32px;height:32px"></i>
+        </div>
+        <h3 style="color: #34D399; margin-bottom: 0.5rem">Imunoterapia</h3>
+        <p class="text-stone" style="margin-bottom: 1rem">ICIs em pulmão (NSCLC + SCLC), pembro neoadj/1L em mama TNBC, vacinas autólogas em próstata, BiTE DLL3 em SCLC.</p>
+        <ul style="list-style:none; padding:0; margin:0; font-size: 0.85rem; color: var(--stone)">
+          <li style="margin-bottom: 0.4rem">→ <span class="text-off-white">KEYNOTE-024/189/407</span> · pembro NSCLC</li>
+          <li style="margin-bottom: 0.4rem">→ <span class="text-off-white">KEYNOTE-522, KEYNOTE-355</span> · pembro mama TNBC</li>
+          <li style="margin-bottom: 0.4rem">→ <span class="text-off-white">PACIFIC, ADRIATIC, KEYNOTE-671</span> · perioperatório</li>
+          <li>→ <span class="text-off-white">DeLLphi-301</span> · tarlatamab DLL3 BiTE</li>
+        </ul>
+        <a href="modalidades.html#imunoterapia" class="btn btn-ghost btn-sm" style="margin-top: 1rem; padding-left: 0; color: #34D399">
+          Ver modalidade <i data-lucide="arrow-right" style="width:14px;height:14px"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<div class="home-divider">
+  <svg width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="60" cy="20" r="3" fill="#FF8400"/>
+    <ellipse cx="60" cy="20" rx="40" ry="10" fill="none" stroke="#FF8400" stroke-width="0.8" opacity="0.4"/>
+    <ellipse cx="60" cy="20" rx="55" ry="13" fill="none" stroke="#0EA5B7" stroke-width="0.6" stroke-dasharray="2 4" opacity="0.5"/>
+    <circle cx="100" cy="20" r="1.5" fill="#0EA5B7"/>
+    <circle cx="20" cy="20" r="1.5" fill="#0EA5B7"/>
+  </svg>
+</div>
+
+
+<!-- ============== BLOCO 1 · DATABASE ============== -->
+<section class="block-section">
+  <div class="container">
+    <div class="block-header">
+      <div class="left">
+        <span class="num-badge">Bloco 01 · Database</span>
+        <h2>144 ensaios em filtros hierárquicos</h2>
+        <p>Pesquisa por tumor, modalidade ou estudo individual. Cobertura: teranóstico (próstata, NET, HCC/mCRC, ccRCC, neuroblastoma/PPGL), pulmão (NSCLC drivers, IO 1L, perioperatório, SCLC) e mama (HER2+, HR+/HER2-, TNBC, BRCA-mut, imagem molecular). Cada linha leva a uma ficha com 40 campos.</p>
+      </div>
+      <a href="database.html" class="btn btn-primary">
+        Abrir Database <i data-lucide="arrow-right" style="width:16px;height:16px"></i>
+      </a>
+    </div>
+
+    <div class="db-features">
+      <div class="db-feat">
+        <i data-lucide="filter" style="width:20px;height:20px"></i>
+        <div class="name">Filtros hierárquicos</div>
+        <div class="d">Tumor → modalidade → estudo. Subníveis para radiofármacos.</div>
+      </div>
+      <div class="db-feat">
+        <i data-lucide="star" style="width:20px;height:20px"></i>
+        <div class="name">Favoritos</div>
+        <div class="d">Estudos salvos persistem entre sessões via localStorage.</div>
+      </div>
+      <div class="db-feat">
+        <i data-lucide="quote" style="width:20px;height:20px"></i>
+        <div class="name">Citações</div>
+        <div class="d">Vancouver, AMA, BibTeX e texto plano com 1 clique.</div>
+      </div>
+      <div class="db-feat">
+        <i data-lucide="file-down" style="width:20px;height:20px"></i>
+        <div class="name">Exportar CSV</div>
+        <div class="d">16 campos exportáveis · Excel-ready com BOM.</div>
+      </div>
+      <div class="db-feat">
+        <i data-lucide="link" style="width:20px;height:20px"></i>
+        <div class="name">Deep linking</div>
+        <div class="d">URL hash abre estudo específico — copiável e compartilhável.</div>
+      </div>
+      <div class="db-feat">
+        <i data-lucide="git-compare-arrows" style="width:20px;height:20px"></i>
+        <div class="name">Comparar lado a lado</div>
+        <div class="d">Drawer de comparação para até 4 estudos simultaneamente.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============== BLOCO ESTUDOS ATIVOS · BR ============== -->
+<style>
+  .ea-spotlight {
+    background: linear-gradient(135deg, rgba(52, 211, 153, 0.06) 0%, rgba(34, 211, 238, 0.04) 100%);
+    border: 1px solid rgba(52, 211, 153, 0.25);
+    border-radius: var(--radius-lg);
+    padding: 2rem 1.85rem;
+  }
+  .ea-spot-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+  .ea-spot-card {
+    background: var(--graphite-2);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-md);
+    padding: 1.1rem 1.2rem;
+    text-decoration: none;
+    color: var(--off-white);
+    display: flex; flex-direction: column; gap: 0.55rem;
+    transition: all 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .ea-spot-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 2px; background: var(--accent, #34d399); opacity: 0.7;
+  }
+  .ea-spot-card:hover { transform: translateY(-2px); border-color: var(--accent, #34d399); color: var(--off-white); }
+  .ea-spot-card .name { font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; color: var(--off-white); line-height: 1.15; }
+  .ea-spot-card .name .fase { font-family: var(--font-mono); font-size: 0.7rem; color: var(--accent, #34d399); margin-left: 0.3rem; font-weight: 500; }
+  .ea-spot-card .neo { font-size: 0.78rem; color: var(--stone); }
+  .ea-spot-card .desc { font-size: 0.82rem; color: var(--off-white); line-height: 1.45; flex: 1; }
+  .ea-spot-card .meta { display: flex; align-items: center; gap: 0.55rem; padding-top: 0.5rem; border-top: 1px solid var(--border-soft); font-size: 0.72rem; color: var(--stone-2); }
+  .ea-spot-card .meta .recrut { color: #34d399; display: inline-flex; align-items: center; gap: 0.3rem; }
+  .ea-spot-card .meta .nct { font-family: var(--font-mono); margin-left: auto; }
+</style>
+<section class="block-section">
+  <div class="container">
+    <div class="block-header">
+      <div class="left">
+        <span class="num-badge" style="background: rgba(52,211,153,0.12); color: #34d399; border-color: rgba(52,211,153,0.3)">Bloco 02 · Estudos ativos no Brasil</span>
+        <h2>Recrutamento aberto · curadoria editável</h2>
+        <p>Ensaios clínicos em oncologia <strong style="color:#6EE7B7">recrutando agora no Brasil</strong>. Belo Horizonte como localidade inicial — em expansão. Para médicos, pesquisadores e pacientes encaminhados por especialistas.</p>
+      </div>
+      <a href="estudos-ativos.html" class="btn btn-primary" style="background:#34d399;color:#0E0F12">
+        Abrir lista completa <i data-lucide="arrow-right" style="width:16px;height:16px"></i>
+      </a>
+    </div>
+
+    <div class="ea-spotlight">
+      <div style="display:flex; align-items:flex-start; gap:0.75rem; color:#FCD34D; font-size:0.85rem; margin-bottom:0.5rem">
+        <i data-lucide="info" style="width:16px;height:16px; flex-shrink:0; margin-top:2px"></i>
+        <div><strong style="color:var(--off-white)">Aviso:</strong> seção informativa. A elegibilidade final depende sempre da avaliação do centro responsável pelo estudo.</div>
+      </div>
+
+      <div class="ea-spot-grid">
+        <a href="estudos-ativos.html#sunray-02" class="ea-spot-card" style="--accent:#22d3ee">
+          <div class="name">SUNRAY-02 <span class="fase">Fase III</span></div>
+          <div class="neo">Pulmão · NSCLC KRAS G12C</div>
+          <div class="desc">Olomorasibe + pembro/durva em ressecado II–IIIB ou irressecável estágio III. Teste central de KRAS G12C.</div>
+          <div class="meta"><span class="recrut"><i data-lucide="circle-dot" style="width:10px;height:10px"></i> Recrutando</span><span class="nct">NCT06119581</span></div>
+        </a>
+        <a href="estudos-ativos.html#bnt113-01" class="ea-spot-card" style="--accent:#a855f7">
+          <div class="name">BNT113-01 <span class="fase">Fase III</span></div>
+          <div class="neo">Cabeça e pescoço · CEC HPV16+</div>
+          <div class="desc">Vacina mRNA HPV16 (BNT113) + pembrolizumabe vs pembrolizumabe em CEC recorrente/metastático CPS ≥1.</div>
+          <div class="meta"><span class="recrut"><i data-lucide="circle-dot" style="width:10px;height:10px"></i> Recrutando</span><span class="nct">NCT04534205</span></div>
+        </a>
+        <a href="estudos-ativos.html#lucerna" class="ea-spot-card" style="--accent:#f87171">
+          <div class="name">LUCERNA <span class="fase">Fase III</span></div>
+          <div class="neo">Gástrico/GEJ HER2- CLDN18.2+</div>
+          <div class="desc">Zolbetuximabe + pembrolizumabe + QT vs pembrolizumabe + QT em 1L. Testes CLDN18.2, HER2 e PD-L1 fornecidos.</div>
+          <div class="meta"><span class="recrut"><i data-lucide="circle-dot" style="width:10px;height:10px"></i> Recrutando</span><span class="nct">NCT06346392</span></div>
+        </a>
+        <a href="estudos-ativos.html#chonquer" class="ea-spot-card" style="--accent:#94a3b8">
+          <div class="name">CHONQUER <span class="fase">Fase III</span></div>
+          <div class="neo">Sarcoma · Condrossarcoma IDH1+</div>
+          <div class="desc">Ivosidenibe vs placebo em condrossarcoma convencional avançado IDH1-mutado. Teste IDH1 fornecido.</div>
+          <div class="meta"><span class="recrut"><i data-lucide="circle-dot" style="width:10px;height:10px"></i> Recrutando</span><span class="nct">NCT06387381</span></div>
+        </a>
+        <a href="estudos-ativos.html#rediscover-2" class="ea-spot-card" style="--accent:#ec4899">
+          <div class="name">ReDiscover-2 <span class="fase">Fase III</span></div>
+          <div class="neo">Mama · HR+/HER2- PIK3CA-mut pós-CDK4/6</div>
+          <div class="desc">RLY-2608 (PI3Kα mutante-seletivo) + fulvestranto vs capivasertibe + fulvestranto. Homens e mulheres elegíveis.</div>
+          <div class="meta"><span class="recrut"><i data-lucide="circle-dot" style="width:10px;height:10px"></i> Recrutando</span><span class="nct">NCT06982521</span></div>
+        </a>
+        <a href="estudos-ativos.html#regeneron-penis" class="ea-spot-card" style="--accent:#fbbf24">
+          <div class="name">REGENERON Penile <span class="fase">Fase II</span></div>
+          <div class="neo">Pênis · CCE pós-platina</div>
+          <div class="desc">Cemiplimabe em manutenção vs BSC após 1L à base de platina em CCE de pênis avançado/recorrente.</div>
+          <div class="meta"><span class="recrut"><i data-lucide="circle-dot" style="width:10px;height:10px"></i> Recrutando</span><span class="nct">NCT06125262</span></div>
+        </a>
+      </div>
+
+      <div style="display:flex; flex-wrap:wrap; gap:0.75rem; align-items:center; justify-content:space-between; padding-top:0.75rem; border-top:1px solid var(--border-soft); font-size:0.85rem; color:var(--stone)">
+        <span><strong style="color:var(--off-white)">14 estudos ativos</strong> · 11 áreas tumorais · Belo Horizonte / MG</span>
+        <a href="estudos-ativos.html" style="color:#34d399; display:inline-flex; align-items:center; gap:0.4rem">
+          Filtrar por neoplasia, modalidade, biomarcador <i data-lucide="arrow-right" style="width:14px;height:14px"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============== BLOCO 2 · TUMOR BOARDS + MODALIDADES ============== -->
+<section class="block-section">
+  <div class="container">
+    <div class="block-header">
+      <div class="left">
+        <span class="num-badge">Blocos 03 + 04 · Visões cruzadas</span>
+        <h2>Por tumor · por modalidade</h2>
+        <p>Mesmos 144 ensaios, dois ângulos diferentes. Tumor boards reproduz a discussão clínica real (próstata, pulmão, mama, NET, HCC, RCC); Modalidades agrupa por mecanismo (teranóstico, alvo, IO, ADC, PARP, QT).</p>
+      </div>
+    </div>
+
+    <div class="grid-3">
+      <a href="tumor-boards.html" class="card card-pillar" style="text-decoration:none; color: var(--off-white)">
+        <div style="color: var(--teal); margin-bottom: 1rem">
+          <i data-lucide="layout-grid" style="width:30px;height:30px"></i>
+        </div>
+        <h3 style="margin-bottom: 0.5rem">Tumor boards</h3>
+        <p class="text-stone" style="margin-bottom: 1rem">Próstata (mHSPC, mCRPC, nmCRPC), NET, HCC, RCC, ósseo metastático. Cada tumor com fluxo de decisão e ensaios relevantes.</p>
+        <span class="btn btn-ghost btn-sm" style="padding-left: 0; color: var(--teal)">Abrir <i data-lucide="arrow-right" style="width:14px;height:14px"></i></span>
+      </a>
+
+      <a href="modalidades.html" class="card card-pillar" style="text-decoration:none; color: var(--off-white)">
+        <div style="color: #C084FC; margin-bottom: 1rem">
+          <i data-lucide="layers" style="width:30px;height:30px"></i>
+        </div>
+        <h3 style="margin-bottom: 0.5rem">Modalidades</h3>
+        <p class="text-stone" style="margin-bottom: 1rem">6 modalidades terapêuticas com agrupamento inteligente: teranóstico (PSMA, PRRT, Y-90, MIBG), ARPi, PARP, QT, imuno, plataformas multibraço.</p>
+        <span class="btn btn-ghost btn-sm" style="padding-left: 0; color: #C084FC">Abrir <i data-lucide="arrow-right" style="width:14px;height:14px"></i></span>
+      </a>
+
+      <a href="database.html" class="card card-pillar" style="text-decoration:none; color: var(--off-white)">
+        <div style="color: var(--amber); margin-bottom: 1rem">
+          <i data-lucide="search" style="width:30px;height:30px"></i>
+        </div>
+        <h3 style="margin-bottom: 0.5rem">Pesquisa livre</h3>
+        <p class="text-stone" style="margin-bottom: 1rem">Busca textual em todos os campos — nome do estudo, NCT, autor, indicação, intervenção. Filtros combináveis em tempo real.</p>
+        <span class="btn btn-ghost btn-sm" style="padding-left: 0">Abrir <i data-lucide="arrow-right" style="width:14px;height:14px"></i></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<div class="home-divider">
+  <svg width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="60" cy="20" r="3" fill="#FF8400"/>
+    <ellipse cx="60" cy="20" rx="40" ry="10" fill="none" stroke="#FF8400" stroke-width="0.8" opacity="0.4"/>
+    <ellipse cx="60" cy="20" rx="55" ry="13" fill="none" stroke="#0EA5B7" stroke-width="0.6" stroke-dasharray="2 4" opacity="0.5"/>
+    <circle cx="100" cy="20" r="1.5" fill="#0EA5B7"/>
+    <circle cx="20" cy="20" r="1.5" fill="#0EA5B7"/>
+  </svg>
+</div>
+
+
+<!-- ============== BLOCO 3 · RADIOFÁRMACOS ============== -->
+<section class="block-section">
+  <div class="container">
+    <div class="block-header">
+      <div class="left">
+        <span class="num-badge">Bloco 05 · Páginas profundas</span>
+        <h2>Seis radiofármacos · seis dossiês completos</h2>
+        <p>Cada radiofármaco com cronologia, mecanismo molecular ilustrado, esquema terapêutico padrão, ensaios pivotais, dosimetria por órgão, perfil de toxicidade e perspectivas futuras.</p>
+      </div>
+    </div>
+
+    <div class="rf-hub">
+      <a href="lu-psma.html" class="rf-tile" style="--accent:#FF8400; --accent-light:#FFA640">
+        <span class="ribbon ready">pronto</span>
+        <div class="iso-mini"><span class="m">177</span><span class="e">Lu</span></div>
+        <h3><span class="accent">¹⁷⁷Lu</span>-PSMA-617</h3>
+        <div class="role">Beta · mCRPC</div>
+        <div class="desc">Pluvicto. Primeiro radioligante para câncer de próstata. Aprovação FDA mar/2022.</div>
+        <div class="trials"><span>VISION</span><span>TheraP</span><span>PSMAfore</span><span>SPLASH</span></div>
+      </a>
+
+      <a href="lu-dotatate.html" class="rf-tile" style="--accent:#FF8400; --accent-light:#FFA640">
+        <span class="ribbon ready">pronto</span>
+        <div class="iso-mini"><span class="m">177</span><span class="e">Lu</span></div>
+        <h3><span class="accent">¹⁷⁷Lu</span>-DOTATATE</h3>
+        <div class="role">Beta · NET</div>
+        <div class="desc">Lutathera. Pai da teranóstica moderna. Primeira aprovação ampla em 2018.</div>
+        <div class="trials"><span>NETTER-1</span><span>NETTER-2</span><span>COMPETE</span><span>COMPOSE</span></div>
+      </a>
+
+      <a href="ra-223.html" class="rf-tile" style="--accent:#C084FC; --accent-light:#D9A6FF">
+        <span class="ribbon ready">pronto</span>
+        <div class="iso-mini" style="background:radial-gradient(circle at 35% 35%, #D9A6FF 0%, #C084FC 60%, #7E3FB8 100%)"><span class="m">223</span><span class="e">Ra</span></div>
+        <h3><span class="accent" style="color:#C084FC">²²³Ra</span>-Cloreto</h3>
+        <div class="role">Alfa · osso mCRPC</div>
+        <div class="desc">Xofigo. Primeiro alfa-emissor aprovado em oncologia (2013). Cálcio-mimético osteoblástico.</div>
+        <div class="trials"><span>ALSYMPCA</span><span>PEACE-3</span><span>COMRADE</span><span>AlphaBet</span></div>
+      </a>
+
+      <a href="y90.html" class="rf-tile" style="--accent:#F59E0B; --accent-light:#FCD34D">
+        <span class="ribbon ready">pronto</span>
+        <div class="iso-mini" style="background:radial-gradient(circle at 35% 35%, #FCD34D 0%, #F59E0B 60%, #B45309 100%)"><span class="m">90</span><span class="e">Y</span></div>
+        <h3><span class="accent" style="color:#F59E0B">⁹⁰Y</span>-Microesferas</h3>
+        <div class="role">Beta · TARE locorregional</div>
+        <div class="desc">Radioembolização hepática. Vidro vs resina. Dosimetria personalizada mudou OS.</div>
+        <div class="trials"><span>SARAH</span><span>DOSISPHERE</span><span>LEGACY</span><span>EPOCH</span></div>
+      </a>
+
+      <a href="mibg.html" class="rf-tile" style="--accent:#F472B6; --accent-light:#F9A8D4">
+        <span class="ribbon ready">pronto</span>
+        <div class="iso-mini" style="background:radial-gradient(circle at 35% 35%, #F9A8D4 0%, #F472B6 60%, #BE185D 100%)"><span class="m">131</span><span class="e">I</span></div>
+        <h3><span class="accent" style="color:#F472B6">¹³¹I</span>-MIBG</h3>
+        <div class="role">Beta · neuroblastoma · phaeo</div>
+        <div class="desc">Análogo da noradrenalina. Pediatria, feocromocitoma, paraganglioma. Bloqueio tireoidiano obrigatório.</div>
+        <div class="trials"><span>Azedra</span><span>NANT</span><span>VERITAS</span><span>OnDApp</span></div>
+      </a>
+
+      <a href="novos-alfa.html" class="rf-tile" style="--accent:#A855F7; --accent-light:#C084FC">
+        <span class="ribbon ready">pronto</span>
+        <div class="iso-mini" style="background:radial-gradient(circle at 35% 35%, #C084FC 0%, #A855F7 60%, #6B21A8 100%)"><span class="m">225</span><span class="e">Ac</span></div>
+        <h3><span class="accent" style="color:#A855F7">Novos α</span></h3>
+        <div class="role">Próxima geração</div>
+        <div class="desc">²²⁵Ac-PSMA, ¹⁶¹Tb-PSMA, ²¹²Pb-DOTAMTATE. Comparações β vs α. Auger e LET alta.</div>
+        <div class="trials"><span>AcTION</span><span>ALPHAMEDIX</span><span>REMINISCE</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<div class="home-divider">
+  <svg width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="60" cy="20" r="3" fill="#FF8400"/>
+    <ellipse cx="60" cy="20" rx="40" ry="10" fill="none" stroke="#FF8400" stroke-width="0.8" opacity="0.4"/>
+    <ellipse cx="60" cy="20" rx="55" ry="13" fill="none" stroke="#0EA5B7" stroke-width="0.6" stroke-dasharray="2 4" opacity="0.5"/>
+    <circle cx="100" cy="20" r="1.5" fill="#0EA5B7"/>
+    <circle cx="20" cy="20" r="1.5" fill="#0EA5B7"/>
+  </svg>
+</div>
+
+
+<!-- ============== BLOCO 4 · FERRAMENTAS ============== -->
+<section class="block-section">
+  <div class="container">
+    <div class="block-header">
+      <div class="left">
+        <span class="num-badge">Bloco 06 · Ferramentas clínicas</span>
+        <h2>Calcule, converta, decida</h2>
+        <p>Cinco ferramentas em uma única tela: dose por radiofármaco, conversor de unidades, decaimento radioativo, calculadora estatística e fluxogramas decisórios por tumor.</p>
+      </div>
+      <a href="ferramentas.html" class="btn btn-secondary">
+        Abrir Ferramentas <i data-lucide="arrow-right" style="width:16px;height:16px"></i>
+      </a>
+    </div>
+
+    <div class="tools-showcase">
+      <a href="ferramentas.html#dose" class="ts-item">
+        <i data-lucide="syringe" style="width:24px;height:24px"></i>
+        <div class="ts-name">Dose prescrita</div>
+        <div class="ts-d">Atividade por peso e radiofármaco</div>
+      </a>
+      <a href="ferramentas.html#converter" class="ts-item">
+        <i data-lucide="repeat-2" style="width:24px;height:24px"></i>
+        <div class="ts-name">Converter unidades</div>
+        <div class="ts-d">Bq · Ci · GBq · MBq · mCi</div>
+      </a>
+      <a href="ferramentas.html#decay" class="ts-item">
+        <i data-lucide="trending-down" style="width:24px;height:24px"></i>
+        <div class="ts-name">Decaimento</div>
+        <div class="ts-d">8 isótopos · meia-vida automática</div>
+      </a>
+      <a href="ferramentas.html#stats" class="ts-item">
+        <i data-lucide="bar-chart-3" style="width:24px;height:24px"></i>
+        <div class="ts-name">Estatística</div>
+        <div class="ts-d">HR, CI 95%, NNT, sensibilidade</div>
+      </a>
+      <a href="ferramentas.html#flowcharts" class="ts-item">
+        <i data-lucide="git-branch" style="width:24px;height:24px"></i>
+        <div class="ts-name">Fluxogramas</div>
+        <div class="ts-d">mCRPC · NET · HCC · decisão visual</div>
+      </a>
+      <a href="ferramentas.html#ajcc" class="ts-item">
+        <i data-lucide="layers-3" style="width:24px;height:24px"></i>
+        <div class="ts-name">Estadiamento AJCC</div>
+        <div class="ts-d">TNM por tumor · 8ª/9ª edição</div>
+      </a>
+      <a href="ferramentas.html#ctcae" class="ts-item">
+        <i data-lucide="alert-triangle" style="width:24px;height:24px"></i>
+        <div class="ts-name">CTCAE v6.0</div>
+        <div class="ts-d">Eventos adversos · 5 graus por categoria</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============== BLOCO 5 · FUNDAMENTOS ============== -->
+<section class="block-section">
+  <div class="container">
+    <div class="block-header">
+      <div class="left">
+        <span class="num-badge">Bloco 07 · Fundamentos</span>
+        <h2>Como funcionam ensaios clínicos · visual e direto</h2>
+        <p>Página educacional para residentes e equipe não-clínica. Fases, desenhos, desfechos, estatística, toxicidade, blinding, leitura crítica e mitos × realidade.</p>
+      </div>
+      <a href="fundamentos.html" class="btn btn-secondary">
+        Abrir Fundamentos <i data-lucide="arrow-right" style="width:16px;height:16px"></i>
+      </a>
+    </div>
+
+    <div class="fund-preview">
+      <div>
+        <div style="font-size: 0.75rem; color: var(--amber); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; margin-bottom: 0.5rem">8 seções visuais</div>
+        <div style="font-size: 1.05rem; line-height: 1.55; color: var(--off-white)">Da estrutura de fases até a leitura crítica de Kaplan-Meier — com timelines, funis, diagramas Venn, escala CTCAE, mock-ups visuais e key-facts em vez de blocos de texto.</div>
+        <div class="topics">
+          <span>Fases (I-IV)</span>
+          <span>Desenhos</span>
+          <span>Desfechos</span>
+          <span>Estatística</span>
+          <span>Toxicidade CTCAE</span>
+          <span>Blinding</span>
+          <span>Ler papers</span>
+          <span>Mito × Realidade</span>
+        </div>
+      </div>
+      <div>
+        <svg width="160" height="160" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+          <!-- funil esquemático -->
+          <path d="M 30,30 L 130,30 L 105,70 L 105,130 L 55,130 L 55,70 Z"
+                fill="none" stroke="#FF8400" stroke-width="1.5" opacity="0.7"/>
+          <line x1="30" y1="30" x2="130" y2="30" stroke="#FF8400" stroke-width="2"/>
+          <text x="80" y="48" fill="#FF8400" font-size="9" text-anchor="middle" font-family="JetBrains Mono">N=10000</text>
+          <line x1="55" y1="70" x2="105" y2="70" stroke="#0EA5B7" stroke-width="2"/>
+          <text x="80" y="84" fill="#0EA5B7" font-size="9" text-anchor="middle" font-family="JetBrains Mono">N=300</text>
+          <line x1="55" y1="125" x2="105" y2="125" stroke="#34D399" stroke-width="2"/>
+          <text x="80" y="120" fill="#34D399" font-size="9" text-anchor="middle" font-family="JetBrains Mono">N=50</text>
+          <text x="80" y="148" fill="#8E949C" font-size="8" text-anchor="middle" font-family="JetBrains Mono">funil de fases</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<div class="home-divider">
+  <svg width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="60" cy="20" r="3" fill="#FF8400"/>
+    <ellipse cx="60" cy="20" rx="40" ry="10" fill="none" stroke="#FF8400" stroke-width="0.8" opacity="0.4"/>
+    <ellipse cx="60" cy="20" rx="55" ry="13" fill="none" stroke="#0EA5B7" stroke-width="0.6" stroke-dasharray="2 4" opacity="0.5"/>
+    <circle cx="100" cy="20" r="1.5" fill="#0EA5B7"/>
+    <circle cx="20" cy="20" r="1.5" fill="#0EA5B7"/>
+  </svg>
+</div>
+
+
+<!-- ============== CTA FINAL ============== -->
+<section class="compact" style="text-align: center; padding-bottom: 5rem">
+  <div class="container-narrow">
+    <h2 style="font-weight: 300; margin-bottom: 1rem">Pronto para conectar evidência e prática clínica?</h2>
+    <p class="subtitle" style="margin-bottom: 2rem">83 estudos analisados · 6 dossiês de radiofármaco · 5 ferramentas clínicas · 8 seções de fundamentos · comparação lado a lado · hyperlinks diretos para PubMed e ClinicalTrials.gov.</p>
+    <div class="hero-actions" style="margin-top: 0">
+      <a href="database.html" class="btn btn-primary">
+        Acessar o banco
+        <i data-lucide="database" style="width:16px;height:16px"></i>
+      </a>
+      <a href="lu-psma.html" class="btn btn-secondary">
+        Explorar radiofármacos
+        <i data-lucide="atom" style="width:16px;height:16px"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============== FOOTER ============== -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem">
+          <img src="assets/img/logo-app.png" alt="" style="width: 40px; height: 40px; border-radius: 8px">
+          <div class="brand-text">
+            <span class="brand-name">TheraTrials</span><span class="brand-sub">Oncology</span>
+          </div>
+        </div>
+        <p style="font-size: 0.85rem; color: var(--stone); max-width: 380px; line-height: 1.55">
+          Plataforma desenvolvida por Marcos Oliveira, médico nuclear. Ensaios clínicos em oncologia moderna, organizados para tumor boards e revisão científica rápida.
+        </p>
+      </div>
+      <div class="footer-col">
+        <h4>Plataforma</h4>
+        <a href="index.html">Home</a>
+        <a href="database.html">Database</a>
+        <a href="estudos-ativos.html">Estudos ativos · BR</a>
+        <a href="tumor-boards.html">Tumor boards</a>
+        <a href="modalidades.html">Modalidades</a>
+        <a href="ferramentas.html">Ferramentas</a>
+        <a href="fundamentos.html">Fundamentos</a>
+        <a href="about.html">Sobre</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="termos-uso.html">Termos de uso</a>
+        <a href="privacidade.html">Política de privacidade</a>
+        <a href="direitos-autorais.html">Aviso de direitos autorais</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 TheraTrials Oncology · uso educacional · não substitui diretrizes oficiais ou leitura primária</span>
+      <span>v1.1 · Atualizado mai 2026</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/common.js"></script>
+<script>
+  // Atualiza estatísticas dinamicamente
+  document.addEventListener('DOMContentLoaded', () => {
+    if (typeof lucide !== 'undefined') lucide.createIcons();
+    if (!window.THERA_DATA) return;
+    const studies = THERA_DATA.studies || [];
+    const cats = THERA_DATA.categories || [];
+    document.getElementById('stat-total').textContent = studies.length;
+    const catEl = document.getElementById('stat-categories');
+    if (catEl) catEl.textContent = `em ${cats.length} categorias terapêuticas`;
+    const phase3 = studies.filter(s => (s.fase || '').toLowerCase().includes('fase 3')).length;
+    document.getElementById('stat-phase3').textContent = phase3;
+    const ongoing = studies.filter(s => s.status === 'Em andamento').length;
+    document.getElementById('stat-ongoing').textContent = ongoing;
+  });
+</script>
+
+</body>
+</html>

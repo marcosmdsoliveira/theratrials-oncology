@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Novos α-emissores · TheraTrials Oncology</title>
+<meta name="description" content="Próxima geração de radiofármacos alfa e Auger: 225Ac-PSMA, 161Tb-PSMA/DOTATATE, 212Pb-DOTAMTATE, 227Th, 211At. Comparação β vs α, ensaios AcTION, ALPHAMEDIX e perspectivas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/theratrials.css">
+<link rel="stylesheet" href="assets/css/radiofarmaco.css">
+<link rel="icon" type="image/png" href="assets/img/logo-app.png">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<style>
+  /* Cor novos alfa: lilás saturado */
+  .iso-symbol.violet {
+    background: radial-gradient(circle at 35% 35%, #C084FC 0%, #A855F7 55%, #6B21A8 100%);
+    box-shadow: 0 0 50px rgba(168, 85, 247, 0.4);
+  }
+  .iso-symbol.violet::before { border-color: rgba(168, 85, 247, 0.4) !important; }
+
+  /* Grid de isótopos */
+  .iso-pile {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+  .iso-tile {
+    background: var(--graphite-2);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-md);
+    padding: 1.4rem 1.3rem;
+    text-align: center;
+    position: relative;
+    transition: all 0.2s;
+  }
+  .iso-tile:hover { border-color: rgba(168, 85, 247, 0.4); transform: translateY(-3px); }
+  .iso-tile .mini-symbol {
+    width: 64px; height: 64px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #D9A6FF 0%, #A855F7 60%, #5B21B6 100%);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    color: #0E0F12; font-family: var(--font-display);
+    margin: 0 auto 0.85rem;
+  }
+  .iso-tile .mini-symbol .m { font-size: 0.7rem; font-weight: 600; opacity: 0.8; }
+  .iso-tile .mini-symbol .e { font-size: 1.35rem; font-weight: 700; line-height: 1; }
+  .iso-tile h4 { font-family: var(--font-display); font-size: 1.05rem; margin: 0 0 0.2rem; color: var(--off-white); }
+  .iso-tile .role { font-size: 0.72rem; color: #C084FC; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.85rem; font-weight: 500; }
+  .iso-tile .props { display: grid; grid-template-columns: 1fr 1fr; gap: 0.4rem; font-size: 0.78rem; }
+  .iso-tile .props .lbl { color: var(--stone); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.05em; }
+  .iso-tile .props .val { color: var(--off-white); font-family: var(--font-mono); font-weight: 500; }
+  .iso-tile .where {
+    margin-top: 0.85rem; padding-top: 0.75rem;
+    border-top: 1px solid var(--border-soft);
+    font-size: 0.78rem; color: var(--stone);
+  }
+
+  /* Tabela β vs α completa */
+  .vs-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--graphite-2);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    margin: 1.5rem 0;
+  }
+  .vs-table th, .vs-table td {
+    padding: 0.85rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-soft);
+    font-size: 0.9rem;
+    vertical-align: top;
+  }
+  .vs-table th { background: var(--graphite-3); color: var(--stone); font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; }
+  .vs-table tr:last-child td { border-bottom: 0; }
+  .vs-table .col-beta { color: var(--amber); }
+  .vs-table .col-alpha { color: #C084FC; }
+  .vs-table td:first-child { font-weight: 500; color: var(--off-white); }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="brand">
+      <img src="assets/img/logo-app.png" alt="TheraTrials" class="brand-logo">
+      <div class="brand-text">
+        <span class="brand-name">TheraTrials</span>
+        <span class="brand-sub">Oncology</span>
+      </div>
+    </a>
+    <button class="nav-toggle" aria-label="Menu"><i data-lucide="menu" style="width:18px;height:18px"></i></button>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="database.html">Database</a>
+      <a href="estudos-ativos.html">Estudos ativos</a>
+      <a href="tumor-boards.html">Tumor boards</a>
+      <a href="modalidades.html">Modalidades</a>
+      <a href="ferramentas.html">Ferramentas</a>
+      <a href="fundamentos.html">Fundamentos</a>
+      <a href="about.html">Sobre</a>
+    </nav>
+  </div>
+</header>
+
+<section class="rf-hero">
+  <div class="container">
+    <span class="rf-eyebrow" style="background:rgba(168,85,247,0.12);border-color:rgba(168,85,247,0.3);color:#A855F7">
+      <i data-lucide="atom" style="width:12px;height:12px"></i> Próxima geração · Alfa + Auger + LET alta
+    </span>
+    <h1 class="rf-title">
+      <span style="color:#A855F7">Novos α-emissores</span>
+      <br>e radioligantes Auger · a próxima onda
+    </h1>
+    <p class="rf-subtitle">
+      O sucesso do ¹⁷⁷Lu em PSMA e SSTR abriu a porta para uma geração com maior potência por evento, alcance subcelular e independência de oxigênio: emissores α (²²⁵Ac, ²¹²Pb, ²²⁷Th, ²¹¹At) e elétrons Auger (¹⁶¹Tb). Esta é a página de síntese — comparações, ensaios e logística.
+    </p>
+
+    <div class="iso-card">
+      <div class="iso-symbol violet">
+        <span class="iso-mass">α</span>
+        <span class="iso-element" style="font-size: 2rem">+</span>
+        <span class="iso-name">Auger</span>
+      </div>
+      <div class="iso-grid">
+        <div class="item"><div class="lbl">Energia α típica</div><div class="val">5-9 MeV</div></div>
+        <div class="item"><div class="lbl">Alcance α</div><div class="val">50-100 μm</div></div>
+        <div class="item"><div class="lbl">LET α</div><div class="val">80 keV/μm</div></div>
+        <div class="item"><div class="lbl">Eficiência por evento</div><div class="val">muito alta</div></div>
+        <div class="item"><div class="lbl">Dependência O₂</div><div class="val">não</div></div>
+        <div class="item"><div class="lbl">Estado clínico</div><div class="val">fase 1-2</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding: 0">
+  <div class="container">
+    <div class="rf-layout">
+
+      <aside class="toc">
+        <h4>Nesta página</h4>
+        <a href="#cronologia">Cronologia</a>
+        <a href="#por-que-alfa">Por que alfa?</a>
+        <a href="#isotopos">Isótopos disponíveis</a>
+        <a href="#beta-vs-alfa">β vs α · tabela</a>
+        <a href="#ensaios">Ensaios pivotais</a>
+        <a href="#toxicidade">Toxicidade típica</a>
+        <a href="#logistica">Logística e produção</a>
+        <a href="#perspectivas">Perspectivas</a>
+        <a href="#proximos">Continue lendo</a>
+      </aside>
+
+      <main>
+
+        <!-- ============== CRONOLOGIA ============== -->
+        <div id="cronologia" class="rf-section">
+          <h2><span class="num">01</span> Cronologia</h2>
+          <p class="lead">Da primeira aprovação alfa em oncologia (²²³Ra, 2013) à primeira série de mCRPC refratários ao ¹⁷⁷Lu salvos por ²²⁵Ac (Heidelberg, 2016): a era alfa só começou.</p>
+
+          <div class="timeline">
+            <div class="tl-item">
+              <div class="tl-dot">2013</div>
+              <div class="tl-card">
+                <h4>Aprovação do ²²³Ra · primeiro alfa em oncologia</h4>
+                <p>Xofigo (cloreto de ²²³Ra) é aprovado pelo FDA para mCRPC com metástases ósseas sintomáticas. Prova clínica de que alfa-emissores funcionam in vivo com perfil de toxicidade aceitável. Abre caminho conceitual para os próximos.</p>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot">2016</div>
+              <div class="tl-card">
+                <h4>Heidelberg · primeiros pacientes com ²²⁵Ac-PSMA-617</h4>
+                <p>Kratochwil, Haberkorn e cols. (DKFZ Heidelberg) tratam dois pacientes com mCRPC refratário ao ¹⁷⁷Lu-PSMA-617. Resposta dramática em ambos — o "paciente-índice" alcançou PSA &lt;0,1 ng/mL e regressão completa de extensa carga tumoral PSMA-positiva.</p>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot">2017-2019</div>
+              <div class="tl-card">
+                <h4>Series WARMTH e indianas</h4>
+                <p>Sathekge (África do Sul), Yadav (Índia) e o consórcio europeu WARMTH publicam séries de centenas de pacientes com mCRPC tratados com ²²⁵Ac-PSMA. PSA50 50-65%, perfil de toxicidade caracterizado: xerostomia mais intensa que ¹⁷⁷Lu, anemia comparável.</p>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot">2019</div>
+              <div class="tl-card">
+                <h4>²²⁵Ac-DOTATATE em NET refratário</h4>
+                <p>Estudos indianos (Yadav, Singh) e australianos demonstram resposta em ~50% dos pacientes com NET progressivos pós ¹⁷⁷Lu-DOTATATE com ²²⁵Ac-DOTATATE. Salva pacientes sem outras opções terapêuticas.</p>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot">2020-2022</div>
+              <div class="tl-card">
+                <h4>¹⁶¹Tb · primeiros estudos clínicos</h4>
+                <p>PSI/Bern e Heidelberg iniciam fase 1 com ¹⁶¹Tb-PSMA-I&T e ¹⁶¹Tb-DOTATATE. Mesma química do ¹⁷⁷Lu, mas com elétrons Auger adicionais → eficácia esperada superior em micrometástases.</p>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot">2023</div>
+              <div class="tl-card">
+                <h4>²¹²Pb-DOTAMTATE · ALPHAMEDIX-1 (Cancer Discovery)</h4>
+                <p>Delpassand e cols. publicam fase 1-2 do ²¹²Pb-DOTAMTATE (Alphamedix Therapeutics) em NETs SSTR-positivos. ORR 62%, PFS prolongada. Primeiro alfa-emissor em PRRT a apresentar dados sólidos de fase 2.</p>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot">2024-2025</div>
+              <div class="tl-card">
+                <h4>AcTION, ECLIPSE-Ac225, ALPHAMEDIX-2 · fase 2-3</h4>
+                <p>Programas registrais lançados: AcTION (Novartis, ²²⁵Ac-PSMA-617 fase 1-2), ECLIPSE-Ac225 (mCRPC pós-Lu), ALPHAMEDIX-2 (²¹²Pb-DOTAMTATE fase 2-3 em NET). Primeira aprovação esperada para 2025-26.</p>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot">2025-2026</div>
+              <div class="tl-card">
+                <h4>Pipeline em expansão</h4>
+                <p>²²⁷Th conjugado a anticorpos (Bayer · BAY2701439 anti-FGFR2, BAY3547926 anti-PSMA), ²¹¹At-MABG (neuroblastoma), ²²⁵Ac-FAPI (vários tumores). Mais de 30 ensaios fase 1-2 abertos globalmente.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="orbital-divider">
+          <svg width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="60" cy="20" r="3" fill="#A855F7"/>
+            <ellipse cx="60" cy="20" rx="40" ry="10" fill="none" stroke="#A855F7" stroke-width="0.8" opacity="0.4"/>
+            <ellipse cx="60" cy="20" rx="55" ry="13" fill="none" stroke="#0EA5B7" stroke-width="0.6" stroke-dasharray="2 4" opacity="0.5"/>
+            <circle cx="100" cy="20" r="1.5" fill="#0EA5B7"/>
+            <circle cx="20" cy="20" r="1.5" fill="#0EA5B7"/>
+          </svg>
+        </div>
+
+        <!-- ============== POR QUE ALFA ============== -->
+        <div id="por-que-alfa" class="rf-section">
+          <h2><span class="num">02</span> Por que alfa? Princípios físicos</h2>
+          <p class="lead">Três propriedades das partículas alfa explicam por que elas resolvem problemas que o β⁻ não resolve: alta LET, alcance subcelular e independência de oxigênio.</p>
+
+          <div class="mech-diagram">
+            <svg viewBox="0 0 800 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+              <!-- Coluna esquerda: β⁻ -->
+              <g transform="translate(150, 30)">
+                <text x="0" y="0" fill="#FF8400" font-size="14" text-anchor="middle" font-weight="600">β⁻ (¹⁷⁷Lu)</text>
+                <text x="0" y="20" fill="#8E949C" font-size="10" text-anchor="middle">trajetória longa · LET baixa</text>
+
+                <!-- Cell cluster -->
+                <g transform="translate(0, 40)">
+                  <circle cx="-40" cy="0" r="18" fill="rgba(14, 165, 183, 0.15)" stroke="#0EA5B7" stroke-width="0.5"/>
+                  <circle cx="0" cy="0" r="18" fill="rgba(14, 165, 183, 0.15)" stroke="#0EA5B7" stroke-width="0.5"/>
+                  <circle cx="40" cy="0" r="18" fill="rgba(14, 165, 183, 0.15)" stroke="#0EA5B7" stroke-width="0.5"/>
+                  <circle cx="-40" cy="40" r="18" fill="rgba(14, 165, 183, 0.15)" stroke="#0EA5B7" stroke-width="0.5"/>
+                  <circle cx="0" cy="40" r="18" fill="rgba(14, 165, 183, 0.15)" stroke="#0EA5B7" stroke-width="0.5"/>
+                  <circle cx="40" cy="40" r="18" fill="rgba(14, 165, 183, 0.15)" stroke="#0EA5B7" stroke-width="0.5"/>
+                  <circle cx="-40" cy="80" r="18" fill="rgba(14, 165, 183, 0.15)" stroke="#0EA5B7" stroke-width="0.5"/>
+                  <circle cx="0" cy="80" r="18" fill="rgba(14, 165, 183, 0.15)" stroke="#0EA5B7" stroke-width="0.5"/>
+                  <circle cx="40" cy="80" r="18" fill="rgba(14, 165, 183, 0.15)" stroke="#0EA5B7" stroke-width="0.5"/>
+
+                  <!-- 177Lu particle -->
+                  <circle cx="0" cy="0" r="3" fill="#FF8400"/>
+                  <!-- β path - long, sparse ionizations -->
+                  <path d="M 0,0 Q 30,20 50,40 Q 70,60 90,90"
+                        stroke="#FF8400" stroke-width="0.8" fill="none" stroke-dasharray="2 2"/>
+                  <g fill="#FF8400">
+                    <circle cx="20" cy="15" r="1.2"/>
+                    <circle cx="40" cy="35" r="1.2"/>
+                    <circle cx="55" cy="50" r="1.2"/>
+                    <circle cx="75" cy="75" r="1.2"/>
+                  </g>
+                  <text x="0" y="120" fill="#FF8400" font-size="9" text-anchor="middle">~ 700 μm</text>
+                  <text x="0" y="135" fill="#8E949C" font-size="8" text-anchor="middle">crossfire amplo</text>
+                </g>
+              </g>
+
+              <!-- Linha vertical separadora -->
+              <line x1="400" y1="20" x2="400" y2="220" stroke="#252932" stroke-width="1"/>
+
+              <!-- Coluna direita: α -->
+              <g transform="translate(600, 30)">
+                <text x="0" y="0" fill="#C084FC" font-size="14" text-anchor="middle" font-weight="600">α (²²⁵Ac · ²¹²Pb)</text>
+                <text x="0" y="20" fill="#8E949C" font-size="10" text-anchor="middle">trajetória curta · LET alta</text>
+
+                <g transform="translate(0, 40)">
+                  <circle cx="-40" cy="0" r="18" fill="rgba(14, 165, 183, 0.15)" stroke="#0EA5B7" stroke-width="0.5"/>
+                  <circle cx="0" cy="0" r="18" fill="rgba(168, 85, 247, 0.25)" stroke="#A855F7" stroke-width="1"/>
+                  <circle cx="40" cy="0" r="18" fill="rgba(14, 165, 183, 0.15)" stroke="#0EA5B7" stroke-width="0.5"/>
+                  <circle cx="-40" cy="40" r="18" fill="rgba(14, 165, 183, 0.15)" stroke="#0EA5B7" stroke-width="0.5"/>
+                  <circle cx="0" cy="40" r="18" fill="rgba(14, 165, 183, 0.15)" stroke="#0EA5B7" stroke-width="0.5"/>
+                  <circle cx="40" cy="40" r="18" fill="rgba(14, 165, 183, 0.15)" stroke="#0EA5B7" stroke-width="0.5"/>
+                  <circle cx="-40" cy="80" r="18" fill="rgba(14, 165, 183, 0.15)" stroke="#0EA5B7" stroke-width="0.5"/>
+                  <circle cx="0" cy="80" r="18" fill="rgba(14, 165, 183, 0.15)" stroke="#0EA5B7" stroke-width="0.5"/>
+                  <circle cx="40" cy="80" r="18" fill="rgba(14, 165, 183, 0.15)" stroke="#0EA5B7" stroke-width="0.5"/>
+
+                  <!-- alpha source -->
+                  <circle cx="0" cy="0" r="3" fill="#A855F7"/>
+                  <!-- α track - short, dense ionizations -->
+                  <path d="M 0,0 L 25,20" stroke="#A855F7" stroke-width="2" fill="none"/>
+                  <g fill="#A855F7">
+                    <circle cx="3" cy="2" r="1.5"/>
+                    <circle cx="6" cy="5" r="1.5"/>
+                    <circle cx="9" cy="7" r="1.5"/>
+                    <circle cx="12" cy="9" r="1.5"/>
+                    <circle cx="15" cy="12" r="1.5"/>
+                    <circle cx="18" cy="14" r="1.5"/>
+                    <circle cx="21" cy="17" r="1.5"/>
+                    <circle cx="24" cy="20" r="1.5"/>
+                  </g>
+                  <text x="0" y="120" fill="#A855F7" font-size="9" text-anchor="middle">~ 50-100 μm</text>
+                  <text x="0" y="135" fill="#8E949C" font-size="8" text-anchor="middle">poucas células · DSB densas</text>
+                </g>
+              </g>
+            </svg>
+
+            <div class="mech-stages">
+              <div class="mech-stage">
+                <div class="mech-num" style="background:#A855F7">1</div>
+                <h5>LET alta</h5>
+                <p>80 keV/μm × 0,2 keV/μm do β⁻. Densidade de ionização 400× maior. Quebras duplas de DNA são a regra (não exceção).</p>
+              </div>
+              <div class="mech-stage">
+                <div class="mech-num" style="background:#A855F7">2</div>
+                <h5>Alcance subcelular</h5>
+                <p>50-100 μm = poucas células. Lesões pequenas e disseminadas (micromets) são alvo ideal — onde β⁻ "vaza" para tecido normal.</p>
+              </div>
+              <div class="mech-stage">
+                <div class="mech-num" style="background:#A855F7">3</div>
+                <h5>Independente de oxigênio</h5>
+                <p>Dano via ionização direta de DNA, não dependente de ROS. Tumores hipóxicos respondem normalmente — vantagem em CHC, nódulos centrais grandes.</p>
+              </div>
+              <div class="mech-stage">
+                <div class="mech-num" style="background:#A855F7">4</div>
+                <h5>Refratários ao β⁻</h5>
+                <p>Pacientes que progridem ao ¹⁷⁷Lu mantêm expressão do alvo (PSMA, SSTR2). Trocar β por α resgata 50-65% deles em séries publicadas.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="key-fact">
+            <div class="lbl">Auger · o "α em miniatura"</div>
+            <p>Elétrons Auger têm energia muito baixa (eV-keV) e alcance nanométrico (poucos nm). Para causar dano significativo precisam estar dentro do núcleo da célula — o que requer internalização do radioligante. Quando isso acontece, a densidade de ionização é equivalente ou superior à de partículas α. ¹⁶¹Tb é particularmente atrativo porque combina β⁻ moderado (cobertura mm) com Auger (precisão subcelular) — o melhor dos dois mundos para tumores heterogêneos.</p>
+          </div>
+        </div>
+
+        <div class="orbital-divider">
+          <svg width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="60" cy="20" r="3" fill="#A855F7"/>
+            <ellipse cx="60" cy="20" rx="40" ry="10" fill="none" stroke="#A855F7" stroke-width="0.8" opacity="0.4"/>
+            <ellipse cx="60" cy="20" rx="55" ry="13" fill="none" stroke="#0EA5B7" stroke-width="0.6" stroke-dasharray="2 4" opacity="0.5"/>
+            <circle cx="100" cy="20" r="1.5" fill="#0EA5B7"/>
+            <circle cx="20" cy="20" r="1.5" fill="#0EA5B7"/>
+          </svg>
+        </div>
+
+        <!-- ============== ISÓTOPOS ============== -->
+        <div id="isotopos" class="rf-section">
+          <h2><span class="num">03</span> Isótopos disponíveis</h2>
+          <p class="lead">Cinco emissores α e um Auger ocupam o centro do palco. Cada um com perfil físico, vetor preferido e estado de desenvolvimento clínico próprios.</p>
+
+          <div class="iso-pile">
+            <div class="iso-tile">
+              <div class="mini-symbol"><span class="m">225</span><span class="e">Ac</span></div>
+              <h4>Actínio-225</h4>
+              <div class="role">α · cadeia de 4</div>
+              <div class="props">
+                <div><div class="lbl">T½</div><div class="val">9,9 d</div></div>
+                <div><div class="lbl">α/decay</div><div class="val">4</div></div>
+                <div><div class="lbl">Energia total</div><div class="val">~ 28 MeV</div></div>
+                <div><div class="lbl">Alvo</div><div class="val">PSMA, SSTR, FAPI</div></div>
+              </div>
+              <div class="where">Mais avançado em desenvolvimento clínico. AcTION, ECLIPSE.</div>
+            </div>
+
+            <div class="iso-tile">
+              <div class="mini-symbol"><span class="m">161</span><span class="e">Tb</span></div>
+              <h4>Térbio-161</h4>
+              <div class="role">β⁻ + Auger</div>
+              <div class="props">
+                <div><div class="lbl">T½</div><div class="val">6,9 d</div></div>
+                <div><div class="lbl">Eβmax</div><div class="val">593 keV</div></div>
+                <div><div class="lbl">Auger</div><div class="val">+ alta densidade</div></div>
+                <div><div class="lbl">Alvo</div><div class="val">PSMA, SSTR</div></div>
+              </div>
+              <div class="where">Substituto direto do ¹⁷⁷Lu (mesma química DOTA). Fase 1-2 ativos.</div>
+            </div>
+
+            <div class="iso-tile">
+              <div class="mini-symbol"><span class="m">212</span><span class="e">Pb</span></div>
+              <h4>Chumbo-212</h4>
+              <div class="role">α (via ²¹²Bi)</div>
+              <div class="props">
+                <div><div class="lbl">T½</div><div class="val">10,6 h</div></div>
+                <div><div class="lbl">Decai p/</div><div class="val">²¹²Bi (α)</div></div>
+                <div><div class="lbl">Gerador</div><div class="val">²²⁴Ra/²¹²Pb</div></div>
+                <div><div class="lbl">Alvo</div><div class="val">DOTAMTATE, FAPI</div></div>
+              </div>
+              <div class="where">ALPHAMEDIX-1 publicado. Logística favorável (gerador).</div>
+            </div>
+
+            <div class="iso-tile">
+              <div class="mini-symbol"><span class="m">227</span><span class="e">Th</span></div>
+              <h4>Tório-227</h4>
+              <div class="role">α · biofarma</div>
+              <div class="props">
+                <div><div class="lbl">T½</div><div class="val">18,7 d</div></div>
+                <div><div class="lbl">Decai p/</div><div class="val">²²³Ra (α)</div></div>
+                <div><div class="lbl">Plataforma</div><div class="val">Bayer TTC</div></div>
+                <div><div class="lbl">Alvo</div><div class="val">FGFR2, PSMA, CD22</div></div>
+              </div>
+              <div class="where">Conjugados a anticorpos (TTC). Fase 1.</div>
+            </div>
+
+            <div class="iso-tile">
+              <div class="mini-symbol"><span class="m">211</span><span class="e">At</span></div>
+              <h4>Astato-211</h4>
+              <div class="role">α · halogênio</div>
+              <div class="props">
+                <div><div class="lbl">T½</div><div class="val">7,2 h</div></div>
+                <div><div class="lbl">Energia α</div><div class="val">5,9-7,5 MeV</div></div>
+                <div><div class="lbl">Produção</div><div class="val">cíclotron</div></div>
+                <div><div class="lbl">Alvo</div><div class="val">MABG, PSMA, anti-CD45</div></div>
+              </div>
+              <div class="where">Logística limitada por T½ curto. Fase 1.</div>
+            </div>
+
+            <div class="iso-tile">
+              <div class="mini-symbol"><span class="m">213</span><span class="e">Bi</span></div>
+              <h4>Bismuto-213</h4>
+              <div class="role">α · curto</div>
+              <div class="props">
+                <div><div class="lbl">T½</div><div class="val">46 min</div></div>
+                <div><div class="lbl">Origem</div><div class="val">²²⁵Ac → ²¹³Bi</div></div>
+                <div><div class="lbl">Aplicação</div><div class="val">leucemias, intratecal</div></div>
+                <div><div class="lbl">Alvo</div><div class="val">CD33, DOTATOC</div></div>
+              </div>
+              <div class="where">T½ muito curto restringe a aplicações regionais.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="orbital-divider">
+          <svg width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="60" cy="20" r="3" fill="#A855F7"/>
+            <ellipse cx="60" cy="20" rx="40" ry="10" fill="none" stroke="#A855F7" stroke-width="0.8" opacity="0.4"/>
+            <ellipse cx="60" cy="20" rx="55" ry="13" fill="none" stroke="#0EA5B7" stroke-width="0.6" stroke-dasharray="2 4" opacity="0.5"/>
+            <circle cx="100" cy="20" r="1.5" fill="#0EA5B7"/>
+            <circle cx="20" cy="20" r="1.5" fill="#0EA5B7"/>
+          </svg>
+        </div>
+
+        <!-- ============== BETA VS ALFA ============== -->
+        <div id="beta-vs-alfa" class="rf-section">
+          <h2><span class="num">04</span> β vs α · tabela detalhada</h2>
+          <p class="lead">Mesmas plataformas químicas, físicas opostas. A escolha entre ¹⁷⁷Lu e ²²⁵Ac (ou ¹⁶¹Tb) depende de carga tumoral, padrão de captação, estado dosimétrico e disponibilidade.</p>
+
+          <table class="vs-table">
+            <thead>
+              <tr>
+                <th>Parâmetro</th>
+                <th class="col-beta">β⁻ · ¹⁷⁷Lu (referência)</th>
+                <th class="col-alpha">α · ²²⁵Ac · ²¹²Pb</th>
+                <th class="col-alpha">β⁻ + Auger · ¹⁶¹Tb</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Energia média/máx</td>
+                <td>134 / 498 keV</td>
+                <td>5-9 MeV (α)</td>
+                <td>154 / 593 keV + e⁻ Auger</td>
+              </tr>
+              <tr>
+                <td>Alcance médio</td>
+                <td>~ 0,7 mm</td>
+                <td>50-100 μm</td>
+                <td>~ 0,7 mm + nm (Auger)</td>
+              </tr>
+              <tr>
+                <td>LET</td>
+                <td>0,2 keV/μm</td>
+                <td>80 keV/μm</td>
+                <td>0,2 + alta local (Auger)</td>
+              </tr>
+              <tr>
+                <td>Crossfire</td>
+                <td>centenas de células</td>
+                <td>poucas células</td>
+                <td>amplo + subcelular</td>
+              </tr>
+              <tr>
+                <td>Quebras de DNA</td>
+                <td>SSB &gt; DSB</td>
+                <td>DSB densas</td>
+                <td>SSB amplo + DSB no núcleo</td>
+              </tr>
+              <tr>
+                <td>Dependência O₂</td>
+                <td>parcial (ROS)</td>
+                <td>nenhuma</td>
+                <td>parcial (β) + nenhuma (Auger)</td>
+              </tr>
+              <tr>
+                <td>Lesões pequenas</td>
+                <td>moderada</td>
+                <td>excelente</td>
+                <td>excelente (Auger)</td>
+              </tr>
+              <tr>
+                <td>Lesões grandes</td>
+                <td>excelente</td>
+                <td>moderada (heterogênea)</td>
+                <td>excelente</td>
+              </tr>
+              <tr>
+                <td>Toxicidade salivar</td>
+                <td>moderada (PSMA)</td>
+                <td>severa (recoil/PSMA)</td>
+                <td>moderada (similar Lu)</td>
+              </tr>
+              <tr>
+                <td>Imagem pós (γ)</td>
+                <td>208 keV (10%)</td>
+                <td>fraco (²²¹Fr 218 keV)</td>
+                <td>49 keV + 75 keV (Auger)</td>
+              </tr>
+              <tr>
+                <td>Disponibilidade</td>
+                <td>global</td>
+                <td>limitada (DOE/SPES/Karlsruhe)</td>
+                <td>limitada (PSI/ILL/SCK)</td>
+              </tr>
+              <tr>
+                <td>Status regulatório</td>
+                <td>aprovado FDA/EMA</td>
+                <td>fase 2-3 (²¹²Pb registro próximo)</td>
+                <td>fase 1-2</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="key-fact">
+            <div class="lbl">Quando preferir alfa?</div>
+            <p>Em prática 2026: (1) <strong>Refratariedade ao Lu</strong> com expressão preservada do alvo — mCRPC PSMA-PET ainda intenso após ¹⁷⁷Lu-PSMA, NET SSTR-PET preservado pós ¹⁷⁷Lu-DOTATATE. (2) <strong>Doença com micromets dominantes</strong> ou heterogeneidade alta. (3) <strong>Tumores hipóxicos</strong> grandes que respondem mal à β⁻. (4) <strong>Carga tumoral baixa pós-debulking</strong>, onde precisão subcelular é mais valiosa que crossfire.</p>
+          </div>
+        </div>
+
+        <div class="orbital-divider">
+          <svg width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="60" cy="20" r="3" fill="#A855F7"/>
+            <ellipse cx="60" cy="20" rx="40" ry="10" fill="none" stroke="#A855F7" stroke-width="0.8" opacity="0.4"/>
+            <ellipse cx="60" cy="20" rx="55" ry="13" fill="none" stroke="#0EA5B7" stroke-width="0.6" stroke-dasharray="2 4" opacity="0.5"/>
+            <circle cx="100" cy="20" r="1.5" fill="#0EA5B7"/>
+            <circle cx="20" cy="20" r="1.5" fill="#0EA5B7"/>
+          </svg>
+        </div>
+
+        <!-- ============== ENSAIOS ============== -->
+        <div id="ensaios" class="rf-section">
+          <h2><span class="num">05</span> Ensaios pivotais</h2>
+          <p class="lead">Programa registral em pleno andamento. AcTION, ECLIPSE-Ac225 e ALPHAMEDIX-2 são os mais avançados.</p>
+
+          <div class="trials-grid">
+            <div class="trial-card">
+              <div class="trial-name">
+                <span class="name">Heidelberg ²²⁵Ac-PSMA</span>
+                <span class="year">2016-2024 · series</span>
+              </div>
+              <p class="pop">mCRPC pós ¹⁷⁷Lu-PSMA · n &gt; 200 acumulados · acesso compassivo / fase 1-2</p>
+              <div class="results">
+                <div class="stat-row"><div class="lbl">PSA50</div><div class="val">~ 60-65%</div></div>
+                <div class="stat-row"><div class="lbl">Resposta CR</div><div class="val">10-15%</div></div>
+                <div class="stat-row"><div class="lbl">Tox xerostomia</div><div class="val">G2-3 ~ 70%</div></div>
+                <div class="stat-row"><div class="lbl">Ciclos típicos</div><div class="val">2-4 (100 kBq/kg)</div></div>
+              </div>
+              <p class="takeaway">Maior experiência mundial. Salva mCRPC refratários ao Lu mantendo PSMA-PET positivo.</p>
+            </div>
+
+            <div class="trial-card">
+              <div class="trial-name">
+                <span class="name">AcTION</span>
+                <span class="year">em curso · Novartis</span>
+              </div>
+              <p class="pop">mCRPC pós-Lu · n=128 · ²²⁵Ac-PSMA-617 · fase 1-2</p>
+              <div class="results">
+                <div class="stat-row"><div class="lbl">Endpoints</div><div class="val">PSA50, rPFS, OS</div></div>
+                <div class="stat-row"><div class="lbl">Status</div><div class="val">recrutando</div></div>
+                <div class="stat-row"><div class="lbl">NCT</div><div class="val">04597411</div></div>
+                <div class="stat-row"><div class="lbl">Resultados</div><div class="val">2025-26</div></div>
+              </div>
+              <p class="takeaway">Estudo registral conduzido pela Novartis. Pode levar à primeira aprovação de α em PSMA.</p>
+            </div>
+
+            <div class="trial-card">
+              <div class="trial-name">
+                <span class="name">ALPHAMEDIX-1</span>
+                <span class="year">2023 · Cancer Discovery</span>
+              </div>
+              <p class="pop">NET SSTR+ pós-Lu-DOTATATE · n=20 · ²¹²Pb-DOTAMTATE · fase 1-2</p>
+              <div class="results">
+                <div class="stat-row"><div class="lbl">ORR</div><div class="val">62%</div></div>
+                <div class="stat-row"><div class="lbl">DCR</div><div class="val">94%</div></div>
+                <div class="stat-row"><div class="lbl">PFS</div><div class="val">não atingido em 12 m</div></div>
+                <div class="stat-row"><div class="lbl">Tox</div><div class="val">manejável</div></div>
+              </div>
+              <p class="takeaway">Primeiro alfa-emissor em PRRT com dados sólidos de fase 2. Provoca caminho registral.</p>
+            </div>
+
+            <div class="trial-card">
+              <div class="trial-name">
+                <span class="name">ALPHAMEDIX-2</span>
+                <span class="year">em curso · pivotal</span>
+              </div>
+              <p class="pop">NET SSTR+ progressivo · ²¹²Pb-DOTAMTATE · fase 2-3 · n &gt; 200</p>
+              <div class="results">
+                <div class="stat-row"><div class="lbl">Endpoint</div><div class="val">ORR confirmado</div></div>
+                <div class="stat-row"><div class="lbl">Status</div><div class="val">recrutando</div></div>
+                <div class="stat-row"><div class="lbl">Sponsor</div><div class="val">Perspective Therapeutics</div></div>
+                <div class="stat-row"><div class="lbl">FDA fast track</div><div class="val">sim</div></div>
+              </div>
+              <p class="takeaway">Pode resultar em primeira aprovação de PRRT alfa para NET. Resultados aguardados 2025-26.</p>
+            </div>
+
+            <div class="trial-card">
+              <div class="trial-name">
+                <span class="name">REMINISCE</span>
+                <span class="year">em curso · ¹⁶¹Tb</span>
+              </div>
+              <p class="pop">NET SSTR+ · ¹⁶¹Tb-DOTATATE · fase 1-2 · multicêntrico europeu</p>
+              <div class="results">
+                <div class="stat-row"><div class="lbl">Endpoint</div><div class="val">segurança · resposta</div></div>
+                <div class="stat-row"><div class="lbl">Comparação</div><div class="val">vs ¹⁷⁷Lu histórico</div></div>
+                <div class="stat-row"><div class="lbl">Status</div><div class="val">recrutando</div></div>
+                <div class="stat-row"><div class="lbl">Lugar</div><div class="val">PSI/Bern · ICR</div></div>
+              </div>
+              <p class="takeaway">Substituição direta do ¹⁷⁷Lu por ¹⁶¹Tb. Conceito atrativo: maior eficácia em micromets sem mudar logística.</p>
+            </div>
+
+            <div class="trial-card">
+              <div class="trial-name">
+                <span class="name">PRObecic / ¹⁶¹Tb-PSMA</span>
+                <span class="year">em curso · fase 1</span>
+              </div>
+              <p class="pop">mCRPC · ¹⁶¹Tb-PSMA-I&T · fase 1 dose-escalada</p>
+              <div class="results">
+                <div class="stat-row"><div class="lbl">Endpoint</div><div class="val">MTD · segurança</div></div>
+                <div class="stat-row"><div class="lbl">Sites</div><div class="val">Bern · Heidelberg</div></div>
+                <div class="stat-row"><div class="lbl">Status</div><div class="val">recrutando</div></div>
+                <div class="stat-row"><div class="lbl">Próximo passo</div><div class="val">fase 2 · 2025-26</div></div>
+              </div>
+              <p class="takeaway">Testa hipótese de ¹⁶¹Tb-PSMA em substituição ao ¹⁷⁷Lu-PSMA. Auger pode ser definidor em micromets.</p>
+            </div>
+
+            <div class="trial-card">
+              <div class="trial-name">
+                <span class="name">BAY2701439</span>
+                <span class="year">em curso · ²²⁷Th</span>
+              </div>
+              <p class="pop">Tumores FGFR2+ (gástrico, intra-hepático colangio, urotelial) · ²²⁷Th-FGFR2</p>
+              <div class="results">
+                <div class="stat-row"><div class="lbl">Plataforma</div><div class="val">TTC (Targeted Thorium Conjugate)</div></div>
+                <div class="stat-row"><div class="lbl">Sponsor</div><div class="val">Bayer</div></div>
+                <div class="stat-row"><div class="lbl">Status</div><div class="val">fase 1</div></div>
+                <div class="stat-row"><div class="lbl">NCT</div><div class="val">04994353</div></div>
+              </div>
+              <p class="takeaway">²²⁷Th conjugado a anticorpo. Conceito de antibody-drug-conjugate radioativo. Fronteira biofarma + radio.</p>
+            </div>
+
+            <div class="trial-card">
+              <div class="trial-name">
+                <span class="name">²²⁵Ac-DOTATATE séries</span>
+                <span class="year">2019-2024 · multinacional</span>
+              </div>
+              <p class="pop">NET pós-Lu-DOTATATE · estudos retrospectivos / fase 1 · n &gt; 60 acumulados</p>
+              <div class="results">
+                <div class="stat-row"><div class="lbl">DCR</div><div class="val">~ 60-80%</div></div>
+                <div class="stat-row"><div class="lbl">ORR</div><div class="val">~ 50%</div></div>
+                <div class="stat-row"><div class="lbl">Tox</div><div class="val">hema · QoL impacto</div></div>
+                <div class="stat-row"><div class="lbl">PFS pós-Lu</div><div class="val">8-15 m</div></div>
+              </div>
+              <p class="takeaway">Alternativa ao ²¹²Pb em centros sem acesso a Alphamedix. Resgate em pacientes pós-Lu.</p>
+            </div>
+          </div>
+
+          <div style="text-align: center; margin-top: 2rem">
+            <a href="database.html" class="rf-eyebrow" style="cursor:pointer; background:rgba(168,85,247,0.12);border-color:rgba(168,85,247,0.3);color:#A855F7">
+              <i data-lucide="database" style="width:14px;height:14px"></i>
+              Ver todos os estudos no Database
+              <i data-lucide="arrow-right" style="width:14px;height:14px"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="orbital-divider">
+          <svg width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="60" cy="20" r="3" fill="#A855F7"/>
+            <ellipse cx="60" cy="20" rx="40" ry="10" fill="none" stroke="#A855F7" stroke-width="0.8" opacity="0.4"/>
+            <ellipse cx="60" cy="20" rx="55" ry="13" fill="none" stroke="#0EA5B7" stroke-width="0.6" stroke-dasharray="2 4" opacity="0.5"/>
+            <circle cx="100" cy="20" r="1.5" fill="#0EA5B7"/>
+            <circle cx="20" cy="20" r="1.5" fill="#0EA5B7"/>
+          </svg>
+        </div>
+
+        <!-- ============== TOXICIDADE ============== -->
+        <div id="toxicidade" class="rf-section">
+          <h2><span class="num">06</span> Toxicidade · perfil típico</h2>
+          <p class="lead">Compartilham com β⁻ a hematológica, mas xerostomia em PSMA é o ponto distintivo do ²²⁵Ac. ²¹²Pb-DOTAMTATE em NET tem perfil mais semelhante ao Lu.</p>
+
+          <div class="tox-grid">
+            <div class="tox-item">
+              <div class="tox-name">Xerostomia (²²⁵Ac-PSMA)</div>
+              <div class="tox-pct"><span class="tox-all">~ 70%</span><span class="tox-g3">G3 ~ 10-15%</span></div>
+              <div class="tox-bar"><div class="tox-bar-all" style="width:70%; background:#A855F7"></div></div>
+            </div>
+            <div class="tox-item">
+              <div class="tox-name">Anemia</div>
+              <div class="tox-pct"><span class="tox-all">~ 30-40%</span><span class="tox-g3">G3-4 ~ 10%</span></div>
+              <div class="tox-bar"><div class="tox-bar-all" style="width:35%; background:#A855F7"></div></div>
+            </div>
+            <div class="tox-item">
+              <div class="tox-name">Trombocitopenia</div>
+              <div class="tox-pct"><span class="tox-all">~ 25-35%</span><span class="tox-g3">G3-4 ~ 8-12%</span></div>
+              <div class="tox-bar"><div class="tox-bar-all" style="width:30%; background:#A855F7"></div></div>
+            </div>
+            <div class="tox-item">
+              <div class="tox-name">Linfopenia</div>
+              <div class="tox-pct"><span class="tox-all">~ 50%</span><span class="tox-g3">G3-4 ~ 20%</span></div>
+              <div class="tox-bar"><div class="tox-bar-all" style="width:50%; background:#A855F7"></div></div>
+            </div>
+            <div class="tox-item">
+              <div class="tox-name">Fadiga</div>
+              <div class="tox-pct"><span class="tox-all">~ 50%</span><span class="tox-g3">G3 ~ 5%</span></div>
+              <div class="tox-bar"><div class="tox-bar-all" style="width:50%; background:#A855F7"></div></div>
+            </div>
+            <div class="tox-item">
+              <div class="tox-name">Náusea</div>
+              <div class="tox-pct"><span class="tox-all">~ 40%</span><span class="tox-g3">G3 ~ 3%</span></div>
+              <div class="tox-bar"><div class="tox-bar-all" style="width:40%; background:#A855F7"></div></div>
+            </div>
+            <div class="tox-item">
+              <div class="tox-name">Disfunção renal (²¹²Pb)</div>
+              <div class="tox-pct"><span class="tox-all">~ 10%</span><span class="tox-g3">G3 raro</span></div>
+              <div class="tox-bar"><div class="tox-bar-all" style="width:10%; background:#A855F7"></div></div>
+            </div>
+            <div class="tox-item">
+              <div class="tox-name">SMD/leucemia 2ª (séries longas)</div>
+              <div class="tox-pct"><span class="tox-all">~ 1-3%</span><span class="tox-g3">grave · longo prazo</span></div>
+              <div class="tox-bar"><div class="tox-bar-all" style="width:3%; background:#F87171"></div></div>
+            </div>
+          </div>
+
+          <div class="key-fact">
+            <div class="lbl">Por que xerostomia é mais intensa em ²²⁵Ac-PSMA?</div>
+            <p>Duas hipóteses, possivelmente complementares: (1) <strong>recoil dos isótopos-filhos</strong> — após decaimento α, o núcleo-filho recebe energia de recoil suficiente para se descomplexar do quelante DOTA e migrar livremente; pode ficar retido em sítios PSMA-positivos secundários como glândulas salivares; (2) <strong>maior LET por evento</strong> em sítios já moderadamente captantes amplifica dano. Reduções de dose individual (50-100 kBq/kg em vez de 100-150) mitigam parcialmente sem perda de eficácia em séries publicadas. Tempering schemes (atividade decrescente entre ciclos) é prática emergente em centros experientes.</p>
+          </div>
+        </div>
+
+        <div class="orbital-divider">
+          <svg width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="60" cy="20" r="3" fill="#A855F7"/>
+            <ellipse cx="60" cy="20" rx="40" ry="10" fill="none" stroke="#A855F7" stroke-width="0.8" opacity="0.4"/>
+            <ellipse cx="60" cy="20" rx="55" ry="13" fill="none" stroke="#0EA5B7" stroke-width="0.6" stroke-dasharray="2 4" opacity="0.5"/>
+            <circle cx="100" cy="20" r="1.5" fill="#0EA5B7"/>
+            <circle cx="20" cy="20" r="1.5" fill="#0EA5B7"/>
+          </svg>
+        </div>
+
+        <!-- ============== LOGÍSTICA ============== -->
+        <div id="logistica" class="rf-section">
+          <h2><span class="num">07</span> Logística e produção</h2>
+          <p class="lead">A grande limitação dos α-emissores não é a eficácia — é a oferta. Cada isótopo tem uma cadeia produtiva única, com gargalos próprios.</p>
+
+          <table class="dose-table">
+            <thead>
+              <tr>
+                <th>Isótopo</th>
+                <th>Fonte primária</th>
+                <th>Atual capacidade global</th>
+                <th>Limitação</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>²²⁵Ac</strong></td>
+                <td>Geradores de ²²⁹Th (DOE/ORNL, JRC Karlsruhe, IPN Orsay) + cíclotron (TR-30, NorthStar, TerraPower SPES)</td>
+                <td>&lt; 2 Ci/ano (geradores) + escala industrial cresscente (cíclotron)</td>
+                <td>Demanda mundial &gt;&gt; oferta. Produção cíclotron acelera entrega para 2026-27.</td>
+              </tr>
+              <tr>
+                <td><strong>¹⁶¹Tb</strong></td>
+                <td>Reator a partir de ¹⁶⁰Gd (PSI Suíça, ILL França, NRG Holanda)</td>
+                <td>Pequena escala atual</td>
+                <td>Cadeia limitada. Pode escalar com mais reatores adaptados.</td>
+              </tr>
+              <tr>
+                <td><strong>²¹²Pb</strong></td>
+                <td>Gerador ²²⁴Ra/²¹²Pb (Perspective Therapeutics, NorthStar)</td>
+                <td>Escalável (gerador comercial)</td>
+                <td>²²⁴Ra-mãe vem de ²²⁸Th — supply finito mas razoável.</td>
+              </tr>
+              <tr>
+                <td><strong>²²⁷Th</strong></td>
+                <td>²²⁷Ac → ²²⁷Th (Bayer in-house)</td>
+                <td>Limitada à própria Bayer</td>
+                <td>Plataforma fechada · captiva de programa registrais Bayer.</td>
+              </tr>
+              <tr>
+                <td><strong>²¹¹At</strong></td>
+                <td>Cíclotron médio porte (²⁰⁹Bi(α,2n)²¹¹At) · poucos sites</td>
+                <td>Local · curto prazo</td>
+                <td>T½ 7,2 h obriga produção e entrega no mesmo dia.</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="key-fact">
+            <div class="lbl">Brasil · cenário 2026</div>
+            <p>O IPEN (USP) trabalha em estudos de produção de ²²⁵Ac via cíclotron e em parcerias internacionais. ²¹²Pb-DOTAMTATE da Perspective Therapeutics tem plano de chegada a centros teranósticos brasileiros conforme aprovação FDA/EMA seja concretizada e ANVISA dê sequência. Pacientes individuais podem importar com autorização ANVISA caso a caso. Centros como o Centro Teranóstico do Hospital Felício Rocho estão tecnicamente capazes de operar α-emissores quando houver acesso comercial.</p>
+          </div>
+        </div>
+
+        <div class="orbital-divider">
+          <svg width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="60" cy="20" r="3" fill="#A855F7"/>
+            <ellipse cx="60" cy="20" rx="40" ry="10" fill="none" stroke="#A855F7" stroke-width="0.8" opacity="0.4"/>
+            <ellipse cx="60" cy="20" rx="55" ry="13" fill="none" stroke="#0EA5B7" stroke-width="0.6" stroke-dasharray="2 4" opacity="0.5"/>
+            <circle cx="100" cy="20" r="1.5" fill="#0EA5B7"/>
+            <circle cx="20" cy="20" r="1.5" fill="#0EA5B7"/>
+          </svg>
+        </div>
+
+        <!-- ============== PERSPECTIVAS ============== -->
+        <div id="perspectivas" class="rf-section">
+          <h2><span class="num">08</span> Perspectivas · 2026-2030</h2>
+          <p class="lead">Quatro grandes movimentos em curso: (1) primeiras aprovações registrais, (2) integração teranóstica β-α-Auger, (3) plataformas TTC (anticorpos α) e (4) combinações com PARPi e imuno.</p>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin: 1.5rem 0">
+            <div style="background: var(--graphite-2); border: 1px solid rgba(168,85,247,0.3); border-radius: var(--radius-md); padding: 1.25rem">
+              <div style="font-family: var(--font-mono); color: #A855F7; font-size: 0.85rem; margin-bottom: 0.4rem">1ª aprovação α em PRRT</div>
+              <div style="font-size: 0.95rem; color: var(--off-white); margin-bottom: 0.35rem">²¹²Pb-DOTAMTATE · 2025-26</div>
+              <div style="font-size: 0.82rem; color: var(--stone); line-height: 1.5">ALPHAMEDIX-2 deve gerar dados registrais. Primeira PRRT alfa em mercado.</div>
+            </div>
+            <div style="background: var(--graphite-2); border: 1px solid rgba(168,85,247,0.3); border-radius: var(--radius-md); padding: 1.25rem">
+              <div style="font-family: var(--font-mono); color: #A855F7; font-size: 0.85rem; margin-bottom: 0.4rem">1ª aprovação α em PSMA</div>
+              <div style="font-size: 0.95rem; color: var(--off-white); margin-bottom: 0.35rem">²²⁵Ac-PSMA · AcTION 2026-27</div>
+              <div style="font-size: 0.82rem; color: var(--stone); line-height: 1.5">Pode chegar como 2L pós-Lu-PSMA. Mudaria o algoritmo de mCRPC profundamente.</div>
+            </div>
+            <div style="background: var(--graphite-2); border: 1px solid rgba(168,85,247,0.3); border-radius: var(--radius-md); padding: 1.25rem">
+              <div style="font-family: var(--font-mono); color: #A855F7; font-size: 0.85rem; margin-bottom: 0.4rem">Sequência β → α</div>
+              <div style="font-size: 0.95rem; color: var(--off-white); margin-bottom: 0.35rem">Estratégia padrão</div>
+              <div style="font-size: 0.82rem; color: var(--stone); line-height: 1.5">Lu primeiro (cobertura ampla, dose-controlada), α em refratários (potência local). Sequenciamento racional ganhando maturidade.</div>
+            </div>
+            <div style="background: var(--graphite-2); border: 1px solid rgba(168,85,247,0.3); border-radius: var(--radius-md); padding: 1.25rem">
+              <div style="font-family: var(--font-mono); color: #A855F7; font-size: 0.85rem; margin-bottom: 0.4rem">Targeted Thorium (TTC)</div>
+              <div style="font-size: 0.95rem; color: var(--off-white); margin-bottom: 0.35rem">α-anticorpo · Bayer</div>
+              <div style="font-size: 0.82rem; color: var(--stone); line-height: 1.5">FGFR2, mesotelina, HER2, CD22. Plataforma α em ADCs. Frente que mistura biofarma com radio.</div>
+            </div>
+            <div style="background: var(--graphite-2); border: 1px solid rgba(168,85,247,0.3); border-radius: var(--radius-md); padding: 1.25rem">
+              <div style="font-family: var(--font-mono); color: #A855F7; font-size: 0.85rem; margin-bottom: 0.4rem">Combinações com PARPi</div>
+              <div style="font-size: 0.95rem; color: var(--off-white); margin-bottom: 0.35rem">α + bloqueio reparo</div>
+              <div style="font-size: 0.82rem; color: var(--stone); line-height: 1.5">Sinergia conceitual perfeita: α causa DSB densas; PARPi impede reparo. Estudos pré-clínicos promissores.</div>
+            </div>
+            <div style="background: var(--graphite-2); border: 1px solid rgba(168,85,247,0.3); border-radius: var(--radius-md); padding: 1.25rem">
+              <div style="font-family: var(--font-mono); color: #A855F7; font-size: 0.85rem; margin-bottom: 0.4rem">Combinações com imuno</div>
+              <div style="font-size: 0.95rem; color: var(--off-white); margin-bottom: 0.35rem">Efeito abscopal mediado por α</div>
+              <div style="font-size: 0.82rem; color: var(--stone); line-height: 1.5">Quebras densas liberam neoantígenos e ativam STING. Combinações com anti-PD-1 em estudos fase 1.</div>
+            </div>
+          </div>
+
+          <div class="key-fact">
+            <div class="lbl">A teranóstica em camadas</div>
+            <p>O futuro mais provável não é "α substitui β" — é uma <strong>teranóstica em camadas</strong>: imagem PET para selecionar e quantificar; β para tratar a maior parte da carga (dose-controlada, ampla); α (ou Auger) para resgatar refratários ou tratar micromets residuais; combinações com PARPi e imunoterapia para potencializar e ativar resposta sistêmica. Cada paciente um plano. Marcos, esta é a fronteira onde o seu Centro Teranóstico do HFR se posiciona para os próximos 5 anos.</p>
+          </div>
+        </div>
+
+        <div class="orbital-divider">
+          <svg width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="60" cy="20" r="3" fill="#A855F7"/>
+            <ellipse cx="60" cy="20" rx="40" ry="10" fill="none" stroke="#A855F7" stroke-width="0.8" opacity="0.4"/>
+            <ellipse cx="60" cy="20" rx="55" ry="13" fill="none" stroke="#0EA5B7" stroke-width="0.6" stroke-dasharray="2 4" opacity="0.5"/>
+            <circle cx="100" cy="20" r="1.5" fill="#0EA5B7"/>
+            <circle cx="20" cy="20" r="1.5" fill="#0EA5B7"/>
+          </svg>
+        </div>
+
+        <!-- ============== PRÓXIMOS ============== -->
+        <div id="proximos" class="rf-section">
+          <h2><span class="num">09</span> Continue lendo</h2>
+          <div class="next-grid">
+            <a href="lu-psma.html" class="next-card">
+              <div class="lbl">Referência β em PSMA</div>
+              <div class="name">¹⁷⁷Lu-PSMA-617</div>
+              <div class="desc">Base sobre a qual o ²²⁵Ac-PSMA e ¹⁶¹Tb-PSMA constroem.</div>
+            </a>
+            <a href="lu-dotatate.html" class="next-card">
+              <div class="lbl">Referência β em SSTR</div>
+              <div class="name">¹⁷⁷Lu-DOTATATE</div>
+              <div class="desc">Plataforma para ²¹²Pb-DOTAMTATE e ²²⁵Ac-DOTATATE.</div>
+            </a>
+            <a href="ra-223.html" class="next-card">
+              <div class="lbl">α aprovado · osso</div>
+              <div class="name">²²³Ra-Cloreto</div>
+              <div class="desc">Primeiro α em oncologia. Mecanismo cálcio-mimético.</div>
+            </a>
+            <a href="database.html" class="next-card">
+              <div class="lbl">Database</div>
+              <div class="name">Estudos α e Auger</div>
+              <div class="desc">Filtre por '225Ac', '161Tb', '212Pb' no Database.</div>
+            </a>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>© 2026 TheraTrials Oncology · Plataforma de evidências em oncologia moderna</span>
+      <span style="color: var(--stone); font-size: 0.82rem; margin-left: 1rem">Dados extraídos de publicações peer-reviewed e bases regulatórias. Conteúdo educacional, não substitui julgamento clínico.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    if (typeof lucide !== 'undefined') lucide.createIcons();
+  });
+</script>
+
+</body>
+</html>

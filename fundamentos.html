@@ -1,0 +1,1558 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fundamentos · TheraTrials Oncology</title>
+<meta name="description" content="Como funcionam os ensaios clínicos: guia visual e direto sobre fases, desenhos, desfechos e estatística básica.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/theratrials.css">
+<link rel="icon" type="image/png" href="assets/img/logo-app.png">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+<style>
+  /* ---------- Hero ---------- */
+  .fund-hero { padding: 3rem 0 2rem; text-align: center; }
+  .fund-hero h1 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; letter-spacing: -0.025em; margin-bottom: 0.75rem; }
+  .fund-hero h1 .text-amber { color: var(--amber); }
+  .fund-hero p { color: var(--stone); max-width: 640px; margin: 0 auto; font-size: 1rem; }
+
+  /* ---------- Hub de tópicos ---------- */
+  .hub-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0.85rem;
+    margin: 2rem 0 4rem;
+  }
+  .hub-card {
+    background: var(--graphite-2);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-md);
+    padding: 1.1rem;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    transition: all 0.2s ease;
+    cursor: pointer;
+  }
+  .hub-card:hover {
+    border-color: var(--accent, var(--amber));
+    background: var(--graphite-3);
+    transform: translateY(-2px);
+  }
+  .hub-card .num {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--stone-2);
+    letter-spacing: 0.08em;
+  }
+  .hub-card .icon {
+    color: var(--accent, var(--amber));
+    width: 24px; height: 24px;
+  }
+  .hub-card h3 {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--off-white);
+    letter-spacing: -0.015em;
+    margin: 0;
+  }
+  .hub-card p {
+    font-size: 0.78rem;
+    color: var(--stone);
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  /* ---------- Seções ---------- */
+  section.topic {
+    padding: 3rem 0;
+    scroll-margin-top: 100px;
+  }
+  section.topic .topic-head {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+  }
+  section.topic .topic-num {
+    width: 32px; height: 32px;
+    border-radius: var(--radius-sm);
+    background: var(--accent-bg, rgba(255, 132, 0, 0.12));
+    color: var(--accent, var(--amber));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+  }
+  section.topic h2 {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--off-white);
+    letter-spacing: -0.02em;
+    margin: 0;
+  }
+  section.topic .lede {
+    color: var(--stone);
+    font-size: 0.95rem;
+    margin: 0.5rem 0 1.5rem;
+    max-width: 720px;
+    line-height: 1.6;
+  }
+  section.topic .lede strong { color: var(--off-white); }
+
+  /* ---------- Divisor orbital entre seções (transição elegante) ---------- */
+  .topic-divider {
+    position: relative;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin: 0;
+  }
+  .topic-divider::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: min(80%, 720px);
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, rgba(255, 132, 0, 0.06) 18%, rgba(255, 132, 0, 0.4) 50%, rgba(255, 132, 0, 0.06) 82%, transparent 100%);
+  }
+  .topic-divider svg {
+    position: relative;
+    z-index: 2;
+    width: 200px;
+    height: 50px;
+    overflow: visible;
+  }
+  .topic-divider::after {
+    content: '';
+    position: absolute;
+    bottom: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50%;
+    height: 60px;
+    background: radial-gradient(ellipse, rgba(255, 132, 0, 0.10) 0%, transparent 70%);
+    pointer-events: none;
+    filter: blur(14px);
+  }
+
+  /* ---------- Reveal on scroll ---------- */
+  section.topic { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
+  section.topic.in-view { opacity: 1; transform: translateY(0); }
+
+  /* ---------- Key fact boxes (aprofundamento visual) ---------- */
+  .key-fact {
+    background: linear-gradient(135deg, rgba(255, 132, 0, 0.06) 0%, transparent 100%);
+    border: 1px solid rgba(255, 132, 0, 0.2);
+    border-left: 3px solid var(--amber);
+    border-radius: var(--radius-md);
+    padding: 0.85rem 1.1rem;
+    margin: 1.25rem 0;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.85rem;
+    align-items: start;
+  }
+  .key-fact .kf-icon {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: rgba(255, 132, 0, 0.15);
+    color: var(--amber);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .key-fact .kf-text {
+    font-size: 0.85rem;
+    color: var(--off-white);
+    line-height: 1.55;
+  }
+  .key-fact .kf-text strong { color: var(--amber); display: block; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.2rem; font-weight: 700; }
+
+  /* ---------- Funnel de fases (taxa de sucesso) ---------- */
+  .funnel {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+    margin: 1.5rem 0 0.75rem;
+  }
+  .funnel-step {
+    background: var(--graphite-2);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-md);
+    padding: 0.85rem 0.75rem;
+    text-align: center;
+    position: relative;
+  }
+  .funnel-step .pct {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--funnel-color, var(--amber));
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+  .funnel-step .lbl {
+    font-size: 0.68rem;
+    color: var(--stone);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 0.4rem;
+  }
+  .funnel-step .arr {
+    position: absolute;
+    right: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--stone-2);
+    font-size: 1rem;
+    z-index: 2;
+    background: var(--graphite);
+    width: 20px; height: 20px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .funnel-step:last-child .arr { display: none; }
+  @media (max-width: 720px) { .funnel { grid-template-columns: repeat(2, 1fr); } .funnel-step .arr { display: none; } }
+
+  /* ---------- Hierarquia da evidência (pirâmide) ---------- */
+  .pyramid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    margin: 1.25rem 0;
+  }
+  .pyramid-tier {
+    background: var(--graphite-2);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-sm);
+    padding: 0.55rem 1.1rem;
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--off-white);
+    transition: all 0.2s ease;
+  }
+  .pyramid-tier:hover { border-color: var(--amber); background: var(--graphite-3); }
+  .pyramid-tier .lvl { font-size: 0.6rem; color: var(--amber); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; margin-bottom: 0.15rem; display: block; }
+  .pyramid-tier.t1 { width: 30%; min-width: 200px; background: rgba(52, 211, 153, 0.06); border-color: rgba(52, 211, 153, 0.3); }
+  .pyramid-tier.t1 .lvl { color: #6EE7B7; }
+  .pyramid-tier.t2 { width: 45%; min-width: 240px; }
+  .pyramid-tier.t3 { width: 60%; min-width: 280px; }
+  .pyramid-tier.t4 { width: 75%; min-width: 320px; }
+  .pyramid-tier.t5 { width: 90%; opacity: 0.7; }
+
+  /* ---------- KM curve mockup ---------- */
+  .km-mock {
+    background: var(--graphite-2);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-md);
+    padding: 1.25rem;
+    margin: 1rem 0;
+  }
+  .km-mock svg { width: 100%; height: 200px; }
+  .km-legend {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    margin-top: 0.75rem;
+    flex-wrap: wrap;
+  }
+  .km-legend .lg-item {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.78rem;
+    color: var(--stone);
+  }
+  .km-legend .lg-line { width: 20px; height: 2px; }
+
+  /* ---------- Endpoint relationship (Venn-style) ---------- */
+  .ep-venn-box {
+    background: var(--graphite-2);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-md);
+    padding: 1.25rem;
+    margin: 1.25rem 0;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1.5rem;
+    align-items: center;
+  }
+  @media (max-width: 600px) { .ep-venn-box { grid-template-columns: 1fr; text-align: center; } }
+  .ep-venn-box svg { width: 200px; height: 140px; flex-shrink: 0; margin: 0 auto; }
+  .ep-venn-box .ven-text { font-size: 0.85rem; color: var(--stone); line-height: 1.6; }
+  .ep-venn-box .ven-text strong { color: var(--off-white); }
+
+  /* ---------- ITT vs PP visual ---------- */
+  .itt-pp {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.85rem;
+    margin: 1.25rem 0;
+  }
+  @media (max-width: 600px) { .itt-pp { grid-template-columns: 1fr; } }
+  .itt-pp-card {
+    background: var(--graphite-2);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-md);
+    padding: 1.1rem;
+  }
+  .itt-pp-card h5 {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--off-white);
+    margin: 0 0 0.5rem;
+  }
+  .itt-pp-card .who {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--amber);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+  }
+  .itt-pp-card svg { width: 100%; height: 60px; margin: 0.6rem 0; }
+  .itt-pp-card p { font-size: 0.78rem; color: var(--stone); margin: 0; line-height: 1.5; }
+  .itt-pp-card .pros-cons {
+    margin-top: 0.6rem;
+    padding-top: 0.6rem;
+    border-top: 1px solid var(--border-soft);
+    font-size: 0.7rem;
+    color: var(--off-white);
+  }
+  .itt-pp-card .pros-cons span:first-child { color: #6EE7B7; }
+  .itt-pp-card .pros-cons span:last-child { color: #FCA5A5; }
+
+  /* ---------- Tox example pills ---------- */
+  .tox-examples {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0.5rem;
+    margin: 1rem 0;
+    font-size: 0.78rem;
+  }
+  .tox-ex {
+    background: var(--graphite-2);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-sm);
+    padding: 0.55rem 0.75rem;
+    color: var(--stone);
+  }
+  .tox-ex strong { color: var(--off-white); display: inline; }
+  .tox-ex .gtag {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    padding: 0.05rem 0.35rem;
+    border-radius: var(--radius-sm);
+    margin-right: 0.4rem;
+    font-weight: 600;
+  }
+  .tox-ex .gtag.g3 { background: rgba(251, 167, 74, 0.2); color: #FBA74A; }
+
+  /* ---------- Read-step time pill ---------- */
+  .read-step .time-pill {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--teal);
+    background: rgba(14, 165, 183, 0.1);
+    padding: 0.1rem 0.45rem;
+    border-radius: 100px;
+    margin-left: 0.5rem;
+    vertical-align: middle;
+  }
+
+  /* ---------- Linha do tempo das fases (SVG horizontal) ---------- */
+  .phase-timeline {
+    background: var(--graphite-2);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem 1.5rem;
+    overflow-x: auto;
+    margin-bottom: 1.5rem;
+  }
+  .phase-stops {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.5rem;
+    align-items: stretch;
+    min-width: 720px;
+    position: relative;
+  }
+  .phase-stops::before {
+    content: '';
+    position: absolute;
+    top: 32px;
+    left: 10%;
+    right: 10%;
+    height: 2px;
+    background: linear-gradient(90deg, #C084FC 0%, #DDB4F9 25%, #93C5FD 50%, #6EE7B7 75%, var(--stone) 100%);
+    opacity: 0.4;
+    z-index: 0;
+  }
+  .phase-stop {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+  .phase-stop .dot {
+    width: 64px; height: 64px;
+    border-radius: 50%;
+    background: var(--graphite-3);
+    border: 2px solid var(--phase-color);
+    color: var(--phase-color);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 0.75rem;
+    letter-spacing: -0.03em;
+  }
+  .phase-stop .label {
+    font-family: var(--font-display);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--off-white);
+    margin-bottom: 0.4rem;
+  }
+  .phase-stop .pq {
+    font-size: 0.7rem;
+    color: var(--stone);
+    line-height: 1.5;
+    margin-bottom: 0.4rem;
+  }
+  .phase-stop .n {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--phase-color);
+    background: var(--graphite-3);
+    padding: 0.15rem 0.45rem;
+    border-radius: 100px;
+    display: inline-block;
+  }
+
+  /* ---------- Cards de desenho ---------- */
+  .design-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+  }
+  .design-card {
+    background: var(--graphite-2);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-md);
+    padding: 1.25rem;
+  }
+  .design-card svg {
+    display: block;
+    width: 100%;
+    height: 80px;
+    margin-bottom: 0.85rem;
+  }
+  .design-card h4 {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--off-white);
+    margin: 0 0 0.35rem;
+    letter-spacing: -0.01em;
+  }
+  .design-card p {
+    font-size: 0.78rem;
+    color: var(--stone);
+    margin: 0;
+    line-height: 1.5;
+  }
+  .design-card .ex {
+    margin-top: 0.6rem;
+    padding-top: 0.6rem;
+    border-top: 1px solid var(--border-soft);
+    font-size: 0.7rem;
+    color: var(--amber);
+    font-family: var(--font-mono);
+  }
+
+  /* ---------- Tabela de endpoints ---------- */
+  .ep-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--graphite-2);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+  }
+  .ep-table td {
+    padding: 0.7rem 1rem;
+    border-bottom: 1px solid var(--border-soft);
+    font-size: 0.85rem;
+    line-height: 1.5;
+    vertical-align: top;
+  }
+  .ep-table tr:last-child td { border-bottom: none; }
+  .ep-table tr:hover td { background: rgba(255, 132, 0, 0.03); }
+  .ep-table .sigla {
+    font-family: var(--font-mono);
+    font-weight: 600;
+    color: var(--amber);
+    width: 90px;
+    white-space: nowrap;
+  }
+  .ep-table .name { color: var(--off-white); font-weight: 500; width: 220px; }
+  .ep-table .desc { color: var(--stone); }
+  .ep-table .tag {
+    display: inline-block;
+    font-size: 0.6rem;
+    padding: 0.1rem 0.4rem;
+    border-radius: var(--radius-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+    margin-left: 0.5rem;
+    border: 1px solid;
+    vertical-align: middle;
+  }
+  .tag-hard { background: rgba(52, 211, 153, 0.12); color: #6EE7B7; border-color: rgba(52, 211, 153, 0.3); }
+  .tag-surr { background: rgba(96, 165, 250, 0.12); color: #93C5FD; border-color: rgba(96, 165, 250, 0.3); }
+
+  /* ---------- Cards de stats ---------- */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 0.85rem;
+  }
+  .stat-tile {
+    background: var(--graphite-2);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-md);
+    padding: 1rem 1.1rem;
+  }
+  .stat-tile .key {
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--amber);
+    margin-bottom: 0.25rem;
+  }
+  .stat-tile h4 {
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--off-white);
+    margin: 0 0 0.35rem;
+  }
+  .stat-tile p {
+    font-size: 0.78rem;
+    color: var(--stone);
+    margin: 0;
+    line-height: 1.5;
+  }
+  .stat-tile .interp {
+    margin-top: 0.6rem;
+    padding-top: 0.6rem;
+    border-top: 1px solid var(--border-soft);
+    font-size: 0.7rem;
+    color: var(--off-white);
+  }
+  .stat-tile .interp strong { color: var(--teal); font-family: var(--font-mono); }
+
+  /* ---------- Steps de "como ler" ---------- */
+  .read-steps {
+    display: grid;
+    gap: 0.6rem;
+  }
+  .read-step {
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    gap: 0.85rem;
+    align-items: start;
+    background: var(--graphite-2);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-md);
+    padding: 0.85rem 1.1rem;
+  }
+  .read-step .step-n {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: var(--amber);
+    color: var(--graphite);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .read-step h5 {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--off-white);
+    margin: 0 0 0.2rem;
+    letter-spacing: -0.01em;
+  }
+  .read-step p { font-size: 0.82rem; color: var(--stone); margin: 0; line-height: 1.5; }
+
+  /* ---------- Mito vs Realidade ---------- */
+  .myth-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 0.85rem;
+  }
+  .myth-card {
+    background: var(--graphite-2);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+  }
+  .myth-row {
+    padding: 0.85rem 1rem;
+    display: flex;
+    gap: 0.6rem;
+    font-size: 0.82rem;
+    line-height: 1.55;
+  }
+  .myth-row.myth { background: rgba(239, 68, 68, 0.05); border-bottom: 1px solid var(--border-soft); }
+  .myth-row.real { background: rgba(52, 211, 153, 0.04); }
+  .myth-row .ic {
+    flex-shrink: 0;
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 0.75rem;
+  }
+  .myth-row.myth .ic { background: rgba(239, 68, 68, 0.2); color: #FCA5A5; }
+  .myth-row.real .ic { background: rgba(52, 211, 153, 0.2); color: #6EE7B7; }
+  .myth-row .text strong { color: var(--off-white); display: block; margin-bottom: 0.15rem; font-weight: 600; }
+  .myth-row.myth .text { color: var(--stone); }
+  .myth-row.real .text { color: var(--off-white); }
+
+  /* ---------- Toxicidade — escala visual ---------- */
+  .ctcae-scale {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.4rem;
+    margin: 1rem 0;
+  }
+  .ctcae-grade {
+    background: var(--graphite-2);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-md);
+    padding: 0.85rem 0.75rem;
+    text-align: center;
+    border-top: 3px solid var(--g-color);
+  }
+  .ctcae-grade .gn {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--g-color);
+    line-height: 1;
+  }
+  .ctcae-grade .gl {
+    font-size: 0.7rem;
+    color: var(--off-white);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+    margin-top: 0.4rem;
+  }
+  .ctcae-grade .gd {
+    font-size: 0.7rem;
+    color: var(--stone);
+    margin-top: 0.4rem;
+    line-height: 1.4;
+  }
+  @media (max-width: 700px) { .ctcae-scale { grid-template-columns: repeat(2, 1fr); } }
+
+  /* ---------- Cegamento — chart visual ---------- */
+  .blind-tbl {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--graphite-2);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    margin: 1rem 0;
+  }
+  .blind-tbl th, .blind-tbl td {
+    padding: 0.5rem 0.75rem;
+    border-bottom: 1px solid var(--border-soft);
+    font-size: 0.82rem;
+    text-align: center;
+  }
+  .blind-tbl th {
+    background: var(--graphite-3);
+    color: var(--stone);
+    font-weight: 600;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .blind-tbl td:first-child { text-align: left; color: var(--off-white); font-weight: 500; }
+  .blind-tbl tr:last-child td { border-bottom: none; }
+  .eye-yes { color: #6EE7B7; }
+  .eye-no { color: #FCA5A5; }
+
+  /* ---------- Exemplos de estudos do banco (badges) ---------- */
+  .ex-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    background: rgba(255, 132, 0, 0.08);
+    border: 1px solid rgba(255, 132, 0, 0.25);
+    color: var(--amber-glow);
+    padding: 0.2rem 0.55rem;
+    border-radius: 100px;
+    font-size: 0.72rem;
+    font-family: var(--font-mono);
+    margin: 0.15rem 0.25rem 0.15rem 0;
+    text-decoration: none;
+  }
+  .ex-pill:hover { background: rgba(255, 132, 0, 0.15); color: var(--off-white); }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="brand">
+      <img src="assets/img/logo-app.png" alt="TheraTrials" class="brand-logo">
+      <div class="brand-text">
+        <span class="brand-name">TheraTrials</span>
+        <span class="brand-sub">Oncology</span>
+      </div>
+    </a>
+    <button class="nav-toggle" aria-label="Menu"><i data-lucide="menu" style="width:18px;height:18px"></i></button>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="database.html">Database</a>
+      <a href="estudos-ativos.html">Estudos ativos</a>
+      <a href="tumor-boards.html">Tumor boards</a>
+      <a href="modalidades.html">Modalidades</a>
+      <a href="ferramentas.html">Ferramentas</a>
+      <a href="fundamentos.html">Fundamentos</a>
+      <a href="about.html">Sobre</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="fund-hero">
+  <div class="container">
+    <span class="eyebrow">Fundamentos · ensaios clínicos</span>
+    <h1>O <span class="text-amber">essencial</span> em 6 cartões</h1>
+    <p>Sem rodeios. Conceitos visuais para ler qualquer trial em oncologia com rigor — fases, desenhos, desfechos, estatística e armadilhas.</p>
+  </div>
+</section>
+
+<section style="padding: 0">
+  <div class="container">
+
+    <!-- HUB DE TÓPICOS -->
+    <div class="hub-grid">
+      <a href="#fases" class="hub-card" style="--accent: #C084FC">
+        <div class="num">01</div>
+        <i data-lucide="layers" class="icon"></i>
+        <h3>Fases</h3>
+        <p>Da segurança à eficácia comparativa.</p>
+      </a>
+      <a href="#desenhos" class="hub-card" style="--accent: #93C5FD">
+        <div class="num">02</div>
+        <i data-lucide="git-branch" class="icon"></i>
+        <h3>Desenhos</h3>
+        <p>RCT, single-arm, plataforma, fatorial.</p>
+      </a>
+      <a href="#endpoints" class="hub-card" style="--accent: var(--amber)">
+        <div class="num">03</div>
+        <i data-lucide="target" class="icon"></i>
+        <h3>Endpoints</h3>
+        <p>Hard vs surrogate. PFS, OS, ORR.</p>
+      </a>
+      <a href="#estatistica" class="hub-card" style="--accent: var(--teal)">
+        <div class="num">04</div>
+        <i data-lucide="sigma" class="icon"></i>
+        <h3>Estatística</h3>
+        <p>HR, IC, p, ITT, cross-over.</p>
+      </a>
+      <a href="#toxicidade" class="hub-card" style="--accent: #FCA5A5">
+        <div class="num">05</div>
+        <i data-lucide="alert-triangle" class="icon"></i>
+        <h3>Toxicidade</h3>
+        <p>Escala CTCAE · 5 graus.</p>
+      </a>
+      <a href="#ler-paper" class="hub-card" style="--accent: #6EE7B7">
+        <div class="num">06</div>
+        <i data-lucide="book-open" class="icon"></i>
+        <h3>Como ler</h3>
+        <p>7 passos para extrair o essencial.</p>
+      </a>
+      <a href="#armadilhas" class="hub-card" style="--accent: #FBBF24">
+        <div class="num">07</div>
+        <i data-lucide="alert-octagon" class="icon"></i>
+        <h3>Armadilhas</h3>
+        <p>Mitos comuns × realidade.</p>
+      </a>
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- 1. FASES -->
+    <!-- ============================================================== -->
+    <section class="topic" id="fases" style="--accent: #C084FC; --accent-bg: rgba(192, 132, 252, 0.12)">
+      <div class="topic-head">
+        <div class="topic-num">01</div>
+        <h2>Fases dos estudos</h2>
+      </div>
+      <p class="lede">Toda droga oncológica passa por 4 fases sequenciais. Cada fase responde a uma pergunta específica e exige sucesso da anterior.</p>
+
+      <div class="phase-timeline">
+        <div class="phase-stops">
+          <div class="phase-stop" style="--phase-color: #A855F7">
+            <div class="dot">0</div>
+            <div class="label">Microdose</div>
+            <div class="pq">Atinge o alvo?</div>
+            <div class="n">10–15</div>
+          </div>
+          <div class="phase-stop" style="--phase-color: #C084FC">
+            <div class="dot">1</div>
+            <div class="label">Segurança</div>
+            <div class="pq">Qual é a MTD/RP2D?</div>
+            <div class="n">20–80</div>
+          </div>
+          <div class="phase-stop" style="--phase-color: #93C5FD">
+            <div class="dot">2</div>
+            <div class="label">Sinal</div>
+            <div class="pq">Tem atividade?</div>
+            <div class="n">50–300</div>
+          </div>
+          <div class="phase-stop" style="--phase-color: #6EE7B7">
+            <div class="dot">3</div>
+            <div class="label">Pivotal</div>
+            <div class="pq">Supera o padrão?</div>
+            <div class="n">300–3000+</div>
+          </div>
+          <div class="phase-stop" style="--phase-color: #8E949C">
+            <div class="dot">4</div>
+            <div class="label">Real-world</div>
+            <div class="pq">Como funciona na prática?</div>
+            <div class="n">milhares</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Funnel: probabilidade de progressão entre fases -->
+      <h3 style="font-size: 0.95rem; font-weight: 600; color: var(--stone); text-transform: uppercase; letter-spacing: 0.1em; margin: 1.5rem 0 0.5rem">Probabilidade de progressão</h3>
+      <div class="funnel">
+        <div class="funnel-step" style="--funnel-color: #C084FC">
+          <div class="pct">~63%</div>
+          <div class="lbl">Fase 1 → 2</div>
+          <span class="arr">→</span>
+        </div>
+        <div class="funnel-step" style="--funnel-color: #93C5FD">
+          <div class="pct">~31%</div>
+          <div class="lbl">Fase 2 → 3</div>
+          <span class="arr">→</span>
+        </div>
+        <div class="funnel-step" style="--funnel-color: #6EE7B7">
+          <div class="pct">~58%</div>
+          <div class="lbl">Fase 3 → aprovação</div>
+          <span class="arr">→</span>
+        </div>
+        <div class="funnel-step" style="--funnel-color: #FF8400">
+          <div class="pct">~5%</div>
+          <div class="lbl">Da Fase 1 ao mercado</div>
+        </div>
+      </div>
+      <p class="lede" style="font-size: 0.78rem; margin-top: 0.25rem; color: var(--stone-2)">Em oncologia, apenas 1 em cada 20 drogas que entram em humanos chega à aprovação. O caminho típico leva <strong style="color: var(--off-white)">7-12 anos</strong>.</p>
+
+      <div class="key-fact">
+        <div class="kf-icon"><i data-lucide="lightbulb" style="width:16px;height:16px"></i></div>
+        <div class="kf-text">
+          <strong>Atalho regulatório</strong>
+          A FDA pode dar <em style="color: var(--amber)">accelerated approval</em> com fase 2 single-arm + endpoint surrogate (ex: ORR), exigindo um fase 3 confirmatório posterior. Foi assim que <a href="database.html" class="ex-pill" style="margin: 0">Pluvicto®</a> chegou ao mercado mais rápido — antes da OS final do VISION.
+        </div>
+      </div>
+
+      <p class="lede" style="margin-top: 1.5rem">
+        <strong>Exemplos no banco:</strong>
+        <a href="database.html" class="ex-pill">VISION · Fase 3</a>
+        <a href="database.html" class="ex-pill">NETTER-1 · Fase 3</a>
+        <a href="database.html" class="ex-pill">TheraP · Fase 2</a>
+        <a href="database.html" class="ex-pill">VIOLET · Fase 1/2</a>
+        <a href="database.html" class="ex-pill">STAMPEDE · plataforma</a>
+      </p>
+    </section>
+
+    <!-- DIVISOR ORBITAL -->
+    <div class="topic-divider" aria-hidden="true">
+      <svg viewBox="0 0 200 50" fill="none">
+        <ellipse cx="100" cy="25" rx="70" ry="11" stroke="#FF8400" stroke-width="0.8" fill="none" opacity="0.55"/>
+        <ellipse cx="100" cy="25" rx="55" ry="8" stroke="#FF8400" stroke-width="0.6" stroke-dasharray="1.2 4" fill="none" opacity="0.4"/>
+        <circle cx="100" cy="25" r="4" fill="#FF8400" opacity="0.85"/>
+        <circle cx="100" cy="25" r="1.5" fill="#FFE5B0"/>
+        <circle cx="32" cy="29" r="1.6" fill="#FF8400"/>
+        <circle cx="166" cy="22" r="1.5" fill="#0EA5B7"/>
+      </svg>
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- 2. DESENHOS -->
+    <!-- ============================================================== -->
+    <section class="topic" id="desenhos" style="--accent: #93C5FD; --accent-bg: rgba(96, 165, 250, 0.12)">
+      <div class="topic-head">
+        <div class="topic-num">02</div>
+        <h2>Tipos de desenho</h2>
+      </div>
+      <p class="lede">O desenho determina <strong>o quanto se pode confiar nas conclusões</strong>. RCT é padrão-ouro; single-arm é exploratório.</p>
+
+      <div class="design-grid">
+        <div class="design-card">
+          <svg viewBox="0 0 240 80" fill="none">
+            <circle cx="20" cy="40" r="6" fill="#FF8400"/>
+            <line x1="26" y1="40" x2="80" y2="40" stroke="#5C616A" stroke-width="1.5"/>
+            <text x="50" y="35" font-size="9" fill="#8E949C" font-family="JetBrains Mono">RANDOM</text>
+            <line x1="80" y1="40" x2="120" y2="20" stroke="#5C616A" stroke-width="1.5"/>
+            <line x1="80" y1="40" x2="120" y2="60" stroke="#5C616A" stroke-width="1.5"/>
+            <rect x="120" y="13" width="100" height="14" rx="3" fill="rgba(255,132,0,0.2)" stroke="#FF8400"/>
+            <rect x="120" y="53" width="100" height="14" rx="3" fill="rgba(143,148,156,0.15)" stroke="#5C616A"/>
+            <text x="170" y="23" font-size="9" fill="#FFB95E" text-anchor="middle">Tratamento</text>
+            <text x="170" y="63" font-size="9" fill="#8E949C" text-anchor="middle">Controle</text>
+          </svg>
+          <h4>RCT (Randomized Controlled Trial)</h4>
+          <p>Pacientes alocados aleatoriamente. Padrão-ouro: equilibra fatores conhecidos e desconhecidos.</p>
+          <div class="ex">VISION 2:1 · ALSYMPCA 2:1 · PEACE-3 1:1</div>
+        </div>
+
+        <div class="design-card">
+          <svg viewBox="0 0 240 80" fill="none">
+            <circle cx="20" cy="40" r="6" fill="#FF8400"/>
+            <line x1="26" y1="40" x2="120" y2="40" stroke="#5C616A" stroke-width="1.5"/>
+            <rect x="120" y="33" width="100" height="14" rx="3" fill="rgba(255,132,0,0.2)" stroke="#FF8400"/>
+            <text x="170" y="43" font-size="9" fill="#FFB95E" text-anchor="middle">Tratamento (todos)</text>
+          </svg>
+          <h4>Single-arm</h4>
+          <p>Sem comparador prospectivo. Útil em doenças raras ou efeitos dramáticos. Resultado precisa contexto histórico.</p>
+          <div class="ex">LEGACY · LuTectomy · 225Ac-PSMA-617</div>
+        </div>
+
+        <div class="design-card">
+          <svg viewBox="0 0 240 80" fill="none">
+            <circle cx="20" cy="40" r="6" fill="#FF8400"/>
+            <line x1="26" y1="40" x2="60" y2="40" stroke="#5C616A" stroke-width="1.5"/>
+            <line x1="60" y1="40" x2="100" y2="15" stroke="#5C616A" stroke-width="1.5"/>
+            <line x1="60" y1="40" x2="100" y2="40" stroke="#5C616A" stroke-width="1.5"/>
+            <line x1="60" y1="40" x2="100" y2="65" stroke="#5C616A" stroke-width="1.5"/>
+            <rect x="100" y="9" width="120" height="11" rx="3" fill="rgba(192,132,252,0.2)" stroke="#C084FC"/>
+            <rect x="100" y="34" width="120" height="11" rx="3" fill="rgba(96,165,250,0.2)" stroke="#93C5FD"/>
+            <rect x="100" y="59" width="120" height="11" rx="3" fill="rgba(143,148,156,0.15)" stroke="#5C616A"/>
+            <text x="160" y="17" font-size="8" fill="#DDB4F9" text-anchor="middle">Braço A</text>
+            <text x="160" y="42" font-size="8" fill="#93C5FD" text-anchor="middle">Braço B</text>
+            <text x="160" y="67" font-size="8" fill="#8E949C" text-anchor="middle">Controle</text>
+          </svg>
+          <h4>Plataforma multibraço</h4>
+          <p>Múltiplas comparações com controle compartilhado. Adapta ao longo do tempo. Mais eficiente que RCTs separados.</p>
+          <div class="ex">STAMPEDE · STAMPEDE-2</div>
+        </div>
+
+        <div class="design-card">
+          <svg viewBox="0 0 240 80" fill="none">
+            <line x1="120" y1="10" x2="120" y2="70" stroke="#5C616A" stroke-width="1" stroke-dasharray="2 2"/>
+            <line x1="40" y1="40" x2="200" y2="40" stroke="#5C616A" stroke-width="1" stroke-dasharray="2 2"/>
+            <rect x="50" y="15" width="65" height="22" rx="3" fill="rgba(255,132,0,0.15)" stroke="#FF8400"/>
+            <rect x="125" y="15" width="65" height="22" rx="3" fill="rgba(14,165,183,0.15)" stroke="#0EA5B7"/>
+            <rect x="50" y="45" width="65" height="22" rx="3" fill="rgba(96,165,250,0.15)" stroke="#93C5FD"/>
+            <rect x="125" y="45" width="65" height="22" rx="3" fill="rgba(143,148,156,0.1)" stroke="#5C616A"/>
+            <text x="82" y="29" font-size="8" fill="#FFB95E" text-anchor="middle">A só</text>
+            <text x="157" y="29" font-size="8" fill="#5DCAA5" text-anchor="middle">B só</text>
+            <text x="82" y="59" font-size="8" fill="#93C5FD" text-anchor="middle">A+B</text>
+            <text x="157" y="59" font-size="8" fill="#8E949C" text-anchor="middle">Controle</text>
+          </svg>
+          <h4>Fatorial 2×2</h4>
+          <p>Testa duas intervenções no mesmo estudo. Eficiente quando há duas perguntas independentes.</p>
+          <div class="ex">PEACE-1 (Doce ± Abi ± RT)</div>
+        </div>
+      </div>
+
+      <!-- Pirâmide hierárquica -->
+      <h3 style="font-size: 0.95rem; font-weight: 600; color: var(--stone); text-transform: uppercase; letter-spacing: 0.1em; margin: 2rem 0 0.75rem">Hierarquia da evidência</h3>
+      <div class="pyramid">
+        <div class="pyramid-tier t1"><span class="lvl">Nível 1A</span>Meta-análise de RCTs</div>
+        <div class="pyramid-tier t2"><span class="lvl">Nível 1B</span>RCT individual com resultado claro</div>
+        <div class="pyramid-tier t3"><span class="lvl">Nível 2</span>Coorte prospectiva com controle</div>
+        <div class="pyramid-tier t4"><span class="lvl">Nível 3</span>Caso-controle / coorte retrospectiva</div>
+        <div class="pyramid-tier t5"><span class="lvl">Nível 4-5</span>Série de casos · opinião de especialista</div>
+      </div>
+      <p class="lede" style="font-size: 0.78rem; color: var(--stone-2); margin-top: 0.5rem">Diretrizes (NCCN, ESMO) classificam recomendações pela força da evidência subjacente. <strong style="color: var(--off-white)">"Categoria 1"</strong> em NCCN ≈ <strong style="color: var(--off-white)">consenso uniforme baseado em evidência de alto nível</strong>.</p>
+    </section>
+
+    <!-- DIVISOR ORBITAL -->
+    <div class="topic-divider" aria-hidden="true">
+      <svg viewBox="0 0 200 50" fill="none">
+        <ellipse cx="100" cy="25" rx="70" ry="11" stroke="#FF8400" stroke-width="0.8" fill="none" opacity="0.55"/>
+        <ellipse cx="100" cy="25" rx="55" ry="8" stroke="#FF8400" stroke-width="0.6" stroke-dasharray="1.2 4" fill="none" opacity="0.4"/>
+        <circle cx="100" cy="25" r="4" fill="#FF8400" opacity="0.85"/>
+        <circle cx="100" cy="25" r="1.5" fill="#FFE5B0"/>
+        <circle cx="32" cy="29" r="1.6" fill="#FF8400"/>
+        <circle cx="166" cy="22" r="1.5" fill="#0EA5B7"/>
+      </svg>
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- 3. ENDPOINTS -->
+    <!-- ============================================================== -->
+    <section class="topic" id="endpoints" style="--accent: var(--amber); --accent-bg: rgba(255, 132, 0, 0.12)">
+      <div class="topic-head">
+        <div class="topic-num">03</div>
+        <h2>Desfechos (endpoints)</h2>
+      </div>
+      <p class="lede">
+        <strong>Hard endpoints</strong> medem benefício real ao paciente (OS, QoL).
+        <strong>Surrogates</strong> são imagiológicos/biológicos (PFS, ORR) — mais rápidos mas indiretos.
+      </p>
+
+      <table class="ep-table">
+        <tr>
+          <td class="sigla">OS</td>
+          <td class="name">Overall Survival<span class="tag tag-hard">Hard</span></td>
+          <td class="desc">Tempo até morte por qualquer causa. Gold standard. Pode levar anos para maturar.</td>
+        </tr>
+        <tr>
+          <td class="sigla">PFS</td>
+          <td class="name">Progression-Free Survival<span class="tag tag-surr">Surrogate</span></td>
+          <td class="desc">Tempo até progressão (RECIST) ou morte. Mais rápido que OS.</td>
+        </tr>
+        <tr>
+          <td class="sigla">rPFS</td>
+          <td class="name">Radiographic PFS<span class="tag tag-surr">Surrogate</span></td>
+          <td class="desc">Subset de PFS focado em imagem; padrão em mCRPC.</td>
+        </tr>
+        <tr>
+          <td class="sigla">MFS</td>
+          <td class="name">Metastasis-Free Survival<span class="tag tag-hard">Hard</span></td>
+          <td class="desc">Tempo até aparecimento de metástases ou morte. Padrão em nmCRPC.</td>
+        </tr>
+        <tr>
+          <td class="sigla">ORR</td>
+          <td class="name">Objective Response Rate<span class="tag tag-surr">Surrogate</span></td>
+          <td class="desc">Proporção com CR + PR por RECIST. Mede atividade.</td>
+        </tr>
+        <tr>
+          <td class="sigla">DCR</td>
+          <td class="name">Disease Control Rate<span class="tag tag-surr">Surrogate</span></td>
+          <td class="desc">CR + PR + estabilidade (SD).</td>
+        </tr>
+        <tr>
+          <td class="sigla">PSA50</td>
+          <td class="name">PSA 50% decline<span class="tag tag-surr">Surrogate</span></td>
+          <td class="desc">Específico de próstata: queda ≥50% do basal.</td>
+        </tr>
+        <tr>
+          <td class="sigla">SSE</td>
+          <td class="name">Symptomatic Skeletal Event<span class="tag tag-hard">Hard</span></td>
+          <td class="desc">Fratura patológica, compressão medular, RT óssea.</td>
+        </tr>
+        <tr>
+          <td class="sigla">QoL</td>
+          <td class="name">Quality of Life<span class="tag tag-hard">Hard</span></td>
+          <td class="desc">Escalas validadas (FACT-P, EORTC QLQ-C30, BPI).</td>
+        </tr>
+      </table>
+
+      <!-- Relação entre endpoints -->
+      <div class="ep-venn-box">
+        <svg viewBox="0 0 200 140" fill="none">
+          <defs>
+            <radialGradient id="orVenn" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#FFA640" stop-opacity="0.5"/><stop offset="100%" stop-color="#FF8400" stop-opacity="0.05"/></radialGradient>
+            <radialGradient id="tlVenn" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#5DCAA5" stop-opacity="0.45"/><stop offset="100%" stop-color="#0EA5B7" stop-opacity="0.05"/></radialGradient>
+          </defs>
+          <ellipse cx="78" cy="70" rx="58" ry="48" fill="url(#orVenn)" stroke="#FF8400" stroke-width="1" stroke-opacity="0.6"/>
+          <ellipse cx="135" cy="70" rx="42" ry="36" fill="url(#tlVenn)" stroke="#0EA5B7" stroke-width="1" stroke-opacity="0.6"/>
+          <text x="55" y="72" font-size="11" fill="#FFE5B0" font-family="Outfit" font-weight="600">PFS</text>
+          <text x="42" y="86" font-size="8" fill="#FFB95E" font-family="Outfit">surrogate</text>
+          <text x="148" y="68" font-size="11" fill="#9FE1EA" font-family="Outfit" font-weight="600">OS</text>
+          <text x="146" y="82" font-size="8" fill="#5DCAA5" font-family="Outfit">hard</text>
+          <text x="103" y="68" font-size="9" fill="#fff" font-family="Outfit" font-weight="600" text-anchor="middle">ORR</text>
+          <text x="103" y="82" font-size="7" fill="#8E949C" font-family="Outfit" text-anchor="middle">subset</text>
+        </svg>
+        <div class="ven-text">
+          ORR é subset de PFS (todo respondedor não progrediu). PFS é <strong>preditor imperfeito</strong> de OS — em alguns tumores se traduz, em outros não. <strong>OS continua sendo o standard absoluto</strong> de benefício clínico.
+        </div>
+      </div>
+
+      <div class="key-fact">
+        <div class="kf-icon"><i data-lucide="zap" style="width:16px;height:16px"></i></div>
+        <div class="kf-text">
+          <strong>Por que PFS aparece em quase todo trial moderno</strong>
+          OS leva 5-10 anos para maturar em cânceres indolentes (próstata, NET, RCC). PFS é capturável em meses, permitindo aprovação <em>accelerated</em>. Mas exige confirmação de OS posterior — se ela não vier, a aprovação pode ser revogada.
+        </div>
+      </div>
+    </section>
+
+    <!-- DIVISOR ORBITAL -->
+    <div class="topic-divider" aria-hidden="true">
+      <svg viewBox="0 0 200 50" fill="none">
+        <ellipse cx="100" cy="25" rx="70" ry="11" stroke="#FF8400" stroke-width="0.8" fill="none" opacity="0.55"/>
+        <ellipse cx="100" cy="25" rx="55" ry="8" stroke="#FF8400" stroke-width="0.6" stroke-dasharray="1.2 4" fill="none" opacity="0.4"/>
+        <circle cx="100" cy="25" r="4" fill="#FF8400" opacity="0.85"/>
+        <circle cx="100" cy="25" r="1.5" fill="#FFE5B0"/>
+        <circle cx="32" cy="29" r="1.6" fill="#FF8400"/>
+        <circle cx="166" cy="22" r="1.5" fill="#0EA5B7"/>
+      </svg>
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- 4. ESTATÍSTICA -->
+    <!-- ============================================================== -->
+    <section class="topic" id="estatistica" style="--accent: var(--teal); --accent-bg: rgba(14, 165, 183, 0.12)">
+      <div class="topic-head">
+        <div class="topic-num">04</div>
+        <h2>Estatística essencial</h2>
+      </div>
+      <p class="lede">Você não precisa ser bioestatístico — só dominar 6 conceitos que aparecem em <em>todo</em> abstract.</p>
+
+      <div class="stats-grid">
+        <div class="stat-tile">
+          <div class="key">HR</div>
+          <h4>Hazard Ratio</h4>
+          <p>Razão entre risco de evento entre grupos. Quanto menor, melhor para o tratamento.</p>
+          <div class="interp"><strong>HR 0,40</strong> = 60% menos risco · <strong>HR 1,0</strong> = sem diferença · <strong>HR 1,5</strong> = 50% mais risco</div>
+        </div>
+        <div class="stat-tile">
+          <div class="key">IC 95%</div>
+          <h4>Intervalo de Confiança</h4>
+          <p>Faixa onde o "verdadeiro" valor provavelmente está com 95% de confiança.</p>
+          <div class="interp"><strong>IC 0,52–0,74</strong> não cruza 1 → significativo</div>
+        </div>
+        <div class="stat-tile">
+          <div class="key">p &lt; 0,05</div>
+          <h4>p-value</h4>
+          <p>Probabilidade do resultado ter ocorrido por acaso. Limiar tradicional de significância.</p>
+          <div class="interp"><strong>≠ relevância clínica</strong>: olhe magnitude, não só p</div>
+        </div>
+        <div class="stat-tile">
+          <div class="key">ITT</div>
+          <h4>Intent-to-Treat</h4>
+          <p>Análise inclui TODOS os randomizados, mesmo se mudaram de tratamento. Reflete realidade.</p>
+          <div class="interp"><strong>PP</strong> só inclui quem completou — viesado mas mostra eficácia ideal</div>
+        </div>
+        <div class="stat-tile">
+          <div class="key">Power</div>
+          <h4>Poder estatístico</h4>
+          <p>Capacidade de detectar diferença real. Padrão ≥80%. Estudo underpowered = resultado ambíguo.</p>
+          <div class="interp">N planejado é calculado para atingir esse poder</div>
+        </div>
+        <div class="stat-tile">
+          <div class="key">IPCW</div>
+          <h4>Ajuste de cross-over</h4>
+          <p>Quando braço controle recebe tratamento experimental na progressão. Distorce OS ITT.</p>
+          <div class="interp">Ex: <strong>PSMAfore</strong> — OS ITT NS, mas IPCW HR 0,59</div>
+        </div>
+      </div>
+
+      <!-- ITT vs PP visual -->
+      <h3 style="font-size: 0.95rem; font-weight: 600; color: var(--stone); text-transform: uppercase; letter-spacing: 0.1em; margin: 1.75rem 0 0.5rem">ITT × Per-Protocol</h3>
+      <div class="itt-pp">
+        <div class="itt-pp-card">
+          <div class="who">Análise ITT</div>
+          <h5>Todos os randomizados entram</h5>
+          <svg viewBox="0 0 200 60" fill="none">
+            <circle cx="20" cy="30" r="6" fill="#FF8400"/>
+            <line x1="26" y1="30" x2="80" y2="30" stroke="#5C616A" stroke-width="1"/>
+            <text x="50" y="22" font-size="8" fill="#8E949C" text-anchor="middle">100 randomizados</text>
+            <line x1="80" y1="30" x2="180" y2="30" stroke="#FF8400" stroke-width="2"/>
+            <text x="130" y="22" font-size="8" fill="#FFB95E" text-anchor="middle">analisados: 100</text>
+            <text x="130" y="48" font-size="7" fill="#5C616A" text-anchor="middle">incluindo perdas, descontinuação, troca</text>
+          </svg>
+          <p>Reflete realidade: pacientes que pararam o tratamento, mudaram, abandonaram — todos contam.</p>
+          <div class="pros-cons"><span>+ rigoroso e conservador</span> · <span>− pode subestimar eficácia</span></div>
+        </div>
+        <div class="itt-pp-card">
+          <div class="who">Análise Per-Protocol</div>
+          <h5>Só quem completou o plano</h5>
+          <svg viewBox="0 0 200 60" fill="none">
+            <circle cx="20" cy="30" r="6" fill="#FF8400"/>
+            <line x1="26" y1="30" x2="80" y2="30" stroke="#5C616A" stroke-width="1"/>
+            <text x="50" y="22" font-size="8" fill="#8E949C" text-anchor="middle">100 randomizados</text>
+            <line x1="80" y1="30" x2="140" y2="30" stroke="#0EA5B7" stroke-width="2"/>
+            <line x1="140" y1="30" x2="180" y2="30" stroke="#5C616A" stroke-width="1" stroke-dasharray="2 2"/>
+            <text x="120" y="22" font-size="8" fill="#5DCAA5" text-anchor="middle">analisados: 73</text>
+            <text x="160" y="48" font-size="7" fill="#5C616A" text-anchor="middle">excluiu 27</text>
+          </svg>
+          <p>Mostra eficácia "ideal" — se todos seguissem o protocolo perfeitamente.</p>
+          <div class="pros-cons"><span>+ mostra potencial real</span> · <span>− viesado (perde aleatoriedade)</span></div>
+        </div>
+      </div>
+
+      <div class="key-fact">
+        <div class="kf-icon"><i data-lucide="info" style="width:16px;height:16px"></i></div>
+        <div class="kf-text">
+          <strong>Quando há discrepância grande entre ITT e PP</strong>
+          Significa que muitos pacientes não completaram o tratamento. Pode indicar toxicidade limitante, complexidade logística ou problema de aderência. Em ensaios pivotais, ITT é a análise <em>obrigatória</em> para decisões regulatórias.
+        </div>
+      </div>
+    </section>
+
+    <!-- DIVISOR ORBITAL -->
+    <div class="topic-divider" aria-hidden="true">
+      <svg viewBox="0 0 200 50" fill="none">
+        <ellipse cx="100" cy="25" rx="70" ry="11" stroke="#FF8400" stroke-width="0.8" fill="none" opacity="0.55"/>
+        <ellipse cx="100" cy="25" rx="55" ry="8" stroke="#FF8400" stroke-width="0.6" stroke-dasharray="1.2 4" fill="none" opacity="0.4"/>
+        <circle cx="100" cy="25" r="4" fill="#FF8400" opacity="0.85"/>
+        <circle cx="100" cy="25" r="1.5" fill="#FFE5B0"/>
+        <circle cx="32" cy="29" r="1.6" fill="#FF8400"/>
+        <circle cx="166" cy="22" r="1.5" fill="#0EA5B7"/>
+      </svg>
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- TOXICIDADE (escala visual CTCAE) -->
+    <!-- ============================================================== -->
+    <section class="topic" id="toxicidade" style="--accent: #FCA5A5; --accent-bg: rgba(239, 68, 68, 0.1)">
+      <div class="topic-head">
+        <div class="topic-num">05</div>
+        <h2>Escala CTCAE de toxicidade</h2>
+      </div>
+      <p class="lede">Eventos adversos em oncologia são classificados em <strong>5 graus</strong>. ≥G3 são os reportados em paper.</p>
+
+      <div class="ctcae-scale">
+        <div class="ctcae-grade" style="--g-color: #6EE7B7">
+          <div class="gn">G1</div>
+          <div class="gl">Leve</div>
+          <div class="gd">Assintomático ou leve. Sem intervenção.</div>
+        </div>
+        <div class="ctcae-grade" style="--g-color: #FCD34D">
+          <div class="gn">G2</div>
+          <div class="gl">Moderado</div>
+          <div class="gd">Intervenção mínima. Limita atividades instrumentais.</div>
+        </div>
+        <div class="ctcae-grade" style="--g-color: #FBA74A">
+          <div class="gn">G3</div>
+          <div class="gl">Grave</div>
+          <div class="gd">Hospitalização. Limita atividades diárias.</div>
+        </div>
+        <div class="ctcae-grade" style="--g-color: #F87171">
+          <div class="gn">G4</div>
+          <div class="gl">Ameaça à vida</div>
+          <div class="gd">UTI. Intervenção urgente.</div>
+        </div>
+        <div class="ctcae-grade" style="--g-color: #DC2626">
+          <div class="gn">G5</div>
+          <div class="gl">Fatal</div>
+          <div class="gd">Morte relacionada ao evento.</div>
+        </div>
+      </div>
+
+      <!-- Exemplos de eventos por grau -->
+      <h3 style="font-size: 0.95rem; font-weight: 600; color: var(--stone); text-transform: uppercase; letter-spacing: 0.1em; margin: 1.5rem 0 0.5rem">Exemplos clínicos comuns ≥G3</h3>
+      <div class="tox-examples">
+        <div class="tox-ex"><span class="gtag g3">G3</span><strong>Anemia</strong> Hb &lt;8 g/dL · necessita transfusão</div>
+        <div class="tox-ex"><span class="gtag g3">G3</span><strong>Trombocitopenia</strong> &lt;50.000 plaq · risco de sangramento</div>
+        <div class="tox-ex"><span class="gtag g3">G3</span><strong>Neutropenia febril</strong> &lt;500 + febre · hospitalização</div>
+        <div class="tox-ex"><span class="gtag g3">G3</span><strong>Diarreia</strong> 7+ episódios/dia · desidratação</div>
+        <div class="tox-ex"><span class="gtag g3">G3</span><strong>Hepatotoxicidade</strong> ALT/AST &gt;5×ULN</div>
+        <div class="tox-ex"><span class="gtag g3">G3</span><strong>Hipertensão</strong> PAS &gt;160 com sintomas</div>
+      </div>
+
+      <div class="key-fact">
+        <div class="kf-icon"><i data-lucide="search" style="width:16px;height:16px"></i></div>
+        <div class="kf-text">
+          <strong>O que olhar primeiro na seção de toxicidade</strong>
+          (1) Eventos ≥G3 totais nos dois braços; (2) Eventos de interesse específico — esperados pelo mecanismo (xerostomia em PSMA-RLT, anemia em PARP, hipotireoidismo em apalutamida); (3) Descontinuação por AE; (4) Mortes tratamento-relacionadas (sempre &lt;3% em estudos bem desenhados).
+        </div>
+      </div>
+    </section>
+
+    <!-- DIVISOR ORBITAL -->
+    <div class="topic-divider" aria-hidden="true">
+      <svg viewBox="0 0 200 50" fill="none">
+        <ellipse cx="100" cy="25" rx="70" ry="11" stroke="#FF8400" stroke-width="0.8" fill="none" opacity="0.55"/>
+        <ellipse cx="100" cy="25" rx="55" ry="8" stroke="#FF8400" stroke-width="0.6" stroke-dasharray="1.2 4" fill="none" opacity="0.4"/>
+        <circle cx="100" cy="25" r="4" fill="#FF8400" opacity="0.85"/>
+        <circle cx="100" cy="25" r="1.5" fill="#FFE5B0"/>
+        <circle cx="32" cy="29" r="1.6" fill="#FF8400"/>
+        <circle cx="166" cy="22" r="1.5" fill="#0EA5B7"/>
+      </svg>
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- COMO LER PAPER (7 passos) -->
+    <!-- ============================================================== -->
+    <section class="topic" id="ler-paper" style="--accent: #6EE7B7; --accent-bg: rgba(110, 231, 183, 0.1)">
+      <div class="topic-head">
+        <div class="topic-num">06</div>
+        <h2>Como ler um paper de oncologia em 7 passos</h2>
+      </div>
+      <p class="lede">Não leia papers de fora pra dentro. Leia em camadas — cada uma respondendo a uma pergunta específica. Em 15-20 minutos você extrai o essencial.</p>
+
+      <div class="reading-steps">
+        <div class="rs-step">
+          <div class="rs-num">1</div>
+          <div class="rs-body">
+            <h4>Pergunta clínica</h4>
+            <p>Qual a população (P), intervenção (I), comparador (C) e desfecho (O)? Está no título e na primeira frase do <em>abstract</em>. Se não está claro nessas duas frases, o paper começou mal.</p>
+          </div>
+        </div>
+        <div class="rs-step">
+          <div class="rs-num">2</div>
+          <div class="rs-body">
+            <h4>Desenho e fase</h4>
+            <p>RCT? Open-label? Single-arm? Fase 2 ou 3? Tamanho amostral. Endpoint primário (atenção: surrogate ou hard?). Descobre-se nos métodos — leia os 2 primeiros parágrafos de Methods.</p>
+          </div>
+        </div>
+        <div class="rs-step">
+          <div class="rs-num">3</div>
+          <div class="rs-body">
+            <h4>Tabela 1 · características basais</h4>
+            <p>Os braços são parecidos? Idade, ECOG, doença visceral, tratamentos prévios. Diferenças significativas em variáveis prognósticas tornam o resultado suspeito mesmo em RCT.</p>
+          </div>
+        </div>
+        <div class="rs-step">
+          <div class="rs-num">4</div>
+          <div class="rs-body">
+            <h4>Resultado primário · Kaplan-Meier</h4>
+            <p>HR (com IC 95%) e p-valor. Mediana de PFS/OS nos dois braços. Curvas se separam cedo ou tarde? Crossover ou plateau? Olhe a forma da curva, não só o número.</p>
+          </div>
+        </div>
+        <div class="rs-step">
+          <div class="rs-num">5</div>
+          <div class="rs-body">
+            <h4>Subgrupos (forest plot)</h4>
+            <p>Há subgrupo onde o efeito é diferente (interação)? Ex.: HRR-mutados vs wild-type, alta vs baixa expressão de PSMA. Útil para hipóteses, não para decisão (subgrupos são exploratórios em geral).</p>
+          </div>
+        </div>
+        <div class="rs-step">
+          <div class="rs-num">6</div>
+          <div class="rs-body">
+            <h4>Toxicidade e descontinuação</h4>
+            <p>≥G3 totais, eventos de interesse específico, descontinuação por AE, mortes tratamento-relacionadas. Compare com perfil esperado pelo mecanismo. Se há sinal novo, está no <em>safety summary</em>.</p>
+          </div>
+        </div>
+        <div class="rs-step">
+          <div class="rs-num">7</div>
+          <div class="rs-body">
+            <h4>Limitações declaradas</h4>
+            <p>O parágrafo de Limitations na Discussão diz mais que parece. Se o autor é honesto, lista o que enfraquece o estudo: amostra pequena, follow-up curto, crossover alto, falta de OS madura, viés de seleção. Use para calibrar peso na decisão clínica.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="key-fact">
+        <div class="kf-icon"><i data-lucide="lightbulb" style="width:16px;height:16px"></i></div>
+        <div class="kf-text">
+          <strong>Atalho de 60 segundos</strong>
+          Quando estiver com pressa: leia o <em>conclusion</em> do abstract, olhe a curva de Kaplan-Meier do endpoint primário e a tabela de toxicidade ≥G3. Isso responde "o que mudou" e "a que custo" — suficiente para decidir se vale ler com calma depois.
+        </div>
+      </div>
+    </section>
+
+    <!-- DIVISOR ORBITAL -->
+    <div class="topic-divider" aria-hidden="true">
+      <svg viewBox="0 0 200 50" fill="none">
+        <ellipse cx="100" cy="25" rx="70" ry="11" stroke="#FF8400" stroke-width="0.8" fill="none" opacity="0.55"/>
+        <ellipse cx="100" cy="25" rx="55" ry="8" stroke="#FF8400" stroke-width="0.6" stroke-dasharray="1.2 4" fill="none" opacity="0.4"/>
+        <circle cx="100" cy="25" r="4" fill="#FF8400" opacity="0.85"/>
+        <circle cx="100" cy="25" r="1.5" fill="#FFE5B0"/>
+        <circle cx="32" cy="29" r="1.6" fill="#FF8400"/>
+        <circle cx="166" cy="22" r="1.5" fill="#0EA5B7"/>
+      </svg>
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- ARMADILHAS (Mito × Realidade) -->
+    <!-- ============================================================== -->
+    <section class="topic" id="armadilhas" style="--accent: #FBBF24; --accent-bg: rgba(251, 191, 36, 0.1)">
+      <div class="topic-head">
+        <div class="topic-num">07</div>
+        <h2>Armadilhas comuns · mito × realidade</h2>
+      </div>
+      <p class="lede">Sete confusões frequentes na leitura de ensaios. Saber identificá-las separa quem decide bem de quem se deixa convencer pela manchete.</p>
+
+      <div class="myth-grid">
+        <div class="myth-card">
+          <div class="myth-tag">Mito</div>
+          <p class="myth-text">"P &lt; 0,05 significa que o tratamento funciona."</p>
+          <div class="reality-tag">Realidade</div>
+          <p class="reality-text">P &lt; 0,05 só diz que <em>provavelmente não é acaso</em>. Não diz tamanho do efeito, nem se é clinicamente relevante. HR de 0,98 com p &lt; 0,001 em N grande não muda prática.</p>
+        </div>
+        <div class="myth-card">
+          <div class="myth-tag">Mito</div>
+          <p class="myth-text">"Ganhou em PFS, então salva vidas."</p>
+          <div class="reality-tag">Realidade</div>
+          <p class="reality-text">PFS é surrogate. Em vários cenários (CHC, mama avançado), ganhos de PFS não se traduziram em OS. Em outros (mCRPC, NET), correlação é razoável. Sempre olhe se OS foi atingido também.</p>
+        </div>
+        <div class="myth-card">
+          <div class="myth-tag">Mito</div>
+          <p class="myth-text">"Subgrupo X mostrou benefício, então uso para esse paciente."</p>
+          <div class="reality-tag">Realidade</div>
+          <p class="reality-text">Análises de subgrupo são exploratórias na maioria dos estudos. Forest plot mostra hipóteses para futuros estudos, não decisão imediata. Cuidado especial com subgrupos pequenos e múltiplos testes.</p>
+        </div>
+        <div class="myth-card">
+          <div class="myth-tag">Mito</div>
+          <p class="myth-text">"Não houve diferença, então o tratamento não funciona."</p>
+          <div class="reality-tag">Realidade</div>
+          <p class="reality-text">Ausência de evidência ≠ evidência de ausência. Estudos com N pequeno podem não ter poder estatístico para detectar diferença real. Veja IC do HR — se inclui benefício clinicamente significativo, é inconclusivo.</p>
+        </div>
+        <div class="myth-card">
+          <div class="myth-tag">Mito</div>
+          <p class="myth-text">"O comparador é o padrão-ouro, então o resultado vale para o mundo real."</p>
+          <div class="reality-tag">Realidade</div>
+          <p class="reality-text">O comparador no paper pode estar desatualizado. SARAH/SIRveNIB usaram sorafenib, hoje com atezo+bev e tremelimumab+durvalumab no algoritmo de CHC. Sempre situe o comparador no momento atual.</p>
+        </div>
+        <div class="myth-card">
+          <div class="myth-tag">Mito</div>
+          <p class="myth-text">"Estudo de fase 2 com N=30 já basta para mudar prática."</p>
+          <div class="reality-tag">Realidade</div>
+          <p class="reality-text">Fase 2 single-arm aponta sinal, não confirma. Decisões regulatórias e mudança de prática rotineiramente exigem fase 3 (ou fase 2 randomizado, em populações órfãs). Exceções quando alvo é raro e benefício é dramático.</p>
+        </div>
+        <div class="myth-card">
+          <div class="myth-tag">Mito</div>
+          <p class="myth-text">"Crossover alto não importa — só olhe o desfecho final."</p>
+          <div class="reality-tag">Realidade</div>
+          <p class="reality-text">Crossover diluí o sinal de OS. PSMAfore teve 84% de crossover; OS comparável não significa sem benefício — significa que o estudo não consegue medir mais. Análises de sensibilidade (RPSFT, IPCW) ajudam a recuperar o sinal.</p>
+        </div>
+        <div class="myth-card">
+          <div class="myth-tag">Mito</div>
+          <p class="myth-text">"Subanálise não pré-especificada deu positiva — válido?"</p>
+          <div class="reality-tag">Realidade</div>
+          <p class="reality-text">Análises post-hoc são explorações. Geram hipóteses, não conclusões. Se positiva, vira tema do próximo estudo — não decisão regulatória. Sempre verifique a coluna "pre-specified" no methods e na tabela de subgrupos.</p>
+        </div>
+      </div>
+
+      <div class="key-fact">
+        <div class="kf-icon"><i data-lucide="compass" style="width:16px;height:16px"></i></div>
+        <div class="kf-text">
+          <strong>Bússola para tumor board</strong>
+          Ao apresentar um paper, lidere com 3 perguntas: <em>(1) Qual era a pergunta? (2) O resultado é robusto e relevante? (3) O paciente da nossa frente se parece com a população do estudo?</em> Se as três respostas são sólidas, o paper informa decisão. Se alguma delas é fraca, o paper informa contexto — não decisão.
+        </div>
+      </div>
+    </section>
+
+    <!-- DIVISOR ORBITAL FINAL -->
+    <div class="topic-divider" aria-hidden="true">
+      <svg viewBox="0 0 200 50" fill="none">
+        <ellipse cx="100" cy="25" rx="70" ry="11" stroke="#FF8400" stroke-width="0.8" fill="none" opacity="0.55"/>
+        <ellipse cx="100" cy="25" rx="55" ry="8" stroke="#FF8400" stroke-width="0.6" stroke-dasharray="1.2 4" fill="none" opacity="0.4"/>
+        <circle cx="100" cy="25" r="4" fill="#FF8400" opacity="0.85"/>
+        <circle cx="100" cy="25" r="1.5" fill="#FFE5B0"/>
+        <circle cx="32" cy="29" r="1.6" fill="#FF8400"/>
+        <circle cx="166" cy="22" r="1.5" fill="#0EA5B7"/>
+      </svg>
+    </div>
+
+    <!-- CTA FINAL -->
+    <section style="text-align:center; padding: 1rem 0 4rem">
+      <h2 style="font-weight: 300; margin-bottom: 0.85rem">Aplique no Database</h2>
+      <p style="color: var(--stone); max-width: 620px; margin: 0 auto 1.5rem">Agora que você sabe interpretar os números, vá para o banco de evidências e leia 83 ensaios com olhar crítico.</p>
+      <div style="display: inline-flex; gap: 0.85rem; flex-wrap: wrap; justify-content: center">
+        <a href="database.html" class="btn btn-primary">Acessar Database <i data-lucide="database" style="width:16px;height:16px"></i></a>
+        <a href="tumor-boards.html" class="btn btn-secondary">Ver por tumor <i data-lucide="layout-grid" style="width:16px;height:16px"></i></a>
+      </div>
+    </section>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>© 2026 TheraTrials Oncology · Fundamentos · 7 tópicos visuais</span>
+      <span>Para uso educacional. Não substitui leitura primária dos papers.</span>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .reading-steps { display: flex; flex-direction: column; gap: 0.85rem; margin: 1.25rem 0; }
+  .rs-step {
+    display: grid; grid-template-columns: 48px 1fr; gap: 1.15rem;
+    background: var(--graphite-2); border: 1px solid var(--border-soft);
+    border-radius: var(--radius-md); padding: 1.1rem 1.2rem;
+    align-items: flex-start;
+  }
+  .rs-num {
+    width: 38px; height: 38px; border-radius: 50%;
+    background: rgba(110, 231, 183, 0.15); color: #6EE7B7;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-display); font-weight: 700; font-size: 1.05rem;
+    flex-shrink: 0;
+  }
+  .rs-body h4 { margin: 0 0 0.3rem; font-size: 1rem; color: var(--off-white); font-weight: 600; }
+  .rs-body p { margin: 0; font-size: 0.9rem; color: var(--stone); line-height: 1.55; }
+
+  .myth-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem; margin: 1.25rem 0;
+  }
+  .myth-card {
+    background: var(--graphite-2); border: 1px solid var(--border-soft);
+    border-radius: var(--radius-md); padding: 1.15rem;
+  }
+  .myth-tag, .reality-tag {
+    display: inline-block; font-size: 0.65rem; text-transform: uppercase;
+    letter-spacing: 0.1em; font-weight: 600; padding: 0.2rem 0.55rem;
+    border-radius: 4px; margin-bottom: 0.5rem;
+  }
+  .myth-tag { background: rgba(248, 113, 113, 0.15); color: #FCA5A5; }
+  .reality-tag { background: rgba(110, 231, 183, 0.15); color: #6EE7B7; margin-top: 0.85rem; }
+  .myth-text { font-size: 0.9rem; color: var(--off-white); margin: 0; font-style: italic; }
+  .reality-text { font-size: 0.88rem; color: var(--stone); margin: 0; line-height: 1.55; }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    if (typeof lucide !== 'undefined') lucide.createIcons();
+
+    // Fade-in das seções via IntersectionObserver
+    const topics = document.querySelectorAll('section.topic');
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
+      topics.forEach(t => io.observe(t));
+    } else {
+      // Fallback: sem observer, todas visíveis
+      topics.forEach(t => t.classList.add('in-view'));
+    }
+
+    // Quando o usuário clica em um anchor do hub e a seção ainda está fora da viewport,
+    // garantir que ela seja revelada imediatamente (evita aparecer em branco após scroll).
+    document.querySelectorAll('a.hub-card[href^="#"]').forEach(a => {
+      a.addEventListener('click', () => {
+        const id = a.getAttribute('href').slice(1);
+        const target = document.getElementById(id);
+        if (target) target.classList.add('in-view');
+      });
+    });
+  });
+</script>
+
+</body>
+</html>

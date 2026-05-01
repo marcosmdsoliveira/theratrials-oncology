@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Database · TheraTrials Oncology</title>
+<meta name="description" content="Banco interativo de 83 ensaios clínicos selecionados em oncologia moderna. Filtros por tumor, modalidade, fase e linha.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/theratrials.css">
+<link rel="icon" type="image/png" href="assets/img/logo-app.png">
+<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.13.5/dist/cdn.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.5/dist/cdn.min.js"></script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+<style>
+  /* ============================================================
+     Database — estilos
+     ============================================================ */
+  .db-hero { padding: 3rem 0 2rem; text-align: center; }
+  .db-hero h1 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; letter-spacing: -0.025em; margin-bottom: 0.75rem; }
+  .db-hero h1 .text-amber { color: var(--amber); }
+  .db-hero p { color: var(--stone); max-width: 640px; margin: 0 auto 2rem; font-size: 1rem; }
+
+  .search-wrap { max-width: 720px; margin: 0 auto; position: relative; }
+  .search-input {
+    width: 100%; padding: 1rem 1.25rem 1rem 3rem;
+    background: var(--graphite-2); border: 1px solid var(--border-soft);
+    border-radius: var(--radius-md); color: var(--off-white);
+    font-family: var(--font-sans); font-size: 1rem; transition: all 0.2s ease;
+  }
+  .search-input:focus { outline: none; border-color: rgba(255, 132, 0, 0.5); box-shadow: 0 0 0 3px rgba(255, 132, 0, 0.1); background: var(--graphite-3); }
+  .search-icon { position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--stone); pointer-events: none; }
+  .search-clear { position: absolute; right: 0.5rem; top: 50%; transform: translateY(-50%); background: transparent; border: none; color: var(--stone); padding: 0.5rem; border-radius: var(--radius-sm); cursor: pointer; }
+  .search-clear:hover { color: var(--off-white); background: rgba(143, 148, 156, 0.1); }
+
+  /* Layout */
+  .db-layout { display: grid; grid-template-columns: 280px 1fr; gap: 2rem; padding-bottom: 4rem; }
+  @media (max-width: 968px) { .db-layout { grid-template-columns: 1fr; } .db-sidebar { position: static !important; max-height: none !important; } }
+
+  /* Sidebar */
+  .db-sidebar {
+    position: sticky; top: 100px; max-height: calc(100vh - 120px); overflow-y: auto;
+    background: var(--graphite-2); border: 1px solid var(--border-soft); border-radius: var(--radius-lg); padding: 1.5rem;
+  }
+  .db-sidebar::-webkit-scrollbar { width: 6px; }
+  .db-sidebar::-webkit-scrollbar-thumb { background: var(--graphite-4); }
+
+  .filter-section { margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border-soft); }
+  .filter-section:last-of-type { border-bottom: none; }
+  .filter-section-header {
+    width: 100%; background: transparent; border: none; padding: 0.5rem 0;
+    display: flex; align-items: center; gap: 0.5rem; cursor: pointer;
+    font-family: var(--font-sans); font-size: 0.78rem; font-weight: 600;
+    color: var(--off-white); text-transform: uppercase; letter-spacing: 0.08em;
+  }
+  .filter-section-header span:nth-child(2) { flex: 1; text-align: left; }
+  .filter-section-header:hover { color: var(--amber-glow); }
+  .filter-section-chevron { color: var(--stone); transition: transform 0.25s ease; }
+  .filter-section-chevron.open { transform: rotate(180deg); }
+  .filter-section-badge {
+    background: var(--amber); color: var(--graphite); font-size: 0.6rem; font-weight: 700;
+    padding: 0.1rem 0.4rem; border-radius: 100px; min-width: 18px; text-align: center;
+    text-transform: none; letter-spacing: 0;
+  }
+  .filter-section-body { padding-top: 0.5rem; }
+
+  .filter-sub-label { font-size: 0.65rem; color: var(--stone); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 500; margin: 0.75rem 0 0.5rem; }
+  .filter-sub-label:first-child { margin-top: 0; }
+
+  .modality-row { margin-bottom: 0.2rem; }
+  .modality-subs { margin-left: 1.5rem; margin-top: 0.25rem; padding-left: 0.75rem; border-left: 1px solid var(--border-soft); display: flex; flex-direction: column; gap: 0.25rem; }
+  .sub-item { font-size: 0.78rem; padding: 0.4rem 0.6rem; }
+
+  .expand-btn {
+    margin-left: auto; padding: 0.2rem; background: transparent; border: 1px solid transparent;
+    border-radius: var(--radius-sm); color: var(--stone); cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: transform 0.2s ease, color 0.2s ease;
+  }
+  .expand-btn.open { transform: rotate(90deg); color: var(--amber); }
+  .expand-btn:hover { color: var(--off-white); }
+
+  .upcoming-divider {
+    font-size: 0.65rem; color: var(--stone-2); text-transform: uppercase; letter-spacing: 0.12em;
+    text-align: center; margin: 0.75rem 0 0.5rem; position: relative;
+  }
+  .upcoming-divider::before, .upcoming-divider::after { content: ''; position: absolute; top: 50%; width: 25%; height: 1px; background: var(--border-soft); }
+  .upcoming-divider::before { left: 0; }
+  .upcoming-divider::after { right: 0; }
+
+  .cat-item.upcoming { color: var(--stone-2); font-style: italic; cursor: not-allowed; opacity: 0.55; }
+  .cat-item.upcoming:hover { background: transparent; color: var(--stone-2); }
+
+  .cat-list { display: flex; flex-direction: column; gap: 0.4rem; }
+  .cat-item {
+    display: flex; align-items: center; gap: 0.6rem; padding: 0.55rem 0.75rem;
+    background: transparent; border: 1px solid transparent; border-radius: var(--radius-sm);
+    cursor: pointer; color: var(--stone); font-size: 0.85rem; font-family: var(--font-sans);
+    text-align: left; width: 100%; transition: all 0.15s ease;
+  }
+  .cat-item:hover { background: rgba(143, 148, 156, 0.06); color: var(--off-white); }
+  .cat-item.active { background: rgba(255, 132, 0, 0.1); border-color: rgba(255, 132, 0, 0.35); color: var(--amber); }
+  .cat-item span:nth-child(2) { flex: 1; }
+  .cat-count { font-family: var(--font-mono); font-size: 0.7rem; color: var(--stone-2); }
+  .cat-item.active .cat-count { color: var(--amber); }
+
+  .chip-row { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .chip {
+    padding: 0.35rem 0.7rem; background: var(--graphite-3); border: 1px solid var(--border-soft);
+    border-radius: var(--radius-sm); color: var(--stone); font-size: 0.75rem; cursor: pointer;
+    font-family: var(--font-sans); transition: all 0.15s ease;
+  }
+  .chip:hover { border-color: var(--stone); color: var(--off-white); }
+  .chip.active { background: rgba(255, 132, 0, 0.12); border-color: rgba(255, 132, 0, 0.4); color: var(--amber-glow); }
+
+  .reset-btn {
+    width: 100%; margin-top: 1rem; padding: 0.6rem;
+    background: rgba(239, 68, 68, 0.08); border: 1px solid rgba(239, 68, 68, 0.25);
+    color: #FCA5A5; border-radius: var(--radius-sm); font-size: 0.8rem; cursor: pointer;
+    font-family: var(--font-sans); display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+    transition: all 0.15s ease;
+  }
+  .reset-btn:hover { background: rgba(239, 68, 68, 0.15); }
+
+  /* Main */
+  .db-main { min-width: 0; }
+  .db-toolbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem; }
+  .db-count { font-size: 0.85rem; color: var(--stone); }
+  .db-count strong { color: var(--off-white); font-weight: 600; }
+
+  .sort-select {
+    padding: 0.5rem 2.5rem 0.5rem 0.75rem; background: var(--graphite-2);
+    border: 1px solid var(--border-soft); border-radius: var(--radius-sm);
+    color: var(--off-white); font-family: var(--font-sans); font-size: 0.85rem;
+    cursor: pointer; appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238E949C' stroke-width='2'><polyline points='6 9 12 15 18 9'/></svg>");
+    background-repeat: no-repeat; background-position: right 0.75rem center;
+  }
+
+  .compare-btn-toolbar {
+    padding: 0.5rem 0.875rem; background: rgba(14, 165, 183, 0.1);
+    border: 1px solid rgba(14, 165, 183, 0.3); color: var(--teal);
+    border-radius: var(--radius-sm); font-size: 0.8rem; cursor: pointer;
+    font-family: var(--font-sans); display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none;
+  }
+  .compare-btn-toolbar:hover { background: rgba(14, 165, 183, 0.2); }
+  .compare-btn-toolbar .badge { background: var(--teal); color: var(--graphite); border-radius: 100px; padding: 0.05rem 0.4rem; font-size: 0.7rem; font-weight: 600; margin-left: 0.25rem; }
+
+  /* Bloco 2: produtividade */
+  .fav-toggle {
+    padding: 0.5rem 0.875rem; background: rgba(255, 132, 0, 0.1);
+    border: 1px solid rgba(255, 132, 0, 0.3); color: var(--amber);
+    border-radius: var(--radius-sm); font-size: 0.8rem; cursor: pointer;
+    font-family: var(--font-sans); display: inline-flex; align-items: center; gap: 0.5rem;
+    transition: all 0.15s ease;
+  }
+  .fav-toggle:hover { background: rgba(255, 132, 0, 0.2); }
+  .fav-toggle.active { background: rgba(255, 132, 0, 0.25); color: var(--amber-glow); }
+  .fav-toggle .badge { background: var(--amber); color: var(--graphite); border-radius: 100px; padding: 0.05rem 0.4rem; font-size: 0.7rem; font-weight: 600; margin-left: 0.25rem; }
+
+  .export-btn {
+    padding: 0.5rem 0.875rem; background: transparent; border: 1px solid var(--border-mid);
+    color: var(--stone); border-radius: var(--radius-sm); font-size: 0.8rem; cursor: pointer;
+    font-family: var(--font-sans); display: inline-flex; align-items: center; gap: 0.5rem;
+    transition: all 0.15s ease;
+  }
+  .export-btn:hover { border-color: var(--amber); color: var(--off-white); background: var(--graphite-3); }
+
+  .fav-btn {
+    position: absolute; top: 0.85rem; right: 0.85rem; width: 28px; height: 28px;
+    background: var(--graphite-3); border: 1px solid var(--border-soft);
+    border-radius: 50%; color: var(--stone); cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.15s ease; z-index: 5;
+  }
+  .fav-btn:hover { border-color: var(--amber); color: var(--amber); background: rgba(255, 132, 0, 0.1); }
+  .fav-btn.is-fav { background: rgba(255, 132, 0, 0.15); border-color: var(--amber); color: var(--amber); }
+  .fav-btn.is-fav:hover { background: rgba(255, 132, 0, 0.25); color: var(--amber-glow); }
+
+  /* Cards */
+  .study-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1rem; }
+  .study-card {
+    position: relative;
+    background: var(--graphite-2); border: 1px solid var(--border-soft); border-radius: var(--radius-lg);
+    padding: 1.25rem; cursor: pointer; transition: all 0.2s ease;
+    display: flex; flex-direction: column;
+  }
+  .study-card:hover { border-color: rgba(255, 132, 0, 0.35); background: var(--graphite-3); transform: translateY(-2px); }
+  .study-card.compared { border-color: var(--teal); background: rgba(14, 165, 183, 0.05); }
+
+  .card-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 0.5rem; margin-bottom: 0.75rem; padding-right: 36px; }
+  .card-cat { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.65rem; color: var(--stone); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 500; }
+  .card-title { font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; color: var(--off-white); letter-spacing: -0.015em; margin: 0 0 0.35rem; line-height: 1.2; padding-right: 36px; }
+  .study-card:hover .card-title { color: var(--amber-glow); }
+  .card-nct { font-family: var(--font-mono); font-size: 0.7rem; color: var(--stone-2); margin-bottom: 0.75rem; }
+  .card-indication { font-size: 0.82rem; color: var(--stone); margin-bottom: 0.75rem; }
+  .card-primary {
+    border-left: 2px solid var(--amber); background: rgba(255, 132, 0, 0.05);
+    padding: 0.6rem 0.75rem; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; margin-bottom: 0.75rem;
+  }
+  .card-primary-label { font-size: 0.6rem; color: var(--amber); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; margin-bottom: 0.25rem; }
+  .card-primary-text { font-size: 0.78rem; color: var(--off-white); line-height: 1.5; white-space: pre-line; }
+
+  .card-footer { margin-top: auto; padding-top: 0.75rem; border-top: 1px solid var(--border-soft); display: flex; justify-content: space-between; align-items: center; }
+  .card-meta { font-size: 0.7rem; color: var(--stone-2); display: flex; align-items: center; gap: 0.4rem; }
+  .card-actions { display: flex; gap: 0.4rem; }
+  .icon-btn {
+    background: transparent; border: 1px solid transparent; color: var(--stone);
+    padding: 0.35rem 0.6rem; border-radius: var(--radius-sm); font-size: 0.7rem; cursor: pointer;
+    font-family: var(--font-sans); display: inline-flex; align-items: center; gap: 0.3rem;
+    transition: all 0.15s ease;
+  }
+  .icon-btn:hover { color: var(--amber); background: rgba(255, 132, 0, 0.06); }
+  .icon-btn.compare-active { color: var(--teal); background: rgba(14, 165, 183, 0.1); border-color: rgba(14, 165, 183, 0.3); }
+
+  /* Empty */
+  .empty-state { text-align: center; padding: 4rem 2rem; background: var(--graphite-2); border: 1px dashed var(--border-soft); border-radius: var(--radius-lg); }
+  .empty-state svg { color: var(--stone); margin-bottom: 1rem; }
+  .empty-state h3 { color: var(--off-white); margin-bottom: 0.5rem; }
+  .empty-state p { color: var(--stone); font-size: 0.9rem; }
+
+  /* Modal */
+  .modal-backdrop { position: fixed; inset: 0; background: rgba(14, 15, 18, 0.85); backdrop-filter: blur(8px); z-index: 100; overflow-y: auto; padding: 2rem; }
+  .modal-content { max-width: 1000px; margin: 2rem auto; background: var(--graphite-2); border: 1px solid var(--border-mid); border-radius: var(--radius-xl); overflow: hidden; position: relative; }
+  .modal-close { position: absolute; top: 1rem; right: 1rem; z-index: 10; background: var(--graphite-4); border: 1px solid var(--border-mid); color: var(--off-white); padding: 0.5rem; border-radius: var(--radius-sm); cursor: pointer; }
+  .modal-close:hover { background: var(--graphite-3); }
+
+  .modal-header { padding: 2rem; border-bottom: 1px solid var(--border-soft); }
+  .modal-cat { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.7rem; color: var(--stone); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.75rem; }
+  .modal-title { font-family: var(--font-display); font-size: 1.75rem; font-weight: 700; color: var(--off-white); letter-spacing: -0.02em; margin-bottom: 0.5rem; line-height: 1.2; }
+  .modal-acron { color: var(--stone); font-size: 0.95rem; font-style: italic; margin-bottom: 1rem; }
+  .modal-meta { font-size: 0.78rem; color: var(--stone); display: flex; flex-wrap: wrap; gap: 0.4rem 1rem; }
+  .modal-meta .sep { color: var(--stone-2); }
+  .modal-actions { margin-top: 1.5rem; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
+  .modal-body { padding: 1.5rem 2rem 2rem; max-height: 65vh; overflow-y: auto; }
+  .section-block { margin-bottom: 1.75rem; }
+  .section-block:last-child { margin-bottom: 0; }
+  .section-block-title { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--amber); font-weight: 700; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
+  .section-block-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+  @media (max-width: 720px) { .section-block-grid { grid-template-columns: 1fr; } }
+  .field { background: var(--graphite-3); border-radius: var(--radius-sm); padding: 0.75rem; border: 1px solid var(--border-soft); }
+  .field.full { grid-column: 1 / -1; }
+  .field.highlight { background: rgba(255, 132, 0, 0.06); border-color: rgba(255, 132, 0, 0.3); }
+  .field-label { font-size: 0.62rem; color: var(--stone); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; margin-bottom: 0.35rem; }
+  .field-text { font-size: 0.82rem; color: var(--off-white); line-height: 1.55; white-space: pre-line; }
+  .field-text.mono { font-family: var(--font-mono); }
+
+  .modal-footer { padding: 1rem 2rem; background: rgba(14, 15, 18, 0.6); border-top: 1px solid var(--border-soft); display: flex; justify-content: space-between; font-size: 0.7rem; color: var(--stone-2); }
+
+  /* Compare drawer */
+  .compare-drawer { position: fixed; bottom: 0; left: 0; right: 0; background: var(--graphite-2); border-top: 1px solid var(--border-mid); padding: 1rem 1.5rem; z-index: 80; box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.4); }
+  .compare-drawer-inner { max-width: var(--maxw); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+  .compare-list { display: flex; gap: 0.5rem; flex-wrap: wrap; flex: 1; }
+  .compare-chip { background: var(--graphite-3); border: 1px solid rgba(14, 165, 183, 0.3); color: var(--off-white); padding: 0.35rem 0.75rem; border-radius: var(--radius-sm); font-size: 0.75rem; display: inline-flex; align-items: center; gap: 0.5rem; }
+  .compare-chip button { background: transparent; border: none; color: var(--stone); cursor: pointer; padding: 0; display: flex; }
+  .compare-chip button:hover { color: #F87171; }
+
+  /* Phase badges */
+  .pb { display: inline-block; padding: 0.15rem 0.45rem; border-radius: var(--radius-sm); font-size: 0.6rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; border: 1px solid; }
+  .pb-3 { background: rgba(52, 211, 153, 0.12); color: #6EE7B7; border-color: rgba(52, 211, 153, 0.3); }
+  .pb-2 { background: rgba(96, 165, 250, 0.12); color: #93C5FD; border-color: rgba(96, 165, 250, 0.3); }
+  .pb-1 { background: rgba(192, 132, 252, 0.12); color: #DDB4F9; border-color: rgba(192, 132, 252, 0.3); }
+  .pb-other { background: rgba(251, 191, 36, 0.12); color: #FCD34D; border-color: rgba(251, 191, 36, 0.3); }
+
+  /* Compare table view */
+  .compare-view { background: var(--graphite-2); border: 1px solid var(--border-soft); border-radius: var(--radius-lg); padding: 1.5rem; overflow-x: auto; margin-top: 1.5rem; }
+  .compare-table { width: 100%; border-collapse: collapse; min-width: 800px; }
+  .compare-table th, .compare-table td { text-align: left; padding: 0.75rem; vertical-align: top; border-bottom: 1px solid var(--border-soft); font-size: 0.8rem; }
+  .compare-table th { color: var(--stone); font-weight: 600; text-transform: uppercase; font-size: 0.65rem; letter-spacing: 0.1em; width: 180px; background: var(--graphite-3); position: sticky; left: 0; }
+  .compare-table td { color: var(--off-white); white-space: pre-line; }
+
+  /* Painel de citações */
+  .cite-panel { margin-top: 1rem; padding: 1rem; background: var(--graphite-3); border: 1px solid var(--border-soft); border-radius: var(--radius-md); }
+  .cite-tabs { display: flex; gap: 0.5rem; margin-bottom: 1rem; border-bottom: 1px solid var(--border-soft); padding-bottom: 0.5rem; flex-wrap: wrap; }
+  .cite-tab { padding: 0.4rem 0.85rem; background: transparent; border: 1px solid transparent; border-radius: var(--radius-sm); color: var(--stone); font-family: var(--font-sans); font-size: 0.78rem; cursor: pointer; transition: all 0.15s ease; font-weight: 500; }
+  .cite-tab:hover { color: var(--off-white); background: var(--graphite-4); }
+  .cite-tab.active { background: rgba(255, 132, 0, 0.12); border-color: rgba(255, 132, 0, 0.3); color: var(--amber); }
+  .cite-text { font-family: var(--font-mono); font-size: 0.78rem; line-height: 1.6; color: var(--off-white); background: var(--graphite-4); border: 1px solid var(--border-soft); border-radius: var(--radius-sm); padding: 0.85rem; white-space: pre-wrap; word-break: break-word; }
+  .cite-actions { display: flex; gap: 0.5rem; margin-top: 0.75rem; flex-wrap: wrap; }
+
+  /* Notas pessoais */
+  .notes-area { width: 100%; min-height: 80px; padding: 0.75rem; background: var(--graphite-4); border: 1px solid var(--border-soft); border-radius: var(--radius-sm); color: var(--off-white); font-family: var(--font-sans); font-size: 0.85rem; resize: vertical; line-height: 1.5; box-sizing: border-box; }
+  .notes-area:focus { outline: none; border-color: rgba(255, 132, 0, 0.5); background: var(--graphite-3); }
+  .notes-saved-indicator { font-size: 0.7rem; color: #6EE7B7; margin-top: 0.4rem; display: flex; align-items: center; gap: 0.3rem; }
+
+  /* Feedback form (comentário/sugestão) */
+  .feedback-form { display: flex; flex-direction: column; gap: 0.65rem; }
+  .feedback-form .ff-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.65rem; }
+  @media (max-width: 540px) { .feedback-form .ff-row { grid-template-columns: 1fr; } }
+  .feedback-form .ff-input,
+  .feedback-form .ff-textarea {
+    width: 100%; padding: 0.7rem 0.85rem;
+    background: var(--graphite-4); border: 1px solid var(--border-soft);
+    border-radius: var(--radius-sm); color: var(--off-white);
+    font-family: var(--font-sans); font-size: 0.9rem; line-height: 1.5;
+    box-sizing: border-box; transition: border-color 0.15s ease, background 0.15s ease;
+  }
+  .feedback-form .ff-textarea { resize: vertical; min-height: 100px; }
+  .feedback-form .ff-input:focus,
+  .feedback-form .ff-textarea:focus { outline: none; border-color: rgba(147, 197, 253, 0.6); background: var(--graphite-3); }
+  .feedback-form .ff-input::placeholder,
+  .feedback-form .ff-textarea::placeholder { color: var(--stone-2); }
+  .feedback-form .ff-actions { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: 0.25rem; }
+  .feedback-form .ff-counter { font-size: 0.72rem; color: var(--stone-2); font-family: var(--font-mono); }
+  .feedback-form .btn[disabled] { opacity: 0.4; cursor: not-allowed; }
+
+  body.modal-open { overflow: hidden; }
+  [x-cloak] { display: none !important; }
+</style>
+</head>
+<body x-data="databaseApp()" x-init="init()" :class="{ 'modal-open': selectedStudy }">
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="brand">
+      <img src="assets/img/logo-app.png" alt="TheraTrials" class="brand-logo">
+      <div class="brand-text">
+        <span class="brand-name">TheraTrials</span>
+        <span class="brand-sub">Oncology</span>
+      </div>
+    </a>
+    <button class="nav-toggle" aria-label="Menu"><i data-lucide="menu" style="width:18px;height:18px"></i></button>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="database.html">Database</a>
+      <a href="estudos-ativos.html">Estudos ativos</a>
+      <a href="tumor-boards.html">Tumor boards</a>
+      <a href="modalidades.html">Modalidades</a>
+      <a href="ferramentas.html">Ferramentas</a>
+      <a href="fundamentos.html">Fundamentos</a>
+      <a href="about.html">Sobre</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="db-hero">
+  <div class="container">
+    <span class="eyebrow">Banco de evidências · 83 estudos analisados</span>
+    <h1>Encontre, compare e cite <span class="text-amber">com clareza</span></h1>
+    <p>Filtre por tumor, modalidade, fase ou linha. Clique em qualquer estudo para ver os 31 campos detalhados, salvar como favorito, anotar ou copiar a citação formatada.</p>
+    <div class="search-wrap">
+      <i data-lucide="search" class="search-icon" style="width:18px;height:18px"></i>
+      <input type="text" class="search-input" x-model="searchQuery" placeholder="Buscar estudo, NCT, radiofármaco, doença..." @keyup.escape="searchQuery=''">
+      <button class="search-clear" x-show="searchQuery" @click="searchQuery=''" x-cloak>
+        <i data-lucide="x" style="width:16px;height:16px"></i>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- LAYOUT -->
+<section style="padding: 1rem 0 0">
+  <div class="container">
+    <div class="db-layout">
+
+      <!-- SIDEBAR -->
+      <aside class="db-sidebar">
+
+        <!-- TIPO TUMORAL -->
+        <div class="filter-section" x-data="{ open: true }">
+          <button class="filter-section-header" @click="open = !open">
+            <i data-lucide="layers" style="width:14px;height:14px; color: var(--amber)"></i>
+            <span>Tipo tumoral</span>
+            <span class="filter-section-chevron" :class="{ open }"><i data-lucide="chevron-down" style="width:14px;height:14px"></i></span>
+            <span x-show="filterTumors.length" class="filter-section-badge" x-text="filterTumors.length"></span>
+          </button>
+          <div class="filter-section-body" x-show="open" x-collapse>
+            <div class="cat-list">
+              <template x-for="t in tumorTypes" :key="t.id">
+                <button class="cat-item" :class="{ active: filterTumors.includes(t.id) }" @click="toggleTumor(t.id)">
+                  <span class="cat-dot" style="background: var(--amber); box-shadow: 0 0 6px var(--amber)"></span>
+                  <span x-text="t.short"></span>
+                  <span class="cat-count" x-text="countForTumor(t)"></span>
+                </button>
+              </template>
+            </div>
+            <div class="upcoming-divider">Em breve</div>
+            <div class="cat-list">
+              <template x-for="t in tumorTypesUpcoming" :key="t.id">
+                <div class="cat-item upcoming">
+                  <span class="cat-dot" style="background: var(--stone-2)"></span>
+                  <span x-text="t.name"></span>
+                </div>
+              </template>
+            </div>
+          </div>
+        </div>
+
+        <!-- MODALIDADE -->
+        <div class="filter-section" x-data="{ open: true }">
+          <button class="filter-section-header" @click="open = !open">
+            <i data-lucide="atom" style="width:14px;height:14px; color: var(--teal)"></i>
+            <span>Modalidade terapêutica</span>
+            <span class="filter-section-chevron" :class="{ open }"><i data-lucide="chevron-down" style="width:14px;height:14px"></i></span>
+            <span x-show="filterModalities.length || filterCategory" class="filter-section-badge" x-text="filterModalities.length + (filterCategory ? 1 : 0)"></span>
+          </button>
+          <div class="filter-section-body" x-show="open" x-collapse>
+            <div class="cat-list">
+              <template x-for="m in modalities" :key="m.id">
+                <div class="modality-row">
+                  <button class="cat-item" :class="{ active: filterModalities.includes(m.id) }" @click="toggleModality(m.id)">
+                    <span class="cat-dot" :style="`background: ${modalityColor(m.id)}; box-shadow: 0 0 6px ${modalityColor(m.id)}`"></span>
+                    <span x-text="m.short"></span>
+                    <span class="cat-count" x-text="countForModality(m)"></span>
+                    <button x-show="m.subs && m.subs.length" class="expand-btn" @click.stop="toggleExpand(m.id)" :class="{ open: expandedModality === m.id }">
+                      <i data-lucide="chevron-right" style="width:12px;height:12px"></i>
+                    </button>
+                  </button>
+                  <div x-show="m.subs && expandedModality === m.id" class="modality-subs" x-cloak x-collapse>
+                    <template x-for="sub in m.subs" :key="sub.id">
+                      <button class="cat-item sub-item" :class="{ active: filterCategory === sub.id }" @click.stop="filterCategory = filterCategory === sub.id ? '' : sub.id">
+                        <span class="cat-dot" :class="`cat-${sub.id}`"></span>
+                        <span x-text="sub.short"></span>
+                        <span class="cat-count" x-text="countForCategory(sub.id)"></span>
+                      </button>
+                    </template>
+                  </div>
+                </div>
+              </template>
+            </div>
+            <div class="upcoming-divider">Em breve</div>
+            <div class="cat-list">
+              <template x-for="m in modalitiesUpcoming" :key="m.id">
+                <div class="cat-item upcoming">
+                  <span class="cat-dot" style="background: var(--stone-2)"></span>
+                  <span x-text="m.name"></span>
+                </div>
+              </template>
+            </div>
+          </div>
+        </div>
+
+        <!-- ESTUDO -->
+        <div class="filter-section" x-data="{ open: true }">
+          <button class="filter-section-header" @click="open = !open">
+            <i data-lucide="flask-conical" style="width:14px;height:14px; color: var(--stone)"></i>
+            <span>Estudo</span>
+            <span class="filter-section-chevron" :class="{ open }"><i data-lucide="chevron-down" style="width:14px;height:14px"></i></span>
+            <span x-show="filterPhases.length || filterLines.length || filterStatus || filterYears.length" class="filter-section-badge" x-text="filterPhases.length + filterLines.length + (filterStatus ? 1 : 0) + filterYears.length"></span>
+          </button>
+          <div class="filter-section-body" x-show="open" x-collapse>
+            <div class="filter-sub-label">Fase</div>
+            <div class="chip-row">
+              <template x-for="p in ['Fase 3', 'Fase 2', 'Fase 1', 'Outras']" :key="p">
+                <button class="chip" :class="{ active: filterPhases.includes(p) }" @click="togglePhase(p)" x-text="p"></button>
+              </template>
+            </div>
+            <div class="filter-sub-label">Linha de tratamento</div>
+            <div class="chip-row">
+              <template x-for="l in treatmentLines" :key="l.id">
+                <button class="chip" :class="{ active: filterLines.includes(l.id) }" @click="toggleLine(l.id)" x-text="l.name"></button>
+              </template>
+            </div>
+            <div class="filter-sub-label">Status</div>
+            <div class="cat-list">
+              <button class="cat-item" :class="{ active: filterStatus === 'pivotal' }" @click="filterStatus = filterStatus === 'pivotal' ? '' : 'pivotal'">
+                <i data-lucide="check-circle-2" style="width:14px;height:14px; color: #6EE7B7"></i>
+                <span>Resultados publicados</span>
+              </button>
+              <button class="cat-item" :class="{ active: filterStatus === 'ongoing' }" @click="filterStatus = filterStatus === 'ongoing' ? '' : 'ongoing'">
+                <i data-lucide="loader-circle" style="width:14px;height:14px; color: #FCD34D"></i>
+                <span>Em andamento</span>
+              </button>
+            </div>
+            <div class="filter-sub-label">Período</div>
+            <div class="chip-row">
+              <template x-for="y in ['2024-2026', '2020-2023', '2015-2019', '<2015']" :key="y">
+                <button class="chip" :class="{ active: filterYears.includes(y) }" @click="toggleYear(y)" x-text="y"></button>
+              </template>
+            </div>
+          </div>
+        </div>
+
+        <button class="reset-btn" x-show="hasActiveFilters" @click="resetFilters()" x-cloak>
+          <i data-lucide="filter-x" style="width:14px;height:14px"></i>
+          Limpar todos os filtros
+        </button>
+      </aside>
+
+      <!-- MAIN -->
+      <main class="db-main">
+        <div class="db-toolbar">
+          <div class="db-count">
+            <strong x-text="filteredStudies.length"></strong>
+            <span x-text="filteredStudies.length === 1 ? 'estudo encontrado' : 'estudos encontrados'"></span>
+            <span x-show="hasActiveFilters" class="text-amber" x-cloak> · filtros ativos</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap">
+            <select class="sort-select" x-model="sortBy">
+              <option value="recent">Mais recentes</option>
+              <option value="phase">Fase (3 → 1)</option>
+              <option value="alpha">A-Z</option>
+              <option value="category">Por categoria</option>
+            </select>
+            <button class="fav-toggle" :class="{ active: showFavoritesOnly }" @click="showFavoritesOnly = !showFavoritesOnly" x-show="favorites.length > 0" x-cloak title="Mostrar apenas favoritos">
+              <i data-lucide="star" style="width:14px;height:14px"></i>
+              <span>Favoritos</span>
+              <span class="badge" x-text="favorites.length"></span>
+            </button>
+            <button class="export-btn" @click="exportCSV()" title="Exportar lista filtrada (CSV)">
+              <i data-lucide="download" style="width:14px;height:14px"></i>
+              <span>Exportar</span>
+            </button>
+            <button class="compare-btn-toolbar" @click="showCompareView = !showCompareView" x-show="compareList.length > 0" x-cloak>
+              <i data-lucide="git-compare" style="width:14px;height:14px"></i>
+              <span x-text="showCompareView ? 'Ver cards' : 'Comparar'"></span>
+              <span class="badge" x-text="compareList.length"></span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Compare view -->
+        <div class="compare-view" x-show="showCompareView && compareList.length > 0" x-cloak>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem">
+            <h3 style="font-size: 1rem; color: var(--off-white)">Comparação lado a lado</h3>
+            <button @click="compareList=[]; showCompareView=false" class="icon-btn" style="color: #F87171">
+              <i data-lucide="x" style="width:14px;height:14px"></i> Limpar comparação
+            </button>
+          </div>
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th></th>
+                <template x-for="s in compareList" :key="s.uid">
+                  <th style="background: var(--graphite-3); color: var(--off-white); font-size: 0.85rem; text-transform: none; letter-spacing: 0; font-weight: 600; min-width: 240px">
+                    <div style="display: flex; flex-direction: column; gap: 0.25rem">
+                      <div style="display: flex; align-items: center; gap: 0.4rem">
+                        <span class="cat-dot" :class="`cat-${s.category_id}`" style="width: 6px; height: 6px"></span>
+                        <span style="font-size: 0.65rem; color: var(--stone); text-transform: uppercase; letter-spacing: 0.08em" x-text="s.category_short"></span>
+                      </div>
+                      <div x-text="TheraTrials.studyTitle(s.estudo)"></div>
+                      <div style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--stone-2)" x-text="s.nct"></div>
+                    </div>
+                  </th>
+                </template>
+              </tr>
+            </thead>
+            <tbody>
+              <template x-for="field in compareFields" :key="field.key">
+                <tr>
+                  <th><span x-text="field.label"></span></th>
+                  <template x-for="s in compareList" :key="s.uid + field.key">
+                    <td x-text="s[field.key] || '—'"></td>
+                  </template>
+                </tr>
+              </template>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Cards grid -->
+        <div class="study-grid" x-show="!showCompareView && filteredStudies.length > 0" x-cloak>
+          <template x-for="s in sortedStudies" :key="s.uid">
+            <article class="study-card" :class="{ compared: isComparing(s) }" @click="openStudy(s)">
+              <button class="fav-btn" :class="{ 'is-fav': isFavorite(s) }" @click.stop="toggleFavorite(s)" :title="isFavorite(s) ? 'Remover dos favoritos' : 'Adicionar aos favoritos'">
+                <i data-lucide="star" style="width:14px;height:14px"></i>
+              </button>
+              <div class="card-top">
+                <div class="card-cat">
+                  <span class="cat-dot" :class="`cat-${s.category_id}`"></span>
+                  <span x-text="s.category_short"></span>
+                </div>
+                <span class="pb" :class="phaseClassShort(s.fase)" x-text="phaseShort(s.fase)"></span>
+              </div>
+              <h3 class="card-title" x-text="TheraTrials.studyTitle(s.estudo)"></h3>
+              <div class="card-nct" x-text="s.nct"></div>
+              <p class="card-indication line-clamp-2" x-text="s.indicacao"></p>
+              <div class="card-primary">
+                <div class="card-primary-label">Desfecho primário</div>
+                <p class="card-primary-text line-clamp-3" x-text="TheraTrials.cleanText(s.primario)"></p>
+              </div>
+              <div class="card-footer">
+                <div class="card-meta">
+                  <i data-lucide="users" style="width:11px;height:11px"></i>
+                  <span x-text="TheraTrials.extractN(s.n)"></span>
+                </div>
+                <div class="card-actions">
+                  <button class="icon-btn" :class="{ 'compare-active': isComparing(s) }" @click.stop="toggleCompare(s)">
+                    <i data-lucide="git-compare" style="width:11px;height:11px"></i>
+                    <span>Comparar</span>
+                  </button>
+                </div>
+              </div>
+            </article>
+          </template>
+        </div>
+
+        <!-- Empty state -->
+        <div class="empty-state" x-show="filteredStudies.length === 0" x-cloak>
+          <i data-lucide="search-x" style="width:48px;height:48px"></i>
+          <h3>Nenhum estudo encontrado</h3>
+          <p>Ajuste os filtros ou os termos da busca.</p>
+          <button class="btn btn-secondary" style="margin-top: 1.25rem" @click="resetFilters()">
+            <i data-lucide="rotate-ccw" style="width:14px;height:14px"></i>
+            Limpar filtros
+          </button>
+        </div>
+      </main>
+    </div>
+  </div>
+</section>
+
+<!-- Compare drawer -->
+<div class="compare-drawer" x-show="compareList.length > 0 && !showCompareView" x-transition x-cloak>
+  <div class="compare-drawer-inner">
+    <div class="compare-list">
+      <template x-for="s in compareList" :key="s.uid">
+        <span class="compare-chip">
+          <span class="cat-dot" :class="`cat-${s.category_id}`" style="width:6px; height:6px"></span>
+          <span x-text="TheraTrials.studyTitle(s.estudo)"></span>
+          <button @click="toggleCompare(s)"><i data-lucide="x" style="width:12px;height:12px"></i></button>
+        </span>
+      </template>
+    </div>
+    <div style="display: flex; gap: 0.5rem">
+      <button class="btn btn-secondary btn-sm" @click="compareList=[]">Limpar</button>
+      <button class="btn btn-primary btn-sm" @click="showCompareView = true" :disabled="compareList.length < 2">
+        Comparar (<span x-text="compareList.length"></span>)
+        <i data-lucide="arrow-right" style="width:14px;height:14px"></i>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal-backdrop" x-show="selectedStudy" @click.self="closeStudy()" @keydown.window.escape="closeStudy()" x-transition.opacity x-cloak>
+  <template x-if="selectedStudy">
+    <div class="modal-content">
+      <button class="modal-close" @click="closeStudy()"><i data-lucide="x" style="width:16px;height:16px"></i></button>
+
+      <div class="modal-header" :style="`background: linear-gradient(135deg, ${categoryColor(selectedStudy.category_id)}11, transparent 80%)`">
+        <div class="modal-cat">
+          <span class="cat-dot" :class="`cat-${selectedStudy.category_id}`"></span>
+          <span x-text="selectedStudy.category_name"></span>
+          <span class="pb" :class="phaseClassShort(selectedStudy.fase)" x-text="selectedStudy.fase" style="margin-left: 0.5rem"></span>
+        </div>
+        <h2 class="modal-title" x-text="selectedStudy.estudo"></h2>
+        <p class="modal-acron" x-text="selectedStudy.acron"></p>
+        <div class="modal-meta">
+          <span class="text-mono" x-text="selectedStudy.nct"></span>
+          <span class="sep">·</span>
+          <span x-text="selectedStudy.sponsor"></span>
+          <span class="sep">·</span>
+          <span x-text="selectedStudy.periodo"></span>
+        </div>
+        <div class="modal-actions">
+          <a x-show="selectedStudy.nct_url" :href="selectedStudy.nct_url" target="_blank" rel="noopener" class="btn btn-secondary btn-sm">
+            <i data-lucide="external-link" style="width:14px;height:14px"></i> ClinicalTrials.gov
+          </a>
+          <a x-show="selectedStudy.pubmed_url" :href="selectedStudy.pubmed_url" target="_blank" rel="noopener" class="btn btn-secondary btn-sm">
+            <i data-lucide="book-open" style="width:14px;height:14px"></i> PubMed
+          </a>
+          <button class="btn btn-secondary btn-sm" :class="{ 'btn-primary': isFavorite(selectedStudy) }" @click="toggleFavorite(selectedStudy)">
+            <i data-lucide="star" style="width:14px;height:14px"></i>
+            <span x-text="isFavorite(selectedStudy) ? 'Favorito' : 'Favoritar'"></span>
+          </button>
+          <button class="btn btn-secondary btn-sm" :class="{ 'btn-primary': isComparing(selectedStudy) }" @click="toggleCompare(selectedStudy)">
+            <i data-lucide="git-compare" style="width:14px;height:14px"></i>
+            <span x-text="isComparing(selectedStudy) ? 'Adicionado' : 'Comparar'"></span>
+          </button>
+          <button class="btn btn-secondary btn-sm" @click="copyShareLink(selectedStudy)">
+            <i data-lucide="link-2" style="width:14px;height:14px"></i> Link
+          </button>
+        </div>
+      </div>
+
+      <div class="modal-body" x-effect="selectedStudy && $nextTick(() => hideEmptyFields())">
+
+        <div class="section-block">
+          <div class="section-block-title"><i data-lucide="users" style="width:13px;height:13px"></i> População</div>
+          <div class="section-block-grid">
+            <div class="field"><div class="field-label">Indicação</div><div class="field-text" x-text="selectedStudy.indicacao || '—'"></div></div>
+            <div class="field"><div class="field-label">N (planejado / randomizado / analisado)</div><div class="field-text" x-text="selectedStudy.n || '—'"></div></div>
+            <div class="field"><div class="field-label">Inclusão</div><div class="field-text" x-text="selectedStudy.incl || '—'"></div></div>
+            <div class="field"><div class="field-label">Exclusão</div><div class="field-text" x-text="selectedStudy.excl || '—'"></div></div>
+            <div class="field"><div class="field-label">Estratificadores</div><div class="field-text" x-text="selectedStudy.estrat || '—'"></div></div>
+            <div class="field"><div class="field-label">Características basais</div><div class="field-text" x-text="selectedStudy.basal || '—'"></div></div>
+          </div>
+        </div>
+
+        <div class="section-block">
+          <div class="section-block-title" style="color: var(--teal)"><i data-lucide="dna" style="width:13px;height:13px"></i> Critérios moleculares e imagem</div>
+          <div class="section-block-grid">
+            <div class="field"><div class="field-label">Critério molecular / PET</div><div class="field-text" x-text="selectedStudy.molecular || '—'"></div></div>
+            <div class="field"><div class="field-label">Biomarcadores</div><div class="field-text" x-text="selectedStudy.biomarc || '—'"></div></div>
+          </div>
+        </div>
+
+        <div class="section-block">
+          <div class="section-block-title"><i data-lucide="syringe" style="width:13px;height:13px"></i> Intervenção e radiofarmácia</div>
+          <div class="section-block-grid">
+            <div class="field full highlight"><div class="field-label">Radiofármaco / Intervenção</div><div class="field-text" style="font-weight: 500" x-text="selectedStudy.radiofarmaco || '—'"></div></div>
+            <div class="field"><div class="field-label">Esquema</div><div class="field-text" x-text="selectedStudy.esquema || '—'"></div></div>
+            <div class="field"><div class="field-label">Atividade cumulativa típica</div><div class="field-text mono" x-text="selectedStudy.cumul || '—'"></div></div>
+            <div class="field full"><div class="field-label">Preparo e pré-medicação</div><div class="field-text" x-text="selectedStudy.preparo || '—'"></div></div>
+            <div class="field full"><div class="field-label">Comparador</div><div class="field-text" x-text="selectedStudy.comparador || '—'"></div></div>
+          </div>
+        </div>
+
+        <div class="section-block">
+          <div class="section-block-title"><i data-lucide="sigma" style="width:13px;height:13px"></i> Desenho estatístico</div>
+          <div class="section-block-grid">
+            <div class="field"><div class="field-label">Hipótese estatística</div><div class="field-text" x-text="selectedStudy.estatistica || '—'"></div></div>
+            <div class="field"><div class="field-label">Análises (ITT/PP, ajustes)</div><div class="field-text" x-text="selectedStudy.analises || '—'"></div></div>
+          </div>
+        </div>
+
+        <div class="section-block">
+          <div class="section-block-title"><i data-lucide="target" style="width:13px;height:13px"></i> Desfechos</div>
+          <div class="field full highlight" style="margin-bottom: 0.75rem"><div class="field-label">Primário (resultado)</div><div class="field-text" x-text="selectedStudy.primario || '—'"></div></div>
+          <div class="field full" style="margin-bottom: 0.75rem"><div class="field-label">Secundários</div><div class="field-text" x-text="selectedStudy.secundario || '—'"></div></div>
+          <div class="field full"><div class="field-label">Subgrupos / análises exploratórias</div><div class="field-text" x-text="selectedStudy.subgrupo || '—'"></div></div>
+        </div>
+
+        <div class="section-block">
+          <div class="section-block-title" style="color: #F472B6"><i data-lucide="alert-triangle" style="width:13px;height:13px"></i> Toxicidade</div>
+          <div class="section-block-grid">
+            <div class="field"><div class="field-label">Eventos ≥G3</div><div class="field-text" x-text="selectedStudy.tox_g3 || '—'"></div></div>
+            <div class="field"><div class="field-label">Eventos de interesse específico</div><div class="field-text" x-text="selectedStudy.tox_interesse || '—'"></div></div>
+          </div>
+        </div>
+
+        <div class="section-block">
+          <div class="section-block-title"><i data-lucide="award" style="width:13px;height:13px"></i> Impacto e referência</div>
+          <div class="field full highlight" style="margin-bottom: 0.75rem"><div class="field-label">Impacto regulatório / diretrizes</div><div class="field-text" x-text="selectedStudy.impacto_reg || '—'"></div></div>
+          <div class="field full" style="margin-bottom: 0.75rem"><div class="field-label">Limitações</div><div class="field-text" x-text="selectedStudy.limit || '—'"></div></div>
+          <div class="field full" style="border-color: rgba(255, 132, 0, 0.3)"><div class="field-label">Referência principal</div><div class="field-text mono" x-text="selectedStudy.ref || '—'"></div></div>
+        </div>
+
+        <div class="section-block">
+          <div class="section-block-title" style="color: var(--stone)"><i data-lucide="map-pin" style="width:13px;height:13px"></i> Detalhes do estudo</div>
+          <div class="section-block-grid">
+            <div class="field"><div class="field-label">Desenho</div><div class="field-text" x-text="selectedStudy.desenho || '—'"></div></div>
+            <div class="field"><div class="field-label">Centros</div><div class="field-text" x-text="selectedStudy.centros || '—'"></div></div>
+          </div>
+        </div>
+
+        <div class="section-block">
+          <div class="section-block-title" style="color: #6EE7B7"><i data-lucide="quote" style="width:13px;height:13px"></i> Citação</div>
+          <div class="cite-panel">
+            <div class="cite-tabs">
+              <button class="cite-tab" :class="{ active: citeFormat === 'vancouver' }" @click="citeFormat='vancouver'">Vancouver</button>
+              <button class="cite-tab" :class="{ active: citeFormat === 'ama' }" @click="citeFormat='ama'">AMA</button>
+              <button class="cite-tab" :class="{ active: citeFormat === 'abnt' }" @click="citeFormat='abnt'">ABNT</button>
+              <button class="cite-tab" :class="{ active: citeFormat === 'plain' }" @click="citeFormat='plain'">Texto simples</button>
+            </div>
+            <div class="cite-text" x-text="formatCitation(selectedStudy, citeFormat)"></div>
+            <div class="cite-actions">
+              <button class="btn btn-secondary btn-sm" @click="copyText(formatCitation(selectedStudy, citeFormat), 'Citação copiada')">
+                <i data-lucide="copy" style="width:14px;height:14px"></i> Copiar citação
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-block">
+          <div class="section-block-title" style="color: #93C5FD"><i data-lucide="message-circle" style="width:13px;height:13px"></i> Envie um comentário ou sugestão</div>
+          <p style="color: var(--stone); font-size: 0.85rem; margin: 0 0 0.85rem; line-height: 1.55">
+            Tem comentário sobre este estudo, dado novo de congresso, sugestão de outro estudo relacionado que gostaria de ver aqui ou correção a fazer? Envie abaixo — o conteúdo é encaminhado por e-mail e a curadoria responde quando aplicável.
+          </p>
+          <div class="feedback-form">
+            <div class="ff-row">
+              <input type="text" class="ff-input" placeholder="Seu nome" x-model="feedback.name" maxlength="80">
+              <input type="email" class="ff-input" placeholder="Seu e-mail" x-model="feedback.email" maxlength="120">
+            </div>
+            <textarea class="ff-textarea" placeholder="Comentário, sugestão ou correção..." x-model="feedback.message" maxlength="2000" rows="4"></textarea>
+            <div class="ff-actions">
+              <span class="ff-counter" x-text="(feedback.message || '').length + ' / 2000'"></span>
+              <button class="btn btn-primary btn-sm" @click="submitFeedback()" :disabled="!canSubmitFeedback()">
+                <i data-lucide="send" style="width:14px;height:14px"></i> Enviar
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="modal-footer">
+        <span>UID: <span class="text-mono" x-text="selectedStudy.uid"></span></span>
+        <span>Curado · não substitui leitura da publicação primária</span>
+      </div>
+    </div>
+  </template>
+</div>
+
+<div x-show="toast" x-transition x-cloak style="position: fixed; bottom: 6rem; right: 1.5rem; background: var(--graphite-3); border: 1px solid var(--border-mid); padding: 0.75rem 1rem; border-radius: var(--radius-sm); box-shadow: 0 8px 24px rgba(0,0,0,0.4); z-index: 200; display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem">
+  <i data-lucide="check-circle-2" style="width:16px;height:16px; color: #6EE7B7"></i>
+  <span x-text="toast"></span>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>© 2026 TheraTrials Oncology · 83 estudos analisados · v1.0</span>
+      <span>Para uso educacional. Não substitui diretrizes oficiais.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/common.js"></script>
+<script>
+function databaseApp() {
+  return {
+    data: window.THERA_DATA || { studies: [], categories: [] },
+    searchQuery: '',
+    filterCategory: '',
+    filterTumors: [],
+    filterModalities: [],
+    filterPhases: [],
+    filterLines: [],
+    filterYears: [],
+    filterStatus: '',
+    sortBy: 'recent',
+    selectedStudy: null,
+    compareList: [],
+    showCompareView: false,
+    toast: '',
+    expandedModality: '',
+    favorites: [],
+    showFavoritesOnly: false,
+    notes: {},
+    noteJustSaved: false,
+    citeFormat: 'vancouver',
+    _saveNoteTimer: null,
+
+    // Form de comentário/sugestão (substituiu Notas pessoais)
+    feedback: { name: '', email: '', message: '' },
+    feedbackTo: 'marcosmdsoliveira@gmail.com',
+    tumorTypes: TheraTrials.tumorTypes,
+    tumorTypesUpcoming: TheraTrials.tumorTypesUpcoming,
+    modalities: TheraTrials.modalities,
+    modalitiesUpcoming: TheraTrials.modalitiesUpcoming,
+    treatmentLines: TheraTrials.treatmentLines,
+
+    init() {
+      this.$nextTick(() => lucide.createIcons());
+      this.$watch('selectedStudy', () => { this.$nextTick(() => lucide.createIcons()); });
+      this.$watch('filteredStudies', () => { this.$nextTick(() => lucide.createIcons()); });
+      this.$watch('compareList', () => { this.$nextTick(() => lucide.createIcons()); });
+      this.$watch('expandedModality', () => { this.$nextTick(() => lucide.createIcons()); });
+      this.$watch('filterModalities', () => { this.$nextTick(() => lucide.createIcons()); });
+      this.$watch('filterTumors', () => { this.$nextTick(() => lucide.createIcons()); });
+      this.$watch('favorites', () => { this.$nextTick(() => lucide.createIcons()); this.persistFavorites(); });
+      this.$watch('citeFormat', () => { this.$nextTick(() => lucide.createIcons()); });
+
+      try {
+        const favs = localStorage.getItem('theratrials_favorites');
+        if (favs) this.favorites = JSON.parse(favs);
+        const nts = localStorage.getItem('theratrials_notes');
+        if (nts) this.notes = JSON.parse(nts);
+      } catch (e) {}
+
+      this.handleHash();
+      window.addEventListener('hashchange', () => this.handleHash());
+    },
+
+    handleHash() {
+      const h = (window.location.hash || '').replace('#', '').trim();
+      if (h && this.data.studies) {
+        const s = this.data.studies.find(x => x.uid === h);
+        if (s) this.openStudy(s);
+      }
+    },
+
+    get filteredStudies() {
+      let arr = this.data.studies || [];
+      const q = this.searchQuery.toLowerCase().trim();
+      if (q) {
+        arr = arr.filter(s => (s.estudo + ' ' + (s.acron||'') + ' ' + (s.indicacao||'') + ' ' + (s.radiofarmaco||'') + ' ' + (s.nct||'') + ' ' + (s.category_name||'')).toLowerCase().includes(q));
+      }
+      if (this.showFavoritesOnly) arr = arr.filter(s => this.favorites.includes(s.uid));
+      if (this.filterTumors.length) {
+        arr = arr.filter(s => this.filterTumors.some(tid => {
+          const t = this.tumorTypes.find(x => x.id === tid);
+          return t && t.match(s);
+        }));
+      }
+      if (this.filterModalities.length) {
+        arr = arr.filter(s => this.filterModalities.some(mid => {
+          const m = this.modalities.find(x => x.id === mid);
+          return m && m.match(s);
+        }));
+      }
+      if (this.filterCategory) arr = arr.filter(s => s.category_id === this.filterCategory);
+      if (this.filterPhases.length) {
+        arr = arr.filter(s => {
+          const p = (s.fase || '').toLowerCase();
+          return this.filterPhases.some(f => {
+            if (f === 'Fase 3') return p.includes('fase 3') || p.includes('plataforma');
+            if (f === 'Fase 2') return p.includes('fase 2') && !p.includes('1/2');
+            if (f === 'Fase 1') return p.includes('fase 1') || p.includes('1/2');
+            return !p.includes('fase 1') && !p.includes('fase 2') && !p.includes('fase 3') && !p.includes('plataforma');
+          });
+        });
+      }
+      if (this.filterLines.length) {
+        arr = arr.filter(s => this.filterLines.some(lid => {
+          const l = this.treatmentLines.find(x => x.id === lid);
+          return l && l.match(s);
+        }));
+      }
+      if (this.filterStatus === 'pivotal') arr = arr.filter(s => s.status !== 'Em andamento');
+      if (this.filterStatus === 'ongoing') arr = arr.filter(s => s.status === 'Em andamento');
+      if (this.filterYears.length) {
+        arr = arr.filter(s => {
+          const y = s.ano_pub || TheraTrials.extractYear(s.estudo);
+          return this.filterYears.some(yr => {
+            if (yr === '2024-2026') return y >= 2024;
+            if (yr === '2020-2023') return y >= 2020 && y <= 2023;
+            if (yr === '2015-2019') return y >= 2015 && y <= 2019;
+            if (yr === '<2015') return y < 2015 && y > 0;
+            return false;
+          });
+        });
+      }
+      return arr;
+    },
+
+    get sortedStudies() {
+      const arr = [...this.filteredStudies];
+      const phaseOrder = (f) => { const x = (f || '').toLowerCase(); if (x.includes('fase 3')) return 3; if (x.includes('1/2')) return 1.5; if (x.includes('fase 2')) return 2; if (x.includes('fase 1')) return 1; if (x.includes('plataforma')) return 3.5; return 0; };
+      if (this.sortBy === 'recent') arr.sort((a,b) => (b.ano_pub||0) - (a.ano_pub||0));
+      else if (this.sortBy === 'phase') arr.sort((a,b) => phaseOrder(b.fase) - phaseOrder(a.fase));
+      else if (this.sortBy === 'alpha') arr.sort((a,b) => a.estudo.localeCompare(b.estudo));
+      else if (this.sortBy === 'category') arr.sort((a,b) => a.category_id.localeCompare(b.category_id));
+      return arr;
+    },
+
+    get hasActiveFilters() {
+      return this.searchQuery || this.filterCategory || this.filterTumors.length || this.filterModalities.length
+        || this.filterPhases.length || this.filterLines.length || this.filterYears.length || this.filterStatus
+        || this.showFavoritesOnly;
+    },
+
+    togglePhase(p) { const i = this.filterPhases.indexOf(p); if (i>=0) this.filterPhases.splice(i,1); else this.filterPhases.push(p); },
+    toggleYear(y) { const i = this.filterYears.indexOf(y); if (i>=0) this.filterYears.splice(i,1); else this.filterYears.push(y); },
+    toggleTumor(id) { const i = this.filterTumors.indexOf(id); if (i>=0) this.filterTumors.splice(i,1); else this.filterTumors.push(id); },
+    toggleModality(id) { const i = this.filterModalities.indexOf(id); if (i>=0) this.filterModalities.splice(i,1); else this.filterModalities.push(id); },
+    toggleLine(id) { const i = this.filterLines.indexOf(id); if (i>=0) this.filterLines.splice(i,1); else this.filterLines.push(id); },
+    toggleExpand(id) { this.expandedModality = (this.expandedModality === id) ? '' : id; },
+
+    resetFilters() {
+      this.searchQuery = ''; this.filterCategory = ''; this.filterTumors = [];
+      this.filterModalities = []; this.filterPhases = []; this.filterLines = [];
+      this.filterYears = []; this.filterStatus = ''; this.showFavoritesOnly = false;
+    },
+
+    countForTumor(t) { return (this.data.studies || []).filter(t.match).length; },
+    countForModality(m) { return (this.data.studies || []).filter(m.match).length; },
+    countForCategory(catId) { return (this.data.studies || []).filter(s => s.category_id === catId).length; },
+
+    modalityColor(id) {
+      const colors = { teranostico: '#FF8400', arpi: '#0EA5B7', parp: '#34D399', qt: '#FBBF24', imunoterapia: '#10B981' };
+      return colors[id] || '#FF8400';
+    },
+
+    openStudy(s) { this.selectedStudy = s; if (history.replaceState) history.replaceState(null, '', '#' + s.uid); },
+    closeStudy() { this.selectedStudy = null; if (history.replaceState) history.replaceState(null, '', window.location.pathname); },
+
+    // Esconde fields cujo conteúdo é vazio, '—', '-' ou whitespace.
+    // Também esconde a section-block inteira se TODOS os fields dela ficarem ocultos.
+    hideEmptyFields() {
+      const isEmpty = (s) => {
+        const t = (s || '').trim();
+        return !t || t === '—' || t === '-' || t === 'N/A' || t === 'n/a';
+      };
+      document.querySelectorAll('.modal-body .field').forEach(f => {
+        const txt = f.querySelector('.field-text');
+        f.style.display = (txt && isEmpty(txt.textContent)) ? 'none' : '';
+      });
+      // Esconde section-block se todos os fields visíveis dele forem ocultos
+      document.querySelectorAll('.modal-body .section-block').forEach(blk => {
+        const fields = blk.querySelectorAll('.field');
+        if (fields.length === 0) return;
+        const anyVisible = Array.from(fields).some(f => f.style.display !== 'none');
+        // Não esconder blocos especiais (notas, citação, links) que não usam .field
+        const isSpecialBlock = blk.querySelector('.feedback-form, .cite-panel, .study-links, .compare-toggle');
+        if (!anyVisible && !isSpecialBlock) blk.style.display = 'none';
+        else blk.style.display = '';
+      });
+    },
+    isComparing(s) { return this.compareList.some(x => x.uid === s.uid); },
+    toggleCompare(s) {
+      const i = this.compareList.findIndex(x => x.uid === s.uid);
+      if (i >= 0) this.compareList.splice(i, 1);
+      else if (this.compareList.length < 3) this.compareList.push(s);
+      else this.showToast('Maximo de 3 estudos para comparacao');
+    },
+
+    isFavorite(s) { return this.favorites.includes(s.uid); },
+    toggleFavorite(s) {
+      const i = this.favorites.indexOf(s.uid);
+      if (i >= 0) { this.favorites.splice(i, 1); this.showToast('Removido dos favoritos'); }
+      else { this.favorites.push(s.uid); this.showToast('Adicionado aos favoritos'); }
+    },
+    persistFavorites() {
+      try { localStorage.setItem('theratrials_favorites', JSON.stringify(this.favorites)); } catch (e) {}
+    },
+
+    getNote(uid) { return this.notes[uid] || ''; },
+    saveNote(uid, value) {
+      this.notes[uid] = value;
+      clearTimeout(this._saveNoteTimer);
+      this._saveNoteTimer = setTimeout(() => {
+        try { localStorage.setItem('theratrials_notes', JSON.stringify(this.notes)); } catch (e) {}
+        this.noteJustSaved = true;
+        setTimeout(() => this.noteJustSaved = false, 1500);
+      }, 600);
+    },
+
+    // Extrai sobrenome do PI a partir do campo sponsor (ex.: "MSD | PI: Reck" → "RECK")
+    _extractPI(sponsor) {
+      const m = (sponsor || '').match(/PI:\s*([^|,;]+)/i);
+      if (!m) return '';
+      const name = m[1].trim().split(/\s+/).pop();  // último token
+      return name.replace(/[^A-Za-zÀ-ú]/g, '');
+    },
+
+    formatCitation(s, fmt) {
+      if (!s) return '';
+      const ref = s.ref || '';
+      const estudo = TheraTrials.studyTitle(s.estudo);
+      const acron = s.acron || estudo;
+      const ano = s.ano_pub || '';
+      const nctMatch = (s.nct || '').match(/NCT\d{8,}/);
+      const nctId = nctMatch ? nctMatch[0] : '';
+      const pi = this._extractPI(s.sponsor);
+      const url = s.pubmed_url || s.nct_url || ref || '';
+
+      if (fmt === 'plain') {
+        return estudo + ' (' + ano + '). ' + acron + '.\nReferência: ' + ref + (nctId ? '\nClinicalTrials.gov: ' + nctId : '');
+      }
+      if (fmt === 'vancouver') {
+        // Estilo Vancouver: Autor et al. Título do estudo. Acrônimo. Ano. Disponível em: URL.
+        const author = pi ? pi + ' et al.' : 'Investigadores do estudo.';
+        return author + ' ' + acron + '. ' + ano + '.' + (url ? ' Disponível em: ' + url : '') + (nctId ? ' [' + nctId + '].' : '');
+      }
+      if (fmt === 'ama') {
+        // AMA: Autor, et al. Título. Acrônimo. Year. Accessed on URL.
+        const author = pi ? pi + ' et al.' : 'Investigadores.';
+        return author + ' ' + acron + '. ' + ano + '. ' + (url ? 'Disponível em: ' + url + '.' : '') + (nctId ? ' Identificador ClinicalTrials.gov: ' + nctId + '.' : '');
+      }
+      if (fmt === 'abnt') {
+        // ABNT NBR 6023:2018 — referência completa
+        const author = pi ? pi.toUpperCase() + ', ' + (pi.charAt(0)) + '. et al.' : 'INVESTIGADORES DO ESTUDO.';
+        return author + ' ' + acron + '. ' + ano + '. Disponível em: ' + url + '.' + (nctId ? ' Identificador: ' + nctId + '.' : '') + ' Acesso em: ' + new Date().toLocaleDateString('pt-BR') + '.';
+      }
+      return ref;
+    },
+
+    // ============== FEEDBACK / SUGESTÕES ==============
+    canSubmitFeedback() {
+      const f = this.feedback;
+      return f.name.trim().length >= 2
+          && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.email.trim())
+          && f.message.trim().length >= 10;
+    },
+
+    submitFeedback() {
+      if (!this.canSubmitFeedback()) {
+        this.showToast('Preencha nome, e-mail válido e mensagem (mínimo 10 caracteres).');
+        return;
+      }
+      const s = this.selectedStudy;
+      const studyRef = s ? (TheraTrials.studyTitle(s.estudo) + ' [' + s.uid + ']') : 'Sugestão geral';
+      const subject = '[TheraTrials Oncology] ' + studyRef;
+      const lines = [
+        'Comentário/sugestão enviado a partir do Database — TheraTrials Oncology',
+        '',
+        'Estudo de referência: ' + studyRef,
+        s ? 'URL: ' + window.location.origin + window.location.pathname + '#' + s.uid : '',
+        '',
+        'Nome: ' + this.feedback.name.trim(),
+        'E-mail: ' + this.feedback.email.trim(),
+        '',
+        '— Mensagem —',
+        this.feedback.message.trim(),
+      ].filter(Boolean).join('\n');
+      const mailto = 'mailto:' + this.feedbackTo
+        + '?subject=' + encodeURIComponent(subject)
+        + '&body=' + encodeURIComponent(lines);
+
+      // Backup local (caso o cliente de e-mail não abra)
+      try {
+        const log = JSON.parse(localStorage.getItem('theratrials_feedback') || '[]');
+        log.push({
+          uid: s?.uid || null,
+          study: s ? TheraTrials.studyTitle(s.estudo) : null,
+          name: this.feedback.name.trim(),
+          email: this.feedback.email.trim(),
+          message: this.feedback.message.trim(),
+          ts: new Date().toISOString(),
+        });
+        localStorage.setItem('theratrials_feedback', JSON.stringify(log));
+      } catch (e) { /* localStorage indisponível */ }
+
+      window.location.href = mailto;
+      this.showToast('Abrindo seu cliente de e-mail…');
+      this.feedback = { name: '', email: '', message: '' };
+    },
+
+    copyText(txt, msg) {
+      navigator.clipboard.writeText(txt).then(() => this.showToast(msg || 'Copiado'));
+    },
+
+    copyShareLink(s) {
+      const url = window.location.origin + window.location.pathname + '#' + s.uid;
+      this.copyText(url, 'Link compartilhavel copiado');
+    },
+
+    exportCSV() {
+      const rows = this.filteredStudies;
+      if (!rows.length) { this.showToast('Nada para exportar'); return; }
+      const fields = ['uid', 'estudo', 'category_short', 'fase', 'nct', 'indicacao', 'radiofarmaco', 'comparador', 'n', 'molecular', 'primario', 'secundario', 'tox_g3', 'impacto_reg', 'ref', 'pubmed_url'];
+      const labels = ['UID', 'Estudo', 'Categoria', 'Fase', 'NCT', 'Indicacao', 'Intervencao', 'Comparador', 'N', 'Criterio molecular', 'Desfecho primario', 'Secundarios', 'Tox G3', 'Impacto', 'Referencia', 'PubMed URL'];
+      const esc = (v) => '"' + String(v || '').replace(/"/g, '""').replace(/\n/g, ' ') + '"';
+      const csv = [labels.map(esc).join(',')].concat(rows.map(r => fields.map(f => esc(r[f])).join(','))).join('\n');
+      const blob = new Blob(['﻿' + csv], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'theratrials_' + rows.length + '_estudos_' + new Date().toISOString().slice(0,10) + '.csv';
+      document.body.appendChild(a); a.click(); document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      this.showToast(rows.length + ' estudos exportados');
+    },
+
+    phaseShort(fase) { return TheraTrials.phaseShort(fase); },
+    phaseClassShort(fase) {
+      const c = TheraTrials.phaseClass(fase);
+      if (c === 'phase-3') return 'pb-3';
+      if (c === 'phase-2') return 'pb-2';
+      if (c === 'phase-1') return 'pb-1';
+      return 'pb-other';
+    },
+
+    categoryColor(catId) {
+      const colors = {
+        lupsma_prostata: '#FF8400', ra223_prostata: '#C084FC',
+        lu_dotatate_net: '#0EA5B7', lupsma_ccrcc: '#38BDF8',
+        y90_tare: '#FBBF24', novos_psma: '#F87171',
+        mibg_pediatria_pheo: '#F472B6', prostata_contexto: '#8E949C',
+      };
+      return colors[catId] || '#FF8400';
+    },
+
+    compareFields: [
+      { key: 'fase', label: 'Fase' },
+      { key: 'desenho', label: 'Desenho' },
+      { key: 'indicacao', label: 'Indicacao' },
+      { key: 'n', label: 'N' },
+      { key: 'molecular', label: 'Criterio molecular / PET' },
+      { key: 'radiofarmaco', label: 'Intervencao' },
+      { key: 'esquema', label: 'Esquema' },
+      { key: 'cumul', label: 'Cumulativa' },
+      { key: 'preparo', label: 'Preparo / pre-medicacao' },
+      { key: 'comparador', label: 'Comparador' },
+      { key: 'primario', label: 'Desfecho primario' },
+      { key: 'secundario', label: 'Secundarios' },
+      { key: 'tox_g3', label: 'Toxicidade G3' },
+      { key: 'impacto_reg', label: 'Impacto regulatorio' },
+      { key: 'limit', label: 'Limitacoes' },
+      { key: 'ref', label: 'Referencia' },
+    ],
+
+    showToast(msg) {
+      this.toast = msg;
+      setTimeout(() => this.toast = '', 2400);
+    },
+  };
+}
+</script>
+
+</body>
+</html>

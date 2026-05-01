@@ -1,0 +1,1816 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ferramentas · TheraTrials Oncology</title>
+<meta name="description" content="Calculadoras de dose, conversores de unidades, calculadora estatística e fluxogramas decisórios em oncologia teranóstica.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/theratrials.css">
+<link rel="icon" type="image/png" href="assets/img/logo-app.png">
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.5/dist/cdn.min.js"></script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+<style>
+  /* Hero */
+  .ft-hero { padding: 3rem 0 2rem; text-align: center; }
+  .ft-hero h1 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; letter-spacing: -0.025em; margin-bottom: 0.75rem; }
+  .ft-hero h1 .text-amber { color: var(--amber); }
+  .ft-hero p { color: var(--stone); max-width: 680px; margin: 0 auto; font-size: 1rem; }
+
+  /* Hub */
+  .tools-hub {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0.85rem;
+    margin: 2rem 0 4rem;
+  }
+  .tool-link {
+    background: var(--graphite-2);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-md);
+    padding: 1.1rem;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    transition: all 0.2s ease;
+  }
+  .tool-link:hover {
+    border-color: var(--accent, var(--amber));
+    background: var(--graphite-3);
+    transform: translateY(-2px);
+  }
+  .tool-link .num { font-family: var(--font-mono); font-size: 0.65rem; color: var(--stone-2); letter-spacing: 0.08em; }
+  .tool-link .icon { color: var(--accent, var(--amber)); width: 24px; height: 24px; }
+  .tool-link h3 { font-family: var(--font-display); font-size: 1rem; font-weight: 700; color: var(--off-white); margin: 0; letter-spacing: -0.015em; }
+  .tool-link p { font-size: 0.78rem; color: var(--stone); margin: 0; line-height: 1.4; }
+
+  /* Tool sections */
+  section.tool {
+    padding: 3rem 0;
+    scroll-margin-top: 100px;
+  }
+  section.tool .tool-head {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+  section.tool .tool-num {
+    width: 32px; height: 32px;
+    border-radius: var(--radius-sm);
+    background: rgba(255, 132, 0, 0.12);
+    color: var(--amber);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: 0.85rem;
+  }
+  section.tool h2 {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--off-white);
+    letter-spacing: -0.02em;
+    margin: 0;
+  }
+  section.tool .tool-desc {
+    color: var(--stone);
+    font-size: 0.9rem;
+    margin: 0 0 1.5rem;
+    max-width: 720px;
+    line-height: 1.6;
+  }
+
+  /* Calculator card */
+  .calc-card {
+    background: var(--graphite-2);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem;
+    margin-bottom: 1rem;
+  }
+  .calc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+  @media (max-width: 768px) { .calc-grid { grid-template-columns: 1fr; } }
+
+  .calc-inputs { display: flex; flex-direction: column; gap: 1rem; }
+  .calc-field { display: flex; flex-direction: column; gap: 0.4rem; }
+  .calc-field label {
+    font-size: 0.7rem;
+    color: var(--stone);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 500;
+  }
+  .calc-field .hint { font-size: 0.7rem; color: var(--stone-2); margin-top: 0.2rem; font-style: italic; }
+  .calc-input {
+    padding: 0.7rem 0.9rem;
+    background: var(--graphite-3);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-sm);
+    color: var(--off-white);
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    transition: all 0.15s ease;
+  }
+  .calc-input:focus {
+    outline: none;
+    border-color: rgba(255, 132, 0, 0.5);
+    background: var(--graphite-4);
+    box-shadow: 0 0 0 3px rgba(255, 132, 0, 0.08);
+  }
+  .calc-input.mono { font-family: var(--font-mono); }
+  select.calc-input {
+    appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238E949C' stroke-width='2'><polyline points='6 9 12 15 18 9'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    padding-right: 2.25rem;
+  }
+
+  /* Output */
+  .calc-output {
+    background: linear-gradient(135deg, rgba(255, 132, 0, 0.08) 0%, transparent 100%);
+    border: 1px solid rgba(255, 132, 0, 0.25);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .calc-output .out-label {
+    font-size: 0.7rem;
+    color: var(--amber);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 600;
+  }
+  .calc-output .out-value {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--amber);
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+  .calc-output .out-unit { font-size: 1rem; color: var(--off-white); margin-left: 0.4rem; font-weight: 500; }
+  .calc-output .out-extras {
+    padding-top: 0.85rem;
+    border-top: 1px solid rgba(255, 132, 0, 0.15);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+    gap: 0.5rem;
+  }
+  .calc-output .extra {
+    font-size: 0.75rem;
+    color: var(--stone);
+  }
+  .calc-output .extra strong {
+    display: block;
+    color: var(--off-white);
+    font-family: var(--font-mono);
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-top: 0.15rem;
+  }
+
+  /* Reference table */
+  .ref-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    background: var(--graphite-3);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    font-size: 0.8rem;
+  }
+  .ref-table th, .ref-table td {
+    text-align: left;
+    padding: 0.55rem 0.85rem;
+    border-bottom: 1px solid var(--border-soft);
+  }
+  .ref-table tr:last-child td { border-bottom: none; }
+  .ref-table th {
+    background: var(--graphite-4);
+    color: var(--stone);
+    font-weight: 600;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .ref-table td:first-child { color: var(--amber); font-family: var(--font-mono); white-space: nowrap; }
+  .ref-table td { color: var(--off-white); }
+  .ref-table tr:hover td { background: rgba(255, 132, 0, 0.04); }
+
+  /* Note box */
+  .note {
+    background: rgba(14, 165, 183, 0.06);
+    border-left: 2px solid var(--teal);
+    border-radius: var(--radius-sm);
+    padding: 0.7rem 0.95rem;
+    margin-top: 1rem;
+    font-size: 0.78rem;
+    color: var(--off-white);
+    line-height: 1.55;
+  }
+  .note strong { color: var(--teal); }
+  .note .lbl {
+    font-size: 0.62rem;
+    color: var(--teal);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+
+  /* Flowchart */
+  .flow-card {
+    background: var(--graphite-2);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    overflow-x: auto;
+  }
+  .flow-title {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--off-white);
+    margin-bottom: 0.5rem;
+  }
+  .flow-sub {
+    font-size: 0.78rem;
+    color: var(--stone);
+    margin-bottom: 1.25rem;
+  }
+  .flow-svg {
+    width: 100%;
+    min-width: 600px;
+    height: auto;
+    display: block;
+  }
+
+  /* Topic divider (orbital) */
+  .topic-divider {
+    position: relative;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin: 0;
+  }
+  .topic-divider::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: min(80%, 720px);
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, rgba(255, 132, 0, 0.06) 18%, rgba(255, 132, 0, 0.4) 50%, rgba(255, 132, 0, 0.06) 82%, transparent 100%);
+  }
+  .topic-divider svg {
+    position: relative;
+    z-index: 2;
+    width: 200px;
+    height: 50px;
+  }
+  .topic-divider::after {
+    content: '';
+    position: absolute;
+    bottom: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50%;
+    height: 60px;
+    background: radial-gradient(ellipse, rgba(255, 132, 0, 0.10) 0%, transparent 70%);
+    pointer-events: none;
+    filter: blur(14px);
+  }
+
+  /* Reveal */
+  body.modal-open { overflow: hidden; }
+
+  section.tool { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
+  section.tool.in-view { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body x-data="toolsApp()" x-init="init()">
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="brand">
+      <img src="assets/img/logo-app.png" alt="TheraTrials" class="brand-logo">
+      <div class="brand-text">
+        <span class="brand-name">TheraTrials</span>
+        <span class="brand-sub">Oncology</span>
+      </div>
+    </a>
+    <button class="nav-toggle" aria-label="Menu"><i data-lucide="menu" style="width:18px;height:18px"></i></button>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="database.html">Database</a>
+      <a href="estudos-ativos.html">Estudos ativos</a>
+      <a href="tumor-boards.html">Tumor boards</a>
+      <a href="modalidades.html">Modalidades</a>
+      <a href="ferramentas.html">Ferramentas</a>
+      <a href="fundamentos.html">Fundamentos</a>
+      <a href="about.html">Sobre</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="ft-hero">
+  <div class="container">
+    <span class="eyebrow">Ferramentas clínicas</span>
+    <h1>Calcule, converta, <span class="text-amber">decida</span></h1>
+    <p>Calculadoras de dose por radiofármaco, conversores de unidades, calculadora estatística e fluxogramas decisórios por tumor — em uma única tela.</p>
+  </div>
+</section>
+
+<section style="padding: 0">
+  <div class="container">
+
+    <!-- HUB -->
+    <div class="tools-hub">
+      <a href="#dose" class="tool-link" style="--accent: #FF8400">
+        <div class="num">01</div>
+        <i data-lucide="syringe" class="icon"></i>
+        <h3>Dose prescrita</h3>
+        <p>Atividade por peso e radiofármaco</p>
+      </a>
+      <a href="#converter" class="tool-link" style="--accent: #0EA5B7">
+        <div class="num">02</div>
+        <i data-lucide="repeat-2" class="icon"></i>
+        <h3>Converter unidades</h3>
+        <p>Bq · Ci · GBq · MBq · mCi</p>
+      </a>
+      <a href="#decay" class="tool-link" style="--accent: #C084FC">
+        <div class="num">03</div>
+        <i data-lucide="clock" class="icon"></i>
+        <h3>Decaimento</h3>
+        <p>Atividade residual no tempo</p>
+      </a>
+      <a href="#stats" class="tool-link" style="--accent: #6EE7B7">
+        <div class="num">04</div>
+        <i data-lucide="sigma" class="icon"></i>
+        <h3>HR · NNT · Risco</h3>
+        <p>Calculadora estatística</p>
+      </a>
+      <a href="#flowcharts" class="tool-link" style="--accent: #F472B6">
+        <div class="num">05</div>
+        <i data-lucide="git-branch" class="icon"></i>
+        <h3>Fluxogramas</h3>
+        <p>Decisão clínica por tumor</p>
+      </a>
+      <a href="#ajcc" class="tool-link" style="--accent: #38BDF8">
+        <div class="num">06</div>
+        <i data-lucide="layers-3" class="icon"></i>
+        <h3>Estadiamento AJCC</h3>
+        <p>TNM 8ª/9ª edição · resumo por tumor</p>
+      </a>
+      <a href="#ctcae" class="tool-link" style="--accent: #FBBF24">
+        <div class="num">07</div>
+        <i data-lucide="alert-triangle" class="icon"></i>
+        <h3>Eventos adversos CTCAE</h3>
+        <p>Escala v6.0 · 5 graus por categoria</p>
+      </a>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 01. DOSE PRESCRITA -->
+    <!-- ============================================================ -->
+    <section class="tool" id="dose">
+      <div class="tool-head">
+        <div class="tool-num">01</div>
+        <h2>Calculadora de dose prescrita</h2>
+      </div>
+      <p class="tool-desc">Selecione o radiofármaco, informe peso (se aplicável) e veja a atividade prescrita em GBq, MBq e mCi simultaneamente. Os esquemas-padrão vêm dos protocolos pivotais.</p>
+
+      <div class="calc-card">
+        <div class="calc-grid">
+          <div class="calc-inputs">
+            <div class="calc-field">
+              <label>Radiofármaco</label>
+              <select class="calc-input" x-model="dose.drug">
+                <template x-for="d in doseDrugs" :key="d.id">
+                  <option :value="d.id" x-text="d.name"></option>
+                </template>
+              </select>
+              <span class="hint" x-text="currentDrug?.note || ''"></span>
+            </div>
+
+            <div class="calc-field" x-show="currentDrug?.weightBased">
+              <label>Peso do paciente (kg)</label>
+              <input type="number" class="calc-input" x-model.number="dose.weight" min="0" max="250" step="1">
+            </div>
+
+            <div class="calc-field" x-show="currentDrug?.cyclesEditable">
+              <label>Ciclo atual (1 a <span x-text="currentDrug?.maxCycles"></span>)</label>
+              <input type="number" class="calc-input" x-model.number="dose.cycle" min="1" :max="currentDrug?.maxCycles || 6">
+            </div>
+
+            <div class="calc-field" x-show="currentDrug?.fractionEditable">
+              <label>% da dose plena</label>
+              <input type="number" class="calc-input" x-model.number="dose.fraction" min="50" max="100" step="5">
+              <span class="hint">Use 75% ou 50% se redução por toxicidade hematológica</span>
+            </div>
+          </div>
+
+          <div class="calc-output">
+            <div>
+              <div class="out-label">Atividade prescrita</div>
+              <div class="out-value" x-text="doseResult.gbq"><span class="out-unit">GBq</span></div>
+            </div>
+            <div class="out-extras">
+              <div class="extra">Em MBq<strong x-text="doseResult.mbq"></strong></div>
+              <div class="extra">Em mCi<strong x-text="doseResult.mci"></strong></div>
+              <div class="extra">Esquema<strong x-text="currentDrug?.schedule || '—'"></strong></div>
+              <div class="extra">Cumulativa máx.<strong x-text="doseResult.cumul"></strong></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="note">
+          <span class="lbl">Importante</span>
+          <strong>Esses valores são guias baseados nos protocolos dos ensaios pivotais</strong> (VISION, NETTER-1, ALSYMPCA, AZEDRA, DOSISPHERE-01). A dose final deve sempre considerar dosimetria personalizada, função renal/medular, toxicidade prévia e o protocolo institucional. Não substitui prescrição médica.
+        </div>
+      </div>
+    </section>
+
+    <!-- DIVISOR ORBITAL -->
+    <div class="topic-divider" aria-hidden="true">
+      <svg viewBox="0 0 200 50" fill="none">
+        <ellipse cx="100" cy="25" rx="70" ry="11" stroke="#FF8400" stroke-width="0.8" fill="none" opacity="0.55"/>
+        <ellipse cx="100" cy="25" rx="55" ry="8" stroke="#FF8400" stroke-width="0.6" stroke-dasharray="1.2 4" fill="none" opacity="0.4"/>
+        <circle cx="100" cy="25" r="4" fill="#FF8400" opacity="0.85"/>
+        <circle cx="100" cy="25" r="1.5" fill="#FFE5B0"/>
+        <circle cx="32" cy="29" r="1.6" fill="#FF8400"/>
+        <circle cx="166" cy="22" r="1.5" fill="#0EA5B7"/>
+      </svg>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 02. CONVERTER UNIDADES -->
+    <!-- ============================================================ -->
+    <section class="tool" id="converter">
+      <div class="tool-head">
+        <div class="tool-num">02</div>
+        <h2>Conversor de unidades de atividade</h2>
+      </div>
+      <p class="tool-desc">Digite um valor em qualquer unidade — os outros campos se atualizam em tempo real. Útil para converter entre unidades SI (Bq, MBq, GBq) e Curie (μCi, mCi, Ci).</p>
+
+      <div class="calc-card">
+        <div class="calc-grid" style="grid-template-columns: 1fr 1fr 1fr; gap: 1rem">
+          <div class="calc-field">
+            <label>GBq (Gigabecquerel)</label>
+            <input type="number" class="calc-input mono" :value="conv.gbq" @input="updateConv($event.target.value, 'gbq')" step="0.001">
+          </div>
+          <div class="calc-field">
+            <label>MBq (Megabecquerel)</label>
+            <input type="number" class="calc-input mono" :value="conv.mbq" @input="updateConv($event.target.value, 'mbq')" step="1">
+          </div>
+          <div class="calc-field">
+            <label>kBq (Kilobecquerel)</label>
+            <input type="number" class="calc-input mono" :value="conv.kbq" @input="updateConv($event.target.value, 'kbq')" step="1">
+          </div>
+          <div class="calc-field">
+            <label>mCi (Milicurie)</label>
+            <input type="number" class="calc-input mono" :value="conv.mci" @input="updateConv($event.target.value, 'mci')" step="0.01">
+          </div>
+          <div class="calc-field">
+            <label>μCi (Microcurie)</label>
+            <input type="number" class="calc-input mono" :value="conv.uci" @input="updateConv($event.target.value, 'uci')" step="1">
+          </div>
+          <div class="calc-field">
+            <label>Ci (Curie)</label>
+            <input type="number" class="calc-input mono" :value="conv.ci" @input="updateConv($event.target.value, 'ci')" step="0.0001">
+          </div>
+        </div>
+
+        <table class="ref-table" style="margin-top: 1.5rem">
+          <thead><tr><th>Equivalência fixa</th><th>Valor</th></tr></thead>
+          <tbody>
+            <tr><td>1 Ci</td><td>= 37 GBq = 37 000 MBq = 3,7 × 10¹⁰ Bq</td></tr>
+            <tr><td>1 mCi</td><td>= 37 MBq = 37 000 kBq</td></tr>
+            <tr><td>1 GBq</td><td>= 27,03 mCi = 1000 MBq</td></tr>
+            <tr><td>1 MBq</td><td>= 0,027 mCi = 27,03 μCi</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- DIVISOR ORBITAL -->
+    <div class="topic-divider" aria-hidden="true">
+      <svg viewBox="0 0 200 50" fill="none">
+        <ellipse cx="100" cy="25" rx="70" ry="11" stroke="#FF8400" stroke-width="0.8" fill="none" opacity="0.55"/>
+        <ellipse cx="100" cy="25" rx="55" ry="8" stroke="#FF8400" stroke-width="0.6" stroke-dasharray="1.2 4" fill="none" opacity="0.4"/>
+        <circle cx="100" cy="25" r="4" fill="#FF8400" opacity="0.85"/>
+        <circle cx="100" cy="25" r="1.5" fill="#FFE5B0"/>
+        <circle cx="32" cy="29" r="1.6" fill="#FF8400"/>
+        <circle cx="166" cy="22" r="1.5" fill="#0EA5B7"/>
+      </svg>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 03. DECAIMENTO -->
+    <!-- ============================================================ -->
+    <section class="tool" id="decay">
+      <div class="tool-head">
+        <div class="tool-num">03</div>
+        <h2>Decaimento radioativo</h2>
+      </div>
+      <p class="tool-desc">Calcula a atividade residual em um momento futuro com base na meia-vida do radioisótopo. Útil para corrigir dose entre calibração e administração, ou estimar atividade residual em paciente após alta.</p>
+
+      <div class="calc-card">
+        <div class="calc-grid">
+          <div class="calc-inputs">
+            <div class="calc-field">
+              <label>Radioisótopo</label>
+              <select class="calc-input" x-model="decay.iso">
+                <template x-for="i in isotopes" :key="i.id">
+                  <option :value="i.id" x-text="i.name + ' (T½ = ' + i.t12_str + ')'"></option>
+                </template>
+              </select>
+            </div>
+            <div class="calc-field">
+              <label>Atividade inicial</label>
+              <div style="display: flex; gap: 0.5rem; align-items: center">
+                <input type="number" class="calc-input mono" x-model.number="decay.a0" step="0.1" style="flex: 1">
+                <select class="calc-input" x-model="decay.a0unit" style="width: 110px">
+                  <option value="GBq">GBq</option>
+                  <option value="MBq">MBq</option>
+                  <option value="mCi">mCi</option>
+                </select>
+              </div>
+            </div>
+            <div class="calc-field">
+              <label>Tempo decorrido</label>
+              <div style="display: flex; gap: 0.5rem; align-items: center">
+                <input type="number" class="calc-input mono" x-model.number="decay.t" step="1" style="flex: 1" min="0">
+                <select class="calc-input" x-model="decay.tunit" style="width: 110px">
+                  <option value="h">horas</option>
+                  <option value="d">dias</option>
+                  <option value="min">minutos</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="calc-output">
+            <div>
+              <div class="out-label">Atividade residual</div>
+              <div class="out-value" x-text="decayResult.value"><span class="out-unit" x-text="decay.a0unit"></span></div>
+            </div>
+            <div class="out-extras">
+              <div class="extra">Fração restante<strong x-text="decayResult.fraction + '%'"></strong></div>
+              <div class="extra">Meia-vidas<strong x-text="decayResult.halfLives"></strong></div>
+              <div class="extra">A reduzir 99%<strong x-text="decayResult.t99"></strong></div>
+              <div class="extra">A reduzir 50%<strong x-text="decayResult.t50"></strong></div>
+            </div>
+          </div>
+        </div>
+
+        <table class="ref-table">
+          <thead><tr><th>Isótopo</th><th>Meia-vida</th><th>Tipo</th><th>Uso típico</th></tr></thead>
+          <tbody>
+            <tr><td>177Lu</td><td>6,65 dias</td><td>β⁻ + γ</td><td>Lu-PSMA, Lu-DOTATATE</td></tr>
+            <tr><td>225Ac</td><td>9,9 dias</td><td>α (cascata)</td><td>Ac-PSMA-617</td></tr>
+            <tr><td>223Ra</td><td>11,4 dias</td><td>α</td><td>Xofigo® em CRPC ósseo</td></tr>
+            <tr><td>90Y</td><td>64,1 horas</td><td>β⁻</td><td>TARE em HCC, mCRC</td></tr>
+            <tr><td>131I</td><td>8,02 dias</td><td>β⁻ + γ</td><td>MIBG, tireóide</td></tr>
+            <tr><td>161Tb</td><td>6,89 dias</td><td>β⁻ + Auger</td><td>Tb-PSMA-I&T (VIOLET)</td></tr>
+            <tr><td>68Ga</td><td>67,7 min</td><td>β⁺ (PET)</td><td>PSMA-11, DOTATATE PET</td></tr>
+            <tr><td>18F</td><td>110 min</td><td>β⁺ (PET)</td><td>FDG, PSMA-1007, DCFPyL</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- DIVISOR ORBITAL -->
+    <div class="topic-divider" aria-hidden="true">
+      <svg viewBox="0 0 200 50" fill="none">
+        <ellipse cx="100" cy="25" rx="70" ry="11" stroke="#FF8400" stroke-width="0.8" fill="none" opacity="0.55"/>
+        <ellipse cx="100" cy="25" rx="55" ry="8" stroke="#FF8400" stroke-width="0.6" stroke-dasharray="1.2 4" fill="none" opacity="0.4"/>
+        <circle cx="100" cy="25" r="4" fill="#FF8400" opacity="0.85"/>
+        <circle cx="100" cy="25" r="1.5" fill="#FFE5B0"/>
+        <circle cx="32" cy="29" r="1.6" fill="#FF8400"/>
+        <circle cx="166" cy="22" r="1.5" fill="#0EA5B7"/>
+      </svg>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 04. ESTATÍSTICA -->
+    <!-- ============================================================ -->
+    <section class="tool" id="stats">
+      <div class="tool-head">
+        <div class="tool-num">04</div>
+        <h2>Calculadora estatística</h2>
+      </div>
+      <p class="tool-desc">Insira a taxa de evento nos dois braços e descubra a redução absoluta de risco (ARR), número necessário a tratar (NNT) e razão de risco (RR) — entendendo a magnitude do benefício clínico.</p>
+
+      <div class="calc-card">
+        <div class="calc-grid">
+          <div class="calc-inputs">
+            <div class="calc-field">
+              <label>Taxa de evento — controle (%)</label>
+              <input type="number" class="calc-input mono" x-model.number="stat.ctrl" min="0" max="100" step="0.1">
+              <span class="hint">Ex: 30 = 30% dos pacientes do controle tiveram o evento</span>
+            </div>
+            <div class="calc-field">
+              <label>Taxa de evento — tratamento (%)</label>
+              <input type="number" class="calc-input mono" x-model.number="stat.trt" min="0" max="100" step="0.1">
+              <span class="hint">Ex: 18 = 18% dos pacientes tratados tiveram o evento</span>
+            </div>
+            <div class="note" style="margin-top: 0.5rem">
+              <span class="lbl">Como interpretar</span>
+              <strong>ARR</strong> = redução absoluta de risco. <strong>NNT</strong> = quantos pacientes você precisa tratar para evitar 1 evento. <strong>RRR</strong> = redução relativa. <strong>OR</strong> e <strong>RR</strong> aproximados.
+            </div>
+          </div>
+
+          <div class="calc-output">
+            <div>
+              <div class="out-label">NNT — Number Needed to Treat</div>
+              <div class="out-value" x-text="statResult.nnt"></div>
+            </div>
+            <div class="out-extras">
+              <div class="extra">ARR (redução absoluta)<strong x-text="statResult.arr + '%'"></strong></div>
+              <div class="extra">RRR (redução relativa)<strong x-text="statResult.rrr + '%'"></strong></div>
+              <div class="extra">RR (Risco Relativo)<strong x-text="statResult.rr"></strong></div>
+              <div class="extra">OR (Odds Ratio)<strong x-text="statResult.or"></strong></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DIVISOR ORBITAL -->
+    <div class="topic-divider" aria-hidden="true">
+      <svg viewBox="0 0 200 50" fill="none">
+        <ellipse cx="100" cy="25" rx="70" ry="11" stroke="#FF8400" stroke-width="0.8" fill="none" opacity="0.55"/>
+        <ellipse cx="100" cy="25" rx="55" ry="8" stroke="#FF8400" stroke-width="0.6" stroke-dasharray="1.2 4" fill="none" opacity="0.4"/>
+        <circle cx="100" cy="25" r="4" fill="#FF8400" opacity="0.85"/>
+        <circle cx="100" cy="25" r="1.5" fill="#FFE5B0"/>
+        <circle cx="32" cy="29" r="1.6" fill="#FF8400"/>
+        <circle cx="166" cy="22" r="1.5" fill="#0EA5B7"/>
+      </svg>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 05. FLUXOGRAMAS -->
+    <!-- ============================================================ -->
+    <section class="tool" id="flowcharts">
+      <div class="tool-head">
+        <div class="tool-num">05</div>
+        <h2>Fluxogramas decisórios</h2>
+      </div>
+      <p class="tool-desc">Algoritmos simplificados de decisão terapêutica em cenários teranósticos. Para uso educacional — em prática real, sempre considere protocolo institucional, biomarcadores específicos e contexto clínico individual.</p>
+
+      <!-- Próstata -->
+      <div class="flow-card">
+        <div class="flow-title">mCRPC pós-ARPi e pós-taxano · onde encaixa o 177Lu-PSMA?</div>
+        <div class="flow-sub">Fluxo simplificado baseado em VISION, PSMAfore, PSMAddition, COMRADE.</div>
+        <svg class="flow-svg" viewBox="0 0 800 380" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <marker id="ar1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="#5C616A"/>
+            </marker>
+          </defs>
+
+          <!-- Início -->
+          <rect x="320" y="10" width="160" height="40" rx="6" fill="rgba(255,132,0,0.12)" stroke="#FF8400"/>
+          <text x="400" y="35" text-anchor="middle" font-size="13" fill="#FFB95E" font-family="Outfit" font-weight="600">mCRPC progressivo</text>
+
+          <!-- Q1 -->
+          <line x1="400" y1="50" x2="400" y2="80" stroke="#5C616A" stroke-width="1.5" marker-end="url(#ar1)"/>
+          <rect x="280" y="80" width="240" height="46" rx="6" fill="var(--graphite-2, #14161B)" stroke="#5C616A" stroke-dasharray="3 3"/>
+          <text x="400" y="103" text-anchor="middle" font-size="12" fill="#F5F6F7" font-family="Outfit" font-weight="500">PSMA-PET com captação significativa?</text>
+          <text x="400" y="118" text-anchor="middle" font-size="10" fill="#8E949C" font-family="Outfit">(critério VISION: SUV > fígado em &gt;1 lesão)</text>
+
+          <!-- Branches -->
+          <line x1="320" y1="126" x2="160" y2="170" stroke="#5C616A" stroke-width="1.5" marker-end="url(#ar1)"/>
+          <line x1="480" y1="126" x2="640" y2="170" stroke="#5C616A" stroke-width="1.5" marker-end="url(#ar1)"/>
+          <text x="220" y="148" font-size="10" fill="#FCD34D" font-family="JetBrains Mono">SIM</text>
+          <text x="560" y="148" font-size="10" fill="#FCA5A5" font-family="JetBrains Mono">NÃO</text>
+
+          <!-- Branch SIM -->
+          <rect x="50" y="170" width="220" height="46" rx="6" fill="rgba(255,132,0,0.08)" stroke="#FF8400"/>
+          <text x="160" y="192" text-anchor="middle" font-size="12" fill="#FFB95E" font-family="Outfit" font-weight="600">177Lu-PSMA-617 · 6×7,4 GBq</text>
+          <text x="160" y="207" text-anchor="middle" font-size="10" fill="#8E949C" font-family="Outfit">VISION · Pluvicto® aprovado</text>
+
+          <!-- Branch NÃO -->
+          <rect x="530" y="170" width="220" height="46" rx="6" fill="rgba(96,165,250,0.08)" stroke="#93C5FD"/>
+          <text x="640" y="192" text-anchor="middle" font-size="12" fill="#93C5FD" font-family="Outfit" font-weight="600">Cabazitaxel · QT 2ª linha</text>
+          <text x="640" y="207" text-anchor="middle" font-size="10" fill="#8E949C" font-family="Outfit">ou ARPi sequencial · ou trial</text>
+
+          <!-- Q2 abaixo de SIM (HRR-mutado) -->
+          <line x1="160" y1="216" x2="160" y2="246" stroke="#5C616A" stroke-width="1.5" marker-end="url(#ar1)"/>
+          <rect x="40" y="246" width="240" height="46" rx="6" fill="var(--graphite-2, #14161B)" stroke="#5C616A" stroke-dasharray="3 3"/>
+          <text x="160" y="269" text-anchor="middle" font-size="12" fill="#F5F6F7" font-family="Outfit" font-weight="500">Mutação HRR (BRCA1/2)?</text>
+          <text x="160" y="284" text-anchor="middle" font-size="10" fill="#8E949C" font-family="Outfit">próxima linha após Lu-PSMA</text>
+
+          <line x1="160" y1="292" x2="160" y2="320" stroke="#5C616A" stroke-width="1.5" marker-end="url(#ar1)"/>
+          <rect x="20" y="320" width="280" height="46" rx="6" fill="rgba(52,211,153,0.06)" stroke="#34D399"/>
+          <text x="160" y="342" text-anchor="middle" font-size="12" fill="#6EE7B7" font-family="Outfit" font-weight="600">→ Considerar PARP (olaparib, rucaparib)</text>
+          <text x="160" y="357" text-anchor="middle" font-size="10" fill="#8E949C" font-family="Outfit">PROfound, TRITON3 · ou novos α-PSMA</text>
+
+          <!-- Branch NÃO continua com novo flow -->
+          <line x1="640" y1="216" x2="640" y2="246" stroke="#5C616A" stroke-width="1.5" marker-end="url(#ar1)"/>
+          <rect x="520" y="246" width="240" height="46" rx="6" fill="var(--graphite-2, #14161B)" stroke="#5C616A" stroke-dasharray="3 3"/>
+          <text x="640" y="269" text-anchor="middle" font-size="12" fill="#F5F6F7" font-family="Outfit" font-weight="500">Mets ósseas dominantes?</text>
+          <text x="640" y="284" text-anchor="middle" font-size="10" fill="#8E949C" font-family="Outfit">sem visceral significativa</text>
+
+          <line x1="640" y1="292" x2="640" y2="320" stroke="#5C616A" stroke-width="1.5" marker-end="url(#ar1)"/>
+          <rect x="500" y="320" width="280" height="46" rx="6" fill="rgba(168,85,247,0.06)" stroke="#A855F7"/>
+          <text x="640" y="342" text-anchor="middle" font-size="12" fill="#C084FC" font-family="Outfit" font-weight="600">→ 223Ra (com bisfosfonato/denosumabe)</text>
+          <text x="640" y="357" text-anchor="middle" font-size="10" fill="#8E949C" font-family="Outfit">ALSYMPCA · NÃO combinar com Abi sem proteção</text>
+        </svg>
+      </div>
+
+      <!-- TNE -->
+      <div class="flow-card">
+        <div class="flow-title">TNE bem diferenciado · quando indicar PRRT?</div>
+        <div class="flow-sub">Baseado em NETTER-1, NETTER-2, COMPETE, OCCLURANDOM.</div>
+        <svg class="flow-svg" viewBox="0 0 800 320" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <marker id="ar2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="#5C616A"/>
+            </marker>
+          </defs>
+
+          <rect x="320" y="10" width="160" height="40" rx="6" fill="rgba(14,165,183,0.1)" stroke="#0EA5B7"/>
+          <text x="400" y="35" text-anchor="middle" font-size="13" fill="#5DCAA5" font-family="Outfit" font-weight="600">TNE GEP G1-G3</text>
+
+          <line x1="400" y1="50" x2="400" y2="80" stroke="#5C616A" stroke-width="1.5" marker-end="url(#ar2)"/>
+          <rect x="270" y="80" width="260" height="46" rx="6" fill="var(--graphite-2, #14161B)" stroke="#5C616A" stroke-dasharray="3 3"/>
+          <text x="400" y="103" text-anchor="middle" font-size="12" fill="#F5F6F7" font-family="Outfit" font-weight="500">SSTR+ ao 68Ga-DOTATATE PET?</text>
+          <text x="400" y="118" text-anchor="middle" font-size="10" fill="#8E949C" font-family="Outfit">Krenning ≥ 3 (captação ≥ fígado)</text>
+
+          <line x1="320" y1="126" x2="160" y2="170" stroke="#5C616A" stroke-width="1.5" marker-end="url(#ar2)"/>
+          <line x1="480" y1="126" x2="640" y2="170" stroke="#5C616A" stroke-width="1.5" marker-end="url(#ar2)"/>
+          <text x="220" y="148" font-size="10" fill="#FCD34D" font-family="JetBrains Mono">SIM</text>
+          <text x="560" y="148" font-size="10" fill="#FCA5A5" font-family="JetBrains Mono">NÃO</text>
+
+          <rect x="40" y="170" width="240" height="46" rx="6" fill="var(--graphite-2, #14161B)" stroke="#5C616A" stroke-dasharray="3 3"/>
+          <text x="160" y="193" text-anchor="middle" font-size="12" fill="#F5F6F7" font-family="Outfit" font-weight="500">Ki-67?</text>
+
+          <rect x="540" y="170" width="220" height="46" rx="6" fill="rgba(143,148,156,0.08)" stroke="#5C616A"/>
+          <text x="650" y="192" text-anchor="middle" font-size="12" fill="#F5F6F7" font-family="Outfit" font-weight="500">Considerar QT (CAPTEM/FOLFOX)</text>
+          <text x="650" y="207" text-anchor="middle" font-size="10" fill="#8E949C" font-family="Outfit">ou everolimus / sunitinib</text>
+
+          <!-- Ki-67 branches -->
+          <line x1="100" y1="216" x2="50" y2="252" stroke="#5C616A" stroke-width="1.5" marker-end="url(#ar2)"/>
+          <line x1="160" y1="216" x2="160" y2="252" stroke="#5C616A" stroke-width="1.5" marker-end="url(#ar2)"/>
+          <line x1="220" y1="216" x2="280" y2="252" stroke="#5C616A" stroke-width="1.5" marker-end="url(#ar2)"/>
+
+          <text x="60" y="234" font-size="9" fill="#8E949C" font-family="JetBrains Mono">≤2%</text>
+          <text x="170" y="234" font-size="9" fill="#8E949C" font-family="JetBrains Mono">3-20%</text>
+          <text x="240" y="234" font-size="9" fill="#8E949C" font-family="JetBrains Mono">21-55%</text>
+
+          <rect x="0" y="252" width="100" height="50" rx="6" fill="rgba(96,165,250,0.05)" stroke="#93C5FD"/>
+          <text x="50" y="272" text-anchor="middle" font-size="11" fill="#93C5FD" font-family="Outfit" font-weight="600">G1</text>
+          <text x="50" y="288" text-anchor="middle" font-size="9" fill="#8E949C" font-family="Outfit">SSA + watch</text>
+
+          <rect x="110" y="252" width="100" height="50" rx="6" fill="rgba(14,165,183,0.08)" stroke="#0EA5B7"/>
+          <text x="160" y="272" text-anchor="middle" font-size="11" fill="#5DCAA5" font-family="Outfit" font-weight="600">G2 / G3</text>
+          <text x="160" y="288" text-anchor="middle" font-size="9" fill="#8E949C" font-family="Outfit">PRRT 1ª linha</text>
+
+          <rect x="230" y="252" width="100" height="50" rx="6" fill="rgba(14,165,183,0.08)" stroke="#0EA5B7"/>
+          <text x="280" y="272" text-anchor="middle" font-size="11" fill="#5DCAA5" font-family="Outfit" font-weight="600">G3 alto</text>
+          <text x="280" y="288" text-anchor="middle" font-size="9" fill="#8E949C" font-family="Outfit">PRRT (NETTER-2)</text>
+        </svg>
+      </div>
+
+      <!-- HCC -->
+      <div class="flow-card">
+        <div class="flow-title">HCC localmente avançado · resseccão, ablação, TARE ou sistêmica?</div>
+        <div class="flow-sub">Algoritmo simplificado baseado em BCLC + DOSISPHERE-01, LEGACY, RASER.</div>
+        <svg class="flow-svg" viewBox="0 0 800 320" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <marker id="ar3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="#5C616A"/>
+            </marker>
+          </defs>
+
+          <rect x="320" y="10" width="160" height="40" rx="6" fill="rgba(251,191,36,0.1)" stroke="#FBBF24"/>
+          <text x="400" y="35" text-anchor="middle" font-size="13" fill="#FCD34D" font-family="Outfit" font-weight="600">HCC inoperável</text>
+
+          <line x1="400" y1="50" x2="400" y2="80" stroke="#5C616A" stroke-width="1.5" marker-end="url(#ar3)"/>
+          <rect x="270" y="80" width="260" height="46" rx="6" fill="var(--graphite-2, #14161B)" stroke="#5C616A" stroke-dasharray="3 3"/>
+          <text x="400" y="103" text-anchor="middle" font-size="12" fill="#F5F6F7" font-family="Outfit" font-weight="500">Estágio BCLC?</text>
+          <text x="400" y="118" text-anchor="middle" font-size="10" fill="#8E949C" font-family="Outfit">Child-Pugh A · sem mets extra-hepáticas</text>
+
+          <line x1="280" y1="126" x2="120" y2="170" stroke="#5C616A" stroke-width="1.5" marker-end="url(#ar3)"/>
+          <line x1="400" y1="126" x2="400" y2="170" stroke="#5C616A" stroke-width="1.5" marker-end="url(#ar3)"/>
+          <line x1="520" y1="126" x2="680" y2="170" stroke="#5C616A" stroke-width="1.5" marker-end="url(#ar3)"/>
+          <text x="180" y="148" font-size="10" fill="#8E949C" font-family="JetBrains Mono">A (≤3 cm)</text>
+          <text x="380" y="148" font-size="10" fill="#8E949C" font-family="JetBrains Mono">B (intermediário)</text>
+          <text x="600" y="148" font-size="10" fill="#8E949C" font-family="JetBrains Mono">C (TVP, mets)</text>
+
+          <rect x="0" y="170" width="240" height="46" rx="6" fill="rgba(251,191,36,0.06)" stroke="#FBBF24"/>
+          <text x="120" y="192" text-anchor="middle" font-size="12" fill="#FCD34D" font-family="Outfit" font-weight="600">Radiação segmentar Y-90</text>
+          <text x="120" y="207" text-anchor="middle" font-size="10" fill="#8E949C" font-family="Outfit">RASER, LEGACY · &gt;190 Gy</text>
+
+          <rect x="280" y="170" width="240" height="46" rx="6" fill="rgba(251,191,36,0.06)" stroke="#FBBF24"/>
+          <text x="400" y="192" text-anchor="middle" font-size="12" fill="#FCD34D" font-family="Outfit" font-weight="600">TARE Y-90 com PDA</text>
+          <text x="400" y="207" text-anchor="middle" font-size="10" fill="#8E949C" font-family="Outfit">DOSISPHERE-01 · ≥205 Gy alvo</text>
+
+          <rect x="560" y="170" width="240" height="46" rx="6" fill="rgba(143,148,156,0.08)" stroke="#5C616A"/>
+          <text x="680" y="192" text-anchor="middle" font-size="12" fill="#F5F6F7" font-family="Outfit" font-weight="600">Sistêmica + considerar TARE</text>
+          <text x="680" y="207" text-anchor="middle" font-size="10" fill="#8E949C" font-family="Outfit">atezo-bev, lenvatinibe, sorafenibe</text>
+
+          <!-- Bottom -->
+          <line x1="400" y1="216" x2="400" y2="246" stroke="#5C616A" stroke-width="1.5" stroke-dasharray="3 3"/>
+          <rect x="190" y="246" width="420" height="46" rx="6" fill="rgba(14,165,183,0.06)" stroke="#0EA5B7"/>
+          <text x="400" y="269" text-anchor="middle" font-size="12" fill="#5DCAA5" font-family="Outfit" font-weight="600">Sempre: planejamento angiográfico + 99mTc-MAA prévio</text>
+          <text x="400" y="284" text-anchor="middle" font-size="10" fill="#8E949C" font-family="Outfit">cálculo de shunt pulmonar e dosimetria preditiva</text>
+        </svg>
+      </div>
+
+      <div class="note">
+        <span class="lbl">Aviso</span>
+        Esses fluxos são <strong>simplificações educacionais</strong>. Decisões reais devem considerar diretrizes atualizadas (NCCN, EAU, ESMO, ENETS, EASL, BCLC), comorbidades, função renal/medular/hepática, status mutacional completo, contexto sócio-econômico e disponibilidade local. Sempre discutir em <em>tumor board</em> multidisciplinar.
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 06. ESTADIAMENTO AJCC TNM -->
+    <!-- ============================================================ -->
+    <section class="tool" id="ajcc" style="--tool-accent: #38BDF8">
+      <div class="tool-head">
+        <div class="tool-num" style="background: rgba(56, 189, 248, 0.15); color: #38BDF8">06</div>
+        <h2>Estadiamento oncológico AJCC · TNM</h2>
+      </div>
+      <p style="color: var(--stone); margin: 0 0 1.5rem; max-width: 720px; line-height: 1.55">
+        Resumo prático do sistema TNM (8ª edição AJCC, com atualizações 9ª edição quando disponíveis) para os tumores mais frequentes em discussão de teranóstico, pulmão e mama. Use como referência rápida — não substitui o manual completo.
+      </p>
+
+      <!-- Princípios gerais -->
+      <div class="tnm-principles" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-bottom: 2rem">
+        <div style="background:var(--graphite-2); border:1px solid var(--border-soft); border-radius:var(--radius-md); padding:1.1rem 1.25rem">
+          <div style="font-family:var(--font-mono); color:#38BDF8; font-size:1.4rem; font-weight:700; margin-bottom:0.25rem">T</div>
+          <div style="font-size:0.78rem; color:var(--stone); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.4rem">Tumor primário</div>
+          <div style="font-size:0.85rem; color:var(--off-white); line-height:1.5">Tamanho, profundidade e invasão local. T1 → T4 conforme tumor. Tis = in situ. Tx = não avaliável.</div>
+        </div>
+        <div style="background:var(--graphite-2); border:1px solid var(--border-soft); border-radius:var(--radius-md); padding:1.1rem 1.25rem">
+          <div style="font-family:var(--font-mono); color:#38BDF8; font-size:1.4rem; font-weight:700; margin-bottom:0.25rem">N</div>
+          <div style="font-size:0.78rem; color:var(--stone); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.4rem">Linfonodos regionais</div>
+          <div style="font-size:0.85rem; color:var(--off-white); line-height:1.5">N0 (sem) a N3 (extenso/contralateral). Sublocalizações por tumor (N1a/b/c). Nx = não avaliável.</div>
+        </div>
+        <div style="background:var(--graphite-2); border:1px solid var(--border-soft); border-radius:var(--radius-md); padding:1.1rem 1.25rem">
+          <div style="font-family:var(--font-mono); color:#38BDF8; font-size:1.4rem; font-weight:700; margin-bottom:0.25rem">M</div>
+          <div style="font-size:0.78rem; color:var(--stone); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.4rem">Metástases à distância</div>
+          <div style="font-size:0.85rem; color:var(--off-white); line-height:1.5">M0 (ausentes) ou M1 (presentes). M1a/b/c por sítio em alguns tumores (próstata, NSCLC).</div>
+        </div>
+        <div style="background:var(--graphite-2); border:1px solid var(--border-soft); border-radius:var(--radius-md); padding:1.1rem 1.25rem">
+          <div style="font-family:var(--font-mono); color:#38BDF8; font-size:1.4rem; font-weight:700; margin-bottom:0.25rem">Modificadores</div>
+          <div style="font-size:0.78rem; color:var(--stone); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.4rem">Prefixos clínicos</div>
+          <div style="font-size:0.85rem; color:var(--off-white); line-height:1.5">c = clínico, p = patológico, y = pós-tratamento neoadj, r = recidiva, a = autópsia.</div>
+        </div>
+      </div>
+
+      <style>
+        .tnm-grid {
+          display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+          gap: 0.85rem; margin: 1.2rem 0 0;
+        }
+        .tnm-card {
+          background: var(--graphite-2); border: 1px solid var(--border-soft);
+          border-radius: var(--radius-md); padding: 1rem 1.1rem;
+          cursor: pointer; transition: all 0.18s ease;
+          display: flex; flex-direction: column; gap: 0.55rem;
+          text-align: left; font-family: inherit; color: inherit;
+          position: relative; overflow: hidden;
+        }
+        .tnm-card::after {
+          content: ''; position: absolute; top: 0; right: 0;
+          width: 3px; height: 100%; background: #38BDF8;
+          opacity: 0; transition: opacity 0.2s;
+        }
+        .tnm-card:hover {
+          transform: translateY(-2px); border-color: rgba(56,189,248,0.55);
+          box-shadow: 0 6px 20px rgba(56,189,248,0.08);
+        }
+        .tnm-card:hover::after { opacity: 1; }
+        .tnm-card .tnm-card-icon {
+          width: 32px; height: 32px; border-radius: 8px;
+          background: rgba(56,189,248,0.10); display: grid; place-items: center;
+        }
+        .tnm-card .tnm-card-title {
+          font-family: var(--font-display); font-size: 1rem; color: var(--off-white);
+          font-weight: 600; line-height: 1.25;
+        }
+        .tnm-card .tnm-card-ed {
+          font-family: var(--font-mono); font-size: 0.65rem; color: var(--stone-2);
+          text-transform: uppercase; letter-spacing: 0.06em;
+        }
+        .tnm-card .tnm-card-summary {
+          font-size: 0.78rem; color: var(--stone); line-height: 1.5;
+        }
+        .tnm-card .tnm-card-cta {
+          margin-top: auto; font-size: 0.7rem; color: #38BDF8;
+          font-family: var(--font-mono); display: flex; align-items: center; gap: 0.3rem;
+        }
+
+        /* Modal */
+        dialog.tnm-modal {
+          padding: 0; border: 1px solid rgba(56,189,248,0.35);
+          border-radius: var(--radius-lg); background: var(--graphite-1);
+          color: var(--off-white); max-width: 880px; width: 92vw;
+          max-height: 88vh; overflow: hidden;
+          box-shadow: 0 24px 80px rgba(0,0,0,0.55);
+        }
+        dialog.tnm-modal::backdrop { background: rgba(0,0,0,0.72); backdrop-filter: blur(4px); }
+        dialog.tnm-modal .tnm-modal-head {
+          padding: 1.2rem 1.5rem; border-bottom: 1px solid var(--border-soft);
+          display: flex; align-items: center; gap: 0.85rem;
+          background: linear-gradient(to bottom, rgba(56,189,248,0.06), transparent);
+          position: sticky; top: 0; z-index: 2;
+        }
+        dialog.tnm-modal .tnm-modal-head .icon {
+          width: 38px; height: 38px; border-radius: 10px;
+          background: rgba(56,189,248,0.15); display: grid; place-items: center;
+        }
+        dialog.tnm-modal .tnm-modal-head h3 {
+          margin: 0; font-family: var(--font-display); font-size: 1.15rem;
+          color: var(--off-white); font-weight: 600;
+        }
+        dialog.tnm-modal .tnm-modal-head .ed {
+          font-family: var(--font-mono); font-size: 0.7rem; color: var(--stone-2);
+          margin-left: 0.5rem;
+        }
+        dialog.tnm-modal .tnm-modal-head .close {
+          margin-left: auto; background: transparent; border: 1px solid var(--border-soft);
+          color: var(--stone); width: 34px; height: 34px; border-radius: 8px;
+          cursor: pointer; display: grid; place-items: center; transition: all 0.15s;
+        }
+        dialog.tnm-modal .tnm-modal-head .close:hover {
+          background: var(--graphite-3); color: var(--off-white); border-color: #38BDF8;
+        }
+        dialog.tnm-modal .tnm-modal-body {
+          padding: 1.3rem 1.5rem 1.6rem; overflow-y: auto;
+          max-height: calc(88vh - 70px); font-size: 0.86rem; line-height: 1.6;
+        }
+        dialog.tnm-modal .tnm-modal-body h5 {
+          font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em;
+          color: var(--stone); margin: 1.3rem 0 0.5rem; font-weight: 600;
+        }
+        dialog.tnm-modal .tnm-modal-body h5:first-of-type { margin-top: 0; }
+        dialog.tnm-modal .tnm-modal-body h5 .pill {
+          background: rgba(56,189,248,0.15); color: #38BDF8;
+          padding: 0.2rem 0.5rem; border-radius: 4px;
+          font-family: var(--font-mono); font-size: 0.7rem; margin-right: 0.4rem;
+        }
+        dialog.tnm-modal .tnm-modal-body ul.tnm-list { list-style: none; padding: 0; margin: 0; }
+        dialog.tnm-modal .tnm-modal-body ul.tnm-list > li {
+          padding: 0.5rem 0; border-bottom: 1px solid var(--border-soft);
+        }
+        dialog.tnm-modal .tnm-modal-body ul.tnm-list > li:last-child { border-bottom: 0; }
+        dialog.tnm-modal .tnm-modal-body ul.tnm-list .code {
+          font-family: var(--font-mono); font-weight: 700;
+          color: #38BDF8; margin-right: 0.5rem;
+        }
+        dialog.tnm-modal .tnm-modal-body ul.tnm-list ul { margin: 0.35rem 0 0 1.5rem; padding: 0; list-style: none; }
+        dialog.tnm-modal .tnm-modal-body ul.tnm-list ul li {
+          font-size: 0.8rem; color: var(--stone); padding: 0.18rem 0 0.18rem 0.85rem;
+          position: relative;
+        }
+        dialog.tnm-modal .tnm-modal-body ul.tnm-list ul li::before {
+          content: ''; position: absolute; left: 0; color: #38BDF8; font-weight: 700;
+        }
+        dialog.tnm-modal .tnm-modal-body table.stage-tbl {
+          width: 100%; border-collapse: collapse; margin-top: 0.5rem;
+          background: var(--graphite-3); border-radius: var(--radius-sm); overflow: hidden;
+        }
+        dialog.tnm-modal .tnm-modal-body table.stage-tbl th,
+        dialog.tnm-modal .tnm-modal-body table.stage-tbl td {
+          padding: 0.5rem 0.7rem; text-align: left;
+          border-bottom: 1px solid var(--border-soft);
+          font-size: 0.78rem; vertical-align: top;
+        }
+        dialog.tnm-modal .tnm-modal-body table.stage-tbl th {
+          background: var(--graphite-4); color: var(--stone);
+          font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.06em;
+        }
+        dialog.tnm-modal .tnm-modal-body table.stage-tbl tr:last-child td { border-bottom: 0; }
+        dialog.tnm-modal .tnm-modal-body table.stage-tbl .stg {
+          font-family: var(--font-mono); font-weight: 700; color: #38BDF8; white-space: nowrap;
+        }
+        dialog.tnm-modal .tnm-modal-body .notes {
+          margin-top: 1rem; padding: 0.7rem 1rem;
+          background: var(--graphite-3); border-left: 3px solid #38BDF8;
+          font-size: 0.82rem; line-height: 1.55; border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+        }
+        @media (max-width: 600px) {
+          dialog.tnm-modal { max-height: 100vh; max-width: 100vw; width: 100vw; border-radius: 0; }
+          dialog.tnm-modal .tnm-modal-body { max-height: calc(100vh - 70px); }
+          .tnm-grid { grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+          .tnm-card { padding: 0.85rem 0.95rem; }
+        }
+      </style>
+
+      <h3 style="font-family:var(--font-display); font-size:1.1rem; color:var(--off-white); margin:2rem 0 0.4rem; font-weight:600">Detalhe completo por tumor</h3>
+      <p style="color:var(--stone); font-size:0.85rem; margin:0 0 0.5rem">Selecione um tumor para abrir o detalhamento completo de T, N, M e os grupos de estágio.</p>
+
+      <div class="tnm-grid" id="tnm-grid">
+        <button type="button" class="tnm-card" onclick="openTNM('prostata')">
+          <div class="tnm-card-icon"><i data-lucide="target" style="width:18px;height:18px;color:#FF8400"></i></div>
+          <div class="tnm-card-title">Próstata</div>
+          <div class="tnm-card-ed">AJCC 8ª · prognóstico</div>
+          <div class="tnm-card-summary">T1-T4, N0-N1, M1a/b/c. Estágio I-IVB inclui PSA + Grade Group ISUP.</div>
+          <div class="tnm-card-cta">Ver completo <i data-lucide="arrow-right" style="width:12px;height:12px"></i></div>
+        </button>
+        <button type="button" class="tnm-card" onclick="openTNM('mama')">
+          <div class="tnm-card-icon" style="background:rgba(236,72,153,0.10)"><i data-lucide="flower-2" style="width:18px;height:18px;color:#ec4899"></i></div>
+          <div class="tnm-card-title">Mama</div>
+          <div class="tnm-card-ed">AJCC 8ª · prognóstico</div>
+          <div class="tnm-card-summary">T1-T4d, cN/pN, M0/M1. Estadiamento prognóstico inclui ER, PR, HER2 e grau.</div>
+          <div class="tnm-card-cta">Ver completo <i data-lucide="arrow-right" style="width:12px;height:12px"></i></div>
+        </button>
+        <button type="button" class="tnm-card" onclick="openTNM('nsclc')">
+          <div class="tnm-card-icon" style="background:rgba(34,211,238,0.10)"><i data-lucide="wind" style="width:18px;height:18px;color:#22d3ee"></i></div>
+          <div class="tnm-card-title">Pulmão · NSCLC</div>
+          <div class="tnm-card-ed">AJCC 9ª (2024)</div>
+          <div class="tnm-card-summary">N2a/N2b por estações; M1c1/M1c2 por número de órgãos. Refinamento 9ª ed.</div>
+          <div class="tnm-card-cta">Ver completo <i data-lucide="arrow-right" style="width:12px;height:12px"></i></div>
+        </button>
+        <button type="button" class="tnm-card" onclick="openTNM('hcc')">
+          <div class="tnm-card-icon" style="background:rgba(251,191,36,0.10)"><i data-lucide="droplet" style="width:18px;height:18px;color:#FBBF24"></i></div>
+          <div class="tnm-card-title">Hepatocelular (HCC)</div>
+          <div class="tnm-card-ed">AJCC 8ª + BCLC</div>
+          <div class="tnm-card-summary">TNM + sistema BCLC clínico (0/A/B/C/D) que define a terapia.</div>
+          <div class="tnm-card-cta">Ver completo <i data-lucide="arrow-right" style="width:12px;height:12px"></i></div>
+        </button>
+        <button type="button" class="tnm-card" onclick="openTNM('net')">
+          <div class="tnm-card-icon" style="background:rgba(14,165,183,0.10)"><i data-lucide="heart-pulse" style="width:18px;height:18px;color:#0EA5B7"></i></div>
+          <div class="tnm-card-title">NETs (GEP-NET)</div>
+          <div class="tnm-card-ed">AJCC 8ª · WHO 2019</div>
+          <div class="tnm-card-summary">TNM por sítio (pNET/siNET) + grade WHO (G1/G2/G3/NEC/MiNEN).</div>
+          <div class="tnm-card-cta">Ver completo <i data-lucide="arrow-right" style="width:12px;height:12px"></i></div>
+        </button>
+        <button type="button" class="tnm-card" onclick="openTNM('rcc')">
+          <div class="tnm-card-icon"><i data-lucide="shield-half" style="width:18px;height:18px;color:#38BDF8"></i></div>
+          <div class="tnm-card-title">Renal (ccRCC)</div>
+          <div class="tnm-card-ed">AJCC 8ª + IMDC</div>
+          <div class="tnm-card-summary">TNM cirúrgico + IMDC/Heng (Bom/Intermediário/Pobre) para sistêmico.</div>
+          <div class="tnm-card-cta">Ver completo <i data-lucide="arrow-right" style="width:12px;height:12px"></i></div>
+        </button>
+        <button type="button" class="tnm-card" onclick="openTNM('crc')">
+          <div class="tnm-card-icon" style="background:rgba(251,146,60,0.10)"><i data-lucide="activity-square" style="width:18px;height:18px;color:#fb923c"></i></div>
+          <div class="tnm-card-title">Colorretal</div>
+          <div class="tnm-card-ed">AJCC 8ª</div>
+          <div class="tnm-card-summary">N1a/b/c, N2a/b por número de LN. M1a/b/c por sítios.</div>
+          <div class="tnm-card-cta">Ver completo <i data-lucide="arrow-right" style="width:12px;height:12px"></i></div>
+        </button>
+        <button type="button" class="tnm-card" onclick="openTNM('gastric')">
+          <div class="tnm-card-icon" style="background:rgba(248,113,113,0.10)"><i data-lucide="circle" style="width:18px;height:18px;color:#f87171"></i></div>
+          <div class="tnm-card-title">Gástrico / GEJ</div>
+          <div class="tnm-card-ed">AJCC 8ª</div>
+          <div class="tnm-card-summary">Grupos N por número (1-2 / 3-6 / 7-15 / ≥16) + tipos de Lauren.</div>
+          <div class="tnm-card-cta">Ver completo <i data-lucide="arrow-right" style="width:12px;height:12px"></i></div>
+        </button>
+      </div>
+
+      <dialog id="tnm-modal" class="tnm-modal" aria-labelledby="tnm-modal-title">
+        <div class="tnm-modal-head">
+          <div class="icon" id="tnm-modal-icon"></div>
+          <div>
+            <h3 id="tnm-modal-title">Tumor</h3>
+            <span class="ed" id="tnm-modal-ed"></span>
+          </div>
+          <button type="button" class="close" onclick="document.getElementById('tnm-modal').close()" aria-label="Fechar">
+            <i data-lucide="x" style="width:18px;height:18px"></i>
+          </button>
+        </div>
+        <div class="tnm-modal-body" id="tnm-modal-body"></div>
+      </dialog>
+
+    <script>
+      // ====== TNM DATA — Estadiamento AJCC ======
+      const TNM_DATA = {
+        prostata: {
+          title: 'Próstata',
+          edition: 'AJCC 8ª · prognóstico',
+          icon: 'target',
+          color: '#FF8400',
+          body: `
+            <h5><span class="pill">T</span>Tumor primário</h5>
+            <ul class="tnm-list">
+              <li><span class="code">Tx</span>Não pode ser avaliado</li>
+              <li><span class="code">T0</span>Sem evidência de tumor primário</li>
+              <li><span class="code">T1</span>Não palpável e não visível em imagem
+                <ul>
+                  <li>T1a: achado histológico em ≤5% do tecido ressecado</li>
+                  <li>T1b: achado em &gt;5% do tecido ressecado</li>
+                  <li>T1c: identificado por biópsia (PSA elevado), uni ou bilateral, não palpável</li>
+                </ul>
+              </li>
+              <li><span class="code">T2</span>Palpável, confinado à próstata
+                <ul>
+                  <li>T2a: ≤½ de um lobo</li>
+                  <li>T2b: &gt;½ de um lobo, mas só um lobo</li>
+                  <li>T2c: ambos os lobos</li>
+                </ul>
+              </li>
+              <li><span class="code">T3</span>Extensão extra-prostática
+                <ul>
+                  <li>T3a: extensão extracapsular (uni/bilateral) ou invasão microscópica do colo vesical</li>
+                  <li>T3b: invasão de vesícula(s) seminal(is)</li>
+                </ul>
+              </li>
+              <li><span class="code">T4</span>Fixo ou invade estruturas adjacentes (esfíncter externo, reto, bexiga, levantador, parede pélvica)</li>
+            </ul>
+            <h5><span class="pill">N</span>Linfonodos regionais</h5>
+            <ul class="tnm-list">
+              <li><span class="code">Nx</span>Não avaliados</li>
+              <li><span class="code">N0</span>Sem metástase em LN regionais</li>
+              <li><span class="code">N1</span>Metástase em LN regional(is) (ilíaca interna/externa/comum, obturatória, sacral, perirretal, pélvica)</li>
+            </ul>
+            <h5><span class="pill">M</span>Metástases à distância</h5>
+            <ul class="tnm-list">
+              <li><span class="code">M0</span>Sem metástase à distância</li>
+              <li><span class="code">M1</span>Metástase à distância
+                <ul>
+                  <li>M1a: linfonodo(s) não-regional(is)</li>
+                  <li>M1b: osso(s)</li>
+                  <li>M1c: outros sítios viscerais (com/sem doença óssea)</li>
+                </ul>
+              </li>
+            </ul>
+            <h5>Grupos de estágio prognóstico</h5>
+            <table class="stage-tbl">
+              <thead><tr><th>Estágio</th><th>T</th><th>N</th><th>M</th><th>PSA · Grade Group</th></tr></thead>
+              <tbody>
+                <tr><td class="stg">I</td><td>cT1a-c, cT2a · pT2</td><td>N0</td><td>M0</td><td>PSA &lt;10 · GG1</td></tr>
+                <tr><td class="stg">IIA</td><td>cT1-cT2a · pT2</td><td>N0</td><td>M0</td><td>PSA 10-20 · GG1</td></tr>
+                <tr><td class="stg">IIA</td><td>cT2b-c</td><td>N0</td><td>M0</td><td>PSA &lt;20 · GG1</td></tr>
+                <tr><td class="stg">IIB</td><td>T1-2</td><td>N0</td><td>M0</td><td>PSA &lt;20 · GG2</td></tr>
+                <tr><td class="stg">IIC</td><td>T1-2</td><td>N0</td><td>M0</td><td>PSA &lt;20 · GG3-4</td></tr>
+                <tr><td class="stg">IIIA</td><td>T1-2</td><td>N0</td><td>M0</td><td>PSA ≥20 · GG1-4</td></tr>
+                <tr><td class="stg">IIIB</td><td>T3-4</td><td>N0</td><td>M0</td><td>qualquer PSA · GG1-4</td></tr>
+                <tr><td class="stg">IIIC</td><td>qualquer T</td><td>N0</td><td>M0</td><td>qualquer PSA · GG5</td></tr>
+                <tr><td class="stg">IVA</td><td>qualquer T</td><td>N1</td><td>M0</td><td>qualquer PSA · GG</td></tr>
+                <tr><td class="stg">IVB</td><td>qualquer T</td><td>qualquer N</td><td>M1</td><td>qualquer PSA · GG</td></tr>
+              </tbody>
+            </table>
+            <div class="notes"><strong>Grade Group ISUP:</strong> GG1 = Gleason 6 (3+3) · GG2 = Gleason 7 (3+4) · GG3 = Gleason 7 (4+3) · GG4 = Gleason 8 · GG5 = Gleason 9-10. Estadiamento prognóstico AJCC 8ª usa T+N+M+PSA+GG.</div>
+          `
+        },
+        mama: {
+          title: 'Mama',
+          edition: 'AJCC 8ª · prognóstico',
+          icon: 'flower-2',
+          color: '#ec4899',
+          body: `
+            <h5><span class="pill">T</span>Tumor primário</h5>
+            <ul class="tnm-list">
+              <li><span class="code">Tis</span>Carcinoma in situ
+                <ul><li>Tis (DCIS): carcinoma ductal in situ</li><li>Tis (Paget): doença de Paget sem tumor invasivo</li></ul>
+              </li>
+              <li><span class="code">T1</span>≤2 cm
+                <ul><li>T1mi: ≤1 mm</li><li>T1a: 1-5 mm</li><li>T1b: 5-10 mm</li><li>T1c: 10-20 mm</li></ul>
+              </li>
+              <li><span class="code">T2</span>2-5 cm</li>
+              <li><span class="code">T3</span>&gt;5 cm</li>
+              <li><span class="code">T4</span>Qualquer tamanho com extensão direta
+                <ul>
+                  <li>T4a: parede torácica (excluindo peitoral isolado)</li>
+                  <li>T4b: pele (ulceração, edema, nódulos satélite)</li>
+                  <li>T4c: T4a + T4b</li>
+                  <li>T4d: carcinoma inflamatório</li>
+                </ul>
+              </li>
+            </ul>
+            <h5><span class="pill">N</span>Linfonodos</h5>
+            <ul class="tnm-list">
+              <li><span class="code">cN0</span>Sem evidência</li>
+              <li><span class="code">cN1</span>Axilares ipsi nível I-II móveis</li>
+              <li><span class="code">cN2</span>Axilares ipsi I-II fixos OU mamária interna ipsi sem axilar</li>
+              <li><span class="code">cN3</span>Infraclaviculares (nível III), supraclaviculares OU mamária interna + axilar</li>
+              <li><span class="code">pN1mi</span>Micrometástase 0,2-2 mm (200 células)</li>
+              <li><span class="code">pN1</span>1-3 LN axilares com mets &gt;2 mm</li>
+              <li><span class="code">pN2</span>4-9 LN axilares</li>
+              <li><span class="code">pN3</span>≥10 LN OU infraclaviculares OU supraclaviculares</li>
+            </ul>
+            <h5><span class="pill">M</span>Metástases</h5>
+            <ul class="tnm-list">
+              <li><span class="code">cM0</span>Sem evidência clínica/radiológica</li>
+              <li><span class="code">cM0(i+)</span>Sem evidência clínica, mas células tumorais em circulação/medula sem outros sítios</li>
+              <li><span class="code">M1</span>Mets à distância detectada por exames clínicos ou histologicamente confirmada &gt;0,2 mm</li>
+            </ul>
+            <h5>Grupos de estágio anatômico</h5>
+            <table class="stage-tbl">
+              <thead><tr><th>Estágio</th><th>T</th><th>N</th><th>M</th></tr></thead>
+              <tbody>
+                <tr><td class="stg">0</td><td>Tis</td><td>N0</td><td>M0</td></tr>
+                <tr><td class="stg">IA</td><td>T1</td><td>N0</td><td>M0</td></tr>
+                <tr><td class="stg">IB</td><td>T0-T1</td><td>N1mi</td><td>M0</td></tr>
+                <tr><td class="stg">IIA</td><td>T0-T1 / T2</td><td>N1 / N0</td><td>M0</td></tr>
+                <tr><td class="stg">IIB</td><td>T2 / T3</td><td>N1 / N0</td><td>M0</td></tr>
+                <tr><td class="stg">IIIA</td><td>T0-T2 / T3</td><td>N2 / N1-2</td><td>M0</td></tr>
+                <tr><td class="stg">IIIB</td><td>T4</td><td>N0-2</td><td>M0</td></tr>
+                <tr><td class="stg">IIIC</td><td>qualquer T</td><td>N3</td><td>M0</td></tr>
+                <tr><td class="stg">IV</td><td>qualquer T</td><td>qualquer N</td><td>M1</td></tr>
+              </tbody>
+            </table>
+            <div class="notes"><strong>Estadiamento prognóstico AJCC 8ª</strong> incorpora ER, PR, HER2, grau histológico e Oncotype DX (RS) em N0 HR+/HER2−. Pode reduzir o estágio quando biologia favorável.</div>
+          `
+        },
+        nsclc: {
+          title: 'Pulmão · NSCLC',
+          edition: 'AJCC 9ª (2024)',
+          icon: 'wind',
+          color: '#22d3ee',
+          body: `
+            <h5><span class="pill">T</span>Tumor primário</h5>
+            <ul class="tnm-list">
+              <li><span class="code">Tis</span>Carcinoma in situ</li>
+              <li><span class="code">T1</span>≤3 cm circundado por pulmão/pleura visceral
+                <ul><li>T1mi: minimamente invasivo</li><li>T1a: ≤1 cm</li><li>T1b: &gt;1-2 cm</li><li>T1c: &gt;2-3 cm</li></ul>
+              </li>
+              <li><span class="code">T2</span>&gt;3 e ≤5 cm OU brônquio principal/pleura visceral OU atelectasia
+                <ul><li>T2a: &gt;3-4 cm</li><li>T2b: &gt;4-5 cm</li></ul>
+              </li>
+              <li><span class="code">T3</span>&gt;5-7 cm OU invade parede torácica, pericárdio parietal, n. frênico OU nódulos no mesmo lobo</li>
+              <li><span class="code">T4</span>&gt;7 cm OU invade diafragma, mediastino, coração, grandes vasos, traqueia, esôfago, vértebra, carina OU nódulos em lobo ipsi diferente</li>
+            </ul>
+            <h5><span class="pill">N</span>Linfonodos</h5>
+            <ul class="tnm-list">
+              <li><span class="code">N0</span>Sem mets linfonodais</li>
+              <li><span class="code">N1</span>Peribrônquicos e/ou hilares ipsi e intrapulmonares</li>
+              <li><span class="code">N2</span>Mediastinais ipsi e/ou subcarinais
+                <ul><li>N2a: estação única <em>(novidade 9ª ed)</em></li><li>N2b: múltiplas estações <em>(novidade 9ª ed)</em></li></ul>
+              </li>
+              <li><span class="code">N3</span>Mediastinais contra, hilares contra, escalênicos ou supraclaviculares</li>
+            </ul>
+            <h5><span class="pill">M</span>Metástases</h5>
+            <ul class="tnm-list">
+              <li><span class="code">M0</span>Sem metástases</li>
+              <li><span class="code">M1</span>Metástases à distância
+                <ul>
+                  <li>M1a: nódulo em lobo contra; nódulos pleurais/pericárdicos; derrame maligno</li>
+                  <li>M1b: metástase única extratorácica em órgão único</li>
+                  <li>M1c1: múltiplas mets em órgão único <em>(novidade 9ª ed)</em></li>
+                  <li>M1c2: múltiplas mets em múltiplos órgãos <em>(novidade 9ª ed)</em></li>
+                </ul>
+              </li>
+            </ul>
+            <h5>Grupos de estágio</h5>
+            <table class="stage-tbl">
+              <thead><tr><th>Estágio</th><th>T</th><th>N</th><th>M</th><th>Notas</th></tr></thead>
+              <tbody>
+                <tr><td class="stg">0</td><td>Tis</td><td>N0</td><td>M0</td><td></td></tr>
+                <tr><td class="stg">IA1-3</td><td>T1mi-T1c</td><td>N0</td><td>M0</td><td>IA1: T1mi-T1a · IA2: T1b · IA3: T1c</td></tr>
+                <tr><td class="stg">IB</td><td>T2a</td><td>N0</td><td>M0</td><td></td></tr>
+                <tr><td class="stg">IIA</td><td>T2b</td><td>N0</td><td>M0</td><td></td></tr>
+                <tr><td class="stg">IIB</td><td>T1-T2b</td><td>N1</td><td>M0</td><td>OU T3 N0</td></tr>
+                <tr><td class="stg">IIIA</td><td>T1-T2 / T3 / T4</td><td>N2a / N1 / N0-1</td><td>M0</td><td>9ª ed: N2a única estação</td></tr>
+                <tr><td class="stg">IIIB</td><td>T1-T2 / T3-T4</td><td>N2b-N3 / N2</td><td>M0</td><td>múltiplas estações N2</td></tr>
+                <tr><td class="stg">IIIC</td><td>T3-T4</td><td>N3</td><td>M0</td><td></td></tr>
+                <tr><td class="stg">IVA</td><td>qualquer</td><td>qualquer</td><td>M1a-b ou M1c1</td><td>oligometastático elegível à abordagem local</td></tr>
+                <tr><td class="stg">IVB</td><td>qualquer</td><td>qualquer</td><td>M1c2</td><td>múltiplos órgãos com múltiplas mets</td></tr>
+              </tbody>
+            </table>
+            <div class="notes"><strong>AJCC 9ª edição (2024):</strong> refinamentos em N2 (estação única vs múltiplas) e M1c (subdivisão por número de órgãos). Importante para selecionar candidatos a abordagem local em oligometastático.</div>
+          `
+        },
+        hcc: {
+          title: 'Hepatocelular (HCC)',
+          edition: 'AJCC 8ª + BCLC',
+          icon: 'droplet',
+          color: '#FBBF24',
+          body: `
+            <h5><span class="pill">T</span>Tumor primário</h5>
+            <ul class="tnm-list">
+              <li><span class="code">T1</span>Tumor solitário sem invasão vascular
+                <ul><li>T1a: ≤2 cm</li><li>T1b: &gt;2 cm sem invasão vascular</li></ul>
+              </li>
+              <li><span class="code">T2</span>Tumor solitário com invasão vascular OU múltiplos ≤5 cm</li>
+              <li><span class="code">T3</span>Múltiplos tumores, ≥1 com &gt;5 cm</li>
+              <li><span class="code">T4</span>Invasão de ramo maior da veia porta/hepática OU órgãos vizinhos (exceto vesícula) OU peritônio visceral</li>
+            </ul>
+            <h5><span class="pill">N</span>Linfonodos</h5>
+            <ul class="tnm-list">
+              <li><span class="code">N0</span>Sem metástases</li>
+              <li><span class="code">N1</span>LN regionais (porta hepática, hepáticos, periarteriais)</li>
+            </ul>
+            <h5><span class="pill">M</span>Metástases</h5>
+            <ul class="tnm-list">
+              <li><span class="code">M0</span>Sem metástases</li>
+              <li><span class="code">M1</span>Metástases à distância</li>
+            </ul>
+            <h5>Grupos AJCC</h5>
+            <table class="stage-tbl">
+              <thead><tr><th>Estágio</th><th>T</th><th>N</th><th>M</th></tr></thead>
+              <tbody>
+                <tr><td class="stg">IA</td><td>T1a</td><td>N0</td><td>M0</td></tr>
+                <tr><td class="stg">IB</td><td>T1b</td><td>N0</td><td>M0</td></tr>
+                <tr><td class="stg">II</td><td>T2</td><td>N0</td><td>M0</td></tr>
+                <tr><td class="stg">IIIA</td><td>T3</td><td>N0</td><td>M0</td></tr>
+                <tr><td class="stg">IIIB</td><td>T4</td><td>N0</td><td>M0</td></tr>
+                <tr><td class="stg">IVA</td><td>qualquer</td><td>N1</td><td>M0</td></tr>
+                <tr><td class="stg">IVB</td><td>qualquer</td><td>qualquer</td><td>M1</td></tr>
+              </tbody>
+            </table>
+            <h5>BCLC (sistema clínico — mais usado)</h5>
+            <table class="stage-tbl">
+              <thead><tr><th>Estágio</th><th>Descrição</th><th>Critérios</th><th>Tratamento</th></tr></thead>
+              <tbody>
+                <tr><td class="stg">0</td><td>Muito precoce</td><td>Solitário ≤2 cm, CP A, ECOG 0</td><td>Ressecção · ablação</td></tr>
+                <tr><td class="stg">A</td><td>Precoce</td><td>Solitário ou ≤3 nódulos ≤3 cm, CP A-B, ECOG 0</td><td>Ressecção · transplante · ablação</td></tr>
+                <tr><td class="stg">B</td><td>Intermediário</td><td>Multinodular, CP A-B, ECOG 0</td><td>TARE · TACE · sistêmico em selecionados</td></tr>
+                <tr><td class="stg">C</td><td>Avançado</td><td>Invasão vascular ou mets, CP A-B, ECOG 1-2</td><td>Atezo+bev · trem+durva · sorafenibe</td></tr>
+                <tr><td class="stg">D</td><td>Terminal</td><td>CP C ou ECOG 3-4</td><td>Cuidados de suporte</td></tr>
+              </tbody>
+            </table>
+            <div class="notes"><strong>BCLC</strong> é o sistema mais usado clinicamente — incorpora extensão tumoral, função hepática (Child-Pugh) e performance (ECOG). Define a terapia. AJCC TNM é usado mais para registro/cirurgia.</div>
+          `
+        },
+        net: {
+          title: 'NETs (GEP-NET)',
+          edition: 'AJCC 8ª · WHO 2019',
+          icon: 'heart-pulse',
+          color: '#0EA5B7',
+          body: `
+            <p style="margin:0 0 0.8rem; color:var(--stone); font-size:0.84rem">TNM varia por sítio. Resumo abaixo cobre pNET e siNET (jejuno-íleo). Classificação WHO complementar é mandatória.</p>
+            <h5><span class="pill">T</span>Tumor primário</h5>
+            <ul class="tnm-list">
+              <li><span class="code">pNET T1</span>Pâncreas: limitado, &lt;2 cm</li>
+              <li><span class="code">pNET T2</span>Pâncreas: limitado, 2-4 cm</li>
+              <li><span class="code">pNET T3</span>Pâncreas: &gt;4 cm OU invade duodeno ou ducto biliar</li>
+              <li><span class="code">pNET T4</span>Pâncreas: invade órgãos adjacentes ou parede de grandes vasos</li>
+              <li><span class="code">siNET T1</span>Jejuno-íleo: ≤1 cm, mucosa/submucosa</li>
+              <li><span class="code">siNET T2</span>Jejuno-íleo: &gt;1 cm OU muscular própria</li>
+              <li><span class="code">siNET T3</span>Jejuno-íleo: subserosa</li>
+              <li><span class="code">siNET T4</span>Jejuno-íleo: peritônio visceral ou outros órgãos</li>
+            </ul>
+            <h5><span class="pill">N</span>Linfonodos</h5>
+            <ul class="tnm-list">
+              <li><span class="code">N0</span>Sem metástases</li>
+              <li><span class="code">N1</span>LN regionais positivos</li>
+              <li><span class="code">N2</span>Massa(s) mesentérica(s) ≥2 cm e/ou LN extensos (siNET, AJCC 8ª)</li>
+            </ul>
+            <h5><span class="pill">M</span>Metástases</h5>
+            <ul class="tnm-list">
+              <li><span class="code">M0</span>Sem metástase à distância</li>
+              <li><span class="code">M1</span>Metástase à distância
+                <ul>
+                  <li>M1a: apenas hepática</li>
+                  <li>M1b: ≥1 sítio extra-hepático (pulmão, ovário, peritônio não-mesentérico, osso)</li>
+                  <li>M1c: ambos (hepática + extra-hepática)</li>
+                </ul>
+              </li>
+            </ul>
+            <h5>Grupos AJCC</h5>
+            <table class="stage-tbl">
+              <thead><tr><th>Estágio</th><th>T</th><th>N</th><th>M</th></tr></thead>
+              <tbody>
+                <tr><td class="stg">I</td><td>T1</td><td>N0</td><td>M0</td></tr>
+                <tr><td class="stg">II</td><td>T2-3</td><td>N0</td><td>M0</td></tr>
+                <tr><td class="stg">III</td><td>T4 / qualquer T</td><td>N0 / N1-N2</td><td>M0</td></tr>
+                <tr><td class="stg">IV</td><td>qualquer</td><td>qualquer</td><td>M1</td></tr>
+              </tbody>
+            </table>
+            <h5>WHO 2019 — grade tumoral</h5>
+            <table class="stage-tbl">
+              <thead><tr><th>Categoria</th><th>Diferenciação</th><th>Critérios</th><th>Manejo típico</th></tr></thead>
+              <tbody>
+                <tr><td class="stg">NET G1</td><td>Bem-diferenciado</td><td>Ki-67 &lt;3% e &lt;2 mitoses/2 mm²</td><td>Análogo SS · observação</td></tr>
+                <tr><td class="stg">NET G2</td><td>Bem-diferenciado</td><td>Ki-67 3-20% ou 2-20 mitoses</td><td>SS · everolimus · PRRT (NETTER-2)</td></tr>
+                <tr><td class="stg">NET G3</td><td>Bem-diferenciado</td><td>Ki-67 &gt;20%, morfologia bem-dif</td><td>QT, PRRT, alvo</td></tr>
+                <tr><td class="stg">NEC</td><td>Mal-diferenciado</td><td>Ki-67 frequentemente &gt;55%, morfologia pouco-dif</td><td>QT à base de platina (similar SCLC)</td></tr>
+                <tr><td class="stg">MiNEN</td><td>Misto NE/não-NE</td><td>≥30% de cada componente</td><td>Tratamento por componente dominante</td></tr>
+              </tbody>
+            </table>
+            <div class="notes">TNM por sítio (estômago, duodeno, apêndice, cólon, reto, pâncreas, jejuno-íleo) tem regras próprias. PRRT é elegível conforme captação SSTR no PET ⁶⁸Ga-DOTATATE.</div>
+          `
+        },
+        rcc: {
+          title: 'Renal (ccRCC)',
+          edition: 'AJCC 8ª + IMDC',
+          icon: 'shield-half',
+          color: '#38BDF8',
+          body: `
+            <h5><span class="pill">T</span>Tumor primário</h5>
+            <ul class="tnm-list">
+              <li><span class="code">T1</span>≤7 cm, limitado ao rim
+                <ul><li>T1a: ≤4 cm</li><li>T1b: &gt;4 e ≤7 cm</li></ul>
+              </li>
+              <li><span class="code">T2</span>&gt;7 cm, limitado ao rim
+                <ul><li>T2a: &gt;7 e ≤10 cm</li><li>T2b: &gt;10 cm</li></ul>
+              </li>
+              <li><span class="code">T3</span>Invade veia renal, gordura perinéfrica/seio renal, sem ultrapassar Gerota
+                <ul>
+                  <li>T3a: veia renal ou ramos OU gordura perinéfrica/seio renal</li>
+                  <li>T3b: veia cava abaixo do diafragma</li>
+                  <li>T3c: veia cava acima do diafragma OU invade parede da cava</li>
+                </ul>
+              </li>
+              <li><span class="code">T4</span>Invade fáscia de Gerota OU adrenal ipsi por contiguidade</li>
+            </ul>
+            <h5><span class="pill">N</span>Linfonodos</h5>
+            <ul class="tnm-list">
+              <li><span class="code">N0</span>Sem mets regional</li>
+              <li><span class="code">N1</span>Mets em LN regional(is)</li>
+            </ul>
+            <h5><span class="pill">M</span>Metástases</h5>
+            <ul class="tnm-list">
+              <li><span class="code">M0</span>Sem metástase</li>
+              <li><span class="code">M1</span>Mets à distância</li>
+            </ul>
+            <h5>Grupos AJCC</h5>
+            <table class="stage-tbl">
+              <thead><tr><th>Estágio</th><th>T</th><th>N</th><th>M</th></tr></thead>
+              <tbody>
+                <tr><td class="stg">I</td><td>T1</td><td>N0</td><td>M0</td></tr>
+                <tr><td class="stg">II</td><td>T2</td><td>N0</td><td>M0</td></tr>
+                <tr><td class="stg">III</td><td>T1-T2 / T3</td><td>N1 / N0-N1</td><td>M0</td></tr>
+                <tr><td class="stg">IV</td><td>T4 / qualquer</td><td>qualquer / qualquer</td><td>M0 / M1</td></tr>
+              </tbody>
+            </table>
+            <h5>Risco IMDC (Heng) — guia de terapia sistêmica em mRCC</h5>
+            <table class="stage-tbl">
+              <thead><tr><th>Categoria</th><th>Fatores</th><th>Critérios (qualquer)</th><th>Tratamento</th></tr></thead>
+              <tbody>
+                <tr><td class="stg">Bom</td><td>0</td><td>KPS ≥80%, Ca normal, Hb normal, neutrófilos normais, plaquetas normais, dx → tx ≥1 ano</td><td>Cabozantinibe ± nivo · sunitinibe · pazopanibe</td></tr>
+                <tr><td class="stg">Intermediário</td><td>1-2</td><td>Qualquer dos critérios alterado</td><td>Nivo+ipi · pembro+axi · pembro+lenva · cabozantinibe</td></tr>
+                <tr><td class="stg">Pobre</td><td>≥3</td><td>Múltiplos critérios alterados</td><td>Nivo+ipi (preferido) · pembro+axi · pembro+lenva · cabozantinibe</td></tr>
+              </tbody>
+            </table>
+            <div class="notes">Estadiamento TNM define cirurgia (radical vs parcial) e necessidade de adjuvante. IMDC define tratamento sistêmico em metastático.</div>
+          `
+        },
+        crc: {
+          title: 'Colorretal',
+          edition: 'AJCC 8ª',
+          icon: 'activity-square',
+          color: '#fb923c',
+          body: `
+            <h5><span class="pill">T</span>Tumor primário</h5>
+            <ul class="tnm-list">
+              <li><span class="code">Tis</span>In situ (intramucoso, sem ultrapassar muscular da mucosa)</li>
+              <li><span class="code">T1</span>Invade submucosa</li>
+              <li><span class="code">T2</span>Invade muscular própria</li>
+              <li><span class="code">T3</span>Invade subserosa ou tecidos pericólicos/perirretais não-peritonizados</li>
+              <li><span class="code">T4</span>Invade peritônio visceral OU órgãos
+                <ul><li>T4a: penetra peritônio visceral</li><li>T4b: invade direta ou aderência a outros órgãos</li></ul>
+              </li>
+            </ul>
+            <h5><span class="pill">N</span>Linfonodos</h5>
+            <ul class="tnm-list">
+              <li><span class="code">N0</span>Sem metástases regionais</li>
+              <li><span class="code">N1</span>1-3 LN positivos
+                <ul><li>N1a: 1 LN</li><li>N1b: 2-3 LN</li><li>N1c: depósitos tumorais sem mets em LN</li></ul>
+              </li>
+              <li><span class="code">N2</span>≥4 LN
+                <ul><li>N2a: 4-6 LN</li><li>N2b: ≥7 LN</li></ul>
+              </li>
+            </ul>
+            <h5><span class="pill">M</span>Metástases</h5>
+            <ul class="tnm-list">
+              <li><span class="code">M0</span>Sem mets</li>
+              <li><span class="code">M1</span>Mets à distância
+                <ul><li>M1a: 1 órgão (fígado, pulmão, ovário, LN não-regional)</li><li>M1b: ≥2 órgãos sem peritônio</li><li>M1c: peritoneal, com ou sem outros sítios</li></ul>
+              </li>
+            </ul>
+            <h5>Grupos de estágio</h5>
+            <table class="stage-tbl">
+              <thead><tr><th>Estágio</th><th>T</th><th>N</th><th>M</th></tr></thead>
+              <tbody>
+                <tr><td class="stg">0</td><td>Tis</td><td>N0</td><td>M0</td></tr>
+                <tr><td class="stg">I</td><td>T1-T2</td><td>N0</td><td>M0</td></tr>
+                <tr><td class="stg">IIA</td><td>T3</td><td>N0</td><td>M0</td></tr>
+                <tr><td class="stg">IIB</td><td>T4a</td><td>N0</td><td>M0</td></tr>
+                <tr><td class="stg">IIC</td><td>T4b</td><td>N0</td><td>M0</td></tr>
+                <tr><td class="stg">IIIA</td><td>T1-T2 / T1</td><td>N1 / N2a</td><td>M0</td></tr>
+                <tr><td class="stg">IIIB</td><td>T3-T4a / T2-T3 / T1-T2</td><td>N1 / N2a / N2b</td><td>M0</td></tr>
+                <tr><td class="stg">IIIC</td><td>T4a / T3-T4a / T4b</td><td>N2a / N2b / N1-N2</td><td>M0</td></tr>
+                <tr><td class="stg">IVA</td><td>qualquer</td><td>qualquer</td><td>M1a</td></tr>
+                <tr><td class="stg">IVB</td><td>qualquer</td><td>qualquer</td><td>M1b</td></tr>
+                <tr><td class="stg">IVC</td><td>qualquer</td><td>qualquer</td><td>M1c</td></tr>
+              </tbody>
+            </table>
+            <div class="notes">Adjuvância em estágio II depende de fatores de risco (T4, perfuração, &lt;12 LN avaliados, MSI alto, perineural). MSI/dMMR define elegibilidade para imunoterapia em metastático (KEYNOTE-177).</div>
+          `
+        },
+        gastric: {
+          title: 'Gástrico / GEJ',
+          edition: 'AJCC 8ª',
+          icon: 'circle',
+          color: '#f87171',
+          body: `
+            <h5><span class="pill">T</span>Tumor primário</h5>
+            <ul class="tnm-list">
+              <li><span class="code">Tis</span>In situ, sem invasão da lâmina própria</li>
+              <li><span class="code">T1</span>Lâmina própria, muscular da mucosa ou submucosa
+                <ul><li>T1a: lâmina própria/muscular da mucosa</li><li>T1b: submucosa</li></ul>
+              </li>
+              <li><span class="code">T2</span>Invade muscular própria</li>
+              <li><span class="code">T3</span>Penetra subserosa sem invasão de peritônio visceral</li>
+              <li><span class="code">T4</span>Invade serosa ou estruturas adjacentes
+                <ul><li>T4a: serosa (peritônio visceral)</li><li>T4b: invade estruturas/órgãos adjacentes</li></ul>
+              </li>
+            </ul>
+            <h5><span class="pill">N</span>Linfonodos</h5>
+            <ul class="tnm-list">
+              <li><span class="code">N0</span>Sem mets</li>
+              <li><span class="code">N1</span>1-2 LN positivos</li>
+              <li><span class="code">N2</span>3-6 LN</li>
+              <li><span class="code">N3</span>≥7 LN
+                <ul><li>N3a: 7-15</li><li>N3b: ≥16</li></ul>
+              </li>
+            </ul>
+            <h5><span class="pill">M</span>Metástases</h5>
+            <ul class="tnm-list">
+              <li><span class="code">M0</span>Sem metástase</li>
+              <li><span class="code">M1</span>Mets à distância (incluindo peritoneal)</li>
+            </ul>
+            <h5>Grupos de estágio</h5>
+            <table class="stage-tbl">
+              <thead><tr><th>Estágio</th><th>T</th><th>N</th><th>M</th></tr></thead>
+              <tbody>
+                <tr><td class="stg">0</td><td>Tis</td><td>N0</td><td>M0</td></tr>
+                <tr><td class="stg">IA</td><td>T1</td><td>N0</td><td>M0</td></tr>
+                <tr><td class="stg">IB</td><td>T1 / T2</td><td>N1 / N0</td><td>M0</td></tr>
+                <tr><td class="stg">IIA</td><td>T1 / T2 / T3</td><td>N2 / N1 / N0</td><td>M0</td></tr>
+                <tr><td class="stg">IIB</td><td>T1 / T2 / T3 / T4a</td><td>N3a / N2 / N1 / N0</td><td>M0</td></tr>
+                <tr><td class="stg">IIIA</td><td>T2-T4a</td><td>N1-N3</td><td>M0</td></tr>
+                <tr><td class="stg">IIIB</td><td>T1-T4a / T4b</td><td>N3b / N0-N2</td><td>M0</td></tr>
+                <tr><td class="stg">IIIC</td><td>T4b</td><td>N3a-N3b</td><td>M0</td></tr>
+                <tr><td class="stg">IV</td><td>qualquer</td><td>qualquer</td><td>M1</td></tr>
+              </tbody>
+            </table>
+            <h5>Tipo histológico Lauren</h5>
+            <table class="stage-tbl">
+              <thead><tr><th>Tipo</th><th>Características</th><th>Perfil clínico</th><th>Cirurgia</th></tr></thead>
+              <tbody>
+                <tr><td class="stg">Intestinal</td><td>Bem-diferenciado, glandular</td><td>Idoso, distal, melhor prognóstico</td><td>Gastrectomia subtotal</td></tr>
+                <tr><td class="stg">Difuso</td><td>Pouco coeso, anel de sinete</td><td>Jovem, proximal, prognóstico pior; CDH1</td><td>Gastrectomia total</td></tr>
+                <tr><td class="stg">Misto</td><td>Componentes dos dois</td><td>~10-15% dos casos</td><td>Conforme componente dominante</td></tr>
+              </tbody>
+            </table>
+            <div class="notes">HER2 (IHC + ISH), MSI/dMMR e PD-L1 (CPS) são marcadores essenciais antes de tratamento avançado. CLDN18.2 emergente (zolbetuximabe). EBV+ é subgrupo distinto (5-10%) com alta resposta à IO.</div>
+          `
+        }
+      };
+
+      function openTNM(id) {
+        const data = TNM_DATA[id];
+        if (!data) { console.warn('TNM key not found:', id); return; }
+        const dlg = document.getElementById('tnm-modal');
+        if (!dlg) { console.error('tnm-modal element missing'); return; }
+        try {
+          document.getElementById('tnm-modal-title').textContent = data.title;
+          document.getElementById('tnm-modal-ed').textContent = data.edition;
+          const iconBox = document.getElementById('tnm-modal-icon');
+          iconBox.style.background = 'rgba(' + hexToRgbStr(data.color) + ', 0.15)';
+          // Render do ícone com fallback SVG inline, evita dependência do lucide loader
+          iconBox.innerHTML = '<i data-lucide="' + data.icon + '" style="width:20px;height:20px;color:' + data.color + '"></i>';
+          document.getElementById('tnm-modal-body').innerHTML = data.body;
+        } catch (err) {
+          console.error('TNM render error:', err);
+        }
+        // ABRE PRIMEIRO — garantia de que o modal aparece mesmo se o lucide falhar
+        if (typeof dlg.showModal === 'function') {
+          dlg.showModal();
+        } else {
+          dlg.setAttribute('open', '');
+        }
+        // Renderiza ícones depois (não bloqueia o modal)
+        try {
+          if (window.lucide && typeof window.lucide.createIcons === 'function') {
+            window.lucide.createIcons();
+          }
+        } catch (err) {
+          console.warn('lucide.createIcons failed:', err);
+        }
+      }
+
+      function hexToRgbStr(hex) {
+        const h = hex.replace('#', '');
+        const r = parseInt(h.substring(0,2), 16);
+        const g = parseInt(h.substring(2,4), 16);
+        const b = parseInt(h.substring(4,6), 16);
+        return r + ', ' + g + ', ' + b;
+      }
+
+      // Fechar modal ao clicar no backdrop do <dialog>.
+      // Em modal mode, cliques no backdrop têm e.target === dlg (o conteúdo
+      // interno tem outros targets). Usamos listener próprio do dialog para
+      // evitar que cliques fora do dialog (ex: no card que ABRIU o modal)
+      // façam o modal fechar antes mesmo de aparecer.
+      document.addEventListener('DOMContentLoaded', function() {
+        const dlg = document.getElementById('tnm-modal');
+        if (!dlg) return;
+        dlg.addEventListener('click', function(e) {
+          if (e.target === dlg) dlg.close();
+        });
+      });
+    </script>
+
+
+
+      <div style="background:var(--graphite-2); border-left:3px solid #38BDF8; border-radius:0 var(--radius-md) var(--radius-md) 0; padding:1rem 1.5rem; margin:1.5rem 0">
+        <div style="font-size:0.7rem; color:#38BDF8; text-transform:uppercase; letter-spacing:0.1em; font-weight:600; margin-bottom:0.4rem">Importante</div>
+        <p style="margin:0; color:var(--off-white); font-size:0.9rem; line-height:1.55">Este resumo cobre os tumores mais frequentes. Consulte sempre o <strong>AJCC Cancer Staging Manual</strong> (8ª ou 9ª edição) e UICC TNM Classification. Para tumores raros (sarcomas, GIST, melanoma, ginecológicos, hematológicos), há sistemas próprios.</p>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 07. CTCAE v6.0 -->
+    <!-- ============================================================ -->
+    <section class="tool" id="ctcae" style="--tool-accent: #FBBF24">
+      <div class="tool-head">
+        <div class="tool-num" style="background: rgba(251, 191, 36, 0.15); color: #FBBF24">07</div>
+        <h2>Eventos adversos · CTCAE v6.0</h2>
+      </div>
+      <p style="color: var(--stone); margin: 0 0 1.5rem; max-width: 720px; line-height: 1.55">
+        Common Terminology Criteria for Adverse Events — escala universal usada em ensaios clínicos para classificar eventos adversos em 5 graus. Versão 6.0 (atual).
+      </p>
+
+      <div style="display:grid; grid-template-columns: repeat(5, 1fr); gap:0.5rem; margin: 1.5rem 0">
+        <div style="background:var(--graphite-2); border:1px solid rgba(110, 231, 183, 0.3); border-top:3px solid #6EE7B7; border-radius:var(--radius-md); padding:1.1rem 0.85rem; text-align:center">
+          <div style="font-family:var(--font-mono); font-size:1.3rem; font-weight:700; color:#6EE7B7; margin-bottom:0.25rem">G1</div>
+          <div style="font-size:0.78rem; color:var(--off-white); font-weight:600; margin-bottom:0.4rem">Leve</div>
+          <div style="font-size:0.72rem; color:var(--stone); line-height:1.4">Assintomático ou sintomas leves; só observação.</div>
+        </div>
+        <div style="background:var(--graphite-2); border:1px solid rgba(252, 211, 77, 0.3); border-top:3px solid #FCD34D; border-radius:var(--radius-md); padding:1.1rem 0.85rem; text-align:center">
+          <div style="font-family:var(--font-mono); font-size:1.3rem; font-weight:700; color:#FCD34D; margin-bottom:0.25rem">G2</div>
+          <div style="font-size:0.78rem; color:var(--off-white); font-weight:600; margin-bottom:0.4rem">Moderado</div>
+          <div style="font-size:0.72rem; color:var(--stone); line-height:1.4">Intervenção mínima. Limita atividades instrumentais.</div>
+        </div>
+        <div style="background:var(--graphite-2); border:1px solid rgba(251, 167, 74, 0.3); border-top:3px solid #FBA74A; border-radius:var(--radius-md); padding:1.1rem 0.85rem; text-align:center">
+          <div style="font-family:var(--font-mono); font-size:1.3rem; font-weight:700; color:#FBA74A; margin-bottom:0.25rem">G3</div>
+          <div style="font-size:0.78rem; color:var(--off-white); font-weight:600; margin-bottom:0.4rem">Grave</div>
+          <div style="font-size:0.72rem; color:var(--stone); line-height:1.4">Hospitalização. Limita atividades básicas.</div>
+        </div>
+        <div style="background:var(--graphite-2); border:1px solid rgba(248, 113, 113, 0.3); border-top:3px solid #F87171; border-radius:var(--radius-md); padding:1.1rem 0.85rem; text-align:center">
+          <div style="font-family:var(--font-mono); font-size:1.3rem; font-weight:700; color:#F87171; margin-bottom:0.25rem">G4</div>
+          <div style="font-size:0.78rem; color:var(--off-white); font-weight:600; margin-bottom:0.4rem">Ameaça à vida</div>
+          <div style="font-size:0.72rem; color:var(--stone); line-height:1.4">UTI. Intervenção urgente.</div>
+        </div>
+        <div style="background:var(--graphite-2); border:1px solid rgba(220, 38, 38, 0.4); border-top:3px solid #DC2626; border-radius:var(--radius-md); padding:1.1rem 0.85rem; text-align:center">
+          <div style="font-family:var(--font-mono); font-size:1.3rem; font-weight:700; color:#DC2626; margin-bottom:0.25rem">G5</div>
+          <div style="font-size:0.78rem; color:var(--off-white); font-weight:600; margin-bottom:0.4rem">Fatal</div>
+          <div style="font-size:0.72rem; color:var(--stone); line-height:1.4">Morte relacionada ao evento.</div>
+        </div>
+      </div>
+      <div style="text-align:center; font-size:0.78rem; color:var(--stone); margin-bottom:2rem">
+        <em>≥G3 são os eventos relevantes para reporte regulatório e exigem ajuste de dose ou interrupção.</em>
+      </div>
+
+      <h3 style="font-family:var(--font-display); font-size:1.1rem; color:var(--off-white); margin:2rem 0 1rem; font-weight:600">Exemplos práticos por categoria</h3>
+      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 1rem">
+        <div style="background:var(--graphite-2); border:1px solid var(--border-soft); border-radius:var(--radius-md); padding:1.25rem 1.4rem">
+          <h4 style="font-family:var(--font-display); font-size:1rem; margin:0 0 0.75rem; color:var(--off-white); display:flex; align-items:center; gap:0.5rem"><i data-lucide="droplet" style="width:16px; height:16px; color:#FBBF24"></i>Hematológico</h4>
+          <div style="font-size:0.82rem; color:var(--off-white); line-height:1.55">
+            <strong style="color:#FCD34D">Anemia (Hb):</strong> G1 ≥10 · G2 8-10 · G3 &lt;8 · G4 risco de vida<br>
+            <strong style="color:#FCD34D">Plaquetas:</strong> G1 75-LIN · G2 50-75 · G3 25-50 · G4 &lt;25 (×10⁹/L)<br>
+            <strong style="color:#FCD34D">Neutrófilos:</strong> G1 1.5-LIN · G2 1.0-1.5 · G3 0.5-1.0 · G4 &lt;0.5
+          </div>
+        </div>
+        <div style="background:var(--graphite-2); border:1px solid var(--border-soft); border-radius:var(--radius-md); padding:1.25rem 1.4rem">
+          <h4 style="font-family:var(--font-display); font-size:1rem; margin:0 0 0.75rem; color:var(--off-white); display:flex; align-items:center; gap:0.5rem"><i data-lucide="utensils" style="width:16px; height:16px; color:#FBBF24"></i>Gastrointestinal</h4>
+          <div style="font-size:0.82rem; color:var(--off-white); line-height:1.55">
+            <strong style="color:#FCD34D">Diarreia:</strong> G1 &lt;4/d · G2 4-6 · G3 ≥7 ou desidratação · G4 instabilidade<br>
+            <strong style="color:#FCD34D">Náusea:</strong> G1 ingesta normal · G2 redução · G3 &lt;1500 cal/d · G4 risco<br>
+            <strong style="color:#FCD34D">Mucosite oral:</strong> G1 leve · G2 dor com ingesta · G3 dieta líquida · G4 NPT
+          </div>
+        </div>
+        <div style="background:var(--graphite-2); border:1px solid var(--border-soft); border-radius:var(--radius-md); padding:1.25rem 1.4rem">
+          <h4 style="font-family:var(--font-display); font-size:1rem; margin:0 0 0.75rem; color:var(--off-white); display:flex; align-items:center; gap:0.5rem"><i data-lucide="hexagon" style="width:16px; height:16px; color:#FBBF24"></i>Hepatobiliar</h4>
+          <div style="font-size:0.82rem; color:var(--off-white); line-height:1.55">
+            <strong style="color:#FCD34D">ALT/AST:</strong> G1 &gt;LSN-3× · G2 3-5× · G3 5-20× · G4 &gt;20×<br>
+            <strong style="color:#FCD34D">Bilirrubina:</strong> G1 &gt;LSN-1.5× · G2 1.5-3× · G3 3-10× · G4 &gt;10×<br>
+            <em style="color:var(--stone-2); font-size:0.78rem">Regra de Hy = ALT &gt;3× + bilirrubina &gt;2× sem obstrução = sinal grave.</em>
+          </div>
+        </div>
+        <div style="background:var(--graphite-2); border:1px solid var(--border-soft); border-radius:var(--radius-md); padding:1.25rem 1.4rem">
+          <h4 style="font-family:var(--font-display); font-size:1rem; margin:0 0 0.75rem; color:var(--off-white); display:flex; align-items:center; gap:0.5rem"><i data-lucide="filter" style="width:16px; height:16px; color:#FBBF24"></i>Renal</h4>
+          <div style="font-size:0.82rem; color:var(--off-white); line-height:1.55">
+            <strong style="color:#FCD34D">Creatinina:</strong> G1 &gt;LSN-1.5× · G2 1.5-3× · G3 &gt;3× ou Cr ≥4 mg/dL · G4 diálise<br>
+            <strong style="color:#FCD34D">Proteinúria:</strong> G1 1+ ou 0.15-1 g/24h · G2 2-3+ ou 1-3.5 · G3 &gt;3.5
+          </div>
+        </div>
+        <div style="background:var(--graphite-2); border:1px solid var(--border-soft); border-radius:var(--radius-md); padding:1.25rem 1.4rem">
+          <h4 style="font-family:var(--font-display); font-size:1rem; margin:0 0 0.75rem; color:var(--off-white); display:flex; align-items:center; gap:0.5rem"><i data-lucide="shield-plus" style="width:16px; height:16px; color:#FBBF24"></i>Imuno-mediado (irAEs)</h4>
+          <div style="font-size:0.82rem; color:var(--off-white); line-height:1.55">
+            <strong style="color:#FCD34D">Pneumonite:</strong> G1 assintom. · G2 sintomas, AIVDs · G3 severos/O₂ · G4 IRpA<br>
+            <strong style="color:#FCD34D">Colite:</strong> G1 leve · G2 4-6 ev/d · G3 ≥7 ou peritonite · G4 perfuração<br>
+            <strong style="color:#FCD34D">Hepatite IO:</strong> G2 → suspender + corticoide · G3+ → permanente
+          </div>
+        </div>
+        <div style="background:var(--graphite-2); border:1px solid var(--border-soft); border-radius:var(--radius-md); padding:1.25rem 1.4rem">
+          <h4 style="font-family:var(--font-display); font-size:1rem; margin:0 0 0.75rem; color:var(--off-white); display:flex; align-items:center; gap:0.5rem"><i data-lucide="user" style="width:16px; height:16px; color:#FBBF24"></i>Dermatológico</h4>
+          <div style="font-size:0.82rem; color:var(--off-white); line-height:1.55">
+            <strong style="color:#FCD34D">Rash maculopapular:</strong> G1 &lt;10% · G2 10-30% · G3 &gt;30% ou impacta AVDs · G4 SSJ/NET<br>
+            <strong style="color:#FCD34D">Síndrome mão-pé:</strong> G1 dormência · G2 dor sem AVDs · G3 dor severa<br>
+            <strong style="color:#FCD34D">Prurido:</strong> G1 leve · G2 difuso · G3 incapacitante
+          </div>
+        </div>
+        <div style="background:var(--graphite-2); border:1px solid var(--border-soft); border-radius:var(--radius-md); padding:1.25rem 1.4rem">
+          <h4 style="font-family:var(--font-display); font-size:1rem; margin:0 0 0.75rem; color:var(--off-white); display:flex; align-items:center; gap:0.5rem"><i data-lucide="atom" style="width:16px; height:16px; color:#FBBF24"></i>Específico de radioligante</h4>
+          <div style="font-size:0.82rem; color:var(--off-white); line-height:1.55">
+            <strong style="color:#FCD34D">Xerostomia:</strong> G1 leve · G2 limita ingesta · G3 severo, salivação &lt;0.1 mL/min<br>
+            <strong style="color:#FCD34D">Hipotireoidismo (MIBG):</strong> G1 assintom. · G2 substituição · G3 hospitalização<br>
+            <strong style="color:#FCD34D">REILD (Y-90):</strong> ascite/icterícia 4-8 sem pós
+          </div>
+        </div>
+        <div style="background:var(--graphite-2); border:1px solid var(--border-soft); border-radius:var(--radius-md); padding:1.25rem 1.4rem">
+          <h4 style="font-family:var(--font-display); font-size:1rem; margin:0 0 0.75rem; color:var(--off-white); display:flex; align-items:center; gap:0.5rem"><i data-lucide="zap" style="width:16px; height:16px; color:#FBBF24"></i>CRS / ICANS</h4>
+          <div style="font-size:0.82rem; color:var(--off-white); line-height:1.55">
+            <strong style="color:#FCD34D">CRS (ASTCT):</strong> G1 febre · G2 + hipotensão a fluido OU O₂ baixo · G3 + vasopressor único · G4 multivasopressor/intubação<br>
+            <strong style="color:#FCD34D">ICANS (ICE):</strong> G1 7-9 · G2 3-6 · G3 0-2 · G4 status convulsivo
+          </div>
+        </div>
+        <div style="background:var(--graphite-2); border:1px solid var(--border-soft); border-radius:var(--radius-md); padding:1.25rem 1.4rem">
+          <h4 style="font-family:var(--font-display); font-size:1rem; margin:0 0 0.75rem; color:var(--off-white); display:flex; align-items:center; gap:0.5rem"><i data-lucide="thermometer" style="width:16px; height:16px; color:#FBBF24"></i>Geral / sistêmico</h4>
+          <div style="font-size:0.82rem; color:var(--off-white); line-height:1.55">
+            <strong style="color:#FCD34D">Fadiga:</strong> G1 leve · G2 modera AIVDs · G3 limita AVDs · G4 incapacitante<br>
+            <strong style="color:#FCD34D">Febre:</strong> G1 38.0-39.0 · G2 39-40 · G3 &gt;40 ≤24h · G4 &gt;24h<br>
+            <strong style="color:#FCD34D">HTN:</strong> G1 120-140/80-90 · G2 140-160/90-100 · G3 &gt;160/100 · G4 emergência
+          </div>
+        </div>
+      </div>
+
+      <div style="background:var(--graphite-2); border-left:3px solid #FBBF24; border-radius:0 var(--radius-md) var(--radius-md) 0; padding:1rem 1.5rem; margin:1.5rem 0">
+        <div style="font-size:0.7rem; color:#FBBF24; text-transform:uppercase; letter-spacing:0.1em; font-weight:600; margin-bottom:0.4rem">Como decidir manejo</div>
+        <p style="margin:0; color:var(--off-white); font-size:0.9rem; line-height:1.55">
+          <strong>G1-G2:</strong> manter, monitorar, suporte sintomático. <strong>G3:</strong> suspender até melhora ≤G1, considerar redução de dose. <strong>G4:</strong> suspender permanentemente, exceto eventos hematológicos esperados que recuperem. Em irAEs G3-G4: corticoide alta-dose precoce (1-2 mg/kg metilprednisolona EV); ICI permanentemente descontinuado em G4 (exceto endocrinopatias substituídas).
+        </p>
+      </div>
+
+      <div style="font-size:0.78rem; color:var(--stone-2); padding:0.75rem 0; border-top:1px solid var(--border-soft); margin-top:1.5rem">
+        <strong>Fonte:</strong> CTCAE v6.0, NIH/NCI 2024 · ASTCT (CRS/ICANS): Lee et al. Biol Blood Marrow Transplant 2019.
+      </div>
+    </section>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>© 2026 TheraTrials Oncology · Ferramentas · v1.1</span>
+      <span>Para uso educacional. Não substitui prescrição médica.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Stub mínimo do toolsApp para evitar erros do Alpine nas calculadoras
+  // (calculadoras de dose/decay/stats voltarão em versão futura)
+  function toolsApp() {
+    return {
+      init() {},
+      doseDrugs: [], dose: { drug: '', weight: 70, cycle: 1, fraction: 100 },
+      get currentDrug() { return null; },
+      get doseResult() { return { gbq: '—', mbq: '—', mci: '—', cumul: '—' }; },
+      isotopes: [], decay: { iso: '', a0: 0, a0unit: 'GBq', t: 0, tunit: 'h' },
+      get decayResult() { return { value: '—', fraction: '—', halfLives: '—', t99: '—', t50: '—' }; },
+      stat: { ctrl: 0, trt: 0 },
+      get statResult() { return { nnt: '—', arr: '—', rrr: '—', rr: '—', or: '—' }; },
+    };
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    if (typeof lucide !== 'undefined') lucide.createIcons();
+
+    // Fade-in das section.tool via IntersectionObserver
+    const tools = document.querySelectorAll('section.tool');
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.05, rootMargin: '0px 0px -50px 0px' });
+      tools.forEach(t => io.observe(t));
+    } else {
+      // Fallback sem IO
+      tools.forEach(t => t.classList.add('in-view'));
+    }
+  });
+</script>
+
+</body>
+</html>

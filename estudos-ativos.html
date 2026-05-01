@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estudos ativos no Brasil · TheraTrials Oncology</title>
+<meta name="description" content="Banco curado de ensaios clínicos em recrutamento ativo no Brasil. Filtre por neoplasia, modalidade, fase, biomarcador, linha terapêutica e localidade.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/theratrials.css">
+<link rel="icon" type="image/png" href="assets/img/logo-app.png">
+<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.13.5/dist/cdn.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.5/dist/cdn.min.js"></script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+<style>
+  /* ============================================================
+     Estudos ativos · BR
+     ============================================================ */
+  .ea-hero {
+    padding: 3rem 0 1.5rem;
+    text-align: center;
+    position: relative;
+  }
+  .ea-hero h1 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; letter-spacing: -0.025em; margin-bottom: 0.6rem; }
+  .ea-hero h1 .accent { color: var(--amber); }
+  .ea-hero p { color: var(--stone); max-width: 720px; margin: 0 auto 1rem; font-size: 1rem; line-height: 1.55; }
+
+  .ea-disclaimer {
+    max-width: 840px; margin: 1.5rem auto 0;
+    background: rgba(251, 191, 36, 0.05);
+    border: 1px solid rgba(251, 191, 36, 0.25);
+    border-radius: var(--radius-md);
+    padding: 0.85rem 1.15rem;
+    color: #FCD34D; font-size: 0.85rem; line-height: 1.5;
+    display: flex; align-items: flex-start; gap: 0.75rem;
+    text-align: left;
+  }
+  .ea-disclaimer i { flex-shrink: 0; margin-top: 2px; }
+  .ea-disclaimer strong { color: var(--off-white); }
+
+  /* Layout */
+  .ea-layout {
+    display: grid; grid-template-columns: 280px 1fr; gap: 2rem;
+    padding: 1.5rem 0 4rem;
+  }
+  @media (max-width: 968px) {
+    .ea-layout { grid-template-columns: 1fr; }
+    .ea-sidebar { position: static !important; max-height: none !important; }
+  }
+
+  /* Sidebar de filtros */
+  .ea-sidebar {
+    position: sticky; top: 100px; max-height: calc(100vh - 130px); overflow-y: auto;
+    background: var(--graphite-2); border: 1px solid var(--border-soft);
+    border-radius: var(--radius-lg); padding: 1.25rem;
+  }
+  .ea-sidebar::-webkit-scrollbar { width: 6px; }
+  .ea-sidebar::-webkit-scrollbar-thumb { background: var(--graphite-4); border-radius: 3px; }
+
+  .filter-block { margin-bottom: 1.25rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border-soft); }
+  .filter-block:last-child { border-bottom: 0; padding-bottom: 0; margin-bottom: 0; }
+  .filter-block-header {
+    display: flex; align-items: center; justify-content: space-between;
+    cursor: pointer; user-select: none;
+    margin-bottom: 0.65rem;
+  }
+  .filter-block-header h3 {
+    font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--stone); margin: 0; font-weight: 600;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .filter-block-header .chev {
+    color: var(--stone); transition: transform 0.2s ease;
+  }
+  .filter-block-header .chev.open { transform: rotate(180deg); }
+
+  .filter-options { display: flex; flex-direction: column; gap: 0.3rem; }
+  .filter-pill {
+    display: flex; align-items: center; gap: 0.6rem;
+    padding: 0.45rem 0.65rem;
+    background: transparent; border: 1px solid transparent;
+    border-radius: var(--radius-sm);
+    color: var(--off-white);
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+  .filter-pill:hover { background: var(--graphite-3); }
+  .filter-pill.active {
+    background: rgba(255, 132, 0, 0.1);
+    border-color: rgba(255, 132, 0, 0.4);
+    color: var(--amber);
+  }
+  .filter-pill .count {
+    margin-left: auto;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--stone-2);
+  }
+  .filter-pill.active .count { color: var(--amber); }
+  .filter-pill .dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--accent, var(--stone));
+    flex-shrink: 0;
+  }
+
+  .clear-filters-btn {
+    width: 100%; padding: 0.55rem 0.85rem;
+    background: transparent; border: 1px solid var(--border-mid);
+    border-radius: var(--radius-sm);
+    color: var(--stone); font-family: var(--font-sans); font-size: 0.82rem;
+    cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.4rem;
+    transition: all 0.15s;
+  }
+  .clear-filters-btn:hover { color: var(--off-white); border-color: var(--stone); }
+
+  /* Search bar */
+  .ea-search-row {
+    display: grid; grid-template-columns: 1fr auto; gap: 1rem;
+    margin-bottom: 1.25rem;
+  }
+  @media (max-width: 720px) { .ea-search-row { grid-template-columns: 1fr; } }
+  .ea-search {
+    position: relative;
+  }
+  .ea-search input {
+    width: 100%; padding: 0.85rem 1rem 0.85rem 2.5rem;
+    background: var(--graphite-2); border: 1px solid var(--border-soft);
+    border-radius: var(--radius-md); color: var(--off-white);
+    font-family: var(--font-sans); font-size: 0.95rem;
+    box-sizing: border-box;
+  }
+  .ea-search input:focus { outline: none; border-color: rgba(255, 132, 0, 0.5); background: var(--graphite-3); }
+  .ea-search i { position: absolute; left: 0.85rem; top: 50%; transform: translateY(-50%); color: var(--stone); pointer-events: none; }
+  .ea-result-count { color: var(--stone); font-size: 0.85rem; align-self: center; white-space: nowrap; }
+  .ea-result-count strong { color: var(--off-white); }
+
+  /* Cards */
+  .ea-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    gap: 1.15rem;
+  }
+  .ea-card {
+    background: var(--graphite-2);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-lg);
+    padding: 1.4rem 1.5rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+    display: flex; flex-direction: column;
+    gap: 0.7rem;
+  }
+  .ea-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 3px;
+    background: var(--neoplasia-color, var(--amber));
+    opacity: 0.7;
+  }
+  .ea-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--neoplasia-color, var(--amber));
+    box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+  }
+
+  .ea-card-top {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    gap: 0.75rem;
+  }
+  .ea-card-name {
+    font-family: var(--font-display);
+    font-size: 1.15rem; font-weight: 700;
+    color: var(--off-white);
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+  .ea-card-name .nct-mini {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--stone-2);
+    font-weight: 400;
+    margin-left: 0.5rem;
+  }
+
+  .ea-status {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    padding: 0.2rem 0.55rem;
+    border-radius: 100px;
+    font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+  .ea-status.recrutando { background: rgba(52, 211, 153, 0.15); color: #6EE7B7; border: 1px solid rgba(52, 211, 153, 0.3); }
+  .ea-status.aindanao { background: rgba(251, 191, 36, 0.15); color: #FCD34D; border: 1px solid rgba(251, 191, 36, 0.3); }
+  .ea-status.suspenso { background: rgba(251, 146, 60, 0.15); color: #FDBA74; border: 1px solid rgba(251, 146, 60, 0.3); }
+  .ea-status.encerrado { background: rgba(148, 163, 184, 0.15); color: #94a3b8; border: 1px solid rgba(148, 163, 184, 0.3); }
+
+  .ea-card-titulo {
+    color: var(--stone); font-size: 0.85rem; line-height: 1.5;
+  }
+
+  .ea-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+  .ea-tag {
+    display: inline-flex; align-items: center; gap: 0.3rem;
+    padding: 0.18rem 0.55rem;
+    background: var(--graphite-3);
+    border: 1px solid var(--border-soft);
+    border-radius: 100px;
+    font-size: 0.7rem; color: var(--off-white);
+    font-family: var(--font-mono);
+  }
+  .ea-tag.fase { background: rgba(255, 132, 0, 0.1); color: var(--amber); border-color: rgba(255, 132, 0, 0.3); }
+  .ea-tag.bio { background: rgba(14, 165, 183, 0.1); color: var(--teal); border-color: rgba(14, 165, 183, 0.3); }
+
+  .ea-card-meta {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0.65rem 1rem;
+    margin-top: 0.5rem;
+    padding-top: 0.7rem;
+    border-top: 1px solid var(--border-soft);
+    font-size: 0.78rem;
+  }
+  .ea-card-meta .item { display: flex; flex-direction: column; gap: 0.15rem; }
+  .ea-card-meta .lbl { font-size: 0.65rem; color: var(--stone-2); text-transform: uppercase; letter-spacing: 0.06em; }
+  .ea-card-meta .val { color: var(--off-white); }
+
+  .ea-card-footer {
+    display: flex; justify-content: space-between; align-items: center;
+    padding-top: 0.75rem; margin-top: auto;
+    border-top: 1px solid var(--border-soft);
+    font-size: 0.75rem;
+  }
+  .ea-card-footer .city { color: var(--stone); display: flex; align-items: center; gap: 0.35rem; }
+  .ea-card-footer .more { color: var(--amber); display: flex; align-items: center; gap: 0.3rem; }
+
+  .ea-empty {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 3rem 1rem;
+    color: var(--stone);
+    background: var(--graphite-2);
+    border-radius: var(--radius-lg);
+    border: 1px dashed var(--border-soft);
+  }
+  .ea-empty i { color: var(--stone-2); margin-bottom: 0.85rem; }
+  .ea-empty p { margin: 0; }
+
+  /* ============== MODAL ============== */
+  .ea-modal-bg {
+    position: fixed; inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(6px);
+    z-index: 100;
+    display: flex; justify-content: center; align-items: flex-start;
+    padding: 3rem 1rem;
+    overflow-y: auto;
+  }
+  .ea-modal {
+    background: var(--graphite); border: 1px solid var(--border-mid);
+    border-radius: var(--radius-xl);
+    max-width: 880px; width: 100%;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  }
+  .ea-modal-head {
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid var(--border-soft);
+    display: flex; justify-content: space-between; align-items: flex-start;
+    gap: 1rem;
+    position: sticky; top: 0;
+    background: var(--graphite);
+    border-top-left-radius: var(--radius-xl); border-top-right-radius: var(--radius-xl);
+    z-index: 1;
+  }
+  .ea-modal-head h2 {
+    font-family: var(--font-display);
+    font-size: 1.5rem; font-weight: 700;
+    color: var(--off-white); margin: 0 0 0.4rem;
+    letter-spacing: -0.015em;
+  }
+  .ea-modal-head .nct {
+    color: var(--stone); font-family: var(--font-mono); font-size: 0.8rem;
+  }
+  .ea-modal-close {
+    background: transparent; border: 1px solid var(--border-soft);
+    color: var(--stone); padding: 0.4rem 0.6rem;
+    border-radius: var(--radius-sm); cursor: pointer;
+    flex-shrink: 0;
+  }
+  .ea-modal-close:hover { color: var(--off-white); border-color: var(--stone); }
+
+  .ea-modal-body { padding: 1.5rem 2rem 2rem; }
+
+  .ea-section { margin-bottom: 1.85rem; }
+  .ea-section:last-child { margin-bottom: 0; }
+  .ea-section h3 {
+    font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--stone); font-weight: 600;
+    margin: 0 0 0.65rem;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .ea-section h3 i { color: var(--amber); }
+
+  .ea-pills-row { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .ea-pill-detail {
+    display: inline-flex; align-items: center; gap: 0.35rem;
+    padding: 0.35rem 0.75rem;
+    background: var(--graphite-2);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-sm);
+    font-size: 0.82rem;
+    color: var(--off-white);
+  }
+  .ea-pill-detail .lbl { color: var(--stone-2); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; }
+  .ea-pill-detail .val { font-weight: 500; }
+
+  .ea-info-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem;
+  }
+  .ea-info-card {
+    background: var(--graphite-2);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-md);
+    padding: 0.85rem 1rem;
+  }
+  .ea-info-card .lbl {
+    font-size: 0.7rem; color: var(--stone-2);
+    text-transform: uppercase; letter-spacing: 0.05em;
+    margin-bottom: 0.3rem; font-weight: 500;
+  }
+  .ea-info-card .val { font-size: 0.9rem; color: var(--off-white); line-height: 1.5; }
+
+  .ea-text {
+    color: var(--off-white); font-size: 0.92rem; line-height: 1.65;
+  }
+  .ea-text strong { color: var(--amber); }
+
+  .ea-list { margin: 0.5rem 0 0; padding: 0; list-style: none; }
+  .ea-list li {
+    padding: 0.5rem 0 0.5rem 1.5rem;
+    border-bottom: 1px solid var(--border-soft);
+    position: relative;
+    color: var(--off-white); font-size: 0.88rem; line-height: 1.5;
+  }
+  .ea-list li:last-child { border-bottom: 0; }
+  .ea-list li::before {
+    content: '✓'; position: absolute; left: 0;
+    color: var(--success); font-weight: 700;
+    font-family: var(--font-mono);
+  }
+  .ea-list.exclusion li::before { content: '✕'; color: #F87171; }
+
+  .ea-actions {
+    display: flex; flex-wrap: wrap; gap: 0.65rem;
+    padding-top: 1rem; border-top: 1px solid var(--border-soft);
+    margin-top: 1rem;
+  }
+  .ea-actions a {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    padding: 0.55rem 0.95rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.85rem; font-weight: 500;
+    text-decoration: none;
+    transition: all 0.15s;
+  }
+  .ea-actions a.primary {
+    background: var(--amber); color: #0E0F12;
+  }
+  .ea-actions a.primary:hover { background: var(--amber-glow); color: #0E0F12; }
+  .ea-actions a.ghost {
+    background: transparent; color: var(--off-white);
+    border: 1px solid var(--border-mid);
+  }
+  .ea-actions a.ghost:hover { border-color: var(--amber); color: var(--amber); }
+
+  .ea-source {
+    margin-top: 1.25rem;
+    padding: 0.75rem 1rem;
+    background: var(--graphite-2);
+    border-left: 3px solid var(--stone);
+    font-size: 0.8rem; color: var(--stone);
+    line-height: 1.5;
+  }
+  .ea-source strong { color: var(--off-white); }
+
+  body.modal-open { overflow: hidden; }
+  [x-cloak] { display: none !important; }
+</style>
+</head>
+<body x-data="estudosAtivosApp()" x-init="init()" :class="{ 'modal-open': selected }">
+
+<!-- ============== HEADER ============== -->
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="brand">
+      <img src="assets/img/logo-app.png" alt="TheraTrials" class="brand-logo">
+      <div class="brand-text">
+        <span class="brand-name">TheraTrials</span><span class="brand-sub">Oncology</span>
+      </div>
+    </a>
+    <button class="nav-toggle" aria-label="Menu"><i data-lucide="menu" style="width:18px;height:18px"></i></button>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="database.html">Database</a>
+      <a href="estudos-ativos.html">Estudos ativos</a>
+      <a href="tumor-boards.html">Tumor boards</a>
+      <a href="modalidades.html">Modalidades</a>
+      <a href="ferramentas.html">Ferramentas</a>
+      <a href="fundamentos.html">Fundamentos</a>
+      <a href="about.html">Sobre</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ============== HERO ============== -->
+<section class="ea-hero">
+  <div class="container">
+    <span class="eyebrow">Recrutamento ativo · Brasil</span>
+    <h1>Estudos clínicos <span class="accent">recrutando</span> agora</h1>
+    <p>Banco curado de ensaios em oncologia com recrutamento aberto no Brasil. Filtre por neoplasia, modalidade, fase, biomarcador, linha terapêutica e localidade. Para médicos, pesquisadores e pacientes encaminhados por especialistas.</p>
+
+    <div class="ea-disclaimer">
+      <i data-lucide="info" style="width:18px;height:18px"></i>
+      <div>
+        <strong>Aviso:</strong> esta seção é informativa. As informações são consolidadas a partir de registros públicos (ClinicalTrials.gov, REBEC, ANVISA) e fontes oficiais dos patrocinadores. <strong>A elegibilidade final depende sempre da avaliação do centro responsável pelo estudo</strong>. Datas, status e critérios podem mudar — sempre confirmar com a fonte original e a equipe local antes de qualquer encaminhamento.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== LAYOUT ============== -->
+<section style="padding: 0">
+  <div class="container">
+    <div class="ea-layout">
+
+      <!-- SIDEBAR DE FILTROS -->
+      <aside class="ea-sidebar">
+        <button class="clear-filters-btn" @click="clearFilters()" x-show="hasAnyFilter()" x-cloak>
+          <i data-lucide="x" style="width:14px;height:14px"></i> Limpar filtros
+        </button>
+
+        <!-- LOCALIDADE -->
+        <div class="filter-block">
+          <div class="filter-block-header" @click="open.local = !open.local">
+            <h3><i data-lucide="map-pin" style="width:13px;height:13px"></i> Localidade (UF)</h3>
+            <i data-lucide="chevron-down" class="chev" :class="{ open: open.local }" style="width:14px;height:14px"></i>
+          </div>
+          <div class="filter-options" x-show="open.local" x-collapse>
+            <template x-for="uf in availableUFs()" :key="uf">
+              <button class="filter-pill" :class="{ active: filters.uf.includes(uf) }" @click="toggle('uf', uf)">
+                <span x-text="uf"></span>
+                <span class="count" x-text="countBy(s => (s.estados||[]).includes(uf))"></span>
+              </button>
+            </template>
+          </div>
+        </div>
+
+        <!-- NEOPLASIA -->
+        <div class="filter-block">
+          <div class="filter-block-header" @click="open.neo = !open.neo">
+            <h3><i data-lucide="dna" style="width:13px;height:13px"></i> Neoplasia</h3>
+            <i data-lucide="chevron-down" class="chev" :class="{ open: open.neo }" style="width:14px;height:14px"></i>
+          </div>
+          <div class="filter-options" x-show="open.neo" x-collapse>
+            <template x-for="n in meta.neoplasias" :key="n.id">
+              <button class="filter-pill" :class="{ active: filters.neoplasia.includes(n.id) }" @click="toggle('neoplasia', n.id)" :style="`--accent: ${n.color}`">
+                <span class="dot" :style="`background: ${n.color}`"></span>
+                <span x-text="n.label"></span>
+                <span class="count" x-text="countBy(s => s.neoplasia === n.id)"></span>
+              </button>
+            </template>
+          </div>
+        </div>
+
+        <!-- MODALIDADE -->
+        <div class="filter-block">
+          <div class="filter-block-header" @click="open.mod = !open.mod">
+            <h3><i data-lucide="layers" style="width:13px;height:13px"></i> Modalidade</h3>
+            <i data-lucide="chevron-down" class="chev" :class="{ open: open.mod }" style="width:14px;height:14px"></i>
+          </div>
+          <div class="filter-options" x-show="open.mod" x-collapse>
+            <template x-for="m in meta.modalidades" :key="m.id">
+              <button class="filter-pill" :class="{ active: filters.modalidade.includes(m.id) }" @click="toggle('modalidade', m.id)">
+                <span x-text="m.label"></span>
+                <span class="count" x-text="countBy(s => (s.modalidade||[]).includes(m.id))"></span>
+              </button>
+            </template>
+          </div>
+        </div>
+
+        <!-- FASE -->
+        <div class="filter-block">
+          <div class="filter-block-header" @click="open.fase = !open.fase">
+            <h3><i data-lucide="git-branch" style="width:13px;height:13px"></i> Fase</h3>
+            <i data-lucide="chevron-down" class="chev" :class="{ open: open.fase }" style="width:14px;height:14px"></i>
+          </div>
+          <div class="filter-options" x-show="open.fase" x-collapse>
+            <template x-for="f in meta.fases" :key="f.id">
+              <button class="filter-pill" :class="{ active: filters.fase.includes(f.id) }" @click="toggle('fase', f.id)">
+                <span x-text="f.label"></span>
+                <span class="count" x-text="countBy(s => s.fase === f.id)"></span>
+              </button>
+            </template>
+          </div>
+        </div>
+
+        <!-- STATUS -->
+        <div class="filter-block">
+          <div class="filter-block-header" @click="open.status = !open.status">
+            <h3><i data-lucide="activity" style="width:13px;height:13px"></i> Status</h3>
+            <i data-lucide="chevron-down" class="chev" :class="{ open: open.status }" style="width:14px;height:14px"></i>
+          </div>
+          <div class="filter-options" x-show="open.status" x-collapse>
+            <template x-for="st in meta.status" :key="st.id">
+              <button class="filter-pill" :class="{ active: filters.status.includes(st.id) }" @click="toggle('status', st.id)">
+                <span class="dot" :style="`background: ${st.color}`"></span>
+                <span x-text="st.label"></span>
+                <span class="count" x-text="countBy(s => s.status === st.id)"></span>
+              </button>
+            </template>
+          </div>
+        </div>
+
+        <!-- BIOMARCADOR -->
+        <div class="filter-block">
+          <div class="filter-block-header" @click="open.bio = !open.bio">
+            <h3><i data-lucide="microscope" style="width:13px;height:13px"></i> Biomarcador</h3>
+            <i data-lucide="chevron-down" class="chev" :class="{ open: open.bio }" style="width:14px;height:14px"></i>
+          </div>
+          <div class="filter-options" x-show="open.bio" x-collapse>
+            <template x-for="b in availableBiomarkers()" :key="b">
+              <button class="filter-pill" :class="{ active: filters.biomarcador.includes(b) }" @click="toggle('biomarcador', b)">
+                <span x-text="b"></span>
+                <span class="count" x-text="countBy(s => (s.biomarcadores||[]).includes(b))"></span>
+              </button>
+            </template>
+          </div>
+        </div>
+
+        <!-- LINHA -->
+        <div class="filter-block">
+          <div class="filter-block-header" @click="open.linha = !open.linha">
+            <h3><i data-lucide="list-ordered" style="width:13px;height:13px"></i> Linha terapêutica</h3>
+            <i data-lucide="chevron-down" class="chev" :class="{ open: open.linha }" style="width:14px;height:14px"></i>
+          </div>
+          <div class="filter-options" x-show="open.linha" x-collapse>
+            <template x-for="l in availableLinhas()" :key="l">
+              <button class="filter-pill" :class="{ active: filters.linha.includes(l) }" @click="toggle('linha', l)">
+                <span x-text="l"></span>
+                <span class="count" x-text="countBy(s => s.linha_terapeutica === l)"></span>
+              </button>
+            </template>
+          </div>
+        </div>
+      </aside>
+
+      <!-- CONTEÚDO -->
+      <main>
+        <div class="ea-search-row">
+          <div class="ea-search">
+            <i data-lucide="search" style="width:16px;height:16px"></i>
+            <input type="text" placeholder="Buscar por nome do estudo, NCT, intervenção, biomarcador, patrocinador…" x-model="search">
+          </div>
+          <div class="ea-result-count">
+            <strong x-text="filtered().length"></strong> de <strong x-text="data.length"></strong> estudos
+          </div>
+        </div>
+
+        <div class="ea-grid">
+          <template x-for="s in filtered()" :key="s.id">
+            <article class="ea-card" :style="`--neoplasia-color: ${neoplasiaColor(s.neoplasia)}`" @click="open(s)">
+              <div class="ea-card-top">
+                <div>
+                  <div class="ea-card-name">
+                    <span x-text="s.nome"></span>
+                    <span class="nct-mini" x-text="s.nct"></span>
+                  </div>
+                </div>
+                <span class="ea-status" :class="statusClass(s.status)" x-text="s.status"></span>
+              </div>
+
+              <div class="ea-card-titulo" x-text="s.titulo"></div>
+
+              <div class="ea-tags">
+                <span class="ea-tag fase" x-text="'Fase ' + s.fase"></span>
+                <span class="ea-tag" x-text="s.neoplasia_label"></span>
+                <template x-for="b in (s.biomarcadores||[]).slice(0,3)">
+                  <span class="ea-tag bio" x-text="b"></span>
+                </template>
+              </div>
+
+              <div class="ea-card-meta">
+                <div class="item">
+                  <div class="lbl">Linha</div>
+                  <div class="val" x-text="s.linha_terapeutica"></div>
+                </div>
+                <div class="item">
+                  <div class="lbl">Cenário</div>
+                  <div class="val" x-text="s.cenario_clinico"></div>
+                </div>
+                <div class="item" style="grid-column: 1 / -1">
+                  <div class="lbl">Intervenção</div>
+                  <div class="val" x-text="s.intervencao"></div>
+                </div>
+              </div>
+
+              <div class="ea-card-footer">
+                <span class="city">
+                  <i data-lucide="map-pin" style="width:11px;height:11px"></i>
+                  <span x-text="(s.centros||[]).join(' · ')"></span>
+                </span>
+                <span class="more">
+                  Ver detalhes <i data-lucide="arrow-right" style="width:11px;height:11px"></i>
+                </span>
+              </div>
+            </article>
+          </template>
+
+          <div class="ea-empty" x-show="filtered().length === 0">
+            <i data-lucide="search-x" style="width:48px;height:48px"></i>
+            <p>Nenhum estudo corresponde aos filtros selecionados. <button class="clear-filters-btn" @click="clearFilters()" style="display:inline-flex; width:auto; margin-top:0.5rem">Limpar filtros</button></p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+</section>
+
+<!-- ============== MODAL DE DETALHE ============== -->
+<div class="ea-modal-bg" x-show="selected" x-cloak @click.self="close()" @keydown.window.escape="close()" x-transition.opacity>
+  <template x-if="selected">
+    <div class="ea-modal" :style="`--neoplasia-color: ${neoplasiaColor(selected.neoplasia)}`">
+      <div class="ea-modal-head">
+        <div>
+          <h2 x-text="selected.nome"></h2>
+          <span class="nct" x-text="selected.nct"></span>
+          <span class="ea-status" :class="statusClass(selected.status)" x-text="selected.status" style="margin-left: 0.5rem"></span>
+        </div>
+        <button class="ea-modal-close" @click="close()" aria-label="Fechar">
+          <i data-lucide="x" style="width:16px;height:16px"></i>
+        </button>
+      </div>
+
+      <div class="ea-modal-body">
+        <p class="ea-text" style="margin: 0 0 1.25rem"><strong x-text="selected.titulo"></strong></p>
+
+        <!-- Pills de overview -->
+        <div class="ea-section">
+          <div class="ea-pills-row">
+            <span class="ea-pill-detail"><span class="lbl">Fase</span><span class="val" x-text="'Fase ' + selected.fase"></span></span>
+            <span class="ea-pill-detail"><span class="lbl">Neoplasia</span><span class="val" x-text="selected.neoplasia_label"></span></span>
+            <span class="ea-pill-detail"><span class="lbl">Linha</span><span class="val" x-text="selected.linha_terapeutica"></span></span>
+            <span class="ea-pill-detail" x-show="(selected.biomarcadores||[]).length"><span class="lbl">Biomarcador</span><span class="val" x-text="(selected.biomarcadores||[]).join(', ')"></span></span>
+          </div>
+        </div>
+
+        <!-- Racional -->
+        <div class="ea-section" x-show="selected.racional">
+          <h3><i data-lucide="lightbulb" style="width:14px;height:14px"></i> Racional</h3>
+          <p class="ea-text" x-text="selected.racional"></p>
+        </div>
+
+        <!-- População e cenário -->
+        <div class="ea-section">
+          <h3><i data-lucide="users" style="width:14px;height:14px"></i> População e cenário clínico</h3>
+          <div class="ea-info-grid">
+            <div class="ea-info-card">
+              <div class="lbl">Subtipo</div>
+              <div class="val" x-text="selected.subtipo"></div>
+            </div>
+            <div class="ea-info-card">
+              <div class="lbl">Cenário clínico</div>
+              <div class="val" x-text="selected.cenario_clinico"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Intervenção e comparador -->
+        <div class="ea-section">
+          <h3><i data-lucide="syringe" style="width:14px;height:14px"></i> Intervenção e comparador</h3>
+          <div class="ea-info-grid">
+            <div class="ea-info-card">
+              <div class="lbl">Braço experimental</div>
+              <div class="val" x-text="selected.intervencao"></div>
+            </div>
+            <div class="ea-info-card">
+              <div class="lbl">Comparador / controle</div>
+              <div class="val" x-text="selected.comparador"></div>
+            </div>
+            <div class="ea-info-card" x-show="selected.testes_fornecidos">
+              <div class="lbl">Testes fornecidos pelo estudo</div>
+              <div class="val" x-text="selected.testes_fornecidos"></div>
+            </div>
+            <div class="ea-info-card" x-show="selected.patrocinador">
+              <div class="lbl">Patrocinador</div>
+              <div class="val" x-text="selected.patrocinador"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Critérios principais -->
+        <div class="ea-section" x-show="(selected.criterios_principais||[]).length">
+          <h3><i data-lucide="check-circle-2" style="width:14px;height:14px"></i> Critérios principais de inclusão</h3>
+          <ul class="ea-list">
+            <template x-for="c in selected.criterios_principais"><li x-text="c"></li></template>
+          </ul>
+        </div>
+
+        <!-- Critérios de exclusão -->
+        <div class="ea-section" x-show="(selected.criterios_exclusao||[]).length">
+          <h3><i data-lucide="x-circle" style="width:14px;height:14px"></i> Critérios de exclusão relevantes</h3>
+          <ul class="ea-list exclusion">
+            <template x-for="c in selected.criterios_exclusao"><li x-text="c"></li></template>
+          </ul>
+        </div>
+
+        <!-- Centros -->
+        <div class="ea-section">
+          <h3><i data-lucide="map-pin" style="width:14px;height:14px"></i> Centros participantes no Brasil</h3>
+          <div class="ea-pills-row">
+            <template x-for="c in selected.centros"><span class="ea-pill-detail"><span class="val" x-text="c"></span></span></template>
+          </div>
+        </div>
+
+        <!-- Ações -->
+        <div class="ea-actions">
+          <a x-show="selected.fonte_url" :href="selected.fonte_url" target="_blank" rel="noopener" class="primary">
+            <i data-lucide="external-link" style="width:14px;height:14px"></i>
+            Registro oficial / ClinicalTrials.gov
+          </a>
+          <a x-show="selected.contato_url && selected.contato_url !== selected.fonte_url" :href="selected.contato_url" target="_blank" rel="noopener" class="ghost">
+            <i data-lucide="phone" style="width:14px;height:14px"></i>
+            Contato do estudo
+          </a>
+          <a href="database.html" class="ghost">
+            <i data-lucide="database" style="width:14px;height:14px"></i>
+            Ver evidência prévia no Database
+          </a>
+        </div>
+
+        <div class="ea-source">
+          <strong>Fonte da curadoria:</strong> consolidação de registros públicos (ClinicalTrials.gov, REBEC), comunicações dos patrocinadores e literatura primária. Última atualização desta ficha: <span x-text="selected.data_atualizacao"></span>. <em>Confirme sempre com o centro responsável.</em>
+        </div>
+      </div>
+    </div>
+  </template>
+</div>
+
+<!-- ============== FOOTER ============== -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>© 2026 TheraTrials Oncology · Estudos ativos no Brasil · curadoria informativa</span>
+      <span>Não substitui avaliação do centro responsável</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/trials_br.js"></script>
+<script>
+  function estudosAtivosApp() {
+    return {
+      data: window.THERA_TRIALS_BR || [],
+      meta: window.THERA_TRIALS_BR_META || { neoplasias: [], modalidades: [], fases: [], status: [], linhas: [], biomarcadores: [] },
+      selected: null,
+      search: '',
+      filters: {
+        uf: [],
+        neoplasia: [],
+        modalidade: [],
+        fase: [],
+        status: [],
+        biomarcador: [],
+        linha: [],
+      },
+      open: { local: true, neo: true, mod: false, fase: false, status: false, bio: false, linha: false },
+
+      init() {
+        this.$nextTick(() => lucide.createIcons());
+        this.$watch('selected', () => this.$nextTick(() => lucide.createIcons()));
+        this.$watch('search', () => this.$nextTick(() => lucide.createIcons()));
+        this.$watch('filters', () => this.$nextTick(() => lucide.createIcons()), { deep: true });
+        // Deep linking via #id
+        const hash = window.location.hash.replace('#', '');
+        if (hash) {
+          const found = this.data.find(s => s.id === hash);
+          if (found) this.selected = found;
+        }
+      },
+
+      open(s) {
+        this.selected = s;
+        if (history.replaceState) history.replaceState(null, '', '#' + s.id);
+      },
+      close() {
+        this.selected = null;
+        if (history.replaceState) history.replaceState(null, '', window.location.pathname);
+      },
+
+      toggle(group, value) {
+        const arr = this.filters[group];
+        const i = arr.indexOf(value);
+        if (i >= 0) arr.splice(i, 1);
+        else arr.push(value);
+      },
+
+      clearFilters() {
+        Object.keys(this.filters).forEach(k => { this.filters[k] = []; });
+        this.search = '';
+      },
+
+      hasAnyFilter() {
+        return Object.values(this.filters).some(arr => arr.length > 0) || (this.search || '').trim().length > 0;
+      },
+
+      countBy(predicate) {
+        return this.data.filter(predicate).length;
+      },
+
+      availableUFs() {
+        const all = new Set();
+        this.data.forEach(s => (s.estados || []).forEach(e => all.add(e)));
+        return Array.from(all).sort();
+      },
+      availableBiomarkers() {
+        const all = new Set();
+        this.data.forEach(s => (s.biomarcadores || []).forEach(b => all.add(b)));
+        return Array.from(all).sort();
+      },
+      availableLinhas() {
+        const all = new Set();
+        this.data.forEach(s => { if (s.linha_terapeutica) all.add(s.linha_terapeutica); });
+        return Array.from(all).sort();
+      },
+
+      filtered() {
+        const q = (this.search || '').trim().toLowerCase();
+        return this.data.filter(s => {
+          if (this.filters.uf.length && !this.filters.uf.some(uf => (s.estados || []).includes(uf))) return false;
+          if (this.filters.neoplasia.length && !this.filters.neoplasia.includes(s.neoplasia)) return false;
+          if (this.filters.modalidade.length && !this.filters.modalidade.some(m => (s.modalidade || []).includes(m))) return false;
+          if (this.filters.fase.length && !this.filters.fase.includes(s.fase)) return false;
+          if (this.filters.status.length && !this.filters.status.includes(s.status)) return false;
+          if (this.filters.biomarcador.length && !this.filters.biomarcador.some(b => (s.biomarcadores || []).includes(b))) return false;
+          if (this.filters.linha.length && !this.filters.linha.includes(s.linha_terapeutica)) return false;
+          if (q) {
+            const haystack = [
+              s.nome, s.titulo, s.nct, s.intervencao, s.comparador,
+              s.subtipo, s.cenario_clinico, s.patrocinador,
+              ...(s.biomarcadores || []), ...(s.centros || []), ...(s.cidades || []),
+            ].filter(Boolean).join(' ').toLowerCase();
+            if (!haystack.includes(q)) return false;
+          }
+          return true;
+        });
+      },
+
+      neoplasiaColor(id) {
+        const n = (this.meta.neoplasias || []).find(x => x.id === id);
+        return n ? n.color : '#FF8400';
+      },
+
+      statusClass(st) {
+        if (!st) return '';
+        if (/recrutando/i.test(st) && !/ainda/i.test(st)) return 'recrutando';
+        if (/ainda/i.test(st)) return 'aindanao';
+        if (/suspens/i.test(st)) return 'suspenso';
+        if (/encerr/i.test(st)) return 'encerrado';
+        return '';
+      },
+    };
+  }
+</script>
+
+</body>
+</html>
