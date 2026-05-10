@@ -745,19 +745,19 @@
         </div>
 
         <div class="section-block">
-          <div class="section-block-title" style="color: var(--teal)"><i data-lucide="dna" style="width:13px;height:13px"></i> Critérios moleculares e imagem</div>
+          <div class="section-block-title" style="color: var(--teal)"><i data-lucide="dna" style="width:13px;height:13px"></i> <span x-text="(window.TheraTrials && TheraTrials.isRadioStudy(selectedStudy)) ? 'Critérios moleculares e imagem' : 'Critérios moleculares'"></span></div>
           <div class="section-block-grid">
-            <div class="field"><div class="field-label">Critério molecular / PET</div><div class="field-text" x-text="selectedStudy.molecular || '—'"></div></div>
+            <div class="field"><div class="field-label" x-text="(window.TheraTrials && TheraTrials.isRadioStudy(selectedStudy)) ? 'Critério molecular / PET' : 'Critério molecular'"></div><div class="field-text" x-text="selectedStudy.molecular || '—'"></div></div>
             <div class="field"><div class="field-label">Biomarcadores</div><div class="field-text" x-text="selectedStudy.biomarc || '—'"></div></div>
           </div>
         </div>
 
         <div class="section-block">
-          <div class="section-block-title"><i data-lucide="syringe" style="width:13px;height:13px"></i> Intervenção e radiofarmácia</div>
+          <div class="section-block-title"><i data-lucide="syringe" style="width:13px;height:13px"></i> <span x-text="(window.TheraTrials && TheraTrials.isRadioStudy(selectedStudy)) ? 'Intervenção e radiofarmácia' : 'Intervenção'"></span></div>
           <div class="section-block-grid">
-            <div class="field full highlight"><div class="field-label">Radiofármaco / Intervenção</div><div class="field-text" style="font-weight: 500" x-text="selectedStudy.radiofarmaco || '—'"></div></div>
+            <div class="field full highlight"><div class="field-label" x-text="(window.TheraTrials && TheraTrials.isRadioStudy(selectedStudy)) ? 'Radiofármaco / Intervenção' : 'Intervenção'"></div><div class="field-text" style="font-weight: 500" x-text="selectedStudy.radiofarmaco || '—'"></div></div>
             <div class="field"><div class="field-label">Esquema</div><div class="field-text" x-text="selectedStudy.esquema || '—'"></div></div>
-            <div class="field"><div class="field-label">Atividade cumulativa típica</div><div class="field-text mono" x-text="selectedStudy.cumul || '—'"></div></div>
+            <div class="field"><div class="field-label" x-text="(window.TheraTrials && TheraTrials.isRadioStudy(selectedStudy)) ? 'Atividade cumulativa típica' : 'Dose cumulativa típica'"></div><div class="field-text mono" x-text="selectedStudy.cumul || '—'"></div></div>
             <div class="field full"><div class="field-label">Preparo e pré-medicação</div><div class="field-text" x-text="selectedStudy.preparo || '—'"></div></div>
             <div class="field full"><div class="field-label">Comparador</div><div class="field-text" x-text="selectedStudy.comparador || '—'"></div></div>
           </div>

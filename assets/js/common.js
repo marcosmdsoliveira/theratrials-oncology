@@ -30,6 +30,21 @@
   // ---------- Helpers de dados ----------
   window.TheraTrials = window.TheraTrials || {};
 
+  // Categorias cuja intervencao principal eh um radiofarmaco/teranostico.
+  // Define os labels do modal: estudos radio mostram "Intervencao e radiofarmacia" /
+  // "Criterios moleculares e imagem"; estudos nao-radio mostram versoes neutras.
+  TheraTrials.RADIO_CATEGORIES = new Set([
+    'lupsma_prostata', 'ra223_prostata', 'lu_dotatate_net', 'lupsma_ccrcc',
+    'y90_tare', 'novos_psma', 'mibg_pediatria_pheo',
+    'lung_radio_dev', 'breast_radio_dev',
+    'teranostico_emergente'
+  ]);
+
+  TheraTrials.isRadioStudy = function(study) {
+    if (!study) return false;
+    return TheraTrials.RADIO_CATEGORIES.has(study.category_id);
+  };
+
   TheraTrials.studyTitle = function(estudo) {
     if (!estudo) return '';
     return estudo.split('\n')[0].split('(')[0].trim();
