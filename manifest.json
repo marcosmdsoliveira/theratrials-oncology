@@ -1,0 +1,138 @@
+{
+  "name": "TheraTrials Oncology",
+  "short_name": "TheraTrials",
+  "description": "Plataforma de evidências clínicas em oncologia moderna — ensaios clínicos curados de teranóstico, terapia-alvo e imunoterapia.",
+  "lang": "pt-BR",
+  "dir": "ltr",
+  "start_url": "./index.html",
+  "scope": "./",
+  "id": "/theratrials-oncology",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui", "browser"],
+  "orientation": "any",
+  "background_color": "#0E0F12",
+  "theme_color": "#FF8400",
+  "categories": ["medical", "education", "books", "productivity"],
+  "icons": [
+    {
+      "src": "assets/img/icons/icon-72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/img/icons/icon-96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/img/icons/icon-128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/img/icons/icon-144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/img/icons/icon-152.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/img/icons/icon-180.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/img/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/img/icons/icon-192-maskable.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "assets/img/icons/icon-384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/img/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/img/icons/icon-512-maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "assets/img/icons/icon-1024.png",
+      "sizes": "1024x1024",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Database de ensaios",
+      "short_name": "Database",
+      "description": "311 ensaios filtráveis por tumor, modalidade e biomarcador",
+      "url": "./database.html",
+      "icons": [
+        { "src": "assets/img/icons/icon-192.png", "sizes": "192x192" }
+      ]
+    },
+    {
+      "name": "Estudos ativos no Brasil",
+      "short_name": "Estudos ativos",
+      "description": "Recrutamento aberto no Brasil",
+      "url": "./estudos-ativos.html",
+      "icons": [
+        { "src": "assets/img/icons/icon-192.png", "sizes": "192x192" }
+      ]
+    },
+    {
+      "name": "Tumor boards",
+      "short_name": "Tumor boards",
+      "description": "Visão por tumor",
+      "url": "./tumor-boards.html",
+      "icons": [
+        { "src": "assets/img/icons/icon-192.png", "sizes": "192x192" }
+      ]
+    },
+    {
+      "name": "Ferramentas clínicas",
+      "short_name": "Ferramentas",
+      "description": "AJCC TNM · CTCAE v6.0 · calculadoras",
+      "url": "./ferramentas.html",
+      "icons": [
+        { "src": "assets/img/icons/icon-192.png", "sizes": "192x192" }
+      ]
+    }
+  ],
+  "prefer_related_applications": false,
+  "screenshots": [
+    {
+      "src": "assets/img/hero-banner.png",
+      "sizes": "1672x941",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Página inicial — TheraTrials Oncology"
+    }
+  ]
+}

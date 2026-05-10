@@ -2,14 +2,75 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
+<!-- PWA:BEGIN -->
+<!-- ============== PWA · App-like experience ============== -->
+<meta name="theme-color" content="#FF8400" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0E0F12" media="(prefers-color-scheme: dark)">
+<meta name="color-scheme" content="dark light">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="TheraTrials">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="application-name" content="TheraTrials Oncology">
+<meta name="format-detection" content="telephone=no">
+<meta name="msapplication-TileColor" content="#0E0F12">
+<meta name="msapplication-TileImage" content="assets/img/icons/icon-144.png">
+
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/img/icons/favicon-16.png">
+<link rel="shortcut icon" href="assets/img/icons/favicon-32.png">
+
+<!-- iOS Touch Icons -->
+<link rel="apple-touch-icon" href="assets/img/icons/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/img/icons/icon-180.png">
+<link rel="apple-touch-icon" sizes="152x152" href="assets/img/icons/icon-152.png">
+<link rel="apple-touch-icon" sizes="144x144" href="assets/img/icons/icon-144.png">
+<link rel="apple-touch-icon" sizes="120x120" href="assets/img/icons/apple-touch-icon-120.png">
+<link rel="apple-touch-icon" sizes="76x76" href="assets/img/icons/apple-touch-icon-76.png">
+<link rel="apple-touch-icon" sizes="60x60" href="assets/img/icons/apple-touch-icon-60.png">
+
+<!-- iOS Splash Screens -->
+<link rel="apple-touch-startup-image" media="(device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="assets/img/splash/splash-1290x2796.png">
+<link rel="apple-touch-startup-image" media="(device-width: 932px) and (device-height: 430px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)" href="assets/img/splash/splash-2796x1290.png">
+<link rel="apple-touch-startup-image" media="(device-width: 402px) and (device-height: 874px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="assets/img/splash/splash-1206x2622.png">
+<link rel="apple-touch-startup-image" media="(device-width: 874px) and (device-height: 402px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)" href="assets/img/splash/splash-2622x1206.png">
+<link rel="apple-touch-startup-image" media="(device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="assets/img/splash/splash-1179x2556.png">
+<link rel="apple-touch-startup-image" media="(device-width: 852px) and (device-height: 393px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)" href="assets/img/splash/splash-2556x1179.png">
+<link rel="apple-touch-startup-image" media="(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="assets/img/splash/splash-1284x2778.png">
+<link rel="apple-touch-startup-image" media="(device-width: 926px) and (device-height: 428px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)" href="assets/img/splash/splash-2778x1284.png">
+<link rel="apple-touch-startup-image" media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="assets/img/splash/splash-1170x2532.png">
+<link rel="apple-touch-startup-image" media="(device-width: 844px) and (device-height: 390px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)" href="assets/img/splash/splash-2532x1170.png">
+<link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="assets/img/splash/splash-1125x2436.png">
+<link rel="apple-touch-startup-image" media="(device-width: 812px) and (device-height: 375px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)" href="assets/img/splash/splash-2436x1125.png">
+<link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="assets/img/splash/splash-1242x2688.png">
+<link rel="apple-touch-startup-image" media="(device-width: 896px) and (device-height: 414px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)" href="assets/img/splash/splash-2688x1242.png">
+<link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="assets/img/splash/splash-828x1792.png">
+<link rel="apple-touch-startup-image" media="(device-width: 896px) and (device-height: 414px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)" href="assets/img/splash/splash-1792x828.png">
+<link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="assets/img/splash/splash-1242x2208.png">
+<link rel="apple-touch-startup-image" media="(device-width: 736px) and (device-height: 414px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)" href="assets/img/splash/splash-2208x1242.png">
+<link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="assets/img/splash/splash-750x1334.png">
+<link rel="apple-touch-startup-image" media="(device-width: 667px) and (device-height: 375px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)" href="assets/img/splash/splash-1334x750.png">
+<link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="assets/img/splash/splash-640x1136.png">
+<link rel="apple-touch-startup-image" media="(device-width: 568px) and (device-height: 320px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)" href="assets/img/splash/splash-1136x640.png">
+<link rel="apple-touch-startup-image" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="assets/img/splash/splash-2048x2732.png">
+<link rel="apple-touch-startup-image" media="(device-width: 1366px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)" href="assets/img/splash/splash-2732x2048.png">
+<link rel="apple-touch-startup-image" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="assets/img/splash/splash-1668x2388.png">
+<link rel="apple-touch-startup-image" media="(device-width: 1194px) and (device-height: 834px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)" href="assets/img/splash/splash-2388x1668.png">
+<link rel="apple-touch-startup-image" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="assets/img/splash/splash-1668x2224.png">
+<link rel="apple-touch-startup-image" media="(device-width: 1112px) and (device-height: 834px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)" href="assets/img/splash/splash-2224x1668.png">
+<link rel="apple-touch-startup-image" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="assets/img/splash/splash-1536x2048.png">
+<link rel="apple-touch-startup-image" media="(device-width: 1024px) and (device-height: 768px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)" href="assets/img/splash/splash-2048x1536.png">
+<link rel="apple-touch-startup-image" media="(device-width: 744px) and (device-height: 1133px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="assets/img/splash/splash-1488x2266.png">
+<link rel="apple-touch-startup-image" media="(device-width: 1133px) and (device-height: 744px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)" href="assets/img/splash/splash-2266x1488.png">
+<!-- PWA:END -->
 <title>Ferramentas · TheraTrials Oncology</title>
-<meta name="description" content="Calculadoras de dose, conversores de unidades, calculadora estatística e fluxogramas decisórios em oncologia teranóstica.">
+<meta name="description" content="Estadiamento AJCC TNM e tabela de eventos adversos CTCAE v6.0 em oncologia teranóstica.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/theratrials.css">
-<link rel="icon" type="image/png" href="assets/img/logo-app.png">
 <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.5/dist/cdn.min.js"></script>
 <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 
@@ -340,7 +401,7 @@
   <div class="container">
     <span class="eyebrow">Ferramentas clínicas</span>
     <h1>Calcule, converta, <span class="text-amber">decida</span></h1>
-    <p>Calculadoras de dose por radiofármaco, conversores de unidades, calculadora estatística e fluxogramas decisórios por tumor — em uma única tela.</p>
+    <p>Estadiamento AJCC TNM (oitava e nona edições) e tabela de eventos adversos CTCAE v6.0 — em uma única tela.</p>
   </div>
 </section>
 
@@ -349,44 +410,14 @@
 
     <!-- HUB -->
     <div class="tools-hub">
-      <a href="#dose" class="tool-link" style="--accent: #FF8400">
-        <div class="num">01</div>
-        <i data-lucide="syringe" class="icon"></i>
-        <h3>Dose prescrita</h3>
-        <p>Atividade por peso e radiofármaco</p>
-      </a>
-      <a href="#converter" class="tool-link" style="--accent: #0EA5B7">
-        <div class="num">02</div>
-        <i data-lucide="repeat-2" class="icon"></i>
-        <h3>Converter unidades</h3>
-        <p>Bq · Ci · GBq · MBq · mCi</p>
-      </a>
-      <a href="#decay" class="tool-link" style="--accent: #C084FC">
-        <div class="num">03</div>
-        <i data-lucide="clock" class="icon"></i>
-        <h3>Decaimento</h3>
-        <p>Atividade residual no tempo</p>
-      </a>
-      <a href="#stats" class="tool-link" style="--accent: #6EE7B7">
-        <div class="num">04</div>
-        <i data-lucide="sigma" class="icon"></i>
-        <h3>HR · NNT · Risco</h3>
-        <p>Calculadora estatística</p>
-      </a>
-      <a href="#flowcharts" class="tool-link" style="--accent: #F472B6">
-        <div class="num">05</div>
-        <i data-lucide="git-branch" class="icon"></i>
-        <h3>Fluxogramas</h3>
-        <p>Decisão clínica por tumor</p>
-      </a>
       <a href="#ajcc" class="tool-link" style="--accent: #38BDF8">
-        <div class="num">06</div>
+        <div class="num">01</div>
         <i data-lucide="layers-3" class="icon"></i>
         <h3>Estadiamento AJCC</h3>
         <p>TNM 8ª/9ª edição · resumo por tumor</p>
       </a>
       <a href="#ctcae" class="tool-link" style="--accent: #FBBF24">
-        <div class="num">07</div>
+        <div class="num">02</div>
         <i data-lucide="alert-triangle" class="icon"></i>
         <h3>Eventos adversos CTCAE</h3>
         <p>Escala v6.0 · 5 graus por categoria</p>
@@ -394,467 +425,11 @@
     </div>
 
     <!-- ============================================================ -->
-    <!-- 01. DOSE PRESCRITA -->
-    <!-- ============================================================ -->
-    <section class="tool" id="dose">
-      <div class="tool-head">
-        <div class="tool-num">01</div>
-        <h2>Calculadora de dose prescrita</h2>
-      </div>
-      <p class="tool-desc">Selecione o radiofármaco, informe peso (se aplicável) e veja a atividade prescrita em GBq, MBq e mCi simultaneamente. Os esquemas-padrão vêm dos protocolos pivotais.</p>
-
-      <div class="calc-card">
-        <div class="calc-grid">
-          <div class="calc-inputs">
-            <div class="calc-field">
-              <label>Radiofármaco</label>
-              <select class="calc-input" x-model="dose.drug">
-                <template x-for="d in doseDrugs" :key="d.id">
-                  <option :value="d.id" x-text="d.name"></option>
-                </template>
-              </select>
-              <span class="hint" x-text="currentDrug?.note || ''"></span>
-            </div>
-
-            <div class="calc-field" x-show="currentDrug?.weightBased">
-              <label>Peso do paciente (kg)</label>
-              <input type="number" class="calc-input" x-model.number="dose.weight" min="0" max="250" step="1">
-            </div>
-
-            <div class="calc-field" x-show="currentDrug?.cyclesEditable">
-              <label>Ciclo atual (1 a <span x-text="currentDrug?.maxCycles"></span>)</label>
-              <input type="number" class="calc-input" x-model.number="dose.cycle" min="1" :max="currentDrug?.maxCycles || 6">
-            </div>
-
-            <div class="calc-field" x-show="currentDrug?.fractionEditable">
-              <label>% da dose plena</label>
-              <input type="number" class="calc-input" x-model.number="dose.fraction" min="50" max="100" step="5">
-              <span class="hint">Use 75% ou 50% se redução por toxicidade hematológica</span>
-            </div>
-          </div>
-
-          <div class="calc-output">
-            <div>
-              <div class="out-label">Atividade prescrita</div>
-              <div class="out-value" x-text="doseResult.gbq"><span class="out-unit">GBq</span></div>
-            </div>
-            <div class="out-extras">
-              <div class="extra">Em MBq<strong x-text="doseResult.mbq"></strong></div>
-              <div class="extra">Em mCi<strong x-text="doseResult.mci"></strong></div>
-              <div class="extra">Esquema<strong x-text="currentDrug?.schedule || '—'"></strong></div>
-              <div class="extra">Cumulativa máx.<strong x-text="doseResult.cumul"></strong></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="note">
-          <span class="lbl">Importante</span>
-          <strong>Esses valores são guias baseados nos protocolos dos ensaios pivotais</strong> (VISION, NETTER-1, ALSYMPCA, AZEDRA, DOSISPHERE-01). A dose final deve sempre considerar dosimetria personalizada, função renal/medular, toxicidade prévia e o protocolo institucional. Não substitui prescrição médica.
-        </div>
-      </div>
-    </section>
-
-    <!-- DIVISOR ORBITAL -->
-    <div class="topic-divider" aria-hidden="true">
-      <svg viewBox="0 0 200 50" fill="none">
-        <ellipse cx="100" cy="25" rx="70" ry="11" stroke="#FF8400" stroke-width="0.8" fill="none" opacity="0.55"/>
-        <ellipse cx="100" cy="25" rx="55" ry="8" stroke="#FF8400" stroke-width="0.6" stroke-dasharray="1.2 4" fill="none" opacity="0.4"/>
-        <circle cx="100" cy="25" r="4" fill="#FF8400" opacity="0.85"/>
-        <circle cx="100" cy="25" r="1.5" fill="#FFE5B0"/>
-        <circle cx="32" cy="29" r="1.6" fill="#FF8400"/>
-        <circle cx="166" cy="22" r="1.5" fill="#0EA5B7"/>
-      </svg>
-    </div>
-
-    <!-- ============================================================ -->
-    <!-- 02. CONVERTER UNIDADES -->
-    <!-- ============================================================ -->
-    <section class="tool" id="converter">
-      <div class="tool-head">
-        <div class="tool-num">02</div>
-        <h2>Conversor de unidades de atividade</h2>
-      </div>
-      <p class="tool-desc">Digite um valor em qualquer unidade — os outros campos se atualizam em tempo real. Útil para converter entre unidades SI (Bq, MBq, GBq) e Curie (μCi, mCi, Ci).</p>
-
-      <div class="calc-card">
-        <div class="calc-grid" style="grid-template-columns: 1fr 1fr 1fr; gap: 1rem">
-          <div class="calc-field">
-            <label>GBq (Gigabecquerel)</label>
-            <input type="number" class="calc-input mono" :value="conv.gbq" @input="updateConv($event.target.value, 'gbq')" step="0.001">
-          </div>
-          <div class="calc-field">
-            <label>MBq (Megabecquerel)</label>
-            <input type="number" class="calc-input mono" :value="conv.mbq" @input="updateConv($event.target.value, 'mbq')" step="1">
-          </div>
-          <div class="calc-field">
-            <label>kBq (Kilobecquerel)</label>
-            <input type="number" class="calc-input mono" :value="conv.kbq" @input="updateConv($event.target.value, 'kbq')" step="1">
-          </div>
-          <div class="calc-field">
-            <label>mCi (Milicurie)</label>
-            <input type="number" class="calc-input mono" :value="conv.mci" @input="updateConv($event.target.value, 'mci')" step="0.01">
-          </div>
-          <div class="calc-field">
-            <label>μCi (Microcurie)</label>
-            <input type="number" class="calc-input mono" :value="conv.uci" @input="updateConv($event.target.value, 'uci')" step="1">
-          </div>
-          <div class="calc-field">
-            <label>Ci (Curie)</label>
-            <input type="number" class="calc-input mono" :value="conv.ci" @input="updateConv($event.target.value, 'ci')" step="0.0001">
-          </div>
-        </div>
-
-        <table class="ref-table" style="margin-top: 1.5rem">
-          <thead><tr><th>Equivalência fixa</th><th>Valor</th></tr></thead>
-          <tbody>
-            <tr><td>1 Ci</td><td>= 37 GBq = 37 000 MBq = 3,7 × 10¹⁰ Bq</td></tr>
-            <tr><td>1 mCi</td><td>= 37 MBq = 37 000 kBq</td></tr>
-            <tr><td>1 GBq</td><td>= 27,03 mCi = 1000 MBq</td></tr>
-            <tr><td>1 MBq</td><td>= 0,027 mCi = 27,03 μCi</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <!-- DIVISOR ORBITAL -->
-    <div class="topic-divider" aria-hidden="true">
-      <svg viewBox="0 0 200 50" fill="none">
-        <ellipse cx="100" cy="25" rx="70" ry="11" stroke="#FF8400" stroke-width="0.8" fill="none" opacity="0.55"/>
-        <ellipse cx="100" cy="25" rx="55" ry="8" stroke="#FF8400" stroke-width="0.6" stroke-dasharray="1.2 4" fill="none" opacity="0.4"/>
-        <circle cx="100" cy="25" r="4" fill="#FF8400" opacity="0.85"/>
-        <circle cx="100" cy="25" r="1.5" fill="#FFE5B0"/>
-        <circle cx="32" cy="29" r="1.6" fill="#FF8400"/>
-        <circle cx="166" cy="22" r="1.5" fill="#0EA5B7"/>
-      </svg>
-    </div>
-
-    <!-- ============================================================ -->
-    <!-- 03. DECAIMENTO -->
-    <!-- ============================================================ -->
-    <section class="tool" id="decay">
-      <div class="tool-head">
-        <div class="tool-num">03</div>
-        <h2>Decaimento radioativo</h2>
-      </div>
-      <p class="tool-desc">Calcula a atividade residual em um momento futuro com base na meia-vida do radioisótopo. Útil para corrigir dose entre calibração e administração, ou estimar atividade residual em paciente após alta.</p>
-
-      <div class="calc-card">
-        <div class="calc-grid">
-          <div class="calc-inputs">
-            <div class="calc-field">
-              <label>Radioisótopo</label>
-              <select class="calc-input" x-model="decay.iso">
-                <template x-for="i in isotopes" :key="i.id">
-                  <option :value="i.id" x-text="i.name + ' (T½ = ' + i.t12_str + ')'"></option>
-                </template>
-              </select>
-            </div>
-            <div class="calc-field">
-              <label>Atividade inicial</label>
-              <div style="display: flex; gap: 0.5rem; align-items: center">
-                <input type="number" class="calc-input mono" x-model.number="decay.a0" step="0.1" style="flex: 1">
-                <select class="calc-input" x-model="decay.a0unit" style="width: 110px">
-                  <option value="GBq">GBq</option>
-                  <option value="MBq">MBq</option>
-                  <option value="mCi">mCi</option>
-                </select>
-              </div>
-            </div>
-            <div class="calc-field">
-              <label>Tempo decorrido</label>
-              <div style="display: flex; gap: 0.5rem; align-items: center">
-                <input type="number" class="calc-input mono" x-model.number="decay.t" step="1" style="flex: 1" min="0">
-                <select class="calc-input" x-model="decay.tunit" style="width: 110px">
-                  <option value="h">horas</option>
-                  <option value="d">dias</option>
-                  <option value="min">minutos</option>
-                </select>
-              </div>
-            </div>
-          </div>
-
-          <div class="calc-output">
-            <div>
-              <div class="out-label">Atividade residual</div>
-              <div class="out-value" x-text="decayResult.value"><span class="out-unit" x-text="decay.a0unit"></span></div>
-            </div>
-            <div class="out-extras">
-              <div class="extra">Fração restante<strong x-text="decayResult.fraction + '%'"></strong></div>
-              <div class="extra">Meia-vidas<strong x-text="decayResult.halfLives"></strong></div>
-              <div class="extra">A reduzir 99%<strong x-text="decayResult.t99"></strong></div>
-              <div class="extra">A reduzir 50%<strong x-text="decayResult.t50"></strong></div>
-            </div>
-          </div>
-        </div>
-
-        <table class="ref-table">
-          <thead><tr><th>Isótopo</th><th>Meia-vida</th><th>Tipo</th><th>Uso típico</th></tr></thead>
-          <tbody>
-            <tr><td>177Lu</td><td>6,65 dias</td><td>β⁻ + γ</td><td>Lu-PSMA, Lu-DOTATATE</td></tr>
-            <tr><td>225Ac</td><td>9,9 dias</td><td>α (cascata)</td><td>Ac-PSMA-617</td></tr>
-            <tr><td>223Ra</td><td>11,4 dias</td><td>α</td><td>Xofigo® em CRPC ósseo</td></tr>
-            <tr><td>90Y</td><td>64,1 horas</td><td>β⁻</td><td>TARE em HCC, mCRC</td></tr>
-            <tr><td>131I</td><td>8,02 dias</td><td>β⁻ + γ</td><td>MIBG, tireóide</td></tr>
-            <tr><td>161Tb</td><td>6,89 dias</td><td>β⁻ + Auger</td><td>Tb-PSMA-I&T (VIOLET)</td></tr>
-            <tr><td>68Ga</td><td>67,7 min</td><td>β⁺ (PET)</td><td>PSMA-11, DOTATATE PET</td></tr>
-            <tr><td>18F</td><td>110 min</td><td>β⁺ (PET)</td><td>FDG, PSMA-1007, DCFPyL</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <!-- DIVISOR ORBITAL -->
-    <div class="topic-divider" aria-hidden="true">
-      <svg viewBox="0 0 200 50" fill="none">
-        <ellipse cx="100" cy="25" rx="70" ry="11" stroke="#FF8400" stroke-width="0.8" fill="none" opacity="0.55"/>
-        <ellipse cx="100" cy="25" rx="55" ry="8" stroke="#FF8400" stroke-width="0.6" stroke-dasharray="1.2 4" fill="none" opacity="0.4"/>
-        <circle cx="100" cy="25" r="4" fill="#FF8400" opacity="0.85"/>
-        <circle cx="100" cy="25" r="1.5" fill="#FFE5B0"/>
-        <circle cx="32" cy="29" r="1.6" fill="#FF8400"/>
-        <circle cx="166" cy="22" r="1.5" fill="#0EA5B7"/>
-      </svg>
-    </div>
-
-    <!-- ============================================================ -->
-    <!-- 04. ESTATÍSTICA -->
-    <!-- ============================================================ -->
-    <section class="tool" id="stats">
-      <div class="tool-head">
-        <div class="tool-num">04</div>
-        <h2>Calculadora estatística</h2>
-      </div>
-      <p class="tool-desc">Insira a taxa de evento nos dois braços e descubra a redução absoluta de risco (ARR), número necessário a tratar (NNT) e razão de risco (RR) — entendendo a magnitude do benefício clínico.</p>
-
-      <div class="calc-card">
-        <div class="calc-grid">
-          <div class="calc-inputs">
-            <div class="calc-field">
-              <label>Taxa de evento — controle (%)</label>
-              <input type="number" class="calc-input mono" x-model.number="stat.ctrl" min="0" max="100" step="0.1">
-              <span class="hint">Ex: 30 = 30% dos pacientes do controle tiveram o evento</span>
-            </div>
-            <div class="calc-field">
-              <label>Taxa de evento — tratamento (%)</label>
-              <input type="number" class="calc-input mono" x-model.number="stat.trt" min="0" max="100" step="0.1">
-              <span class="hint">Ex: 18 = 18% dos pacientes tratados tiveram o evento</span>
-            </div>
-            <div class="note" style="margin-top: 0.5rem">
-              <span class="lbl">Como interpretar</span>
-              <strong>ARR</strong> = redução absoluta de risco. <strong>NNT</strong> = quantos pacientes você precisa tratar para evitar 1 evento. <strong>RRR</strong> = redução relativa. <strong>OR</strong> e <strong>RR</strong> aproximados.
-            </div>
-          </div>
-
-          <div class="calc-output">
-            <div>
-              <div class="out-label">NNT — Number Needed to Treat</div>
-              <div class="out-value" x-text="statResult.nnt"></div>
-            </div>
-            <div class="out-extras">
-              <div class="extra">ARR (redução absoluta)<strong x-text="statResult.arr + '%'"></strong></div>
-              <div class="extra">RRR (redução relativa)<strong x-text="statResult.rrr + '%'"></strong></div>
-              <div class="extra">RR (Risco Relativo)<strong x-text="statResult.rr"></strong></div>
-              <div class="extra">OR (Odds Ratio)<strong x-text="statResult.or"></strong></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- DIVISOR ORBITAL -->
-    <div class="topic-divider" aria-hidden="true">
-      <svg viewBox="0 0 200 50" fill="none">
-        <ellipse cx="100" cy="25" rx="70" ry="11" stroke="#FF8400" stroke-width="0.8" fill="none" opacity="0.55"/>
-        <ellipse cx="100" cy="25" rx="55" ry="8" stroke="#FF8400" stroke-width="0.6" stroke-dasharray="1.2 4" fill="none" opacity="0.4"/>
-        <circle cx="100" cy="25" r="4" fill="#FF8400" opacity="0.85"/>
-        <circle cx="100" cy="25" r="1.5" fill="#FFE5B0"/>
-        <circle cx="32" cy="29" r="1.6" fill="#FF8400"/>
-        <circle cx="166" cy="22" r="1.5" fill="#0EA5B7"/>
-      </svg>
-    </div>
-
-    <!-- ============================================================ -->
-    <!-- 05. FLUXOGRAMAS -->
-    <!-- ============================================================ -->
-    <section class="tool" id="flowcharts">
-      <div class="tool-head">
-        <div class="tool-num">05</div>
-        <h2>Fluxogramas decisórios</h2>
-      </div>
-      <p class="tool-desc">Algoritmos simplificados de decisão terapêutica em cenários teranósticos. Para uso educacional — em prática real, sempre considere protocolo institucional, biomarcadores específicos e contexto clínico individual.</p>
-
-      <!-- Próstata -->
-      <div class="flow-card">
-        <div class="flow-title">mCRPC pós-ARPi e pós-taxano · onde encaixa o 177Lu-PSMA?</div>
-        <div class="flow-sub">Fluxo simplificado baseado em VISION, PSMAfore, PSMAddition, COMRADE.</div>
-        <svg class="flow-svg" viewBox="0 0 800 380" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <marker id="ar1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-              <path d="M0,0 L10,5 L0,10 z" fill="#5C616A"/>
-            </marker>
-          </defs>
-
-          <!-- Início -->
-          <rect x="320" y="10" width="160" height="40" rx="6" fill="rgba(255,132,0,0.12)" stroke="#FF8400"/>
-          <text x="400" y="35" text-anchor="middle" font-size="13" fill="#FFB95E" font-family="Outfit" font-weight="600">mCRPC progressivo</text>
-
-          <!-- Q1 -->
-          <line x1="400" y1="50" x2="400" y2="80" stroke="#5C616A" stroke-width="1.5" marker-end="url(#ar1)"/>
-          <rect x="280" y="80" width="240" height="46" rx="6" fill="var(--graphite-2, #14161B)" stroke="#5C616A" stroke-dasharray="3 3"/>
-          <text x="400" y="103" text-anchor="middle" font-size="12" fill="#F5F6F7" font-family="Outfit" font-weight="500">PSMA-PET com captação significativa?</text>
-          <text x="400" y="118" text-anchor="middle" font-size="10" fill="#8E949C" font-family="Outfit">(critério VISION: SUV > fígado em &gt;1 lesão)</text>
-
-          <!-- Branches -->
-          <line x1="320" y1="126" x2="160" y2="170" stroke="#5C616A" stroke-width="1.5" marker-end="url(#ar1)"/>
-          <line x1="480" y1="126" x2="640" y2="170" stroke="#5C616A" stroke-width="1.5" marker-end="url(#ar1)"/>
-          <text x="220" y="148" font-size="10" fill="#FCD34D" font-family="JetBrains Mono">SIM</text>
-          <text x="560" y="148" font-size="10" fill="#FCA5A5" font-family="JetBrains Mono">NÃO</text>
-
-          <!-- Branch SIM -->
-          <rect x="50" y="170" width="220" height="46" rx="6" fill="rgba(255,132,0,0.08)" stroke="#FF8400"/>
-          <text x="160" y="192" text-anchor="middle" font-size="12" fill="#FFB95E" font-family="Outfit" font-weight="600">177Lu-PSMA-617 · 6×7,4 GBq</text>
-          <text x="160" y="207" text-anchor="middle" font-size="10" fill="#8E949C" font-family="Outfit">VISION · Pluvicto® aprovado</text>
-
-          <!-- Branch NÃO -->
-          <rect x="530" y="170" width="220" height="46" rx="6" fill="rgba(96,165,250,0.08)" stroke="#93C5FD"/>
-          <text x="640" y="192" text-anchor="middle" font-size="12" fill="#93C5FD" font-family="Outfit" font-weight="600">Cabazitaxel · QT 2ª linha</text>
-          <text x="640" y="207" text-anchor="middle" font-size="10" fill="#8E949C" font-family="Outfit">ou ARPi sequencial · ou trial</text>
-
-          <!-- Q2 abaixo de SIM (HRR-mutado) -->
-          <line x1="160" y1="216" x2="160" y2="246" stroke="#5C616A" stroke-width="1.5" marker-end="url(#ar1)"/>
-          <rect x="40" y="246" width="240" height="46" rx="6" fill="var(--graphite-2, #14161B)" stroke="#5C616A" stroke-dasharray="3 3"/>
-          <text x="160" y="269" text-anchor="middle" font-size="12" fill="#F5F6F7" font-family="Outfit" font-weight="500">Mutação HRR (BRCA1/2)?</text>
-          <text x="160" y="284" text-anchor="middle" font-size="10" fill="#8E949C" font-family="Outfit">próxima linha após Lu-PSMA</text>
-
-          <line x1="160" y1="292" x2="160" y2="320" stroke="#5C616A" stroke-width="1.5" marker-end="url(#ar1)"/>
-          <rect x="20" y="320" width="280" height="46" rx="6" fill="rgba(52,211,153,0.06)" stroke="#34D399"/>
-          <text x="160" y="342" text-anchor="middle" font-size="12" fill="#6EE7B7" font-family="Outfit" font-weight="600">→ Considerar PARP (olaparib, rucaparib)</text>
-          <text x="160" y="357" text-anchor="middle" font-size="10" fill="#8E949C" font-family="Outfit">PROfound, TRITON3 · ou novos α-PSMA</text>
-
-          <!-- Branch NÃO continua com novo flow -->
-          <line x1="640" y1="216" x2="640" y2="246" stroke="#5C616A" stroke-width="1.5" marker-end="url(#ar1)"/>
-          <rect x="520" y="246" width="240" height="46" rx="6" fill="var(--graphite-2, #14161B)" stroke="#5C616A" stroke-dasharray="3 3"/>
-          <text x="640" y="269" text-anchor="middle" font-size="12" fill="#F5F6F7" font-family="Outfit" font-weight="500">Mets ósseas dominantes?</text>
-          <text x="640" y="284" text-anchor="middle" font-size="10" fill="#8E949C" font-family="Outfit">sem visceral significativa</text>
-
-          <line x1="640" y1="292" x2="640" y2="320" stroke="#5C616A" stroke-width="1.5" marker-end="url(#ar1)"/>
-          <rect x="500" y="320" width="280" height="46" rx="6" fill="rgba(168,85,247,0.06)" stroke="#A855F7"/>
-          <text x="640" y="342" text-anchor="middle" font-size="12" fill="#C084FC" font-family="Outfit" font-weight="600">→ 223Ra (com bisfosfonato/denosumabe)</text>
-          <text x="640" y="357" text-anchor="middle" font-size="10" fill="#8E949C" font-family="Outfit">ALSYMPCA · NÃO combinar com Abi sem proteção</text>
-        </svg>
-      </div>
-
-      <!-- TNE -->
-      <div class="flow-card">
-        <div class="flow-title">TNE bem diferenciado · quando indicar PRRT?</div>
-        <div class="flow-sub">Baseado em NETTER-1, NETTER-2, COMPETE, OCCLURANDOM.</div>
-        <svg class="flow-svg" viewBox="0 0 800 320" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <marker id="ar2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-              <path d="M0,0 L10,5 L0,10 z" fill="#5C616A"/>
-            </marker>
-          </defs>
-
-          <rect x="320" y="10" width="160" height="40" rx="6" fill="rgba(14,165,183,0.1)" stroke="#0EA5B7"/>
-          <text x="400" y="35" text-anchor="middle" font-size="13" fill="#5DCAA5" font-family="Outfit" font-weight="600">TNE GEP G1-G3</text>
-
-          <line x1="400" y1="50" x2="400" y2="80" stroke="#5C616A" stroke-width="1.5" marker-end="url(#ar2)"/>
-          <rect x="270" y="80" width="260" height="46" rx="6" fill="var(--graphite-2, #14161B)" stroke="#5C616A" stroke-dasharray="3 3"/>
-          <text x="400" y="103" text-anchor="middle" font-size="12" fill="#F5F6F7" font-family="Outfit" font-weight="500">SSTR+ ao 68Ga-DOTATATE PET?</text>
-          <text x="400" y="118" text-anchor="middle" font-size="10" fill="#8E949C" font-family="Outfit">Krenning ≥ 3 (captação ≥ fígado)</text>
-
-          <line x1="320" y1="126" x2="160" y2="170" stroke="#5C616A" stroke-width="1.5" marker-end="url(#ar2)"/>
-          <line x1="480" y1="126" x2="640" y2="170" stroke="#5C616A" stroke-width="1.5" marker-end="url(#ar2)"/>
-          <text x="220" y="148" font-size="10" fill="#FCD34D" font-family="JetBrains Mono">SIM</text>
-          <text x="560" y="148" font-size="10" fill="#FCA5A5" font-family="JetBrains Mono">NÃO</text>
-
-          <rect x="40" y="170" width="240" height="46" rx="6" fill="var(--graphite-2, #14161B)" stroke="#5C616A" stroke-dasharray="3 3"/>
-          <text x="160" y="193" text-anchor="middle" font-size="12" fill="#F5F6F7" font-family="Outfit" font-weight="500">Ki-67?</text>
-
-          <rect x="540" y="170" width="220" height="46" rx="6" fill="rgba(143,148,156,0.08)" stroke="#5C616A"/>
-          <text x="650" y="192" text-anchor="middle" font-size="12" fill="#F5F6F7" font-family="Outfit" font-weight="500">Considerar QT (CAPTEM/FOLFOX)</text>
-          <text x="650" y="207" text-anchor="middle" font-size="10" fill="#8E949C" font-family="Outfit">ou everolimus / sunitinib</text>
-
-          <!-- Ki-67 branches -->
-          <line x1="100" y1="216" x2="50" y2="252" stroke="#5C616A" stroke-width="1.5" marker-end="url(#ar2)"/>
-          <line x1="160" y1="216" x2="160" y2="252" stroke="#5C616A" stroke-width="1.5" marker-end="url(#ar2)"/>
-          <line x1="220" y1="216" x2="280" y2="252" stroke="#5C616A" stroke-width="1.5" marker-end="url(#ar2)"/>
-
-          <text x="60" y="234" font-size="9" fill="#8E949C" font-family="JetBrains Mono">≤2%</text>
-          <text x="170" y="234" font-size="9" fill="#8E949C" font-family="JetBrains Mono">3-20%</text>
-          <text x="240" y="234" font-size="9" fill="#8E949C" font-family="JetBrains Mono">21-55%</text>
-
-          <rect x="0" y="252" width="100" height="50" rx="6" fill="rgba(96,165,250,0.05)" stroke="#93C5FD"/>
-          <text x="50" y="272" text-anchor="middle" font-size="11" fill="#93C5FD" font-family="Outfit" font-weight="600">G1</text>
-          <text x="50" y="288" text-anchor="middle" font-size="9" fill="#8E949C" font-family="Outfit">SSA + watch</text>
-
-          <rect x="110" y="252" width="100" height="50" rx="6" fill="rgba(14,165,183,0.08)" stroke="#0EA5B7"/>
-          <text x="160" y="272" text-anchor="middle" font-size="11" fill="#5DCAA5" font-family="Outfit" font-weight="600">G2 / G3</text>
-          <text x="160" y="288" text-anchor="middle" font-size="9" fill="#8E949C" font-family="Outfit">PRRT 1ª linha</text>
-
-          <rect x="230" y="252" width="100" height="50" rx="6" fill="rgba(14,165,183,0.08)" stroke="#0EA5B7"/>
-          <text x="280" y="272" text-anchor="middle" font-size="11" fill="#5DCAA5" font-family="Outfit" font-weight="600">G3 alto</text>
-          <text x="280" y="288" text-anchor="middle" font-size="9" fill="#8E949C" font-family="Outfit">PRRT (NETTER-2)</text>
-        </svg>
-      </div>
-
-      <!-- HCC -->
-      <div class="flow-card">
-        <div class="flow-title">HCC localmente avançado · resseccão, ablação, TARE ou sistêmica?</div>
-        <div class="flow-sub">Algoritmo simplificado baseado em BCLC + DOSISPHERE-01, LEGACY, RASER.</div>
-        <svg class="flow-svg" viewBox="0 0 800 320" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <marker id="ar3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-              <path d="M0,0 L10,5 L0,10 z" fill="#5C616A"/>
-            </marker>
-          </defs>
-
-          <rect x="320" y="10" width="160" height="40" rx="6" fill="rgba(251,191,36,0.1)" stroke="#FBBF24"/>
-          <text x="400" y="35" text-anchor="middle" font-size="13" fill="#FCD34D" font-family="Outfit" font-weight="600">HCC inoperável</text>
-
-          <line x1="400" y1="50" x2="400" y2="80" stroke="#5C616A" stroke-width="1.5" marker-end="url(#ar3)"/>
-          <rect x="270" y="80" width="260" height="46" rx="6" fill="var(--graphite-2, #14161B)" stroke="#5C616A" stroke-dasharray="3 3"/>
-          <text x="400" y="103" text-anchor="middle" font-size="12" fill="#F5F6F7" font-family="Outfit" font-weight="500">Estágio BCLC?</text>
-          <text x="400" y="118" text-anchor="middle" font-size="10" fill="#8E949C" font-family="Outfit">Child-Pugh A · sem mets extra-hepáticas</text>
-
-          <line x1="280" y1="126" x2="120" y2="170" stroke="#5C616A" stroke-width="1.5" marker-end="url(#ar3)"/>
-          <line x1="400" y1="126" x2="400" y2="170" stroke="#5C616A" stroke-width="1.5" marker-end="url(#ar3)"/>
-          <line x1="520" y1="126" x2="680" y2="170" stroke="#5C616A" stroke-width="1.5" marker-end="url(#ar3)"/>
-          <text x="180" y="148" font-size="10" fill="#8E949C" font-family="JetBrains Mono">A (≤3 cm)</text>
-          <text x="380" y="148" font-size="10" fill="#8E949C" font-family="JetBrains Mono">B (intermediário)</text>
-          <text x="600" y="148" font-size="10" fill="#8E949C" font-family="JetBrains Mono">C (TVP, mets)</text>
-
-          <rect x="0" y="170" width="240" height="46" rx="6" fill="rgba(251,191,36,0.06)" stroke="#FBBF24"/>
-          <text x="120" y="192" text-anchor="middle" font-size="12" fill="#FCD34D" font-family="Outfit" font-weight="600">Radiação segmentar Y-90</text>
-          <text x="120" y="207" text-anchor="middle" font-size="10" fill="#8E949C" font-family="Outfit">RASER, LEGACY · &gt;190 Gy</text>
-
-          <rect x="280" y="170" width="240" height="46" rx="6" fill="rgba(251,191,36,0.06)" stroke="#FBBF24"/>
-          <text x="400" y="192" text-anchor="middle" font-size="12" fill="#FCD34D" font-family="Outfit" font-weight="600">TARE Y-90 com PDA</text>
-          <text x="400" y="207" text-anchor="middle" font-size="10" fill="#8E949C" font-family="Outfit">DOSISPHERE-01 · ≥205 Gy alvo</text>
-
-          <rect x="560" y="170" width="240" height="46" rx="6" fill="rgba(143,148,156,0.08)" stroke="#5C616A"/>
-          <text x="680" y="192" text-anchor="middle" font-size="12" fill="#F5F6F7" font-family="Outfit" font-weight="600">Sistêmica + considerar TARE</text>
-          <text x="680" y="207" text-anchor="middle" font-size="10" fill="#8E949C" font-family="Outfit">atezo-bev, lenvatinibe, sorafenibe</text>
-
-          <!-- Bottom -->
-          <line x1="400" y1="216" x2="400" y2="246" stroke="#5C616A" stroke-width="1.5" stroke-dasharray="3 3"/>
-          <rect x="190" y="246" width="420" height="46" rx="6" fill="rgba(14,165,183,0.06)" stroke="#0EA5B7"/>
-          <text x="400" y="269" text-anchor="middle" font-size="12" fill="#5DCAA5" font-family="Outfit" font-weight="600">Sempre: planejamento angiográfico + 99mTc-MAA prévio</text>
-          <text x="400" y="284" text-anchor="middle" font-size="10" fill="#8E949C" font-family="Outfit">cálculo de shunt pulmonar e dosimetria preditiva</text>
-        </svg>
-      </div>
-
-      <div class="note">
-        <span class="lbl">Aviso</span>
-        Esses fluxos são <strong>simplificações educacionais</strong>. Decisões reais devem considerar diretrizes atualizadas (NCCN, EAU, ESMO, ENETS, EASL, BCLC), comorbidades, função renal/medular/hepática, status mutacional completo, contexto sócio-econômico e disponibilidade local. Sempre discutir em <em>tumor board</em> multidisciplinar.
-      </div>
-    </section>
-
-    <!-- ============================================================ -->
-    <!-- 06. ESTADIAMENTO AJCC TNM -->
+    <!-- 01. ESTADIAMENTO AJCC TNM -->
     <!-- ============================================================ -->
     <section class="tool" id="ajcc" style="--tool-accent: #38BDF8">
       <div class="tool-head">
-        <div class="tool-num" style="background: rgba(56, 189, 248, 0.15); color: #38BDF8">06</div>
+        <div class="tool-num" style="background: rgba(56, 189, 248, 0.15); color: #38BDF8">01</div>
         <h2>Estadiamento oncológico AJCC · TNM</h2>
       </div>
       <p style="color: var(--stone); margin: 0 0 1.5rem; max-width: 720px; line-height: 1.55">
@@ -1023,6 +598,8 @@
           .tnm-grid { grid-template-columns: 1fr 1fr; gap: 0.6rem; }
           .tnm-card { padding: 0.85rem 0.95rem; }
         }
+      
+
       </style>
 
       <h3 style="font-family:var(--font-display); font-size:1.1rem; color:var(--off-white); margin:2rem 0 0.4rem; font-weight:600">Detalhe completo por tumor</h3>
@@ -1083,6 +660,55 @@
           <div class="tnm-card-title">Gástrico / GEJ</div>
           <div class="tnm-card-ed">AJCC 8ª</div>
           <div class="tnm-card-summary">Grupos N por número (1-2 / 3-6 / 7-15 / ≥16) + tipos de Lauren.</div>
+          <div class="tnm-card-cta">Ver completo <i data-lucide="arrow-right" style="width:12px;height:12px"></i></div>
+        </button>
+        <button type="button" class="tnm-card" onclick="openTNM('bexiga')">
+          <div class="tnm-card-icon" style="background:rgba(234,179,8,0.10)"><i data-lucide="droplets" style="width:18px;height:18px;color:#EAB308"></i></div>
+          <div class="tnm-card-title">Bexiga · Urotelial</div>
+          <div class="tnm-card-ed">AJCC 8ª · NMIBC/MIBC</div>
+          <div class="tnm-card-summary">Ta/Tis/T1 (NMIBC) vs T2-T4 (MIBC). N1-N3 por nível, M1a/b. Inclui BCG-Schedule.</div>
+          <div class="tnm-card-cta">Ver completo <i data-lucide="arrow-right" style="width:12px;height:12px"></i></div>
+        </button>
+        <button type="button" class="tnm-card" onclick="openTNM('tireoide')">
+          <div class="tnm-card-icon" style="background:rgba(217,70,239,0.10)"><i data-lucide="circle-dot" style="width:18px;height:18px;color:#D946EF"></i></div>
+          <div class="tnm-card-title">Tireoide</div>
+          <div class="tnm-card-ed">AJCC 8ª · DTC/MTC/ATC</div>
+          <div class="tnm-card-summary">DTC com cutoff 55 anos · MTC TNM clássico · ATC sempre estágio IV.</div>
+          <div class="tnm-card-cta">Ver completo <i data-lucide="arrow-right" style="width:12px;height:12px"></i></div>
+        </button>
+        <button type="button" class="tnm-card" onclick="openTNM('hnscc')">
+          <div class="tnm-card-icon" style="background:rgba(168,85,247,0.10)"><i data-lucide="user" style="width:18px;height:18px;color:#A855F7"></i></div>
+          <div class="tnm-card-title">Cabeça e Pescoço</div>
+          <div class="tnm-card-ed">AJCC 8ª · HPV+ / HPV-</div>
+          <div class="tnm-card-summary">Sistemas separados HPV-positivo (orofaringe p16+) vs HPV-negativo. Inclui ENE.</div>
+          <div class="tnm-card-cta">Ver completo <i data-lucide="arrow-right" style="width:12px;height:12px"></i></div>
+        </button>
+        <button type="button" class="tnm-card" onclick="openTNM('esofago')">
+          <div class="tnm-card-icon" style="background:rgba(244,63,94,0.10)"><i data-lucide="circle" style="width:18px;height:18px;color:#F43F5E"></i></div>
+          <div class="tnm-card-title">Esôfago e EGJ</div>
+          <div class="tnm-card-ed">AJCC 8ª · SCC/Adenoca</div>
+          <div class="tnm-card-summary">Sistemas separados ESCC e EAC. Siewert tipo I/II/III. Estagiamentos clínico (c), patológico (p) e pós-neoadj (yp).</div>
+          <div class="tnm-card-cta">Ver completo <i data-lucide="arrow-right" style="width:12px;height:12px"></i></div>
+        </button>
+        <button type="button" class="tnm-card" onclick="openTNM('pancreas')">
+          <div class="tnm-card-icon" style="background:rgba(132,204,22,0.10)"><i data-lucide="hexagon" style="width:18px;height:18px;color:#84CC16"></i></div>
+          <div class="tnm-card-title">Pâncreas</div>
+          <div class="tnm-card-ed">AJCC 8ª · Adenocarcinoma</div>
+          <div class="tnm-card-summary">T por tamanho (≤2/2-4/&gt;4 cm) + envolvimento vascular (T4). N por número (1-3 vs ≥4).</div>
+          <div class="tnm-card-cta">Ver completo <i data-lucide="arrow-right" style="width:12px;height:12px"></i></div>
+        </button>
+        <button type="button" class="tnm-card" onclick="openTNM('linfoma')">
+          <div class="tnm-card-icon" style="background:rgba(20,184,166,0.10)"><i data-lucide="git-branch" style="width:18px;height:18px;color:#14B8A6"></i></div>
+          <div class="tnm-card-title">Linfoma</div>
+          <div class="tnm-card-ed">Lugano 2014 · Ann Arbor</div>
+          <div class="tnm-card-summary">Estágios I-IV + sintomas A/B + bulky (X) + extranodal (E). Resposta por Deauville em FDG-PET.</div>
+          <div class="tnm-card-cta">Ver completo <i data-lucide="arrow-right" style="width:12px;height:12px"></i></div>
+        </button>
+        <button type="button" class="tnm-card" onclick="openTNM('melanoma')">
+          <div class="tnm-card-icon" style="background:rgba(139,92,246,0.10)"><i data-lucide="sparkles" style="width:18px;height:18px;color:#8B5CF6"></i></div>
+          <div class="tnm-card-title">Melanoma cutâneo</div>
+          <div class="tnm-card-ed">AJCC 8ª · LDH</div>
+          <div class="tnm-card-summary">T por Breslow + ulceração. N por # LN + microsatélite/MIT. M1a-d com LDH (0/1/2).</div>
           <div class="tnm-card-cta">Ver completo <i data-lucide="arrow-right" style="width:12px;height:12px"></i></div>
         </button>
       </div>
@@ -1567,8 +1193,706 @@
             </table>
             <div class="notes">HER2 (IHC + ISH), MSI/dMMR e PD-L1 (CPS) são marcadores essenciais antes de tratamento avançado. CLDN18.2 emergente (zolbetuximabe). EBV+ é subgrupo distinto (5-10%) com alta resposta à IO.</div>
           `
+        },
+        bexiga: {
+          title: 'Bexiga · Carcinoma Urotelial',
+          edition: 'AJCC 8ª · NMIBC vs MIBC',
+          icon: 'droplets',
+          color: '#EAB308',
+          body: `
+            <h5><span class="pill">T</span>Tumor primário</h5>
+            <ul class="tnm-list">
+              <li><span class="code">Tx</span>Não pode ser avaliado</li>
+              <li><span class="code">T0</span>Sem evidência de tumor primário</li>
+              <li><span class="code">Ta</span>Carcinoma papilar não-invasivo (NMIBC, low-grade ou high-grade)</li>
+              <li><span class="code">Tis</span>Carcinoma in situ (CIS) plano de alto grau ("flat tumor")</li>
+              <li><span class="code">T1</span>Tumor invade tecido conjuntivo subepitelial (lâmina própria) — NMIBC alto risco</li>
+              <li><span class="code">T2</span>Tumor invade muscular própria (MIBC inicia aqui)
+                <ul>
+                  <li>T2a: invade muscular superficial (metade interna)</li>
+                  <li>T2b: invade muscular profunda (metade externa)</li>
+                </ul>
+              </li>
+              <li><span class="code">T3</span>Tumor invade tecido perivesical
+                <ul>
+                  <li>T3a: invasão microscópica</li>
+                  <li>T3b: invasão macroscópica (massa extravesical)</li>
+                </ul>
+              </li>
+              <li><span class="code">T4</span>Tumor invade órgãos adjacentes
+                <ul>
+                  <li>T4a: invade próstata, vesículas seminais, útero ou vagina</li>
+                  <li>T4b: invade parede pélvica ou parede abdominal</li>
+                </ul>
+              </li>
+            </ul>
+            <h5><span class="pill">N</span>Linfonodos regionais (pélvicos)</h5>
+            <ul class="tnm-list">
+              <li><span class="code">Nx</span>Não avaliados</li>
+              <li><span class="code">N0</span>Sem metástase em LN regionais</li>
+              <li><span class="code">N1</span>1 LN pélvico verdadeiro (hipogástrico, obturador, ilíaco externo, presacral)</li>
+              <li><span class="code">N2</span>Múltiplos LN pélvicos (≥2 LN da pelve verdadeira)</li>
+              <li><span class="code">N3</span>LN ilíaco comum (acima da bifurcação aórtica) — antes era M1</li>
+            </ul>
+            <h5><span class="pill">M</span>Metástases à distância</h5>
+            <ul class="tnm-list">
+              <li><span class="code">M0</span>Sem metástase à distância</li>
+              <li><span class="code">M1a</span>Metástase em LN não-regional (acima de ilíaca comum, retroperitoneal)</li>
+              <li><span class="code">M1b</span>Outras metástases à distância (víscera, osso, etc.)</li>
+            </ul>
+            <h5>Grupos de estágio</h5>
+            <table class="stage-tbl">
+              <thead><tr><th>Estágio</th><th>T</th><th>N</th><th>M</th></tr></thead>
+              <tbody>
+                <tr><td class="stg">0a</td><td>Ta</td><td>N0</td><td>M0</td></tr>
+                <tr><td class="stg">0is</td><td>Tis</td><td>N0</td><td>M0</td></tr>
+                <tr><td class="stg">I</td><td>T1</td><td>N0</td><td>M0</td></tr>
+                <tr><td class="stg">II</td><td>T2a-T2b</td><td>N0</td><td>M0</td></tr>
+                <tr><td class="stg">IIIA</td><td>T3a-T4a · T1-T4a</td><td>N0 · N1</td><td>M0</td></tr>
+                <tr><td class="stg">IIIB</td><td>T1-T4a</td><td>N2-N3</td><td>M0</td></tr>
+                <tr><td class="stg">IVA</td><td>T4b · qualquer T</td><td>qualquer N · qualquer N</td><td>M0 · M1a</td></tr>
+                <tr><td class="stg">IVB</td><td>qualquer T</td><td>qualquer N</td><td>M1b</td></tr>
+              </tbody>
+            </table>
+            <div class="notes"><strong>NMIBC vs MIBC:</strong> NMIBC (Ta, Tis, T1) — tratamento local: RTU + intravesical (BCG ou MMC ou novos agentes — Adstiladrin, TAR-200, Anktiva). MIBC (T2-T4) — cistectomia radical ± neoadj/adj sistêmico (NIAGARA, CheckMate-274, AMBASSADOR).</div>
+            <h5>BCG Schedule (SWOG)</h5>
+            <table class="stage-tbl">
+              <thead><tr><th>Fase</th><th>Esquema</th><th>Indicação</th></tr></thead>
+              <tbody>
+                <tr><td>Indução</td><td>1 instilação semanal × 6 sem</td><td>Após RTU completa, NMIBC alto risco</td></tr>
+                <tr><td>Manutenção</td><td>3 instilações semanais (1×/sem × 3 sem) aos 3, 6, 12, 18, 24, 30, 36 meses</td><td>SWOG 8507 — reduz recorrência e progressão</td></tr>
+                <tr><td>BCG-unresponsive</td><td>—</td><td>Persistência ou recidiva ≤6m após adequada exposição (≥5 instilações indução + ≥2 manutenção)</td></tr>
+              </tbody>
+            </table>
+            <div class="notes"><strong>Trato superior urotelial:</strong> mesmo TNM aplicado a pelve renal e ureter, com particularidades: T1 invade lâmina própria, T2 muscular, T3 perirrenal/periuretérica, T4 órgãos adjacentes. Tratamento: nefroureterectomia ± POUT (gem-cis/gem-carbo adjuvante x4 ciclos). Refs: Amin MB et al. AJCC Manual 8ª ed. 2017; Babjuk M et al. Eur Urol 2022 (NMIBC); Witjes JA et al. Eur Urol 2024 (MIBC).</div>
+          `
+        },
+        tireoide: {
+          title: 'Tireoide',
+          edition: 'AJCC 8ª · DTC/MTC/ATC',
+          icon: 'circle-dot',
+          color: '#D946EF',
+          body: `
+            <h5><span class="pill">T</span>Tumor primário (DTC e MTC)</h5>
+            <ul class="tnm-list">
+              <li><span class="code">Tx/T0</span>Não avaliado / sem evidência</li>
+              <li><span class="code">T1</span>Tumor ≤2 cm limitado à tireoide
+                <ul>
+                  <li>T1a: ≤1 cm</li>
+                  <li>T1b: &gt;1 cm e ≤2 cm</li>
+                </ul>
+              </li>
+              <li><span class="code">T2</span>Tumor &gt;2 cm e ≤4 cm limitado à tireoide</li>
+              <li><span class="code">T3</span>Tumor &gt;4 cm ou com extensão extratireoidiana mínima
+                <ul>
+                  <li>T3a: &gt;4 cm limitado à tireoide</li>
+                  <li>T3b: extensão extratireoidiana mínima (esternotireoideo, peri-tireoidiano)</li>
+                </ul>
+              </li>
+              <li><span class="code">T4</span>Extensão extratireoidiana extensa
+                <ul>
+                  <li>T4a: invade tecido subcutâneo, laringe, traqueia, esôfago ou nervo laríngeo recorrente</li>
+                  <li>T4b: invade fáscia pré-vertebral ou envolve carótida ou vasos mediastinais</li>
+                </ul>
+              </li>
+            </ul>
+            <h5><span class="pill">N</span>Linfonodos regionais</h5>
+            <ul class="tnm-list">
+              <li><span class="code">N0</span>Sem metástase
+                <ul>
+                  <li>N0a: ≥1 LN benigno citologia/histologia</li>
+                  <li>N0b: ausência de evidência clínica/radiológica</li>
+                </ul>
+              </li>
+              <li><span class="code">N1a</span>LN nível VI ou VII (pré-traqueal, paratraqueal, pré-laríngeo/Delphian, mediastinal superior)</li>
+              <li><span class="code">N1b</span>LN cervical lateral unilateral (níveis I-V), bilateral ou contralateral, OU retrofaríngeo</li>
+            </ul>
+            <h5><span class="pill">M</span>Metástases à distância</h5>
+            <ul class="tnm-list">
+              <li><span class="code">M0/M1</span>Sem / com metástase à distância</li>
+            </ul>
+            <h5>Estadiamento DTC (papilífero/folicular) — cutoff 55 anos</h5>
+            <table class="stage-tbl">
+              <thead><tr><th>Idade</th><th>Estágio</th><th>T</th><th>N</th><th>M</th></tr></thead>
+              <tbody>
+                <tr><td><strong>&lt;55 a</strong></td><td class="stg">I</td><td>qualquer T</td><td>qualquer N</td><td>M0</td></tr>
+                <tr><td><strong>&lt;55 a</strong></td><td class="stg">II</td><td>qualquer T</td><td>qualquer N</td><td>M1</td></tr>
+                <tr><td><strong>≥55 a</strong></td><td class="stg">I</td><td>T1, T2</td><td>N0/Nx</td><td>M0</td></tr>
+                <tr><td><strong>≥55 a</strong></td><td class="stg">II</td><td>T1, T2 · T3a-3b</td><td>N1 · qualquer N</td><td>M0</td></tr>
+                <tr><td><strong>≥55 a</strong></td><td class="stg">III</td><td>T4a</td><td>qualquer N</td><td>M0</td></tr>
+                <tr><td><strong>≥55 a</strong></td><td class="stg">IVA</td><td>T4b</td><td>qualquer N</td><td>M0</td></tr>
+                <tr><td><strong>≥55 a</strong></td><td class="stg">IVB</td><td>qualquer T</td><td>qualquer N</td><td>M1</td></tr>
+              </tbody>
+            </table>
+            <h5>Estadiamento MTC (medular)</h5>
+            <table class="stage-tbl">
+              <thead><tr><th>Estágio</th><th>T</th><th>N</th><th>M</th></tr></thead>
+              <tbody>
+                <tr><td class="stg">I</td><td>T1</td><td>N0</td><td>M0</td></tr>
+                <tr><td class="stg">II</td><td>T2-T3</td><td>N0</td><td>M0</td></tr>
+                <tr><td class="stg">III</td><td>T1-T3</td><td>N1a</td><td>M0</td></tr>
+                <tr><td class="stg">IVA</td><td>T4a · T1-T3</td><td>qualquer N · N1b</td><td>M0</td></tr>
+                <tr><td class="stg">IVB</td><td>T4b</td><td>qualquer N</td><td>M0</td></tr>
+                <tr><td class="stg">IVC</td><td>qualquer T</td><td>qualquer N</td><td>M1</td></tr>
+              </tbody>
+            </table>
+            <h5>Estadiamento ATC (anaplásico) — sempre estágio IV</h5>
+            <table class="stage-tbl">
+              <thead><tr><th>Estágio</th><th>T</th><th>N</th><th>M</th></tr></thead>
+              <tbody>
+                <tr><td class="stg">IVA</td><td>T1-T3a</td><td>N0/Nx</td><td>M0</td></tr>
+                <tr><td class="stg">IVB</td><td>T1-T3a · T3b-T4</td><td>N1 · qualquer N</td><td>M0</td></tr>
+                <tr><td class="stg">IVC</td><td>qualquer T</td><td>qualquer N</td><td>M1</td></tr>
+              </tbody>
+            </table>
+            <div class="notes"><strong>DTC:</strong> tireoidectomia + ¹³¹I ablativo conforme risco ATA (low/intermediate/high). <strong>MTC:</strong> tireoidectomia total + dissecção VI; calcitonina e CEA seriados; testar RET (MEN2). <strong>ATC:</strong> sempre IV; mutação BRAF V600E em 30-40% (dabrafenib + trametinibe), considerar lenvatinibe e PD-1. <strong>Imagem nuclear:</strong> ¹³¹I para DTC tireoglobulina-elevado; ⁶⁸Ga-DOTATATE em MTC; ¹⁸F-FDG em DTC iodo-refratário e em ATC.</div>
+          `
+        },
+        hnscc: {
+          title: 'Cabeça e Pescoço (HNSCC)',
+          edition: 'AJCC 8ª · HPV+ vs HPV-',
+          icon: 'user',
+          color: '#A855F7',
+          body: `
+            <h5>Sistema HPV-positivo (orofaringe p16+) — clínico (cT/cN)</h5>
+            <ul class="tnm-list">
+              <li><span class="code">cT1</span>Tumor ≤2 cm</li>
+              <li><span class="code">cT2</span>Tumor &gt;2 cm e ≤4 cm</li>
+              <li><span class="code">cT3</span>Tumor &gt;4 cm ou extensão à superfície lingual da epiglote</li>
+              <li><span class="code">cT4</span>Doença localmente avançada
+                <ul>
+                  <li>cT4 (não T4a/b separados em HPV+): invade laringe, língua extrínseca, pterigoideo medial, palato duro, mandíbula ou estruturas além</li>
+                </ul>
+              </li>
+              <li><span class="code">cN0</span>Sem LN regional</li>
+              <li><span class="code">cN1</span>LN ipsilateral, ≤6 cm</li>
+              <li><span class="code">cN2</span>LN contralateral ou bilateral, ≤6 cm</li>
+              <li><span class="code">cN3</span>LN &gt;6 cm</li>
+            </ul>
+            <h5>Sistema HPV-positivo — patológico (pN)</h5>
+            <ul class="tnm-list">
+              <li><span class="code">pN0</span>Sem metástase em LN dissecado</li>
+              <li><span class="code">pN1</span>≤4 LN+</li>
+              <li><span class="code">pN2</span>≥5 LN+</li>
+            </ul>
+            <h5>Estadiamento HPV+ (orofaringe p16+)</h5>
+            <table class="stage-tbl">
+              <thead><tr><th>Estágio</th><th>cT</th><th>cN</th><th>M</th></tr></thead>
+              <tbody>
+                <tr><td class="stg">I</td><td>T1-T2</td><td>N0-N1</td><td>M0</td></tr>
+                <tr><td class="stg">II</td><td>T1-T2 · T3</td><td>N2 · N0-N2</td><td>M0</td></tr>
+                <tr><td class="stg">III</td><td>T1-T3 · T4</td><td>N3 · N0-N3</td><td>M0</td></tr>
+                <tr><td class="stg">IV</td><td>qualquer T</td><td>qualquer N</td><td>M1</td></tr>
+              </tbody>
+            </table>
+            <h5>Sistema HPV-negativo (oral, hipofaringe, laringe, cavidade nasal/seios)</h5>
+            <ul class="tnm-list">
+              <li><span class="code">T1</span>≤2 cm</li>
+              <li><span class="code">T2</span>&gt;2 e ≤4 cm</li>
+              <li><span class="code">T3</span>&gt;4 cm ou extensão profunda (depth of invasion &gt;10 mm em cavidade oral)</li>
+              <li><span class="code">T4a</span>Doença moderadamente avançada (invade osso, língua extrínseca, pele)</li>
+              <li><span class="code">T4b</span>Doença muito avançada (espaço mastigatório, pterigoide, base do crânio, encartar carótida)</li>
+              <li><span class="code">N1</span>1 LN ipsilateral ≤3 cm, ENE-</li>
+              <li><span class="code">N2a</span>1 LN ipsilateral &gt;3 e ≤6 cm, ENE-</li>
+              <li><span class="code">N2b</span>Múltiplos LN ipsilaterais ≤6 cm, ENE-</li>
+              <li><span class="code">N2c</span>LN bilateral ou contralateral ≤6 cm, ENE-</li>
+              <li><span class="code">N3a</span>Qualquer LN &gt;6 cm, ENE-</li>
+              <li><span class="code">N3b</span>Qualquer LN com ENE+ (extensão extranodal clínica/patológica)</li>
+            </ul>
+            <h5>Estadiamento HPV-</h5>
+            <table class="stage-tbl">
+              <thead><tr><th>Estágio</th><th>T</th><th>N</th><th>M</th></tr></thead>
+              <tbody>
+                <tr><td class="stg">I</td><td>T1</td><td>N0</td><td>M0</td></tr>
+                <tr><td class="stg">II</td><td>T2</td><td>N0</td><td>M0</td></tr>
+                <tr><td class="stg">III</td><td>T3 · T1-3</td><td>N0 · N1</td><td>M0</td></tr>
+                <tr><td class="stg">IVA</td><td>T1-3 · T4a</td><td>N2 · N0-2</td><td>M0</td></tr>
+                <tr><td class="stg">IVB</td><td>T4b · qualquer T</td><td>qualquer N · N3</td><td>M0</td></tr>
+                <tr><td class="stg">IVC</td><td>qualquer T</td><td>qualquer N</td><td>M1</td></tr>
+              </tbody>
+            </table>
+            <div class="notes"><strong>HPV+:</strong> melhor prognóstico — RT sozinha em estágios precoces; quimiorradio (cisplatina) em avançado; deintensificação em estudo. <strong>HPV-:</strong> tratamento mais agressivo; ENE+ é fator prognóstico crítico (estágio IVB). <strong>Imagem:</strong> ¹⁸F-FDG PET/CT é padrão para staging inicial avançado, planejamento de RT e avaliação de resposta (NI-RADS após 12 sem). Refs: AJCC 8ª ed. 2017; Lydiatt WM et al. CA Cancer J Clin 2017.</div>
+          `
+        },
+        esofago: {
+          title: 'Esôfago e Junção Esofagogástrica (EGJ)',
+          edition: 'AJCC 8ª · ESCC + EAC',
+          icon: 'circle',
+          color: '#F43F5E',
+          body: `
+            <h5><span class="pill">T</span>Tumor primário</h5>
+            <ul class="tnm-list">
+              <li><span class="code">Tis</span>Displasia de alto grau / carcinoma in situ</li>
+              <li><span class="code">T1</span>Invade lâmina própria, muscular da mucosa ou submucosa
+                <ul>
+                  <li>T1a: lâmina própria ou muscular da mucosa</li>
+                  <li>T1b: submucosa</li>
+                </ul>
+              </li>
+              <li><span class="code">T2</span>Invade muscular própria</li>
+              <li><span class="code">T3</span>Invade adventícia</li>
+              <li><span class="code">T4</span>Invade estruturas adjacentes
+                <ul>
+                  <li>T4a: pleura, pericárdio, ázigos, diafragma ou peritônio</li>
+                  <li>T4b: aorta, traquéia, vértebra ou outras estruturas adjacentes (irrecíavel)</li>
+                </ul>
+              </li>
+            </ul>
+            <h5><span class="pill">N</span>Linfonodos regionais (cervicais a celíacos)</h5>
+            <ul class="tnm-list">
+              <li><span class="code">N0</span>Sem LN+ regional</li>
+              <li><span class="code">N1</span>1-2 LN+</li>
+              <li><span class="code">N2</span>3-6 LN+</li>
+              <li><span class="code">N3</span>≥7 LN+</li>
+            </ul>
+            <h5><span class="pill">M</span>Metástase à distância</h5>
+            <ul class="tnm-list">
+              <li><span class="code">M0/M1</span>Sem / com metástase à distância (incluindo LN não-regionais)</li>
+            </ul>
+            <h5>Estadiamento clínico (cTNM) — Adenocarcinoma (EAC)</h5>
+            <table class="stage-tbl">
+              <thead><tr><th>Estágio</th><th>cT</th><th>cN</th><th>cM</th></tr></thead>
+              <tbody>
+                <tr><td class="stg">0</td><td>Tis</td><td>N0</td><td>M0</td></tr>
+                <tr><td class="stg">I</td><td>T1</td><td>N0</td><td>M0</td></tr>
+                <tr><td class="stg">IIA</td><td>T1</td><td>N1</td><td>M0</td></tr>
+                <tr><td class="stg">IIB</td><td>T2</td><td>N0</td><td>M0</td></tr>
+                <tr><td class="stg">III</td><td>T2 · T3 · T4a</td><td>N1 · N0-N1 · N0-N1</td><td>M0</td></tr>
+                <tr><td class="stg">IVA</td><td>T1-T4a · T4b · qualquer T</td><td>N2 · qualquer N · N3</td><td>M0</td></tr>
+                <tr><td class="stg">IVB</td><td>qualquer T</td><td>qualquer N</td><td>M1</td></tr>
+              </tbody>
+            </table>
+            <h5>Estadiamento clínico (cTNM) — Carcinoma escamoso (ESCC)</h5>
+            <table class="stage-tbl">
+              <thead><tr><th>Estágio</th><th>cT</th><th>cN</th><th>cM</th></tr></thead>
+              <tbody>
+                <tr><td class="stg">0</td><td>Tis</td><td>N0</td><td>M0</td></tr>
+                <tr><td class="stg">I</td><td>T1</td><td>N0-N1</td><td>M0</td></tr>
+                <tr><td class="stg">II</td><td>T2 · T3</td><td>N0-N1 · N0</td><td>M0</td></tr>
+                <tr><td class="stg">III</td><td>T1-T2 · T3</td><td>N2 · N1-N2</td><td>M0</td></tr>
+                <tr><td class="stg">IVA</td><td>T4a-T4b · qualquer T</td><td>N0-N2 · N3</td><td>M0</td></tr>
+                <tr><td class="stg">IVB</td><td>qualquer T</td><td>qualquer N</td><td>M1</td></tr>
+              </tbody>
+            </table>
+            <h5>Classificação Siewert (junção esofagogástrica)</h5>
+            <table class="stage-tbl">
+              <thead><tr><th>Tipo</th><th>Localização do epicentro</th><th>Tratamento (regra geral)</th></tr></thead>
+              <tbody>
+                <tr><td>I</td><td>1-5 cm acima da JEG</td><td>Esofagectomia (regras esôfago)</td></tr>
+                <tr><td>II</td><td>1 cm acima a 2 cm abaixo (cárdia)</td><td>Esofagectomia distal/gastrectomia proximal</td></tr>
+                <tr><td>III</td><td>2-5 cm abaixo da JEG</td><td>Gastrectomia total/proximal (regras gástrico)</td></tr>
+              </tbody>
+            </table>
+            <div class="notes"><strong>Sistemas de estadiamento separados:</strong> AJCC 8ª inclui clínico (cTNM), patológico (pTNM) e pós-neoadjuvante (ypTNM) com critérios distintos. Siewert tipo I/II é estadiado como esôfago; Siewert III como gástrico. <strong>Tratamento moderno:</strong> CROSS regimen (carboplatina/paclitaxel + RT 41,4 Gy) → cirurgia para EAC localmente avançado; CheckMate-577 (nivolumab adjuvante 1 ano após neoadj+cirurgia com doença residual). FDG-PET é padrão para staging e resposta. Refs: AJCC 8ª ed.; Rice TW et al. Ann Cardiothorac Surg 2017; Kelly RJ et al. NEJM 2021 (CheckMate-577).</div>
+          `
+        },
+        pancreas: {
+          title: 'Pâncreas (Adenocarcinoma)',
+          edition: 'AJCC 8ª · PDAC',
+          icon: 'hexagon',
+          color: '#84CC16',
+          body: `
+            <h5><span class="pill">T</span>Tumor primário</h5>
+            <ul class="tnm-list">
+              <li><span class="code">Tis</span>Carcinoma in situ (PanIN-3, NIM, MCN, IPMN com displasia alto grau)</li>
+              <li><span class="code">T1</span>Tumor ≤2 cm
+                <ul>
+                  <li>T1a: ≤0,5 cm</li>
+                  <li>T1b: &gt;0,5 cm e &lt;1 cm</li>
+                  <li>T1c: 1-2 cm</li>
+                </ul>
+              </li>
+              <li><span class="code">T2</span>Tumor &gt;2 cm e ≤4 cm</li>
+              <li><span class="code">T3</span>Tumor &gt;4 cm</li>
+              <li><span class="code">T4</span>Tumor envolve eixo celíaco, AMS (artéria mesentérica superior) ou artéria hepática comum (independente do tamanho) — irressecável</li>
+            </ul>
+            <h5><span class="pill">N</span>Linfonodos regionais</h5>
+            <ul class="tnm-list">
+              <li><span class="code">N0</span>Sem metástase em LN regionais</li>
+              <li><span class="code">N1</span>1-3 LN+ regionais</li>
+              <li><span class="code">N2</span>≥4 LN+ regionais</li>
+            </ul>
+            <h5><span class="pill">M</span>Metástase à distância</h5>
+            <ul class="tnm-list">
+              <li><span class="code">M0/M1</span>Sem / com metástase à distância (incluindo carcinomatose peritoneal)</li>
+            </ul>
+            <h5>Grupos de estágio</h5>
+            <table class="stage-tbl">
+              <thead><tr><th>Estágio</th><th>T</th><th>N</th><th>M</th></tr></thead>
+              <tbody>
+                <tr><td class="stg">0</td><td>Tis</td><td>N0</td><td>M0</td></tr>
+                <tr><td class="stg">IA</td><td>T1</td><td>N0</td><td>M0</td></tr>
+                <tr><td class="stg">IB</td><td>T2</td><td>N0</td><td>M0</td></tr>
+                <tr><td class="stg">IIA</td><td>T3</td><td>N0</td><td>M0</td></tr>
+                <tr><td class="stg">IIB</td><td>T1-T3</td><td>N1</td><td>M0</td></tr>
+                <tr><td class="stg">III</td><td>T1-T3 · T4</td><td>N2 · qualquer N</td><td>M0</td></tr>
+                <tr><td class="stg">IV</td><td>qualquer T</td><td>qualquer N</td><td>M1</td></tr>
+              </tbody>
+            </table>
+            <h5>Resectability — NCCN/ISGPS</h5>
+            <table class="stage-tbl">
+              <thead><tr><th>Categoria</th><th>Definição vascular</th><th>Tratamento</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Ressecável</strong></td><td>Sem contato com AMS, eixo celíaco ou hepática comum; contato &lt;180° com VMS/VP sem irregularidade</td><td>Cirurgia upfront (Whipple, distal, total)</td></tr>
+                <tr><td><strong>Borderline</strong></td><td>Contato 180° com AMS/VMS/VP recuperável; ou contato com hepática comum sem extensão eixo celíaco</td><td>Quimio neoadj (FOLFIRINOX ou Gem-NabP) → cirurgia se resposta</td></tr>
+                <tr><td><strong>Locally advanced (LAPC)</strong></td><td>Contato &gt;180° com AMS, eixo celíaco; oclusão VMS/VP irrecuperável</td><td>Quimio sistêmica ± RT; cirurgia se conversão</td></tr>
+                <tr><td><strong>Metastático</strong></td><td>Mets a distância (M1) — fígado, peritônio, pulmão</td><td>Quimio paliativa (FOLFIRINOX, Gem-NabP); IO em MSI-H/dMMR; PARPi em BRCA1/2</td></tr>
+              </tbody>
+            </table>
+            <div class="notes"><strong>Marcadores:</strong> CA 19-9 (cuidado em Lewis-negativos ~10%). <strong>Quimio:</strong> FOLFIRINOX modificado (PRODIGE 35) supera Gem-NabP em performance status bom; Gem-NabP em ECOG 1-2. <strong>Adjuvante:</strong> mFOLFIRINOX por 6 meses (PRODIGE 24) é padrão. <strong>Genômica:</strong> testar BRCA1/2, MSI-H, NTRK, KRAS G12C (sotorasibe/adagrasibe em fase clínica). <strong>Imagem:</strong> ⁶⁸Ga-FAPI-PET emergente (especialmente para fibrose e implantes peritoneais que ¹⁸F-FDG perde). Refs: Tempero MA et al. NCCN Guidelines 2024; Conroy T et al. NEJM 2018 (PRODIGE 24).</div>
+          `
+        },
+        linfoma: {
+          title: 'Linfoma (Hodgkin e não-Hodgkin)',
+          edition: 'Lugano 2014 · Ann Arbor revisado',
+          icon: 'git-branch',
+          color: '#14B8A6',
+          body: `
+            <h5>Estadiamento de Lugano (2014) — substitui Ann Arbor para HL e NHL</h5>
+            <table class="stage-tbl">
+              <thead><tr><th>Estágio</th><th>Definição</th></tr></thead>
+              <tbody>
+                <tr><td class="stg">I</td><td>1 região linfonodal OU 1 sítio extralinfático isolado (IE)</td></tr>
+                <tr><td class="stg">II</td><td>≥2 regiões linfonodais no <strong>mesmo lado do diafragma</strong> · IIE = + extensão extralinfática contígua</td></tr>
+                <tr><td class="stg">II bulky</td><td>Estágio II com massa volumosa: HL ≥10 cm ou ≥1/3 do diâmetro torácico em CT; NHL definição variável</td></tr>
+                <tr><td class="stg">III</td><td>Regiões em <strong>ambos os lados do diafragma</strong> · IIIE = + sítio extralinfático contíguo · IIIS = + baço</td></tr>
+                <tr><td class="stg">IV</td><td>Doença extralinfática difusa (medula óssea, fígado, pulmão, SNC) — não contígua a sítio nodal</td></tr>
+              </tbody>
+            </table>
+            <h5>Modificadores</h5>
+            <ul class="tnm-list">
+              <li><span class="code">A</span>Sem sintomas B</li>
+              <li><span class="code">B</span>Presença de pelo menos 1 sintoma B
+                <ul>
+                  <li>Febre &gt;38°C inexplicada</li>
+                  <li>Sudorese noturna profusa</li>
+                  <li>Perda de peso &gt;10% nos últimos 6 meses</li>
+                </ul>
+              </li>
+              <li><span class="code">E</span>Extensão extranodal contígua a partir de sítio linfonodal</li>
+              <li><span class="code">X</span>Bulky disease (não mais usado em Lugano — incorporado descritivamente)</li>
+              <li><span class="code">S</span>Envolvimento esplênico (incluído nas categorias III)</li>
+            </ul>
+            <h5>Resposta — Critérios de Deauville (FDG-PET)</h5>
+            <table class="stage-tbl">
+              <thead><tr><th>Score</th><th>Captação vs referência</th><th>Interpretação</th></tr></thead>
+              <tbody>
+                <tr><td>1</td><td>Sem captação acima do background</td><td>Resposta completa metabólica (CMR)</td></tr>
+                <tr><td>2</td><td>Captação ≤ pool sanguíneo mediastinal</td><td>CMR</td></tr>
+                <tr><td>3</td><td>Captação &gt; pool mediastinal e ≤ fígado</td><td>CMR (em maioria dos contextos; PMR em interim de HL primário)</td></tr>
+                <tr><td>4</td><td>Captação &gt; fígado moderadamente</td><td>Resposta parcial metabólica (PMR) se redução; doença residual se não</td></tr>
+                <tr><td>5</td><td>Captação &gt;&gt; fígado ou novas lesões</td><td>Doença em progressão (PMD) ou refratária</td></tr>
+              </tbody>
+            </table>
+            <h5>Critérios de bulky · LDH · IPI</h5>
+            <table class="stage-tbl">
+              <thead><tr><th>Sistema</th><th>Componentes</th><th>Uso</th></tr></thead>
+              <tbody>
+                <tr><td>IPI (NHL agressivo)</td><td>Idade &gt;60 · LDH alta · ECOG ≥2 · Estágio III/IV · ≥2 sítios extranodais</td><td>Risco baixo (0-1), int-baixo (2), int-alto (3), alto (4-5) — preditor de OS em DLBCL</td></tr>
+                <tr><td>FLIPI (folicular)</td><td>Idade &gt;60 · LDH alta · Hb &lt;12 · &gt;4 áreas nodais · Estágio III/IV</td><td>Risco baixo, intermediário, alto</td></tr>
+                <tr><td>HL bulky</td><td>Massa ≥10 cm OU &gt;1/3 do diâmetro torácico em CT</td><td>Indica intensificação RT/QT</td></tr>
+              </tbody>
+            </table>
+            <div class="notes"><strong>Imagem:</strong> ¹⁸F-FDG PET/CT é padrão para staging inicial e avaliação de resposta em HL e NHL agressivo (DLBCL). Lugano define "interim PET" (após 2-4 ciclos) como ferramenta para escalar/desescalar tratamento (RAPID, RATHL para HL; PETAL para DLBCL). Estudo medular (BMB) não é mais obrigatório em HL e DLBCL se PET claramente positivo ou negativo. <strong>Tratamento:</strong> HL — ABVD ± BV (BrECADD em estudos); BEACOPP em alto risco. DLBCL — R-CHOP × 6 (ou Pola-R-CHP no POLARIX); CAR-T em recidiva (ZUMA-7, TRANSFORM). Refs: Cheson BD et al. J Clin Oncol 2014 (Lugano); Meignan M et al. Leuk Lymphoma 2009 (Deauville).</div>
+          `
+        },
+        melanoma: {
+          title: 'Melanoma cutâneo',
+          edition: 'AJCC 8ª · LDH',
+          icon: 'sparkles',
+          color: '#8B5CF6',
+          body: `
+            <h5><span class="pill">T</span>Tumor primário (Breslow + ulceração)</h5>
+            <ul class="tnm-list">
+              <li><span class="code">Tis</span>Melanoma in situ</li>
+              <li><span class="code">T1</span>Espessura ≤1,0 mm
+                <ul>
+                  <li>T1a: &lt;0,8 mm sem ulceração</li>
+                  <li>T1b: &lt;0,8 mm com ulceração OU 0,8-1,0 mm com/sem ulceração</li>
+                </ul>
+              </li>
+              <li><span class="code">T2</span>1,01-2,0 mm
+                <ul>
+                  <li>T2a: sem ulceração · T2b: com ulceração</li>
+                </ul>
+              </li>
+              <li><span class="code">T3</span>2,01-4,0 mm
+                <ul>
+                  <li>T3a: sem ulceração · T3b: com ulceração</li>
+                </ul>
+              </li>
+              <li><span class="code">T4</span>&gt;4,0 mm
+                <ul>
+                  <li>T4a: sem ulceração · T4b: com ulceração</li>
+                </ul>
+              </li>
+            </ul>
+            <h5><span class="pill">N</span>Linfonodos regionais e MIT/satélite</h5>
+            <ul class="tnm-list">
+              <li><span class="code">N0</span>Sem LN+ regional</li>
+              <li><span class="code">N1</span>1 LN+ OU presença de microsatélite/MIT/in-transit
+                <ul>
+                  <li>N1a: 1 LN clinicamente oculto (SLN+)</li>
+                  <li>N1b: 1 LN clinicamente detectado</li>
+                  <li>N1c: 0 LN+ mas presença de MIT/satélite/in-transit</li>
+                </ul>
+              </li>
+              <li><span class="code">N2</span>2-3 LN+ OU 1 LN+ com MIT/satélite/in-transit
+                <ul>
+                  <li>N2a: 2-3 LN clinicamente ocultos (SLN+)</li>
+                  <li>N2b: 2-3 LN, ≥1 detectado clinicamente</li>
+                  <li>N2c: 1 LN+ (oculto ou detectado) com MIT/satélite/in-transit</li>
+                </ul>
+              </li>
+              <li><span class="code">N3</span>≥4 LN+ OU 2-3 LN+ com MIT/satélite OU LN matted (agregados)
+                <ul>
+                  <li>N3a: ≥4 LN ocultos · N3b: ≥4 LN, ≥1 clínico ou matted · N3c: ≥2 LN+ com MIT/satélite/in-transit</li>
+                </ul>
+              </li>
+            </ul>
+            <h5><span class="pill">M</span>Metástase à distância (com LDH)</h5>
+            <ul class="tnm-list">
+              <li><span class="code">M0</span>Sem metástase à distância</li>
+              <li><span class="code">M1a</span>Pele, subcutâneo, mama, LN distantes (não SNC)
+                <ul><li>M1a(0): LDH normal · M1a(1): LDH elevada</li></ul>
+              </li>
+              <li><span class="code">M1b</span>Pulmão (com ou sem M1a)
+                <ul><li>M1b(0): LDH normal · M1b(1): LDH elevada</li></ul>
+              </li>
+              <li><span class="code">M1c</span>Vísceras não-SNC (com ou sem M1a/M1b)
+                <ul><li>M1c(0): LDH normal · M1c(1): LDH elevada</li></ul>
+              </li>
+              <li><span class="code">M1d</span>SNC (com ou sem outros sítios)
+                <ul><li>M1d(0): LDH normal · M1d(1): LDH elevada</li></ul>
+              </li>
+            </ul>
+            <h5>Grupos de estágio (clinical · cTNM)</h5>
+            <table class="stage-tbl">
+              <thead><tr><th>Estágio</th><th>T</th><th>N</th><th>M</th></tr></thead>
+              <tbody>
+                <tr><td class="stg">0</td><td>Tis</td><td>N0</td><td>M0</td></tr>
+                <tr><td class="stg">IA</td><td>T1a</td><td>N0</td><td>M0</td></tr>
+                <tr><td class="stg">IB</td><td>T1b · T2a</td><td>N0</td><td>M0</td></tr>
+                <tr><td class="stg">IIA</td><td>T2b · T3a</td><td>N0</td><td>M0</td></tr>
+                <tr><td class="stg">IIB</td><td>T3b · T4a</td><td>N0</td><td>M0</td></tr>
+                <tr><td class="stg">IIC</td><td>T4b</td><td>N0</td><td>M0</td></tr>
+                <tr><td class="stg">III</td><td>qualquer T</td><td>≥N1</td><td>M0</td></tr>
+                <tr><td class="stg">IV</td><td>qualquer T</td><td>qualquer N</td><td>M1</td></tr>
+              </tbody>
+            </table>
+            <div class="notes"><strong>Pesquisa molecular obrigatória em estágio III/IV:</strong> BRAF V600 (40-50%) — dabrafenib/trametinibe ou encorafenib/binimetinibe. NRAS, c-KIT (mucoso/acral). PD-L1 não é decisor mas biomarcador exploratório. <strong>Tratamento moderno:</strong> Estágio III adjuvante — pembro (KEYNOTE-054), nivo (CheckMate-238), dabra+tram (COMBI-AD em BRAF+). Estágio IV — IO 1L (nivo+ipi RELATIVITY-047, nivo+rela; pembro), terapia-alvo BRAF se mutação positiva. <strong>Imagem:</strong> FDG-PET/CT padrão para staging III/IV; MRI cérebro obrigatório em III/IV. Refs: Gershenwald JE et al. CA Cancer J Clin 2017; AJCC 8ª ed.; Larkin J et al. NEJM 2019 (CheckMate-067 5-yr).</div>
+          `
         }
       };
+
+      // ====== CTCAE DATA — Eventos Adversos por categoria ======
+      const CTCAE_DATA = {
+        hema: {
+          title: 'Hematológico',
+          icon: 'droplet',
+          color: '#FBBF24',
+          events: [
+            { name: 'Anemia (Hb)', g1: '<LSN-10,0 g/dL', g2: '8,0-10,0 g/dL', g3: '<8,0 g/dL · transfusão indicada', g4: 'Risco de vida; intervenção urgente' },
+            { name: 'Neutropenia (ANC)', g1: '<LIN-1,5×10⁹/L', g2: '1,0-1,5×10⁹/L', g3: '0,5-1,0×10⁹/L', g4: '<0,5×10⁹/L' },
+            { name: 'Trombocitopenia (PLQ)', g1: '<LIN-75×10⁹/L', g2: '50-75×10⁹/L', g3: '25-50×10⁹/L', g4: '<25×10⁹/L' },
+            { name: 'Linfopenia', g1: '<LIN-800/mm³', g2: '500-800/mm³', g3: '200-500/mm³', g4: '<200/mm³' },
+            { name: 'Leucopenia (WBC)', g1: '<LIN-3,0×10⁹/L', g2: '2,0-3,0×10⁹/L', g3: '1,0-2,0×10⁹/L', g4: '<1,0×10⁹/L' },
+            { name: 'Neutropenia febril', g1: '—', g2: '—', g3: 'ANC <1,0 + temp ≥38,3°C única ou ≥38°C ≥1h · sem instabilidade', g4: 'Com sepse / instabilidade hemodinâmica' },
+            { name: 'Hemorragia (geral)', g1: 'Sangramento leve · sem intervenção', g2: 'Sintomas moderados · transfusão única', g3: 'Transfusão recorrente · radiologia/endoscopia/cirurgia', g4: 'Risco de vida · intervenção urgente' },
+            { name: 'Hemorragia SNC', g1: 'Microsangramento assintomático', g2: 'Sintomas leves (cefaleia, déficit transitório)', g3: 'Déficit moderado · intervenção médica', g4: 'Hemorragia massiva · risco de vida; cirurgia/UTI' },
+            { name: 'TVP / TEP', g1: 'TVP venosa superficial', g2: 'TVP de extremidade · anticoagulação', g3: 'TEP estável · anticoagulação ativa', g4: 'TEP com instabilidade · trombólise/UTI' },
+            { name: 'CIVD', g1: '—', g2: '—', g3: 'Coagulopatia laboratorial · transfusão de plasma/plaquetas', g4: 'Sangramento grave + falência multi-orgânica' }
+          ],
+          manage: '<strong>G1-G2:</strong> manter terapia, monitorar 1-2x/sem; suporte (ferro, folato, EPO conforme indicação). <strong>G3:</strong> suspender ciclo até recuperação ≥G1; transfusão (Hb &lt;7-8, plaquetas &lt;10 ou &lt;20 com sangramento, neutrófilos com FN); G-CSF profilático em risco alto. <strong>G4:</strong> suspender permanente em maioria das terapias. <strong>Em teranóstico:</strong> Lu-PSMA — mielossupressão acumulativa em ciclos 4-6; Lu-DOTATATE — neutropenia tardia leve; Y-90 — pancitopenia rara (REILD).'
+        },
+        gi: {
+          title: 'Gastrointestinal',
+          icon: 'utensils',
+          color: '#FBBF24',
+          events: [
+            { name: 'Diarreia', g1: '<4 evac/d acima do basal', g2: '4-6 evac/d acima do basal · líquidos EV indicados', g3: '≥7 evac/d · incontinência · hospitalização', g4: 'Risco de vida · intervenção urgente · sepse' },
+            { name: 'Náusea', g1: 'Perda de apetite sem alteração de hábitos', g2: 'Redução de ingesta sem perda significativa de peso', g3: 'Ingesta calórica/líquida inadequada · NPT/hospitalização', g4: '—' },
+            { name: 'Vômito', g1: '1-2 episódios em 24h', g2: '3-5 episódios/24h', g3: '≥6 episódios/24h · NPT/hospitalização', g4: 'Risco de vida · intervenção urgente' },
+            { name: 'Mucosite oral', g1: 'Assintomático ou sintomas leves · sem intervenção', g2: 'Dor moderada · não interfere com ingesta', g3: 'Dor grave · interfere com ingesta', g4: 'Risco de vida · intervenção urgente; NPT' },
+            { name: 'Constipação', g1: 'Ocasional · uso ocasional de laxativo', g2: 'Persistente · laxativos regulares · não impacta AVDs', g3: 'Obstipação com manuseio manual · impacta AVDs', g4: 'Risco de vida · intervenção urgente; obstrução' },
+            { name: 'Obstrução intestinal', g1: 'Assintomático · achado radiológico', g2: 'Sintomática · intervenção não-cirúrgica (sonda, jejum)', g3: 'Sintomática · cirúrgica indicada', g4: 'Risco de vida · perfuração / sepse' },
+            { name: 'Perfuração GI', g1: '—', g2: 'Sintomas mínimos · cirurgia minor', g3: 'Sintomas moderados · cirurgia indicada', g4: 'Risco de vida · cirurgia urgente' },
+            { name: 'Fístula GI', g1: 'Assintomática · radiológico', g2: 'Sintomática · drenagem/dieta', g3: 'Cirurgia indicada · radiológica/endoscópica', g4: 'Risco de vida · sepse / hemorragia' },
+            { name: 'Sangramento GI', g1: 'Microscópico · sem alteração Hb', g2: 'Macroscópico · transfusão única', g3: 'Transfusão recorrente · endoscopia/intervenção', g4: 'Risco de vida · intervenção urgente' },
+            { name: 'Esofagite', g1: 'Assintomática · achado endoscópico', g2: 'Sintomas · não interfere com ingesta', g3: 'Interfere com ingesta · NPT/dilatação', g4: 'Perfuração / risco de vida' }
+          ],
+          manage: '<strong>Diarreia G2+ em IO:</strong> sempre descartar colite imuno-mediada — se confirmada, colonoscopia + corticoide. <strong>G3-4 IO:</strong> hospitalizar, metilprednisolona 1-2 mg/kg/d EV; se refratário em 3-5 d → infliximabe ou vedolizumabe. <strong>Náusea/vômito em PRRT:</strong> profilaxia com antagonista 5-HT3 + dexa antes da infusão de aminoácidos. <strong>Mucosite (everolimus, lenva, T-DXd):</strong> bochechos com bicarbonato + dexa; severo → drug holiday.'
+        },
+        hepato: {
+          title: 'Hepatobiliar',
+          icon: 'hexagon',
+          color: '#FBBF24',
+          events: [
+            { name: 'ALT (TGP)', g1: '>LSN-3× LSN', g2: '3-5× LSN', g3: '5-20× LSN', g4: '>20× LSN' },
+            { name: 'AST (TGO)', g1: '>LSN-3× LSN', g2: '3-5× LSN', g3: '5-20× LSN', g4: '>20× LSN' },
+            { name: 'Bilirrubina total', g1: '>LSN-1,5× LSN', g2: '1,5-3× LSN', g3: '3-10× LSN', g4: '>10× LSN' },
+            { name: 'Fosfatase alcalina', g1: '>LSN-2,5× LSN', g2: '2,5-5× LSN', g3: '5-20× LSN', g4: '>20× LSN' },
+            { name: 'GGT', g1: '>LSN-2,5× LSN', g2: '2,5-5× LSN', g3: '5-20× LSN', g4: '>20× LSN' },
+            { name: 'Hepatite (clínica)', g1: 'Assintomática · só labs ↑', g2: 'Sintomas · interferência mínima AVDs', g3: 'Sintomas graves · interfere com AVDs', g4: 'Risco de vida · descompensação hepática' },
+            { name: 'Falência hepática', g1: '—', g2: 'INR <1,5 · Bili <2× LSN sem encefalopatia', g3: 'INR 1,5-2,5 · sem encefalopatia', g4: 'INR >2,5 com encefalopatia · risco de vida' },
+            { name: 'Pancreatite', g1: 'Assintomática · enzimas ↑', g2: 'Sintomas · enzimas ≥3× LSN', g3: 'Imagem com necrose <30% · hospitalização', g4: 'Necrose >30% · falência orgânica · UTI' }
+          ],
+          manage: '<strong>Regra de Hy:</strong> ALT/AST &gt;3× LSN + Bili total &gt;2× LSN sem obstrução = sinal de hepatotoxicidade grave (mortalidade ~10%). Suspender e investigar imediatamente. <strong>Hepatite IO G2:</strong> suspender ICI · prednisona 0,5-1 mg/kg/d. <strong>G3-G4:</strong> hospitalizar · metilprednisolona 1-2 mg/kg/d EV; se refratário em 3 d → micofenolato (NÃO infliximabe — hepatotóxico); ICI permanentemente descontinuado em G3-G4 hepatite.'
+        },
+        renal: {
+          title: 'Renal',
+          icon: 'filter',
+          color: '#FBBF24',
+          events: [
+            { name: 'Creatinina sérica', g1: '>LSN-1,5× LSN OU 1,5-2× basal', g2: '1,5-3× basal · 1,5-3× LSN', g3: '>3× basal · 3× LSN OU Cr ≥4 mg/dL', g4: 'Risco de vida · diálise indicada' },
+            { name: 'Proteinúria', g1: '1+ ou 0,15-1 g/24h', g2: '2-3+ ou 1-3,5 g/24h', g3: '4+ ou >3,5 g/24h', g4: 'Síndrome nefrótica grave · diálise' },
+            { name: 'Hematúria', g1: 'Microscópica', g2: 'Macroscópica · sem coágulos · cateterização', g3: 'Coágulos · cateterismo + irrigação · transfusão', g4: 'Risco de vida · intervenção urgente · cirurgia' },
+            { name: 'Cistite (rad/hemorr.)', g1: 'Assintomática · achado endoscópico', g2: 'Sintomas urinários · sem coágulos', g3: 'Coágulos · cateterização · transfusão', g4: 'Risco de vida · cistectomia/embolização' },
+            { name: 'Lesão renal aguda', g1: 'Cr ↑ leve sem oligúria', g2: 'Cr ↑ moderada · oligúria <0,5 mL/kg/h por 6-12h', g3: 'Cr ↑ severa · oligúria persistente >12h · diálise possível', g4: 'Falência renal · diálise · risco de vida' },
+            { name: 'Síndrome de lise tumoral', g1: '—', g2: 'Laboratorial · assintomática · hidratação', g3: 'Sintomas (arritmia, oligúria) · intervenção urgente', g4: 'Risco de vida · diálise · UTI' },
+            { name: 'Acidose metabólica', g1: 'pH 7,3-7,35', g2: 'pH 7,2-7,3', g3: 'pH <7,2 · intervenção médica', g4: 'Risco de vida · ventilação' },
+            { name: 'Nefrite tubulointersticial', g1: 'Assintomática · só labs', g2: 'Sintomas leves · interferência mínima AVDs', g3: 'Hospitalização · biópsia/corticoide', g4: 'Risco de vida · diálise' }
+          ],
+          manage: '<strong>Lu-PSMA / Lu-DOTATATE:</strong> nefrotoxicidade dose-dependente. Lu-DOTATATE — proteção com aminoácidos (lisina 25 g + arginina 25 g em 2 L SF) iniciados 30 min antes e por 4h. <strong>Y-90 TARE:</strong> precaução em CrCl &lt;30. <strong>Cisplatina:</strong> hidratação 2-3 L/d com manitol; CrCl ≥60 mL/min obrigatório. <strong>Nefrite IO G2:</strong> suspender ICI · prednisona 0,5-1 mg/kg/d. <strong>G3-G4:</strong> metilprednisolona 1-2 mg/kg/d EV; refratário → micofenolato.'
+        },
+        irae: {
+          title: 'Imuno-mediado (irAEs)',
+          icon: 'shield-plus',
+          color: '#FBBF24',
+          events: [
+            { name: 'Pneumonite', g1: 'Assintomática · achado radiológico', g2: 'Sintomática · interfere AIVDs · O₂ não indicado', g3: 'Sintomas graves · O₂ indicado · hospitalização', g4: 'Insuf respiratória · UTI · ventilação' },
+            { name: 'Colite', g1: 'Assintomática ou diarreia leve', g2: '4-6 evac/d acima do basal · dor abd', g3: '≥7 evac/d · sangue/muco · peritonismo', g4: 'Perfuração · hemorragia · risco de vida' },
+            { name: 'Hepatite IO', g1: 'ALT/AST 1-3× LSN · Bili 1-1,5× LSN', g2: 'ALT 3-5× LSN · Bili 1,5-3×', g3: 'ALT 5-20× LSN · Bili 3-10×', g4: 'ALT >20× LSN · Bili >10× · descompensação' },
+            { name: 'Hipotireoidismo', g1: 'Assintomático · TSH 4,5-10', g2: 'Sintomático · substituição', g3: 'Sintomas severos · hospitalização', g4: 'Coma mixedematoso' },
+            { name: 'Hipertireoidismo', g1: 'Assintomático · TSH suprimido', g2: 'Sintomático · betabloq / antitireoideanos', g3: 'Sintomas severos · hospitalização', g4: 'Crise tireotóxica · UTI' },
+            { name: 'Hipofisite', g1: 'Assintomática · achado RM', g2: 'Cefaleia · achados endócrinos · substituição', g3: 'Sintomas severos · hospitalização · alta dose corticoide', g4: 'Risco de vida · adrenal aguda' },
+            { name: 'Insuf adrenal', g1: 'Assintomática · achado lab', g2: 'Sintomática · substituição', g3: 'Sintomas severos · hospitalização · estresse', g4: 'Crise adrenal · choque' },
+            { name: 'Diabetes IO (T1)', g1: 'Glicose 161-200 jejum · sem sintomas', g2: '201-250 ou cetoacidose leve', g3: '251-500 · cetoacidose · hospitalização', g4: 'Cetoacidose grave · UTI' },
+            { name: 'Miocardite IO', g1: 'Assintomática · troponina ↑', g2: 'Sintomas leves · alterações ECG/ECO', g3: 'Sintomas severos · IC · hospitalização', g4: 'IC grave · UTI · arritmia letal' },
+            { name: 'Nefrite intersticial IO', g1: 'Cr 1-1,5× basal · assintomática', g2: 'Cr 1,5-3× basal · sintomas leves', g3: 'Cr >3× basal · hospitalização · biópsia', g4: 'Diálise · risco de vida' },
+            { name: 'Encefalite IO', g1: 'Assintomática · achado RM', g2: 'Sintomas leves · cefaleia · confusão leve', g3: 'Sintomas severos · hospitalização · plasmaferese', g4: 'Coma · UTI · risco de vida' },
+            { name: 'Miosite/Miastenia IO', g1: 'CPK 2-5× LSN · assintomática', g2: 'CPK 5-10× LSN · fraqueza leve', g3: 'CPK >10× LSN · fraqueza moderada · hospitalização', g4: 'Falência respiratória · UTI · IVIg/plasma' }
+          ],
+          manage: '<strong>G1:</strong> manter, monitorar mais perto. <strong>G2:</strong> suspender ICI · prednisona 0,5-1 mg/kg/d com taper de 4-6 sem. <strong>G3:</strong> hospitalizar · metilprednisolona 1-2 mg/kg/d IV · suspender ICI permanentemente em maioria. <strong>G4:</strong> UTI · permanente em todos. <strong>Refratário em 3-5 d:</strong> escalar — colite/hepatite → infliximabe (NÃO em hepatite por hepatotoxicidade) ou vedolizumabe; pneumonite → micofenolato/IVIg/ciclofosfamida; miocardite → metilpred 1g/d 3-5 d + IVIg/ATG. <strong>Endocrinopatias:</strong> não exigem corticoide (exceto hipofisite/adrenalite agudas) — substituir hormônio.'
+        },
+        derm: {
+          title: 'Dermatológico',
+          icon: 'user',
+          color: '#FBBF24',
+          events: [
+            { name: 'Rash maculopapular', g1: '<10% SC · sem sintomas', g2: '10-30% SC · prurido · interferência mínima', g3: '>30% SC · interfere AVDs', g4: 'Pápulas/pústulas confluentes · superinfecção · SSJ' },
+            { name: 'Síndrome mão-pé (HFS)', g1: 'Dormência/disestesia · eritema · sem dor', g2: 'Eritema doloroso · descamação · não interfere AVDs', g3: 'Descamação úmida · ulceração · dor severa · interfere AVDs', g4: '—' },
+            { name: 'Prurido', g1: 'Leve · localizado · sem ou com poucas escoriações', g2: 'Difuso · escoriações · interferência mínima AIVDs', g3: 'Generalizado · contínuo · interfere AVDs/sono', g4: '—' },
+            { name: 'Alopecia', g1: 'Perda <50% do volume · não exige peruca', g2: '≥50% · cobertura completa exigindo peruca', g3: '—', g4: '—' },
+            { name: 'Vitiligo', g1: 'Hipopigmentação <10% SC · sem psicossocial', g2: 'Hipopigmentação ≥10% SC · associada com efeito psicossocial', g3: '—', g4: '—' },
+            { name: 'SSJ / NET', g1: '—', g2: '—', g3: 'SSJ: <10% SC com epidermólise · hospitalização', g4: 'NET: >30% SC com epidermólise · UTI · risco de vida' },
+            { name: 'Fotossensibilidade', g1: 'Eritema discreto · resolve sem tto', g2: 'Eritema doloroso · reação tardia · interfere AIVDs', g3: 'Reação severa · queimadura grave · interfere AVDs', g4: 'Necrose pele · risco de vida' },
+            { name: 'Hiperpigmentação', g1: 'Hiperpigmentação leve · localizada', g2: 'Generalizada · psicossocial · cosmético', g3: '—', g4: '—' },
+            { name: 'Onicólise / distrofia ungueal', g1: 'Assintomática · cosmética', g2: 'Sintomática · sem alteração AIVDs', g3: 'Sintomática · interfere AVDs', g4: '—' }
+          ],
+          manage: '<strong>Rash IO G2:</strong> corticoide tópico médio (mometasona) + anti-histamínico oral · pode manter ICI. <strong>G3-G4:</strong> suspender ICI · prednisona 0,5-1 mg/kg/d; consulta dermatologia urgente; biópsia se atípico. <strong>SSJ/NET:</strong> emergência — suspender permanentemente ICI · UTI/queimaduras · IVIg ou ciclosporina. <strong>HFS (cabozantinibe, lenva, sorafenibe, capecitabina, EV):</strong> emolientes preventivos com ureia 10-20%; corticoide tópico G2; reduzir dose 25-50% em G3.'
+        },
+        radio: {
+          title: 'Específico de radioligante',
+          icon: 'atom',
+          color: '#FBBF24',
+          events: [
+            { name: 'Xerostomia', g1: 'Sintomática · sem alteração de dieta · saliva basal >0,2 mL/min', g2: 'Modera de dieta (umidificação) · saliva 0,1-0,2 mL/min', g3: 'Incapaz de mastigar/engolir · saliva <0,1 mL/min · NPT', g4: '—' },
+            { name: 'Parotidite / sialadenite', g1: 'Eritema/edema leve sem dor · imagem positiva', g2: 'Edema doloroso · interfere com ingesta · antibiótico', g3: 'Abscesso · drenagem · NPT', g4: 'Risco de vida · sepse' },
+            { name: 'REILD (Y-90)', g1: 'Achado lab assintomático', g2: 'Bili 2-3× LSN · ascite leve · ictericía', g3: 'Bili >3× LSN · ascite refratária · falência hepática progressiva', g4: 'Coma hepático · risco de vida' },
+            { name: 'Hipotireoidismo (MIBG)', g1: 'Assintomático · TSH ↑ leve', g2: 'Sintomático · substituição com levotiroxina', g3: 'Sintomas severos · hospitalização', g4: 'Coma mixedematoso' },
+            { name: 'Mielossupressão tardia', g1: 'Cito leve · sem intervenção', g2: 'Cito moderada · transfusão pontual', g3: 'Cito severa · transfusão recorrente · suspender próximos ciclos', g4: 'SMD / leucemia secundária · risco de vida' },
+            { name: 'Hematúria pós Lu-PSMA', g1: 'Microscópica · sem coágulos', g2: 'Macroscópica · sem instabilidade', g3: 'Coágulos · cateterismo · transfusão', g4: 'Risco de vida · intervenção urgente' },
+            { name: 'Crise carcinoide pós-PRRT', g1: '—', g2: 'Sintomas leves · flushing · diarreia', g3: 'Sintomas severos · taquicardia · hipotensão · hospitalização', g4: 'Choque · risco de vida' },
+            { name: 'Tumor flare (pós-MIBG/PRRT)', g1: 'Dor leve no sítio tumoral · sem analgésico', g2: 'Dor moderada · analgésico simples', g3: 'Dor severa · opioide · hospitalização', g4: 'Edema obstrutivo (medular, encefálico) · risco de vida' },
+            { name: 'Tox alfa-emissor (²²⁵Ac)', g1: 'Xerostomia leve', g2: 'Xerostomia moderada · queratite', g3: 'Xerostomia severa irreversível · falha medular', g4: 'Múltiplas falências · risco de vida' }
+          ],
+          manage: '<strong>Xerostomia:</strong> proteção com gelo parotídeo durante e 30 min após Lu-PSMA reduz dose absorvida. Pilocarpina 5 mg 3x/d; saliva artificial; hidratação. ²²⁵Ac-PSMA — xerostomia é dose-limitante e cumulativa; reduzir kBq/kg em ciclos subsequentes. <strong>REILD:</strong> ocorre 4-8 sem pós-Y-90 em pacientes com função hepática limítrofe (Child A/B); manejo de suporte. <strong>Crise carcinoide:</strong> octreotida 100-500 µg SC/EV antes de PRRT em pacientes com sintomas; manter LAR durante (mas suspender 4-6 sem antes do ciclo). <strong>Tumor flare:</strong> aumentar dexa peri-infusão.'
+        },
+        crs: {
+          title: 'CRS / ICANS (CAR-T e BiTE)',
+          icon: 'zap',
+          color: '#FBBF24',
+          events: [
+            { name: 'CRS (ASTCT)', g1: 'Febre ≥38°C · sem hipotensão · sem hipóxia', g2: 'Febre + hipotensão sem vasopressor · O₂ baixo (FiO₂ <40%)', g3: 'Febre + 1 vasopressor · O₂ ≥40%', g4: 'Febre + ≥2 vasopressores ou ventilação mecânica' },
+            { name: 'ICANS (ICE score)', g1: 'ICE 7-9 · acordado · sem alterações motoras', g2: 'ICE 3-6 · acordado e responsivo · disfasia leve', g3: 'ICE 0-2 · diminuição de consciência · convulsões focais', g4: 'ICE 0 · estado convulsivo · coma · pressão IC ↑' },
+            { name: 'HLH-secundário', g1: '—', g2: 'Citopenia + ↑ferritina + esplenomegalia', g3: '+ falência orgânica · etoposídeo + dexa', g4: 'Refratário · risco de vida · UTI' },
+            { name: 'Reativação CMV', g1: 'PCR detectável sem doença', g2: 'Doença leve (febre)', g3: 'Doença orgânica (pneumonia, hepatite, retinite) · ganciclovir', g4: 'Doença disseminada · risco de vida' },
+            { name: 'EBV-PTLD', g1: 'PCR detectável sem doença', g2: 'Linfopatia leve · monitorização', g3: 'Linfoma associado · rituximabe · quimio', g4: 'Linfoma fulminante · risco de vida' },
+            { name: 'Linfopenia profunda', g1: '—', g2: 'CD4 200-500 · monitorar', g3: 'CD4 <200 · profilaxia PCP/HSV', g4: 'Sepse oportunista · risco de vida' },
+            { name: 'Aplasia B-celular', g1: 'IgG <LIN sem infecções', g2: 'Infecções leves · IgG suplementar', g3: 'Infecções recorrentes · IGIV mensal', g4: 'Sepse refratária · risco de vida' },
+            { name: 'Neurotoxicidade tardia', g1: 'Tremor leve · sem disfunção', g2: 'Disfunção motora leve · interferência mínima AVDs', g3: 'Convulsões · ataxia severa · interferência AVDs', g4: 'Demência · estado vegetativo' }
+          ],
+          manage: '<strong>CRS G1:</strong> antitérmico · líquidos · monitor. <strong>CRS G2:</strong> tocilizumabe 8 mg/kg EV (max 800 mg) · O₂; considerar dexa 10 mg q6h. <strong>CRS G3-G4:</strong> tocilizumabe + dexa em dose alta · vasopressor · UTI; considerar anakinra ou siltuximabe se refratário. <strong>ICANS G1:</strong> observar · evitar BZD; <strong>G2:</strong> dexa 10 mg q6h; <strong>G3-G4:</strong> dexa 1g/d · anakinra · UTI; tocilizumabe NÃO penetra BHE — usar para CRS concomitante. <strong>Profilaxia:</strong> aciclovir, fluconazol, sulfa (PCP) em todos pós-CAR-T; IGIV mensal se IgG <400.'
+        },
+        sist: {
+          title: 'Geral / sistêmico',
+          icon: 'thermometer',
+          color: '#FBBF24',
+          events: [
+            { name: 'Fadiga', g1: 'Leve · não modera AVDs', g2: 'Modera AIVDs · não AVDs básicas', g3: 'Limita AVDs · auto-cuidado', g4: 'Incapacitante · cama' },
+            { name: 'Febre', g1: '38,0-39,0°C', g2: '39,1-40,0°C ≤24h', g3: '>40,0°C ≤24h · com sintomas', g4: '>40,0°C >24h ou hipotensão' },
+            { name: 'Hipertensão', g1: 'PAS 120-139 ou PAD 80-89', g2: 'PAS 140-159 ou PAD 90-99 · monoterapia', g3: 'PAS ≥160 ou PAD ≥100 · terapia múltipla', g4: 'Emergência hipertensiva · ↓consciência · IRA' },
+            { name: 'Hipotensão', g1: 'Assintomática · transitória · sem intervenção', g2: 'Sintomática · líquidos EV · não PIA', g3: 'Persistente · vasopressor · hospitalização', g4: 'Choque · UTI · arritmia' },
+            { name: 'Edema periférico', g1: '<10% inter-membros · sem dor', g2: '10-30% · dor leve · interfere AIVDs', g3: '>30% · dor severa · interfere AVDs', g4: 'Risco anasarca · IC · UTI' },
+            { name: 'Perda de peso', g1: '5-10% basal', g2: '10-20% · NPT/sup', g3: '>20% · NPT · hospitalização', g4: '—' },
+            { name: 'Anorexia', g1: 'Perda apetite · sem alteração ingesta', g2: 'Redução ingesta · sem perda peso significativa', g3: 'Perda peso significativa · NPT', g4: 'Risco vida' },
+            { name: 'Insônia', g1: 'Leve · sem interferência', g2: 'Modera AIVDs · soníferos', g3: 'Severa · não responde a soníferos', g4: '—' },
+            { name: 'Dor (geral)', g1: 'Leve · não modera AVDs', g2: 'Modera · analgésico não-opioide', g3: 'Severa · opioides · interfere AVDs', g4: 'Incapacitante' },
+            { name: 'Reação infusional', g1: 'Leve · transitória · interrupção infusão não indicada', g2: 'Sintomas moderados · interrupção + pré-medicação', g3: 'Prolongada · sintomas severos · suspender infusão · hospitalização', g4: 'Anafilaxia · risco de vida' }
+          ],
+          manage: '<strong>HTN em IO+TKI (lenva/cabo/axi):</strong> meta &lt;140/90; iniciar antiHTA precoce (IECA/BRA primeira linha); reduzir dose TKI em G3 refratário. <strong>Reação infusional:</strong> rituximabe, T-DXd, cetuximabe têm risco; pré-medicação com dexa + difenidramina + paracetamol; em G3-G4 anafilática suspender permanentemente. <strong>Fadiga IO/QT/PRRT:</strong> excluir hipotireoidismo, anemia, ↓adrenal; intervenção: exercício aeróbico, suporte psicológico.'
+        }
+      };
+
+      function openCTCAE(id) {
+        const data = CTCAE_DATA[id];
+        if (!data) { console.warn('CTCAE key not found:', id); return; }
+        const dlg = document.getElementById('ctcae-modal');
+        if (!dlg) { console.error('ctcae-modal element missing'); return; }
+        try {
+          document.getElementById('ctcae-modal-title').textContent = 'CTCAE v6.0 · ' + data.title;
+          document.getElementById('ctcae-modal-ed').textContent = data.events.length + ' eventos';
+          const iconBox = document.getElementById('ctcae-modal-icon');
+          iconBox.style.background = 'rgba(251, 191, 36, 0.15)';
+          iconBox.innerHTML = '<i data-lucide="' + data.icon + '" style="width:20px;height:20px;color:#FBBF24"></i>';
+          let html = '<table class="stage-tbl" style="margin-top:0.5rem"><thead><tr><th>Evento</th><th>G1</th><th>G2</th><th>G3</th><th>G4</th></tr></thead><tbody>';
+          for (const ev of data.events) {
+            html += '<tr>';
+            html += '<td class="stg" style="color:var(--off-white)">' + ev.name + '</td>';
+            html += '<td style="color:#6EE7B7">' + (ev.g1 || '—') + '</td>';
+            html += '<td style="color:#FCD34D">' + (ev.g2 || '—') + '</td>';
+            html += '<td style="color:#FBA74A">' + (ev.g3 || '—') + '</td>';
+            html += '<td style="color:#F87171">' + (ev.g4 || '—') + '</td>';
+            html += '</tr>';
+          }
+          html += '</tbody></table>';
+          html += '<div class="notes" style="margin-top:1.25rem; padding:0.85rem 1rem; background:rgba(251,191,36,0.06); border-left:3px solid #FBBF24; border-radius:0 var(--radius-sm) var(--radius-sm) 0; line-height:1.55"><strong style="color:#FCD34D">Manejo:</strong> ' + data.manage + '</div>';
+          document.getElementById('ctcae-modal-body').innerHTML = html;
+        } catch (err) {
+          console.error('CTCAE render error:', err);
+        }
+        if (typeof dlg.showModal === 'function') {
+          dlg.showModal();
+        } else {
+          dlg.setAttribute('open', '');
+        }
+        try {
+          if (window.lucide && typeof window.lucide.createIcons === 'function') {
+            window.lucide.createIcons();
+          }
+        } catch (err) {
+          console.warn('lucide.createIcons failed:', err);
+        }
+      }
+
+      document.addEventListener('DOMContentLoaded', function() {
+        const dlg = document.getElementById('ctcae-modal');
+        if (!dlg) return;
+        dlg.addEventListener('click', function(e) {
+          if (e.target === dlg) dlg.close();
+        });
+      });
 
       function openTNM(id) {
         const data = TNM_DATA[id];
@@ -1633,11 +1957,11 @@
     </section>
 
     <!-- ============================================================ -->
-    <!-- 07. CTCAE v6.0 -->
+    <!-- 02. CTCAE v6.0 -->
     <!-- ============================================================ -->
     <section class="tool" id="ctcae" style="--tool-accent: #FBBF24">
       <div class="tool-head">
-        <div class="tool-num" style="background: rgba(251, 191, 36, 0.15); color: #FBBF24">07</div>
+        <div class="tool-num" style="background: rgba(251, 191, 36, 0.15); color: #FBBF24">02</div>
         <h2>Eventos adversos · CTCAE v6.0</h2>
       </div>
       <p style="color: var(--stone); margin: 0 0 1.5rem; max-width: 720px; line-height: 1.55">
@@ -1675,79 +1999,86 @@
         <em>≥G3 são os eventos relevantes para reporte regulatório e exigem ajuste de dose ou interrupção.</em>
       </div>
 
-      <h3 style="font-family:var(--font-display); font-size:1.1rem; color:var(--off-white); margin:2rem 0 1rem; font-weight:600">Exemplos práticos por categoria</h3>
-      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 1rem">
-        <div style="background:var(--graphite-2); border:1px solid var(--border-soft); border-radius:var(--radius-md); padding:1.25rem 1.4rem">
-          <h4 style="font-family:var(--font-display); font-size:1rem; margin:0 0 0.75rem; color:var(--off-white); display:flex; align-items:center; gap:0.5rem"><i data-lucide="droplet" style="width:16px; height:16px; color:#FBBF24"></i>Hematológico</h4>
-          <div style="font-size:0.82rem; color:var(--off-white); line-height:1.55">
-            <strong style="color:#FCD34D">Anemia (Hb):</strong> G1 ≥10 · G2 8-10 · G3 &lt;8 · G4 risco de vida<br>
-            <strong style="color:#FCD34D">Plaquetas:</strong> G1 75-LIN · G2 50-75 · G3 25-50 · G4 &lt;25 (×10⁹/L)<br>
-            <strong style="color:#FCD34D">Neutrófilos:</strong> G1 1.5-LIN · G2 1.0-1.5 · G3 0.5-1.0 · G4 &lt;0.5
-          </div>
-        </div>
-        <div style="background:var(--graphite-2); border:1px solid var(--border-soft); border-radius:var(--radius-md); padding:1.25rem 1.4rem">
-          <h4 style="font-family:var(--font-display); font-size:1rem; margin:0 0 0.75rem; color:var(--off-white); display:flex; align-items:center; gap:0.5rem"><i data-lucide="utensils" style="width:16px; height:16px; color:#FBBF24"></i>Gastrointestinal</h4>
-          <div style="font-size:0.82rem; color:var(--off-white); line-height:1.55">
-            <strong style="color:#FCD34D">Diarreia:</strong> G1 &lt;4/d · G2 4-6 · G3 ≥7 ou desidratação · G4 instabilidade<br>
-            <strong style="color:#FCD34D">Náusea:</strong> G1 ingesta normal · G2 redução · G3 &lt;1500 cal/d · G4 risco<br>
-            <strong style="color:#FCD34D">Mucosite oral:</strong> G1 leve · G2 dor com ingesta · G3 dieta líquida · G4 NPT
-          </div>
-        </div>
-        <div style="background:var(--graphite-2); border:1px solid var(--border-soft); border-radius:var(--radius-md); padding:1.25rem 1.4rem">
-          <h4 style="font-family:var(--font-display); font-size:1rem; margin:0 0 0.75rem; color:var(--off-white); display:flex; align-items:center; gap:0.5rem"><i data-lucide="hexagon" style="width:16px; height:16px; color:#FBBF24"></i>Hepatobiliar</h4>
-          <div style="font-size:0.82rem; color:var(--off-white); line-height:1.55">
-            <strong style="color:#FCD34D">ALT/AST:</strong> G1 &gt;LSN-3× · G2 3-5× · G3 5-20× · G4 &gt;20×<br>
-            <strong style="color:#FCD34D">Bilirrubina:</strong> G1 &gt;LSN-1.5× · G2 1.5-3× · G3 3-10× · G4 &gt;10×<br>
-            <em style="color:var(--stone-2); font-size:0.78rem">Regra de Hy = ALT &gt;3× + bilirrubina &gt;2× sem obstrução = sinal grave.</em>
-          </div>
-        </div>
-        <div style="background:var(--graphite-2); border:1px solid var(--border-soft); border-radius:var(--radius-md); padding:1.25rem 1.4rem">
-          <h4 style="font-family:var(--font-display); font-size:1rem; margin:0 0 0.75rem; color:var(--off-white); display:flex; align-items:center; gap:0.5rem"><i data-lucide="filter" style="width:16px; height:16px; color:#FBBF24"></i>Renal</h4>
-          <div style="font-size:0.82rem; color:var(--off-white); line-height:1.55">
-            <strong style="color:#FCD34D">Creatinina:</strong> G1 &gt;LSN-1.5× · G2 1.5-3× · G3 &gt;3× ou Cr ≥4 mg/dL · G4 diálise<br>
-            <strong style="color:#FCD34D">Proteinúria:</strong> G1 1+ ou 0.15-1 g/24h · G2 2-3+ ou 1-3.5 · G3 &gt;3.5
-          </div>
-        </div>
-        <div style="background:var(--graphite-2); border:1px solid var(--border-soft); border-radius:var(--radius-md); padding:1.25rem 1.4rem">
-          <h4 style="font-family:var(--font-display); font-size:1rem; margin:0 0 0.75rem; color:var(--off-white); display:flex; align-items:center; gap:0.5rem"><i data-lucide="shield-plus" style="width:16px; height:16px; color:#FBBF24"></i>Imuno-mediado (irAEs)</h4>
-          <div style="font-size:0.82rem; color:var(--off-white); line-height:1.55">
-            <strong style="color:#FCD34D">Pneumonite:</strong> G1 assintom. · G2 sintomas, AIVDs · G3 severos/O₂ · G4 IRpA<br>
-            <strong style="color:#FCD34D">Colite:</strong> G1 leve · G2 4-6 ev/d · G3 ≥7 ou peritonite · G4 perfuração<br>
-            <strong style="color:#FCD34D">Hepatite IO:</strong> G2 → suspender + corticoide · G3+ → permanente
-          </div>
-        </div>
-        <div style="background:var(--graphite-2); border:1px solid var(--border-soft); border-radius:var(--radius-md); padding:1.25rem 1.4rem">
-          <h4 style="font-family:var(--font-display); font-size:1rem; margin:0 0 0.75rem; color:var(--off-white); display:flex; align-items:center; gap:0.5rem"><i data-lucide="user" style="width:16px; height:16px; color:#FBBF24"></i>Dermatológico</h4>
-          <div style="font-size:0.82rem; color:var(--off-white); line-height:1.55">
-            <strong style="color:#FCD34D">Rash maculopapular:</strong> G1 &lt;10% · G2 10-30% · G3 &gt;30% ou impacta AVDs · G4 SSJ/NET<br>
-            <strong style="color:#FCD34D">Síndrome mão-pé:</strong> G1 dormência · G2 dor sem AVDs · G3 dor severa<br>
-            <strong style="color:#FCD34D">Prurido:</strong> G1 leve · G2 difuso · G3 incapacitante
-          </div>
-        </div>
-        <div style="background:var(--graphite-2); border:1px solid var(--border-soft); border-radius:var(--radius-md); padding:1.25rem 1.4rem">
-          <h4 style="font-family:var(--font-display); font-size:1rem; margin:0 0 0.75rem; color:var(--off-white); display:flex; align-items:center; gap:0.5rem"><i data-lucide="atom" style="width:16px; height:16px; color:#FBBF24"></i>Específico de radioligante</h4>
-          <div style="font-size:0.82rem; color:var(--off-white); line-height:1.55">
-            <strong style="color:#FCD34D">Xerostomia:</strong> G1 leve · G2 limita ingesta · G3 severo, salivação &lt;0.1 mL/min<br>
-            <strong style="color:#FCD34D">Hipotireoidismo (MIBG):</strong> G1 assintom. · G2 substituição · G3 hospitalização<br>
-            <strong style="color:#FCD34D">REILD (Y-90):</strong> ascite/icterícia 4-8 sem pós
-          </div>
-        </div>
-        <div style="background:var(--graphite-2); border:1px solid var(--border-soft); border-radius:var(--radius-md); padding:1.25rem 1.4rem">
-          <h4 style="font-family:var(--font-display); font-size:1rem; margin:0 0 0.75rem; color:var(--off-white); display:flex; align-items:center; gap:0.5rem"><i data-lucide="zap" style="width:16px; height:16px; color:#FBBF24"></i>CRS / ICANS</h4>
-          <div style="font-size:0.82rem; color:var(--off-white); line-height:1.55">
-            <strong style="color:#FCD34D">CRS (ASTCT):</strong> G1 febre · G2 + hipotensão a fluido OU O₂ baixo · G3 + vasopressor único · G4 multivasopressor/intubação<br>
-            <strong style="color:#FCD34D">ICANS (ICE):</strong> G1 7-9 · G2 3-6 · G3 0-2 · G4 status convulsivo
-          </div>
-        </div>
-        <div style="background:var(--graphite-2); border:1px solid var(--border-soft); border-radius:var(--radius-md); padding:1.25rem 1.4rem">
-          <h4 style="font-family:var(--font-display); font-size:1rem; margin:0 0 0.75rem; color:var(--off-white); display:flex; align-items:center; gap:0.5rem"><i data-lucide="thermometer" style="width:16px; height:16px; color:#FBBF24"></i>Geral / sistêmico</h4>
-          <div style="font-size:0.82rem; color:var(--off-white); line-height:1.55">
-            <strong style="color:#FCD34D">Fadiga:</strong> G1 leve · G2 modera AIVDs · G3 limita AVDs · G4 incapacitante<br>
-            <strong style="color:#FCD34D">Febre:</strong> G1 38.0-39.0 · G2 39-40 · G3 &gt;40 ≤24h · G4 &gt;24h<br>
-            <strong style="color:#FCD34D">HTN:</strong> G1 120-140/80-90 · G2 140-160/90-100 · G3 &gt;160/100 · G4 emergência
-          </div>
-        </div>
+      <h3 style="font-family:var(--font-display); font-size:1.1rem; color:var(--off-white); margin:2rem 0 1rem; font-weight:600">Eventos por categoria · clique para detalhes</h3>
+      <div class="tnm-grid">
+        <button type="button" class="tnm-card" onclick="openCTCAE('hema')">
+          <div class="tnm-card-icon" style="background:rgba(251,191,36,0.10)"><i data-lucide="droplet" style="width:18px;height:18px;color:#FBBF24"></i></div>
+          <div class="tnm-card-title">Hematológico</div>
+          <div class="tnm-card-ed">CTCAE v6.0 · 10 eventos</div>
+          <div class="tnm-card-summary">Anemia, neutropenia, trombocitopenia, linfopenia, leucopenia, neutropenia febril, hemorragia, eventos trombóticos, CIVD.</div>
+          <div class="tnm-card-cta">Ver completo <i data-lucide="arrow-right" style="width:12px;height:12px"></i></div>
+        </button>
+        <button type="button" class="tnm-card" onclick="openCTCAE('gi')">
+          <div class="tnm-card-icon" style="background:rgba(251,191,36,0.10)"><i data-lucide="utensils" style="width:18px;height:18px;color:#FBBF24"></i></div>
+          <div class="tnm-card-title">Gastrointestinal</div>
+          <div class="tnm-card-ed">CTCAE v6.0 · 10 eventos</div>
+          <div class="tnm-card-summary">Diarreia, náusea, vômito, mucosite oral, constipação, obstrução, perfuração, fístula, sangramento alto/baixo, esofagite.</div>
+          <div class="tnm-card-cta">Ver completo <i data-lucide="arrow-right" style="width:12px;height:12px"></i></div>
+        </button>
+        <button type="button" class="tnm-card" onclick="openCTCAE('hepato')">
+          <div class="tnm-card-icon" style="background:rgba(251,191,36,0.10)"><i data-lucide="hexagon" style="width:18px;height:18px;color:#FBBF24"></i></div>
+          <div class="tnm-card-title">Hepatobiliar</div>
+          <div class="tnm-card-ed">CTCAE v6.0 · 8 eventos</div>
+          <div class="tnm-card-summary">ALT, AST, bilirrubina total, FA, GGT, hepatite imuno-mediada, falência hepática, pancreatite. Inclui regra de Hy.</div>
+          <div class="tnm-card-cta">Ver completo <i data-lucide="arrow-right" style="width:12px;height:12px"></i></div>
+        </button>
+        <button type="button" class="tnm-card" onclick="openCTCAE('renal')">
+          <div class="tnm-card-icon" style="background:rgba(251,191,36,0.10)"><i data-lucide="filter" style="width:18px;height:18px;color:#FBBF24"></i></div>
+          <div class="tnm-card-title">Renal</div>
+          <div class="tnm-card-ed">CTCAE v6.0 · 8 eventos</div>
+          <div class="tnm-card-summary">Creatinina, proteinúria, hematúria, cistite, lesão renal aguda, síndrome de lise tumoral, nefrite intersticial.</div>
+          <div class="tnm-card-cta">Ver completo <i data-lucide="arrow-right" style="width:12px;height:12px"></i></div>
+        </button>
+        <button type="button" class="tnm-card" onclick="openCTCAE('irae')">
+          <div class="tnm-card-icon" style="background:rgba(251,191,36,0.10)"><i data-lucide="shield-plus" style="width:18px;height:18px;color:#FBBF24"></i></div>
+          <div class="tnm-card-title">Imuno-mediado (irAEs)</div>
+          <div class="tnm-card-ed">CTCAE v6.0 · 12 eventos</div>
+          <div class="tnm-card-summary">Pneumonite, colite, hepatite IO, hipo/hipertireoidismo, hipofisite, ↓adrenal, diabetes T1, miocardite, nefrite, encefalite, miosite.</div>
+          <div class="tnm-card-cta">Ver completo <i data-lucide="arrow-right" style="width:12px;height:12px"></i></div>
+        </button>
+        <button type="button" class="tnm-card" onclick="openCTCAE('derm')">
+          <div class="tnm-card-icon" style="background:rgba(251,191,36,0.10)"><i data-lucide="user" style="width:18px;height:18px;color:#FBBF24"></i></div>
+          <div class="tnm-card-title">Dermatológico</div>
+          <div class="tnm-card-ed">CTCAE v6.0 · 9 eventos</div>
+          <div class="tnm-card-summary">Rash maculopapular, mão-pé, prurido, alopecia, vitiligo, SSJ/NET, fotossensibilidade, hiperpigmentação, onicólise.</div>
+          <div class="tnm-card-cta">Ver completo <i data-lucide="arrow-right" style="width:12px;height:12px"></i></div>
+        </button>
+        <button type="button" class="tnm-card" onclick="openCTCAE('radio')">
+          <div class="tnm-card-icon" style="background:rgba(251,191,36,0.10)"><i data-lucide="atom" style="width:18px;height:18px;color:#FBBF24"></i></div>
+          <div class="tnm-card-title">Específico de radioligante</div>
+          <div class="tnm-card-ed">CTCAE v6.0 · 9 eventos</div>
+          <div class="tnm-card-summary">Xerostomia, parotidite, REILD (Y-90), hipotireoidismo (MIBG), mielossupressão tardia, tumor flare, crise carcinoide.</div>
+          <div class="tnm-card-cta">Ver completo <i data-lucide="arrow-right" style="width:12px;height:12px"></i></div>
+        </button>
+        <button type="button" class="tnm-card" onclick="openCTCAE('crs')">
+          <div class="tnm-card-icon" style="background:rgba(251,191,36,0.10)"><i data-lucide="zap" style="width:18px;height:18px;color:#FBBF24"></i></div>
+          <div class="tnm-card-title">CRS / ICANS</div>
+          <div class="tnm-card-ed">CAR-T · BiTE · 8 eventos</div>
+          <div class="tnm-card-summary">CRS (ASTCT), ICANS (ICE/CARTOX), HLH-secundário, neurotoxicidade tardia, infecções oportunistas pós-CAR-T.</div>
+          <div class="tnm-card-cta">Ver completo <i data-lucide="arrow-right" style="width:12px;height:12px"></i></div>
+        </button>
+        <button type="button" class="tnm-card" onclick="openCTCAE('sist')">
+          <div class="tnm-card-icon" style="background:rgba(251,191,36,0.10)"><i data-lucide="thermometer" style="width:18px;height:18px;color:#FBBF24"></i></div>
+          <div class="tnm-card-title">Geral / sistêmico</div>
+          <div class="tnm-card-ed">CTCAE v6.0 · 10 eventos</div>
+          <div class="tnm-card-summary">Fadiga, febre, hipertensão, hipotensão, edema, perda de peso, anorexia, insônia, dor, reação infusional.</div>
+          <div class="tnm-card-cta">Ver completo <i data-lucide="arrow-right" style="width:12px;height:12px"></i></div>
+        </button>
       </div>
+
+      <dialog id="ctcae-modal" class="tnm-modal" aria-labelledby="ctcae-modal-title">
+        <div class="tnm-modal-head">
+          <div class="icon" id="ctcae-modal-icon"></div>
+          <div>
+            <h3 id="ctcae-modal-title">Categoria</h3>
+            <span class="ed" id="ctcae-modal-ed"></span>
+          </div>
+          <button type="button" class="close" onclick="document.getElementById('ctcae-modal').close()" aria-label="Fechar">
+            <i data-lucide="x" style="width:18px;height:18px"></i>
+          </button>
+        </div>
+        <div class="tnm-modal-body" id="ctcae-modal-body"></div>
+      </dialog>
 
       <div style="background:var(--graphite-2); border-left:3px solid #FBBF24; border-radius:0 var(--radius-md) var(--radius-md) 0; padding:1rem 1.5rem; margin:1.5rem 0">
         <div style="font-size:0.7rem; color:#FBBF24; text-transform:uppercase; letter-spacing:0.1em; font-weight:600; margin-bottom:0.4rem">Como decidir manejo</div>
@@ -1811,6 +2142,11 @@
     }
   });
 </script>
+
+
+<script src="assets/js/pwa-install.js" defer></script>
+
+
 
 </body>
 </html>

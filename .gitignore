@@ -61,3 +61,6 @@ credentials.json
 /scratch/
 *.scratch.html
 DEBUG_*
+
+# Backups numerados (data.js.bak_pre_batchN, etc.)
+*.bak_*
