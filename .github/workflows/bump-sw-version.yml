@@ -1,0 +1,65 @@
+name: Auto-bump SW CACHE_VERSION
+
+# Sempre que houver push em main que altere assets, HTML ou JS,
+# bumpa automaticamente a versão de cache do service worker (sw.js).
+# Isso força os iPhones a baixarem CSS/JS/imagens novos quando você publica.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'assets/**'
+      - '*.html'
+      - 'manifest.json'
+      - '!sw.js'           # evita loop quando o próprio bot empurra sw.js
+      - '!**/*.md'         # ignora mudanças só em docs
+
+permissions:
+  contents: write
+
+concurrency:
+  group: bump-sw
+  cancel-in-progress: false
+
+jobs:
+  bump:
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, '[skip ci]') && github.actor != 'github-actions[bot]'"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Generate new CACHE_VERSION
+        id: bump
+        run: |
+          DATE=$(date -u +"%Y.%m.%d")
+          SHA=$(git rev-parse --short HEAD)
+          NEW_VERSION="${DATE}-${SHA}"
+          echo "new_version=${NEW_VERSION}" >> "$GITHUB_OUTPUT"
+          echo "Nova versão: theratrials-v${NEW_VERSION}"
+
+      - name: Patch sw.js
+        run: |
+          NEW_VERSION="${{ steps.bump.outputs.new_version }}"
+          # Substitui a string entre aspas após CACHE_VERSION =
+          # Aceita qualquer valor anterior (semver tipo 1.1.0, datas, etc.)
+          sed -i "s|const CACHE_VERSION = 'theratrials-[^']*'|const CACHE_VERSION = 'theratrials-v${NEW_VERSION}'|" sw.js
+
+          # Confirma que mudou
+          grep -E "const CACHE_VERSION" sw.js | head -1
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet sw.js; then
+            echo "sw.js já está atualizado · nenhum commit necessário"
+          else
+            git add sw.js
+            git commit -m "chore(sw): bump CACHE_VERSION para ${{ steps.bump.outputs.new_version }} [skip ci]"
+            git push
+            echo "✓ sw.js bumpado e empurrado"
+          fi
