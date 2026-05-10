@@ -2608,11 +2608,84 @@
         <h2>Imunoterapia &middot; resposta atipica</h2>
       </div>
       <p style="color: var(--stone); margin: 0 0 1.5rem; max-width: 720px; line-height: 1.55">Criterios que reconhecem padroes atipicos de resposta a inibidores de checkpoint imune (pseudoprogressao, hiperprogressao, resposta tardia).</p>
-      <div class="crit-placeholder">
-        <strong>Em producao &middot; proxima atualizacao</strong>
-        Cobertura prevista:
-        <ul><li>iRECIST</li><li>irRECIST</li><li>PERCIMT</li><li>imPERCIST</li></ul>
+            <div class="crit-grid">
+
+        <div class="crit-card">
+          <div class="crit-name">
+            <h3>iRECIST</h3>
+            <span class="ref">Seymour · Lancet Oncol 2017 · RECIST WG</span>
+          </div>
+          <p class="crit-lead">Adaptação modular do RECIST 1.1 para imunoterapia. Reconhece <strong>pseudoprogressão</strong> (alargamento inicial seguido de resposta) via categoria <strong>iUPD (unconfirmed PD)</strong>: progressão precisa de <strong>2ª imagem confirmatória em 4-8 sem</strong> antes de declarar iCPD (confirmed PD).</p>
+          <table class="crit-table">
+            <thead><tr><th>Categoria</th><th>Definição</th></tr></thead>
+            <tbody>
+              <tr><td class="cat">iCR</td><td>Resposta completa (RECIST CR)</td></tr>
+              <tr><td class="cat">iPR</td><td>Resposta parcial (RECIST PR)</td></tr>
+              <tr><td class="cat">iSD</td><td>Doença estável</td></tr>
+              <tr><td class="cat">iUPD</td><td>↑ ≥ 20% da soma OU novas lesões — <strong>aguardar 4-8 sem</strong></td></tr>
+              <tr><td class="cat">iCPD</td><td>iUPD confirmado: nova ↑ ≥ 5 mm na soma OU novas novas lesões</td></tr>
+            </tbody>
+          </table>
+          <div class="crit-pearl"><strong>Pearl</strong>Novas lesões em iUPD passam a ser <strong>target lesions separadas</strong> (não-target). Se desaparecerem na 2ª imagem, voltam à categoria target anterior — permite recategorizar como iPR/iSD em caso de pseudoprogressão.</div>
+        </div>
+
+        <div class="crit-card">
+          <div class="crit-name">
+            <h3>irRECIST</h3>
+            <span class="ref">Nishino · JNCI 2013 · pré-iRECIST</span>
+          </div>
+          <p class="crit-lead">Critério antecessor ao iRECIST, ainda usado em alguns ensaios e na prática. Diferença-chave: <strong>soma total de lesões inclui novas mensuráveis</strong> (≥ 5 mm em LD) e exige confirmação de PD em ≥ 4 semanas.</p>
+          <table class="crit-table">
+            <thead><tr><th>Componente</th><th>irRECIST</th><th>iRECIST</th></tr></thead>
+            <tbody>
+              <tr><td class="cat">Novas lesões</td><td>Somadas à carga tumoral total</td><td>Categoria separada (não-target)</td></tr>
+              <tr><td class="cat">PD</td><td>↑ ≥ 20% da soma <strong>incluindo novas</strong></td><td>iUPD + confirmação iCPD</td></tr>
+              <tr><td class="cat">Confirmação</td><td>4 sem mínimo</td><td>4-8 sem mínimo</td></tr>
+              <tr><td class="cat">Status atual</td><td>Largamente substituído</td><td>Padrão recomendado RECIST WG</td></tr>
+            </tbody>
+          </table>
+          <div class="crit-pearl"><strong>Pearl</strong>Em ensaios antigos (KEYNOTE-001 a -006), irRECIST foi o critério usado. Em ensaios novos: <strong>iRECIST</strong>. A taxa de pseudoprogressão real é baixa em tumores sólidos (~5-10% melanoma, &lt; 5% NSCLC) — mas a confirmação evita descontinuação precoce de paciente que ainda pode responder.</div>
+        </div>
+
+        <div class="crit-card">
+          <div class="crit-name">
+            <h3>PERCIMT</h3>
+            <span class="ref">Anwar · Eur J Nucl Med 2018 · melanoma sob ICI</span>
+          </div>
+          <p class="crit-lead">PET Response Criteria for Immune Modulatory Therapy. Específico para <strong>melanoma metastático sob ICI</strong>. Usa <strong>número de novas lesões FDG-ávidas</strong> + tamanho como critério-chave, em vez de % de mudança SUVmax.</p>
+          <table class="crit-table">
+            <thead><tr><th>Categoria</th><th>Definição</th></tr></thead>
+            <tbody>
+              <tr><td class="cat">CMR</td><td>Desaparecimento completo de toda captação tumoral</td></tr>
+              <tr><td class="cat">PMR</td><td>Sem aparecimento de ≥ 4 novas lesões &lt; 1 cm OU ≥ 3 novas 1-1,5 cm OU ≥ 2 novas &gt; 1,5 cm</td></tr>
+              <tr><td class="cat">SMD</td><td>Sem critérios de CMR/PMR/PMD</td></tr>
+              <tr><td class="cat">PMD</td><td>Aparecimento de ≥ 4 novas &lt; 1 cm OU ≥ 3 novas 1-1,5 cm OU ≥ 2 novas &gt; 1,5 cm</td></tr>
+            </tbody>
+          </table>
+          <div class="crit-pearl"><strong>Pearl</strong>PERCIMT detecta progressão de forma mais robusta que PERCIST em melanoma sob ICI: SUVmax pode aumentar transitoriamente por infiltração inflamatória peri-tumoral. Foco em <strong>número e tamanho de novas lesões</strong> é mais específico.</div>
+        </div>
+
+        <div class="crit-card">
+          <div class="crit-name">
+            <h3>imPERCIST 5</h3>
+            <span class="ref">Ito · Eur J Nucl Med 2018</span>
+          </div>
+          <p class="crit-lead">Modificação do PERCIST para imunoterapia. Mantém SULpeak/SUVpeak da lesão mais ativa, mas <strong>permite progressão somente após confirmação em 2ª imagem</strong> (similar ao iRECIST). Threshold de ≥ 30% mantido.</p>
+          <table class="crit-table">
+            <thead><tr><th>Categoria</th><th>Definição</th></tr></thead>
+            <tbody>
+              <tr><td class="cat">imCMR</td><td>Desaparecimento de toda captação tumoral (≤ fígado)</td></tr>
+              <tr><td class="cat">imPMR</td><td>↓ SULpeak ≥ 30% E ↓ ≥ 0,8 unidades</td></tr>
+              <tr><td class="cat">imSMD</td><td>Sem critérios de PMR ou PMD</td></tr>
+              <tr><td class="cat">imUPD</td><td>↑ SULpeak ≥ 30% OU novas lesões — aguardar 4-8 sem</td></tr>
+              <tr><td class="cat">imCPD</td><td>imUPD confirmado em 2ª imagem</td></tr>
+            </tbody>
+          </table>
+          <div class="crit-pearl"><strong>Pearl</strong>Em pacientes com resposta dissociada (algumas lesões respondem, outras progridem), considerar <strong>tratamento local</strong> (RT estereotáxica) das lesões resistentes + continuar ICI. Esse padrão é compatível com imSMD ou imUPD e não exige descontinuação automática.</div>
+        </div>
+
       </div>
+
     </section>
 
     <section class="tool" id="anatomica" style="--tool-accent: #F472B6">
@@ -2621,11 +2694,74 @@
         <h2>Resposta anatomica tumoral</h2>
       </div>
       <p style="color: var(--stone); margin: 0 0 1.5rem; max-width: 720px; line-height: 1.55">Criterios morfologicos por TC/RM para tumores solidos. RECIST e padrao para a maioria dos ensaios.</p>
-      <div class="crit-placeholder">
-        <strong>Em producao &middot; proxima atualizacao</strong>
-        Cobertura prevista:
-        <ul><li>RECIST 1.1</li><li>mRECIST</li><li>Choi Criteria</li></ul>
+            <div class="crit-grid">
+
+        <div class="crit-card">
+          <div class="crit-name">
+            <h3>RECIST 1.1</h3>
+            <span class="ref">Eisenhauer · Eur J Cancer 2009 · padrão global</span>
+          </div>
+          <p class="crit-lead">Response Evaluation Criteria in Solid Tumors. Padrão para ensaios clínicos em tumores sólidos. Avalia <strong>até 5 lesões-alvo no total (máx 2 por órgão)</strong> em diâmetro maior (LD), exceto linfonodos que usam <strong>eixo curto</strong>.</p>
+          <table class="crit-table">
+            <thead><tr><th>Categoria</th><th>Definição</th></tr></thead>
+            <tbody>
+              <tr><td class="cat">CR</td><td>Desaparecimento de todas as lesões-alvo; linfonodos &lt; 10 mm em eixo curto</td></tr>
+              <tr><td class="cat">PR</td><td>↓ ≥ 30% na soma dos LD vs basal</td></tr>
+              <tr><td class="cat">SD</td><td>Sem critérios para PR nem PD</td></tr>
+              <tr><td class="cat">PD</td><td>↑ ≥ 20% na soma dos LD <strong>E</strong> ↑ ≥ 5 mm absolutos, OU nova lesão, OU progressão inequívoca de não-target</td></tr>
+            </tbody>
+          </table>
+          <table class="crit-table" style="margin-top: 0.5rem">
+            <thead><tr><th>Critério</th><th>Valor</th></tr></thead>
+            <tbody>
+              <tr><td>Lesão mensurável (não-nodal)</td><td>≥ 10 mm em TC (5 mm em RM se &lt; 1 mm corte)</td></tr>
+              <tr><td>Linfonodo mensurável</td><td>≥ 15 mm em eixo curto</td></tr>
+              <tr><td>Linfonodo patológico (não-target)</td><td>10-15 mm em eixo curto</td></tr>
+              <tr><td>Linfonodo normal</td><td>&lt; 10 mm</td></tr>
+              <tr><td>Lesão óssea</td><td>Mensurável SOMENTE se componente partes moles ≥ 10 mm</td></tr>
+            </tbody>
+          </table>
+          <div class="crit-pearl"><strong>Pearl</strong>Lesões cística simples (não-mensurável), peritoneais difusas (não-mensurável), ascite e derrame pleural NÃO são mensuráveis. Sempre validar mensurabilidade no <strong>basal</strong> — não inclua "alvo" o que não pode ser medido reprodutivelmente em follow-up.</div>
+        </div>
+
+        <div class="crit-card">
+          <div class="crit-name">
+            <h3>mRECIST (modified RECIST)</h3>
+            <span class="ref">Lencioni · Semin Liver Dis 2010 · específico HCC</span>
+          </div>
+          <p class="crit-lead">Adaptação do RECIST para <strong>carcinoma hepatocelular tratado com terapias locorregionais</strong> (TACE, Y-90, ablação). Mede apenas o <strong>componente viável (com captação arterial)</strong> em fase arterial — necrose pós-tratamento NÃO conta para a soma.</p>
+          <table class="crit-table">
+            <thead><tr><th>Categoria</th><th>Definição</th></tr></thead>
+            <tbody>
+              <tr><td class="cat">CR</td><td>Desaparecimento de qualquer captação intra-tumoral em fase arterial</td></tr>
+              <tr><td class="cat">PR</td><td>↓ ≥ 30% na soma dos LD da porção viável</td></tr>
+              <tr><td class="cat">SD</td><td>Sem critérios PR nem PD</td></tr>
+              <tr><td class="cat">PD</td><td>↑ ≥ 20% na soma dos LD da porção viável OU nova lesão</td></tr>
+            </tbody>
+          </table>
+          <div class="crit-pearl"><strong>Pearl</strong>Após Y-90, edema peritumoral é comum nas primeiras 6-12 sem — pode <strong>simular progressão por RECIST 1.1</strong> (tamanho total aumenta). mRECIST detecta corretamente como SD/PR porque só conta componente viável. Use mRECIST <strong>obrigatoriamente</strong> para avaliar resposta pós-TARE.</div>
+        </div>
+
+        <div class="crit-card">
+          <div class="crit-name">
+            <h3>Choi Criteria</h3>
+            <span class="ref">Choi · JCO 2007 · GIST sob imatinibe</span>
+          </div>
+          <p class="crit-lead">Específico para <strong>GIST tratado com TKIs (imatinibe, sunitinibe)</strong>. Reconhece que GIST responde por <strong>↓ densidade tumoral em TC</strong> (mixoide, cístico) ANTES de ↓ tamanho. Critério baseado em densidade + tamanho.</p>
+          <table class="crit-table">
+            <thead><tr><th>Categoria</th><th>Definição (TODOS exigidos)</th></tr></thead>
+            <tbody>
+              <tr><td class="cat">CR</td><td>Desaparecimento de todas as lesões; sem novas</td></tr>
+              <tr><td class="cat">PR</td><td>↓ ≥ 10% no tamanho <strong>OU</strong> ↓ ≥ 15% na densidade média (UH) em TC contrastado</td></tr>
+              <tr><td class="cat">SD</td><td>Sem critérios PR nem PD; ausência de sintomas de progressão</td></tr>
+              <tr><td class="cat">PD</td><td>↑ ≥ 10% no tamanho <strong>E</strong> sem critérios Choi PR de densidade, OU novas lesões, OU novos nódulos intra-tumorais</td></tr>
+            </tbody>
+          </table>
+          <div class="crit-pearl"><strong>Pearl</strong>RECIST 1.1 falha em ~40% dos GIST responsivos (tumor torna-se cístico mas mantém tamanho) — Choi corrige isso. Para outros tumores tratados com TKIs (RCC, HCC sob sorafenibe/lenvatinibe), Choi NÃO foi validado prospectivamente — use RECIST 1.1 ou mRECIST conforme o tumor.</div>
+        </div>
+
       </div>
+
     </section>
 
     <section class="tool" id="hcc" style="--tool-accent: #F59E0B">
@@ -2634,11 +2770,174 @@
         <h2>CHC e radioembolizacao hepatica</h2>
       </div>
       <p style="color: var(--stone); margin: 0 0 1.5rem; max-width: 720px; line-height: 1.55">Criterios para estratificacao BCLC, funcao hepatica, classificacao LI-RADS e resposta apos Y-90.</p>
-      <div class="crit-placeholder">
-        <strong>Em producao &middot; proxima atualizacao</strong>
-        Cobertura prevista:
-        <ul><li>BCLC Staging</li><li>Child-Pugh</li><li>ALBI Grade</li><li>MELD Score</li><li>LI-RADS</li><li>LR-TR</li><li>EASL Response</li><li>mRECIST HCC</li></ul>
+            <div class="crit-grid">
+
+        <div class="crit-card">
+          <div class="crit-name">
+            <h3>BCLC Staging (2022 update)</h3>
+            <span class="ref">Llovet · J Hepatol 2022 · padrão EASL/AASLD</span>
+          </div>
+          <p class="crit-lead">Barcelona Clinic Liver Cancer. <strong>Sistema integrado</strong> que combina tumor, função hepática (Child-Pugh) e performance status (ECOG) para indicar tratamento. Único sistema validado prospectivamente que liga estadiamento a terapia.</p>
+          <table class="crit-table">
+            <thead><tr><th>BCLC</th><th>Critérios</th><th>Tratamento</th></tr></thead>
+            <tbody>
+              <tr><td class="cat">0 (muito precoce)</td><td>Único ≤ 2 cm, CP A, ECOG 0</td><td>Ressecção / ablação</td></tr>
+              <tr><td class="cat">A (precoce)</td><td>Único OU ≤ 3 nódulos ≤ 3 cm, CP A-B, ECOG 0</td><td>Ressecção / transplante / ablação</td></tr>
+              <tr><td class="cat">B (intermediário)</td><td>Multinodular, CP A-B, ECOG 0; subdivisão B1/B2/B3 por up-to-7 ou tumor burden</td><td>TACE; <strong>Y-90 (TARE)</strong> em B1-B2; sistêmica se TACE não-elegível</td></tr>
+              <tr><td class="cat">C (avançado)</td><td>Invasão portal OU mets extra-hepáticas, CP A-B, ECOG 1-2</td><td>Sistêmica: atezolizumab+bevacizumab, durvalumabe+tremelimumab, lenvatinibe, sorafenibe</td></tr>
+              <tr><td class="cat">D (terminal)</td><td>CP C OU ECOG &gt; 2</td><td>Cuidados paliativos / transplante (Milão)</td></tr>
+            </tbody>
+          </table>
+          <div class="crit-pearl"><strong>Pearl</strong>BCLC 2022 expandiu o papel do <strong>Y-90 (TARE) em B1-B2</strong> baseado em LEGACY e DOSISPHERE-01 — pacientes com tumor único 4-8 cm e CP A podem ter sobrevida comparável à ressecção. Também posicionou TARE como ponte para transplante (downstaging).</div>
+        </div>
+
+        <div class="crit-card">
+          <div class="crit-name">
+            <h3>Child-Pugh Score</h3>
+            <span class="ref">Pugh · BJS 1973 · clássico para função hepática</span>
+          </div>
+          <p class="crit-lead">Soma de <strong>5 variáveis clínico-laboratoriais</strong> (cada 1-3 pontos): bilirrubina, albumina, INR, ascite, encefalopatia. Total 5-15 pontos, classifica em A (5-6), B (7-9), C (10-15).</p>
+          <table class="crit-table">
+            <thead><tr><th>Variável</th><th>1 ponto</th><th>2 pontos</th><th>3 pontos</th></tr></thead>
+            <tbody>
+              <tr><td>Bilirrubina total (mg/dL)</td><td>&lt; 2</td><td>2-3</td><td>&gt; 3</td></tr>
+              <tr><td>Albumina (g/dL)</td><td>&gt; 3,5</td><td>2,8-3,5</td><td>&lt; 2,8</td></tr>
+              <tr><td>INR</td><td>&lt; 1,7</td><td>1,7-2,3</td><td>&gt; 2,3</td></tr>
+              <tr><td>Ascite</td><td>Ausente</td><td>Leve (controlada)</td><td>Refratária</td></tr>
+              <tr><td>Encefalopatia</td><td>Ausente</td><td>Grau 1-2</td><td>Grau 3-4</td></tr>
+            </tbody>
+          </table>
+          <table class="crit-table" style="margin-top: 0.5rem">
+            <thead><tr><th>Classe</th><th>Pontos</th><th>Sobrevida 1 ano</th></tr></thead>
+            <tbody>
+              <tr><td class="score">A</td><td>5-6</td><td>~ 100%</td></tr>
+              <tr><td class="score">B</td><td>7-9</td><td>~ 80%</td></tr>
+              <tr><td class="score">C</td><td>10-15</td><td>~ 45%</td></tr>
+            </tbody>
+          </table>
+          <div class="crit-pearl"><strong>Pearl</strong>Subjetividade nos componentes <strong>ascite e encefalopatia</strong> limita reprodutibilidade — daí o ALBI Grade, mais objetivo. Mas Child-Pugh continua incorporado a algoritmos (BCLC, MELD, indicação Y-90) por sua simplicidade clínica.</div>
+        </div>
+
+        <div class="crit-card">
+          <div class="crit-name">
+            <h3>ALBI Grade</h3>
+            <span class="ref">Johnson · JCO 2015 · alternativa objetiva</span>
+          </div>
+          <p class="crit-lead">Albumin-Bilirubin Grade. Score <strong>baseado SÓ em albumina e bilirrubina</strong>, sem componentes subjetivos. Validado em ressecção, TACE, Y-90, sistêmica.</p>
+          <table class="crit-table">
+            <thead><tr><th>Cálculo</th><th>ALBI score</th></tr></thead>
+            <tbody>
+              <tr><td colspan="2"><strong>ALBI = (log<sub>10</sub> bilirrubina × 0,66) + (albumina × –0,085)</strong><br>(bilirrubina em μmol/L; albumina em g/L)</td></tr>
+              <tr><td class="cat">Grade 1</td><td class="score">≤ –2,60</td></tr>
+              <tr><td class="cat">Grade 2</td><td class="score">–2,60 a –1,39</td></tr>
+              <tr><td class="cat">Grade 3</td><td class="score">&gt; –1,39</td></tr>
+            </tbody>
+          </table>
+          <div class="crit-pearl"><strong>Pearl</strong>ALBI Grade 1 = CP A robusto (mediana OS pós-sistêmica ~ 19 meses). ALBI Grade 2 inclui CP A "frágil" e CP B — separa pacientes que respondem como CP A daqueles com função pior. ALBI 3 = CP C virtualmente sempre. Em DOSISPHERE-01 e LEGACY (Y-90), ALBI 1 foi o melhor preditor de OS prolongada.</div>
+        </div>
+
+        <div class="crit-card">
+          <div class="crit-name">
+            <h3>MELD Score</h3>
+            <span class="ref">Kamath · Hepatology 2001 · prioridade transplante</span>
+          </div>
+          <p class="crit-lead">Model for End-Stage Liver Disease. Calculado de <strong>bilirrubina + creatinina + INR</strong>. Originalmente para TIPS, hoje é o critério oficial de alocação para transplante hepático (MELD-Na e MELD 3.0 são updates).</p>
+          <table class="crit-table">
+            <thead><tr><th>Fórmula MELD original</th></tr></thead>
+            <tbody>
+              <tr><td><strong>MELD = 9,57 × ln(Cr) + 3,78 × ln(BT) + 11,2 × ln(INR) + 6,43</strong><br>(arredondar para inteiro; mínimo cada variável = 1)</td></tr>
+            </tbody>
+          </table>
+          <table class="crit-table" style="margin-top: 0.5rem">
+            <thead><tr><th>MELD</th><th>Sobrevida 3 meses (cirrose)</th></tr></thead>
+            <tbody>
+              <tr><td class="score">&lt; 10</td><td>~ 97%</td></tr>
+              <tr><td class="score">10-19</td><td>~ 76%</td></tr>
+              <tr><td class="score">20-29</td><td>~ 50%</td></tr>
+              <tr><td class="score">30-39</td><td>~ 30%</td></tr>
+              <tr><td class="score">≥ 40</td><td>~ 7%</td></tr>
+            </tbody>
+          </table>
+          <div class="crit-pearl"><strong>Pearl</strong><strong>MELD-Na</strong> (adiciona sódio) e <strong>MELD 3.0</strong> (UNOS 2023, ajusta por sexo, albumina) são as versões atuais para alocação de transplante. Para HCC dentro de Milão, há um <strong>MELD exception</strong> com pontuação fixa que cresce ao longo do tempo na fila (downstaging com Y-90/TACE pode manter elegibilidade).</div>
+        </div>
+
+        <div class="crit-card">
+          <div class="crit-name">
+            <h3>LI-RADS v2018</h3>
+            <span class="ref">ACR · 2018 update · padrão diagnóstico HCC</span>
+          </div>
+          <p class="crit-lead">Liver Imaging Reporting and Data System. Padroniza relato de TC/RM em pacientes com risco para HCC (cirrose, hepatite B). Classifica nódulos em 5 categorias (LR-1 a LR-5) + LR-M (malignidade não-HCC) + LR-TIV (trombo tumoral) + LR-NC (não-categorizável).</p>
+          <table class="crit-table">
+            <thead><tr><th>Categoria</th><th>Probabilidade HCC</th></tr></thead>
+            <tbody>
+              <tr><td class="cat">LR-1</td><td>Definitivamente benigno</td></tr>
+              <tr><td class="cat">LR-2</td><td>Provavelmente benigno</td></tr>
+              <tr><td class="cat">LR-3</td><td>Probabilidade intermediária</td></tr>
+              <tr><td class="cat">LR-4</td><td>Provavelmente HCC</td></tr>
+              <tr><td class="cat">LR-5</td><td>Definitivamente HCC (sem biópsia)</td></tr>
+              <tr><td class="cat">LR-M</td><td>Provavelmente maligno, não-HCC (ex: colangio)</td></tr>
+              <tr><td class="cat">LR-TIV</td><td>Trombo tumoral em veia</td></tr>
+            </tbody>
+          </table>
+          <div class="crit-pearl"><strong>Pearl</strong>LR-5 dispensa biópsia para diagnóstico em paciente de risco (cirrose ou HBV) — economiza tempo crítico. Critérios principais: <strong>≥ 10 mm + APHE (captação arterial não-rim) + washout em fase venosa portal OU equilíbrio + cápsula visível</strong>. LR-M tem padrão diferente (rim-like enhancement, restrição difusa) e exige biópsia.</div>
+        </div>
+
+        <div class="crit-card">
+          <div class="crit-name">
+            <h3>LI-RADS Treatment Response (LR-TR)</h3>
+            <span class="ref">ACR · 2017 update 2024 · pós-locorregional</span>
+          </div>
+          <p class="crit-lead">Algoritmo específico para <strong>avaliar resposta após terapias locorregionais</strong> (TACE, Y-90, ablação). Foca no <strong>tecido tratado</strong>, distinguindo viável de não-viável.</p>
+          <table class="crit-table">
+            <thead><tr><th>Categoria</th><th>Definição</th></tr></thead>
+            <tbody>
+              <tr><td class="cat">LR-TR Non-viable</td><td>Sem captação intra-tumoral típica de HCC; sem realce nodular ou espesso</td></tr>
+              <tr><td class="cat">LR-TR Equivocal</td><td>Captação atípica, padrão ambíguo (não-viável vs viável)</td></tr>
+              <tr><td class="cat">LR-TR Viable</td><td>Captação nodular ou espessa típica de HCC dentro/adjacente ao tecido tratado</td></tr>
+              <tr><td class="cat">LR-TR Not Evaluable</td><td>Imagem insuficiente para avaliar (sem fase arterial, artefato)</td></tr>
+            </tbody>
+          </table>
+          <div class="crit-pearl"><strong>Pearl</strong>Após Y-90, <strong>edema peri-procedimento simula captação atípica</strong> nas primeiras 4-12 sem. Imagem ideal de resposta: <strong>12 sem pós-TARE com RM dinâmica</strong>. Antes disso, LR-TR Equivocal é frequente. EOB-RM (Primovist) ajuda a distinguir cicatriz de doença viável.</div>
+        </div>
+
+        <div class="crit-card">
+          <div class="crit-name">
+            <h3>EASL Response Criteria</h3>
+            <span class="ref">EASL Conference 2000 · histórico</span>
+          </div>
+          <p class="crit-lead">Critério europeu, anterior ao mRECIST. Mede <strong>área tumoral viável (não-necrótica) bidimensional</strong>: ↓ ≥ 50% na área viável (D1 × D2) = resposta. Hoje substituído pelo mRECIST, mas ainda aparece em literatura europeia antiga.</p>
+          <table class="crit-table">
+            <thead><tr><th>Categoria</th><th>Definição</th></tr></thead>
+            <tbody>
+              <tr><td class="cat">CR</td><td>Desaparecimento de toda área viável</td></tr>
+              <tr><td class="cat">PR</td><td>↓ ≥ 50% na soma das áreas viáveis</td></tr>
+              <tr><td class="cat">SD</td><td>Sem critérios PR nem PD</td></tr>
+              <tr><td class="cat">PD</td><td>↑ ≥ 25% na soma das áreas viáveis OU nova lesão</td></tr>
+            </tbody>
+          </table>
+          <div class="crit-pearl"><strong>Pearl</strong>EASL e mRECIST são <strong>conceitualmente equivalentes</strong> (ambos focam em viável vs total) mas diferem em unidimensional (mRECIST: LD) vs bidimensional (EASL: D1×D2). Em ensaios modernos: use <strong>mRECIST</strong>. Em registros antigos, ambos foram aceitos pela FDA/EMA para HCC.</div>
+        </div>
+
+        <div class="crit-card">
+          <div class="crit-name">
+            <h3>mRECIST for HCC</h3>
+            <span class="ref">Lencioni 2010 · padrão atual HCC</span>
+          </div>
+          <p class="crit-lead">Versão unidimensional do EASL, alinhada com RECIST 1.1 mas medindo apenas <strong>componente viável (captação arterial não-rim)</strong> em fase arterial. Critério oficial em ensaios de HCC (REFLECT, IMbrave150, HIMALAYA).</p>
+          <table class="crit-table">
+            <thead><tr><th>Categoria</th><th>Definição</th></tr></thead>
+            <tbody>
+              <tr><td class="cat">CR</td><td>Desaparecimento de qualquer captação arterial intra-tumoral</td></tr>
+              <tr><td class="cat">PR</td><td>↓ ≥ 30% na soma dos LD da porção viável</td></tr>
+              <tr><td class="cat">SD</td><td>Sem critérios PR nem PD</td></tr>
+              <tr><td class="cat">PD</td><td>↑ ≥ 20% na soma dos LD da porção viável OU nova lesão</td></tr>
+            </tbody>
+          </table>
+          <div class="crit-pearl"><strong>Pearl</strong>Em pacientes pós-Y-90 com <strong>"radiation lobectomy"</strong> (hipertrofia compensatória do lobo contralateral), mRECIST avalia só o tumor tratado — o aumento do lobo contralateral NÃO é progressão. Use mRECIST como critério primário de eficácia em todos os ensaios de TARE.</div>
+        </div>
+
       </div>
+
     </section>
 
     <section class="tool" id="clinica" style="--tool-accent: #94A3B8">
@@ -2647,11 +2946,101 @@
         <h2>Oncologia clinica &middot; escalas funcionais</h2>
       </div>
       <p style="color: var(--stone); margin: 0 0 1.5rem; max-width: 720px; line-height: 1.55">Escalas universais para avaliacao funcional e comorbidade.</p>
-      <div class="crit-placeholder">
-        <strong>Em producao &middot; proxima atualizacao</strong>
-        Cobertura prevista:
-        <ul><li>ECOG Performance Status</li><li>Karnofsky</li><li>NCI-CTCAE (ver secao 02)</li><li>Charlson Comorbidity Index</li></ul>
+            <div class="crit-grid">
+
+        <div class="crit-card">
+          <div class="crit-name">
+            <h3>ECOG Performance Status</h3>
+            <span class="ref">Oken · Am J Clin Oncol 1982 · padrão global</span>
+          </div>
+          <p class="crit-lead">Escala de 0-5 graduando atividade funcional. <strong>Critério universal de elegibilidade em ensaios e seleção terapêutica</strong>. Avaliado por médico em entrevista de 1-2 minutos.</p>
+          <table class="crit-table">
+            <thead><tr><th>Grau</th><th>Definição</th></tr></thead>
+            <tbody>
+              <tr><td class="score">0</td><td>Plenamente ativo, sem restrição (= antes da doença)</td></tr>
+              <tr><td class="score">1</td><td>Restrição em atividades extenuantes; deambula e capaz de trabalho leve</td></tr>
+              <tr><td class="score">2</td><td>Deambula e cuida de si, mas incapaz de trabalho; em pé &gt; 50% das horas acordado</td></tr>
+              <tr><td class="score">3</td><td>Auto-cuidado limitado; confinado a cama/cadeira &gt; 50% das horas acordado</td></tr>
+              <tr><td class="score">4</td><td>Totalmente confinado; auto-cuidado impossível</td></tr>
+              <tr><td class="score">5</td><td>Óbito</td></tr>
+            </tbody>
+          </table>
+          <div class="crit-pearl"><strong>Pearl</strong>Maioria dos ensaios oncológicos exige <strong>ECOG 0-1</strong>. ECOG 2 entra em alguns (cuidado: viés de seleção). ECOG 3-4 = quase sempre exclusão. Lu-PSMA (VISION) aceitou ECOG 0-2; Lu-DOTATATE (NETTER-1) aceitou apenas 0-2. Discordância médico-paciente é comum — o paciente quase sempre auto-classifica melhor que o médico.</div>
+        </div>
+
+        <div class="crit-card">
+          <div class="crit-name">
+            <h3>Karnofsky Performance Status (KPS)</h3>
+            <span class="ref">Karnofsky 1949 · ainda usado em geriatria/transplante</span>
+          </div>
+          <p class="crit-lead">Escala de <strong>0 a 100 em incrementos de 10</strong>. Mais granular que ECOG, usada principalmente em transplante (HCT-CI), neuro-oncologia, geriatria. Equivalências aproximadas com ECOG.</p>
+          <table class="crit-table">
+            <thead><tr><th>KPS</th><th>Definição</th><th>≈ ECOG</th></tr></thead>
+            <tbody>
+              <tr><td class="score">100</td><td>Normal; sem queixas</td><td>0</td></tr>
+              <tr><td class="score">90</td><td>Atividades normais; sintomas mínimos</td><td>0-1</td></tr>
+              <tr><td class="score">80</td><td>Atividades normais com esforço</td><td>1</td></tr>
+              <tr><td class="score">70</td><td>Auto-cuidado, mas incapaz de trabalho</td><td>2</td></tr>
+              <tr><td class="score">60</td><td>Auxílio ocasional</td><td>2</td></tr>
+              <tr><td class="score">50</td><td>Auxílio considerável + cuidados médicos</td><td>2-3</td></tr>
+              <tr><td class="score">40</td><td>Incapacitado; cuidados especiais</td><td>3</td></tr>
+              <tr><td class="score">30</td><td>Severamente incapacitado; hospitalização</td><td>3-4</td></tr>
+              <tr><td class="score">20</td><td>Doença ativa grave; suporte hospitalar contínuo</td><td>4</td></tr>
+              <tr><td class="score">10</td><td>Moribundo</td><td>4</td></tr>
+              <tr><td class="score">0</td><td>Óbito</td><td>5</td></tr>
+            </tbody>
+          </table>
+          <div class="crit-pearl"><strong>Pearl</strong>KPS &lt; 70 em paciente oncológico = forte preditor independente de mortalidade em 3-6 meses, mesmo controlando por estádio. Em neuro-oncologia (glioblastoma), KPS &lt; 70 muda condução: priorizar paliação sintomática vs combinação RT+TMZ.</div>
+        </div>
+
+        <div class="crit-card">
+          <div class="crit-name">
+            <h3>NCI-CTCAE v6.0</h3>
+            <span class="ref">NIH/NCI · 2024 update</span>
+          </div>
+          <p class="crit-lead">Common Terminology Criteria for Adverse Events. <strong>Padrão para reporte de toxicidade</strong> em ensaios e prática. Categoriza eventos em 5 graus (1-5) com critérios específicos por terminologia. Cobre &gt; 800 termos em 26 categorias (SOC).</p>
+          <table class="crit-table">
+            <thead><tr><th>Grau</th><th>Definição geral</th></tr></thead>
+            <tbody>
+              <tr><td class="score">1</td><td>Leve; assintomático ou sintomas leves; sem intervenção</td></tr>
+              <tr><td class="score">2</td><td>Moderado; intervenção mínima, local ou não-invasiva</td></tr>
+              <tr><td class="score">3</td><td>Severo ou clinicamente significativo, mas não imediatamente ameaçador à vida; hospitalização prolongada</td></tr>
+              <tr><td class="score">4</td><td>Ameaça à vida; intervenção urgente</td></tr>
+              <tr><td class="score">5</td><td>Óbito relacionado ao evento</td></tr>
+            </tbody>
+          </table>
+          <div class="crit-pearl"><strong>Pearl</strong>Ver detalhe expandido em <a href="#ctcae" style="color: var(--tool-accent, var(--amber))">seção 02 · Eventos adversos CTCAE</a> com categorias específicas (hematológica, GI, cardíaco, irAE de ICI). Em ICI: G3 = suspender + corticoide alta-dose; G4 = descontinuar permanentemente (exceto endocrinopatias).</div>
+        </div>
+
+        <div class="crit-card">
+          <div class="crit-name">
+            <h3>Charlson Comorbidity Index (CCI)</h3>
+            <span class="ref">Charlson · J Chronic Dis 1987 · update Quan 2011</span>
+          </div>
+          <p class="crit-lead">Quantifica <strong>carga de comorbidades</strong> em paciente oncológico via pontuação ponderada de 17 condições. Total prediz mortalidade em 1-10 anos. Versão CCI-ajustada-por-idade soma +1 por década após 50 anos.</p>
+          <table class="crit-table">
+            <thead><tr><th>Pontos</th><th>Condições</th></tr></thead>
+            <tbody>
+              <tr><td class="score">1</td><td>IAM, ICC, doença vascular periférica, AVC/AIT, demência, DPOC, doença do tecido conjuntivo, úlcera péptica, doença hepática leve, DM sem dano órgão-alvo</td></tr>
+              <tr><td class="score">2</td><td>Hemiplegia, DRC moderada-severa, DM com dano órgão-alvo, qualquer tumor sólido sem mets, leucemia, linfoma</td></tr>
+              <tr><td class="score">3</td><td>Doença hepática moderada-severa</td></tr>
+              <tr><td class="score">6</td><td>Tumor sólido com mets, AIDS</td></tr>
+            </tbody>
+          </table>
+          <table class="crit-table" style="margin-top: 0.5rem">
+            <thead><tr><th>CCI total</th><th>Sobrevida 10 anos</th></tr></thead>
+            <tbody>
+              <tr><td class="score">0</td><td>~ 99%</td></tr>
+              <tr><td class="score">1-2</td><td>~ 90%</td></tr>
+              <tr><td class="score">3-4</td><td>~ 53%</td></tr>
+              <tr><td class="score">≥ 5</td><td>~ 21%</td></tr>
+            </tbody>
+          </table>
+          <div class="crit-pearl"><strong>Pearl</strong>CCI &gt; 3 em paciente oncológico = considerar fortemente o impacto das comorbidades vs o câncer na decisão terapêutica. Em mCRPC idoso com CCI 5-6, terapias menos tóxicas (ARPi vs cabazitaxel; Lu-PSMA antes de cabazitaxel) podem ser preferidas.</div>
+        </div>
+
       </div>
+
     </section>
 
   </div>
