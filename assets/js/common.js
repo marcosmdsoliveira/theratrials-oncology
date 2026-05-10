@@ -6,15 +6,9 @@
 (function() {
   'use strict';
 
-  // Toggle do menu mobile
+  // Marcar link ativo no menu
   document.addEventListener('DOMContentLoaded', function() {
-    const navToggle = document.querySelector('.nav-toggle');
-    const nav = document.querySelector('.nav');
-    if (navToggle && nav) {
-      navToggle.addEventListener('click', () => nav.classList.toggle('open'));
-    }
-
-    // Marcar link ativo no menu
+    // Toggle do menu mobile agora eh feito via onclick inline na tag <button>
     const path = window.location.pathname.split('/').pop() || 'index.html';
     document.querySelectorAll('.nav a').forEach(a => {
       const href = a.getAttribute('href') || '';

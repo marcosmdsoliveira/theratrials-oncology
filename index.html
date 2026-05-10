@@ -183,33 +183,77 @@
   @media (max-width: 520px) { .platform-map { grid-template-columns: 1fr; } }
 
   .pmap-card {
-    background: var(--graphite-2);
+    background: linear-gradient(165deg, rgba(20,22,27,0.95) 0%, rgba(14,15,18,0.85) 100%);
     border: 1px solid var(--border-soft);
-    border-radius: var(--radius-md);
-    padding: 1.15rem 1rem;
+    border-radius: 14px;
+    padding: 1.6rem 1.35rem 1.4rem;
     text-decoration: none;
     color: var(--off-white);
-    display: flex; flex-direction: column; gap: 0.4rem;
+    display: flex; flex-direction: column; gap: 0.55rem;
     position: relative;
     overflow: hidden;
-    transition: all 0.2s;
+    transition: transform 0.25s cubic-bezier(.22,.94,.34,1), border-color 0.2s, box-shadow 0.3s;
   }
   .pmap-card::before {
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0; height: 2px;
-    background: var(--accent, var(--amber));
-    opacity: 0.6;
+    background: linear-gradient(90deg, transparent, var(--accent, var(--amber)) 30%, var(--accent, var(--amber)) 70%, transparent);
+    opacity: 0.85;
+  }
+  .pmap-card::after {
+    content: '';
+    position: absolute;
+    inset: -50% -50% auto auto;
+    width: 220px; height: 220px;
+    background: radial-gradient(circle, var(--accent, var(--amber)) 0%, transparent 65%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
   }
   .pmap-card:hover {
-    transform: translateY(-2px);
+    transform: translateY(-4px);
     border-color: var(--accent, var(--amber));
+    box-shadow: 0 18px 40px -20px rgba(0,0,0,0.6), 0 0 0 1px var(--accent, var(--amber)) inset;
     color: var(--off-white);
   }
-  .pmap-card .pmap-num { font-family: var(--font-mono); font-size: 0.7rem; color: var(--stone); letter-spacing: 0.08em; }
-  .pmap-card .pmap-icon { color: var(--accent, var(--amber)); margin-bottom: 0.1rem; }
-  .pmap-card .pmap-name { font-size: 1rem; font-weight: 600; line-height: 1.2; }
-  .pmap-card .pmap-desc { font-size: 0.78rem; color: var(--stone); line-height: 1.4; }
+  .pmap-card:hover::after { opacity: 0.08; }
+  .pmap-card .pmap-num {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: var(--accent, var(--amber));
+    letter-spacing: 0.12em;
+    opacity: 0.7;
+  }
+  .pmap-card .pmap-icon {
+    color: var(--accent, var(--amber));
+    margin: 0.15rem 0 0.25rem;
+    display: flex;
+  }
+  .pmap-card .pmap-name {
+    font-family: var(--font-display);
+    font-size: 1.08rem;
+    font-weight: 600;
+    line-height: 1.25;
+    letter-spacing: -0.012em;
+  }
+  .pmap-card .pmap-desc {
+    font-size: 0.8rem;
+    color: var(--stone);
+    line-height: 1.5;
+  }
+  .pmap-card .pmap-arrow {
+    margin-top: auto;
+    padding-top: 0.6rem;
+    color: var(--accent, var(--amber));
+    font-size: 0.72rem;
+    letter-spacing: 0.05em;
+    opacity: 0;
+    transform: translateX(-4px);
+    transition: opacity 0.2s, transform 0.2s;
+    display: inline-flex; align-items: center; gap: 4px;
+  }
+  .pmap-card:hover .pmap-arrow { opacity: 1; transform: translateX(0); }
 
   /* Bloco section frame */
   .block-section { padding: 4rem 0 2rem; position: relative; }
@@ -376,7 +420,7 @@
         <span class="brand-name">TheraTrials</span><span class="brand-sub">Oncology</span>
       </div>
     </a>
-    <button class="nav-toggle" aria-label="Menu"><i data-lucide="menu" style="width:18px;height:18px"></i></button>
+    <button class="nav-toggle" aria-label="Menu" onclick="this.parentElement.querySelector('.nav').classList.toggle('open')"><i data-lucide="menu" style="width:18px;height:18px"></i></button>
     <nav class="nav">
       <a href="index.html">Home</a>
       <a href="database.html">Database</a>
@@ -405,37 +449,13 @@
 </section>
 
 
-<!-- ============== STATS ============== -->
-<section class="compact" style="padding-top: 2rem">
-  <div class="container">
-    <div class="stat-grid">
-      <div class="stat-card">
-        <div class="stat-label"><i data-lucide="flask-conical" style="width:14px;height:14px"></i> Ensaios analisados</div>
-        <div class="stat-value" id="stat-total">311</div>
-        <div class="stat-suffix" id="stat-categories">em 34 categorias terapêuticas</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-label"><i data-lucide="medal" style="width:14px;height:14px"></i> Fase 3 pivotais</div>
-        <div class="stat-value" id="stat-phase3">—</div>
-        <div class="stat-suffix">com poder regulatório</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-label"><i data-lucide="loader-circle" style="width:14px;height:14px"></i> Em andamento</div>
-        <div class="stat-value" id="stat-ongoing">—</div>
-        <div class="stat-suffix">recrutamento ativo / aguardando</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
 <!-- ============== MAPA DA PLATAFORMA ============== -->
-<section style="padding: 2rem 0 0">
+<section style="padding: 3rem 0 1rem">
   <div class="container">
-    <div class="section-header" style="text-align: center">
-      <span class="eyebrow">Mapa da plataforma</span>
-      <h2 style="margin-top: 0.5rem; font-weight: 600">Seis portas de entrada para a evidência</h2>
-      <p class="subtitle">Banco de evidência publicada, recrutamento ativo no Brasil, visões por tumor e por modalidade, ferramentas clínicas e fundamentos — cada bloco resolve uma necessidade clínica diferente.</p>
+    <div class="section-header" style="text-align: center; max-width: 760px; margin: 0 auto 2.5rem">
+      <span class="eyebrow">Onde quer começar?</span>
+      <h2 style="margin-top: 0.6rem; font-weight: 600; font-size: clamp(1.85rem, 3.5vw, 2.6rem); letter-spacing: -0.02em">Seis caminhos. Uma decisão clínica.</h2>
+      <p class="subtitle" style="margin-top: 0.85rem">Banco curado de evidências, recrutamento ativo no Brasil, visões por tumor e por modalidade, ferramentas de bolso e fundamentos — escolha o caminho mais útil para a próxima conversa de tumor board.</p>
     </div>
 
     <div class="platform-map">
@@ -931,22 +951,8 @@
 <script src="assets/js/data.js"></script>
 <script src="assets/js/common.js"></script>
 <script>
-  // Atualiza estatísticas dinamicamente
   document.addEventListener('DOMContentLoaded', () => {
     if (typeof lucide !== 'undefined') lucide.createIcons();
-    if (!window.THERA_DATA) return;
-    const studies = THERA_DATA.studies || [];
-    const cats = THERA_DATA.categories || [];
-    const elTotal = document.getElementById('stat-total');
-    if (elTotal) elTotal.textContent = studies.length;
-    const catEl = document.getElementById('stat-categories');
-    if (catEl) catEl.textContent = `em ${cats.length} categorias terapêuticas`;
-    const phase3 = studies.filter(s => (s.fase || '').toLowerCase().includes('fase 3')).length;
-    const elP3 = document.getElementById('stat-phase3');
-    if (elP3) elP3.textContent = phase3;
-    const ongoing = studies.filter(s => s.status === 'Em andamento').length;
-    const elOng = document.getElementById('stat-ongoing');
-    if (elOng) elOng.textContent = ongoing;
   });
 </script>
 
