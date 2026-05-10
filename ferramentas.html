@@ -368,6 +368,38 @@
 
   section.tool { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
   section.tool.in-view { opacity: 1; transform: translateY(0); }
+  /* ======= CRITÉRIOS — cards inline expandidos ======= */
+  .crit-grid {
+    display: grid; grid-template-columns: 1fr; gap: 1.25rem; margin: 1.5rem 0;
+  }
+  .crit-card {
+    background: var(--graphite-2); border: 1px solid var(--border-soft);
+    border-radius: var(--radius-md); padding: 1.4rem 1.55rem;
+    position: relative; overflow: hidden;
+  }
+  .crit-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: var(--tool-accent, var(--amber)); opacity: 0.55;
+  }
+  .crit-card .crit-name { display: flex; align-items: baseline; gap: 0.7rem; flex-wrap: wrap; margin: 0 0 0.55rem; }
+  .crit-card .crit-name h3 { font-family: var(--font-display); font-size: 1.15rem; font-weight: 600; color: var(--off-white); margin: 0; letter-spacing: -0.012em; }
+  .crit-card .crit-name .ref { font-family: var(--font-mono); font-size: 0.7rem; color: var(--stone-2); letter-spacing: 0.05em; }
+  .crit-card .crit-lead { color: var(--stone); font-size: 0.92rem; line-height: 1.6; margin: 0 0 1rem; }
+  .crit-card .crit-lead strong { color: var(--off-white); }
+  .crit-table { width: 100%; border-collapse: collapse; margin: 0.85rem 0; font-size: 0.85rem; background: var(--graphite-3); border-radius: var(--radius-sm); overflow: hidden; }
+  .crit-table th, .crit-table td { padding: 0.6rem 0.85rem; text-align: left; border-bottom: 1px solid var(--border-soft); }
+  .crit-table th { background: rgba(255,255,255,0.03); color: var(--stone); font-weight: 500; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; }
+  .crit-table tr:last-child td { border-bottom: 0; }
+  .crit-table td.score { font-family: var(--font-mono); font-weight: 600; color: var(--tool-accent, var(--amber)); width: 80px; }
+  .crit-table td.cat { font-weight: 500; color: var(--off-white); width: 130px; }
+  .crit-pearl { margin: 0.85rem 0 0; padding: 0.75rem 1rem; background: rgba(255, 132, 0, 0.06); border-left: 3px solid var(--tool-accent, var(--amber)); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; font-size: 0.85rem; color: var(--off-white); line-height: 1.55; }
+  .crit-pearl strong { color: var(--tool-accent, var(--amber)); text-transform: uppercase; letter-spacing: 0.07em; font-size: 0.7rem; display: inline-block; margin-right: 0.4rem; }
+  .crit-placeholder { padding: 1.5rem 1.6rem; text-align: center; background: var(--graphite-2); border: 1px dashed var(--border-soft); border-radius: var(--radius-md); color: var(--stone-2); font-size: 0.9rem; line-height: 1.6; }
+  .crit-placeholder strong { color: var(--off-white); display: block; margin-bottom: 0.3rem; font-size: 0.95rem; }
+  .crit-placeholder ul { display: inline-flex; flex-wrap: wrap; gap: 0.4rem; list-style: none; padding: 0; margin: 0.85rem 0 0; justify-content: center; }
+  .crit-placeholder li { font-family: var(--font-mono); font-size: 0.72rem; padding: 0.25rem 0.6rem; background: var(--graphite-3); border-radius: 4px; color: var(--off-white); }
+
+
 </style>
 </head>
 <body x-data="toolsApp()" x-init="init()">
@@ -422,6 +454,48 @@
         <i data-lucide="alert-triangle" class="icon"></i>
         <h3>Eventos adversos CTCAE</h3>
         <p>Escala v6.0 · 5 graus por categoria</p>
+      </a>
+      <a href="#psma" class="tool-link" style="--accent: #FF8400">
+        <div class="num">03</div>
+        <i data-lucide="atom" class="icon"></i>
+        <h3>PSMA · Próstata</h3>
+        <p>PROMISE · miTNM · PSMA-RADS · PRIMARY · RECIP · PCWG · Gleason · ISUP · D'Amico</p>
+      </a>
+      <a href="#petct" class="tool-link" style="--accent: #C084FC">
+        <div class="num">04</div>
+        <i data-lucide="activity" class="icon"></i>
+        <h3>PET/CT · resposta metabólica</h3>
+        <p>PERCIST · EORTC PET · Deauville · Lugano</p>
+      </a>
+      <a href="#tne" class="tool-link" style="--accent: #34D399">
+        <div class="num">05</div>
+        <i data-lucide="git-branch" class="icon"></i>
+        <h3>Tumores neuroendócrinos</h3>
+        <p>Krenning · NETPET · SSTR-RADS · WHO Grade · Ki-67 · ENETS TNM</p>
+      </a>
+      <a href="#imuno" class="tool-link" style="--accent: #22D3EE">
+        <div class="num">06</div>
+        <i data-lucide="shield-plus" class="icon"></i>
+        <h3>Imunoterapia</h3>
+        <p>iRECIST · irRECIST · PERCIMT · imPERCIST</p>
+      </a>
+      <a href="#anatomica" class="tool-link" style="--accent: #F472B6">
+        <div class="num">07</div>
+        <i data-lucide="ruler" class="icon"></i>
+        <h3>Resposta anatômica</h3>
+        <p>RECIST 1.1 · mRECIST · Choi Criteria</p>
+      </a>
+      <a href="#hcc" class="tool-link" style="--accent: #F59E0B">
+        <div class="num">08</div>
+        <i data-lucide="droplet" class="icon"></i>
+        <h3>CHC e radioembolização</h3>
+        <p>BCLC · Child-Pugh · ALBI · MELD · LI-RADS · LR-TR · EASL · mRECIST HCC</p>
+      </a>
+      <a href="#clinica" class="tool-link" style="--accent: #94A3B8">
+        <div class="num">09</div>
+        <i data-lucide="user-check" class="icon"></i>
+        <h3>Oncologia clínica</h3>
+        <p>ECOG · Karnofsky · NCI-CTCAE · Charlson</p>
       </a>
     </div>
 
@@ -2099,6 +2173,484 @@
 
       <div style="font-size:0.78rem; color:var(--stone-2); padding:0.75rem 0; border-top:1px solid var(--border-soft); margin-top:1.5rem">
         <strong>Fonte:</strong> CTCAE v6.0, NIH/NCI 2024 · ASTCT (CRS/ICANS): Lee et al. Biol Blood Marrow Transplant 2019.
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 03. PSMA / Próstata -->
+    <!-- ============================================================ -->
+    <section class="tool" id="psma" style="--tool-accent: #FF8400">
+      <div class="tool-head">
+        <div class="tool-num" style="background: rgba(255, 132, 0, 0.15); color: #FF8400">03</div>
+        <h2>PSMA · câncer de próstata</h2>
+      </div>
+      <p style="color: var(--stone); margin: 0 0 1.5rem; max-width: 720px; line-height: 1.55">
+        Critérios de imagem (PROMISE, PSMA-RADS, PRIMARY, RECIP), de resposta clínica (PCWG), e de estratificação inicial (Gleason, ISUP, D'Amico). Foco em decisão prática para PSMA-PET diagnóstico, seleção para Lu-PSMA e avaliação de resposta.
+      </p>
+
+      <div class="crit-grid">
+
+        <!-- PROMISE / miTNM -->
+        <div class="crit-card">
+          <div class="crit-name">
+            <h3>PROMISE v2 / miTNM</h3>
+            <span class="ref">SNMMI/EANM 2023 · Eiber, Fendler</span>
+          </div>
+          <p class="crit-lead">Sistema padronizado de relatório do PSMA-PET/CT. <strong>miTNM</strong> = molecular imaging TNM, classifica extensão tumoral por imagem. <strong>PROMISE v2</strong> adiciona escore tumoral global e captação de referência (fígado).</p>
+          <table class="crit-table">
+            <thead><tr><th>Componente</th><th>Definição</th></tr></thead>
+            <tbody>
+              <tr><td class="cat">miT (local)</td><td>T0 sem captação · T2 confinado à próstata · T3a extracapsular · T3b vesícula seminal · T4 órgão adjacente</td></tr>
+              <tr><td class="cat">miN (linfonodal)</td><td>N0 negativo · N1 pélvico (M1a anterior) · M1a retroperitoneal/extra-pélvico</td></tr>
+              <tr><td class="cat">miM (metástase)</td><td>M1a linfonodo extra-pélvico · M1b óssea · M1c visceral</td></tr>
+              <tr><td class="cat">miPSMA score</td><td>0 = sem captação · 1 = &lt; sangue · 2 = sangue–fígado · 3 = ≥ fígado · 4 = ≥ parótida</td></tr>
+            </tbody>
+          </table>
+          <div class="crit-pearl"><strong>Pearl</strong>O <strong>miPSMA ≥ 2 (≥ background hepático)</strong> é o threshold prático para considerar lesão "PSMA-positiva" no critério VISION para Lu-PSMA. Captação parótida (4) marca tumor com expressão muito alta — bom prognóstico para resposta.</div>
+        </div>
+
+        <!-- PSMA-RADS -->
+        <div class="crit-card">
+          <div class="crit-name">
+            <h3>PSMA-RADS v2.0</h3>
+            <span class="ref">Rowe, Pomper · 2023 (atualização)</span>
+          </div>
+          <p class="crit-lead">Classificação <strong>por lesão individual</strong> em 5 categorias de probabilidade de malignidade. Complementa o PROMISE (que estrutura o relatório global) graduando a confiança em cada achado.</p>
+          <table class="crit-table">
+            <thead><tr><th>Score</th><th>Categoria</th><th>Interpretação</th></tr></thead>
+            <tbody>
+              <tr><td class="score">1</td><td class="cat">Benigno</td><td>Captação típica de benignidade (gânglios celíaco, ureter)</td></tr>
+              <tr><td class="score">2</td><td class="cat">Provável benigno</td><td>Captação atípica em local incomum, sem correlato anatômico de malignidade</td></tr>
+              <tr><td class="score">3A</td><td class="cat">Indeterminado</td><td>Lesão sem captação significativa em sítio típico de mets</td></tr>
+              <tr><td class="score">3B</td><td class="cat">Indeterminado</td><td>Captação leve sem correlato anatômico claro</td></tr>
+              <tr><td class="score">3C</td><td class="cat">Indeterminado</td><td>Captação intensa em local inesperado para próstata</td></tr>
+              <tr><td class="score">3D</td><td class="cat">Indeterminado</td><td>Lesão anatômica sugestiva de malignidade <strong>sem</strong> captação PSMA</td></tr>
+              <tr><td class="score">4</td><td class="cat">Provável maligno</td><td>Captação intensa em sítio típico, sem correlato anatômico definido</td></tr>
+              <tr><td class="score">5</td><td class="cat">Maligno</td><td>Captação intensa + lesão anatômica típica</td></tr>
+            </tbody>
+          </table>
+          <div class="crit-pearl"><strong>Pearl</strong>O <strong>3D</strong> é o "tracker" mais perigoso para Lu-PSMA: lesão grande em TC <strong>sem</strong> captação PSMA = doença discordante (PSMA-). Indicação para FDG-PET de complemento e cuidado na seleção terapêutica.</div>
+        </div>
+
+        <!-- PRIMARY Score -->
+        <div class="crit-card">
+          <div class="crit-name">
+            <h3>PRIMARY Score</h3>
+            <span class="ref">Emmett · J Nucl Med 2021 · validado em 2024</span>
+          </div>
+          <p class="crit-lead">Escore PSMA-PET <strong>intra-prostático</strong> (0–5) para predizer doença clinicamente significativa (ISUP ≥ 2) na biópsia. Permite evitar biópsia em pacientes selecionados ou direcioná-la (target).</p>
+          <table class="crit-table">
+            <thead><tr><th>Score</th><th>Padrão</th><th>VPP csPCa</th></tr></thead>
+            <tbody>
+              <tr><td class="score">1</td><td class="cat">Sem captação focal</td><td>~12%</td></tr>
+              <tr><td class="score">2</td><td class="cat">Captação difusa zonal de transição</td><td>~27%</td></tr>
+              <tr><td class="score">3</td><td class="cat">Captação focal SUVmax &lt; 12</td><td>~57%</td></tr>
+              <tr><td class="score">4</td><td class="cat">Captação focal SUVmax ≥ 12</td><td>~83%</td></tr>
+              <tr><td class="score">5</td><td class="cat">Extensão extra-prostática (T3+)</td><td>~92%</td></tr>
+            </tbody>
+          </table>
+          <div class="crit-pearl"><strong>Pearl</strong>Score 1–2 + PSA &lt; 20 ng/mL + PI-RADS 1–3 → considerar evitar biópsia (vigilância ativa). Score 4–5 → biópsia direcionada à área de captação (fusão). Tem performance comparável ao mpRMN com PI-RADS para detecção de csPCa.</div>
+        </div>
+
+        <!-- RECIP 1.0 -->
+        <div class="crit-card">
+          <div class="crit-name">
+            <h3>RECIP 1.0</h3>
+            <span class="ref">Gafita · J Nucl Med 2022 (mCRPC pós-Lu-PSMA)</span>
+          </div>
+          <p class="crit-lead">Critério de resposta para PSMA-PET <strong>após Lu-PSMA</strong> em mCRPC. Combina mudança de PSMA-volume tumoral total (PSMA-VTV) com aparecimento de novas lesões. Validado em &gt; 600 pacientes.</p>
+          <table class="crit-table">
+            <thead><tr><th>Categoria</th><th>Definição</th><th>Prognóstico</th></tr></thead>
+            <tbody>
+              <tr><td class="cat">RC PSMA</td><td>Desaparecimento de todas as lesões</td><td>Melhor</td></tr>
+              <tr><td class="cat">RP PSMA</td><td>↓ PSMA-VTV ≥ 30% E sem novas lesões</td><td>OS prolongada (HR ~ 0,4)</td></tr>
+              <tr><td class="cat">DE PSMA</td><td>Não preenche RP nem PD</td><td>Intermediário</td></tr>
+              <tr><td class="cat">PD PSMA</td><td>↑ PSMA-VTV ≥ 20% E aparecimento de ≥ 2 novas lesões</td><td>Pior</td></tr>
+            </tbody>
+          </table>
+          <div class="crit-pearl"><strong>Pearl</strong>RECIP é mais robusto que PSA-only para predizer OS após Lu-PSMA. <strong>Resposta divergente</strong> (PSA cai mas PSMA-VTV sobe) é sinal de pior prognóstico — considerar mudança terapêutica precoce.</div>
+        </div>
+
+        <!-- PCWG3 / PCWG4 -->
+        <div class="crit-card">
+          <div class="crit-name">
+            <h3>PCWG3 / PCWG4 (Prostate Cancer Working Group)</h3>
+            <span class="ref">Scher · JCO 2016 (PCWG3) · 2024 (PCWG4 update)</span>
+          </div>
+          <p class="crit-lead">Padrão para <strong>desfechos em ensaios clínicos de mCRPC</strong>. Define tipos de progressão: PSA, óssea, partes moles, sintomática. PCWG4 (2024) integra PSMA-PET pela primeira vez.</p>
+          <table class="crit-table">
+            <thead><tr><th>Componente</th><th>Definição</th></tr></thead>
+            <tbody>
+              <tr><td class="cat">PFS-PSA</td><td>↑ PSA ≥ 25% E ≥ 2 ng/mL acima do nadir, confirmado em ≥ 3 sem</td></tr>
+              <tr><td class="cat">PFS ósseo</td><td>≥ 2 novas lesões em cintilografia (BS) confirmadas em segunda BS (regra "2+2")</td></tr>
+              <tr><td class="cat">PFS partes moles</td><td>RECIST 1.1 (lesões ≥ 1,5 cm em eixo curto)</td></tr>
+              <tr><td class="cat">PCWG4 update</td><td>Permite incluir PSMA-PET (RECIP) e ctDNA como desfechos exploratórios</td></tr>
+            </tbody>
+          </table>
+          <div class="crit-pearl"><strong>Pearl</strong>A <strong>regra "2+2"</strong> evita o pseudo-flare ósseo precoce após início de terapia (lesões "novas" na 1ª BS pós-tratamento podem ser cura/cicatrização). Confirmar progressão óssea exige nova BS ≥ 6 sem depois mostrando ≥ 2 lesões adicionais.</div>
+        </div>
+
+        <!-- Gleason Score -->
+        <div class="crit-card">
+          <div class="crit-name">
+            <h3>Gleason Score</h3>
+            <span class="ref">Gleason 1966 · ISUP/WHO update 2014</span>
+          </div>
+          <p class="crit-lead">Classificação <strong>histológica</strong> baseada na arquitetura glandular. Padrões 1–5 (1 = mais diferenciado, 5 = anaplásico). Reporta-se como soma do <strong>padrão primário (mais comum) + padrão secundário</strong>. Padrão terciário se &lt; 5% do tecido.</p>
+          <table class="crit-table">
+            <thead><tr><th>Padrão</th><th>Característica</th></tr></thead>
+            <tbody>
+              <tr><td class="score">1–2</td><td>Glândulas bem diferenciadas, uniformes (raro hoje em biópsia)</td></tr>
+              <tr><td class="score">3</td><td>Glândulas individuais, infiltrativas mas reconhecíveis</td></tr>
+              <tr><td class="score">4</td><td>Glândulas fundidas, cribriforme, glomeruloide ou mal-formadas</td></tr>
+              <tr><td class="score">5</td><td>Sem formação glandular; cordões, ninhos, células isoladas, comedo-necrose</td></tr>
+            </tbody>
+          </table>
+          <div class="crit-pearl"><strong>Pearl</strong>Gleason 7 é heterogêneo: <strong>3+4 ≠ 4+3</strong>. O 4+3 (padrão dominante 4) tem prognóstico significativamente pior. Por isso o ISUP Grade Group desagregou em 2 (3+4) e 3 (4+3).</div>
+        </div>
+
+        <!-- ISUP Grade Group -->
+        <div class="crit-card">
+          <div class="crit-name">
+            <h3>ISUP Grade Group</h3>
+            <span class="ref">Epstein · ISUP 2014 · WHO 5ª ed 2022</span>
+          </div>
+          <p class="crit-lead">Sistema de 5 grupos que <strong>simplifica e estratifica melhor</strong> o Gleason. Substituiu a soma Gleason em diretrizes modernas (NCCN, AUA, EAU).</p>
+          <table class="crit-table">
+            <thead><tr><th>Grupo</th><th>Gleason</th><th>Risco recidiva</th></tr></thead>
+            <tbody>
+              <tr><td class="score">1</td><td>≤ 6 (3+3)</td><td>Muito baixo</td></tr>
+              <tr><td class="score">2</td><td>7 (3+4)</td><td>Baixo–intermediário favorável</td></tr>
+              <tr><td class="score">3</td><td>7 (4+3)</td><td>Intermediário desfavorável</td></tr>
+              <tr><td class="score">4</td><td>8 (4+4, 3+5, 5+3)</td><td>Alto</td></tr>
+              <tr><td class="score">5</td><td>9–10 (4+5, 5+4, 5+5)</td><td>Muito alto</td></tr>
+            </tbody>
+          </table>
+          <div class="crit-pearl"><strong>Pearl</strong>Tumores <strong>cribriforme/intraductal mesmo em Grade 2</strong> (3+4) têm prognóstico próximo do Grade 3 (4+3) — sempre solicitar do patologista a presença/ausência desses padrões.</div>
+        </div>
+
+        <!-- D'Amico -->
+        <div class="crit-card">
+          <div class="crit-name">
+            <h3>Classificação de D'Amico</h3>
+            <span class="ref">D'Amico · JAMA 1998 (clássico, ainda usado)</span>
+          </div>
+          <p class="crit-lead">Estratifica o <strong>câncer de próstata localizado</strong> em risco baixo / intermediário / alto, baseado em PSA, Gleason e estádio clínico T. Define indicação de tratamento (vigilância, RT focal, RT+ADT, prostatectomia).</p>
+          <table class="crit-table">
+            <thead><tr><th>Risco</th><th>Critério (TODOS)</th></tr></thead>
+            <tbody>
+              <tr><td class="cat">Baixo</td><td>PSA ≤ 10 ng/mL <strong>E</strong> Gleason ≤ 6 (ISUP 1) <strong>E</strong> cT1–T2a</td></tr>
+              <tr><td class="cat">Intermediário</td><td>PSA 10–20 <strong>OU</strong> Gleason 7 (ISUP 2–3) <strong>OU</strong> cT2b</td></tr>
+              <tr><td class="cat">Alto</td><td>PSA &gt; 20 <strong>OU</strong> Gleason 8–10 (ISUP 4–5) <strong>OU</strong> cT2c–T3</td></tr>
+              <tr><td class="cat">Muito alto (NCCN)</td><td>cT3b–T4 <strong>OU</strong> ISUP 5 com &gt; 4 cores positivos <strong>OU</strong> 2+ fatores de alto risco</td></tr>
+            </tbody>
+          </table>
+          <div class="crit-pearl"><strong>Pearl</strong>Pacientes <strong>intermediário desfavorável</strong> (presença de qualquer: ≥ 50% de cores positivos, padrão Gleason 4 ≥ 50%, ou múltiplos fatores intermediários) têm comportamento mais próximo de alto risco — considerar ADT curto associado à RT.</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 04. PET/CT · resposta metabólica -->
+    <!-- ============================================================ -->
+    <section class="tool" id="petct" style="--tool-accent: #C084FC">
+      <div class="tool-head">
+        <div class="tool-num" style="background: rgba(192, 132, 252, 0.15); color: #C084FC">04</div>
+        <h2>PET/CT · resposta metabólica</h2>
+      </div>
+      <p style="color: var(--stone); margin: 0 0 1.5rem; max-width: 720px; line-height: 1.55">
+        Critérios para avaliação de resposta tumoral por PET/CT com FDG. PERCIST e EORTC para tumores sólidos; Deauville e Lugano para linfomas. SUL e SUVmax como métricas de referência.
+      </p>
+
+      <div class="crit-grid">
+
+        <!-- PERCIST 1.0 -->
+        <div class="crit-card">
+          <div class="crit-name">
+            <h3>PERCIST 1.0</h3>
+            <span class="ref">Wahl · J Nucl Med 2009 · padrão atual</span>
+          </div>
+          <p class="crit-lead">PET Response Criteria in Solid Tumors. Usa <strong>SULpeak</strong> (SUV corrigido pela massa magra, em ROI de 1 cm³) da lesão mais ativa. Resposta avaliada por mudança percentual entre exames.</p>
+          <table class="crit-table">
+            <thead><tr><th>Categoria</th><th>Definição</th></tr></thead>
+            <tbody>
+              <tr><td class="cat">CMR (resposta completa)</td><td>Desaparecimento de toda captação tumoral mensurável (≤ background hepático)</td></tr>
+              <tr><td class="cat">PMR (resposta parcial)</td><td>↓ SULpeak ≥ 30% E ↓ ≥ 0,8 unidades SUL na lesão de referência</td></tr>
+              <tr><td class="cat">SMD (doença estável)</td><td>Não preenche PMR nem PMD</td></tr>
+              <tr><td class="cat">PMD (progressão)</td><td>↑ SULpeak ≥ 30% E ↑ ≥ 0,8 unidades, OU novas lesões, OU ↑ ≥ 75% TLG</td></tr>
+            </tbody>
+          </table>
+          <table class="crit-table" style="margin-top: 0.5rem">
+            <thead><tr><th>Pré-requisitos técnicos</th><th>Valor</th></tr></thead>
+            <tbody>
+              <tr><td>SUL fígado normal</td><td>SUVmean &gt; 1,5 (caso contrário, PET não é interpretável)</td></tr>
+              <tr><td>Glicemia</td><td>&lt; 200 mg/dL no momento da injeção</td></tr>
+              <tr><td>Tempo uptake</td><td>60 min ± 10 min em ambos exames</td></tr>
+              <tr><td>Mesmo scanner</td><td>Idealmente; ou EARL-compatível</td></tr>
+            </tbody>
+          </table>
+          <div class="crit-pearl"><strong>Pearl</strong>SULpeak (não SUVmax) é a métrica oficial — corrige por massa magra, reduz variabilidade entre pacientes obesos vs magros. Mudanças menores que 30% são <strong>ruído</strong>, não resposta real.</div>
+        </div>
+
+        <!-- EORTC PET -->
+        <div class="crit-card">
+          <div class="crit-name">
+            <h3>EORTC PET Response Criteria</h3>
+            <span class="ref">Young · Eur J Cancer 1999 · histórico</span>
+          </div>
+          <p class="crit-lead">Primeiro critério padronizado para PET. Usa <strong>SUVmax</strong> (mais simples que SULpeak), threshold de 25% para resposta. Largamente substituído por PERCIST mas ainda usado em alguns ensaios europeus.</p>
+          <table class="crit-table">
+            <thead><tr><th>Categoria</th><th>EORTC</th><th>PERCIST (comparação)</th></tr></thead>
+            <tbody>
+              <tr><td class="cat">RC</td><td>Desaparecimento de captação</td><td>CMR (≤ fígado)</td></tr>
+              <tr><td class="cat">RP</td><td>↓ SUVmax ≥ 15-25% após 1 ciclo, ≥ 25% após múltiplos</td><td>PMR (≥ 30% SULpeak)</td></tr>
+              <tr><td class="cat">DE</td><td>Não preenche RP nem PD</td><td>SMD</td></tr>
+              <tr><td class="cat">PD</td><td>↑ SUVmax ≥ 25% OU novas lesões OU ↑ ≥ 20% extensão</td><td>PMD (≥ 30% E novas)</td></tr>
+            </tbody>
+          </table>
+          <div class="crit-pearl"><strong>Pearl</strong>EORTC é mais sensível para detectar resposta precoce (após 1 ciclo) por usar threshold menor. PERCIST é mais robusto para resposta tardia. Em ensaios novos: prefira <strong>PERCIST 1.0</strong>.</div>
+        </div>
+
+        <!-- Deauville -->
+        <div class="crit-card">
+          <div class="crit-name">
+            <h3>Deauville Score (5-PS)</h3>
+            <span class="ref">Meignan · 2009 · padrão para linfomas</span>
+          </div>
+          <p class="crit-lead">Escala visual de 5 pontos para <strong>linfoma de Hodgkin e DLBCL</strong>. Compara captação residual com 2 referências internas: <strong>mediastino (pool sanguíneo)</strong> e <strong>fígado</strong>. Padrão para PET de fim de tratamento e PET interim.</p>
+          <table class="crit-table">
+            <thead><tr><th>Score</th><th>Captação residual</th><th>Interpretação</th></tr></thead>
+            <tbody>
+              <tr><td class="score">1</td><td>Sem captação acima de fundo</td><td>Resposta metabólica completa</td></tr>
+              <tr><td class="score">2</td><td>≤ pool mediastinal</td><td>RC (negativo)</td></tr>
+              <tr><td class="score">3</td><td>&gt; mediastino, ≤ fígado</td><td>RC (negativo) na maioria; debate em interim</td></tr>
+              <tr><td class="score">4</td><td>Moderadamente &gt; fígado</td><td>Resposta inadequada / persistência</td></tr>
+              <tr><td class="score">5</td><td>Marcadamente &gt; fígado (≥ 2× fígado) OU novas lesões</td><td>Refratariedade / progressão</td></tr>
+              <tr><td class="score">X</td><td>Captação não relacionada ao linfoma</td><td>Excluir avaliação</td></tr>
+            </tbody>
+          </table>
+          <div class="crit-pearl"><strong>Pearl</strong>Em Hodgkin clássico, <strong>PET interim Deauville 1–2</strong> permite escalonamento de QT (RATHL, AHL2011). Deauville 4–5 = mudar para regime mais intenso. Em DLBCL pós-R-CHOP, Deauville 4 pode requerer biópsia para confirmar persistência viva (necrose também pode dar Deauville 4 transitório).</div>
+        </div>
+
+        <!-- Lugano -->
+        <div class="crit-card">
+          <div class="crit-name">
+            <h3>Lugano Classification (2014/2024)</h3>
+            <span class="ref">Cheson · JCO 2014 · update 2024</span>
+          </div>
+          <p class="crit-lead">Sistema integrado de <strong>estadiamento E avaliação de resposta</strong> para linfomas. Substituiu Ann Arbor (estadiamento) e IWG (resposta). Usa Deauville Score como critério de resposta metabólica, RECIST adaptado para resposta anatômica.</p>
+          <table class="crit-table">
+            <thead><tr><th>Componente</th><th>Definição</th></tr></thead>
+            <tbody>
+              <tr><td class="cat">Estádio I</td><td>1 sítio nodal OU 1 extranodal isolado (IE)</td></tr>
+              <tr><td class="cat">Estádio II</td><td>2+ sítios nodais do mesmo lado do diafragma</td></tr>
+              <tr><td class="cat">Estádio III</td><td>Sítios nodais em ambos lados do diafragma OU baço</td></tr>
+              <tr><td class="cat">Estádio IV</td><td>Envolvimento extranodal difuso/disseminado</td></tr>
+              <tr><td class="cat">"Bulky"</td><td>Massa &gt; 10 cm OU &gt; 1/3 do diâmetro torácico</td></tr>
+            </tbody>
+          </table>
+          <table class="crit-table" style="margin-top: 0.5rem">
+            <thead><tr><th>Resposta (PET)</th><th>Definição</th></tr></thead>
+            <tbody>
+              <tr><td class="cat">RC metabólica</td><td>Deauville 1–3 com ou sem massa residual</td></tr>
+              <tr><td class="cat">RP metabólica</td><td>Deauville 4–5 com ↓ captação E sem novas lesões</td></tr>
+              <tr><td class="cat">SD metabólica</td><td>Deauville 4–5 sem ↓ significativa</td></tr>
+              <tr><td class="cat">PD metabólica</td><td>Novas lesões OU ↑ Deauville</td></tr>
+            </tbody>
+          </table>
+          <div class="crit-pearl"><strong>Pearl</strong>Lugano permite <strong>"PET-only" para resposta</strong> em linfomas FDG-ávidos (Hodgkin, DLBCL, FL alta carga) — não exige TC contrastado se PET/CT for de boa qualidade. Para linfomas pouco FDG-ávidos (LLC, MZL, MALT, alguns FL indolentes), use IWG-2014 / RECIST.</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 05. TNE · Tumores Neuroendócrinos -->
+    <!-- ============================================================ -->
+    <section class="tool" id="tne" style="--tool-accent: #34D399">
+      <div class="tool-head">
+        <div class="tool-num" style="background: rgba(52, 211, 153, 0.15); color: #34D399">05</div>
+        <h2>Tumores neuroendócrinos · scores</h2>
+      </div>
+      <p style="color: var(--stone); margin: 0 0 1.5rem; max-width: 720px; line-height: 1.55">
+        Critérios para seleção e estratificação em TNE: imagem (Krenning, NETPET, SSTR-RADS), patologia (WHO, Ki-67) e estadiamento (ENETS TNM). Foco em decisão para Lu-DOTATATE e estratégia terapêutica.
+      </p>
+
+      <div class="crit-grid">
+
+        <!-- Krenning Score -->
+        <div class="crit-card">
+          <div class="crit-name">
+            <h3>Krenning Score (clássico) e Modified Krenning</h3>
+            <span class="ref">Krenning · Eur J Nucl Med 1993 · adaptado para PET</span>
+          </div>
+          <p class="crit-lead">Escala visual de 0–4 para captação SSTR. Originalmente para <strong>OctreoScan (¹¹¹In-pentetreotide)</strong>; <strong>Modified Krenning</strong> adapta para PSMA-PET com ⁶⁸Ga-DOTATATE/DOTATOC. Threshold ≥ 2 (≥ fígado) é critério de elegibilidade para PRRT (Lu-DOTATATE).</p>
+          <table class="crit-table">
+            <thead><tr><th>Score</th><th>Captação</th><th>Interpretação PRRT</th></tr></thead>
+            <tbody>
+              <tr><td class="score">0</td><td>Sem captação</td><td>NÃO elegível</td></tr>
+              <tr><td class="score">1</td><td>Muito baixa, &lt; fígado</td><td>NÃO elegível</td></tr>
+              <tr><td class="score">2</td><td>= fígado</td><td>Borderline (caso a caso)</td></tr>
+              <tr><td class="score">3</td><td>&gt; fígado, &lt; baço</td><td>Elegível</td></tr>
+              <tr><td class="score">4</td><td>≥ baço</td><td>Excelente candidato</td></tr>
+            </tbody>
+          </table>
+          <div class="crit-pearl"><strong>Pearl</strong>NETTER-1 exigiu Krenning ≥ 3 em <strong>todas</strong> as lesões-alvo. Na prática brasileira aceita-se Krenning ≥ 2 com captação <strong>dominante</strong> ≥ 3 — heterogeneidade tumoral é a regra. Lesão Krenning 0–1 dentro de paciente predominantemente Krenning 3–4: considerar abordagem combinada (PRRT + RT focal).</div>
+        </div>
+
+        <!-- NETPET Score -->
+        <div class="crit-card">
+          <div class="crit-name">
+            <h3>NETPET Score</h3>
+            <span class="ref">Chan · Theranostics 2017 · útil em G2 alto/G3</span>
+          </div>
+          <p class="crit-lead">Combina <strong>SSTR-PET (DOTATATE) + FDG-PET</strong> em um único escore P1–P5 que estratifica prognóstico e direciona terapia. Especialmente útil em NET <strong>G2 alto e G3</strong> onde a discordância DOTA/FDG é frequente.</p>
+          <table class="crit-table">
+            <thead><tr><th>Score</th><th>Padrão SSTR / FDG</th><th>Estratégia</th></tr></thead>
+            <tbody>
+              <tr><td class="score">P1</td><td>SSTR+ todas, FDG−</td><td>PRRT + análogo SSTR</td></tr>
+              <tr><td class="score">P2a</td><td>SSTR+ todas, FDG+ &lt; SSTR</td><td>PRRT preferencial</td></tr>
+              <tr><td class="score">P2b</td><td>SSTR+ todas, FDG+ = SSTR</td><td>PRRT considerar QT</td></tr>
+              <tr><td class="score">P3</td><td>Lesões FDG+ &gt; SSTR</td><td>QT (CAPTEM, FOLFOX) preferencial</td></tr>
+              <tr><td class="score">P4</td><td>Discordância major (FDG dominante)</td><td>QT; PRRT pouco eficaz</td></tr>
+              <tr><td class="score">P5</td><td>Lesões FDG+ apenas, SSTR−</td><td>Não-elegível PRRT; QT</td></tr>
+            </tbody>
+          </table>
+          <div class="crit-pearl"><strong>Pearl</strong>Em NET G3 ou G2 com Ki-67 &gt; 15%, <strong>sempre faça FDG-PET além do DOTATATE</strong> antes de indicar Lu-DOTATATE. P3–P5 = priorize QT (CAPTEM se G2/G3 bem-diferenciado, FOLFOX/EP-platina se NEC). NETPET P2a–P2b = melhor benefício de PRRT documentado.</div>
+        </div>
+
+        <!-- SSTR-RADS -->
+        <div class="crit-card">
+          <div class="crit-name">
+            <h3>SSTR-RADS v1.0</h3>
+            <span class="ref">Werner · Theranostics 2018</span>
+          </div>
+          <p class="crit-lead">Sistema análogo ao PSMA-RADS, mas para <strong>SSTR-PET</strong> (DOTATATE/DOTATOC). Classifica cada lesão em 5 categorias de probabilidade tumoral, padronizando relatórios.</p>
+          <table class="crit-table">
+            <thead><tr><th>Score</th><th>Categoria</th><th>Interpretação</th></tr></thead>
+            <tbody>
+              <tr><td class="score">1</td><td>Benigno</td><td>Captação típica de benignidade (uncinado, gland adrenais nl, baço)</td></tr>
+              <tr><td class="score">2</td><td>Provável benigno</td><td>Captação atípica em sítio improvável de NET</td></tr>
+              <tr><td class="score">3</td><td>Equívoco</td><td>Captação leve em local possível mas não típico</td></tr>
+              <tr><td class="score">4</td><td>Provável maligno</td><td>Captação intensa em sítio típico, sem correlato anatômico claro</td></tr>
+              <tr><td class="score">5</td><td>Maligno</td><td>Captação intensa + lesão anatômica típica</td></tr>
+            </tbody>
+          </table>
+          <div class="crit-pearl"><strong>Pearl</strong>O <strong>processo uncinado pancreático</strong> tem captação fisiológica de DOTATATE em até 50% dos pacientes — não confunda com tumor primário pancreático. Repetir com correlação anatômica fina (RM) se SSTR-RADS 3 nessa região.</div>
+        </div>
+
+        <!-- WHO Grade -->
+        <div class="crit-card">
+          <div class="crit-name">
+            <h3>WHO Classification (NET 2019/2022)</h3>
+            <span class="ref">Klimstra · WHO Digestive 2019, Endocrine 2022</span>
+          </div>
+          <p class="crit-lead">Classifica TNE em 3 graus (G1, G2, G3) baseado em <strong>Ki-67 e índice mitótico</strong>. Distingue tumores <strong>bem-diferenciados (NET)</strong> de <strong>mal-diferenciados (NEC)</strong> — diferenciação tem mais peso prognóstico que o grau isolado.</p>
+          <table class="crit-table">
+            <thead><tr><th>Categoria</th><th>Diferenciação</th><th>Ki-67</th><th>Mitoses (10 HPF)</th></tr></thead>
+            <tbody>
+              <tr><td class="cat">NET G1</td><td>Bem-dif.</td><td>&lt; 3%</td><td>&lt; 2</td></tr>
+              <tr><td class="cat">NET G2</td><td>Bem-dif.</td><td>3–20%</td><td>2–20</td></tr>
+              <tr><td class="cat">NET G3</td><td>Bem-dif.</td><td>&gt; 20%</td><td>&gt; 20</td></tr>
+              <tr><td class="cat">NEC pequenas células</td><td>Mal-dif.</td><td>&gt; 20% (geralmente &gt; 55%)</td><td>&gt; 20</td></tr>
+              <tr><td class="cat">NEC grandes células</td><td>Mal-dif.</td><td>&gt; 20%</td><td>&gt; 20</td></tr>
+              <tr><td class="cat">MiNEN</td><td>Componente misto NE + não-NE (cada ≥ 30%)</td><td colspan="2">Variável</td></tr>
+            </tbody>
+          </table>
+          <div class="crit-pearl"><strong>Pearl</strong><strong>NET G3 ≠ NEC</strong>. Apesar de ambos terem Ki-67 &gt; 20%, NET G3 mantém arquitetura organoide, expressa cromogranina/sinaptofisina forte, frequentemente é <strong>SSTR+</strong> e responde a Lu-DOTATATE. NEC é não-diferenciado, raramente SSTR+, responde a EP-platina como tumor de pequenas células. NETTER-2 incluiu NET G2/G3 SSTR+, não NEC.</div>
+        </div>
+
+        <!-- Ki-67 Index -->
+        <div class="crit-card">
+          <div class="crit-name">
+            <h3>Ki-67 Proliferation Index</h3>
+            <span class="ref">Marcador-chave para grade · IHQ MIB-1</span>
+          </div>
+          <p class="crit-lead">Antígeno nuclear expresso em células em ciclo (G1, S, G2, M; ausente em G0). Mensurado por imuno-histoquímica como <strong>% de células coradas em hot-spot de 500–2000 células</strong>. Define grade WHO e correlaciona com prognóstico em quase todos tumores.</p>
+          <table class="crit-table">
+            <thead><tr><th>Range</th><th>Significado em NET</th></tr></thead>
+            <tbody>
+              <tr><td class="score">&lt; 3%</td><td>NET G1 — indolente, vigilância ou análogo SSA</td></tr>
+              <tr><td class="score">3–10%</td><td>NET G2 baixo — análogo SSA, considerar everolimus/sunitinibe</td></tr>
+              <tr><td class="score">10–20%</td><td>NET G2 alto — Lu-DOTATATE preferencial (NETTER-2)</td></tr>
+              <tr><td class="score">20–55%</td><td>NET G3 (se bem-dif) — Lu-DOTATATE pode beneficiar; CAPTEM alternativa</td></tr>
+              <tr><td class="score">&gt; 55%</td><td>NEC virtualmente sempre — EP/platina padrão</td></tr>
+            </tbody>
+          </table>
+          <div class="crit-pearl"><strong>Pearl</strong>Ki-67 deve ser feito no <strong>hot-spot</strong> (área de maior proliferação), não na média. Em biópsias pequenas pode subestimar — repita em metástase quando possível para refinar grade. Ki-67 ≥ 10% em PNET (pâncreas) tem comportamento especialmente agressivo.</div>
+        </div>
+
+        <!-- ENETS TNM -->
+        <div class="crit-card">
+          <div class="crit-name">
+            <h3>ENETS TNM (8ª edição)</h3>
+            <span class="ref">Rindi · Virchows Arch 2007 · update AJCC 8</span>
+          </div>
+          <p class="crit-lead">Sistema de estadiamento <strong>específico para TNE gastroentero-pancreáticos</strong> (GEP-NET). Diferente do AJCC clássico em alguns sítios (especialmente pâncreas e intestino delgado), reflete melhor o comportamento indolente dos NET bem-diferenciados.</p>
+          <table class="crit-table">
+            <thead><tr><th>Sítio</th><th>T1</th><th>T2</th><th>T3</th><th>T4</th></tr></thead>
+            <tbody>
+              <tr><td class="cat">PNET (pâncreas)</td><td>≤ 2 cm, confinado</td><td>2–4 cm, confinado</td><td>&gt; 4 cm OU invade duodeno/colédoco</td><td>Invade órgãos adjacentes/grandes vasos</td></tr>
+              <tr><td class="cat">Intestino delgado</td><td>≤ 1 cm, mucosa/submucosa</td><td>≤ 1 cm muscular OU 1–2 cm</td><td>&gt; 2 cm OU invade subserosa</td><td>Invade peritônio/órgão</td></tr>
+              <tr><td class="cat">Estômago</td><td>≤ 1 cm submucosa</td><td>1–2 cm OU muscular</td><td>&gt; 2 cm OU subserosa</td><td>Invade peritônio/órgão</td></tr>
+            </tbody>
+          </table>
+          <div class="crit-pearl"><strong>Pearl</strong>Em PNET, <strong>presença de mets hepáticas com primário não-localizado</strong> é apresentação clássica. ENETS classifica como M1 mas o prognóstico depende muito mais do <strong>grau (Ki-67) e padrão NETPET</strong> do que do estádio TNM. Use sempre TNM <em>combinado</em> com WHO grade e SSTR-imagem.</div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="tool" id="imuno" style="--tool-accent: #22D3EE">
+      <div class="tool-head">
+        <div class="tool-num" style="background: rgba(34, 211, 238, 0.15); color: #22D3EE">06</div>
+        <h2>Imunoterapia &middot; resposta atipica</h2>
+      </div>
+      <p style="color: var(--stone); margin: 0 0 1.5rem; max-width: 720px; line-height: 1.55">Criterios que reconhecem padroes atipicos de resposta a inibidores de checkpoint imune (pseudoprogressao, hiperprogressao, resposta tardia).</p>
+      <div class="crit-placeholder">
+        <strong>Em producao &middot; proxima atualizacao</strong>
+        Cobertura prevista:
+        <ul><li>iRECIST</li><li>irRECIST</li><li>PERCIMT</li><li>imPERCIST</li></ul>
+      </div>
+    </section>
+
+    <section class="tool" id="anatomica" style="--tool-accent: #F472B6">
+      <div class="tool-head">
+        <div class="tool-num" style="background: rgba(244, 114, 182, 0.15); color: #F472B6">07</div>
+        <h2>Resposta anatomica tumoral</h2>
+      </div>
+      <p style="color: var(--stone); margin: 0 0 1.5rem; max-width: 720px; line-height: 1.55">Criterios morfologicos por TC/RM para tumores solidos. RECIST e padrao para a maioria dos ensaios.</p>
+      <div class="crit-placeholder">
+        <strong>Em producao &middot; proxima atualizacao</strong>
+        Cobertura prevista:
+        <ul><li>RECIST 1.1</li><li>mRECIST</li><li>Choi Criteria</li></ul>
+      </div>
+    </section>
+
+    <section class="tool" id="hcc" style="--tool-accent: #F59E0B">
+      <div class="tool-head">
+        <div class="tool-num" style="background: rgba(245, 158, 11, 0.15); color: #F59E0B">08</div>
+        <h2>CHC e radioembolizacao hepatica</h2>
+      </div>
+      <p style="color: var(--stone); margin: 0 0 1.5rem; max-width: 720px; line-height: 1.55">Criterios para estratificacao BCLC, funcao hepatica, classificacao LI-RADS e resposta apos Y-90.</p>
+      <div class="crit-placeholder">
+        <strong>Em producao &middot; proxima atualizacao</strong>
+        Cobertura prevista:
+        <ul><li>BCLC Staging</li><li>Child-Pugh</li><li>ALBI Grade</li><li>MELD Score</li><li>LI-RADS</li><li>LR-TR</li><li>EASL Response</li><li>mRECIST HCC</li></ul>
+      </div>
+    </section>
+
+    <section class="tool" id="clinica" style="--tool-accent: #94A3B8">
+      <div class="tool-head">
+        <div class="tool-num" style="background: rgba(148, 163, 184, 0.15); color: #94A3B8">09</div>
+        <h2>Oncologia clinica &middot; escalas funcionais</h2>
+      </div>
+      <p style="color: var(--stone); margin: 0 0 1.5rem; max-width: 720px; line-height: 1.55">Escalas universais para avaliacao funcional e comorbidade.</p>
+      <div class="crit-placeholder">
+        <strong>Em producao &middot; proxima atualizacao</strong>
+        Cobertura prevista:
+        <ul><li>ECOG Performance Status</li><li>Karnofsky</li><li>NCI-CTCAE (ver secao 02)</li><li>Charlson Comorbidity Index</li></ul>
       </div>
     </section>
 
