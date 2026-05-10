@@ -7,7 +7,7 @@
      • Google Fonts / CDNs (Lucide, etc.) → stale-while-revalidate
    ============================================================================= */
 
-const CACHE_VERSION = 'theratrials-v2026.05.10-dfe0088';
+const CACHE_VERSION = 'theratrials-v2026.05.10-96cd321';
 const CACHE_STATIC  = `${CACHE_VERSION}-static`;
 const CACHE_PAGES   = `${CACHE_VERSION}-pages`;
 const CACHE_RUNTIME = `${CACHE_VERSION}-runtime`;
@@ -154,4 +154,7 @@ async function staleWhileRevalidate(req, cacheName) {
   return cached || network || new Response('', { status: 504 });
 }
 
-/* =====================  MENSAGEM (atualiz
+/* =====================  MENSAGEM (atualização forçada)  ===================== */
+self.addEventListener('message', (event) => {
+  if (event.data && event.data.type === 'SKIP_WAITING') self.skipWaiting();
+});
