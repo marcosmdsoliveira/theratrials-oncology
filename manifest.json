@@ -1,7 +1,7 @@
 {
   "name": "TheraTrials Oncology",
   "short_name": "TheraTrials",
-  "description": "Plataforma de evidências clínicas em oncologia moderna — ensaios clínicos curados de teranóstico, terapia-alvo e imunoterapia.",
+  "description": "Plataforma de evidências clínicas em oncologia moderna — ensaios clínicos selecionados de teranóstico, terapia-alvo e imunoterapia.",
   "lang": "pt-BR",
   "dir": "ltr",
   "start_url": "./index.html",

@@ -154,7 +154,4 @@ async function staleWhileRevalidate(req, cacheName) {
   return cached || network || new Response('', { status: 504 });
 }
 
-/* =====================  MENSAGEM (atualização forçada)  ===================== */
-self.addEventListener('message', (event) => {
-  if (event.data && event.data.type === 'SKIP_WAITING') self.skipWaiting();
-});
+/* =====================  MENSAGEM (atualiz

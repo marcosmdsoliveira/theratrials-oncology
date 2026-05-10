@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
+<!-- PWA:BEGIN -->
+<!-- ============== PWA · App-like experience ============== -->
+<meta name="theme-color" content="#FF8400" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0E0F12" media="(prefers-color-scheme: dark)">
+<meta name="color-scheme" content="dark light">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="TheraTrials">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="application-name" content="TheraTrials Oncology">
+<meta name="format-detection" content="telephone=no">
+<meta name="msapplication-TileColor" content="#0E0F12">
+<meta name="msapplication-TileImage" content="assets/img/icons/icon-144.png">
+
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/img/icons/favicon-16.png">
+<link rel="shortcut icon" href="assets/img/icons/favicon-32.png">
+
+<!-- iOS Touch Icons -->
+<link rel="apple-touch-icon" href="assets/img/icons/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/img/icons/icon-180.png">
+<link rel="apple-touch-icon" sizes="152x152" href="assets/img/icons/icon-152.png">
+<link rel="apple-touch-icon" sizes="144x144" href="assets/img/icons/icon-144.png">
+<link rel="apple-touch-icon" sizes="120x120" href="assets/img/icons/apple-touch-icon-120.png">
+<link rel="apple-touch-icon" sizes="76x76" href="assets/img/icons/apple-touch-icon-76.png">
+<link rel="apple-touch-icon" sizes="60x60" href="assets/img/icons/apple-touch-icon-60.png">
+<!-- PWA:END -->
+<title>Radiofármacos · TheraTrials Oncology</title>
+<meta name="description" content="Dossiês completos dos seis radiofármacos: ¹⁷⁷Lu-PSMA-617, ¹⁷⁷Lu-DOTATATE, ²²³Ra-Cloreto, ⁹⁰Y-microesferas, ¹³¹I-MIBG e novos α-emissores. Mecanismo, esquema, ensaios pivotais, dosimetria, toxicidade.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/theratrials.css">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+<style>
+  /* Hero do hub */
+  .rf-hero {
+    text-align: center;
+    padding: 4rem 1.25rem 2rem;
+    max-width: 880px;
+    margin: 0 auto;
+  }
+  .rf-hero .eyebrow { color: var(--amber); }
+  .rf-hero h1 {
+    font-size: clamp(2rem, 4.5vw, 3.2rem);
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    margin: 0.85rem 0 1rem;
+  }
+  .rf-hero h1 .accent { color: var(--amber); }
+  .rf-hero p.lede {
+    font-size: clamp(1rem, 1.7vw, 1.15rem);
+    color: var(--stone);
+    line-height: 1.65;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  /* Conceito teranóstico — pareamento diagnóstico/terapia */
+  .teranostic-concept {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 1.5rem;
+    align-items: center;
+    max-width: 720px;
+    margin: 2rem auto 0;
+    padding: 1.25rem 1.5rem;
+    background: rgba(20,22,27,0.6);
+    border: 1px solid var(--border-soft);
+    border-radius: 14px;
+  }
+  @media (max-width: 640px) {
+    .teranostic-concept { grid-template-columns: 1fr; gap: 0.9rem; padding: 1.1rem; }
+  }
+  .teranostic-concept .pole {
+    text-align: center;
+    font-size: 0.85rem;
+  }
+  .teranostic-concept .pole .lbl {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--stone-2);
+    margin-bottom: 0.35rem;
+  }
+  .teranostic-concept .pole .name {
+    color: var(--off-white);
+    font-weight: 500;
+    line-height: 1.4;
+  }
+  .teranostic-concept .arrow {
+    color: var(--amber);
+    font-size: 1.4rem;
+    line-height: 1;
+  }
+  @media (max-width: 640px) {
+    .teranostic-concept .arrow { transform: rotate(90deg); }
+  }
+
+  /* Hub de radiofármacos — grade premium */
+  .rf-hub-page {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.15rem;
+    max-width: 1180px;
+    margin: 3rem auto 4rem;
+    padding: 0 1.25rem;
+  }
+  @media (max-width: 920px) { .rf-hub-page { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 540px) { .rf-hub-page { grid-template-columns: 1fr; } }
+
+  .rf-tile-page {
+    background: linear-gradient(165deg, rgba(20,22,27,0.95) 0%, rgba(14,15,18,0.85) 100%);
+    border: 1px solid var(--border-soft);
+    border-radius: 16px;
+    padding: 1.5rem 1.4rem 1.65rem;
+    text-decoration: none;
+    color: var(--off-white);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.25s cubic-bezier(.22,.94,.34,1), border-color 0.2s, box-shadow 0.3s;
+    display: flex; flex-direction: column;
+    min-height: 280px;
+  }
+  .rf-tile-page::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, transparent, var(--accent, var(--amber)) 25%, var(--accent, var(--amber)) 75%, transparent);
+    opacity: 0.85;
+  }
+  .rf-tile-page::after {
+    content: '';
+    position: absolute;
+    inset: -45% -45% auto auto;
+    width: 220px; height: 220px;
+    background: radial-gradient(circle, var(--accent, var(--amber)) 0%, transparent 65%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+  }
+  .rf-tile-page:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent, var(--amber));
+    box-shadow: 0 24px 48px -24px rgba(0,0,0,0.65), 0 0 0 1px var(--accent, var(--amber)) inset;
+    color: var(--off-white);
+  }
+  .rf-tile-page:hover::after { opacity: 0.1; }
+  .rf-tile-page .ribbon {
+    position: absolute; top: 14px; right: 14px;
+    font-family: var(--font-mono); font-size: 0.6rem;
+    padding: 0.18rem 0.45rem; border-radius: 4px;
+    text-transform: uppercase; letter-spacing: 0.07em;
+    background: var(--success-soft); color: var(--success);
+    border: 1px solid rgba(52, 211, 153, 0.25);
+  }
+  .rf-tile-page .iso-mini {
+    width: 60px; height: 60px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, var(--accent-light, var(--amber-glow)) 0%, var(--accent, var(--amber)) 60%, #B85D00 100%);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    color: #0E0F12; font-family: var(--font-display);
+    margin-bottom: 1.1rem;
+  }
+  .rf-tile-page .iso-mini .m { font-size: 0.62rem; font-weight: 600; opacity: 0.8; line-height: 1; }
+  .rf-tile-page .iso-mini .e { font-size: 1.25rem; font-weight: 700; line-height: 1; }
+  .rf-tile-page h3 {
+    margin: 0 0 0.4rem;
+    font-size: 1.18rem;
+    font-weight: 600;
+    letter-spacing: -0.012em;
+  }
+  .rf-tile-page h3 .accent { color: var(--accent, var(--amber)); }
+  .rf-tile-page .role {
+    font-size: 0.7rem; color: var(--stone-2);
+    text-transform: uppercase; letter-spacing: 0.1em;
+    margin-bottom: 0.7rem;
+  }
+  .rf-tile-page .desc {
+    font-size: 0.86rem; color: var(--stone);
+    line-height: 1.55;
+    margin-bottom: 0.95rem;
+  }
+  .rf-tile-page .trials {
+    font-size: 0.72rem; color: var(--off-white);
+    display: flex; flex-wrap: wrap; gap: 0.32rem;
+    margin-top: auto;
+  }
+  .rf-tile-page .trials span {
+    background: var(--graphite-3);
+    padding: 0.18rem 0.5rem;
+    border-radius: 4px;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+  }
+  .rf-tile-page .arrow-cta {
+    margin-top: 0.85rem;
+    color: var(--accent, var(--amber));
+    font-size: 0.74rem;
+    letter-spacing: 0.05em;
+    opacity: 0;
+    transform: translateX(-4px);
+    transition: opacity 0.2s, transform 0.2s;
+    display: inline-flex; align-items: center; gap: 4px;
+  }
+  .rf-tile-page:hover .arrow-cta { opacity: 1; transform: translateX(0); }
+
+  /* Bloco de princípio — explicação rápida */
+  .rf-principles {
+    max-width: 1180px;
+    margin: 1rem auto 4rem;
+    padding: 0 1.25rem;
+  }
+  .rf-principles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+  .rf-principle {
+    background: var(--graphite-2);
+    border: 1px solid var(--border-soft);
+    border-radius: 12px;
+    padding: 1.15rem 1.2rem;
+  }
+  .rf-principle i { color: var(--amber); margin-bottom: 0.5rem; }
+  .rf-principle .name { font-weight: 600; font-size: 0.95rem; margin-bottom: 0.3rem; }
+  .rf-principle .desc { font-size: 0.82rem; color: var(--stone); line-height: 1.55; }
+</style>
+</head>
+<body>
+
+<!-- ============== HEADER ============== -->
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="brand">
+      <img src="assets/img/logo-app.png" alt="TheraTrials" class="brand-logo">
+      <div class="brand-text">
+        <span class="brand-name">TheraTrials</span><span class="brand-sub">Oncology</span>
+      </div>
+    </a>
+    <button class="nav-toggle" aria-label="Menu" onclick="this.parentElement.querySelector('.nav').classList.toggle('open')"><i data-lucide="menu" style="width:18px;height:18px"></i></button>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="database.html">Database</a>
+      <a href="estudos-ativos.html">Estudos ativos</a>
+      <a href="tumor-boards.html">Tumor boards</a>
+      <a href="modalidades.html">Modalidades</a>
+      <a href="radiofarmacos.html">Radiofármacos</a>
+      <a href="ferramentas.html">Ferramentas</a>
+      <a href="fundamentos.html">Fundamentos</a>
+      <a href="about.html">Sobre</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ============== HERO ============== -->
+<section class="rf-hero">
+  <span class="eyebrow">Dossiês completos</span>
+  <h1>Seis <span class="accent">radiofármacos</span>, seis dossiês.</h1>
+  <p class="lede">
+    Mecanismo molecular, esquema terapêutico, ensaios pivotais, dosimetria por órgão e perfil de toxicidade — em formato consultável para a próxima decisão clínica em teranóstico.
+  </p>
+
+  <!-- Conceito teranóstico em 1 linha -->
+  <div class="teranostic-concept">
+    <div class="pole">
+      <div class="lbl">Imagem (diagnóstico)</div>
+      <div class="name">⁶⁸Ga-PSMA-11 · ⁶⁸Ga-DOTATATE · ⁹⁹ᵐTc-MIBG · ¹⁸F-FDG</div>
+    </div>
+    <div class="arrow" aria-hidden="true">→</div>
+    <div class="pole">
+      <div class="lbl">Terapia (mesmo alvo)</div>
+      <div class="name">¹⁷⁷Lu-PSMA-617 · ¹⁷⁷Lu-DOTATATE · ¹³¹I-MIBG · ²²⁵Ac-PSMA</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============== HUB DOS 6 RADIOFÁRMACOS ============== -->
+<div class="rf-hub-page">
+  <a href="lu-psma.html" class="rf-tile-page" style="--accent:#FF8400; --accent-light:#FFA640">
+    <span class="ribbon">pronto</span>
+    <div class="iso-mini"><span class="m">177</span><span class="e">Lu</span></div>
+    <h3><span class="accent">¹⁷⁷Lu</span>-PSMA-617</h3>
+    <div class="role">Beta · mCRPC pós-ARPi/taxano</div>
+    <div class="desc">Pluvicto. Primeiro radioligante aprovado para câncer de próstata metastático resistente à castração (FDA mar/2022, EMA dez/2022).</div>
+    <div class="trials"><span>VISION</span><span>TheraP</span><span>PSMAfore</span><span>PSMAddition</span></div>
+    <div class="arrow-cta">Abrir dossiê <i data-lucide="arrow-right" style="width:13px;height:13px"></i></div>
+  </a>
+
+  <a href="lu-dotatate.html" class="rf-tile-page" style="--accent:#10B981; --accent-light:#34D399">
+    <span class="ribbon">pronto</span>
+    <div class="iso-mini" style="background:radial-gradient(circle at 35% 35%, #34D399 0%, #10B981 60%, #064E3B 100%)"><span class="m">177</span><span class="e">Lu</span></div>
+    <h3><span class="accent" style="color:#10B981">¹⁷⁷Lu</span>-DOTATATE</h3>
+    <div class="role">Beta · NET grau 1–2 SSTR+</div>
+    <div class="desc">Lutathera. Primeira aprovação ampla em teranóstico (2018). Padrão pós-progressão a análogos da somatostatina em NET de intestino médio.</div>
+    <div class="trials"><span>NETTER-1</span><span>NETTER-2</span><span>COMPETE</span><span>COMPOSE</span></div>
+    <div class="arrow-cta">Abrir dossiê <i data-lucide="arrow-right" style="width:13px;height:13px"></i></div>
+  </a>
+
+  <a href="ra-223.html" class="rf-tile-page" style="--accent:#C084FC; --accent-light:#D9A6FF">
+    <span class="ribbon">pronto</span>
+    <div class="iso-mini" style="background:radial-gradient(circle at 35% 35%, #D9A6FF 0%, #C084FC 60%, #7E3FB8 100%)"><span class="m">223</span><span class="e">Ra</span></div>
+    <h3><span class="accent" style="color:#C084FC">²²³Ra</span>-Cloreto</h3>
+    <div class="role">Alfa · mCRPC com mets ósseas sintomáticas</div>
+    <div class="desc">Xofigo. Primeiro α-emissor aprovado em oncologia (2013). Cálcio-mimético com tropismo osteoblástico — exclusivo para doença óssea predominante.</div>
+    <div class="trials"><span>ALSYMPCA</span><span>PEACE-3</span><span>COMRADE</span><span>AlphaBet</span></div>
+    <div class="arrow-cta">Abrir dossiê <i data-lucide="arrow-right" style="width:13px;height:13px"></i></div>
+  </a>
+
+  <a href="y90.html" class="rf-tile-page" style="--accent:#F59E0B; --accent-light:#FCD34D">
+    <span class="ribbon">pronto</span>
+    <div class="iso-mini" style="background:radial-gradient(circle at 35% 35%, #FCD34D 0%, #F59E0B 60%, #B45309 100%)"><span class="m">90</span><span class="e">Y</span></div>
+    <h3><span class="accent" style="color:#F59E0B">⁹⁰Y</span>-Microesferas</h3>
+    <div class="role">Beta · TARE locorregional hepática</div>
+    <div class="desc">Radioembolização hepática transarterial. Microesferas de vidro (TheraSphere) ou resina (SIR-Spheres). Dosimetria personalizada redefiniu OS em HCC.</div>
+    <div class="trials"><span>SARAH</span><span>DOSISPHERE-01</span><span>LEGACY</span><span>EPOCH</span></div>
+    <div class="arrow-cta">Abrir dossiê <i data-lucide="arrow-right" style="width:13px;height:13px"></i></div>
+  </a>
+
+  <a href="mibg.html" class="rf-tile-page" style="--accent:#F472B6; --accent-light:#F9A8D4">
+    <span class="ribbon">pronto</span>
+    <div class="iso-mini" style="background:radial-gradient(circle at 35% 35%, #F9A8D4 0%, #F472B6 60%, #BE185D 100%)"><span class="m">131</span><span class="e">I</span></div>
+    <h3><span class="accent" style="color:#F472B6">¹³¹I</span>-MIBG</h3>
+    <div class="role">Beta · neuroblastoma · feocromo / paraganglioma</div>
+    <div class="desc">Análogo da norepinefrina captado pelo NET (norepinephrine transporter). Pediatria de alto risco e PPGL irressecável/metastático. Bloqueio tireoidiano obrigatório.</div>
+    <div class="trials"><span>Azedra</span><span>NANT</span><span>VERITAS</span><span>OnDApp</span></div>
+    <div class="arrow-cta">Abrir dossiê <i data-lucide="arrow-right" style="width:13px;height:13px"></i></div>
+  </a>
+
+  <a href="novos-alfa.html" class="rf-tile-page" style="--accent:#A855F7; --accent-light:#C084FC">
+    <span class="ribbon">pronto</span>
+    <div class="iso-mini" style="background:radial-gradient(circle at 35% 35%, #C084FC 0%, #A855F7 60%, #6B21A8 100%)"><span class="m">225</span><span class="e">Ac</span></div>
+    <h3><span class="accent" style="color:#A855F7">Novos α</span></h3>
+    <div class="role">Próxima geração · alfa, Auger, ¹⁶¹Tb</div>
+    <div class="desc">²²⁵Ac-PSMA-617, ²¹²Pb-DOTAMTATE, ¹⁶¹Tb-PSMA. LET alta, Auger nuclear, comparações β vs α em PSMA e SSTR. Pipeline 2026.</div>
+    <div class="trials"><span>AcTION</span><span>ALPHAMEDIX</span><span>REMINISCE</span></div>
+    <div class="arrow-cta">Abrir dossiê <i data-lucide="arrow-right" style="width:13px;height:13px"></i></div>
+  </a>
+</div>
+
+
+<!-- ============== PRINCÍPIOS DA TERAPIA COM RADIOISÓTOPOS ============== -->
+<section class="rf-principles">
+  <div class="section-header" style="text-align: center; max-width: 760px; margin: 0 auto 0">
+    <span class="eyebrow">Princípios técnicos</span>
+    <h2 style="margin-top: 0.5rem; font-weight: 600">O que torna um radiofármaco terapêutico eficaz</h2>
+    <p class="subtitle" style="margin-top: 0.7rem">Quatro pilares decidem se uma molécula vai longe na clínica.</p>
+  </div>
+  <div class="rf-principles-grid">
+    <div class="rf-principle">
+      <i data-lucide="target" style="width:22px;height:22px"></i>
+      <div class="name">Alvo molecular específico</div>
+      <div class="desc">Receptor superexpresso no tumor e ausente (ou pouco expresso) em tecidos normais — define a janela terapêutica. PSMA, SSTR, NET, integrina αvβ3, FAP.</div>
+    </div>
+    <div class="rf-principle">
+      <i data-lucide="atom" style="width:22px;height:22px"></i>
+      <div class="name">Radionuclídeo adequado</div>
+      <div class="desc">Emissão (β⁻, α, Auger), energia, alcance no tecido (mm para β; µm para α), meia-vida física compatível com a biodistribuição. Definem dose absorvida no tumor vs órgão crítico.</div>
+    </div>
+    <div class="rf-principle">
+      <i data-lucide="link" style="width:22px;height:22px"></i>
+      <div class="name">Quelante e linker estáveis</div>
+      <div class="desc">DOTA, NOTA, PSMA-617 — estabilidade in vivo evita liberação do radiometal livre. Linker farmacocinético equilibra captação tumoral × clearance renal/hepático.</div>
+    </div>
+    <div class="rf-principle">
+      <i data-lucide="layers" style="width:22px;height:22px"></i>
+      <div class="name">Pareamento teranóstico</div>
+      <div class="desc">Mesma molécula com par diagnóstico (⁶⁸Ga, ⁶⁴Cu, ¹⁸F) e terapêutico (¹⁷⁷Lu, ²²⁵Ac, ⁹⁰Y) permite seleção de paciente, dosimetria pré-tratamento e avaliação de resposta.</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============== FOOTER ============== -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col footer-brand">
+        <div class="brand-logo-row">
+          <img src="assets/img/logo-app.png" alt="TheraTrials Oncology" style="width:36px;height:36px;border-radius:8px">
+          <div>
+            <div style="font-family:var(--font-display); font-size:1.05rem; font-weight:600">TheraTrials <span style="color:var(--amber)">Oncology</span></div>
+            <div style="font-size:0.78rem; color:var(--stone)">Evidência clínica selecionada</div>
+          </div>
+        </div>
+        <p style="font-size:0.85rem; color:var(--stone); line-height:1.6; margin-top:1rem; max-width:340px">
+          Plataforma de evidências em oncologia moderna — terapias-alvo, imunoterapia, biomarcadores, imagem molecular e teranóstico. Curadoria editorial independente para uso educacional.
+        </p>
+      </div>
+      <div class="footer-col">
+        <h4 style="font-size:0.78rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--stone); margin:0 0 0.85rem">Plataforma</h4>
+        <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.5rem">
+          <li><a href="database.html" style="color:var(--off-white); text-decoration:none; font-size:0.88rem">Database</a></li>
+          <li><a href="estudos-ativos.html" style="color:var(--off-white); text-decoration:none; font-size:0.88rem">Estudos ativos · BR</a></li>
+          <li><a href="tumor-boards.html" style="color:var(--off-white); text-decoration:none; font-size:0.88rem">Tumor boards</a></li>
+          <li><a href="modalidades.html" style="color:var(--off-white); text-decoration:none; font-size:0.88rem">Modalidades</a></li>
+          <li><a href="radiofarmacos.html" style="color:var(--off-white); text-decoration:none; font-size:0.88rem">Radiofármacos</a></li>
+          <li><a href="ferramentas.html" style="color:var(--off-white); text-decoration:none; font-size:0.88rem">Ferramentas</a></li>
+          <li><a href="fundamentos.html" style="color:var(--off-white); text-decoration:none; font-size:0.88rem">Fundamentos</a></li>
+          <li><a href="about.html" style="color:var(--off-white); text-decoration:none; font-size:0.88rem">Sobre</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 style="font-size:0.78rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--stone); margin:0 0 0.85rem">Legal</h4>
+        <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.5rem">
+          <li><a href="termos-uso.html" style="color:var(--off-white); text-decoration:none; font-size:0.88rem">Termos de uso</a></li>
+          <li><a href="privacidade.html" style="color:var(--off-white); text-decoration:none; font-size:0.88rem">Política de privacidade</a></li>
+          <li><a href="direitos-autorais.html" style="color:var(--off-white); text-decoration:none; font-size:0.88rem">Direitos autorais</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 TheraTrials Oncology · uso educacional · não substitui diretrizes oficiais ou leitura primária</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/common.js" defer></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    if (typeof lucide !== 'undefined') lucide.createIcons();
+  });
+</script>
+<script src="assets/js/pwa-install.js" defer></script>
+</body>
+</html>

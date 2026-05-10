@@ -1,6 +1,6 @@
 # TheraTrials Oncology
 
-> Plataforma de evidências clínicas em oncologia moderna — ensaios clínicos curados de teranóstico, terapia-alvo e imunoterapia, organizados para uso em tumor boards e revisão científica rápida.
+> Plataforma de evidências clínicas em oncologia moderna — ensaios clínicos selecionados de teranóstico, terapia-alvo e imunoterapia, organizados para uso em tumor boards e revisão científica rápida.
 
 **Versão:** 1.0
 **Status:** repositório privado · uso educacional
