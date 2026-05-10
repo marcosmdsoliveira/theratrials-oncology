@@ -98,20 +98,46 @@
       match: (s) => /(hcc|hepatocelular)/i.test(s.indicacao || '') },
     { id: 'mcrc', name: 'Colorretal (mCRC)', short: 'mCRC',
       match: (s) => /(mcrc|colorretal)/i.test(s.indicacao || '') },
-    { id: 'ccrcc', name: 'Renal (ccRCC)', short: 'ccRCC',
-      match: (s) => s.category_id === 'lupsma_ccrcc' },
+    { id: 'ccrcc', name: 'Renal (ccRCC e não-clear)', short: 'ccRCC',
+      match: (s) => ['lupsma_ccrcc', 'rcc_avancado', 'rcc_adjuvante_naocc'].includes(s.category_id) },
+    { id: 'urotelial', name: 'Urotelial (bexiga · trato superior · NMIBC)', short: 'Urotelial',
+      match: (s) => ['urotelial_avancado', 'urotelial_periop_nmibc'].includes(s.category_id) },
+    { id: 'tireoide', name: 'Tireoide (DTC iodo-refrat / MTC / ATC)', short: 'Tireoide',
+      match: (s) => s.category_id === 'tireoide_avancado' },
+    { id: 'esofago_egj', name: 'Esôfago e EGJ (ESCC + EAC + gástrico)', short: 'Esôfago/EGJ',
+      match: (s) => s.category_id === 'esofago_egj' },
+    { id: 'pancreas', name: 'Pâncreas (adenocarcinoma)', short: 'Pâncreas',
+      match: (s) => s.category_id === 'pancreas' },
+    { id: 'teranostico_emergente', name: 'Teranóstico emergente (CAIX, FAPI, α-PRRT)', short: 'Teran. emerg.',
+      match: (s) => s.category_id === 'teranostico_emergente' },
+    { id: 'hnscc', name: 'Cabeça e Pescoço (HNSCC)', short: 'HNSCC',
+      match: (s) => s.category_id === 'hnscc' },
+    { id: 'melanoma', name: 'Melanoma (avançado + adjuvante)', short: 'Melanoma',
+      match: (s) => ['melanoma_avancado', 'melanoma_adjuvante'].includes(s.category_id) },
+    { id: 'mieloma', name: 'Mieloma múltiplo (NDMM + RRMM)', short: 'Mieloma',
+      match: (s) => s.category_id === 'mieloma' },
+    { id: 'linfoma', name: 'Linfoma B agressivo · DLBCL/HL/PTCL', short: 'Linfoma',
+      match: (s) => s.category_id === 'linfoma_dlbcl' },
+    { id: 'lma', name: 'Leucemia mieloide aguda (LMA)', short: 'LMA',
+      match: (s) => s.category_id === 'lma' },
+    { id: 'ovario', name: 'Ovário (epitelial avançado/recidivado)', short: 'Ovário',
+      match: (s) => s.category_id === 'ovario' },
+    { id: 'endometrio', name: 'Endométrio (avançado/recidivado)', short: 'Endométrio',
+      match: (s) => s.category_id === 'endometrio' },
+    { id: 'cervix', name: 'Cérvix (LACC + recurrente/metastático)', short: 'Cérvix',
+      match: (s) => s.category_id === 'cervix' },
   ];
 
   TheraTrials.tumorTypesUpcoming = [
-    { id: 'melanoma', name: 'Melanoma' },
-    { id: 'cabeca_pescoco', name: 'Cabeça e pescoço' },
-    { id: 'tgi', name: 'Trato gastrointestinal' },
+    { id: 'tgi', name: 'Trato gastrointestinal (cólon, reto, hepatobiliar)' },
+    { id: 'ginecologico', name: 'Ginecológico (ovário, endométrio, cérvix)' },
+    { id: 'hematologico', name: 'Hematológico (mieloma, linfoma, leucemias)' },
   ];
 
   // Modalidades terapêuticas (multi-select com subníveis)
   TheraTrials.modalities = [
     { id: 'teranostico', name: 'Teranóstico', short: 'Teranóstico',
-      match: (s) => ['lupsma_prostata', 'ra223_prostata', 'lu_dotatate_net', 'lupsma_ccrcc', 'y90_tare', 'novos_psma', 'mibg_pediatria_pheo', 'lung_radio_dev', 'breast_radio_dev'].includes(s.category_id),
+      match: (s) => ['lupsma_prostata', 'ra223_prostata', 'lu_dotatate_net', 'lupsma_ccrcc', 'y90_tare', 'novos_psma', 'mibg_pediatria_pheo', 'lung_radio_dev', 'breast_radio_dev', 'teranostico_emergente'].includes(s.category_id),
       subs: [
         { id: 'lupsma_prostata', name: '177Lu-PSMA · Próstata', short: 'Lu-PSMA' },
         { id: 'ra223_prostata', name: '223Ra · Próstata', short: 'Ra-223' },
@@ -130,6 +156,9 @@
         if (['nsclc_imuno', 'sclc'].includes(s.category_id)) return true;
         if (s.category_id === 'nsclc_periop' && !/osi|alect/i.test(r)) return true;
         if (s.category_id === 'breast_tnbc_brca' && /pembro|nivo|atezo|durva/i.test(r)) return true;
+        // Uro-oncologia: regimes IO ou IO+TKI/QT/ADC nas 4 categorias novas
+        const uroCats = ['rcc_avancado', 'rcc_adjuvante_naocc', 'urotelial_avancado', 'urotelial_periop_nmibc'];
+        if (uroCats.includes(s.category_id) && /(pembro|nivo|atezo|durva|avelumab|tremelimumab|ipilimumab|n-803|nogapendekin|anktiva)/i.test(r)) return true;
         return false;
       },
       subs: [
@@ -138,15 +167,22 @@
         { id: 'sclc', name: 'SCLC · imuno + QT, BiTE', short: 'SCLC' },
         { id: 'breast_tnbc_brca', name: 'Mama · TNBC neoadj/1L (KEYNOTE-522/-355)', short: 'Mama TNBC IO' },
         { id: 'prostata_contexto', name: 'Próstata · vacinas (Sipuleucel-T)', short: 'Próstata' },
+        { id: 'rcc_avancado', name: 'ccRCC · IO+TKI / IO+IO 1L (CM-214, KN-426, CM-9ER, CLEAR)', short: 'ccRCC IO' },
+        { id: 'rcc_adjuvante_naocc', name: 'RCC · IO adjuvante (KN-564, CM-914, IMmotion010)', short: 'RCC adj IO' },
+        { id: 'urotelial_avancado', name: 'Urotelial · IO+ADC/QT 1L e 2L+ (EV-302, CM-901, KN-045)', short: 'Uro IO' },
+        { id: 'urotelial_periop_nmibc', name: 'Urotelial · IO periop e NMIBC (NIAGARA, CM-274, KN-057)', short: 'Uro periop IO' },
       ]},
-    { id: 'terapia_alvo', name: 'Terapia-alvo (TKIs · ARPi · CDK4/6 · PI3K)', short: 'Alvo',
+    { id: 'terapia_alvo', name: 'Terapia-alvo (TKIs · ARPi · CDK4/6 · PI3K · VEGFR · FGFR · HIF-2α)', short: 'Alvo',
       match: (s) => {
         const r = (s.radiofarmaco || '').toLowerCase();
         const isProstateARPi = s.category_id === 'prostata_contexto' && /(abiraterona|enzalutamida|apalutamida|darolutamida)/i.test(r) && !/(olaparib|rucaparib|niraparib|talazoparib)/i.test(r);
         const isLungAlvo = s.category_id === 'nsclc_alvo';
         const isLungAdjAlvo = s.category_id === 'nsclc_periop' && /osi|alect/i.test(r);
         const isBreastAlvo = s.category_id === 'breast_hrpos' || (s.category_id === 'breast_her2' && /(tucatinib|neratinib|lapatinib)/i.test(r));
-        return isProstateARPi || isLungAlvo || isLungAdjAlvo || isBreastAlvo;
+        // Uro-oncologia: TKIs VEGFR (sunitinibe/cabo/axi/pazo/lenva/tivo), FGFRi (erdafitinibe), HIF-2α (belzutifan), MET (savolitinibe/crizo)
+        const uroCats = ['rcc_avancado', 'rcc_adjuvante_naocc', 'urotelial_avancado'];
+        const isUroAlvo = uroCats.includes(s.category_id) && /(sunitinib|cabozantinib|axitinib|pazopanib|lenvatinib|tivozanib|sorafenib|everolimus|belzutifan|erdafitinib|savolitinib|crizotinib)/i.test(r);
+        return isProstateARPi || isLungAlvo || isLungAdjAlvo || isBreastAlvo || isUroAlvo;
       },
       subs: [
         { id: 'arpi', name: 'ARPi · próstata', short: 'ARPi' },
@@ -157,13 +193,18 @@
         { id: 'cdk46', name: 'Mama · CDK4/6i (palbo, ribo, abema)', short: 'CDK4/6' },
         { id: 'pi3k_akt', name: 'Mama · PI3K/AKT (alpelisib, inavolisib, capivasertib)', short: 'PI3K/AKT' },
         { id: 'serd_her2tki', name: 'Mama · SERDs orais e HER2-TKI (elacestrant, tucatinib)', short: 'SERD/HER2-TKI' },
+        { id: 'vegfr_tki_rcc', name: 'RCC · VEGFR-TKI (sunitinibe, cabo, axi, lenva, pazo, tivo)', short: 'VEGFR-TKI' },
+        { id: 'hif2a', name: 'RCC · HIF-2α (belzutifan)', short: 'HIF-2α' },
+        { id: 'fgfr_uro', name: 'Urotelial · FGFR (erdafitinibe)', short: 'FGFR' },
+        { id: 'met_papRCC', name: 'papRCC · MET (savolitinibe, crizotinibe)', short: 'MET' },
       ]},
     { id: 'adc', name: 'ADC · conjugados anticorpo-droga', short: 'ADC',
-      match: (s) => /(trastuzumab emtansine|t-dm1|trastuzumab deruxtecan|t-dxd|sacituzumab|datopotamab)/i.test(s.radiofarmaco || ''),
+      match: (s) => /(trastuzumab emtansine|t-dm1|trastuzumab deruxtecan|t-dxd|sacituzumab|datopotamab|enfortumab vedotin|enfortumabe vedotina)/i.test(s.radiofarmaco || ''),
       subs: [
         { id: 'tdm1', name: 'T-DM1 (HER2+)', short: 'T-DM1' },
-        { id: 'tdxd', name: 'T-DXd (HER2+ e HER2-low)', short: 'T-DXd' },
+        { id: 'tdxd', name: 'T-DXd (HER2+ e HER2-low · pan-tumor IHC 3+)', short: 'T-DXd' },
         { id: 'sacituzumab', name: 'Sacituzumab govitecan (TNBC, Trop-2)', short: 'Sacituzumab' },
+        { id: 'ev_uro', name: 'Enfortumab vedotin (Nectin-4 · UC)', short: 'EV' },
       ]},
     { id: 'parp', name: 'PARP inibidores', short: 'PARP',
       match: (s) => /(olaparib|rucaparib|niraparib|talazoparib)/i.test(s.radiofarmaco || ''),
@@ -292,11 +333,18 @@
       filter: function(s) { const i = (s.indicacao||'').toLowerCase(); return i.includes('mcrc') || i.includes('colorretal'); }
     },
     ccrcc: {
-      name: 'Carcinoma renal de células claras',
-      tagline: '2ª/3ª linha pós-TKI/ICI · 177Lu-PSMA',
+      name: 'Carcinoma renal (ccRCC e não-clear)',
+      tagline: '1L IO+TKI/IO+IO · adjuvante · 2L+ HIF-2α · não-clear · teranóstico Lu-PSMA exploratório',
       icon: 'kidney',
       color: '#38BDF8',
-      categorias: ['lupsma_ccrcc']
+      categorias: ['lupsma_ccrcc', 'rcc_avancado', 'rcc_adjuvante_naocc']
+    },
+    urotelial: {
+      name: 'Carcinoma urotelial',
+      tagline: 'mUC 1L EV+pembro/IO-quimio · adjuvante · perioperatório (NIAGARA, VOLGA) · NMIBC BCG-unresponsive',
+      icon: 'flask-conical',
+      color: '#EAB308',
+      categorias: ['urotelial_avancado', 'urotelial_periop_nmibc']
     },
     pulmao: {
       name: 'Câncer de pulmão',
