@@ -609,7 +609,7 @@
         </div>
         <div class="item">
           <div class="lbl">Alcance β máx</div>
-          <div class="val">~ 2 mm</div>
+          <div class="val">~ 2,2 mm</div>
         </div>
         <div class="item">
           <div class="lbl">γ útil (SPECT)</div>
@@ -657,7 +657,7 @@
               <div class="tl-dot">1993</div>
               <div class="tl-card">
                 <h4>Identificação do antígeno PSMA</h4>
-                <p>Horoszewicz e Heston caracterizam o glutamate carboxypeptidase II como antígeno específico da membrana prostática. Expresso em &gt;95% dos cânceres de próstata, com superexpressão em doença avançada e resistente a castração.</p>
+                <p>Horoszewicz e Heston caracterizam o glutamate carboxypeptidase II como antígeno específico da membrana prostática. Expresso em &gt;95% dos cânceres de próstata, com superexpressão em doença avançada e resistente a castração. Importante: <strong>5–15% dos mCRPC perdem expressão de PSMA</strong> após múltiplas linhas de ARPi ou em diferenciação neuroendócrina — daí a obrigatoriedade do PSMA-PET diagnóstico imediatamente antes de indicar a terapia.</p>
               </div>
             </div>
             <div class="tl-item">
@@ -830,7 +830,7 @@
               <div class="mech-stage">
                 <div class="mech-num">4</div>
                 <h5>Dano duplo de DNA</h5>
-                <p>Quebras simples e duplas do DNA, sobrecarga de reparo e morte celular por apoptose ou catástrofe mitótica. Fotobomba de imagem γ permite SPECT pós-terapia.</p>
+                <p>Quebras simples e duplas do DNA, sobrecarga de reparo e morte celular por apoptose ou catástrofe mitótica. A emissão γ secundária (208 keV, ~10%) permite SPECT/CT pós-terapia para verificação de captação tumoral e dosimetria.</p>
               </div>
             </div>
           </div>
@@ -838,6 +838,11 @@
           <div class="key-fact">
             <div class="lbl">Por que o PSMA-617 e não PSMA-I&T?</div>
             <p>Ambos são Glu-CO-Lys com chelator DOTA, mas o PSMA-617 incorpora um espaçador 2-naftilalanina-tranexâmico que aumenta a afinidade pelo PSMA e reduz a captação salivar e renal. O PSMA-I&T (substrato do produto Curium / SPLASH) tem chelator DOTAGA e perfil farmacocinético comparável.</p>
+          </div>
+
+          <div class="key-fact">
+            <div class="lbl">¹⁷⁷Lu n.c.a. vs c.a. — por que importa</div>
+            <p>O <strong>¹⁷⁷Lu non-carrier-added (n.c.a.)</strong>, usado no Pluvicto, é produzido a partir de ¹⁷⁶Yb por captura neutrônica seguida de separação radioquímica — entrega altíssima atividade específica (&gt;3 TBq/mg) e mínimo ¹⁷⁷ᵐLu (contaminante de meia-vida longa, 160 d). O <strong>¹⁷⁷Lu carrier-added (c.a.)</strong>, mais barato, parte de ¹⁷⁶Lu enriquecido e tem maior fração de ¹⁷⁷ᵐLu, gerando rejeitos radiativos por décadas. Em programas de teranóstico de longo prazo, n.c.a. é padrão.</p>
           </div>
         </div>
 
@@ -893,11 +898,11 @@
             <div style="margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid var(--border-soft); display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem">
               <div>
                 <div style="font-size: 0.75rem; color: var(--stone); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.35rem">Pré-medicação</div>
-                <div style="font-size: 0.9rem; color: var(--off-white); line-height: 1.55">Antiemético padrão · hidratação oral · resfriamento ou ácido cítrico em pastilhas para reduzir captação salivar é opcional.</div>
+                <div style="font-size: 0.9rem; color: var(--off-white); line-height: 1.55">Antiemético padrão · hidratação oral. <strong>Bloqueio salivar não tem padrão consolidado em PSMA</strong> (diferente do DOTATATE com aminoácidos): centros usam gelo intra-oral, ácido cítrico em pastilhas ou resfriamento parotídeo externo, com benefício clínico modesto. Botox parotídeo, mAbs anti-PSMA pré-injeção e externa-cooling estão em estudo.</div>
               </div>
               <div>
                 <div style="font-size: 0.75rem; color: var(--stone); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.35rem">Não-aplicável</div>
-                <div style="font-size: 0.9rem; color: var(--off-white); line-height: 1.55">Nefroproteção com aminoácidos (lisina/arginina) <strong>não</strong> é rotina em PSMA — perfil dosimétrico renal é mais favorável que DOTATATE.</div>
+                <div style="font-size: 0.9rem; color: var(--off-white); line-height: 1.55">Nefroproteção com aminoácidos (lisina/arginina) <strong>não</strong> é rotina em PSMA — perfil dosimétrico renal é mais favorável que DOTATATE. Alguns centros (Heidelberg, Melbourne) consideram Lys/Arg quando a dose tumoral renal projetada por dosimetria pré-tratamento ultrapassa 23 Gy BED, ou em pacientes com TFG basal ≤45 mL/min.</div>
               </div>
               <div>
                 <div style="font-size: 0.75rem; color: var(--stone); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.35rem">Imagem pós-terapia</div>
@@ -951,7 +956,12 @@
 
           <div class="key-fact">
             <div class="lbl">PROMISE v2 · padronização de leitura</div>
-            <p>Recomendação 2023: descrição estruturada usando miTNM (molecular imaging TNM) + PSMA expression score (PSMA-RADS). A captação hepática é o referencial para definir lesão "PSMA-positiva" significativa.</p>
+            <p>Recomendação 2023 da SNMMI/EANM: descrição estruturada do exame usando <strong>miTNM</strong> (molecular imaging TNM) e escore tumoral global. A captação hepática (e secundariamente a do parótida) é o referencial para definir lesão "PSMA-positiva" significativa.</p>
+          </div>
+
+          <div class="key-fact">
+            <div class="lbl">PSMA-RADS · classificação por lesão</div>
+            <p>Sistema complementar ao PROMISE: classifica cada lesão em 5 categorias — <strong>1-2</strong> prováveis benignas, <strong>3</strong> indeterminadas, <strong>4-5</strong> prováveis malignas. PROMISE estrutura o relatório, PSMA-RADS gradua a confiança em cada achado.</p>
           </div>
         </div>
 
@@ -969,6 +979,11 @@
         <div id="criterios" class="rf-section">
           <h2><span class="num">05</span> Critérios PSMA-PET para elegibilidade</h2>
           <p class="lead">Critérios VISION são os adotados pela FDA. PSMAfore usa critério qualitativamente similar com pequena variação.</p>
+
+          <div class="key-fact" style="border-left-color: #F472B6">
+            <div class="lbl" style="color: #F472B6">Heterogeneidade tumoral · FDG-PET no triagem</div>
+            <p>Cerca de 10-30% dos mCRPC têm doença <strong>discordante</strong> (FDG⁺ / PSMA⁻), associada a desdiferenciação neuroendócrina e prognóstico pior. O TheraP usou ⁶⁸Ga-PSMA-11 PET <em>e</em> ¹⁸FDG-PET no screening: pacientes com lesão FDG⁺ &gt; PSMA⁺ foram excluídos. O VISION não exigiu FDG, e parte dos não-respondedores possivelmente tinha doença discordante. <strong>Considerar FDG-PET se PSMA-PET mostrar lesões com captação heterogênea, lesões viscerais grandes ou se houver elevação rápida de PSA com PSA-PET pouco impressivo.</strong></p>
+          </div>
 
           <h4 style="margin: 1.5rem 0 0.5rem; font-size: 1rem; color: var(--off-white)">Critérios VISION</h4>
           <div class="criteria-box">
@@ -989,6 +1004,11 @@
                 <li>Qualquer lesão óssea &gt; 1 cm de partes moles associadas com PSMA ≤ fígado</li>
               </ul>
             </div>
+          </div>
+
+          <div class="key-fact">
+            <div class="lbl">Tracer aceito</div>
+            <p>O VISION usou exclusivamente <strong>⁶⁸Ga-PSMA-11</strong>. A bula do Pluvicto e a prática atual aceitam também <strong>¹⁸F-DCFPyL (Pylarify)</strong> com critérios qualitativamente equivalentes (captação dominante &gt; fígado em ≥1 lesão metastática). ¹⁸F-PSMA-1007, por excreção hepatobiliar, não é recomendado para seleção terapêutica.</p>
           </div>
 
           <div class="key-fact">
@@ -1040,7 +1060,7 @@
                 <div class="stat-row"><div class="lbl">G3-4 AE</div><div class="val">33 vs 53%</div></div>
                 <div class="stat-row"><div class="lbl">OS final</div><div class="val">19,1 vs 19,6 m</div></div>
               </div>
-              <p class="takeaway">Superioridade em resposta de PSA com toxicidade menor. OS comparável foi influenciada por crossover.</p>
+              <p class="takeaway">Superioridade em PSA50 e qualidade de vida vs cabazitaxel, com toxicidade G3+ menor. <strong>OS final 19,1 vs 19,6 m foi não-significativa</strong> (HR 0,97) — o crossover de ~32% e o cruzamento entre os braços diluiu a vantagem inicial. TheraP é positivo em desfecho de PSA, neutro em sobrevida.</p>
             </div>
 
             <div class="trial-card">
@@ -1055,7 +1075,7 @@
                 <div class="stat-row"><div class="lbl">HR rPFS</div><div class="val">0,43</div></div>
                 <div class="stat-row"><div class="lbl">OS</div><div class="val">crossover (84%)</div></div>
               </div>
-              <p class="takeaway">Expansão FDA mar/2025 para uso pré-taxano. OS confundida pelo alto crossover.</p>
+              <p class="takeaway">Expansão FDA mar/2025 para uso pré-taxano. <strong>OS por ITT mostrou HR 1,16</strong> (não-significativo, devido a 84% de crossover); ajuste pré-especificado por RPSFT trouxe HR ~0,80. A FDA expandiu com base no <strong>rPFS robusto (HR 0,43)</strong>.</p>
             </div>
 
             <div class="trial-card">
@@ -1085,7 +1105,7 @@
                 <div class="stat-row"><div class="lbl">PSA50</div><div class="val">93 vs 68%</div></div>
                 <div class="stat-row"><div class="lbl">HR PSA-PFS</div><div class="val">0,43</div></div>
               </div>
-              <p class="takeaway">Primeira evidência randomizada de combinação Lu-PSMA + ARPi em mCRPC 1L.</p>
+              <p class="takeaway">Primeira evidência randomizada de combinação Lu-PSMA + ARPi em mCRPC 1L. <strong>Seleção exigia ≥2 fatores de risco adversos</strong> (visceral, baixo PSA, alterações DDR, etc.) — não foi 1L "all-comers". Validação em fase 3 dependerá do PSMAddition e ENZACK.</p>
             </div>
 
             <div class="trial-card">
@@ -1169,7 +1189,7 @@
                 <td>Parótidas</td>
                 <td>~ 1,4</td>
                 <td><div class="dose-bar med"><div class="dose-bar-fill" style="width:35%"></div></div></td>
-                <td>40 Gy (refêrencia)</td>
+                <td>40 Gy (referência)</td>
               </tr>
               <tr>
                 <td>Submandibulares</td>
@@ -1312,7 +1332,7 @@
               <h4><i data-lucide="zap" style="width:18px;height:18px"></i> ¹⁷⁷Lu (β⁻)</h4>
               <ul>
                 <li>Energia média <span class="v">134 keV</span></li>
-                <li>Alcance médio <span class="v">~ 0,7 mm</span></li>
+                <li>Alcance médio <span class="v">~ 0,67 mm</span></li>
                 <li>LET <span class="v">0,2 keV/μm</span></li>
                 <li>Eficiência por evento <span class="v">moderada</span></li>
                 <li>Crossfire <span class="v">amplo (mm)</span></li>
@@ -1341,7 +1361,7 @@
             <div style="background: var(--graphite-2); border: 1px solid rgba(192, 132, 252, 0.3); border-radius: var(--radius-md); padding: 1.25rem">
               <div style="font-family: var(--font-mono); color: #C084FC; font-size: 0.85rem; margin-bottom: 0.4rem">¹⁶¹Tb-PSMA</div>
               <div style="font-size: 0.95rem; color: var(--off-white); margin-bottom: 0.35rem">β⁻ + Auger</div>
-              <div style="font-size: 0.82rem; color: var(--stone); line-height: 1.5">Combina elétrons Auger (alta LET local) com β⁻. Pode ser superior ao Lu para micrometástases. Faseaberta no REALITY.</div>
+              <div style="font-size: 0.82rem; color: var(--stone); line-height: 1.5">Combina elétrons Auger (alta LET local) com β⁻. Pode ser superior ao Lu para micrometástases. Fase aberta no REALITY.</div>
             </div>
             <div style="background: var(--graphite-2); border: 1px solid rgba(192, 132, 252, 0.3); border-radius: var(--radius-md); padding: 1.25rem">
               <div style="font-family: var(--font-mono); color: #C084FC; font-size: 0.85rem; margin-bottom: 0.4rem">²¹²Pb-PSMA</div>
@@ -1388,7 +1408,7 @@
             <a href="database.html" class="next-card">
               <div class="lbl">Database</div>
               <div class="name">Todos os estudos</div>
-              <div class="desc">83 ensaios clínicos com filtros por tumor, modalidade e fase.</div>
+              <div class="desc">311 ensaios clínicos em 34 categorias terapêuticas, com filtros hierárquicos.</div>
             </a>
             <a href="ferramentas.html#dose" class="next-card">
               <div class="lbl">Ferramenta</div>
