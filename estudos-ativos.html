@@ -419,23 +419,41 @@
     padding-top: 1rem; border-top: 1px solid var(--border-soft);
     margin-top: 1rem;
   }
-  .ea-actions a {
+  .ea-actions a,
+  .ea-actions button {
     display: inline-flex; align-items: center; gap: 0.4rem;
     padding: 0.55rem 0.95rem;
     border-radius: var(--radius-sm);
     font-size: 0.85rem; font-weight: 500;
     text-decoration: none;
+    cursor: pointer;
+    border: 0;
+    font-family: inherit;
+    line-height: 1.2;
     transition: all 0.15s;
   }
   .ea-actions a.primary {
     background: var(--amber); color: #0E0F12;
   }
   .ea-actions a.primary:hover { background: var(--amber-glow); color: #0E0F12; }
-  .ea-actions a.ghost {
+  .ea-actions a.ghost,
+  .ea-actions button.ghost {
     background: transparent; color: var(--off-white);
     border: 1px solid var(--border-mid);
   }
-  .ea-actions a.ghost:hover { border-color: var(--amber); color: var(--amber); }
+  .ea-actions a.ghost:hover,
+  .ea-actions button.ghost:hover { border-color: var(--amber); color: var(--amber); }
+  .ea-actions button.contact {
+    background: linear-gradient(135deg, #0EA5B7 0%, #06B6D4 100%);
+    color: #ffffff;
+    box-shadow: 0 4px 14px -4px rgba(14, 165, 183, 0.55);
+    font-weight: 600;
+  }
+  .ea-actions button.contact:hover {
+    background: linear-gradient(135deg, #14B8CB 0%, #22D3EE 100%);
+    box-shadow: 0 6px 20px -4px rgba(14, 165, 183, 0.7);
+    transform: translateY(-1px);
+  }
 
   .ea-source {
     margin-top: 1.25rem;
@@ -955,7 +973,7 @@
             <i data-lucide="phone" style="width:14px;height:14px"></i>
             Registro de contato oficial
           </a>
-          <button type="button" class="primary" @click="openContact(selected)" style="background: linear-gradient(135deg, var(--amber), #FFA640); color: #0E0F12; border: 0; cursor: pointer; font-family: inherit">
+          <button type="button" class="contact" @click="openContact(selected)">
             <i data-lucide="mail" style="width:14px;height:14px"></i>
             Entrar em contato com o pesquisador
           </button>
@@ -1026,7 +1044,7 @@
       <i data-lucide="check-circle-2"></i>
     </div>
     <h4>Obrigado pelo contato!</h4>
-    <p>Recebemos sua mensagem. Em breve retornaremos pelo e-mail ou telefone informado.</p>
+    <p id="cm-success-msg">Recebemos sua mensagem. Em breve retornaremos pelo e-mail ou telefone informado.</p>
     <button type="button" class="cm-btn cm-btn-send" style="max-width: 200px; margin: 0 auto" onclick="closeContactModal()">Fechar</button>
   </div>
 
@@ -1037,11 +1055,14 @@
     </div>
     <h4>Não conseguimos enviar agora</h4>
     <p id="cm-error-msg">Ocorreu um erro de conexão. Tente novamente em alguns instantes ou use o WhatsApp.</p>
-    <div class="cm-actions" style="max-width: 380px; margin: 0 auto">
+    <div class="cm-actions" style="max-width: 380px; margin: 0 auto; flex-wrap: wrap">
       <button type="button" class="cm-btn cm-btn-wpp" onclick="sendWhatsApp()">
         <i data-lucide="message-circle" style="width:16px;height:16px"></i> WhatsApp
       </button>
-      <button type="button" class="cm-btn cm-btn-send" onclick="resetContactForm()">
+      <button type="button" class="cm-btn cm-btn-send" onclick="_sendViaMailto()">
+        <i data-lucide="mail" style="width:16px;height:16px"></i> App de e-mail
+      </button>
+      <button type="button" class="cm-btn cm-btn-send" style="background:transparent; color:var(--off-white); border:1px solid var(--border-soft); flex-basis:100%" onclick="resetContactForm()">
         Tentar novamente
       </button>
     </div>
@@ -1052,14 +1073,18 @@
   /* =====================================================================
      Modal de Contato com Pesquisador — TheraTrials Oncology
      ---------------------------------------------------------------------
-     CONFIGURAÇÃO (ajustar após cadastro):
-       FORMSPREE_ENDPOINT : crie conta gratuita em https://formspree.io
-                            e cole aqui o endpoint do form (ex: https://formspree.io/f/abcd1234)
-       WHATSAPP_NUMBER    : número no formato internacional sem espaços/símbolos
-                            (ex: 5531999998888 para +55 31 99999-8888)
+     CONTACT_EMAIL      : email institucional que recebe as mensagens.
+                          Usado tanto pelo Formspree (criar conta com esse
+                          email) quanto pelo fallback mailto:.
+     FORMSPREE_ENDPOINT : enquanto o endpoint estiver com 'REPLACE_WITH_...',
+                          o botão "Enviar por e-mail" usa fallback mailto:.
+                          Para usar Formspree: cadastre conta em formspree.io
+                          com o CONTACT_EMAIL e cole o endpoint aqui.
+     WHATSAPP_NUMBER    : número no formato internacional sem espaços/símbolos.
      ===================================================================== */
+  const CONTACT_EMAIL = 'theratrialsoncology@gmail.com';
   const FORMSPREE_ENDPOINT = 'https://formspree.io/f/REPLACE_WITH_YOUR_FORM_ID';
-  const WHATSAPP_NUMBER = '5531999998888'; // PLACEHOLDER — substituir pelo número real
+  const WHATSAPP_NUMBER = '5531994032446'; // +55 31 99403-2446
 
   let _currentStudy = { nome: '', nct: '' };
 
@@ -1103,6 +1128,39 @@
     document.getElementById('cm-error-view').style.display = 'none';
   };
 
+  function _buildEmailBody() {
+    const form = document.getElementById('contact-form');
+    const f = form && form.elements;
+    const nome = f && f.nome ? f.nome.value.trim() : '';
+    const email = f && f.email ? f.email.value.trim() : '';
+    const tel = f && f.telefone ? f.telefone.value.trim() : '';
+    const msg = f && f.mensagem ? f.mensagem.value.trim() : '';
+
+    const lines = [
+      'Contato sobre o estudo: ' + (_currentStudy.nome || '') + (_currentStudy.nct ? ' (' + _currentStudy.nct + ')' : ''),
+      '',
+      'Nome: ' + nome,
+      'Email: ' + email,
+      'Telefone: ' + (tel || '—'),
+      '',
+      'Mensagem:',
+      msg || '(sem mensagem adicional)',
+      '',
+      '---',
+      'Enviado via TheraTrials Oncology'
+    ];
+    return lines.join('\n');
+  }
+
+  function _sendViaMailto() {
+    const subject = '[TheraTrials] Contato sobre ' + (_currentStudy.nome || '') + (_currentStudy.nct ? ' (' + _currentStudy.nct + ')' : '');
+    const body = _buildEmailBody();
+    const url = 'mailto:' + CONTACT_EMAIL +
+                '?subject=' + encodeURIComponent(subject) +
+                '&body=' + encodeURIComponent(body);
+    window.location.href = url;
+  }
+
   window.submitContact = async function(e) {
     e.preventDefault();
     const form = e.target;
@@ -1112,10 +1170,23 @@
     btn.innerHTML = '<i data-lucide="loader-2" class="cm-spin"></i> Enviando...';
     if (typeof lucide !== 'undefined' && lucide.createIcons) lucide.createIcons();
 
-    try {
-      if (FORMSPREE_ENDPOINT.includes('REPLACE_WITH_YOUR_FORM_ID')) {
-        throw new Error('Configuração pendente: cadastre um endpoint Formspree.');
+    // Caminho 1: Formspree ainda não configurado → fallback mailto:
+    if (FORMSPREE_ENDPOINT.includes('REPLACE_WITH_YOUR_FORM_ID')) {
+      _sendViaMailto();
+      const sm = document.getElementById('cm-success-msg');
+      if (sm) sm.textContent = 'Abrimos seu app de e-mail com a mensagem pronta. Verifique e toque em ENVIAR para concluir o contato.';
+      document.getElementById('cm-form-view').style.display = 'none';
+      document.getElementById('cm-success-view').style.display = 'block';
+      if (typeof lucide !== 'undefined' && lucide.createIcons) {
+        requestAnimationFrame(() => lucide.createIcons());
       }
+      btn.disabled = false;
+      btn.innerHTML = originalBtn;
+      return;
+    }
+
+    // Caminho 2: Formspree configurado → POST direto
+    try {
       const formData = new FormData(form);
       const res = await fetch(FORMSPREE_ENDPOINT, {
         method: 'POST',
@@ -1134,10 +1205,11 @@
         throw new Error(detail);
       }
     } catch (err) {
+      // Caminho 3: Formspree falhou → tenta mailto: como recurso final
       document.getElementById('cm-form-view').style.display = 'none';
       document.getElementById('cm-error-view').style.display = 'block';
       const msgEl = document.getElementById('cm-error-msg');
-      if (msgEl) msgEl.textContent = 'Não conseguimos enviar agora (' + err.message + '). Use o WhatsApp ou tente novamente em alguns instantes.';
+      if (msgEl) msgEl.textContent = 'Não conseguimos enviar pelo servidor (' + err.message + '). Você pode abrir seu app de e-mail ou usar o WhatsApp.';
       if (typeof lucide !== 'undefined' && lucide.createIcons) {
         requestAnimationFrame(() => lucide.createIcons());
       }
