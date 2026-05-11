@@ -242,94 +242,40 @@
           <p class="lead">O MIBG é estruturalmente similar à noradrenalina e usa a mesma porta de entrada celular: o transportador de noradrenalina (NET / hNET / SLC6A2). Uma vez dentro da célula, é armazenado em vesículas catecolaminérgicas via VMAT (transportador vesicular de monoaminas).</p>
 
           <div class="mech-diagram">
-            <svg viewBox="0 0 800 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
-              <!-- Membrana -->
-              <rect x="0" y="190" width="800" height="60" fill="#1B1E25"/>
-              <line x1="0" y1="190" x2="800" y2="190" stroke="#F472B6" stroke-width="1" opacity="0.3"/>
-              <line x1="0" y1="250" x2="800" y2="250" stroke="#F472B6" stroke-width="1" opacity="0.3"/>
-              <text x="20" y="225" fill="#8E949C" font-size="10" font-family="JetBrains Mono">membrana plasmática · célula cromafim / neuroblástica</text>
-
-              <!-- NET transporter -->
-              <g transform="translate(180, 170)">
-                <path d="M -10,0 Q -10,30 -5,50 M 5,0 Q 5,30 10,50 M -5,0 Q -5,30 0,50" stroke="#F472B6" stroke-width="2" fill="none" opacity="0.7"/>
-                <ellipse cx="0" cy="-5" rx="14" ry="8" fill="#F472B6"/>
-                <text x="0" y="-15" fill="#F472B6" font-size="9" text-anchor="middle">NET</text>
-              </g>
-
-              <!-- 131I-MIBG fora -->
-              <g transform="translate(120, 90)">
-                <circle cx="0" cy="0" r="14" fill="#F472B6"/>
-                <text x="0" y="3" fill="#0E0F12" font-size="9" text-anchor="middle" font-weight="700"><sup>131</sup>I</text>
-                <line x1="0" y1="14" x2="0" y2="40" stroke="#F472B6" stroke-width="2"/>
-                <rect x="-12" y="40" width="24" height="14" rx="3" fill="#F472B6" opacity="0.6"/>
-                <text x="0" y="50" fill="#0E0F12" font-size="7" text-anchor="middle">MIBG</text>
-                <text x="35" y="3" fill="#F472B6" font-size="9">benzilguanidina</text>
-              </g>
-
-              <!-- Vesículas (VMAT) intracelular -->
-              <g transform="translate(380, 220)">
-                <circle cx="0" cy="0" r="22" fill="none" stroke="#F472B6" stroke-width="1.5"/>
-                <text x="0" y="-30" fill="#F472B6" font-size="9" text-anchor="middle">vesícula</text>
-                <text x="0" y="40" fill="#8E949C" font-size="9" text-anchor="middle">catecolaminérgica</text>
-                <circle cx="-7" cy="-3" r="5" fill="#F472B6"/>
-                <circle cx="6" cy="4" r="5" fill="#F472B6"/>
-              </g>
-              <text x="320" y="195" fill="#F472B6" font-size="9" font-weight="600">VMAT</text>
-
-              <!-- Núcleo + radiação β + γ -->
-              <g transform="translate(620, 220)">
-                <circle cx="0" cy="0" r="35" fill="#0EA5B7" opacity="0.15" stroke="#0EA5B7" stroke-width="1"/>
-                <text x="0" y="3" fill="#0EA5B7" font-size="11" text-anchor="middle">núcleo</text>
-                <g stroke="#F472B6" stroke-width="1.2" fill="none">
-                  <path d="M -25,-20 Q -10,-30 5,-15"/>
-                  <path d="M -30,5 Q -15,15 0,5"/>
-                </g>
-                <text x="-30" y="-35" fill="#F472B6" font-size="9">β⁻</text>
-                <!-- γ -->
-                <g stroke="#FBBF24" stroke-width="1" stroke-dasharray="3 2" fill="none">
-                  <path d="M 0,0 L 60,-30"/>
-                  <path d="M 0,0 L -60,40"/>
-                </g>
-                <text x="55" y="-35" fill="#FBBF24" font-size="9">γ 364 keV</text>
-              </g>
-
-              <!-- Setas -->
-              <g stroke="#8E949C" stroke-width="1" fill="none" marker-end="url(#arrowM)">
-                <line x1="160" y1="120" x2="200" y2="155"/>
-                <line x1="220" y1="200" x2="350" y2="220"/>
-                <line x1="420" y1="220" x2="585" y2="220"/>
-              </g>
-              <defs>
-                <marker id="arrowM" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
-                  <path d="M0,0 L0,6 L8,3 z" fill="#8E949C"/>
-                </marker>
-              </defs>
-
-              <text x="225" y="145" fill="#F472B6" font-size="10" font-weight="600">1 · NET uptake</text>
-              <text x="290" y="195" fill="#F472B6" font-size="10" font-weight="600">2 · armazenamento vesicular</text>
-              <text x="490" y="215" fill="#F472B6" font-size="10" font-weight="600">3 · radiação β⁻ + γ</text>
-            </svg>
+            <img src="assets/img/mibg-mecanismo.png"
+                 alt="Mecanismo molecular do 131I-mIBG — captação pelo NET, entrada celular, armazenamento vesicular, retenção tumoral, emissão β⁻ e emissão γ para imagem"
+                 style="display: block; width: 100%; height: auto; border-radius: var(--radius-md); margin-bottom: 1rem">
 
             <div class="mech-stages">
               <div class="mech-stage">
                 <div class="mech-num" style="background:#F472B6">1</div>
-                <h5>Captação NET</h5>
-                <p>O MIBG é reconhecido como noradrenalina pelo transportador NET (SLC6A2) na membrana das células cromafins. Mecanismo idêntico ao da recaptação de noradrenalina sináptica.</p>
+                <h5>Captação pelo NET</h5>
+                <p>O <sup>131</sup>I-mIBG é um análogo funcional da noradrenalina e é reconhecido pelo transportador de noradrenalina (NET), expresso na membrana de células tumorais derivadas do sistema simpático/neuroendócrino.</p>
               </div>
               <div class="mech-stage">
                 <div class="mech-num" style="background:#F472B6">2</div>
-                <h5>Armazenamento vesicular</h5>
-                <p>Já no citoplasma, o MIBG é importado para vesículas catecolaminérgicas via VMAT, onde permanece retido por horas a dias — análogo ao armazenamento da noradrenalina endógena.</p>
+                <h5>Entrada celular</h5>
+                <p>Após o reconhecimento pelo NET, o radiofármaco é transportado para o interior da célula tumoral por mecanismo ativo de captação, semelhante ao utilizado pelas catecolaminas.</p>
               </div>
               <div class="mech-stage">
                 <div class="mech-num" style="background:#F472B6">3</div>
-                <h5>Emissão β⁻ + γ</h5>
-                <p>O <sup>131</sup>I emite β⁻ (606 keV máx) com alcance de ~2 mm e γ útil de 364 keV (81%) — usado para imagem cintilográfica de pré-tratamento e SPECT pós-terapia. Dose efetiva variável por carga tumoral.</p>
+                <h5>Armazenamento vesicular</h5>
+                <p>No citoplasma, parte do <sup>131</sup>I-mIBG é direcionada para vesículas ou grânulos neurosecretórios, com participação do transporte vesicular associado ao fenótipo catecolaminérgico, incluindo o VMAT.</p>
               </div>
               <div class="mech-stage">
                 <div class="mech-num" style="background:#F472B6">4</div>
-                <h5>Crossfire e dano de DNA</h5>
-                <p>Radiação β quebra DNA das células tumorais. Crossfire de 2 mm cobre microambiente celular. Tumores heterogêneos com NET+ misto a NET− respondem por proximidade.</p>
+                <h5>Retenção tumoral</h5>
+                <p>A permanência intracelular e vesicular do radiofármaco favorece a retenção seletiva em tumores com expressão funcional do NET, como neuroblastoma, feocromocitoma e paraganglioma.</p>
+              </div>
+              <div class="mech-stage">
+                <div class="mech-num" style="background:#F472B6">5</div>
+                <h5>Emissão β⁻ terapêutica</h5>
+                <p>O <sup>131</sup>I emite partículas beta menos, que depositam energia em curto alcance no tecido tumoral, promovendo dano celular e lesão do DNA nas células que concentraram o radiofármaco.</p>
+              </div>
+              <div class="mech-stage">
+                <div class="mech-num" style="background:#F472B6">6</div>
+                <h5>Emissão γ / imagem</h5>
+                <p>Além da emissão β⁻ terapêutica, o <sup>131</sup>I também emite fótons gama, permitindo cintilografia ou SPECT para avaliar a distribuição do radiofármaco, confirmar captação tumoral e documentar a biodistribuição pós-terapia.</p>
               </div>
             </div>
           </div>

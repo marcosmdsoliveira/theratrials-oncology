@@ -304,98 +304,40 @@
           <p class="lead">Microesferas de 20-60 μm injetadas seletivamente no ramo arterial hepático que nutre o tumor. Lodge nos arteríolos pré-capilares, onde o <sup>90</sup>Y emite radiação β localmente — alcance máximo de 11 mm cobre todo o microambiente tumoral.</p>
 
           <div class="mech-diagram">
-            <svg viewBox="0 0 800 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
-              <!-- Fígado -->
-              <path d="M 100,80 Q 80,100 90,160 Q 100,200 200,210 Q 320,220 380,180 Q 400,130 380,90 Q 300,60 200,70 Q 130,75 100,80 Z" fill="#1B1E25" stroke="#8E949C" stroke-width="1"/>
-              <text x="200" y="50" fill="#8E949C" font-size="11" font-family="JetBrains Mono">fígado</text>
-
-              <!-- Tumor -->
-              <ellipse cx="240" cy="140" rx="35" ry="28" fill="rgba(245, 158, 11, 0.2)" stroke="#F59E0B" stroke-width="1.5"/>
-              <text x="240" y="145" fill="#F59E0B" font-size="10" text-anchor="middle">tumor</text>
-
-              <!-- Artéria hepática + ramos -->
-              <path d="M 70,140 L 130,140 Q 160,140 170,150 L 220,160 M 170,150 L 200,180 L 240,180" stroke="#F87171" stroke-width="2" fill="none"/>
-              <text x="50" y="135" fill="#F87171" font-size="10">A. hepática</text>
-
-              <!-- Veia porta -->
-              <path d="M 70,180 L 130,180 Q 160,180 200,200" stroke="#0EA5B7" stroke-width="2" fill="none"/>
-              <text x="50" y="195" fill="#0EA5B7" font-size="10">V. porta</text>
-
-              <!-- Microesferas -->
-              <g fill="#F59E0B">
-                <circle cx="220" cy="135" r="2"/>
-                <circle cx="235" cy="148" r="2"/>
-                <circle cx="248" cy="138" r="2"/>
-                <circle cx="225" cy="155" r="2"/>
-                <circle cx="255" cy="148" r="2"/>
-                <circle cx="240" cy="125" r="2"/>
-              </g>
-
-              <!-- Cateter -->
-              <path d="M 30,140 L 130,140" stroke="#FF8400" stroke-width="3" fill="none"/>
-              <circle cx="130" cy="140" r="3" fill="#FF8400"/>
-              <text x="40" y="125" fill="#FF8400" font-size="10">microcateter</text>
-
-              <!-- Β radiação -->
-              <g stroke="#F59E0B" stroke-width="1" fill="none">
-                <path d="M 240,140 L 250,125"/>
-                <path d="M 240,140 L 220,130"/>
-                <path d="M 240,140 L 230,160"/>
-                <path d="M 240,140 L 260,150"/>
-              </g>
-              <text x="270" y="115" fill="#F59E0B" font-size="9">β⁻</text>
-
-              <!-- Detalhes microesfera -->
-              <g transform="translate(550, 140)">
-                <circle cx="0" cy="0" r="50" fill="rgba(245, 158, 11, 0.1)" stroke="#F59E0B" stroke-width="1.5"/>
-                <text x="0" y="-65" fill="#F59E0B" font-size="11" text-anchor="middle">microesfera</text>
-                <circle cx="-15" cy="-10" r="6" fill="#F59E0B"/>
-                <circle cx="10" cy="5" r="6" fill="#F59E0B"/>
-                <circle cx="-5" cy="20" r="6" fill="#F59E0B"/>
-                <text x="20" y="-20" fill="#8E949C" font-size="9"><sup>90</sup>Y</text>
-                <text x="0" y="65" fill="#8E949C" font-size="9" text-anchor="middle">20-60 μm · embolização capilar</text>
-
-                <!-- Beta emission -->
-                <g stroke="#F59E0B" stroke-width="0.8" fill="none">
-                  <path d="M -15,-10 L -45,-25"/>
-                  <path d="M 10,5 L 50,15"/>
-                  <path d="M -5,20 L -25,55"/>
-                </g>
-                <circle cx="0" cy="0" r="80" fill="none" stroke="#F59E0B" stroke-width="0.5" stroke-dasharray="2 3" opacity="0.4"/>
-                <text x="80" y="-65" fill="#F59E0B" font-size="9">alcance β⁻ ~11 mm</text>
-              </g>
-
-              <!-- Setas -->
-              <g stroke="#8E949C" stroke-width="1" fill="none" marker-end="url(#arrow3)">
-                <line x1="380" y1="140" x2="490" y2="140"/>
-              </g>
-              <defs>
-                <marker id="arrow3" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
-                  <path d="M0,0 L0,6 L8,3 z" fill="#8E949C"/>
-                </marker>
-              </defs>
-            </svg>
+            <img src="assets/img/y90-mecanismo.png"
+                 alt="Mecanismo molecular do 90Y-Microesferas — cateterização seletiva, infusão arterial, distribuição preferencial ao tumor, alojamento arteriolar, emissão β⁻ e efeito terapêutico"
+                 style="display: block; width: 100%; height: auto; border-radius: var(--radius-md); margin-bottom: 1rem">
 
             <div class="mech-stages">
               <div class="mech-stage">
                 <div class="mech-num" style="background: #F59E0B">1</div>
-                <h5>Cateter seletivo</h5>
-                <p>Microcateter posicionado no ramo arterial que nutre exclusivamente o tumor (segmentar ou lobar). Acesso femoral ou radial.</p>
+                <h5>Cateterização seletiva</h5>
+                <p>O microcateter é posicionado de forma seletiva no ramo da artéria hepática que nutre o tumor, permitindo a entrega locorregional do radiofármaco diretamente ao território tumoral.</p>
               </div>
               <div class="mech-stage">
                 <div class="mech-num" style="background: #F59E0B">2</div>
-                <h5>Suspensão de microesferas</h5>
-                <p>Solução com microesferas de 20-60 μm é injetada lentamente. Diâmetro maior que o capilar (8-10 μm) garante encarceramento arteriolar pré-capilar.</p>
+                <h5>Infusão das microesferas de <sup>90</sup>Y</h5>
+                <p>Microesferas de vidro ou resina marcadas com ítrio-90 são administradas lentamente pela via intra-arterial, acompanhando o fluxo arterial hepático até a lesão-alvo.</p>
               </div>
               <div class="mech-stage">
                 <div class="mech-num" style="background: #F59E0B">3</div>
-                <h5>Fluxo arterial preferencial</h5>
-                <p>Tumores hepáticos recebem ~80% do fluxo da artéria hepática. Resultado: deposição preferencial nos sítios tumorais com poupança relativa do parênquima normal (que recebe maior fluxo portal).</p>
+                <h5>Distribuição preferencial ao tumor</h5>
+                <p>Os tumores hepáticos recebem suprimento predominantemente arterial, enquanto o parênquima hepático normal é irrigado principalmente pela veia porta. Essa diferença favorece maior deposição das microesferas no leito tumoral.</p>
               </div>
               <div class="mech-stage">
                 <div class="mech-num" style="background: #F59E0B">4</div>
-                <h5>Radiação β contínua</h5>
-                <p><sup>90</sup>Y emite β⁻ com alcance máximo de 11 mm — cobre todo o nicho tumoral 3D. Decaimento contínuo ao longo de ~10 dias entrega &gt;94% da dose.</p>
+                <h5>Alojamento arteriolar e efeito embólico</h5>
+                <p>As microesferas ficam retidas em arteríolas distais e vasos pré-capilares do tumor, promovendo microembolização seletiva e permanecendo próximas às células neoplásicas.</p>
+              </div>
+              <div class="mech-stage">
+                <div class="mech-num" style="background: #F59E0B">5</div>
+                <h5>Emissão β⁻ local</h5>
+                <p>O <sup>90</sup>Y emite radiação beta menos, com deposição de dose no microambiente tumoral. O alcance tecidual permite irradiar células tumorais adjacentes às microesferas, cobrindo o volume-alvo ao redor dos vasos tratados.</p>
+              </div>
+              <div class="mech-stage">
+                <div class="mech-num" style="background: #F59E0B">6</div>
+                <h5>Efeito terapêutico tumoral</h5>
+                <p>A combinação de entrega arterial seletiva, retenção intratumoral das microesferas e radiação β⁻ resulta em dano celular progressivo, necrose tumoral e preservação relativa do parênquima hepático não tumoral.</p>
               </div>
             </div>
           </div>

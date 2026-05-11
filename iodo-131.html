@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
+<!-- PWA:BEGIN -->
+<meta name="theme-color" content="#06B6D4" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0E0F12" media="(prefers-color-scheme: dark)">
+<meta name="color-scheme" content="dark light">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="TheraTrials">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="application-name" content="TheraTrials Oncology">
+<meta name="format-detection" content="telephone=no">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/img/icons/favicon-16.png">
+<link rel="shortcut icon" href="assets/img/icons/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/img/icons/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/img/icons/icon-180.png">
+<link rel="apple-touch-icon" sizes="152x152" href="assets/img/icons/icon-152.png">
+<link rel="apple-touch-icon" sizes="144x144" href="assets/img/icons/icon-144.png">
+<link rel="apple-touch-icon" sizes="120x120" href="assets/img/icons/apple-touch-icon-120.png">
+<!-- PWA:END -->
+<title>131I-Iodo · TheraTrials Oncology</title>
+<meta name="description" content="Iodo-131 em medicina nuclear terapêutica: carcinoma diferenciado de tireoide (CDT) e hipertireoidismo. Página em construção — conteúdo teórico em breve.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/theratrials.css">
+<link rel="stylesheet" href="assets/css/radiofarmaco.css">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<style>
+  /* Override de tema: 131I-Iodo usa cyan/teal (#06B6D4) */
+  :root {
+    --amber: #06B6D4;
+    --amber-glow: #22D3EE;
+    --amber-soft: rgba(6, 182, 212, 0.12);
+    --amber-strong: rgba(6, 182, 212, 0.85);
+  }
+  .iso-symbol.cyan {
+    background: radial-gradient(circle at 35% 35%, #22D3EE 0%, #06B6D4 55%, #0E7490 100%);
+    box-shadow: 0 0 50px rgba(6, 182, 212, 0.35);
+  }
+  .iso-symbol.cyan::before { border-color: rgba(6, 182, 212, 0.4) !important; }
+
+  /* Bloco "Em construção" */
+  .under-construction {
+    background: linear-gradient(180deg, rgba(6, 182, 212, 0.05), rgba(14, 15, 18, 0.4));
+    border: 1px solid rgba(6, 182, 212, 0.25);
+    border-radius: var(--radius-lg);
+    padding: 3rem 2rem;
+    text-align: center;
+    margin: 2.5rem auto;
+    max-width: 720px;
+  }
+  .under-construction .uc-icon {
+    width: 84px; height: 84px;
+    border-radius: 50%;
+    background: rgba(6, 182, 212, 0.12);
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 1.4rem;
+    color: #22D3EE;
+    border: 1px solid rgba(6, 182, 212, 0.3);
+  }
+  .under-construction .uc-icon i { width: 38px; height: 38px; }
+  .under-construction h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.4rem, 2.6vw, 1.8rem);
+    color: var(--off-white);
+    margin: 0 0 0.85rem;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+  }
+  .under-construction .uc-desc {
+    color: var(--stone);
+    font-size: 1rem;
+    line-height: 1.65;
+    max-width: 540px;
+    margin: 0 auto 1.75rem;
+  }
+  .under-construction .uc-pills {
+    display: flex; flex-wrap: wrap; gap: 0.55rem; justify-content: center;
+    margin: 1.5rem 0 0;
+  }
+  .under-construction .uc-pills span {
+    background: var(--graphite-3);
+    border: 1px solid var(--border-soft);
+    padding: 0.4rem 0.85rem;
+    border-radius: 100px;
+    font-size: 0.82rem;
+    color: var(--off-white);
+  }
+  .under-construction .uc-coverage {
+    background: var(--graphite-2);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-md);
+    padding: 1.25rem 1.4rem;
+    margin: 1.75rem auto 0;
+    max-width: 580px;
+    text-align: left;
+  }
+  .under-construction .uc-coverage h4 {
+    font-family: var(--font-display);
+    font-size: 0.78rem;
+    color: #22D3EE;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin: 0 0 0.65rem;
+    font-weight: 600;
+  }
+  .under-construction .uc-coverage ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 0.92rem;
+    color: var(--off-white);
+    line-height: 1.7;
+  }
+  .under-construction .uc-coverage ul li {
+    padding-left: 1.4rem;
+    position: relative;
+  }
+  .under-construction .uc-coverage ul li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: #06B6D4;
+    font-weight: 600;
+  }
+</style>
+</head>
+<body>
+
+<!-- ============== HEADER ============== -->
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="brand">
+      <img src="assets/img/logo-app.png" alt="TheraTrials" class="brand-logo">
+      <div class="brand-text">
+        <span class="brand-name">TheraTrials</span>
+        <span class="brand-sub">Oncology</span>
+      </div>
+    </a>
+    <button class="nav-toggle" aria-label="Menu" onclick="this.parentElement.querySelector('.nav').classList.toggle('open')"><i data-lucide="menu" style="width:18px;height:18px"></i></button>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="database.html">Database</a>
+      <a href="estudos-ativos.html">Estudos ativos</a>
+      <a href="tumor-boards.html">Tumor boards</a>
+      <a href="modalidades.html">Modalidades</a>
+      <a href="radiofarmacos.html">Radiofármacos</a>
+      <a href="ferramentas.html">Ferramentas</a>
+      <a href="fundamentos.html">Fundamentos</a>
+      <a href="about.html">Sobre</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ============== HERO ============== -->
+<section class="rf-hero">
+  <div class="container">
+    <span class="rf-eyebrow" style="background:rgba(6,182,212,0.12);border-color:rgba(6,182,212,0.3);color:#22D3EE">
+      <i data-lucide="atom" style="width:12px;height:12px"></i> Radiofármaco · Beta + gama · Tireoide
+    </span>
+    <h1 class="rf-title">
+      <span class="iso-up" style="color:#22D3EE">131</span>I-Iodo
+      <br><span style="color:#22D3EE">Sódio iodeto</span> · o radiofármaco fundador da medicina nuclear terapêutica
+    </h1>
+    <p class="rf-subtitle">
+      Captado pelo cotransportador sódio-iodeto (NIS) das células foliculares tireoidianas. É o radiofármaco terapêutico mais antigo em uso clínico contínuo (desde 1941) — referência absoluta em <strong>carcinoma diferenciado de tireoide</strong> (ablação de remanescente, tratamento adjuvante e doença persistente/metastática) e em <strong>hipertireoidismo</strong> (Doença de Graves e bócio nodular tóxico).
+    </p>
+
+    <div class="iso-card">
+      <div class="iso-symbol cyan">
+        <span class="iso-mass">131</span>
+        <span class="iso-element">I</span>
+        <span class="iso-name">Iodo</span>
+      </div>
+      <div class="iso-grid">
+        <div class="item"><div class="lbl">Meia-vida</div><div class="val">8,02 d</div></div>
+        <div class="item"><div class="lbl">Decaimento</div><div class="val">β⁻ + γ</div></div>
+        <div class="item"><div class="lbl">Energia β máx</div><div class="val">606 keV</div></div>
+        <div class="item"><div class="lbl">Alcance β máx</div><div class="val">~ 2 mm em tecido</div></div>
+        <div class="item"><div class="lbl">γ útil</div><div class="val">364 keV (81%)</div></div>
+        <div class="item"><div class="lbl">Captação</div><div class="val">NIS (sódio-iodeto)</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== EM CONSTRUÇÃO ============== -->
+<section style="padding: 1rem 0 3rem">
+  <div class="container">
+    <div class="under-construction">
+      <div class="uc-icon">
+        <i data-lucide="construction"></i>
+      </div>
+      <h2>Página em construção</h2>
+      <p class="uc-desc">
+        O dossiê completo do <sup>131</sup>I-Iodo está em produção. Em breve teremos cronologia, mecanismo molecular (NIS), protocolos de tratamento, preparo, dosimetria, isolamento radiometabólico, indicações em CDT e hipertireoidismo, ensaios clínicos relevantes e perspectivas.
+      </p>
+
+      <div class="uc-coverage">
+        <h4>Cobertura prevista</h4>
+        <ul>
+          <li>Mecanismo molecular · sódio-iodeto symporter (NIS)</li>
+          <li>Carcinoma diferenciado de tireoide · ablação, adjuvante, doença persistente/metastática</li>
+          <li>Estratificação ATA de risco e seleção para terapia</li>
+          <li>Hipertireoidismo · Doença de Graves, bócio multinodular tóxico, adenoma autônomo</li>
+          <li>Preparo · TSH recombinante (rhTSH) × suspensão hormonal · dieta pobre em iodo</li>
+          <li>Protocolos de dose · empírica × dosimétrica · MIRD vs lesional</li>
+          <li>Isolamento radiometabólico · normas CNEN · alta hospitalar</li>
+          <li>PCI pós-terapia · SPECT/CT · cintilografia de corpo inteiro</li>
+          <li>Toxicidade e seguimento de longo prazo</li>
+        </ul>
+      </div>
+
+      <div class="uc-pills">
+        <span>CDT</span>
+        <span>Hipertireoidismo</span>
+        <span>NIS</span>
+        <span>ATA Guidelines</span>
+        <span>Dosimetria lesional</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============== FOOTER ============== -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col footer-brand">
+        <div class="brand-logo-row">
+          <img src="assets/img/logo-app.png" alt="TheraTrials Oncology" style="width:36px;height:36px;border-radius:8px">
+          <div>
+            <div style="font-family:var(--font-display); font-size:1.05rem; font-weight:600">TheraTrials <span style="color:var(--amber)">Oncology</span></div>
+            <div style="font-size:0.78rem; color:var(--stone)">Evidência clínica selecionada</div>
+          </div>
+        </div>
+        <p style="font-size:0.85rem; color:var(--stone); line-height:1.6; margin-top:1rem; max-width:340px">
+          Plataforma de evidências em oncologia moderna — terapias-alvo, imunoterapia, biomarcadores, imagem molecular e teranóstico. Curadoria editorial independente para uso educacional.
+        </p>
+      </div>
+      <div class="footer-col">
+        <h4 style="font-size:0.78rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--stone); margin:0 0 0.85rem">Plataforma</h4>
+        <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.5rem">
+          <li><a href="database.html" style="color:var(--off-white); text-decoration:none; font-size:0.88rem">Database</a></li>
+          <li><a href="estudos-ativos.html" style="color:var(--off-white); text-decoration:none; font-size:0.88rem">Estudos ativos · BR</a></li>
+          <li><a href="tumor-boards.html" style="color:var(--off-white); text-decoration:none; font-size:0.88rem">Tumor boards</a></li>
+          <li><a href="modalidades.html" style="color:var(--off-white); text-decoration:none; font-size:0.88rem">Modalidades</a></li>
+          <li><a href="radiofarmacos.html" style="color:var(--off-white); text-decoration:none; font-size:0.88rem">Radiofármacos</a></li>
+          <li><a href="ferramentas.html" style="color:var(--off-white); text-decoration:none; font-size:0.88rem">Ferramentas</a></li>
+          <li><a href="fundamentos.html" style="color:var(--off-white); text-decoration:none; font-size:0.88rem">Fundamentos</a></li>
+          <li><a href="about.html" style="color:var(--off-white); text-decoration:none; font-size:0.88rem">Sobre</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 style="font-size:0.78rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--stone); margin:0 0 0.85rem">Legal</h4>
+        <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.5rem">
+          <li><a href="termos-uso.html" style="color:var(--off-white); text-decoration:none; font-size:0.88rem">Termos de uso</a></li>
+          <li><a href="privacidade.html" style="color:var(--off-white); text-decoration:none; font-size:0.88rem">Política de privacidade</a></li>
+          <li><a href="direitos-autorais.html" style="color:var(--off-white); text-decoration:none; font-size:0.88rem">Direitos autorais</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 TheraTrials Oncology · uso educacional · não substitui diretrizes oficiais ou leitura primária</span>
+      <span>v1.1 · Atualizado mai 2026</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/common.js" defer></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    if (typeof lucide !== 'undefined') lucide.createIcons();
+  });
+</script>
+<script src="assets/js/pwa-install.js" defer></script>
+
+</body>
+</html>
