@@ -615,3 +615,14 @@ section.compact { padding: 3rem 0; }
 .preserve-newlines { white-space: pre-line; }
 .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 .line-clamp-3 { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+
+/* superscript alinhamento isótopo (177Lu, 223Ra, 90Y etc) */
+sup {
+  font-size: 0.62em;
+  line-height: 0;
+  vertical-align: super;
+  font-feature-settings: "tnum" 1;
+  font-variant-numeric: tabular-nums;
+  position: relative;
+  top: -0.05em;
+}
