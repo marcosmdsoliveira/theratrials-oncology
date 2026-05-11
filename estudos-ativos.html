@@ -449,6 +449,164 @@
 
   body.modal-open { overflow: hidden; }
   [x-cloak] { display: none !important; }
+
+  /* ===== Modal de contato com pesquisador ===== */
+  .contact-modal {
+    border: 1px solid var(--border-soft);
+    background: linear-gradient(180deg, rgba(20,22,27,0.98), rgba(14,15,18,0.98));
+    color: var(--off-white);
+    border-radius: var(--radius-lg);
+    padding: 0;
+    width: min(560px, calc(100vw - 2rem));
+    max-height: 90vh;
+    box-shadow: 0 25px 80px -20px rgba(0,0,0,0.7);
+    overflow: hidden;
+  }
+  .contact-modal::backdrop { background: rgba(0,0,0,0.65); backdrop-filter: blur(4px); }
+  .cm-head {
+    display: flex; align-items: flex-start; justify-content: space-between;
+    gap: 1rem;
+    padding: 1.25rem 1.4rem 1rem;
+    border-bottom: 1px solid var(--border-soft);
+    background: linear-gradient(135deg, rgba(255,132,0,0.08), rgba(34,211,238,0.04));
+  }
+  .cm-title-wrap { flex: 1; min-width: 0; }
+  .cm-title-wrap h3 {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0 0 0.25rem;
+    color: var(--off-white);
+    letter-spacing: -0.01em;
+  }
+  .cm-study {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--amber);
+    line-height: 1.4;
+  }
+  .cm-close {
+    background: transparent;
+    border: 1px solid var(--border-soft);
+    border-radius: 8px;
+    width: 32px; height: 32px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--stone);
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: all 0.15s;
+  }
+  .cm-close:hover { color: var(--off-white); border-color: var(--off-white); }
+  .cm-body {
+    padding: 1.25rem 1.4rem 1.4rem;
+    overflow-y: auto;
+    max-height: calc(90vh - 80px);
+  }
+  .cm-intro {
+    font-size: 0.88rem;
+    color: var(--stone);
+    line-height: 1.55;
+    margin: 0 0 1.25rem;
+  }
+  #contact-form label {
+    display: block;
+    font-size: 0.78rem;
+    color: var(--stone);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 500;
+    margin: 0.85rem 0 0.35rem;
+  }
+  #contact-form label:first-of-type { margin-top: 0; }
+  #contact-form input,
+  #contact-form textarea {
+    width: 100%;
+    background: var(--graphite-2, #14161B);
+    border: 1px solid var(--border-soft);
+    border-radius: 8px;
+    padding: 0.7rem 0.85rem;
+    color: var(--off-white);
+    font-family: var(--font-body, inherit);
+    font-size: 0.92rem;
+    box-sizing: border-box;
+    transition: border-color 0.15s;
+  }
+  #contact-form input:focus,
+  #contact-form textarea:focus {
+    outline: none;
+    border-color: var(--amber);
+  }
+  #contact-form textarea { resize: vertical; min-height: 90px; }
+  .cm-actions {
+    display: flex; gap: 0.6rem; margin-top: 1.4rem; flex-wrap: wrap;
+  }
+  .cm-btn {
+    flex: 1; min-width: 130px;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex; align-items: center; justify-content: center;
+    gap: 0.45rem;
+    transition: all 0.15s;
+    border: 1px solid transparent;
+    font-family: var(--font-display, inherit);
+  }
+  .cm-btn-wpp {
+    background: rgba(37, 211, 102, 0.12);
+    color: #25D366;
+    border-color: rgba(37, 211, 102, 0.35);
+  }
+  .cm-btn-wpp:hover { background: rgba(37, 211, 102, 0.22); }
+  .cm-btn-send {
+    background: var(--amber);
+    color: #0E0F12;
+  }
+  .cm-btn-send:hover { background: #FFA640; }
+  .cm-btn-send:disabled { opacity: 0.6; cursor: not-allowed; }
+  .cm-priv {
+    font-size: 0.72rem;
+    color: var(--stone-2, var(--stone));
+    margin: 1rem 0 0;
+    line-height: 1.5;
+    opacity: 0.75;
+  }
+  .cm-success, .cm-error { text-align: center; padding: 2rem 1.4rem 1.6rem; }
+  .cm-success-icon, .cm-error-icon {
+    width: 64px; height: 64px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 1rem;
+  }
+  .cm-success-icon { background: rgba(52, 211, 153, 0.15); color: #34D399; }
+  .cm-error-icon { background: rgba(248, 113, 113, 0.15); color: #F87171; }
+  .cm-success-icon i, .cm-error-icon i { width: 32px; height: 32px; }
+  .cm-success h4, .cm-error h4 {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    margin: 0 0 0.5rem;
+    color: var(--off-white);
+  }
+  .cm-success p, .cm-error p {
+    font-size: 0.9rem;
+    color: var(--stone);
+    line-height: 1.55;
+    max-width: 380px;
+    margin: 0 auto 1.4rem;
+  }
+  .cm-spin {
+    animation: cm-spin 0.8s linear infinite;
+    width: 16px; height: 16px;
+  }
+  @keyframes cm-spin { to { transform: rotate(360deg); } }
+
+  /* Safe area iOS */
+  @supports (padding: env(safe-area-inset-bottom)) {
+    .contact-modal { margin-bottom: env(safe-area-inset-bottom); }
+  }
+
 </style>
 </head>
 <body x-data="estudosAtivosApp()" x-init="init()" :class="{ 'modal-open': selected }">
@@ -795,8 +953,12 @@
           </a>
           <a x-show="selected.contato_url && selected.contato_url !== selected.fonte_url" :href="selected.contato_url" target="_blank" rel="noopener" class="ghost">
             <i data-lucide="phone" style="width:14px;height:14px"></i>
-            Contato do estudo
+            Registro de contato oficial
           </a>
+          <button type="button" class="primary" @click="openContact(selected)" style="background: linear-gradient(135deg, var(--amber), #FFA640); color: #0E0F12; border: 0; cursor: pointer; font-family: inherit">
+            <i data-lucide="mail" style="width:14px;height:14px"></i>
+            Entrar em contato com o pesquisador
+          </button>
           <a href="database.html" class="ghost">
             <i data-lucide="database" style="width:14px;height:14px"></i>
             Ver evidência prévia no Database
@@ -810,6 +972,215 @@
     </div>
   </template>
 </div>
+
+
+<!-- ============== MODAL DE CONTATO COM PESQUISADOR ============== -->
+<dialog id="contact-modal" class="contact-modal" aria-labelledby="contact-modal-title">
+  <div class="cm-head">
+    <div class="cm-title-wrap">
+      <h3 id="contact-modal-title">Entrar em contato</h3>
+      <span class="cm-study" id="cm-study-name"></span>
+    </div>
+    <button type="button" class="cm-close" onclick="closeContactModal()" aria-label="Fechar">
+      <i data-lucide="x" style="width:16px;height:16px"></i>
+    </button>
+  </div>
+
+  <!-- View 1: Formulário -->
+  <div class="cm-body" id="cm-form-view">
+    <p class="cm-intro">Deixe seus dados e mensagem que retornaremos pelo canal informado. Você também pode usar o WhatsApp para um contato mais rápido.</p>
+
+    <form id="contact-form" onsubmit="submitContact(event)">
+      <input type="hidden" name="estudo" id="cm-hidden-estudo">
+      <input type="hidden" name="nct" id="cm-hidden-nct">
+      <input type="hidden" name="_subject" id="cm-hidden-subject">
+
+      <label for="cm-nome">Nome completo *</label>
+      <input id="cm-nome" type="text" name="nome" required maxlength="120" autocomplete="name">
+
+      <label for="cm-email">Email *</label>
+      <input id="cm-email" type="email" name="email" required maxlength="200" autocomplete="email">
+
+      <label for="cm-tel">Telefone (WhatsApp)</label>
+      <input id="cm-tel" type="tel" name="telefone" placeholder="+55 31 9 9999-9999" maxlength="30" autocomplete="tel">
+
+      <label for="cm-msg">Mensagem</label>
+      <textarea id="cm-msg" name="mensagem" rows="4" maxlength="2000" placeholder="Conte brevemente sobre o caso clínico ou o que gostaria de saber..."></textarea>
+
+      <div class="cm-actions">
+        <button type="button" class="cm-btn cm-btn-wpp" onclick="sendWhatsApp()">
+          <i data-lucide="message-circle" style="width:16px;height:16px"></i> WhatsApp
+        </button>
+        <button type="submit" class="cm-btn cm-btn-send">
+          <i data-lucide="send" style="width:16px;height:16px"></i> Enviar por e-mail
+        </button>
+      </div>
+
+      <p class="cm-priv">Seus dados são usados apenas para responder a este contato. Não compartilhamos com terceiros nem fazemos disparos de marketing.</p>
+    </form>
+  </div>
+
+  <!-- View 2: Sucesso -->
+  <div class="cm-body cm-success" id="cm-success-view" style="display:none">
+    <div class="cm-success-icon">
+      <i data-lucide="check-circle-2"></i>
+    </div>
+    <h4>Obrigado pelo contato!</h4>
+    <p>Recebemos sua mensagem. Em breve retornaremos pelo e-mail ou telefone informado.</p>
+    <button type="button" class="cm-btn cm-btn-send" style="max-width: 200px; margin: 0 auto" onclick="closeContactModal()">Fechar</button>
+  </div>
+
+  <!-- View 3: Erro -->
+  <div class="cm-body cm-error" id="cm-error-view" style="display:none">
+    <div class="cm-error-icon">
+      <i data-lucide="alert-triangle"></i>
+    </div>
+    <h4>Não conseguimos enviar agora</h4>
+    <p id="cm-error-msg">Ocorreu um erro de conexão. Tente novamente em alguns instantes ou use o WhatsApp.</p>
+    <div class="cm-actions" style="max-width: 380px; margin: 0 auto">
+      <button type="button" class="cm-btn cm-btn-wpp" onclick="sendWhatsApp()">
+        <i data-lucide="message-circle" style="width:16px;height:16px"></i> WhatsApp
+      </button>
+      <button type="button" class="cm-btn cm-btn-send" onclick="resetContactForm()">
+        Tentar novamente
+      </button>
+    </div>
+  </div>
+</dialog>
+
+<script>
+  /* =====================================================================
+     Modal de Contato com Pesquisador — TheraTrials Oncology
+     ---------------------------------------------------------------------
+     CONFIGURAÇÃO (ajustar após cadastro):
+       FORMSPREE_ENDPOINT : crie conta gratuita em https://formspree.io
+                            e cole aqui o endpoint do form (ex: https://formspree.io/f/abcd1234)
+       WHATSAPP_NUMBER    : número no formato internacional sem espaços/símbolos
+                            (ex: 5531999998888 para +55 31 99999-8888)
+     ===================================================================== */
+  const FORMSPREE_ENDPOINT = 'https://formspree.io/f/REPLACE_WITH_YOUR_FORM_ID';
+  const WHATSAPP_NUMBER = '5531999998888'; // PLACEHOLDER — substituir pelo número real
+
+  let _currentStudy = { nome: '', nct: '' };
+
+  window.openContactModal = function(studyName, nct) {
+    _currentStudy = { nome: studyName || '', nct: nct || '' };
+    const studyEl = document.getElementById('cm-study-name');
+    if (studyEl) studyEl.textContent = (studyName || '') + (nct ? '  ·  ' + nct : '');
+    const hEst = document.getElementById('cm-hidden-estudo');
+    const hNct = document.getElementById('cm-hidden-nct');
+    const hSub = document.getElementById('cm-hidden-subject');
+    if (hEst) hEst.value = studyName || '';
+    if (hNct) hNct.value = nct || '';
+    if (hSub) hSub.value = '[TheraTrials] Contato sobre ' + (studyName || '') + ' (' + (nct || '') + ')';
+    document.getElementById('cm-form-view').style.display = 'block';
+    document.getElementById('cm-success-view').style.display = 'none';
+    document.getElementById('cm-error-view').style.display = 'none';
+    const form = document.getElementById('contact-form');
+    if (form) form.reset();
+    if (hEst) hEst.value = studyName || '';
+    if (hNct) hNct.value = nct || '';
+    if (hSub) hSub.value = '[TheraTrials] Contato sobre ' + (studyName || '') + ' (' + (nct || '') + ')';
+
+    const dlg = document.getElementById('contact-modal');
+    if (typeof dlg.showModal === 'function') dlg.showModal();
+    else dlg.setAttribute('open', '');
+
+    if (typeof lucide !== 'undefined' && lucide.createIcons) {
+      requestAnimationFrame(() => { try { lucide.createIcons(); } catch(e){} });
+    }
+  };
+
+  window.closeContactModal = function() {
+    const dlg = document.getElementById('contact-modal');
+    if (dlg && typeof dlg.close === 'function') dlg.close();
+    else if (dlg) dlg.removeAttribute('open');
+  };
+
+  window.resetContactForm = function() {
+    document.getElementById('cm-form-view').style.display = 'block';
+    document.getElementById('cm-success-view').style.display = 'none';
+    document.getElementById('cm-error-view').style.display = 'none';
+  };
+
+  window.submitContact = async function(e) {
+    e.preventDefault();
+    const form = e.target;
+    const btn = form.querySelector('button[type="submit"]');
+    const originalBtn = btn.innerHTML;
+    btn.disabled = true;
+    btn.innerHTML = '<i data-lucide="loader-2" class="cm-spin"></i> Enviando...';
+    if (typeof lucide !== 'undefined' && lucide.createIcons) lucide.createIcons();
+
+    try {
+      if (FORMSPREE_ENDPOINT.includes('REPLACE_WITH_YOUR_FORM_ID')) {
+        throw new Error('Configuração pendente: cadastre um endpoint Formspree.');
+      }
+      const formData = new FormData(form);
+      const res = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        document.getElementById('cm-form-view').style.display = 'none';
+        document.getElementById('cm-success-view').style.display = 'block';
+        if (typeof lucide !== 'undefined' && lucide.createIcons) {
+          requestAnimationFrame(() => lucide.createIcons());
+        }
+      } else {
+        let detail = 'HTTP ' + res.status;
+        try { const j = await res.json(); detail = (j && (j.error || (j.errors && j.errors[0] && j.errors[0].message))) || detail; } catch(_){}
+        throw new Error(detail);
+      }
+    } catch (err) {
+      document.getElementById('cm-form-view').style.display = 'none';
+      document.getElementById('cm-error-view').style.display = 'block';
+      const msgEl = document.getElementById('cm-error-msg');
+      if (msgEl) msgEl.textContent = 'Não conseguimos enviar agora (' + err.message + '). Use o WhatsApp ou tente novamente em alguns instantes.';
+      if (typeof lucide !== 'undefined' && lucide.createIcons) {
+        requestAnimationFrame(() => lucide.createIcons());
+      }
+    } finally {
+      btn.disabled = false;
+      btn.innerHTML = originalBtn;
+      if (typeof lucide !== 'undefined' && lucide.createIcons) lucide.createIcons();
+    }
+  };
+
+  window.sendWhatsApp = function() {
+    const form = document.getElementById('contact-form');
+    const f = form && form.elements;
+    const nome = f && f.nome ? f.nome.value.trim() : '';
+    const email = f && f.email ? f.email.value.trim() : '';
+    const tel = f && f.telefone ? f.telefone.value.trim() : '';
+    const msg = f && f.mensagem ? f.mensagem.value.trim() : '';
+
+    const lines = [
+      'Olá! Tenho interesse no estudo *' + (_currentStudy.nome || '') + '*' + (_currentStudy.nct ? ' (' + _currentStudy.nct + ')' : '') + '.',
+      ''
+    ];
+    if (nome) lines.push('Nome: ' + nome);
+    if (email) lines.push('Email: ' + email);
+    if (tel) lines.push('Telefone: ' + tel);
+    if (msg) { lines.push(''); lines.push('Mensagem: ' + msg); }
+    lines.push('');
+    lines.push('(Enviado via TheraTrials Oncology)');
+
+    const text = encodeURIComponent(lines.join('\n'));
+    const url = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + text;
+    window.open(url, '_blank');
+  };
+
+  // Fecha o modal ao clicar no backdrop
+  document.addEventListener('DOMContentLoaded', function() {
+    const dlg = document.getElementById('contact-modal');
+    if (!dlg) return;
+    dlg.addEventListener('click', function(e) {
+      if (e.target === dlg) dlg.close();
+    });
+  });
+</script>
 
 <!-- ============== FOOTER ============== -->
 <footer class="site-footer">
@@ -860,6 +1231,10 @@
       close() {
         this.selected = null;
         if (history.replaceState) history.replaceState(null, '', window.location.pathname);
+      },
+
+      openContact(study) {
+        if (window.openContactModal && study) window.openContactModal(study.nome, study.nct);
       },
 
       toggle(group, value) {

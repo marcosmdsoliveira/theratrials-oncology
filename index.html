@@ -407,6 +407,134 @@
     display: flex; justify-content: center; align-items: center;
     padding: 1.5rem 0;
   }
+
+  /* Stats bar institucional · números reais do app */
+  .stats-bar {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    background: linear-gradient(180deg, rgba(20,22,27,0.65), rgba(14,15,18,0.45));
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    margin: 1.5rem 0 0;
+  }
+  @media (max-width: 880px) { .stats-bar { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 480px) { .stats-bar { grid-template-columns: repeat(2, 1fr); } }
+  .stats-bar .s-cell {
+    padding: 1.35rem 0.85rem;
+    text-align: center;
+    border-right: 1px solid var(--border-soft);
+    border-bottom: 1px solid var(--border-soft);
+  }
+  .stats-bar .s-cell:last-child { border-right: 0; }
+  @media (max-width: 880px) {
+    .stats-bar .s-cell { border-right: 1px solid var(--border-soft); border-bottom: 1px solid var(--border-soft); }
+    .stats-bar .s-cell:nth-child(3n) { border-right: 0; }
+    .stats-bar .s-cell:nth-last-child(-n+3) { border-bottom: 0; }
+  }
+  @media (max-width: 480px) {
+    .stats-bar .s-cell:nth-child(3n) { border-right: 1px solid var(--border-soft); }
+    .stats-bar .s-cell:nth-child(2n) { border-right: 0; }
+    .stats-bar .s-cell:nth-last-child(-n+2) { border-bottom: 0; }
+  }
+  .stats-bar .s-num {
+    font-family: var(--font-display);
+    font-size: clamp(1.4rem, 3.2vw, 1.95rem);
+    font-weight: 700;
+    color: var(--amber);
+    line-height: 1;
+    letter-spacing: -0.01em;
+  }
+  .stats-bar .s-lab {
+    font-size: 0.7rem;
+    color: var(--stone);
+    margin-top: 0.4rem;
+    line-height: 1.3;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  /* Tools mini-grid · 9 grupos de critérios oncológicos */
+  .tools-mini-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+    margin: 1.5rem 0;
+  }
+  @media (max-width: 880px) { .tools-mini-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 480px) { .tools-mini-grid { grid-template-columns: 1fr; } }
+  .tools-mini {
+    background: var(--graphite-2);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-md);
+    padding: 0.95rem 1.05rem;
+    text-decoration: none;
+    color: var(--off-white);
+    display: flex; align-items: flex-start; gap: 0.75rem;
+    transition: transform 0.2s, border-color 0.2s;
+    position: relative; overflow: hidden;
+  }
+  .tools-mini::before {
+    content: ''; position: absolute; top: 0; left: 0; bottom: 0;
+    width: 3px; background: var(--accent, var(--amber));
+    opacity: 0.85;
+  }
+  .tools-mini:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent, var(--amber));
+    color: var(--off-white);
+  }
+  .tools-mini .tm-icon {
+    width: 36px; height: 36px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .tools-mini .tm-icon i { color: var(--accent, var(--amber)); }
+  .tools-mini .tm-body { flex: 1; min-width: 0; }
+  .tools-mini .tm-name {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin: 0 0 0.2rem;
+    line-height: 1.2;
+  }
+  .tools-mini .tm-d {
+    font-size: 0.76rem;
+    color: var(--stone);
+    line-height: 1.45;
+  }
+
+  /* Grid-2 para Tumor boards + Modalidades */
+  .grid-2-tb {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  @media (max-width: 720px) { .grid-2-tb { grid-template-columns: 1fr; } }
+
+  /* Bloco Sobre · institucional */
+  .about-block {
+    background: linear-gradient(135deg, rgba(255, 132, 0, 0.05) 0%, rgba(14, 165, 183, 0.04) 100%);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-lg);
+    padding: 1.85rem 1.85rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1.85rem;
+    align-items: center;
+    margin: 1.5rem 0;
+  }
+  @media (max-width: 720px) { .about-block { grid-template-columns: 1fr; padding: 1.5rem 1.35rem; } }
+  .about-block .about-meta {
+    display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem;
+  }
+  .about-block .about-meta span {
+    background: var(--graphite-3); padding: 0.3rem 0.7rem;
+    border-radius: 100px; font-size: 0.76rem;
+    color: var(--off-white);
+    border: 1px solid var(--border-soft);
+  }
 </style>
 </head>
 <body>
@@ -457,7 +585,7 @@
       <a href="database.html" class="pmap-card" style="--accent:#FF8400">
         <div class="pmap-icon"><i data-lucide="database" style="width:22px;height:22px"></i></div>
         <div class="pmap-name">Database</div>
-        <div class="pmap-desc">311 ensaios filtráveis · favoritos · citações · CSV</div>
+        <div class="pmap-desc">Mais de 300 ensaios · atualização semanal · favoritos · citações</div>
       </a>
       <a href="estudos-ativos.html" class="pmap-card" style="--accent:#34d399">
         <div class="pmap-icon"><i data-lucide="map-pin" style="width:22px;height:22px"></i></div>
@@ -495,84 +623,10 @@
         <div class="pmap-desc">Projeto, missão, metodologia editorial e contato</div>
       </a>
     </div>
-  </div>
-</section>
 
-
-<!-- ============== 3 PILARES ============== -->
-<section class="block-section">
-  <div class="container">
-    <div class="section-header">
-      <span class="eyebrow">Três pilares da oncologia moderna</span>
-      <h2 style="margin-top: 0.5rem">Tumor, biomarcador, terapia · evidência conectada</h2>
-      <p class="subtitle">A plataforma organiza estudos em três eixos complementares, refletindo a forma como decisões reais são tomadas em tumor boards.</p>
-    </div>
-
-    <div class="grid-3">
-      <div class="card card-pillar card-glow">
-        <div style="color: var(--amber); margin-bottom: 1rem">
-          <i data-lucide="atom" style="width:32px;height:32px"></i>
-        </div>
-        <h3 style="color: var(--amber); margin-bottom: 0.5rem">Teranóstico</h3>
-        <p class="text-stone" style="margin-bottom: 1rem">PSMA-RLT em próstata, PRRT em NET/PPGL, radioembolização Y-90 em HCC/mCRC, MIBG em NB. Imagem molecular guiando terapia.</p>
-        <ul style="list-style:none; padding:0; margin:0; font-size: 0.85rem; color: var(--stone)">
-          <li style="margin-bottom: 0.4rem">→ <span class="text-off-white">VISION, PSMAfore, PSMAddition</span> · 177Lu-PSMA</li>
-          <li style="margin-bottom: 0.4rem">→ <span class="text-off-white">NETTER-1/2, COMPETE</span> · PRRT</li>
-          <li style="margin-bottom: 0.4rem">→ <span class="text-off-white">DOSISPHERE-01, EPOCH</span> · Y-90 TARE</li>
-          <li>→ <span class="text-off-white">VIOLET, 225Ac-PSMA</span> · novos α/Tb</li>
-        </ul>
-        <a href="modalidades.html#teranostico" class="btn btn-ghost btn-sm" style="margin-top: 1rem; padding-left: 0">
-          Ver modalidade <i data-lucide="arrow-right" style="width:14px;height:14px"></i>
-        </a>
-      </div>
-
-      <div class="card card-pillar card-glow">
-        <div style="color: var(--teal); margin-bottom: 1rem">
-          <i data-lucide="target" style="width:32px;height:32px"></i>
-        </div>
-        <h3 style="color: var(--teal); margin-bottom: 0.5rem">Terapias-alvo molecular</h3>
-        <p class="text-stone" style="margin-bottom: 1rem">Inibidores específicos por biomarcador em 3 tumores: próstata (ARPi, PARP), pulmão (EGFR/ALK/KRAS/RET/MET/HER2) e mama (CDK4/6, PI3K/AKT, HER2-TKI, ADCs).</p>
-        <ul style="list-style:none; padding:0; margin:0; font-size: 0.85rem; color: var(--stone)">
-          <li style="margin-bottom: 0.4rem">→ <span class="text-off-white">DESTINY-Breast03/04/06, KATHERINE</span> · ADCs anti-HER2</li>
-          <li style="margin-bottom: 0.4rem">→ <span class="text-off-white">PALOMA-2, MONALEESA, MonarchE, NATALEE</span> · CDK4/6</li>
-          <li style="margin-bottom: 0.4rem">→ <span class="text-off-white">FLAURA, MARIPOSA, ALEX, CROWN</span> · drivers NSCLC</li>
-          <li>→ <span class="text-off-white">PROfound, PROpel, OlympiAD, OlympiA</span> · PARP</li>
-        </ul>
-        <a href="modalidades.html#terapia-alvo" class="btn btn-ghost btn-sm" style="margin-top: 1rem; padding-left: 0; color: var(--teal)">
-          Ver modalidade <i data-lucide="arrow-right" style="width:14px;height:14px"></i>
-        </a>
-      </div>
-
-      <div class="card card-pillar card-glow">
-        <div style="color: #34D399; margin-bottom: 1rem">
-          <i data-lucide="shield-plus" style="width:32px;height:32px"></i>
-        </div>
-        <h3 style="color: #34D399; margin-bottom: 0.5rem">Imunoterapia</h3>
-        <p class="text-stone" style="margin-bottom: 1rem">ICIs em pulmão (NSCLC + SCLC), pembro neoadj/1L em mama TNBC, vacinas autólogas em próstata, BiTE DLL3 em SCLC.</p>
-        <ul style="list-style:none; padding:0; margin:0; font-size: 0.85rem; color: var(--stone)">
-          <li style="margin-bottom: 0.4rem">→ <span class="text-off-white">KEYNOTE-024/189/407</span> · pembro NSCLC</li>
-          <li style="margin-bottom: 0.4rem">→ <span class="text-off-white">KEYNOTE-522, KEYNOTE-355</span> · pembro mama TNBC</li>
-          <li style="margin-bottom: 0.4rem">→ <span class="text-off-white">PACIFIC, ADRIATIC, KEYNOTE-671</span> · perioperatório</li>
-          <li>→ <span class="text-off-white">DeLLphi-301</span> · tarlatamab DLL3 BiTE</li>
-        </ul>
-        <a href="modalidades.html#imunoterapia" class="btn btn-ghost btn-sm" style="margin-top: 1rem; padding-left: 0; color: #34D399">
-          Ver modalidade <i data-lucide="arrow-right" style="width:14px;height:14px"></i>
-        </a>
-      </div>
     </div>
   </div>
 </section>
-
-
-<div class="home-divider">
-  <svg width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="60" cy="20" r="3" fill="#FF8400"/>
-    <ellipse cx="60" cy="20" rx="40" ry="10" fill="none" stroke="#FF8400" stroke-width="0.8" opacity="0.4"/>
-    <ellipse cx="60" cy="20" rx="55" ry="13" fill="none" stroke="#0EA5B7" stroke-width="0.6" stroke-dasharray="2 4" opacity="0.5"/>
-    <circle cx="100" cy="20" r="1.5" fill="#0EA5B7"/>
-    <circle cx="20" cy="20" r="1.5" fill="#0EA5B7"/>
-  </svg>
-</div>
 
 
 <!-- ============== BLOCO 1 · DATABASE ============== -->
@@ -580,9 +634,9 @@
   <div class="container">
     <div class="block-header">
       <div class="left">
-        <span class="num-badge">Bloco 01 · Database</span>
-        <h2>311 ensaios em filtros hierárquicos</h2>
-        <p>Pesquisa por tumor, modalidade ou estudo individual. Cobertura: teranóstico (próstata, NET, HCC/mCRC, ccRCC, neuroblastoma/PPGL), pulmão (NSCLC drivers, IO 1L, perioperatório, SCLC), mama (HER2+, HR+/HER2-, TNBC, BRCA-mut, imagem molecular) e uro-oncologia (ccRCC IO+TKI, RCC adjuvante e não-clear, urotelial avançado e perioperatório/NMIBC). Cada linha leva a uma ficha com 40 campos.</p>
+        <span class="num-badge">Database</span>
+        <h2>Mais de 300 ensaios clínicos · atualizações semanais</h2>
+        <p>Pesquisa por tumor, modalidade ou estudo individual, com atualizações semanais. Cobertura: teranóstico (próstata, NET, HCC/mCRC, ccRCC, neuroblastoma/PPGL), pulmão (NSCLC drivers, IO 1L, perioperatório, SCLC), mama (HER2+, HR+/HER2-, TNBC, BRCA-mut, imagem molecular) e uro-oncologia (ccRCC IO+TKI, RCC adjuvante e não-clear, urotelial avançado e perioperatório/NMIBC). Cada linha leva a uma ficha com 40 campos.</p>
       </div>
       <a href="database.html" class="btn btn-primary">
         Abrir Database <i data-lucide="arrow-right" style="width:16px;height:16px"></i>
@@ -604,16 +658,6 @@
         <i data-lucide="quote" style="width:20px;height:20px"></i>
         <div class="name">Citações</div>
         <div class="d">Vancouver, AMA, BibTeX e texto plano com 1 clique.</div>
-      </div>
-      <div class="db-feat">
-        <i data-lucide="file-down" style="width:20px;height:20px"></i>
-        <div class="name">Exportar CSV</div>
-        <div class="d">16 campos exportáveis · Excel-ready com BOM.</div>
-      </div>
-      <div class="db-feat">
-        <i data-lucide="link" style="width:20px;height:20px"></i>
-        <div class="name">Deep linking</div>
-        <div class="d">URL hash abre estudo específico — copiável e compartilhável.</div>
       </div>
       <div class="db-feat">
         <i data-lucide="git-compare-arrows" style="width:20px;height:20px"></i>
@@ -669,8 +713,8 @@
   <div class="container">
     <div class="block-header">
       <div class="left">
-        <span class="num-badge" style="background: rgba(52,211,153,0.12); color: #34d399; border-color: rgba(52,211,153,0.3)">Bloco 02 · Estudos ativos no Brasil</span>
-        <h2>Recrutamento aberto · curadoria editável</h2>
+        <span class="num-badge" style="background: rgba(52,211,153,0.12); color: #34d399; border-color: rgba(52,211,153,0.3)">Estudos ativos no Brasil</span>
+        <h2>Recrutamento aberto</h2>
         <p>Ensaios clínicos em oncologia <strong style="color:#6EE7B7">recrutando agora no Brasil</strong>. Belo Horizonte como localidade inicial — em expansão. Para médicos, pesquisadores e pacientes encaminhados por especialistas.</p>
       </div>
       <a href="estudos-ativos.html" class="btn btn-primary" style="background:#34d399;color:#0E0F12">
@@ -734,66 +778,12 @@
 </section>
 
 
-<!-- ============== BLOCO 2 · TUMOR BOARDS + MODALIDADES ============== -->
-<section class="block-section">
-  <div class="container">
-    <div class="block-header">
-      <div class="left">
-        <span class="num-badge">Blocos 03 + 04 · Visões cruzadas</span>
-        <h2>Por tumor · por modalidade</h2>
-        <p>Mesmos 311 ensaios, dois ângulos diferentes. Tumor boards reproduz a discussão clínica real (próstata, pulmão, mama, NET, HCC, RCC, urotelial, tireoide, GI superior, pâncreas, cabeça e pescoço, melanoma, mieloma, linfoma, LMA, ovário, endométrio, cérvix); Modalidades agrupa por mecanismo (teranóstico, terapia-alvo, IO, ADC, PARP, CAR-T, bispecifics, TIL, vacinas mRNA, BRAF+MEK).</p>
-      </div>
-    </div>
-
-    <div class="grid-3">
-      <a href="tumor-boards.html" class="card card-pillar" style="text-decoration:none; color: var(--off-white)">
-        <div style="color: var(--teal); margin-bottom: 1rem">
-          <i data-lucide="layout-grid" style="width:30px;height:30px"></i>
-        </div>
-        <h3 style="margin-bottom: 0.5rem">Tumor boards</h3>
-        <p class="text-stone" style="margin-bottom: 1rem">Próstata (mHSPC, mCRPC, nmCRPC), NET, HCC, RCC, ósseo metastático. Cada tumor com fluxo de decisão e ensaios relevantes.</p>
-        <span class="btn btn-ghost btn-sm" style="padding-left: 0; color: var(--teal)">Abrir <i data-lucide="arrow-right" style="width:14px;height:14px"></i></span>
-      </a>
-
-      <a href="modalidades.html" class="card card-pillar" style="text-decoration:none; color: var(--off-white)">
-        <div style="color: #C084FC; margin-bottom: 1rem">
-          <i data-lucide="layers" style="width:30px;height:30px"></i>
-        </div>
-        <h3 style="margin-bottom: 0.5rem">Modalidades</h3>
-        <p class="text-stone" style="margin-bottom: 1rem">6 modalidades terapêuticas com agrupamento inteligente: teranóstico (PSMA, PRRT, Y-90, MIBG), ARPi, PARP, QT, imuno, plataformas multibraço.</p>
-        <span class="btn btn-ghost btn-sm" style="padding-left: 0; color: #C084FC">Abrir <i data-lucide="arrow-right" style="width:14px;height:14px"></i></span>
-      </a>
-
-      <a href="database.html" class="card card-pillar" style="text-decoration:none; color: var(--off-white)">
-        <div style="color: var(--amber); margin-bottom: 1rem">
-          <i data-lucide="search" style="width:30px;height:30px"></i>
-        </div>
-        <h3 style="margin-bottom: 0.5rem">Pesquisa livre</h3>
-        <p class="text-stone" style="margin-bottom: 1rem">Busca textual em todos os campos — nome do estudo, NCT, autor, indicação, intervenção. Filtros combináveis em tempo real.</p>
-        <span class="btn btn-ghost btn-sm" style="padding-left: 0">Abrir <i data-lucide="arrow-right" style="width:14px;height:14px"></i></span>
-      </a>
-    </div>
-  </div>
-</section>
-
-
-<div class="home-divider">
-  <svg width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="60" cy="20" r="3" fill="#FF8400"/>
-    <ellipse cx="60" cy="20" rx="40" ry="10" fill="none" stroke="#FF8400" stroke-width="0.8" opacity="0.4"/>
-    <ellipse cx="60" cy="20" rx="55" ry="13" fill="none" stroke="#0EA5B7" stroke-width="0.6" stroke-dasharray="2 4" opacity="0.5"/>
-    <circle cx="100" cy="20" r="1.5" fill="#0EA5B7"/>
-    <circle cx="20" cy="20" r="1.5" fill="#0EA5B7"/>
-  </svg>
-</div>
-
-
 <!-- ============== BLOCO 3 · RADIOFÁRMACOS ============== -->
 <section class="block-section">
   <div class="container">
     <div class="block-header">
       <div class="left">
-        <span class="num-badge">Bloco 05 · Páginas profundas</span>
+        <span class="num-badge">Radiofármacos</span>
         <h2>Seis radiofármacos · seis dossiês completos</h2>
         <p>Cada radiofármaco com cronologia, mecanismo molecular ilustrado, esquema terapêutico padrão, ensaios pivotais, dosimetria por órgão, perfil de toxicidade e perspectivas futuras.</p>
       </div>
@@ -858,28 +848,83 @@
 </section>
 
 
-<div class="home-divider">
-  <svg width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="60" cy="20" r="3" fill="#FF8400"/>
-    <ellipse cx="60" cy="20" rx="40" ry="10" fill="none" stroke="#FF8400" stroke-width="0.8" opacity="0.4"/>
-    <ellipse cx="60" cy="20" rx="55" ry="13" fill="none" stroke="#0EA5B7" stroke-width="0.6" stroke-dasharray="2 4" opacity="0.5"/>
-    <circle cx="100" cy="20" r="1.5" fill="#0EA5B7"/>
-    <circle cx="20" cy="20" r="1.5" fill="#0EA5B7"/>
-  </svg>
-</div>
-
-
-<!-- ============== BLOCO · FUNDAMENTOS ============== -->
+<!-- ============== BLOCO · FERRAMENTAS (9 grupos de critérios) ============== -->
 <section class="block-section">
   <div class="container">
     <div class="block-header">
       <div class="left">
-        <span class="num-badge">Bloco 06 · Fundamentos</span>
-        <h2>Como funcionam ensaios clínicos · visual e direto</h2>
-        <p>Página educacional para residentes e equipe não-clínica. Fases, desenhos, desfechos, estatística, toxicidade, blinding, leitura crítica e mitos × realidade.</p>
+        <span class="num-badge" style="background:rgba(251,191,36,0.12); color:#FBBF24; border-color:rgba(251,191,36,0.3)">Ferramentas</span>
+        <h2>Estadiamento, toxicidade e resposta · em um clique</h2>
+        <p>Sistemas de classificação e critérios de resposta para uso clínico cotidiano. Cada card abre um modal completo com tabelas, exemplos e referências — sem sair da página.</p>
       </div>
-      <a href="fundamentos.html" class="btn btn-secondary">
-        Abrir Fundamentos <i data-lucide="arrow-right" style="width:16px;height:16px"></i>
+      <a href="ferramentas.html" class="btn btn-primary" style="background:#FBBF24; color:#0E0F12">
+        Abrir Ferramentas <i data-lucide="arrow-right" style="width:16px;height:16px"></i>
+      </a>
+    </div>
+
+    <div class="tools-mini-grid">
+      <a href="ferramentas.html#tnm" class="tools-mini" style="--accent:#FF8400">
+        <div class="tm-icon" style="background:rgba(255,132,0,0.10)"><i data-lucide="layers" style="width:18px;height:18px"></i></div>
+        <div class="tm-body">
+          <div class="tm-name">AJCC TNM · 8ª ed.</div>
+          <div class="tm-d">Estadiamento por sítio · 80+ neoplasias</div>
+        </div>
+      </a>
+      <a href="ferramentas.html#ctcae" class="tools-mini" style="--accent:#F87171">
+        <div class="tm-icon" style="background:rgba(248,113,113,0.10)"><i data-lucide="alert-triangle" style="width:18px;height:18px"></i></div>
+        <div class="tm-body">
+          <div class="tm-name">CTCAE v6.0</div>
+          <div class="tm-d">Eventos adversos · graduação clínica e laboratorial</div>
+        </div>
+      </a>
+      <a href="ferramentas.html#psma" class="tools-mini" style="--accent:#FF8400">
+        <div class="tm-icon" style="background:rgba(255,132,0,0.10)"><i data-lucide="compass" style="width:18px;height:18px"></i></div>
+        <div class="tm-body">
+          <div class="tm-name">PSMA · Próstata</div>
+          <div class="tm-d">PROMISE · PSMA-RADS · RECIP · PCWG · Gleason · D'Amico</div>
+        </div>
+      </a>
+      <a href="ferramentas.html#petct" class="tools-mini" style="--accent:#C084FC">
+        <div class="tm-icon" style="background:rgba(192,132,252,0.10)"><i data-lucide="activity" style="width:18px;height:18px"></i></div>
+        <div class="tm-body">
+          <div class="tm-name">PET/CT metabólica</div>
+          <div class="tm-d">PERCIST · EORTC · Deauville · Lugano</div>
+        </div>
+      </a>
+      <a href="ferramentas.html#tne" class="tools-mini" style="--accent:#34D399">
+        <div class="tm-icon" style="background:rgba(52,211,153,0.10)"><i data-lucide="gauge" style="width:18px;height:18px"></i></div>
+        <div class="tm-body">
+          <div class="tm-name">Neuroendócrinos</div>
+          <div class="tm-d">Krenning · NETPET · SSTR-RADS · WHO · Ki67 · ENETS</div>
+        </div>
+      </a>
+      <a href="ferramentas.html#imuno" class="tools-mini" style="--accent:#22D3EE">
+        <div class="tm-icon" style="background:rgba(34,211,238,0.10)"><i data-lucide="shield" style="width:18px;height:18px"></i></div>
+        <div class="tm-body">
+          <div class="tm-name">Imunoterapia</div>
+          <div class="tm-d">iRECIST · irRECIST · PERCIMT · imPERCIST</div>
+        </div>
+      </a>
+      <a href="ferramentas.html#anatomica" class="tools-mini" style="--accent:#F472B6">
+        <div class="tm-icon" style="background:rgba(244,114,182,0.10)"><i data-lucide="ruler" style="width:18px;height:18px"></i></div>
+        <div class="tm-body">
+          <div class="tm-name">Resposta anatômica</div>
+          <div class="tm-d">RECIST 1.1 · mRECIST · Choi</div>
+        </div>
+      </a>
+      <a href="ferramentas.html#hcc" class="tools-mini" style="--accent:#F59E0B">
+        <div class="tm-icon" style="background:rgba(245,158,11,0.10)"><i data-lucide="git-branch" style="width:18px;height:18px"></i></div>
+        <div class="tm-body">
+          <div class="tm-name">CHC · radioembolização</div>
+          <div class="tm-d">BCLC 2026 · Child-Pugh · ALBI · LI-RADS · mRECIST HCC</div>
+        </div>
+      </a>
+      <a href="ferramentas.html#clinica" class="tools-mini" style="--accent:#94A3B8">
+        <div class="tm-icon" style="background:rgba(148,163,184,0.10)"><i data-lucide="user-check" style="width:18px;height:18px"></i></div>
+        <div class="tm-body">
+          <div class="tm-name">Escalas funcionais</div>
+          <div class="tm-d">ECOG · Karnofsky · CTCAE · Charlson</div>
+        </div>
       </a>
     </div>
   </div>
@@ -890,7 +935,7 @@
 <section class="block-section" style="text-align:center; padding-bottom:5rem">
   <div class="container">
     <h2 style="font-weight: 300; margin-bottom: 1rem">Pronto para conectar evidência e prática clínica?</h2>
-    <p class="subtitle" style="margin-bottom: 2rem; color: var(--stone)">184 estudos selecionados em 21 categorias · 6 dossiês de radiofármaco · estadiamento AJCC TNM · CTCAE v6.0 · hyperlinks diretos para PubMed e ClinicalTrials.gov.</p>
+    <p class="subtitle" style="margin-bottom: 2rem; color: var(--stone)">Mais de 300 ensaios clínicos avaliados com atualizações semanais · 14 ativos no Brasil · 6 dossiês de radiofármaco · 9 grupos de critérios oncológicos · BCLC 2026, AJCC 8ª ed., CTCAE v6.0 · hyperlinks diretos para PubMed e ClinicalTrials.gov.</p>
     <div class="hero-actions" style="margin-top: 0; display:flex; gap:0.75rem; justify-content:center; flex-wrap:wrap">
       <a href="database.html" class="btn btn-primary">
         Acessar o banco <i data-lucide="arrow-right" style="width:16px;height:16px"></i>
@@ -898,6 +943,27 @@
       <a href="tumor-boards.html" class="btn btn-secondary">
         Tumor boards <i data-lucide="arrow-right" style="width:16px;height:16px"></i>
       </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============== AUTORIA ============== -->
+<section style="padding: 2rem 0 3rem; border-top: 1px solid var(--border-soft)">
+  <div class="container">
+    <div style="max-width: 760px; margin: 0 auto; text-align: center">
+      <div style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--stone); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.85rem">
+        Idealização e produção
+      </div>
+      <div style="font-family: var(--font-display); font-size: 1.15rem; font-weight: 600; color: var(--off-white); letter-spacing: -0.01em">
+        Dr. Marcos Oliveira
+      </div>
+      <div style="font-size: 0.88rem; color: var(--stone); margin-top: 0.45rem; line-height: 1.6">
+        Médico Nuclear · CRM-MG 81.686 · RQE 66.917
+      </div>
+      <div style="font-size: 0.78rem; color: var(--stone-2, var(--stone)); margin-top: 0.85rem; line-height: 1.55; max-width: 540px; margin-left: auto; margin-right: auto">
+        Projeto pessoal e independente · curadoria editorial colaborativa com oncologistas, radioterapeutas e demais especialistas vinculados
+      </div>
     </div>
   </div>
 </section>
