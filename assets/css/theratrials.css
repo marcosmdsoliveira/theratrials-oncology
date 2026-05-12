@@ -584,11 +584,12 @@ section.compact { padding: 3rem 0; }
 }
 .cat-lupsma_prostata { background: var(--amber); box-shadow: 0 0 8px var(--amber); }
 .cat-ra223_prostata { background: #C084FC; box-shadow: 0 0 8px #C084FC; }
-.cat-lu_dotatate_net { background: var(--teal); box-shadow: 0 0 8px var(--teal); }
+.cat-net_gep { background: #10B981; box-shadow: 0 0 8px #10B981; }
 .cat-lupsma_ccrcc { background: #38BDF8; box-shadow: 0 0 8px #38BDF8; }
-.cat-y90_tare { background: #FBBF24; box-shadow: 0 0 8px #FBBF24; }
+.cat-hepatobiliar { background: #FBBF24; box-shadow: 0 0 8px #FBBF24; }
 .cat-novos_psma { background: #F87171; box-shadow: 0 0 8px #F87171; }
-.cat-mibg_pediatria_pheo { background: #F472B6; box-shadow: 0 0 8px #F472B6; }
+.cat-ppgl { background: #EC4899; box-shadow: 0 0 8px #EC4899; }
+.cat-neuroblastoma { background: #8B5CF6; box-shadow: 0 0 8px #8B5CF6; }
 .cat-prostata_contexto { background: var(--stone); box-shadow: 0 0 8px var(--stone); }
 
 /* Phase badges */

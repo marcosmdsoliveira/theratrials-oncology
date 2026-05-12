@@ -28,14 +28,25 @@
   // Define os labels do modal: estudos radio mostram "Intervencao e radiofarmacia" /
   // "Criterios moleculares e imagem"; estudos nao-radio mostram versoes neutras.
   TheraTrials.RADIO_CATEGORIES = new Set([
-    'lupsma_prostata', 'ra223_prostata', 'lu_dotatate_net', 'lupsma_ccrcc',
-    'y90_tare', 'novos_psma', 'mibg_pediatria_pheo',
+    'lupsma_prostata', 'ra223_prostata', 'net_gep', 'lupsma_ccrcc',
+    'hepatobiliar', 'novos_psma', 'ppgl', 'neuroblastoma',
     'lung_radio_dev', 'breast_radio_dev',
     'teranostico_emergente'
   ]);
 
+  // Modalidades teranósticas/radiofármacos — usadas para detectar estudo "radio" via tags
+  TheraTrials.RADIO_MODALITIES = new Set([
+    'teranostico_psma', 'teranostico_prrt', 'teranostico_alfa',
+    'tare_y90', 'mibg', 'iodo_131', 'teranostico_emergente'
+  ]);
+
   TheraTrials.isRadioStudy = function(study) {
     if (!study) return false;
+    // Prioridade: array modalities[] (taxonomia canônica)
+    if (Array.isArray(study.modalities) && study.modalities.length) {
+      return study.modalities.some(m => TheraTrials.RADIO_MODALITIES.has(m));
+    }
+    // Fallback: category_id legado
     return TheraTrials.RADIO_CATEGORIES.has(study.category_id);
   };
 
@@ -89,52 +100,64 @@
   // FILTROS HIERÁRQUICOS — usados pelo database.html
   // ============================================================
 
-  // Tipos tumorais (multi-select)
+  // Helper: estudo cobre tumor X? Prioriza array tumors[] (taxonomia canônica),
+  // cai no category_id legado se ausente.
+  function hasTumor(s, ...ids) {
+    if (Array.isArray(s.tumors) && s.tumors.length) {
+      return s.tumors.some(t => ids.includes(t));
+    }
+    return false;
+  }
+  TheraTrials.hasTumor = hasTumor;
+
+  // Tipos tumorais (multi-select) — prioriza s.tumors[]; fallback para category_id legado
   TheraTrials.tumorTypes = [
     { id: 'prostata', name: 'Próstata', short: 'Próstata',
-      match: (s) => ['lupsma_prostata', 'ra223_prostata', 'novos_psma', 'prostata_contexto'].includes(s.category_id) },
+      match: (s) => hasTumor(s, 'prostata') || ['lupsma_prostata', 'ra223_prostata', 'novos_psma', 'prostata_contexto'].includes(s.category_id) },
     { id: 'pulmao', name: 'Pulmão (NSCLC + SCLC)', short: 'Pulmão',
-      match: (s) => ['nsclc_imuno', 'nsclc_alvo', 'nsclc_periop', 'sclc', 'lung_radio_dev'].includes(s.category_id) },
+      match: (s) => hasTumor(s, 'nsclc_egfr', 'nsclc_alk', 'nsclc_kras', 'nsclc_outros_drivers', 'nsclc_imuno', 'nsclc_periop', 'sclc') || ['nsclc_imuno', 'nsclc_alvo', 'nsclc_periop', 'sclc', 'lung_radio_dev'].includes(s.category_id) },
     { id: 'mama', name: 'Mama (HER2+, HR+, TNBC)', short: 'Mama',
-      match: (s) => ['breast_her2', 'breast_hrpos', 'breast_tnbc_brca', 'breast_radio_dev'].includes(s.category_id) },
-    { id: 'net', name: 'Tumores neuroendócrinos', short: 'Neuroendócrinos',
-      match: (s) => s.category_id === 'lu_dotatate_net' && !/(pheo|paragangli|neuroblastoma|ppgl)/i.test((s.indicacao || '') + ' ' + (s.estudo || '')) },
+      match: (s) => hasTumor(s, 'mama_her2pos', 'mama_hrpos', 'mama_tnbc') || ['breast_her2', 'breast_hrpos', 'breast_tnbc_brca', 'breast_radio_dev'].includes(s.category_id) },
+    { id: 'net', name: 'Tumores neuroendócrinos (GEP + brônquicos)', short: 'Neuroendócrinos',
+      match: (s) => hasTumor(s, 'net_gep') || s.category_id === 'net_gep' },
     { id: 'pheo_pgl', name: 'Feocromocitoma e Paraganglioma (PPGL)', short: 'Feocromocitoma',
-      match: (s) => /(pheo|paragangli|ppgl|feocromo)/i.test((s.indicacao || '') + ' ' + (s.estudo || '')) },
+      match: (s) => hasTumor(s, 'ppgl') || s.category_id === 'ppgl' },
     { id: 'neuroblastoma', name: 'Neuroblastoma', short: 'Neuroblastoma',
-      match: (s) => /neuroblastoma/i.test((s.indicacao || '') + ' ' + (s.estudo || '')) },
-    { id: 'hcc', name: 'Hepatocelular (HCC)', short: 'Fígado',
-      match: (s) => /(hcc|hepatocelular)/i.test(s.indicacao || '') },
-    { id: 'mcrc', name: 'Colorretal (mCRC)', short: 'Colorretal',
-      match: (s) => /(mcrc|colorretal)/i.test(s.indicacao || '') },
+      match: (s) => hasTumor(s, 'neuroblastoma') || s.category_id === 'neuroblastoma' },
+    { id: 'hcc', name: 'Hepatocelular (CHC)', short: 'CHC',
+      match: (s) => hasTumor(s, 'hcc') || /(hcc|hepatocelular)/i.test(s.indicacao || '') },
+    { id: 'colangiocarcinoma', name: 'Colangiocarcinoma (intra/extra-hep + vesícula)', short: 'Colangio',
+      match: (s) => hasTumor(s, 'colangiocarcinoma', 'vesicula') },
+    { id: 'mcrc', name: 'Colorretal', short: 'Colorretal',
+      match: (s) => hasTumor(s, 'colorretal') || /(mcrc|colorretal)/i.test(s.indicacao || '') },
     { id: 'ccrcc', name: 'Renal (ccRCC e não-clear)', short: 'Rim',
-      match: (s) => ['lupsma_ccrcc', 'rcc_avancado', 'rcc_adjuvante_naocc'].includes(s.category_id) },
+      match: (s) => hasTumor(s, 'ccrcc', 'rcc_naoclear') || ['lupsma_ccrcc', 'rcc_avancado', 'rcc_adjuvante_naocc'].includes(s.category_id) },
     { id: 'urotelial', name: 'Urotelial (bexiga · trato superior · NMIBC)', short: 'Bexiga',
-      match: (s) => ['urotelial_avancado', 'urotelial_periop_nmibc'].includes(s.category_id) },
-    { id: 'tireoide', name: 'Tireoide (DTC iodo-refrat / MTC / ATC)', short: 'Tireoide',
-      match: (s) => s.category_id === 'tireoide_avancado' },
+      match: (s) => hasTumor(s, 'urotelial_avancado', 'urotelial_periop') || ['urotelial_avancado', 'urotelial_periop_nmibc'].includes(s.category_id) },
+    { id: 'tireoide', name: 'Tireoide (CDT / MTC / ATC)', short: 'Tireoide',
+      match: (s) => hasTumor(s, 'tireoide_cdt', 'tireoide_mtc', 'tireoide_atc') || s.category_id === 'tireoide_avancado' },
     { id: 'esofago_egj', name: 'Esôfago e EGJ (ESCC + EAC + gástrico)', short: 'Esôfago e estômago',
-      match: (s) => s.category_id === 'esofago_egj' },
+      match: (s) => hasTumor(s, 'esofago_escc', 'esofago_eac', 'gastrico') || s.category_id === 'esofago_egj' },
     { id: 'pancreas', name: 'Pâncreas (adenocarcinoma)', short: 'Pâncreas',
-      match: (s) => s.category_id === 'pancreas' },
+      match: (s) => hasTumor(s, 'pancreas_ductal') || s.category_id === 'pancreas' },
     { id: 'teranostico_emergente', name: 'Teranóstico emergente (CAIX, FAPI, α-PRRT)', short: 'Teranóstico emergente',
       match: (s) => s.category_id === 'teranostico_emergente' },
     { id: 'hnscc', name: 'Cabeça e Pescoço (HNSCC)', short: 'Cabeça e pescoço',
-      match: (s) => s.category_id === 'hnscc' },
-    { id: 'melanoma', name: 'Melanoma (avançado + adjuvante)', short: 'Melanoma',
-      match: (s) => ['melanoma_avancado', 'melanoma_adjuvante'].includes(s.category_id) },
+      match: (s) => hasTumor(s, 'hnscc') || s.category_id === 'hnscc' },
+    { id: 'melanoma', name: 'Melanoma (cutâneo + uveal)', short: 'Melanoma',
+      match: (s) => hasTumor(s, 'melanoma_cutaneo', 'melanoma_uveal') || ['melanoma_avancado', 'melanoma_adjuvante'].includes(s.category_id) },
     { id: 'mieloma', name: 'Mieloma múltiplo (NDMM + RRMM)', short: 'Mieloma',
-      match: (s) => s.category_id === 'mieloma' },
+      match: (s) => hasTumor(s, 'mieloma') || s.category_id === 'mieloma' },
     { id: 'linfoma', name: 'Linfoma B agressivo (DLBCL · Hodgkin · PTCL)', short: 'Linfoma',
-      match: (s) => s.category_id === 'linfoma_dlbcl' },
+      match: (s) => hasTumor(s, 'dlbcl', 'hodgkin', 'follicular') || s.category_id === 'linfoma_dlbcl' },
     { id: 'lma', name: 'Leucemia mieloide aguda (LMA)', short: 'Leucemia',
-      match: (s) => s.category_id === 'lma' },
+      match: (s) => hasTumor(s, 'lma', 'lla') || s.category_id === 'lma' },
     { id: 'ovario', name: 'Ovário (epitelial avançado/recidivado)', short: 'Ovário',
-      match: (s) => s.category_id === 'ovario' },
+      match: (s) => hasTumor(s, 'ovario') || s.category_id === 'ovario' },
     { id: 'endometrio', name: 'Endométrio (avançado/recidivado)', short: 'Endométrio',
-      match: (s) => s.category_id === 'endometrio' },
+      match: (s) => hasTumor(s, 'endometrio') || s.category_id === 'endometrio' },
     { id: 'cervix', name: 'Cérvix (LACC + recurrente/metastático)', short: 'Colo do útero',
-      match: (s) => s.category_id === 'cervix' },
+      match: (s) => hasTumor(s, 'cervix') || s.category_id === 'cervix' },
   ];
 
   TheraTrials.tumorTypesUpcoming = [
@@ -146,15 +169,16 @@
   // Modalidades terapêuticas (multi-select com subníveis)
   TheraTrials.modalities = [
     { id: 'teranostico', name: 'Teranóstico', short: 'Teranóstico',
-      match: (s) => ['lupsma_prostata', 'ra223_prostata', 'lu_dotatate_net', 'lupsma_ccrcc', 'y90_tare', 'novos_psma', 'mibg_pediatria_pheo', 'lung_radio_dev', 'breast_radio_dev', 'teranostico_emergente'].includes(s.category_id),
+      match: (s) => ['lupsma_prostata', 'ra223_prostata', 'net_gep', 'lupsma_ccrcc', 'hepatobiliar', 'novos_psma', 'ppgl', 'neuroblastoma', 'lung_radio_dev', 'breast_radio_dev', 'teranostico_emergente'].includes(s.category_id),
       subs: [
         { id: 'lupsma_prostata', name: '177Lu-PSMA · Próstata', short: 'Lu-PSMA' },
         { id: 'ra223_prostata', name: '223Ra · Próstata', short: 'Ra-223' },
-        { id: 'lu_dotatate_net', name: '177Lu-DOTATATE · NET', short: 'Lu-DOTATATE' },
+        { id: 'net_gep', name: 'NETs · GEP e brônquicos (PRRT)', short: 'NETs' },
         { id: 'lupsma_ccrcc', name: '177Lu-PSMA · ccRCC', short: 'Lu-PSMA-RCC' },
-        { id: 'y90_tare', name: 'Radioembolização 90Y', short: 'Y-90' },
+        { id: 'hepatobiliar', name: 'Hepatobiliar (CHC, colangio · inclui TARE Y-90)', short: 'Hepatobiliar' },
         { id: 'novos_psma', name: 'Novos PSMA (α / 161Tb / RIT)', short: 'α-PSMA' },
-        { id: 'mibg_pediatria_pheo', name: '131I-MIBG · PPGL · NB', short: 'MIBG/PPGL' },
+        { id: 'ppgl', name: 'PPGL · 131I-MIBG e 177Lu-DOTATATE', short: 'PPGL' },
+        { id: 'neuroblastoma', name: 'Neuroblastoma · pediátrico', short: 'NB' },
         { id: 'lung_radio_dev', name: 'Pulmão · radio-exp (DLL3, FAPI)', short: 'Lung-radio' },
         { id: 'breast_radio_dev', name: 'Mama · 89Zr-trastu, FES, FAPI', short: 'Mama-radio' },
       ]},
@@ -267,7 +291,7 @@
       tagline: 'Imagem molecular + radiofármaco terapêutico no mesmo alvo',
       icon: 'atom',
       color: '#FF8400',
-      categorias: ['lupsma_prostata', 'ra223_prostata', 'lu_dotatate_net', 'lupsma_ccrcc', 'y90_tare', 'novos_psma', 'mibg_pediatria_pheo']
+      categorias: ['lupsma_prostata', 'ra223_prostata', 'net_gep', 'lupsma_ccrcc', 'hepatobiliar', 'novos_psma', 'ppgl', 'neuroblastoma']
     },
     terapia_alvo: {
       name: 'Terapias-alvo molecular',
@@ -303,43 +327,48 @@
     },
     net: {
       name: 'Tumores neuroendócrinos',
-      tagline: 'GEP-NET, midgut, pancreático, pulmonar',
+      tagline: 'GEP-NET, midgut, pancreático, brônquico/pulmonar',
       icon: 'activity',
-      color: '#0EA5B7',
-      categorias: ['lu_dotatate_net'],
-      filter: function(s) { return !((s.indicacao||'').toLowerCase().includes('pheo') || (s.indicacao||'').toLowerCase().includes('paragangli') || (s.indicacao||'').toLowerCase().includes('neuroblastoma')); }
+      color: '#10B981',
+      categorias: ['net_gep']
     },
     pheo_pgl: {
       name: 'Feocromocitoma e paraganglioma',
       tagline: 'PPGL maligno · 131I-MIBG e 177Lu-DOTATATE',
       icon: 'heart-pulse',
-      color: '#F472B6',
-      categorias: ['mibg_pediatria_pheo', 'lu_dotatate_net'],
-      filter: function(s) { const i = (s.indicacao||'').toLowerCase(); return i.includes('pheo') || i.includes('paragangli') || i.includes('ppgl'); }
+      color: '#EC4899',
+      categorias: ['ppgl']
     },
     neuroblastoma: {
       name: 'Neuroblastoma (pediatria)',
       tagline: 'Alto risco refratário/recidivado · 131I-MIBG e PRRT pediátrica',
       icon: 'baby',
-      color: '#C084FC',
-      categorias: ['mibg_pediatria_pheo', 'lu_dotatate_net'],
-      filter: function(s) { const i = (s.indicacao||'').toLowerCase(); return i.includes('neuroblastoma') || (i.includes('pediátric') && !i.includes('pheo')); }
+      color: '#8B5CF6',
+      categorias: ['neuroblastoma']
     },
     hcc: {
-      name: 'Carcinoma hepatocelular',
-      tagline: 'BCLC A/B/C · radioembolização 90Y',
+      name: 'Carcinoma hepatocelular (CHC)',
+      tagline: 'BCLC A/B/C · IO+anti-VEGF, TKIs, IO duplo, radioembolização ⁹⁰Y',
       icon: 'droplet',
       color: '#FBBF24',
-      categorias: ['y90_tare'],
-      filter: function(s) { const i = (s.indicacao||'').toLowerCase(); return i.includes('hcc') || i.includes('hepatocelular'); }
+      categorias: ['hepatobiliar'],
+      filter: function(s) { return (Array.isArray(s.tumors) && s.tumors.includes('hcc')) || /(hcc|hepatocelular)/i.test(s.indicacao||''); }
+    },
+    colangiocarcinoma: {
+      name: 'Colangiocarcinoma e vesícula biliar',
+      tagline: 'Intra-hep, extra-hep e vesícula · gem/cis ± durva, alvos moleculares (FGFR2, IDH1, HER2)',
+      icon: 'droplet',
+      color: '#F59E0B',
+      categorias: ['hepatobiliar'],
+      filter: function(s) { return Array.isArray(s.tumors) && (s.tumors.includes('colangiocarcinoma') || s.tumors.includes('vesicula')); }
     },
     mcrc: {
-      name: 'Câncer colorretal metastático',
-      tagline: 'Mets hepáticas dominantes · TARE com Y-90',
+      name: 'Câncer colorretal',
+      tagline: 'Sistêmico e direcionado a mets hepáticas (TARE ⁹⁰Y)',
       icon: 'activity-square',
       color: '#F87171',
-      categorias: ['y90_tare'],
-      filter: function(s) { const i = (s.indicacao||'').toLowerCase(); return i.includes('mcrc') || i.includes('colorretal'); }
+      categorias: ['hepatobiliar'],
+      filter: function(s) { return (Array.isArray(s.tumors) && s.tumors.includes('colorretal')) || /(mcrc|colorretal)/i.test(s.indicacao||''); }
     },
     ccrcc: {
       name: 'Carcinoma renal (ccRCC e não-clear)',

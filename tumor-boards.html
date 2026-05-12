@@ -563,12 +563,12 @@
       tumors: [
         { id: 'prostata', name: 'Câncer de próstata', tagline: 'mHSPC, mCRPC, nmCRPC, oligometastático e localizado de alto risco', icon: 'circle-dot', color: '#FF8400',
           match: (s) => ['lupsma_prostata', 'ra223_prostata', 'novos_psma', 'prostata_contexto'].includes(s.category_id) },
-        { id: 'net', name: 'Tumores neuroendócrinos', tagline: 'GEP-NET, midgut, pancreático e pulmonar (well-differentiated)', icon: 'activity', color: '#0EA5B7',
-          match: (s) => s.category_id === 'lu_dotatate_net' && !/(pheo|paragangli|neuroblastoma|ppgl)/i.test(s.indicacao || '') },
-        { id: 'pheo_pgl', name: 'Feocromocitoma e paraganglioma', tagline: 'PPGL maligno · 131I-MIBG e 177Lu-DOTATATE', icon: 'heart-pulse', color: '#F472B6',
-          match: (s) => /(pheo|paragangli|ppgl|feocromo)/i.test((s.indicacao || '') + ' ' + (s.estudo || '')) },
-        { id: 'neuroblastoma', name: 'Neuroblastoma (pediatria)', tagline: 'Alto risco refratário/recidivado · 131I-MIBG e PRRT pediátrica', icon: 'baby', color: '#C084FC',
-          match: (s) => /neuroblastoma|pediátric|pediatric/i.test((s.indicacao || '') + ' ' + (s.estudo || '')) && !/(pheo|paragangli|ppgl)/i.test(s.indicacao || '') },
+        { id: 'net', name: 'Tumores neuroendócrinos', tagline: 'GEP-NET, midgut, pancreático e brônquico/pulmonar', icon: 'activity', color: '#10B981',
+          match: (s) => s.category_id === 'net_gep' },
+        { id: 'pheo_pgl', name: 'Feocromocitoma e paraganglioma', tagline: 'PPGL maligno · 131I-MIBG e 177Lu-DOTATATE', icon: 'heart-pulse', color: '#EC4899',
+          match: (s) => s.category_id === 'ppgl' },
+        { id: 'neuroblastoma', name: 'Neuroblastoma (pediatria)', tagline: 'Alto risco refratário/recidivado · 131I-MIBG e PRRT pediátrica', icon: 'baby', color: '#8B5CF6',
+          match: (s) => s.category_id === 'neuroblastoma' },
         { id: 'hcc', name: 'Carcinoma hepatocelular', tagline: 'BCLC A/B/C · radioembolização Y-90 e dosimetria personalizada', icon: 'droplet', color: '#FBBF24',
           match: (s) => /(hcc|hepatocelular)/i.test(s.indicacao || '') },
         { id: 'mcrc', name: 'Câncer colorretal metastático', tagline: 'Mets hepáticas dominantes · TARE com Y-90', icon: 'activity-square', color: '#F87171',
@@ -632,15 +632,19 @@
           if (rfa.includes('psma') || rfa.includes('lu')) return { key: 'teranostico_combo', name: 'Combinações teranósticas', icon: 'shuffle', color: '#A855F7', order: 3 };
           return { key: 'teranostico_alfa', name: 'Teranóstico — 223Ra (α-emissor)', icon: 'radiation', color: '#A855F7', order: 4 };
         }
-        if (cat === 'lu_dotatate_net') {
-          return { key: 'teranostico_prrt', name: 'Teranóstico — PRRT (177Lu-DOTATATE / Edotreotide)', icon: 'activity', color: '#0EA5B7', order: 1 };
+        if (cat === 'net_gep') {
+          return { key: 'teranostico_prrt', name: 'Teranóstico — PRRT (177Lu-DOTATATE / Edotreotide / alfa)', icon: 'activity', color: '#10B981', order: 1 };
         }
         if (cat === 'y90_tare') {
           return { key: 'teranostico_y90', name: 'Radioembolização — 90Y', icon: 'droplet', color: '#FBBF24', order: 1 };
         }
-        if (cat === 'mibg_pediatria_pheo') {
-          if (rfa.includes('dotatate')) return { key: 'teranostico_prrt', name: 'PRRT — 177Lu-DOTATATE (em PPGL/NB)', icon: 'activity', color: '#0EA5B7', order: 2 };
-          return { key: 'mibg', name: 'Teranóstico — 131I-MIBG / Iobenguano', icon: 'heart-pulse', color: '#F472B6', order: 1 };
+        if (cat === 'ppgl') {
+          if (rfa.includes('dotatate') || rfa.includes('lu-177') || rfa.includes('lutetium')) return { key: 'teranostico_prrt', name: 'PRRT — 177Lu-DOTATATE em PPGL', icon: 'activity', color: '#10B981', order: 2 };
+          return { key: 'mibg', name: 'Teranóstico — 131I-MIBG / Iobenguano em PPGL', icon: 'heart-pulse', color: '#EC4899', order: 1 };
+        }
+        if (cat === 'neuroblastoma') {
+          if (rfa.includes('dotatate') || rfa.includes('lu-177') || rfa.includes('lutetium')) return { key: 'teranostico_prrt', name: 'PRRT — 177Lu-DOTATATE em neuroblastoma', icon: 'activity', color: '#10B981', order: 2 };
+          return { key: 'mibg', name: 'Teranóstico — 131I-MIBG em neuroblastoma', icon: 'heart-pulse', color: '#8B5CF6', order: 1 };
         }
         if (cat === 'prostata_contexto') {
           if (rfa.includes('docetaxel') || rfa.includes('cabazitaxel')) return { key: 'qt', name: 'Quimioterapia citotóxica (QT)', icon: 'flask-conical', color: '#FBBF24', order: 7 };
