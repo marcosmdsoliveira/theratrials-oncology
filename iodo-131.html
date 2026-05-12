@@ -23,8 +23,8 @@
 <link rel="apple-touch-icon" sizes="144x144" href="assets/img/icons/icon-144.png">
 <link rel="apple-touch-icon" sizes="120x120" href="assets/img/icons/apple-touch-icon-120.png">
 <!-- PWA:END -->
-<title>131I-Iodo · TheraTrials Oncology</title>
-<meta name="description" content="Iodo-131 em medicina nuclear terapêutica: carcinoma diferenciado de tireoide (CDT) e hipertireoidismo. Página em construção — conteúdo teórico em breve.">
+<title>131I-Iodeto de sódio · TheraTrials Oncology</title>
+<meta name="description" content="Dossiê do 131I-Iodeto de sódio: o radiofármaco fundador da medicina nuclear terapêutica. Mecanismo NIS, esquemas de tratamento em carcinoma diferenciado de tireoide (CDT) e hipertireoidismo (Graves, BMN tóxico, nódulo autônomo), preparo, dosimetria, ESTIMABL2, HiLo, MERAIODE, radioproteção CNEN.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -45,90 +45,92 @@
   }
   .iso-symbol.cyan::before { border-color: rgba(6, 182, 212, 0.4) !important; }
 
-  /* Bloco "Em construção" */
-  .under-construction {
-    background: linear-gradient(180deg, rgba(6, 182, 212, 0.05), rgba(14, 15, 18, 0.4));
-    border: 1px solid rgba(6, 182, 212, 0.25);
-    border-radius: var(--radius-lg);
-    padding: 3rem 2rem;
-    text-align: center;
-    margin: 2.5rem auto;
-    max-width: 720px;
+  /* Tabs de indicação (CDT vs Hipertireoidismo) */
+  .ind-tabs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+    margin: 1.5rem 0 1rem;
   }
-  .under-construction .uc-icon {
-    width: 84px; height: 84px;
-    border-radius: 50%;
-    background: rgba(6, 182, 212, 0.12);
-    display: flex; align-items: center; justify-content: center;
-    margin: 0 auto 1.4rem;
-    color: #22D3EE;
-    border: 1px solid rgba(6, 182, 212, 0.3);
+  @media (max-width: 720px) {
+    .ind-tabs { grid-template-columns: 1fr; }
   }
-  .under-construction .uc-icon i { width: 38px; height: 38px; }
-  .under-construction h2 {
-    font-family: var(--font-display);
-    font-size: clamp(1.4rem, 2.6vw, 1.8rem);
-    color: var(--off-white);
-    margin: 0 0 0.85rem;
-    font-weight: 600;
-    letter-spacing: -0.015em;
-  }
-  .under-construction .uc-desc {
-    color: var(--stone);
-    font-size: 1rem;
-    line-height: 1.65;
-    max-width: 540px;
-    margin: 0 auto 1.75rem;
-  }
-  .under-construction .uc-pills {
-    display: flex; flex-wrap: wrap; gap: 0.55rem; justify-content: center;
-    margin: 1.5rem 0 0;
-  }
-  .under-construction .uc-pills span {
-    background: var(--graphite-3);
-    border: 1px solid var(--border-soft);
-    padding: 0.4rem 0.85rem;
-    border-radius: 100px;
-    font-size: 0.82rem;
-    color: var(--off-white);
-  }
-  .under-construction .uc-coverage {
+  .ind-tab {
     background: var(--graphite-2);
     border: 1px solid var(--border-soft);
+    border-left: 3px solid #06B6D4;
     border-radius: var(--radius-md);
-    padding: 1.25rem 1.4rem;
-    margin: 1.75rem auto 0;
-    max-width: 580px;
-    text-align: left;
+    padding: 1.25rem 1.35rem;
   }
-  .under-construction .uc-coverage h4 {
-    font-family: var(--font-display);
-    font-size: 0.78rem;
+  .ind-tab .ind-eyebrow {
+    font-family: var(--font-mono);
     color: #22D3EE;
+    font-size: 0.74rem;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin: 0 0 0.65rem;
-    font-weight: 600;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.45rem;
   }
-  .under-construction .uc-coverage ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    font-size: 0.92rem;
+  .ind-tab h4 {
     color: var(--off-white);
-    line-height: 1.7;
-  }
-  .under-construction .uc-coverage ul li {
-    padding-left: 1.4rem;
-    position: relative;
-  }
-  .under-construction .uc-coverage ul li::before {
-    content: '→';
-    position: absolute;
-    left: 0;
-    color: #06B6D4;
+    font-size: 1.05rem;
+    margin: 0 0 0.55rem;
     font-weight: 600;
   }
+  .ind-tab p {
+    font-size: 0.9rem;
+    color: var(--stone);
+    line-height: 1.6;
+    margin: 0 0 0.7rem;
+  }
+  .ind-tab .ind-pills {
+    display: flex; flex-wrap: wrap; gap: 0.4rem;
+  }
+  .ind-tab .ind-pills span {
+    font-size: 0.74rem;
+    color: var(--off-white);
+    background: rgba(6, 182, 212, 0.08);
+    border: 1px solid rgba(6, 182, 212, 0.25);
+    padding: 0.25rem 0.55rem;
+    border-radius: 4px;
+  }
+
+  /* Risk strata table (ATA) */
+  .risk-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.88rem;
+  }
+  .risk-table th, .risk-table td {
+    padding: 0.7rem 0.85rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-soft);
+    vertical-align: top;
+  }
+  .risk-table th {
+    background: var(--graphite-3);
+    color: #22D3EE;
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 600;
+  }
+  .risk-table td:first-child {
+    color: var(--off-white);
+    font-weight: 600;
+  }
+  .risk-table .risk-pill {
+    display: inline-block;
+    padding: 0.2rem 0.55rem;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    font-family: var(--font-mono);
+    font-weight: 500;
+  }
+  .risk-table .risk-low { background: rgba(16,185,129,0.15); color: #34D399; border:1px solid rgba(16,185,129,0.3); }
+  .risk-table .risk-int { background: rgba(245,158,11,0.15); color: #FCD34D; border:1px solid rgba(245,158,11,0.3); }
+  .risk-table .risk-high { background: rgba(239,68,68,0.15); color: #F87171; border:1px solid rgba(239,68,68,0.3); }
 </style>
 </head>
 <body>
@@ -161,15 +163,13 @@
 <!-- ============== HERO ============== -->
 <section class="rf-hero">
   <div class="container">
-    <span class="rf-eyebrow" style="background:rgba(6,182,212,0.12);border-color:rgba(6,182,212,0.3);color:#22D3EE">
-      <i data-lucide="atom" style="width:12px;height:12px"></i> Radiofármaco · Beta + gama · Tireoide
-    </span>
+    <span class="rf-eyebrow"><i data-lucide="atom" style="width:12px;height:12px"></i> Radiofármaco · Beta + gama · Tireoide</span>
     <h1 class="rf-title">
-      <span class="iso-up" style="color:#22D3EE">131</span>I-Iodo
-      <br><span style="color:#22D3EE">Sódio iodeto</span> · o radiofármaco fundador da medicina nuclear terapêutica
+      <span class="iso-up">131</span>I-Iodeto de sódio
+      <br><span class="accent">RAI · sódio iodeto</span>
     </h1>
     <p class="rf-subtitle">
-      Captado pelo cotransportador sódio-iodeto (NIS) das células foliculares tireoidianas. É o radiofármaco terapêutico mais antigo em uso clínico contínuo (desde 1941) — referência absoluta em <strong>carcinoma diferenciado de tireoide</strong> (ablação de remanescente, tratamento adjuvante e doença persistente/metastática) e em <strong>hipertireoidismo</strong> (Doença de Graves e bócio nodular tóxico).
+      Captado seletivamente pelas células foliculares tireoidianas pelo cotransportador sódio-iodeto (NIS). É o radiofármaco terapêutico mais antigo em uso clínico contínuo — desde Saul Hertz em 1941 — e referência absoluta em <strong>carcinoma diferenciado de tireoide</strong> (ablação de remanescente, terapia adjuvante e doença persistente/metastática) e em <strong>hipertireoidismo</strong> (Doença de Graves, bócio multinodular tóxico e adenoma autônomo). Protótipo histórico de toda a teranóstica moderna.
     </p>
 
     <div class="iso-card">
@@ -179,51 +179,948 @@
         <span class="iso-name">Iodo</span>
       </div>
       <div class="iso-grid">
-        <div class="item"><div class="lbl">Meia-vida</div><div class="val">8,02 d</div></div>
+        <div class="item"><div class="lbl">Meia-vida física</div><div class="val">8,02 d</div></div>
         <div class="item"><div class="lbl">Decaimento</div><div class="val">β⁻ + γ</div></div>
-        <div class="item"><div class="lbl">Energia β máx</div><div class="val">606 keV</div></div>
-        <div class="item"><div class="lbl">Alcance β máx</div><div class="val">~ 2 mm em tecido</div></div>
-        <div class="item"><div class="lbl">γ útil</div><div class="val">364 keV (81%)</div></div>
-        <div class="item"><div class="lbl">Captação</div><div class="val">NIS (sódio-iodeto)</div></div>
+        <div class="item"><div class="lbl">Energia β máx</div><div class="val">606 keV (89%)</div></div>
+        <div class="item"><div class="lbl">Alcance β máx</div><div class="val">~ 2,4 mm</div></div>
+        <div class="item"><div class="lbl">γ útil (cintilo)</div><div class="val">364 keV (81%)</div></div>
+        <div class="item"><div class="lbl">Vetor</div><div class="val">Iodeto livre (NIS)</div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============== EM CONSTRUÇÃO ============== -->
-<section style="padding: 1rem 0 3rem">
+<!-- ============== LAYOUT ============== -->
+<section style="padding: 0">
   <div class="container">
-    <div class="under-construction">
-      <div class="uc-icon">
-        <i data-lucide="construction"></i>
-      </div>
-      <h2>Página em construção</h2>
-      <p class="uc-desc">
-        O dossiê completo do <sup>131</sup>I-Iodo está em produção. Em breve teremos cronologia, mecanismo molecular (NIS), protocolos de tratamento, preparo, dosimetria, isolamento radiometabólico, indicações em CDT e hipertireoidismo, ensaios clínicos relevantes e perspectivas.
-      </p>
+    <div class="rf-layout">
 
-      <div class="uc-coverage">
-        <h4>Cobertura prevista</h4>
-        <ul>
-          <li>Mecanismo molecular · sódio-iodeto symporter (NIS)</li>
-          <li>Carcinoma diferenciado de tireoide · ablação, adjuvante, doença persistente/metastática</li>
-          <li>Estratificação ATA de risco e seleção para terapia</li>
-          <li>Hipertireoidismo · Doença de Graves, bócio multinodular tóxico, adenoma autônomo</li>
-          <li>Preparo · TSH recombinante (rhTSH) × suspensão hormonal · dieta pobre em iodo</li>
-          <li>Protocolos de dose · empírica × dosimétrica · MIRD vs lesional</li>
-          <li>Isolamento radiometabólico · normas CNEN · alta hospitalar</li>
-          <li>PCI pós-terapia · SPECT/CT · cintilografia de corpo inteiro</li>
-          <li>Toxicidade e seguimento de longo prazo</li>
-        </ul>
-      </div>
+      <!-- TOC -->
+      <aside class="toc">
+        <h4>Nesta página</h4>
+        <a href="#cronologia">Cronologia</a>
+        <a href="#mecanismo">Mecanismo molecular</a>
+        <a href="#indicacoes">Indicações clínicas</a>
+        <a href="#esquema-cdt">Esquema · CDT</a>
+        <a href="#esquema-hiper">Esquema · Hipertireoidismo</a>
+        <a href="#preparo">Preparo do paciente</a>
+        <a href="#imagem">Imagem pós-terapia</a>
+        <a href="#ensaios">Ensaios pivotais</a>
+        <a href="#dosimetria">Dosimetria</a>
+        <a href="#toxicidade">Toxicidade</a>
+        <a href="#radioprotecao">Radioproteção</a>
+        <a href="#perspectivas">Perspectivas</a>
+        <a href="#proximos">Continue lendo</a>
+      </aside>
 
-      <div class="uc-pills">
-        <span>CDT</span>
-        <span>Hipertireoidismo</span>
-        <span>NIS</span>
-        <span>ATA Guidelines</span>
-        <span>Dosimetria lesional</span>
-      </div>
+      <!-- CONTEÚDO -->
+      <main>
+
+        <!-- ============== CRONOLOGIA ============== -->
+        <div id="cronologia" class="rf-section">
+          <h2><span class="num">01</span> Cronologia</h2>
+          <p class="lead">Do experimento pioneiro de Saul Hertz em 1941 ao paradigma atual de dose-individualizada por estratificação ATA: 85 anos de evolução de um radiofármaco que <em>fundou</em> a medicina nuclear terapêutica.</p>
+
+          <div class="timeline">
+            <div class="tl-item">
+              <div class="tl-dot">1936</div>
+              <div class="tl-card">
+                <h4>Karl Compton sugere uso terapêutico</h4>
+                <p>Em palestra no Tremont Temple (Boston), o presidente do MIT Karl Compton sugere usar isótopos radioativos em medicina. Saul Hertz (Massachusetts General Hospital) e Arthur Roberts iniciam, com Robley Evans (MIT), os estudos com iodo radioativo.</p>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot">1941</div>
+              <div class="tl-card">
+                <h4>Primeiro tratamento humano · Hertz, MGH</h4>
+                <p>Hertz administra mistura de <sup>130</sup>I/<sup>131</sup>I em paciente com Doença de Graves no Massachusetts General Hospital — o nascimento da medicina nuclear terapêutica. Paralelamente, Joseph G. Hamilton e John H. Lawrence faziam estudos análogos em Berkeley.</p>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot">1946</div>
+              <div class="tl-card">
+                <h4>Seidlin, Marinelli, Oshry · CDT metastático</h4>
+                <p>Caso emblemático publicado no <em>JAMA</em>: paciente com câncer diferenciado de tireoide metastático tratado com sucesso por iodo radioativo. Estabelece o paradigma terapêutico em CDT que persiste até hoje.</p>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot">1951</div>
+              <div class="tl-card">
+                <h4>FDA aprova <sup>131</sup>I-Iodeto de sódio</h4>
+                <p>Primeiro radiofármaco aprovado pela <em>Food and Drug Administration</em> dos EUA — marco regulatório fundador da medicina nuclear. Disponibilizado comercialmente para hipertireoidismo e carcinoma diferenciado.</p>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot">1962</div>
+              <div class="tl-card">
+                <h4>Benua, Leeper · dosimetria sangue/medula</h4>
+                <p>Equipe do MSKCC formaliza o método dosimétrico de limite à medula vermelha (2 Gy) e à retenção pulmonar (≤80 mCi em 48h em metástases pulmonares difusas). Base de toda a dosimetria empírica e individualizada em CDT até hoje.</p>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot period"><span>1970</span><span>1990</span></div>
+              <div class="tl-card">
+                <h4>Consolidação como padrão</h4>
+                <p>Décadas de experiência estabelecem regimes empíricos (30, 100, 150-200 mCi) em CDT. Mazzaferri (1994) publica séries históricas mostrando redução de recorrência e mortalidade em CDT tratado com RAI — sustentação da indicação universal pós-tireoidectomia.</p>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot">1996</div>
+              <div class="tl-card">
+                <h4>Clonagem do NIS · Dai, Levy, Carrasco</h4>
+                <p>Identificação molecular do <em>sodium iodide symporter</em> (SLC5A5/NIS) explica a captação seletiva do iodeto. Abre caminho para terapia gênica radioteranóstica com NIS exógeno em tumores não-tireoidianos.</p>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot">2009</div>
+              <div class="tl-card">
+                <h4>rhTSH (Thyrogen) aprovado para ablação</h4>
+                <p>FDA aprova tireotrofina alfa recombinante humana (rhTSH) para preparo da ablação com <sup>131</sup>I em pacientes de baixo/intermediário risco — alternativa ao <em>withdrawal</em> de levotiroxina, evitando hipotireoidismo iatrogênico.</p>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot">2012</div>
+              <div class="tl-card">
+                <h4>ESTIMABL e HiLo · low-dose em baixo risco</h4>
+                <p>Dois RCTs publicados simultaneamente no NEJM (Schlumberger e Mallick, 2012) mostram não-inferioridade de 30 mCi vs 100 mCi e de rhTSH vs <em>withdrawal</em> em ablação de remanescentes em CDT de baixo risco. Mudam a prática global.</p>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot">2015</div>
+              <div class="tl-card">
+                <h4>ATA Guidelines · revisão profunda (Haugen)</h4>
+                <p>A <em>American Thyroid Association</em> reestrutura a estratificação (baixo / intermediário / alto), desencoraja ablação rotineira em microcarcinomas e formaliza a "<em>response to therapy</em>" como reclassificação dinâmica. RAI passa a ser adjuvante seletivo, não universal.</p>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot">2018</div>
+              <div class="tl-card">
+                <h4>Era do CDT refratário a iodo</h4>
+                <p>TKIs antiangiogênicos (lenvatinib · SELECT, sorafenib · DECISION) e drogas seletivas por driver (selpercatinib em RET+, larotrectinib em NTRK+) consolidam-se como linha pós-RAI em <em>radioiodine-refractory</em> DTC. Redesenha o algoritmo de doença metastática.</p>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot">2022</div>
+              <div class="tl-card">
+                <h4>ESTIMABL2 · 30 mCi confirmado em baixo risco</h4>
+                <p>Leboulleux e cols. (NEJM 2022) randomizam 776 pacientes de baixo risco entre 30 mCi+rhTSH e 100 mCi+rhTSH: resposta excelente equivalente (~95%) com toxicidade significativamente menor. Reforça definitivamente o low-dose como padrão.</p>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot">2023</div>
+              <div class="tl-card">
+                <h4>MERAIODE · redifferentation</h4>
+                <p>Estratégias de redifferentation com inibidores MAPK (trametinib + dabrafenib em BRAF-V600E; selumetinib em RAS) restauram captação de RAI em uma fração de CDT refratário, permitindo retratamento em pacientes antes sem opção radio-iodada.</p>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot">2025</div>
+              <div class="tl-card">
+                <h4>ATA 2025 · revisão integral (Ringel, Sosa et al.)</h4>
+                <p>Nova diretriz ATA para CDT em adultos (<em>Thyroid</em> 2025;35(8):841-985) — primeira revisão profunda desde 2015. Painel multidisciplinar com 20 especialistas (endo, cirurgia, patologia, medicina nuclear, oncologia, advocacia do paciente) e metodologia GRADE modificada. Eixos centrais: <strong>desescalada terapêutica em baixo risco</strong> (vigilância ativa formal para microcarcinoma; lobectomia ampliada; omissão de RAI confirmada pós-ESTIMABL2/IoN); <strong>terapia-alvo integrada</strong> (selpercatinib em RET+, dabrafenib+trametinib em BRAF-V600E, larotrectinib/entrectinib em NTRK+); <strong>redifferentation</strong> como estratégia formal em refratários selecionados; <strong>PROs</strong> (patient-reported outcomes) centrais à jornada do paciente; e gaps de pesquisa explicitamente apontados.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="orbital-divider">
+          <svg width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="60" cy="20" r="3" fill="#06B6D4"/>
+            <ellipse cx="60" cy="20" rx="40" ry="10" fill="none" stroke="#06B6D4" stroke-width="0.8" opacity="0.4"/>
+            <ellipse cx="60" cy="20" rx="55" ry="13" fill="none" stroke="#22D3EE" stroke-width="0.6" stroke-dasharray="2 4" opacity="0.5"/>
+            <circle cx="100" cy="20" r="1.5" fill="#22D3EE"/>
+            <circle cx="20" cy="20" r="1.5" fill="#22D3EE"/>
+          </svg>
+        </div>
+
+        <!-- ============== MECANISMO ============== -->
+        <div id="mecanismo" class="rf-section">
+          <h2><span class="num">02</span> Mecanismo molecular</h2>
+          <p class="lead">O iodeto não precisa de carreador molecular: o tireócito o capta avidamente pela proteína NIS (Na<sup>+</sup>/I<sup>−</sup> symporter, gene SLC5A5), faz organificação no colóide via TPO e o retém ligado à tireoglobulina. A emissão β⁻ do <sup>131</sup>I causa quebras de dupla-fita no DNA das células-alvo.</p>
+
+          <div class="mech-diagram">
+            <img src="assets/img/iodo-131-mecanismo.png"
+                 alt="Mecanismo molecular do 131I-Iodeto de sódio — captação pelo NIS, efluxo apical via pendrina, organificação pela TPO na tireoglobulina, retenção, emissão β⁻ com dano ao DNA e emissão γ de 364 keV para imagem"
+                 style="display: block; width: 100%; height: auto; border-radius: var(--radius-md); margin-bottom: 1rem">
+
+            <div class="mech-stages">
+              <div class="mech-stage">
+                <div class="mech-num">1</div>
+                <h5>Captação por NIS</h5>
+                <p>O cotransportador Na<sup>+</sup>/I<sup>−</sup> (NIS · SLC5A5), expresso na membrana basolateral do tireócito, transporta ativamente 2 Na<sup>+</sup> e 1 I<sup>−</sup> para o citosol — energizado pelo gradiente de sódio mantido pela Na<sup>+</sup>/K<sup>+</sup>-ATPase. Expressão regulada por TSH.</p>
+              </div>
+              <div class="mech-stage">
+                <div class="mech-num">2</div>
+                <h5>Efluxo apical via pendrina</h5>
+                <p>O iodeto é eflupido para o colóide pela pendrina (SLC26A4) na membrana apical. Mutações em pendrina (síndrome de Pendred) causam bócio + surdez por falha desse passo.</p>
+              </div>
+              <div class="mech-stage">
+                <div class="mech-num">3</div>
+                <h5>Organificação pela TPO</h5>
+                <p>A tireoperoxidase (TPO) oxida o iodeto e o incorpora a resíduos de tirosina da tireoglobulina, formando monoiodotirosina (MIT) e diiodotirosina (DIT). Acoplamento gera T<sub>3</sub> e T<sub>4</sub>, armazenados no colóide.</p>
+              </div>
+              <div class="mech-stage">
+                <div class="mech-num">4</div>
+                <h5>Retenção prolongada</h5>
+                <p>O iodo organificado permanece ligado à tireoglobulina por dias a semanas (T½ biológica ~80 dias no tireócito normal). Em tireócitos malignos diferenciados a retenção é menor, mas suficiente para terapia.</p>
+              </div>
+              <div class="mech-stage">
+                <div class="mech-num">5</div>
+                <h5>Emissão β⁻ terapêutica</h5>
+                <p>O <sup>131</sup>I emite partículas β⁻ (Emax 606 keV; alcance máximo ~2,4 mm; médio ~0,4 mm em tecido). A energia depositada provoca quebras de dupla-fita no DNA, estresse oxidativo e morte celular — efeito acentuado pelo <em>cross-fire</em> entre tireócitos vizinhos.</p>
+              </div>
+              <div class="mech-stage">
+                <div class="mech-num">6</div>
+                <h5>Emissão γ para imagem</h5>
+                <p>O γ de 364 keV (81% de abundância) permite cintilografia de corpo inteiro (PCI/WBS) e SPECT/CT pós-terapia, característica que faz do <sup>131</sup>I o protótipo teranóstico — terapia e imagem com o mesmo radionuclídeo.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="key-fact">
+            <div class="lbl">NIS extra-tireoidiano · captação fisiológica e off-target</div>
+            <p>O NIS não é exclusivo da tireoide: também é expresso em glândulas salivares, mucosa gástrica, mama em lactação, plexo coróide, glândulas lacrimais e túbulos renais (excreção). Essa biodistribuição explica a maior parte da toxicidade do <sup>131</sup>I — sialoadenite, xerostomia, gastrite, obstrução naso-lacrimal (NLDO) e necessidade absoluta de evitar amamentação após terapia. Diferentemente do tireócito, esses tecidos <em>não organificam</em> o iodeto, mas a retenção transitória é suficiente para dano radioinduzido em doses altas.</p>
+          </div>
+
+          <div class="key-fact">
+            <div class="lbl">Diferenciação tumoral e captação</div>
+            <p>A expressão de NIS, TPO e tireoglobulina cai progressivamente conforme aumenta a desdiferenciação. CDT bem-diferenciado (clássico) capta avidamente; variantes pouco diferenciadas, oncocíticas/Hürthle e o carcinoma <em>poorly differentiated</em> têm captação progressivamente menor. <strong>Carcinoma anaplásico</strong> e <strong>medular</strong> (origem parafolicular, sem NIS) <em>não captam</em> <sup>131</sup>I e não têm indicação de RAI.</p>
+          </div>
+        </div>
+
+        <div class="orbital-divider">
+          <svg width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="60" cy="20" r="3" fill="#06B6D4"/>
+            <ellipse cx="60" cy="20" rx="40" ry="10" fill="none" stroke="#06B6D4" stroke-width="0.8" opacity="0.4"/>
+            <ellipse cx="60" cy="20" rx="55" ry="13" fill="none" stroke="#22D3EE" stroke-width="0.6" stroke-dasharray="2 4" opacity="0.5"/>
+            <circle cx="100" cy="20" r="1.5" fill="#22D3EE"/>
+            <circle cx="20" cy="20" r="1.5" fill="#22D3EE"/>
+          </svg>
+        </div>
+
+        <!-- ============== INDICAÇÕES ============== -->
+        <div id="indicacoes" class="rf-section">
+          <h2><span class="num">03</span> Indicações clínicas</h2>
+          <p class="lead">Duas grandes famílias de indicação, com lógicas farmacológicas opostas: em CDT busca-se <em>ablação/destruição</em> tumoral; em hipertireoidismo busca-se <em>destruição funcional</em> do tireócito hiperativo. A dose, o preparo e o seguimento diferem profundamente entre os dois cenários.</p>
+
+          <div class="ind-tabs">
+            <div class="ind-tab">
+              <div class="ind-eyebrow">Oncologia · CDT</div>
+              <h4>Carcinoma diferenciado de tireoide</h4>
+              <p>Após cirurgia inicial (lobectomia ou tireoidectomia total conforme estratificação ATA 2025) — papilífero, folicular e variantes diferenciadas. Três objetivos clinicamente distintos: (1) <strong>ablação</strong> de remanescente tireoidiano para facilitar seguimento por Tg; (2) <strong>terapia adjuvante</strong> de microdoença suspeita ou comprovada; (3) tratamento de <strong>doença persistente, recorrente ou metastática</strong> conhecida. <em>Vigilância ativa</em> é alternativa formal à cirurgia em microcarcinomas papilíferos de baixo risco selecionados (ATA 2025).</p>
+              <div class="ind-pills">
+                <span>Papilífero · clássico</span>
+                <span>Folicular</span>
+                <span>Hürthle (variável)</span>
+                <span>Variantes diferenciadas</span>
+              </div>
+            </div>
+
+            <div class="ind-tab">
+              <div class="ind-eyebrow">Endocrinologia · Hipertireoidismo</div>
+              <h4>Hipertireoidismo persistente</h4>
+              <p>Alternativa definitiva às drogas antitireoidianas e à cirurgia. Tratamento eletivo em <strong>Doença de Graves</strong> (autoimune, anti-TRAb+), <strong>bócio multinodular tóxico</strong> (Plummer) e <strong>adenoma autônomo</strong> (nódulo tóxico solitário). Custo-efetivo, ambulatorial e definitivo na maioria dos pacientes.</p>
+              <div class="ind-pills">
+                <span>Graves</span>
+                <span>BMN tóxico</span>
+                <span>Adenoma autônomo</span>
+                <span>Falha de tionamidas</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="key-fact">
+            <div class="lbl">Contraindicações absolutas e relativas</div>
+            <p><strong>Absolutas:</strong> gestação e amamentação. <strong>Relativas / atenção:</strong> oftalmopatia de Graves moderada-grave ativa (risco de piora — considerar corticoide profilático ou cirurgia); incapacidade de cooperação com restrições de radioproteção; insuficiência renal grave (excreção lenta, maior dose corporal); incontinência urinária (radioproteção); doença psiquiátrica descompensada. <strong>Não-indicação:</strong> carcinoma medular e anaplásico de tireoide (não captam).</p>
+          </div>
+        </div>
+
+        <div class="orbital-divider">
+          <svg width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="60" cy="20" r="3" fill="#06B6D4"/>
+            <ellipse cx="60" cy="20" rx="40" ry="10" fill="none" stroke="#06B6D4" stroke-width="0.8" opacity="0.4"/>
+            <ellipse cx="60" cy="20" rx="55" ry="13" fill="none" stroke="#22D3EE" stroke-width="0.6" stroke-dasharray="2 4" opacity="0.5"/>
+            <circle cx="100" cy="20" r="1.5" fill="#22D3EE"/>
+            <circle cx="20" cy="20" r="1.5" fill="#22D3EE"/>
+          </svg>
+        </div>
+
+        <!-- ============== ESQUEMA · CDT ============== -->
+        <div id="esquema-cdt" class="rf-section">
+          <h2><span class="num">04</span> Esquema terapêutico · CDT</h2>
+          <p class="lead">Após cirurgia (lobectomia ou tireoidectomia total, conforme estratificação) e classificação de risco ATA, a dose é definida pelo objetivo (ablação × adjuvância × doença macroscópica) e pelas características da doença. <strong>ATA 2025</strong> consolida a tendência iniciada em 2015: <em>menos é mais</em> em baixo risco (com vigilância ativa formal e omissão de RAI), dose personalizada e terapia-alvo integrada em alto risco e refratário.</p>
+
+          <table class="risk-table">
+            <thead>
+              <tr>
+                <th>Risco ATA</th>
+                <th>Critérios</th>
+                <th>Atividade típica</th>
+                <th>Indicação RAI</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="risk-pill risk-low">Baixo</span></td>
+                <td>Papilífero intratireoidiano, sem invasão extra-tireoidiana, sem M1, ≤5 LN+ micrometastáticos (&lt;0,2 cm), Tg pós-op &lt;1 ng/mL com TSH suprimido</td>
+                <td><strong>30 mCi</strong> (1,1 GBq) — quando indicado</td>
+                <td>Geralmente <strong>não</strong> recomendado; considerar em casos selecionados (Tg detectável, idade jovem, multifocalidade)</td>
+              </tr>
+              <tr>
+                <td><span class="risk-pill risk-int">Intermediário</span></td>
+                <td>Invasão microscópica extra-tireoidiana, histologia agressiva (células altas, colunar, sólida), invasão vascular, &gt;5 LN+ ou LN+ ≥0,2 cm, captação fora do leito no PCI pós-ablação</td>
+                <td><strong>30 a 100-150 mCi</strong> (1,1 a 5,5 GBq)</td>
+                <td><strong>Considerar</strong> — terapia adjuvante seletiva conforme fator de risco predominante</td>
+              </tr>
+              <tr>
+                <td><span class="risk-pill risk-high">Alto</span></td>
+                <td>Invasão macroscópica extra-tireoidiana, ressecção incompleta, metástase a distância, Tg pós-op &gt;5-10 ng/mL com TSH suprimido, LN+ ≥3 cm</td>
+                <td><strong>100-200 mCi</strong> (3,7-7,4 GBq) ou dose por dosimetria individualizada</td>
+                <td><strong>Recomendado</strong> — terapia adjuvante e/ou tratamento de doença conhecida</td>
+              </tr>
+              <tr>
+                <td><span class="risk-pill risk-high">M1 / refratário-iodado pendente</span></td>
+                <td>Metástase pulmonar (difusa ou macronodular), óssea, cerebral, hepática com captação de iodo presumida ou comprovada</td>
+                <td><strong>150-200 mCi</strong> empírico, ou cálculo dosimétrico (Benua-Leeper, dosimetria lesional)</td>
+                <td><strong>Recomendado</strong> enquanto persistir captação radio-iodada e benefício clínico</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="scheme-box">
+            <div class="scheme-pills">
+              <div class="scheme-pill"><span class="pill-lbl">Ablação BR</span><span class="pill-val">30 mCi · 1,1 GBq</span></div>
+              <div class="scheme-pill"><span class="pill-lbl">Adjuvante IR</span><span class="pill-val">100 mCi · 3,7 GBq</span></div>
+              <div class="scheme-pill"><span class="pill-lbl">Doença AR</span><span class="pill-val">150-200 mCi · 5,5-7,4 GBq</span></div>
+              <div class="scheme-pill"><span class="pill-lbl">Intervalo entre doses</span><span class="pill-val">≥ 6 meses</span></div>
+              <div class="scheme-pill"><span class="pill-lbl">TSH-alvo (pré-RAI)</span><span class="pill-val">≥ 30 mUI/L</span></div>
+              <div class="scheme-pill"><span class="pill-lbl">Tg-stim alvo</span><span class="pill-val">"resposta excelente" &lt;0,2 ng/mL</span></div>
+            </div>
+
+            <h4 style="margin: 1.5rem 0 0.5rem; color: var(--off-white); font-size: 1rem; font-weight: 600">Avaliação de resposta (ATA 2015 · mantida em 2025)</h4>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 0.75rem; margin-top: 0.5rem">
+              <div style="background:var(--graphite-3); border:1px solid var(--border-soft); border-radius:8px; padding:0.85rem 1rem">
+                <div style="font-family:var(--font-mono); font-size:0.74rem; color:#34D399; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:0.35rem">Excelente</div>
+                <div style="font-size:0.85rem; color:var(--off-white); line-height:1.5">Tg-stim &lt;1 ng/mL, US negativo, sem evidência estrutural. Risco de recorrência &lt;3%.</div>
+              </div>
+              <div style="background:var(--graphite-3); border:1px solid var(--border-soft); border-radius:8px; padding:0.85rem 1rem">
+                <div style="font-family:var(--font-mono); font-size:0.74rem; color:#FCD34D; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:0.35rem">Bioquímica incompleta</div>
+                <div style="font-size:0.85rem; color:var(--off-white); line-height:1.5">Tg detectável sem doença estrutural visível. Vigilância; considerar imagem dedicada.</div>
+              </div>
+              <div style="background:var(--graphite-3); border:1px solid var(--border-soft); border-radius:8px; padding:0.85rem 1rem">
+                <div style="font-family:var(--font-mono); font-size:0.74rem; color:#F87171; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:0.35rem">Estrutural incompleta</div>
+                <div style="font-size:0.85rem; color:var(--off-white); line-height:1.5">Doença identificável por imagem (US, CT, PET ou PCI). Reintervenção definida por sítio e dimensão.</div>
+              </div>
+              <div style="background:var(--graphite-3); border:1px solid var(--border-soft); border-radius:8px; padding:0.85rem 1rem">
+                <div style="font-family:var(--font-mono); font-size:0.74rem; color:#22D3EE; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:0.35rem">Indeterminada</div>
+                <div style="font-size:0.85rem; color:var(--off-white); line-height:1.5">Achados não específicos (LN reativos, Tg detectável instável, anti-Tg+). Seguimento ativo.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="key-fact">
+            <div class="lbl">O que mudou na ATA 2025 (Ringel, Sosa et al. · <em>Thyroid</em> 2025)</div>
+            <p>A revisão de 2025 mantém a arquitetura geral de 2015 e consolida tendências surgidas na última década. Pontos centrais:</p>
+            <ul style="margin: 0.6rem 0 0; padding-left: 1.4rem; color: var(--stone); font-size: 0.9rem; line-height: 1.7">
+              <li><strong>Vigilância ativa</strong> formalizada como opção legítima em microcarcinoma papilífero de baixo risco selecionado — desfecho oncológico equivalente à cirurgia em séries de Tóquio (Ito/Miyauchi), MSKCC e Kuma Hospital.</li>
+              <li><strong>Lobectomia</strong> ampliada como cirurgia inicial em DTC de baixo risco até 4 cm sem extensão extra-tireoidiana — paridade oncológica com tireoidectomia total e qualidade de vida superior.</li>
+              <li><strong>Desescalada de RAI</strong> reforçada em baixo risco — incorporando ESTIMABL2 (2022) e IoN (2024): omissão de ablação é opção válida; quando indicada, 30 mCi + rhTSH é o padrão.</li>
+              <li><strong>Terapia-alvo</strong> integrada formalmente: selpercatinib/pralsetinib em RET-fusion DTC e RET-mutado MTC; dabrafenib + trametinib em BRAF-V600E (CDT pouco-dif e ATC); larotrectinib/entrectinib em NTRK-fusion (raras em adulto, mais comuns em DTC pediátrico).</li>
+              <li><strong>Redifferentation</strong> com inibidores MAPK (trametinib, selumetinib, dabrafenib+trametinib) consolidada como estratégia para resgatar captação de RAI em refratários selecionados.</li>
+              <li><strong>PROs</strong> (patient-reported outcomes) e a "jornada do paciente" como eixo organizador da diretriz — inclusão de representante de pacientes no painel.</li>
+              <li><strong>NGS amplo</strong> em DTC iodo-refratário avançado para identificar drivers acionáveis (RET, BRAF, NTRK, ALK, RAS) antes de escolher TKI de primeira linha.</li>
+              <li>Painel internacional · 20 especialistas · metodologia GRADE modificada · cut-off da literatura Jul/2024 (corrigendum em Out/2025 · PMID 41182278).</li>
+            </ul>
+          </div>
+
+          <div class="key-fact">
+            <div class="lbl">Critério de refratariedade ao iodo</div>
+            <p>Quatro definições aceitas (qualquer uma basta): (1) ausência de captação na PCI pós-terapia em doença conhecida; (2) perda de captação prévia em retratamento; (3) captação presente em algumas lesões mas não em outras; (4) progressão estrutural em &lt;12 meses pós-RAI apesar de captação. Dose cumulativa &gt;600 mCi sem resposta também é considerada. Pacientes refratários têm OS mediana ~3-5 anos e são candidatos a TKI (lenvatinib, sorafenib) e drogas seletivas (selpercatinib, larotrectinib).</p>
+          </div>
+        </div>
+
+        <div class="orbital-divider">
+          <svg width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="60" cy="20" r="3" fill="#06B6D4"/>
+            <ellipse cx="60" cy="20" rx="40" ry="10" fill="none" stroke="#06B6D4" stroke-width="0.8" opacity="0.4"/>
+            <ellipse cx="60" cy="20" rx="55" ry="13" fill="none" stroke="#22D3EE" stroke-width="0.6" stroke-dasharray="2 4" opacity="0.5"/>
+            <circle cx="100" cy="20" r="1.5" fill="#22D3EE"/>
+            <circle cx="20" cy="20" r="1.5" fill="#22D3EE"/>
+          </svg>
+        </div>
+
+        <!-- ============== ESQUEMA · HIPERTIREOIDISMO ============== -->
+        <div id="esquema-hiper" class="rf-section">
+          <h2><span class="num">05</span> Esquema terapêutico · Hipertireoidismo</h2>
+          <p class="lead">A dose pode ser calculada pela captação tireoidiana de iodo em 24h (RAIU-24h) e pelo volume glandular, ou administrada por regime fixo. Doença de Graves responde com doses menores; bócio multinodular tóxico é mais radio-resistente.</p>
+
+          <div class="scheme-box">
+            <div class="scheme-pills">
+              <div class="scheme-pill"><span class="pill-lbl">Graves · dose fixa</span><span class="pill-val">10-15 mCi · 370-555 MBq</span></div>
+              <div class="scheme-pill"><span class="pill-lbl">BMN tóxico</span><span class="pill-val">20-30 mCi · 740 MBq-1,1 GBq</span></div>
+              <div class="scheme-pill"><span class="pill-lbl">Adenoma autônomo</span><span class="pill-val">15-30 mCi · 555 MBq-1,1 GBq</span></div>
+              <div class="scheme-pill"><span class="pill-lbl">Alvo Graves (Gy)</span><span class="pill-val">150-200 Gy</span></div>
+              <div class="scheme-pill"><span class="pill-lbl">Alvo BMN (Gy)</span><span class="pill-val">200-300 Gy</span></div>
+              <div class="scheme-pill"><span class="pill-lbl">Eutireoidismo</span><span class="pill-val">6-12 sem</span></div>
+            </div>
+
+            <h4 style="margin: 1.5rem 0 0.5rem; color: var(--off-white); font-size: 1rem; font-weight: 600">Cálculo dosimétrico por captação · Graves</h4>
+            <div style="background: var(--graphite-3); border: 1px solid var(--border-soft); border-radius: 8px; padding: 1rem 1.25rem; margin-top: 0.5rem; font-family: var(--font-mono); font-size: 0.92rem; line-height: 1.7; color: var(--off-white)">
+              Atividade (μCi) = [dose-alvo (μCi/g) × peso glandular (g) × 100] ÷ RAIU-24h (%)<br>
+              <span style="color: var(--stone); font-size: 0.82rem">Dose-alvo típica: 80 μCi/g (hipertireoidismo leve) · 120-200 μCi/g (Graves moderada-grave, BMN tóxico)</span>
+            </div>
+
+            <div style="margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid var(--border-soft); display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem">
+              <div>
+                <div style="font-size: 0.75rem; color: var(--stone); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.35rem">Pré-tratamento</div>
+                <div style="font-size: 0.9rem; color: var(--off-white); line-height: 1.55">Suspender metimazol (MMI) 3-7 dias antes para liberar a captação. Propiltiouracila (PTU) suspender 14 dias antes — atrasa mais a recuperação da NIS.</div>
+              </div>
+              <div>
+                <div style="font-size: 0.75rem; color: var(--stone); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.35rem">Captação prévia</div>
+                <div style="font-size: 0.9rem; color: var(--off-white); line-height: 1.55">RAIU-24h obrigatória para cálculo dosimétrico; estimar peso glandular por US ou palpação. Pode-se reduzir intermediário em Graves leve.</div>
+              </div>
+              <div>
+                <div style="font-size: 0.75rem; color: var(--stone); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.35rem">Pós-administração</div>
+                <div style="font-size: 0.9rem; color: var(--off-white); line-height: 1.55">Manter beta-bloqueador até eutireoidismo. Reavaliação clínica/laboratorial em 6 sem; instituir LT4 ao surgir hipotireoidismo.</div>
+              </div>
+              <div>
+                <div style="font-size: 0.75rem; color: var(--stone); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.35rem">Hipotireoidismo final</div>
+                <div style="font-size: 0.9rem; color: var(--off-white); line-height: 1.55">Esperado em ~70% dos pacientes com Graves em 1 ano e &gt;90% em 10 anos. É o desfecho funcionalmente desejado; tratado com LT4 vitalícia.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="key-fact">
+            <div class="lbl">Oftalmopatia de Graves · risco de piora</div>
+            <p>O <sup>131</sup>I pode <strong>piorar a oftalmopatia ativa</strong> em ~15-30% dos pacientes (vs ~5% com tionamidas, ~5% com tireoidectomia). Fatores de risco: tabagismo ativo, oftalmopatia moderada-grave já presente, TRAb muito elevado, hipotireoidismo pós-tratamento mal corrigido. <strong>Profilaxia:</strong> prednisona 0,3-0,5 mg/kg/dia por 1 mês iniciada no dia da terapia, com desmame em 2-3 meses, em pacientes com oftalmopatia leve ativa ou fatores de risco. Em oftalmopatia moderada-grave ativa, evitar RAI — preferir tireoidectomia ou aguardar estabilização.</p>
+          </div>
+
+          <div class="key-fact">
+            <div class="lbl">Falha terapêutica e retratamento</div>
+            <p>Persistência de hipertireoidismo após 6 meses ocorre em ~10-20% após primeira dose em Graves, mais em BMN tóxico (~20-30%). Retratamento pode ser feito a partir de 6 meses, geralmente com dose 1,5-2× maior que a inicial. Em bócios muito volumosos (&gt;80-100 g) ou após múltiplas falhas, tireoidectomia é alternativa razoável.</p>
+          </div>
+        </div>
+
+        <div class="orbital-divider">
+          <svg width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="60" cy="20" r="3" fill="#06B6D4"/>
+            <ellipse cx="60" cy="20" rx="40" ry="10" fill="none" stroke="#06B6D4" stroke-width="0.8" opacity="0.4"/>
+            <ellipse cx="60" cy="20" rx="55" ry="13" fill="none" stroke="#22D3EE" stroke-width="0.6" stroke-dasharray="2 4" opacity="0.5"/>
+            <circle cx="100" cy="20" r="1.5" fill="#22D3EE"/>
+            <circle cx="20" cy="20" r="1.5" fill="#22D3EE"/>
+          </svg>
+        </div>
+
+        <!-- ============== PREPARO ============== -->
+        <div id="preparo" class="rf-section">
+          <h2><span class="num">06</span> Preparo do paciente</h2>
+          <p class="lead">O preparo é cenário-específico. Em <strong>CDT</strong>, busca-se elevar TSH (estímulo NIS) e esvaziar o pool de iodo estável (dieta hipoiodada). Em <strong>hipertireoidismo</strong>, basta suspender tionamidas e contraste iodado.</p>
+
+          <div class="scheme-box">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem">
+              <div>
+                <div style="font-size: 0.75rem; color: var(--amber); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.35rem">Estimulação do TSH · CDT</div>
+                <div style="font-size: 0.92rem; color: var(--off-white); line-height: 1.55">Alvo TSH ≥ 30 mUI/L. Duas estratégias: <strong>(a) withdrawal</strong> de levotiroxina — suspender LT4 por 4 sem (ou trocar para LT3 e suspender LT3 por 2 sem); <strong>(b) rhTSH</strong> (tireotrofina alfa, Thyrogen) — 2 doses IM de 0,9 mg em D-2 e D-1; RAI no D0. rhTSH evita hipotireoidismo iatrogênico (qualidade de vida).</div>
+              </div>
+              <div>
+                <div style="font-size: 0.75rem; color: var(--amber); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.35rem">Dieta hipoiodada · CDT</div>
+                <div style="font-size: 0.92rem; color: var(--off-white); line-height: 1.55">1-2 semanas com &lt;50 μg de iodo/dia. Evitar: sal iodado, frutos do mar, laticínios em excesso, ovos, soja, gema, embutidos, pães industriais, comidas processadas, suplementos contendo iodo. <strong>Iodúria 24h &lt; 100 μg</strong> é alvo prático para máxima captação.</div>
+              </div>
+              <div>
+                <div style="font-size: 0.75rem; color: var(--amber); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.35rem">Drogas a suspender</div>
+                <div style="font-size: 0.92rem; color: var(--off-white); line-height: 1.55"><strong>Amiodarona</strong>: até 6 meses antes (iodo livre no organismo). <strong>Contraste iodado</strong>: 4-8 semanas. <strong>Tionamidas</strong> (em hiper): MMI 3-7 dias, PTU 14 dias. <strong>Multivitamínicos com iodo</strong>, kelp, povidona tópica: 2-4 semanas.</div>
+              </div>
+              <div>
+                <div style="font-size: 0.75rem; color: var(--amber); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.35rem">Gestação e fertilidade</div>
+                <div style="font-size: 0.92rem; color: var(--off-white); line-height: 1.55"><strong>β-hCG negativo obrigatório</strong> antes da terapia (mulheres em idade fértil). Contracepção por <strong>6-12 meses</strong> pós-terapia (ATA 2015). Em homens, recomenda-se aguardar <strong>4 meses</strong> antes de paternidade após doses altas (oligospermia transitória).</div>
+              </div>
+              <div>
+                <div style="font-size: 0.75rem; color: var(--amber); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.35rem">Lactação</div>
+                <div style="font-size: 0.92rem; color: var(--off-white); line-height: 1.55"><strong>Contraindicação absoluta.</strong> NIS é altamente expresso na mama em lactação — risco severo ao lactente. Suspender lactação ≥ 6 semanas antes da terapia (involução da glândula); retomada não é segura na lactação atual.</div>
+              </div>
+              <div>
+                <div style="font-size: 0.75rem; color: var(--amber); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.35rem">Hidratação e proteção das salivares</div>
+                <div style="font-size: 0.92rem; color: var(--off-white); line-height: 1.55">Hidratação vigorosa peri-terapia (&gt;2 L/dia) acelera clearance. Estimular salivação com balas ácidas ou suco de limão — porém só <strong>após 24h</strong> da administração (estímulo precoce <em>aumenta</em> a captação salivar e a dose). Evitar sialogogos nas primeiras 24h.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="key-fact">
+            <div class="lbl">rhTSH vs withdrawal · qual escolher?</div>
+            <p>Em CDT de <strong>baixo e intermediário risco</strong>, rhTSH é não-inferior ao withdrawal para ablação (HiLo, ESTIMABL, ESTIMABL2) com qualidade de vida significativamente melhor — é a recomendação ATA 2015. Em <strong>alto risco e doença conhecida</strong>, dados são menos robustos e muitos centros mantêm o withdrawal por gerar maior estímulo metabólico ao tireócito tumoral e maior captação lesional, embora rhTSH seja crescentemente usada conforme a literatura recente. Em <strong>doença metastática agressiva</strong> ou idosos com risco de descompensação cardíaca pelo hipotireoidismo, rhTSH é preferível.</p>
+          </div>
+        </div>
+
+        <div class="orbital-divider">
+          <svg width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="60" cy="20" r="3" fill="#06B6D4"/>
+            <ellipse cx="60" cy="20" rx="40" ry="10" fill="none" stroke="#06B6D4" stroke-width="0.8" opacity="0.4"/>
+            <ellipse cx="60" cy="20" rx="55" ry="13" fill="none" stroke="#22D3EE" stroke-width="0.6" stroke-dasharray="2 4" opacity="0.5"/>
+            <circle cx="100" cy="20" r="1.5" fill="#22D3EE"/>
+            <circle cx="20" cy="20" r="1.5" fill="#22D3EE"/>
+          </svg>
+        </div>
+
+        <!-- ============== IMAGEM PÓS-TERAPIA ============== -->
+        <div id="imagem" class="rf-section">
+          <h2><span class="num">07</span> Imagem teranóstica</h2>
+          <p class="lead">A emissão γ de 364 keV permite que o mesmo radionuclídeo seja terapia <em>e</em> diagnóstico: é a essência do conceito teranóstico, do qual o <sup>131</sup>I é o protótipo histórico. A imagem pós-dose terapêutica (PCI) é mandatória e frequentemente revela doença não vista no rastreio diagnóstico pré-terapia.</p>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin: 1.5rem 0">
+            <div style="background: var(--graphite-2); border: 1px solid var(--border-soft); border-radius: var(--radius-md); padding: 1.25rem">
+              <div style="font-family: var(--font-mono); color: var(--amber); font-size: 0.85rem; margin-bottom: 0.4rem"><sup>131</sup>I diagnóstico (2-5 mCi)</div>
+              <div style="font-size: 0.95rem; color: var(--off-white); margin-bottom: 0.35rem">Rastreio pré-terapia</div>
+              <div style="font-size: 0.82rem; color: var(--stone); line-height: 1.5">Indicação seletiva. Risco de <em>stunning</em> — captação reduzida pelo tumor após dose diagnóstica. Hoje, em geral, substituído por <sup>123</sup>I quando disponível, ou omitido em favor da PCI pós-dose.</div>
+            </div>
+            <div style="background: var(--graphite-2); border: 1px solid var(--border-soft); border-radius: var(--radius-md); padding: 1.25rem">
+              <div style="font-family: var(--font-mono); color: var(--amber); font-size: 0.85rem; margin-bottom: 0.4rem"><sup>123</sup>I (1-5 mCi)</div>
+              <div style="font-size: 0.95rem; color: var(--off-white); margin-bottom: 0.35rem">Pré-terapia · sem stunning</div>
+              <div style="font-size: 0.82rem; color: var(--stone); line-height: 1.5">γ puro (159 keV), T½ 13h, dosimetria favorável. SPECT/CT de alta qualidade. Não disponível em todos os centros (necessita ciclotron).</div>
+            </div>
+            <div style="background: var(--graphite-2); border: 1px solid var(--border-soft); border-radius: var(--radius-md); padding: 1.25rem">
+              <div style="font-family: var(--font-mono); color: var(--amber); font-size: 0.85rem; margin-bottom: 0.4rem"><sup>124</sup>I-PET/CT</div>
+              <div style="font-size: 0.95rem; color: var(--off-white); margin-bottom: 0.35rem">Dosimetria pré-tratamento</div>
+              <div style="font-size: 0.82rem; color: var(--stone); line-height: 1.5">Emissor de pósitrons (β+, T½ 4,18 d). Quantificação lesional precisa para dosimetria individualizada. Centros teranósticos especializados.</div>
+            </div>
+            <div style="background: var(--graphite-2); border: 1px solid var(--border-soft); border-radius: var(--radius-md); padding: 1.25rem">
+              <div style="font-family: var(--font-mono); color: var(--amber); font-size: 0.85rem; margin-bottom: 0.4rem"><sup>18</sup>F-FDG PET/CT</div>
+              <div style="font-size: 0.95rem; color: var(--off-white); margin-bottom: 0.35rem">CDT desdiferenciado</div>
+              <div style="font-size: 0.82rem; color: var(--stone); line-height: 1.5">Padrão para investigar refratariedade ao iodo: lesões <em>flip-flop</em> (FDG+/<sup>131</sup>I−) sugerem desdiferenciação e mau prognóstico. Tg elevada + PCI negativa (TENIS) é indicação clássica.</div>
+            </div>
+          </div>
+
+          <div class="key-fact">
+            <div class="lbl">PCI pós-dose terapêutica · 2-10 dias</div>
+            <p>A cintilografia de corpo inteiro (<em>post-therapy whole body scan</em>) é mandatória após qualquer dose terapêutica de <sup>131</sup>I em CDT — geralmente 5-7 dias pós-administração para permitir clearance de atividade fisiológica. <strong>SPECT/CT</strong> da região cervical e de áreas suspeitas é o padrão atual, permitindo localização anatômica precisa e diferenciação de focos fisiológicos (salivares, gástrico, intestinal, mamário em mulheres não-lactantes ocasionalmente). Achados patológicos típicos: foco residual em leito tireoidiano, LN cervicais, mediastinais, metástases pulmonares e ósseas. Fontes de falso-positivo: contaminação cutânea/vestes, secreções, divertículo de Zenker, dilatação esofágica, refluxo, cisto tireoglosso, hidronefrose, cistos ovarianos.</p>
+          </div>
+
+          <div class="key-fact">
+            <div class="lbl">"Stunning" — ainda existe?</div>
+            <p>Conceito clássico de redução de captação lesional pelo <sup>131</sup>I terapêutico após dose diagnóstica prévia de <sup>131</sup>I (geralmente &gt;5 mCi). Real, mas controverso quanto à magnitude e impacto clínico. <strong>Conduta prática:</strong> usar <sup>123</sup>I para rastreio diagnóstico quando disponível; se usar <sup>131</sup>I diagnóstico, manter dose ≤2 mCi e administrar a terapia em até 72h; em pacientes de alto risco, considerar omitir o diagnóstico pré e ir direto à dose empírica com PCI pós-terapia.</p>
+          </div>
+        </div>
+
+        <div class="orbital-divider">
+          <svg width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="60" cy="20" r="3" fill="#06B6D4"/>
+            <ellipse cx="60" cy="20" rx="40" ry="10" fill="none" stroke="#06B6D4" stroke-width="0.8" opacity="0.4"/>
+            <ellipse cx="60" cy="20" rx="55" ry="13" fill="none" stroke="#22D3EE" stroke-width="0.6" stroke-dasharray="2 4" opacity="0.5"/>
+            <circle cx="100" cy="20" r="1.5" fill="#22D3EE"/>
+            <circle cx="20" cy="20" r="1.5" fill="#22D3EE"/>
+          </svg>
+        </div>
+
+        <!-- ============== ENSAIOS ============== -->
+        <div id="ensaios" class="rf-section">
+          <h2><span class="num">08</span> Ensaios pivotais</h2>
+          <p class="lead">A evidência em CDT viveu três ondas: séries históricas observacionais (Mazzaferri, MSKCC) que sustentaram a indicação universal; RCTs de low-dose nos anos 2010 (HiLo, ESTIMABL) que redesenharam a dose no baixo risco; e a era atual de redifferentation e terapia-alvo no refratário.</p>
+
+          <div class="trials-grid">
+            <div class="trial-card">
+              <div class="trial-name">
+                <span class="name">Mazzaferri</span>
+                <span class="year">1994 · Am J Med</span>
+              </div>
+              <p class="pop">Série histórica · 1.355 pacientes CDT · seguimento 16 anos</p>
+              <div class="results">
+                <div class="stat-row"><div class="lbl">Recorrência (RAI vs não-RAI)</div><div class="val">16 vs 38%</div></div>
+                <div class="stat-row"><div class="lbl">Mortalidade tumor</div><div class="val">3 vs 9%</div></div>
+                <div class="stat-row"><div class="lbl">Tamanho ≥1,5 cm</div><div class="val">benefício consistente</div></div>
+                <div class="stat-row"><div class="lbl">Microcarcinoma</div><div class="val">sem benefício</div></div>
+              </div>
+              <p class="takeaway">Pilar histórico da indicação universal de RAI pós-tireoidectomia em CDT &gt;1-1,5 cm. Sustentou prática por 20 anos.</p>
+            </div>
+
+            <div class="trial-card">
+              <div class="trial-name">
+                <span class="name">HiLo</span>
+                <span class="year">2012 · NEJM</span>
+              </div>
+              <p class="pop">CDT baixo risco · n=438 · 2×2 fatorial: 30 vs 100 mCi × rhTSH vs withdrawal</p>
+              <div class="results">
+                <div class="stat-row"><div class="lbl">Ablação completa</div><div class="val">85% em todos os braços (NI)</div></div>
+                <div class="stat-row"><div class="lbl">Toxicidade</div><div class="val">menor com 30 mCi</div></div>
+                <div class="stat-row"><div class="lbl">QoL</div><div class="val">melhor com rhTSH</div></div>
+                <div class="stat-row"><div class="lbl">Internação</div><div class="val">reduzida com 30 mCi</div></div>
+              </div>
+              <p class="takeaway">Não-inferioridade dupla: 30 mCi não-inferior a 100 mCi; rhTSH não-inferior a withdrawal. Marco do low-dose.</p>
+            </div>
+
+            <div class="trial-card">
+              <div class="trial-name">
+                <span class="name">ESTIMABL</span>
+                <span class="year">2012 · NEJM</span>
+              </div>
+              <p class="pop">CDT baixo risco · n=752 · 2×2 fatorial análogo</p>
+              <div class="results">
+                <div class="stat-row"><div class="lbl">Ablação 6-10m</div><div class="val">92% em todos os braços</div></div>
+                <div class="stat-row"><div class="lbl">30 mCi vs 100</div><div class="val">não-inferior</div></div>
+                <div class="stat-row"><div class="lbl">rhTSH vs WD</div><div class="val">não-inferior</div></div>
+                <div class="stat-row"><div class="lbl">Custo total</div><div class="val">menor com 30 mCi+rhTSH</div></div>
+              </div>
+              <p class="takeaway">Confirmação independente (Schlumberger, França) do HiLo. Mudança definitiva da prática europeia.</p>
+            </div>
+
+            <div class="trial-card">
+              <div class="trial-name">
+                <span class="name">ESTIMABL2</span>
+                <span class="year">2022 · NEJM</span>
+              </div>
+              <p class="pop">CDT baixo risco · n=776 · "ausência de ablação" vs 30 mCi+rhTSH</p>
+              <div class="results">
+                <div class="stat-row"><div class="lbl">Resposta excelente 3 anos</div><div class="val">95,6 vs 95,9%</div></div>
+                <div class="stat-row"><div class="lbl">Δ absoluto</div><div class="val">−0,3% (NI confirmada)</div></div>
+                <div class="stat-row"><div class="lbl">Eventos adversos</div><div class="val">menos sem RAI</div></div>
+                <div class="stat-row"><div class="lbl">Conclusão</div><div class="val">"sem RAI" é opção válida</div></div>
+              </div>
+              <p class="takeaway">Pilar da desescalada terapêutica em baixo risco. Justifica omitir ablação em casos selecionados.</p>
+            </div>
+
+            <div class="trial-card">
+              <div class="trial-name">
+                <span class="name">IoN</span>
+                <span class="year">2024 · Lancet</span>
+              </div>
+              <p class="pop">CDT baixo risco · n=472 · 1,1 GBq+rhTSH vs sem RAI</p>
+              <div class="results">
+                <div class="stat-row"><div class="lbl">Sobrevida livre de evento 5 anos</div><div class="val">97,9 vs 97,1%</div></div>
+                <div class="stat-row"><div class="lbl">Não-inferioridade</div><div class="val">confirmada</div></div>
+                <div class="stat-row"><div class="lbl">Toxicidade</div><div class="val">menor sem RAI</div></div>
+                <div class="stat-row"><div class="lbl">Origem</div><div class="val">UK · randomizado</div></div>
+              </div>
+              <p class="takeaway">Mais um pilar para evitar RAI em baixo risco — sem prejuízo a desfechos clínicos a 5 anos.</p>
+            </div>
+
+            <div class="trial-card">
+              <div class="trial-name">
+                <span class="name">SELECT</span>
+                <span class="year">2015 · NEJM</span>
+              </div>
+              <p class="pop">CDT refratário ao iodo · n=392 · lenvatinib vs placebo</p>
+              <div class="results">
+                <div class="stat-row"><div class="lbl">PFS</div><div class="val">18,3 vs 3,6 m</div></div>
+                <div class="stat-row"><div class="lbl">ORR</div><div class="val">64,8 vs 1,5%</div></div>
+                <div class="stat-row"><div class="lbl">HR PFS</div><div class="val">0,21</div></div>
+                <div class="stat-row"><div class="lbl">Aprovação</div><div class="val">FDA 2015</div></div>
+              </div>
+              <p class="takeaway">Define lenvatinib como padrão pós-RAI em CDT refratário. Aborda o sucessor terapêutico do <sup>131</sup>I.</p>
+            </div>
+
+            <div class="trial-card">
+              <div class="trial-name">
+                <span class="name">DECISION</span>
+                <span class="year">2014 · Lancet</span>
+              </div>
+              <p class="pop">CDT refratário · n=417 · sorafenib vs placebo</p>
+              <div class="results">
+                <div class="stat-row"><div class="lbl">PFS</div><div class="val">10,8 vs 5,8 m</div></div>
+                <div class="stat-row"><div class="lbl">ORR</div><div class="val">12,2 vs 0,5%</div></div>
+                <div class="stat-row"><div class="lbl">HR PFS</div><div class="val">0,59</div></div>
+                <div class="stat-row"><div class="lbl">Aprovação</div><div class="val">FDA 2013</div></div>
+              </div>
+              <p class="takeaway">Primeiro TKI aprovado em CDT refratário. Toxicidade significativa (mão-pé, HTA, diarreia).</p>
+            </div>
+
+            <div class="trial-card">
+              <div class="trial-name">
+                <span class="name">MERAIODE</span>
+                <span class="year">2023</span>
+              </div>
+              <p class="pop">CDT refratário · trametinib+dabrafenib (BRAF) ou trametinib (RAS) · seguido de RAI</p>
+              <div class="results">
+                <div class="stat-row"><div class="lbl">Recuperação de captação</div><div class="val">~ 60% BRAF, ~40% RAS</div></div>
+                <div class="stat-row"><div class="lbl">Resposta estrutural pós-RAI</div><div class="val">~ 35-40%</div></div>
+                <div class="stat-row"><div class="lbl">Reversão de refratariedade</div><div class="val">parcial</div></div>
+                <div class="stat-row"><div class="lbl">Conceito</div><div class="val">redifferentation</div></div>
+              </div>
+              <p class="takeaway">Prova de conceito de re-induzir captação radio-iodada em refratários por inibição MAPK. Estratégia em expansão.</p>
+            </div>
+
+            <div class="trial-card">
+              <div class="trial-name">
+                <span class="name">Bartalena · oftalmopatia</span>
+                <span class="year">1998 · NEJM</span>
+              </div>
+              <p class="pop">Graves · n=443 · RAI ± prednisona vs MMI vs RAI sem corticoide</p>
+              <div class="results">
+                <div class="stat-row"><div class="lbl">Piora ocular</div><div class="val">15% RAI vs 3% MMI</div></div>
+                <div class="stat-row"><div class="lbl">RAI+prednisona</div><div class="val">0% piora</div></div>
+                <div class="stat-row"><div class="lbl">Tabagismo</div><div class="val">fator de risco maior</div></div>
+                <div class="stat-row"><div class="lbl">Conclusão</div><div class="val">profilaxia esteróide</div></div>
+              </div>
+              <p class="takeaway">Pilar da prática atual de corticoide profilático com RAI em Graves com oftalmopatia leve ativa.</p>
+            </div>
+
+          </div>
+
+          <div style="text-align: center; margin-top: 2rem">
+            <a href="database.html" class="rf-eyebrow" style="cursor:pointer">
+              <i data-lucide="database" style="width:14px;height:14px"></i>
+              Ver todos os estudos no Database
+              <i data-lucide="arrow-right" style="width:14px;height:14px"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="orbital-divider">
+          <svg width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="60" cy="20" r="3" fill="#06B6D4"/>
+            <ellipse cx="60" cy="20" rx="40" ry="10" fill="none" stroke="#06B6D4" stroke-width="0.8" opacity="0.4"/>
+            <ellipse cx="60" cy="20" rx="55" ry="13" fill="none" stroke="#22D3EE" stroke-width="0.6" stroke-dasharray="2 4" opacity="0.5"/>
+            <circle cx="100" cy="20" r="1.5" fill="#22D3EE"/>
+            <circle cx="20" cy="20" r="1.5" fill="#22D3EE"/>
+          </svg>
+        </div>
+
+        <!-- ============== DOSIMETRIA ============== -->
+        <div id="dosimetria" class="rf-section">
+          <h2><span class="num">09</span> Dosimetria</h2>
+          <p class="lead">Em CDT existem três abordagens: <strong>dose empírica</strong> (a mais usada — 30/100/150-200 mCi por estratificação ATA); <strong>dosimetria de sangue/medula</strong> (Benua-Leeper, MSKCC — limite de 2 Gy à medula); e <strong>dosimetria lesional</strong> (alvo ≥80 Gy ao tumor, alvo controverso). Em hipertireoidismo, dosimetria por captação e volume é padrão.</p>
+
+          <table class="dose-table">
+            <thead>
+              <tr>
+                <th>Órgão / tecido</th>
+                <th>Dose por GBq (mGy/GBq)</th>
+                <th>Visualização</th>
+                <th>Limite / observação</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Tireoide normal</strong> (remanescente)</td><td>200.000 — 500.000</td><td><div class="dose-bar high"><div class="dose-bar-fill" style="width:100%"></div></div></td><td>alvo da ablação · &gt;300 Gy efetivo</td></tr>
+              <tr><td>Estômago (mucosa)</td><td>~ 460</td><td><div class="dose-bar med"><div class="dose-bar-fill" style="width:35%"></div></div></td><td>gastrite radiação rara</td></tr>
+              <tr><td>Glândulas salivares</td><td>~ 220</td><td><div class="dose-bar med"><div class="dose-bar-fill" style="width:25%"></div></div></td><td>sialoadenite dose-dependente</td></tr>
+              <tr><td><strong>Medula óssea (vermelha)</strong></td><td>~ 70</td><td><div class="dose-bar low"><div class="dose-bar-fill" style="width:10%"></div></div></td><td><strong>limite 2 Gy</strong> (Benua-Leeper)</td></tr>
+              <tr><td>Bexiga (parede)</td><td>~ 290</td><td><div class="dose-bar med"><div class="dose-bar-fill" style="width:20%"></div></div></td><td>hidratação reduz</td></tr>
+              <tr><td>Cólon</td><td>~ 100</td><td><div class="dose-bar low"><div class="dose-bar-fill" style="width:8%"></div></div></td><td>—</td></tr>
+              <tr><td>Pulmão (sadio)</td><td>~ 30</td><td><div class="dose-bar low"><div class="dose-bar-fill" style="width:5%"></div></div></td><td><strong>≤80 mCi retidos 48h</strong> em M1 difusa</td></tr>
+              <tr><td>Ovários / testículos</td><td>~ 40 / 30</td><td><div class="dose-bar low"><div class="dose-bar-fill" style="width:5%"></div></div></td><td>oligospermia transitória &gt;200 mCi acumulados</td></tr>
+              <tr><td>Corpo total</td><td>~ 70</td><td><div class="dose-bar low"><div class="dose-bar-fill" style="width:8%"></div></div></td><td>limite cumulativo geral ~600 mCi (22 GBq)</td></tr>
+            </tbody>
+          </table>
+
+          <div class="key-fact">
+            <div class="lbl">Método Benua-Leeper (MSKCC)</div>
+            <p>Dosimetria por sangue/medula desenvolvida no Memorial Sloan Kettering: contagem seriada de atividade total e atividade sanguínea após dose diagnóstica de <sup>131</sup>I (geralmente 1-5 mCi). Calcula-se a dose que entrega <strong>2 Gy ao sangue</strong> (surrogate de medula vermelha) e mantém <strong>retenção pulmonar ≤80 mCi em 48h</strong> em pacientes com M1 pulmonar difusa. Doses calculadas podem chegar a 300+ mCi por ciclo em pacientes selecionados — o limite é tóxico, não arbitrário. Aplicação principal: doença metastática volumosa, pulmonar difusa, idosos, pacientes pequenos, retratamento.</p>
+          </div>
+
+          <div class="key-fact">
+            <div class="lbl">Dosimetria lesional · alvo ≥80 Gy?</div>
+            <p>Trabalhos do grupo Maxon e estudos europeus sugerem correlação entre dose absorvida lesional ≥80 Gy (em remanescente) ou ≥30 Gy (em metástases) e resposta. Cálculo requer <sup>124</sup>I-PET/CT pré-tratamento ou modelagem SPECT/CT seriada pós-terapia — fora da rotina da maioria dos centros. Hoje é mais ferramenta acadêmica e de centros teranósticos avançados do que parâmetro clínico cotidiano, mas tende a ganhar terreno conforme dosimetria SPECT/CT comercial amadurece.</p>
+          </div>
+        </div>
+
+        <div class="orbital-divider">
+          <svg width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="60" cy="20" r="3" fill="#06B6D4"/>
+            <ellipse cx="60" cy="20" rx="40" ry="10" fill="none" stroke="#06B6D4" stroke-width="0.8" opacity="0.4"/>
+            <ellipse cx="60" cy="20" rx="55" ry="13" fill="none" stroke="#22D3EE" stroke-width="0.6" stroke-dasharray="2 4" opacity="0.5"/>
+            <circle cx="100" cy="20" r="1.5" fill="#22D3EE"/>
+            <circle cx="20" cy="20" r="1.5" fill="#22D3EE"/>
+          </svg>
+        </div>
+
+        <!-- ============== TOXICIDADE ============== -->
+        <div id="toxicidade" class="rf-section">
+          <h2><span class="num">10</span> Eventos adversos</h2>
+          <p class="lead">A maior parte da toxicidade do <sup>131</sup>I é leve e transitória. Sialoadenite e xerostomia são os efeitos crônicos mais frequentes em doses cumulativas altas; mielossupressão e fibrose pulmonar são limitantes em M1 volumosa; segunda neoplasia tem incidência baixa mas mensurável.</p>
+
+          <div class="tox-grid">
+            <div class="tox-item">
+              <div class="tox-name">Sialoadenite aguda</div>
+              <div class="tox-pct"><span class="tox-all">20-30%</span><span class="tox-g3">G3 &lt; 5%</span></div>
+              <div class="tox-bar"><div class="tox-bar-all" style="width:30%"></div></div>
+            </div>
+            <div class="tox-item">
+              <div class="tox-name">Xerostomia crônica</div>
+              <div class="tox-pct"><span class="tox-all">10-30%</span><span class="tox-g3">dose-dependente</span></div>
+              <div class="tox-bar"><div class="tox-bar-all" style="width:25%"></div></div>
+            </div>
+            <div class="tox-item">
+              <div class="tox-name">Náusea peri-administração</div>
+              <div class="tox-pct"><span class="tox-all">15-25%</span><span class="tox-g3">G3 &lt; 2%</span></div>
+              <div class="tox-bar"><div class="tox-bar-all" style="width:20%"></div></div>
+            </div>
+            <div class="tox-item">
+              <div class="tox-name">Mielossupressão (transitória)</div>
+              <div class="tox-pct"><span class="tox-all">5-15%</span><span class="tox-g3">G3-4 &lt; 5%</span></div>
+              <div class="tox-bar"><div class="tox-bar-all" style="width:12%"></div></div>
+            </div>
+            <div class="tox-item">
+              <div class="tox-name">Obstrução ducto naso-lacrimal (NLDO)</div>
+              <div class="tox-pct"><span class="tox-all">2-5%</span><span class="tox-g3">cirurgia &lt;1%</span></div>
+              <div class="tox-bar"><div class="tox-bar-all" style="width:5%"></div></div>
+            </div>
+            <div class="tox-item">
+              <div class="tox-name">Fibrose pulmonar (M1 difusa)</div>
+              <div class="tox-pct"><span class="tox-all">&lt; 5%</span><span class="tox-g3">se &gt;80 mCi retidos 48h</span></div>
+              <div class="tox-bar"><div class="tox-bar-all" style="width:5%"></div></div>
+            </div>
+            <div class="tox-item">
+              <div class="tox-name">Disgeusia / alteração paladar</div>
+              <div class="tox-pct"><span class="tox-all">25-40%</span><span class="tox-g3">geralmente reversível</span></div>
+              <div class="tox-bar"><div class="tox-bar-all" style="width:33%"></div></div>
+            </div>
+            <div class="tox-item">
+              <div class="tox-name">Oligospermia transitória</div>
+              <div class="tox-pct"><span class="tox-all">~ 50% &gt;200 mCi</span><span class="tox-g3">recuperação 6-12m</span></div>
+              <div class="tox-bar"><div class="tox-bar-all" style="width:30%"></div></div>
+            </div>
+            <div class="tox-item">
+              <div class="tox-name">Segunda neoplasia (leucemia, GI)</div>
+              <div class="tox-pct"><span class="tox-all">SIR ~ 1,2-1,4</span><span class="tox-g3">dose-dependente</span></div>
+              <div class="tox-bar"><div class="tox-bar-all" style="width:8%"></div></div>
+            </div>
+            <div class="tox-item">
+              <div class="tox-name">Hipotireoidismo (em Graves)</div>
+              <div class="tox-pct"><span class="tox-all">~ 70% em 1 ano</span><span class="tox-g3">&gt;90% em 10 anos</span></div>
+              <div class="tox-bar"><div class="tox-bar-all" style="width:70%"></div></div>
+            </div>
+          </div>
+
+          <div class="key-fact">
+            <div class="lbl">Sialoadenite · profilaxia e manejo</div>
+            <p>O NIS expresso nas glândulas salivares (sobretudo parótida) é responsável pela toxicidade salivar. <strong>Profilaxia:</strong> hidratação vigorosa, evitar sialogogos nas primeiras 24h (estimulam captação salivar), depois usar balas ácidas, limão e mastigação a cada 2-3h por 1-2 semanas. Massagem glandular e dieta hídrica. <strong>Manejo:</strong> sialoadenite aguda responde a AINEs e hidratação; xerostomia crônica é difícil — saliva artificial, pilocarpina oral 5 mg 3-4× dia, cuidado dental rigoroso (cárie por hipossalivação). Sialoendoscopia pode resolver obstruções ductais em casos selecionados.</p>
+          </div>
+
+          <div class="key-fact">
+            <div class="lbl">Risco de segunda neoplasia</div>
+            <p>Metanálises (Sawka, Rubino) mostram aumento modesto e dose-dependente do risco de leucemia, neoplasia GI (estômago, cólon), mama e bexiga após exposição cumulativa significativa (&gt;100-150 mCi). Risco absoluto baixo — <strong>SIR 1,2-1,4</strong> conforme cohort —, especialmente relevante em pacientes jovens com expectativa de vida longa e múltiplas doses. Justifica o paradigma atual de minimizar atividade cumulativa em baixo risco, individualizar dose em casos selecionados e usar PCI/SPECT para confirmar benefício antes de retratamento.</p>
+          </div>
+        </div>
+
+        <div class="orbital-divider">
+          <svg width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="60" cy="20" r="3" fill="#06B6D4"/>
+            <ellipse cx="60" cy="20" rx="40" ry="10" fill="none" stroke="#06B6D4" stroke-width="0.8" opacity="0.4"/>
+            <ellipse cx="60" cy="20" rx="55" ry="13" fill="none" stroke="#22D3EE" stroke-width="0.6" stroke-dasharray="2 4" opacity="0.5"/>
+            <circle cx="100" cy="20" r="1.5" fill="#22D3EE"/>
+            <circle cx="20" cy="20" r="1.5" fill="#22D3EE"/>
+          </svg>
+        </div>
+
+        <!-- ============== RADIOPROTEÇÃO ============== -->
+        <div id="radioprotecao" class="rf-section">
+          <h2><span class="num">11</span> Radioproteção · CNEN e alta hospitalar</h2>
+          <p class="lead">O <sup>131</sup>I exige cuidados radioprotetivos específicos pela emissão γ de 364 keV (alto poder de penetração) e excreção urinária dominante. A regulação brasileira (CNEN NN 3.05) define limites para alta hospitalar e restrições pós-tratamento.</p>
+
+          <div class="scheme-box">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem">
+              <div>
+                <div style="font-size: 0.75rem; color: var(--amber); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.35rem">Limite para alta · CNEN</div>
+                <div style="font-size: 0.92rem; color: var(--off-white); line-height: 1.55">Atividade residual ≤ <strong>1.110 MBq (30 mCi)</strong> ou taxa de dose ≤ <strong>30 μSv/h a 1 m</strong>. Doses ≤30 mCi podem ser ambulatoriais; acima, internação em quarto terapêutico blindado é a regra.</div>
+              </div>
+              <div>
+                <div style="font-size: 0.75rem; color: var(--amber); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.35rem">Excreção</div>
+                <div style="font-size: 0.92rem; color: var(--off-white); line-height: 1.55"><strong>50-70%</strong> da atividade administrada é eliminada nas primeiras 24h, predominantemente pela urina (também saliva, suor, fezes, leite materno). Hidratação acelera clearance e reduz dose à bexiga.</div>
+              </div>
+              <div>
+                <div style="font-size: 0.75rem; color: var(--amber); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.35rem">Quarto terapêutico</div>
+                <div style="font-size: 0.92rem; color: var(--off-white); line-height: 1.55">Paredes plumbadas, vaso sanitário próprio (descarga 3×), lixo separado, banho de rotina, troca de roupas pelo paciente. Permanência típica 24-48h até atingir limite de alta.</div>
+              </div>
+              <div>
+                <div style="font-size: 0.75rem; color: var(--amber); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.35rem">Restrições pós-alta</div>
+                <div style="font-size: 0.92rem; color: var(--off-white); line-height: 1.55">Distância e tempo: evitar contato prolongado &lt;1 m com adultos por 3-7 dias; com gestantes e crianças &lt;10 anos por 7-14 dias. Dormir sozinho. Banheiro próprio. Lavagem separada de roupas íntimas e toalhas.</div>
+              </div>
+              <div>
+                <div style="font-size: 0.75rem; color: var(--amber); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.35rem">Doses baixas (hipertireoidismo)</div>
+                <div style="font-size: 0.92rem; color: var(--off-white); line-height: 1.55">Doses 10-30 mCi geralmente ambulatoriais. Orientações por escrito sobre distância de gestantes/crianças por 7 dias, banheiro próprio, hidratação. Sem necessidade de internação na maioria.</div>
+              </div>
+              <div>
+                <div style="font-size: 0.75rem; color: var(--amber); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.35rem">Viagem aérea pós-terapia</div>
+                <div style="font-size: 0.92rem; color: var(--off-white); line-height: 1.55">Atestado médico com data, atividade, isótopo e contato do serviço. Detectores de fronteira detectam <sup>131</sup>I por &gt;30 dias após dose terapêutica.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="key-fact">
+            <div class="lbl">Acidente / contaminação · iodeto de potássio (KI) profilático?</div>
+            <p>Não tem relação com a terapia rotineira — mas vale conhecer: KI é o profilático em acidentes nucleares com liberação de iodos radioativos ambientais (Chernobyl, Fukushima). Satura o NIS tireoidiano e bloqueia captação de iodos ambientais. <strong>Não é usado em pacientes em terapia com <sup>131</sup>I</strong>, pois bloquearia também o radiofármaco.</p>
+          </div>
+        </div>
+
+        <div class="orbital-divider">
+          <svg width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="60" cy="20" r="3" fill="#06B6D4"/>
+            <ellipse cx="60" cy="20" rx="40" ry="10" fill="none" stroke="#06B6D4" stroke-width="0.8" opacity="0.4"/>
+            <ellipse cx="60" cy="20" rx="55" ry="13" fill="none" stroke="#22D3EE" stroke-width="0.6" stroke-dasharray="2 4" opacity="0.5"/>
+            <circle cx="100" cy="20" r="1.5" fill="#22D3EE"/>
+            <circle cx="20" cy="20" r="1.5" fill="#22D3EE"/>
+          </svg>
+        </div>
+
+        <!-- ============== PERSPECTIVAS ============== -->
+        <div id="perspectivas" class="rf-section">
+          <h2><span class="num">12</span> Perspectivas: redifferentation, dosimetria, NIS exógeno</h2>
+          <p class="lead">A pesquisa em <sup>131</sup>I caminha por três fronteiras: <em>redifferentation</em> farmacológica para resgatar refratários, dosimetria SPECT/CT individualizada e terapia gênica com NIS exógeno em tumores extra-tireoidianos.</p>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin: 1.5rem 0">
+            <div style="background: var(--graphite-2); border: 1px solid rgba(34, 211, 238, 0.3); border-radius: var(--radius-md); padding: 1.25rem">
+              <div style="font-family: var(--font-mono); color: #22D3EE; font-size: 0.85rem; margin-bottom: 0.4rem">Redifferentation</div>
+              <div style="font-size: 0.95rem; color: var(--off-white); margin-bottom: 0.35rem">MEK/BRAF/RET inibidores</div>
+              <div style="font-size: 0.82rem; color: var(--stone); line-height: 1.5">Trametinib+dabrafenib (BRAF V600E), selumetinib (RAS/MAPK), selpercatinib (RET+) podem restaurar expressão de NIS e permitir retratamento com RAI em refratários selecionados.</div>
+            </div>
+            <div style="background: var(--graphite-2); border: 1px solid rgba(34, 211, 238, 0.3); border-radius: var(--radius-md); padding: 1.25rem">
+              <div style="font-family: var(--font-mono); color: #22D3EE; font-size: 0.85rem; margin-bottom: 0.4rem">Dosimetria SPECT/CT</div>
+              <div style="font-size: 0.95rem; color: var(--off-white); margin-bottom: 0.35rem">Lesional individualizada</div>
+              <div style="font-size: 0.82rem; color: var(--stone); line-height: 1.5">Softwares comerciais (HERMES, MIM, Velocity) maduram a dosimetria lesional pós-terapia. Tendência: substituir progressivamente a dose empírica em centros teranósticos.</div>
+            </div>
+            <div style="background: var(--graphite-2); border: 1px solid rgba(34, 211, 238, 0.3); border-radius: var(--radius-md); padding: 1.25rem">
+              <div style="font-family: var(--font-mono); color: #22D3EE; font-size: 0.85rem; margin-bottom: 0.4rem"><sup>124</sup>I-PET/CT</div>
+              <div style="font-size: 0.95rem; color: var(--off-white); margin-bottom: 0.35rem">PET teranóstico</div>
+              <div style="font-size: 0.82rem; color: var(--stone); line-height: 1.5">Quantificação tridimensional pré-terapia para dosimetria. Particularmente útil em refratariedade dúbia e em re-staging pós-redifferentation.</div>
+            </div>
+            <div style="background: var(--graphite-2); border: 1px solid rgba(34, 211, 238, 0.3); border-radius: var(--radius-md); padding: 1.25rem">
+              <div style="font-family: var(--font-mono); color: #22D3EE; font-size: 0.85rem; margin-bottom: 0.4rem">NIS exógeno</div>
+              <div style="font-size: 0.95rem; color: var(--off-white); margin-bottom: 0.35rem">Terapia gênica radioteranóstica</div>
+              <div style="font-size: 0.82rem; color: var(--stone); line-height: 1.5">Transdução de NIS em tumores não-tireoidianos (próstata, pâncreas, glioma) por vetores virais ou nanopartículas. Estudos pré-clínicos avançados; ensaios fase 1 emergentes.</div>
+            </div>
+          </div>
+
+          <div class="key-fact">
+            <div class="lbl">Desescalada em baixo risco e re-expansão em alto risco</div>
+            <p>O paradigma da última década consolida-se na <strong>ATA 2025</strong>: <strong>menos RAI em baixo risco</strong> (ESTIMABL2, IoN — incluindo vigilância ativa formal em microcarcinoma e lobectomia ampliada) e <strong>mais RAI personalizado em alto risco</strong>, integrado a terapias-alvo, dosimetria individualizada e redifferentation seletiva. É um movimento de individualização — não de declínio do RAI. A despeito de TKIs e drogas seletivas dominarem o cenário refratário, o <sup>131</sup>I permanece como a melhor primeira opção sistêmica em CDT diferenciado captante: barato, eficaz, com perfil de toxicidade bem caracterizado em 80 anos de uso.</p>
+          </div>
+        </div>
+
+        <div class="orbital-divider">
+          <svg width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="60" cy="20" r="3" fill="#06B6D4"/>
+            <ellipse cx="60" cy="20" rx="40" ry="10" fill="none" stroke="#06B6D4" stroke-width="0.8" opacity="0.4"/>
+            <ellipse cx="60" cy="20" rx="55" ry="13" fill="none" stroke="#22D3EE" stroke-width="0.6" stroke-dasharray="2 4" opacity="0.5"/>
+            <circle cx="100" cy="20" r="1.5" fill="#22D3EE"/>
+            <circle cx="20" cy="20" r="1.5" fill="#22D3EE"/>
+          </svg>
+        </div>
+
+        <!-- ============== PRÓXIMOS ============== -->
+        <div id="proximos" class="rf-section">
+          <h2><span class="num">13</span> Continue lendo</h2>
+          <div class="next-grid">
+            <a href="mibg.html" class="next-card">
+              <div class="lbl">Outro <sup>131</sup>I</div>
+              <div class="name"><sup>131</sup>I-MIBG</div>
+              <div class="desc">Neuroblastoma e PPGL. Mecanismo NET. Bloqueio tireoidiano obrigatório.</div>
+            </a>
+            <a href="lu-dotatate.html" class="next-card">
+              <div class="lbl">Beta-emissor</div>
+              <div class="name"><sup>177</sup>Lu-DOTATATE</div>
+              <div class="desc">NETTER-1/2 · PRRT em tumores neuroendócrinos.</div>
+            </a>
+            <a href="lu-psma.html" class="next-card">
+              <div class="lbl">Radioligante</div>
+              <div class="name"><sup>177</sup>Lu-PSMA-617</div>
+              <div class="desc">VISION, TheraP, PSMAfore — mCRPC.</div>
+            </a>
+            <a href="database.html" class="next-card">
+              <div class="lbl">Database</div>
+              <div class="name">Todos os estudos</div>
+              <div class="desc">Filtre por CDT / <sup>131</sup>I / hipertireoidismo no Database.</div>
+            </a>
+          </div>
+        </div>
+
+      </main>
     </div>
   </div>
 </section>
@@ -269,7 +1166,7 @@
     </div>
     <div class="footer-bottom">
       <span>© 2026 TheraTrials Oncology · uso educacional · não substitui diretrizes oficiais ou leitura primária</span>
-      <span>v1.1 · Atualizado mai 2026</span>
+      <span>v1.3 · Atualizado mai 2026 · ATA 2025</span>
     </div>
   </div>
 </footer>
