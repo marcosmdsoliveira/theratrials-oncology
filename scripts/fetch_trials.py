@@ -41,6 +41,7 @@ USER_AGENT = "TheraTrials-Oncology/1.0 (https://marcosmdsoliveira.github.io/ther
 THIS_FILE = Path(__file__).resolve()
 SITE_DIR = THIS_FILE.parent.parent  # site/
 OUTPUT = SITE_DIR / "assets" / "data" / "tracker.json"
+OUTPUT_JS = SITE_DIR / "assets" / "data" / "tracker.js"
 
 # -----------------------------------------------------------------------------
 # Queries (cobertura do "Radiopharmaceutical Therapy Tracker")
@@ -454,6 +455,19 @@ def main() -> int:
     OUTPUT.write_text(json.dumps(output, ensure_ascii=False, indent=1), encoding="utf-8")
     size_kb = OUTPUT.stat().st_size / 1024
     print(f"\n[fetch_trials] ✓ gravado: {OUTPUT}  ({size_kb:.1f} KB)")
+
+    # Espelha em tracker.js (fallback para file:// e cache PWA)
+    js_payload = (
+        "/* ============================================================\n"
+        "   TheraTrials Oncology — RPT Tracker dataset (auto-gerado)\n"
+        "   Espelho de assets/data/tracker.json em formato JS-bootstrap.\n"
+        "   tracker.html prefere o JSON via fetch e cai aqui se fetch falha\n"
+        "   (file://, offline cache). Não editar à mão.\n"
+        "   ============================================================ */\n"
+        "window.THERA_TRACKER = " + json.dumps(output, ensure_ascii=False) + ";\n"
+    )
+    OUTPUT_JS.write_text(js_payload, encoding="utf-8")
+    print(f"[fetch_trials] ✓ gravado: {OUTPUT_JS}  ({OUTPUT_JS.stat().st_size/1024:.1f} KB)")
 
     # Stats no stdout para a Action publicar
     print("\n=== SUMÁRIO ===")

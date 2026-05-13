@@ -58,12 +58,12 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          if git diff --quiet assets/data/tracker.json && [ "$FORCE" != "true" ]; then
-            echo "tracker.json sem mudanças — nada a fazer."
+          if git diff --quiet assets/data/tracker.json assets/data/tracker.js && [ "$FORCE" != "true" ]; then
+            echo "tracker.json/tracker.js sem mudanças — nada a fazer."
           else
-            git add assets/data/tracker.json
+            git add assets/data/tracker.json assets/data/tracker.js
             DATE=$(date -u +"%Y-%m-%d")
             git commit -m "data(tracker): refresh CT.gov pipeline ($DATE) · ${{ steps.fetch.outputs.trials }} estudos"
             git push
-            echo "✓ tracker.json bumpado e empurrado"
+            echo "✓ tracker.json/tracker.js bumpados e empurrados"
           fi

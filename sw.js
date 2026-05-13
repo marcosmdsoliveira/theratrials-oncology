@@ -43,6 +43,7 @@ const CORE_ASSETS = [
   './assets/js/common.js',
   './assets/js/trials_br.js',
   './assets/data/tracker.json',
+  './assets/data/tracker.js',
   './assets/js/pwa-install.js',
   './assets/img/logo-app.png',
   './assets/img/logo-circular.png',
