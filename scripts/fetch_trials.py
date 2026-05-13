@@ -455,5 +455,34 @@ def main() -> int:
     OUTPUT.write_text(json.dumps(output, ensure_ascii=False, indent=1), encoding="utf-8")
     size_kb = OUTPUT.stat().st_size / 1024
     print(f"\n[fetch_trials] ✓ gravado: {OUTPUT}  ({size_kb:.1f} KB)")
+    # Espelha em pipeline.js (fallback para file:// e cache PWA)
+    js_payload = (
+        "/* ============================================================\n"
+        "   TheraTrials Oncology - Pipeline RLT dataset (auto-gerado)\n"
+        "   Espelho de assets/data/pipeline.json em formato JS-bootstrap.\n"
+        "   pipeline.html prefere o JSON via fetch e cai aqui se fetch falha\n"
+        "   (file://, offline cache). Nao editar a mao.\n"
+        "   ============================================================ */\n"
+        "window.THERA_PIPELINE = " + json.dumps(output, ensure_ascii=False) + ";\n"
+    )
+    OUTPUT_JS.write_text(js_payload, encoding="utf-8")
+    print(f"[fetch_trials] OK gravado: {OUTPUT_JS}  ({OUTPUT_JS.stat().st_size/1024:.1f} KB)")
 
-    # Espelha em pipeline.js (fallback para file:// e cac
+    # Stats no stdout para a Action publicar
+    print("\n=== SUMARIO ===")
+    print(f"trials totais:     {len(trials)}")
+    print(f"com centro no BR:  {output['totals']['with_brazil']}")
+    print("\nPor isotopo:")
+    for k, v in facets["isotope"].items():
+        print(f"  {k:<8} {v}")
+    print("\nPor classe:")
+    for k, v in facets["drug_class"].items():
+        print(f"  {k:<22} {v}")
+    print("\nPor fase:")
+    for k, v in list(facets["phase"].items())[:8]:
+        print(f"  {k:<30} {v}")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

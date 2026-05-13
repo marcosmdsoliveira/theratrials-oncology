@@ -33,8 +33,32 @@
 <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.13.5/dist/cdn.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.5/dist/cdn.min.js"></script>
 <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
-<!-- Bootstrap dataset (file:// fallback). Em HTTPS o pipelineApp prefere o JSON via fetch. -->
+<!-- Bootstrap dataset. Em HTTPS pipeline.json é fetcheado; em file:// usa-se este script. -->
 <script src="assets/data/pipeline.js"></script>
+<script>
+  // Diagnóstico: imprime no console o estado dos pré-requisitos.
+  console.log('[Pipeline RLT] boot ·',
+    'THERA_PIPELINE:', !!window.THERA_PIPELINE ? 'OK (' + window.THERA_PIPELINE.trials.length + ' trials)' : 'AUSENTE',
+    '· lucide:', !!window.lucide,
+    '· document.readyState:', document.readyState
+  );
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      console.log('[Pipeline RLT] após load · Alpine:', typeof window.Alpine !== 'undefined');
+      if (typeof window.Alpine === 'undefined') {
+        const w = document.createElement('div');
+        w.style.cssText = 'position:fixed;top:0;left:0;right:0;background:#7f1d1d;color:#fff;padding:0.75rem 1rem;font:14px/1.4 system-ui;z-index:99999';
+        w.textContent = '⚠ Alpine.js não carregou (cdn.jsdelivr.net bloqueado?). A tabela e os filtros não vão funcionar. Abra a página por HTTP em vez de file://, ou cheque a aba Network.';
+        document.body.appendChild(w);
+      } else if (!window.THERA_PIPELINE) {
+        const w = document.createElement('div');
+        w.style.cssText = 'position:fixed;top:0;left:0;right:0;background:#7f1d1d;color:#fff;padding:0.75rem 1rem;font:14px/1.4 system-ui;z-index:99999';
+        w.textContent = '⚠ window.THERA_PIPELINE ausente — pipeline.js não foi carregado. Cheque a aba Network do DevTools.';
+        document.body.appendChild(w);
+      }
+    }, 500);
+  });
+</script>
 
 <style>
   /* ============================================================
@@ -861,33 +885,40 @@
       open: { iso: true, cls: true, tgt: false, lig: false, phase: true, status: false, neo: false, spons: false, geo: false },
 
       async init() {
-        this.$nextTick(() => lucide.createIcons());
-        this.$watch('selected', () => this.$nextTick(() => lucide.createIcons()));
-        this.$watch('search',   () => this.$nextTick(() => lucide.createIcons()));
-        this.$watch('filters',  () => { this.$nextTick(() => lucide.createIcons()); this.syncHash(); }, { deep: true });
+        const safeIcons = () => { try { if (window.lucide) lucide.createIcons(); } catch(e){} };
+        safeIcons();
+        this.$nextTick(safeIcons);
+        this.$watch('selected', () => this.$nextTick(safeIcons));
+        this.$watch('search',   () => this.$nextTick(safeIcons));
+        this.$watch('filters',  () => { this.$nextTick(safeIcons); this.syncHash(); }, { deep: true });
 
-        // Estratégia: fetch do JSON (preferido em produção HTTPS) → fallback para
-        // window.THERA_PIPELINE (script bootstrap, funciona em file:// e offline cache).
-        const tryFetch = async () => {
+        console.log('[Pipeline RLT] init() · window.THERA_PIPELINE present?', !!window.THERA_PIPELINE,
+                    '· trials:', window.THERA_PIPELINE?.trials?.length);
+
+        let loaded = null;
+        // 1. Se o script bootstrap pipeline.js carregou, usa direto (funciona file:// e HTTPS).
+        if (window.THERA_PIPELINE && window.THERA_PIPELINE.trials) {
+          loaded = window.THERA_PIPELINE;
+          console.log('[Pipeline RLT] dataset via window.THERA_PIPELINE ·', loaded.trials.length, 'estudos');
+        } else {
+          // 2. Fallback: tenta o JSON via fetch (só funciona com servidor HTTP).
           try {
             const res = await fetch('assets/data/pipeline.json', { cache: 'no-cache' });
             if (!res.ok) throw new Error('HTTP ' + res.status);
-            return await res.json();
+            loaded = await res.json();
+            console.log('[Pipeline RLT] dataset via fetch ·', loaded.trials.length, 'estudos');
           } catch (e) {
-            return null;
+            console.warn('[Pipeline RLT] fetch falhou:', e.message);
           }
-        };
-
-        let loaded = await tryFetch();
-        if (!loaded && window.THERA_PIPELINE) loaded = window.THERA_PIPELINE;
+        }
 
         if (loaded) {
           this.data = loaded;
         } else {
-          this.errorMsg = 'Falha ao carregar o dataset. Se estiver abrindo este arquivo via file:// localmente, sirva-o por HTTP (`python -m http.server`) ou acesse pela URL publicada. A GitHub Action mensal regenera o JSON e o JS-bootstrap.';
+          this.errorMsg = 'Falha ao carregar o dataset. Verifique no DevTools (Network) se assets/data/pipeline.js retornou 200 OK e se window.THERA_PIPELINE está definida no Console.';
         }
         this.loading = false;
-        this.$nextTick(() => lucide.createIcons());
+        this.$nextTick(safeIcons);
         this.applyHashFilters();
       },
 
