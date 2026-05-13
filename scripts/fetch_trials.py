@@ -7,7 +7,7 @@ de radiofármacos terapêuticos em oncologia, normaliza os campos,
 classifica por isótopo / ligante / alvo / classe e gera o arquivo
 estático que alimenta a página `pipeline.html`.
 
-Saída:  site/assets/data/tracker.json
+Saída:  site/assets/data/pipeline.json (+ pipeline.js como fallback)
 Stats:  imprime sumário no stdout.
 
 Sem dependências externas — só stdlib (urllib + json).
@@ -16,7 +16,7 @@ Uso local:
     python scripts/fetch_trials.py
 
 Uso CI (GitHub Action):
-    Mesmo comando, commit do diff de tracker.json se houver mudança.
+    Mesmo comando, commit do diff de pipeline.json/pipeline.js se houver mudança.
 """
 
 from __future__ import annotations
@@ -232,7 +232,7 @@ def all_matches(rules, text: str) -> list[str]:
 
 
 def normalize(study: dict) -> dict | None:
-    """Reduz o objeto CT.gov ao schema do tracker. Retorna None se não for terapêutico oncológico."""
+    """Reduz o objeto CT.gov ao schema do pipeline. Retorna None se não for terapêutico oncológico."""
     proto = study.get("protocolSection", {}) or {}
     ident = proto.get("identificationModule", {}) or {}
     status_mod = proto.get("statusModule", {}) or {}
@@ -456,4 +456,4 @@ def main() -> int:
     size_kb = OUTPUT.stat().st_size / 1024
     print(f"\n[fetch_trials] ✓ gravado: {OUTPUT}  ({size_kb:.1f} KB)")
 
-    # Espelha em tracker.js (fallback para file:// e cac
+    # Espelha em pipeline.js (fallback para file:// e cac

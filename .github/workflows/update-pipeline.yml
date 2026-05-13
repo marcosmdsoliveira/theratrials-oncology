@@ -36,7 +36,7 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Run tracker fetcher
+      - name: Run pipeline fetcher
         id: fetch
         run: |
           python scripts/fetch_trials.py
@@ -63,4 +63,7 @@ jobs:
           else
             git add assets/data/pipeline.json assets/data/pipeline.js
             DATE=$(date -u +"%Y-%m-%d")
-            git commit -m "data(tracker): refresh CT.gov pipeline ($DATE) · ${{ steps.f
+            git commit -m "data(pipeline): refresh CT.gov RLT pipeline ($DATE) · ${{ steps.fetch.outputs.trials }} estudos"
+            git push
+            echo "✓ pipeline.json/pipeline.js bumpados e empurrados"
+          fi
