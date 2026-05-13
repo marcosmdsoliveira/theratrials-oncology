@@ -642,7 +642,7 @@
     <nav class="nav">
       <a href="index.html">Home</a>
       <a href="database.html">Database</a>
-      <a href="tracker.html">RPT Tracker</a>
+      <a href="pipeline.html">Pipeline RLT</a>
       <a href="estudos-ativos.html">Estudos ativos</a>
       <a href="tumor-boards.html">Tumor boards</a>
       <a href="modalidades.html">Modalidades</a>
@@ -671,7 +671,7 @@
     <div style="max-width:840px; margin:1rem auto 0; padding:0.85rem 1.15rem; background:rgba(255,132,0,0.06); border:1px solid rgba(255,132,0,0.28); border-radius:var(--radius-md); display:flex; align-items:center; gap:0.85rem; text-align:left; color:var(--off-white); font-size:0.88rem; line-height:1.5;">
       <i data-lucide="atom" style="width:20px;height:20px;color:var(--amber);flex-shrink:0"></i>
       <div>
-        Procurando o <strong>pipeline global de radiofármacos terapêuticos</strong> (177Lu, 225Ac, 90Y, 131I, FAPI, GRPR, CXCR4…)? Use o <a href="tracker.html" style="color:var(--amber); text-decoration:underline; font-weight:500">RPT Tracker</a> — alimentado pela API do ClinicalTrials.gov v2 com atualização mensal automática.
+        Procurando o <strong>pipeline global de radiofármacos terapêuticos</strong> (177Lu, 225Ac, 90Y, 131I, FAPI, GRPR, CXCR4…)? Use o <a href="pipeline.html" style="color:var(--amber); text-decoration:underline; font-weight:500">Pipeline RLT</a> — alimentado pela API do ClinicalTrials.gov v2 com atualização mensal automática.
       </div>
     </div>
   </div>
@@ -1367,34 +1367,4 @@
             const haystack = [
               s.nome, s.titulo, s.nct, s.intervencao, s.comparador,
               s.subtipo, s.cenario_clinico, s.patrocinador,
-              ...(s.biomarcadores || []), ...(s.centros || []), ...(s.cidades || []),
-            ].filter(Boolean).join(' ').toLowerCase();
-            if (!haystack.includes(q)) return false;
-          }
-          return true;
-        });
-      },
-
-      neoplasiaColor(id) {
-        const n = (this.meta.neoplasias || []).find(x => x.id === id);
-        return n ? n.color : '#FF8400';
-      },
-
-      statusClass(st) {
-        if (!st) return '';
-        if (/recrutando/i.test(st) && !/ainda/i.test(st)) return 'recrutando';
-        if (/ainda/i.test(st)) return 'aindanao';
-        if (/suspens/i.test(st)) return 'suspenso';
-        if (/encerr/i.test(st)) return 'encerrado';
-        return '';
-      },
-    };
-  }
-</script>
-
-<script src="assets/js/common.js" defer></script>
-<script src="assets/js/pwa-install.js" defer></script>
-
-
-</body>
-</html>
+              ...(s.biomarcadores || []), ...(s.centros || []), ...(s.cidades

@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """
-TheraTrials Oncology — Radiopharmaceutical Therapy Tracker
+TheraTrials Oncology — Pipeline RLT
 ===========================================================
 Consulta a API v2 do ClinicalTrials.gov, agrega todos os estudos
 de radiofármacos terapêuticos em oncologia, normaliza os campos,
 classifica por isótopo / ligante / alvo / classe e gera o arquivo
-estático que alimenta a página `tracker.html`.
+estático que alimenta a página `pipeline.html`.
 
 Saída:  site/assets/data/tracker.json
 Stats:  imprime sumário no stdout.
@@ -40,11 +40,11 @@ USER_AGENT = "TheraTrials-Oncology/1.0 (https://marcosmdsoliveira.github.io/ther
 # Diretório onde o JSON é salvo (relativo à raiz do `site/`).
 THIS_FILE = Path(__file__).resolve()
 SITE_DIR = THIS_FILE.parent.parent  # site/
-OUTPUT = SITE_DIR / "assets" / "data" / "tracker.json"
-OUTPUT_JS = SITE_DIR / "assets" / "data" / "tracker.js"
+OUTPUT = SITE_DIR / "assets" / "data" / "pipeline.json"
+OUTPUT_JS = SITE_DIR / "assets" / "data" / "pipeline.js"
 
 # -----------------------------------------------------------------------------
-# Queries (cobertura do "Radiopharmaceutical Therapy Tracker")
+# Queries (cobertura do "Pipeline RLT")
 # Cada entrada é um termo de intervenção. A API faz match fuzzy
 # e tolera sinônimos, então uma única query como "Lu-177" já pega
 # Pluvicto, Lutathera, PSMA-617, DOTATATE, NeoB, etc.
@@ -456,34 +456,4 @@ def main() -> int:
     size_kb = OUTPUT.stat().st_size / 1024
     print(f"\n[fetch_trials] ✓ gravado: {OUTPUT}  ({size_kb:.1f} KB)")
 
-    # Espelha em tracker.js (fallback para file:// e cache PWA)
-    js_payload = (
-        "/* ============================================================\n"
-        "   TheraTrials Oncology — RPT Tracker dataset (auto-gerado)\n"
-        "   Espelho de assets/data/tracker.json em formato JS-bootstrap.\n"
-        "   tracker.html prefere o JSON via fetch e cai aqui se fetch falha\n"
-        "   (file://, offline cache). Não editar à mão.\n"
-        "   ============================================================ */\n"
-        "window.THERA_TRACKER = " + json.dumps(output, ensure_ascii=False) + ";\n"
-    )
-    OUTPUT_JS.write_text(js_payload, encoding="utf-8")
-    print(f"[fetch_trials] ✓ gravado: {OUTPUT_JS}  ({OUTPUT_JS.stat().st_size/1024:.1f} KB)")
-
-    # Stats no stdout para a Action publicar
-    print("\n=== SUMÁRIO ===")
-    print(f"trials totais:     {len(trials)}")
-    print(f"com centro no BR:  {output['totals']['with_brazil']}")
-    print("\nPor isótopo:")
-    for k, v in facets["isotope"].items():
-        print(f"  {k:<8} {v}")
-    print("\nPor classe:")
-    for k, v in facets["drug_class"].items():
-        print(f"  {k:<22} {v}")
-    print("\nPor fase:")
-    for k, v in list(facets["phase"].items())[:8]:
-        print(f"  {k:<30} {v}")
-    return 0
-
-
-if __name__ == "__main__":
-    sys.exit(main())
+    # Espelha em tracker.js (fallback para file:// e cac

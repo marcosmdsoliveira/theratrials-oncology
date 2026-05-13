@@ -1,0 +1,66 @@
+name: Update Pipeline RLT (radioligand therapy)
+
+# Atualiza assets/data/pipeline.json com o dataset completo do
+# ClinicalTrials.gov v2 todo dia 1 de cada mês.
+# Também pode ser disparado manualmente (workflow_dispatch).
+
+on:
+  schedule:
+    - cron: '17 5 1 * *'   # dia 1, 05:17 UTC (≈ 02:17 BRT)
+  workflow_dispatch:
+    inputs:
+      force_commit:
+        description: 'Commitar mesmo se não houver diff (útil para teste)'
+        required: false
+        default: 'false'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-pipeline
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Run tracker fetcher
+        id: fetch
+        run: |
+          python scripts/fetch_trials.py
+          echo "json_bytes=$(stat -c %s assets/data/pipeline.json)" >> "$GITHUB_OUTPUT"
+          echo "trials=$(python -c 'import json;print(json.load(open(\"assets/data/pipeline.json\"))[\"totals\"][\"trials\"])')" >> "$GITHUB_OUTPUT"
+
+      - name: Diff summary
+        run: |
+          echo "## Pipeline RLT atualizado" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "- **Estudos** no JSON final: ${{ steps.fetch.outputs.trials }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "- **Tamanho** de \`assets/data/pipeline.json\`: ${{ steps.fetch.outputs.json_bytes }} bytes" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          git --no-pager diff --stat assets/data/pipeline.json || true
+
+      - name: Commit and push if changed
+        env:
+          FORCE: ${{ github.event.inputs.force_commit }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet assets/data/pipeline.json assets/data/pipeline.js && [ "$FORCE" != "true" ]; then
+            echo "pipeline.json/pipeline.js sem mudanças — nada a fazer."
+          else
+            git add assets/data/pipeline.json assets/data/pipeline.js
+            DATE=$(date -u +"%Y-%m-%d")
+            git commit -m "data(tracker): refresh CT.gov pipeline ($DATE) · ${{ steps.f

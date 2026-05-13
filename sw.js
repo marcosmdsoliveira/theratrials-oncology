@@ -17,7 +17,7 @@ const CORE_PAGES = [
   './',
   './index.html',
   './database.html',
-  './tracker.html',
+  './pipeline.html',
   './estudos-ativos.html',
   './tumor-boards.html',
   './modalidades.html',
@@ -42,7 +42,8 @@ const CORE_ASSETS = [
   './assets/js/data.js',
   './assets/js/common.js',
   './assets/js/trials_br.js',
-  './assets/data/tracker.json',
+  './assets/data/pipeline.json',
+  './assets/data/pipeline.js',
   './assets/data/tracker.js',
   './assets/js/pwa-install.js',
   './assets/img/logo-app.png',
@@ -159,5 +160,4 @@ async function staleWhileRevalidate(req, cacheName) {
 
 /* =====================  MENSAGEM (atualização forçada)  ===================== */
 self.addEventListener('message', (event) => {
-  if (event.data && event.data.type === 'SKIP_WAITING') self.skipWaiting();
-});
+  if (event.data && event.data.type === 'SKIP_WAITI
