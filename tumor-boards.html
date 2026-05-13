@@ -303,11 +303,10 @@
     margin: 0 0 0.65rem 0;
   }
   .line-label {
-    font-size: 0.74rem;
-    font-weight: 600;
+    font-size: 0.78rem;
+    font-weight: 700;
     color: var(--off-white);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.01em;
   }
   .line-count {
     font-size: 0.7rem;
@@ -662,7 +661,7 @@
         const mods = {};
         studies.forEach(s => {
           const m = TheraTrials.studyModality(s);
-          const l = TheraTrials.studyLine(s);
+          const l = TheraTrials.studyLine(s, tumorId);
           const meta = colorKey(m.color);
           if (!mods[meta.key]) {
             mods[meta.key] = { key: meta.key, name: meta.name, icon: meta.icon, color: m.color, order: ORDER[meta.key] || 99, lineGroups: {} };

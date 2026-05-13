@@ -205,11 +205,94 @@
   };
 
   // ============================================================
+  // CENÁRIOS CLÍNICOS DE PRÓSTATA
+  // ============================================================
+  TheraTrials._studyLineProstate = function(s) {
+    const fase = String(s.fase || '').toLowerCase();
+    const txt = (String(s.indicacao || '') + ' ' + String(s.acron || '') + ' ' + String(s.estudo || '')).toLowerCase();
+
+    // 1) Diretriz / consenso / meta-análise
+    if (/diretriz|guideline|consensus|consenso|meta-?an[aá]lise|systematic review/.test(fase) ||
+        /\b(guidelines?|diretriz)\b/i.test(s.estudo || '')) {
+      return { key: 'diretriz', label: 'Diretriz / Consenso', order: 99 };
+    }
+
+    // 2) Neoadjuvante / pré-tratamento curativo (LUTECTOMY, pré-prostatectomia)
+    if (/neoadjuvante|neoadjuvant|pr[ée]-?prostatectomia|pr[ée]-?ressec|lutectomy|pre.?surgery/.test(txt)) {
+      return { key: 'neoadj', label: 'Pré-tratamento curativo · neoadjuvante', order: 1 };
+    }
+
+    // 3) Recidiva bioquímica · oligometastático HSPC (Bullseye, oligo-rt)
+    if (/oligometast[áa]tic|recidiva\s+bioqu[íi]mic|biochemical\s+recurr|\bbcr\b|psa.?recidiv|hspc\s+oligo|bullseye/.test(txt)) {
+      return { key: 'bcr', label: 'Recidiva bioquímica · oligometastático', order: 2 };
+    }
+
+    // 4) mHSPC (hormônio-sensível metastático)
+    if (/\bmhspc\b|hormone-?sensit|hormon[iô]nio-?sens|metast[áa]tic\s+hormone-?sensit|hsensit/.test(txt)) {
+      return { key: 'mhspc', label: 'mHSPC (hormônio-sensível metastático)', order: 3 };
+    }
+
+    // 5) nmCRPC (não-metastático castração-resistente)
+    if (/\bnmcrpc\b|non-?metastatic\s+crpc|n[ãa]o-?metast[áa]tic.*castr|m0\s+crpc|psa-?dt\s*≤?\s*10/.test(txt)) {
+      return { key: 'nmcrpc', label: 'nmCRPC (não-metastático CR)', order: 4 };
+    }
+
+    // 6) mCRPC HRR-mut / PARP (PROfound, MAGNITUDE, TALAPRO-2)
+    const isHRR = /\b(hrr|brca[12]?|atm|cdk12|chek2|palb2)\b/.test(txt) ||
+                  /\b(olaparib|talazoparib|niraparib|rucaparib)\w*/.test(txt);
+    if (isHRR && /mcrpc|castr.*resist/.test(txt)) {
+      return { key: 'mcrpc_hrr', label: 'mCRPC HRR-mut (PARPi)', order: 5 };
+    }
+
+    // 7) mCRPC pós-ARPi E pós-taxano (multi-tratado — VISION, CARD)
+    const posArpi = /(p[óo]s.?(?:≥?\s*\d+\s*)?(?:arpi|abirat|enzalu|apalu|darolu))/i.test(txt);
+    const posTax  = /p[óo]s.?(?:≥?\s*\d+\s*)?(?:taxano|docetaxel|cabazitaxel|quimio|chemo)\b/i.test(txt) &&
+                    !/com\s+ou\s+sem\s+(?:qt|quimio)/.test(txt);
+    if (posArpi && posTax) {
+      return { key: 'mcrpc_multi', label: 'mCRPC pós-ARPi + pós-taxano', order: 8 };
+    }
+
+    // 8) mCRPC pós-ARPi · pré-taxano (PSMAfore, SPLASH, TheraP—wait, TheraP é pós-doce; só pré-taxano se explícito)
+    if (posArpi && /pr[ée]-?taxano|sem\s+quimio|chemo-?naive|taxano-?naive|sem\s+chemo\s+pr[ée]vi/.test(txt)) {
+      return { key: 'mcrpc_posarpi_pretax', label: 'mCRPC pós-ARPi · pré-taxano', order: 6 };
+    }
+
+    // 9) mCRPC pós-taxano / pós-quimio (AFFIRM, COU-AA-301, TheraP, CARD)
+    if (posTax && /crpc|castr.*resist/.test(txt)) {
+      return { key: 'mcrpc_posqt', label: 'mCRPC pós-quimio (taxano)', order: 7 };
+    }
+
+    // 10) mCRPC 1L · pré-quimio (PREVAIL, COU-AA-302)
+    if (/(?:pr[ée]-?qt|pr[ée]-?quimio|pr[ée]-?docetaxel|chemo-?naive|sem\s+quimio|min\s+sintom).*(crpc|castr)/.test(txt) ||
+        /(crpc|castr.*resist).*?(?:pr[ée]-?qt|pr[ée]-?quimio|chemo-?naive)/.test(txt) ||
+        /\bmcrpc\s+1[ªa]\s*linha\b|1l\s+mcrpc/.test(txt)) {
+      return { key: 'mcrpc_1L', label: 'mCRPC 1L · pré-quimio', order: 5 };
+    }
+
+    // 11) mCRPC ósseo sintomático (α-emissor — ALSYMPCA)
+    if (/mcrpc.*[óo]sse|metast.*[óo]sse.*castr|sintom[áa]tico\s+sem\s+mets?\s+visc|\b[óo]sseo\s+sintom[áa]tico\b/.test(txt)) {
+      return { key: 'mcrpc_osseo', label: 'mCRPC ósseo sintomático', order: 9 };
+    }
+
+    // 12) mCRPC genérico
+    if (/mcrpc|castration-?resistant|castr.*resist/.test(txt)) {
+      return { key: 'mcrpc', label: 'mCRPC (cenário geral)', order: 10 };
+    }
+
+    // Fallback
+    return { key: 'av', label: 'Câncer de próstata · geral', order: 50 };
+  };
+
+  // ============================================================
   // CLASSIFICAÇÃO DE LINHA DE TRATAMENTO
   // Retorna { key, label, order } para agrupar dentro de modalidade
+  // Aceita tumorId opcional para usar regras tumor-específicas
   // ============================================================
-  TheraTrials.studyLine = function(s) {
+  TheraTrials.studyLine = function(s, tumorId) {
     if (!s) return { key: 'geral', label: 'Geral', order: 10 };
+    // Regras tumor-específicas (cenários clínicos próprios)
+    if (tumorId === 'prostata') return TheraTrials._studyLineProstate(s);
+    // — Genérica abaixo —
     const fase  = String(s.fase || '').toLowerCase();
     const ind   = String(s.indicacao || '').toLowerCase();
     const acron = String(s.acron || '').toLowerCase();
