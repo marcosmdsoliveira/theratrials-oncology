@@ -291,6 +291,33 @@
     font-family: var(--font-mono);
   }
 
+  /* Sub-grupos por linha de tratamento dentro de cada modalidade */
+  .line-group {
+    margin: 1rem 0 1.5rem 0;
+    padding-left: 0.85rem;
+    border-left: 2px solid var(--border-soft);
+  }
+  .line-group:last-child { margin-bottom: 0.5rem; }
+  .line-title {
+    display: flex; align-items: center; gap: 0.55rem;
+    margin: 0 0 0.65rem 0;
+  }
+  .line-label {
+    font-size: 0.74rem;
+    font-weight: 600;
+    color: var(--off-white);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .line-count {
+    font-size: 0.7rem;
+    color: var(--stone);
+    background: var(--graphite-3);
+    padding: 0.15rem 0.5rem;
+    border-radius: 100px;
+    font-family: var(--font-mono);
+  }
+
   /* Mini cards de estudo na detail view */
   .study-mini-grid {
     display: grid;
@@ -491,7 +518,7 @@
             </div>
           </div>
 
-          <!-- Grupos por modalidade -->
+          <!-- Grupos por modalidade → linha de tratamento -->
           <template x-for="modality in modalitiesForTumor(currentTumor.id)" :key="modality.key">
             <div class="modality-group">
               <div class="modality-title">
@@ -499,33 +526,41 @@
                   <i :data-lucide="modality.icon" style="width:18px;height:18px"></i>
                 </div>
                 <h3 class="modality-name" x-text="modality.name"></h3>
-                <span class="modality-count" x-text="`${modality.studies.length} ${modality.studies.length === 1 ? 'estudo' : 'estudos'}`"></span>
+                <span class="modality-count" x-text="`${modality.studies} ${modality.studies === 1 ? 'estudo' : 'estudos'}`"></span>
               </div>
-              <div class="study-mini-grid">
-                <template x-for="s in modality.studies" :key="s.uid">
-                  <article class="study-mini" @click="goToDatabase(s)">
-                    <div class="study-mini-top">
-                      <div style="flex: 1; min-width: 0">
-                        <h4 class="study-mini-title" x-text="TheraTrials.studyTitle(s.estudo)"></h4>
-                        <div class="study-mini-nct" x-text="s.nct"></div>
-                      </div>
-                      <span class="pb" :class="phaseClassShort(s.fase)" x-text="phaseShort(s.fase)"></span>
-                    </div>
-                    <p class="study-mini-result" x-text="TheraTrials.cleanText(s.primario)"></p>
-                    <div class="study-mini-footer">
-                      <span x-text="TheraTrials.extractN(s.n)"></span>
-                      <div class="study-mini-actions" @click.stop>
-                        <a x-show="s.pubmed_url" :href="s.pubmed_url" target="_blank" rel="noopener" title="Abrir PubMed">
-                          <i data-lucide="book-open" style="width:11px;height:11px"></i> PubMed
-                        </a>
-                        <a x-show="s.nct_url" :href="s.nct_url" target="_blank" rel="noopener" title="Abrir ClinicalTrials.gov">
-                          <i data-lucide="external-link" style="width:11px;height:11px"></i> CT.gov
-                        </a>
-                      </div>
-                    </div>
-                  </article>
-                </template>
-              </div>
+              <template x-for="line in modality.lines" :key="line.key">
+                <div class="line-group">
+                  <div class="line-title">
+                    <span class="line-label" x-text="line.label"></span>
+                    <span class="line-count" x-text="`${line.studies.length}`"></span>
+                  </div>
+                  <div class="study-mini-grid">
+                    <template x-for="s in line.studies" :key="s.uid">
+                      <article class="study-mini" @click="goToDatabase(s)">
+                        <div class="study-mini-top">
+                          <div style="flex: 1; min-width: 0">
+                            <h4 class="study-mini-title" x-text="TheraTrials.studyTitle(s.estudo)"></h4>
+                            <div class="study-mini-nct" x-text="s.nct"></div>
+                          </div>
+                          <span class="pb" :class="phaseClassShort(s.fase)" x-text="phaseShort(s.fase)"></span>
+                        </div>
+                        <p class="study-mini-result" x-text="TheraTrials.cleanText(s.primario)"></p>
+                        <div class="study-mini-footer">
+                          <span x-text="TheraTrials.extractN(s.n)"></span>
+                          <div class="study-mini-actions" @click.stop>
+                            <a x-show="s.pubmed_url" :href="s.pubmed_url" target="_blank" rel="noopener" title="Abrir PubMed">
+                              <i data-lucide="book-open" style="width:11px;height:11px"></i> PubMed
+                            </a>
+                            <a x-show="s.nct_url" :href="s.nct_url" target="_blank" rel="noopener" title="Abrir ClinicalTrials.gov">
+                              <i data-lucide="external-link" style="width:11px;height:11px"></i> CT.gov
+                            </a>
+                          </div>
+                        </div>
+                      </article>
+                    </template>
+                  </div>
+                </div>
+              </template>
             </div>
           </template>
 
@@ -561,24 +596,30 @@
       selectedTumor: null,
 
       tumors: [
-        { id: 'prostata', name: 'Câncer de próstata', tagline: 'mHSPC, mCRPC, nmCRPC, oligometastático e localizado de alto risco', icon: 'circle-dot', color: '#FF8400',
-          match: (s) => ['lupsma_prostata', 'ra223_prostata', 'novos_psma', 'prostata_contexto'].includes(s.category_id) },
-        { id: 'net', name: 'Tumores neuroendócrinos', tagline: 'GEP-NET, midgut, pancreático e brônquico/pulmonar', icon: 'activity', color: '#10B981',
-          match: (s) => s.category_id === 'net_gep' },
-        { id: 'pheo_pgl', name: 'Feocromocitoma e paraganglioma', tagline: 'PPGL maligno · 131I-MIBG e 177Lu-DOTATATE', icon: 'heart-pulse', color: '#EC4899',
-          match: (s) => s.category_id === 'ppgl' },
-        { id: 'neuroblastoma', name: 'Neuroblastoma (pediatria)', tagline: 'Alto risco refratário/recidivado · 131I-MIBG e PRRT pediátrica', icon: 'baby', color: '#8B5CF6',
-          match: (s) => s.category_id === 'neuroblastoma' },
-        { id: 'hcc', name: 'Carcinoma hepatocelular', tagline: 'BCLC A/B/C · radioembolização Y-90 e dosimetria personalizada', icon: 'droplet', color: '#FBBF24',
-          match: (s) => /(hcc|hepatocelular)/i.test(s.indicacao || '') },
-        { id: 'mcrc', name: 'Câncer colorretal metastático', tagline: 'Mets hepáticas dominantes · TARE com Y-90', icon: 'activity-square', color: '#F87171',
-          match: (s) => /(mcrc|colorretal)/i.test(s.indicacao || '') },
-        { id: 'ccrcc', name: 'Carcinoma renal de células claras', tagline: '2ª/3ª linha pós-TKI/ICI · 177Lu-PSMA', icon: 'circle-dashed', color: '#38BDF8',
-          match: (s) => s.category_id === 'lupsma_ccrcc' },
-        { id: 'pulmao', name: 'Câncer de pulmão', tagline: 'NSCLC drivers (EGFR/ALK/KRAS) · imuno 1L · perioperatório · SCLC · radiofármacos', icon: 'wind', color: '#22d3ee',
-          match: (s) => ['nsclc_imuno', 'nsclc_alvo', 'nsclc_periop', 'sclc', 'lung_radio_dev'].includes(s.category_id) },
-        { id: 'mama', name: 'Câncer de mama', tagline: 'HER2+, HR+/HER2- (CDK4/6, PI3K, AKT), TNBC, BRCA-mutado, ADCs e imagem molecular', icon: 'flower-2', color: '#ec4899',
-          match: (s) => ['breast_her2', 'breast_hrpos', 'breast_tnbc_brca', 'breast_radio_dev'].includes(s.category_id) },
+        { id: 'prostata', name: 'Câncer de próstata', tagline: 'mHSPC · mCRPC · nmCRPC · ARPi · PARP · teranóstico PSMA · α-PSMA · 223Ra', icon: 'circle-dot', color: '#FF8400',
+          match: (s) => TheraTrials.hasTumor(s,'prostata') || ['lupsma_prostata','ra223_prostata','novos_psma','prostata_contexto'].includes(s.category_id) },
+        { id: 'net', name: 'Tumores neuroendócrinos', tagline: 'GEP-NET · midgut · pNET · brônquico/pulmonar · PRRT · SSA · mTOR · TKI · α-PRRT', icon: 'activity', color: '#10B981',
+          match: (s) => TheraTrials.hasTumor(s,'net_gep') || s.category_id === 'net_gep' },
+        { id: 'ppgl', name: 'Feocromocitoma e paraganglioma', tagline: 'PPGL maligno · sunitinib (FIRSTMAPPP) · cabozantinib · CVD · TMZ · 131I-MIBG · 177Lu-DOTATATE · belzutifan VHL', icon: 'heart-pulse', color: '#EC4899',
+          match: (s) => TheraTrials.hasTumor(s,'ppgl') || s.category_id === 'ppgl' },
+        { id: 'neuroblastoma', name: 'Neuroblastoma (pediatria)', tagline: 'Alto risco · anti-GD2 (dinutuximab, naxitamab) · BuMel · tandem ASCT · 131I-MIBG + topotecano · lorlatinib em ALK+', icon: 'baby', color: '#8B5CF6',
+          match: (s) => TheraTrials.hasTumor(s,'neuroblastoma') || s.category_id === 'neuroblastoma' },
+        { id: 'hcc', name: 'Carcinoma hepatocelular', tagline: 'BCLC A/B/C · atezo+bev · durva+treme · nivo+ipi · TARE Y-90 · TACE + IO (EMERALD-1) · TKIs', icon: 'droplet', color: '#F59E0B',
+          match: (s) => TheraTrials.hasTumor(s,'hcc') || /(hcc|hepatocelular)/i.test(s.indicacao||'') },
+        { id: 'colangio', name: 'Colangiocarcinoma e vesícula', tagline: 'BTC intra/extra-hep · gemcis+IO (TOPAZ-1, KEYNOTE-966) · FGFR2 · IDH1 · HER2 (zanidatamab, T-DXd) · BRAF V600E', icon: 'flask-conical', color: '#FBBF24',
+          match: (s) => TheraTrials.hasTumor(s,'colangiocarcinoma','vesicula') },
+        { id: 'colorretal', name: 'Câncer colorretal', tagline: 'mCRC e adjuvante · FOLFOX/FOLFIRI · MSI-H/dMMR (KEYNOTE-177, NICHE-2) · BRAF V600E · KRAS G12C · HER2 · refratário', icon: 'activity-square', color: '#F87171',
+          match: (s) => TheraTrials.hasTumor(s,'colorretal') || s.category_id === 'colorretal' },
+        { id: 'rcc', name: 'Carcinoma renal', tagline: 'ccRCC e não-clear · IO+TKI/IO+IO · adjuvante (pembro) · HIF-2α (belzutifan) · 177Lu-PSMA exploratório', icon: 'circle-dashed', color: '#38BDF8',
+          match: (s) => TheraTrials.hasTumor(s,'ccrcc','rcc_naoclear') || ['lupsma_ccrcc','rcc_avancado','rcc_adjuvante_naocc'].includes(s.category_id) },
+        { id: 'pulmao', name: 'Câncer de pulmão', tagline: 'NSCLC drivers (EGFR/ALK/KRAS/RET/NTRK/MET/HER2/ROS1) · imuno 1L · perioperatório · SCLC · radiofármacos exp (DLL3, FAPI)', icon: 'wind', color: '#22D3EE',
+          match: (s) => TheraTrials.hasTumor(s,'nsclc_egfr','nsclc_alk','nsclc_kras','nsclc_outros_drivers','nsclc_imuno','nsclc_periop','sclc') || ['nsclc_imuno','nsclc_alvo','nsclc_periop','sclc','lung_radio_dev'].includes(s.category_id) },
+        { id: 'mama', name: 'Câncer de mama', tagline: 'HER2+ (T-DXd, T-DM1, tucatinib) · HR+/HER2- (CDK4/6, PI3K, AKT, SERDs) · TNBC e BRCA · ADCs · imagem/radio-exp', icon: 'flower-2', color: '#EC4899',
+          match: (s) => TheraTrials.hasTumor(s,'mama_her2pos','mama_hrpos','mama_tnbc') || ['breast_her2','breast_hrpos','breast_tnbc_brca','breast_radio_dev'].includes(s.category_id) },
+        { id: 'tireoide', name: 'Tireoide', tagline: 'CDT (vigilância ativa, ablação RAI, ESTIMABL2) · MTC (selpercatinib) · ATC (BRAF/MEK) · TKIs (lenvatinib) · redifferentiation · ATA 2025', icon: 'circle-dot', color: '#06B6D4',
+          match: (s) => TheraTrials.hasTumor(s,'tireoide_cdt','tireoide_mtc','tireoide_atc') || s.category_id === 'tireoide_avancado' },
+        { id: 'melanoma', name: 'Melanoma', tagline: 'Avançado · ICI (nivo+ipi, LAG-3 relatlimab) · BRAF/MEK · adjuvante e neoadjuvante (NADINA, KN-716)', icon: 'sparkles', color: '#A855F7',
+          match: (s) => TheraTrials.hasTumor(s,'melanoma_cutaneo','melanoma_uveal') || ['melanoma_avancado','melanoma_adjuvante'].includes(s.category_id) },
       ],
 
       get currentTumor() {
@@ -609,106 +650,36 @@
 
       modalitiesForTumor(tumorId) {
         const studies = this.getStudiesForTumor(tumorId);
-        const groups = {};
+        const ORDER = { teranostico: 1, imuno: 2, alvo: 3, quimio: 4, cirurgia_rt: 5, diretriz: 6, outros: 9 };
+        const colorKey = (color) => ({
+          '#FF8400': { key: 'teranostico', name: 'Teranóstico (radioligante)', icon: 'atom' },
+          '#34D399': { key: 'imuno',       name: 'Imunoterapia',                icon: 'shield-plus' },
+          '#0EA5B7': { key: 'alvo',        name: 'Terapia-alvo',                icon: 'target' },
+          '#FBBF24': { key: 'quimio',      name: 'Quimioterapia',               icon: 'flask-conical' },
+          '#F472B6': { key: 'cirurgia_rt', name: 'Cirurgia · Radioterapia',     icon: 'scissors' },
+          '#A78BFA': { key: 'diretriz',    name: 'Diretrizes e consensos',      icon: 'book-open' },
+        }[color] || { key: 'outros', name: 'Outras terapias sistêmicas', icon: 'circle' });
+        const mods = {};
         studies.forEach(s => {
-          const m = this.classifyModality(s);
-          if (!groups[m.key]) groups[m.key] = { ...m, studies: [] };
-          groups[m.key].studies.push(s);
+          const m = TheraTrials.studyModality(s);
+          const l = TheraTrials.studyLine(s);
+          const meta = colorKey(m.color);
+          if (!mods[meta.key]) {
+            mods[meta.key] = { key: meta.key, name: meta.name, icon: meta.icon, color: m.color, order: ORDER[meta.key] || 99, lineGroups: {} };
+          }
+          if (!mods[meta.key].lineGroups[l.key]) {
+            mods[meta.key].lineGroups[l.key] = { key: l.key, label: l.label, order: l.order, studies: [] };
+          }
+          mods[meta.key].lineGroups[l.key].studies.push(s);
         });
-        return Object.values(groups).sort((a, b) => a.order - b.order);
+        return Object.values(mods).map(mod => ({
+          ...mod,
+          studies: Object.values(mod.lineGroups).reduce((a, lg) => a + lg.studies.length, 0),
+          lines: Object.values(mod.lineGroups).sort((a, b) => a.order - b.order)
+        })).sort((a, b) => a.order - b.order);
       },
 
-      classifyModality(s) {
-        const rfa = (s.radiofarmaco || '').toLowerCase();
-        const cat = s.category_id || '';
-
-        if (cat === 'lupsma_prostata' || cat === 'lupsma_ccrcc') {
-          return { key: 'teranostico_psma', name: 'Teranóstico — 177Lu-PSMA', icon: 'atom', color: '#FF8400', order: 1 };
-        }
-        if (cat === 'novos_psma') {
-          return { key: 'teranostico_psma_novos', name: 'Novos PSMA (α / 161Tb / RIT)', icon: 'zap', color: '#F87171', order: 2 };
-        }
-        if (cat === 'ra223_prostata') {
-          if (rfa.includes('psma') || rfa.includes('lu')) return { key: 'teranostico_combo', name: 'Combinações teranósticas', icon: 'shuffle', color: '#A855F7', order: 3 };
-          return { key: 'teranostico_alfa', name: 'Teranóstico — 223Ra (α-emissor)', icon: 'radiation', color: '#A855F7', order: 4 };
-        }
-        if (cat === 'net_gep') {
-          return { key: 'teranostico_prrt', name: 'Teranóstico — PRRT (177Lu-DOTATATE / Edotreotide / alfa)', icon: 'activity', color: '#10B981', order: 1 };
-        }
-        if (cat === 'y90_tare') {
-          return { key: 'teranostico_y90', name: 'Radioembolização — 90Y', icon: 'droplet', color: '#FBBF24', order: 1 };
-        }
-        if (cat === 'ppgl') {
-          if (rfa.includes('dotatate') || rfa.includes('lu-177') || rfa.includes('lutetium')) return { key: 'teranostico_prrt', name: 'PRRT — 177Lu-DOTATATE em PPGL', icon: 'activity', color: '#10B981', order: 2 };
-          return { key: 'mibg', name: 'Teranóstico — 131I-MIBG / Iobenguano em PPGL', icon: 'heart-pulse', color: '#EC4899', order: 1 };
-        }
-        if (cat === 'neuroblastoma') {
-          if (rfa.includes('dotatate') || rfa.includes('lu-177') || rfa.includes('lutetium')) return { key: 'teranostico_prrt', name: 'PRRT — 177Lu-DOTATATE em neuroblastoma', icon: 'activity', color: '#10B981', order: 2 };
-          return { key: 'mibg', name: 'Teranóstico — 131I-MIBG em neuroblastoma', icon: 'heart-pulse', color: '#8B5CF6', order: 1 };
-        }
-        if (cat === 'prostata_contexto') {
-          if (rfa.includes('docetaxel') || rfa.includes('cabazitaxel')) return { key: 'qt', name: 'Quimioterapia citotóxica (QT)', icon: 'flask-conical', color: '#FBBF24', order: 7 };
-          if (rfa.includes('olaparib') || rfa.includes('rucaparib') || rfa.includes('niraparib') || rfa.includes('talazoparib')) return { key: 'parp', name: 'PARP inibidores (HRR-mutados)', icon: 'shield', color: '#34D399', order: 6 };
-          if (rfa.includes('sipuleucel') || rfa.includes('vacina')) return { key: 'imuno', name: 'Imunoterapia', icon: 'shield-plus', color: '#10B981', order: 8 };
-          if (rfa.includes('abiraterona') || rfa.includes('enzalutamida') || rfa.includes('apalutamida') || rfa.includes('darolutamida')) return { key: 'arpi', name: 'ARPi (inibidores do receptor de androgênio)', icon: 'target', color: '#0EA5B7', order: 5 };
-          return { key: 'outros', name: 'Outras terapias sistêmicas', icon: 'circle', color: '#8E949C', order: 9 };
-        }
-
-        // ============== PULMÃO ==============
-        if (cat === 'nsclc_imuno') {
-          return { key: 'lung_imuno', name: 'NSCLC · Imunoterapia 1L (ICIs)', icon: 'shield-plus', color: '#22d3ee', order: 1 };
-        }
-        if (cat === 'nsclc_alvo') {
-          if (/osi|gefit|erlot|afatin|amivantamab|lazertinib/i.test(rfa)) return { key: 'lung_egfr', name: 'NSCLC · EGFR (TKIs)', icon: 'target', color: '#0EA5B7', order: 2 };
-          if (/alect|crizo|lorla|brigatin/i.test(rfa)) return { key: 'lung_alk', name: 'NSCLC · ALK (TKIs)', icon: 'target', color: '#0EA5B7', order: 3 };
-          if (/sotorasib|adagrasib/i.test(rfa)) return { key: 'lung_kras', name: 'NSCLC · KRAS G12C', icon: 'target', color: '#0EA5B7', order: 4 };
-          if (/selperc|prals/i.test(rfa)) return { key: 'lung_ret', name: 'NSCLC · RET (TKIs)', icon: 'target', color: '#0EA5B7', order: 5 };
-          if (/capmatinib|tepotinib/i.test(rfa)) return { key: 'lung_met', name: 'NSCLC · MET ex14', icon: 'target', color: '#0EA5B7', order: 6 };
-          if (/trastuzumab deruxtecan|t-dxd/i.test(rfa)) return { key: 'lung_her2', name: 'NSCLC · HER2 (T-DXd)', icon: 'target', color: '#0EA5B7', order: 7 };
-          if (/entrectinib|larotrectinib/i.test(rfa)) return { key: 'lung_ros1_ntrk', name: 'NSCLC · ROS1 / NTRK', icon: 'target', color: '#0EA5B7', order: 8 };
-          return { key: 'lung_alvo_outros', name: 'NSCLC · Outros drivers', icon: 'target', color: '#0EA5B7', order: 9 };
-        }
-        if (cat === 'nsclc_periop') {
-          if (/osi|alect/i.test(rfa)) return { key: 'lung_periop_alvo', name: 'NSCLC · Adjuvante alvo (EGFR/ALK)', icon: 'scissors', color: '#34d399', order: 10 };
-          return { key: 'lung_periop_io', name: 'NSCLC · Perioperatório (IO ± QT)', icon: 'scissors', color: '#34d399', order: 11 };
-        }
-        if (cat === 'sclc') {
-          if (/tarlatamab/i.test(rfa)) return { key: 'sclc_dll3', name: 'SCLC · DLL3 BiTE (tarlatamab)', icon: 'flame', color: '#fbbf24', order: 13 };
-          return { key: 'sclc_imuno', name: 'SCLC · Imuno + QT (ES/LS)', icon: 'flame', color: '#fbbf24', order: 12 };
-        }
-        if (cat === 'lung_radio_dev') {
-          return { key: 'lung_radio', name: 'Pulmão · Radiofármacos experimentais (DLL3, FAPI)', icon: 'atom', color: '#a855f7', order: 14 };
-        }
-
-        // ============== MAMA ==============
-        if (cat === 'breast_her2') {
-          if (/(t-dxd|trastuzumab deruxtecan|deruxtecan)/i.test(rfa)) return { key: 'breast_tdxd', name: 'Mama · T-DXd (HER2+ e HER2-low/ultralow)', icon: 'shield-check', color: '#f472b6', order: 21 };
-          if (/(t-dm1|trastuzumab emtansine|emtansine)/i.test(rfa)) return { key: 'breast_tdm1', name: 'Mama · T-DM1 (HER2+)', icon: 'shield-check', color: '#f472b6', order: 22 };
-          if (/(tucatinib|lapatinib|neratinib)/i.test(rfa)) return { key: 'breast_her2tki', name: 'Mama · HER2-TKI (tucatinib, neratinib)', icon: 'target', color: '#f472b6', order: 23 };
-          if (/(pertuzumab.*trastuzumab|trastuzumab.*pertuzumab|HP)/i.test(rfa)) return { key: 'breast_dual', name: 'Mama · Duplo bloqueio HER2 (HP)', icon: 'shield', color: '#f472b6', order: 24 };
-          return { key: 'breast_her2_outros', name: 'Mama · Outras anti-HER2', icon: 'shield', color: '#f472b6', order: 25 };
-        }
-        if (cat === 'breast_hrpos') {
-          if (/(palbocicl|ribocicl|abemacicl)/i.test(rfa)) return { key: 'breast_cdk', name: 'Mama · CDK4/6 inibidores (HR+)', icon: 'sliders', color: '#ec4899', order: 26 };
-          if (/(elacestrant|fulvestrant|tamoxif|letrozol|anastrozol|exemestano)/i.test(rfa) && !/cdk|cicl/i.test(rfa)) return { key: 'breast_endo', name: 'Mama · Endocrinoterapia (ET, SERDs)', icon: 'flower', color: '#ec4899', order: 27 };
-          if (/(alpelisib|inavolisib|pi3k)/i.test(rfa)) return { key: 'breast_pi3k', name: 'Mama · PI3K inibidores (PIK3CA-mut)', icon: 'beaker', color: '#ec4899', order: 28 };
-          if (/(capivasertib|akt)/i.test(rfa)) return { key: 'breast_akt', name: 'Mama · AKT inibidores', icon: 'beaker', color: '#ec4899', order: 29 };
-          return { key: 'breast_hrpos_outros', name: 'Mama · Outras HR+/HER2-', icon: 'flower', color: '#ec4899', order: 30 };
-        }
-        if (cat === 'breast_tnbc_brca') {
-          if (/pembrolizumab|pembro/i.test(rfa)) return { key: 'breast_io', name: 'Mama · Imunoterapia (TNBC)', icon: 'shield-plus', color: '#db2777', order: 31 };
-          if (/(sacituzumab|trodelvy)/i.test(rfa)) return { key: 'breast_trop2', name: 'Mama · ADCs Trop-2 (sacituzumab)', icon: 'shield', color: '#db2777', order: 32 };
-          if (/(olapar|talazop|ruca|nirap)/i.test(rfa)) return { key: 'breast_parp', name: 'Mama · PARP inibidores (BRCA+)', icon: 'shield', color: '#db2777', order: 33 };
-          return { key: 'breast_tnbc_outros', name: 'Mama · Outras TNBC/BRCA', icon: 'shield-x', color: '#db2777', order: 34 };
-        }
-        if (cat === 'breast_radio_dev') {
-          return { key: 'breast_radio', name: 'Mama · Imagem molecular e radiofármacos exp', icon: 'atom', color: '#a855f7', order: 35 };
-        }
-
-        return { key: 'outros', name: 'Outras', icon: 'circle', color: '#8E949C', order: 99 };
-      },
-
-      goToDatabase(s) {
+            goToDatabase(s) {
         // Abre o database e foca o estudo via UID na URL hash
         window.location.href = `database.html#${s.uid}`;
       },

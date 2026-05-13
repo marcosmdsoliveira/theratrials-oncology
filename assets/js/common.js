@@ -80,6 +80,178 @@
     return 'phase-other';
   };
 
+  // ============================================================
+  // CLASSIFICAÇÃO DE MODALIDADE TERAPÊUTICA
+  // Retorna { label, html, color, icon } para exibição em badge nos cards.
+  // ============================================================
+  TheraTrials.studyModality = function(s) {
+    if (!s) return { label: '—', color: '#8E949C', icon: 'circle' };
+
+    const fase = String(s.fase || '').toLowerCase();
+    const rfa  = String(s.radiofarmaco || '').toLowerCase();
+    const est  = String(s.estudo || '').toLowerCase();
+    const cat  = s.category_id || '';
+    // blob amplo só para detecção de cirurgia/RT (último recurso); para imuno/alvo/QT/teranóstico, usar rfa + est + acron (mais específico)
+    const blobNarrow = rfa + ' ' + est + ' ' + String(s.acron || '').toLowerCase();
+    const blobWide = blobNarrow + ' ' + String(s.esquema || '').toLowerCase() + ' ' + String(s.indicacao || '').toLowerCase();
+
+    // 1) DIRETRIZ / GUIDELINE
+    if (/diretriz|guideline|consensus|consenso/.test(fase) || /\b(guidelines?|diretriz|consensus|consenso)\b/i.test(s.estudo || '')) {
+      return { label: 'Diretriz', color: '#A78BFA', icon: 'book-open' };
+    }
+
+    // 2) META-ANÁLISE
+    if (/meta-?an[aá]lise|systematic review/.test(fase)) {
+      return { label: 'Meta-análise', color: '#A78BFA', icon: 'layers' };
+    }
+
+    // 3) TERANÓSTICO — depende de padrão concreto no radiofarmaco
+    // (NÃO usar category_id sozinho — categorias como 'hepatobiliar' são mistas)
+    // Categorias 100%-teranósticas (todos os estudos são radio): usar como atalho
+    const PURE_RADIO_CATS = new Set([
+      'lupsma_prostata', 'ra223_prostata', 'lupsma_ccrcc', 'novos_psma',
+      'lung_radio_dev', 'breast_radio_dev', 'teranostico_emergente'
+    ]);
+    const isPureRadio = PURE_RADIO_CATS.has(cat);
+    // Detectar padrão isotópico ou nome de radiofármaco no radiofarmaco
+    const hasIsotopePattern = /\b(\d{2,3})\s*[A-Za-z]{1,2}\b/.test(rfa) ||
+                              /\b(tare|sirt|radioembol|microesferas?|sir-?spheres|therasphere|mibg|iobenguano|psma|dotatate|dotatoc|dotanoc|dotamtate|iodeto|cloreto)\b/i.test(rfa) ||
+                              /lutathera|pluvicto|xofigo|azedra|locametz|netspot|illuccix|posluma/i.test(rfa);
+
+    if (isPureRadio || hasIsotopePattern) {
+      const label = TheraTrials._formatTheranosticLabel(s);
+      return { label: label, html: true, color: '#FF8400', icon: 'atom' };
+    }
+
+    // 4) IMUNOTERAPIA (ICIs, vacinas, BiTE, CAR-T, ADCs imuno, anti-GD2)
+    // Terminação flexível (\w* ao final) para aceitar variantes pt-BR (-mab/-mabe, -nib/-nibe)
+    if (/\b(pembrolizumab|pembro|keytruda|nivolumab|nivo|opdivo|ipilimumab|yervoy|atezolizumab|atezo|tecentriq|durvalumab|durva|imfinzi|tremelimumab|treme|imjudo|avelumab|bavencio|cemiplimab|libtayo|tislelizumab|tevimbra|sintilimab|tyvyt|camrelizumab|toripalimab|loqtorzi|dostarlimab|jemperli|spartalizumab|relatlimab|opdualag|sipuleucel|provenge|dinutuximab|unituxin|naxitamab|danyelza|hu3f8|3f8|car-t|cilta|carvykti|abecma|yescarta|teclistamab|tecvayli|elranatamab|talvey|talquetamab|epcoritamab|glofitamab|columvi|mosunetuzumab|lunsumio|blinatumomab|blincyto|amivantamab|rybrevant|enfortumab|padcev|sacituzumab|trodelvy|datopotamab|dato-dxd|n-803|nogapendekin|anktiva|interferon|interleukin|il-2|gm-csf)\w*/i.test(blobNarrow) || /\bipi\b/i.test(blobNarrow)) {
+      return { label: 'Imunoterapia', color: '#34D399', icon: 'shield-plus' };
+    }
+
+    // 5) TERAPIA-ALVO (TKIs, ARPi, CDK4/6, PARPi, anti-HER2, BRAF/MEK, KRAS, RET, NTRK, ALK, MET, EGFR, VEGF)
+    // Terminação flexível para tolerar variantes pt-BR
+    if (/\b(olaparib|lynparza|rucaparib|rubraca|niraparib|zejula|talazoparib|talzenna|veliparib|abirateron|zytiga|enzalutamid|xtandi|apalutamid|erleada|darolutamid|nubeqa|relugolix|palbociclib|ibrance|ribociclib|kisqali|abemaciclib|verzenio|alpelisib|piqray|capivasertib|truqap|inavolisib|trastuzumab|herceptin|pertuzumab|perjeta|t-dxd|enhertu|t-dm1|kadcyla|tucatinib|tukysa|lapatinib|tykerb|sotorasib|lumakras|adagrasib|krazati|encorafenib|braftovi|vemurafenib|zelboraf|dabrafenib|tafinlar|trametinib|mekinist|cobimetinib|cotellic|binimetinib|mektovi|selumetinib|koselugo|selpercatinib|retsevmo|pralsetinib|gavreto|larotrectinib|vitrakvi|entrectinib|rozlytrek|repotrectinib|augtyro|crizotinib|xalkori|lorlatinib|lorbrena|alectinib|alecensa|brigatinib|alunbrig|ceritinib|zykadia|gefitinib|iressa|erlotinib|tarceva|afatinib|giotrif|gilotrif|osimertinib|tagrisso|lazertinib|lazcluze|cetuximab|erbitux|panitumumab|vectibix|sunitinib|sutent|sorafenib|nexavar|regorafenib|stivarga|lenvatinib|lenvima|cabozantinib|cabometyx|cometriq|axitinib|inlyta|pazopanib|votrient|fruquintinib|fruzaqla|surufatinib|sulanda|everolimus|afinitor|temsirolimus|torisel|venetoclax|venclexta|ivosidenib|tibsovo|enasidenib|idhifa|pemigatinib|pemazyre|infigratinib|truseltiq|futibatinib|lytgobi|zanidatamab|ziihera|nirogacestat|ogsiveo|belzutifan|welireg|ramucirumab|cyramza|bevacizumab|avastin|aflibercept|zaltrap|tivozanib|fotivda|ponatinib|iclusig|dasatinib|sprycel|nilotinib|tasigna|imatinib|gleevec|bosutinib|bosulif|ruxolitinib|jakafi|fedratinib|inrebic|pacritinib|vonjo|momelotinib|ojjaara|idelalisib|zydelig|duvelisib|copiktra|copanlisib|aliqopa|umbralisib|ukoniq|ibrutinib|imbruvica|acalabrutinib|calquence|zanubrutinib|brukinsa|pirtobrutinib|jaypirca|midostaurin|rydapt|gilteritinib|xospata|quizartinib|vanflyta|olutasidenib|rezlidhia|elacestrant|orserdu|imlunestrant|camizestrant|giredestrant|amcenestrant|trilaciclib|cosela|mirvetuximab|elahere|tisotumab|tivdak|tafasitamab|monjuvi|polatuzumab|polivy|loncastuximab|zynlonta|brentuximab|adcetris|gemtuzumab|mylotarg|inotuzumab|besponsa|moxetumomab|lumoxiti|belantamab|blenrep|lenalidomida|revlimid|pomalidomida|pomalyst|talidomida|thalomid|iberdomida|mezigdomida|bortezomib|velcade|carfilzomib|kyprolis|ixazomib|ninlaro|daratumumab|darzalex|isatuximab|sarclisa|elotuzumab|empliciti|tazemetostat|tazverik|rivoceranib|apatinib|telisotuzumab|octreotid|sandostatin|lanreotid|somatuline|pasireotid|signifor|surufatinib|orteronel|asciminib|scemblix)\w*/i.test(blobNarrow)) {
+      return { label: 'Terapia-alvo', color: '#0EA5B7', icon: 'target' };
+    }
+
+    // 6) QUIMIOTERAPIA (citotóxicos clássicos) — terminação flexível
+    if (/\b(folfox|folfiri|capox|xelox|folfoxiri|capem|cape\+tem|capecitabin|xeloda|cisplatin|carboplatin|oxaliplatin|eloxatin|irinotecan|camptosar|paclitaxel|taxol|docetaxel|taxotere|cabazitaxel|jevtana|nab-?paclitaxel|abraxane|gemcitabin|gemzar|etoposid|vp-16|trifluridin|tas-?102|lonsurf|5-?fu|fluoruracil|temozolomid|temodal|temodar|dacarbazin|dtic|ciclofosfamid|cyclophosphamid|cytoxan|ifosfamid|holoxan|vincristin|oncovin|vinblastin|vinorelbin|navelbine|doxorrubicin|doxorubicin|adriamic|epirubicin|ellence|daunorubicin|daunoxome|melfalan|melphalan|alkeran|busulfan|myleran|busulfex|fludarabin|fludara|citarabin|cytarabin|ara-c|metotrexato|methotrexate|trexall|otrexup|pemetrexed|alimta|hidroxiureia|hydrea|topotecan|hycamtin|mitoxantron|novantrone|bendamustin|treanda|treosulfan|trabectedin|yondelis|lurbinectedin|zepzelca|nelarabin|arranon|raltitrexed|tomudex|mitomicin|streptozocin|zanosar|carmustin|bcnu|gliadel|tegafur|teysuno|s-?1|nimustin|liposomal|cpx-?351|vyxeos|asparaginase|elspar|erwinaze|fluorouracil|6-?mp|6-?tg|lomustin|fluoropirimidin|fluoro|gencitabin)\w*/i.test(blobNarrow)) {
+      return { label: 'Quimioterapia', color: '#FBBF24', icon: 'flask-conical' };
+    }
+
+    // 7) CIRURGIA / RADIOTERAPIA / NEOADJUVANTE puro — usa blob amplo (busca também em esquema e indicacao)
+    if (/\b(tireoidectomia|lobectomia|colectomia|gastrectomia|tme|cirurgia\s+(?:radical|inicial|prim)|surgery|resection|ressec[áa]vel|nefrectomia|prostatectomia|mastectomia|histerectomia|hepatectomia|radioterapia|qrt|imrt|sbrt|braquiterapia|radiocirurgia|ablação|ablation|tace|deb-tace|crioablação|microwave|rfa|watch-?and-?wait|órgão-?preservação|total\s+neoadjuvant|tnt|vigilância\s+ativa)\b/i.test(blobWide)) {
+      return { label: 'Cirurgia/RT', color: '#F472B6', icon: 'scissors' };
+    }
+
+    // 8) Default
+    return { label: 'Sistêmica', color: '#8E949C', icon: 'circle' };
+  };
+
+  // Formatador para teranóstico: retorna nome completo do radiotraçador (ex: ²²⁵Ac-PSMA-617)
+  TheraTrials._formatTheranosticLabel = function(s) {
+    let rfa = s.radiofarmaco || '';
+    // Normalizar superscripts unicode → dígitos comuns
+    rfa = rfa.replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹]/g, (m) => '⁰¹²³⁴⁵⁶⁷⁸⁹'.indexOf(m).toString());
+
+    // Padrão típico: "[177Lu]Lu-PSMA-617", "225Ac-PSMA-617", "[131I]MIBG", "223Ra-dicloreto", "90Y-microsferas"
+    // Captura: massa atômica + elemento + opcional ligante completo
+    const m = rfa.match(/\[?(\d{2,3})\]?\s*([A-Z][a-z]?)[\s\-\]]*([A-Za-z0-9\-\&]+(?:[\s\-][A-Za-z0-9\&]+)*)?/);
+    if (m) {
+      const mass = m[1];
+      const elem = m[2];
+      let ligand = (m[3] || '').trim();
+      // Limpar: cortar no primeiro parêntese, vírgula, ou espaço seguido de palavra descritiva
+      ligand = ligand.split(/\s*[\(,\/]/)[0].trim();
+      // Ligandos não têm espaços internos (ex.: PSMA-617, MIBG, DOTATATE, FAP-2286, PSMA-I&T)
+      // Cortar tudo a partir do primeiro espaço
+      ligand = ligand.split(/\s+/)[0];
+      // Se o ligando começa com a sigla do elemento (caso [177Lu]Lu-PSMA-617), descartar essa repetição
+      const elemRe = new RegExp('^' + elem + '[\\s\\-]+', 'i');
+      ligand = ligand.replace(elemRe, '');
+      // Simplificações de nomes longos
+      const ll = ligand.toLowerCase();
+      if (/dota-?tyr3?-?octreotate|tyr3?-?octreotate/.test(ll)) ligand = 'DOTATATE';
+      else if (/dota-?(tyr3?-?)?octreotide/.test(ll)) ligand = 'DOTATOC';
+      else if (/dota-?nal3?-?octreotide/.test(ll)) ligand = 'DOTANOC';
+      else if (/dota-?mtate|dotam-?tate/.test(ll)) ligand = 'DOTAMTATE';
+      else if (/microsferas?|micro.?esferas?|sir-?spheres|therasphere/.test(ll)) ligand = 'microesferas';
+      else if (/dicloreto|chloride/.test(ll)) ligand = '';  // ²²³Ra puro
+      else if (/iodeto|sodium\s*iodide|^nai$/.test(ll)) ligand = '';  // ¹³¹I puro
+      else if (/iobenguan/.test(ll)) ligand = 'MIBG';
+      // Renderizar
+      const eleStr = elem;
+      return ligand ? `<sup>${mass}</sup>${eleStr}-${ligand}` : `<sup>${mass}</sup>${eleStr}`;
+    }
+
+    // Fallback por categoria
+    if (s.category_id === 'hepatobiliar' && /sarah|sirvenib|dosisphere|legacy|premiere|trace|raser|sirflox|foxfire|epoch|tare/i.test(s.estudo || '')) {
+      return '<sup>90</sup>Y-microesferas';
+    }
+    const fbMap = {
+      'lupsma_prostata': '<sup>177</sup>Lu-PSMA-617',
+      'ra223_prostata': '<sup>223</sup>Ra',
+      'net_gep': '<sup>177</sup>Lu-DOTATATE',
+      'lupsma_ccrcc': '<sup>177</sup>Lu-PSMA-617',
+      'novos_psma': '<sup>225</sup>Ac-PSMA',
+      'ppgl': '<sup>131</sup>I-MIBG',
+      'neuroblastoma': '<sup>131</sup>I-MIBG',
+      'teranostico_emergente': 'Teranóstico',
+      'lung_radio_dev': 'Radioexp',
+      'breast_radio_dev': 'Radioexp',
+    };
+    return fbMap[s.category_id] || 'Teranóstico';
+  };
+
+  // ============================================================
+  // CLASSIFICAÇÃO DE LINHA DE TRATAMENTO
+  // Retorna { key, label, order } para agrupar dentro de modalidade
+  // ============================================================
+  TheraTrials.studyLine = function(s) {
+    if (!s) return { key: 'geral', label: 'Geral', order: 10 };
+    const fase  = String(s.fase || '').toLowerCase();
+    const ind   = String(s.indicacao || '').toLowerCase();
+    const acron = String(s.acron || '').toLowerCase();
+    const est   = String(s.estudo || '').toLowerCase();
+    const txt   = ind + ' ' + acron + ' ' + est;
+
+    // Diretriz / Meta-análise (não-trial)
+    if (/diretriz|guideline|consensus|consenso|meta-?an[aá]lise|systematic review/i.test(fase) ||
+        /\b(guidelines?|diretriz)\b/i.test(s.estudo || '')) {
+      return { key: 'diretriz', label: 'Diretriz / Consenso', order: 99 };
+    }
+
+    // Adjuvante / Neoadjuvante / Perioperatório / Locorregional curativo
+    if (/\b(adjuvante|adjuvant|perioperat[óo]ri|neoadjuvante|neoadjuvant|p[óo]s-?cirurgia|p[óo]s-?ressec|consolida[çc][ãa]o\s+(?:p[óo]s-?asct|imunoter|asct)|consolidation|watch.?and.?wait|órg[ãa]o-?preserv|vigil[âa]ncia\s+ativa|abla[çc][ãa]o|m[óo]rgan-?preserv|tnt\b|total\s+neoadjuvant|risco\s+(?:baixo|intermedi[áa]rio|alto)\s+(?:cdt|p[óo]s)|hr-?nbl|asct\b)\b/i.test(txt)) {
+      return { key: 'adj', label: 'Adjuvante · Perioperatório · Locorregional', order: 1 };
+    }
+
+    // Localmente avançado / Estágio II-III (pré-metastático mas não-adjuvante puro)
+    if (/\b(localmente\s+avan[çc]ado|locally\s+advanced|est[áa]gio\s+(?:ii|iii)\b|stage\s+(?:ii|iii)\b)\b/i.test(txt) &&
+        !/refrat|metast|avan[çc]ado\/met|m1\b/i.test(txt)) {
+      return { key: 'loc_adv', label: 'Localmente avançado', order: 2 };
+    }
+
+    // Refratário / 3L+ / pós-múltiplas linhas
+    if (/refrat[áa]rio|recidivad|relapsed|3.?ª?\s*linha|terceira\s+linha|third.?line|p[óo]s.?gemcis|p[óo]s.?(?:lu-?dotatate|prrt)|p[óo]s.?sorafenib|p[óo]s.?2\s*linhas|fourth.?line|p[óo]s.?(?:sunitinib|pazopanib|cabozan)|sotorasib.*pani|sotorasib\s+\+\s+panitumumab|adagrasib.*cetuximab|pos.?asct.*recidiv|altamente\s+refrat/i.test(txt)) {
+      return { key: '3L', label: '3ª linha+ · Refratário', order: 5 };
+    }
+
+    // 2ª linha / pós-1L
+    if (/\b(2.?ª?\s*linha|segunda\s+linha|\b2l\b|second.?line|p[óo]s.?1l\b|p[óo]s.?primeira\s+linha|p[óo]s.?progress[ãa]o\s+a\s+\w+|after\s+(?:sorafenib|gemcis|chemo)|pos.?fluoro\/oxa|p[óo]s.?fluoro)\b/i.test(txt)) {
+      return { key: '2L', label: '2ª linha', order: 4 };
+    }
+
+    // 1ª linha
+    if (/\b(1.?ª?\s*linha|primeira\s+linha|\b1l\b|first.?line|n[ãa]o.?tratad|untreated|treatment.?naive|sem\s+sist[eê]mica|sem\s+tratamento\s+pr[ée]vio|chemo.?naive|consolida[çc][ãa]o\s+inicial)\b/i.test(txt)) {
+      return { key: '1L', label: '1ª linha', order: 3 };
+    }
+
+    // Avançado/Metastático geral (sem linha explícita)
+    return { key: 'av', label: 'Avançado / Metastático', order: 10 };
+  };
+
   TheraTrials.phaseShort = function(fase) {
     const f = String(fase || '').toLowerCase();
     if (f.includes('fase 3') && f.includes('plataforma')) return 'Fase 3 Plat.';

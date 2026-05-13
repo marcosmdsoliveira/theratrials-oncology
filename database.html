@@ -252,7 +252,8 @@
   .study-card.compared { border-color: var(--teal); background: rgba(14, 165, 183, 0.05); }
 
   .card-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 0.5rem; margin-bottom: 0.75rem; padding-right: 36px; }
-  .card-cat { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.65rem; color: var(--stone); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 500; }
+  .card-cat { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.72rem; letter-spacing: 0.04em; font-weight: 600; font-family: var(--font-mono); }
+  .card-cat sup { font-size: 0.7em; vertical-align: super; margin-right: 1px; }
   .card-title { font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; color: var(--off-white); letter-spacing: -0.015em; margin: 0 0 0.35rem; line-height: 1.2; padding-right: 36px; }
   .study-card:hover .card-title { color: var(--amber-glow); }
   .card-nct { font-family: var(--font-mono); font-size: 0.7rem; color: var(--stone-2); margin-bottom: 0.75rem; }
@@ -325,6 +326,23 @@
   .pb-2 { background: rgba(96, 165, 250, 0.12); color: #93C5FD; border-color: rgba(96, 165, 250, 0.3); }
   .pb-1 { background: rgba(192, 132, 252, 0.12); color: #DDB4F9; border-color: rgba(192, 132, 252, 0.3); }
   .pb-other { background: rgba(251, 191, 36, 0.12); color: #FCD34D; border-color: rgba(251, 191, 36, 0.3); }
+
+  /* === Badge de modalidade terapêutica === */
+  .mod-badge {
+    display: inline-flex; align-items: center;
+    padding: 0.18rem 0.5rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    border: 1px solid;
+    white-space: nowrap;
+    background: var(--mod-bg, rgba(255,132,0,0.08));
+    color: var(--mod-fg, #FF8400);
+    border-color: var(--mod-border, rgba(255,132,0,0.3));
+  }
+  .mod-badge sup { font-size: 0.55em; vertical-align: super; margin-right: 1px; }
+  .card-top-meta { display: inline-flex; gap: 0.35rem; flex-wrap: wrap; align-items: center; }
 
   /* Compare table view */
   .compare-view { background: var(--graphite-2); border: 1px solid var(--border-soft); border-radius: var(--radius-lg); padding: 1.5rem; overflow-x: auto; margin-top: 1.5rem; }
@@ -441,15 +459,6 @@
                 </button>
               </template>
             </div>
-            <div class="upcoming-divider">Em breve</div>
-            <div class="cat-list">
-              <template x-for="t in tumorTypesUpcoming" :key="t.id">
-                <div class="cat-item upcoming">
-                  <span class="cat-dot" style="background: var(--stone-2)"></span>
-                  <span x-text="t.name"></span>
-                </div>
-              </template>
-            </div>
           </div>
         </div>
 
@@ -482,15 +491,6 @@
                       </button>
                     </template>
                   </div>
-                </div>
-              </template>
-            </div>
-            <div class="upcoming-divider">Em breve</div>
-            <div class="cat-list">
-              <template x-for="m in modalitiesUpcoming" :key="m.id">
-                <div class="cat-item upcoming">
-                  <span class="cat-dot" style="background: var(--stone-2)"></span>
-                  <span x-text="m.name"></span>
                 </div>
               </template>
             </div>
@@ -624,8 +624,8 @@
               </button>
               <div class="card-top">
                 <div class="card-cat">
-                  <span class="cat-dot" :class="`cat-${s.category_id}`"></span>
-                  <span x-text="s.category_short"></span>
+                  <span class="cat-dot" :style="`background: ${TheraTrials.studyModality(s).color}; box-shadow: 0 0 6px ${TheraTrials.studyModality(s).color}`"></span>
+                  <span :style="`color: ${TheraTrials.studyModality(s).color}`" x-html="TheraTrials.studyModality(s).label"></span>
                 </div>
                 <span class="pb" :class="phaseClassShort(s.fase)" x-text="phaseShort(s.fase)"></span>
               </div>
