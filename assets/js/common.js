@@ -116,7 +116,7 @@
 
     // Marcador explícito no banco: campo radiofarmaco com sufixo "(não-radiofármaco)"
     // indica que o esquema descrito ali é não-radio (apenas convenção editorial).
-    const isExplicitNonRadio = /\(\s*n[aã]o-?radio[a-zà-ú]*\s*\)/i.test(rfa);
+    const isExplicitNonRadio = /\(\s*n[aã]o-?radio[^)]*\)/i.test(rfa);
 
     // Isótopos relevantes em medicina nuclear (terapêuticos e diagnósticos teranósticos).
     // O símbolo precisa estar grudado ou hifenado ao número e NÃO seguido de unidade
