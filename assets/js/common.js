@@ -113,12 +113,24 @@
       'lung_radio_dev', 'breast_radio_dev', 'teranostico_emergente'
     ]);
     const isPureRadio = PURE_RADIO_CATS.has(cat);
-    // Detectar padrão isotópico ou nome de radiofármaco no radiofarmaco
-    const hasIsotopePattern = /\b(\d{2,3})\s*[A-Za-z]{1,2}\b/.test(rfa) ||
-                              /\b(tare|sirt|radioembol|microesferas?|sir-?spheres|therasphere|mibg|iobenguano|psma|dotatate|dotatoc|dotanoc|dotamtate|iodeto|cloreto)\b/i.test(rfa) ||
-                              /lutathera|pluvicto|xofigo|azedra|locametz|netspot|illuccix|posluma/i.test(rfa);
 
-    if (isPureRadio || hasIsotopePattern) {
+    // Marcador explícito no banco: campo radiofarmaco com sufixo "(não-radiofármaco)"
+    // indica que o esquema descrito ali é não-radio (apenas convenção editorial).
+    const isExplicitNonRadio = /\(\s*n[aã]o-?radio[a-zà-ú]*\s*\)/i.test(rfa);
+
+    // Isótopos relevantes em medicina nuclear (terapêuticos e diagnósticos teranósticos).
+    // O símbolo precisa estar grudado ou hifenado ao número e NÃO seguido de unidade
+    // de dose ("mg", "g", "mL", "kg" etc.) — evita match em "600 mg", "200 mg".
+    const ISOTOPE_NUMERIC = /\b(?:(?:177|176)\s*Lu|Lu[-\s]?17[67]|225\s*Ac|Ac[-\s]?225|223\s*Ra|Ra[-\s]?223|90\s*Y|Y[-\s]?90|13[12]\s*I|I[-\s]?13[12]|123\s*I|I[-\s]?123|161\s*Tb|Tb[-\s]?161|67\s*Cu|Cu[-\s]?67|64\s*Cu|Cu[-\s]?64|166\s*Ho|Ho[-\s]?166|188\s*Re|Re[-\s]?188|186\s*Re|Re[-\s]?186|153\s*Sm|Sm[-\s]?153|89\s*Sr|Sr[-\s]?89|212\s*Pb|Pb[-\s]?212|213\s*Bi|Bi[-\s]?213|211\s*At|At[-\s]?211|227\s*Th|Th[-\s]?227|68\s*Ga|Ga[-\s]?68|18\s*F|F[-\s]?18|99m?\s*Tc|Tc[-\s]?99m?|89\s*Zr|Zr[-\s]?89|44\s*Sc|Sc[-\s]?44|111\s*In|In[-\s]?111|201\s*Tl|Tl[-\s]?201)\b(?!\s*(?:mg|mcg|ug|g|ml|mL|L|kg|UI|UFC))/i;
+    // Plataformas de radiofármaco identificáveis pelo nome (sem nº de isótopo).
+    const RADIO_PLATFORM = /\b(tare|sirt|radioembol\w*|microesferas?|sir-?spheres|therasphere|quirem|holmium\s+microsph|mibg|iobenguano|iobenguane|psma-617|psma-i&t|psma-i-t|dotatate|dotatoc|dotanoc|dotamtate|sartate|pentixather|girentuximab.*lu|girentuximab.*y|fapi-46|fap-2286|pnt2002|pnt2003)\b/i;
+    const RADIO_BRAND = /\b(lutathera|pluvicto|xofigo|azedra|metastron|quadramet|zevalin|bexxar|locametz|netspot|illuccix|posluma|theraspheres?|sir-?spheres?|quiremspheres?)\b/i;
+
+    const hasIsotopePattern = !isExplicitNonRadio && (
+      ISOTOPE_NUMERIC.test(rfa) || RADIO_PLATFORM.test(rfa) || RADIO_BRAND.test(rfa)
+    );
+
+    if ((isPureRadio && !isExplicitNonRadio) || hasIsotopePattern) {
       const label = TheraTrials._formatTheranosticLabel(s);
       return { label: label, html: true, color: '#FF8400', icon: 'atom' };
     }
