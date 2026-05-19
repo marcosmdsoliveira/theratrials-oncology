@@ -152,6 +152,11 @@
       return { label: 'Quimioterapia', color: '#FBBF24', icon: 'flask-conical' };
     }
 
+    // 6.5) RT/SBRT — categorias dedicadas (MDT, consolidação, próstata localizada)
+    if (['rt_sbrt_oligo', 'rt_prostata_local', 'rt_consolidacao'].includes(cat)) {
+      return { label: 'Cirurgia/RT', color: '#F472B6', icon: 'scissors' };
+    }
+
     // 7) CIRURGIA / RADIOTERAPIA / NEOADJUVANTE puro — usa blob amplo (busca também em esquema e indicacao)
     if (/\b(tireoidectomia|lobectomia|colectomia|gastrectomia|tme|cirurgia\s+(?:radical|inicial|prim)|surgery|resection|ressec[áa]vel|nefrectomia|prostatectomia|mastectomia|histerectomia|hepatectomia|radioterapia|qrt|imrt|sbrt|braquiterapia|radiocirurgia|ablação|ablation|tace|deb-tace|crioablação|microwave|rfa|watch-?and-?wait|órgão-?preservação|total\s+neoadjuvant|tnt|vigilância\s+ativa)\b/i.test(blobWide)) {
       return { label: 'Cirurgia/RT', color: '#F472B6', icon: 'scissors' };
