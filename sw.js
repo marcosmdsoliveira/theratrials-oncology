@@ -1,13 +1,13 @@
 /* =============================================================================
    TheraTrials Oncology — Service Worker
-   v1.1.0 · 2026-05-10
+   v1.2.0 · 2026-05-19 (Pipeline RLT → TheraTrials Explorer)
    Estratégias:
      • HTML  → network-first com fallback em cache (e em última instância /offline.html)
      • Assets estáticos (CSS/JS/IMG/Fonts) → cache-first com revalidação background
      • Google Fonts / CDNs (Lucide, etc.) → stale-while-revalidate
    ============================================================================= */
 
-const CACHE_VERSION = 'theratrials-v2026.05.14-b5e9313';
+const CACHE_VERSION = 'theratrials-v2026.05.19-explorer';
 const CACHE_STATIC  = `${CACHE_VERSION}-static`;
 const CACHE_PAGES   = `${CACHE_VERSION}-pages`;
 const CACHE_RUNTIME = `${CACHE_VERSION}-runtime`;
@@ -17,7 +17,7 @@ const CORE_PAGES = [
   './',
   './index.html',
   './database.html',
-  './pipeline.html',
+  './explorer.html',
   './estudos-ativos.html',
   './tumor-boards.html',
   './modalidades.html',
@@ -42,8 +42,8 @@ const CORE_ASSETS = [
   './assets/js/data.js',
   './assets/js/common.js',
   './assets/js/trials_br.js',
-  './assets/data/pipeline.json',
-  './assets/data/pipeline.js',
+  './assets/data/explorer.json',
+  './assets/data/explorer.js',
   './assets/js/pwa-install.js',
   './assets/img/logo-app.png',
   './assets/img/logo-circular.png',

@@ -567,7 +567,7 @@
     <nav class="nav">
       <a href="index.html">Home</a>
       <a href="database.html">Database</a>
-      <a href="pipeline.html">Pipeline RLT</a>
+      <a href="explorer.html">TheraTrials Explorer</a>
       <a href="estudos-ativos.html">Estudos ativos</a>
       <a href="tumor-boards.html">Tumor boards</a>
       <a href="modalidades.html">Modalidades</a>
@@ -602,7 +602,12 @@
       <a href="database.html" class="pmap-card" style="--accent:#FF8400">
         <div class="pmap-icon"><i data-lucide="database" style="width:22px;height:22px"></i></div>
         <div class="pmap-name">Database</div>
-        <div class="pmap-desc">Mais de 300 ensaios · atualização semanal · favoritos · citações</div>
+        <div class="pmap-desc">Mais de 400 ensaios · 36 categorias · favoritos · citações</div>
+      </a>
+      <a href="explorer.html" class="pmap-card" style="--accent:#22D3EE">
+        <div class="pmap-icon"><i data-lucide="radar" style="width:22px;height:22px"></i></div>
+        <div class="pmap-name">TheraTrials Explorer</div>
+        <div class="pmap-desc">Pipeline global de radioligantes · dados do ClinicalTrials.gov · atualização mensal</div>
       </a>
       <a href="estudos-ativos.html" class="pmap-card" style="--accent:#34d399">
         <div class="pmap-icon"><i data-lucide="map-pin" style="width:22px;height:22px"></i></div>
@@ -622,7 +627,7 @@
       <a href="radiofarmacos.html" class="pmap-card" style="--accent:#A855F7">
         <div class="pmap-icon"><i data-lucide="atom" style="width:22px;height:22px"></i></div>
         <div class="pmap-name">Radiofármacos</div>
-        <div class="pmap-desc">Seis dossiês completos · <sup>177</sup>Lu, <sup>223</sup>Ra, <sup>90</sup>Y, <sup>131</sup>I-MIBG, novos α</div>
+        <div class="pmap-desc">Sete dossiês completos · <sup>177</sup>Lu, <sup>223</sup>Ra, <sup>90</sup>Y, <sup>131</sup>I-MIBG, <sup>131</sup>I, novos α</div>
       </a>
       <a href="ferramentas.html" class="pmap-card" style="--accent:#FBBF24">
         <div class="pmap-icon"><i data-lucide="calculator" style="width:22px;height:22px"></i></div>
@@ -652,7 +657,7 @@
     <div class="block-header">
       <div class="left">
         <span class="num-badge">Database</span>
-        <h2>Mais de 300 ensaios clínicos · atualizações semanais</h2>
+        <h2>Mais de 400 ensaios clínicos · 36 categorias</h2>
         <p>Pesquisa por tumor, modalidade ou estudo individual, com atualizações semanais. Cobertura: teranóstico (próstata, NET, HCC/mCRC, ccRCC, neuroblastoma/PPGL), pulmão (NSCLC drivers, IO 1L, perioperatório, SCLC), mama (HER2+, HR+/HER2-, TNBC, BRCA-mut, imagem molecular) e uro-oncologia (ccRCC IO+TKI, RCC adjuvante e não-clear, urotelial avançado e perioperatório/NMIBC). Cada linha leva a uma ficha com 40 campos.</p>
       </div>
       <a href="database.html" class="btn btn-primary">
@@ -680,6 +685,112 @@
         <i data-lucide="git-compare-arrows" style="width:20px;height:20px"></i>
         <div class="name">Comparar lado a lado</div>
         <div class="d">Drawer de comparação para até 4 estudos simultaneamente.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============== BLOCO · THERATRIALS EXPLORER ============== -->
+<style>
+  .explorer-block {
+    background: linear-gradient(135deg, rgba(34, 211, 238, 0.06) 0%, rgba(14, 165, 183, 0.04) 100%);
+    border: 1px solid rgba(34, 211, 238, 0.2);
+    border-radius: var(--radius-lg);
+    padding: 2rem 1.85rem;
+  }
+  .explorer-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 0.85rem;
+    margin: 1.5rem 0;
+  }
+  .explorer-feat {
+    background: var(--graphite-2);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-md);
+    padding: 1.1rem 1.2rem;
+    display: flex; align-items: flex-start; gap: 0.75rem;
+  }
+  .explorer-feat i { color: #22D3EE; flex-shrink: 0; margin-top: 2px; }
+  .explorer-feat .name { font-weight: 600; font-size: 0.92rem; margin-bottom: 0.25rem; }
+  .explorer-feat .d { font-size: 0.78rem; color: var(--stone); line-height: 1.45; }
+  .explorer-isotopes {
+    display: flex; flex-wrap: wrap; gap: 0.45rem;
+    margin-top: 1rem; padding-top: 0.85rem;
+    border-top: 1px solid var(--border-soft);
+  }
+  .explorer-isotopes span {
+    background: rgba(34, 211, 238, 0.08);
+    border: 1px solid rgba(34, 211, 238, 0.2);
+    padding: 0.22rem 0.6rem;
+    border-radius: 100px;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: #22D3EE;
+  }
+</style>
+<section class="block-section">
+  <div class="container">
+    <div class="block-header">
+      <div class="left">
+        <span class="num-badge" style="background:rgba(34,211,238,0.12); color:#22D3EE; border-color:rgba(34,211,238,0.3)">TheraTrials Explorer</span>
+        <h2>Pipeline global de radioligantes terapêuticos</h2>
+        <p>Tracker alimentado diretamente pela API v2 do <strong style="color:var(--off-white)">ClinicalTrials.gov</strong> com atualização mensal automática. Filtre por isótopo, alvo molecular, fase, neoplasia, sponsor e presença no Brasil.</p>
+      </div>
+      <a href="explorer.html" class="btn btn-primary" style="background:#22D3EE; color:#0E0F12">
+        Abrir Explorer <i data-lucide="arrow-right" style="width:16px;height:16px"></i>
+      </a>
+    </div>
+
+    <div class="explorer-block">
+      <div class="explorer-features">
+        <div class="explorer-feat">
+          <i data-lucide="radar" style="width:20px;height:20px"></i>
+          <div>
+            <div class="name">Dados verificados</div>
+            <div class="d">Fonte programática direta do CT.gov. Nenhum dado inserido manualmente.</div>
+          </div>
+        </div>
+        <div class="explorer-feat">
+          <i data-lucide="refresh-cw" style="width:20px;height:20px"></i>
+          <div>
+            <div class="name">Refresh mensal</div>
+            <div class="d">GitHub Action atualiza automaticamente no dia 1 de cada mês.</div>
+          </div>
+        </div>
+        <div class="explorer-feat">
+          <i data-lucide="filter" style="width:20px;height:20px"></i>
+          <div>
+            <div class="name">9 filtros laterais</div>
+            <div class="d">Isótopo, classe, alvo, ligante, fase, status, neoplasia, sponsor, Brasil.</div>
+          </div>
+        </div>
+        <div class="explorer-feat">
+          <i data-lucide="download" style="width:20px;height:20px"></i>
+          <div>
+            <div class="name">Export CSV</div>
+            <div class="d">Baixe a tabela filtrada para uso em planilhas e apresentações.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="explorer-isotopes">
+        <span><sup>177</sup>Lu</span>
+        <span><sup>225</sup>Ac</span>
+        <span><sup>212</sup>Pb</span>
+        <span><sup>227</sup>Th</span>
+        <span><sup>223</sup>Ra</span>
+        <span><sup>90</sup>Y</span>
+        <span><sup>131</sup>I</span>
+        <span><sup>161</sup>Tb</span>
+        <span><sup>67</sup>Cu</span>
+        <span><sup>211</sup>At</span>
+        <span><sup>213</sup>Bi</span>
+        <span>FAPI</span>
+        <span>PSMA</span>
+        <span>DOTATATE</span>
+        <span>MIBG</span>
       </div>
     </div>
   </div>
@@ -961,10 +1072,13 @@
 <section class="block-section" style="text-align:center; padding-bottom:5rem">
   <div class="container">
     <h2 style="font-weight: 300; margin-bottom: 1rem">Pronto para conectar evidência e prática clínica?</h2>
-    <p class="subtitle" style="margin-bottom: 2rem; color: var(--stone)">Mais de 300 ensaios clínicos avaliados com atualizações semanais · 14 ativos no Brasil · 7 dossiês de radiofármaco · 9 grupos de critérios oncológicos · BCLC 2026, AJCC 8ª ed., CTCAE v6.0 · hyperlinks diretos para PubMed e ClinicalTrials.gov.</p>
+    <p class="subtitle" style="margin-bottom: 2rem; color: var(--stone)">Mais de 400 ensaios clínicos curados em 36 categorias · pipeline global de radioligantes via ClinicalTrials.gov · 14 estudos ativos no Brasil · 7 dossiês de radiofármaco · 9 grupos de critérios oncológicos · AJCC 8ª ed., CTCAE v6.0, BCLC 2026 · hyperlinks diretos para PubMed e ClinicalTrials.gov.</p>
     <div class="hero-actions" style="margin-top: 0; display:flex; gap:0.75rem; justify-content:center; flex-wrap:wrap">
       <a href="database.html" class="btn btn-primary">
         Acessar o banco <i data-lucide="arrow-right" style="width:16px;height:16px"></i>
+      </a>
+      <a href="explorer.html" class="btn btn-secondary" style="border-color:#22D3EE; color:#22D3EE">
+        Explorer <i data-lucide="radar" style="width:16px;height:16px"></i>
       </a>
       <a href="tumor-boards.html" class="btn btn-secondary">
         Tumor boards <i data-lucide="arrow-right" style="width:16px;height:16px"></i>
@@ -1015,6 +1129,7 @@
         <h4 style="font-size:0.78rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--stone); margin:0 0 0.85rem">Plataforma</h4>
         <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.5rem">
           <li><a href="database.html" style="color:var(--off-white); text-decoration:none; font-size:0.88rem">Database</a></li>
+          <li><a href="explorer.html" style="color:var(--off-white); text-decoration:none; font-size:0.88rem">TheraTrials Explorer</a></li>
           <li><a href="estudos-ativos.html" style="color:var(--off-white); text-decoration:none; font-size:0.88rem">Estudos ativos · BR</a></li>
           <li><a href="tumor-boards.html" style="color:var(--off-white); text-decoration:none; font-size:0.88rem">Tumor boards</a></li>
           <li><a href="modalidades.html" style="color:var(--off-white); text-decoration:none; font-size:0.88rem">Modalidades</a></li>

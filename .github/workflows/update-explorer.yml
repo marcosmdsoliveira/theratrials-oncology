@@ -1,6 +1,6 @@
-name: Update Pipeline RLT (radioligand therapy)
+name: Update TheraTrials Explorer (radioligand therapy)
 
-# Atualiza assets/data/pipeline.json com o dataset completo do
+# Atualiza assets/data/explorer.json com o dataset completo do
 # ClinicalTrials.gov v2 todo dia 1 de cada mês.
 # Também pode ser disparado manualmente (workflow_dispatch).
 
@@ -18,7 +18,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: update-pipeline
+  group: update-explorer
   cancel-in-progress: false
 
 jobs:
@@ -40,17 +40,17 @@ jobs:
         id: fetch
         run: |
           python scripts/fetch_trials.py
-          echo "json_bytes=$(stat -c %s assets/data/pipeline.json)" >> "$GITHUB_OUTPUT"
-          echo "trials=$(python -c 'import json;print(json.load(open(\"assets/data/pipeline.json\"))[\"totals\"][\"trials\"])')" >> "$GITHUB_OUTPUT"
+          echo "json_bytes=$(stat -c %s assets/data/explorer.json)" >> "$GITHUB_OUTPUT"
+          echo "trials=$(python -c 'import json;print(json.load(open(\"assets/data/explorer.json\"))[\"totals\"][\"trials\"])')" >> "$GITHUB_OUTPUT"
 
       - name: Diff summary
         run: |
-          echo "## Pipeline RLT atualizado" >> "$GITHUB_STEP_SUMMARY"
+          echo "## TheraTrials Explorer atualizado" >> "$GITHUB_STEP_SUMMARY"
           echo "" >> "$GITHUB_STEP_SUMMARY"
           echo "- **Estudos** no JSON final: ${{ steps.fetch.outputs.trials }}" >> "$GITHUB_STEP_SUMMARY"
-          echo "- **Tamanho** de \`assets/data/pipeline.json\`: ${{ steps.fetch.outputs.json_bytes }} bytes" >> "$GITHUB_STEP_SUMMARY"
+          echo "- **Tamanho** de \`assets/data/explorer.json\`: ${{ steps.fetch.outputs.json_bytes }} bytes" >> "$GITHUB_STEP_SUMMARY"
           echo "" >> "$GITHUB_STEP_SUMMARY"
-          git --no-pager diff --stat assets/data/pipeline.json || true
+          git --no-pager diff --stat assets/data/explorer.json || true
 
       - name: Commit and push if changed
         env:
@@ -58,12 +58,12 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          if git diff --quiet assets/data/pipeline.json assets/data/pipeline.js && [ "$FORCE" != "true" ]; then
-            echo "pipeline.json/pipeline.js sem mudanças — nada a fazer."
+          if git diff --quiet assets/data/explorer.json assets/data/explorer.js && [ "$FORCE" != "true" ]; then
+            echo "explorer.json/explorer.js sem mudanças — nada a fazer."
           else
-            git add assets/data/pipeline.json assets/data/pipeline.js
+            git add assets/data/explorer.json assets/data/explorer.js
             DATE=$(date -u +"%Y-%m-%d")
             git commit -m "data(pipeline): refresh CT.gov RLT pipeline ($DATE) · ${{ steps.fetch.outputs.trials }} estudos"
             git push
-            echo "✓ pipeline.json/pipeline.js bumpados e empurrados"
+            echo "✓ explorer.json/explorer.js bumpados e empurrados"
           fi

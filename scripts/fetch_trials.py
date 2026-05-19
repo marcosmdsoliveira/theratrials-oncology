@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """
-TheraTrials Oncology — Pipeline RLT
+TheraTrials Oncology — TheraTrials Explorer
 ===========================================================
 Consulta a API v2 do ClinicalTrials.gov, agrega todos os estudos
 de radiofármacos terapêuticos em oncologia, normaliza os campos,
 classifica por isótopo / ligante / alvo / classe e gera o arquivo
-estático que alimenta a página `pipeline.html`.
+estático que alimenta a página `explorer.html`.
 
-Saída:  site/assets/data/pipeline.json (+ pipeline.js como fallback)
+Saída:  site/assets/data/explorer.json (+ explorer.js como fallback)
 Stats:  imprime sumário no stdout.
 
 Sem dependências externas — só stdlib (urllib + json).
@@ -16,7 +16,7 @@ Uso local:
     python scripts/fetch_trials.py
 
 Uso CI (GitHub Action):
-    Mesmo comando, commit do diff de pipeline.json/pipeline.js se houver mudança.
+    Mesmo comando, commit do diff de explorer.json/explorer.js se houver mudança.
 """
 
 from __future__ import annotations
@@ -40,11 +40,11 @@ USER_AGENT = "TheraTrials-Oncology/1.0 (https://marcosmdsoliveira.github.io/ther
 # Diretório onde o JSON é salvo (relativo à raiz do `site/`).
 THIS_FILE = Path(__file__).resolve()
 SITE_DIR = THIS_FILE.parent.parent  # site/
-OUTPUT = SITE_DIR / "assets" / "data" / "pipeline.json"
-OUTPUT_JS = SITE_DIR / "assets" / "data" / "pipeline.js"
+OUTPUT = SITE_DIR / "assets" / "data" / "explorer.json"
+OUTPUT_JS = SITE_DIR / "assets" / "data" / "explorer.js"
 
 # -----------------------------------------------------------------------------
-# Queries (cobertura do "Pipeline RLT")
+# Queries (cobertura do "TheraTrials Explorer")
 # Cada entrada é um termo de intervenção. A API faz match fuzzy
 # e tolera sinônimos, então uma única query como "Lu-177" já pega
 # Pluvicto, Lutathera, PSMA-617, DOTATATE, NeoB, etc.
@@ -455,15 +455,15 @@ def main() -> int:
     OUTPUT.write_text(json.dumps(output, ensure_ascii=False, indent=1), encoding="utf-8")
     size_kb = OUTPUT.stat().st_size / 1024
     print(f"\n[fetch_trials] ✓ gravado: {OUTPUT}  ({size_kb:.1f} KB)")
-    # Espelha em pipeline.js (fallback para file:// e cache PWA)
+    # Espelha em explorer.js (fallback para file:// e cache PWA)
     js_payload = (
         "/* ============================================================\n"
-        "   TheraTrials Oncology - Pipeline RLT dataset (auto-gerado)\n"
-        "   Espelho de assets/data/pipeline.json em formato JS-bootstrap.\n"
-        "   pipeline.html prefere o JSON via fetch e cai aqui se fetch falha\n"
+        "   TheraTrials Oncology - TheraTrials Explorer dataset (auto-gerado)\n"
+        "   Espelho de assets/data/explorer.json em formato JS-bootstrap.\n"
+        "   explorer.html prefere o JSON via fetch e cai aqui se fetch falha\n"
         "   (file://, offline cache). Nao editar a mao.\n"
         "   ============================================================ */\n"
-        "window.THERA_PIPELINE = " + json.dumps(output, ensure_ascii=False) + ";\n"
+        "window.THERA_EXPLORER = " + json.dumps(output, ensure_ascii=False) + ";\n"
     )
     OUTPUT_JS.write_text(js_payload, encoding="utf-8")
     print(f"[fetch_trials] OK gravado: {OUTPUT_JS}  ({OUTPUT_JS.stat().st_size/1024:.1f} KB)")

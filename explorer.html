@@ -18,10 +18,10 @@
 <link rel="shortcut icon" href="assets/img/icons/favicon-32.png">
 <link rel="apple-touch-icon" href="assets/img/icons/apple-touch-icon.png">
 
-<title>Pipeline RLT · TheraTrials Oncology</title>
-<meta name="description" content="Pipeline global de radiofármacos terapêuticos em oncologia. Filtre por isótopo, ligante, fase, neoplasia, sponsor e país. Fonte: ClinicalTrials.gov v2, atualização mensal automática.">
-<meta property="og:title" content="Pipeline RLT · TheraTrials Oncology">
-<meta property="og:description" content="Pipeline ativo de radioligantes terapêuticos em oncologia. Filtre por isótopo, ligante, fase, neoplasia, sponsor e país. ClinicalTrials.gov v2, atualização mensal automática.">
+<title>TheraTrials Explorer · TheraTrials Oncology</title>
+<meta name="description" content="TheraTrials Explorer — tracker global de radiofármacos terapêuticos em oncologia. Filtre por isótopo, ligante, fase, neoplasia, sponsor e país. Fonte: ClinicalTrials.gov v2, atualização mensal automática.">
+<meta property="og:title" content="TheraTrials Explorer · TheraTrials Oncology">
+<meta property="og:description" content="Tracker ativo de radioligantes terapêuticos em oncologia. Filtre por isótopo, ligante, fase, neoplasia, sponsor e país. ClinicalTrials.gov v2, atualização mensal automática.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://marcosmdsoliveira.github.io/theratrials-oncology/assets/img/hero-banner.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -33,27 +33,27 @@
 <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.13.5/dist/cdn.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.5/dist/cdn.min.js"></script>
 <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
-<!-- Bootstrap dataset. Em HTTPS pipeline.json é fetcheado; em file:// usa-se este script. -->
-<script src="assets/data/pipeline.js"></script>
+<!-- Bootstrap dataset. Em HTTPS explorer.json é fetcheado; em file:// usa-se este script. -->
+<script src="assets/data/explorer.js"></script>
 <script>
   // Diagnóstico: imprime no console o estado dos pré-requisitos.
-  console.log('[Pipeline RLT] boot ·',
-    'THERA_PIPELINE:', !!window.THERA_PIPELINE ? 'OK (' + window.THERA_PIPELINE.trials.length + ' trials)' : 'AUSENTE',
+  console.log('[TheraTrials Explorer] boot ·',
+    'THERA_EXPLORER:', !!window.THERA_EXPLORER ? 'OK (' + window.THERA_EXPLORER.trials.length + ' trials)' : 'AUSENTE',
     '· lucide:', !!window.lucide,
     '· document.readyState:', document.readyState
   );
   window.addEventListener('load', () => {
     setTimeout(() => {
-      console.log('[Pipeline RLT] após load · Alpine:', typeof window.Alpine !== 'undefined');
+      console.log('[TheraTrials Explorer] após load · Alpine:', typeof window.Alpine !== 'undefined');
       if (typeof window.Alpine === 'undefined') {
         const w = document.createElement('div');
         w.style.cssText = 'position:fixed;top:0;left:0;right:0;background:#7f1d1d;color:#fff;padding:0.75rem 1rem;font:14px/1.4 system-ui;z-index:99999';
         w.textContent = '⚠ Alpine.js não carregou (cdn.jsdelivr.net bloqueado?). A tabela e os filtros não vão funcionar. Abra a página por HTTP em vez de file://, ou cheque a aba Network.';
         document.body.appendChild(w);
-      } else if (!window.THERA_PIPELINE) {
+      } else if (!window.THERA_EXPLORER) {
         const w = document.createElement('div');
         w.style.cssText = 'position:fixed;top:0;left:0;right:0;background:#7f1d1d;color:#fff;padding:0.75rem 1rem;font:14px/1.4 system-ui;z-index:99999';
-        w.textContent = '⚠ window.THERA_PIPELINE ausente — pipeline.js não foi carregado. Cheque a aba Network do DevTools.';
+        w.textContent = '⚠ window.THERA_EXPLORER ausente — explorer.js não foi carregado. Cheque a aba Network do DevTools.';
         document.body.appendChild(w);
       }
     }, 500);
@@ -62,7 +62,7 @@
 
 <style>
   /* ============================================================
-     Pipeline RLT · radioligand therapy
+     TheraTrials Explorer · radioligand therapy
      ============================================================ */
   .tr-hero {
     padding: 2.5rem 0 1.25rem;
@@ -208,7 +208,7 @@
   }
   .tr-export-btn:hover { border-color: var(--amber); color: var(--amber); }
 
-  /* Tabela densa do pipeline */
+  /* Tabela densa do tracker */
   .tr-table-wrap {
     background: var(--graphite-2);
     border: 1px solid var(--border-soft);
@@ -448,7 +448,7 @@
   }
 </style>
 </head>
-<body x-data="pipelineApp()" x-init="init()" :class="{ 'modal-open': selected }">
+<body x-data="explorerApp()" x-init="init()" :class="{ 'modal-open': selected }">
 
 <!-- ============== HEADER ============== -->
 <header class="site-header">
@@ -463,7 +463,7 @@
     <nav class="nav">
       <a href="index.html">Home</a>
       <a href="database.html">Database</a>
-      <a href="pipeline.html" class="active">Pipeline RLT</a>
+      <a href="explorer.html" class="active">TheraTrials Explorer</a>
       <a href="estudos-ativos.html">Estudos ativos</a>
       <a href="tumor-boards.html">Tumor boards</a>
       <a href="modalidades.html">Modalidades</a>
@@ -478,21 +478,21 @@
 <!-- ============== HERO ============== -->
 <section class="tr-hero">
   <div class="container">
-    <span class="eyebrow">Pipeline global · radiofármacos terapêuticos</span>
-    <h1>Pipeline <span class="accent">RLT</span></h1>
-    <p>Pipeline ativo de radioligantes terapêuticos em oncologia. Filtre por isótopo, ligante/alvo, fase, neoplasia, sponsor e país. Fonte: <strong>ClinicalTrials.gov v2</strong>, com atualização automática mensal.</p>
+    <span class="eyebrow">Tracker global · radiofármacos terapêuticos</span>
+    <h1>TheraTrials <span class="accent">Explorer</span></h1>
+    <p>Tracker ativo de radioligantes terapêuticos em oncologia. Filtre por isótopo, ligante/alvo, fase, neoplasia, sponsor e país. Fonte: <strong>ClinicalTrials.gov v2</strong>, com atualização automática mensal.</p>
 
     <div class="src-line" :class="{ 'is-seed': data.is_seed }">
       <span class="dot"></span>
       <span x-show="!data.is_seed && !data.is_empty">Dataset CT.gov · <strong x-text="data.totals?.trials || 0"></strong>&nbsp;estudos · atualizado em <strong x-text="prettyDate(data.generated_at)"></strong></span>
-      <span x-show="data.is_seed && !data.is_empty">Seed curado · <strong x-text="data.totals?.trials || 0"></strong>&nbsp;estudos · GitHub Action expandirá para o pipeline completo no próximo refresh</span>
+      <span x-show="data.is_seed && !data.is_empty">Seed curado · <strong x-text="data.totals?.trials || 0"></strong>&nbsp;estudos · GitHub Action expandirá para o catálogo completo no próximo refresh</span>
       <span x-show="data.is_empty">Aguardando primeiro refresh automatizado da API ClinicalTrials.gov v2</span>
     </div>
 
     <!-- Aviso visível quando o dataset está vazio (aguardando 1º run da Action) -->
     <div x-show="data.is_empty" x-cloak style="max-width:780px; margin:1.5rem auto 0; padding:1rem 1.25rem; background:rgba(251,191,36,0.08); border:1px solid rgba(251,191,36,0.35); border-radius:var(--radius-md); color:#FCD34D; text-align:left; font-size:0.9rem; line-height:1.55;">
-      <strong style="display:block; margin-bottom:0.35rem; color:#FCD34D;">⚙ Pipeline aguardando primeira sincronização</strong>
-      Esta página é alimentada pela API v2 do ClinicalTrials.gov via GitHub Action mensal. Para popular agora com dados <strong>verificados e atualizados</strong>, dispare manualmente o workflow <code style="background:rgba(0,0,0,0.3);padding:1px 6px;border-radius:4px;font-family:var(--font-mono);font-size:0.85em">Update Pipeline RLT</code> em <a href="https://github.com/marcosmdsoliveira/theratrials-oncology/actions" target="_blank" rel="noopener" style="color:var(--amber);text-decoration:underline">Actions → Run workflow</a>. Decidimos não exibir um seed curado manualmente para evitar risco de NCT incorreto.
+      <strong style="display:block; margin-bottom:0.35rem; color:#FCD34D;">⚙ Dataset aguardando primeira sincronização</strong>
+      Esta página é alimentada pela API v2 do ClinicalTrials.gov via GitHub Action mensal. Para popular agora com dados <strong>verificados e atualizados</strong>, dispare manualmente o workflow <code style="background:rgba(0,0,0,0.3);padding:1px 6px;border-radius:4px;font-family:var(--font-mono);font-size:0.85em">Update TheraTrials Explorer</code> em <a href="https://github.com/marcosmdsoliveira/theratrials-oncology/actions" target="_blank" rel="noopener" style="color:var(--amber);text-decoration:underline">Actions → Run workflow</a>. Decidimos não exibir um seed curado manualmente para evitar risco de NCT incorreto.
     </div>
 
     <div class="tr-stats" x-show="data.totals && !data.is_empty" x-cloak>
@@ -679,7 +679,7 @@
         <!-- Banner: redireciona para estudos-ativos quando o filtro Brasil estiver ativo -->
         <div x-show="filters.only_brazil" x-cloak style="margin-bottom:1rem; padding:0.75rem 1rem; background:rgba(34,197,94,0.06); border:1px solid rgba(34,197,94,0.25); border-radius:var(--radius-md); display:flex; align-items:center; gap:0.65rem; color:#86EFAC; font-size:0.85rem;">
           <i data-lucide="map-pin" style="width:14px;height:14px"></i>
-          <span>Filtrando por participação brasileira no pipeline global. Para a <strong>curadoria detalhada de estudos abertos no Brasil</strong> (com centros, contatos e critérios em português), use <a href="estudos-ativos.html" style="color:var(--amber); text-decoration:underline;">Estudos ativos · BR</a>.</span>
+          <span>Filtrando por participação brasileira no tracker global. Para a <strong>curadoria detalhada de estudos abertos no Brasil</strong> (com centros, contatos e critérios em português), use <a href="estudos-ativos.html" style="color:var(--amber); text-decoration:underline;">Estudos ativos · BR</a>.</span>
         </div>
 
         <!-- Toolbar -->
@@ -700,7 +700,7 @@
         <div class="tr-table-wrap" x-show="loading" x-cloak>
           <div class="tr-loading">
             <div class="spin"></div>
-            <p>Carregando pipeline de radiofármacos…</p>
+            <p>Carregando estudos de radiofármacos…</p>
           </div>
         </div>
 
@@ -869,14 +869,14 @@
 <footer class="site-footer">
   <div class="container">
     <div class="footer-bottom">
-      <span>© 2026 TheraTrials Oncology · Pipeline RLT (radioligand therapy)</span>
+      <span>© 2026 TheraTrials Oncology · TheraTrials Explorer (radioligand therapy)</span>
       <span>Fonte: ClinicalTrials.gov v2 · atualização mensal automatizada</span>
     </div>
   </div>
 </footer>
 
 <script>
-  function pipelineApp() {
+  function explorerApp() {
     return {
       data: { trials: [], totals: {}, facets: {} },
       loading: true,
@@ -899,30 +899,30 @@
         this.$watch('search',   () => this.$nextTick(safeIcons));
         this.$watch('filters',  () => { this.$nextTick(safeIcons); this.syncHash(); }, { deep: true });
 
-        console.log('[Pipeline RLT] init() · window.THERA_PIPELINE present?', !!window.THERA_PIPELINE,
-                    '· trials:', window.THERA_PIPELINE?.trials?.length);
+        console.log('[TheraTrials Explorer] init() · window.THERA_EXPLORER present?', !!window.THERA_EXPLORER,
+                    '· trials:', window.THERA_EXPLORER?.trials?.length);
 
         let loaded = null;
-        // 1. Se o script bootstrap pipeline.js carregou, usa direto (funciona file:// e HTTPS).
-        if (window.THERA_PIPELINE && window.THERA_PIPELINE.trials) {
-          loaded = window.THERA_PIPELINE;
-          console.log('[Pipeline RLT] dataset via window.THERA_PIPELINE ·', loaded.trials.length, 'estudos');
+        // 1. Se o script bootstrap explorer.js carregou, usa direto (funciona file:// e HTTPS).
+        if (window.THERA_EXPLORER && window.THERA_EXPLORER.trials) {
+          loaded = window.THERA_EXPLORER;
+          console.log('[TheraTrials Explorer] dataset via window.THERA_EXPLORER ·', loaded.trials.length, 'estudos');
         } else {
           // 2. Fallback: tenta o JSON via fetch (só funciona com servidor HTTP).
           try {
-            const res = await fetch('assets/data/pipeline.json', { cache: 'no-cache' });
+            const res = await fetch('assets/data/explorer.json', { cache: 'no-cache' });
             if (!res.ok) throw new Error('HTTP ' + res.status);
             loaded = await res.json();
-            console.log('[Pipeline RLT] dataset via fetch ·', loaded.trials.length, 'estudos');
+            console.log('[TheraTrials Explorer] dataset via fetch ·', loaded.trials.length, 'estudos');
           } catch (e) {
-            console.warn('[Pipeline RLT] fetch falhou:', e.message);
+            console.warn('[TheraTrials Explorer] fetch falhou:', e.message);
           }
         }
 
         if (loaded) {
           this.data = loaded;
         } else {
-          this.errorMsg = 'Falha ao carregar o dataset. Verifique no DevTools (Network) se assets/data/pipeline.js retornou 200 OK e se window.THERA_PIPELINE está definida no Console.';
+          this.errorMsg = 'Falha ao carregar o dataset. Verifique no DevTools (Network) se assets/data/explorer.js retornou 200 OK e se window.THERA_EXPLORER está definida no Console.';
         }
         this.loading = false;
         this.$nextTick(safeIcons);
@@ -1079,7 +1079,7 @@
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = 'theratrials-pipeline-rlt-' + new Date().toISOString().slice(0,10) + '.csv';
+        a.download = 'theratrials-explorer-' + new Date().toISOString().slice(0,10) + '.csv';
         document.body.appendChild(a); a.click(); a.remove();
         URL.revokeObjectURL(url);
       },
