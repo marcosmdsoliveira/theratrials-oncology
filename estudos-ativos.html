@@ -1367,4 +1367,16 @@
             const haystack = [
               s.nome, s.titulo, s.nct, s.intervencao, s.comparador,
               s.subtipo, s.cenario_clinico, s.patrocinador,
-              ...(s.biomarcadores || []), ...(s.centros || []), ...(s.cidades
+              ...(s.biomarcadores || []), ...(s.centros || []), ...(s.cidades || []),
+              ...(s.estados || []), ...(s.modalidade || []),
+            ].filter(Boolean).join(' ').toLowerCase();
+            if (!haystack.includes(q)) return false;
+          }
+          return true;
+        });
+      },
+    };
+  }
+</script>
+</body>
+</html>

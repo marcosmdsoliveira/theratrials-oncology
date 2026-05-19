@@ -421,7 +421,7 @@
 <!-- HERO -->
 <section class="db-hero">
   <div class="container">
-    <span class="eyebrow">Banco de evidências · 336 estudos analisados</span>
+    <span class="eyebrow">Banco de evidências · 426 estudos analisados</span>
     <h1>Encontre, compare e cite <span class="text-amber">com clareza</span></h1>
     <p>Filtre por tumor, modalidade, fase ou linha. Clique em qualquer estudo para ver os 31 campos detalhados, salvar como favorito, anotar ou copiar a citação formatada.</p>
     <div class="search-wrap">
@@ -859,14 +859,14 @@
 <footer class="site-footer">
   <div class="container">
     <div class="footer-bottom">
-      <span>© 2026 TheraTrials Oncology · 336 estudos analisados · v1.0</span>
+      <span>© 2026 TheraTrials Oncology · 426 estudos analisados · v1.0</span>
       <span>Para uso educacional. Não substitui diretrizes oficiais.</span>
     </div>
   </div>
 </footer>
 
-<script src="assets/js/data.js"></script>
-<script src="assets/js/common.js"></script>
+<script src="assets/js/data.js?v=11"></script>
+<script src="assets/js/common.js?v=11"></script>
 <script>
 function databaseApp() {
   return {
@@ -1019,7 +1019,7 @@ function databaseApp() {
     countForCategory(catId) { return (this.data.studies || []).filter(s => s.category_id === catId).length; },
 
     modalityColor(id) {
-      const colors = { teranostico: '#FF8400', arpi: '#0EA5B7', parp: '#34D399', qt: '#FBBF24', imunoterapia: '#10B981' };
+      const colors = { teranostico: '#FF8400', arpi: '#0EA5B7', parp: '#34D399', qt: '#FBBF24', imunoterapia: '#10B981', rt_sbrt: '#F472B6' };
       return colors[id] || '#FF8400';
     },
 

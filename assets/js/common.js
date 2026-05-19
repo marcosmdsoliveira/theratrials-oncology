@@ -380,11 +380,11 @@
   // Tipos tumorais (multi-select) — prioriza s.tumors[]; fallback para category_id legado
   TheraTrials.tumorTypes = [
     { id: 'prostata', name: 'Próstata', short: 'Próstata',
-      match: (s) => hasTumor(s, 'prostata') || ['lupsma_prostata', 'ra223_prostata', 'novos_psma', 'prostata_contexto'].includes(s.category_id) },
+      match: (s) => hasTumor(s, 'prostata') || ['lupsma_prostata', 'ra223_prostata', 'novos_psma', 'prostata_contexto', 'rt_prostata_local'].includes(s.category_id) || (s.category_id === 'rt_sbrt_oligo' && /(prostat|mCRPC|mHSPC|STOMP|ORIOLE|STAMPEDE)/i.test((s.indicacao||'') + ' ' + (s.estudo||''))) },
     { id: 'pulmao', name: 'Pulmão (NSCLC + SCLC)', short: 'Pulmão',
-      match: (s) => hasTumor(s, 'nsclc_egfr', 'nsclc_alk', 'nsclc_kras', 'nsclc_outros_drivers', 'nsclc_imuno', 'nsclc_periop', 'sclc') || ['nsclc_imuno', 'nsclc_alvo', 'nsclc_periop', 'sclc', 'lung_radio_dev'].includes(s.category_id) },
+      match: (s) => hasTumor(s, 'nsclc_egfr', 'nsclc_alk', 'nsclc_kras', 'nsclc_outros_drivers', 'nsclc_imuno', 'nsclc_periop', 'sclc') || ['nsclc_imuno', 'nsclc_alvo', 'nsclc_periop', 'sclc', 'lung_radio_dev'].includes(s.category_id) || (['rt_sbrt_oligo', 'rt_consolidacao'].includes(s.category_id) && /(NSCLC|SCLC|pulmão|lung|PACIFIC|LAURA|KEYNOTE-799|SINDAS|ADRIATIC|STARS|ROSEL)/i.test((s.indicacao||'') + ' ' + (s.estudo||''))) },
     { id: 'mama', name: 'Mama (HER2+, HR+, TNBC)', short: 'Mama',
-      match: (s) => hasTumor(s, 'mama_her2pos', 'mama_hrpos', 'mama_tnbc') || ['breast_her2', 'breast_hrpos', 'breast_tnbc_brca', 'breast_radio_dev'].includes(s.category_id) },
+      match: (s) => hasTumor(s, 'mama_her2pos', 'mama_hrpos', 'mama_tnbc') || ['breast_her2', 'breast_hrpos', 'breast_tnbc_brca', 'breast_radio_dev'].includes(s.category_id) || (s.category_id === 'rt_sbrt_oligo' && /(mama|breast|NRG-BR)/i.test((s.indicacao||'') + ' ' + (s.estudo||''))) },
     { id: 'net', name: 'Tumores neuroendócrinos (GEP + brônquicos)', short: 'Neuroendócrinos',
       match: (s) => hasTumor(s, 'net_gep') || s.category_id === 'net_gep' },
     { id: 'pheo_pgl', name: 'Feocromocitoma e Paraganglioma (PPGL)', short: 'Feocromocitoma',
@@ -517,6 +517,13 @@
         const r = (s.radiofarmaco || '').toLowerCase();
         return /(docetaxel|cabazitaxel)/i.test(r) && !/(psma|lu-?psma|ra-?223|177lu)/.test(r);
       }},
+    { id: 'rt_sbrt', name: 'Radioterapia / SBRT', short: 'RT/SBRT',
+      match: (s) => ['rt_sbrt_oligo', 'rt_prostata_local', 'rt_consolidacao'].includes(s.category_id),
+      subs: [
+        { id: 'rt_sbrt_oligo', name: 'RT/SBRT · Doença oligometastática (STOMP, ORIOLE, SABR-COMET)', short: 'Oligomet' },
+        { id: 'rt_prostata_local', name: 'RT · Próstata localizada e pós-operatória (PACE-B, FLAME, RADICALS)', short: 'Próstata local' },
+        { id: 'rt_consolidacao', name: 'RT · Consolidação e combinação IO/TKI (PACIFIC, LAURA, ADRIATIC)', short: 'Consolid. IO/TKI' },
+      ]},
   ];
 
   TheraTrials.modalitiesUpcoming = [
