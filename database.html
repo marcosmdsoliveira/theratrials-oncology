@@ -443,7 +443,7 @@
       <aside class="db-sidebar">
 
         <!-- TIPO TUMORAL -->
-        <div class="filter-section" x-data="{ open: window.innerWidth >= 969 }">
+        <div class="filter-section" x-data="{ open: false }">
           <button class="filter-section-header" @click="open = !open">
             <i data-lucide="layers" style="width:14px;height:14px; color: var(--amber)"></i>
             <span>Tipo tumoral</span>
@@ -464,7 +464,7 @@
         </div>
 
         <!-- MODALIDADE -->
-        <div class="filter-section" x-data="{ open: window.innerWidth >= 969 }">
+        <div class="filter-section" x-data="{ open: false }">
           <button class="filter-section-header" @click="open = !open">
             <i data-lucide="atom" style="width:14px;height:14px; color: var(--teal)"></i>
             <span>Modalidade terapêutica</span>
@@ -499,7 +499,7 @@
         </div>
 
         <!-- ESTUDO -->
-        <div class="filter-section" x-data="{ open: window.innerWidth >= 969 }">
+        <div class="filter-section" x-data="{ open: false }">
           <button class="filter-section-header" @click="open = !open">
             <i data-lucide="flask-conical" style="width:14px;height:14px; color: var(--stone)"></i>
             <span>Estudo</span>

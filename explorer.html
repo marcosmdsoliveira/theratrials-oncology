@@ -67,10 +67,11 @@
   .tr-hero {
     padding: 2.5rem 0 1.25rem;
     text-align: center;
+    overflow: hidden;
   }
   .tr-hero h1 { font-size: clamp(1.85rem, 3.7vw, 2.85rem); font-weight: 700; letter-spacing: -0.025em; margin: 0 0 0.5rem; }
   .tr-hero h1 .accent { color: var(--amber); }
-  .tr-hero p { color: var(--stone); max-width: 760px; margin: 0 auto 1rem; font-size: 0.98rem; line-height: 1.55; }
+  .tr-hero p { color: var(--stone); max-width: 760px; margin: 0 auto 1rem; font-size: 0.98rem; line-height: 1.55; padding: 0 0.5rem; word-break: break-word; }
   .tr-hero .src-line {
     display: inline-flex; align-items: center; gap: 0.55rem;
     padding: 0.4rem 0.85rem;
@@ -80,6 +81,9 @@
     color: var(--stone);
     font-family: var(--font-mono);
     font-size: 0.74rem;
+    max-width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
   }
   .tr-hero .src-line strong { color: var(--off-white); font-weight: 500; }
   .tr-hero .src-line .dot {
@@ -108,13 +112,15 @@
   .tr-stat-card .val { font-family: var(--font-display); font-size: 1.35rem; font-weight: 600; color: var(--off-white); line-height: 1; letter-spacing: -0.02em; }
   .tr-stat-card .sub { font-size: 0.7rem; color: var(--stone); margin-top: 0.18rem; font-family: var(--font-mono); }
 
-  /* Layout */
+  /* Layout — wider container for explorer */
+  .explorer-wide { max-width: 1520px; }
   .tr-layout {
-    display: grid; grid-template-columns: 260px 1fr; gap: 1.75rem;
+    display: grid; grid-template-columns: 250px 1fr; gap: 1.5rem;
     padding: 1.25rem 0 4rem;
   }
+  .tr-layout > main { min-width: 0; }
   @media (max-width: 1080px) {
-    .tr-layout { grid-template-columns: 240px 1fr; gap: 1.25rem; }
+    .tr-layout { grid-template-columns: 220px 1fr; gap: 1rem; }
   }
   @media (max-width: 880px) {
     .tr-layout { grid-template-columns: 1fr; }
@@ -215,9 +221,18 @@
     border-radius: var(--radius-lg);
     overflow: hidden;
   }
-  .tr-table-scroll { overflow-x: auto; }
+  .tr-table-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: var(--graphite-4) transparent;
+  }
+  .tr-table-scroll::-webkit-scrollbar { height: 6px; }
+  .tr-table-scroll::-webkit-scrollbar-thumb { background: var(--graphite-4); border-radius: 3px; }
+  .tr-table-scroll::-webkit-scrollbar-track { background: transparent; }
   .tr-table {
-    width: 100%; border-collapse: collapse;
+    width: 100%; min-width: 920px;
+    border-collapse: collapse;
     font-size: 0.86rem;
   }
   .tr-table thead th {
@@ -249,7 +264,7 @@
     line-height: 1.45;
     vertical-align: top;
   }
-  .tr-table .col-drug { font-family: var(--font-display); font-weight: 500; min-width: 220px; }
+  .tr-table .col-drug { font-family: var(--font-display); font-weight: 500; min-width: 180px; max-width: 260px; word-break: break-word; }
   .tr-table .col-drug .nct {
     display: block;
     font-family: var(--font-mono);
@@ -265,7 +280,7 @@
     text-transform: uppercase; letter-spacing: 0.06em; margin-top: 0.18rem;
     font-family: var(--font-mono);
   }
-  .tr-table .col-cond { font-size: 0.82rem; max-width: 280px; }
+  .tr-table .col-cond { font-size: 0.82rem; max-width: 240px; word-break: break-word; }
   .tr-table .col-cond .cnd-main { color: var(--off-white); }
   .tr-table .col-cond .cnd-extra { color: var(--stone-2); font-size: 0.76rem; }
 
@@ -418,21 +433,41 @@
   }
   @keyframes spin { to { transform: rotate(360deg); } }
 
+  /* Scroll hint gradient for intermediate sizes */
+  @media (min-width: 721px) and (max-width: 1200px) {
+    .tr-table-scroll {
+      position: relative;
+    }
+    .tr-table-wrap::after {
+      content: '';
+      position: absolute;
+      top: 0; right: 0; bottom: 0; width: 32px;
+      background: linear-gradient(to right, transparent, var(--graphite-2));
+      pointer-events: none;
+      border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+      opacity: 0.8;
+      z-index: 1;
+    }
+    .tr-table-wrap { position: relative; }
+  }
+
   /* Mobile: tabela degrada para cards */
   @media (max-width: 720px) {
+    .tr-table { min-width: 0; }
     .tr-table thead { display: none; }
     .tr-table, .tr-table tbody, .tr-table tr, .tr-table td { display: block; width: 100%; }
     .tr-table tr {
       border: 1px solid var(--border-soft);
       border-radius: var(--radius-md);
-      padding: 0.7rem 0.85rem;
+      padding: 0.85rem 1rem;
       margin: 0.65rem 0;
       background: var(--graphite-2);
     }
     .tr-table td {
-      padding: 0.25rem 0;
+      padding: 0.3rem 0;
       border: 0;
     }
+    .tr-table td:empty { display: none; }
     .tr-table td::before {
       content: attr(data-label);
       display: block;
@@ -442,9 +477,15 @@
       letter-spacing: 0.07em;
       margin-bottom: 0.18rem;
     }
-    .tr-table .col-drug { font-size: 1rem; }
+    .tr-table td[data-label=""]::before { display: none; }
+    .tr-table .col-drug { font-size: 1rem; min-width: 0; max-width: none; }
+    .tr-table .col-cond { max-width: none; }
     .tr-table-wrap { background: transparent; border: 0; }
     .tr-table-scroll { overflow: visible; }
+    .tr-table-wrap::after { display: none; }
+
+    .tr-toolbar { gap: 0.5rem; }
+    .tr-result-count { font-size: 0.75rem; }
   }
 </style>
 </head>
@@ -522,7 +563,7 @@
 
 <!-- ============== LAYOUT ============== -->
 <section style="padding:0">
-  <div class="container">
+  <div class="container explorer-wide">
     <div class="tr-layout">
 
       <!-- SIDEBAR DE FILTROS -->
@@ -889,7 +930,7 @@
         phase: [], status: [], neoplasia: [], sponsor_class: [],
         only_brazil: false,
       },
-      open: { iso: true, cls: true, tgt: false, lig: false, phase: true, status: false, neo: false, spons: false, geo: false },
+      open: { iso: false, cls: false, tgt: false, lig: false, phase: false, status: false, neo: false, spons: false, geo: false },
 
       async init() {
         const safeIcons = () => { try { if (window.lucide) lucide.createIcons(); } catch(e){} };

@@ -659,7 +659,7 @@
   <div class="container">
     <span class="eyebrow">Recrutamento ativo · Brasil</span>
     <h1>Ensaios clínicos <span class="accent">recrutando</span> agora</h1>
-    <p>Banco selecionado de ensaios em oncologia com recrutamento aberto no Brasil. Filtre por neoplasia, modalidade, fase, biomarcador, linha terapêutica e localidade. Para médicos, pesquisadores e pacientes encaminhados por especialistas.</p>
+    <p>Banco selecionado de ensaios clínicos <strong>não teranósticos</strong> em oncologia com recrutamento aberto no Brasil — imunoterapia, terapia-alvo, ADCs, quimioterapia, hormonoterapia, cirurgia e radioterapia. Filtre por neoplasia, modalidade, fase, biomarcador, linha terapêutica e localidade. Para médicos, pesquisadores e pacientes encaminhados por especialistas.</p>
 
     <div class="ea-disclaimer">
       <i data-lucide="info" style="width:18px;height:18px"></i>
@@ -668,12 +668,6 @@
       </div>
     </div>
 
-    <div style="max-width:840px; margin:1rem auto 0; padding:0.85rem 1.15rem; background:rgba(255,132,0,0.06); border:1px solid rgba(255,132,0,0.28); border-radius:var(--radius-md); display:flex; align-items:center; gap:0.85rem; text-align:left; color:var(--off-white); font-size:0.88rem; line-height:1.5;">
-      <i data-lucide="atom" style="width:20px;height:20px;color:var(--amber);flex-shrink:0"></i>
-      <div>
-        Procurando o <strong>pipeline global de radiofármacos terapêuticos</strong> (177Lu, 225Ac, 90Y, 131I, FAPI, GRPR, CXCR4…)? Use o <a href="explorer.html" style="color:var(--amber); text-decoration:underline; font-weight:500">TheraTrials Explorer</a> — alimentado pela API do ClinicalTrials.gov v2 com atualização mensal automática.
-      </div>
-    </div>
   </div>
 </section>
 
@@ -913,7 +907,7 @@
         <div class="ea-section">
           <h3><i data-lucide="users" style="width:14px;height:14px"></i> População e cenário clínico</h3>
           <div class="ea-info-grid">
-            <div class="ea-info-card">
+            <div class="ea-info-card" x-show="selected.subtipo">
               <div class="lbl">Subtipo</div>
               <div class="val" x-text="selected.subtipo"></div>
             </div>
@@ -1042,7 +1036,7 @@
         </button>
       </div>
 
-      <p class="cm-priv">Seus dados são usados apenas para responder a este contato. Não compartilhamos com terceiros nem fazemos disparos de marketing.</p>
+      <p class="cm-priv">Seus dados são usados apenas para responder a este contato. Não comercializamos seus dados nem fazemos disparos de marketing. O envio pode envolver provedores técnicos necessários ao funcionamento do formulário. Controlador: Dr. Marcos Oliveira. Detalhes na <a href="privacidade.html" style="color:var(--amber); text-decoration:underline">Política de Privacidade</a>.</p>
     </form>
   </div>
 
@@ -1289,7 +1283,7 @@
         biomarcador: [],
         linha: [],
       },
-      open: { local: true, neo: true, mod: false, fase: false, status: false, bio: false, linha: false },
+      open: { local: false, neo: false, mod: false, fase: false, status: false, bio: false, linha: false },
 
       init() {
         this.$nextTick(() => lucide.createIcons());
