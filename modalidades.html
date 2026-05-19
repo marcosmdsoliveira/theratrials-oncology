@@ -453,10 +453,10 @@
         { id: 'teranostico', name: 'Teranóstico',
           tagline: 'Imagem molecular + radiofármaco no mesmo alvo. PSMA-RLT, PRRT, Y-90, MIBG; radio-exp em pulmão (DLL3, FAPI) e mama (89Zr-trastu, FES, FAPI).',
           icon: 'atom', color: '#FF8400',
-          match: (s) => ['lupsma_prostata', 'ra223_prostata', 'net_gep', 'lupsma_ccrcc', 'hepatobiliar', 'novos_psma', 'ppgl', 'neuroblastoma', 'lung_radio_dev', 'breast_radio_dev'].includes(s.category_id)
+          match: (s) => ['lupsma_prostata', 'ra223_prostata', 'net_gep', 'lupsma_ccrcc', 'hepatobiliar', 'novos_psma', 'ppgl', 'neuroblastoma', 'lung_radio_dev', 'breast_radio_dev', 'teranostico_emergente'].includes(s.category_id)
         },
-        { id: 'terapia-alvo', name: 'Terapias-alvo (TKIs, ARPi, CDK4/6, PI3K)',
-          tagline: 'ARPi (próstata); EGFR/ALK/KRAS/RET/MET/HER2/ROS1 (pulmão); CDK4/6, PI3K, AKT, HER2-TKI, SERD (mama).',
+        { id: 'terapia-alvo', name: 'Terapias-alvo (TKIs, ARPi, CDK4/6, PI3K, VEGFR, HIF-2α)',
+          tagline: 'ARPi (próstata); EGFR/ALK/KRAS/RET/MET/HER2/ROS1 (pulmão); CDK4/6, PI3K, AKT, HER2-TKI, SERD (mama); VEGFR-TKI, HIF-2α, FGFR (rim/bexiga).',
           icon: 'target', color: '#0EA5B7',
           match: (s) => {
             const r = (s.radiofarmaco || '').toLowerCase();
@@ -464,15 +464,17 @@
             const isLungAlvo = s.category_id === 'nsclc_alvo';
             const isLungAdjAlvo = s.category_id === 'nsclc_periop' && /osi|alect/i.test(r);
             const isBreastAlvo = s.category_id === 'breast_hrpos' || (s.category_id === 'breast_her2' && /(tucatinib|lapatinib|neratinib)/i.test(r));
-            return isProstateARPi || isLungAlvo || isLungAdjAlvo || isBreastAlvo;
+            const uroCats = ['rcc_avancado', 'rcc_adjuvante_naocc', 'urotelial_avancado'];
+            const isUroAlvo = uroCats.includes(s.category_id) && /(sunitinib|cabozantinib|axitinib|pazopanib|lenvatinib|tivozanib|sorafenib|everolimus|belzutifan|erdafitinib|savolitinib|crizotinib)/i.test(r);
+            return isProstateARPi || isLungAlvo || isLungAdjAlvo || isBreastAlvo || isUroAlvo;
           }
         },
         { id: 'adc', name: 'ADC · conjugados anticorpo-droga',
-          tagline: 'T-DM1, T-DXd, sacituzumab govitecan e plataforma DESTINY/ASCENT — alta atividade em mama HER2+/HER2-low e TNBC.',
+          tagline: 'T-DM1, T-DXd, sacituzumab govitecan, enfortumab vedotin e plataforma DESTINY/ASCENT/EV-302 — mama, TNBC e urotelial.',
           icon: 'package', color: '#f472b6',
           match: (s) => {
             const r = (s.radiofarmaco || '').toLowerCase();
-            return /(trastuzumab emtansine|t-dm1|trastuzumab deruxtecan|t-dxd|sacituzumab|datopotamab)/i.test(r);
+            return /(trastuzumab emtansine|t-dm1|trastuzumab deruxtecan|t-dxd|sacituzumab|datopotamab|enfortumab vedotin|enfortumabe vedotina)/i.test(r);
           }
         },
         { id: 'parp', name: 'PARP inibidores',
@@ -490,14 +492,16 @@
           }
         },
         { id: 'imunoterapia', name: 'Imunoterapia',
-          tagline: 'ICIs em pulmão (KEYNOTE, CheckMate, CASPIAN), pembro neoadj/1L em mama TNBC (KEYNOTE-522/-355), vacinas em próstata, BiTE DLL3 em SCLC.',
+          tagline: 'ICIs em pulmão (KEYNOTE, CheckMate, CASPIAN), mama TNBC (KEYNOTE-522/-355), uro-oncologia (EV-302, CM-214, KN-426), vacinas em próstata, BiTE DLL3 em SCLC.',
           icon: 'shield-plus', color: '#10B981',
           match: (s) => {
             const r = (s.radiofarmaco || '').toLowerCase();
             const proVacina = /(sipuleucel|vacina)/i.test(r);
             const lungIO = ['nsclc_imuno', 'sclc'].includes(s.category_id) || (s.category_id === 'nsclc_periop' && !/osi|alect/i.test(r));
             const breastIO = s.category_id === 'breast_tnbc_brca' && /pembro|nivo|atezo|durva/i.test(r);
-            return proVacina || lungIO || breastIO;
+            const uroCats = ['rcc_avancado', 'rcc_adjuvante_naocc', 'urotelial_avancado', 'urotelial_periop_nmibc'];
+            const uroIO = uroCats.includes(s.category_id) && /(pembro|nivo|atezo|durva|avelumab|tremelimumab|ipilimumab|n-803|nogapendekin|anktiva)/i.test(r);
+            return proVacina || lungIO || breastIO || uroIO;
           }
         },
         { id: 'quimio-imuno', name: 'Quimio-imunoterapia',
@@ -512,6 +516,11 @@
           tagline: 'Estudos plataforma como STAMPEDE — múltiplos braços comparativos rodando simultaneamente.',
           icon: 'layers', color: '#A855F7',
           match: (s) => /plataforma|multibra/i.test(s.fase || '') || /stampede/i.test(s.estudo || '')
+        },
+        { id: 'rt_sbrt', name: 'Radioterapia / SBRT',
+          tagline: 'Doença oligometastática (STOMP, ORIOLE, SABR-COMET), próstata localizada (PACE-B, FLAME, RADICALS) e consolidação IO/TKI (PACIFIC, LAURA, ADRIATIC).',
+          icon: 'crosshair', color: '#F472B6',
+          match: (s) => ['rt_sbrt_oligo', 'rt_prostata_local', 'rt_consolidacao'].includes(s.category_id)
         },
       ],
 
