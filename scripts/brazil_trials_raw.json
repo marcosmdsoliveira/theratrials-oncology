@@ -1,0 +1,3158 @@
+[
+  {
+    "nct": "NCT06855277",
+    "title": "Study Comparing AAA817+ARPI Versus Standard of Care in Adult Participants With PSMA-positive mCRPC",
+    "official_title": "A Phase III, Open-label, Multi-center, Randomized Study Comparing AAA817+ARPI Versus Standard of Care in Adult Participants With PSMA-positive Metastatic Castration Resistant Prostate Cancer",
+    "phase": "Fase 3",
+    "sponsor": "Novartis Pharmaceuticals",
+    "interventions": [
+      "AAA817",
+      "ARPI",
+      "Standard of Care"
+    ],
+    "intervention_types": [
+      "DRUG"
+    ],
+    "brazil_cities": [
+      "São Paulo"
+    ],
+    "brazil_states": [
+      "São Paulo"
+    ],
+    "brazil_facilities": [
+      "Novartis Investigative Site · São Paulo/São Paulo",
+      "Novartis Investigative Site · São Paulo/São Paulo"
+    ],
+    "summary": "The purpose of this study is to determine whether \\[225Ac\\]Ac-PSMA-617 (AAA817), given for up to 6 cycles at a dose of 10 Megabecquerel (MBq) +/- 10%, plus androgen receptor pathway inhibitor (ARPI), improves the radiographic progression free survival (rPFS) compared to investigator's choice of stan",
+    "eligibility_snippet": "Key Inclusion Criteria:\n\n* Signed informed consent must be obtained prior to participation in the study.\n* Participants must be adults ≥ 18 years of age.\n* Participants must have an ECOG performance status of 0 to 2.\n* Participants must have histological, and/or cytological confirmation of adenocarcinoma of the prostate. Participants with mixed histology (neuroendocrine) are not eligible.\n* Participants who have received taxane-based chemotherapy in mHSPC setting are eligible if they are deemed ",
+    "neoplasia_group": "prostata",
+    "neoplasia_label": "Próstata",
+    "url": "https://clinicaltrials.gov/study/NCT06855277"
+  },
+  {
+    "nct": "NCT07028853",
+    "title": "This Study Will Explore Whether a Combination of the Investigational Drug Mevrometostat (PF-06821497) and Enzalutamide Will Work Better Than Taking Enzalutamide Alone in Participants With mCSPC Who Are ARPI naïve.",
+    "official_title": "A Phase 3, Randomized, Double-Blind, Placebo-Controlled Study of Mevrometostat (PF-06821497) With Enzalutamide in Metastatic Castration-Sensitive Prostate Cancer (MEVPRO-3)",
+    "phase": "Fase 3",
+    "sponsor": "Pfizer",
+    "interventions": [
+      "Mevrometostat",
+      "Placebo",
+      "Enzalutamide"
+    ],
+    "intervention_types": [
+      "DRUG"
+    ],
+    "brazil_cities": [
+      "São José do Rio Preto",
+      "Santo André",
+      "Sorocaba",
+      "Curitiba",
+      "São Paulo",
+      "Ijuí",
+      "Porto Alegre",
+      "Fortaleza"
+    ],
+    "brazil_states": [
+      "São Paulo",
+      "Rio Grande do Sul",
+      "Paraná",
+      "Ceará"
+    ],
+    "brazil_facilities": [
+      "Crio - Centro Regional Integrado de Oncologia · Fortaleza/Ceará",
+      "Hospital Erasto Gaertner · Curitiba/Paraná",
+      "ONCOSITE - Centro de Pesquisa Clinica em Oncologia · Ijuí/Rio Grande do Sul",
+      "Centro Gaucho Integrado De Oncologia, Hematologia, Ensino E Pesquisa · Porto Alegre/Rio Grande do Sul",
+      "CEPHO - Centro de Estudos e Pesquisas de Hematologia e Oncologia · Santo André/São Paulo",
+      "Fundação Faculdade Regional de Medicina de São José do Rio Preto · São José do Rio Preto/São Paulo",
+      "BP - A Beneficencia Portuguesa de São Paulo · São Paulo/São Paulo",
+      "Hospital Alemao Oswaldo Cruz · São Paulo/São Paulo",
+      "Centro de Estudos e Pesquisas Oncologia de Sorocaba (CEPOS) · Sorocaba/São Paulo",
+      "Instituto do Cancer Arnaldo Vieira de Carvalho · São Paulo/",
+      "IBCC - Núcleo de Pesquisa e Ensino · São Paulo/"
+    ],
+    "summary": "This study will explore whether a combination of the investigational drug mevrometostat (PF-06821497) and enzalutamide will work better than taking enzalutamide alone in participants with mCSPC who are ARPI naïve and have not yet received chemotherapy in the mCSPC setting.",
+    "eligibility_snippet": "Inclusion Criteria\n\n* Male participants aged ≥18 years (or the minimum age of consent in accordance with local regulations) at screening.\n* Histologically or cytologically confirmed adenocarcinoma of the prostate without small cell features.\n* Metastatic prostate cancer documented by positive bone scan (for bone disease) or metastatic lesion(s) on CT or MRI (for soft tissue/visceral disease).\n* Resolution of acute effects of any prior therapy to either baseline severity or CTCAE Grade ≤1 (except",
+    "neoplasia_group": "prostata",
+    "neoplasia_label": "Próstata",
+    "url": "https://clinicaltrials.gov/study/NCT07028853"
+  },
+  {
+    "nct": "NCT06991556",
+    "title": "An Open-label Study of JSB462 (Luxdegalutamide) in Combination With Abiraterone in Adult Male Patients With Metastatic Hormone-sensitive Prostate Cancer (mHSPC)",
+    "official_title": "A Phase II, Randomized, Open-label, Multi-center Study of JSB462 (Luxdegalutamide) in Combination With Abiraterone in Adult Male Patients With Metastatic Hormone-sensitive Prostate Cancer (mHSPC)",
+    "phase": "Fase 2",
+    "sponsor": "Novartis Pharmaceuticals",
+    "interventions": [
+      "JSB462",
+      "Abiraterone",
+      "Enzalutamide"
+    ],
+    "intervention_types": [
+      "DRUG"
+    ],
+    "brazil_cities": [
+      "São Paulo"
+    ],
+    "brazil_states": [
+      "São Paulo"
+    ],
+    "brazil_facilities": [
+      "Novartis Investigative Site · São Paulo/São Paulo"
+    ],
+    "summary": "This Phase II study aims to evaluate efficacy and safety of the combination of JSB462 (also known as luxdegalutamide) at 100 mg and 300 mg once a day (QD) doses + abiraterone compared with an androgen receptor pathway inhibitor (ARPI, abiraterone or enzalutamide) in participants with metastatic Horm",
+    "eligibility_snippet": "Key Inclusion Criteria:\n\n* An Eastern Cooperative Oncology Group (ECOG) Performance Status (PS) ≤2\n* Histologically confirmed adenocarcinoma of the prostate. Participants with mixed histology (neuroendocrine) are not eligible\n* High-volume mHSPC, defined by the presence of ≥1 metastatic visceral non-nodal lesion and/or ≥4 metastatic bone lesions (with at least one lesion outside the vertebral column and/or pelvis) in imaging exams (CT/MRI or bone scan) according to local radiology assessment by ",
+    "neoplasia_group": "prostata",
+    "neoplasia_label": "Próstata",
+    "url": "https://clinicaltrials.gov/study/NCT06991556"
+  },
+  {
+    "nct": "NCT06764485",
+    "title": "A Study to Compare the Efficacy and Safety of BMS-986365 Versus the Investigator's Choice of Therapy in Participants With Metastatic Castration-resistant Prostate Cancer",
+    "official_title": "A Phase 3, Two-part, Randomized, Open-label, Adaptive Study Comparing BMS-986365 Versus Investigator's Choice of Therapy Comprising Either Docetaxel or Second Androgen Receptor Pathway Inhibitor (ARPI), in Participants With Metastatic Castration-resistant Prostate Cancer (mCRPC) - rechARge",
+    "phase": "Fase 3",
+    "sponsor": "Celgene",
+    "interventions": [
+      "BMS-986365",
+      "Enzalutamide",
+      "Abiraterone",
+      "Docetaxel",
+      "Predinsone/Prednisolone"
+    ],
+    "intervention_types": [
+      "DRUG"
+    ],
+    "brazil_cities": [
+      "Belo Horizonte",
+      "São Paulo",
+      "Natal",
+      "Vitória",
+      "Porto Alegre"
+    ],
+    "brazil_states": [
+      "São Paulo",
+      "Espírito Santo",
+      "Minas Gerais",
+      "Rio Grande do Norte",
+      "Rio Grande do Sul"
+    ],
+    "brazil_facilities": [
+      "Local Institution - 0039 · Vitória/Espírito Santo",
+      "Cetus Oncologia - Unidade Belo Horizonte · Belo Horizonte/Minas Gerais",
+      "Liga Norte Riograndense Contra o Câncer · Natal/Rio Grande do Norte",
+      "Hospital Moinhos de Vento · Porto Alegre/Rio Grande do Sul",
+      "Hospital Sírio Libanês · São Paulo/São Paulo",
+      "A. C. Camargo Cancer Center · São Paulo/São Paulo"
+    ],
+    "summary": "The purpose of this study is to compare the efficacy and safety of BMS-986365 versus the investigator's choice of therapy in participants with Metastatic Castration-resistant Prostate Cancer.",
+    "eligibility_snippet": "Inclusion Criteria\n\n* Participants must have histologic or cytologic confirmation of adenocarcinoma of the prostate without small cell or neuro-endocrine features.\n* Participants must have current evidence of metastatic disease documented by either bone lesions on radionuclide bone scan and/or soft tissue lesions on computed tomography/magnetic resonance imaging (CT/MRI).\n* Participants must be asymptomatic or mildly symptomatic from prostate cancer with score on Brief Pain Inventory - Short For",
+    "neoplasia_group": "prostata",
+    "neoplasia_label": "Próstata",
+    "url": "https://clinicaltrials.gov/study/NCT06764485"
+  },
+  {
+    "nct": "NCT02960022",
+    "title": "A Study for Subjects With Prostate Cancer Who Previously Participated in an Enzalutamide Clinical Study",
+    "official_title": "A Phase 2 Open-label Extension Study for Subjects With Prostate Cancer Who Previously Participated in an Enzalutamide Clinical Study",
+    "phase": "Fase 2",
+    "sponsor": "Astellas Pharma Global Development, Inc.",
+    "interventions": [
+      "enzalutamide",
+      "abiraterone acetate",
+      "prednisone",
+      "Leuprolide acetate"
+    ],
+    "intervention_types": [
+      "DRUG"
+    ],
+    "brazil_cities": [
+      "Rio Grande",
+      "Santo André",
+      "Bahia",
+      "Jaú",
+      "Campinas",
+      "Ijuí",
+      "Porto Alegre"
+    ],
+    "brazil_states": [
+      "Rio Grande do Sul"
+    ],
+    "brazil_facilities": [
+      "Site BR55007 · Porto Alegre/Rio Grande do Sul",
+      "Site BR55009 · Bahia/",
+      "Site BR55008 · Campinas/",
+      "Site BR55004 · Ijuí/",
+      "Site BR55011 · Jaú/",
+      "Site BR55002 · Rio Grande/",
+      "Site BR55010 · Santo André/"
+    ],
+    "summary": "The purpose of this study is to collect long term safety data in subjects who are continuing to derive clinical benefit from treatment with Enzalutamide from the subjects participation in an enzalutamide clinical study sponsored by Astellas or Medivation (i.e., parent study) which has completed, at ",
+    "eligibility_snippet": "Inclusion Criteria:\n\n* Subject must currently be receiving enzalutamide or assigned to receive enzalutamide (if on treatment suspension) for prostate cancer in a study sponsored by Astellas or Medivation and, based on the investigator's assessment, benefit from continued treatment. Subjects participating in investigator-initiated trials are not eligible.\n* Subject is able to continue on the treatment regimen that they were receiving or were assigned to receive in the prior study. If in the inves",
+    "neoplasia_group": "prostata",
+    "neoplasia_label": "Próstata",
+    "url": "https://clinicaltrials.gov/study/NCT02960022"
+  },
+  {
+    "nct": "NCT06136650",
+    "title": "A Study of Opevesostat (MK-5684) Versus Alternative Next-generation Hormonal Agent (NHA) in Metastatic Castration-resistant Prostate Cancer (mCRPC) Post One NHA (MK-5684-004)",
+    "official_title": "MK-5684-004: A Phase 3, Randomized, Open-label Study of Opevesostat Versus Alternative Abiraterone Acetate or Enzalutamide in Participants With Metastatic Castration-resistant Prostate Cancer (mCRPC) That Progressed On or After Prior Treatment With One Next-generation Hormonal Agent (NHA) (OMAHA-004)",
+    "phase": "Fase 3",
+    "sponsor": "Merck Sharp & Dohme LLC",
+    "interventions": [
+      "Opevesostat",
+      "Dexamethasone",
+      "Fludrocortisone acetate",
+      "Hydrocortisone",
+      "Abiraterone acetate",
+      "Prednisone acetate",
+      "Enzalutamide"
+    ],
+    "intervention_types": [
+      "DRUG"
+    ],
+    "brazil_cities": [
+      "São José do Rio Preto",
+      "Belo Horizonte",
+      "São Luís",
+      "Taubaté",
+      "Curitiba",
+      "Itajaí",
+      "São Paulo",
+      "Salvador",
+      "Vitória",
+      "Bragança Paulista",
+      "Porto Alegre",
+      "Fortaleza",
+      "Uberaba"
+    ],
+    "brazil_states": [
+      "Paraná",
+      "Ceará",
+      "Estado de Bahia",
+      "São Paulo",
+      "Maranhão",
+      "Espírito Santo",
+      "Santa Catarina",
+      "Minas Gerais",
+      "Rio Grande do Sul"
+    ],
+    "brazil_facilities": [
+      "CRIO - CENTRO REGIONAL INTEGRADO DE ONCOLOGIA ( Site 0256) · Fortaleza/Ceará",
+      "Hospital Santa Rita de Cassia ( Site 0271) · Vitória/Espírito Santo",
+      "Obras Sociais Irma Dulce ( Site 0255) · Salvador/Estado de Bahia",
+      "Hospital São Domingos ( Site 0258) · São Luís/Maranhão",
+      "Hospital Mario Penna ( Site 0264) · Belo Horizonte/Minas Gerais",
+      "Universidade Federal do Triangulo Mineiro - Hospital de Clinicas ( Site 0262) · Uberaba/Minas Gerais",
+      "ICTRIALS Pesquisa e Desenvolvimento ( Site 0274) · Curitiba/Paraná",
+      "Hospital Universitário Evangélico Mackenzie ( Site 0252) · Curitiba/Paraná",
+      "Hospital São Lucas da PUCRS ( Site 0270) · Porto Alegre/Rio Grande do Sul",
+      "Clínica de Neoplasias Litoral ( Site 0269) · Itajaí/Santa Catarina",
+      "Hospital Universitário São Francisco de Assis - Bragança Paulista ( Site 0251) · Bragança Paulista/São Paulo",
+      "Hospital de Base de São José do Rio Preto ( Site 0275) · São José do Rio Preto/São Paulo",
+      "Instituto do Câncer Brasil - Unidade Taubaté ( Site 0263) · Taubaté/São Paulo",
+      "Hospital Paulistano ( Site 0259) · São Paulo/"
+    ],
+    "summary": "The purpose of this study is to assess the efficacy and safety of opevesostat plus hormone replacement therapy (HRT) compared to alternative abiraterone acetate or enzalutamide in participants with Metastatic Castration-resistant Prostate Cancer (mCRPC) previously treated with one next-generation ho",
+    "eligibility_snippet": "Inclusion Criteria:\n\nThe main inclusion criteria include but are not limited to the following:\n\n* Have histologically or cytologically confirmed adenocarcinoma of the prostate without small cell histology\n* Has prostate cancer progression while receiving androgen deprivation therapy (ADT) (or post bilateral orchiectomy) within 6 months before screening\n* Has current evidence of distant metastatic disease (M1 disease) documented by either bone lesions on bone scan and/or soft tissue disease shown",
+    "neoplasia_group": "prostata",
+    "neoplasia_label": "Próstata",
+    "url": "https://clinicaltrials.gov/study/NCT06136650"
+  },
+  {
+    "nct": "NCT06629779",
+    "title": "A Study to Learn How PF-06821497 (Mevrometostat) Works in Men With Metastatic Castration-resistant Prostate Cancer.",
+    "official_title": "A PHASE 3, RANDOMIZED, DOUBLE BLIND, PLACEBO CONTROLLED STUDY OF PF-06821497 (MEVROMETOSTAT) WITH ENZALUTAMIDE IN METASTATIC CASTRATION RESISTANT PROSTATE CANCER (MEVPRO-2)",
+    "phase": "Fase 3",
+    "sponsor": "Pfizer",
+    "interventions": [
+      "PF-06821497",
+      "Placebo",
+      "Enzalutamide"
+    ],
+    "intervention_types": [
+      "DRUG"
+    ],
+    "brazil_cities": [
+      "São José do Rio Preto",
+      "Barretos",
+      "Santo André",
+      "Brasília",
+      "São Paulo",
+      "Natal",
+      "Salvador",
+      "Porto Alegre",
+      "Fortaleza"
+    ],
+    "brazil_states": [
+      "Ceará",
+      "Federal District",
+      "Estado de Bahia",
+      "São Paulo",
+      "Rio Grande do Norte",
+      "Rio Grande do Sul"
+    ],
+    "brazil_facilities": [
+      "Oncocentro Servico Medicos e Hospitalares Ltda · Fortaleza/Ceará",
+      "Hospital São Carlos · Fortaleza/Ceará",
+      "Oncocentro Oncologia · Fortaleza/Ceará",
+      "Instituto D'Or de Pesquisa e Ensino · Fortaleza/Ceará",
+      "Crio - Centro Regional Integrado de Oncologia · Fortaleza/Ceará",
+      "Instituto D'Or de Pesquisa e Ensino (IDOR) - Filial Salvador · Salvador/Estado de Bahia",
+      "Hospital Da Bahia · Salvador/Estado de Bahia",
+      "Clinica Amo - Rio Vermelho · Salvador/Estado de Bahia",
+      "Hospital Sirio Libanes · Brasília/Federal District",
+      "Liga Norte Riograndense Contra o Câncer · Natal/Rio Grande do Norte",
+      "Hospital São Lucas da PUCRS · Porto Alegre/Rio Grande do Sul",
+      "MedPlex Eixo Norte · Porto Alegre/Rio Grande do Sul",
+      "Hospital Nossa Senhora da Conceição · Porto Alegre/Rio Grande do Sul",
+      "Fundação Pio XII - Hospital de Câncer de Barretos · Barretos/São Paulo",
+      "CEPHO - Centro de Estudos e Pesquisas de Hematologia e Oncologia · Santo André/São Paulo",
+      "Fundação Faculdade Regional de Medicina de São José do Rio Preto · São José do Rio Preto/São Paulo",
+      "Hospital Alemao Oswaldo Cruz · São Paulo/São Paulo",
+      "Instituto do Cancer Arnaldo Vieira de Carvalho · São Paulo/",
+      "IBCC - Núcleo de Pesquisa e Ensino · São Paulo/"
+    ],
+    "summary": "This study will explore whether a combination of the investigational drug PF-06821497 and enzalutamide will work better than taking enzalutamide alone in participants with mCRPC who are ARSi or abiraterone naïve.",
+    "eligibility_snippet": "Inclusion Criteria:\n\n* Histologically or cytologically confirmed adenocarcinoma of the prostate without small cell features.\n* Metastatic disease in bone documented on bone scan, or in soft tissue documented on CT/MRI scan.\n* Progressive disease in the setting of medical or surgical castration.\n* ECOG performance status 0 or 1, with a life expectancy of ≥12 months as assessed by the investigator.\n\nExclusion Criteria:\n\n* Any medical or psychiatric condition including recent (within the past year)",
+    "neoplasia_group": "prostata",
+    "neoplasia_label": "Próstata",
+    "url": "https://clinicaltrials.gov/study/NCT06629779"
+  },
+  {
+    "nct": "NCT06136624",
+    "title": "Study of Opevesostat (MK-5684) Versus Alternative NHA in mCRPC (MK-5684-003)",
+    "official_title": "A Phase 3 Randomized, Open-label Study of MK-5684 Versus Alternative Abiraterone Acetate or Enzalutamide in Participants With Metastatic Castration-resistant Prostate Cancer (mCRPC) Previously Treated With Next-generation Hormonal Agent (NHA) and Taxane-based Chemotherapy (OMAHA-003)",
+    "phase": "Fase 3",
+    "sponsor": "Merck Sharp & Dohme LLC",
+    "interventions": [
+      "Opevesostat",
+      "Abiraterone acetate",
+      "Enzalutamide",
+      "Hydrocortisone",
+      "Fludrocortisone acetate",
+      "Prednisone",
+      "Dexamethasone"
+    ],
+    "intervention_types": [
+      "DRUG"
+    ],
+    "brazil_cities": [
+      "Belo Horizonte",
+      "Curitiba",
+      "Itajaí",
+      "São Paulo",
+      "Salvador",
+      "Vitória",
+      "Bragança Paulista"
+    ],
+    "brazil_states": [
+      "Paraná",
+      "Estado de Bahia",
+      "São Paulo",
+      "Espírito Santo",
+      "Santa Catarina",
+      "Minas Gerais"
+    ],
+    "brazil_facilities": [
+      "Hospital Santa Rita de Cassia-Centro de Pesquisa Clínica ( Site 0320) · Vitória/Espírito Santo",
+      "Obras Sociais Irma Dulce ( Site 0302) · Salvador/Estado de Bahia",
+      "Hospital Felicio Rocho ( Site 0317) · Belo Horizonte/Minas Gerais",
+      "Hospital Mario Penna ( Site 0309) · Belo Horizonte/Minas Gerais",
+      "Hospital Universitário Evangélico Mackenzie-Centro de Oncologia Mackenzie ( Site 0314) · Curitiba/Paraná",
+      "Clínica de Neoplasias Litoral ( Site 0305) · Itajaí/Santa Catarina",
+      "Hospital Universitário São Francisco de Assis - Bragança Paulista ( Site 0308) · Bragança Paulista/São Paulo",
+      "A. C. Camargo Cancer Center ( Site 0310) · São Paulo/São Paulo"
+    ],
+    "summary": "This is a phase 3, randomized, open-label study of opevesostat compared to alternative abiraterone acetate or enzalutamide in participants with metastatic castration-resistant prostate cancer (mCRPC) with respect to overall survival (OS) in participants with mCRPC previously treated with next-genera",
+    "eligibility_snippet": "Inclusion Criteria:\n\n* Has histologically- or cytologically-confirmed adenocarcinoma of the prostate without small cell histology.\n* Has prostate cancer progression while on androgen deprivation therapy (or post bilateral orchiectomy) within 6 months before Screening\n* Has current evidence of distant metastatic disease (M1 disease) documented by either bone lesions on bone scan and/or soft tissue disease by computed tomography/magnetic resonance imaging (CT/MRI).\n* Has disease that progressed du",
+    "neoplasia_group": "prostata",
+    "neoplasia_label": "Próstata",
+    "url": "https://clinicaltrials.gov/study/NCT06136624"
+  },
+  {
+    "nct": "NCT06120491",
+    "title": "Saruparib (AZD5305) vs Placebo in Men With Metastatic Castration-Sensitive Prostate Cancer Receiving Physician's Choice New Hormonal Agents",
+    "official_title": "A Randomized, 2-cohort, Double-blind, Placebo-controlled, Phase III Study of Saruparib (AZD5305) in Combination With Physician's Choice New Hormonal Agents in Patients With HRRm and Non-HRRm Metastatic Castration-Sensitive Prostate Cancer (EvoPAR-Prostate01)",
+    "phase": "Fase 3",
+    "sponsor": "AstraZeneca",
+    "interventions": [
+      "Saruparib",
+      "Placebo",
+      "Abiraterone Acetate",
+      "Darolutamide",
+      "Enzalutamide"
+    ],
+    "intervention_types": [
+      "DRUG"
+    ],
+    "brazil_cities": [
+      "Pelotas",
+      "São Luís",
+      "Curitiba",
+      "São Paulo",
+      "Salvador",
+      "Rio de Janeiro",
+      "Porto Alegre"
+    ],
+    "brazil_states": [],
+    "brazil_facilities": [
+      "Research Site · Curitiba/",
+      "Research Site · Pelotas/",
+      "Research Site · Porto Alegre/",
+      "Research Site · Porto Alegre/",
+      "Research Site · Rio de Janeiro/",
+      "Research Site · Salvador/",
+      "Research Site · São Luís/",
+      "Research Site · São Paulo/",
+      "Research Site · São Paulo/",
+      "Research Site · São Paulo/"
+    ],
+    "summary": "The intention of the study is to demonstrate superiority of Saruparib (AZD5305) + physician's choice NHA relative to placebo + physician's choice NHA by assessment of radiographic progression-free survival (rPFS) in participants with mCSPC.",
+    "eligibility_snippet": "Inclusion Criteria:\n\n* Male ≥ 18 years of age.\n* Histologically documented prostate adenocarcinoma which is de novo or recurrent and castration-sensitive. Participants with pathologic features of small cell, neuroendocrine, sarcomatoid, spindle cell, or signet cell histology are not eligible.\n* Metastatic disease as documented by the investigator prior to randomisation, with clear evidence of ≥ 1 bone lesion and/or ≥ 1 soft tissue lesion that is suitable for repeated assessment with CT and/or MR",
+    "neoplasia_group": "prostata",
+    "neoplasia_label": "Próstata",
+    "url": "https://clinicaltrials.gov/study/NCT06120491"
+  },
+  {
+    "nct": "NCT04704505",
+    "title": "Bipolar Androgen Therapy (BAT) and Radium-223 (RAD) in Metastatic Castration-resistant Prostate Cancer (mCRPC)",
+    "official_title": "Bipolar Androgen Therapy (BAT) and Radium-223 (RAD) in Metastatic Castration-resistant Prostate Cancer (mCRPC) (BAT-RAD Study)",
+    "phase": "Fase 2",
+    "sponsor": "Sidney Kimmel Comprehensive Cancer Center at Johns Hopkins",
+    "interventions": [
+      "radium-223",
+      "Bipolar Androgen Therapy (BAT)"
+    ],
+    "intervention_types": [
+      "RADIATION",
+      "DRUG"
+    ],
+    "brazil_cities": [
+      "Porto Alegre"
+    ],
+    "brazil_states": [],
+    "brazil_facilities": [
+      "Moinhos de Vento Hospital · Porto Alegre/"
+    ],
+    "summary": "This is a single-arm, multicenter open label, international, phase II study of Bipolar Androgen Therapy (BAT) plus Radium-223 (RAD) in men with metastatic castration-resistant prostate cancer (mCRPC). Men with mCRPC with progressive disease (radiographically and/or biochemically) who have been treat",
+    "eligibility_snippet": "Inclusion Criteria:\n\n* Histologically documented adenocarcinoma of the prostate confirmed by pathology report from prostate biopsy or a radical prostatectomy specimen. If prostatic tumor is of mixed histology, \\> 50% of the tumor must be adenocarcinoma.\n* Bone metastases as manifested by one or more lesions on a Technetium 99m bone scan performed within 2 months of screening\n* Castrate-resistant prostate cancer, in the setting of castrate levels of testosterone (≤ 50 ng/dL), defined as current o",
+    "neoplasia_group": "prostata",
+    "neoplasia_label": "Próstata",
+    "url": "https://clinicaltrials.gov/study/NCT04704505"
+  },
+  {
+    "nct": "NCT06952803",
+    "title": "A Study of Metastases Free Survival With Saruparib vs Placebo Added to a Standard RT/ADT in Men With High-risk Prostate Cancer With a BRCA Mutation",
+    "official_title": "A Randomised, Double-blind, Placebo-controlled, Phase III Study of Adjuvant Saruparib (AZD5305) in Patients With BRCAm Localised High-Risk Prostate Cancer Receiving Radiotherapy With Androgen Deprivation Therapy (EvoPAR-Prostate02).",
+    "phase": "Fase 3",
+    "sponsor": "AstraZeneca",
+    "interventions": [
+      "Saruparib",
+      "Placebo",
+      "Abiraterone + Prednisolone/Prednisone",
+      "Androgen Deprivation Therapy (ADT)"
+    ],
+    "intervention_types": [
+      "DRUG"
+    ],
+    "brazil_cities": [
+      "Pelotas",
+      "Jaú",
+      "Curitiba",
+      "São Paulo",
+      "Salvador",
+      "Londrina",
+      "Rio de Janeiro",
+      "Cachoeiro de Itapemirim",
+      "Porto Alegre"
+    ],
+    "brazil_states": [],
+    "brazil_facilities": [
+      "Research Site · Cachoeiro de Itapemirim/",
+      "Research Site · Curitiba/",
+      "Research Site · Curitiba/",
+      "Research Site · Jaú/",
+      "Research Site · Londrina/",
+      "Research Site · Pelotas/",
+      "Research Site · Porto Alegre/",
+      "Research Site · Porto Alegre/",
+      "Research Site · Rio de Janeiro/",
+      "Research Site · Rio de Janeiro/",
+      "Research Site · Salvador/",
+      "Research Site · São Paulo/",
+      "Research Site · São Paulo/"
+    ],
+    "summary": "The purpose of the study is to demonstrate superiority of Saruparib (AZD5305) relative to placebo added to a standard radiation therapy (RT) + androgen deprivation therapy (ADT) regimen by assessment of metastases-free survival in participants with high-risk and very high-risk localised/locally adva",
+    "eligibility_snippet": "Inclusion Criteria:\n\n* Male participants with a histologically documented diagnosis of prostate adenocarcinoma.\n* Newly diagnosed high-risk and very high-risk (localised/locally advanced) prostate cancer or a high-risk biochemical recurrence (BCR) following radical prostatectomy.\n* Provision of a formalin fixed and paraffin embedded (FFPE) tumour tissue sample.\n* Confirmed BRCA1 or BRCA2 mutation status by central tumour tissue is required for enrolment.\n* Participants required to have a compute",
+    "neoplasia_group": "prostata",
+    "neoplasia_label": "Próstata",
+    "url": "https://clinicaltrials.gov/study/NCT06952803"
+  },
+  {
+    "nct": "NCT07287150",
+    "title": "A Study to Test Inavolisib Treatment in Participants With Metastatic Castration-Resistant Prostate Cancer",
+    "official_title": "A Phase II, Randomized, Multicenter, Open-Label Study Evaluating the Efficacy and Safety of the Combination of Inavolisib Plus Enzalutamide Versus Physician's Choice of ARPI or Docetaxel in Patients With Metastatic Castration-Resistant Prostate Cancer",
+    "phase": "Fase 2",
+    "sponsor": "Hoffmann-La Roche",
+    "interventions": [
+      "Inavolisib",
+      "Enzalutamide",
+      "Abiraterone",
+      "Docetaxel"
+    ],
+    "intervention_types": [
+      "DRUG"
+    ],
+    "brazil_cities": [
+      "Santo André",
+      "Porto Alegre"
+    ],
+    "brazil_states": [
+      "Rio Grande do Sul",
+      "São Paulo"
+    ],
+    "brazil_facilities": [
+      "Irmandade Da Santa Casa de Misericordia de Porto Alegre · Porto Alegre/Rio Grande do Sul",
+      "CEPHO - Centro de Estudos e Pesquisas em Hematologia e Oncologia · Santo André/São Paulo"
+    ],
+    "summary": "This study will evaluate the efficacy and safety of the combination of inavolisib plus enzalutamide compared with physician's choice of alternative androgen receptor pathway inhibitor (ARPi) or docetaxel in biomarker-selected participants with metastatic castrate-resistant prostate cancer (mCRPC) wh",
+    "eligibility_snippet": "Inclusion Criteria:\n\n* Histologically or cytologically confirmed adenocarcinoma of the prostate without small-cell or neuroendocrine features\n* Progressive metastatic CRPC, defined as any of the following: PSA progression, defined by a minimum of two rising PSA values from three consecutive assessments with an interval of at least 7 days between assessments and with a minimal starting value of PSA \\>=1 ng/mL; The most recent qualifying PSA value must be determined within 14 days of enrollment; S",
+    "neoplasia_group": "prostata",
+    "neoplasia_label": "Próstata",
+    "url": "https://clinicaltrials.gov/study/NCT07287150"
+  },
+  {
+    "nct": "NCT06863272",
+    "title": "A Clinical Study of Ifinatamab Deruxtecan Based Treatment Combinations or as Monotherapy to Treat Metastatic Castrate Resistant Prostate Cancer (mCRPC) (MK-2400-01A/IDeate-Prostate02)",
+    "official_title": "MK-2400-01A Substudy: A Phase 1/2, Open-label Umbrella Substudy of MK-2400-U01 Master Protocol to Evaluate the Safety and Efficacy of Ifinatamab Deruxtecan-based Treatment Combinations or Ifinatamab Deruxtecan Alone in Participants With Metastatic Castration-resistant Prostate Cancer (mCRPC) (IDeate-Prostate02)",
+    "phase": "Fase 1, Fase 2",
+    "sponsor": "Merck Sharp & Dohme LLC",
+    "interventions": [
+      "Docetaxel",
+      "Ifinatamab Deruxtecan",
+      "MK-5684",
+      "Abiraterone",
+      "Enzalutamide",
+      "Rescue Medication"
+    ],
+    "intervention_types": [
+      "DRUG"
+    ],
+    "brazil_cities": [
+      "São José do Rio Preto",
+      "São Paulo",
+      "Natal",
+      "Bragança Paulista",
+      "Porto Alegre",
+      "Ribeirão Preto"
+    ],
+    "brazil_states": [
+      "Rio Grande do Norte",
+      "Rio Grande do Sul",
+      "São Paulo"
+    ],
+    "brazil_facilities": [
+      "Liga Norte Riograndense Contra o Câncer ( Site 0271) · Natal/Rio Grande do Norte",
+      "Irmandade da Santa Casa de Misericórdia de Porto Alegre ( Site 0270) · Porto Alegre/Rio Grande do Sul",
+      "Hospital Moinhos de Vento ( Site 0278) · Porto Alegre/Rio Grande do Sul",
+      "Hospital Universitário São Francisco de Assis - Bragança Paulista ( Site 0268) · Bragança Paulista/São Paulo",
+      "Hospital das Clínicas da Faculdade de Medicina de Ribeirão Preto da Universidade de São Paulo (USP) ( Site 0273) · Ribeirão Preto/São Paulo",
+      "Fundação Faculdade Regional de Medicina de São José do Rio Preto ( Site 0263) · São José do Rio Preto/São Paulo",
+      "Hospital Alemao Oswaldo Cruz ( Site 0279) · São Paulo/São Paulo",
+      "IPITEC ( Site 0275) · São Paulo/",
+      "IBCC - Instituto Brasileiro de Controle do Câncer ( Site 0269) · São Paulo/"
+    ],
+    "summary": "The purpose of this substudy is to assess the efficacy and safety of ifinatamab deruxtecan (I-DXd), given alone or with other treatments in participants with metastatic castration-resistant prostate cancer (mCRPC). The goals of this study are to learn about:\n\n* The safety of the study treatment and ",
+    "eligibility_snippet": "Inclusion Criteria:\n\nThe main inclusion criteria include but are not limited to the following:\n\n* Has histologically- or cytologically-confirmed adenocarcinoma of the prostate without small cell histology\n* Has prostate cancer progression while on androgen deprivation therapy (ADT) (or post bilateral orchiectomy) within 6 months before Screening\n* Has current evidence of metastatic disease\n* Has received prior treatment with 1 or 2 androgen receptor pathway inhibitors (ARPIs) and progressed duri",
+    "neoplasia_group": "prostata",
+    "neoplasia_label": "Próstata",
+    "url": "https://clinicaltrials.gov/study/NCT06863272"
+  },
+  {
+    "nct": "NCT07405801",
+    "title": "A Phase II Study Evaluating the Efficacy and Safety of Inavolisib Plus Ribociclib Plus Fulvestrant Versus Placebo Plus Ribociclib Plus Fulvestrant in Participants With Advanced Breast Cancer",
+    "official_title": "A Phase II, Multicenter, Randomized, Double-Blind, Placebo-Controlled Study Evaluating the Efficacy and Safety of Inavolisib Plus Ribociclib Plus Fulvestrant Versus Placebo Plus Ribociclib Plus Fulvestrant in Patients With Endocrine- Resistant Hormone-Receptor-Positive, HER2-Negative Advanced Breast Cancer With Chromosome 8P Loss and Without a PIK3CA Mutation",
+    "phase": "Fase 2",
+    "sponsor": "Hoffmann-La Roche",
+    "interventions": [
+      "Inavolisib",
+      "Ribociclib",
+      "Fulvestrant",
+      "Placebo"
+    ],
+    "intervention_types": [
+      "DRUG"
+    ],
+    "brazil_cities": [
+      "São Paulo",
+      "Curitiba",
+      "Brasília",
+      "Vitória"
+    ],
+    "brazil_states": [
+      "Espírito Santo",
+      "São Paulo",
+      "Federal District",
+      "Paraná"
+    ],
+    "brazil_facilities": [
+      "Hospital Santa Rita de Cassia Vitoria · Vitória/Espírito Santo",
+      "Hospital Brasilia · Brasília/Federal District",
+      "ICTR Curitiba · Curitiba/Paraná",
+      "Clinica de Pesquisa e Centro de Estudos em Oncologia Ginecologica e Mamaria Ltda · São Paulo/São Paulo"
+    ],
+    "summary": "A study to evaluate the efficacy and safety of triplet combination of inavolisib plus ribociclib and fulvestrant versus placebo plus ribociclib and fulvestrant in the first-line setting in participants with endocrine-therapy-resistant hormone receptor (HR)-positive (HR+), human epidermal growth fact",
+    "eligibility_snippet": "Inclusion Criteria:\n\n* Women or men with histologically or cytologically confirmed carcinoma of the breast that is locally advanced or metastatic and is not amenable to surgical or radiation therapy with curative intent\n* Documented estrogen receptor (ER)-positive and/or progesterone receptor (PR)-positive tumor according to American Society of Clinical Oncology/College of American Pathologists (ASCO/CAP) guidelines, defined as \\>=1% of tumor cells stained positive based on the most recent tumor",
+    "neoplasia_group": "mama",
+    "neoplasia_label": "Mama",
+    "url": "https://clinicaltrials.gov/study/NCT07405801"
+  },
+  {
+    "nct": "NCT07060807",
+    "title": "A Clinical Study of Patritumab Deruxtecan to Treat Breast Cancer (MK-1022-016)",
+    "official_title": "An Open-label, Randomized, Phase 3 Study to Evaluate Patritumab Deruxtecan Monotherapy Versus Treatment of Physician's Choice in Hormone Receptor-positive, HER2-negative Unresectable Locally Advanced or Metastatic Breast Cancer (HERTHENA-Breast04)",
+    "phase": "Fase 3",
+    "sponsor": "Merck Sharp & Dohme LLC",
+    "interventions": [
+      "Patritumab deruxtecan",
+      "Paclitaxel",
+      "Nab-paclitaxel",
+      "Capecitabine",
+      "Liposomal doxorubicin",
+      "Trastuzumab deruxtecan"
+    ],
+    "intervention_types": [
+      "DRUG",
+      "BIOLOGICAL"
+    ],
+    "brazil_cities": [
+      "Lages",
+      "São Paulo",
+      "Natal",
+      "Santa Cruz do Sul",
+      "Recife",
+      "Porto Alegre"
+    ],
+    "brazil_states": [
+      "Rio Grande do Norte",
+      "Santa Catarina",
+      "Rio Grande do Sul",
+      "Pernambuco"
+    ],
+    "brazil_facilities": [
+      "Hospital de Câncer de Recife ( Site 0302) · Recife/Pernambuco",
+      "Liga Norte Riograndense Contra o Câncer ( Site 0301) · Natal/Rio Grande do Norte",
+      "Hospital do Câncer Mãe de Deus ( Site 0300) · Porto Alegre/Rio Grande do Sul",
+      "Instituto de Oncologia Saint Gallen ( Site 0308) · Santa Cruz do Sul/Rio Grande do Sul",
+      "ANIMI - Unidade de Tratamento Oncologico ( Site 0306) · Lages/Santa Catarina",
+      "Hospital Paulistano ( Site 0304) · São Paulo/"
+    ],
+    "summary": "Researchers are looking for other ways to treat breast cancer (BC) that is hormone receptor-positive and human epidermal growth factor receptor 2-negative (HR+/HER2-) and either unresectable locally advanced or metastatic.\n\n* HR positive (HR+) means the cancer cells have proteins that attach to estr",
+    "eligibility_snippet": "Inclusion Criteria:\n\nThe main inclusion criteria include but are not limited to the following:\n\n* Has a diagnosis of hormone receptor positive (HR+)/human epidermal growth factor receptor 2 (HER2)- invasive breast carcinoma that is either locally advanced disease not amenable to resection with curative intent (herein called unresectable) or metastatic disease not treatable with curative intent\n* Has centrally-confirmed HR+ and HER2- results and human epidermal growth factor receptor 3 (HER3) eva",
+    "neoplasia_group": "mama",
+    "neoplasia_label": "Mama",
+    "url": "https://clinicaltrials.gov/study/NCT07060807"
+  },
+  {
+    "nct": "NCT05563220",
+    "title": "Open-Label Umbrella Study To Evaluate Safety And Efficacy Of Elacestrant In Various Combination In Participants With Metastatic Breast Cancer",
+    "official_title": "A Phase 1b/2, Open-Label Umbrella Study To Evaluate Safety And Efficacy Of Elacestrant In Various Combination In Patients With Metastatic Breast Cancer",
+    "phase": "Fase 1, Fase 2",
+    "sponsor": "Stemline Therapeutics, Inc.",
+    "interventions": [
+      "Elacestrant",
+      "Alpelisib",
+      "Everolimus",
+      "Ribociclib",
+      "Palbociclib",
+      "Capivasertib",
+      "Abemaciclib"
+    ],
+    "intervention_types": [
+      "DRUG"
+    ],
+    "brazil_cities": [
+      "Itajaí",
+      "Porto Alegre",
+      "São Paulo",
+      "Goiânia"
+    ],
+    "brazil_states": [],
+    "brazil_facilities": [
+      "ACCG - Hospital Araujo Jorge · Goiânia/",
+      "Clinica Neoplasias Litoral · Itajaí/",
+      "Hospital Sao Lucas da PUCRS · Porto Alegre/",
+      "Centro Gaucho Integrado de Oncologia; Hematologia; Ensino e Pesquisa - Hospital Mae de Deus/AESC · Porto Alegre/",
+      "Hospital Sirio-Libanes (HSL) - Centro De Oncologia - Sao Paulo · São Paulo/"
+    ],
+    "summary": "This is a multicenter, Phase 1b/2 trial in participants with estrogen receptor positive/human epidermal growth factor receptor 2 negative (ER+/HER2-) advanced/metastatic breast cancer. The phase 1b part of the trial will determine the recommended Phase 2 dose (RP2D) of elacestrant when administered ",
+    "eligibility_snippet": "Inclusion Criteria:\n\n1. Participant has signed the informed consent before all study specific activities are conducted.\n2. Women or men aged ≥18 years (or the minimum age of consent in accordance with the local law), at the time of informed consent signature. Female participants may be of any menopausal status.\n\n   * Postmenopausal status is defined as follows or in accordance with local regulations:\n\n     1. Age ≥60 years or\n     2. Age \\<60 years and amenorrhea for 12 or more months (without a",
+    "neoplasia_group": "mama",
+    "neoplasia_label": "Mama",
+    "url": "https://clinicaltrials.gov/study/NCT05563220"
+  },
+  {
+    "nct": "NCT06170788",
+    "title": "Sacituzumab Tirumotecan (MK-2870) in Combination With Pembrolizumab Versus Pembrolizumab Alone in Metastatic Non-small Cell Lung Cancer (NSCLC) With Programmed Cell Death Ligand 1 (PD-L1) Tumor Proportion Score (TPS) ≥ 50% (MK-2870-007)",
+    "official_title": "A Randomized, Open-label, Phase 3 Study of MK-2870 in Combination With Pembrolizumab Compared to Pembrolizumab Monotherapy in the First-line Treatment of Participants With Metastatic Non-small Cell Lung Cancer With PD-L1 TPS Greater Than or Equal to 50% (TroFuse-007)",
+    "phase": "Fase 3",
+    "sponsor": "Merck Sharp & Dohme LLC",
+    "interventions": [
+      "Sacituzumab tirumotecan",
+      "Pembrolizumab",
+      "Supportive care measures"
+    ],
+    "intervention_types": [
+      "DRUG",
+      "BIOLOGICAL"
+    ],
+    "brazil_cities": [
+      "São José do Rio Preto",
+      "Barretos",
+      "São Paulo",
+      "Rio de Janeiro",
+      "Porto Alegre",
+      "Santa Maria"
+    ],
+    "brazil_states": [
+      "Rio Grande do Sul",
+      "São Paulo"
+    ],
+    "brazil_facilities": [
+      "Irmandade da Santa Casa de Misericórdia de Porto Alegre ( Site 0409) · Porto Alegre/Rio Grande do Sul",
+      "Clinica Viver ( Site 0400) · Santa Maria/Rio Grande do Sul",
+      "Fundação Pio XII - Hospital de Câncer de Barretos ( Site 0402) · Barretos/São Paulo",
+      "Fundação Faculdade Regional de Medicina de São José do Rio Preto ( Site 0406) · São José do Rio Preto/São Paulo",
+      "Instituto Nacional de Câncer - INCA ( Site 0405) · Rio de Janeiro/",
+      "Núcleo de Pesquisa Clínica da Rede São Camilo ( Site 0401) · São Paulo/"
+    ],
+    "summary": "The primary objective of the study is to compare sacituzumab tirumotecan combined with pembrolizumab to pembrolizumab alone with respect to overall survival (OS). The primary hypothesis is that the combination of sacituzumab tirumotecan and pembrolizumab is superior to pembrolizumab alone with respe",
+    "eligibility_snippet": "Inclusion Criteria:\n\n* Histologically or cytologically confirmed diagnosis of squamous or nonsquamous NSCLC\n\n  * Confirmation that epidermal growth factor receptor- (EGFR-), anaplastic lymphoma kinase- (ALK-), or proto-oncogene tyrosine-protein kinase ROS (ROS1-) directed therapy is not indicated as primary therapy\n  * Provided tumor tissue that demonstrates programmed cell death ligand 1 (PD-L1) expression in ≥50% of tumor cells as assessed by an immunohistochemistry (IHC) central laboratory\n  ",
+    "neoplasia_group": "mama",
+    "neoplasia_label": "Mama",
+    "url": "https://clinicaltrials.gov/study/NCT06170788"
+  },
+  {
+    "nct": "NCT05827081",
+    "title": "Phase IIIb Study of Ribociclib + ET in Early Breast Cancer",
+    "official_title": "A Phase IIIb Study to Characterize the Efficacy and Safety of Adjuvant Ribociclib Plus Endocrine Therapy in a Close-to-clinical Practice Patient Population With HR+ HER2- Early Breast Cancer (Adjuvant WIDER)",
+    "phase": "Fase 3",
+    "sponsor": "Novartis Pharmaceuticals",
+    "interventions": [
+      "Ribociclib",
+      "Letrozole",
+      "Ansastrozole",
+      "Goserelin",
+      "Leuprolide",
+      "Exemestane"
+    ],
+    "intervention_types": [
+      "DRUG"
+    ],
+    "brazil_cities": [
+      "Porto Alegre",
+      "São Paulo"
+    ],
+    "brazil_states": [
+      "Rio Grande do Sul",
+      "São Paulo"
+    ],
+    "brazil_facilities": [
+      "Novartis Investigative Site · Porto Alegre/Rio Grande do Sul",
+      "Novartis Investigative Site · São Paulo/São Paulo"
+    ],
+    "summary": "The purpose of this open-label, multicenter, phase IIIb, single-arm study is to characterize the efficacy and safety of the combination of ribociclib and standard adjuvant endocrine therapy (ET) on invasive breast cancer-free survival (iBCFS), in a close to clinical practice patient population with ",
+    "eligibility_snippet": "Key Inclusion criteria:\n\n* Participant is an adult, male or female ≥ 18 years of age at the time of informed consent form signature (IC).\n* Participant has a histologically and/or cytologically confirmed diagnosis of estrogen-receptor positive and/or progesterone receptor positive breast cancer (BC) based on the most recently analyzed tissue sample tested by a local laboratory prior to enrollment.\n* Participant has HER2- BC defined as a negative in situ hybridization test or an immunohistochemis",
+    "neoplasia_group": "mama",
+    "neoplasia_label": "Mama",
+    "url": "https://clinicaltrials.gov/study/NCT05827081"
+  },
+  {
+    "nct": "NCT05950945",
+    "title": "Trastuzumab Deruxtecan (T-DXd) in Patients Who Have Hormone Receptor-negative and Hormone Receptor-positive HER2-low or HER2 IHC 0 Metastatic Breast Cancer",
+    "official_title": "A Phase 3b, Multicenter, Global, Interventional, Open-label Study of Trastuzumab Deruxtecan (T-DXd), an Anti-HER2-Antibody Drug Conjugate (ADC), in Subjects Who Have Unresectable and/or Metastatic HER2-low or HER2 Immunohistochemistry (IHC) 0 Breast Cancer (DESTINY-Breast15)",
+    "phase": "Fase 3",
+    "sponsor": "Daiichi Sankyo",
+    "interventions": [
+      "Trastuzumab Deruxtecan"
+    ],
+    "intervention_types": [
+      "DRUG"
+    ],
+    "brazil_cities": [
+      "São José do Rio Preto",
+      "Rio Grande",
+      "Santo André",
+      "Brasília",
+      "Jaú",
+      "Curitiba",
+      "São Paulo",
+      "Salvador",
+      "Londrina",
+      "Florianópolis",
+      "Riberão Preto",
+      "Santa Catarina",
+      "Ijuí"
+    ],
+    "brazil_states": [],
+    "brazil_facilities": [
+      "Centro de Oncologia - Unidade Brasília - Hospital Sírio Libanês · Brasília/",
+      "CIONC-Centro Integrado de Oncologia de Curitiba · Curitiba/",
+      "Hospital Erasto Gaertner - Liga Paranaense de Combate ao Câncer · Curitiba/",
+      "CEPON - Centro de Pesquisas Oncológicas de Santa Catarina · Florianópolis/",
+      "Oncosite - Centro de Pesquisa Clinica e Oncologia · Ijuí/",
+      "Fundação Doutor Amaral Carvalho · Jaú/",
+      "Instituto de Cancer de Londrina · Londrina/",
+      "Hospital das Clínicas FMRP-USP · Riberão Preto/",
+      "Hospital Nossa Senhora da Conceicao · Rio Grande/",
+      "Ensino e Terapia de Inovação Clínica AMO-ETICA · Salvador/",
+      "Catarina Pesquisa Clinica · Santa Catarina/",
+      "CEPHO - Centro de Estudos e Pesquisas de Hematologia e Oncologia · Santo André/",
+      "Fundacao Faculdade Regional de Medicina de Sao Jose do Rio Preto · São José do Rio Preto/",
+      "ICESP - Instituto do Câncer do Estado de São Paulo Octavio Frias de Oliveira · São Paulo/",
+      "Clínica de Pesquisas e Centro de Estudos em Oncologia Ginecológica e Mamária Ltda · São Paulo/"
+    ],
+    "summary": "This study will evaluate the safety and efficacy of trastuzumab deruxtecan (T-DXd) in participants with human epidermal growth factor receptor 2 (HER2)-low or HER2 immunohistochemistry (IHC) 0 (who are both hormone receptor \\[HR\\]-negative and HR-positive) unresectable and/or metastatic breast cance",
+    "eligibility_snippet": "Inclusion Criteria:\n\n* Sign and date the main informed consent form\n* Must agree to provide a newly obtained or archival baseline biopsy from primary and/or metastatic lesion.\n* Pathologically documented Breast Cancer (BC) tumor\n\n  * Is unresectable and/or metastatic.\n  * Is hormone receptor-negative or hormone receptor-positive.\n\n    * Must include percentage of positively stained cells to characterize if hormone receptor-positive or -negative.\n  * Has confirmed HER2 IHC 1+ or IHC 2+/ISH- (HER2",
+    "neoplasia_group": "mama",
+    "neoplasia_label": "Mama",
+    "url": "https://clinicaltrials.gov/study/NCT05950945"
+  },
+  {
+    "nct": "NCT05633654",
+    "title": "Study of Sacituzumab Govitecan-hziy and Pembrolizumab Versus Treatment of Physician's Choice in Patients With Triple Negative Breast Cancer Who Have Residual Invasive Disease After Surgery and Neoadjuvant Therapy (ASCENT-05/AFT-65 OptimICE-RD/GBG 119/NSABP B-63)",
+    "official_title": "A Randomized, Open-label, Phase 3 Study of Adjuvant Sacituzumab Govitecan and Pembrolizumab Versus Treatment of Physician's Choice in Patients With Triple Negative Breast Cancer Who Have Residual Invasive Disease After Surgery and Neoadjuvant Therapy",
+    "phase": "Fase 3",
+    "sponsor": "Gilead Sciences",
+    "interventions": [
+      "Sacituzumab govitecan-hziy (SG)",
+      "Pembrolizumab",
+      "Capecitabine"
+    ],
+    "intervention_types": [
+      "DRUG"
+    ],
+    "brazil_cities": [
+      "Brasília",
+      "Curitiba",
+      "Itajaí",
+      "São Paulo",
+      "Natal",
+      "Salvador",
+      "Teresina",
+      "Porto Alegre"
+    ],
+    "brazil_states": [],
+    "brazil_facilities": [
+      "St. de Habitações Individuais Sul QI 15 - Lago Sul, Brasília - DF, Brasil · Brasília/",
+      "Rua Myltho Anselmo da Silva, 870 - Mercês, Curitiba - PR, CEP 80510-130 · Curitiba/",
+      "R. Aderbal Ramos da Silva, 148 - Centro, Itajaí - SC, 88300-000, Brasil · Itajaí/",
+      "Av. Miguel Castro, 1355, Nossa Senhora de Nazaré, Natal/RN · Natal/",
+      "Rua Professor Annes Dias, 295 - Centro Histórico, Porto Alegre - RS, , Brasil · Porto Alegre/",
+      "Av. Soledad, 569, sala 1103, Três Figueiras, CEP 90470-340 · Porto Alegre/",
+      "Av. Ipiranga 6690 · Porto Alegre/",
+      "Av. Milton Santos, 123 - Ondina, Salvador - BA, , Brasil · Salvador/",
+      "Av. Brigadeiro Luís Antônio 733, loja 8 · São Paulo/",
+      "Martiiano de Carvalho 965 · São Paulo/",
+      "CIPE Centro Internacional de Pesquisa; A.C. Camargo Cancer Center · São Paulo/",
+      "Rua Gardênia, 710, Edifício Prime, 4º andar, Bairro Jóquei, Teresina - PI, CEP 60449-200 · Teresina/"
+    ],
+    "summary": "The goal of this study is to find out if the experimental product, sacituzumab govitecan-hziy (SG) in combination with pembrolizumab given after surgery, is effective and safe compared to the treatment of physician's choice (TPC) which includes either pembrolizumab or pembrolizumab plus capecitabine",
+    "eligibility_snippet": "Key Inclusion Criteria:\n\n* Age \\> 18 years, with residual invasive triple negative breast cancer (TNBC) in the breast or lymph nodes after neoadjuvant therapy and surgery:\n\n  * TNBC criteria for the study is defined as estrogen receptor (ER) and progesterone receptor (PR) ≤ 10%, human epidermal growth factor receptor 2 (HER2)-negative per American Society of Clinical Oncology and College of American Pathologists (ASCO/CAP) guidelines (immunohistochemistry (IHC) and/or in situ hybridization (ISH)",
+    "neoplasia_group": "mama",
+    "neoplasia_label": "Mama",
+    "url": "https://clinicaltrials.gov/study/NCT05633654"
+  },
+  {
+    "nct": "NCT07100106",
+    "title": "A Study to Evaluate the Effect of GDC-4198 Alone and in Combination With Giredestrant Versus Abemaciclib and Giredestrant in Participants With Locally Advanced or Metastatic Estrogen Receptor-Positive (ER+), Human Epidermal Growth Factor Receptor-Negative (HER2-) Breast Cancer",
+    "official_title": "A Phase Ib/II Multicenter, Open-Label, Randomized Study Evaluating the Safety, Pharmacokinetics, and Activity of GDC-4198 Alone and in Combination With Giredestrant in Comparison With Abemaciclib and Giredestrant in Participants With Locally Advanced or Metastatic Estrogen Receptor-Positive, HER2-Negative Breast Cancer Who Have Previously Progressed During or After a CDK4/6 Inhibitor",
+    "phase": "Fase 1, Fase 2",
+    "sponsor": "Genentech, Inc.",
+    "interventions": [
+      "GDC-4198",
+      "Giredestrant",
+      "Abemaciclib"
+    ],
+    "intervention_types": [
+      "DRUG"
+    ],
+    "brazil_cities": [
+      "Recife",
+      "Porto Alegre"
+    ],
+    "brazil_states": [
+      "Rio Grande do Sul",
+      "Pernambuco"
+    ],
+    "brazil_facilities": [
+      "Hospital do Cancer de Pernambuco - HCP · Recife/Pernambuco",
+      "Irmandade Da Santa Casa de Misericordia de Porto Alegre · Porto Alegre/Rio Grande do Sul",
+      "Hospital de Clinicas de Porto Alegre (HCPA) - PPDS · Porto Alegre/Rio Grande do Sul"
+    ],
+    "summary": "The purpose of this study is to assess the safety of GDC-4198 alone and in combination with giredestrant and also the efficacy of GDC-4198 + giredestrant versus abemaciclib + giredestrant in participants with locally advanced or metastatic ER+, HER2- breast cancer. The study consists of 2 phases: Ph",
+    "eligibility_snippet": "Inclusion Criteria:\n\n* Histologically and/or cytologically confirmed adenocarcinoma of the breast that is locally advanced or metastatic.\n* Previously documented ER+ and HER2- tumor according to American Society of Clinical Oncology (ASCO)/ College of American Pathologists (CAP) or European Society of Medical Oncology (ESMO) guidelines or any national guidelines with criteria conforming to ASCO/CAP or ESMO guidelines.\n* Disease progression during or after treatment with an approved cyclin-depend",
+    "neoplasia_group": "mama",
+    "neoplasia_label": "Mama",
+    "url": "https://clinicaltrials.gov/study/NCT07100106"
+  },
+  {
+    "nct": "NCT06982521",
+    "title": "Phase 3 Study of RLY-2608 + Fulvestrant vs Capivasertib + Fulvestrant as Treatment for Locally Advanced or Metastatic PIK3CA-mutant HR+/HER2- Breast Cancer",
+    "official_title": "A Phase 3 Open-Label Randomized Study Assessing the Efficacy and Safety of RLY-2608 + Fulvestrant Versus Capivasertib + Fulvestrant as Treatment for PIK3CA-mutant Hormone Receptor Positive, Human Epidermal Growth Factor Receptor 2 Negative (HR+/HER2-) Locally Advanced or Metastatic Breast Cancer Following Recurrence or Progression On or After Treatment With a CDK4/6 Inhibitor",
+    "phase": "Fase 3",
+    "sponsor": "Relay Therapeutics, Inc.",
+    "interventions": [
+      "RLY-2608",
+      "Capivasertib",
+      "Fulvestrant"
+    ],
+    "intervention_types": [
+      "DRUG"
+    ],
+    "brazil_cities": [
+      "Belo Horizonte",
+      "Natal",
+      "Salvador",
+      "Rio de Janeiro",
+      "Porto Alegre",
+      "Fortaleza",
+      "São Caetano do Sul"
+    ],
+    "brazil_states": [
+      "São Paulo"
+    ],
+    "brazil_facilities": [
+      "Centro de Oncologia do ABC- CEON+ Unidade Sao Caetano do Sul · São Caetano do Sul/São Paulo",
+      "Oncolinicas do Brasil Serviços Médicos S.A (Oncocentro) · Belo Horizonte/",
+      "Instituto do Câncer do Ceará · Fortaleza/",
+      "Oncoclinicas Natal- Centro de Pesquisa Oncology Natal · Natal/",
+      "Irmandade da Santa Casa de Misericórdia de Porto Alegre · Porto Alegre/",
+      "Centro Gaúcho Integrado - Hospital Mae de Deus · Porto Alegre/",
+      "Associação Hospitalar Moinhos de Vento · Porto Alegre/",
+      "Uniao Brasileira de Educacao e Assistencia/ Hospital Sao Lucas da PUCRS · Porto Alegre/",
+      "Oncoclinicas Rio de Janeiro S.A. · Rio de Janeiro/",
+      "Instituto de Educação Pesquisa e Gestão em Saúde · Rio de Janeiro/",
+      "Nucleo de Oncologia da Bahia S.A. · Salvador/"
+    ],
+    "summary": "This is a global, multicenter, open-label, randomized Phase 3 study comparing the efficacy and safety of RLY-2608 + fulvestrant to capivasertib + fulvestrant for the treatment of patients with HR+/HER2- ABC with PIK3CA mutation following recurrence or progression on or after treatment with a CDK4/6 ",
+    "eligibility_snippet": "Inclusion Criteria:\n\n* Patient has ECOG performance status of 0-1\n* One or more known primary oncogenic PIK3CA mutation(s)\n* Adult females, pre- and/or post-menopausal, and adult males. Pre-menopausal (and peri-menopausal) women can be enrolled if amenable to treatment with a gonadotropin-releasing hormone (GnRH) agonist. Patients are to have commenced treatment with a GnRH agonist at least 4 weeks prior to randomization and must be willing to continue on it for the duration of the study.\n* Hist",
+    "neoplasia_group": "mama",
+    "neoplasia_label": "Mama",
+    "url": "https://clinicaltrials.gov/study/NCT06982521"
+  },
+  {
+    "nct": "NCT06966700",
+    "title": "A Clinical Study of Sacituzumab Tirumotecan (Sac-TMT, MK-2870) in People With Breast Cancer (MK-2870-032)",
+    "official_title": "A Phase 3, Randomized, Open-label Study to Evaluate the Efficacy and Safety of Sac-TMT (Sacituzumab Tirumotecan, MK-2870) Followed by Carboplatin/Paclitaxel vs Chemotherapy, Both in Combination With Pembrolizumab as Neoadjuvant Therapy for High-Risk, Early-Stage, Triple-Negative Breast Cancer or Hormone Receptor-low Positive/Human Epidermal Growth Factor Receptor-2 Negative Breast Cancer",
+    "phase": "Fase 3",
+    "sponsor": "Merck Sharp & Dohme LLC",
+    "interventions": [
+      "Sacituzumab tirumotecan",
+      "Pembrolizumab",
+      "Rescue Medication",
+      "Carboplatin",
+      "Paclitaxel",
+      "Doxorubicin",
+      "Epirubicin",
+      "Cyclophosphamide",
+      "Capecitabine",
+      "Olaparib"
+    ],
+    "intervention_types": [
+      "DRUG",
+      "BIOLOGICAL"
+    ],
+    "brazil_cities": [
+      "São José do Rio Preto",
+      "Barretos",
+      "Passo Fundo",
+      "Blumenau",
+      "Natal",
+      "Rio de Janeiro",
+      "Porto Alegre",
+      "Fortaleza",
+      "Goiânia"
+    ],
+    "brazil_states": [
+      "Ceará",
+      "Goiás",
+      "São Paulo",
+      "Santa Catarina",
+      "Rio Grande do Norte",
+      "Rio Grande do Sul"
+    ],
+    "brazil_facilities": [
+      "PRONUTRIR ( Site 6120) · Fortaleza/Ceará",
+      "Hospital Araújo Jorge ( Site 6100) · Goiânia/Goiás",
+      "Liga Norte Riograndense Contra o Câncer ( Site 6111) · Natal/Rio Grande do Norte",
+      "Associação Hospitalar Beneficente São Vicente de Paulo ( Site 6115) · Passo Fundo/Rio Grande do Sul",
+      "Irmandade da Santa Casa de Misericórdia de Porto Alegre ( Site 6102) · Porto Alegre/Rio Grande do Sul",
+      "Hospital São Lucas da PUCRS ( Site 6103) · Porto Alegre/Rio Grande do Sul",
+      "Clínica de Oncologia Reichow ( Site 6112) · Blumenau/Santa Catarina",
+      "Fundação Pio XII - Hospital de Câncer de Barretos ( Site 6108) · Barretos/São Paulo",
+      "Hospital de Base de São José do Rio Preto ( Site 6101) · São José do Rio Preto/São Paulo",
+      "INCA Hospital do Câncer III ( Site 6107) · Rio de Janeiro/"
+    ],
+    "summary": "Researchers are looking for new ways to treat types of breast cancer that are both:\n\n* High-risk, which means the cancer may have a higher chance of getting worse or coming back after treatment\n* Early-stage, which means the cancer is in the breast or the lymph nodes around the breast The 2 types of",
+    "eligibility_snippet": "Inclusion Criteria:\n\nThe main inclusion criteria include but are not limited to the following:\n\n* Has previously untreated high-risk, early-stage, non-metastatic (M0) breast cancer (BC), defined as any of the following combined primary tumor (T) and regional lymph node (N) staging per AJCC 8th edition criteria as assessed by the physician investigator based on radiological and/or clinical assessment:\n\n  * cT1c, N1-N2\n  * cT2, N0-N2\n  * cT3, N0-N2\n  * cT4a-d, N0-N2\n* The participant must have a c",
+    "neoplasia_group": "mama",
+    "neoplasia_label": "Mama",
+    "url": "https://clinicaltrials.gov/study/NCT06966700"
+  },
+  {
+    "nct": "NCT04862663",
+    "title": "Capivasertib + CDK4/6i + Fulvestrant for Advanced/Metastatic HR+/HER2- Breast Cancer (CAPItello-292)",
+    "official_title": "A Phase Ib/III, Open-label, Randomised Study of Capivasertib Plus CDK4/6 Inhibitors and Fulvestrant Versus CDK4/6 Inhibitors and Fulvestrant in Hormone Receptor-Positive and Human Epidermal Growth Factor Receptor 2-Negative Locally Advanced, Unresectable or Metastatic Breast Cancer (CAPItello-292)",
+    "phase": "Fase 3",
+    "sponsor": "AstraZeneca",
+    "interventions": [
+      "Capivasertib",
+      "Fulvestrant",
+      "Palbociclib",
+      "Ribociclib",
+      "Abemaciclib"
+    ],
+    "intervention_types": [
+      "DRUG"
+    ],
+    "brazil_cities": [
+      "Blumenau",
+      "Taubaté",
+      "São Paulo",
+      "Natal",
+      "Teresina",
+      "Vitória",
+      "Alfenas",
+      "Porto Velho",
+      "Porto Alegre"
+    ],
+    "brazil_states": [],
+    "brazil_facilities": [
+      "Research Site · Alfenas/",
+      "Research Site · Blumenau/",
+      "Research Site · Natal/",
+      "Research Site · Porto Alegre/",
+      "Research Site · Porto Velho/",
+      "Research Site · São Paulo/",
+      "Research Site · Taubaté/",
+      "Research Site · Teresina/",
+      "Research Site · Vitória/"
+    ],
+    "summary": "A Phase Ib/III Open-label, Randomised Study of Capivasertib plus CDK4/6 Inhibitors and Fulvestrant versus CDK4/6 Inhibitors and Fulvestrant in Hormone Receptor-Positive and Human Epidermal Growth Factor Receptor 2-Negative Locally Advanced, Unresectable or Metastatic Breast Cancer (CAPItello-292)",
+    "eligibility_snippet": "Key inclusion criteria for both phases:\n\n1. Adult females (pre-/peri-/ and post-menopausal), and adult males.\n2. Histologically confirmed HR+/ HER2- breast cancer determined from the most recent tumour sample (primary or metastatic) per the American Society of Clinical Oncology and College of American Pathologists guideline. To fulfil the requirement of HR+ disease, a breast cancer must express ER with or without co-expression of progesterone receptor.\n3. Eligible for fulvestrant therapy and at ",
+    "neoplasia_group": "mama",
+    "neoplasia_label": "Mama",
+    "url": "https://clinicaltrials.gov/study/NCT04862663"
+  },
+  {
+    "nct": "NCT06841354",
+    "title": "A Study of Sacituzumab Tirumotecan (Sac-TMT, MK-2870) as Monotherapy and in Combination With Pembrolizumab (MK-3475) in Participants With Triple-Negative Breast Cancer (MK-2870-011/TroFuse-011)",
+    "official_title": "A Phase 3, Randomized, Open-label Study Comparing Efficacy and Safety of Sacituzumab Tirumotecan (Sac-TMT, MK-2870) as a Monotherapy and in Combination With Pembrolizumab (MK-3475) Versus Treatment of Physician's Choice in Participants With Previously Untreated Locally Recurrent Unresectable or Metastatic Triple-Negative Breast Cancer Expressing PD-L1 at CPS Less Than 10 (TroFuse-011)",
+    "phase": "Fase 3",
+    "sponsor": "Merck Sharp & Dohme LLC",
+    "interventions": [
+      "Sacituzumab tirumotecan",
+      "Pembrolizumab",
+      "Rescue Medication",
+      "Paclitaxel",
+      "Nab-paclitaxel",
+      "Gemcitabine",
+      "Carboplatin"
+    ],
+    "intervention_types": [
+      "DRUG",
+      "BIOLOGICAL"
+    ],
+    "brazil_cities": [
+      "Barretos",
+      "São Jose Do Rio Preto",
+      "São Paulo",
+      "Natal",
+      "Recife",
+      "Porto Alegre"
+    ],
+    "brazil_states": [
+      "Rio Grande do Norte",
+      "São Paulo",
+      "Rio Grande do Sul",
+      "Pernambuco"
+    ],
+    "brazil_facilities": [
+      "Hospital de Câncer de Recife ( Site 2300) · Recife/Pernambuco",
+      "Liga Norte Riograndense Contra o Cancer ( Site 2310) · Natal/Rio Grande do Norte",
+      "Hospital Nossa Senhora da Conceição ( Site 2302) · Porto Alegre/Rio Grande do Sul",
+      "Fundacao Pio XII - Hospital de Cancer de Barretos ( Site 2307) · Barretos/São Paulo",
+      "Fundação Faculdade Regional de Medicina de São José do Rio Preto ( Site 2301) · São Jose Do Rio Preto/São Paulo",
+      "IBCC - Núcleo de Pesquisa e Ensino ( Site 2306) · São Paulo/"
+    ],
+    "summary": "Researchers want to know if sacituzumab tirumotecan given alone or with pembrolizumab can treat triple negative breast cancer (TNBC). The main goal of this study is to learn if people treated with sacituzumab tirumotecan alone or with pembrolizumab live longer overall or without the cancer growing o",
+    "eligibility_snippet": "Inclusion Criteria:\n\nThe main inclusion criteria include but are not limited to the following:\n\n* Has locally recurrent unresectable or metastatic TNBC that cannot be treated with curative intent\n* Has not received systemic treatment for locally recurrent unresectable or metastatic breast cancer\n* Participants previously treated for early-stage breast cancer must have completed all prior therapy for early-stage breast cancer with curative intent at least 6 months before the first disease recurre",
+    "neoplasia_group": "mama",
+    "neoplasia_label": "Mama",
+    "url": "https://clinicaltrials.gov/study/NCT06841354"
+  },
+  {
+    "nct": "NCT06422143",
+    "title": "Pembrolizumab With or Without Maintenance Sacituzumab Tirumotecan (Sac-TMT; MK-2870) in Metastatic Squamous Non-small Cell Lung Cancer (NSCLC) [MK-2870-023]",
+    "official_title": "Phase 3 Study of Pembrolizumab in Combination With Carboplatin/Taxane (Paclitaxel or Nab-paclitaxel) Followed by Pembrolizumab With or Without Maintenance MK-2870 in the First-line Treatment of Metastatic Squamous Non-small Cell Lung Cancer",
+    "phase": "Fase 3",
+    "sponsor": "Merck Sharp & Dohme LLC",
+    "interventions": [
+      "Pembrolizumab",
+      "sac-TMT",
+      "Carboplatin",
+      "Paclitaxel",
+      "Nab-paclitaxel"
+    ],
+    "intervention_types": [
+      "DRUG",
+      "BIOLOGICAL"
+    ],
+    "brazil_cities": [
+      "São José do Rio Preto",
+      "São Paulo",
+      "Santa Cruz do Sul",
+      "Teresina",
+      "Recife",
+      "Porto Alegre"
+    ],
+    "brazil_states": [
+      "São Paulo",
+      "Piauí",
+      "Rio Grande do Sul",
+      "Pernambuco"
+    ],
+    "brazil_facilities": [
+      "Hospital do Cancer de Pernambuco ( Site 0312) · Recife/Pernambuco",
+      "Vencer Centro de Pesquisa Clínica ( Site 0309) · Teresina/Piauí",
+      "Irmandade da Santa Casa de Misericórdia de Porto Alegre ( Site 0311) · Porto Alegre/Rio Grande do Sul",
+      "Hospital Nossa Senhora da Conceição ( Site 0300) · Porto Alegre/Rio Grande do Sul",
+      "Instituto de Oncologia Saint Gallen ( Site 0304) · Santa Cruz do Sul/Rio Grande do Sul",
+      "Hospital de Base de São José do Rio Preto ( Site 0310) · São José do Rio Preto/São Paulo",
+      "Hospital Paulistano ( Site 0307) · São Paulo/"
+    ],
+    "summary": "This is a phase 3 study of pembrolizumab in combination with carboplatin/taxane (paclitaxel or nab-paclitaxel) followed by pembrolizumab with or without maintenance sacituzumab tirumotecan (sac-TMT; MK-2870) in first-line treatment of metastatic squamous non-small cell lung cancer. It is hypothesize",
+    "eligibility_snippet": "Inclusion Criteria:\n\n* Histologically or cytologically confirmed diagnosis of squamous non-small cell lung cancer (NSCLC) \\[Stage IV: M1a, M1b, M1c, American Joint Committee on Cancer Staging Manual, version 8\\]\n* Measurable disease per Response Evaluation Criteria in Solid Tumours (RECIST) 1.1 as assessed by the local site investigator/radiology\n* Has life expectancy ≥3 months\n* Has Eastern Cooperative Oncology Group Performance Status (ECOG PS) score of 0 or 1 assessed within 7 days prior to a",
+    "neoplasia_group": "mama",
+    "neoplasia_label": "Mama",
+    "url": "https://clinicaltrials.gov/study/NCT06422143"
+  },
+  {
+    "nct": "NCT07054190",
+    "title": "A Study to Test Inavolisib Treatments in Participants With Early-Stage, PIK3CA-Mutated Breast Cancer",
+    "official_title": "A Phase II, Open-Label, Multicenter Study Evaluating the Safety and Efficacy of Neoadjuvant Treatment With Inavolisib Combinations in Patients With Untreated, Early-stage, PIK3CA-Mutated Breast Cancer",
+    "phase": "Fase 2",
+    "sponsor": "Hoffmann-La Roche",
+    "interventions": [
+      "Inavolisib",
+      "Ribociclib",
+      "Letrozole"
+    ],
+    "intervention_types": [
+      "DRUG"
+    ],
+    "brazil_cities": [
+      "Recife",
+      "Porto Alegre",
+      "São Paulo",
+      "Goiânia"
+    ],
+    "brazil_states": [
+      "São Paulo",
+      "Rio Grande do Sul",
+      "Goiás",
+      "Pernambuco"
+    ],
+    "brazil_facilities": [
+      "Hospital Araujo Jorge · Goiânia/Goiás",
+      "Hospital do Cancer de Pernambuco - HCP · Recife/Pernambuco",
+      "Irmandade Da Santa Casa de Misericordia de Porto Alegre · Porto Alegre/Rio Grande do Sul",
+      "Clinica de Pesquisa e Centro de Estudos em Oncologia Ginecologica e Mamaria Ltda · São Paulo/São Paulo"
+    ],
+    "summary": "This study will evaluate the safety and efficacy of inavolisib combination therapies in participants with untreated, PIK3CA-mutated, Stage II-III, estrogen receptor (ER)-positive, Human Epidermal Growth Factor Receptor 2 (HER2)-negative breast cancer (BC).",
+    "eligibility_snippet": "Inclusion Criteria:\n\n* Histologically confirmed operable or inoperable invasive Stage II-III BC according to American Joint Committee on Cancer (AJCC) TNM staging classification\n* Candidate for neoadjuvant treatment and considered appropriate for endocrine combination therapy\n* Willingness to undergo breast surgery (mastectomy or breast-conserving surgery) after neoadjuvant treatment (unless inoperable)\n* Documented ER-positive tumor in accordance with current American Society of Clinical Oncolo",
+    "neoplasia_group": "mama",
+    "neoplasia_label": "Mama",
+    "url": "https://clinicaltrials.gov/study/NCT07054190"
+  },
+  {
+    "nct": "NCT06380751",
+    "title": "Saruparib (AZD5305) Plus Camizestrant Compared With CDK4/6 Inhibitor Plus Endocrine Therapy or Plus Camizestrant in HR-Positive, HER2-Negative (IHC 0, 1+, 2+/ ISH Non-amplified), BRCA1, BRCA2, or PALB2m Advanced Breast Cancer",
+    "official_title": "A Randomised, Open-Label, Phase III Study of Saruparib (AZD5305) Plus Camizestrant Compared With Physician's Choice CDK4/6 Inhibitor Plus Endocrine Therapy or Plus Camizestrant for the First-Line Treatment of Patients With BRCA1, BRCA2, or PALB2 Mutations and Hormone Receptor Positive, HER2-Negative (IHC 0, 1+, 2+/ ISH Non-amplified) Advanced Breast Cancer (EvoPAR-Breast01)",
+    "phase": "Fase 3",
+    "sponsor": "AstraZeneca",
+    "interventions": [
+      "Saruparib (AZD5305)",
+      "Camizestrant",
+      "Abemaciclib",
+      "Ribociclib",
+      "Palbociclib",
+      "Fulvestrant",
+      "Letrozole",
+      "Anastrozole",
+      "Exemestane"
+    ],
+    "intervention_types": [
+      "DRUG"
+    ],
+    "brazil_cities": [
+      "Fortaleza",
+      "Jaú",
+      "Curitiba",
+      "São Paulo",
+      "Salvador",
+      "Porto Alegre",
+      "Cachoeira de Itapemirim",
+      "Ribeirão Preto",
+      "Goiânia"
+    ],
+    "brazil_states": [],
+    "brazil_facilities": [
+      "Research Site · Cachoeira de Itapemirim/",
+      "Research Site · Curitiba/",
+      "Research Site · Fortaleza/",
+      "Research Site · Goiânia/",
+      "Research Site · Jaú/",
+      "Research Site · Porto Alegre/",
+      "Research Site · Ribeirão Preto/",
+      "Research Site · Salvador/",
+      "Research Site · São Paulo/",
+      "Research Site · São Paulo/"
+    ],
+    "summary": "The primary objective of the study is to measure efficacy of saruparib (AZD5305) plus camizestrant compared with physician's choice CDK4/6i plus ET in patients with BRCA1, BRCA2, or PALB2m, HR-positive, HER2-negative (defined as IHC 0, 1+, 2+/ ISH non-amplified) advanced breast cancer",
+    "eligibility_snippet": "Inclusion Criteria:\n\n* Adult females, pre/peri-menopausal and/or post-menopausal, and adult males\n* Histologically or cytologically documented diagnosis of HR-positive, HER2-negative breast cancer\n* Advanced breast cancer with either locally advanced disease not amenable to curative treatment or metastatic disease\n* ECOG performance status of 0 or 1 with no deterioration over the previous 2 weeks\n* FFPE tumour tissue from each participant\n* Documented germline tumour loss of function mutation in",
+    "neoplasia_group": "mama",
+    "neoplasia_label": "Mama",
+    "url": "https://clinicaltrials.gov/study/NCT06380751"
+  },
+  {
+    "nct": "NCT07293351",
+    "title": "A Study to Evaluate the Safety, Tolerability, and Efficacy of Pumitamig Alone or in Combination With Ipilimumab or Cabozantinib in Participants With Advanced Renal Cell Carcinoma (RCC) (ROSETTA RCC-208)",
+    "official_title": "ROSETTA RCC-208: A Phase 1/2 Open-label, Multi-center, Randomized Study of Pumitamig Alone or in Combination With Ipilimumab or Cabozantinib in Participants With Advanced Renal Cell Carcinoma (RCC)",
+    "phase": "Fase 1, Fase 2",
+    "sponsor": "Bristol-Myers Squibb",
+    "interventions": [
+      "Pumitamig",
+      "Ipilimumab",
+      "Cabozantinib",
+      "Nivolumab"
+    ],
+    "intervention_types": [
+      "DRUG"
+    ],
+    "brazil_cities": [
+      "Brasília"
+    ],
+    "brazil_states": [
+      "Federal District"
+    ],
+    "brazil_facilities": [
+      "Local Institution - 0093 · Brasília/Federal District"
+    ],
+    "summary": "The purpose of this study is to evaluate the safety, tolerability, and efficacy of Pumitamig alone or in combination with Ipilimumab or Cabozantinib in participants with advanced Renal Cell Carcinoma (RCC)",
+    "eligibility_snippet": "Inclusion Criteria\n\n* Participants must have a histologically confirmed diagnosis of locally advanced, unresectable (not amenable to curative surgery or radiation therapy) or metastatic Renal Cell Carcinoma (RCC).\n* Participants must have clear cell RCC (ccRCC) or non-clear cell RCC (nccRCC) may be enrolled in Part 1. Note: Part 2 may only enroll participants with ccRCC.\n* Participants may have favorable, intermediate or poor risk disease categories.\n* Participants must not have received prior s",
+    "neoplasia_group": "rim",
+    "neoplasia_label": "ccRCC",
+    "url": "https://clinicaltrials.gov/study/NCT07293351"
+  },
+  {
+    "nct": "NCT06638931",
+    "title": "Agnostic Therapy in Rare Solid Tumors",
+    "official_title": "Phase II Basket Study to Evaluate the Tissue-agnostic Efficacy of Anti-Programmed Cell Death Protein 1 (Anti-PD1) Monoclonal Antibody in Patients With Advanced Rare Tumors",
+    "phase": "Fase 2",
+    "sponsor": "Instituto do Cancer do Estado de São Paulo",
+    "interventions": [
+      "Nivolumab"
+    ],
+    "intervention_types": [
+      "DRUG"
+    ],
+    "brazil_cities": [
+      "Brasília",
+      "Curitiba",
+      "São Paulo",
+      "Salvador",
+      "Rio de Janeiro",
+      "Recife",
+      "Fortaleza"
+    ],
+    "brazil_states": [
+      "Paraná",
+      "Ceará",
+      "Estado de Bahia",
+      "São Paulo",
+      "Pernambuco"
+    ],
+    "brazil_facilities": [
+      "Hospital São Carlos · Fortaleza/Ceará",
+      "Hospital São Rafael · Salvador/Estado de Bahia",
+      "Hospital Santa Cruz · Curitiba/Paraná",
+      "IDOR Recife · Recife/Pernambuco",
+      "Instituto D'or de Pesquisa e Ensino · São Paulo/São Paulo",
+      "Instituto do Câncer do Estado de São Paulo - ICESP · São Paulo/São Paulo",
+      "DF Star · Brasília/",
+      "Instituto D'Or de Pesquisa e Ensino · Rio de Janeiro/"
+    ],
+    "summary": "The ANTARES study is a phase II basket trial designed to evaluate the tissue-agnostic efficacy of the monoclonal anti-PD1 antibody, nivolumab, in patients with advanced or metastatic rare tumors.\n\nThe study aims to treat rare malignancies with PD-L1 expression (CPS ≥ 10), regardless of the tumor's t",
+    "eligibility_snippet": "Inclusion Criteria\n\n1. Age 18 years or older.\n2. Patients with immunohistochemistry for PD-L1 with a combined positive score (CPS) of 10 or higher.\n3. Patients with progression or intolerance to already approved and accessible treatments for the specific neoplasm and population.\n4. Documented disease progression radiologically after the last routine treatment.\n5. Eastern Cooperative Oncology Group (ECOG) performance status of 0 or 1.\n6. Measurable lesion per RECIST v1.1. Lesions previously treat",
+    "neoplasia_group": "rim",
+    "neoplasia_label": "ccRCC",
+    "url": "https://clinicaltrials.gov/study/NCT06638931"
+  },
+  {
+    "nct": "NCT07167329",
+    "title": "Real-World Effectiveness and Pharmacogenetics of Belzutifan in VHL Syndrome: The BELIEVE-VHL Trial",
+    "official_title": "The BELIEVE-VHL Trial: A Real-world Longitudinal Study on Belzutifan's Effectiveness, Pharmacogenetics, and Pharmacoeconomics in Von Hippel-Lindau (VHL) Syndrome Using the HIF2α Inhibitor Belzutifan",
+    "phase": "Fase 2",
+    "sponsor": "José Claudio Casali da Rocha",
+    "interventions": [
+      "Belzutifan"
+    ],
+    "intervention_types": [
+      "DRUG"
+    ],
+    "brazil_cities": [
+      "São Paulo"
+    ],
+    "brazil_states": [
+      "São Paulo"
+    ],
+    "brazil_facilities": [
+      "AC Camargo Cancer Center · São Paulo/São Paulo"
+    ],
+    "summary": "The BELIEVE-VHL Trial is a prospective real-life study designed to evaluate the therapeutic effects, benefits, and adverse effects of belzutifan, as well as the timing of treatment response and disease progression in patients with von Hippel-Lindau (VHL) syndrome.",
+    "eligibility_snippet": "Inclusion Criteria:\n\n* Age ≥ 14 years.\n* Clinical or genetic confirmation of von Hippel-Lindau (VHL) syndrome.\n* Presence of measurable or progressive VHL-associated tumors, as defined by RECIST 1.1 or disease-specific imaging criteria.\n* ECOG performance status of 0-2.\n* Adequate bone marrow, hepatic, and renal function as defined by laboratory reference values.\n* Ability to swallow oral medication.\n* Provision of written informed consent prior to enrollment.\n\nExclusion Criteria:\n\n* Age \\< 14 y",
+    "neoplasia_group": "rim",
+    "neoplasia_label": "ccRCC",
+    "url": "https://clinicaltrials.gov/study/NCT07167329"
+  },
+  {
+    "nct": "NCT07227402",
+    "title": "A Clinical Study of Belzutifan and Zanzalintinib in People With Recurrent Kidney Cancer Following Adjuvant Therapy (MK-6482-033)",
+    "official_title": "A Phase 3, Randomized, Open-label Study of Belzutifan + Zanzalintinib Versus Cabozantinib in Participants With Advanced RCC Who Experienced Disease Recurrence During or After Prior Adjuvant Anti-PD-1/L1 Therapy (LITESPARK-033)",
+    "phase": "Fase 3",
+    "sponsor": "Merck Sharp & Dohme LLC",
+    "interventions": [
+      "Belzutifan",
+      "Zanzalintinib",
+      "Cabozantinib"
+    ],
+    "intervention_types": [
+      "DRUG"
+    ],
+    "brazil_cities": [
+      "São José do Rio Preto",
+      "São Paulo",
+      "Natal",
+      "Cuiabá",
+      "Porto Alegre"
+    ],
+    "brazil_states": [
+      "Rio Grande do Norte",
+      "Mato Grosso",
+      "Rio Grande do Sul",
+      "São Paulo"
+    ],
+    "brazil_facilities": [
+      "IPC - MT Instituto de Pesquisas Clínicas do Mato Grosso ( Site 0305) · Cuiabá/Mato Grosso",
+      "Liga Norte Riograndense Contra o Câncer ( Site 0307) · Natal/Rio Grande do Norte",
+      "Hospital Moinhos de Vento ( Site 0309) · Porto Alegre/Rio Grande do Sul",
+      "Fundação Faculdade Regional de Medicina de São José do Rio Preto ( Site 0302) · São José do Rio Preto/São Paulo",
+      "Hospital Alemao Oswaldo Cruz ( Site 0311) · São Paulo/São Paulo"
+    ],
+    "summary": "Researchers are looking for more ways to treat advanced renal cell carcinoma (RCC) that is recurrent. Researchers want to learn if recurrent advanced renal cell carcinoma (RCC) responds (gets smaller or goes away) after treatment with belzutifan (MK-6482) and zanzalintinib compared to cabozantinib.\n",
+    "eligibility_snippet": "Inclusion Criteria:\n\nThe main inclusion criteria include but are not limited to the following:\n\n* Has a histologically confirmed diagnosis of unresectable, advanced renal cell cancer (RCC) with clear cell component (with or without sarcomatoid features) i.e., Stage IV renal cell cancer per American Joint Committee on Cancer (AJCC) (8th Edition)\n* Has measurable disease per Response Evaluation Criteria in Solid Tumors 1.1 (RECIST 1.1)\n* Has disease recurrence during adjuvant anti-programmed cell ",
+    "neoplasia_group": "rim",
+    "neoplasia_label": "ccRCC",
+    "url": "https://clinicaltrials.gov/study/NCT07227402"
+  },
+  {
+    "nct": "NCT06112314",
+    "title": "IMC-F106C Regimen Versus Nivolumab Regimens in Previously Untreated Advanced Melanoma (PRISM-MEL-301)",
+    "official_title": "A Phase 3 Randomized, Controlled Study of IMC-F106C Plus Nivolumab Versus Nivolumab Regimens in HLA-A*02:01-Positive Participants With Previously Untreated Advanced Melanoma (PRISM-MEL-301",
+    "phase": "Fase 3",
+    "sponsor": "Immunocore Ltd",
+    "interventions": [
+      "Brenetafusp",
+      "Nivolumab",
+      "Nivolumab + Relatlimab"
+    ],
+    "intervention_types": [
+      "DRUG"
+    ],
+    "brazil_cities": [
+      "Barretos",
+      "Brasília",
+      "Liberdade",
+      "São Paulo",
+      "Rio de Janeiro",
+      "Florianópolis",
+      "Ijuí",
+      "Porto Alegre",
+      "Fortaleza"
+    ],
+    "brazil_states": [
+      "Rio Grande do Sul"
+    ],
+    "brazil_facilities": [
+      "Centro de Pesquisa Clinica em Oncologia - Oncosite · Ijuí/Rio Grande do Sul",
+      "Centro Gaucho Integrado de Oncologia, Hematologia, Ensino e Pesquisa Ltda · Porto Alegre/Rio Grande do Sul",
+      "Fundacao Pio XII - Hospital de Cancer de Barretos - Hospital de Amor · Barretos/",
+      "Hospital Sirio-Libanes (HSL) - Centro de Oncologia - Brasilia · Brasília/",
+      "Centro de Pesquisas Oncologicas (CEPON) · Florianópolis/",
+      "Oncocentro Sao Carlos Hospital · Fortaleza/",
+      "A.C.Camargo Cancer Center - Centro Internacional de Pesquisa (CIPE) · Liberdade/",
+      "Hospital de Clinicas de Porto Alegre (HCPA) · Porto Alegre/",
+      "Pontificia Universidade Catolica do Rio Grande do Sul (PUCRS) - Hospital Sao Lucas - Centro de Pesquisa Clinica (CPC) · Porto Alegre/",
+      "National Cancer Institute · Rio de Janeiro/",
+      "Instituto Américas - Instituto de Educação Pesquisa e Gestão em Saúde Oncosite · Rio de Janeiro/",
+      "Instituto do Cancer do Estado de Sao Paulo (ICESP) · São Paulo/",
+      "Hospital 9 de Julho · São Paulo/",
+      "Faculdade de Medicina de Sao Jose do Rio Preto-SP (FAMERP) - Hospital de Base (HB) - Centro Integrado de Pesquisa (CIP) · São Paulo/"
+    ],
+    "summary": "This is a phase 3, randomized, controlled study of brenetafusp (IMC-F106C) plus nivolumab compared to standard nivolumab regimens in HLA-A\\*02:01-positive participants with previously untreated advanced melanoma.",
+    "eligibility_snippet": "Inclusion Criteria:\n\n* Participants must be HLA-A\\*02:01-positive\n* Participants must have histologically confirmed Stage IV or unresectable Stage III melanoma\n* Archived or fresh tumor tissue sample that must be confirmed as adequate\n* Participants must have measurable disease per RECIST 1.1\n* Participant must have BRAF V600 mutation status determined\n* Participants must have an Eastern Cooperative Oncology Group (ECOG) performance status score of 0 or 1\n* Male and female participants of childb",
+    "neoplasia_group": "melanoma",
+    "neoplasia_label": "Melanoma",
+    "url": "https://clinicaltrials.gov/study/NCT06112314"
+  },
+  {
+    "nct": "NCT03899155",
+    "title": "Pan Tumor Rollover Study",
+    "official_title": "Pan-Tumor Study for Long-term Treatment of Cancer Patients Who Have Participated in BMS Sponsored Trials Investigating Nivolumab and Other Cancer Therapies",
+    "phase": "Fase 2",
+    "sponsor": "Bristol-Myers Squibb",
+    "interventions": [
+      "Nivolumab",
+      "Ipilimumab",
+      "Cabozantinib",
+      "Trametinib",
+      "Relatlimab",
+      "Nivolumab + Relatlimab",
+      "Capecitabine",
+      "Bevacizumab",
+      "Temozolomide",
+      "Rucaparib",
+      "Daratumumab",
+      "Regorafinib",
+      "Leucovorin",
+      "Fluorouracil",
+      "Oxaliplatin",
+      "Enzalutamide",
+      "Sunitinib",
+      "Pemetrexed",
+      "Pembrolizumab"
+    ],
+    "intervention_types": [
+      "DRUG"
+    ],
+    "brazil_cities": [
+      "São José do Rio Preto",
+      "Barretos",
+      "Passo Fundo",
+      "Belo Horizonte",
+      "São Paulo",
+      "Rio de Janeiro",
+      "Ijuí",
+      "Porto Alegre"
+    ],
+    "brazil_states": [
+      "Rio Grande do Sul",
+      "Minas Gerais",
+      "São Paulo"
+    ],
+    "brazil_facilities": [
+      "Local Institution - 0260 · Belo Horizonte/Minas Gerais",
+      "ONCOSITE - Centro de Pesquisa Clinica em Oncologia · Ijuí/Rio Grande do Sul",
+      "Local Institution - 0379 · Passo Fundo/Rio Grande do Sul",
+      "Local Institution - 0093 · Porto Alegre/Rio Grande do Sul",
+      "Irmandade da Santa Casa de Misericordia de Porto Alegre · Porto Alegre/Rio Grande do Sul",
+      "Hospital Sao Lucas Da Pucrs · Porto Alegre/Rio Grande do Sul",
+      "Local Institution - 0399 · Porto Alegre/Rio Grande do Sul",
+      "Local Institution - 0264 · Barretos/São Paulo",
+      "Local Institution - 0262 · São José do Rio Preto/São Paulo",
+      "ICESP - Instituto do Cancer do Estado de Soo Paulo · São Paulo/São Paulo",
+      "Local Institution - 0263 · São Paulo/São Paulo",
+      "Hospital Alemao Oswaldo Cruz · São Paulo/São Paulo",
+      "Local Institution - 0266 · Rio de Janeiro/",
+      "Local Institution - 0258 · Rio de Janeiro/",
+      "Local Institution - 0340 · São Paulo/"
+    ],
+    "summary": "Main Objective of this study is to examine long-term safety of nivolumab monotherapy including combinations and other cancer therapies in various tumor types.",
+    "eligibility_snippet": "Inclusion Criteria\n\n* Signed Written Informed Consent.\n* Eligible to receive continued study treatment per the Parent Study, including treatment beyond progression per investigator assessment in the Parent Study.\n* On treatment hold in the Parent Study following long-lasting response or are eligible for treatment rechallenge as defined in the Parent Study.\n* WOCBP and male participants who are sexually active must agree to follow instructions for method(s) of contraception as described below and",
+    "neoplasia_group": "melanoma",
+    "neoplasia_label": "Melanoma",
+    "url": "https://clinicaltrials.gov/study/NCT03899155"
+  },
+  {
+    "nct": "NCT02332668",
+    "title": "A Study of Pembrolizumab (MK-3475) in Pediatric Participants With an Advanced Solid Tumor or Lymphoma (MK-3475-051/KEYNOTE-051)",
+    "official_title": "A Phase I/II Study of Pembrolizumab (MK-3475) in Children With Advanced Melanoma or a PD-L1 Positive Advanced, Relapsed or Refractory Solid Tumor or Lymphoma (KEYNOTE-051)",
+    "phase": "Fase 1, Fase 2",
+    "sponsor": "Merck Sharp & Dohme LLC",
+    "interventions": [
+      "Pembrolizumab"
+    ],
+    "intervention_types": [
+      "BIOLOGICAL"
+    ],
+    "brazil_cities": [
+      "São Paulo"
+    ],
+    "brazil_states": [],
+    "brazil_facilities": [
+      "MSD Brasil · São Paulo/"
+    ],
+    "summary": "Researchers are looking for new ways to treat children with different types of melanoma (skin cancer), solid tumors, and lymphomas (blood cancers) that are any of these:\n\n* Advanced, which means cancer spread in the body or cannot be removed with surgery\n* Relapsed, which means cancer has come back ",
+    "eligibility_snippet": "Inclusion Criteria:\n\n* Between 6 months and \\<18 years of age on day of signing informed consent is documented.\n* Histologically- or cytologically-documented, locally-advanced, or metastatic solid malignancy or lymphoma that is incurable and has failed prior standard therapy, or for which no standard therapy exists, or for which no standard therapy is considered appropriate\n* Any number of prior treatment regimens\n* Tissue (or lymph node biopsy for rrcHL participants) available from an archival ",
+    "neoplasia_group": "melanoma",
+    "neoplasia_label": "Melanoma",
+    "url": "https://clinicaltrials.gov/study/NCT02332668"
+  },
+  {
+    "nct": "NCT03486873",
+    "title": "Long-term Safety and Efficacy Extension Study for Participants With Advanced Tumors Who Are Currently on Treatment or in Follow-up in a Pembrolizumab (MK-3475) Study (MK-3475-587/KEYNOTE-587)",
+    "official_title": "A Multicenter, Open-label, Phase 3 Study to Evaluate the Long-term Safety and Efficacy in Participants Who Are Currently on Treatment or in Follow-up in Studies That Include Pembrolizumab",
+    "phase": "Fase 3",
+    "sponsor": "Merck Sharp & Dohme LLC",
+    "interventions": [
+      "Pembrolizumab",
+      "Standard of Care (SOC)",
+      "Lenvatinib",
+      "Olaparib",
+      "MK-4280",
+      "MK-4280A",
+      "Pembrolizumab (+) Berahyaluronidase alfa"
+    ],
+    "intervention_types": [
+      "DRUG",
+      "BIOLOGICAL"
+    ],
+    "brazil_cities": [
+      "Pelotas",
+      "São José do Rio Preto",
+      "Barretos",
+      "Passo Fundo",
+      "Porto Alegree",
+      "Bento Gonçalves",
+      "Jaú",
+      "Curitiba",
+      "Itajaí",
+      "São Paulo",
+      "Rio de Janeiro",
+      "Florianópolis",
+      "Ssanta Cruz Do Sul",
+      "Ijuí",
+      "Porto Alegre",
+      "Fortaleza",
+      "Santa Maria"
+    ],
+    "brazil_states": [
+      "Paraná",
+      "Ceará",
+      "São Paulo",
+      "Santa Catarina",
+      "Rio Grande do Sul"
+    ],
+    "brazil_facilities": [
+      "Hospital São Carlos-Oncocentro Ce ( Site 1029) · Fortaleza/Ceará",
+      "CRIO - CENTRO REGIONAL INTEGRADO DE ONCOLOGIA-Pesquisa Clínica ( Site 1024) · Fortaleza/Ceará",
+      "Centro de Pesquisa Clínica do Instituto do Câncer do Ceará ( Site 1016) · Fortaleza/Ceará",
+      "Hospital Erasto Gaertner ( Site 1036) · Curitiba/Paraná",
+      "Hospital Tacchini ( Site 1040) · Bento Gonçalves/Rio Grande do Sul",
+      "ONCOSITE - Centro de Pesquisa Clinica em Oncologia ( Site 1008) · Ijuí/Rio Grande do Sul",
+      "Hospital de Clínicas de Passo Fundo ( Site 1025) · Passo Fundo/Rio Grande do Sul",
+      "Lacks - Oncologia E Hematologia ( Site 1026) · Pelotas/Rio Grande do Sul",
+      "Hospital de Clinicas de Porto Alegre ( Site 1000) · Porto Alegre/Rio Grande do Sul",
+      "Hospital São Lucas da PUCRS-Centro de Pesquisa em Oncologia ( Site 1006) · Porto Alegre/Rio Grande do Sul",
+      "Hospital Nossa Senhora da Conceição ( Site 1011) · Porto Alegre/Rio Grande do Sul",
+      "Irmandade da Santa Casa de Misericórdia de Porto Alegre ( Site 1035) · Porto Alegree/Rio Grande do Sul",
+      "Clinica Viver ( Site 1021) · Santa Maria/Rio Grande do Sul",
+      "Instituto de Oncologia Saint Gallen ( Site 1039) · Ssanta Cruz Do Sul/Rio Grande do Sul",
+      "CEPEN - Centro de Pesquisa e Ensino em Oncologia de Santa Catarina ( Site 1034) · Florianópolis/Santa Catarina",
+      "CEPON ( Site 1012) · Florianópolis/Santa Catarina",
+      "Centro de Novos Tratamentos Itajai - Clinica de Neoplasias Litoral ( Site 1041) · Itajaí/Santa Catarina",
+      "Fundação Pio XII - Hospital de Câncer de Barretos ( Site 1010) · Barretos/São Paulo",
+      "Hospital Amaral Carvalho ( Site 1023) · Jaú/São Paulo",
+      "Fundação Faculdade Regional de Medicina de São José do Rio Preto-Centro Integrado de Pesquisa ( Site 1003) · São José do Rio Preto/São Paulo",
+      "Clínica de Pesquisa e Centro de Estudos em Ginecologia Oncológica e Mamária LTDA ( Site 1017) · São Paulo/São Paulo",
+      "Instituto Nacional de Câncer José Alencar Gomes da Silva - INCA ( Site 1020) · Rio de Janeiro/",
+      "Instituto de de Educação, pesquisa e Gestão em Saúde ( Site 1014) · Rio de Janeiro/",
+      "Instituto do Cancer do Estado de Sao Paulo - ICESP ( Site 1001) · São Paulo/",
+      "BP - A Beneficencia Portuguesa de São Paulo-Medical Oncology ( Site 1030) · São Paulo/",
+      "Hospital Paulistano ( Site 1033) · São Paulo/",
+      "A. C. Camargo Cancer Center ( Site 1002) · São Paulo/",
+      "Núcleo de Pesquisa Clínica da Rede São Camilo ( Site 1018) · São Paulo/"
+    ],
+    "summary": "The purpose of this study is to evaluate the long-term safety and efficacy of pembrolizumab (MK-3475) in participants from previous Merck pembrolizumab-based parent studies who transition into this extension study.\n\nThis study will consist of three phases: 1) First Course Phase, 2) Survival Follow-u",
+    "eligibility_snippet": "Inclusion Criteria:\n\n* Treated on the parent pembrolizumab studies established by the Sponsor as MK-3475-587 ready.\n* Currently receiving pembrolizumab, pembrolizumab based combinations or lenvatinib from parent studies or in a follow-up phase.\n\nAdditional eligibility criteria for participants who enter Second Course Phase once they are enrolled on MK-3475-587:\n\n* Has not received any anticancer systemic treatment since the last dose of pembrolizumab or a pembrolizumab-based combination in First",
+    "neoplasia_group": "melanoma",
+    "neoplasia_label": "Melanoma",
+    "url": "https://clinicaltrials.gov/study/NCT03486873"
+  },
+  {
+    "nct": "NCT05020236",
+    "title": "A Study to Learn About the Study Medicine Elranatamab Alone and With Daratumumab in People With Multiple Myeloma Who Have Received Other Treatments",
+    "official_title": "AN OPEN-LABEL, 3-ARM, MULTICENTER, RANDOMIZED PHASE 3 STUDY TO EVALUATE THE EFFICACY AND SAFETY OF ELRANATAMAB (PF-06863135) MONOTHERAPY AND ELRANATAMAB + DARATUMUMAB VERSUS DARATUMUMAB + POMALIDOMIDE + DEXAMETHASONE IN PARTICIPANTS WITH RELAPSED/REFRACTORY MULTIPLE MYELOMA WHO HAVE RECEIVED AT LEAST 1 PRIOR LINE OF THERAPY INCLUDING LENALIDOMIDE AND A PROTEASOME INHIBITOR",
+    "phase": "Fase 3",
+    "sponsor": "Pfizer",
+    "interventions": [
+      "Elranatamab",
+      "Daratumumab",
+      "Pomalidomide",
+      "Dexamethasone"
+    ],
+    "intervention_types": [
+      "DRUG"
+    ],
+    "brazil_cities": [
+      "São Paulo",
+      "Salvador",
+      "Rio de Janeiro",
+      "SP",
+      "Porto Alegre"
+    ],
+    "brazil_states": [
+      "Rio Grande do Sul",
+      "Estado de Bahia",
+      "São Paulo"
+    ],
+    "brazil_facilities": [
+      "Instituto D'Or de Pesquisa e Ensino (IDOR) - Filial Salvador · Salvador/Estado de Bahia",
+      "Centro Gaucho Integrado De Oncologia, Hematologia, Ensino E Pesquisa · Porto Alegre/Rio Grande do Sul",
+      "Hospital Mae de Deus · Porto Alegre/Rio Grande do Sul",
+      "Clínica Médica São Germano LTDA · SP/São Paulo",
+      "Instituto de Educação, Pesquisa e Gestão em Saúde · Rio de Janeiro/",
+      "HU UNIFESP / SPDM - Hospital São Paulo · São Paulo/",
+      "Clínica Médica São Germano S/S Ltda · São Paulo/",
+      "Instituto D'Or de Pesquisa e Ensino (IDOR) · São Paulo/",
+      "Instituto D'Or de Pesquisa e Ensino (IDOR) · São Paulo/"
+    ],
+    "summary": "The purpose of this clinical trial is to (1) learn whether the BCMA-CD3 bispecific antibody elranatamab can provide more benefit to people with multiple myeloma compared to a combination therapy including daratumumab, pomalidomide, and dexamethasone, and (2) learn about the safety and activity of el",
+    "eligibility_snippet": "Inclusion Criteria:\n\n* Prior diagnosis of multiple myeloma as defined by IMWG criteria (Rajkumar et al, 2014).\n* Measurable disease based on IMWG criteria as defined by at least 1 of the following:\n\n  * Serum M-protein ≥0.5 g/dL.\n  * Urinary M-protein excretion ≥200 mg/24 hours.\n  * Serum immunoglobulin FLC ≥10 mg/dL (≥100 mg/L) AND abnormal serum immunoglobulin kappa to lambda FLC ratio (\\<0.26 or \\>1.65).\n* Prior anti-multiple myeloma therapy including treatment with lenalidomide.\n* ECOG perfo",
+    "neoplasia_group": "mieloma",
+    "neoplasia_label": "Mieloma",
+    "url": "https://clinicaltrials.gov/study/NCT05020236"
+  },
+  {
+    "nct": "NCT06208150",
+    "title": "A Study Comparing Talquetamab Plus Pomalidomide, Talquetamab Plus Teclistamab, and Elotuzumab, Pomalidomide, and Dexamethasone or Pomalidomide, Bortezomib, and Dexamethasone in Participants With Relapsed or Refractory Myeloma Who Have Received an Anti-CD38 Antibody and Lenalidomide",
+    "official_title": "A Phase 3 Randomized Study Comparing Talquetamab in Combination With Pomalidomide (Tal-P), Talquetamab in Combination With Teclistamab (Tal-Tec), and Investigator's Choice of Either Elotuzumab, Pomalidomide, and Dexamethasone (EPd) or Pomalidomide, Bortezomib, and Dexamethasone (PVd) in Participants With Relapsed or Refractory Myeloma Who Have Received 1 to 4 Prior Lines of Therapy Including an Anti-CD38 Antibody and Lenalidomide",
+    "phase": "Fase 3",
+    "sponsor": "Janssen Research & Development, LLC",
+    "interventions": [
+      "Talquetamab",
+      "Pomalidomide",
+      "Teclistamab",
+      "Elotuzumab",
+      "Dexamethasone",
+      "Bortezomib"
+    ],
+    "intervention_types": [
+      "DRUG"
+    ],
+    "brazil_cities": [
+      "São José do Rio Preto",
+      "Brasília",
+      "Belo Horizonte",
+      "Curitiba",
+      "São Paulo",
+      "Salvador",
+      "Rio de Janeiro",
+      "Recife",
+      "Caxias do Sul",
+      "Porto Alegre"
+    ],
+    "brazil_states": [],
+    "brazil_facilities": [
+      "Cetus Oncologia · Belo Horizonte/",
+      "DF Star · Brasília/",
+      "Fundacao Universidade de Caxias do Sul · Caxias do Sul/",
+      "Hospital Erasto Gaertner- Liga Paranaense de Combate ao Cancer · Curitiba/",
+      "Hospital De Clinicas De Porto Alegre · Porto Alegre/",
+      "Instituto D Or de Pesquisa e Ensino IDOR · Recife/",
+      "Instituto de Educacao, Pesquisa e Gestao em Saude Instituto Americas (COI) · Rio de Janeiro/",
+      "Hospital Sao Rafael · Salvador/",
+      "Fundacao Faculdade Regional de Medicina de Sao Jose do Rio Preto Hospital de Base · São José do Rio Preto/",
+      "Real e Benemerita Associacao Portuguesa de Beneficencia · São Paulo/",
+      "Fundacao Antonio Prudente A C Camargo Cancer Center · São Paulo/",
+      "Clinica Medica Sao Germano S/S LTDA · São Paulo/",
+      "Instituto D Or de Pesquisa e Ensino · São Paulo/"
+    ],
+    "summary": "The purpose of this study is to compare the effectiveness of either talquetamab plus pomalidomide (Tal-P) or talquetamab plus teclistamab (Tal-Tec) with elotuzumab, pomalidomide, and dexamethasone (EPd) or pomalidomide, bortezomib, and dexamethasone (PVd).",
+    "eligibility_snippet": "Inclusion Criteria:\n\n* Documented multiple myeloma as defined by the criteria below: (a) multiple myeloma diagnosis according to the international myeloma working group (IMWG) diagnostic criteria (b) measurable disease at screening as assessed by central laboratory, defined by any of the following: (i) serum M-protein level greater than or equal to (\\>=) 0.5 gram per deciliter (g/dL); or (ii) urine M-protein level \\>= 200 milligram (mg) per 24 hours; or (iii) light chain multiple myeloma without",
+    "neoplasia_group": "mieloma",
+    "neoplasia_label": "Mieloma",
+    "url": "https://clinicaltrials.gov/study/NCT06208150"
+  },
+  {
+    "nct": "NCT06500884",
+    "title": "A Study to Evaluate Preventive Treatments for GPRC5D-related Oral Events",
+    "official_title": "A Phase 2, Open-label, Randomized Study to Evaluate GPRC5D-related Oral Events",
+    "phase": "Fase 2",
+    "sponsor": "Janssen Research & Development, LLC",
+    "interventions": [
+      "Talquetamab",
+      "Prophylaxis A",
+      "Prophylaxis B",
+      "Prophylaxis C",
+      "Prophylaxis D",
+      "Ramantamig"
+    ],
+    "intervention_types": [
+      "DRUG"
+    ],
+    "brazil_cities": [
+      "Brasília",
+      "Curitiba",
+      "São Paulo",
+      "Salvador",
+      "Caxias do Sul"
+    ],
+    "brazil_states": [],
+    "brazil_facilities": [
+      "Hospitais Integrados da Gavea SA DF Star · Brasília/",
+      "Fundacao Universidade de Caxias do Sul · Caxias do Sul/",
+      "Hospital Erasto Gaertner- Liga Paranaense de Combate ao Cancer · Curitiba/",
+      "Instituto D Or de Pesquisa e Ensino · Salvador/",
+      "Clinica Medica Sao Germano S/S LTDA · São Paulo/",
+      "Instituto D Or de Pesquisa e Ensino IDOR · São Paulo/"
+    ],
+    "summary": "The purpose of this study is to identify preventive treatments that can minimize the occurrence, severity, and duration of talquetamab-related taste changes (dysgeusia), during the prophylaxis (preventive) treatment phase, to better characterize the signs or symptoms of talquetamab-related taste cha",
+    "eligibility_snippet": "Inclusion Criteria:\n\n* Multiple myeloma (MM) according to IMWG diagnostic criteria\n* Were triple-class exposed (received prior treatment with a PI, an IMiD, and anti CD38 mAb)\n* Documented evidence of progressive disease based on investigator's determination of response by IMWG criteria on or after their last regimen\n* Have an Eastern Cooperative Oncology Group-performance status (ECOG-PS) of 0 or 1 at screening. Participants with ECOG-PS 2 or 3 are eligible for the study if the ECOG-PS score is",
+    "neoplasia_group": "mieloma",
+    "neoplasia_label": "Mieloma",
+    "url": "https://clinicaltrials.gov/study/NCT06500884"
+  },
+  {
+    "nct": "NCT05714839",
+    "title": "A Study to Investigate the Safety and Efficacy of Belantamab for the Treatment of Multiple Myeloma When Used as Monotherapy and in Combination Treatments",
+    "official_title": "A Phase 1/2 Open-label, Multicentre, Dose Escalation and Expansion Study to Investigate the Safety, Tolerability, and Clinical Activity of Belantamab as Monotherapy and in Combination With Other Treatments in Participants With Multiple Myeloma",
+    "phase": "Fase 1, Fase 2",
+    "sponsor": "GlaxoSmithKline",
+    "interventions": [
+      "Unconjugated belantamab antibody",
+      "Belantamab mafodotin",
+      "Unconjugated belantamab antibody and belantamab mafodotin",
+      "Unconjugated belantamab antibody in combination with pomalidomide-dexamethasone backbone, with or without belantamab mafodotin"
+    ],
+    "intervention_types": [
+      "DRUG"
+    ],
+    "brazil_cities": [
+      "Joinville",
+      "São Paulo",
+      "Salvador"
+    ],
+    "brazil_states": [],
+    "brazil_facilities": [
+      "GSK Investigational Site · Joinville/",
+      "GSK Investigational Site · Salvador/",
+      "GSK Investigational Site · São Paulo/"
+    ],
+    "summary": "The study consists of three parts:\n\n* Part 1 The primary purpose of this part aims to evaluate the safety, tolerability, and clinical activity of escalating doses of single agent Unconjugated belantamab antibody in participants with refractory multiple myeloma (RRMM) who have received at least 3 pri",
+    "eligibility_snippet": "Inclusion Criteria:\n\n* Participants at the time of signing the Informed Consent Form (ICF) are at least 18 years old or are of the legal age of consent in the jurisdiction in which the study is taking place.\n* Participants who have histologically or cytologically confirmed diagnosis of Multiple Myeloma (MM), as defined by the international myeloma working group (IMWG) and have progressed on or following the last line of treatment Part 1 and Part 2: Participants who have received at least 3 prior",
+    "neoplasia_group": "mieloma",
+    "neoplasia_label": "Mieloma",
+    "url": "https://clinicaltrials.gov/study/NCT05714839"
+  },
+  {
+    "nct": "NCT05552222",
+    "title": "A Study of Teclistamab in Combination With Daratumumab and Lenalidomide (Tec-DR) and Talquetamab in Combination With Daratumumab and Lenalidomide (Tal-DR) in Participants With Newly Diagnosed Multiple Myeloma",
+    "official_title": "A Phase 3 Randomized Study Comparing Teclistamab in Combination With Daratumumab SC and Lenalidomide (Tec-DR) and Talquetamab in Combination With Daratumumab SC and Lenalidomide (Tal-DR) Versus Daratumumab SC, Lenalidomide, and Dexamethasone (DRd) in Participants With Newly Diagnosed Multiple Myeloma Who Are Either Ineligible or Not Intended for Autologous Stem Cell Transplant as Initial Therapy",
+    "phase": "Fase 3",
+    "sponsor": "Janssen Research & Development, LLC",
+    "interventions": [
+      "Teclistamab",
+      "Daratumumab",
+      "Lenalidomide",
+      "Dexamethasone",
+      "Talquetamab"
+    ],
+    "intervention_types": [
+      "DRUG"
+    ],
+    "brazil_cities": [
+      "Barretos",
+      "Belo Horizonte",
+      "Curitiba",
+      "São Paulo",
+      "Natal",
+      "Salvador",
+      "Niterói",
+      "Porto Alegre",
+      "Fortaleza",
+      "Ribeirão Preto"
+    ],
+    "brazil_states": [],
+    "brazil_facilities": [
+      "Fundacao Pio XII · Barretos/",
+      "Santa Casa de Misericordia de Belo Horizonte · Belo Horizonte/",
+      "Liga Paranaense de Combate ao Cancer · Curitiba/",
+      "Instituto Do Cancer Do Ceara · Fortaleza/",
+      "Liga Norte Riograndense Contra O Cancer · Natal/",
+      "Complexo Hospitalar de Niteroi · Niterói/",
+      "Hospital De Clinicas De Porto Alegre · Porto Alegre/",
+      "Hospital Das Clinicas Da Faculdade De Medicina De RPUSP HCRP · Ribeirão Preto/",
+      "Hospital Sao Rafael · Salvador/",
+      "Hospital Nove de Julho · São Paulo/",
+      "Clinica Medica Sao Germano S/S LTDA · São Paulo/",
+      "Hospital Das Clinicas Da Faculdade De Medicina Da USP · São Paulo/"
+    ],
+    "summary": "The purpose of this study is to compare the efficacy of teclistamab in combination with daratumumab and lenalidomide (Tec-DR) and talquetamab in combination with daratumumab and lenalidomide (Tal-DR) versus daratumumab, lenalidomide, dexamethasone (DRd).",
+    "eligibility_snippet": "Inclusion Criteria:\n\n* Have a diagnosis of multiple myeloma according to the International Myeloma Working Group (IMWG) diagnostic criteria\n* Be newly diagnosed and not considered a candidate for high-dose chemotherapy with autologous stem cell transplant (ASCT) due to: ineligible due to advanced age OR; ineligible due to the presence of comorbid condition(s) likely to have a negative impact on tolerability of high-dose chemotherapy with ASCT OR; deferral of high-dose chemotherapy with ASCT as i",
+    "neoplasia_group": "mieloma",
+    "neoplasia_label": "Mieloma",
+    "url": "https://clinicaltrials.gov/study/NCT05552222"
+  },
+  {
+    "nct": "NCT07258511",
+    "title": "A Study Comparing JNJ-79635322 and an Anti-B-cell Maturation Antigen (BCMA)xCD3 Bispecific Antibody in Participants With Relapsed or Refractory Multiple Myeloma",
+    "official_title": "A Phase 3 Randomized Study Comparing JNJ-79635322 and an Anti-BCMAxCD3 Bispecific Antibody in Participants With Relapsed or Refractory Multiple Myeloma Who Have Received at Least 3 Prior Lines of Therapy Including a PI, an IMiD, and an Anti CD38 Antibody",
+    "phase": "Fase 3",
+    "sponsor": "Janssen Research & Development, LLC",
+    "interventions": [
+      "JNJ-79635322",
+      "Teclistamab"
+    ],
+    "intervention_types": [
+      "DRUG"
+    ],
+    "brazil_cities": [
+      "Porto Alegre"
+    ],
+    "brazil_states": [],
+    "brazil_facilities": [
+      "Hospital De Clinicas De Porto Alegre · Porto Alegre/"
+    ],
+    "summary": "The purpose of this study is to evaluate how well JNJ-79635322 works when compared with an anti-B-cell maturation antigen (BCMA)xCD3 bispecific antibody.",
+    "eligibility_snippet": "Inclusion:\n\n* Documented diagnosis of multiple myeloma (MM) as defined by the criteria below:\n\n  1. MM diagnosis according to the international myeloma working group (IMWG) diagnostic criteria\n  2. Measurable disease at screening as assessed by central laboratory\n* Received at least 3 prior lines of antimyeloma therapy including a proteasome inhibitor (PI), an immunomodulatory drug (IMiD), and an anti-cluster of differentiation (CD)38 antibody\n* Documented evidence of progressive disease (PD) or",
+    "neoplasia_group": "mieloma",
+    "neoplasia_label": "Mieloma",
+    "url": "https://clinicaltrials.gov/study/NCT07258511"
+  },
+  {
+    "nct": "NCT06679101",
+    "title": "A Study of Belantamab Mafodotin Administered in Combination With Lenalidomide and Dexamethasone (BRd) Versus Daratumumab, Lenalidomide, and Dexamethasone (DRd) in Participants With Newly Diagnosed Multiple Myeloma (NDMM) Who Are Ineligible for Autologous Stem Cell Transplantation (TI-NDMM)",
+    "official_title": "A Phase 3, Randomized, Open-label Study of Belantamab Mafodotin Administered in Combination With Lenalidomide and Dexamethasone (BRd) Versus Daratumumab, Lenalidomide, and Dexamethasone (DRd) in Participants With Newly Diagnosed Multiple Myeloma Who Are Ineligible for Autologous Stem Cell Transplantation (TI-NDMM)",
+    "phase": "Fase 3",
+    "sponsor": "GlaxoSmithKline",
+    "interventions": [
+      "Belantamab mafodotin",
+      "Lenalidomide",
+      "Dexamethasone",
+      "Daratumumab"
+    ],
+    "intervention_types": [
+      "DRUG"
+    ],
+    "brazil_cities": [
+      "Barretos",
+      "São Paulo",
+      "Salvador",
+      "Teresina",
+      "Vitória",
+      "Joinville",
+      "Porto Alegre"
+    ],
+    "brazil_states": [
+      "Rio Grande do Sul",
+      "Estado de Bahia"
+    ],
+    "brazil_facilities": [
+      "GSK Investigational Site · Salvador/Estado de Bahia",
+      "GSK Investigational Site · Porto Alegre/Rio Grande do Sul",
+      "GSK Investigational Site · Barretos/",
+      "GSK Investigational Site · Joinville/",
+      "GSK Investigational Site · Porto Alegre/",
+      "GSK Investigational Site · São Paulo/",
+      "GSK Investigational Site · São Paulo/",
+      "GSK Investigational Site · São Paulo/",
+      "GSK Investigational Site · São Paulo/",
+      "GSK Investigational Site · Teresina/",
+      "GSK Investigational Site · Vitória/"
+    ],
+    "summary": "The purpose of this Phase 3 study is to evaluate if BRd prolongs progression free survival (PFS) and/or improves minimal residual disease (MRD) negative status compared with DRd in participants with TI-NDMM.",
+    "eligibility_snippet": "Inclusion Criteria:\n\n1. Is at least 18 or the legal age of consent in the jurisdiction in which the study is taking place, at the time of signing the informed consent.\n2. Capable of giving signed informed consent, which includes compliance with the requirements and restrictions listed in the informed consent form and in the protocol.\n3. NDMM with a requirement for treatment as documented per IMWG criteria.\n4. Must have at least 1 aspect of measurable disease, as assessed by the central laborator",
+    "neoplasia_group": "mieloma",
+    "neoplasia_label": "Mieloma",
+    "url": "https://clinicaltrials.gov/study/NCT06679101"
+  },
+  {
+    "nct": "NCT05243797",
+    "title": "Phase 3 Study of Teclistamab in Combination With Lenalidomide and Teclistamab Alone Versus Lenalidomide Alone in Participants With Newly Diagnosed Multiple Myeloma as Maintenance Therapy Following Autologous Stem Cell Transplantation",
+    "official_title": "Phase 3 Study of Teclistamab in Combination With Lenalidomide and Teclistamab Alone Versus Lenalidomide Alone in Participants With Newly Diagnosed Multiple Myeloma as Maintenance Therapy Following Autologous Stem Cell Transplantation - MajesTEC-4",
+    "phase": "Fase 3",
+    "sponsor": "European Myeloma Network B.V.",
+    "interventions": [
+      "Teclistamab",
+      "Lenalidomide"
+    ],
+    "intervention_types": [
+      "DRUG"
+    ],
+    "brazil_cities": [
+      "Rio de Janeiro",
+      "Porto Alegre",
+      "São Paulo",
+      "Salvador"
+    ],
+    "brazil_states": [],
+    "brazil_facilities": [
+      "Hospital Mãe de Deus - Centro Integrado de Oncologia · Porto Alegre/",
+      "Hospital Santa Rita · Porto Alegre/",
+      "Instituto Americas de Ensino,Pesquisa e Inovação · Rio de Janeiro/",
+      "IDOR- Instituto D'or de pesquisa. Av. São Rafael · Salvador/",
+      "A Real e Benemérita Associação Portuguesa de Beneficência · São Paulo/",
+      "Clínica Medica São Germano,Grupo Oncoclínicas Pesquisa Clínica · São Paulo/",
+      "Departamento de Oncologia Clínica AC Camargo Cancer Center · São Paulo/",
+      "Grupo Oncoclínicas Pesquisa Clínica · São Paulo/",
+      "Hcor, Associacao Siria · São Paulo/",
+      "Hemocentro UNICAMP, Universidade Estadual de Campinas · São Paulo/",
+      "Hospital das Clínicas da Universidade de São Paulo · São Paulo/",
+      "Hospital Paulistano, Centro de Pesquisa Clinica R. Martiniano de Carvalho · São Paulo/",
+      "Onco Star · São Paulo/",
+      "Universidade Federal de São Paulo - Hospital São Paulo · São Paulo/"
+    ],
+    "summary": "This is a multicenter, randomized, open-label, Phase 3 study in participants with newly diagnosed multiple myeloma to evaluate the benefits of teclistamab in combination with lenalidomide and teclistamab alone versus lenalidomide alone as maintenance therapy after autologous stem cell transplant.",
+    "eligibility_snippet": "Inclusion Criteria:\n\n* Must have a new diagnosis of multiple myeloma according to IMWG criteria and have received induction +/- consolidation.\n* Must have received only one line of therapy and achieved at least a partial response (≥PR) as per IMWG 2016 response criteria (Kumar 2016) without evidence of progression at the time of first treatment dose.\n* Must not be intolerant to the starting dose of lenalidomide.\n* Must not have received any maintenance therapy.\n* Have an ECOG performance status ",
+    "neoplasia_group": "mieloma",
+    "neoplasia_label": "Mieloma",
+    "url": "https://clinicaltrials.gov/study/NCT05243797"
+  },
+  {
+    "nct": "NCT06152575",
+    "title": "MagnetisMM-32: A Study to Learn About the Study Medicine Called Elranatamab in People With Multiple Myeloma (MM) That Has Come Back After Taking Other Treatments (Including Prior Treatment With an Anti-CD38 Antibody and Lenalidomide)",
+    "official_title": "A PHASE 3, OPEN-LABEL STUDY OF ELRANATAMAB MONOTHERAPY VERSUS ELOTUZUMAB, POMALIDOMIDE, DEXAMETHASONE (EPd) OR POMALIDOMIDE, BORTEZOMIB, DEXAMETHASONE (PVd) OR CARFILZOMIB, DEXAMETHASONE (Kd) IN PARTICIPANTS WITH RELAPSED/REFRACTORY MULTIPLE MYELOMA WHO RECEIVED PRIOR ANTI-CD38 DIRECTED THERAPY",
+    "phase": "Fase 3",
+    "sponsor": "Pfizer",
+    "interventions": [
+      "Elranatamab",
+      "Elotuzumab",
+      "Pomalidomide",
+      "Dexamethasone",
+      "Bortezomib",
+      "Carfilzomib"
+    ],
+    "intervention_types": [
+      "DRUG"
+    ],
+    "brazil_cities": [
+      "Jaú",
+      "São Paulo",
+      "Salvador",
+      "Rio de Janeiro",
+      "SP",
+      "Niterói",
+      "Porto Alegre",
+      "Ribeirão Preto"
+    ],
+    "brazil_states": [
+      "Rio de Janeiro",
+      "Rio Grande do Sul",
+      "Estado de Bahia",
+      "São Paulo"
+    ],
+    "brazil_facilities": [
+      "Instituto D'Or de Pesquisa e Ensino (IDOR) - Filial Salvador · Salvador/Estado de Bahia",
+      "Instituto Oncomed de Educação e Pesquisa · Niterói/Rio de Janeiro",
+      "Oncomed Clínica Oncológica · Niterói/Rio de Janeiro",
+      "Hospital Moinhos de Vento · Porto Alegre/Rio Grande do Sul",
+      "Centro Gaucho Integrado De Oncologia, Hematologia, Ensino E Pesquisa · Porto Alegre/Rio Grande do Sul",
+      "Centro de Pesquisa Clínica - Área Administrativa · Porto Alegre/Rio Grande do Sul",
+      "Hospital Mae de Deus · Porto Alegre/Rio Grande do Sul",
+      "Hospital Amaral Carvalho · Jaú/São Paulo",
+      "Hospital das Clínicas da Faculdade de Medicina de Ribeirão Preto da Universidade de São Paulo (USP) · Ribeirão Preto/São Paulo",
+      "Instituto D'Or de Pesquisa e Ensino (IDOR) · São Paulo/São Paulo",
+      "Clínica Médica São Germano LTDA · SP/São Paulo",
+      "Instituto de Educação, Pesquisa e Gestão em Saúde · Rio de Janeiro/",
+      "Americas Centro de Oncologia Integrado · Rio de Janeiro/",
+      "Instituto de Educação, Pesquisa e Gestão em Saúde · Rio de Janeiro/",
+      "ESHO Empresa de Serviços Hospitalares S.A/ Hospital Samaritano de Higienópolis · São Paulo/",
+      "Instituto D'Or de Pesquisa e Ensino (IDOR) · São Paulo/",
+      "Hospital do Coracao · São Paulo/",
+      "HU UNIFESP / SPDM - Hospital São Paulo · São Paulo/",
+      "Universidade Federal de Sao Paulo · São Paulo/",
+      "INSUMA · São Paulo/",
+      "Clínica Médica São Germano S/S Ltda · São Paulo/"
+    ],
+    "summary": "The purpose of this study is to learn about the study medicine called elranatamab.This study aims to compare elranatamab to other medicines for the treatment of MM (a type of cancer).\n\nThis study is seeking participants who:\n\n* Are 18 years of age or older and have MM.\n* Have received treatments bef",
+    "eligibility_snippet": "Inclusion Criteria:\n\n* Prior diagnosis of multiple myeloma as defined by International Myeloma Working Group (IMWG) criteria and previously received 1 to 4 prior lines of therapy including prior anti-cluster of differentiation 38 (CD38) antibody and prior lenalidomide.\n* Documented evidence of progressive disease or failure to achieve a response to last line of therapy per IMWG criteria.\n* Measurable disease defined as at least 1 of the following: (a) Serum M-protein ≥0.5 g/dL; (b) Urinary M-pro",
+    "neoplasia_group": "mieloma",
+    "neoplasia_label": "Mieloma",
+    "url": "https://clinicaltrials.gov/study/NCT06152575"
+  },
+  {
+    "nct": "NCT06084936",
+    "title": "A Study to Evaluate Glofitamab as a Single Agent vs. Investigator's Choice in Participants With Relapsed/Refractory Mantle Cell Lymphoma",
+    "official_title": "A Phase III, Open-Label, Multicenter Randomized Study Evaluating Glofitamab as a Single Agent Versus Investigator's Choice in Patients With Relapsed/Refractory Mantle Cell Lymphoma",
+    "phase": "Fase 3",
+    "sponsor": "Hoffmann-La Roche",
+    "interventions": [
+      "Obinutuzumab",
+      "Glofitamab",
+      "Rituximab",
+      "Bendamustine",
+      "Lenalidomide",
+      "Tocilizumab"
+    ],
+    "intervention_types": [
+      "DRUG"
+    ],
+    "brazil_cities": [
+      "Curitiba",
+      "São Paulo",
+      "Salvador",
+      "Rio de Janeiro",
+      "Porto Alegre"
+    ],
+    "brazil_states": [
+      "São Paulo",
+      "Rio Grande do Sul",
+      "Estado de Bahia",
+      "Paraná"
+    ],
+    "brazil_facilities": [
+      "Hospital Sao Rafael - HSR · Salvador/Estado de Bahia",
+      "ICTR Curitiba · Curitiba/Paraná",
+      "Hospital Mae de Deus · Porto Alegre/Rio Grande do Sul",
+      "Hospital Paulistano · São Paulo/São Paulo",
+      "Hospital Alemao Oswaldo Cruz · São Paulo/São Paulo",
+      "Hospital A. C. Camargo · São Paulo/São Paulo",
+      "Instituto D'Or Pesquisa e Ensino · São Paulo/São Paulo",
+      "Americas Medical City · Rio de Janeiro/",
+      "Beneficencia Portuguesa de Sao Paulo · São Paulo/"
+    ],
+    "summary": "The purpose of this study is to evaluate the efficacy of glofitamab monotherapy compared with an investigator's choice of either rituximab plus bendamustine (BR), or lenalidomide with rituximab (R-Len) in patients with relapsed or refractory (R/R) mantle cell lymphoma (MCL).",
+    "eligibility_snippet": "Inclusion Criteria:\n\n* Life expectancy at least 12 weeks\n* Histologically-confirmed MCL, with documentation of either overexpression of cyclin D1 or the presence of t(11:14) within 12 months of study entry\n* Relapsed (disease progression after the last treatment regimen) or refractory (failure to achieve a partial or complete response from the last treatment regimen) disease\n* At least 1 line of prior systemic therapy including a BTK inhibitor and additional systemic therapy option\n* Confirmed a",
+    "neoplasia_group": "linfoma",
+    "neoplasia_label": "Linfoma",
+    "url": "https://clinicaltrials.gov/study/NCT06084936"
+  },
+  {
+    "nct": "NCT06634589",
+    "title": "A Study to Investigate Safety and Effectiveness of BGB-16673 in Combination With Other Agents in Participants With Relapsed or Refractory B-Cell Malignancies",
+    "official_title": "A Phase 1b/2, Open-Label, Master Protocol Study of BTK-Degrader BGB-16673 in Combination With Other Agents in Patients With Relapsed or Refractory B-Cell Malignancies",
+    "phase": "Fase 1, Fase 2",
+    "sponsor": "BeOne Medicines",
+    "interventions": [
+      "BGB-16673",
+      "Sonrotoclax",
+      "Zanubrutinib",
+      "Mosunetuzumab",
+      "Glofitamab",
+      "Obinutuzumab"
+    ],
+    "intervention_types": [
+      "DRUG"
+    ],
+    "brazil_cities": [
+      "São José do Rio Preto",
+      "São Paulo",
+      "Brasília",
+      "Salvador"
+    ],
+    "brazil_states": [],
+    "brazil_facilities": [
+      "Hospital Sirio Libanes Brasilia · Brasília/",
+      "Ensino E Terapia de Inovacao Clinica Amo Etica · Salvador/",
+      "Fundacao Faculdade Regional de Medicina de Sao Jose Do Rio Preto · São José do Rio Preto/",
+      "Sociedade Beneficente Israelita Brasileira Hospital Albert Einstein · São Paulo/"
+    ],
+    "summary": "The purpose of this study is to measure the safety, preliminary antitumor activity, pharmacokinetics, and pharmacodynamics with BGB-16673 in combination with other agents in participants with relapsed or refractory (R/R) B-cell malignancies. This study is structured as a master protocol with separat",
+    "eligibility_snippet": "Key Inclusion Criteria:\n\n* Must sign the informed consent form (ICF) and be capable of giving written informed consent, which includes compliance with the requirements and restrictions listed in the ICF\n* Confirmed diagnosis of a R/R B-cell malignancy\n* Protocol-defined measurable disease\n* Stable Eastern Cooperative Oncology Group (ECOG) Performance Status of 0 to 2\n* Adequate organ function\n* Female participants of childbearing potential must be willing to use a highly effective method of birt",
+    "neoplasia_group": "linfoma",
+    "neoplasia_label": "Linfoma",
+    "url": "https://clinicaltrials.gov/study/NCT06634589"
+  },
+  {
+    "nct": "NCT05533775",
+    "title": "A Study to Evaluate Glofitamab Monotherapy and Glofitamab + Chemoimmunotherapy in Pediatric and Young Adult Participants With Relapsed/Refractory Mature B-Cell Non-Hodgkin Lymphoma",
+    "official_title": "A Phase I/II, Open-Label, Single-Arm, Two-Part Trial to Evaluate Safety, Tolerability, Pharmacokinetics, and Anti-Tumor Activity of Glofitamab in Monotherapy and in Combination With Chemoimmunotherapy in Pediatric and Young Adult Participants With Relapsed/Refractory Mature B-Cell Non-Hodgkin Lymphoma",
+    "phase": "Fase 1, Fase 2",
+    "sponsor": "Hoffmann-La Roche",
+    "interventions": [
+      "Obinutuzumab",
+      "Glofitamab",
+      "Rituximab",
+      "Ifosfamide",
+      "Carboplatin",
+      "Etoposide",
+      "Tocilizumab"
+    ],
+    "intervention_types": [
+      "DRUG"
+    ],
+    "brazil_cities": [
+      "Curitiba",
+      "São Paulo"
+    ],
+    "brazil_states": [
+      "São Paulo",
+      "Paraná"
+    ],
+    "brazil_facilities": [
+      "Hospital Erasto Gaertner · Curitiba/Paraná",
+      "Graacc-Grupo de Apoio ao adolescente e a crianca com cancer · São Paulo/São Paulo"
+    ],
+    "summary": "The purpose of this study is to evaluate the safety and efficacy of glofitamab, as monotherapy and in combination with a standard chemoimmunotherapy regimen: rituximab, ifosfamide, carboplatin, and etoposide (R-ICE) in pediatric and young adult participants with relapsed and refractory (R/R) mature ",
+    "eligibility_snippet": "Inclusion Criteria:\n\n* Age 6 months to \\< 18 years at the time of signing Informed Consent for Cohort A Part 1 and Cohort B of the study, and age 6 months to \\< 30 years old at the time of signing Informed Consent for Cohort A Part 2 of the study\n* Histologically re-confirmed diagnosis, via tissue biopsy, or bone marrow aspirate, pleural effusion, or ascites, prior to study entry of aggressive mature B-NHL that expresses CD20 (reconfirmed by IHC or flow cytometry if IHC is not possible), includi",
+    "neoplasia_group": "linfoma",
+    "neoplasia_label": "Linfoma",
+    "url": "https://clinicaltrials.gov/study/NCT05533775"
+  },
+  {
+    "nct": "NCT05660395",
+    "title": "A Study to Evaluate the Pharmacokinetics and Safety of Loncastuximab Tesirine in Participants With Relapsed or Refractory Diffuse Large B-cell Lymphoma or High-grade B-cell Lymphoma With Hepatic Impairment (LOTIS-10)",
+    "official_title": "A Phase 1b Open-Label Study to Evaluate the Pharmacokinetics and Safety of Loncastuximab Tesirine in Patients With Relapsed or Refractory Diffuse Large B-cell Lymphoma or High-grade B-cell Lymphoma With Hepatic Impairment (LOTIS-10)",
+    "phase": "Fase 1",
+    "sponsor": "ADC Therapeutics S.A.",
+    "interventions": [
+      "Loncastuximab Tesirine"
+    ],
+    "intervention_types": [
+      "DRUG"
+    ],
+    "brazil_cities": [
+      "São Paulo",
+      "Porto Alegre",
+      "Brasília"
+    ],
+    "brazil_states": [],
+    "brazil_facilities": [
+      "Hospital Sírio-Libanês - Brasília · Brasília/",
+      "Hospital Mãe de Deus - Centro Integrado de Oncologia · Porto Alegre/",
+      "Hospital Sírio-Libanês - São Paulo · São Paulo/",
+      "A Beneficência Portuguesa de São Paulo - Unidade Mirant · São Paulo/",
+      "Hospital 9 de Julho · São Paulo/",
+      "Albert Einstein Israelite Hospital · São Paulo/"
+    ],
+    "summary": "The primary objective of this study is to determine the recommended dosing regimen of loncastuximab tesirine in diffuse large B-cell lymphoma (DLBCL) or high-grade B-cell lymphoma (HGBCL) participants with moderate and severe hepatic impairment.",
+    "eligibility_snippet": "Inclusion Criteria:\n\n* Male or female participants aged 18 years or older\n* Pathologic diagnosis of relapsed (disease that has recurred following a response) or refractory (disease that failed to respond to prior therapy) DLBCL not otherwise specified, DLBCL arising from low grade lymphoma, and high-grade B-cell lymphoma (2016 World Health Organization classification) who have received at least one systemic treatment regimen\n* Measurable disease as defined by the 2014 Lugano Classification\n* Nor",
+    "neoplasia_group": "linfoma",
+    "neoplasia_label": "Linfoma",
+    "url": "https://clinicaltrials.gov/study/NCT05660395"
+  },
+  {
+    "nct": "NCT06191744",
+    "title": "Study of Subcutaneous Epcoritamab in Combination With Intravenous Rituximab and Oral Lenalidomide (R2) to Assess Adverse Events and Change in Disease Activity in Adult Participants With Previously Untreated Follicular Lymphoma",
+    "official_title": "A Phase 3, Multicenter, Randomized, Open-Label Trial to Evaluate the Safety and Efficacy of Epcoritamab + Rituximab and Lenalidomide (R2) Compared to Chemoimmunotherapy in Previously Untreated Follicular Lymphoma (EPCORE™FL-2)",
+    "phase": "Fase 3",
+    "sponsor": "Genmab",
+    "interventions": [
+      "Epcoritamab",
+      "Prednisone",
+      "Rituximab",
+      "Lenalidomide",
+      "Doxorubicin",
+      "Vincristine",
+      "Cyclophosphamide",
+      "Obinutuzumab",
+      "Bendamustine"
+    ],
+    "intervention_types": [
+      "DRUG"
+    ],
+    "brazil_cities": [
+      "Belo Horizonte",
+      "Brasília",
+      "Jaú",
+      "Curitiba",
+      "São Paulo",
+      "Rio de Janeiro",
+      "Ribeirão Preto"
+    ],
+    "brazil_states": [
+      "Puerto Rico",
+      "Federal District",
+      "Minas Gerais",
+      "São Paulo"
+    ],
+    "brazil_facilities": [
+      "DF Star /ID# 260844 · Brasília/Federal District",
+      "Oncocentro de Minas Gerais /ID# 260973 · Belo Horizonte/Minas Gerais",
+      "Hospital Erasto Gaertner /ID# 260871 · Curitiba/Puerto Rico",
+      "Hospital Amaral Carvalho - Fundacao Doutor Amaral Carvalho /ID# 260828 · Jaú/São Paulo",
+      "Hospital das Clinicas da Faculdade de Medicina de Ribeirao Preto /ID# 260843 · Ribeirão Preto/São Paulo",
+      "Fundacao Antonio Prudente - AC Camargo Cancer Center /ID# 260827 · São Paulo/São Paulo",
+      "Grupo Oncoclínicas Botafogo /ID# 260870 · Rio de Janeiro/",
+      "Real e Benemérita Associação Portuguesa de Beneficência /ID# 260826 · São Paulo/",
+      "Instituto D'Or de Pesquisa e Ensino - Regional Sao Paulo /ID# 260829 · São Paulo/",
+      "Hospital das Clinicas da Faculdade de Medicina da Universidade de Sao /ID# 260822 · São Paulo/"
+    ],
+    "summary": "Follicular lymphoma (FL) is the second most common B-cell cancer and the most common type of cancer of lymphocytes. Unfortunately, this disease is incurable with conventional treatment and the disease recurs in almost all patients. This study will assess how safe and effective epcoritamab is in comb",
+    "eligibility_snippet": "Inclusion Criteria:\n\n* Diagnosis of follicular lymphoma (FL).\n* Have CD20+, histologically confirmed classic FL (previously Grade 1 to 3a FL) at most recent representative tumor biopsy based on the local pathology report, according to the 5th edition of World Health Organization (WHO) Classification of Haematolymphoid Tumours.\n* Are willing and able to comply with procedures required in the protocol.\n* Must have stage, III, IV or II with bulky disease \\>= 7cm).\n* Must be in need of systemic trea",
+    "neoplasia_group": "linfoma",
+    "neoplasia_label": "Linfoma",
+    "url": "https://clinicaltrials.gov/study/NCT06191744"
+  },
+  {
+    "nct": "NCT06534983",
+    "title": "A Study to Evaluate the Efficacy and Safety of Autogene Cevumeran With Nivolumab Versus Nivolumab Alone in Participants With High-risk Muscle-invasive Urothelial Carcinoma (MIUC)",
+    "official_title": "A Randomized Phase II, Double-blind, Multicenter Study Evaluating the Efficacy and Safety of Autogene Cevumeran Plus Nivolumab Versus Nivolumab as Adjuvant Therapy in Patients With High-risk Muscle-invasive Urothelial Carcinoma",
+    "phase": "Fase 2",
+    "sponsor": "Hoffmann-La Roche",
+    "interventions": [
+      "Autogene Cevumeran",
+      "Nivolumab",
+      "Saline"
+    ],
+    "intervention_types": [
+      "DRUG"
+    ],
+    "brazil_cities": [
+      "Porto Alegre"
+    ],
+    "brazil_states": [
+      "Rio Grande do Sul"
+    ],
+    "brazil_facilities": [
+      "Hospital Moinhos de Vento · Porto Alegre/Rio Grande do Sul"
+    ],
+    "summary": "The main purpose of the study is to evaluate the efficacy of adjuvant treatment with autogene cevumeran plus nivolumab compared with nivolumab in participants with high risk MIUC.\n\nIn this study participants will be enrolled in a safety run-in phase to receive autogene cevumeran + nivolumab. This ph",
+    "eligibility_snippet": "Inclusion Criteria:\n\n* Participants must have the capacity to participate/enroll in the study and to provide informed consent\n* Histologically confirmed muscle-invasive UC (also termed transitional cell carcinoma \\[TCC\\]) of the bladder or upper urinary tract\n* Tumor-node-metastasis (TNM ) classification (Union for International Cancer Control \\[UICC\\]/American Joint Committee on Cancer \\[AJCC\\] 7th edition) at pathological examination of surgical resection specimen of (y)pT3-4 or (y)pN+ and M0\n",
+    "neoplasia_group": "urotelial",
+    "neoplasia_label": "Urotelial",
+    "url": "https://clinicaltrials.gov/study/NCT06534983"
+  },
+  {
+    "nct": "NCT07419295",
+    "title": "A Clinical Trial of Sacituzumab Tirumotecan (Sac-TMT, MK-2870) to Treat Urothelial Cancer (MK-2870-031)",
+    "official_title": "A Phase 3, Randomized, Open-label Study of Sacituzumab Tirumotecan (MK-2870) Versus Investigator's Choice of Non-platinum Chemotherapy in Participants With Pretreated Locally Advanced/Metastatic Urothelial Carcinoma",
+    "phase": "Fase 3",
+    "sponsor": "Merck Sharp & Dohme LLC",
+    "interventions": [
+      "Sacituzumab tirumotecan",
+      "Vinflunine",
+      "Docetaxel",
+      "Paclitaxel",
+      "Rescue medications for sacituzumab tirumotecan",
+      "Rescue medications for chemotherapy"
+    ],
+    "intervention_types": [
+      "DRUG",
+      "BIOLOGICAL"
+    ],
+    "brazil_cities": [
+      "São José do Rio Preto"
+    ],
+    "brazil_states": [
+      "São Paulo"
+    ],
+    "brazil_facilities": [
+      "Fundação Faculdade Regional de Medicina de São José do Rio Preto ( Site 0110) · São José do Rio Preto/São Paulo"
+    ],
+    "summary": "Researchers are looking for new ways to treat locally advanced or metastatic urothelial cancer (UC). Current treatments for locally advanced or metastatic UC include chemotherapy, immunotherapy, and targeted therapy.\n\nResearchers want to know if giving sacituzumab tirumotecan (sac-TMT), the trial me",
+    "eligibility_snippet": "Inclusion Criteria:\n\nThe main inclusion criteria include but are not limited to the following:\n\n* Has histologically documented locally advanced/metastatic urothelial cancer. Locally advanced disease must not be amenable to resection or radiation with curative intent per investigator assessment\n* Has measurable disease per Response Evaluation Criteria In Solid Tumors Version 1.1 (RECIST 1.1) as assessed by the investigator\n* Has received treatment with anti-programmed cell death \\[ligand\\] 1 (an",
+    "neoplasia_group": "urotelial",
+    "neoplasia_label": "Urotelial",
+    "url": "https://clinicaltrials.gov/study/NCT07419295"
+  },
+  {
+    "nct": "NCT07218380",
+    "title": "A Study of Vepugratinib (LY3866288) in Participants With Cancer in the Urinary Tract",
+    "official_title": "FORAGER-2: A Phase 3, Randomized, Double-blind, Placebo-controlled Study Evaluating the Efficacy and Safety of Vepugratinib Combined With Enfortumab Vedotin and Pembrolizumab in Adults With Untreated Locally Advanced or Metastatic Urothelial Carcinoma With an FGFR3 Genetic Alteration",
+    "phase": "Fase 3",
+    "sponsor": "Eli Lilly and Company",
+    "interventions": [
+      "Vepugratinib",
+      "Placebo",
+      "EV",
+      "Pembrolizumab"
+    ],
+    "intervention_types": [
+      "DRUG",
+      "OTHER"
+    ],
+    "brazil_cities": [
+      "Barretos",
+      "Belo Horizonte",
+      "Belém",
+      "Bento Gonçalves",
+      "Curitiba",
+      "São Paulo",
+      "Natal",
+      "Londrina",
+      "Salvador",
+      "Rio de Janeiro",
+      "Santa Cruz do Sul",
+      "João Pessoa",
+      "Porto Alegre",
+      "São Caetano do Sul"
+    ],
+    "brazil_states": [],
+    "brazil_facilities": [
+      "Fundação Pio XII - Hospital de Câncer de Barretos · Barretos/",
+      "CPAM - Centro de Pesquisas da Amazônia · Belém/",
+      "Oncocentro de Minas Gerais · Belo Horizonte/",
+      "Hospital Mario Penna · Belo Horizonte/",
+      "Hospital Tacchini · Bento Gonçalves/",
+      "Centro Integrado de Oncologia de Curitiba · Curitiba/",
+      "IOP Pesquisa · Curitiba/",
+      "Centro Paraibano De Oncologia - Oncoclínicas · João Pessoa/",
+      "Hospital de Cancer de Londrina · Londrina/",
+      "Liga Norte Riograndense Contra o Câncer · Natal/",
+      "Centro Gaucho Integrado De Oncologia, Hematologia, Ensino E Pesquisa · Porto Alegre/",
+      "Hospital São Lucas da PUCRS · Porto Alegre/",
+      "Hospital Nossa Senhora da Conceição · Porto Alegre/",
+      "Instituto Nacional de Câncer José Alencar Gomes da Silva - INCA · Rio de Janeiro/",
+      "Instituto D'Or Pesquisa e Ensino · Rio de Janeiro/",
+      "Nucleo de Oncologia da Bahia · Salvador/",
+      "Clinica Amo - Rio Vermelho · Salvador/",
+      "Instituto de Oncologia Saint Gallen · Santa Cruz do Sul/",
+      "Centro de Oncologia - CEON+ - Unidade São Caetano do Sul · São Caetano do Sul/",
+      "Instituto do Cancer Arnaldo Vieira de Carvalho · São Paulo/",
+      "Icesp - Instituto Do Câncer Do Estado de São Paulo · São Paulo/",
+      "Hospital BP · São Paulo/",
+      "Hospital Alemao Oswaldo Cruz · São Paulo/",
+      "Centro Paulista de Oncologia Clínica · São Paulo/",
+      "IBCC - Núcleo de Pesquisa e Ensino · São Paulo/"
+    ],
+    "summary": "The purpose of this study is to test a new medicine, vepugratinib, in comparison with placebo, to see if it is safe and can help people with a bladder cancer that is advanced or has spread.\n\nVepugratinib or placebo will be administered in combination with enfortumab vedotin and pembrolizumab.\n\nStudy",
+    "eligibility_snippet": "Inclusion Criteria:\n\n* Have histologically confirmed, unresectable locally advanced or metastatic urothelial cancer (mUC). Individuals with mixed histology other than small cell or neuroendocrine carcinoma are eligible if a urothelial component is present.\n* Have a qualifying fibroblast growth factor receptor 3 (FGFR3) genetic alteration determined via molecular testing from a tumor or blood sample obtained at or any time after diagnosis of advanced or metastatic urothelial cancer.\n* Have measur",
+    "neoplasia_group": "urotelial",
+    "neoplasia_label": "Urotelial",
+    "url": "https://clinicaltrials.gov/study/NCT07218380"
+  },
+  {
+    "nct": "NCT06319820",
+    "title": "A Study to Evaluate TAR-210 Versus Single Agent Intravesical Cancer Treatment in Participants With Bladder Cancer",
+    "official_title": "A Phase 3, Randomized Study Evaluating the Efficacy and Safety of TAR-210 Erdafitinib Intravesical Delivery System Versus Single Agent Intravesical Chemotherapy in Participants With Intermediate-risk Non-muscle Invasive Bladder Cancer (IR-NMIBC) and Susceptible FGFR Alterations",
+    "phase": "Fase 3",
+    "sponsor": "Janssen Research & Development, LLC",
+    "interventions": [
+      "TAR-210",
+      "Gemcitabine",
+      "MMC"
+    ],
+    "intervention_types": [
+      "DRUG",
+      "COMBINATION_PRODUCT"
+    ],
+    "brazil_cities": [
+      "Barretos",
+      "Santo André",
+      "São Paulo",
+      "Natal",
+      "Salvador",
+      "Campinas",
+      "Porto Alegre"
+    ],
+    "brazil_states": [],
+    "brazil_facilities": [
+      "Fundacao Pio XII · Barretos/",
+      "Universidade Estadual De Campinas · Campinas/",
+      "Liga Norte Riograndense Contra O Cancer · Natal/",
+      "Associacao Hospitalar Moinhos de Vento · Porto Alegre/",
+      "Irmandade da Santa Casa de Misericordia de Porto Alegre · Porto Alegre/",
+      "HBA SA Assitencia Medica e Hospitalar · Salvador/",
+      "Fundacao do ABC Centro Universitario FMABC · Santo André/",
+      "Irmandade Da Santa Casa De Misericordia De Sao Paulo · São Paulo/",
+      "Fundacao Faculdade de Medicina - Instituto do Cancer do Estado de Sao Paulo · São Paulo/",
+      "Real e Benemérita Associação Portuguesa de Beneficência · São Paulo/",
+      "Fundacao Antonio Prudente A C Camargo Cancer Center · São Paulo/"
+    ],
+    "summary": "The main purpose of this study is to compare the disease-free survival between participants receiving treatment with TAR-210 versus investigator's choice of intravesical chemotherapy for treatment of intermediate-risk NMIBC.",
+    "eligibility_snippet": "Inclusion Criteria:\n\n* Main study only: Have a histologically confirmed diagnosis (within 90 days of randomization) of IR-NMIBC with at least one of the following criteria fulfilled: a. Ta low grade (LG)/ Grade 1 (G1): primary or recurrent, b. Ta LG/G2: primary or recurrent and c. Greater than or equal to (\\>=) 1 of the following risk factors: i. Multiple Ta LG tumors, ii. Solitary LG tumor \\>= 3 cm, iii. Early recurrence (less than \\[\\<\\] 1 year), iv. Frequent recurrence (greater than \\[\\>\\] 1 ",
+    "neoplasia_group": "urotelial",
+    "neoplasia_label": "Urotelial",
+    "url": "https://clinicaltrials.gov/study/NCT06319820"
+  },
+  {
+    "nct": "NCT06919965",
+    "title": "A Study to Evaluate TAR-210 Versus Intravesical Chemotherapy Treatment in Participants With High Risk Non-Muscle-Invasive Bladder Cancer",
+    "official_title": "A Phase 3, Randomized, Open-label, Multicenter Study Evaluating the Efficacy and Safety of TAR-210 Erdafitinib Intravesical Delivery System Versus Investigator's Choice of Intravesical Chemotherapy in Participants With High-risk Non-muscle-invasive Bladder Cancer With Susceptible FGFR Alterations Who Had Received Intravesical Bacillus Calmette-Guérin (BCG)",
+    "phase": "Fase 3",
+    "sponsor": "Janssen Research & Development, LLC",
+    "interventions": [
+      "TAR-210",
+      "Mitomycin C",
+      "Gemcitabine"
+    ],
+    "intervention_types": [
+      "DRUG"
+    ],
+    "brazil_cities": [
+      "São José do Rio Preto",
+      "São Paulo",
+      "Presidente Prudente",
+      "Natal"
+    ],
+    "brazil_states": [],
+    "brazil_facilities": [
+      "Liga Norte Riograndense Contra O Cancer · Natal/",
+      "Hospital Regional do Cancer - Hospital de Esperança · Presidente Prudente/",
+      "Fundacao Faculdade Regional De Medicina De Sao Jose Do Rio Preto · São José do Rio Preto/",
+      "Fundacao Faculdade de Medicina - Instituto do Cancer do Estado de Sao Paulo · São Paulo/",
+      "Real e Benemerita Associacao Portuguesa de Beneficencia · São Paulo/"
+    ],
+    "summary": "The main purpose of this study is to compare the disease-free survival (the length of time after randomization that a participant survives without any signs or symptoms of the cancer returning, or progressing) between Bacillus Calmette-Guérin (BCG) treated participants receiving treatment with TAR-2",
+    "eligibility_snippet": "Inclusion criteria:\n\n* Histologically confirmed diagnosis by local pathology of papillary-only HR-NMIBC (defined as high-grade Ta or any T1, no CIS). Mixed histology tumors are allowed if urothelial differentiation is predominant. However, neuroendocrine, and small cell variants will be excluded\n* Have a susceptible fibroblast growth factor receptor (FGFR) mutation or fusion either by urine testing or tumor tissue testing (from TURBT tissue) as determined by central or local testing\n* All visibl",
+    "neoplasia_group": "urotelial",
+    "neoplasia_label": "Urotelial",
+    "url": "https://clinicaltrials.gov/study/NCT06919965"
+  },
+  {
+    "nct": "NCT07076121",
+    "title": "A Study Comparing BMS-986504 in Combination With Nab-paclitaxel and Gemcitabine Versus Placebo in Combination With Nab-paclitaxel and Gemcitabine in Participants With Untreated Metastatic Pancreatic Ductal Adenocarcinoma With Homozygous MTAP Deletion (MountainTAP-30)",
+    "official_title": "A Randomized, Phase 2/3 Study Comparing BMS-986504 in Combination With Nab-paclitaxel and Gemcitabine Versus Placebo in Combination With Nab-paclitaxel and Gemcitabine in Participants With Untreated Metastatic Pancreatic Ductal Adenocarcinoma Harboring Homozygous MTAP Deletion",
+    "phase": "Fase 2, Fase 3",
+    "sponsor": "Bristol-Myers Squibb",
+    "interventions": [
+      "BMS-986504",
+      "Gemcitabine",
+      "Nab-paclitaxel",
+      "Placebo"
+    ],
+    "intervention_types": [
+      "DRUG"
+    ],
+    "brazil_cities": [
+      "Barretos",
+      "Belo Horizonte",
+      "São Paulo",
+      "Salvador",
+      "Natal",
+      "Rio de Janeiro",
+      "Santa Cruz do Sul",
+      "Vitória"
+    ],
+    "brazil_states": [
+      "Estado de Bahia",
+      "São Paulo",
+      "Espírito Santo",
+      "Minas Gerais",
+      "Rio Grande do Norte",
+      "Rio Grande do Sul"
+    ],
+    "brazil_facilities": [
+      "CEDOES · Vitória/Espírito Santo",
+      "Instituto D'Or de Pesquisa e Ensino (IDOR) - Filial Salvador · Salvador/Estado de Bahia",
+      "Hospital Mario Penna · Belo Horizonte/Minas Gerais",
+      "Liga Norte Riograndense Contra o Câncer · Natal/Rio Grande do Norte",
+      "Instituto de Oncologia Saint Gallen · Santa Cruz do Sul/Rio Grande do Sul",
+      "Fundação Pio XII - Hospital de Câncer de Barretos · Barretos/São Paulo",
+      "Oncoclinicas Rio de Janeiro · Rio de Janeiro/",
+      "Icesp - Instituto Do Câncer Do Estado de São Paulo · São Paulo/",
+      "Local Institution - 0332 · São Paulo/"
+    ],
+    "summary": "The purpose of this study is to assess the safety and efficacy of BMS-986504, a selective, MTA-cooperative PRMT5 inhibitor, in combination with Nab-paclitaxel/Gemcitabine (nab-p/gem) versus placebo in combination with nab-p/gem, in participants with untreated metastatic Pancreatic Ductal Adenocarcin",
+    "eligibility_snippet": "Inclusion Criteria:\n\n* Histologically or cytologically confirmed diagnosis of metastatic pancreatic ductal adenocarcinoma (PDAC).\n* Evidence of homozygous methylthioadenosine phosphorylase (MTAP) deletion or MTAP loss detected in tumor tissue.\n* Metastatic disease with at least 1 measurable lesion as per Response Evaluation Criteria in Solid Tumors version v1.1 (RECIST v1.1).\n* Participants must not have received any systemic anticancer treatments in the metastatic setting.\n* If clinically indic",
+    "neoplasia_group": "pancreas",
+    "neoplasia_label": "Pâncreas",
+    "url": "https://clinicaltrials.gov/study/NCT07076121"
+  },
+  {
+    "nct": "NCT06989112",
+    "title": "DESTINY-Endometrial01: A Phase III Study of Trastuzumab Deruxtecan Plus Rilvegostomig or Pembrolizumab as First-Line Treatment of HER2-Expressing (IHC 3+/2+), Mismatch Repair Proficient (pMMR) Endometrial Cancer",
+    "official_title": "DESTINY-Endometrial01: An Open-Label, Sponsor-Blinded, Randomized, Controlled, Multicenter, Phase III Study of Trastuzumab Deruxtecan (T-DXd) Plus Rilvegostomig or Pembrolizumab vs Chemotherapy Plus Pembrolizumab as First-Line Therapy of HER2-Expressing (IHC 3+/2+), Mismatch Repair Proficient (pMMR), Primary Advanced or Recurrent Endometrial Cancer",
+    "phase": "Fase 3",
+    "sponsor": "AstraZeneca",
+    "interventions": [
+      "Trastuzumab deruxtecan",
+      "Rilvegostomig",
+      "Pembrolizumab",
+      "Carboplatin",
+      "Paclitaxel",
+      "Docetaxel"
+    ],
+    "intervention_types": [
+      "DRUG"
+    ],
+    "brazil_cities": [
+      "Barretos",
+      "Belo Horizonte",
+      "São Paulo",
+      "Salvador",
+      "Londrina",
+      "Rio de Janeiro",
+      "Teresina",
+      "Porto Alegre",
+      "Goiânia"
+    ],
+    "brazil_states": [],
+    "brazil_facilities": [
+      "Research Site · Barretos/",
+      "Research Site · Belo Horizonte/",
+      "Research Site · Goiânia/",
+      "Research Site · Londrina/",
+      "Research Site · Porto Alegre/",
+      "Research Site · Porto Alegre/",
+      "Research Site · Rio de Janeiro/",
+      "Research Site · Salvador/",
+      "Research Site · São Paulo/",
+      "Research Site · São Paulo/",
+      "Research Site · São Paulo/",
+      "Research Site · Teresina/"
+    ],
+    "summary": "DESTINY-Endometrial01 will investigate the efficacy of first-line T-DXd + rilvegostomig (Arm A) and/or T-DXd+ pembrolizumab (Arm B) when compared to chemotherapy (carboplatin + paclitaxel) + pembrolizumab (Arm C), by assessment of progression free survival (PFS), as assessed by BICR, in participants",
+    "eligibility_snippet": "* Key Inclusion Criteria:\n\n  * Participants must be ≥ 18 years of age at the time of screening. Other age restrictions may apply as per local regulations.\n  * Histologically confirmed diagnosis of epithelial endometrial carcinoma. All histologies are allowed except for sarcomas (carcinosarcomas are allowed).\n  * Following surgery or diagnostic biopsy, participant must have primary advanced disease (Stage III/IV) or first recurrent endometrial cancer and meet at least one of the following criteri",
+    "neoplasia_group": "endometrio",
+    "neoplasia_label": "Endométrio",
+    "url": "https://clinicaltrials.gov/study/NCT06989112"
+  },
+  {
+    "nct": "NCT06796907",
+    "title": "A Study of GSK5733584 in Combination With Anti-cancer Therapies for Advanced Solid Tumors",
+    "official_title": "A Phase I/II Randomized Multi-Cohort Study to Evaluate the Safety, Tolerability, Pharmacokinetics and Clinical Activity of GSK5733584 in Combination With Anti-Cancer Agents in Participants With Advanced Solid Tumors",
+    "phase": "Fase 1, Fase 2",
+    "sponsor": "GlaxoSmithKline",
+    "interventions": [
+      "GSK5733584",
+      "Dostarlimab",
+      "Bevacizumab",
+      "Anticancer therapy 3",
+      "Anticancer therapy 4"
+    ],
+    "intervention_types": [
+      "DRUG"
+    ],
+    "brazil_cities": [
+      "Vitória",
+      "Porto Alegre",
+      "São Paulo",
+      "Natal"
+    ],
+    "brazil_states": [],
+    "brazil_facilities": [
+      "GSK Investigational Site · Natal/",
+      "GSK Investigational Site · Porto Alegre/",
+      "GSK Investigational Site · São Paulo/",
+      "GSK Investigational Site · Vitória/"
+    ],
+    "summary": "Advanced solid tumors are cancers that have spread to other parts of the body. While many treatments exist, most people become resistant to them, and the cancer returns. Researchers are developing new treatments that combine different medicines for those who do not respond to single medicine. This s",
+    "eligibility_snippet": "Inclusion Criteria:\n\n* Participants must be 18 years of age inclusive or older, at the time of signing the informed consent, or the legal age of consent in the jurisdiction in which the study is taking place.\n* Participant capable of giving signed informed consent including compliance with the requirements and restrictions listed in the Informed consent form (ICF) and in this protocol.\n* Participants with pathologically confirmed advanced solid tumor specific for study arms (key local diagnostic",
+    "neoplasia_group": "endometrio",
+    "neoplasia_label": "Endométrio",
+    "url": "https://clinicaltrials.gov/study/NCT06796907"
+  },
+  {
+    "nct": "NCT06952504",
+    "title": "A Study to Compare Sacituzumab Tirumotecan (MK-2870) in Combination With Pembrolizumab (MK-3475) Versus Pembrolizumab Alone as Treatment in Participants With Mismatch Repair Proficient Endometrial Cancer (MK-2870-033/TroFuse-033/GOG-3119/ENGOT-en29)",
+    "official_title": "A Phase 3 Randomized, Open-label, Multicenter Study to Compare the Efficacy and Safety of Sacituzumab Tirumotecan (Sac-TMT, MK-2870) in Combination With Pembrolizumab Versus Pembrolizumab Alone as First-line Maintenance Treatment in Participants With Mismatch Repair Proficient Endometrial Cancer (TroFuse-033/GOG-3119/ENGOT-en29)",
+    "phase": "Fase 3",
+    "sponsor": "Merck Sharp & Dohme LLC",
+    "interventions": [
+      "Pembrolizumab",
+      "Carboplatin",
+      "Paclitaxel",
+      "Docetaxel",
+      "Sacituzumab Tirumotecan"
+    ],
+    "intervention_types": [
+      "DRUG",
+      "BIOLOGICAL"
+    ],
+    "brazil_cities": [
+      "São Paulo",
+      "Natal",
+      "Rio de Janeiro",
+      "Porto Alegre",
+      "Goiânia"
+    ],
+    "brazil_states": [
+      "Rio Grande do Norte",
+      "Rio Grande do Sul",
+      "Goiás",
+      "São Paulo"
+    ],
+    "brazil_facilities": [
+      "Hospital Araújo Jorge ( Site 0521) · Goiânia/Goiás",
+      "Liga Norte Riograndense Contra o Câncer ( Site 0523) · Natal/Rio Grande do Norte",
+      "Hospital São Lucas da PUCRS ( Site 0522) · Porto Alegre/Rio Grande do Sul",
+      "IBCC - Instituto Brasileiro de Controle do Câncer ( Site 0525) · São Paulo/São Paulo",
+      "Instituto Nacional de Câncer - INCA ( Site 0515) · Rio de Janeiro/"
+    ],
+    "summary": "Researchers are looking for new ways to treat people with proficient mismatch repair (pMMR) endometrial cancer (EC) that is advanced or recurrent.\n\n* EC is a type of cancer that starts in the tissues inside the uterus (womb)\n* pMMR indicates that certain normal proteins are present in the cancer cel",
+    "eligibility_snippet": "Key inclusion criteria include but are not limited to:\n\n* Has a histologically confirmed diagnosis of primary advanced or recurrent endometrial carcinoma that has been confirmed as proficient mismatch repair (pMMR)\n* Has radiographically evaluable disease, with measurable Stage III or either measurable or non-measurable Stage IV or recurrent disease per Response Evaluation Criteria In Solid Tumors version 1.1 (RECIST 1.1), as assessed by the investigator\n* Has received no prior systemic therapy ",
+    "neoplasia_group": "endometrio",
+    "neoplasia_label": "Endométrio",
+    "url": "https://clinicaltrials.gov/study/NCT06952504"
+  },
+  {
+    "nct": "NCT06670911",
+    "title": "Low-dose Pembrolizumab Plus Chemotherapy for the First-Line Treatment of Persistent, Recurrent, or Metastatic Cervical Cancer.",
+    "official_title": "A Phase II Trial of Low-dose Pembrolizumab Plus Chemotherapy for the First-Line Treatment of Persistent, Recurrent, or Metastatic Cervical Cancer - ACCESS I",
+    "phase": "Fase 2",
+    "sponsor": "Instituto Nacional de Cancer, Brazil",
+    "interventions": [
+      "Low-dose Pembrolizumab Plus Chemotherapy (Paclitaxel plus Carboplatin or Cisplatin)"
+    ],
+    "intervention_types": [
+      "DRUG"
+    ],
+    "brazil_cities": [
+      "Rio de Janeiro"
+    ],
+    "brazil_states": [
+      "Rio de Janeiro"
+    ],
+    "brazil_facilities": [
+      "Instituto Nacional de Cancer · Rio de Janeiro/Rio de Janeiro"
+    ],
+    "summary": "This is a phase II single-arm study of low-dose pembrolizumab (100mg, fixed-dose) plus chemotherapy in women aged 18 years or older with histologically confirmed persistent, recurrent, or metastatic cervical cancer who are ineligible for curative-intent treatment (surgery and/or radiation therapy) a",
+    "eligibility_snippet": "Inclusion Criteria:\n\n1. ) Female participants aged 18 years and older\n2. ) Patients with persistent, recurrent, or metastatic squamous cell, adenocarcinoma, or adenosquamous cervical cancer, with PD-L1 CPS ≥ 1 expression, who have not received prior chemotherapy and are ineligible for curative surgery and/ or radiotherapy. Prior chemotherapy used as a radiosensitizer and completed at least 2 weeks before the scheduled date for C1D1 with resolution of all treatment-related toxicities is allowed. ",
+    "neoplasia_group": "cervix",
+    "neoplasia_label": "Cérvix",
+    "url": "https://clinicaltrials.gov/study/NCT06670911"
+  },
+  {
+    "nct": "NCT06525220",
+    "title": "A Phase 3 Study to Evaluate Petosemtamab Plus Pembrolizumab vs Pembrolizumab in First-line Treatment of Head and Neck Cancer (LiGeR - HN1)",
+    "official_title": "A Phase 3 Randomized, Open-label Study to Evaluate the Efficacy and Safety of Petosemtamab Plus Pembrolizumab vs Pembrolizumab in First-line Treatment of Recurrent or Metastatic PD-L1+ Head and Neck Squamous Cell Carcinoma",
+    "phase": "Fase 3",
+    "sponsor": "Merus B.V.",
+    "interventions": [
+      "Petosemtamab",
+      "Pembrolizumab"
+    ],
+    "intervention_types": [
+      "DRUG"
+    ],
+    "brazil_cities": [
+      "Belo Horizonte",
+      "São Paulo",
+      "Natal",
+      "Rio de Janeiro",
+      "Recife",
+      "Porto Alegre"
+    ],
+    "brazil_states": [],
+    "brazil_facilities": [
+      "Site 141 · Belo Horizonte/",
+      "Site 144 · Natal/",
+      "Site 140 · Porto Alegre/",
+      "Site 142 · Porto Alegre/",
+      "Site 137 · Recife/",
+      "Site 149 · Rio de Janeiro/",
+      "Site 138 · Rio de Janeiro/",
+      "Site 134 · São Paulo/",
+      "Site 136 · São Paulo/"
+    ],
+    "summary": "This is a Phase 3 randomized, open-label study to evaluate the efficacy and safety of petosemtamab plus pembrolizumab vs pembrolizumab in first-line treatment of recurrent or metastatic PD-L1+ head and neck squamous cell carcinoma.",
+    "eligibility_snippet": "Inclusion Criteria:\n\n1. Signed ICF before initiation of any study procedures\n2. Age ≥ 18 years at signing of ICF\n3. Histologically confirmed HNSCC with evidence of metastatic or locally recurrent disease not amenable to local therapy with curative intent.\n4. The eligible HNSCC primary tumor locations are oropharynx, oral cavity, hypopharynx, and larynx.\n5. HNSCC patients eligible to receive pembrolizumab as 1L monotherapy with tumors expressing PD-L1, CPS ≥1.\n6. HNSCC patients should not have ha",
+    "neoplasia_group": "cervix",
+    "neoplasia_label": "Cérvix",
+    "url": "https://clinicaltrials.gov/study/NCT06525220"
+  },
+  {
+    "nct": "NCT05319730",
+    "title": "A Study to Evaluate Investigational Agents With or Without Pembrolizumab (MK-3475) in Participants With Advanced Esophageal Cancer Previously Exposed to Programmed Cell Death 1 Protein (PD-1)/ Programmed Cell Death Ligand 1 (PD-L1) Treatment (MK-3475-06B)",
+    "official_title": "A Phase 1/2 Open-Label, Umbrella Platform Design Study of Investigational Agents With or Without Pembrolizumab (MK-3475) and/or Chemotherapy in Participants With Advanced Esophageal Cancer Previously Exposed to PD-1/PD-L1 Treatment (KEYMAKER-U06): Substudy 06B",
+    "phase": "Fase 1, Fase 2",
+    "sponsor": "Merck Sharp & Dohme LLC",
+    "interventions": [
+      "Paclitaxel",
+      "Irinotecan",
+      "Pembrolizumab",
+      "MK-4830",
+      "Lenvatinib",
+      "Sacituzumab tirumotecan",
+      "Antihistamine",
+      "H2 Receptor Antagonist",
+      "Acetaminophen (or equivalent)",
+      "Dexamethasone (or equivalent)",
+      "Steroid Mouthwash (dexamethasone or equivalent)",
+      "Supportive care measures"
+    ],
+    "intervention_types": [
+      "DRUG",
+      "BIOLOGICAL"
+    ],
+    "brazil_cities": [
+      "Porto Alegre",
+      "São Paulo",
+      "Natal"
+    ],
+    "brazil_states": [
+      "Rio Grande do Norte",
+      "Rio Grande do Sul"
+    ],
+    "brazil_facilities": [
+      "Liga Norte Riograndense Contra o Câncer ( Site 4303) · Natal/Rio Grande do Norte",
+      "Hospital Nossa Senhora da Conceição ( Site 4301) · Porto Alegre/Rio Grande do Sul",
+      "ICESP - INSTITUTO DO CÂNCER DO ESTADO DE SÃO PAULO ( Site 4300) · São Paulo/"
+    ],
+    "summary": "This is a Phase 1/2, multicenter, randomized, open-label umbrella platform study to evaluate the safety and efficacy of investigational agents with or without pembrolizumab and/or chemotherapy, for the treatment of participants with second line (2L) esophageal squamous cell carcinoma (ESCC) who have",
+    "eligibility_snippet": "The main inclusion and exclusion criteria include but are not limited to the following:\n\nInclusion Criteria:\n\n* Histologically or cytologically confirmed diagnosis of metastatic or locally advanced unresectable esophageal squamous cell carcinoma (ESCC)\n* Has experienced investigator documented radiographic or clinical disease progression on one prior line of standard therapy, that includes a platinum agent and previous exposure to an anti-programmed cell death 1 (PD1)/programmed cell death ligan",
+    "neoplasia_group": "cervix",
+    "neoplasia_label": "Cérvix",
+    "url": "https://clinicaltrials.gov/study/NCT05319730"
+  },
+  {
+    "nct": "NCT06806852",
+    "title": "A Study to Test Whether Treatment With BI 770371 in Combination With Pembrolizumab With or Without Cetuximab Helps People With Head and Neck Cancer Compared With Pembrolizumab Alone",
+    "official_title": "A Phase Ib Open Label Randomised Clinical Trial to Evaluate Safety and Efficacy of BI 770371 in Combination With Pembrolizumab With or Without Cetuximab Compared With Pembrolizumab Monotherapy for the First-line Treatment of Patients With Metastatic or Recurrent Head and Neck Squamous Cell Carcinoma (HNSCC)",
+    "phase": "Fase 1",
+    "sponsor": "Boehringer Ingelheim",
+    "interventions": [
+      "BI 770371",
+      "Pembrolizumab",
+      "Cetuximab"
+    ],
+    "intervention_types": [
+      "DRUG"
+    ],
+    "brazil_cities": [
+      "São José do Rio Preto",
+      "Barretos",
+      "Natal"
+    ],
+    "brazil_states": [],
+    "brazil_facilities": [
+      "Hospital de Amor · Barretos/",
+      "Liga Norte Riograndense contra o cancer · Natal/",
+      "Fundação Faculdade Regional de Medicina de São José do Rio Preto · São José do Rio Preto/"
+    ],
+    "summary": "This study is open to adults with head and neck cancer. The purpose of this study is to find out whether combining different study medicines makes tumors shrink in people with head and neck cancer.\n\nThe tested medicines in this study are antibodies that act in different ways against cancer. BI 77037",
+    "eligibility_snippet": "Inclusion Criteria:\n\n* Patients with histologically confirmed metastatic or recurrent HNSCC of the primary tumour location of oral cavity, oropharynx, hypopharynx, and larynx not amenable to locoregional treatment with curative intent.\n* Willingness to provide pretreatment (baseline) biopsy/tissue to the sponsor (fresh or archival one). A newly obtained biopsy is preferred but an archival sample is acceptable, with tumor tissue (formalin fixed paraffin embedded \\[FFPE\\] block preferred, or at le",
+    "neoplasia_group": "cervix",
+    "neoplasia_label": "Cérvix",
+    "url": "https://clinicaltrials.gov/study/NCT06806852"
+  },
+  {
+    "nct": "NCT07276399",
+    "title": "A Study of Amivantamab in Addition to Standard of Care Agents (SOC) Compared With SOC Alone in Participants With Recurrent/Metastatic Head and Neck Cancer",
+    "official_title": "A Phase 3, Randomized, Open-Label, Multicenter Study of Amivantamab in Addition to Carboplatin and Pembrolizumab, Compared to Standard of Care Platinum and Pembrolizumab and 5-FU, in Participants With Treatment-Naïve Recurrent/Metastatic Head and Neck Squamous Cell Carcinoma",
+    "phase": "Fase 3",
+    "sponsor": "Janssen Research & Development, LLC",
+    "interventions": [
+      "Amivantamab",
+      "Pembrolizumab",
+      "Carboplatin",
+      "5-Flurouracil",
+      "Cisplatin"
+    ],
+    "intervention_types": [
+      "DRUG",
+      "BIOLOGICAL"
+    ],
+    "brazil_cities": [
+      "São José do Rio Preto",
+      "Jaú",
+      "São Paulo",
+      "Natal",
+      "Vitória",
+      "Porto Alegre"
+    ],
+    "brazil_states": [],
+    "brazil_facilities": [
+      "Fundacao Doutor Amaral Carvalho · Jaú/",
+      "Liga Norte Riograndense Contra O Cancer · Natal/",
+      "Irmandade da Santa Casa de Misericordia de Porto Alegre · Porto Alegre/",
+      "Fundacao Faculdade Regional de Medicina de Sao Jose Do Rio Preto - Centro Integrado de Pesquisa · São José do Rio Preto/",
+      "Hospital Alemao Oswaldo Cruz · São Paulo/",
+      "Associacao Feminina de Educacao e Combate ao Cancer Hospital Santa Rita de Cassia · Vitória/"
+    ],
+    "summary": "The purpose of this study is to compare anti-tumor activity of amivantamab in addition to pembrolizumab and carboplatin versus pembrolizumab, 5-fluorouracil (FU), and platinum therapy (carboplatin or cisplatin) in participants with refractory/metastatic (R/M) head and neck squamous cell carcinoma (H",
+    "eligibility_snippet": "Inclusion criteria:\n\n* Be more than or equal to (\\>=) 18 years of age (or the legal age of majority in the jurisdiction in which the study is taking place, whichever is greater)\n* Have histologically or cytologically confirmed recurrent/metastatic (R/M) HNSCC that is considered incurable by local therapies: a. eligible primary tumor locations are the oral cavity, oropharynx, hypopharynx, or larynx; b. Must not have a primary tumor site of nasopharynx or primary tumor of unknown location; c. Must",
+    "neoplasia_group": "cervix",
+    "neoplasia_label": "Cérvix",
+    "url": "https://clinicaltrials.gov/study/NCT07276399"
+  },
+  {
+    "nct": "NCT07216703",
+    "title": "A Clinical Study of Sacituzumab Tirumotecan (MK-2870) in Combination With Pembrolizumab (MK-3475) as First-line Maintenance Treatment of Cervical Cancer (MK-2870-036/TroFuse-036/GOG-3123/ENGOT-cx22)",
+    "official_title": "A Phase 3, Randomized, Open-label, Multicenter Study to Evaluate the Efficacy and Safety of Sacituzumab Tirumotecan (MK-2870) in Combination With Pembrolizumab With or Without Bevacizumab Compared With Standard of Care as Firstline Maintenance Treatment for Participants With Persistent, Recurrent, or Newly Diagnosed Metastatic Cervical Cancer With PD-L1 CPS Greater Than or Equal to 1 (TroFuse-036/GOG-3123/ENGOT-cx22)",
+    "phase": "Fase 3",
+    "sponsor": "Merck Sharp & Dohme LLC",
+    "interventions": [
+      "Pembrolizumab",
+      "Sacituzumab Tirumotecan",
+      "Bevacizumab",
+      "Paclitaxel",
+      "Cisplatin",
+      "Carboplatin",
+      "Rescue Medications"
+    ],
+    "intervention_types": [
+      "DRUG",
+      "BIOLOGICAL"
+    ],
+    "brazil_cities": [
+      "São José do Rio Preto",
+      "Barretos",
+      "São Paulo",
+      "Natal",
+      "Porto Alegre"
+    ],
+    "brazil_states": [
+      "Rio Grande do Norte",
+      "Rio Grande do Sul",
+      "São Paulo"
+    ],
+    "brazil_facilities": [
+      "Liga Norte Riograndense Contra o Câncer ( Site 0513) · Natal/Rio Grande do Norte",
+      "Irmandade da Santa Casa de Misericordia de Porto Alegre ( Site 0514) · Porto Alegre/Rio Grande do Sul",
+      "Hospital São Lucas da PUCRS ( Site 0516) · Porto Alegre/Rio Grande do Sul",
+      "Fundação Pio XII - Hospital de Câncer de Barretos ( Site 0511) · Barretos/São Paulo",
+      "Fundacao Faculdade Regional de Medicina de Sao Jose do Rio Preto ( Site 0512) · São José do Rio Preto/São Paulo",
+      "IBCC - Instituto Brasileiro de Controle do Câncer ( Site 0517) · São Paulo/São Paulo"
+    ],
+    "summary": "Researchers are looking for new ways to treat metastatic cervical cancer. Cervical cancer is cancer in the cervix, the lower part of the uterus (womb). Metastatic means the cancer has spread to other parts of the body.\n\nResearchers want to learn about giving the study medicine sacituzumab tirumoteca",
+    "eligibility_snippet": "The main inclusion criteria include but are not limited to the following:\n\n* Has a histologically confirmed diagnosis of squamous cell carcinoma, adenosquamous carcinoma, or adenocarcinoma of cervix\n* Has persistent, recurrent, or newly diagnosed metastatic (International Federation of Gynecology and Obstetrics \\[FIGO\\]-2028 Stage IVB) cervical cancer that is not amenable to curative treatment (surgery and/or radiation)\n* If infected with human immunodeficiency virus (HIV), has well controlled H",
+    "neoplasia_group": "cervix",
+    "neoplasia_label": "Cérvix",
+    "url": "https://clinicaltrials.gov/study/NCT07216703"
+  },
+  {
+    "nct": "NCT06780111",
+    "title": "Substudy 06E: Umbrella Study of Combination Therapies in Esophageal Cancer (MK-3475-06E/KEYMAKER-U06)",
+    "official_title": "A Phase 1/2 Open-Label, Umbrella Platform Design Study of Investigational Agents in Combination With Pembrolizumab (MK-3475) With or Without Chemotherapy in Participants With 1L Locally Advanced Unresectable/Metastatic Esophageal Cancer: KEYMAKER-U06 Substudy 06E",
+    "phase": "Fase 1, Fase 2",
+    "sponsor": "Merck Sharp & Dohme LLC",
+    "interventions": [
+      "Pembrolizumab",
+      "I-DXd",
+      "Leucovorin",
+      "Levoleucovorin",
+      "5-Fluorouracil (5-FU)",
+      "Oxaliplatin",
+      "Sacituzumab tirumotecan",
+      "Rescue Medication"
+    ],
+    "intervention_types": [
+      "DRUG",
+      "BIOLOGICAL"
+    ],
+    "brazil_cities": [
+      "Porto Alegre",
+      "Natal"
+    ],
+    "brazil_states": [
+      "Rio Grande do Norte",
+      "Rio Grande do Sul"
+    ],
+    "brazil_facilities": [
+      "Liga Norte Riograndense Contra o Cancer ( Site 1301) · Natal/Rio Grande do Norte",
+      "Hospital Nossa Senhora da Conceicao ( Site 1300) · Porto Alegre/Rio Grande do Sul"
+    ],
+    "summary": "Researchers are looking for new ways to treat esophageal squamous cell carcinoma (ESCC). ESCC is a type of cancer that starts in certain cells that line the esophagus. The esophagus is the tube that connects the throat to the stomach. This study will look at ESCC that is either locally advanced unre",
+    "eligibility_snippet": "Inclusion Criteria\n\nThe main inclusion criteria include but are not limited to the following:\n\n* Has histologically or cytologically confirmed diagnosis of locally advanced unresectable or metastatic squamous cell carcinoma of the esophagus in first-line (1L) setting.\n* Has measurable disease per RECIST 1.1 as assessed by the local site. investigator or designee/radiology assessment and verified by BICR. Lesions situated in a previously irradiated area are considered measurable if progression ha",
+    "neoplasia_group": "cervix",
+    "neoplasia_label": "Cérvix",
+    "url": "https://clinicaltrials.gov/study/NCT06780111"
+  },
+  {
+    "nct": "NCT04379596",
+    "title": "Ph1b/2 Study of the Safety and Efficacy of T-DXd Combinations in Advanced HER2-expressing Gastric Cancer (DESTINY-Gastric03)",
+    "official_title": "A Phase 1b/2 Multicenter, Open-label, Dose-escalation and Dose-expansion Study to Evaluate the Safety, Tolerability, Pharmacokinetics, Immunogenicity, and Antitumor Activity of Trastuzumab Deruxtecan (T-DXd) Monotherapy and Combinations in Adult Participants With HER2-expressing Gastric Cancer (DESTINY-Gastric-03)",
+    "phase": "Fase 2",
+    "sponsor": "AstraZeneca",
+    "interventions": [
+      "Fluorouracil (5-FU)",
+      "Capecitabine",
+      "Durvalumab",
+      "Oxaliplatin",
+      "Trastuzumab",
+      "Trastuzumab deruxtecan",
+      "Cisplatin",
+      "Pembrolizumab",
+      "Volrustomig",
+      "Rilvegostomig"
+    ],
+    "intervention_types": [
+      "DRUG",
+      "BIOLOGICAL"
+    ],
+    "brazil_cities": [
+      "São Jose Do Rio Preto",
+      "São Paulo",
+      "Natal",
+      "Londrina",
+      "Rio de Janeiro",
+      "Florianópolis",
+      "Porto Alegre",
+      "Ribeirão Preto",
+      "Santa Maria"
+    ],
+    "brazil_states": [],
+    "brazil_facilities": [
+      "Research Site · Florianópolis/",
+      "Research Site · Londrina/",
+      "Research Site · Natal/",
+      "Research Site · Porto Alegre/",
+      "Research Site · Ribeirão Preto/",
+      "Research Site · Rio de Janeiro/",
+      "Research Site · Santa Maria/",
+      "Research Site · São Jose Do Rio Preto/",
+      "Research Site · São Paulo/",
+      "Research Site · São Paulo/",
+      "Research Site · São Paulo/"
+    ],
+    "summary": "DESTINY-Gastric03 will investigate the safety, tolerability, pharmacokinetics, immunogenicity, and preliminary antitumor activity of trastuzumab deruxtecan (T-DXd) alone or in combination with chemotherapy and/or immunotherapy in HER2-expressing advanced/metastatic gastric/gastroesophageal junction ",
+    "eligibility_snippet": "Inclusion criteria:\n\n1. Male and female participants must be at least 18 years of age. Other age restrictions may apply as per local regulations\n2. Disease Characteristics:\n\n   1. Locally advanced, unresectable, or metastatic disease based on most recent imaging\n   2. For Part 1, 2, 3a, 4a pathologically documented adenocarcinoma of the stomach/GEJ/esophagus, HER2-positive (IHC 3+ or IHC 2+/ISH+) based on local tissue testing results\n   3. For Part 3b,4b and Part 5, pathologically documented ade",
+    "neoplasia_group": "cervix",
+    "neoplasia_label": "Cérvix",
+    "url": "https://clinicaltrials.gov/study/NCT04379596"
+  },
+  {
+    "nct": "NCT06459180",
+    "title": "A Study to Compare Sacituzumab Tirumotecan (MK-2870) Monotherapy Versus Treatment of Physician's Choice as Second-line Treatment for Participants With Recurrent or Metastatic Cervical Cancer (MK-2870-020/TroFuse-020/Gog-3101/ENGOT-cx20)",
+    "official_title": "A Phase 3 Randomized, Active-controlled, Open-label, Multicenter Study to Compare the Efficacy and Safety of MK-2870 Monotherapy Versus Treatment of Physician's Choice as Second-line Treatment for Participants With Recurrent or Metastatic Cervical Cancer (TroFuse-020/GOG-3101/ENGOT-cx20)",
+    "phase": "Fase 3",
+    "sponsor": "Merck Sharp & Dohme LLC",
+    "interventions": [
+      "Sacituzumab Tirumotecan",
+      "Pemetrexed",
+      "Tisotumab Vedotin",
+      "Topotecan",
+      "Vinorelbine",
+      "Gemcitabine",
+      "Irinotecan"
+    ],
+    "intervention_types": [
+      "DRUG",
+      "BIOLOGICAL"
+    ],
+    "brazil_cities": [
+      "Curitiba",
+      "São Paulo",
+      "Rio de Janeiro",
+      "Joinville",
+      "Porto Alegre"
+    ],
+    "brazil_states": [
+      "Santa Catarina",
+      "São Paulo",
+      "Rio Grande do Sul",
+      "Paraná"
+    ],
+    "brazil_facilities": [
+      "Instituto do Câncer e Transplante de Curitiba ( Site 0205) · Curitiba/Paraná",
+      "Hospital Moinhos de Vento-Centro de Pesquisa Clínica ( Site 0204) · Porto Alegre/Rio Grande do Sul",
+      "Hospital do Câncer Mãe de Deus ( Site 0201) · Porto Alegre/Rio Grande do Sul",
+      "Centro de Hematologia e Oncologia ( Site 0203) · Joinville/Santa Catarina",
+      "IBCC - Instituto Brasileiro de Controle do Câncer-Centro de Pesquisa Clínica ( Site 0200) · São Paulo/São Paulo",
+      "Americas Centro de Oncologia Integrado ( Site 0202) · Rio de Janeiro/",
+      "Hospital Paulistano ( Site 0209) · São Paulo/"
+    ],
+    "summary": "This study will have two phases: a sacituzumab tirumotecan safety run-in and a Phase 3 portion. The safety run-in phase will be used to evaluate the efficacy and safety of sacituzumab tirumotecan at the dose for evaluation in the Phase 3 portion. The purpose of this study is to compare the efficacy ",
+    "eligibility_snippet": "Inclusion Criteria:\n\n* Has histologically-confirmed diagnosis of squamous cell carcinoma, adenosquamous carcinoma, or adenocarcinoma of the cervix\n* Must have recurrent or metastatic cervical cancer that has progressed on or after treatment with 1 prior line of systemic platinum doublet chemotherapy (with or without bevacizumab) AND must have received anti-PD-1/anti-PD-L1 therapy as part of prior cervical cancer regimens\n* Has measurable disease per Response Evaluation Criteria In Solid Tumors (",
+    "neoplasia_group": "cervix",
+    "neoplasia_label": "Cérvix",
+    "url": "https://clinicaltrials.gov/study/NCT06459180"
+  },
+  {
+    "nct": "NCT06445972",
+    "title": "Substudy 06D: Combination Therapies in Second Line (2L) Gastroesophageal Adenocarcinoma (MK-3475-06D/Keymaker-U06)",
+    "official_title": "A Phase 1/2 Open-Label, Umbrella Platform Design Study to Evaluate the Safety and Efficacy of Investigational Agents in Combination With Standard of Care Treatments as the Second-Line Treatment of Participants With Advanced/Metastatic Gastroesophageal Adenocarcinoma: Substudy 06D",
+    "phase": "Fase 1, Fase 2",
+    "sponsor": "Merck Sharp & Dohme LLC",
+    "interventions": [
+      "Ramucirumab",
+      "Paclitaxel",
+      "Sacituzumab Tirumotecan",
+      "Rescue Medications",
+      "HER3-DXd"
+    ],
+    "intervention_types": [
+      "DRUG",
+      "BIOLOGICAL"
+    ],
+    "brazil_cities": [
+      "Porto Alegre",
+      "São Paulo",
+      "Natal"
+    ],
+    "brazil_states": [
+      "Rio Grande do Norte",
+      "Rio Grande do Sul",
+      "São Paulo"
+    ],
+    "brazil_facilities": [
+      "Liga Norte Riograndense Contra o Câncer ( Site 8303) · Natal/Rio Grande do Norte",
+      "Hospital Nossa Senhora da Conceição ( Site 8301) · Porto Alegre/Rio Grande do Sul",
+      "IBCC - Instituto Brasileiro de Controle do Câncer ( Site 8304) · São Paulo/São Paulo"
+    ],
+    "summary": "This is a phase 1/2 multicenter, open-label umbrella platform study that will evaluate the safety and efficacy of sacituzumab tirumotecan (MK-2870) plus paclitaxel versus ramucirumab plus paclitaxel, and HER3-DXD plus ramucirumab versus ramucirumab plus paclitaxel for the treatment of participants w",
+    "eligibility_snippet": "Inclusion Criteria:\n\nThe main inclusion criteria include but are not limited to the following:\n\n* Has histologically and/or cytologically confirmed diagnosis of previously treated, second line (2L) (received first line (1L) treatment) gastric adenocarcinoma, gastroesophageal junction adenocarcinoma, or esophageal adenocarcinoma\n* Has metastatic disease or locally advanced, unresectable disease\n* Has experienced documented objective radiographic or clinical disease progression during or after 1L ",
+    "neoplasia_group": "cervix",
+    "neoplasia_label": "Cérvix",
+    "url": "https://clinicaltrials.gov/study/NCT06445972"
+  },
+  {
+    "nct": "NCT06640283",
+    "title": "Dynamic ctDNA Assessment in Cervical and Anal Canal Tumors: Optimizing Follow-up and Clinical Outcomes",
+    "official_title": "Dynamic Assessment of ctDNA in Patients With Cervical and Anal Canal Tumors to Optimize Follow-up and Clinical Outcomes in the Brazilian Unified Health System (SUS)",
+    "phase": "Fase 2",
+    "sponsor": "Instituto do Cancer do Estado de São Paulo",
+    "interventions": [
+      "ctDNA test",
+      "Pembrolizumab"
+    ],
+    "intervention_types": [
+      "DRUG",
+      "DIAGNOSTIC_TEST"
+    ],
+    "brazil_cities": [
+      "São Paulo"
+    ],
+    "brazil_states": [],
+    "brazil_facilities": [
+      "Instituto do Câncer do Estado de São Paulo - ICESP · São Paulo/"
+    ],
+    "summary": "After definitive radiotherapy (RT) treatment (with or without chemotherapy), cervical and anal canal neoplasms frequently exhibit disease persistence or recurrence. Due to the local inflammatory process post-treatment, response assessment by imaging (current gold standard) is limited, often necessit",
+    "eligibility_snippet": "Inclusion Criteria:\n\n1. Histological diagnosis of anal canal or cervical cancer.\n2. Documented presence of HPV.\n3. Locally confined or locally advanced disease, defined as:\n\n   1. Anal canal carcinoma stage I to III, according to American Joint Committee on Cancer (AJCC) 8th edition;\n   2. Cervical carcinoma stage I B2 to IV A, according to AJCC 8th edition.\n4. Indication for definitive treatment with radiotherapy, with or without concomitant chemotherapy.\n5. Eastern Cooperative Oncology Group (",
+    "neoplasia_group": "cervix",
+    "neoplasia_label": "Cérvix",
+    "url": "https://clinicaltrials.gov/study/NCT06640283"
+  },
+  {
+    "nct": "NCT04291105",
+    "title": "Phase 2 Trial of Voyager V1 in Combination With Cemiplimab in Cancer Patients",
+    "official_title": "Phase 2 Trial of Voyager V1 in Combination With Cemiplimab in Patients With Select Solid Tumors",
+    "phase": "Fase 2",
+    "sponsor": "Vyriad, Inc.",
+    "interventions": [
+      "VV1",
+      "Cemiplimab"
+    ],
+    "intervention_types": [
+      "BIOLOGICAL"
+    ],
+    "brazil_cities": [
+      "Rio de Janeiro",
+      "Barretos",
+      "Porto Alegre",
+      "Salvador"
+    ],
+    "brazil_states": [
+      "Rio de Janeiro",
+      "BR",
+      "São Paulo",
+      "Rio Grande do Sul"
+    ],
+    "brazil_facilities": [
+      "Hospital Sao Rafael · Salvador/BR",
+      "INCA · Rio de Janeiro/Rio de Janeiro",
+      "Hospital Moinhos de Vento · Porto Alegre/Rio Grande do Sul",
+      "Hospital de Amor de Barretos · Barretos/São Paulo"
+    ],
+    "summary": "This is a Phase 2 study designed to determine the preliminary anti-tumor activity and confirm the safety of VV1 in combination with cemiplimab. The study will enroll patients with three distinct separate tumor cohorts. The cancers types are colorectal, head and neck carcinoma, and melanoma that are ",
+    "eligibility_snippet": "Inclusion:\n\n1. Age ≥18 years on day of signing informed consent.\n2. Specific by tumor cohorts:\n\n   a. For the HSNCC cohort, histologically confirmed diagnosis of advanced and/or metastatic HSNCC suitable for first line immunotherapy.\n\n   i. HPV+ and HPV- patients are allowed.\n\n   ii. Primary tumor locations of oropharynx, oral cavity, hypopharynx, or larynx. Participants may not have a primary tumor site of nasopharynx (any histology) or salivary gland tumors.\n\n   iii. PD-L1 status ≥ 1% per loca",
+    "neoplasia_group": "cervix",
+    "neoplasia_label": "Cérvix",
+    "url": "https://clinicaltrials.gov/study/NCT04291105"
+  },
+  {
+    "nct": "NCT06469944",
+    "title": "Substudy 06C: A Study of Investigational Agents With Pembrolizumab (MK-3475) and Chemotherapy in Participants With First-Line Locally Advanced Unresectable/Metastatic Gastroesophageal Adenocarcinoma (MK-3475-06C/KEYMAKER-U06)",
+    "official_title": "A Phase 1/2 Open-Label, Umbrella Platform Design Study of Investigational Agents With Pembrolizumab (MK-3475) and Chemotherapy in Participants With 1L Locally Advanced Unresectable/Metastatic Gastroesophageal Adenocarcinoma (Gastric Adenocarcinoma, Gastroesophageal Junction Adenocarcinoma, and Esophageal Adenocarcinoma): Substudy 06C",
+    "phase": "Fase 1, Fase 2",
+    "sponsor": "Merck Sharp & Dohme LLC",
+    "interventions": [
+      "Pembrolizumab",
+      "Sacituzumab Tirumotecan (sac-TMT)",
+      "Capecitabine",
+      "Leucovorin",
+      "Levoleucovorin",
+      "5-Fluorouracil (5-FU)",
+      "Oxaliplatin",
+      "Patritumab Deruxtecan"
+    ],
+    "intervention_types": [
+      "DRUG",
+      "BIOLOGICAL"
+    ],
+    "brazil_cities": [
+      "Porto Alegre",
+      "São Paulo",
+      "Natal"
+    ],
+    "brazil_states": [
+      "Rio Grande do Norte",
+      "Rio Grande do Sul"
+    ],
+    "brazil_facilities": [
+      "Liga Norte Riograndense Contra o Câncer ( Site 6303) · Natal/Rio Grande do Norte",
+      "Hospital Nossa Senhora da Conceição ( Site 6301) · Porto Alegre/Rio Grande do Sul",
+      "ICESP - INSTITUTO DO CÂNCER DO ESTADO DE SÃO PAULO ( Site 6300) · São Paulo/",
+      "IBCC - Instituto Brasileiro de Controle do Câncer ( Site 6304) · São Paulo/"
+    ],
+    "summary": "This is a phase 1/2, multicenter, open-label umbrella platform study that will evaluate the safety and tolerability of investigational agents with pembrolizumab and fluoropyrimidine chemotherapy for the first-line (1L) treatment of participants with locally advanced unresectable or metastatic human ",
+    "eligibility_snippet": "Inclusion Criteria:\n\nThe main inclusion criteria include but are not limited to the following:\n\n* Has histologically and/or cytologically confirmed diagnosis of previously untreated locally advanced unresectable or metastatic first-line (1L) gastroesophageal adenocarcinoma\n* Is not expected to require tumor resection during the treatment course\n* Tumor tissue must be confirmed as negative for human epidermal growth factor receptor 2 (HER2) expression as classified by American Society of Clinical",
+    "neoplasia_group": "cervix",
+    "neoplasia_label": "Cérvix",
+    "url": "https://clinicaltrials.gov/study/NCT06469944"
+  },
+  {
+    "nct": "NCT06252753",
+    "title": "Observational Study Protocol: LIVER-R",
+    "official_title": "An Observational Multi Center Study to Evaluate Real World Treatment Outcomes of Durvalumab Based Regimens in Hepatobiliary Cancers",
+    "phase": "N/A",
+    "sponsor": "AstraZeneca",
+    "interventions": [
+      "Durvalumab-based combination therapies in observational study setting",
+      "Durvalumab-based combination therapies in observational study setting"
+    ],
+    "intervention_types": [
+      "OTHER"
+    ],
+    "brazil_cities": [
+      "Curitiba",
+      "São Paulo",
+      "Morumbi",
+      "Recife - PE",
+      "Porto Alegre"
+    ],
+    "brazil_states": [
+      "São Paulo",
+      "Recife - PE",
+      "Paraná",
+      "Rio Grande do Sul"
+    ],
+    "brazil_facilities": [
+      "Research Site · Curitiba/Paraná",
+      "Research Site · Recife - PE/Recife - PE",
+      "Research Site · Porto Alegre/Rio Grande do Sul",
+      "Research Site · Morumbi/São Paulo",
+      "Research Site · São Paulo/",
+      "Research Site · São Paulo/"
+    ],
+    "summary": "Given the number of anticipated durvalumab-based treatment launches in the hepatobiliary cancer space over the next 3 years, there is a need to capture contemporary real-world data across these indications. LIVER-R is a multicountry, multicenter, observational study of patients with a confirmed diag",
+    "eligibility_snippet": "Inclusion Criteria:\n\n1. Age ≥18 years and a lawful adult in the country at the index date\n2. Confirmed presence of malignancy of primary hepatobiliary cancer (i.e., uHCC or aBTC) by the treating physician\n3. Type of hepatobiliary cancer indication is approved to be treated (i.e., positive phase 3 clinical trial read out for HIMALAYA or TOPAZ 1) with a durvalumab based regimen in the respective country or was administered as part of an EAP\n4. Informed consent was obtained as per country level reg",
+    "neoplasia_group": "hcc",
+    "neoplasia_label": "HCC",
+    "url": "https://clinicaltrials.gov/study/NCT06252753"
+  },
+  {
+    "nct": "NCT06921785",
+    "title": "Phase III Study of Rilvegostomig in Combination With Bevacizumab With or Without Tremelimumab as First-line Treatment of Hepatocellular Carcinoma",
+    "official_title": "A Phase III, Randomised, Open-label, Sponsor-blinded, Multicentre Study of Rilvegostomig in Combination With Bevacizumab With or Without Tremelimumab as First-line Treatment in Patients With Advanced Hepatocellular Carcinoma",
+    "phase": "Fase 3",
+    "sponsor": "AstraZeneca",
+    "interventions": [
+      "Tremelimumab",
+      "Rilvegostomig",
+      "Bevacizumab",
+      "Atezolizumab"
+    ],
+    "intervention_types": [
+      "DRUG"
+    ],
+    "brazil_cities": [
+      "Barretos",
+      "São Paulo",
+      "Vitória",
+      "Porto Alegre",
+      "Santa Maria"
+    ],
+    "brazil_states": [],
+    "brazil_facilities": [
+      "Research Site · Barretos/",
+      "Research Site · Porto Alegre/",
+      "Research Site · Santa Maria/",
+      "Research Site · São Paulo/",
+      "Research Site · São Paulo/",
+      "Research Site · Vitória/"
+    ],
+    "summary": "This is a Phase III, randomised, open-label, sponsor-blinded, 3-arm, multicentre, global study assessing the efficacy and safety of rilvegostomig in combination with bevacizumab with or without tremelimumab compared to atezolizumab in combination with bevacizumab. This study will be conducted in par",
+    "eligibility_snippet": "Inclusion Criteria:\n\n* Locally advanced or metastatic and/or unresectable HCC\n* WHO/ECOG performance status of 0 or 1\n* BCLC stage B (that is not eligible for locoregional therapy) or stage C.\n* Child-Pugh Score class A\n* At least one measurable target lesion\n* Participants with active HBV infection must receive antiviral therapy for a minimum of 14 days prior to randomization to show evidence of HBV stabilization or signs of viral response.\n* Participants with active HCV infection must be well ",
+    "neoplasia_group": "hcc",
+    "neoplasia_label": "HCC",
+    "url": "https://clinicaltrials.gov/study/NCT06921785"
+  }
+]
