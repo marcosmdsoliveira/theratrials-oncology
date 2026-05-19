@@ -20,7 +20,7 @@ A plataforma foi concebida para o fluxo real de um médico nuclear / oncologista
 site/
 ├── index.html                  # Landing
 ├── database.html               # 144 estudos · 17 categorias
-├── estudos-ativos.html         # 14 trials ativos no Brasil (BH)
+├── ensaios-clinicos.html         # 14 trials ativos no Brasil (BH)
 ├── tumor-boards.html           # Visão por tumor
 ├── modalidades.html            # Visão por modalidade
 ├── ferramentas.html            # AJCC TNM · CTCAE v6.0 · calculadoras

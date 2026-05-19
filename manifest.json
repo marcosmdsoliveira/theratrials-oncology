@@ -101,7 +101,7 @@
       "name": "Estudos ativos no Brasil",
       "short_name": "Estudos ativos",
       "description": "Recrutamento aberto no Brasil",
-      "url": "./estudos-ativos.html",
+      "url": "./ensaios-clinicos.html",
       "icons": [
         { "src": "assets/img/icons/icon-192.png", "sizes": "192x192" }
       ]

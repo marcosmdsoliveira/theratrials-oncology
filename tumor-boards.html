@@ -434,7 +434,7 @@
       <a href="index.html">Home</a>
       <a href="database.html">Database</a>
       <a href="explorer.html">TheraTrials Explorer</a>
-      <a href="estudos-ativos.html">Estudos ativos</a>
+      <a href="ensaios-clinicos.html">Ensaios clínicos</a>
       <a href="tumor-boards.html">Tumor boards</a>
       <a href="modalidades.html">Modalidades</a>
       <a href="radiofarmacos.html">Radiofármacos</a>
@@ -581,7 +581,7 @@
 <footer class="site-footer">
   <div class="container">
     <div class="footer-bottom">
-      <span>© 2026 TheraTrials Oncology · Tumor boards · 7 tumores cobertos</span>
+      <span>© 2026 TheraTrials Oncology · Tumor boards · 23 tumores cobertos</span>
       <span>Para uso educacional. Não substitui diretrizes oficiais.</span>
     </div>
   </div>
@@ -596,8 +596,8 @@
       selectedTumor: null,
 
       tumors: [
-        { id: 'prostata', name: 'Câncer de próstata', tagline: 'mHSPC · mCRPC · nmCRPC · ARPi · PARP · teranóstico PSMA · α-PSMA · 223Ra', icon: 'circle-dot', color: '#FF8400',
-          match: (s) => TheraTrials.hasTumor(s,'prostata') || ['lupsma_prostata','ra223_prostata','novos_psma','prostata_contexto'].includes(s.category_id) },
+        { id: 'prostata', name: 'Câncer de próstata', tagline: 'mHSPC · mCRPC · nmCRPC · ARPi · PARP · teranóstico PSMA · α-PSMA · 223Ra · RT/SBRT', icon: 'circle-dot', color: '#FF8400',
+          match: (s) => TheraTrials.hasTumor(s,'prostata') || ['lupsma_prostata','ra223_prostata','novos_psma','prostata_contexto','rt_prostata_local'].includes(s.category_id) || (s.category_id === 'rt_sbrt_oligo' && /(prostat|mCRPC|mHSPC|STOMP|ORIOLE|STAMPEDE)/i.test((s.indicacao||'') + ' ' + (s.estudo||''))) },
         { id: 'net', name: 'Tumores neuroendócrinos', tagline: 'GEP-NET · midgut · pNET · brônquico/pulmonar · PRRT · SSA · mTOR · TKI · α-PRRT', icon: 'activity', color: '#10B981',
           match: (s) => TheraTrials.hasTumor(s,'net_gep') || s.category_id === 'net_gep' },
         { id: 'ppgl', name: 'Feocromocitoma e paraganglioma', tagline: 'PPGL maligno · sunitinib (FIRSTMAPPP) · cabozantinib · CVD · TMZ · 131I-MIBG · 177Lu-DOTATATE · belzutifan VHL', icon: 'heart-pulse', color: '#EC4899',

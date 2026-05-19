@@ -2202,7 +2202,7 @@ window.THERA_TRIALS_BR = [
 
 /* ============================================================
    Mapas auxiliares para filtros
-   (usados pela página estudos-ativos.html)
+   (usados pela página ensaios-clinicos.html)
    ============================================================ */
 window.THERA_TRIALS_BR_META = {
   neoplasias: [

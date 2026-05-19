@@ -18,7 +18,7 @@ const CORE_PAGES = [
   './index.html',
   './database.html',
   './explorer.html',
-  './estudos-ativos.html',
+  './ensaios-clinicos.html',
   './tumor-boards.html',
   './modalidades.html',
   './ferramentas.html',
