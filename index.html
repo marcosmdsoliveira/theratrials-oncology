@@ -469,7 +469,7 @@
     letter-spacing: 0.06em;
   }
 
-  /* Tools mini-grid · 9 grupos de critérios oncológicos */
+  /* Tools mini-grid · 11 ferramentas clínicas */
   .tools-mini-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -612,7 +612,7 @@
       <a href="ensaios-clinicos.html" class="pmap-card" style="--accent:#34d399">
         <div class="pmap-icon"><i data-lucide="map-pin" style="width:22px;height:22px"></i></div>
         <div class="pmap-name">Ensaios clínicos ativos (BR)</div>
-        <div class="pmap-desc">Recrutamento aberto no Brasil · 59 estudos selecionados</div>
+        <div class="pmap-desc">Recrutamento aberto no Brasil · 79 estudos · 20 áreas tumorais</div>
       </a>
       <a href="tumor-boards.html" class="pmap-card" style="--accent:#0EA5B7">
         <div class="pmap-icon"><i data-lucide="layout-grid" style="width:22px;height:22px"></i></div>
@@ -632,7 +632,7 @@
       <a href="ferramentas.html" class="pmap-card" style="--accent:#FBBF24">
         <div class="pmap-icon"><i data-lucide="calculator" style="width:22px;height:22px"></i></div>
         <div class="pmap-name">Ferramentas</div>
-        <div class="pmap-desc">AJCC TNM · CTCAE v6.0 · PSMA · PET/CT · iRECIST · BCLC</div>
+        <div class="pmap-desc">11 ferramentas · AJCC TNM · CTCAE v6.0 · PSMA · PET/CT · iRECIST · BCLC · calculadoras</div>
       </a>
       <a href="fundamentos.html" class="pmap-card" style="--accent:#F472B6">
         <div class="pmap-icon"><i data-lucide="graduation-cap" style="width:22px;height:22px"></i></div>
@@ -896,7 +896,7 @@
       </div>
 
       <div style="display:flex; flex-wrap:wrap; gap:0.75rem; align-items:center; justify-content:space-between; padding-top:0.75rem; border-top:1px solid var(--border-soft); font-size:0.85rem; color:var(--stone)">
-        <span><strong style="color:var(--off-white)">59 ensaios clínicos ativos</strong> · 19 áreas tumorais · Brasil</span>
+        <span><strong style="color:var(--off-white)">79 ensaios clínicos ativos</strong> · 20 áreas tumorais · Brasil</span>
         <a href="ensaios-clinicos.html" style="color:#34d399; display:inline-flex; align-items:center; gap:0.4rem">
           Filtrar por neoplasia, modalidade, biomarcador <i data-lucide="arrow-right" style="width:14px;height:14px"></i>
         </a>
@@ -964,7 +964,7 @@
       </a>
 
       <a href="iodo-131.html" class="rf-tile" style="--accent:#06B6D4; --accent-light:#22D3EE">
-        <span class="ribbon soon">em construção</span>
+        <span class="ribbon ready">pronto</span>
         <div class="iso-mini" style="background:radial-gradient(circle at 35% 35%, #22D3EE 0%, #06B6D4 60%, #0E7490 100%)"><span class="m">131</span><span class="e">I</span></div>
         <h3><span class="accent" style="color:#06B6D4"><sup>131</sup>I</span>-Iodo</h3>
         <div class="role">Beta · tireoide · hipertireoidismo</div>
@@ -985,14 +985,14 @@
 </section>
 
 
-<!-- ============== BLOCO · FERRAMENTAS (9 grupos de critérios) ============== -->
+<!-- ============== BLOCO · FERRAMENTAS (11 ferramentas clínicas) ============== -->
 <section class="block-section">
   <div class="container">
     <div class="block-header">
       <div class="left">
         <span class="num-badge" style="background:rgba(251,191,36,0.12); color:#FBBF24; border-color:rgba(251,191,36,0.3)">Ferramentas</span>
-        <h2>Estadiamento, toxicidade e resposta · em um clique</h2>
-        <p>Sistemas de classificação e critérios de resposta para uso clínico cotidiano. Cada card abre um modal completo com tabelas, exemplos e referências — sem sair da página.</p>
+        <h2>11 ferramentas · estadiamento, toxicidade, dose e resposta</h2>
+        <p>Sistemas de classificação, critérios de resposta, calculadoras de dose e decaimento para uso clínico cotidiano. Cada card abre um modal completo com tabelas, exemplos e referências — sem sair da página.</p>
       </div>
       <a href="ferramentas.html" class="btn btn-primary" style="background:#FBBF24; color:#0E0F12">
         Abrir Ferramentas <i data-lucide="arrow-right" style="width:16px;height:16px"></i>
@@ -1012,6 +1012,20 @@
         <div class="tm-body">
           <div class="tm-name">CTCAE v6.0</div>
           <div class="tm-d">Eventos adversos · graduação clínica e laboratorial</div>
+        </div>
+      </a>
+      <a href="ferramentas.html#dose-calc" class="tools-mini" style="--accent:#10B981">
+        <div class="tm-icon" style="background:rgba(16,185,129,0.10)"><i data-lucide="syringe" style="width:18px;height:18px"></i></div>
+        <div class="tm-body">
+          <div class="tm-name">Calculadora de dose</div>
+          <div class="tm-d">Radiofármacos diagnósticos · adulto e pediátrico · EANM / SNMMI</div>
+        </div>
+      </a>
+      <a href="ferramentas.html#decay-calc" class="tools-mini" style="--accent:#06B6D4">
+        <div class="tm-icon" style="background:rgba(6,182,212,0.10)"><i data-lucide="clock" style="width:18px;height:18px"></i></div>
+        <div class="tm-body">
+          <div class="tm-name">Decaimento PET/CT</div>
+          <div class="tm-d">Correção de atividade por tempo de decaimento · ¹⁸F, ⁶⁸Ga, ¹¹C e outros</div>
         </div>
       </a>
       <a href="ferramentas.html#psma" class="tools-mini" style="--accent:#FF8400">
@@ -1072,7 +1086,7 @@
 <section class="block-section" style="text-align:center; padding-bottom:5rem">
   <div class="container">
     <h2 style="font-weight: 300; margin-bottom: 1rem">Pronto para conectar evidência e prática clínica?</h2>
-    <p class="subtitle" style="margin-bottom: 2rem; color: var(--stone)">426 ensaios clínicos curados em 39 categorias · pipeline global de radioligantes via ClinicalTrials.gov · 59 ensaios clínicos ativos no Brasil · 7 dossiês de radiofármaco · 9 grupos de critérios oncológicos · AJCC 8ª ed., CTCAE v6.0, BCLC 2026 · hyperlinks diretos para PubMed e ClinicalTrials.gov.</p>
+    <p class="subtitle" style="margin-bottom: 2rem; color: var(--stone)">426 ensaios clínicos curados em 39 categorias · pipeline global de radioligantes via ClinicalTrials.gov · 79 ensaios clínicos ativos no Brasil · 7 dossiês de radiofármaco · 11 ferramentas clínicas · AJCC 8ª ed., CTCAE v6.0, BCLC 2026 · hyperlinks diretos para PubMed e ClinicalTrials.gov.</p>
     <div class="hero-actions" style="margin-top: 0; display:flex; gap:0.75rem; justify-content:center; flex-wrap:wrap">
       <a href="database.html" class="btn btn-primary">
         Acessar o banco <i data-lucide="arrow-right" style="width:16px;height:16px"></i>
