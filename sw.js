@@ -112,7 +112,8 @@ self.addEventListener('fetch', (event) => {
   if (url.hostname.includes('fonts.googleapis.com')
    || url.hostname.includes('fonts.gstatic.com')
    || url.hostname.includes('unpkg.com')
-   || url.hostname.includes('cdn.jsdelivr.net')) {
+   || url.hostname.includes('cdn.jsdelivr.net')
+   || url.hostname.includes('cloud.umami.is')) {
     event.respondWith(staleWhileRevalidate(req, CACHE_RUNTIME));
     return;
   }

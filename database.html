@@ -389,6 +389,7 @@
   body.modal-open { overflow: hidden; }
   [x-cloak] { display: none !important; }
 </style>
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="3c576b68-e2b3-4982-82e7-688e5a8adf58"></script>
 </head>
 <body x-data="databaseApp()" x-init="init()" :class="{ 'modal-open': selectedStudy }">
 
@@ -555,6 +556,7 @@
           </div>
           <div style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap">
             <select class="sort-select" x-model="sortBy">
+              <option value="relevance">Relevância</option>
               <option value="recent">Mais recentes</option>
               <option value="phase">Fase (3 → 1)</option>
               <option value="alpha">A-Z</option>
@@ -879,7 +881,7 @@ function databaseApp() {
     filterLines: [],
     filterYears: [],
     filterStatus: '',
-    sortBy: 'recent',
+    sortBy: 'relevance',
     selectedStudy: null,
     compareList: [],
     showCompareView: false,
@@ -988,7 +990,66 @@ function databaseApp() {
     get sortedStudies() {
       const arr = [...this.filteredStudies];
       const phaseOrder = (f) => { const x = (f || '').toLowerCase(); if (x.includes('fase 3')) return 3; if (x.includes('1/2')) return 1.5; if (x.includes('fase 2')) return 2; if (x.includes('fase 1')) return 1; if (x.includes('plataforma')) return 3.5; return 0; };
-      if (this.sortBy === 'recent') arr.sort((a,b) => (b.ano_pub||0) - (a.ano_pub||0));
+
+      if (this.sortBy === 'relevance') {
+        /* ── Relevância: score composto por impacto clínico ── */
+
+        /* Estudos fixados no topo, na ordem exata definida pelo curador */
+        const PINNED_ORDER = [
+          'VISION', 'TheraP', 'PSMAfore', 'ENZA-p', 'BULLSEYE',
+          'NETTER-1', 'NETTER-2', 'PEACE-3 / EORTC-GUCG 1333'
+        ];
+        const pinnedMap = {};
+        PINNED_ORDER.forEach((name, i) => { pinnedMap[name] = PINNED_ORDER.length - i; });
+
+        const LANDMARK = {
+          'VISION':1, 'TheraP':1, 'PSMAfore':1, 'SPLASH':1, 'PSMAddition':1, 'UpFrontPSMA':1,
+          'ALSYMPCA':1, 'NETTER-1':1, 'NETTER-2':1, 'COMPETE':1, 'COMPOSE':1,
+          'SARAH':1, 'SIRveNIB':1, 'DOSISPHERE-01':1, 'LEGACY':1,
+          'AZEDRA':1, 'CLEOPATRA':1, 'EMILIA':1, 'KATHERINE':1,
+          'DESTINY-Breast03':1, 'DESTINY-Breast04':1, 'HER2CLIMB':1,
+          'KEYNOTE-024':1, 'KEYNOTE-189':1, 'CheckMate-227':1, 'FLAURA':1, 'ALEX':1, 'CROWN':1,
+          'PACIFIC':1, 'IMpower133':1, 'ADAURA':1, 'CheckMate-816':1,
+          'PALOMA-2':1, 'MONALEESA-3':1, 'KEYNOTE-522':1, 'ASCENT':1, 'OlympiAD':1,
+          'CheckMate-025':1, 'KEYNOTE-426':1, 'CheckMate-214':1,
+          'IMbrave150':1, 'HIMALAYA':1, 'TOPAZ-1':1,
+          'CHAARTED':1, 'LATITUDE':1, 'ARASENS':1, 'ENZAMET':1,
+          'PROfound':1, 'SPARTAN':1, 'PROSPER':1, 'ARAMIS':1,
+          'ENZA-p':1, 'ECLIPSE':1, 'ERA-223':1, 'PEACE-3 / EORTC-GUCG 1333':1,
+          'BULLSEYE':1
+        };
+        const relevanceScore = (s) => {
+          let score = 0;
+          const acr = (s.acron || s.estudo || '').split(' — ')[0].split(' – ')[0].trim();
+          /* Pinned: garante topo absoluto (1000+), gap de 100 impede que bônus secundários reordenem */
+          if (pinnedMap[acr]) score += 1000 + pinnedMap[acr] * 100;
+          /* Landmark trials +50 */
+          else if (LANDMARK[acr]) score += 50;
+          /* Phase: 3=30, plataforma=28, 2=15, 1/2=10, 1=5, diretriz=25 */
+          const ph = (s.fase || '').toLowerCase();
+          if (ph.includes('fase 3')) score += 30;
+          else if (ph.includes('plataforma')) score += 28;
+          else if (ph.includes('diretriz') || ph.includes('guideline')) score += 25;
+          else if (ph.includes('fase 2')) score += 15;
+          else if (ph.includes('1/2')) score += 10;
+          else if (ph.includes('fase 1')) score += 5;
+          /* Teranóstico / radiofármaco +20 */
+          if (typeof TheraTrials !== 'undefined' && TheraTrials.isRadioStudy && TheraTrials.isRadioStudy(s)) score += 20;
+          /* Enrollment bonus: >500=8, >200=5, >50=2 */
+          const n = parseInt(s.enrollment) || 0;
+          if (n > 500) score += 8;
+          else if (n > 200) score += 5;
+          else if (n > 50) score += 2;
+          /* Recent publication bonus */
+          const yr = s.ano_pub || 0;
+          if (yr >= 2024) score += 6;
+          else if (yr >= 2022) score += 4;
+          else if (yr >= 2020) score += 2;
+          return score;
+        };
+        arr.sort((a, b) => relevanceScore(b) - relevanceScore(a));
+      }
+      else if (this.sortBy === 'recent') arr.sort((a,b) => (b.ano_pub||0) - (a.ano_pub||0));
       else if (this.sortBy === 'phase') arr.sort((a,b) => phaseOrder(b.fase) - phaseOrder(a.fase));
       else if (this.sortBy === 'alpha') arr.sort((a,b) => a.estudo.localeCompare(b.estudo));
       else if (this.sortBy === 'category') arr.sort((a,b) => a.category_id.localeCompare(b.category_id));

@@ -626,6 +626,7 @@
   }
 
 </style>
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="3c576b68-e2b3-4982-82e7-688e5a8adf58"></script>
 </head>
 <body x-data="estudosAtivosApp()" x-init="init()" :class="{ 'modal-open': selected }">
 
@@ -1085,7 +1086,7 @@
      WHATSAPP_NUMBER    : número no formato internacional sem espaços/símbolos.
      ===================================================================== */
   const CONTACT_EMAIL = 'theratrialsoncology@gmail.com';
-  const FORMSPREE_ENDPOINT = 'https://formspree.io/f/REPLACE_WITH_YOUR_FORM_ID';
+  const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xykvwayj';
   const WHATSAPP_NUMBER = '5531994032446'; // +55 31 99403-2446
 
   let _currentStudy = { nome: '', nct: '' };
@@ -1173,7 +1174,7 @@
     if (typeof lucide !== 'undefined' && lucide.createIcons) lucide.createIcons();
 
     // Caminho 1: Formspree ainda não configurado → fallback mailto:
-    if (FORMSPREE_ENDPOINT.includes('REPLACE_WITH_YOUR_FORM_ID')) {
+    if (FORMSPREE_ENDPOINT.includes('__DISABLED__')) {
       _sendViaMailto();
       const sm = document.getElementById('cm-success-msg');
       if (sm) sm.textContent = 'Abrimos seu app de e-mail com a mensagem pronta. Verifique e toque em ENVIAR para concluir o contato.';
