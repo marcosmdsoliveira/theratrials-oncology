@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
+<!-- PWA:BEGIN -->
+<meta name="theme-color" content="#FF8400" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0E0F12" media="(prefers-color-scheme: dark)">
+<meta name="color-scheme" content="dark light">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="TheraTrials">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="application-name" content="TheraTrials Oncology">
+<meta name="format-detection" content="telephone=no">
+<meta name="msapplication-TileColor" content="#0E0F12">
+<meta name="msapplication-TileImage" content="assets/img/icons/icon-144.png">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/img/icons/favicon-16.png">
+<link rel="shortcut icon" href="assets/img/icons/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/img/icons/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/img/icons/icon-180.png">
+<link rel="apple-touch-icon" sizes="152x152" href="assets/img/icons/icon-152.png">
+<link rel="apple-touch-icon" sizes="144x144" href="assets/img/icons/icon-144.png">
+<link rel="apple-touch-icon" sizes="120x120" href="assets/img/icons/apple-touch-icon-120.png">
+<link rel="apple-touch-icon" sizes="76x76" href="assets/img/icons/apple-touch-icon-76.png">
+<link rel="apple-touch-icon" sizes="60x60" href="assets/img/icons/apple-touch-icon-60.png">
+<link rel="apple-touch-startup-image" media="(device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="assets/img/splash/splash-1290x2796.png">
+<link rel="apple-touch-startup-image" media="(device-width: 932px) and (device-height: 430px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)" href="assets/img/splash/splash-2796x1290.png">
+<link rel="apple-touch-startup-image" media="(device-width: 402px) and (device-height: 874px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="assets/img/splash/splash-1206x2622.png">
+<link rel="apple-touch-startup-image" media="(device-width: 874px) and (device-height: 402px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)" href="assets/img/splash/splash-2622x1206.png">
+<link rel="apple-touch-startup-image" media="(device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="assets/img/splash/splash-1179x2556.png">
+<link rel="apple-touch-startup-image" media="(device-width: 852px) and (device-height: 393px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)" href="assets/img/splash/splash-2556x1179.png">
+<link rel="apple-touch-startup-image" media="(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="assets/img/splash/splash-1284x2778.png">
+<link rel="apple-touch-startup-image" media="(device-width: 926px) and (device-height: 428px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)" href="assets/img/splash/splash-2778x1284.png">
+<link rel="apple-touch-startup-image" media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="assets/img/splash/splash-1170x2532.png">
+<link rel="apple-touch-startup-image" media="(device-width: 844px) and (device-height: 390px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)" href="assets/img/splash/splash-2532x1170.png">
+<link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="assets/img/splash/splash-1125x2436.png">
+<link rel="apple-touch-startup-image" media="(device-width: 812px) and (device-height: 375px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)" href="assets/img/splash/splash-2436x1125.png">
+<link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="assets/img/splash/splash-1242x2688.png">
+<link rel="apple-touch-startup-image" media="(device-width: 896px) and (device-height: 414px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)" href="assets/img/splash/splash-2688x1242.png">
+<link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="assets/img/splash/splash-828x1792.png">
+<link rel="apple-touch-startup-image" media="(device-width: 896px) and (device-height: 414px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)" href="assets/img/splash/splash-1792x828.png">
+<link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="assets/img/splash/splash-1242x2208.png">
+<link rel="apple-touch-startup-image" media="(device-width: 736px) and (device-height: 414px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)" href="assets/img/splash/splash-2208x1242.png">
+<link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="assets/img/splash/splash-750x1334.png">
+<link rel="apple-touch-startup-image" media="(device-width: 667px) and (device-height: 375px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)" href="assets/img/splash/splash-1334x750.png">
+<link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="assets/img/splash/splash-640x1136.png">
+<link rel="apple-touch-startup-image" media="(device-width: 568px) and (device-height: 320px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)" href="assets/img/splash/splash-1136x640.png">
+<link rel="apple-touch-startup-image" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="assets/img/splash/splash-2048x2732.png">
+<link rel="apple-touch-startup-image" media="(device-width: 1366px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)" href="assets/img/splash/splash-2732x2048.png">
+<link rel="apple-touch-startup-image" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="assets/img/splash/splash-1668x2388.png">
+<link rel="apple-touch-startup-image" media="(device-width: 1194px) and (device-height: 834px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)" href="assets/img/splash/splash-2388x1668.png">
+<link rel="apple-touch-startup-image" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="assets/img/splash/splash-1668x2224.png">
+<link rel="apple-touch-startup-image" media="(device-width: 1112px) and (device-height: 834px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)" href="assets/img/splash/splash-2224x1668.png">
+<link rel="apple-touch-startup-image" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="assets/img/splash/splash-1536x2048.png">
+<link rel="apple-touch-startup-image" media="(device-width: 1024px) and (device-height: 768px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)" href="assets/img/splash/splash-2048x1536.png">
+<link rel="apple-touch-startup-image" media="(device-width: 744px) and (device-height: 1133px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="assets/img/splash/splash-1488x2266.png">
+<link rel="apple-touch-startup-image" media="(device-width: 1133px) and (device-height: 744px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)" href="assets/img/splash/splash-2266x1488.png">
+<!-- PWA:END -->
+<title>Guidelines em Teranóstico | TheraTrials Oncology</title>
+<meta name="description" content="Mapa prático dos principais guidelines internacionais em teranóstico, PRRT, PSMA-RLT, TARE, radioiodoterapia, dosimetria e imagem pós-terapia.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/theratrials.css">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+<style>
+/* ── Hero ── */
+.gl-hero {
+  padding: 3.5rem 0 2.5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.gl-hero::before {
+  content: '';
+  position: absolute;
+  top: -40%; left: 50%; transform: translateX(-50%);
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(255,132,0,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.gl-hero h1 {
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-bottom: 1rem;
+  position: relative;
+}
+.gl-hero .subtitle {
+  color: var(--stone);
+  max-width: 720px;
+  margin: 0 auto;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+/* ── How-to cards ── */
+.howto-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+  margin: 2.5rem 0 3rem;
+}
+.howto-card {
+  background: var(--graphite-2);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  text-align: center;
+  transition: border-color 0.2s;
+}
+.howto-card:hover { border-color: var(--amber); }
+.howto-num {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: var(--amber-soft);
+  color: var(--amber);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.75rem;
+}
+.howto-card h3 {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--off-white);
+  margin-bottom: 0.4rem;
+}
+.howto-card p { font-size: 0.82rem; color: var(--stone); line-height: 1.5; margin: 0; }
+
+/* ── Filters ── */
+.gl-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+.gl-search {
+  flex: 1 1 280px;
+  background: var(--graphite-2);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  padding: 0.65rem 1rem 0.65rem 2.5rem;
+  color: var(--off-white);
+  font-size: 0.9rem;
+  font-family: var(--font-sans);
+  transition: border-color 0.2s;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%238E949C' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: 0.75rem center;
+}
+.gl-search:focus { outline: none; border-color: var(--amber); }
+.gl-search::placeholder { color: var(--stone-2); }
+.filter-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+.pill {
+  background: var(--graphite-3);
+  border: 1px solid var(--border-soft);
+  border-radius: 999px;
+  padding: 0.35rem 0.85rem;
+  font-size: 0.75rem;
+  font-family: var(--font-sans);
+  color: var(--stone);
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+.pill:hover { color: var(--off-white); border-color: var(--border-mid); }
+.pill.active { background: var(--amber-soft); color: var(--amber); border-color: rgba(255,132,0,0.3); font-weight: 500; }
+.gl-count {
+  font-size: 0.8rem;
+  color: var(--stone);
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+/* ── Category section ── */
+.gl-category {
+  margin-bottom: 3rem;
+  scroll-margin-top: 90px;
+}
+.gl-category-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+.gl-category-icon {
+  width: 36px; height: 36px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.gl-category-header h2 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--off-white);
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+.gl-category-desc {
+  color: var(--stone);
+  font-size: 0.88rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  padding-left: calc(36px + 0.75rem);
+}
+.gl-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 0.75rem;
+}
+
+/* ── Guideline card ── */
+.gl-card {
+  background: var(--graphite-2);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  transition: border-color 0.2s, transform 0.15s;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+}
+.gl-card:hover { border-color: rgba(255,132,0,0.35); transform: translateY(-1px); }
+.gl-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+.gl-card-title {
+  font-family: var(--font-display);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--off-white);
+  line-height: 1.45;
+  flex: 1;
+}
+.gl-card-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  flex-shrink: 0;
+}
+.gl-badge {
+  font-size: 0.62rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.gl-badge-year {
+  background: var(--graphite-3);
+  color: var(--stone);
+  border: 1px solid var(--border-soft);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+}
+.gl-badge-recent {
+  background: rgba(52,211,153,0.12);
+  color: #34D399;
+  border: 1px solid rgba(52,211,153,0.25);
+}
+.gl-badge-essential {
+  background: var(--amber-soft);
+  color: var(--amber);
+  border: 1px solid rgba(255,132,0,0.25);
+}
+.gl-badge-dosimetry {
+  background: rgba(96,165,250,0.12);
+  color: #60A5FA;
+  border: 1px solid rgba(96,165,250,0.25);
+}
+.gl-badge-imaging {
+  background: rgba(192,132,252,0.12);
+  color: #C084FC;
+  border: 1px solid rgba(192,132,252,0.25);
+}
+.gl-badge-service {
+  background: rgba(14,165,183,0.12);
+  color: var(--teal);
+  border: 1px solid rgba(14,165,183,0.25);
+}
+.gl-card-type {
+  font-size: 0.72rem;
+  color: var(--stone);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.gl-card-society {
+  font-size: 0.78rem;
+  color: var(--stone-2);
+}
+.gl-card-context {
+  font-size: 0.82rem;
+  color: var(--stone);
+  line-height: 1.55;
+}
+
+/* ── Expansion placeholder ── */
+.gl-expansion {
+  background: var(--graphite-2);
+  border: 1px dashed var(--border-mid);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  text-align: center;
+}
+.gl-expansion h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--off-white);
+  margin-bottom: 0.5rem;
+}
+.gl-expansion p { font-size: 0.85rem; color: var(--stone); line-height: 1.6; max-width: 500px; margin: 0 auto; }
+.gl-expansion .badge-wip {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  background: rgba(251,191,36,0.12);
+  color: #FBBF24;
+  border: 1px solid rgba(251,191,36,0.25);
+  margin-bottom: 0.75rem;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .gl-cards { grid-template-columns: 1fr; }
+  .gl-category-desc { padding-left: 0; }
+  .gl-toolbar { flex-direction: column; align-items: stretch; }
+  .gl-count { margin-left: 0; text-align: right; }
+}
+@media (max-width: 480px) {
+  .howto-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="brand">
+      <img src="assets/img/logo-app.png" alt="TheraTrials" class="brand-logo">
+      <div class="brand-text">
+        <span class="brand-name">TheraTrials</span>
+        <span class="brand-sub">Oncology</span>
+      </div>
+    </a>
+    <button class="nav-toggle" aria-label="Menu" onclick="this.parentElement.querySelector('.nav').classList.toggle('open')"><i data-lucide="menu" style="width:18px;height:18px"></i></button>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="database.html">Database</a>
+      <a href="explorer.html">TheraTrials Explorer</a>
+      <a href="ensaios-clinicos.html">Ensaios clínicos</a>
+      <a href="tumor-boards.html">Tumor boards</a>
+      <a href="modalidades.html">Modalidades</a>
+      <a href="radiofarmacos.html">Radiofármacos</a>
+      <a href="ferramentas.html">Ferramentas</a>
+      <a href="fundamentos.html">Fundamentos</a>
+      <a href="guidelines.html" class="active">Guidelines</a>
+      <a href="about.html">Sobre</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="gl-hero">
+  <div class="container">
+    <span class="eyebrow">Referências internacionais · 11 áreas</span>
+    <h1>Guidelines em <span class="text-amber">Teranóstico</span></h1>
+    <p class="subtitle">A prática teranóstica integra seleção molecular, terapia com radionuclídeos, dosimetria individualizada, radioproteção, imagem pós-terapia e organização institucional. Esta página reúne os documentos norteadores publicados pelas principais sociedades — EANM, SNMMI, IAEA, ATA, ACR — organizados por cenário clínico para consulta rápida.</p>
+  </div>
+</section>
+
+<!-- HOW TO USE -->
+<section style="padding: 0 0 1rem">
+  <div class="container" style="max-width: 880px">
+    <div class="howto-grid">
+      <div class="howto-card">
+        <div class="howto-num">1</div>
+        <h3>Escolha o cenário clínico</h3>
+        <p>PRRT, PSMA-RLT, TARE, radioiodo, metástases ósseas, MIBG, dosimetria ou estruturação de serviço.</p>
+      </div>
+      <div class="howto-card">
+        <div class="howto-num">2</div>
+        <h3>Consulte o guideline</h3>
+        <p>Cada card identifica sociedade, ano, tipo de documento e relevância prática para o fluxo assistencial.</p>
+      </div>
+      <div class="howto-card">
+        <div class="howto-num">3</div>
+        <h3>Aplique na prática</h3>
+        <p>Utilize como referência em tumor boards, protocolos institucionais, dosimetria e preparo de pacientes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLBAR -->
+<section style="padding: 0 0 1rem">
+  <div class="container">
+    <div class="gl-toolbar">
+      <input type="text" class="gl-search" id="glSearch" placeholder="Buscar guideline, sociedade, radionuclídeo..." oninput="filterGuidelines()">
+      <div class="filter-pills" id="areaPills">
+        <button class="pill active" data-area="all" onclick="setArea(this)">Todas</button>
+        <button class="pill" data-area="prrt" onclick="setArea(this)">PRRT</button>
+        <button class="pill" data-area="psma" onclick="setArea(this)">PSMA</button>
+        <button class="pill" data-area="tare" onclick="setArea(this)">TARE</button>
+        <button class="pill" data-area="tireoide" onclick="setArea(this)">Tireoide</button>
+        <button class="pill" data-area="osseas" onclick="setArea(this)">Mets ósseas</button>
+        <button class="pill" data-area="mibg" onclick="setArea(this)">MIBG</button>
+        <button class="pill" data-area="rso" onclick="setArea(this)">RSO</button>
+        <button class="pill" data-area="dosimetria" onclick="setArea(this)">Dosimetria</button>
+        <button class="pill" data-area="imagem" onclick="setArea(this)">Imagem</button>
+        <button class="pill" data-area="servico" onclick="setArea(this)">Serviço</button>
+      </div>
+      <span class="gl-count" id="glCount"></span>
+    </div>
+  </div>
+</section>
+
+<!-- GUIDELINES MAP -->
+<section style="padding: 0 0 4rem">
+  <div class="container">
+
+    <!-- 1. TNE / PRRT -->
+    <div class="gl-category" data-areas="prrt">
+      <div class="gl-category-header">
+        <div class="gl-category-icon" style="background: rgba(52,211,153,0.1); color: #34D399"><i data-lucide="atom" style="width:18px;height:18px"></i></div>
+        <h2>TNE / PRRT</h2>
+      </div>
+      <p class="gl-category-desc">Terapia com radionuclídeos direcionada a receptores de somatostatina em tumores neuroendócrinos. Abrange seleção por imagem SSTR, administração de <sup>177</sup>Lu-DOTATATE, monitoramento e dosimetria.</p>
+      <div class="gl-cards">
+        <a href="guideline-detail.html#prrt-eanm-iaea-snmmi-2026" class="gl-card" data-areas="prrt" data-types="guideline" data-search="eanm iaea snmmi prrt somatostatin receptor radionuclide therapy neuroendocrine 2026 practical guidance">
+          <div class="gl-card-top">
+            <div class="gl-card-title">Joint EANM, IAEA, and SNMMI practical guidance on somatostatin receptor-targeted radionuclide therapy of neuroendocrine tumours</div>
+            <div class="gl-card-badges">
+              <span class="gl-badge gl-badge-year">2026</span>
+              <span class="gl-badge gl-badge-recent">Recente</span>
+              <span class="gl-badge gl-badge-essential">Essencial</span>
+            </div>
+          </div>
+          <div class="gl-card-type">Practical guidance</div>
+          <div class="gl-card-society">EANM · IAEA · SNMMI</div>
+          <div class="gl-card-context">Atualização do documento de 2013 com novas evidências pós-NETTER-1/2. Cobre indicações, seleção de pacientes, esquemas posológicos, manejo de toxicidade e seguimento.</div>
+        </a>
+        <a href="guideline-detail.html#prrt-iaea-eanm-snmmi-2013" class="gl-card" data-areas="prrt" data-types="guideline" data-search="iaea eanm snmmi prrt peptide receptor radionuclide therapy neuroendocrine 2013">
+          <div class="gl-card-top">
+            <div class="gl-card-title">The joint IAEA, EANM, and SNMMI practical guidance on peptide receptor radionuclide therapy in neuroendocrine tumours</div>
+            <div class="gl-card-badges">
+              <span class="gl-badge gl-badge-year">2013</span>
+            </div>
+          </div>
+          <div class="gl-card-type">Practical guidance</div>
+          <div class="gl-card-society">IAEA · EANM · SNMMI</div>
+          <div class="gl-card-context">Documento fundacional da era moderna de PRRT. Ainda referenciado para aspectos práticos de administração, radioproteção e manejo de efeitos renais e hematológicos.</div>
+        </a>
+        <a href="guideline-detail.html#prrt-nanets-snmmi-dotatate" class="gl-card" data-areas="prrt" data-types="procedure" data-search="nanets snmmi procedure somatostatin receptor prrt lu-177 dotatate">
+          <div class="gl-card-top">
+            <div class="gl-card-title">NANETS/SNMMI Procedure Guidelines for Somatostatin Receptor–Based Peptide Receptor Radionuclide Therapy with <sup>177</sup>Lu-DOTATATE</div>
+            <div class="gl-card-badges">
+              <span class="gl-badge gl-badge-essential">Essencial</span>
+            </div>
+          </div>
+          <div class="gl-card-type">Procedure guideline</div>
+          <div class="gl-card-society">NANETS · SNMMI</div>
+          <div class="gl-card-context">Padroniza o fluxo completo de PRRT: elegibilidade, preparo aminoácido, administração, dosimetria simplificada, cuidados pós-terapia e critérios de retratamento.</div>
+        </a>
+        <a href="guideline-detail.html#prrt-sstr-pet-imaging-2023" class="gl-card" data-areas="prrt imagem" data-types="procedure" data-search="snmmi eanm procedure standard practice guideline sstr pet imaging neuroendocrine 2023">
+          <div class="gl-card-top">
+            <div class="gl-card-title">SNMMI Procedure Standard/EANM Practice Guideline for SSTR PET: Imaging Neuroendocrine Tumors</div>
+            <div class="gl-card-badges">
+              <span class="gl-badge gl-badge-year">2023</span>
+              <span class="gl-badge gl-badge-imaging">Imagem</span>
+            </div>
+          </div>
+          <div class="gl-card-type">Procedure standard / Practice guideline</div>
+          <div class="gl-card-society">SNMMI · EANM</div>
+          <div class="gl-card-context">Referência para aquisição, interpretação e laudo de PET/CT com <sup>68</sup>Ga-DOTATATE/TOC e <sup>64</sup>Cu-DOTATATE. Inclui escalas de captação (Krenning modificado), preparo e indicações.</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- 2. Próstata / PSMA-RLT -->
+    <div class="gl-category" data-areas="psma">
+      <div class="gl-category-header">
+        <div class="gl-category-icon" style="background: rgba(59,130,246,0.1); color: #3B82F6"><i data-lucide="crosshair" style="width:18px;height:18px"></i></div>
+        <h2>Próstata / PSMA-RLT</h2>
+      </div>
+      <p class="gl-category-desc">Radioligandoterapia com <sup>177</sup>Lu-PSMA-617 e imagem molecular com PET-PSMA. Documentos orientam desde a seleção por PET até a administração terapêutica e seguimento dosimétrico.</p>
+      <div class="gl-cards">
+        <a href="guideline-detail.html#psma-rlt-eanm-snmmi-2023" class="gl-card" data-areas="psma" data-types="procedure" data-search="eanm snmmi procedure guideline lu-177 psma radioligand therapy rlt 2023">
+          <div class="gl-card-top">
+            <div class="gl-card-title">Joint EANM/SNMMI procedure guideline for the use of <sup>177</sup>Lu-labeled PSMA-targeted radioligand therapy — <sup>177</sup>Lu-PSMA-RLT</div>
+            <div class="gl-card-badges">
+              <span class="gl-badge gl-badge-year">2023</span>
+              <span class="gl-badge gl-badge-essential">Essencial</span>
+            </div>
+          </div>
+          <div class="gl-card-type">Procedure guideline</div>
+          <div class="gl-card-society">EANM · SNMMI</div>
+          <div class="gl-card-context">Documento central para <sup>177</sup>Lu-PSMA-617 (Pluvicto). Cobre indicações, critérios de elegibilidade, atividade administrada, monitoramento, manejo de xerostomia e critérios de suspensão.</div>
+        </a>
+        <a href="guideline-detail.html#psma-pet-imaging-v2-2023" class="gl-card" data-areas="psma imagem" data-types="procedure" data-search="psma pet ct eanm snmmi procedure guideline prostate cancer imaging version 2.0 2023">
+          <div class="gl-card-top">
+            <div class="gl-card-title">PSMA PET/CT: Joint EANM procedure guideline/SNMMI procedure standard for prostate cancer imaging — version 2.0</div>
+            <div class="gl-card-badges">
+              <span class="gl-badge gl-badge-year">2023</span>
+              <span class="gl-badge gl-badge-imaging">Imagem</span>
+            </div>
+          </div>
+          <div class="gl-card-type">Procedure guideline / Procedure standard</div>
+          <div class="gl-card-society">EANM · SNMMI</div>
+          <div class="gl-card-context">Padroniza aquisição, reconstrução, interpretação e laudo de PET-PSMA. Inclui critérios PSMA-RADS, manejo de achados incidentais e indicações por cenário clínico (estadiamento, recidiva, mCRPC).</div>
+        </a>
+        <a href="guideline-detail.html#psma-eanm-2019" class="gl-card" data-areas="psma" data-types="procedure" data-search="eanm procedure guidelines radionuclide therapy lu-177 psma ligands 2019">
+          <div class="gl-card-top">
+            <div class="gl-card-title">EANM procedure guidelines for radionuclide therapy with <sup>177</sup>Lu-PSMA ligands</div>
+            <div class="gl-card-badges">
+              <span class="gl-badge gl-badge-year">2019</span>
+            </div>
+          </div>
+          <div class="gl-card-type">Procedure guideline</div>
+          <div class="gl-card-society">EANM</div>
+          <div class="gl-card-context">Versão anterior à aprovação do Pluvicto, ainda relevante para centros que utilizam PSMA-I&T ou compostos acadêmicos. Detalha aspectos de produção, controle de qualidade e administração.</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- 3. TARE / Radioembolização hepática -->
+    <div class="gl-category" data-areas="tare">
+      <div class="gl-category-header">
+        <div class="gl-category-icon" style="background: rgba(245,158,11,0.1); color: #F59E0B"><i data-lucide="scan" style="width:18px;height:18px"></i></div>
+        <h2>TARE / Radioembolização hepática</h2>
+      </div>
+      <p class="gl-category-desc">Radioembolização trans-arterial com microesferas de <sup>90</sup>Y para CHC, metástases hepáticas de CCR e TNE. Documentos abrangem planejamento com <sup>99m</sup>Tc-MAA, dosimetria personalizada e cuidados peri-procedimento.</p>
+      <div class="gl-cards">
+        <a href="guideline-detail.html#tare-eanm-procedure-2022" class="gl-card" data-areas="tare" data-types="procedure" data-search="eanm procedure guideline treatment liver cancer metastases intra-arterial radioactive compounds 2022">
+          <div class="gl-card-top">
+            <div class="gl-card-title">EANM procedure guideline for the treatment of liver cancer and liver metastases with intra-arterial radioactive compounds</div>
+            <div class="gl-card-badges">
+              <span class="gl-badge gl-badge-year">2022</span>
+              <span class="gl-badge gl-badge-essential">Essencial</span>
+            </div>
+          </div>
+          <div class="gl-card-type">Procedure guideline</div>
+          <div class="gl-card-society">EANM</div>
+          <div class="gl-card-context">Cobre o fluxo completo de TARE: avaliação hepática, mapeamento angiográfico, cintilografia com MAA, cálculo de atividade (BSA, partição, MIRD), administração e seguimento com imagem.</div>
+        </a>
+        <a href="guideline-detail.html#tare-dosimetry-sop-2021" class="gl-card" data-areas="tare dosimetria" data-types="sop" data-search="eanm dosimetry committee sop unified methodology tc-99m maa y-90 peri-therapy dosimetry liver radioembolization microspheres 2021">
+          <div class="gl-card-top">
+            <div class="gl-card-title">EANM Dosimetry Committee SOP: unified methodology for <sup>99m</sup>Tc-MAA pre- and <sup>90</sup>Y peri-therapy dosimetry in liver radioembolization with <sup>90</sup>Y microspheres</div>
+            <div class="gl-card-badges">
+              <span class="gl-badge gl-badge-year">2021</span>
+              <span class="gl-badge gl-badge-dosimetry">Dosimetria</span>
+            </div>
+          </div>
+          <div class="gl-card-type">Standard operating procedure</div>
+          <div class="gl-card-society">EANM — Dosimetry Committee</div>
+          <div class="gl-card-context">Referência para dosimetria pré-terapêutica (MAA-SPECT) e peri-terapêutica (<sup>90</sup>Y-PET ou Bremsstrahlung). Descreve o fluxo de segmentação hepática, cálculo de dose absorvida e limites de segurança.</div>
+        </a>
+        <a href="guideline-detail.html#tare-glass-microspheres-2025" class="gl-card" data-areas="tare dosimetria" data-types="guideline" data-search="clinical dosimetric considerations y-90 glass microsphere radioembolization 2025">
+          <div class="gl-card-top">
+            <div class="gl-card-title">Clinical and dosimetric considerations for <sup>90</sup>Y glass microsphere radioembolization</div>
+            <div class="gl-card-badges">
+              <span class="gl-badge gl-badge-year">2025</span>
+              <span class="gl-badge gl-badge-recent">Recente</span>
+              <span class="gl-badge gl-badge-dosimetry">Dosimetria</span>
+            </div>
+          </div>
+          <div class="gl-card-type">Guidance document</div>
+          <div class="gl-card-society">Multissociedade</div>
+          <div class="gl-card-context">Atualização focada em microesferas de vidro (TheraSphere). Aborda modelos dosimétricos, limites de dose tumoral e hepática, e integração com planejamento por TC 3D.</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- 4. Radioiodoterapia -->
+    <div class="gl-category" data-areas="tireoide">
+      <div class="gl-category-header">
+        <div class="gl-category-icon" style="background: rgba(244,114,182,0.1); color: #F472B6"><i data-lucide="shield-check" style="width:18px;height:18px"></i></div>
+        <h2>Radioiodoterapia</h2>
+      </div>
+      <p class="gl-category-desc">Terapia com <sup>131</sup>I para carcinoma diferenciado de tireoide (CDT) e doenças benignas (Graves, BMN tóxico). Inclui seleção de atividade, preparo com TSH, suspensão de iodo e monitoramento pós-terapia.</p>
+      <div class="gl-cards">
+        <a href="guideline-detail.html#rait-snmmi-eanm-dtc-2022" class="gl-card" data-areas="tireoide" data-types="procedure" data-search="snmmi eanm procedure standard practice guideline nuclear medicine evaluation therapy differentiated thyroid cancer 2022">
+          <div class="gl-card-top">
+            <div class="gl-card-title">SNMMI Procedure Standard/EANM Practice Guideline for Nuclear Medicine Evaluation and Therapy of Differentiated Thyroid Cancer</div>
+            <div class="gl-card-badges">
+              <span class="gl-badge gl-badge-year">2022</span>
+              <span class="gl-badge gl-badge-essential">Essencial</span>
+            </div>
+          </div>
+          <div class="gl-card-type">Procedure standard / Practice guideline</div>
+          <div class="gl-card-society">SNMMI · EANM</div>
+          <div class="gl-card-context">Padroniza o uso de <sup>131</sup>I em CDT: indicações por estratificação de risco (ATA), atividades recomendadas para ablação e terapia, protocolo de imagem pós-dose e seguimento.</div>
+        </a>
+        <a href="guideline-detail.html#rait-eanm-benign-2023" class="gl-card" data-areas="tireoide" data-types="guideline" data-search="eanm guideline radioiodine therapy benign thyroid disease 2023">
+          <div class="gl-card-top">
+            <div class="gl-card-title">The EANM guideline on radioiodine therapy of benign thyroid disease</div>
+            <div class="gl-card-badges">
+              <span class="gl-badge gl-badge-year">2023</span>
+            </div>
+          </div>
+          <div class="gl-card-type">Guideline</div>
+          <div class="gl-card-society">EANM</div>
+          <div class="gl-card-context">Cobre o uso de <sup>131</sup>I em doença de Graves, bócio multinodular tóxico e adenoma tóxico. Detalha cálculo de atividade, preparo, radioproteção e expectativas de resposta.</div>
+        </a>
+        <a href="guideline-detail.html#rait-ata-dtc-2025" class="gl-card" data-areas="tireoide" data-types="guideline" data-search="american thyroid association ata management guidelines adult patients differentiated thyroid cancer 2025">
+          <div class="gl-card-top">
+            <div class="gl-card-title">2025 American Thyroid Association Management Guidelines for Adult Patients with Differentiated Thyroid Cancer</div>
+            <div class="gl-card-badges">
+              <span class="gl-badge gl-badge-year">2025</span>
+              <span class="gl-badge gl-badge-recent">Recente</span>
+              <span class="gl-badge gl-badge-essential">Essencial</span>
+            </div>
+          </div>
+          <div class="gl-card-type">Management guideline</div>
+          <div class="gl-card-society">ATA</div>
+          <div class="gl-card-context">Atualização das recomendações ATA 2015. Revisão da classificação de risco, indicações de RAI, sistemas de resposta ao tratamento e integração com perfil molecular para decisão terapêutica.</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- 5. Metástases ósseas -->
+    <div class="gl-category" data-areas="osseas">
+      <div class="gl-category-header">
+        <div class="gl-category-icon" style="background: rgba(148,163,184,0.1); color: #94A3B8"><i data-lucide="bone" style="width:18px;height:18px"></i></div>
+        <h2>Metástases ósseas — <sup>223</sup>Ra / <sup>89</sup>Sr / <sup>153</sup>Sm</h2>
+      </div>
+      <p class="gl-category-desc">Terapia paliativa com radionuclídeos em metástases ósseas. <sup>223</sup>Ra (alfa-emissor) no câncer de próstata mCRPC com mets ósseas; <sup>89</sup>Sr e <sup>153</sup>Sm para paliação da dor em múltiplos tumores ósseo-trópicos.</p>
+      <div class="gl-cards">
+        <a href="guideline-detail.html#bone-snmmi-eanm-palliative-2023" class="gl-card" data-areas="osseas" data-types="procedure" data-search="snmmi eanm procedure standard practice guideline palliative nuclear medicine therapies bone metastases 2023">
+          <div class="gl-card-top">
+            <div class="gl-card-title">SNMMI Procedure Standard/EANM Practice Guideline for Palliative Nuclear Medicine Therapies of Bone Metastases</div>
+            <div class="gl-card-badges">
+              <span class="gl-badge gl-badge-year">2023</span>
+              <span class="gl-badge gl-badge-essential">Essencial</span>
+            </div>
+          </div>
+          <div class="gl-card-type">Procedure standard / Practice guideline</div>
+          <div class="gl-card-society">SNMMI · EANM</div>
+          <div class="gl-card-context">Documento consolidado para terapia paliativa com <sup>223</sup>Ra, <sup>89</sup>Sr e <sup>153</sup>Sm-EDTMP. Cobre elegibilidade, atividades, interações com quimioterapia e monitoramento hematológico.</div>
+        </a>
+        <a href="guideline-detail.html#bone-eanm-beta-2018" class="gl-card" data-areas="osseas" data-types="guideline" data-search="eanm guidelines radionuclide therapy bone metastases beta-emitting radionuclides 2018">
+          <div class="gl-card-top">
+            <div class="gl-card-title">EANM guidelines for radionuclide therapy of bone metastases with beta-emitting radionuclides</div>
+            <div class="gl-card-badges">
+              <span class="gl-badge gl-badge-year">2018</span>
+            </div>
+          </div>
+          <div class="gl-card-type">Guideline</div>
+          <div class="gl-card-society">EANM</div>
+          <div class="gl-card-context">Foca em <sup>89</sup>Sr e <sup>153</sup>Sm para paliação em pacientes com mets ósseas osteoblásticas difusas. Complementa o documento de 2023 com detalhes sobre mecanismos beta-emissores.</div>
+        </a>
+        <a href="guideline-detail.html#bone-acr-ra223-2020" class="gl-card" data-areas="osseas" data-types="procedure" data-search="acr acnm ars snmmi practice parameter therapy radium-223 dichloride 2020">
+          <div class="gl-card-top">
+            <div class="gl-card-title">ACR–ACNM–ARS–SNMMI Practice Parameter for Therapy with Radium-223 Dichloride</div>
+            <div class="gl-card-badges">
+              <span class="gl-badge gl-badge-year">2020</span>
+            </div>
+          </div>
+          <div class="gl-card-type">Practice parameter</div>
+          <div class="gl-card-society">ACR · ACNM · ARS · SNMMI</div>
+          <div class="gl-card-context">Parâmetro americano para <sup>223</sup>Ra (Xofigo). Detalha indicações pós-ALSYMPCA, contraindicações, manejo laboratorial entre ciclos e restrições pós-ERA (combinação com abiraterona).</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- 6. Tumores neuroectodérmicos / MIBG -->
+    <div class="gl-category" data-areas="mibg">
+      <div class="gl-category-header">
+        <div class="gl-category-icon" style="background: rgba(251,146,60,0.1); color: #FB923C"><i data-lucide="zap" style="width:18px;height:18px"></i></div>
+        <h2>Tumores neuroectodérmicos / <sup>131</sup>I-MIBG</h2>
+      </div>
+      <p class="gl-category-desc">Terapia com <sup>131</sup>I-metaiodobenzilguanidina em neuroblastoma de alto risco e feocromocitoma/paraganglioma metastático. Inclui dosimetria específica para MIBG.</p>
+      <div class="gl-cards">
+        <a href="guideline-detail.html#mibg-eanm-procedure-2008" class="gl-card" data-areas="mibg" data-types="procedure" data-search="eanm procedure guidelines i-131 meta-iodobenzylguanidine mibg therapy 2008">
+          <div class="gl-card-top">
+            <div class="gl-card-title">EANM procedure guidelines for <sup>131</sup>I-meta-iodobenzylguanidine (<sup>131</sup>I-mIBG) therapy</div>
+            <div class="gl-card-badges">
+              <span class="gl-badge gl-badge-year">2008</span>
+              <span class="gl-badge gl-badge-essential">Essencial</span>
+            </div>
+          </div>
+          <div class="gl-card-type">Procedure guideline</div>
+          <div class="gl-card-society">EANM</div>
+          <div class="gl-card-context">Documento de referência para terapia com <sup>131</sup>I-MIBG. Aborda indicações (neuroblastoma, PPGL, carcinoide MIBG-ávido), preparo tireoidiano, atividades, internação e radioproteção.</div>
+        </a>
+        <a href="guideline-detail.html#mibg-dosimetry-sop-2020" class="gl-card" data-areas="mibg dosimetria" data-types="sop" data-search="eanm dosimetry committee sop dosimetry i-131 mibg treatment neuroendocrine tumours 2020">
+          <div class="gl-card-top">
+            <div class="gl-card-title">EANM Dosimetry Committee SOP: dosimetry for <sup>131</sup>I-mIBG treatment of neuroendocrine tumours</div>
+            <div class="gl-card-badges">
+              <span class="gl-badge gl-badge-year">2020</span>
+              <span class="gl-badge gl-badge-dosimetry">Dosimetria</span>
+            </div>
+          </div>
+          <div class="gl-card-type">Standard operating procedure</div>
+          <div class="gl-card-society">EANM — Dosimetry Committee</div>
+          <div class="gl-card-context">Protocolo operacional para dosimetria de MIBG: aquisição de imagens seriadas, cálculo de tempo de residência tumoral e de órgãos críticos, limites de dose a corpo inteiro e medula.</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- 7. Radiossinoviortese -->
+    <div class="gl-category" data-areas="rso">
+      <div class="gl-category-header">
+        <div class="gl-category-icon" style="background: rgba(6,182,212,0.1); color: #06B6D4"><i data-lucide="hand" style="width:18px;height:18px"></i></div>
+        <h2>Radiossinoviortese</h2>
+      </div>
+      <p class="gl-category-desc">Terapia intra-articular com radionuclídeos beta-emissores (<sup>90</sup>Y, <sup>186</sup>Re, <sup>169</sup>Er) em sinovite crônica, artropatia hemofílica e artrite inflamatória refratária.</p>
+      <div class="gl-cards">
+        <a href="guideline-detail.html#rso-eanm-2022" class="gl-card" data-areas="rso" data-types="guideline" data-search="eanm guideline radiosynoviorthesis 2022">
+          <div class="gl-card-top">
+            <div class="gl-card-title">The EANM guideline for radiosynoviorthesis</div>
+            <div class="gl-card-badges">
+              <span class="gl-badge gl-badge-year">2022</span>
+              <span class="gl-badge gl-badge-essential">Essencial</span>
+            </div>
+          </div>
+          <div class="gl-card-type">Guideline</div>
+          <div class="gl-card-society">EANM</div>
+          <div class="gl-card-context">Referência única e atualizada para RSO. Cobre indicações por articulação, escolha do radionuclídeo por tamanho articular, técnica de injeção guiada, atividades e repouso pós-procedimento.</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- 8. Dosimetria para RLT -->
+    <div class="gl-category" data-areas="dosimetria">
+      <div class="gl-category-header">
+        <div class="gl-category-icon" style="background: rgba(96,165,250,0.1); color: #60A5FA"><i data-lucide="calculator" style="width:18px;height:18px"></i></div>
+        <h2>Dosimetria para RLT</h2>
+      </div>
+      <p class="gl-category-desc">Recomendações para dosimetria clínica em radioligandoterapia: <sup>177</sup>Lu-DOTATATE, <sup>177</sup>Lu-PSMA-617, <sup>90</sup>Y e outros. Abrange dosimetria de órgão, tumoral, medular e boas práticas de relato.</p>
+      <div class="gl-cards">
+        <a href="guideline-detail.html#dosim-eanm-lu177-2022" class="gl-card" data-areas="dosimetria" data-types="guideline" data-search="eanm dosimetry committee recommendations dosimetry lu-177 somatostatin receptor psma targeting ligands 2022">
+          <div class="gl-card-top">
+            <div class="gl-card-title">EANM dosimetry committee recommendations for dosimetry of <sup>177</sup>Lu-labelled somatostatin receptor- and PSMA-targeting ligands</div>
+            <div class="gl-card-badges">
+              <span class="gl-badge gl-badge-year">2022</span>
+              <span class="gl-badge gl-badge-dosimetry">Dosimetria</span>
+              <span class="gl-badge gl-badge-essential">Essencial</span>
+            </div>
+          </div>
+          <div class="gl-card-type">Recommendation</div>
+          <div class="gl-card-society">EANM — Dosimetry Committee</div>
+          <div class="gl-card-context">Padroniza a dosimetria clínica para <sup>177</sup>Lu-DOTATATE e <sup>177</sup>Lu-PSMA-617. Cobre protocolos de aquisição SPECT/CT, calibração, tempo de residência e limites de dose renal e medular.</div>
+        </a>
+        <a href="guideline-detail.html#dosim-eanm-targeted-2026" class="gl-card" data-areas="dosimetria" data-types="guideline" data-search="eanm recommendations dosimetry targeted radionuclide therapy 2026">
+          <div class="gl-card-top">
+            <div class="gl-card-title">EANM recommendations for dosimetry in targeted radionuclide therapy</div>
+            <div class="gl-card-badges">
+              <span class="gl-badge gl-badge-year">2026</span>
+              <span class="gl-badge gl-badge-recent">Recente</span>
+              <span class="gl-badge gl-badge-dosimetry">Dosimetria</span>
+            </div>
+          </div>
+          <div class="gl-card-type">Recommendation</div>
+          <div class="gl-card-society">EANM</div>
+          <div class="gl-card-context">Atualização ampla com discussão de dosimetria baseada em voxel, inteligência artificial, modelagem farmacocinética e a transição de dosimetria baseada em atividade fixa para dosimetria personalizada.</div>
+        </a>
+        <a href="guideline-detail.html#dosim-eanm-reporting" class="gl-card" data-areas="dosimetria" data-types="sop" data-search="eanm dosimetry committee guidance document good practice clinical dosimetry reporting">
+          <div class="gl-card-top">
+            <div class="gl-card-title">EANM Dosimetry Committee guidance document: good practice of clinical dosimetry reporting</div>
+            <div class="gl-card-badges">
+              <span class="gl-badge gl-badge-dosimetry">Dosimetria</span>
+            </div>
+          </div>
+          <div class="gl-card-type">Guidance document</div>
+          <div class="gl-card-society">EANM — Dosimetry Committee</div>
+          <div class="gl-card-context">Orienta a estrutura do laudo dosimétrico: quais informações reportar, métricas de dose, incertezas e reprodutibilidade. Útil para centros implementando dosimetria rotineira.</div>
+        </a>
+        <a href="guideline-detail.html#dosim-eanm-bone-marrow" class="gl-card" data-areas="dosimetria" data-types="guideline" data-search="eanm dosimetry committee guidelines bone marrow whole-body dosimetry">
+          <div class="gl-card-top">
+            <div class="gl-card-title">EANM Dosimetry Committee guidelines for bone marrow and whole-body dosimetry</div>
+            <div class="gl-card-badges">
+              <span class="gl-badge gl-badge-dosimetry">Dosimetria</span>
+            </div>
+          </div>
+          <div class="gl-card-type">Guideline</div>
+          <div class="gl-card-society">EANM — Dosimetry Committee</div>
+          <div class="gl-card-context">Foco na dosimetria de medula óssea e corpo inteiro — parâmetros críticos para segurança hematológica em PRRT e PSMA-RLT. Descreve métodos de amostragem sanguínea e imagenológica.</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- 9. Imagem pós-terapia e monitoramento -->
+    <div class="gl-category" data-areas="imagem">
+      <div class="gl-category-header">
+        <div class="gl-category-icon" style="background: rgba(192,132,252,0.1); color: #C084FC"><i data-lucide="camera" style="width:18px;height:18px"></i></div>
+        <h2>Imagem pós-terapia e monitoramento</h2>
+      </div>
+      <p class="gl-category-desc">Padronização da imagem pós-administração terapêutica com <sup>177</sup>Lu — aquisição SPECT/CT pós-dose para verificação de distribuição, dosimetria e detecção de achados inesperados.</p>
+      <div class="gl-cards">
+        <a href="guideline-detail.html#posttherapy-snmmi-acnm-lu177-2025" class="gl-card" data-areas="imagem" data-types="procedure" data-search="snmmi acnm procedure standard post-treatment imaging lu-177 radiopharmaceuticals 2025">
+          <div class="gl-card-top">
+            <div class="gl-card-title">SNMMI/ACNM Procedure Standard for Post-Treatment Imaging of <sup>177</sup>Lu-Based Radiopharmaceuticals</div>
+            <div class="gl-card-badges">
+              <span class="gl-badge gl-badge-year">2025</span>
+              <span class="gl-badge gl-badge-recent">Recente</span>
+              <span class="gl-badge gl-badge-imaging">Imagem</span>
+              <span class="gl-badge gl-badge-essential">Essencial</span>
+            </div>
+          </div>
+          <div class="gl-card-type">Procedure standard</div>
+          <div class="gl-card-society">SNMMI · ACNM</div>
+          <div class="gl-card-context">Primeiro documento a padronizar imagem pós-terapia com <sup>177</sup>Lu. Define timing, protocolo de aquisição SPECT/CT, parâmetros de reconstrução, interpretação quantitativa e integração com dosimetria.</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- 10. Estruturação de serviço -->
+    <div class="gl-category" data-areas="servico">
+      <div class="gl-category-header">
+        <div class="gl-category-icon" style="background: rgba(14,165,183,0.1); color: var(--teal)"><i data-lucide="building-2" style="width:18px;height:18px"></i></div>
+        <h2>Estruturação de serviço teranóstico</h2>
+      </div>
+      <p class="gl-category-desc">Documentos para implementação institucional de um programa de teranóstica: infraestrutura, equipe multidisciplinar, radioproteção, licenciamento e liberação de pacientes após terapia com radionuclídeos.</p>
+      <div class="gl-cards">
+        <a href="guideline-detail.html#service-eanm-snmmi-iaea-2022" class="gl-card" data-areas="servico" data-types="guideline" data-search="eanm snmmi iaea enabling guide how to set up theranostics centre 2022">
+          <div class="gl-card-top">
+            <div class="gl-card-title">Joint EANM, SNMMI, and IAEA Enabling Guide: How to Set up a Theranostics Centre</div>
+            <div class="gl-card-badges">
+              <span class="gl-badge gl-badge-year">2022</span>
+              <span class="gl-badge gl-badge-service">Serviço</span>
+              <span class="gl-badge gl-badge-essential">Essencial</span>
+            </div>
+          </div>
+          <div class="gl-card-type">Enabling guide</div>
+          <div class="gl-card-society">EANM · SNMMI · IAEA</div>
+          <div class="gl-card-context">Guia prático para montar um centro de teranóstica do zero: requisitos de espaço físico, blindagem, equipe mínima, treinamento, equipamentos, fluxo de paciente e regulação.</div>
+        </a>
+        <a href="guideline-detail.html#service-iaea-release" class="gl-card" data-areas="servico" data-types="guideline" data-search="iaea release patients radionuclide therapy radiation protection considerations">
+          <div class="gl-card-top">
+            <div class="gl-card-title">IAEA — Release of Patients After Radionuclide Therapy</div>
+            <div class="gl-card-badges">
+              <span class="gl-badge gl-badge-service">Serviço</span>
+            </div>
+          </div>
+          <div class="gl-card-type">Radiation protection guidance</div>
+          <div class="gl-card-society">IAEA</div>
+          <div class="gl-card-context">Base para definição de critérios de alta hospitalar pós-terapia: limites de taxa de dose, tempo de isolamento, orientações a familiares e cuidados com resíduos.</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- 11. Meningiomas — Em expansão -->
+    <div class="gl-category" data-areas="prrt">
+      <div class="gl-category-header">
+        <div class="gl-category-icon" style="background: rgba(251,191,36,0.1); color: #FBBF24"><i data-lucide="brain" style="width:18px;height:18px"></i></div>
+        <h2>Meningiomas</h2>
+      </div>
+      <div class="gl-expansion">
+        <span class="badge-wip">Em expansão</span>
+        <h3>Seção em construção</h3>
+        <p>Esta seção reunirá recomendações sobre imagem de receptores de somatostatina (<sup>68</sup>Ga-DOTATATE PET/CT), critérios de seleção para PRRT em meningiomas recorrentes/irressecáveis e monitoramento terapêutico. As referências serão adicionadas conforme consolidação da literatura.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>© 2026 TheraTrials Oncology · 421 estudos analisados · v1.2</span>
+      <span>Para uso educacional. Não substitui diretrizes oficiais.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/common.js"></script>
+<script>
+(function() {
+  var activeArea = 'all';
+  var searchTerm = '';
+  var categories = document.querySelectorAll('.gl-category');
+  var cards = document.querySelectorAll('.gl-card');
+  var countEl = document.getElementById('glCount');
+
+  function updateCount() {
+    var visible = 0;
+    cards.forEach(function(c) { if (c.style.display !== 'none') visible++; });
+    countEl.textContent = visible + ' de ' + cards.length + ' documentos';
+  }
+
+  window.filterGuidelines = function() {
+    searchTerm = document.getElementById('glSearch').value.toLowerCase().trim();
+    applyFilters();
+  };
+
+  window.setArea = function(btn) {
+    document.querySelectorAll('#areaPills .pill').forEach(function(p) { p.classList.remove('active'); });
+    btn.classList.add('active');
+    activeArea = btn.dataset.area;
+    applyFilters();
+  };
+
+  function applyFilters() {
+    cards.forEach(function(card) {
+      var areaMatch = activeArea === 'all' || (card.dataset.areas && card.dataset.areas.indexOf(activeArea) !== -1);
+      var searchMatch = !searchTerm || (card.dataset.search && card.dataset.search.indexOf(searchTerm) !== -1)
+        || card.querySelector('.gl-card-title').textContent.toLowerCase().indexOf(searchTerm) !== -1
+        || (card.querySelector('.gl-card-society') && card.querySelector('.gl-card-society').textContent.toLowerCase().indexOf(searchTerm) !== -1);
+      card.style.display = (areaMatch && searchMatch) ? '' : 'none';
+    });
+
+    categories.forEach(function(cat) {
+      var visibleCards = cat.querySelectorAll('.gl-card:not([style*="display: none"])');
+      var hasExpansion = cat.querySelector('.gl-expansion');
+      var areaMatch = activeArea === 'all' || (cat.dataset.areas && cat.dataset.areas.indexOf(activeArea) !== -1);
+      cat.style.display = (visibleCards.length > 0 || (hasExpansion && areaMatch)) ? '' : 'none';
+    });
+
+    updateCount();
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    if (typeof lucide !== 'undefined') lucide.createIcons();
+    updateCount();
+  });
+})();
+</script>
+</body>
+</html>

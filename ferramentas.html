@@ -426,6 +426,7 @@
       <a href="radiofarmacos.html">Radiofármacos</a>
       <a href="ferramentas.html">Ferramentas</a>
       <a href="fundamentos.html">Fundamentos</a>
+      <a href="guidelines.html">Guidelines</a>
       <a href="about.html">Sobre</a>
     </nav>
   </div>
@@ -436,7 +437,7 @@
   <div class="container">
     <span class="eyebrow">Ferramentas clínicas</span>
     <h1>Calcule, converta, <span class="text-amber">decida</span></h1>
-    <p>Estadiamento, eventos adversos, calculadora de dose, planejamento PET/CT, scores de imagem e escalas clínicas — 11 ferramentas em uma única tela.</p>
+    <p>Estadiamento, eventos adversos, calculadora de dose, planejamento PET/CT, scores de imagem, escalas clínicas e função renal — 12 ferramentas em uma única tela.</p>
   </div>
 </section>
 
@@ -510,6 +511,12 @@
         <i data-lucide="user-check" class="icon"></i>
         <h3>Oncologia clínica</h3>
         <p>ECOG · Karnofsky · NCI-CTCAE · Charlson</p>
+      </a>
+      <a href="#renal" class="tool-link" style="--accent: #E879F9">
+        <div class="num">12</div>
+        <i data-lucide="kidney" class="icon"></i>
+        <h3>Função renal</h3>
+        <p>CKD-EPI 2021 · Cockcroft-Gault · MDRD · Estágio DRC</p>
       </a>
     </div>
 
@@ -3280,6 +3287,213 @@
       </div>
     </section>
 
+    <!-- ============================================================ -->
+    <!-- 12. CALCULADORA DE FUNÇÃO RENAL                              -->
+    <!-- ============================================================ -->
+    <section class="tool" id="renal" style="--tool-accent: #E879F9">
+      <div class="tool-head">
+        <div class="tool-num" style="background: rgba(232, 121, 249, 0.15); color: #E879F9">12</div>
+        <h2>Calculadora de fun&ccedil;&atilde;o renal</h2>
+      </div>
+      <p style="color: var(--stone); margin: 0 0 1.5rem; max-width: 720px; line-height: 1.55">
+        Estimativa de taxa de filtra&ccedil;&atilde;o glomerular por <strong>CKD-EPI 2021</strong> (equa&ccedil;&atilde;o sem ra&ccedil;a, KDIGO recomendada), <strong>Cockcroft-Gault</strong> (clearance de creatinina, refer&ecirc;ncia para ajuste de dose de f&aacute;rmacos) e <strong>MDRD</strong> (hist&oacute;rico, 4 vari&aacute;veis IDMS).
+      </p>
+
+      <div style="display:flex; flex-wrap:wrap; gap:1rem; margin-bottom:1.5rem; align-items:flex-end">
+        <div style="flex:0 0 110px">
+          <label for="renal-age" style="display:block; font-size:0.78rem; color:var(--stone); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.35rem">Idade (anos)</label>
+          <input type="number" id="renal-age" value="60" min="18" max="120" step="1"
+                 style="width:100%; padding:0.55rem 0.7rem; background:var(--graphite-2); border:1px solid var(--border-soft); border-radius:8px; color:var(--off-white); font-family:var(--font-mono); font-size:0.95rem"
+                 oninput="calcRenal()">
+        </div>
+        <div style="flex:0 0 120px">
+          <label for="renal-sex" style="display:block; font-size:0.78rem; color:var(--stone); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.35rem">Sexo</label>
+          <select id="renal-sex"
+                  style="width:100%; padding:0.55rem 0.7rem; background:var(--graphite-2); border:1px solid var(--border-soft); border-radius:8px; color:var(--off-white); font-family:var(--font-body); font-size:0.9rem; appearance:none; background-image:url(&quot;data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238E949C' stroke-width='2'><polyline points='6 9 12 15 18 9'/></svg>&quot;); background-repeat:no-repeat; background-position:right 0.75rem center; padding-right:2.25rem"
+                  onchange="calcRenal()">
+            <option value="M">Masculino</option>
+            <option value="F">Feminino</option>
+          </select>
+        </div>
+        <div style="flex:0 0 110px">
+          <label for="renal-weight" style="display:block; font-size:0.78rem; color:var(--stone); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.35rem">Peso (kg)</label>
+          <input type="number" id="renal-weight" value="70" min="30" max="250" step="0.5"
+                 style="width:100%; padding:0.55rem 0.7rem; background:var(--graphite-2); border:1px solid var(--border-soft); border-radius:8px; color:var(--off-white); font-family:var(--font-mono); font-size:0.95rem"
+                 oninput="calcRenal()">
+        </div>
+        <div style="flex:0 0 110px">
+          <label for="renal-height" style="display:block; font-size:0.78rem; color:var(--stone); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.35rem">Altura (cm)</label>
+          <input type="number" id="renal-height" value="170" min="100" max="230" step="1"
+                 style="width:100%; padding:0.55rem 0.7rem; background:var(--graphite-2); border:1px solid var(--border-soft); border-radius:8px; color:var(--off-white); font-family:var(--font-mono); font-size:0.95rem"
+                 oninput="calcRenal()">
+        </div>
+        <div style="flex:0 0 150px">
+          <label for="renal-cr" style="display:block; font-size:0.78rem; color:var(--stone); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.35rem">Creatinina (mg/dL)</label>
+          <input type="number" id="renal-cr" value="1.0" min="0.1" max="30" step="0.01"
+                 style="width:100%; padding:0.55rem 0.7rem; background:var(--graphite-2); border:1px solid var(--border-soft); border-radius:8px; color:var(--off-white); font-family:var(--font-mono); font-size:0.95rem"
+                 oninput="calcRenal()">
+        </div>
+      </div>
+
+      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:1rem; margin-bottom:1.5rem">
+
+        <div style="background:var(--graphite-2); border:1px solid var(--border-soft); border-radius:var(--radius-md); padding:1.25rem 1.4rem">
+          <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.9rem">
+            <div style="width:8px;height:8px;border-radius:50%;background:#E879F9"></div>
+            <span style="font-family:var(--font-display); font-size:0.82rem; font-weight:600; color:#E879F9; text-transform:uppercase; letter-spacing:0.04em">CKD-EPI 2021</span>
+          </div>
+          <div style="display:flex; align-items:baseline; gap:0.6rem; margin-bottom:0.25rem">
+            <span id="ckdepi-val" style="font-family:var(--font-mono); font-size:1.7rem; font-weight:700; color:var(--off-white)">--</span>
+            <span style="font-size:0.85rem; color:var(--stone)">mL/min/1,73 m&sup2;</span>
+          </div>
+          <div id="ckdepi-stage" style="font-size:0.78rem; color:var(--stone); margin-bottom:0.5rem"></div>
+          <div style="font-size:0.72rem; color:var(--stone-2); border-top:1px solid var(--border-soft); padding-top:0.5rem">Equa&ccedil;&atilde;o sem ra&ccedil;a &middot; KDIGO 2021 &middot; Inker et al. NEJM 2021</div>
+        </div>
+
+        <div style="background:var(--graphite-2); border:1px solid var(--border-soft); border-radius:var(--radius-md); padding:1.25rem 1.4rem">
+          <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.9rem">
+            <div style="width:8px;height:8px;border-radius:50%;background:#38BDF8"></div>
+            <span style="font-family:var(--font-display); font-size:0.82rem; font-weight:600; color:#38BDF8; text-transform:uppercase; letter-spacing:0.04em">Cockcroft-Gault</span>
+          </div>
+          <div style="display:flex; align-items:baseline; gap:0.6rem; margin-bottom:0.25rem">
+            <span id="cg-val" style="font-family:var(--font-mono); font-size:1.7rem; font-weight:700; color:var(--off-white)">--</span>
+            <span style="font-size:0.85rem; color:var(--stone)">mL/min</span>
+          </div>
+          <div id="cg-bsa" style="font-size:0.78rem; color:var(--stone); margin-bottom:0.5rem"></div>
+          <div style="font-size:0.72rem; color:var(--stone-2); border-top:1px solid var(--border-soft); padding-top:0.5rem">Clearance de creatinina &middot; Cockcroft &amp; Gault 1976 &middot; ajuste de dose</div>
+        </div>
+
+        <div style="background:var(--graphite-2); border:1px solid var(--border-soft); border-radius:var(--radius-md); padding:1.25rem 1.4rem">
+          <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.9rem">
+            <div style="width:8px;height:8px;border-radius:50%;background:#10B981"></div>
+            <span style="font-family:var(--font-display); font-size:0.82rem; font-weight:600; color:#10B981; text-transform:uppercase; letter-spacing:0.04em">MDRD (4-var IDMS)</span>
+          </div>
+          <div style="display:flex; align-items:baseline; gap:0.6rem; margin-bottom:0.25rem">
+            <span id="mdrd-val" style="font-family:var(--font-mono); font-size:1.7rem; font-weight:700; color:var(--off-white)">--</span>
+            <span style="font-size:0.85rem; color:var(--stone)">mL/min/1,73 m&sup2;</span>
+          </div>
+          <div id="mdrd-stage" style="font-size:0.78rem; color:var(--stone); margin-bottom:0.5rem"></div>
+          <div style="font-size:0.72rem; color:var(--stone-2); border-top:1px solid var(--border-soft); padding-top:0.5rem">Levey et al. Ann Intern Med 2006 &middot; IDMS-trace&aacute;vel</div>
+        </div>
+
+      </div>
+
+      <div id="renal-ckd-bar" style="background:var(--graphite-2); border:1px solid var(--border-soft); border-radius:var(--radius-md); padding:1.1rem 1.4rem; margin-bottom:1rem">
+        <div style="font-size:0.72rem; color:var(--stone); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:0.75rem; font-weight:500">Classifica&ccedil;&atilde;o KDIGO &middot; Est&aacute;gio DRC (baseado CKD-EPI)</div>
+        <div style="display:flex; gap:2px; border-radius:6px; overflow:hidden; height:28px; font-size:0.65rem; font-weight:600; letter-spacing:0.04em">
+          <div id="ckd-g1" style="flex:1; background:rgba(16,185,129,0.25); color:#10B981; display:flex; align-items:center; justify-content:center; transition:all 0.3s">G1 &ge;90</div>
+          <div id="ckd-g2" style="flex:1; background:rgba(16,185,129,0.12); color:#10B981; display:flex; align-items:center; justify-content:center; transition:all 0.3s">G2 60–89</div>
+          <div id="ckd-g3a" style="flex:1; background:rgba(251,191,36,0.12); color:#FBBF24; display:flex; align-items:center; justify-content:center; transition:all 0.3s">G3a 45–59</div>
+          <div id="ckd-g3b" style="flex:1; background:rgba(251,146,60,0.12); color:#FB923C; display:flex; align-items:center; justify-content:center; transition:all 0.3s">G3b 30–44</div>
+          <div id="ckd-g4" style="flex:1; background:rgba(239,68,68,0.12); color:#EF4444; display:flex; align-items:center; justify-content:center; transition:all 0.3s">G4 15–29</div>
+          <div id="ckd-g5" style="flex:1; background:rgba(239,68,68,0.08); color:#EF4444; display:flex; align-items:center; justify-content:center; transition:all 0.3s">G5 &lt;15</div>
+        </div>
+      </div>
+
+      <div style="display:grid; grid-template-columns: 1fr 1fr; gap:1rem; margin-bottom:1rem">
+        <div class="note" style="border-left-color:#E879F9; background:rgba(232,121,249,0.06)">
+          <span class="lbl" style="color:#E879F9">Teran&oacute;stico &middot; Lu-PSMA / Lu-DOTATATE</span>
+          <strong style="color:#E879F9">VISION</strong> exigiu CrCl &ge; 50 mL/min (Cockcroft-Gault) para Lu-PSMA. <strong style="color:#E879F9">NETTER-1</strong> exigiu CrCl &ge; 50 mL/min para Lu-DOTATATE. Monitorar fun&ccedil;&atilde;o renal a cada ciclo &mdash; nefrotoxicidade &eacute; cumulativa (grau 3-4 em ~2-5% dos pacientes).
+        </div>
+        <div class="note" style="border-left-color:#38BDF8; background:rgba(56,189,248,0.06)">
+          <span class="lbl" style="color:#38BDF8">Ajuste de dose &middot; Qual equa&ccedil;&atilde;o usar?</span>
+          <strong style="color:#38BDF8">CKD-EPI 2021</strong>: classifica&ccedil;&atilde;o DRC e progn&oacute;stico (KDIGO). <strong style="color:#38BDF8">Cockcroft-Gault</strong>: ajuste de dose de f&aacute;rmacos (FDA exige para a maioria). <strong style="color:#38BDF8">MDRD</strong>: hist&oacute;rico, impreciso em TFG &gt; 60. CG e CKD-EPI podem divergir em extremos de peso e idade.
+        </div>
+      </div>
+
+      <div style="background:rgba(232,121,249,0.06); border:1px solid rgba(232,121,249,0.18); border-radius:var(--radius-md); padding:0.9rem 1.1rem; font-size:0.78rem; color:var(--stone); line-height:1.55">
+        <strong style="color:#E879F9">&#9888; Aviso:</strong> Estas equa&ccedil;&otilde;es estimam a fun&ccedil;&atilde;o renal em adultos est&aacute;veis. N&atilde;o s&atilde;o v&aacute;lidas para les&atilde;o renal aguda, gesta&ccedil;&atilde;o, extremos de massa muscular (amputados, caquexia severa, fisiculturistas), ou crian&ccedil;as. N&atilde;o substitui julgamento cl&iacute;nico.
+      </div>
+
+<script>
+(function(){
+  "use strict";
+
+  function calcRenal(){
+    var age = parseFloat(document.getElementById('renal-age').value);
+    var sex = document.getElementById('renal-sex').value;
+    var wt  = parseFloat(document.getElementById('renal-weight').value);
+    var ht  = parseFloat(document.getElementById('renal-height').value);
+    var scr = parseFloat(document.getElementById('renal-cr').value);
+
+    if(!age||!wt||!ht||!scr||age<18||scr<=0){
+      document.getElementById('ckdepi-val').textContent='--';
+      document.getElementById('cg-val').textContent='--';
+      document.getElementById('mdrd-val').textContent='--';
+      document.getElementById('ckdepi-stage').textContent='';
+      document.getElementById('cg-bsa').textContent='';
+      document.getElementById('mdrd-stage').textContent='';
+      resetBar();
+      return;
+    }
+
+    var isFemale = (sex==='F');
+    var kappa = isFemale ? 0.7 : 0.9;
+    var alpha = isFemale ? -0.241 : -0.302;
+    var sexMul = isFemale ? 1.012 : 1.0;
+    var scrK = scr / kappa;
+    var ckdepi = 142 * Math.pow(Math.min(scrK,1), alpha) * Math.pow(Math.max(scrK,1), -1.200) * Math.pow(0.9938, age) * sexMul;
+
+    var cg = ((140 - age) * wt) / (72 * scr);
+    if(isFemale) cg *= 0.85;
+
+    var mdrd = 175 * Math.pow(scr, -1.154) * Math.pow(age, -0.203);
+    if(isFemale) mdrd *= 0.742;
+
+    var bsa = 0.007184 * Math.pow(ht, 0.725) * Math.pow(wt, 0.425);
+    var cgNorm = cg * (1.73 / bsa);
+
+    document.getElementById('ckdepi-val').textContent = ckdepi.toFixed(1);
+    document.getElementById('cg-val').textContent = cg.toFixed(1);
+    document.getElementById('mdrd-val').textContent = mdrd.toFixed(1);
+
+    document.getElementById('ckdepi-stage').textContent = stageLabel(ckdepi);
+    document.getElementById('cg-bsa').textContent = 'Corrigido BSA: ' + cgNorm.toFixed(1) + ' mL/min/1,73 m² · BSA: ' + bsa.toFixed(2) + ' m²';
+    document.getElementById('mdrd-stage').textContent = stageLabel(mdrd);
+
+    highlightBar(ckdepi);
+  }
+
+  function stageLabel(gfr){
+    if(gfr>=90) return 'G1 — Normal ou alto';
+    if(gfr>=60) return 'G2 — Levemente diminuído';
+    if(gfr>=45) return 'G3a — Leve a moderadamente diminuído';
+    if(gfr>=30) return 'G3b — Moderada a severamente diminuído';
+    if(gfr>=15) return 'G4 — Severamente diminuído';
+    return 'G5 — Falência renal';
+  }
+
+  function resetBar(){
+    var ids=['ckd-g1','ckd-g2','ckd-g3a','ckd-g3b','ckd-g4','ckd-g5'];
+    for(var i=0;i<ids.length;i++){
+      document.getElementById(ids[i]).style.outline='none';
+      document.getElementById(ids[i]).style.zIndex='0';
+      document.getElementById(ids[i]).style.transform='none';
+    }
+  }
+
+  function highlightBar(gfr){
+    resetBar();
+    var active='';
+    if(gfr>=90) active='ckd-g1';
+    else if(gfr>=60) active='ckd-g2';
+    else if(gfr>=45) active='ckd-g3a';
+    else if(gfr>=30) active='ckd-g3b';
+    else if(gfr>=15) active='ckd-g4';
+    else active='ckd-g5';
+    var el=document.getElementById(active);
+    el.style.outline='2px solid currentColor';
+    el.style.zIndex='1';
+    el.style.transform='scaleY(1.25)';
+  }
+
+  window.calcRenal = calcRenal;
+  document.addEventListener('DOMContentLoaded', calcRenal);
+})();
+</script>
+
+    </section>
+
   </div>
 </section>
 
@@ -3308,7 +3522,7 @@
 <footer class="site-footer">
   <div class="container">
     <div class="footer-bottom">
-      <span>© 2026 TheraTrials Oncology · Ferramentas · v1.1</span>
+      <span>© 2026 TheraTrials Oncology · Ferramentas · v1.2</span>
       <span>Para uso educacional. Não substitui prescrição médica.</span>
     </div>
   </div>
