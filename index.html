@@ -562,6 +562,266 @@
     border: 1px solid var(--border-soft);
   }
 
+
+  /* ============================================================
+     REDESIGN 2026 — Animations, Reveals, Interactivity
+     ============================================================ */
+
+  /* ── Scroll Reveal System ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(36px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .reveal-stagger > .reveal {
+    transition-delay: calc(var(--i, 0) * 0.07s);
+  }
+
+  /* ── Keyframes ── */
+  @keyframes float-y {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+  @keyframes glow-pulse {
+    0%, 100% { box-shadow: 0 0 20px rgba(255, 132, 0, 0.15); }
+    50% { box-shadow: 0 0 45px rgba(255, 132, 0, 0.3); }
+  }
+  @keyframes shimmer-gradient {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+  @keyframes orbit-rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  @keyframes radar-ping {
+    0% { transform: scale(0.8); opacity: 0.6; }
+    70% { transform: scale(2.2); opacity: 0; }
+    100% { transform: scale(2.2); opacity: 0; }
+  }
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+  @keyframes fade-up-in {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── Hero Orbital Particles ── */
+  .hero { overflow: hidden; }
+  .hero-particles {
+    position: absolute; inset: 0;
+    pointer-events: none;
+    display: flex; align-items: center; justify-content: center;
+    z-index: 0;
+  }
+  .orbit {
+    position: absolute;
+    border: 1px solid rgba(255, 132, 0, 0.06);
+    border-radius: 50%;
+    animation: orbit-rotate var(--duration) linear infinite;
+  }
+  .orbit-1 { width: 380px; height: 380px; --duration: 25s; }
+  .orbit-2 { width: 580px; height: 580px; --duration: 35s; border-color: rgba(14,165,183,0.05); animation-direction: reverse; }
+  .orbit-3 { width: 780px; height: 780px; --duration: 50s; border-color: rgba(255,132,0,0.03); }
+  .orbit .particle {
+    position: absolute; top: -3px; left: 50%; margin-left: -3px;
+    width: 6px; height: 6px;
+    background: var(--amber);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--amber), 0 0 20px rgba(255,132,0,0.3);
+  }
+  .orbit-2 .particle { background: var(--teal); box-shadow: 0 0 10px var(--teal); top: auto; bottom: -3px; }
+  .orbit-3 .particle { width: 4px; height: 4px; top: 50%; left: -2px; margin: -2px 0 0 0; }
+  .hero .container, .hero-after { position: relative; z-index: 1; }
+
+  @media (max-width: 768px) {
+    .hero-particles { display: none; }
+  }
+
+  /* ── Stats Counter Section ── */
+  .stats-counter-section {
+    padding: 0 0 2rem;
+    margin-top: -1rem;
+  }
+  .stats-counter-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    background: linear-gradient(135deg, rgba(20,22,27,0.85), rgba(14,15,18,0.7));
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  .counter-item {
+    text-align: center;
+    padding: 2rem 0.75rem;
+    border-right: 1px solid var(--border-soft);
+    position: relative;
+  }
+  .counter-item:last-child { border-right: 0; }
+  .counter-item::after {
+    content: '';
+    position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+    width: 40px; height: 2px;
+    background: var(--amber);
+    opacity: 0.4;
+    border-radius: 1px;
+  }
+  .counter-num {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 700;
+    color: var(--amber);
+    font-feature-settings: 'tnum';
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .counter-label {
+    display: block;
+    margin-top: 0.6rem;
+    font-size: 0.68rem;
+    color: var(--stone);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    line-height: 1.3;
+  }
+  @media (max-width: 880px) { .stats-counter-grid { grid-template-columns: repeat(3, 1fr); } .counter-item:nth-child(3) { border-right: 0; } }
+  @media (max-width: 480px) { .stats-counter-grid { grid-template-columns: repeat(2, 1fr); } .counter-item:nth-child(2n) { border-right: 0; } .counter-item { padding: 1.4rem 0.5rem; } }
+
+  /* ── Glassmorphism Platform Map Cards ── */
+  .pmap-card {
+    background: rgba(20, 22, 27, 0.55) !important;
+    backdrop-filter: blur(14px) saturate(1.3);
+    -webkit-backdrop-filter: blur(14px) saturate(1.3);
+    transform-style: preserve-3d;
+    will-change: transform;
+  }
+  .pmap-card::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(
+      600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+      rgba(var(--accent-rgb, 255, 132, 0), 0.06),
+      transparent 40%
+    );
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .pmap-card:hover::after { opacity: 1; }
+  .pmap-card:hover {
+    transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(-5px);
+    border-color: color-mix(in srgb, var(--accent, var(--amber)) 50%, transparent);
+    box-shadow: 0 20px 50px -20px rgba(0,0,0,0.5),
+                0 0 0 1px color-mix(in srgb, var(--accent, var(--amber)) 30%, transparent) inset,
+                0 0 30px -5px color-mix(in srgb, var(--accent, var(--amber)) 15%, transparent);
+  }
+  .pmap-card .pmap-icon {
+    animation: float-y 4s ease-in-out infinite;
+    animation-play-state: paused;
+  }
+  .pmap-card:hover .pmap-icon { animation-play-state: running; }
+
+  /* ── Radiofármaco Isotope Sphere Glow ── */
+  .rf-tile:hover .iso-mini {
+    animation: glow-pulse 2s ease-in-out infinite;
+    transform: scale(1.05);
+    transition: transform 0.3s;
+  }
+  .rf-tile .iso-mini { transition: transform 0.3s; }
+
+  /* ── Section Dividers ── */
+  .section-divider {
+    height: 1px;
+    max-width: 800px;
+    margin: 0 auto;
+    background: linear-gradient(90deg, transparent, var(--amber) 20%, var(--teal) 80%, transparent);
+    background-size: 200% 100%;
+    animation: shimmer-gradient 6s ease-in-out infinite;
+    opacity: 0.5;
+  }
+
+  /* ── Enhanced CTA Section ── */
+  .cta-enhanced {
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-enhanced::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%; width: 200%; height: 200%;
+    background: radial-gradient(ellipse at 30% 50%, rgba(255,132,0,0.04) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 50%, rgba(14,165,183,0.03) 0%, transparent 50%);
+    animation: orbit-rotate 40s linear infinite;
+    pointer-events: none;
+  }
+  .cta-enhanced > * { position: relative; z-index: 1; }
+
+  /* ── Explorer Radar Ping ── */
+  .explorer-block { position: relative; overflow: hidden; }
+  .explorer-block::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 100px; height: 100px;
+    margin: -50px 0 0 -50px;
+    border-radius: 50%;
+    border: 2px solid rgba(34, 211, 238, 0.2);
+    animation: radar-ping 3s ease-out infinite;
+    pointer-events: none;
+  }
+
+  /* ── Live dot for Ensaios BR ── */
+  .live-dot {
+    display: inline-block;
+    width: 8px; height: 8px;
+    background: #34d399;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #34d399;
+    animation: pulse-dot 1.5s ease-in-out infinite;
+    margin-right: 0.35rem;
+    vertical-align: middle;
+  }
+
+  /* ── Tools hover fill ── */
+  .tools-mini::before {
+    transition: height 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    height: 30%;
+  }
+  .tools-mini:hover::before {
+    height: 100%;
+  }
+
+  /* ── Authorship glass card ── */
+  .authorship-card {
+    background: rgba(20, 22, 27, 0.5);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-lg);
+    padding: 2.5rem 2rem;
+    max-width: 760px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .authorship-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--amber) 50%, transparent);
+    opacity: 0.6;
+  }
+
   /* Language toggle button */
   .lang-toggle {
     display: inline-flex; align-items: center; gap: 0.35rem;
@@ -643,6 +903,11 @@
 
 <!-- ============== HERO ============== -->
 <section class="hero">
+  <div class="hero-particles" aria-hidden="true">
+    <div class="orbit orbit-1"><span class="particle"></span></div>
+    <div class="orbit orbit-2"><span class="particle"></span></div>
+    <div class="orbit orbit-3"><span class="particle"></span></div>
+  </div>
   <div class="container">
     <img src="assets/img/hero-banner.png" alt="TheraTrials Oncology" class="hero-banner animate-fade">
   </div>
@@ -657,71 +922,104 @@
 </section>
 
 
-<!-- ============== MAPA DA PLATAFORMA ============== -->
-<section class="platform-map-section" style="padding: 3rem 0 1rem">
+
+<!-- ============== STATS COUNTER ============== -->
+<section class="stats-counter-section reveal">
   <div class="container">
-    <div class="platform-map">
-      <a href="database.html" class="pmap-card" style="--accent:#FF8400">
+    <div class="stats-counter-grid">
+      <div class="counter-item">
+        <span class="counter-num" data-target="421" data-suffix="+">0</span>
+        <span class="counter-label" data-i18n="home.statStudies">Ensaios curados</span>
+      </div>
+      <div class="counter-item">
+        <span class="counter-num" data-target="39">0</span>
+        <span class="counter-label" data-i18n="home.statCategories">Categorias</span>
+      </div>
+      <div class="counter-item">
+        <span class="counter-num" data-target="79">0</span>
+        <span class="counter-label" data-i18n="home.statBRTrials">Ensaios ativos BR</span>
+      </div>
+      <div class="counter-item">
+        <span class="counter-num" data-target="7">0</span>
+        <span class="counter-label" data-i18n="home.statRadiopharma">Radiofármacos</span>
+      </div>
+      <div class="counter-item">
+        <span class="counter-num" data-target="11">0</span>
+        <span class="counter-label" data-i18n="home.statTools">Ferramentas</span>
+      </div>
+      <div class="counter-item">
+        <span class="counter-num" data-target="26">0</span>
+        <span class="counter-label" data-i18n="home.statGuidelines">Guidelines</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== MAPA DA PLATAFORMA ============== -->
+<section class="platform-map-section reveal" style="padding: 3rem 0 1rem">
+  <div class="container">
+    <div class="platform-map reveal-stagger">
+      <a href="database.html" class="pmap-card reveal" style="--accent:#FF8400">
         <div class="pmap-icon"><i data-lucide="database" style="width:22px;height:22px"></i></div>
         <div class="pmap-name" data-i18n="home.pmDatabaseName">Database</div>
         <div class="pmap-desc" data-i18n="home.pmDatabaseDesc">Mais de 420 ensaios · 39 categorias · favoritos · citações</div>
       </a>
-      <a href="explorer.html" class="pmap-card" style="--accent:#22D3EE">
+      <a href="explorer.html" class="pmap-card reveal" style="--accent:#22D3EE">
         <div class="pmap-icon"><i data-lucide="radar" style="width:22px;height:22px"></i></div>
         <div class="pmap-name" data-i18n="home.pmExplorerName">TheraTrials Explorer</div>
         <div class="pmap-desc" data-i18n="home.pmExplorerDesc">Pipeline global de radioligantes · dados do ClinicalTrials.gov · atualização mensal</div>
       </a>
-      <a href="ensaios-clinicos.html" class="pmap-card" style="--accent:#34d399">
+      <a href="ensaios-clinicos.html" class="pmap-card reveal" style="--accent:#34d399">
         <div class="pmap-icon"><i data-lucide="map-pin" style="width:22px;height:22px"></i></div>
         <div class="pmap-name" data-i18n="home.pmEnsaiosBRName">Ensaios clínicos ativos (BR)</div>
         <div class="pmap-desc" data-i18n="home.pmEnsaiosBRDesc">Recrutamento aberto no Brasil · 79 estudos · 20 áreas tumorais</div>
       </a>
-      <a href="tumor-boards.html" class="pmap-card" style="--accent:#0EA5B7">
+      <a href="tumor-boards.html" class="pmap-card reveal" style="--accent:#0EA5B7">
         <div class="pmap-icon"><i data-lucide="layout-grid" style="width:22px;height:22px"></i></div>
         <div class="pmap-name" data-i18n="home.pmTumorBoardsName">Tumor boards</div>
         <div class="pmap-desc" data-i18n="home.pmTumorBoardsDesc">Visão por tumor · próstata, pulmão, mama, NET, HCC</div>
       </a>
-      <a href="modalidades.html" class="pmap-card" style="--accent:#C084FC">
+      <a href="modalidades.html" class="pmap-card reveal" style="--accent:#C084FC">
         <div class="pmap-icon"><i data-lucide="layers" style="width:22px;height:22px"></i></div>
         <div class="pmap-name" data-i18n="home.pmModalidadesName">Modalidades</div>
         <div class="pmap-desc" data-i18n="home.pmModalidadesDesc">Teranóstico, alvo, IO, ADC, PARP, QT, plataformas</div>
       </a>
-      <a href="radiofarmacos.html" class="pmap-card" style="--accent:#A855F7">
+      <a href="radiofarmacos.html" class="pmap-card reveal" style="--accent:#A855F7">
         <div class="pmap-icon"><i data-lucide="atom" style="width:22px;height:22px"></i></div>
         <div class="pmap-name" data-i18n="home.pmRadiofarmacosName">Radiofármacos</div>
         <div class="pmap-desc" data-i18n-html="home.pmRadiofarmacosDesc">Sete dossiês completos · <sup>177</sup>Lu, <sup>223</sup>Ra, <sup>90</sup>Y, <sup>131</sup>I-MIBG, <sup>131</sup>I, novos α</div>
       </a>
-      <a href="ferramentas.html" class="pmap-card" style="--accent:#FBBF24">
+      <a href="ferramentas.html" class="pmap-card reveal" style="--accent:#FBBF24">
         <div class="pmap-icon"><i data-lucide="calculator" style="width:22px;height:22px"></i></div>
         <div class="pmap-name" data-i18n="home.pmFerramentasName">Ferramentas</div>
         <div class="pmap-desc" data-i18n="home.pmFerramentasDesc">11 ferramentas · AJCC TNM · CTCAE v6.0 · PSMA · PET/CT · iRECIST · BCLC · calculadoras</div>
       </a>
-      <a href="fundamentos.html" class="pmap-card" style="--accent:#F472B6">
+      <a href="fundamentos.html" class="pmap-card reveal" style="--accent:#F472B6">
         <div class="pmap-icon"><i data-lucide="graduation-cap" style="width:22px;height:22px"></i></div>
         <div class="pmap-name" data-i18n="home.pmFundamentosName">Fundamentos</div>
         <div class="pmap-desc" data-i18n="home.pmFundamentosDesc">Como funcionam ensaios clínicos · visual e direto</div>
       </a>
-      <a href="about.html" class="pmap-card" style="--accent:#94A3B8">
+      <a href="about.html" class="pmap-card reveal" style="--accent:#94A3B8">
         <div class="pmap-icon"><i data-lucide="info" style="width:22px;height:22px"></i></div>
         <div class="pmap-name" data-i18n="home.pmSobreName">Sobre</div>
         <div class="pmap-desc" data-i18n="home.pmSobreDesc">Projeto, missão, metodologia editorial e contato</div>
       </a>
-      <a href="trial-matcher.html" class="pmap-card" style="--accent:#22d3ee">
+      <a href="trial-matcher.html" class="pmap-card reveal" style="--accent:#22d3ee">
         <div class="pmap-icon"><i data-lucide="stethoscope" style="width:22px;height:22px"></i></div>
         <div class="pmap-name">Trial Matcher <span style="font-size:.55rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;padding:1px 5px;border-radius:4px;background:rgba(34,211,238,.12);color:#22d3ee;margin-left:4px;vertical-align:middle">Novo</span></div>
         <div class="pmap-desc" data-i18n="home.pmTrialMatcherDesc">Encontre ensaios por tumor, biomarcador, linha terapêutica e modalidade</div>
       </a>
-      <a href="guidelines.html" class="pmap-card" style="--accent:#60A5FA">
+      <a href="guidelines.html" class="pmap-card reveal" style="--accent:#60A5FA">
         <div class="pmap-icon"><i data-lucide="book-open" style="width:22px;height:22px"></i></div>
         <div class="pmap-name" data-i18n="home.pmGuidelinesName">Guidelines</div>
         <div class="pmap-desc" data-i18n="home.pmGuidelinesDesc">26 guidelines internacionais · EANM, SNMMI, ATA, IAEA · análise expandida</div>
       </a>
-      <a href="eventos.html" class="pmap-card" style="--accent:#0EA5B7; border-style:dashed">
+      <a href="eventos.html" class="pmap-card reveal" style="--accent:#0EA5B7; border-style:dashed">
         <div class="pmap-icon"><i data-lucide="calendar-days" style="width:22px;height:22px"></i></div>
         <div class="pmap-name">Eventos Científicos <span style="font-size:.55rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;padding:1px 5px;border-radius:4px;background:rgba(251,191,36,.12);color:#FBBF24;margin-left:4px;vertical-align:middle">Em breve</span></div>
         <div class="pmap-desc" data-i18n="home.pmEventosDesc">Congressos, simpósios, webinars e deadlines de submissão</div>
       </a>
-      <a href="newsletter.html" class="pmap-card" style="--accent:#FF8400; border-style:dashed">
+      <a href="newsletter.html" class="pmap-card reveal" style="--accent:#FF8400; border-style:dashed">
         <div class="pmap-icon"><i data-lucide="mail" style="width:22px;height:22px"></i></div>
         <div class="pmap-name">Newsletter <span style="font-size:.55rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;padding:1px 5px;border-radius:4px;background:rgba(251,191,36,.12);color:#FBBF24;margin-left:4px;vertical-align:middle">Em breve</span></div>
         <div class="pmap-desc" data-i18n="home.pmNewsletterDesc">Curadoria periódica de novidades em teranóstica e medicina nuclear</div>
@@ -732,9 +1030,10 @@
   </div>
 </section>
 
+<div class="section-divider" aria-hidden="true"></div>
 
 <!-- ============== BLOCO 1 · DATABASE ============== -->
-<section class="block-section">
+<section class="block-section reveal">
   <div class="container">
     <div class="block-header">
       <div class="left">
@@ -772,6 +1071,7 @@
   </div>
 </section>
 
+<div class="section-divider" aria-hidden="true"></div>
 
 <!-- ============== BLOCO · THERATRIALS EXPLORER ============== -->
 <style>
@@ -812,7 +1112,7 @@
     color: #22D3EE;
   }
 </style>
-<section class="block-section">
+<section class="block-section reveal">
   <div class="container">
     <div class="block-header">
       <div class="left">
@@ -878,6 +1178,7 @@
   </div>
 </section>
 
+<div class="section-divider" aria-hidden="true"></div>
 
 <!-- ============== BLOCO ENSAIOS CLÍNICOS ATIVOS · BR ============== -->
 <style>
@@ -919,7 +1220,7 @@
   .ea-spot-card .meta .recrut { color: #34d399; display: inline-flex; align-items: center; gap: 0.3rem; }
   .ea-spot-card .meta .nct { font-family: var(--font-mono); margin-left: auto; }
 </style>
-<section class="block-section">
+<section class="block-section reveal">
   <div class="container">
     <div class="block-header">
       <div class="left">
@@ -943,37 +1244,37 @@
           <div class="name">SUNRAY-02 <span class="fase">Fase III</span></div>
           <div class="neo">Pulmão · NSCLC KRAS G12C</div>
           <div class="desc">Olomorasibe + pembro/durva em ressecado II–IIIB ou irressecável estágio III. Teste central de KRAS G12C.</div>
-          <div class="meta"><span class="recrut"><i data-lucide="circle-dot" style="width:10px;height:10px"></i> <span data-i18n="home.eaRecruiting">Recrutando</span></span><span class="nct">NCT06119581</span></div>
+          <div class="meta"><span class="recrut"><i data-lucide="circle-dot" style="width:10px;height:10px"></i> <span class="live-dot"></span><span data-i18n="home.eaRecruiting">Recrutando</span></span><span class="nct">NCT06119581</span></div>
         </a>
         <a href="ensaios-clinicos.html#bnt113-01" class="ea-spot-card" style="--accent:#a855f7">
           <div class="name">BNT113-01 <span class="fase">Fase III</span></div>
           <div class="neo">Cabeça e pescoço · CEC HPV16+</div>
           <div class="desc">Vacina mRNA HPV16 (BNT113) + pembrolizumabe vs pembrolizumabe em CEC recorrente/metastático CPS ≥1.</div>
-          <div class="meta"><span class="recrut"><i data-lucide="circle-dot" style="width:10px;height:10px"></i> <span data-i18n="home.eaRecruiting">Recrutando</span></span><span class="nct">NCT04534205</span></div>
+          <div class="meta"><span class="recrut"><i data-lucide="circle-dot" style="width:10px;height:10px"></i> <span class="live-dot"></span><span data-i18n="home.eaRecruiting">Recrutando</span></span><span class="nct">NCT04534205</span></div>
         </a>
         <a href="ensaios-clinicos.html#lucerna" class="ea-spot-card" style="--accent:#f87171">
           <div class="name">LUCERNA <span class="fase">Fase III</span></div>
           <div class="neo">Gástrico/GEJ HER2- CLDN18.2+</div>
           <div class="desc">Zolbetuximabe + pembrolizumabe + QT vs pembrolizumabe + QT em 1L. Testes CLDN18.2, HER2 e PD-L1 fornecidos.</div>
-          <div class="meta"><span class="recrut"><i data-lucide="circle-dot" style="width:10px;height:10px"></i> <span data-i18n="home.eaRecruiting">Recrutando</span></span><span class="nct">NCT06346392</span></div>
+          <div class="meta"><span class="recrut"><i data-lucide="circle-dot" style="width:10px;height:10px"></i> <span class="live-dot"></span><span data-i18n="home.eaRecruiting">Recrutando</span></span><span class="nct">NCT06346392</span></div>
         </a>
         <a href="ensaios-clinicos.html#chonquer" class="ea-spot-card" style="--accent:#94a3b8">
           <div class="name">CHONQUER <span class="fase">Fase III</span></div>
           <div class="neo">Sarcoma · Condrossarcoma IDH1+</div>
           <div class="desc">Ivosidenibe vs placebo em condrossarcoma convencional avançado IDH1-mutado. Teste IDH1 fornecido.</div>
-          <div class="meta"><span class="recrut"><i data-lucide="circle-dot" style="width:10px;height:10px"></i> <span data-i18n="home.eaRecruiting">Recrutando</span></span><span class="nct">NCT06387381</span></div>
+          <div class="meta"><span class="recrut"><i data-lucide="circle-dot" style="width:10px;height:10px"></i> <span class="live-dot"></span><span data-i18n="home.eaRecruiting">Recrutando</span></span><span class="nct">NCT06387381</span></div>
         </a>
         <a href="ensaios-clinicos.html#rediscover-2" class="ea-spot-card" style="--accent:#ec4899">
           <div class="name">ReDiscover-2 <span class="fase">Fase III</span></div>
           <div class="neo">Mama · HR+/HER2- PIK3CA-mut pós-CDK4/6</div>
           <div class="desc">RLY-2608 (PI3Kα mutante-seletivo) + fulvestranto vs capivasertibe + fulvestranto. Homens e mulheres elegíveis.</div>
-          <div class="meta"><span class="recrut"><i data-lucide="circle-dot" style="width:10px;height:10px"></i> <span data-i18n="home.eaRecruiting">Recrutando</span></span><span class="nct">NCT06982521</span></div>
+          <div class="meta"><span class="recrut"><i data-lucide="circle-dot" style="width:10px;height:10px"></i> <span class="live-dot"></span><span data-i18n="home.eaRecruiting">Recrutando</span></span><span class="nct">NCT06982521</span></div>
         </a>
         <a href="ensaios-clinicos.html#regeneron-penis" class="ea-spot-card" style="--accent:#fbbf24">
           <div class="name">REGENERON Penile <span class="fase">Fase II</span></div>
           <div class="neo">Pênis · CCE pós-platina</div>
           <div class="desc">Cemiplimabe em manutenção vs BSC após 1L à base de platina em CCE de pênis avançado/recorrente.</div>
-          <div class="meta"><span class="recrut"><i data-lucide="circle-dot" style="width:10px;height:10px"></i> <span data-i18n="home.eaRecruiting">Recrutando</span></span><span class="nct">NCT06125262</span></div>
+          <div class="meta"><span class="recrut"><i data-lucide="circle-dot" style="width:10px;height:10px"></i> <span class="live-dot"></span><span data-i18n="home.eaRecruiting">Recrutando</span></span><span class="nct">NCT06125262</span></div>
         </a>
       </div>
 
@@ -987,9 +1288,10 @@
   </div>
 </section>
 
+<div class="section-divider" aria-hidden="true"></div>
 
 <!-- ============== BLOCO 3 · RADIOFÁRMACOS ============== -->
-<section class="block-section">
+<section class="block-section reveal">
   <div class="container">
     <div class="block-header">
       <div class="left">
@@ -1066,9 +1368,10 @@
   </div>
 </section>
 
+<div class="section-divider" aria-hidden="true"></div>
 
 <!-- ============== BLOCO · FERRAMENTAS (11 ferramentas clínicas) ============== -->
-<section class="block-section">
+<section class="block-section reveal">
   <div class="container">
     <div class="block-header">
       <div class="left">
@@ -1165,7 +1468,7 @@
 
 
 <!-- ============== CTA FINAL ============== -->
-<section class="block-section" style="text-align:center; padding-bottom:5rem">
+<section class="block-section cta-enhanced reveal" style="text-align:center; padding-bottom:5rem">
   <div class="container">
     <h2 style="font-weight: 300; margin-bottom: 1rem" data-i18n="home.ctaTitle">Pronto para conectar evidência e prática clínica?</h2>
     <p class="subtitle" style="margin-bottom: 2rem; color: var(--stone)" data-i18n="home.ctaDesc">421 ensaios clínicos curados em 39 categorias · pipeline global de radioligantes via ClinicalTrials.gov · 79 ensaios clínicos ativos no Brasil · 7 dossiês de radiofármaco · 11 ferramentas clínicas · AJCC 8ª ed., CTCAE v6.0, BCLC 2026 · hyperlinks diretos para PubMed e ClinicalTrials.gov.</p>
@@ -1187,7 +1490,7 @@
 <!-- ============== AUTORIA ============== -->
 <section style="padding: 2rem 0 3rem; border-top: 1px solid var(--border-soft)">
   <div class="container">
-    <div style="max-width: 760px; margin: 0 auto; text-align: center">
+    <div class="authorship-card">
       <div style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--stone); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.85rem">
         <span data-i18n="home.authorLabel">Idealização e produção</span>
       </div>
@@ -1269,6 +1572,128 @@
 
 <script src="assets/js/pwa-install.js" defer></script>
 
+
+
+<script>
+/* ============================================================
+   TheraTrials Home — Interactive Enhancements
+   ============================================================ */
+(function() {
+  'use strict';
+
+  // ── Scroll Reveal (IntersectionObserver) ──
+  function initReveals() {
+    var reveals = document.querySelectorAll('.reveal');
+    if (!reveals.length || !('IntersectionObserver' in window)) {
+      // Fallback: show everything
+      reveals.forEach(function(el) { el.classList.add('revealed'); });
+      return;
+    }
+    // Assign stagger indices
+    document.querySelectorAll('.reveal-stagger').forEach(function(parent) {
+      var children = parent.querySelectorAll('.reveal');
+      children.forEach(function(child, i) { child.style.setProperty('--i', i); });
+    });
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(function(el) { io.observe(el); });
+  }
+
+  // ── Animated Number Counters ──
+  function initCounters() {
+    var counters = document.querySelectorAll('.counter-num[data-target]');
+    if (!counters.length) return;
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          animateCounter(entry.target);
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    counters.forEach(function(el) { io.observe(el); });
+  }
+  function animateCounter(el) {
+    var target = parseInt(el.getAttribute('data-target'));
+    var suffix = el.getAttribute('data-suffix') || '';
+    var duration = 2200;
+    var start = performance.now();
+    function tick(now) {
+      var elapsed = now - start;
+      var progress = Math.min(elapsed / duration, 1);
+      var eased = 1 - Math.pow(1 - progress, 4);
+      el.textContent = Math.round(target * eased) + suffix;
+      if (progress < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+
+  // ── Platform Map: Mouse-Tracking Glow + 3D Tilt ──
+  function initCardEffects() {
+    var cards = document.querySelectorAll('.pmap-card');
+    cards.forEach(function(card) {
+      card.addEventListener('mousemove', function(e) {
+        var rect = card.getBoundingClientRect();
+        var x = ((e.clientX - rect.left) / rect.width * 100).toFixed(1);
+        var y = ((e.clientY - rect.top) / rect.height * 100).toFixed(1);
+        card.style.setProperty('--mouse-x', x + '%');
+        card.style.setProperty('--mouse-y', y + '%');
+        // 3D tilt
+        var tiltX = ((e.clientY - rect.top) / rect.height - 0.5) * -6;
+        var tiltY = ((e.clientX - rect.left) / rect.width - 0.5) * 6;
+        card.style.setProperty('--rx', tiltX + 'deg');
+        card.style.setProperty('--ry', tiltY + 'deg');
+      });
+      card.addEventListener('mouseleave', function() {
+        card.style.setProperty('--mouse-x', '50%');
+        card.style.setProperty('--mouse-y', '50%');
+        card.style.setProperty('--rx', '0deg');
+        card.style.setProperty('--ry', '0deg');
+      });
+    });
+  }
+
+  // ── Hero Parallax ──
+  function initParallax() {
+    var hero = document.querySelector('.hero-banner');
+    if (!hero || window.innerWidth < 768) return;
+    var ticking = false;
+    window.addEventListener('scroll', function() {
+      if (!ticking) {
+        requestAnimationFrame(function() {
+          var scroll = window.scrollY;
+          if (scroll < 900) {
+            hero.style.transform = 'translateY(' + (scroll * 0.12) + 'px) scale(' + Math.max(0.92, 1 - scroll * 0.00015) + ')';
+            hero.style.opacity = Math.max(0.3, 1 - scroll * 0.001);
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+  }
+
+  // ── Init all on DOM ready ──
+  function init() {
+    initReveals();
+    initCounters();
+    initCardEffects();
+    initParallax();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
 
 </body>
 </html>

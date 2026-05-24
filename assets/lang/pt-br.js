@@ -83,6 +83,14 @@ window._i18nRegister('pt-br', {
     tagline2: "Melhores decisões.",
     tagline3: "Melhores resultados.",
 
+    /* Stats counter */
+    statStudies: "Estudos curados",
+    statCategories: "Categorias",
+    statBRTrials: "Ensaios ativos BR",
+    statRadiopharma: "Radiofármacos",
+    statTools: "Ferramentas clínicas",
+    statGuidelines: "Guidelines internacionais",
+
     /* Platform map cards */
     pmDatabaseName: "Database",
     pmDatabaseDesc: "Mais de 420 ensaios · 39 categorias · favoritos · citações",

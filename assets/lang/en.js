@@ -83,6 +83,14 @@ window._i18nRegister('en', {
     tagline2: "Better decisions.",
     tagline3: "Better outcomes.",
 
+    /* Stats counter */
+    statStudies: "Curated Studies",
+    statCategories: "Categories",
+    statBRTrials: "Active BR Trials",
+    statRadiopharma: "Radiopharmaceuticals",
+    statTools: "Clinical Tools",
+    statGuidelines: "Int'l Guidelines",
+
     /* Platform map cards */
     pmDatabaseName: "Database",
     pmDatabaseDesc: "Over 420 trials · 39 categories · favorites · citations",
