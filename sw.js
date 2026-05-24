@@ -7,7 +7,7 @@
      • Google Fonts / CDNs (Lucide, etc.) → stale-while-revalidate
    ============================================================================= */
 
-const CACHE_VERSION = 'theratrials-v2026.05.24-cfbb4ae';
+const CACHE_VERSION = 'theratrials-v2026.05.24-6541ebd';
 const CACHE_STATIC  = `${CACHE_VERSION}-static`;
 const CACHE_PAGES   = `${CACHE_VERSION}-pages`;
 const CACHE_RUNTIME = `${CACHE_VERSION}-runtime`;
