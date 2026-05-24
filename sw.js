@@ -1,13 +1,14 @@
 /* =============================================================================
    TheraTrials Oncology — Service Worker
-   v1.2.0 · 2026-05-19 (Pipeline RLT → TheraTrials Explorer)
-   Estratégias:
-     • HTML  → network-first com fallback em cache (e em última instância /offline.html)
-     • Assets estáticos (CSS/JS/IMG/Fonts) → cache-first com revalidação background
-     • Google Fonts / CDNs (Lucide, etc.) → stale-while-revalidate
+   Strategies:
+     • HTML navigation  → network-first, fallback to cache, then /offline.html
+     • Same-origin assets (CSS/JS/img/fonts) → cache-first, revalidate in background
+     • External analytics / form APIs → network-only (never cache)
+     • External CDNs (Google Fonts, Lucide, etc.) → stale-while-revalidate
    ============================================================================= */
 
-const CACHE_VERSION = 'theratrials-v2026.05.24-be34d69';
+// GitHub Actions bumps this line on each deploy
+const CACHE_VERSION = 'theratrials-v2';
 const CACHE_STATIC  = `${CACHE_VERSION}-static`;
 const CACHE_PAGES   = `${CACHE_VERSION}-pages`;
 const CACHE_RUNTIME = `${CACHE_VERSION}-runtime`;
@@ -89,6 +90,15 @@ self.addEventListener('activate', (event) => {
 });
 
 /* =====================  FETCH  ===================== */
+
+// Hosts that must always go to the network — analytics, forms, live APIs
+const NETWORK_ONLY_HOSTS = [
+  'cloud.umami.is',        // Umami analytics
+  'formspree.io',          // Contact forms
+  'api.buttondown.email',  // Newsletter
+  'clinicaltrials.gov',    // Live trial data API
+];
+
 self.addEventListener('fetch', (event) => {
   const req = event.request;
   if (req.method !== 'GET') return;
@@ -96,27 +106,33 @@ self.addEventListener('fetch', (event) => {
   const url = new URL(req.url);
   const sameOrigin = url.origin === self.location.origin;
 
-  // Navegação / HTML → network-first
+  // 1. Network-only: analytics and external live APIs — never cache
+  if (NETWORK_ONLY_HOSTS.some((host) => url.hostname.includes(host))) {
+    return; // Let the browser handle it with no SW involvement
+  }
+
+  // 2. HTML navigation → network-first with offline fallback
   if (req.mode === 'navigate' || (req.headers.get('accept') || '').includes('text/html')) {
     event.respondWith(networkFirstHTML(req));
     return;
   }
 
-  // Assets do mesmo domínio → cache-first com revalidação
+  // 3. Google Fonts & external CDNs → stale-while-revalidate
+  if (url.hostname.includes('fonts.googleapis.com')
+   || url.hostname.includes('fonts.gstatic.com')
+   || url.hostname.includes('unpkg.com')
+   || url.hostname.includes('cdn.jsdelivr.net')) {
+    event.respondWith(staleWhileRevalidate(req, CACHE_RUNTIME));
+    return;
+  }
+
+  // 4. Same-origin assets (CSS/JS/img/etc.) → cache-first, revalidate in background
   if (sameOrigin) {
     event.respondWith(cacheFirstWithRevalidate(req, CACHE_STATIC));
     return;
   }
 
-  // CDNs (fonts, lucide) → stale-while-revalidate
-  if (url.hostname.includes('fonts.googleapis.com')
-   || url.hostname.includes('fonts.gstatic.com')
-   || url.hostname.includes('unpkg.com')
-   || url.hostname.includes('cdn.jsdelivr.net')
-   || url.hostname.includes('cloud.umami.is')) {
-    event.respondWith(staleWhileRevalidate(req, CACHE_RUNTIME));
-    return;
-  }
+  // 5. Everything else — let the browser handle it normally
 });
 
 /* =====================  STRATEGIES  ===================== */
@@ -158,6 +174,11 @@ async function staleWhileRevalidate(req, cacheName) {
   return cached || network || new Response('', { status: 504 });
 }
 
-/* =====================  MENSAGEM (atualização forçada)  ===================== */
+/* =====================  MESSAGE  ===================== */
+// pwa-install.js sends SKIP_WAITING so the new SW activates immediately
+// when the user taps "Update" in the update toast.
 self.addEventListener('message', (event) => {
-  if (event.data && event.data.type === 'SKIP_WAITI
+  if (event.data && event.data.type === 'SKIP_WAITING') {
+    self.skipWaiting();
+  }
+});

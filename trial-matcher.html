@@ -231,6 +231,51 @@
 .tm-card-status.publicado { background: rgba(96,165,250,0.1); color: #60a5fa; }
 .tm-card-status.ativo { background: rgba(251,191,36,0.1); color: #fbbf24; }
 
+/* ── Loading state ── */
+.tm-loading {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 3rem 1rem; gap: 1rem;
+}
+.tm-spinner {
+  width: 36px; height: 36px; border-radius: 50%;
+  border: 3px solid var(--graphite-4, #252932);
+  border-top-color: var(--amber, #FF8400);
+  animation: tm-spin 0.8s linear infinite;
+}
+@keyframes tm-spin { to { transform: rotate(360deg); } }
+.tm-loading p { color: var(--stone, #8E949C); font-size: 0.85rem; }
+
+/* ── Error state ── */
+.tm-error {
+  text-align: center; padding: 2rem 1rem; border-radius: 12px;
+  background: rgba(239,68,68,0.06); border: 1px solid rgba(239,68,68,0.2);
+  margin-bottom: 1.5rem;
+}
+.tm-error-icon { width: 40px; height: 40px; margin: 0 auto 0.75rem; color: #ef4444; opacity: 0.8; }
+.tm-error h3 { font-family: 'Outfit', sans-serif; font-size: 1rem; color: #ef4444; margin: 0 0 0.4rem; }
+.tm-error p { font-size: 0.82rem; color: var(--stone); max-width: 420px; margin: 0 auto; line-height: 1.5; }
+.tm-error-retry {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  margin-top: 0.8rem; padding: 0.5rem 1rem; border-radius: 8px;
+  border: 1px solid rgba(239,68,68,0.3); background: transparent;
+  color: #ef4444; font-size: 0.8rem; cursor: pointer; transition: all 0.2s;
+}
+.tm-error-retry:hover { background: rgba(239,68,68,0.08); }
+.tm-error-retry i { width: 14px; height: 14px; }
+
+/* ── Show more button ── */
+.tm-show-more {
+  display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+  width: 100%; padding: 0.8rem; margin-top: 0.75rem; border-radius: 10px;
+  border: 1px solid var(--border-soft, rgba(143,148,156,0.18));
+  background: var(--graphite-2, #14161B);
+  color: var(--stone, #8E949C); font-family: 'Inter', sans-serif; font-size: 0.82rem;
+  cursor: pointer; transition: all 0.2s;
+}
+.tm-show-more:hover { border-color: var(--amber, #FF8400); color: var(--amber, #FF8400); background: rgba(255,132,0,0.04); }
+.tm-show-more i { width: 14px; height: 14px; }
+.tm-show-more strong { color: var(--off-white, #F5F6F7); font-weight: 600; }
+
 /* ── Responsive ── */
 @media (max-width: 600px) {
   .tm-filters-grid { grid-template-columns: 1fr; }
@@ -240,6 +285,23 @@
 </style>
 
 <script defer src="https://cloud.umami.is/script.js" data-website-id="3c576b68-e2b3-4982-82e7-688e5a8adf58"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "TheraTrials Trial Matcher",
+  "description": "Ferramenta de busca inteligente de ensaios clínicos em oncologia por tumor, biomarcador, linha terapêutica e modalidade.",
+  "url": "https://theratrials.com/trial-matcher.html",
+  "applicationCategory": "HealthApplication",
+  "operatingSystem": "Web",
+  "inLanguage": "pt-BR",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "BRL"
+  }
+}
+</script>
 </head>
 <body>
 
@@ -360,6 +422,20 @@
       <span class="tm-result-count" id="tm-count"></span>
     </div>
   </section>
+
+  <!-- Loading state -->
+  <div class="tm-loading" id="tm-loading" style="display:none;">
+    <div class="tm-spinner"></div>
+    <p>Carregando banco de dados&hellip;</p>
+  </div>
+
+  <!-- Error state -->
+  <div class="tm-error" id="tm-error" style="display:none;">
+    <div class="tm-error-icon"><i data-lucide="alert-triangle"></i></div>
+    <h3>Erro ao carregar dados</h3>
+    <p id="tm-error-msg">N&atilde;o foi poss&iacute;vel carregar o banco de estudos. Verifique sua conex&atilde;o e tente novamente.</p>
+    <button class="tm-error-retry" onclick="location.reload()"><i data-lucide="refresh-cw"></i> Recarregar</button>
+  </div>
 
   <!-- Results -->
   <section class="tm-results" id="tm-results">
@@ -650,8 +726,12 @@
     // Sort by score descending
     results.sort(function(a, b) { return b.score - a.score; });
 
-    // Render
-    renderResults(results);
+    // Store for pagination
+    allResults = results;
+    visibleCount = 0;
+
+    // Render first page
+    renderResults(results, true);
 
     // Track
     if (typeof umami !== 'undefined') {
@@ -659,8 +739,17 @@
     }
   };
 
+  // ── Pagination state ──
+  var PAGE_SIZE = 25;
+  var allResults = [];
+  var visibleCount = 0;
+
+  window.showMore = function() {
+    renderResults(allResults, false);
+  };
+
   // ── Render results ──
-  function renderResults(results) {
+  function renderResults(results, isNew) {
     var container = document.getElementById('tm-cards');
     var empty = document.getElementById('tm-empty');
     var count = document.getElementById('tm-count');
@@ -677,19 +766,37 @@
     empty.style.display = 'none';
     count.innerHTML = '<strong>' + results.length + '</strong> ensaio' + (results.length > 1 ? 's' : '') + ' encontrado' + (results.length > 1 ? 's' : '');
 
-    var html = '';
-    var max = Math.min(results.length, 50); // Cap at 50 shown
-    for (var i = 0; i < max; i++) {
-      var r = results[i];
-      html += renderCard(r);
+    // Calculate range
+    var start = isNew ? 0 : visibleCount;
+    var end = Math.min(results.length, (isNew ? 0 : visibleCount) + PAGE_SIZE);
+
+    var html = isNew ? '' : container.innerHTML;
+    // Remove existing show-more button before appending
+    html = html.replace(/<button class="tm-show-more"[^]*?<\/button>/g, '');
+
+    for (var i = start; i < end; i++) {
+      html += renderCard(results[i]);
     }
-    if (results.length > 50) {
-      html += '<div style="text-align:center;padding:1rem;color:var(--stone);font-size:0.82rem;">Mostrando 50 de ' + results.length + ' resultados. Refine os filtros para resultados mais específicos.</div>';
+    visibleCount = end;
+
+    // Show more button
+    var remaining = results.length - visibleCount;
+    if (remaining > 0) {
+      var nextBatch = Math.min(remaining, PAGE_SIZE);
+      html += '<button class="tm-show-more" onclick="showMore()">' +
+        '<i data-lucide="chevrons-down"></i> Mostrar mais <strong>' + nextBatch + '</strong> de ' + remaining + ' restantes</button>';
     }
+
     container.innerHTML = html;
 
     // Re-init Lucide for new elements
     if (typeof lucide !== 'undefined') lucide.createIcons();
+
+    // Scroll to new cards if loading more
+    if (!isNew && start > 0) {
+      var cards = container.querySelectorAll('.tm-card');
+      if (cards[start]) cards[start].scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   }
 
   function renderCard(r) {
@@ -771,6 +878,87 @@
   document.querySelectorAll('.tm-field select').forEach(function(sel) {
     sel.addEventListener('change', function() { runMatcher(); });
   });
+
+  // ── Data loading check ──
+  function checkDataLoaded() {
+    var loadingEl = document.getElementById('tm-loading');
+    var errorEl = document.getElementById('tm-error');
+    var errorMsg = document.getElementById('tm-error-msg');
+    var filtersEl = document.querySelector('.tm-filters');
+    var resultsEl = document.getElementById('tm-results');
+
+    var dbOk = !!(window.THERA_DATA && window.THERA_DATA.studies && window.THERA_DATA.studies.length > 0);
+    var brOk = !!(window.THERA_TRIALS_BR && window.THERA_TRIALS_BR.length > 0);
+
+    if (!dbOk && !brOk) {
+      // Both failed
+      loadingEl.style.display = 'none';
+      errorEl.style.display = '';
+      filtersEl.style.opacity = '0.4';
+      filtersEl.style.pointerEvents = 'none';
+      resultsEl.style.display = 'none';
+      errorMsg.textContent = 'Não foi possível carregar nenhuma das fontes de dados (Database e Ensaios Brasil). Verifique sua conexão e recarregue a página.';
+    } else if (!dbOk) {
+      // Only database failed — show warning but allow BR search
+      loadingEl.style.display = 'none';
+      errorEl.style.display = '';
+      errorEl.style.background = 'rgba(251,191,36,0.06)';
+      errorEl.style.borderColor = 'rgba(251,191,36,0.2)';
+      errorEl.querySelector('h3').style.color = '#FBBF24';
+      errorEl.querySelector('h3').textContent = 'Database parcialmente indisponível';
+      errorMsg.textContent = 'O banco principal (421 estudos) não carregou. Apenas ensaios brasileiros (79 ativos) estão disponíveis.';
+      // Disable database source chip
+      var dbChip = document.querySelector('.tm-source-chip.database');
+      if (dbChip) { dbChip.classList.remove('active'); sources.database = false; dbChip.style.opacity = '0.3'; dbChip.style.pointerEvents = 'none'; }
+      var chk = dbChip && dbChip.querySelector('.tm-check');
+      if (chk) chk.setAttribute('data-lucide', 'square');
+    } else if (!brOk) {
+      // Only BR failed — show warning but allow DB search
+      loadingEl.style.display = 'none';
+      errorEl.style.display = '';
+      errorEl.style.background = 'rgba(251,191,36,0.06)';
+      errorEl.style.borderColor = 'rgba(251,191,36,0.2)';
+      errorEl.querySelector('h3').style.color = '#FBBF24';
+      errorEl.querySelector('h3').textContent = 'Ensaios Brasil indisponíveis';
+      errorMsg.textContent = 'O banco de ensaios brasileiros não carregou. Apenas o Database principal (421 estudos) está disponível.';
+      // Disable brasil source chip
+      var brChip = document.querySelector('.tm-source-chip.brasil');
+      if (brChip) { brChip.classList.remove('active'); sources.brasil = false; brChip.style.opacity = '0.3'; brChip.style.pointerEvents = 'none'; }
+      var chkBr = brChip && brChip.querySelector('.tm-check');
+      if (chkBr) chkBr.setAttribute('data-lucide', 'square');
+    } else {
+      // All good
+      loadingEl.style.display = 'none';
+      errorEl.style.display = 'none';
+    }
+
+    // Update source counts with real numbers
+    if (dbOk) {
+      var dbCount = document.querySelector('.tm-source-chip.database .tm-source-count');
+      if (dbCount) dbCount.textContent = window.THERA_DATA.studies.length;
+    }
+    if (brOk) {
+      var brCount = document.querySelector('.tm-source-chip.brasil .tm-source-count');
+      if (brCount) brCount.textContent = window.THERA_TRIALS_BR.length;
+    }
+
+    if (typeof lucide !== 'undefined') lucide.createIcons();
+  }
+
+  // Show loading initially, check once DOM + scripts ready
+  document.getElementById('tm-loading').style.display = 'flex';
+  document.getElementById('tm-results').style.display = 'none';
+
+  // Wait for data scripts to execute
+  if (document.readyState === 'complete') {
+    checkDataLoaded();
+    document.getElementById('tm-results').style.display = '';
+  } else {
+    window.addEventListener('load', function() {
+      checkDataLoaded();
+      document.getElementById('tm-results').style.display = '';
+    });
+  }
 
 })();
 
