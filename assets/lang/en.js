@@ -20,8 +20,6 @@ window._i18nRegister('en', {
     badge: "Clinical Tool",
     title: "Trial <span class=\"accent\">Matcher</span>",
     subtitle: "Find relevant clinical trials for your patient. Filter by tumor, biomarker, therapy line, and modality — simultaneous search across 421 curated studies and 79 active trials in Brazil.",
-
-    /* Filters */
     fTumor: "Tumor / Neoplasm",
     fTumorAll: "All tumors",
     fBio: "Biomarker / Target",
@@ -50,17 +48,11 @@ window._i18nRegister('en', {
     fPhase1: "Phase 1+",
     fFree: "Free Search",
     fFreeHint: "Any term: drug, NCT, study name...",
-
-    /* Sources */
     sources: "Sources",
     srcDatabase: "Database",
     srcBrasil: "Brazil Trials",
-
-    /* Actions */
     btnSearch: "Search trials",
     btnClear: "Clear filters",
-
-    /* States */
     loading: "Loading database…",
     errorTitle: "Failed to load data",
     errorMsg: "Could not load the study database. Check your connection and try again.",
@@ -74,20 +66,276 @@ window._i18nRegister('en', {
     showMore: "Show more",
     of: "of",
     remaining: "remaining",
-
-    /* Card labels */
     cardDatabase: "Database",
     cardBrasil: "Brazil",
-
-    /* Footer */
     footerLine1: "© 2026 TheraTrials Oncology · Trial Matcher · v1.3",
     footerLine2: "Educational tool. Does not replace formal eligibility assessment.",
-
-    /* Error partial */
     errorPartialDB: "Database partially unavailable",
     errorPartialDBMsg: "The main database (421 studies) failed to load. Only Brazilian trials (79 active) are available.",
     errorPartialBR: "Brazil Trials unavailable",
     errorPartialBRMsg: "Brazilian trials database failed to load. Only the main Database (421 studies) is available."
+  },
+
+  /* ── Home (index.html) ── */
+  home: {
+    heroSub: "Objective analysis and access to clinical trials, relevant and up-to-date information, and the best tools to support real clinical decision-making in oncology.",
+    tagline1: "Best evidence.",
+    tagline2: "Better decisions.",
+    tagline3: "Better outcomes.",
+
+    /* Platform map cards */
+    pmDatabaseName: "Database",
+    pmDatabaseDesc: "Over 420 trials · 39 categories · favorites · citations",
+    pmExplorerName: "TheraTrials Explorer",
+    pmExplorerDesc: "Global radioligand pipeline · ClinicalTrials.gov data · monthly updates",
+    pmEnsaiosBRName: "Active Clinical Trials (BR)",
+    pmEnsaiosBRDesc: "Open recruitment in Brazil · 79 studies · 20 tumor types",
+    pmTumorBoardsName: "Tumor Boards",
+    pmTumorBoardsDesc: "Tumor-centric view · prostate, lung, breast, NET, HCC",
+    pmModalidadesName: "Modalities",
+    pmModalidadesDesc: "Theranostics, targeted, IO, ADC, PARP, chemo, platforms",
+    pmRadiofarmacosName: "Radiopharmaceuticals",
+    pmRadiofarmacosDesc: "Seven complete dossiers · ¹⁷⁷Lu, ²²³Ra, ⁹⁰Y, ¹³¹I-MIBG, ¹³¹I, novel α",
+    pmFerramentasName: "Tools",
+    pmFerramentasDesc: "11 tools · AJCC TNM · CTCAE v6.0 · PSMA · PET/CT · iRECIST · BCLC · calculators",
+    pmFundamentosName: "Fundamentals",
+    pmFundamentosDesc: "How clinical trials work · visual and concise",
+    pmSobreName: "About",
+    pmSobreDesc: "Project, mission, editorial methodology and contact",
+    pmTrialMatcherName: "Trial Matcher",
+    pmTrialMatcherBadge: "New",
+    pmTrialMatcherDesc: "Find trials by tumor, biomarker, therapy line and modality",
+    pmGuidelinesName: "Guidelines",
+    pmGuidelinesDesc: "26 international guidelines · EANM, SNMMI, ATA, IAEA · expanded analysis",
+    pmEventosName: "Scientific Events",
+    pmEventosBadge: "Coming soon",
+    pmEventosDesc: "Conferences, symposia, webinars and submission deadlines",
+    pmNewsletterName: "Newsletter",
+    pmNewsletterBadge: "Coming soon",
+    pmNewsletterDesc: "Periodic curation of updates in theranostics and nuclear medicine",
+
+    /* Database block */
+    dbBadge: "Database",
+    dbTitle: "Over 420 clinical trials · 39 categories",
+    dbDesc: "Search by tumor type, modality or individual study, with weekly updates. Coverage: theranostics (prostate, NET, HCC/mCRC, ccRCC, neuroblastoma/PPGL), lung (NSCLC drivers, IO 1L, perioperative, SCLC), breast (HER2+, HR+/HER2-, TNBC, BRCA-mut, molecular imaging) and uro-oncology (ccRCC IO+TKI, adjuvant and non-clear cell RCC, advanced urothelial and perioperative/NMIBC). Each entry opens a record with over 30 fields.",
+    dbCta: "Open Database",
+    dbFeat1Name: "Hierarchical filters",
+    dbFeat1Desc: "Tumor → modality → study. Sub-levels for radiopharmaceuticals.",
+    dbFeat2Name: "Favorites",
+    dbFeat2Desc: "Saved studies persist across sessions via localStorage.",
+    dbFeat3Name: "Citations",
+    dbFeat3Desc: "Vancouver, AMA, BibTeX and plain text with 1 click.",
+    dbFeat4Name: "Side-by-side comparison",
+    dbFeat4Desc: "Comparison panel for up to 4 studies simultaneously.",
+
+    /* Explorer block */
+    expBadge: "TheraTrials Explorer",
+    expTitle: "Global therapeutic radioligand pipeline",
+    expDesc: "Tracker fed directly from the ClinicalTrials.gov v2 API with automatic monthly updates. Filter by isotope, molecular target, phase, tumor type, sponsor and Brazil presence.",
+    expCta: "Open Explorer",
+    expFeat1Name: "Verified data",
+    expFeat1Desc: "Direct programmatic source from CT.gov. No manually entered data.",
+    expFeat2Name: "Monthly refresh",
+    expFeat2Desc: "GitHub Action updates automatically on the 1st of each month.",
+    expFeat3Name: "9 sidebar filters",
+    expFeat3Desc: "Isotope, class, target, ligand, phase, status, tumor type, sponsor, Brazil.",
+    expFeat4Name: "CSV Export",
+    expFeat4Desc: "Download the filtered table for use in spreadsheets and presentations.",
+
+    /* Ensaios BR block */
+    eaBadge: "Active Clinical Trials (BR)",
+    eaTitle: "Open recruitment",
+    eaDesc: "Oncology clinical trials currently recruiting in Brazil. Belo Horizonte as the initial site — expanding. For physicians, researchers and patients referred by specialists.",
+    eaCta: "Open full list",
+    eaDisclaimer: "Disclaimer:",
+    eaDisclaimerText: "informational section. Final eligibility always depends on evaluation by the responsible study center.",
+    eaRecruiting: "Recruiting",
+    eaFooterCount: "79 active clinical trials · 20 tumor types · Brazil",
+    eaFooterLink: "Filter by tumor type, modality, biomarker",
+
+    /* Radiofármacos block */
+    rfBadge: "Radiopharmaceuticals",
+    rfTitle: "Seven radiopharmaceuticals · seven complete dossiers",
+    rfDesc: "Each radiopharmaceutical includes a timeline, illustrated molecular mechanism, standard therapeutic regimen, pivotal trials, organ dosimetry, toxicity profile and future perspectives.",
+    rfReady: "ready",
+    rfSoon: "coming soon",
+    rfLuPsmaDesc: "Pluvicto. First radioligand for prostate cancer. FDA approval Mar/2022.",
+    rfLuDotaDesc: "Lutathera. Landmark of modern theranostics in neuroendocrine tumors. First broad approval 2018.",
+    rfRa223Desc: "Xofigo. First alpha-emitter approved in oncology (2013). Osteoblastic calcium mimetic.",
+    rfY90Desc: "Hepatic radioembolization. Glass vs resin microspheres. Personalized dosimetry changed OS.",
+    rfMibgDesc: "Norepinephrine analog. Pediatrics, pheochromocytoma, paraganglioma. Mandatory thyroid blockade.",
+    rfI131Desc: "Oldest therapeutic radiopharmaceutical in use. Differentiated thyroid cancer and Graves’ disease. Uptake via NIS.",
+    rfNovosName: "Novel α-emitters",
+    rfNovosRole: "Next generation",
+    rfNovosDesc: "²²⁵Ac-PSMA, ¹⁶¹Tb-PSMA, ²¹²Pb-DOTAMTATE. β vs α comparisons. Auger electrons and high LET.",
+
+    /* Tools block */
+    toolsBadge: "Tools",
+    toolsTitle: "11 tools · staging, toxicity, dose and response",
+    toolsDesc: "Classification systems, response criteria, dose and decay calculators for everyday clinical use. Each card opens a complete modal with tables, examples and references — without leaving the page.",
+    toolsCta: "Open Tools",
+
+    /* CTA final */
+    ctaTitle: "Ready to connect evidence and clinical practice?",
+    ctaDesc: "421 curated clinical trials in 39 categories · global radioligand pipeline via ClinicalTrials.gov · 79 active clinical trials in Brazil · 7 radiopharmaceutical dossiers · 11 clinical tools · AJCC 8th ed., CTCAE v6.0, BCLC 2026 · direct hyperlinks to PubMed and ClinicalTrials.gov.",
+    ctaBtnDatabase: "Access the database",
+    ctaBtnExplorer: "Explorer",
+    ctaBtnTumorBoards: "Tumor Boards",
+
+    /* Authorship */
+    authorLabel: "Concept and production",
+    authorRole: "Nuclear Medicine Physician · CRM-MG 81.686 · RQE 66.917",
+    authorDesc: "Personal and independent project · collaborative editorial curation with oncologists, radiation oncologists and affiliated specialists",
+
+    /* Footer */
+    footerTagline: "Curated clinical evidence",
+    footerAbout: "Platform of evidence in modern oncology — targeted therapies, immunotherapy, biomarkers, molecular imaging and theranostics. Independent editorial curation for educational use.",
+    footerColPlatform: "Platform",
+    footerColLegal: "Legal",
+    footerTerms: "Terms of use",
+    footerPrivacy: "Privacy policy",
+    footerCopyright: "Copyright",
+    footerDisclaimer: "© 2026 TheraTrials Oncology · educational use · does not replace official guidelines or primary literature",
+    footerVersion: "v1.1 · Updated May 2026",
+    footerEnsaiosBR: "Active Clinical Trials (BR)",
+    footerEventos: "Scientific Events"
+  },
+
+  /* ── Database page (database.html) ── */
+  db: {
+    heroEyebrow: "Evidence database · 421 curated studies",
+    heroTitle: "Find, compare, and cite <span class=\"text-amber\">with clarity</span>",
+    heroSubtitle: "Filter by tumor, modality, phase, or therapy line. Click any study to view 31 detailed fields, save as a favorite, add notes, or copy a formatted citation.",
+    searchPlaceholder: "Search study, NCT, radiopharmaceutical, disease...",
+
+    /* Sidebar */
+    sidebarTumor: "Tumor type",
+    sidebarModality: "Therapeutic modality",
+    sidebarStudy: "Study",
+    sidebarPhase: "Phase",
+    sidebarLine: "Therapy line",
+    sidebarStatus: "Status",
+    sidebarPeriod: "Period",
+    sidebarPhase3: "Phase 3",
+    sidebarPhase2: "Phase 2",
+    sidebarPhase1: "Phase 1",
+    sidebarPhaseOther: "Other",
+    sidebarStatusPublished: "Published results",
+    sidebarStatusOngoing: "Ongoing",
+    sidebarReset: "Clear all filters",
+
+    /* Toolbar */
+    studySingular: "study found",
+    studyPlural: "studies found",
+    activeFilters: "· active filters",
+    sortRelevance: "Relevance",
+    sortRecent: "Most recent",
+    sortPhase: "Phase (3 → 1)",
+    sortAlpha: "A-Z",
+    sortCategory: "By category",
+    favoritesBtn: "Favorites",
+    favoritesTooltip: "Show favorites only",
+    exportBtn: "Export",
+    exportTooltip: "Export filtered list (CSV)",
+    compareViewBtn: "Compare",
+    compareCardsBtn: "View cards",
+
+    /* Compare */
+    compareTitle: "Side-by-side comparison",
+    compareClear: "Clear comparison",
+
+    /* Cards */
+    primaryEndpoint: "Primary endpoint",
+    compareBtn: "Compare",
+    favAdd: "Add to favorites",
+    favRemove: "Remove from favorites",
+
+    /* Empty */
+    emptyTitle: "No studies found",
+    emptyMsg: "Adjust your filters or search terms.",
+    emptyClear: "Clear filters",
+
+    /* Drawer */
+    drawerClear: "Clear",
+    drawerCompare: "Compare",
+
+    /* Modal */
+    modalFavorited: "Favorited",
+    modalFavorite: "Add to favorites",
+    modalAdded: "Added",
+    modalCompare: "Compare",
+
+    /* Modal sections */
+    secPopulation: "Population",
+    secMolecular: "Molecular criteria",
+    secMolecularRadio: "Molecular criteria and imaging",
+    secIntervention: "Intervention",
+    secInterventionRadio: "Intervention and radiopharmacy",
+    secStatistics: "Statistical design",
+    secEndpoints: "Endpoints",
+    secToxicity: "Toxicity",
+    secImpact: "Impact and reference",
+    secStudyDetails: "Study details",
+    secCitation: "Citation",
+    secFeedback: "Submit a comment or suggestion",
+
+    /* Modal fields */
+    fieldIndication: "Indication",
+    fieldN: "N (planned / randomized / analyzed)",
+    fieldInclusion: "Inclusion criteria",
+    fieldExclusion: "Exclusion criteria",
+    fieldStratifiers: "Stratification factors",
+    fieldBaseline: "Baseline characteristics",
+    fieldMolecularCriterion: "Molecular criterion",
+    fieldMolecularCriterionPET: "Molecular criterion / PET",
+    fieldBiomarkers: "Biomarkers",
+    fieldRadiopharmaceutical: "Radiopharmaceutical / Intervention",
+    fieldInterventionPlain: "Intervention",
+    fieldRegimen: "Regimen",
+    fieldCumulativeActivity: "Typical cumulative activity",
+    fieldCumulativeDose: "Typical cumulative dose",
+    fieldPreparation: "Preparation and premedication",
+    fieldComparator: "Comparator",
+    fieldHypothesis: "Statistical hypothesis",
+    fieldAnalyses: "Analyses (ITT/PP, adjustments)",
+    fieldPrimaryResult: "Primary (result)",
+    fieldSecondary: "Secondary endpoints",
+    fieldSubgroups: "Subgroups / exploratory analyses",
+    fieldG3Events: "Events ≥Grade 3",
+    fieldSpecificEvents: "Events of special interest",
+    fieldRegulatoryImpact: "Regulatory impact / guidelines",
+    fieldLimitations: "Limitations",
+    fieldMainReference: "Primary reference",
+    fieldDesign: "Study design",
+    fieldCenters: "Sites",
+
+    /* Citation */
+    citePlainText: "Plain text",
+    copyCitation: "Copy citation",
+
+    /* Feedback */
+    feedbackIntro: "Have a comment about this study, new congress data, a suggestion for a related study you’d like to see here, or a correction? Submit below — the content is forwarded by email and the curatorial team responds when applicable.",
+    feedbackName: "Your name",
+    feedbackEmail: "Your email",
+    feedbackMessage: "Comment, suggestion, or correction...",
+    feedbackSend: "Submit",
+
+    /* Modal footer */
+    modalDisclaimer: "Curated · does not replace reading the primary publication",
+
+    /* Toasts */
+    toastCitationCopied: "Citation copied",
+    toastCompareMax: "Maximum of 3 studies for comparison",
+    toastFavRemoved: "Removed from favorites",
+    toastFavAdded: "Added to favorites",
+    toastLinkCopied: "Shareable link copied",
+    toastNothingToExport: "Nothing to export",
+    toastExported: "studies exported",
+    toastCopied: "Copied",
+
+    /* Footer */
+    footerLine1: "© 2026 TheraTrials Oncology · 421 studies analyzed · v1.0",
+    footerLine2: "For educational use. Does not replace official guidelines."
   },
 
   /* ── Noscript ── */

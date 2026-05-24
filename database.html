@@ -437,31 +437,35 @@
     </a>
     <button class="nav-toggle" aria-label="Menu" onclick="this.parentElement.querySelector('.nav').classList.toggle('open')"><i data-lucide="menu" style="width:18px;height:18px"></i></button>
     <nav class="nav">
-      <a href="index.html">Home</a>
-      <a href="database.html">Database</a>
-      <a href="trial-matcher.html">Trial Matcher</a>
-      <a href="ensaios-clinicos.html">Ensaios clínicos</a>
-      <a href="explorer.html">Explorer</a>
-      <a href="tumor-boards.html">Tumor boards</a>
-      <a href="radiofarmacos.html">Radiofármacos</a>
-      <a href="guidelines.html">Guidelines</a>
-      <a href="ferramentas.html">Ferramentas</a>
-      <a href="modalidades.html">Modalidades</a>
-      <a href="fundamentos.html">Fundamentos</a>
-      <a href="about.html">Sobre</a>
+      <a href="index.html" data-i18n="nav.home">Home</a>
+      <a href="database.html" data-i18n="nav.database">Database</a>
+      <a href="trial-matcher.html" data-i18n="nav.trialMatcher">Trial Matcher</a>
+      <a href="ensaios-clinicos.html" data-i18n="nav.ensaios">Ensaios clínicos</a>
+      <a href="explorer.html" data-i18n="nav.explorer">Explorer</a>
+      <a href="tumor-boards.html" data-i18n="nav.tumorBoards">Tumor boards</a>
+      <a href="radiofarmacos.html" data-i18n="nav.radiofarmacos">Radiofármacos</a>
+      <a href="guidelines.html" data-i18n="nav.guidelines">Guidelines</a>
+      <a href="ferramentas.html" data-i18n="nav.ferramentas">Ferramentas</a>
+      <a href="modalidades.html" data-i18n="nav.modalidades">Modalidades</a>
+      <a href="fundamentos.html" data-i18n="nav.fundamentos">Fundamentos</a>
+      <a href="about.html" data-i18n="nav.sobre">Sobre</a>
     </nav>
+    <button class="lang-toggle" onclick="toggleLang()" title="Switch to English" aria-label="Switch language">
+      <i data-lucide="globe" style="width:14px;height:14px"></i>
+      <span class="lang-label">EN</span>
+    </button>
   </div>
 </header>
 
 <!-- HERO -->
 <section class="db-hero">
   <div class="container">
-    <span class="eyebrow">Banco de evidências · 421 estudos analisados</span>
-    <h1>Encontre, compare e cite <span class="text-amber">com clareza</span></h1>
-    <p>Filtre por tumor, modalidade, fase ou linha. Clique em qualquer estudo para ver os 31 campos detalhados, salvar como favorito, anotar ou copiar a citação formatada.</p>
+    <span class="eyebrow" data-i18n="db.heroEyebrow">Banco de evidências · 421 estudos analisados</span>
+    <h1 data-i18n-html="db.heroTitle">Encontre, compare e cite <span class="text-amber">com clareza</span></h1>
+    <p data-i18n="db.heroSubtitle">Filtre por tumor, modalidade, fase ou linha. Clique em qualquer estudo para ver os 31 campos detalhados, salvar como favorito, anotar ou copiar a citação formatada.</p>
     <div class="search-wrap">
       <i data-lucide="search" class="search-icon" style="width:18px;height:18px"></i>
-      <input type="text" class="search-input" x-model="searchQuery" placeholder="Buscar estudo, NCT, radiofármaco, doença..." @keyup.escape="searchQuery=''">
+      <input type="text" class="search-input" x-model="searchQuery" placeholder="Buscar estudo, NCT, radiofármaco, doença..." data-i18n-placeholder="db.searchPlaceholder" @keyup.escape="searchQuery=''">
       <button class="search-clear" x-show="searchQuery" @click="searchQuery=''" x-cloak>
         <i data-lucide="x" style="width:16px;height:16px"></i>
       </button>
@@ -481,7 +485,7 @@
         <div class="filter-section" x-data="{ open: false }">
           <button class="filter-section-header" @click="open = !open">
             <i data-lucide="layers" style="width:14px;height:14px; color: var(--amber)"></i>
-            <span>Tipo tumoral</span>
+            <span data-i18n="db.sidebarTumor">Tipo tumoral</span>
             <span class="filter-section-chevron" :class="{ open }"><i data-lucide="chevron-down" style="width:14px;height:14px"></i></span>
             <span x-show="filterTumors.length" class="filter-section-badge" x-text="filterTumors.length"></span>
           </button>
@@ -502,7 +506,7 @@
         <div class="filter-section" x-data="{ open: false }">
           <button class="filter-section-header" @click="open = !open">
             <i data-lucide="atom" style="width:14px;height:14px; color: var(--teal)"></i>
-            <span>Modalidade terapêutica</span>
+            <span data-i18n="db.sidebarModality">Modalidade terapêutica</span>
             <span class="filter-section-chevron" :class="{ open }"><i data-lucide="chevron-down" style="width:14px;height:14px"></i></span>
             <span x-show="filterModalities.length || filterCategory" class="filter-section-badge" x-text="filterModalities.length + (filterCategory ? 1 : 0)"></span>
           </button>
@@ -537,35 +541,35 @@
         <div class="filter-section" x-data="{ open: false }">
           <button class="filter-section-header" @click="open = !open">
             <i data-lucide="flask-conical" style="width:14px;height:14px; color: var(--stone)"></i>
-            <span>Estudo</span>
+            <span data-i18n="db.sidebarStudy">Estudo</span>
             <span class="filter-section-chevron" :class="{ open }"><i data-lucide="chevron-down" style="width:14px;height:14px"></i></span>
             <span x-show="filterPhases.length || filterLines.length || filterStatus || filterYears.length" class="filter-section-badge" x-text="filterPhases.length + filterLines.length + (filterStatus ? 1 : 0) + filterYears.length"></span>
           </button>
           <div class="filter-section-body" x-show="open" x-collapse>
-            <div class="filter-sub-label">Fase</div>
+            <div class="filter-sub-label" data-i18n="db.sidebarPhase">Fase</div>
             <div class="chip-row">
               <template x-for="p in ['Fase 3', 'Fase 2', 'Fase 1', 'Outras']" :key="p">
                 <button class="chip" :class="{ active: filterPhases.includes(p) }" @click="togglePhase(p)" x-text="p"></button>
               </template>
             </div>
-            <div class="filter-sub-label">Linha de tratamento</div>
+            <div class="filter-sub-label" data-i18n="db.sidebarLine">Linha de tratamento</div>
             <div class="chip-row">
               <template x-for="l in treatmentLines" :key="l.id">
                 <button class="chip" :class="{ active: filterLines.includes(l.id) }" @click="toggleLine(l.id)" x-text="l.name"></button>
               </template>
             </div>
-            <div class="filter-sub-label">Status</div>
+            <div class="filter-sub-label" data-i18n="db.sidebarStatus">Status</div>
             <div class="cat-list">
               <button class="cat-item" :class="{ active: filterStatus === 'pivotal' }" @click="filterStatus = filterStatus === 'pivotal' ? '' : 'pivotal'">
                 <i data-lucide="check-circle-2" style="width:14px;height:14px; color: #6EE7B7"></i>
-                <span>Resultados publicados</span>
+                <span data-i18n="db.sidebarStatusPublished">Resultados publicados</span>
               </button>
               <button class="cat-item" :class="{ active: filterStatus === 'ongoing' }" @click="filterStatus = filterStatus === 'ongoing' ? '' : 'ongoing'">
                 <i data-lucide="loader-circle" style="width:14px;height:14px; color: #FCD34D"></i>
-                <span>Em andamento</span>
+                <span data-i18n="db.sidebarStatusOngoing">Em andamento</span>
               </button>
             </div>
-            <div class="filter-sub-label">Período</div>
+            <div class="filter-sub-label" data-i18n="db.sidebarPeriod">Período</div>
             <div class="chip-row">
               <template x-for="y in ['2024-2026', '2020-2023', '2015-2019', '<2015']" :key="y">
                 <button class="chip" :class="{ active: filterYears.includes(y) }" @click="toggleYear(y)" x-text="y"></button>
@@ -576,7 +580,7 @@
 
         <button class="reset-btn" x-show="hasActiveFilters" @click="resetFilters()" x-cloak>
           <i data-lucide="filter-x" style="width:14px;height:14px"></i>
-          Limpar todos os filtros
+          <span data-i18n="db.sidebarReset">Limpar todos os filtros</span>
         </button>
       </aside>
 
@@ -586,24 +590,24 @@
           <div class="db-count">
             <strong x-text="filteredStudies.length"></strong>
             <span x-text="filteredStudies.length === 1 ? 'estudo encontrado' : 'estudos encontrados'"></span>
-            <span x-show="hasActiveFilters" class="text-amber" x-cloak> · filtros ativos</span>
+            <span x-show="hasActiveFilters" class="text-amber" x-cloak> · <span data-i18n="db.activeFilters">filtros ativos</span></span>
           </div>
           <div style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap">
             <select class="sort-select" x-model="sortBy">
-              <option value="relevance">Relevância</option>
-              <option value="recent">Mais recentes</option>
-              <option value="phase">Fase (3 → 1)</option>
-              <option value="alpha">A-Z</option>
-              <option value="category">Por categoria</option>
+              <option value="relevance" data-i18n="db.sortRelevance">Relevância</option>
+              <option value="recent" data-i18n="db.sortRecent">Mais recentes</option>
+              <option value="phase" data-i18n="db.sortPhase">Fase (3 → 1)</option>
+              <option value="alpha" data-i18n="db.sortAlpha">A-Z</option>
+              <option value="category" data-i18n="db.sortCategory">Por categoria</option>
             </select>
-            <button class="fav-toggle" :class="{ active: showFavoritesOnly }" @click="showFavoritesOnly = !showFavoritesOnly" x-show="favorites.length > 0" x-cloak title="Mostrar apenas favoritos">
+            <button class="fav-toggle" :class="{ active: showFavoritesOnly }" @click="showFavoritesOnly = !showFavoritesOnly" x-show="favorites.length > 0" x-cloak :title="window.t ? t('db.favoritesTooltip','Mostrar apenas favoritos') : 'Mostrar apenas favoritos'">
               <i data-lucide="star" style="width:14px;height:14px"></i>
-              <span>Favoritos</span>
+              <span data-i18n="db.favoritesBtn">Favoritos</span>
               <span class="badge" x-text="favorites.length"></span>
             </button>
-            <button class="export-btn" @click="exportCSV()" title="Exportar lista filtrada (CSV)">
+            <button class="export-btn" @click="exportCSV()" :title="window.t ? t('db.exportTooltip','Exportar lista filtrada (CSV)') : 'Exportar lista filtrada (CSV)'">
               <i data-lucide="download" style="width:14px;height:14px"></i>
-              <span>Exportar</span>
+              <span data-i18n="db.exportBtn">Exportar</span>
             </button>
             <button class="compare-btn-toolbar" @click="showCompareView = !showCompareView" x-show="compareList.length > 0" x-cloak>
               <i data-lucide="git-compare" style="width:14px;height:14px"></i>
@@ -616,9 +620,9 @@
         <!-- Compare view -->
         <div class="compare-view" x-show="showCompareView && compareList.length > 0" x-cloak>
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem">
-            <h3 style="font-size: 1rem; color: var(--off-white)">Comparação lado a lado</h3>
+            <h3 style="font-size: 1rem; color: var(--off-white)" data-i18n="db.compareTitle">Comparação lado a lado</h3>
             <button @click="compareList=[]; showCompareView=false" class="icon-btn" style="color: #F87171">
-              <i data-lucide="x" style="width:14px;height:14px"></i> Limpar comparação
+              <i data-lucide="x" style="width:14px;height:14px"></i> <span data-i18n="db.compareClear">Limpar comparação</span>
             </button>
           </div>
           <table class="compare-table">
@@ -670,7 +674,7 @@
               <div class="card-nct" x-text="s.nct"></div>
               <p class="card-indication line-clamp-2" x-text="s.indicacao"></p>
               <div class="card-primary">
-                <div class="card-primary-label">Desfecho primário</div>
+                <div class="card-primary-label" data-i18n="db.primaryEndpoint">Desfecho primário</div>
                 <p class="card-primary-text line-clamp-3" x-text="TheraTrials.cleanText(s.primario)"></p>
               </div>
               <div class="card-footer">
@@ -681,7 +685,7 @@
                 <div class="card-actions">
                   <button class="icon-btn" :class="{ 'compare-active': isComparing(s) }" @click.stop="toggleCompare(s)">
                     <i data-lucide="git-compare" style="width:11px;height:11px"></i>
-                    <span>Comparar</span>
+                    <span data-i18n="db.compareBtn">Comparar</span>
                   </button>
                 </div>
               </div>
@@ -692,11 +696,11 @@
         <!-- Empty state -->
         <div class="empty-state" x-show="filteredStudies.length === 0" x-cloak>
           <i data-lucide="search-x" style="width:48px;height:48px"></i>
-          <h3>Nenhum estudo encontrado</h3>
-          <p>Ajuste os filtros ou os termos da busca.</p>
+          <h3 data-i18n="db.emptyTitle">Nenhum estudo encontrado</h3>
+          <p data-i18n="db.emptyMsg">Ajuste os filtros ou os termos da busca.</p>
           <button class="btn btn-secondary" style="margin-top: 1.25rem" @click="resetFilters()">
             <i data-lucide="rotate-ccw" style="width:14px;height:14px"></i>
-            Limpar filtros
+            <span data-i18n="db.emptyClear">Limpar filtros</span>
           </button>
         </div>
       </main>
@@ -717,7 +721,7 @@
       </template>
     </div>
     <div style="display: flex; gap: 0.5rem">
-      <button class="btn btn-secondary btn-sm" @click="compareList=[]">Limpar</button>
+      <button class="btn btn-secondary btn-sm" @click="compareList=[]"><span data-i18n="db.drawerClear">Limpar</span></button>
       <button class="btn btn-primary btn-sm" @click="showCompareView = true" :disabled="compareList.length < 2">
         Comparar (<span x-text="compareList.length"></span>)
         <i data-lucide="arrow-right" style="width:14px;height:14px"></i>
@@ -771,14 +775,14 @@
       <div class="modal-body" x-effect="selectedStudy && $nextTick(() => hideEmptyFields())">
 
         <div class="section-block">
-          <div class="section-block-title"><i data-lucide="users" style="width:13px;height:13px"></i> População</div>
+          <div class="section-block-title"><i data-lucide="users" style="width:13px;height:13px"></i> <span data-i18n="db.secPopulation">População</span></div>
           <div class="section-block-grid">
-            <div class="field"><div class="field-label">Indicação</div><div class="field-text" x-text="selectedStudy.indicacao || '—'"></div></div>
-            <div class="field"><div class="field-label">N (planejado / randomizado / analisado)</div><div class="field-text" x-text="selectedStudy.n || '—'"></div></div>
-            <div class="field"><div class="field-label">Inclusão</div><div class="field-text" x-text="selectedStudy.incl || '—'"></div></div>
-            <div class="field"><div class="field-label">Exclusão</div><div class="field-text" x-text="selectedStudy.excl || '—'"></div></div>
-            <div class="field"><div class="field-label">Estratificadores</div><div class="field-text" x-text="selectedStudy.estrat || '—'"></div></div>
-            <div class="field"><div class="field-label">Características basais</div><div class="field-text" x-text="selectedStudy.basal || '—'"></div></div>
+            <div class="field"><div class="field-label" data-i18n="db.fieldIndication">Indicação</div><div class="field-text" x-text="selectedStudy.indicacao || '—'"></div></div>
+            <div class="field"><div class="field-label" data-i18n="db.fieldN">N (planejado / randomizado / analisado)</div><div class="field-text" x-text="selectedStudy.n || '—'"></div></div>
+            <div class="field"><div class="field-label" data-i18n="db.fieldInclusion">Inclusão</div><div class="field-text" x-text="selectedStudy.incl || '—'"></div></div>
+            <div class="field"><div class="field-label" data-i18n="db.fieldExclusion">Exclusão</div><div class="field-text" x-text="selectedStudy.excl || '—'"></div></div>
+            <div class="field"><div class="field-label" data-i18n="db.fieldStratifiers">Estratificadores</div><div class="field-text" x-text="selectedStudy.estrat || '—'"></div></div>
+            <div class="field"><div class="field-label" data-i18n="db.fieldBaseline">Características basais</div><div class="field-text" x-text="selectedStudy.basal || '—'"></div></div>
           </div>
         </div>
 
@@ -786,7 +790,7 @@
           <div class="section-block-title" style="color: var(--teal)"><i data-lucide="dna" style="width:13px;height:13px"></i> <span x-text="(window.TheraTrials && TheraTrials.isRadioStudy(selectedStudy)) ? 'Critérios moleculares e imagem' : 'Critérios moleculares'"></span></div>
           <div class="section-block-grid">
             <div class="field"><div class="field-label" x-text="(window.TheraTrials && TheraTrials.isRadioStudy(selectedStudy)) ? 'Critério molecular / PET' : 'Critério molecular'"></div><div class="field-text" x-text="selectedStudy.molecular || '—'"></div></div>
-            <div class="field"><div class="field-label">Biomarcadores</div><div class="field-text" x-text="selectedStudy.biomarc || '—'"></div></div>
+            <div class="field"><div class="field-label" data-i18n="db.fieldBiomarkers">Biomarcadores</div><div class="field-text" x-text="selectedStudy.biomarc || '—'"></div></div>
           </div>
         </div>
 
@@ -794,84 +798,84 @@
           <div class="section-block-title"><i data-lucide="syringe" style="width:13px;height:13px"></i> <span x-text="(window.TheraTrials && TheraTrials.isRadioStudy(selectedStudy)) ? 'Intervenção e radiofarmácia' : 'Intervenção'"></span></div>
           <div class="section-block-grid">
             <div class="field full highlight"><div class="field-label" x-text="(window.TheraTrials && TheraTrials.isRadioStudy(selectedStudy)) ? 'Radiofármaco / Intervenção' : 'Intervenção'"></div><div class="field-text" style="font-weight: 500" x-text="selectedStudy.radiofarmaco || '—'"></div></div>
-            <div class="field"><div class="field-label">Esquema</div><div class="field-text" x-text="selectedStudy.esquema || '—'"></div></div>
+            <div class="field"><div class="field-label" data-i18n="db.fieldRegimen">Esquema</div><div class="field-text" x-text="selectedStudy.esquema || '—'"></div></div>
             <div class="field"><div class="field-label" x-text="(window.TheraTrials && TheraTrials.isRadioStudy(selectedStudy)) ? 'Atividade cumulativa típica' : 'Dose cumulativa típica'"></div><div class="field-text mono" x-text="selectedStudy.cumul || '—'"></div></div>
-            <div class="field full"><div class="field-label">Preparo e pré-medicação</div><div class="field-text" x-text="selectedStudy.preparo || '—'"></div></div>
-            <div class="field full"><div class="field-label">Comparador</div><div class="field-text" x-text="selectedStudy.comparador || '—'"></div></div>
+            <div class="field full"><div class="field-label" data-i18n="db.fieldPreparation">Preparo e pré-medicação</div><div class="field-text" x-text="selectedStudy.preparo || '—'"></div></div>
+            <div class="field full"><div class="field-label" data-i18n="db.fieldComparator">Comparador</div><div class="field-text" x-text="selectedStudy.comparador || '—'"></div></div>
           </div>
         </div>
 
         <div class="section-block">
-          <div class="section-block-title"><i data-lucide="sigma" style="width:13px;height:13px"></i> Desenho estatístico</div>
+          <div class="section-block-title"><i data-lucide="sigma" style="width:13px;height:13px"></i> <span data-i18n="db.secStatistics">Desenho estatístico</span></div>
           <div class="section-block-grid">
-            <div class="field"><div class="field-label">Hipótese estatística</div><div class="field-text" x-text="selectedStudy.estatistica || '—'"></div></div>
-            <div class="field"><div class="field-label">Análises (ITT/PP, ajustes)</div><div class="field-text" x-text="selectedStudy.analises || '—'"></div></div>
+            <div class="field"><div class="field-label" data-i18n="db.fieldHypothesis">Hipótese estatística</div><div class="field-text" x-text="selectedStudy.estatistica || '—'"></div></div>
+            <div class="field"><div class="field-label" data-i18n="db.fieldAnalyses">Análises (ITT/PP, ajustes)</div><div class="field-text" x-text="selectedStudy.analises || '—'"></div></div>
           </div>
         </div>
 
         <div class="section-block">
-          <div class="section-block-title"><i data-lucide="target" style="width:13px;height:13px"></i> Desfechos</div>
-          <div class="field full highlight" style="margin-bottom: 0.75rem"><div class="field-label">Primário (resultado)</div><div class="field-text" x-text="selectedStudy.primario || '—'"></div></div>
-          <div class="field full" style="margin-bottom: 0.75rem"><div class="field-label">Secundários</div><div class="field-text" x-text="selectedStudy.secundario || '—'"></div></div>
-          <div class="field full"><div class="field-label">Subgrupos / análises exploratórias</div><div class="field-text" x-text="selectedStudy.subgrupo || '—'"></div></div>
+          <div class="section-block-title"><i data-lucide="target" style="width:13px;height:13px"></i> <span data-i18n="db.secEndpoints">Desfechos</span></div>
+          <div class="field full highlight" style="margin-bottom: 0.75rem"><div class="field-label" data-i18n="db.fieldPrimaryResult">Primário (resultado)</div><div class="field-text" x-text="selectedStudy.primario || '—'"></div></div>
+          <div class="field full" style="margin-bottom: 0.75rem"><div class="field-label" data-i18n="db.fieldSecondary">Secundários</div><div class="field-text" x-text="selectedStudy.secundario || '—'"></div></div>
+          <div class="field full"><div class="field-label" data-i18n="db.fieldSubgroups">Subgrupos / análises exploratórias</div><div class="field-text" x-text="selectedStudy.subgrupo || '—'"></div></div>
         </div>
 
         <div class="section-block">
-          <div class="section-block-title" style="color: #F472B6"><i data-lucide="alert-triangle" style="width:13px;height:13px"></i> Toxicidade</div>
+          <div class="section-block-title" style="color: #F472B6"><i data-lucide="alert-triangle" style="width:13px;height:13px"></i> <span data-i18n="db.secToxicity">Toxicidade</span></div>
           <div class="section-block-grid">
-            <div class="field"><div class="field-label">Eventos ≥G3</div><div class="field-text" x-text="selectedStudy.tox_g3 || '—'"></div></div>
-            <div class="field"><div class="field-label">Eventos de interesse específico</div><div class="field-text" x-text="selectedStudy.tox_interesse || '—'"></div></div>
+            <div class="field"><div class="field-label" data-i18n="db.fieldG3Events">Eventos ≥G3</div><div class="field-text" x-text="selectedStudy.tox_g3 || '—'"></div></div>
+            <div class="field"><div class="field-label" data-i18n="db.fieldSpecificEvents">Eventos de interesse específico</div><div class="field-text" x-text="selectedStudy.tox_interesse || '—'"></div></div>
           </div>
         </div>
 
         <div class="section-block">
-          <div class="section-block-title"><i data-lucide="award" style="width:13px;height:13px"></i> Impacto e referência</div>
-          <div class="field full highlight" style="margin-bottom: 0.75rem"><div class="field-label">Impacto regulatório / diretrizes</div><div class="field-text" x-text="selectedStudy.impacto_reg || '—'"></div></div>
-          <div class="field full" style="margin-bottom: 0.75rem"><div class="field-label">Limitações</div><div class="field-text" x-text="selectedStudy.limit || '—'"></div></div>
-          <div class="field full" style="border-color: rgba(255, 132, 0, 0.3)"><div class="field-label">Referência principal</div><div class="field-text mono" x-text="selectedStudy.ref || '—'"></div></div>
+          <div class="section-block-title"><i data-lucide="award" style="width:13px;height:13px"></i> <span data-i18n="db.secImpact">Impacto e referência</span></div>
+          <div class="field full highlight" style="margin-bottom: 0.75rem"><div class="field-label" data-i18n="db.fieldRegulatoryImpact">Impacto regulatório / diretrizes</div><div class="field-text" x-text="selectedStudy.impacto_reg || '—'"></div></div>
+          <div class="field full" style="margin-bottom: 0.75rem"><div class="field-label" data-i18n="db.fieldLimitations">Limitações</div><div class="field-text" x-text="selectedStudy.limit || '—'"></div></div>
+          <div class="field full" style="border-color: rgba(255, 132, 0, 0.3)"><div class="field-label" data-i18n="db.fieldMainReference">Referência principal</div><div class="field-text mono" x-text="selectedStudy.ref || '—'"></div></div>
         </div>
 
         <div class="section-block">
-          <div class="section-block-title" style="color: var(--stone)"><i data-lucide="map-pin" style="width:13px;height:13px"></i> Detalhes do estudo</div>
+          <div class="section-block-title" style="color: var(--stone)"><i data-lucide="map-pin" style="width:13px;height:13px"></i> <span data-i18n="db.secStudyDetails">Detalhes do estudo</span></div>
           <div class="section-block-grid">
-            <div class="field"><div class="field-label">Desenho</div><div class="field-text" x-text="selectedStudy.desenho || '—'"></div></div>
-            <div class="field"><div class="field-label">Centros</div><div class="field-text" x-text="selectedStudy.centros || '—'"></div></div>
+            <div class="field"><div class="field-label" data-i18n="db.fieldDesign">Desenho</div><div class="field-text" x-text="selectedStudy.desenho || '—'"></div></div>
+            <div class="field"><div class="field-label" data-i18n="db.fieldCenters">Centros</div><div class="field-text" x-text="selectedStudy.centros || '—'"></div></div>
           </div>
         </div>
 
         <div class="section-block">
-          <div class="section-block-title" style="color: #6EE7B7"><i data-lucide="quote" style="width:13px;height:13px"></i> Citação</div>
+          <div class="section-block-title" style="color: #6EE7B7"><i data-lucide="quote" style="width:13px;height:13px"></i> <span data-i18n="db.secCitation">Citação</span></div>
           <div class="cite-panel">
             <div class="cite-tabs">
               <button class="cite-tab" :class="{ active: citeFormat === 'vancouver' }" @click="citeFormat='vancouver'">Vancouver</button>
               <button class="cite-tab" :class="{ active: citeFormat === 'ama' }" @click="citeFormat='ama'">AMA</button>
               <button class="cite-tab" :class="{ active: citeFormat === 'abnt' }" @click="citeFormat='abnt'">ABNT</button>
-              <button class="cite-tab" :class="{ active: citeFormat === 'plain' }" @click="citeFormat='plain'">Texto simples</button>
+              <button class="cite-tab" :class="{ active: citeFormat === 'plain' }" @click="citeFormat='plain'" data-i18n="db.citePlainText">Texto simples</button>
             </div>
             <div class="cite-text" x-text="formatCitation(selectedStudy, citeFormat)"></div>
             <div class="cite-actions">
-              <button class="btn btn-secondary btn-sm" @click="copyText(formatCitation(selectedStudy, citeFormat), 'Citação copiada')">
-                <i data-lucide="copy" style="width:14px;height:14px"></i> Copiar citação
+              <button class="btn btn-secondary btn-sm" @click="copyText(formatCitation(selectedStudy, citeFormat), window.t ? t('db.toastCitationCopied','Citação copiada') : 'Citação copiada')">
+                <i data-lucide="copy" style="width:14px;height:14px"></i> <span data-i18n="db.copyCitation">Copiar citação</span>
               </button>
             </div>
           </div>
         </div>
 
         <div class="section-block">
-          <div class="section-block-title" style="color: #93C5FD"><i data-lucide="message-circle" style="width:13px;height:13px"></i> Envie um comentário ou sugestão</div>
+          <div class="section-block-title" style="color: #93C5FD"><i data-lucide="message-circle" style="width:13px;height:13px"></i> <span data-i18n="db.secFeedback">Envie um comentário ou sugestão</span></div>
           <p style="color: var(--stone); font-size: 0.85rem; margin: 0 0 0.85rem; line-height: 1.55">
-            Tem comentário sobre este estudo, dado novo de congresso, sugestão de outro estudo relacionado que gostaria de ver aqui ou correção a fazer? Envie abaixo — o conteúdo é encaminhado por e-mail e a curadoria responde quando aplicável.
+            <span data-i18n="db.feedbackIntro">Tem comentário sobre este estudo, dado novo de congresso, sugestão de outro estudo relacionado que gostaria de ver aqui ou correção a fazer? Envie abaixo — o conteúdo é encaminhado por e-mail e a curadoria responde quando aplicável.</span>
           </p>
           <div class="feedback-form">
             <div class="ff-row">
-              <input type="text" class="ff-input" placeholder="Seu nome" x-model="feedback.name" maxlength="80">
-              <input type="email" class="ff-input" placeholder="Seu e-mail" x-model="feedback.email" maxlength="120">
+              <input type="text" class="ff-input" placeholder="Seu nome" data-i18n-placeholder="db.feedbackName" x-model="feedback.name" maxlength="80">
+              <input type="email" class="ff-input" placeholder="Seu e-mail" data-i18n-placeholder="db.feedbackEmail" x-model="feedback.email" maxlength="120">
             </div>
-            <textarea class="ff-textarea" placeholder="Comentário, sugestão ou correção..." x-model="feedback.message" maxlength="2000" rows="4"></textarea>
+            <textarea class="ff-textarea" placeholder="Comentário, sugestão ou correção..." data-i18n-placeholder="db.feedbackMessage" x-model="feedback.message" maxlength="2000" rows="4"></textarea>
             <div class="ff-actions">
               <span class="ff-counter" x-text="(feedback.message || '').length + ' / 2000'"></span>
               <button class="btn btn-primary btn-sm" @click="submitFeedback()" :disabled="!canSubmitFeedback()">
-                <i data-lucide="send" style="width:14px;height:14px"></i> Enviar
+                <i data-lucide="send" style="width:14px;height:14px"></i> <span data-i18n="db.feedbackSend">Enviar</span>
               </button>
             </div>
           </div>
@@ -881,7 +885,7 @@
 
       <div class="modal-footer">
         <span>UID: <span class="text-mono" x-text="selectedStudy.uid"></span></span>
-        <span>Selecionado · não substitui leitura da publicação primária</span>
+        <span data-i18n="db.modalDisclaimer">Selecionado · não substitui leitura da publicação primária</span>
       </div>
     </div>
   </template>
@@ -895,14 +899,17 @@
 <footer class="site-footer">
   <div class="container">
     <div class="footer-bottom">
-      <span>© 2026 TheraTrials Oncology · 421 estudos analisados · v1.0</span>
-      <span>Para uso educacional. Não substitui diretrizes oficiais.</span>
+      <span data-i18n="db.footerLine1">© 2026 TheraTrials Oncology · 421 estudos analisados · v1.0</span>
+      <span data-i18n="db.footerLine2">Para uso educacional. Não substitui diretrizes oficiais.</span>
     </div>
   </div>
 </footer>
 
 <script src="assets/js/data.js?v=12"></script>
 <script src="assets/js/common.js?v=11"></script>
+<script src="assets/js/i18n.js"></script>
+<script src="assets/lang/pt-br.js"></script>
+<script src="assets/lang/en.js"></script>
 <script>
 function databaseApp() {
   return {
@@ -957,6 +964,7 @@ function databaseApp() {
 
       this.handleHash();
       window.addEventListener('hashchange', () => this.handleHash());
+      window.addEventListener('langchange', () => { this.$nextTick(() => lucide.createIcons()); });
     },
 
     handleHash() {
@@ -1148,14 +1156,14 @@ function databaseApp() {
       const i = this.compareList.findIndex(x => x.uid === s.uid);
       if (i >= 0) this.compareList.splice(i, 1);
       else if (this.compareList.length < 3) this.compareList.push(s);
-      else this.showToast('Maximo de 3 estudos para comparacao');
+      else this.showToast(window.t ? t('db.toastCompareMax','Máximo de 3 estudos para comparação') : 'Máximo de 3 estudos para comparação');
     },
 
     isFavorite(s) { return this.favorites.includes(s.uid); },
     toggleFavorite(s) {
       const i = this.favorites.indexOf(s.uid);
-      if (i >= 0) { this.favorites.splice(i, 1); this.showToast('Removido dos favoritos'); }
-      else { this.favorites.push(s.uid); this.showToast('Adicionado aos favoritos'); }
+      if (i >= 0) { this.favorites.splice(i, 1); this.showToast(window.t ? t('db.toastFavRemoved','Removido dos favoritos') : 'Removido dos favoritos'); }
+      else { this.favorites.push(s.uid); this.showToast(window.t ? t('db.toastFavAdded','Adicionado aos favoritos') : 'Adicionado aos favoritos'); }
     },
     persistFavorites() {
       try { localStorage.setItem('theratrials_favorites', JSON.stringify(this.favorites)); } catch (e) {}
@@ -1264,17 +1272,17 @@ function databaseApp() {
     },
 
     copyText(txt, msg) {
-      navigator.clipboard.writeText(txt).then(() => this.showToast(msg || 'Copiado'));
+      navigator.clipboard.writeText(txt).then(() => this.showToast(msg || (window.t ? t('db.toastCopied','Copiado') : 'Copiado')));
     },
 
     copyShareLink(s) {
       const url = window.location.origin + window.location.pathname + '#' + s.uid;
-      this.copyText(url, 'Link compartilhavel copiado');
+      this.copyText(url, window.t ? t('db.toastLinkCopied','Link compartilhável copiado') : 'Link compartilhável copiado');
     },
 
     exportCSV() {
       const rows = this.filteredStudies;
-      if (!rows.length) { this.showToast('Nada para exportar'); return; }
+      if (!rows.length) { this.showToast(window.t ? t('db.toastNothingToExport','Nada para exportar') : 'Nada para exportar'); return; }
       const fields = ['uid', 'estudo', 'category_short', 'fase', 'nct', 'indicacao', 'radiofarmaco', 'comparador', 'n', 'molecular', 'primario', 'secundario', 'tox_g3', 'impacto_reg', 'ref', 'pubmed_url'];
       const labels = ['UID', 'Estudo', 'Categoria', 'Fase', 'NCT', 'Indicacao', 'Intervencao', 'Comparador', 'N', 'Criterio molecular', 'Desfecho primario', 'Secundarios', 'Tox G3', 'Impacto', 'Referencia', 'PubMed URL'];
       const esc = (v) => '"' + String(v || '').replace(/"/g, '""').replace(/\n/g, ' ') + '"';
@@ -1286,7 +1294,7 @@ function databaseApp() {
       a.download = 'theratrials_' + rows.length + '_estudos_' + new Date().toISOString().slice(0,10) + '.csv';
       document.body.appendChild(a); a.click(); document.body.removeChild(a);
       URL.revokeObjectURL(url);
-      this.showToast(rows.length + ' estudos exportados');
+      this.showToast(rows.length + ' ' + (window.t ? t('db.toastExported','estudos exportados') : 'estudos exportados'));
     },
 
     phaseShort(fase) { return TheraTrials.phaseShort(fase); },
