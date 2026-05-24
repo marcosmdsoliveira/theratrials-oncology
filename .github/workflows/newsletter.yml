@@ -1,0 +1,85 @@
+name: Monthly Newsletter
+
+# Gera e envia a newsletter mensal do TheraTrials Oncology.
+# Roda no dia 2 de cada mês (após o refresh do explorer no dia 1)
+# para incluir os dados mais recentes do pipeline.
+# Também pode ser disparado manualmente (workflow_dispatch).
+
+on:
+  schedule:
+    - cron: '0 12 2 * *'   # dia 2, 12:00 UTC (≈ 09:00 BRT)
+  workflow_dispatch:
+    inputs:
+      send_mode:
+        description: 'Modo de envio: "draft" (default) ou "send" (envio direto)'
+        required: false
+        default: 'draft'
+      edition:
+        description: 'Edição específica (YYYY-MM). Deixe vazio para o mês atual.'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+
+concurrency:
+  group: newsletter
+  cancel-in-progress: false
+
+jobs:
+  generate-and-send:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Generate newsletter content
+        id: generate
+        run: |
+          python scripts/generate_newsletter.py
+          echo "generated=true" >> "$GITHUB_OUTPUT"
+
+      - name: Send via Buttondown
+        if: steps.generate.outputs.generated == 'true'
+        env:
+          BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
+        run: |
+          SEND_FLAG=""
+          if [ "${{ github.event.inputs.send_mode }}" = "send" ] || [ "${{ github.event_name }}" = "schedule" ]; then
+            SEND_FLAG="--send"
+          fi
+          EDITION_FLAG=""
+          if [ -n "${{ github.event.inputs.edition }}" ]; then
+            EDITION_FLAG="--edition ${{ github.event.inputs.edition }}"
+          fi
+          python scripts/send_newsletter.py $SEND_FLAG $EDITION_FLAG
+
+      - name: Commit newsletter archive
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet newsletters/ 2>/dev/null && [ -z "$(git ls-files --others newsletters/)" ]; then
+            echo "Sem mudanças em newsletters/ — nada a commitar."
+          else
+            git add newsletters/
+            DATE=$(date -u +"%Y-%m")
+            git commit -m "newsletter: edição $DATE"
+            git push
+            echo "✓ Newsletter $DATE commitada e publicada"
+          fi
+
+      - name: Summary
+        run: |
+          echo "## Newsletter gerada com sucesso" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "- **Edição:** $(date -u +%Y-%m)" >> "$GITHUB_STEP_SUMMARY"
+          echo "- **Modo:** ${{ github.event.inputs.send_mode || 'send (scheduled)' }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "- **Arquivos:** newsletters/$(date -u +%Y-%m).md, newsletters/$(date -u +%Y-%m).html" >> "$GITHUB_STEP_SUMMARY"

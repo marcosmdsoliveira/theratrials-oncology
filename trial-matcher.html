@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
+<!-- PWA:BEGIN -->
+<meta name="theme-color" content="#FF8400" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0E0F12" media="(prefers-color-scheme: dark)">
+<meta name="color-scheme" content="dark light">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="TheraTrials">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="application-name" content="TheraTrials Oncology">
+<meta name="format-detection" content="telephone=no">
+<meta name="msapplication-TileColor" content="#0E0F12">
+<meta name="msapplication-TileImage" content="assets/img/icons/icon-144.png">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/img/icons/favicon-16.png">
+<link rel="shortcut icon" href="assets/img/icons/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/img/icons/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/img/icons/icon-180.png">
+<!-- PWA:END -->
+<title>Trial Matcher &middot; TheraTrials Oncology</title>
+<meta name="description" content="Trial Matcher — encontre ensaios cl&iacute;nicos relevantes para seu paciente. Filtre por tumor, biomarcador, linha terap&ecirc;utica e modalidade.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/theratrials.css">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+<style>
+/* ══════════════════════════════════════════════════════════
+   Trial Matcher — styles
+   ══════════════════════════════════════════════════════════ */
+
+/* ── Page layout ── */
+.tm-page { padding: 2rem 1.25rem 4rem; max-width: 1100px; margin: 0 auto; }
+
+/* ── Hero ── */
+.tm-hero { text-align: center; margin-bottom: 2.5rem; }
+.tm-hero-badge {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  padding: 0.3rem 0.8rem; border-radius: 999px;
+  background: rgba(14, 165, 183, 0.1); color: #0EA5B7;
+  border: 1px solid rgba(14, 165, 183, 0.2); margin-bottom: 1rem;
+}
+.tm-hero-badge i { width: 12px; height: 12px; }
+.tm-hero h1 {
+  font-family: 'Outfit', sans-serif; font-size: clamp(1.6rem, 4vw, 2.5rem);
+  font-weight: 700; letter-spacing: -0.03em; color: var(--off-white, #F5F6F7); margin: 0 0 0.6rem;
+}
+.tm-hero h1 .accent { color: #FF8400; }
+.tm-hero p { color: var(--stone, #8E949C); font-size: 0.92rem; max-width: 560px; margin: 0 auto; line-height: 1.6; }
+
+/* ── Filter panel ── */
+.tm-filters {
+  background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 16px; padding: 1.5rem; margin-bottom: 2rem;
+}
+.tm-filters-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem;
+}
+.tm-field label {
+  display: block; font-family: 'Outfit', sans-serif; font-size: 0.78rem;
+  font-weight: 600; color: var(--stone, #8E949C); text-transform: uppercase;
+  letter-spacing: 0.04em; margin-bottom: 0.4rem;
+}
+.tm-field select, .tm-field input {
+  width: 100%; padding: 0.65rem 0.9rem; border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.04);
+  color: var(--off-white, #F5F6F7); font-family: 'Inter', sans-serif; font-size: 0.85rem;
+  outline: none; transition: border-color 0.2s; appearance: none;
+  -webkit-appearance: none; cursor: pointer;
+}
+.tm-field select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%238E949C' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 4l4 4 4-4'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 0.75rem center; padding-right: 2rem; }
+.tm-field select:focus, .tm-field input:focus { border-color: #FF8400; box-shadow: 0 0 0 3px rgba(255,132,0,0.08); }
+.tm-field input::placeholder { color: rgba(142,148,156,0.5); }
+
+/* ── Action bar ── */
+.tm-actions {
+  display: flex; align-items: center; gap: 1rem; margin-top: 1.25rem; flex-wrap: wrap;
+}
+.tm-btn-match {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.7rem 1.5rem; border-radius: 10px; border: none;
+  background: linear-gradient(135deg, #FF8400, #E07000); color: #fff;
+  font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 0.9rem;
+  cursor: pointer; transition: all 0.2s;
+}
+.tm-btn-match:hover { background: linear-gradient(135deg, #FFA640, #FF8400); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(255,132,0,0.3); }
+.tm-btn-match i { width: 16px; height: 16px; }
+.tm-btn-clear {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  padding: 0.6rem 1rem; border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.1); background: transparent;
+  color: var(--stone, #8E949C); font-family: 'Inter', sans-serif; font-size: 0.82rem;
+  cursor: pointer; transition: all 0.2s;
+}
+.tm-btn-clear:hover { border-color: rgba(255,255,255,0.2); color: var(--off-white); }
+.tm-btn-clear i { width: 14px; height: 14px; }
+.tm-result-count {
+  margin-left: auto; font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem; color: var(--stone, #8E949C);
+}
+.tm-result-count strong { color: #FF8400; }
+
+/* ── Source toggle ── */
+.tm-sources {
+  display: flex; gap: 0.5rem; margin-top: 1.25rem; flex-wrap: wrap;
+}
+.tm-source-chip {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  padding: 0.4rem 0.8rem; border-radius: 8px; font-size: 0.75rem;
+  font-weight: 500; cursor: pointer; transition: all 0.2s; border: 1px solid;
+  font-family: 'Inter', sans-serif;
+}
+.tm-source-chip.active { opacity: 1; }
+.tm-source-chip:not(.active) { opacity: 0.4; }
+.tm-source-chip.database { border-color: rgba(255,132,0,0.3); background: rgba(255,132,0,0.08); color: #FF8400; }
+.tm-source-chip.brasil { border-color: rgba(14,165,183,0.3); background: rgba(14,165,183,0.08); color: #0EA5B7; }
+.tm-source-chip i { width: 12px; height: 12px; }
+
+/* ── Results ── */
+.tm-results { margin-top: 1.5rem; }
+.tm-empty {
+  text-align: center; padding: 3rem 1rem; color: var(--stone, #8E949C);
+}
+.tm-empty-icon { width: 48px; height: 48px; margin: 0 auto 1rem; opacity: 0.4; color: var(--stone); }
+.tm-empty h3 { font-family: 'Outfit', sans-serif; font-size: 1.1rem; color: var(--off-white); margin: 0 0 0.5rem; }
+.tm-empty p { font-size: 0.85rem; max-width: 400px; margin: 0 auto; }
+
+/* ── Result cards ── */
+.tm-cards { display: grid; gap: 0.75rem; }
+.tm-card {
+  background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px; padding: 1.25rem; transition: all 0.2s; position: relative;
+  overflow: hidden;
+}
+.tm-card:hover { background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.12); }
+.tm-card-source {
+  position: absolute; top: 0; right: 0; padding: 0.3rem 0.7rem;
+  font-size: 0.6rem; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.05em; border-radius: 0 12px 0 8px;
+}
+.tm-card-source.database { background: rgba(255,132,0,0.12); color: #FF8400; }
+.tm-card-source.brasil { background: rgba(14,165,183,0.12); color: #0EA5B7; }
+
+.tm-card-header { display: flex; align-items: flex-start; gap: 0.75rem; margin-bottom: 0.75rem; }
+.tm-card-phase {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; font-weight: 600;
+  padding: 0.2rem 0.5rem; border-radius: 6px; white-space: nowrap;
+  background: rgba(255,255,255,0.06); color: var(--stone);
+  flex-shrink: 0;
+}
+.tm-card-phase.fase3 { background: rgba(34,211,238,0.1); color: #22d3ee; }
+.tm-card-phase.fase2 { background: rgba(168,85,247,0.1); color: #a855f7; }
+.tm-card-phase.fase1 { background: rgba(251,191,36,0.1); color: #fbbf24; }
+
+.tm-card-title {
+  font-family: 'Outfit', sans-serif; font-size: 0.95rem; font-weight: 600;
+  color: var(--off-white, #F5F6F7); line-height: 1.4;
+}
+.tm-card-indication {
+  font-size: 0.82rem; color: var(--stone, #8E949C); line-height: 1.55; margin-bottom: 0.75rem;
+}
+
+.tm-card-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.75rem; }
+.tm-tag {
+  font-size: 0.68rem; padding: 0.2rem 0.5rem; border-radius: 5px;
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+  color: var(--stone); white-space: nowrap;
+}
+.tm-tag.highlight { background: rgba(255,132,0,0.08); border-color: rgba(255,132,0,0.2); color: #FF8400; }
+.tm-tag.bio { background: rgba(14,165,183,0.08); border-color: rgba(14,165,183,0.2); color: #0EA5B7; }
+
+.tm-card-footer { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
+.tm-card-link {
+  display: inline-flex; align-items: center; gap: 0.3rem;
+  font-size: 0.75rem; color: #FF8400; text-decoration: none;
+  font-weight: 500; transition: color 0.2s;
+}
+.tm-card-link:hover { color: #FFA640; text-decoration: underline; }
+.tm-card-link i { width: 12px; height: 12px; }
+.tm-card-status {
+  font-size: 0.68rem; padding: 0.15rem 0.5rem; border-radius: 5px;
+  font-weight: 500;
+}
+.tm-card-status.recrutando { background: rgba(34,197,94,0.1); color: #22c55e; }
+.tm-card-status.publicado { background: rgba(96,165,250,0.1); color: #60a5fa; }
+.tm-card-status.ativo { background: rgba(251,191,36,0.1); color: #fbbf24; }
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+  .tm-filters-grid { grid-template-columns: 1fr; }
+  .tm-actions { flex-direction: column; align-items: stretch; }
+  .tm-result-count { margin-left: 0; text-align: center; }
+}
+</style>
+
+<script defer src="https://cloud.umami.is/script.js" data-website-id="3c576b68-e2b3-4982-82e7-688e5a8adf58"></script>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="brand">
+      <img src="assets/img/logo-app.png" alt="TheraTrials" class="brand-logo">
+      <div class="brand-text">
+        <span class="brand-name">TheraTrials</span>
+        <span class="brand-sub">Oncology</span>
+      </div>
+    </a>
+    <button class="nav-toggle" aria-label="Menu" onclick="this.parentElement.querySelector('.nav').classList.toggle('open')"><i data-lucide="menu" style="width:18px;height:18px"></i></button>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="database.html">Database</a>
+      <a href="explorer.html">TheraTrials Explorer</a>
+      <a href="ensaios-clinicos.html">Ensaios cl&iacute;nicos</a>
+      <a href="tumor-boards.html">Tumor boards</a>
+      <a href="modalidades.html">Modalidades</a>
+      <a href="radiofarmacos.html">Radiof&aacute;rmacos</a>
+      <a href="ferramentas.html">Ferramentas</a>
+      <a href="fundamentos.html">Fundamentos</a>
+      <a href="guidelines.html">Guidelines</a>
+      <a href="about.html">Sobre</a>
+    </nav>
+  </div>
+</header>
+
+<!-- MAIN -->
+<main class="tm-page">
+
+  <!-- Hero -->
+  <section class="tm-hero">
+    <div class="tm-hero-badge"><i data-lucide="sparkles"></i> Ferramenta cl&iacute;nica</div>
+    <h1>Trial <span class="accent">Matcher</span></h1>
+    <p>Encontre ensaios cl&iacute;nicos relevantes para seu paciente.
+       Filtre por tumor, biomarcador, linha terap&ecirc;utica e modalidade
+       &mdash; busca simult&acirc;nea em 421 estudos curados e 79 ensaios ativos no Brasil.</p>
+  </section>
+
+  <!-- Filters -->
+  <section class="tm-filters">
+    <div class="tm-filters-grid">
+      <div class="tm-field">
+        <label>Tumor / Neoplasia</label>
+        <select id="f-tumor">
+          <option value="">Todos os tumores</option>
+        </select>
+      </div>
+      <div class="tm-field">
+        <label>Biomarcador / Alvo</label>
+        <input type="text" id="f-biomarker" placeholder="Ex: PSMA, HER2, KRAS G12C, PD-L1...">
+      </div>
+      <div class="tm-field">
+        <label>Linha terap&ecirc;utica</label>
+        <select id="f-line">
+          <option value="">Qualquer linha</option>
+          <option value="1">1&ordf; linha</option>
+          <option value="2">2&ordf; linha+</option>
+          <option value="periop">Perioperatório / adjuvante</option>
+          <option value="salvage">Resgate / última linha</option>
+        </select>
+      </div>
+      <div class="tm-field">
+        <label>Modalidade</label>
+        <select id="f-modality">
+          <option value="">Qualquer modalidade</option>
+          <option value="radioligante">Radioligante (RLT / PRRT)</option>
+          <option value="imunoterapia">Imunoterapia</option>
+          <option value="terapia-alvo">Terapia-alvo</option>
+          <option value="ADC">ADC (anticorpo-droga conjugado)</option>
+          <option value="quimioterapia">Quimioterapia</option>
+          <option value="hormonioterapia">Hormonioterapia</option>
+          <option value="radioterapia">Radioterapia / SBRT</option>
+          <option value="vacina">Vacina</option>
+          <option value="biespecifico">Biespecífico</option>
+        </select>
+      </div>
+      <div class="tm-field">
+        <label>Fase m&iacute;nima</label>
+        <select id="f-phase">
+          <option value="">Qualquer fase</option>
+          <option value="3">Fase 3</option>
+          <option value="2">Fase 2+</option>
+          <option value="1">Fase 1+</option>
+        </select>
+      </div>
+      <div class="tm-field">
+        <label>Busca livre</label>
+        <input type="text" id="f-free" placeholder="Qualquer termo: droga, NCT, estudo...">
+      </div>
+    </div>
+
+    <!-- Source toggles -->
+    <div class="tm-sources">
+      <span class="tm-source-chip database active" data-source="database" onclick="toggleSource(this)">
+        <i data-lucide="database"></i> Database (421 estudos)
+      </span>
+      <span class="tm-source-chip brasil active" data-source="brasil" onclick="toggleSource(this)">
+        <i data-lucide="map-pin"></i> Ensaios Brasil (79 ativos)
+      </span>
+    </div>
+
+    <!-- Actions -->
+    <div class="tm-actions">
+      <button class="tm-btn-match" onclick="runMatcher()">
+        <i data-lucide="search"></i> Buscar ensaios
+      </button>
+      <button class="tm-btn-clear" onclick="clearFilters()">
+        <i data-lucide="x"></i> Limpar filtros
+      </button>
+      <span class="tm-result-count" id="tm-count"></span>
+    </div>
+  </section>
+
+  <!-- Results -->
+  <section class="tm-results" id="tm-results">
+    <div class="tm-empty" id="tm-empty">
+      <div class="tm-empty-icon"><i data-lucide="stethoscope"></i></div>
+      <h3>Defina o perfil do paciente</h3>
+      <p>Selecione pelo menos um filtro acima e clique em &ldquo;Buscar ensaios&rdquo; para encontrar estudos relevantes.</p>
+    </div>
+    <div class="tm-cards" id="tm-cards"></div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>&copy; 2026 TheraTrials Oncology &middot; Trial Matcher &middot; v1.3</span>
+      <span>Ferramenta educacional. N&atilde;o substitui avalia&ccedil;&atilde;o de elegibilidade formal.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Data sources -->
+<script src="assets/js/data.js"></script>
+<script src="assets/js/trials_br.js"></script>
+<script src="assets/js/common.js"></script>
+
+<script>
+/* ══════════════════════════════════════════════════════════
+   Trial Matcher — Engine
+   ══════════════════════════════════════════════════════════ */
+(function() {
+  'use strict';
+
+  // ── Tumor mapping (category_id → friendly group) ──
+  var TUMOR_MAP = {
+    'lupsma_prostata': 'Próstata', 'ra223_prostata': 'Próstata',
+    'lupsma_ccrcc': 'Rim (ccRCC)', 'novos_psma': 'Próstata',
+    'prostata_contexto': 'Próstata',
+    'nsclc_imuno': 'Pulmão (NSCLC)', 'nsclc_alvo': 'Pulmão (NSCLC)',
+    'nsclc_periop': 'Pulmão (NSCLC)', 'sclc': 'Pulmão (SCLC)',
+    'lung_radio_dev': 'Pulmão',
+    'breast_her2': 'Mama', 'breast_hrpos': 'Mama',
+    'breast_tnbc_brca': 'Mama', 'breast_radio_dev': 'Mama',
+    'rcc_avancado': 'Rim (ccRCC)', 'rcc_adjuvante_naocc': 'Rim',
+    'urotelial_avancado': 'Urotelial', 'urotelial_periop_nmibc': 'Urotelial',
+    'tireoide_avancado': 'Tireoide',
+    'esofago_egj': 'Esôfago / EGJ', 'colorretal': 'Colorretal',
+    'pancreas': 'Pâncreas',
+    'hepatobiliar': 'Hepatobiliar (CHC/Colangiocarcinoma)',
+    'teranostico_emergente': 'Teranóstico (pipeline)',
+    'net_gep': 'NETs (GEP/Brônquicos)', 'ppgl': 'Feocromocitoma/Paraganglioma',
+    'neuroblastoma': 'Neuroblastoma',
+    'hnscc': 'Cabeça e Pescoço', 'melanoma_avancado': 'Melanoma',
+    'melanoma_adjuvante': 'Melanoma',
+    'mieloma': 'Mieloma Múltiplo', 'linfoma_dlbcl': 'Linfoma',
+    'lma': 'Leucemia (LMA)',
+    'ovario': 'Ovário', 'endometrio': 'Endométrio', 'cervix': 'Cérvix',
+    'rt_sbrt_oligo': 'Oligometástase (RT/SBRT)',
+    'rt_prostata_local': 'Próstata (RT)', 'rt_consolidacao': 'Consolidação RT+IO'
+  };
+
+  // trials_br neoplasia → friendly group
+  var BR_TUMOR_MAP = {
+    'prostata': 'Próstata', 'pulmao': 'Pulmão (NSCLC)',
+    'mama': 'Mama', 'melanoma': 'Melanoma',
+    'rim': 'Rim (ccRCC)', 'urotelial': 'Urotelial',
+    'colorretal': 'Colorretal', 'pancreas': 'Pâncreas',
+    'hcc': 'Hepatobiliar (CHC/Colangiocarcinoma)',
+    'vias_biliares': 'Hepatobiliar (CHC/Colangiocarcinoma)',
+    'esofago': 'Esôfago / EGJ', 'gastrico': 'Esôfago / EGJ',
+    'cabeca_pescoco': 'Cabeça e Pescoço',
+    'ovario': 'Ovário', 'endometrio': 'Endométrio', 'cervix': 'Cérvix',
+    'linfoma': 'Linfoma', 'mieloma': 'Mieloma Múltiplo',
+    'pediatrico': 'Neuroblastoma', 'penis': 'Outros'
+  };
+
+  // ── Populate tumor filter ──
+  var tumorSet = new Set();
+  Object.values(TUMOR_MAP).forEach(function(v) { tumorSet.add(v); });
+  Object.values(BR_TUMOR_MAP).forEach(function(v) { tumorSet.add(v); });
+  var tumors = Array.from(tumorSet).sort();
+  var sel = document.getElementById('f-tumor');
+  tumors.forEach(function(t) {
+    var opt = document.createElement('option');
+    opt.value = t; opt.textContent = t;
+    sel.appendChild(opt);
+  });
+
+  // ── Sources state ──
+  var sources = { database: true, brasil: true };
+
+  window.toggleSource = function(el) {
+    var src = el.getAttribute('data-source');
+    sources[src] = !sources[src];
+    el.classList.toggle('active', sources[src]);
+  };
+
+  // ── Clear ──
+  window.clearFilters = function() {
+    document.getElementById('f-tumor').value = '';
+    document.getElementById('f-biomarker').value = '';
+    document.getElementById('f-line').value = '';
+    document.getElementById('f-modality').value = '';
+    document.getElementById('f-phase').value = '';
+    document.getElementById('f-free').value = '';
+    document.getElementById('tm-cards').innerHTML = '';
+    document.getElementById('tm-empty').style.display = '';
+    document.getElementById('tm-count').textContent = '';
+  };
+
+  // ── Matcher ──
+  window.runMatcher = function() {
+    var tumor = document.getElementById('f-tumor').value.toLowerCase();
+    var bio = document.getElementById('f-biomarker').value.trim().toLowerCase();
+    var line = document.getElementById('f-line').value;
+    var modality = document.getElementById('f-modality').value.toLowerCase();
+    var phase = document.getElementById('f-phase').value;
+    var free = document.getElementById('f-free').value.trim().toLowerCase();
+
+    var results = [];
+
+    // ── Search Database (421 studies) ──
+    if (sources.database && window.THERA_DATA && window.THERA_DATA.studies) {
+      window.THERA_DATA.studies.forEach(function(s) {
+        var score = 0;
+        var tumorGroup = (TUMOR_MAP[s.category_id] || '').toLowerCase();
+
+        // Tumor filter
+        if (tumor && tumorGroup.indexOf(tumor) === -1) return;
+        if (tumor) score += 3;
+
+        // Biomarker
+        if (bio) {
+          var haystack = ((s.biomarc || '') + ' ' + (s.molecular || '') + ' ' + (s.radiofarmaco || '')).toLowerCase();
+          if (haystack.indexOf(bio) === -1) return;
+          score += 4;
+        }
+
+        // Therapy line
+        if (line) {
+          var ind = (s.indicacao || '').toLowerCase();
+          var cat = (s.category_id || '').toLowerCase();
+          if (line === '1' && ind.indexOf('1') === -1 && ind.indexOf('primeira') === -1 && ind.indexOf('1l') === -1 && ind.indexOf('frontline') === -1) return;
+          if (line === '2' && ind.indexOf('pós') === -1 && ind.indexOf('2') === -1 && ind.indexOf('segunda') === -1 && ind.indexOf('refrat') === -1 && ind.indexOf('recidiv') === -1) return;
+          if (line === 'periop' && cat.indexOf('periop') === -1 && ind.indexOf('adjuv') === -1 && ind.indexOf('neoadjuv') === -1 && cat.indexOf('adjuvante') === -1) return;
+          if (line === 'salvage' && ind.indexOf('últim') === -1 && ind.indexOf('resgate') === -1 && ind.indexOf('heavily') === -1 && ind.indexOf('último') === -1 && ind.indexOf('pós-') === -1) {
+            // allow mCRPC post-taxane studies as salvage
+            if (ind.indexOf('pós') === -1) return;
+          }
+          score += 2;
+        }
+
+        // Modality
+        if (modality) {
+          var modHay = ((s.radiofarmaco || '') + ' ' + (s.category_name || '') + ' ' + (s.indicacao || '') + ' ' + (s.category_id || '')).toLowerCase();
+          if (modality === 'radioligante') {
+            if (modHay.indexOf('lu') === -1 && modHay.indexOf('psma') === -1 && modHay.indexOf('dotatate') === -1 && modHay.indexOf('radio') === -1 && modHay.indexOf('prrt') === -1 && modHay.indexOf('mibg') === -1 && modHay.indexOf('ra-223') === -1 && modHay.indexOf('ra223') === -1) return;
+          } else if (modality === 'radioterapia') {
+            if (modHay.indexOf('rt') === -1 && modHay.indexOf('sbrt') === -1 && modHay.indexOf('radioterapia') === -1) return;
+          } else {
+            if (modHay.indexOf(modality) === -1) return;
+          }
+          score += 2;
+        }
+
+        // Phase
+        if (phase) {
+          var faseStr = (s.fase || '').toLowerCase();
+          if (phase === '3' && faseStr.indexOf('3') === -1) return;
+          if (phase === '2' && faseStr.indexOf('2') === -1 && faseStr.indexOf('3') === -1) return;
+          score += 1;
+        }
+
+        // Free text
+        if (free) {
+          var blob = JSON.stringify(s).toLowerCase();
+          if (blob.indexOf(free) === -1) return;
+          score += 2;
+        }
+
+        // Must match at least one filter
+        if (!tumor && !bio && !line && !modality && !phase && !free) return;
+
+        results.push({
+          source: 'database',
+          title: s.estudo || s.acron || 'Estudo',
+          indication: s.indicacao || '',
+          phase: s.fase || '',
+          biomarkers: s.biomarc || '',
+          molecular: s.molecular || '',
+          drug: s.radiofarmaco || '',
+          category: s.category_name || '',
+          nct: s.nct || '',
+          nct_url: s.nct_url || (s.nct ? 'https://clinicaltrials.gov/study/' + s.nct : ''),
+          pubmed_url: s.pubmed_url || '',
+          status: s.status || '',
+          score: score
+        });
+      });
+    }
+
+    // ── Search Brazil trials (79 active) ──
+    if (sources.brasil && window.THERA_TRIALS_BR) {
+      window.THERA_TRIALS_BR.forEach(function(t) {
+        var score = 0;
+        var tumorGroup = (BR_TUMOR_MAP[t.neoplasia] || t.neoplasia_label || '').toLowerCase();
+
+        // Tumor
+        if (tumor && tumorGroup.indexOf(tumor) === -1) return;
+        if (tumor) score += 3;
+
+        // Biomarker
+        if (bio) {
+          var bioHay = ((t.biomarcadores || []).join(' ') + ' ' + (t.subtipo || '')).toLowerCase();
+          if (bioHay.indexOf(bio) === -1) return;
+          score += 4;
+        }
+
+        // Line
+        if (line) {
+          var lt = (t.linha_terapeutica || '').toLowerCase();
+          var cen = (t.cenario_clinico || '').toLowerCase();
+          if (line === '1' && lt.indexOf('1') === -1 && lt.indexOf('primeira') === -1) return;
+          if (line === '2' && lt.indexOf('2') === -1 && lt.indexOf('segunda') === -1 && cen.indexOf('pós') === -1 && cen.indexOf('recidiv') === -1) return;
+          if (line === 'periop' && lt.indexOf('periop') === -1 && lt.indexOf('adjuv') === -1 && lt.indexOf('neoadjuv') === -1) return;
+          if (line === 'salvage' && lt.indexOf('últim') === -1 && lt.indexOf('resgate') === -1 && cen.indexOf('refratári') === -1) return;
+          score += 2;
+        }
+
+        // Modality
+        if (modality) {
+          var mods = (t.modalidade || []).join(' ').toLowerCase();
+          var interv = (t.intervencao || '').toLowerCase();
+          if (modality === 'radioligante') {
+            if (mods.indexOf('radio') === -1 && interv.indexOf('lu') === -1 && interv.indexOf('psma') === -1 && interv.indexOf('dotatate') === -1) return;
+          } else if (modality === 'biespecifico') {
+            if (mods.indexOf('bispec') === -1 && interv.indexOf('bispec') === -1) return;
+          } else {
+            if (mods.indexOf(modality) === -1 && interv.indexOf(modality) === -1) return;
+          }
+          score += 2;
+        }
+
+        // Phase
+        if (phase) {
+          var fp = (t.fase || '').toLowerCase();
+          if (phase === '3' && fp.indexOf('iii') === -1 && fp.indexOf('3') === -1) return;
+          if (phase === '2' && fp.indexOf('ii') === -1 && fp.indexOf('2') === -1 && fp.indexOf('iii') === -1 && fp.indexOf('3') === -1) return;
+          score += 1;
+        }
+
+        // Free text
+        if (free) {
+          var blob = JSON.stringify(t).toLowerCase();
+          if (blob.indexOf(free) === -1) return;
+          score += 2;
+        }
+
+        if (!tumor && !bio && !line && !modality && !phase && !free) return;
+
+        results.push({
+          source: 'brasil',
+          title: t.nome || t.titulo || 'Ensaio',
+          indication: t.cenario_clinico || t.subtipo || '',
+          phase: 'Fase ' + (t.fase || '?'),
+          biomarkers: (t.biomarcadores || []).join(', '),
+          molecular: '',
+          drug: t.intervencao || '',
+          category: t.neoplasia_label || '',
+          nct: t.nct || '',
+          nct_url: t.fonte_url || (t.nct ? 'https://clinicaltrials.gov/study/' + t.nct : ''),
+          pubmed_url: '',
+          status: t.status || 'Recrutando',
+          centros_br: t.centros || [],
+          estados: t.estados || [],
+          score: score
+        });
+      });
+    }
+
+    // Sort by score descending
+    results.sort(function(a, b) { return b.score - a.score; });
+
+    // Render
+    renderResults(results);
+
+    // Track
+    if (typeof umami !== 'undefined') {
+      umami.track('trial-matcher-search', { tumor: tumor, bio: bio, results: results.length });
+    }
+  };
+
+  // ── Render results ──
+  function renderResults(results) {
+    var container = document.getElementById('tm-cards');
+    var empty = document.getElementById('tm-empty');
+    var count = document.getElementById('tm-count');
+
+    if (results.length === 0) {
+      container.innerHTML = '';
+      empty.style.display = '';
+      empty.querySelector('h3').textContent = 'Nenhum ensaio encontrado';
+      empty.querySelector('p').textContent = 'Tente ampliar os filtros ou usar termos diferentes.';
+      count.innerHTML = '<strong>0</strong> resultados';
+      return;
+    }
+
+    empty.style.display = 'none';
+    count.innerHTML = '<strong>' + results.length + '</strong> ensaio' + (results.length > 1 ? 's' : '') + ' encontrado' + (results.length > 1 ? 's' : '');
+
+    var html = '';
+    var max = Math.min(results.length, 50); // Cap at 50 shown
+    for (var i = 0; i < max; i++) {
+      var r = results[i];
+      html += renderCard(r);
+    }
+    if (results.length > 50) {
+      html += '<div style="text-align:center;padding:1rem;color:var(--stone);font-size:0.82rem;">Mostrando 50 de ' + results.length + ' resultados. Refine os filtros para resultados mais específicos.</div>';
+    }
+    container.innerHTML = html;
+
+    // Re-init Lucide for new elements
+    if (typeof lucide !== 'undefined') lucide.createIcons();
+  }
+
+  function renderCard(r) {
+    // Phase badge class
+    var phaseClass = '';
+    var pLow = (r.phase || '').toLowerCase();
+    if (pLow.indexOf('3') > -1) phaseClass = ' fase3';
+    else if (pLow.indexOf('2') > -1) phaseClass = ' fase2';
+    else if (pLow.indexOf('1') > -1) phaseClass = ' fase1';
+
+    // Phase short label
+    var phaseLabel = r.phase || '';
+    if (phaseLabel.length > 20) {
+      // Shorten
+      if (pLow.indexOf('3') > -1) phaseLabel = 'Fase 3';
+      else if (pLow.indexOf('2') > -1) phaseLabel = 'Fase 2';
+      else if (pLow.indexOf('1') > -1) phaseLabel = 'Fase 1/2';
+    }
+
+    // Status
+    var statusClass = '';
+    var sLow = (r.status || '').toLowerCase();
+    if (sLow.indexOf('recrut') > -1) statusClass = 'recrutando';
+    else if (sLow.indexOf('public') > -1) statusClass = 'publicado';
+    else if (sLow.indexOf('ativo') > -1 || sLow.indexOf('active') > -1) statusClass = 'ativo';
+
+    // Tags
+    var tags = '';
+    if (r.category) tags += '<span class="tm-tag">' + escHtml(r.category) + '</span>';
+    if (r.biomarkers) {
+      var bios = r.biomarkers.split(/[,;]/).slice(0, 3);
+      bios.forEach(function(b) {
+        b = b.trim();
+        if (b && b.length < 40) tags += '<span class="tm-tag bio">' + escHtml(b) + '</span>';
+      });
+    }
+    if (r.drug && r.drug.length < 60) tags += '<span class="tm-tag highlight">' + escHtml(r.drug.substring(0, 55)) + '</span>';
+
+    // Links
+    var links = '';
+    if (r.nct_url) links += '<a href="' + escHtml(r.nct_url) + '" target="_blank" rel="noopener" class="tm-card-link"><i data-lucide="external-link"></i>' + (r.nct || 'ClinicalTrials.gov') + '</a>';
+    if (r.pubmed_url) links += '<a href="' + escHtml(r.pubmed_url) + '" target="_blank" rel="noopener" class="tm-card-link"><i data-lucide="book-open"></i>PubMed</a>';
+
+    // Brazil centers
+    var centrosHtml = '';
+    if (r.source === 'brasil' && r.centros_br && r.centros_br.length > 0) {
+      centrosHtml = '<div style="font-size:0.72rem;color:#0EA5B7;margin-top:0.5rem;"><i data-lucide="map-pin" style="width:11px;height:11px;display:inline;vertical-align:-2px;margin-right:3px;"></i>' + escHtml(r.centros_br.slice(0, 3).join(' · ')) + '</div>';
+    }
+
+    return '<div class="tm-card">' +
+      '<span class="tm-card-source ' + r.source + '">' + (r.source === 'brasil' ? 'Brasil' : 'Database') + '</span>' +
+      '<div class="tm-card-header">' +
+        '<span class="tm-card-phase' + phaseClass + '">' + escHtml(phaseLabel) + '</span>' +
+        '<span class="tm-card-title">' + escHtml(r.title) + '</span>' +
+      '</div>' +
+      '<div class="tm-card-indication">' + escHtml(r.indication.substring(0, 200)) + '</div>' +
+      '<div class="tm-card-tags">' + tags + '</div>' +
+      '<div class="tm-card-footer">' +
+        (r.status ? '<span class="tm-card-status ' + statusClass + '">' + escHtml(r.status) + '</span>' : '') +
+        links +
+      '</div>' +
+      centrosHtml +
+    '</div>';
+  }
+
+  function escHtml(str) {
+    if (!str) return '';
+    return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  // ── Auto-search on Enter ──
+  document.querySelectorAll('.tm-field input').forEach(function(input) {
+    input.addEventListener('keyup', function(e) {
+      if (e.key === 'Enter') runMatcher();
+    });
+  });
+
+  // ── Auto-search on select change ──
+  document.querySelectorAll('.tm-field select').forEach(function(sel) {
+    sel.addEventListener('change', function() { runMatcher(); });
+  });
+
+})();
+
+// Lucide init
+document.addEventListener('DOMContentLoaded', function() {
+  if (typeof lucide !== 'undefined') lucide.createIcons();
+});
+</script>
+<script src="assets/js/pwa-install.js" defer></script>
+
+</body>
+</html>
