@@ -278,11 +278,25 @@
 .tm-show-more i { width: 14px; height: 14px; }
 .tm-show-more strong { color: var(--off-white, #F5F6F7); font-weight: 600; }
 
+/* ── Language toggle ── */
+.lang-toggle {
+  display: inline-flex; align-items: center; gap: 0.35rem;
+  padding: 0.4rem 0.7rem; border-radius: 8px;
+  border: 1px solid var(--border-soft, rgba(143,148,156,0.18));
+  background: var(--graphite-3, #1B1E25);
+  color: var(--stone, #8E949C); font-family: 'Inter', sans-serif; font-size: 0.75rem;
+  font-weight: 600; cursor: pointer; transition: all 0.2s;
+  margin-left: 0.5rem;
+}
+.lang-toggle:hover { border-color: var(--amber, #FF8400); color: var(--amber, #FF8400); }
+.lang-toggle .lang-label { font-size: 0.72rem; letter-spacing: 0.03em; }
+
 /* ── Responsive ── */
 @media (max-width: 600px) {
   .tm-filters-grid { grid-template-columns: 1fr; }
   .tm-actions { flex-direction: column; align-items: stretch; }
   .tm-result-count { margin-left: 0; text-align: center; }
+  .lang-toggle { margin-left: 0; margin-top: 0.5rem; }
 }
 </style>
 
@@ -324,18 +338,22 @@
     </a>
     <button class="nav-toggle" aria-label="Menu" onclick="this.parentElement.querySelector('.nav').classList.toggle('open')"><i data-lucide="menu" style="width:18px;height:18px"></i></button>
     <nav class="nav">
-      <a href="index.html">Home</a>
-      <a href="database.html">Database</a>
-      <a href="trial-matcher.html">Trial Matcher</a>
-      <a href="ensaios-clinicos.html">Ensaios cl&iacute;nicos</a>
-      <a href="explorer.html">Explorer</a>
-      <a href="tumor-boards.html">Tumor boards</a>
-      <a href="radiofarmacos.html">Radiof&aacute;rmacos</a>
-      <a href="guidelines.html">Guidelines</a>
-      <a href="ferramentas.html">Ferramentas</a>
-      <a href="modalidades.html">Modalidades</a>
-      <a href="fundamentos.html">Fundamentos</a>
-      <a href="about.html">Sobre</a>
+      <a href="index.html" data-i18n="nav.home">Home</a>
+      <a href="database.html" data-i18n="nav.database">Database</a>
+      <a href="trial-matcher.html" data-i18n="nav.trialMatcher">Trial Matcher</a>
+      <a href="ensaios-clinicos.html" data-i18n="nav.ensaios">Ensaios cl&iacute;nicos</a>
+      <a href="explorer.html" data-i18n="nav.explorer">Explorer</a>
+      <a href="tumor-boards.html" data-i18n="nav.tumorBoards">Tumor boards</a>
+      <a href="radiofarmacos.html" data-i18n="nav.radiofarmacos">Radiof&aacute;rmacos</a>
+      <a href="guidelines.html" data-i18n="nav.guidelines">Guidelines</a>
+      <a href="ferramentas.html" data-i18n="nav.ferramentas">Ferramentas</a>
+      <a href="modalidades.html" data-i18n="nav.modalidades">Modalidades</a>
+      <a href="fundamentos.html" data-i18n="nav.fundamentos">Fundamentos</a>
+      <a href="about.html" data-i18n="nav.sobre">Sobre</a>
+      <button class="lang-toggle" onclick="toggleLang()" title="Switch to English" aria-label="Change language">
+        <i data-lucide="globe" style="width:14px;height:14px"></i>
+        <span class="lang-label">EN</span>
+      </button>
     </nav>
   </div>
 </header>
@@ -345,9 +363,9 @@
 
   <!-- Hero -->
   <section class="tm-hero">
-    <div class="tm-hero-badge"><i data-lucide="sparkles"></i> Ferramenta cl&iacute;nica</div>
-    <h1>Trial <span class="accent">Matcher</span></h1>
-    <p>Encontre ensaios cl&iacute;nicos relevantes para seu paciente.
+    <div class="tm-hero-badge"><i data-lucide="sparkles"></i> <span data-i18n="tm.badge">Ferramenta cl&iacute;nica</span></div>
+    <h1 data-i18n-html="tm.title">Trial <span class="accent">Matcher</span></h1>
+    <p data-i18n="tm.subtitle">Encontre ensaios cl&iacute;nicos relevantes para seu paciente.
        Filtre por tumor, biomarcador, linha terap&ecirc;utica e modalidade
        &mdash; busca simult&acirc;nea em 421 estudos curados e 79 ensaios ativos no Brasil.</p>
   </section>
@@ -356,75 +374,75 @@
   <section class="tm-filters">
     <div class="tm-filters-grid">
       <div class="tm-field">
-        <label>Tumor / Neoplasia</label>
+        <label data-i18n="tm.fTumor">Tumor / Neoplasia</label>
         <select id="f-tumor">
-          <option value="">Todos os tumores</option>
+          <option value="" data-i18n="tm.fTumorAll">Todos os tumores</option>
         </select>
       </div>
       <div class="tm-field">
-        <label>Biomarcador / Alvo</label>
-        <input type="text" id="f-biomarker" placeholder="Ex: PSMA, HER2, KRAS G12C, PD-L1...">
+        <label data-i18n="tm.fBio">Biomarcador / Alvo</label>
+        <input type="text" id="f-biomarker" placeholder="Ex: PSMA, HER2, KRAS G12C, PD-L1..." data-i18n-placeholder="tm.fBioHint">
       </div>
       <div class="tm-field">
-        <label>Linha terap&ecirc;utica</label>
+        <label data-i18n="tm.fLine">Linha terap&ecirc;utica</label>
         <select id="f-line">
-          <option value="">Qualquer linha</option>
-          <option value="1">1&ordf; linha</option>
-          <option value="2">2&ordf; linha+</option>
-          <option value="periop">Perioperatório / adjuvante</option>
-          <option value="salvage">Resgate / última linha</option>
+          <option value="" data-i18n="tm.fLineAll">Qualquer linha</option>
+          <option value="1" data-i18n="tm.fLine1">1&ordf; linha</option>
+          <option value="2" data-i18n="tm.fLine2">2&ordf; linha+</option>
+          <option value="periop" data-i18n="tm.fLinePeriop">Perioperatório / adjuvante</option>
+          <option value="salvage" data-i18n="tm.fLineSalvage">Resgate / última linha</option>
         </select>
       </div>
       <div class="tm-field">
-        <label>Modalidade</label>
+        <label data-i18n="tm.fMod">Modalidade</label>
         <select id="f-modality">
-          <option value="">Qualquer modalidade</option>
-          <option value="radioligante">Radioligante (RLT / PRRT)</option>
-          <option value="imunoterapia">Imunoterapia</option>
-          <option value="terapia-alvo">Terapia-alvo</option>
-          <option value="ADC">ADC (anticorpo-droga conjugado)</option>
-          <option value="quimioterapia">Quimioterapia</option>
-          <option value="hormonioterapia">Hormonioterapia</option>
-          <option value="radioterapia">Radioterapia / SBRT</option>
-          <option value="vacina">Vacina</option>
-          <option value="biespecifico">Biespecífico</option>
+          <option value="" data-i18n="tm.fModAll">Qualquer modalidade</option>
+          <option value="radioligante" data-i18n="tm.fModRLT">Radioligante (RLT / PRRT)</option>
+          <option value="imunoterapia" data-i18n="tm.fModIO">Imunoterapia</option>
+          <option value="terapia-alvo" data-i18n="tm.fModTarget">Terapia-alvo</option>
+          <option value="ADC" data-i18n="tm.fModADC">ADC (anticorpo-droga conjugado)</option>
+          <option value="quimioterapia" data-i18n="tm.fModChemo">Quimioterapia</option>
+          <option value="hormonioterapia" data-i18n="tm.fModHormone">Hormonioterapia</option>
+          <option value="radioterapia" data-i18n="tm.fModRT">Radioterapia / SBRT</option>
+          <option value="vacina" data-i18n="tm.fModVaccine">Vacina</option>
+          <option value="biespecifico" data-i18n="tm.fModBispec">Biespecífico</option>
         </select>
       </div>
       <div class="tm-field">
-        <label>Fase m&iacute;nima</label>
+        <label data-i18n="tm.fPhase">Fase m&iacute;nima</label>
         <select id="f-phase">
-          <option value="">Qualquer fase</option>
-          <option value="3">Fase 3</option>
-          <option value="2">Fase 2+</option>
-          <option value="1">Fase 1+</option>
+          <option value="" data-i18n="tm.fPhaseAll">Qualquer fase</option>
+          <option value="3" data-i18n="tm.fPhase3">Fase 3</option>
+          <option value="2" data-i18n="tm.fPhase2">Fase 2+</option>
+          <option value="1" data-i18n="tm.fPhase1">Fase 1+</option>
         </select>
       </div>
       <div class="tm-field">
-        <label>Busca livre</label>
-        <input type="text" id="f-free" placeholder="Qualquer termo: droga, NCT, estudo...">
+        <label data-i18n="tm.fFree">Busca livre</label>
+        <input type="text" id="f-free" placeholder="Qualquer termo: droga, NCT, estudo..." data-i18n-placeholder="tm.fFreeHint">
       </div>
     </div>
 
     <!-- Source toggles -->
     <div class="tm-sources">
-      <div class="tm-sources-label"><i data-lucide="layers"></i> Fontes</div>
+      <div class="tm-sources-label"><i data-lucide="layers"></i> <span data-i18n="tm.sources">Fontes</span></div>
       <span class="tm-source-chip database active" data-source="database" onclick="toggleSource(this)">
         <i data-lucide="check-square" class="tm-check"></i>
-        <i data-lucide="database"></i> Database <span class="tm-source-count">421</span>
+        <i data-lucide="database"></i> <span data-i18n="tm.srcDatabase">Database</span> <span class="tm-source-count">421</span>
       </span>
       <span class="tm-source-chip brasil active" data-source="brasil" onclick="toggleSource(this)">
         <i data-lucide="check-square" class="tm-check"></i>
-        <i data-lucide="map-pin"></i> Ensaios Brasil <span class="tm-source-count">79</span>
+        <i data-lucide="map-pin"></i> <span data-i18n="tm.srcBrasil">Ensaios Brasil</span> <span class="tm-source-count">79</span>
       </span>
     </div>
 
     <!-- Actions -->
     <div class="tm-actions">
       <button class="tm-btn-match" onclick="runMatcher()">
-        <i data-lucide="search"></i> Buscar ensaios
+        <i data-lucide="search"></i> <span data-i18n="tm.btnSearch">Buscar ensaios</span>
       </button>
       <button class="tm-btn-clear" onclick="clearFilters()">
-        <i data-lucide="x"></i> Limpar filtros
+        <i data-lucide="x"></i> <span data-i18n="tm.btnClear">Limpar filtros</span>
       </button>
       <span class="tm-result-count" id="tm-count"></span>
     </div>
@@ -433,23 +451,23 @@
   <!-- Loading state -->
   <div class="tm-loading" id="tm-loading" style="display:none;">
     <div class="tm-spinner"></div>
-    <p>Carregando banco de dados&hellip;</p>
+    <p data-i18n="tm.loading">Carregando banco de dados&hellip;</p>
   </div>
 
   <!-- Error state -->
   <div class="tm-error" id="tm-error" style="display:none;">
     <div class="tm-error-icon"><i data-lucide="alert-triangle"></i></div>
-    <h3>Erro ao carregar dados</h3>
-    <p id="tm-error-msg">N&atilde;o foi poss&iacute;vel carregar o banco de estudos. Verifique sua conex&atilde;o e tente novamente.</p>
-    <button class="tm-error-retry" onclick="location.reload()"><i data-lucide="refresh-cw"></i> Recarregar</button>
+    <h3 data-i18n="tm.errorTitle">Erro ao carregar dados</h3>
+    <p id="tm-error-msg" data-i18n="tm.errorMsg">N&atilde;o foi poss&iacute;vel carregar o banco de estudos. Verifique sua conex&atilde;o e tente novamente.</p>
+    <button class="tm-error-retry" onclick="location.reload()"><i data-lucide="refresh-cw"></i> <span data-i18n="tm.errorRetry">Recarregar</span></button>
   </div>
 
   <!-- Results -->
   <section class="tm-results" id="tm-results">
     <div class="tm-empty" id="tm-empty">
       <div class="tm-empty-icon"><i data-lucide="stethoscope"></i></div>
-      <h3>Defina o perfil do paciente</h3>
-      <p>Selecione pelo menos um filtro acima e clique em &ldquo;Buscar ensaios&rdquo; para encontrar estudos relevantes.</p>
+      <h3 data-i18n="tm.emptyTitle">Defina o perfil do paciente</h3>
+      <p data-i18n="tm.emptyMsg">Selecione pelo menos um filtro acima e clique em &ldquo;Buscar ensaios&rdquo; para encontrar estudos relevantes.</p>
     </div>
     <div class="tm-cards" id="tm-cards"></div>
   </section>
@@ -460,8 +478,8 @@
 <footer class="site-footer">
   <div class="container">
     <div class="footer-bottom">
-      <span>&copy; 2026 TheraTrials Oncology &middot; Trial Matcher &middot; v1.3</span>
-      <span>Ferramenta educacional. N&atilde;o substitui avalia&ccedil;&atilde;o de elegibilidade formal.</span>
+      <span data-i18n="tm.footerLine1">&copy; 2026 TheraTrials Oncology &middot; Trial Matcher &middot; v1.3</span>
+      <span data-i18n="tm.footerLine2">Ferramenta educacional. N&atilde;o substitui avalia&ccedil;&atilde;o de elegibilidade formal.</span>
     </div>
   </div>
 </footer>
@@ -470,6 +488,10 @@
 <script src="assets/js/data.js?v=12"></script>
 <script src="assets/js/trials_br.js"></script>
 <script src="assets/js/common.js"></script>
+<!-- i18n engine + lang files -->
+<script src="assets/js/i18n.js"></script>
+<script src="assets/lang/pt-br.js"></script>
+<script src="assets/lang/en.js"></script>
 
 <script>
 /* ══════════════════════════════════════════════════════════
@@ -477,6 +499,9 @@
    ══════════════════════════════════════════════════════════ */
 (function() {
   'use strict';
+
+  // i18n helper (safe fallback if i18n.js not loaded)
+  var t = window.t || function(key, fb) { return fb || key; };
 
   // ── Tumor mapping (category_id → friendly group) ──
   var TUMOR_MAP = {
@@ -764,14 +789,15 @@
     if (results.length === 0) {
       container.innerHTML = '';
       empty.style.display = '';
-      empty.querySelector('h3').textContent = 'Nenhum ensaio encontrado';
-      empty.querySelector('p').textContent = 'Tente ampliar os filtros ou usar termos diferentes.';
-      count.innerHTML = '<strong>0</strong> resultados';
+      empty.querySelector('h3').textContent = t('tm.noResults', 'Nenhum ensaio encontrado');
+      empty.querySelector('p').textContent = t('tm.noResultsMsg', 'Tente ampliar os filtros ou usar termos diferentes.');
+      count.innerHTML = '<strong>0</strong> ' + t('tm.resultsPlural', 'ensaios encontrados');
       return;
     }
 
     empty.style.display = 'none';
-    count.innerHTML = '<strong>' + results.length + '</strong> ensaio' + (results.length > 1 ? 's' : '') + ' encontrado' + (results.length > 1 ? 's' : '');
+    var countLabel = results.length === 1 ? t('tm.resultsSingular', 'ensaio encontrado') : t('tm.resultsPlural', 'ensaios encontrados');
+    count.innerHTML = '<strong>' + results.length + '</strong> ' + countLabel;
 
     // Calculate range
     var start = isNew ? 0 : visibleCount;
@@ -791,7 +817,7 @@
     if (remaining > 0) {
       var nextBatch = Math.min(remaining, PAGE_SIZE);
       html += '<button class="tm-show-more" onclick="showMore()">' +
-        '<i data-lucide="chevrons-down"></i> Mostrar mais <strong>' + nextBatch + '</strong> de ' + remaining + ' restantes</button>';
+        '<i data-lucide="chevrons-down"></i> ' + t('tm.showMore', 'Mostrar mais') + ' <strong>' + nextBatch + '</strong> ' + t('tm.of', 'de') + ' ' + remaining + ' ' + t('tm.remaining', 'restantes') + '</button>';
     }
 
     container.innerHTML = html;
@@ -854,7 +880,7 @@
     }
 
     return '<div class="tm-card">' +
-      '<span class="tm-card-source ' + r.source + '">' + (r.source === 'brasil' ? 'Brasil' : 'Database') + '</span>' +
+      '<span class="tm-card-source ' + r.source + '">' + (r.source === 'brasil' ? t('tm.cardBrasil', 'Brasil') : t('tm.cardDatabase', 'Database')) + '</span>' +
       '<div class="tm-card-header">' +
         '<span class="tm-card-phase' + phaseClass + '">' + escHtml(phaseLabel) + '</span>' +
         '<span class="tm-card-title">' + escHtml(r.title) + '</span>' +
@@ -904,7 +930,8 @@
       filtersEl.style.opacity = '0.4';
       filtersEl.style.pointerEvents = 'none';
       resultsEl.style.display = 'none';
-      errorMsg.textContent = 'Não foi possível carregar nenhuma das fontes de dados (Database e Ensaios Brasil). Verifique sua conexão e recarregue a página.';
+      errorEl.querySelector('h3').textContent = t('tm.errorTitle', 'Erro ao carregar dados');
+      errorMsg.textContent = t('tm.errorMsg', 'Não foi possível carregar o banco de estudos. Verifique sua conexão e tente novamente.');
     } else if (!dbOk) {
       // Only database failed — show warning but allow BR search
       loadingEl.style.display = 'none';
@@ -912,8 +939,8 @@
       errorEl.style.background = 'rgba(251,191,36,0.06)';
       errorEl.style.borderColor = 'rgba(251,191,36,0.2)';
       errorEl.querySelector('h3').style.color = '#FBBF24';
-      errorEl.querySelector('h3').textContent = 'Database parcialmente indisponível';
-      errorMsg.textContent = 'O banco principal (421 estudos) não carregou. Apenas ensaios brasileiros (79 ativos) estão disponíveis.';
+      errorEl.querySelector('h3').textContent = t('tm.errorPartialDB', 'Database parcialmente indisponível');
+      errorMsg.textContent = t('tm.errorPartialDBMsg', 'O banco principal (421 estudos) não carregou. Apenas ensaios brasileiros (79 ativos) estão disponíveis.');
       // Disable database source chip
       var dbChip = document.querySelector('.tm-source-chip.database');
       if (dbChip) { dbChip.classList.remove('active'); sources.database = false; dbChip.style.opacity = '0.3'; dbChip.style.pointerEvents = 'none'; }
@@ -926,8 +953,8 @@
       errorEl.style.background = 'rgba(251,191,36,0.06)';
       errorEl.style.borderColor = 'rgba(251,191,36,0.2)';
       errorEl.querySelector('h3').style.color = '#FBBF24';
-      errorEl.querySelector('h3').textContent = 'Ensaios Brasil indisponíveis';
-      errorMsg.textContent = 'O banco de ensaios brasileiros não carregou. Apenas o Database principal (421 estudos) está disponível.';
+      errorEl.querySelector('h3').textContent = t('tm.errorPartialBR', 'Ensaios Brasil indisponíveis');
+      errorMsg.textContent = t('tm.errorPartialBRMsg', 'O banco de ensaios brasileiros não carregou. Apenas o Database principal (421 estudos) está disponível.');
       // Disable brasil source chip
       var brChip = document.querySelector('.tm-source-chip.brasil');
       if (brChip) { brChip.classList.remove('active'); sources.brasil = false; brChip.style.opacity = '0.3'; brChip.style.pointerEvents = 'none'; }
@@ -966,6 +993,20 @@
       document.getElementById('tm-results').style.display = '';
     });
   }
+
+  // ── Re-render dynamic strings on language change ──
+  window.addEventListener('langchange', function() {
+    if (allResults.length > 0) {
+      renderResults(allResults, true);
+    } else {
+      // Reset empty state text
+      var empty = document.getElementById('tm-empty');
+      if (empty && empty.style.display !== 'none') {
+        empty.querySelector('h3').textContent = t('tm.emptyTitle', 'Defina o perfil do paciente');
+        empty.querySelector('p').textContent = t('tm.emptyMsg', 'Selecione pelo menos um filtro acima e clique em "Buscar ensaios" para encontrar estudos relevantes.');
+      }
+    }
+  });
 
 })();
 
