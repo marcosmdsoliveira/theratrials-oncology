@@ -24,6 +24,15 @@
 <!-- PWA:END -->
 <title>Trial Matcher &middot; TheraTrials Oncology</title>
 <meta name="description" content="Trial Matcher — encontre ensaios cl&iacute;nicos relevantes para seu paciente. Filtre por tumor, biomarcador, linha terap&ecirc;utica e modalidade.">
+<meta property="og:title" content="Trial Matcher · TheraTrials Oncology">
+<meta property="og:description" content="Encontre ensaios clínicos relevantes para seu paciente. Filtre por tumor, biomarcador, linha terapêutica e modalidade.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://theratrials.com/trial-matcher.html">
+<meta property="og:image" content="https://theratrials.com/assets/img/og-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Trial Matcher · TheraTrials Oncology">
+<meta name="twitter:description" content="Encontre ensaios clínicos relevantes para seu paciente. Filtre por tumor, biomarcador, linha terapêutica e modalidade.">
+<meta name="twitter:image" content="https://theratrials.com/assets/img/og-cover.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -58,7 +67,7 @@
 
 /* ── Filter panel ── */
 .tm-filters {
-  background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06);
+  background: var(--graphite-2, #14161B); border: 1px solid var(--border-soft, rgba(143,148,156,0.18));
   border-radius: 16px; padding: 1.5rem; margin-bottom: 2rem;
 }
 .tm-filters-grid {
@@ -66,19 +75,22 @@
 }
 .tm-field label {
   display: block; font-family: 'Outfit', sans-serif; font-size: 0.78rem;
-  font-weight: 600; color: var(--stone, #8E949C); text-transform: uppercase;
+  font-weight: 600; color: var(--amber, #FF8400); text-transform: uppercase;
   letter-spacing: 0.04em; margin-bottom: 0.4rem;
 }
 .tm-field select, .tm-field input {
   width: 100%; padding: 0.65rem 0.9rem; border-radius: 10px;
-  border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border-mid, rgba(143,148,156,0.35));
+  background: var(--graphite-3, #1B1E25);
   color: var(--off-white, #F5F6F7); font-family: 'Inter', sans-serif; font-size: 0.85rem;
-  outline: none; transition: border-color 0.2s; appearance: none;
+  outline: none; transition: border-color 0.2s, box-shadow 0.2s; appearance: none;
   -webkit-appearance: none; cursor: pointer;
 }
-.tm-field select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%238E949C' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 4l4 4 4-4'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 0.75rem center; padding-right: 2rem; }
-.tm-field select:focus, .tm-field input:focus { border-color: #FF8400; box-shadow: 0 0 0 3px rgba(255,132,0,0.08); }
-.tm-field input::placeholder { color: rgba(142,148,156,0.5); }
+.tm-field select option { background: var(--graphite-2, #14161B); color: var(--off-white, #F5F6F7); }
+.tm-field select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23FF8400' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 4l4 4 4-4'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 0.75rem center; padding-right: 2rem; }
+.tm-field select:focus, .tm-field input:focus { border-color: var(--amber, #FF8400); box-shadow: 0 0 0 3px rgba(255,132,0,0.15); }
+.tm-field select:hover, .tm-field input:hover { border-color: var(--stone, #8E949C); }
+.tm-field input::placeholder { color: var(--stone-2, #5C616A); }
 
 /* ── Action bar ── */
 .tm-actions {
@@ -96,11 +108,11 @@
 .tm-btn-clear {
   display: inline-flex; align-items: center; gap: 0.4rem;
   padding: 0.6rem 1rem; border-radius: 8px;
-  border: 1px solid rgba(255,255,255,0.1); background: transparent;
+  border: 1px solid var(--border-soft, rgba(143,148,156,0.18)); background: var(--graphite-3, #1B1E25);
   color: var(--stone, #8E949C); font-family: 'Inter', sans-serif; font-size: 0.82rem;
   cursor: pointer; transition: all 0.2s;
 }
-.tm-btn-clear:hover { border-color: rgba(255,255,255,0.2); color: var(--off-white); }
+.tm-btn-clear:hover { border-color: var(--border-mid, rgba(143,148,156,0.35)); color: var(--off-white); background: var(--graphite-4, #252932); }
 .tm-btn-clear i { width: 14px; height: 14px; }
 .tm-result-count {
   margin-left: auto; font-family: 'JetBrains Mono', monospace;
@@ -110,19 +122,45 @@
 
 /* ── Source toggle ── */
 .tm-sources {
-  display: flex; gap: 0.5rem; margin-top: 1.25rem; flex-wrap: wrap;
+  display: flex; gap: 0; margin-top: 1.25rem;
+  background: var(--graphite-3, #1B1E25); border-radius: 10px;
+  border: 1px solid var(--border-soft, rgba(143,148,156,0.18));
+  overflow: hidden;
 }
+.tm-sources-label {
+  display: flex; align-items: center; gap: 0.35rem;
+  padding: 0.6rem 0.9rem; font-family: 'Outfit', sans-serif;
+  font-size: 0.72rem; font-weight: 600; color: var(--stone, #8E949C);
+  text-transform: uppercase; letter-spacing: 0.04em;
+  border-right: 1px solid var(--border-soft, rgba(143,148,156,0.18));
+  white-space: nowrap; user-select: none;
+}
+.tm-sources-label i { width: 13px; height: 13px; }
 .tm-source-chip {
-  display: inline-flex; align-items: center; gap: 0.4rem;
-  padding: 0.4rem 0.8rem; border-radius: 8px; font-size: 0.75rem;
-  font-weight: 500; cursor: pointer; transition: all 0.2s; border: 1px solid;
-  font-family: 'Inter', sans-serif;
+  display: inline-flex; align-items: center; gap: 0.45rem;
+  padding: 0.6rem 1rem; font-size: 0.8rem;
+  font-weight: 600; cursor: pointer; transition: all 0.2s; border: none;
+  font-family: 'Inter', sans-serif; user-select: none;
+  border-right: 1px solid var(--border-soft, rgba(143,148,156,0.18));
+  position: relative;
 }
-.tm-source-chip.active { opacity: 1; }
-.tm-source-chip:not(.active) { opacity: 0.4; }
-.tm-source-chip.database { border-color: rgba(255,132,0,0.3); background: rgba(255,132,0,0.08); color: #FF8400; }
-.tm-source-chip.brasil { border-color: rgba(14,165,183,0.3); background: rgba(14,165,183,0.08); color: #0EA5B7; }
-.tm-source-chip i { width: 12px; height: 12px; }
+.tm-source-chip:last-child { border-right: none; }
+.tm-source-chip i { width: 14px; height: 14px; }
+.tm-source-chip .tm-check { width: 12px; height: 12px; }
+.tm-source-chip.database { color: var(--stone-2, #5C616A); background: transparent; }
+.tm-source-chip.database.active { color: #FF8400; background: rgba(255,132,0,0.1); }
+.tm-source-chip.brasil { color: var(--stone-2, #5C616A); background: transparent; }
+.tm-source-chip.brasil.active { color: #0EA5B7; background: rgba(14,165,183,0.1); }
+.tm-source-chip:hover:not(.active) { background: rgba(255,255,255,0.04); color: var(--stone, #8E949C); }
+.tm-source-count {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 400;
+  opacity: 0.7; margin-left: 0.15rem;
+}
+@media (max-width: 600px) {
+  .tm-sources { flex-wrap: wrap; }
+  .tm-sources-label { width: 100%; border-right: none; border-bottom: 1px solid var(--border-soft); }
+  .tm-source-chip { flex: 1; justify-content: center; }
+}
 
 /* ── Results ── */
 .tm-results { margin-top: 1.5rem; }
@@ -300,11 +338,14 @@
 
     <!-- Source toggles -->
     <div class="tm-sources">
+      <div class="tm-sources-label"><i data-lucide="layers"></i> Fontes</div>
       <span class="tm-source-chip database active" data-source="database" onclick="toggleSource(this)">
-        <i data-lucide="database"></i> Database (421 estudos)
+        <i data-lucide="check-square" class="tm-check"></i>
+        <i data-lucide="database"></i> Database <span class="tm-source-count">421</span>
       </span>
       <span class="tm-source-chip brasil active" data-source="brasil" onclick="toggleSource(this)">
-        <i data-lucide="map-pin"></i> Ensaios Brasil (79 ativos)
+        <i data-lucide="check-square" class="tm-check"></i>
+        <i data-lucide="map-pin"></i> Ensaios Brasil <span class="tm-source-count">79</span>
       </span>
     </div>
 
@@ -416,6 +457,11 @@
     var src = el.getAttribute('data-source');
     sources[src] = !sources[src];
     el.classList.toggle('active', sources[src]);
+    // Swap check icon
+    var chk = el.querySelector('.tm-check');
+    if (chk) chk.setAttribute('data-lucide', sources[src] ? 'check-square' : 'square');
+    lucide.createIcons();
+    runMatcher();
   };
 
   // ── Clear ──

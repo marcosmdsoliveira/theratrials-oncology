@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Disallow: /newsletters/
+Sitemap: https://theratrials.com/sitemap.xml
