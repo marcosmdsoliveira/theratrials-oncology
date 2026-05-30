@@ -8,7 +8,7 @@
    ============================================================================= */
 
 // GitHub Actions bumps this line on each deploy
-const CACHE_VERSION = 'theratrials-v2026.05.30-4fa6789';
+const CACHE_VERSION = 'theratrials-v2026.05.30-ecb5a85';
 const CACHE_STATIC  = `${CACHE_VERSION}-static`;
 const CACHE_PAGES   = `${CACHE_VERSION}-pages`;
 const CACHE_RUNTIME = `${CACHE_VERSION}-runtime`;
