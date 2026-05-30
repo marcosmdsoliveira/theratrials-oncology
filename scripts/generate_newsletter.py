@@ -222,7 +222,7 @@ def generate_content(now: datetime) -> tuple[str, str, dict]:
     # Footer
     sections_md.append("---\n")
     sections_md.append("## Acesse a plataforma\n")
-    sections_md.append("- [Database](https://marcosmdsoliveira.github.io/theratrials-oncology/database.html) — 421 estudos curados")
+    sections_md.append("- [Database](https://marcosmdsoliveira.github.io/theratrials-oncology/database.html) — 421 estudos analisados")
     sections_md.append("- [Explorer](https://marcosmdsoliveira.github.io/theratrials-oncology/explorer.html) — Pipeline RLT global")
     sections_md.append("- [Ensaios BR](https://marcosmdsoliveira.github.io/theratrials-oncology/ensaios-clinicos.html) — Recrutamento aberto no Brasil")
     sections_md.append("- [Guidelines](https://marcosmdsoliveira.github.io/theratrials-oncology/guidelines.html) — 26 guidelines internacionais")

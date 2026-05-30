@@ -121,7 +121,7 @@ window._i18nRegister('pt-br', {
   tm: {
     badge: "Ferramenta clínica",
     title: "Trial <span class=\"accent\">Matcher</span>",
-    subtitle: "Encontre ensaios clínicos relevantes para seu paciente. Filtre por tumor, biomarcador, linha terapêutica e modalidade — busca simultânea em 421 estudos curados e 79 ensaios ativos no Brasil.",
+    subtitle: "Encontre ensaios clínicos relevantes para seu paciente. Filtre por tumor, biomarcador, linha terapêutica e modalidade — busca simultânea em 421 estudos analisados e 79 ensaios ativos no Brasil.",
     fTumor: "Tumor / Neoplasia",
     fTumorAll: "Todos os tumores",
     fBio: "Biomarcador / Alvo",
@@ -187,7 +187,7 @@ window._i18nRegister('pt-br', {
     tagline3: "Melhores resultados.",
 
     /* Stats counter */
-    statStudies: "Estudos curados",
+    statStudies: "Estudos analisados",
     statCategories: "Categorias",
     statBRTrials: "Ensaios ativos BR",
     statRadiopharma: "Radiofármacos",
@@ -288,7 +288,7 @@ window._i18nRegister('pt-br', {
 
     /* CTA final */
     ctaTitle: "Pronto para conectar evidência e prática clínica?",
-    ctaDesc: "421 ensaios clínicos curados em 39 categorias · pipeline global de radioligantes via ClinicalTrials.gov · 79 ensaios clínicos ativos no Brasil · 7 dossiês de radiofármaco · 11 ferramentas clínicas · AJCC 8ª ed., CTCAE v6.0, BCLC 2026 · hyperlinks diretos para PubMed e ClinicalTrials.gov.",
+    ctaDesc: "421 ensaios clínicos analisados em 39 categorias · pipeline global de radioligantes via ClinicalTrials.gov · 79 ensaios clínicos ativos no Brasil · 7 dossiês de radiofármaco · 11 ferramentas clínicas · AJCC 8ª ed., CTCAE v6.0, BCLC 2026 · hyperlinks diretos para PubMed e ClinicalTrials.gov.",
     ctaBtnDatabase: "Acessar o banco",
     ctaBtnExplorer: "Explorer",
     ctaBtnTumorBoards: "Tumor boards",

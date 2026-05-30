@@ -1,6 +1,6 @@
 # TheraTrials Oncology
 
-> Plataforma de evidências clínicas em oncologia moderna — ensaios clínicos curados, guidelines internacionais, dossiês de radiofármacos e ferramentas clínicas, organizados para uso em tumor boards, teranóstico e revisão científica rápida.
+> Plataforma de evidências clínicas em oncologia moderna — ensaios clínicos analisados, guidelines internacionais, dossiês de radiofármacos e ferramentas clínicas, organizados para uso em tumor boards, teranóstico e revisão científica rápida.
 
 **Versão:** 1.3  
 **Status:** repositório privado · uso educacional  
@@ -19,7 +19,7 @@ A plataforma foi concebida para o fluxo real de um médico nuclear / oncologista
 
 | Métrica | Valor |
 |---------|-------|
-| Ensaios clínicos curados | **421** |
+| Ensaios clínicos analisados | **421** |
 | Categorias terapêuticas | **39** |
 | Ensaios ativos no Brasil | **79** (20 áreas tumorais) |
 | Guidelines internacionais | **26** (EANM, SNMMI, ATA, IAEA, ACR) |

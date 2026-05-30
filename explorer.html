@@ -540,14 +540,14 @@
     <div class="src-line" :class="{ 'is-seed': data.is_seed }">
       <span class="dot"></span>
       <span x-show="!data.is_seed && !data.is_empty">Dataset CT.gov · <strong x-text="data.totals?.trials || 0"></strong>&nbsp;estudos · atualizado em <strong x-text="prettyDate(data.generated_at)"></strong></span>
-      <span x-show="data.is_seed && !data.is_empty">Seed curado · <strong x-text="data.totals?.trials || 0"></strong>&nbsp;estudos · GitHub Action expandirá para o catálogo completo no próximo refresh</span>
+      <span x-show="data.is_seed && !data.is_empty">Seed analisado · <strong x-text="data.totals?.trials || 0"></strong>&nbsp;estudos · GitHub Action expandirá para o catálogo completo no próximo refresh</span>
       <span x-show="data.is_empty">Aguardando primeiro refresh automatizado da API ClinicalTrials.gov v2</span>
     </div>
 
     <!-- Aviso visível quando o dataset está vazio (aguardando 1º run da Action) -->
     <div x-show="data.is_empty" x-cloak style="max-width:780px; margin:1.5rem auto 0; padding:1rem 1.25rem; background:rgba(251,191,36,0.08); border:1px solid rgba(251,191,36,0.35); border-radius:var(--radius-md); color:#FCD34D; text-align:left; font-size:0.9rem; line-height:1.55;">
       <strong style="display:block; margin-bottom:0.35rem; color:#FCD34D;">⚙ Dataset aguardando primeira sincronização</strong>
-      Esta página é alimentada pela API v2 do ClinicalTrials.gov via GitHub Action mensal. Para popular agora com dados <strong>verificados e atualizados</strong>, dispare manualmente o workflow <code style="background:rgba(0,0,0,0.3);padding:1px 6px;border-radius:4px;font-family:var(--font-mono);font-size:0.85em">Update TheraTrials Explorer</code> em <a href="https://github.com/marcosmdsoliveira/theratrials-oncology/actions" target="_blank" rel="noopener" style="color:var(--amber);text-decoration:underline">Actions → Run workflow</a>. Decidimos não exibir um seed curado manualmente para evitar risco de NCT incorreto.
+      Esta página é alimentada pela API v2 do ClinicalTrials.gov via GitHub Action mensal. Para popular agora com dados <strong>verificados e atualizados</strong>, dispare manualmente o workflow <code style="background:rgba(0,0,0,0.3);padding:1px 6px;border-radius:4px;font-family:var(--font-mono);font-size:0.85em">Update TheraTrials Explorer</code> em <a href="https://github.com/marcosmdsoliveira/theratrials-oncology/actions" target="_blank" rel="noopener" style="color:var(--amber);text-decoration:underline">Actions → Run workflow</a>. Decidimos não exibir um seed analisado manualmente para evitar risco de NCT incorreto.
     </div>
 
     <div class="tr-stats" x-show="data.totals && !data.is_empty" x-cloak>

@@ -475,7 +475,7 @@
     <div class="src-line" :class="{ 'is-seed': data.is_seed }">
       <span class="dot"></span>
       <span x-show="!data.is_seed">Dataset CT.gov · <strong x-text="data.totals?.trials || 0"></strong>&nbsp;estudos · atualizado em <strong x-text="prettyDate(data.generated_at)"></strong></span>
-      <span x-show="data.is_seed">Seed curado · <strong x-text="data.totals?.trials || 0"></strong>&nbsp;estudos · GitHub Action irá expandir para o pipeline completo no próximo dia 1</span>
+      <span x-show="data.is_seed">Seed analisado · <strong x-text="data.totals?.trials || 0"></strong>&nbsp;estudos · GitHub Action irá expandir para o pipeline completo no próximo dia 1</span>
     </div>
 
     <div class="tr-stats" x-show="data.totals">
