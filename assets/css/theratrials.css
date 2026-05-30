@@ -102,6 +102,10 @@ h4 { font-size: 1rem; font-weight: 600; }
   color: var(--amber);
   font-weight: 500;
   display: inline-block;
+  max-width: 100%;
+}
+@media (max-width: 480px) {
+  .eyebrow { letter-spacing: 0.08em; font-size: 0.62rem; }
 }
 
 .subtitle {
@@ -183,9 +187,10 @@ section.compact { padding: 3rem 0; }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  gap: 2rem;
+  padding-top: 0.85rem;
+  padding-bottom: 0.85rem;
+  gap: 1.25rem;
+  max-width: 1520px;            /* mais largo que --maxw: os 12 itens do nav cabem no desktop */
 }
 .brand {
   display: flex;
@@ -199,15 +204,16 @@ section.compact { padding: 3rem 0; }
 .brand-name { font-size: 1.15rem; font-weight: 700; letter-spacing: -0.02em; color: var(--off-white); }
 .brand-sub { font-size: 1.15rem; letter-spacing: -0.02em; color: var(--amber); font-weight: 700; }
 
-.nav { display: flex; align-items: center; gap: 0.5rem; }
+.nav { display: flex; align-items: center; gap: 0.12rem; }
 .nav a {
   color: var(--stone);
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 500;
-  padding: 0.5rem 0.875rem;
+  padding: 0.45rem 0.62rem;
   border-radius: var(--radius-sm);
-  transition: all 0.2s ease;
+  transition: color 0.2s ease, background 0.2s ease;
   letter-spacing: 0.01em;
+  line-height: 1.18;
 }
 .nav a:hover { color: var(--off-white); background: rgba(143, 148, 156, 0.08); }
 .nav a.active { color: var(--amber); background: var(--amber-soft); }
@@ -217,15 +223,65 @@ section.compact { padding: 3rem 0; }
   background: transparent;
   border: 1px solid var(--border-mid);
   color: var(--off-white);
-  padding: 0.5rem;
+  padding: 0.5rem 0.55rem;
   border-radius: var(--radius-sm);
+  cursor: pointer;
+  line-height: 0;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+.nav-toggle:hover { border-color: var(--amber); color: var(--amber); }
+
+/* ── Navegação premium: vira drawer suspenso abaixo de 1300px (laptops + tablets + celular) ── */
+@media (max-width: 1300px) {
+  .nav-toggle { display: inline-flex; align-items: center; justify-content: center; }
+  .site-header .container { gap: 1rem; position: relative; }
+  .nav {
+    display: none;
+    position: absolute;
+    top: calc(100% + 1px);
+    left: 0; right: 0;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.3rem;
+    padding: 1rem 1.25rem 1.25rem;
+    background: rgba(17, 19, 24, 0.97);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-top: 1px solid var(--border-soft);
+    border-bottom: 1px solid var(--border-soft);
+    box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.6);
+    max-height: 78dvh;
+    overflow-y: auto;
+    animation: navDrop 0.22s ease;
+  }
+  .nav.open { display: grid; }
+  .nav a {
+    font-size: 0.95rem;
+    padding: 0.85rem 1rem;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    line-height: 1.2;
+  }
+  .nav a:hover,
+  .nav a.active {
+    color: var(--amber);
+    background: rgba(255, 132, 0, 0.08);
+    border-color: rgba(255, 132, 0, 0.22);
+  }
+  .nav .lang-toggle {
+    grid-column: 1 / -1;
+    justify-content: center;
+    margin: 0.35rem 0 0;
+    padding: 0.7rem;
+    font-size: 0.85rem;
+  }
+}
+@media (max-width: 560px) {
+  .nav { grid-template-columns: 1fr; }
 }
 
-@media (max-width: 768px) {
-  .nav { display: none; flex-direction: column; align-items: stretch; position: absolute; top: 100%; left: 0; right: 0; background: var(--graphite-2); padding: 1rem; border-bottom: 1px solid var(--border-soft); }
-  .nav.open { display: flex; }
-  .nav-toggle { display: block; }
-  .site-header .container { gap: 1rem; }
+@keyframes navDrop {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 /* ============================================================
@@ -639,4 +695,3 @@ sup {
 }
 .lang-toggle:hover { border-color: var(--amber, #FF8400); color: var(--amber, #FF8400); }
 .lang-toggle .lang-label { font-size: 0.72rem; letter-spacing: 0.03em; }
-@media (max-width: 900px) { .lang-toggle { margin-left: 0; margin-top: 0.5rem; } }
