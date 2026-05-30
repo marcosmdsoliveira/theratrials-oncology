@@ -649,6 +649,8 @@
   .stats-counter-section {
     padding: 0 0 2rem;
     margin-top: -1rem;
+    position: relative;
+    z-index: 2;   /* acima do .hero-after (z-index:1, fundo #000), que cobria os cantos superiores arredondados */
   }
   .stats-counter-grid {
     display: grid;
