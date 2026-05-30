@@ -78,6 +78,7 @@ window._i18nRegister('en', {
 
   /* ── Home (index.html) ── */
   home: {
+    heroH1: "TheraTrials Oncology — Clinical evidence in modern oncology and theranostics",
     heroSub: "Objective analysis and access to clinical trials, relevant and up-to-date information, and the best tools to support real clinical decision-making in oncology.",
     tagline1: "Best evidence.",
     tagline2: "Better decisions.",

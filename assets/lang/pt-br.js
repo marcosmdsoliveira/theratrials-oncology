@@ -78,6 +78,7 @@ window._i18nRegister('pt-br', {
 
   /* ── Home (index.html) ── */
   home: {
+    heroH1: "TheraTrials Oncology — Evidência clínica em oncologia moderna e teranóstica",
     heroSub: "Análise objetiva e acesso aos ensaios clínicos, informações relevantes e atualizadas, além das melhores ferramentas para apoiar decisões clínicas reais em oncologia.",
     tagline1: "Melhor evidência.",
     tagline2: "Melhores decisões.",
