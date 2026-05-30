@@ -653,12 +653,12 @@
   .stats-counter-grid {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
-    background: linear-gradient(135deg, rgba(20,22,27,0.85), rgba(14,15,18,0.7));
+    /* Fundo quase opaco: dispensa backdrop-filter, que recortava a borda
+       superior no Safari/iOS quando dentro de um ancestral .reveal (transform). */
+    background: linear-gradient(135deg, rgba(22,24,30,0.96), rgba(16,17,21,0.94));
     border: 1px solid var(--border-soft);
     border-radius: var(--radius-lg);
     overflow: hidden;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
   }
   .counter-item {
     text-align: center;
