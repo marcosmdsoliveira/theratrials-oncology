@@ -15,6 +15,108 @@ window._i18nRegister('pt-br', {
     sobre: "Sobre"
   },
 
+  /* ── Tumor Boards (tumor-boards.html) ── */
+  tb: {
+    eyebrow: "Evidência por tipo tumoral",
+    title: "Tumor <span class=\"text-amber\">boards</span>",
+    subtitle: "Evidências organizadas para discussão clínica. Selecione o tumor e veja os ensaios agrupados por modalidade terapêutica e linha de tratamento — sem precisar filtrar manualmente o banco.",
+    back: "Voltar a todos os tumores",
+    metaTotal: "Total de estudos",
+    metaPhase3: "Fase 3",
+    metaOngoing: "Em andamento",
+    studiesLabel: "estudos",
+    study: "estudo",
+    studies: "estudos",
+    cta: "Ver todos no banco completo",
+    footerLeft: "© 2026 TheraTrials Oncology · Tumor boards · 23 tumores cobertos",
+    footerRight: "Para uso educacional. Não substitui diretrizes oficiais.",
+    tumor: {
+      prostata: "Câncer de próstata",
+      net: "Tumores neuroendócrinos",
+      ppgl: "Feocromocitoma e paraganglioma",
+      neuroblastoma: "Neuroblastoma (pediatria)",
+      hcc: "Carcinoma hepatocelular",
+      colangio: "Colangiocarcinoma e vesícula",
+      colorretal: "Câncer colorretal",
+      rcc: "Carcinoma renal",
+      pulmao: "Câncer de pulmão",
+      mama: "Câncer de mama",
+      tireoide: "Tireoide",
+      melanoma: "Melanoma"
+    },
+    mod: {
+      teranostico: "Teranóstico (radioligante)",
+      imuno: "Imunoterapia",
+      alvo: "Terapia-alvo",
+      quimio: "Quimioterapia",
+      cirurgia_rt: "Cirurgia · Radioterapia",
+      diretriz: "Diretrizes e consensos",
+      outros: "Outras terapias sistêmicas"
+    }
+  },
+
+  /* ── Ensaios clínicos (ensaios-clinicos.html) ── */
+  ea: {
+    eyebrow: "Recrutamento ativo · Brasil",
+    title: "Ensaios clínicos <span class=\"accent\">recrutando</span> agora",
+    subtitle: "Banco selecionado de ensaios clínicos <strong>não teranósticos</strong> em oncologia com recrutamento aberto no Brasil — imunoterapia, terapia-alvo, ADCs, quimioterapia, hormonioterapia, cirurgia e radioterapia. Filtre por neoplasia, modalidade, fase, biomarcador, linha terapêutica e localidade. Para médicos, pesquisadores e pacientes encaminhados por especialistas.",
+    disclaimer: "<strong>Aviso:</strong> esta seção é informativa. As informações são consolidadas a partir de registros públicos (ClinicalTrials.gov, REBEC, ANVISA) e fontes oficiais dos patrocinadores. <strong>A elegibilidade final depende sempre da avaliação do centro responsável pelo estudo</strong>. Datas, status e critérios podem mudar — sempre confirmar com a fonte original e a equipe local antes de qualquer encaminhamento.",
+    clearFilters: "Limpar filtros",
+    fLocal: "Localidade (UF)",
+    fNeo: "Neoplasia",
+    fMod: "Modalidade",
+    fFase: "Fase",
+    fStatus: "Status",
+    fBio: "Biomarcador",
+    fLinha: "Linha terapêutica",
+    searchPh: "Buscar por nome do estudo, NCT, intervenção, biomarcador, patrocinador…",
+    of: "de",
+    studies: "estudos",
+    seeDb: "Ver evidência prévia no Database",
+    footerLeft: "© 2026 TheraTrials Oncology · Ensaios clínicos ativos (BR) · curadoria informativa",
+    footerRight: "Não substitui avaliação do centro responsável",
+    cmTitle: "Entrar em contato",
+    cmIntro: "Deixe seus dados e mensagem que retornaremos pelo canal informado. Você também pode usar o WhatsApp para um contato mais rápido.",
+    cmName: "Nome completo *",
+    cmEmail: "Email *",
+    cmPhone: "Telefone (WhatsApp)",
+    cmMsg: "Mensagem",
+    cmMsgPh: "Conte brevemente sobre o caso clínico ou o que gostaria de saber...",
+    cmSend: "Enviar por e-mail",
+    cmPriv: "Seus dados são usados apenas para responder a este contato. Não comercializamos seus dados nem fazemos disparos de marketing. O envio pode envolver provedores técnicos necessários ao funcionamento do formulário. Controlador: Dr. Marcos Oliveira. Detalhes na <a href=\"privacidade.html\" style=\"color:var(--amber); text-decoration:underline\">Política de Privacidade</a>.",
+    cmThanks: "Obrigado pelo contato!",
+    cmThanksMsg: "Recebemos sua mensagem. Em breve retornaremos pelo e-mail ou telefone informado.",
+    cmClose: "Fechar",
+    cmErr: "Não conseguimos enviar agora",
+    cmErrMsg: "Ocorreu um erro de conexão. Tente novamente em alguns instantes ou use o WhatsApp.",
+    cmMailApp: "App de e-mail",
+    cmRetry: "Tentar novamente"
+  },
+
+  /* ── Guidelines (guidelines.html) ── */
+  gl: {
+    eyebrow: "Referências internacionais · 11 áreas",
+    title: "Guidelines em <span class=\"text-amber\">Teranóstico</span>",
+    subtitle: "A prática teranóstica integra seleção molecular, terapia com radionuclídeos, dosimetria individualizada, radioproteção, imagem pós-terapia e organização institucional. Esta página reúne os documentos norteadores publicados pelas principais sociedades — EANM, SNMMI, IAEA, ATA, ACR — organizados por cenário clínico para consulta rápida.",
+    how1Title: "Escolha o cenário clínico",
+    how1Desc: "PRRT, PSMA-RLT, TARE, radioiodo, metástases ósseas, MIBG, dosimetria ou estruturação de serviço.",
+    how2Title: "Consulte o guideline",
+    how2Desc: "Cada card identifica sociedade, ano, tipo de documento e relevância prática para o fluxo assistencial.",
+    how3Title: "Aplique na prática",
+    how3Desc: "Utilize como referência em tumor boards, protocolos institucionais, dosimetria e preparo de pacientes.",
+    searchPh: "Buscar guideline, sociedade, radionuclídeo...",
+    pillAll: "Todas",
+    pillThyroid: "Tireoide",
+    pillBone: "Mets ósseas",
+    pillDosimetry: "Dosimetria",
+    pillImaging: "Imagem",
+    pillService: "Serviço",
+    of: "de",
+    documents: "documentos",
+    footerLeft: "© 2026 TheraTrials Oncology · 421 estudos analisados · v1.2",
+    footerRight: "Para uso educacional. Não substitui diretrizes oficiais."
+  },
+
   /* ── Trial Matcher ── */
   tm: {
     badge: "Ferramenta clínica",

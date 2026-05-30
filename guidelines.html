@@ -404,18 +404,22 @@
     </a>
     <button class="nav-toggle" aria-label="Menu" onclick="this.parentElement.querySelector('.nav').classList.toggle('open')"><i data-lucide="menu" style="width:18px;height:18px"></i></button>
     <nav class="nav">
-      <a href="index.html">Home</a>
-      <a href="database.html">Database</a>
-      <a href="trial-matcher.html">Trial Matcher</a>
-      <a href="ensaios-clinicos.html">Ensaios clínicos</a>
-      <a href="explorer.html">Explorer</a>
-      <a href="tumor-boards.html">Tumor boards</a>
-      <a href="radiofarmacos.html">Radiofármacos</a>
-      <a href="guidelines.html" class="active">Guidelines</a>
-      <a href="ferramentas.html">Ferramentas</a>
-      <a href="modalidades.html">Modalidades</a>
-      <a href="fundamentos.html">Fundamentos</a>
-      <a href="about.html">Sobre</a>
+      <a href="index.html" data-i18n="nav.home">Home</a>
+      <a href="database.html" data-i18n="nav.database">Database</a>
+      <a href="trial-matcher.html" data-i18n="nav.trialMatcher">Trial Matcher</a>
+      <a href="ensaios-clinicos.html" data-i18n="nav.ensaios">Ensaios clínicos</a>
+      <a href="explorer.html" data-i18n="nav.explorer">Explorer</a>
+      <a href="tumor-boards.html" data-i18n="nav.tumorBoards">Tumor boards</a>
+      <a href="radiofarmacos.html" data-i18n="nav.radiofarmacos">Radiofármacos</a>
+      <a href="guidelines.html" class="active" data-i18n="nav.guidelines">Guidelines</a>
+      <a href="ferramentas.html" data-i18n="nav.ferramentas">Ferramentas</a>
+      <a href="modalidades.html" data-i18n="nav.modalidades">Modalidades</a>
+      <a href="fundamentos.html" data-i18n="nav.fundamentos">Fundamentos</a>
+      <a href="about.html" data-i18n="nav.sobre">Sobre</a>
+      <button class="lang-toggle" onclick="toggleLang()" title="Switch to English" aria-label="Change language">
+        <i data-lucide="globe" style="width:14px;height:14px"></i>
+        <span class="lang-label">EN</span>
+      </button>
     </nav>
   </div>
 </header>
@@ -423,9 +427,9 @@
 <!-- HERO -->
 <section class="gl-hero">
   <div class="container">
-    <span class="eyebrow">Referências internacionais · 11 áreas</span>
-    <h1>Guidelines em <span class="text-amber">Teranóstico</span></h1>
-    <p class="subtitle">A prática teranóstica integra seleção molecular, terapia com radionuclídeos, dosimetria individualizada, radioproteção, imagem pós-terapia e organização institucional. Esta página reúne os documentos norteadores publicados pelas principais sociedades — EANM, SNMMI, IAEA, ATA, ACR — organizados por cenário clínico para consulta rápida.</p>
+    <span class="eyebrow" data-i18n="gl.eyebrow">Referências internacionais · 11 áreas</span>
+    <h1 data-i18n-html="gl.title">Guidelines em <span class="text-amber">Teranóstico</span></h1>
+    <p class="subtitle" data-i18n="gl.subtitle">A prática teranóstica integra seleção molecular, terapia com radionuclídeos, dosimetria individualizada, radioproteção, imagem pós-terapia e organização institucional. Esta página reúne os documentos norteadores publicados pelas principais sociedades — EANM, SNMMI, IAEA, ATA, ACR — organizados por cenário clínico para consulta rápida.</p>
   </div>
 </section>
 
@@ -435,18 +439,18 @@
     <div class="howto-grid">
       <div class="howto-card">
         <div class="howto-num">1</div>
-        <h3>Escolha o cenário clínico</h3>
-        <p>PRRT, PSMA-RLT, TARE, radioiodo, metástases ósseas, MIBG, dosimetria ou estruturação de serviço.</p>
+        <h3 data-i18n="gl.how1Title">Escolha o cenário clínico</h3>
+        <p data-i18n="gl.how1Desc">PRRT, PSMA-RLT, TARE, radioiodo, metástases ósseas, MIBG, dosimetria ou estruturação de serviço.</p>
       </div>
       <div class="howto-card">
         <div class="howto-num">2</div>
-        <h3>Consulte o guideline</h3>
-        <p>Cada card identifica sociedade, ano, tipo de documento e relevância prática para o fluxo assistencial.</p>
+        <h3 data-i18n="gl.how2Title">Consulte o guideline</h3>
+        <p data-i18n="gl.how2Desc">Cada card identifica sociedade, ano, tipo de documento e relevância prática para o fluxo assistencial.</p>
       </div>
       <div class="howto-card">
         <div class="howto-num">3</div>
-        <h3>Aplique na prática</h3>
-        <p>Utilize como referência em tumor boards, protocolos institucionais, dosimetria e preparo de pacientes.</p>
+        <h3 data-i18n="gl.how3Title">Aplique na prática</h3>
+        <p data-i18n="gl.how3Desc">Utilize como referência em tumor boards, protocolos institucionais, dosimetria e preparo de pacientes.</p>
       </div>
     </div>
   </div>
@@ -456,19 +460,19 @@
 <section style="padding: 0 0 1rem">
   <div class="container">
     <div class="gl-toolbar">
-      <input type="text" class="gl-search" id="glSearch" placeholder="Buscar guideline, sociedade, radionuclídeo..." oninput="filterGuidelines()">
+      <input type="text" class="gl-search" id="glSearch" data-i18n-placeholder="gl.searchPh" placeholder="Buscar guideline, sociedade, radionuclídeo..." oninput="filterGuidelines()">
       <div class="filter-pills" id="areaPills">
-        <button class="pill active" data-area="all" onclick="setArea(this)">Todas</button>
+        <button class="pill active" data-area="all" onclick="setArea(this)" data-i18n="gl.pillAll">Todas</button>
         <button class="pill" data-area="prrt" onclick="setArea(this)">PRRT</button>
         <button class="pill" data-area="psma" onclick="setArea(this)">PSMA</button>
         <button class="pill" data-area="tare" onclick="setArea(this)">TARE</button>
-        <button class="pill" data-area="tireoide" onclick="setArea(this)">Tireoide</button>
-        <button class="pill" data-area="osseas" onclick="setArea(this)">Mets ósseas</button>
+        <button class="pill" data-area="tireoide" onclick="setArea(this)" data-i18n="gl.pillThyroid">Tireoide</button>
+        <button class="pill" data-area="osseas" onclick="setArea(this)" data-i18n="gl.pillBone">Mets ósseas</button>
         <button class="pill" data-area="mibg" onclick="setArea(this)">MIBG</button>
         <button class="pill" data-area="rso" onclick="setArea(this)">RSO</button>
-        <button class="pill" data-area="dosimetria" onclick="setArea(this)">Dosimetria</button>
-        <button class="pill" data-area="imagem" onclick="setArea(this)">Imagem</button>
-        <button class="pill" data-area="servico" onclick="setArea(this)">Serviço</button>
+        <button class="pill" data-area="dosimetria" onclick="setArea(this)" data-i18n="gl.pillDosimetry">Dosimetria</button>
+        <button class="pill" data-area="imagem" onclick="setArea(this)" data-i18n="gl.pillImaging">Imagem</button>
+        <button class="pill" data-area="servico" onclick="setArea(this)" data-i18n="gl.pillService">Serviço</button>
       </div>
       <span class="gl-count" id="glCount"></span>
     </div>
@@ -920,13 +924,16 @@
 <footer class="site-footer">
   <div class="container">
     <div class="footer-bottom">
-      <span>© 2026 TheraTrials Oncology · 421 estudos analisados · v1.2</span>
-      <span>Para uso educacional. Não substitui diretrizes oficiais.</span>
+      <span data-i18n="gl.footerLeft">© 2026 TheraTrials Oncology · 421 estudos analisados · v1.2</span>
+      <span data-i18n="gl.footerRight">Para uso educacional. Não substitui diretrizes oficiais.</span>
     </div>
   </div>
 </footer>
 
 <script src="assets/js/common.js"></script>
+<script src="assets/js/i18n.js"></script>
+<script src="assets/lang/pt-br.js"></script>
+<script src="assets/lang/en.js"></script>
 <script>
 (function() {
   var activeArea = 'all';
@@ -935,10 +942,12 @@
   var cards = document.querySelectorAll('.gl-card');
   var countEl = document.getElementById('glCount');
 
+  function tr(k, fb) { return window.t ? window.t(k, fb) : fb; }
+
   function updateCount() {
     var visible = 0;
     cards.forEach(function(c) { if (c.style.display !== 'none') visible++; });
-    countEl.textContent = visible + ' de ' + cards.length + ' documentos';
+    countEl.textContent = visible + ' ' + tr('gl.of', 'de') + ' ' + cards.length + ' ' + tr('gl.documents', 'documentos');
   }
 
   window.filterGuidelines = function() {
@@ -975,6 +984,11 @@
   document.addEventListener('DOMContentLoaded', function() {
     if (typeof lucide !== 'undefined') lucide.createIcons();
     updateCount();
+  });
+
+  window.addEventListener('langchange', function() {
+    updateCount();
+    if (typeof lucide !== 'undefined') lucide.createIcons();
   });
 })();
 </script>

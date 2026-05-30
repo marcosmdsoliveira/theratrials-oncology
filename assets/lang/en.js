@@ -15,6 +15,108 @@ window._i18nRegister('en', {
     sobre: "About"
   },
 
+  /* ── Tumor Boards (tumor-boards.html) ── */
+  tb: {
+    eyebrow: "Evidence by tumor type",
+    title: "Tumor <span class=\"text-amber\">boards</span>",
+    subtitle: "Evidence organized for clinical discussion. Select a tumor and see trials grouped by therapeutic modality and treatment line — no manual database filtering needed.",
+    back: "Back to all tumors",
+    metaTotal: "Total studies",
+    metaPhase3: "Phase 3",
+    metaOngoing: "Ongoing",
+    studiesLabel: "studies",
+    study: "study",
+    studies: "studies",
+    cta: "See all in the full database",
+    footerLeft: "© 2026 TheraTrials Oncology · Tumor boards · 23 tumors covered",
+    footerRight: "For educational use. Does not replace official guidelines.",
+    tumor: {
+      prostata: "Prostate cancer",
+      net: "Neuroendocrine tumors",
+      ppgl: "Pheochromocytoma and paraganglioma",
+      neuroblastoma: "Neuroblastoma (pediatric)",
+      hcc: "Hepatocellular carcinoma",
+      colangio: "Cholangiocarcinoma and gallbladder",
+      colorretal: "Colorectal cancer",
+      rcc: "Renal cell carcinoma",
+      pulmao: "Lung cancer",
+      mama: "Breast cancer",
+      tireoide: "Thyroid",
+      melanoma: "Melanoma"
+    },
+    mod: {
+      teranostico: "Theranostics (radioligand)",
+      imuno: "Immunotherapy",
+      alvo: "Targeted therapy",
+      quimio: "Chemotherapy",
+      cirurgia_rt: "Surgery · Radiotherapy",
+      diretriz: "Guidelines and consensus",
+      outros: "Other systemic therapies"
+    }
+  },
+
+  /* ── Clinical trials (ensaios-clinicos.html) ── */
+  ea: {
+    eyebrow: "Active recruitment · Brazil",
+    title: "Clinical trials <span class=\"accent\">recruiting</span> now",
+    subtitle: "Curated database of <strong>non-theranostic</strong> oncology clinical trials with open recruitment in Brazil — immunotherapy, targeted therapy, ADCs, chemotherapy, hormone therapy, surgery and radiotherapy. Filter by neoplasm, modality, phase, biomarker, treatment line and location. For physicians, researchers and patients referred by specialists.",
+    disclaimer: "<strong>Notice:</strong> this section is informational. Information is consolidated from public registries (ClinicalTrials.gov, REBEC, ANVISA) and official sponsor sources. <strong>Final eligibility always depends on assessment by the trial's responsible site</strong>. Dates, status and criteria may change — always confirm with the original source and the local team before any referral.",
+    clearFilters: "Clear filters",
+    fLocal: "Location (state)",
+    fNeo: "Neoplasm",
+    fMod: "Modality",
+    fFase: "Phase",
+    fStatus: "Status",
+    fBio: "Biomarker",
+    fLinha: "Treatment line",
+    searchPh: "Search by study name, NCT, intervention, biomarker, sponsor…",
+    of: "of",
+    studies: "studies",
+    seeDb: "See prior evidence in the Database",
+    footerLeft: "© 2026 TheraTrials Oncology · Active clinical trials (BR) · informational curation",
+    footerRight: "Does not replace assessment by the responsible site",
+    cmTitle: "Get in touch",
+    cmIntro: "Leave your details and message and we'll reply through the channel provided. You can also use WhatsApp for a faster contact.",
+    cmName: "Full name *",
+    cmEmail: "Email *",
+    cmPhone: "Phone (WhatsApp)",
+    cmMsg: "Message",
+    cmMsgPh: "Briefly describe the clinical case or what you'd like to know...",
+    cmSend: "Send by email",
+    cmPriv: "Your data is used only to respond to this contact. We do not sell your data or send marketing. Submission may involve technical providers required for the form to work. Controller: Dr. Marcos Oliveira. Details in the <a href=\"privacidade.html\" style=\"color:var(--amber); text-decoration:underline\">Privacy Policy</a>.",
+    cmThanks: "Thank you for reaching out!",
+    cmThanksMsg: "We received your message. We'll get back to you soon by the email or phone provided.",
+    cmClose: "Close",
+    cmErr: "We couldn't send it right now",
+    cmErrMsg: "A connection error occurred. Try again in a few moments or use WhatsApp.",
+    cmMailApp: "Email app",
+    cmRetry: "Try again"
+  },
+
+  /* ── Guidelines (guidelines.html) ── */
+  gl: {
+    eyebrow: "International references · 11 areas",
+    title: "Guidelines in <span class=\"text-amber\">Theranostics</span>",
+    subtitle: "Theranostic practice integrates molecular selection, radionuclide therapy, individualized dosimetry, radiation protection, post-therapy imaging and institutional organization. This page gathers the guiding documents published by the leading societies — EANM, SNMMI, IAEA, ATA, ACR — organized by clinical scenario for quick reference.",
+    how1Title: "Choose the clinical scenario",
+    how1Desc: "PRRT, PSMA-RLT, TARE, radioiodine, bone metastases, MIBG, dosimetry or service setup.",
+    how2Title: "Consult the guideline",
+    how2Desc: "Each card identifies the society, year, document type and practical relevance to the care workflow.",
+    how3Title: "Apply in practice",
+    how3Desc: "Use as a reference in tumor boards, institutional protocols, dosimetry and patient preparation.",
+    searchPh: "Search guideline, society, radionuclide...",
+    pillAll: "All",
+    pillThyroid: "Thyroid",
+    pillBone: "Bone mets",
+    pillDosimetry: "Dosimetry",
+    pillImaging: "Imaging",
+    pillService: "Service",
+    of: "of",
+    documents: "documents",
+    footerLeft: "© 2026 TheraTrials Oncology · 421 studies analyzed · v1.2",
+    footerRight: "For educational use. Does not replace official guidelines."
+  },
+
   /* ── Trial Matcher ── */
   tm: {
     badge: "Clinical Tool",

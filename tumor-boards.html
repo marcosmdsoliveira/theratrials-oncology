@@ -448,18 +448,22 @@
     </a>
     <button class="nav-toggle" aria-label="Menu" onclick="this.parentElement.querySelector('.nav').classList.toggle('open')"><i data-lucide="menu" style="width:18px;height:18px"></i></button>
     <nav class="nav">
-      <a href="index.html">Home</a>
-      <a href="database.html">Database</a>
-      <a href="trial-matcher.html">Trial Matcher</a>
-      <a href="ensaios-clinicos.html">Ensaios clínicos</a>
-      <a href="explorer.html">Explorer</a>
-      <a href="tumor-boards.html">Tumor boards</a>
-      <a href="radiofarmacos.html">Radiofármacos</a>
-      <a href="guidelines.html">Guidelines</a>
-      <a href="ferramentas.html">Ferramentas</a>
-      <a href="modalidades.html">Modalidades</a>
-      <a href="fundamentos.html">Fundamentos</a>
-      <a href="about.html">Sobre</a>
+      <a href="index.html" data-i18n="nav.home">Home</a>
+      <a href="database.html" data-i18n="nav.database">Database</a>
+      <a href="trial-matcher.html" data-i18n="nav.trialMatcher">Trial Matcher</a>
+      <a href="ensaios-clinicos.html" data-i18n="nav.ensaios">Ensaios clínicos</a>
+      <a href="explorer.html" data-i18n="nav.explorer">Explorer</a>
+      <a href="tumor-boards.html" data-i18n="nav.tumorBoards">Tumor boards</a>
+      <a href="radiofarmacos.html" data-i18n="nav.radiofarmacos">Radiofármacos</a>
+      <a href="guidelines.html" data-i18n="nav.guidelines">Guidelines</a>
+      <a href="ferramentas.html" data-i18n="nav.ferramentas">Ferramentas</a>
+      <a href="modalidades.html" data-i18n="nav.modalidades">Modalidades</a>
+      <a href="fundamentos.html" data-i18n="nav.fundamentos">Fundamentos</a>
+      <a href="about.html" data-i18n="nav.sobre">Sobre</a>
+      <button class="lang-toggle" onclick="toggleLang()" title="Switch to English" aria-label="Change language">
+        <i data-lucide="globe" style="width:14px;height:14px"></i>
+        <span class="lang-label">EN</span>
+      </button>
     </nav>
   </div>
 </header>
@@ -467,9 +471,9 @@
 <!-- HERO -->
 <section class="tb-hero">
   <div class="container">
-    <span class="eyebrow">Evidência por tipo tumoral</span>
-    <h1>Tumor <span class="text-amber">boards</span></h1>
-    <p>Evidências organizadas para discussão clínica. Selecione o tumor e veja os ensaios agrupados por modalidade terapêutica e linha de tratamento — sem precisar filtrar manualmente o banco.</p>
+    <span class="eyebrow" data-i18n="tb.eyebrow">Evidência por tipo tumoral</span>
+    <h1 data-i18n-html="tb.title">Tumor <span class="text-amber">boards</span></h1>
+    <p data-i18n="tb.subtitle">Evidências organizadas para discussão clínica. Selecione o tumor e veja os ensaios agrupados por modalidade terapêutica e linha de tratamento — sem precisar filtrar manualmente o banco.</p>
   </div>
 </section>
 
@@ -485,12 +489,12 @@
           <div class="tumor-icon">
             <i :data-lucide="tumor.icon" style="width:28px;height:28px"></i>
           </div>
-          <h3 class="tumor-name" x-text="tumor.name"></h3>
+          <h3 class="tumor-name" x-text="(i18nTick, tt('tb.tumor.'+tumor.id, tumor.name))"></h3>
           <p class="tumor-tagline" x-text="tumor.tagline"></p>
           <div class="tumor-stats">
             <div>
               <div class="tumor-count" x-text="getStudiesForTumor(tumor.id).length"></div>
-              <div class="tumor-count-label">estudos</div>
+              <div class="tumor-count-label" data-i18n="tb.studiesLabel">estudos</div>
             </div>
             <div class="tumor-arrow">
               <i data-lucide="arrow-right" style="width:18px;height:18px"></i>
@@ -510,7 +514,7 @@
 
       <button class="detail-back" @click="selectedTumor = null">
         <i data-lucide="arrow-left" style="width:14px;height:14px"></i>
-        Voltar a todos os tumores
+        <span x-text="(i18nTick, tt('tb.back','Voltar a todos os tumores'))"></span>
       </button>
 
       <template x-if="currentTumor">
@@ -518,20 +522,20 @@
           <div class="detail-header">
             <h2 class="detail-title">
               <span class="detail-title-icon"><i :data-lucide="currentTumor.icon" style="width:32px;height:32px"></i></span>
-              <span x-text="currentTumor.name"></span>
+              <span x-text="(i18nTick, tt('tb.tumor.'+currentTumor.id, currentTumor.name))"></span>
             </h2>
             <p class="detail-tagline" x-text="currentTumor.tagline"></p>
             <div class="detail-meta">
               <div class="detail-meta-item">
-                <span>Total de estudos</span>
+                <span x-text="(i18nTick, tt('tb.metaTotal','Total de estudos'))"></span>
                 <span x-text="getStudiesForTumor(currentTumor.id).length"></span>
               </div>
               <div class="detail-meta-item">
-                <span>Fase 3</span>
+                <span x-text="(i18nTick, tt('tb.metaPhase3','Fase 3'))"></span>
                 <span x-text="getStudiesForTumor(currentTumor.id).filter(s => (s.fase || '').toLowerCase().includes('fase 3')).length"></span>
               </div>
               <div class="detail-meta-item">
-                <span>Em andamento</span>
+                <span x-text="(i18nTick, tt('tb.metaOngoing','Em andamento'))"></span>
                 <span x-text="getStudiesForTumor(currentTumor.id).filter(s => s.status === 'Em andamento').length"></span>
               </div>
             </div>
@@ -544,8 +548,8 @@
                 <div class="modality-icon-box" :style="`color: ${modality.color}`">
                   <i :data-lucide="modality.icon" style="width:18px;height:18px"></i>
                 </div>
-                <h3 class="modality-name" x-text="modality.name"></h3>
-                <span class="modality-count" x-text="`${modality.studies} ${modality.studies === 1 ? 'estudo' : 'estudos'}`"></span>
+                <h3 class="modality-name" x-text="(i18nTick, tt('tb.mod.'+modality.key, modality.name))"></h3>
+                <span class="modality-count" x-text="(i18nTick, `${modality.studies} ${modality.studies === 1 ? tt('tb.study','estudo') : tt('tb.studies','estudos')}`)"></span>
               </div>
               <template x-for="line in modality.lines" :key="line.key">
                 <div class="line-group">
@@ -586,7 +590,7 @@
           <!-- CTA para ver tudo no database -->
           <div style="text-align: center; padding-top: 1rem; border-top: 1px solid var(--border-soft); margin-top: 2rem">
             <a :href="`database.html?cat=${currentTumor.id}`" class="btn btn-secondary">
-              Ver todos no banco completo
+              <span x-text="(i18nTick, tt('tb.cta','Ver todos no banco completo'))"></span>
               <i data-lucide="arrow-right" style="width:14px;height:14px"></i>
             </a>
           </div>
@@ -600,19 +604,24 @@
 <footer class="site-footer">
   <div class="container">
     <div class="footer-bottom">
-      <span>© 2026 TheraTrials Oncology · Tumor boards · 23 tumores cobertos</span>
-      <span>Para uso educacional. Não substitui diretrizes oficiais.</span>
+      <span data-i18n="tb.footerLeft">© 2026 TheraTrials Oncology · Tumor boards · 23 tumores cobertos</span>
+      <span data-i18n="tb.footerRight">Para uso educacional. Não substitui diretrizes oficiais.</span>
     </div>
   </div>
 </footer>
 
 <script src="assets/js/data.js?v=12"></script>
 <script src="assets/js/common.js?v=11"></script>
+<script src="assets/js/i18n.js"></script>
+<script src="assets/lang/pt-br.js"></script>
+<script src="assets/lang/en.js"></script>
 <script>
   function tumorBoardsApp() {
     return {
       data: window.THERA_DATA || { studies: [] },
       selectedTumor: null,
+      i18nTick: 0,
+      tt(key, fb) { return window.t ? window.t(key, fb) : fb; },
 
       tumors: [
         { id: 'prostata', name: 'Câncer de próstata', tagline: 'mHSPC · mCRPC · nmCRPC · ARPi · PARP · teranóstico PSMA · α-PSMA · 223Ra · RT/SBRT', icon: 'circle-dot', color: '#FF8400',
@@ -647,6 +656,10 @@
 
       init() {
         this.$nextTick(() => lucide.createIcons());
+        window.addEventListener('langchange', () => {
+          this.i18nTick++;
+          this.$nextTick(() => lucide.createIcons());
+        });
         this.$watch('selectedTumor', () => {
           this.$nextTick(() => {
             lucide.createIcons();

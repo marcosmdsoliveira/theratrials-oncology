@@ -657,18 +657,22 @@
     </a>
     <button class="nav-toggle" aria-label="Menu" onclick="this.parentElement.querySelector('.nav').classList.toggle('open')"><i data-lucide="menu" style="width:18px;height:18px"></i></button>
     <nav class="nav">
-      <a href="index.html">Home</a>
-      <a href="database.html">Database</a>
-      <a href="trial-matcher.html">Trial Matcher</a>
-      <a href="ensaios-clinicos.html">Ensaios clínicos</a>
-      <a href="explorer.html">Explorer</a>
-      <a href="tumor-boards.html">Tumor boards</a>
-      <a href="radiofarmacos.html">Radiofármacos</a>
-      <a href="guidelines.html">Guidelines</a>
-      <a href="ferramentas.html">Ferramentas</a>
-      <a href="modalidades.html">Modalidades</a>
-      <a href="fundamentos.html">Fundamentos</a>
-      <a href="about.html">Sobre</a>
+      <a href="index.html" data-i18n="nav.home">Home</a>
+      <a href="database.html" data-i18n="nav.database">Database</a>
+      <a href="trial-matcher.html" data-i18n="nav.trialMatcher">Trial Matcher</a>
+      <a href="ensaios-clinicos.html" data-i18n="nav.ensaios">Ensaios clínicos</a>
+      <a href="explorer.html" data-i18n="nav.explorer">Explorer</a>
+      <a href="tumor-boards.html" data-i18n="nav.tumorBoards">Tumor boards</a>
+      <a href="radiofarmacos.html" data-i18n="nav.radiofarmacos">Radiofármacos</a>
+      <a href="guidelines.html" data-i18n="nav.guidelines">Guidelines</a>
+      <a href="ferramentas.html" data-i18n="nav.ferramentas">Ferramentas</a>
+      <a href="modalidades.html" data-i18n="nav.modalidades">Modalidades</a>
+      <a href="fundamentos.html" data-i18n="nav.fundamentos">Fundamentos</a>
+      <a href="about.html" data-i18n="nav.sobre">Sobre</a>
+      <button class="lang-toggle" onclick="toggleLang()" title="Switch to English" aria-label="Change language">
+        <i data-lucide="globe" style="width:14px;height:14px"></i>
+        <span class="lang-label">EN</span>
+      </button>
     </nav>
   </div>
 </header>
@@ -676,13 +680,13 @@
 <!-- ============== HERO ============== -->
 <section class="ea-hero">
   <div class="container">
-    <span class="eyebrow">Recrutamento ativo · Brasil</span>
-    <h1>Ensaios clínicos <span class="accent">recrutando</span> agora</h1>
-    <p>Banco selecionado de ensaios clínicos <strong>não teranósticos</strong> em oncologia com recrutamento aberto no Brasil — imunoterapia, terapia-alvo, ADCs, quimioterapia, hormonioterapia, cirurgia e radioterapia. Filtre por neoplasia, modalidade, fase, biomarcador, linha terapêutica e localidade. Para médicos, pesquisadores e pacientes encaminhados por especialistas.</p>
+    <span class="eyebrow" data-i18n="ea.eyebrow">Recrutamento ativo · Brasil</span>
+    <h1 data-i18n-html="ea.title">Ensaios clínicos <span class="accent">recrutando</span> agora</h1>
+    <p data-i18n-html="ea.subtitle">Banco selecionado de ensaios clínicos <strong>não teranósticos</strong> em oncologia com recrutamento aberto no Brasil — imunoterapia, terapia-alvo, ADCs, quimioterapia, hormonioterapia, cirurgia e radioterapia. Filtre por neoplasia, modalidade, fase, biomarcador, linha terapêutica e localidade. Para médicos, pesquisadores e pacientes encaminhados por especialistas.</p>
 
     <div class="ea-disclaimer">
       <i data-lucide="info" style="width:18px;height:18px"></i>
-      <div>
+      <div data-i18n-html="ea.disclaimer">
         <strong>Aviso:</strong> esta seção é informativa. As informações são consolidadas a partir de registros públicos (ClinicalTrials.gov, REBEC, ANVISA) e fontes oficiais dos patrocinadores. <strong>A elegibilidade final depende sempre da avaliação do centro responsável pelo estudo</strong>. Datas, status e critérios podem mudar — sempre confirmar com a fonte original e a equipe local antes de qualquer encaminhamento.
       </div>
     </div>
@@ -698,13 +702,13 @@
       <!-- SIDEBAR DE FILTROS -->
       <aside class="ea-sidebar">
         <button class="clear-filters-btn" @click="clearFilters()" x-show="hasAnyFilter()" x-cloak>
-          <i data-lucide="x" style="width:14px;height:14px"></i> Limpar filtros
+          <i data-lucide="x" style="width:14px;height:14px"></i> <span data-i18n="ea.clearFilters">Limpar filtros</span>
         </button>
 
         <!-- LOCALIDADE -->
         <div class="filter-block">
           <div class="filter-block-header" @click="open.local = !open.local">
-            <h3><i data-lucide="map-pin" style="width:13px;height:13px"></i> Localidade (UF)</h3>
+            <h3><i data-lucide="map-pin" style="width:13px;height:13px"></i> <span data-i18n="ea.fLocal">Localidade (UF)</span></h3>
             <i data-lucide="chevron-down" class="chev" :class="{ open: open.local }" style="width:14px;height:14px"></i>
           </div>
           <div class="filter-options" x-show="open.local" x-collapse>
@@ -720,7 +724,7 @@
         <!-- NEOPLASIA -->
         <div class="filter-block">
           <div class="filter-block-header" @click="open.neo = !open.neo">
-            <h3><i data-lucide="dna" style="width:13px;height:13px"></i> Neoplasia</h3>
+            <h3><i data-lucide="dna" style="width:13px;height:13px"></i> <span data-i18n="ea.fNeo">Neoplasia</span></h3>
             <i data-lucide="chevron-down" class="chev" :class="{ open: open.neo }" style="width:14px;height:14px"></i>
           </div>
           <div class="filter-options" x-show="open.neo" x-collapse>
@@ -737,7 +741,7 @@
         <!-- MODALIDADE -->
         <div class="filter-block">
           <div class="filter-block-header" @click="open.mod = !open.mod">
-            <h3><i data-lucide="layers" style="width:13px;height:13px"></i> Modalidade</h3>
+            <h3><i data-lucide="layers" style="width:13px;height:13px"></i> <span data-i18n="ea.fMod">Modalidade</span></h3>
             <i data-lucide="chevron-down" class="chev" :class="{ open: open.mod }" style="width:14px;height:14px"></i>
           </div>
           <div class="filter-options" x-show="open.mod" x-collapse>
@@ -753,7 +757,7 @@
         <!-- FASE -->
         <div class="filter-block">
           <div class="filter-block-header" @click="open.fase = !open.fase">
-            <h3><i data-lucide="git-branch" style="width:13px;height:13px"></i> Fase</h3>
+            <h3><i data-lucide="git-branch" style="width:13px;height:13px"></i> <span data-i18n="ea.fFase">Fase</span></h3>
             <i data-lucide="chevron-down" class="chev" :class="{ open: open.fase }" style="width:14px;height:14px"></i>
           </div>
           <div class="filter-options" x-show="open.fase" x-collapse>
@@ -769,7 +773,7 @@
         <!-- STATUS -->
         <div class="filter-block">
           <div class="filter-block-header" @click="open.status = !open.status">
-            <h3><i data-lucide="activity" style="width:13px;height:13px"></i> Status</h3>
+            <h3><i data-lucide="activity" style="width:13px;height:13px"></i> <span data-i18n="ea.fStatus">Status</span></h3>
             <i data-lucide="chevron-down" class="chev" :class="{ open: open.status }" style="width:14px;height:14px"></i>
           </div>
           <div class="filter-options" x-show="open.status" x-collapse>
@@ -786,7 +790,7 @@
         <!-- BIOMARCADOR -->
         <div class="filter-block">
           <div class="filter-block-header" @click="open.bio = !open.bio">
-            <h3><i data-lucide="microscope" style="width:13px;height:13px"></i> Biomarcador</h3>
+            <h3><i data-lucide="microscope" style="width:13px;height:13px"></i> <span data-i18n="ea.fBio">Biomarcador</span></h3>
             <i data-lucide="chevron-down" class="chev" :class="{ open: open.bio }" style="width:14px;height:14px"></i>
           </div>
           <div class="filter-options" x-show="open.bio" x-collapse>
@@ -802,7 +806,7 @@
         <!-- LINHA -->
         <div class="filter-block">
           <div class="filter-block-header" @click="open.linha = !open.linha">
-            <h3><i data-lucide="list-ordered" style="width:13px;height:13px"></i> Linha terapêutica</h3>
+            <h3><i data-lucide="list-ordered" style="width:13px;height:13px"></i> <span data-i18n="ea.fLinha">Linha terapêutica</span></h3>
             <i data-lucide="chevron-down" class="chev" :class="{ open: open.linha }" style="width:14px;height:14px"></i>
           </div>
           <div class="filter-options" x-show="open.linha" x-collapse>
@@ -821,10 +825,10 @@
         <div class="ea-search-row">
           <div class="ea-search">
             <i data-lucide="search" style="width:16px;height:16px"></i>
-            <input type="text" placeholder="Buscar por nome do estudo, NCT, intervenção, biomarcador, patrocinador…" x-model="search">
+            <input type="text" data-i18n-placeholder="ea.searchPh" placeholder="Buscar por nome do estudo, NCT, intervenção, biomarcador, patrocinador…" x-model="search">
           </div>
           <div class="ea-result-count">
-            <strong x-text="filtered().length"></strong> de <strong x-text="data.length"></strong> estudos
+            <strong x-text="filtered().length"></strong> <span data-i18n="ea.of">de</span> <strong x-text="data.length"></strong> <span data-i18n="ea.studies">estudos</span>
           </div>
         </div>
 
@@ -1017,7 +1021,7 @@
 <dialog id="contact-modal" class="contact-modal" aria-labelledby="contact-modal-title">
   <div class="cm-head">
     <div class="cm-title-wrap">
-      <h3 id="contact-modal-title">Entrar em contato</h3>
+      <h3 id="contact-modal-title" data-i18n="ea.cmTitle">Entrar em contato</h3>
       <span class="cm-study" id="cm-study-name"></span>
     </div>
     <button type="button" class="cm-close" onclick="closeContactModal()" aria-label="Fechar">
@@ -1027,35 +1031,35 @@
 
   <!-- View 1: Formulário -->
   <div class="cm-body" id="cm-form-view">
-    <p class="cm-intro">Deixe seus dados e mensagem que retornaremos pelo canal informado. Você também pode usar o WhatsApp para um contato mais rápido.</p>
+    <p class="cm-intro" data-i18n="ea.cmIntro">Deixe seus dados e mensagem que retornaremos pelo canal informado. Você também pode usar o WhatsApp para um contato mais rápido.</p>
 
     <form id="contact-form" onsubmit="submitContact(event)">
       <input type="hidden" name="estudo" id="cm-hidden-estudo">
       <input type="hidden" name="nct" id="cm-hidden-nct">
       <input type="hidden" name="_subject" id="cm-hidden-subject">
 
-      <label for="cm-nome">Nome completo *</label>
+      <label for="cm-nome" data-i18n="ea.cmName">Nome completo *</label>
       <input id="cm-nome" type="text" name="nome" required maxlength="120" autocomplete="name">
 
-      <label for="cm-email">Email *</label>
+      <label for="cm-email" data-i18n="ea.cmEmail">Email *</label>
       <input id="cm-email" type="email" name="email" required maxlength="200" autocomplete="email">
 
-      <label for="cm-tel">Telefone (WhatsApp)</label>
+      <label for="cm-tel" data-i18n="ea.cmPhone">Telefone (WhatsApp)</label>
       <input id="cm-tel" type="tel" name="telefone" placeholder="+55 31 9 9999-9999" maxlength="30" autocomplete="tel">
 
-      <label for="cm-msg">Mensagem</label>
-      <textarea id="cm-msg" name="mensagem" rows="4" maxlength="2000" placeholder="Conte brevemente sobre o caso clínico ou o que gostaria de saber..."></textarea>
+      <label for="cm-msg" data-i18n="ea.cmMsg">Mensagem</label>
+      <textarea id="cm-msg" name="mensagem" rows="4" maxlength="2000" data-i18n-placeholder="ea.cmMsgPh" placeholder="Conte brevemente sobre o caso clínico ou o que gostaria de saber..."></textarea>
 
       <div class="cm-actions">
         <button type="button" class="cm-btn cm-btn-wpp" onclick="sendWhatsApp()">
           <i data-lucide="message-circle" style="width:16px;height:16px"></i> WhatsApp
         </button>
         <button type="submit" class="cm-btn cm-btn-send">
-          <i data-lucide="send" style="width:16px;height:16px"></i> Enviar por e-mail
+          <i data-lucide="send" style="width:16px;height:16px"></i> <span data-i18n="ea.cmSend">Enviar por e-mail</span>
         </button>
       </div>
 
-      <p class="cm-priv">Seus dados são usados apenas para responder a este contato. Não comercializamos seus dados nem fazemos disparos de marketing. O envio pode envolver provedores técnicos necessários ao funcionamento do formulário. Controlador: Dr. Marcos Oliveira. Detalhes na <a href="privacidade.html" style="color:var(--amber); text-decoration:underline">Política de Privacidade</a>.</p>
+      <p class="cm-priv" data-i18n-html="ea.cmPriv">Seus dados são usados apenas para responder a este contato. Não comercializamos seus dados nem fazemos disparos de marketing. O envio pode envolver provedores técnicos necessários ao funcionamento do formulário. Controlador: Dr. Marcos Oliveira. Detalhes na <a href="privacidade.html" style="color:var(--amber); text-decoration:underline">Política de Privacidade</a>.</p>
     </form>
   </div>
 
@@ -1064,9 +1068,9 @@
     <div class="cm-success-icon">
       <i data-lucide="check-circle-2"></i>
     </div>
-    <h4>Obrigado pelo contato!</h4>
-    <p id="cm-success-msg">Recebemos sua mensagem. Em breve retornaremos pelo e-mail ou telefone informado.</p>
-    <button type="button" class="cm-btn cm-btn-send" style="max-width: 200px; margin: 0 auto" onclick="closeContactModal()">Fechar</button>
+    <h4 data-i18n="ea.cmThanks">Obrigado pelo contato!</h4>
+    <p id="cm-success-msg" data-i18n="ea.cmThanksMsg">Recebemos sua mensagem. Em breve retornaremos pelo e-mail ou telefone informado.</p>
+    <button type="button" class="cm-btn cm-btn-send" style="max-width: 200px; margin: 0 auto" onclick="closeContactModal()" data-i18n="ea.cmClose">Fechar</button>
   </div>
 
   <!-- View 3: Erro -->
@@ -1074,16 +1078,16 @@
     <div class="cm-error-icon">
       <i data-lucide="alert-triangle"></i>
     </div>
-    <h4>Não conseguimos enviar agora</h4>
-    <p id="cm-error-msg">Ocorreu um erro de conexão. Tente novamente em alguns instantes ou use o WhatsApp.</p>
+    <h4 data-i18n="ea.cmErr">Não conseguimos enviar agora</h4>
+    <p id="cm-error-msg" data-i18n="ea.cmErrMsg">Ocorreu um erro de conexão. Tente novamente em alguns instantes ou use o WhatsApp.</p>
     <div class="cm-actions" style="max-width: 380px; margin: 0 auto; flex-wrap: wrap">
       <button type="button" class="cm-btn cm-btn-wpp" onclick="sendWhatsApp()">
         <i data-lucide="message-circle" style="width:16px;height:16px"></i> WhatsApp
       </button>
       <button type="button" class="cm-btn cm-btn-send" onclick="_sendViaMailto()">
-        <i data-lucide="mail" style="width:16px;height:16px"></i> App de e-mail
+        <i data-lucide="mail" style="width:16px;height:16px"></i> <span data-i18n="ea.cmMailApp">App de e-mail</span>
       </button>
-      <button type="button" class="cm-btn cm-btn-send" style="background:transparent; color:var(--off-white); border:1px solid var(--border-soft); flex-basis:100%" onclick="resetContactForm()">
+      <button type="button" class="cm-btn cm-btn-send" style="background:transparent; color:var(--off-white); border:1px solid var(--border-soft); flex-basis:100%" onclick="resetContactForm()" data-i18n="ea.cmRetry">
         Tentar novamente
       </button>
     </div>
@@ -1279,13 +1283,16 @@
 <footer class="site-footer">
   <div class="container">
     <div class="footer-bottom">
-      <span>© 2026 TheraTrials Oncology · Ensaios clínicos ativos (BR) · curadoria informativa</span>
-      <span>Não substitui avaliação do centro responsável</span>
+      <span data-i18n="ea.footerLeft">© 2026 TheraTrials Oncology · Ensaios clínicos ativos (BR) · curadoria informativa</span>
+      <span data-i18n="ea.footerRight">Não substitui avaliação do centro responsável</span>
     </div>
   </div>
 </footer>
 
 <script src="assets/js/trials_br.js"></script>
+<script src="assets/js/i18n.js"></script>
+<script src="assets/lang/pt-br.js"></script>
+<script src="assets/lang/en.js"></script>
 <script>
   function estudosAtivosApp() {
     return {
