@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-05-14T01:51:55+00:00",
+ "generated_at": "2026-06-01T10:33:00+00:00",
  "source": "ClinicalTrials.gov API v2",
  "queries": [
   "Lu-177",
@@ -69,17 +69,17 @@
   "Azedra"
  ],
  "totals": {
-  "trials": 1731,
+  "trials": 1741,
   "queries": 64,
-  "with_brazil": 18
+  "with_brazil": 19
  },
  "facets": {
   "isotope": {
-   "177Lu": 380,
-   "90Y": 340,
+   "177Lu": 384,
+   "90Y": 342,
    "131I": 262,
    "223Ra": 115,
-   "225Ac": 48,
+   "225Ac": 49,
    "166Ho": 24,
    "153Sm": 18,
    "212Pb": 10,
@@ -92,18 +92,18 @@
    "213Bi": 1
   },
   "ligand": {
-   "FAPI": 232,
+   "FAPI": 234,
    "DOTATATE": 180,
-   "Microspheres": 172,
+   "Microspheres": 173,
    "anti-CD20": 135,
-   "PSMA-617": 110,
+   "PSMA-617": 111,
    "MIBG": 99,
    "PSMA-other": 90,
    "DOTATOC": 46,
-   "CXCR4": 38,
-   "PSMA-I&T": 27,
+   "CXCR4": 39,
+   "PSMA-I&T": 28,
    "CAIX": 17,
-   "GRPR/NeoB": 15,
+   "GRPR/NeoB": 16,
    "DOTANOC": 11,
    "IGF-1R": 3,
    "HER2": 3,
@@ -112,72 +112,72 @@
   },
   "target": {
    "SSTR": 237,
-   "FAP": 232,
-   "PSMA": 229,
-   "Vascular (intra-arterial)": 172,
+   "FAP": 234,
+   "PSMA": 231,
+   "Vascular (intra-arterial)": 173,
    "CD20": 135,
    "NET (norepinephrine)": 99,
-   "CXCR4": 38,
+   "CXCR4": 39,
    "CAIX": 17,
-   "GRPR": 15,
+   "GRPR": 16,
    "IGF-1R": 3,
    "HER2": 3,
    "GPC3": 2
   },
   "drug_class": {
-   "Beta-": 1012,
-   "Outro": 503,
-   "Alfa": 188,
+   "Beta-": 1018,
+   "Outro": 506,
+   "Alfa": 189,
    "Beta- (microsfera)": 24,
    "Beta-/Auger": 4
   },
   "phase": {
-   "Phase 2": 439,
+   "Phase 2": 440,
    "Phase 1": 324,
-   "N/A": 290,
-   "NA": 233,
+   "N/A": 292,
+   "NA": 234,
    "Phase 1 / Phase 2": 192,
-   "Phase 3": 118,
-   "EARLY_Phase 1": 87,
+   "Phase 3": 120,
+   "EARLY_Phase 1": 91,
    "Phase 2 / Phase 3": 28,
    "Phase 4": 20
   },
   "status": {
-   "COMPLETED": 608,
-   "RECRUITING": 427,
-   "UNKNOWN": 216,
-   "TERMINATED": 161,
-   "ACTIVE_NOT_RECRUITING": 121,
-   "NOT_YET_RECRUITING": 84,
+   "COMPLETED": 609,
+   "RECRUITING": 430,
+   "UNKNOWN": 215,
+   "TERMINATED": 162,
+   "ACTIVE_NOT_RECRUITING": 123,
+   "NOT_YET_RECRUITING": 88,
    "WITHDRAWN": 71,
-   "NO_LONGER_AVAILABLE": 12,
+   "NO_LONGER_AVAILABLE": 13,
    "ENROLLING_BY_INVITATION": 9,
    "SUSPENDED": 8,
    "APPROVED_FOR_MARKETING": 7,
-   "AVAILABLE": 6,
+   "AVAILABLE": 5,
    "TEMPORARILY_NOT_AVAILABLE": 1
   },
   "sponsor_class": {
-   "OTHER": 1241,
-   "INDUSTRY": 388,
-   "NIH": 52,
+   "OTHER": 1247,
+   "INDUSTRY": 391,
+   "NIH": 53,
    "OTHER_GOV": 26,
    "NETWORK": 21,
    "FED": 3
   },
   "neoplasia": {
-   "Próstata": 356,
-   "Outro": 345,
+   "Próstata": 359,
+   "Outro": 347,
    "NET GEP": 207,
    "Linfoma": 173,
-   "CHC": 169,
+   "CHC": 171,
    "Tireoide": 73,
    "Mama": 57,
    "Neuroblastoma": 55,
    "Metástase hepática": 50,
-   "Colorretal": 31,
-   "Pâncreas": 28,
-   "Sólidos avançados": 27,
+   "Colorretal": 32,
+   "Pâncreas": 29,
+   "Sólidos avançados": 28,
    "Mieloma": 27,
    "Glioma/GBM": 26,
    "Renal (ccRCC)": 25,
@@ -192,19 +192,19 @@
    "Ósseo (mets)": 3
   },
   "neoplasia_all": {
-   "Próstata": 356,
+   "Próstata": 359,
    "NET GEP": 215,
+   "CHC": 177,
    "Linfoma": 176,
-   "CHC": 175,
-   "Colorretal": 94,
+   "Colorretal": 95,
    "Metástase hepática": 89,
    "Tireoide": 82,
    "Neuroblastoma": 80,
-   "Mama": 75,
+   "Mama": 76,
    "Glioma/GBM": 69,
-   "Sólidos avançados": 67,
+   "Sólidos avançados": 69,
    "Ósseo (mets)": 66,
-   "Pâncreas": 50,
+   "Pâncreas": 51,
    "Pulmão (SCLC)": 44,
    "PPGL": 42,
    "Sarcoma": 42,
@@ -415,6 +415,58 @@
    "url": "https://clinicaltrials.gov/study/NCT03903835"
   },
   {
+   "nct": "NCT07611110",
+   "title": "AZD2265 Compared With Standard of Care in PSMA-positive Metastatic Castration-resistant Prostate Cancer (VECTRA-01)",
+   "phase": "Phase 3",
+   "status": "RECRUITING",
+   "isotope": "225Ac",
+   "ligand": "PSMA-I&T",
+   "target": "PSMA",
+   "drug_class": "Alfa",
+   "drug": "AZD2265",
+   "sponsor": "AstraZeneca",
+   "sponsor_class": "INDUSTRY",
+   "conditions": [
+    "Metastatic Castration-resistant Prostate Cancer"
+   ],
+   "neoplasia": "Próstata",
+   "neoplasia_all": [
+    "Próstata"
+   ],
+   "interventions": [
+    "AZD2265",
+    "Cabazitaxel",
+    "Abiraterone",
+    "Enzalutamide",
+    "Apalutamide",
+    "Darolutamide"
+   ],
+   "enrollment": 670,
+   "countries": [
+    "Australia",
+    "Austria",
+    "Brazil",
+    "Canada",
+    "China",
+    "France",
+    "Germany",
+    "India",
+    "Japan",
+    "South Korea",
+    "Spain",
+    "Taiwan",
+    "Thailand",
+    "Turkey (Türkiye)",
+    "United Kingdom",
+    "United States"
+   ],
+   "has_brazil": true,
+   "start_date": "2026-05-04",
+   "primary_completion": "2029-02-13",
+   "last_update": "2026-05-28",
+   "url": "https://clinicaltrials.gov/study/NCT07611110"
+  },
+  {
    "nct": "NCT06520345",
    "title": "The Study of 177Lu-TLX591 Plus SOC Versus SOC Alone in Patients With mCRPC (ProstACT Global)",
    "phase": "Phase 3",
@@ -451,7 +503,7 @@
    "has_brazil": false,
    "start_date": "2024-07-26",
    "primary_completion": "2027-12",
-   "last_update": "2026-05-05",
+   "last_update": "2026-05-27",
    "url": "https://clinicaltrials.gov/study/NCT06520345"
   },
   {
@@ -552,6 +604,7 @@
     "Brazil",
     "Canada",
     "China",
+    "Colombia",
     "Czechia",
     "France",
     "Germany",
@@ -575,7 +628,7 @@
    "has_brazil": true,
    "start_date": "2024-03-12",
    "primary_completion": "2028-04-25",
-   "last_update": "2026-04-30",
+   "last_update": "2026-05-27",
    "url": "https://clinicaltrials.gov/study/NCT05939414"
   },
   {
@@ -621,7 +674,7 @@
    "has_brazil": true,
    "start_date": "2025-02-27",
    "primary_completion": "2028-06-27",
-   "last_update": "2026-04-30",
+   "last_update": "2026-05-27",
    "url": "https://clinicaltrials.gov/study/NCT06780670"
   },
   {
@@ -848,7 +901,7 @@
    "has_brazil": false,
    "start_date": "2023-07-06",
    "primary_completion": "2026-12",
-   "last_update": "2026-04-17",
+   "last_update": "2026-05-19",
    "url": "https://clinicaltrials.gov/study/NCT05884255"
   },
   {
@@ -1914,7 +1967,7 @@
    "has_brazil": false,
    "start_date": "2023-09-27",
    "primary_completion": "2029-11-26",
-   "last_update": "2026-05-01",
+   "last_update": "2026-05-14",
    "url": "https://clinicaltrials.gov/study/NCT05636618"
   },
   {
@@ -2151,8 +2204,41 @@
    "has_brazil": false,
    "start_date": "2006-05",
    "primary_completion": "2027-05",
-   "last_update": "2026-04-02",
+   "last_update": "2026-05-29",
    "url": "https://clinicaltrials.gov/study/NCT00107289"
+  },
+  {
+   "nct": "NCT05620771",
+   "title": "Therasphere® and Systemic Therapy for Patients With Hepatocellular Carcinoma That is High-risk",
+   "phase": "Phase 2",
+   "status": "RECRUITING",
+   "isotope": "90Y",
+   "ligand": "Microspheres",
+   "target": "Vascular (intra-arterial)",
+   "drug_class": "Beta-",
+   "drug": "Y90 + Atezolizumab and Bevacizumab",
+   "sponsor": "Northwestern University",
+   "sponsor_class": "OTHER",
+   "conditions": [
+    "Hepatocellular Carcinoma"
+   ],
+   "neoplasia": "CHC",
+   "neoplasia_all": [
+    "CHC"
+   ],
+   "interventions": [
+    "Y90 + Atezolizumab and Bevacizumab",
+    "Y90 + TKI"
+   ],
+   "enrollment": 200,
+   "countries": [
+    "United States"
+   ],
+   "has_brazil": false,
+   "start_date": "2022-11-30",
+   "primary_completion": "2040-07-01",
+   "last_update": "2026-05-26",
+   "url": "https://clinicaltrials.gov/study/NCT05620771"
   },
   {
    "nct": "NCT06449781",
@@ -2249,37 +2335,6 @@
    "primary_completion": "2026-03-01",
    "last_update": "2026-01-20",
    "url": "https://clinicaltrials.gov/study/NCT07350707"
-  },
-  {
-   "nct": "NCT06955169",
-   "title": "Comparing the Radiopharmaceutical Drug, [177Lu]Lu-DOTATATE, to Standard of Care Treatment for Patients With Meningioma That Has Come Back After Prior Treatment",
-   "phase": "Phase 2",
-   "status": "RECRUITING",
-   "isotope": "177Lu",
-   "ligand": "DOTATATE",
-   "target": "SSTR",
-   "drug_class": "Beta-",
-   "drug": "[177Lu]Lu-DOTATATE",
-   "sponsor": "RTOG Foundation, Inc.",
-   "sponsor_class": "OTHER",
-   "conditions": [
-    "Intracranial Meningioma"
-   ],
-   "neoplasia": "Outro",
-   "neoplasia_all": [],
-   "interventions": [
-    "[177Lu]Lu-DOTATATE",
-    "Standard of Care treatments"
-   ],
-   "enrollment": 153,
-   "countries": [
-    "United States"
-   ],
-   "has_brazil": false,
-   "start_date": "2025-12-24",
-   "primary_completion": "2029-08",
-   "last_update": "2026-05-08",
-   "url": "https://clinicaltrials.gov/study/NCT06955169"
   },
   {
    "nct": "NCT06773663",
@@ -2383,9 +2438,9 @@
     "United States"
    ],
    "has_brazil": false,
-   "start_date": "2026-04",
+   "start_date": "2026-05-18",
    "primary_completion": "2028-09",
-   "last_update": "2026-04-08",
+   "last_update": "2026-05-22",
    "url": "https://clinicaltrials.gov/study/NCT07278479"
   },
   {
@@ -2866,7 +2921,7 @@
    "has_brazil": false,
    "start_date": "2024-01-12",
    "primary_completion": "2029-04-30",
-   "last_update": "2026-05-13",
+   "last_update": "2026-05-26",
    "url": "https://clinicaltrials.gov/study/NCT05773274"
   },
   {
@@ -3199,7 +3254,7 @@
    "has_brazil": false,
    "start_date": "2022-07-20",
    "primary_completion": "2026-08-27",
-   "last_update": "2026-05-12",
+   "last_update": "2026-05-14",
    "url": "https://clinicaltrials.gov/study/NCT05413850"
   },
   {
@@ -3235,7 +3290,7 @@
    "has_brazil": false,
    "start_date": "2014-02-12",
    "primary_completion": "2030-12-31",
-   "last_update": "2026-05-12",
+   "last_update": "2026-05-22",
    "url": "https://clinicaltrials.gov/study/NCT02019706"
   },
   {
@@ -3956,7 +4011,7 @@
    "has_brazil": false,
    "start_date": "2024-08-14",
    "primary_completion": "2031-09-09",
-   "last_update": "2025-11-06",
+   "last_update": "2026-05-27",
    "url": "https://clinicaltrials.gov/study/NCT06247995"
   },
   {
@@ -4026,7 +4081,7 @@
    "has_brazil": false,
    "start_date": "2022-10-03",
    "primary_completion": "2027-07-01",
-   "last_update": "2026-04-07",
+   "last_update": "2026-05-22",
    "url": "https://clinicaltrials.gov/study/NCT04086485"
   },
   {
@@ -4159,7 +4214,7 @@
    "has_brazil": false,
    "start_date": "2021-10-25",
    "primary_completion": "2030-11-30",
-   "last_update": "2026-05-12",
+   "last_update": "2026-05-22",
    "url": "https://clinicaltrials.gov/study/NCT04927416"
   },
   {
@@ -4266,38 +4321,6 @@
    "primary_completion": "2027-12-31",
    "last_update": "2026-03-24",
    "url": "https://clinicaltrials.gov/study/NCT06526299"
-  },
-  {
-   "nct": "NCT05903807",
-   "title": "[68Ga]Ga-FAPI-46 PET/CT in Ovarian Cancer",
-   "phase": "Phase 2",
-   "status": "RECRUITING",
-   "isotope": "",
-   "ligand": "FAPI",
-   "target": "FAP",
-   "drug_class": "Outro",
-   "drug": "68Ga-FAPi-46",
-   "sponsor": "Aalborg University Hospital",
-   "sponsor_class": "OTHER",
-   "conditions": [
-    "Ovarian Cancer"
-   ],
-   "neoplasia": "Ovário",
-   "neoplasia_all": [
-    "Ovário"
-   ],
-   "interventions": [
-    "68Ga-FAPi-46"
-   ],
-   "enrollment": 50,
-   "countries": [
-    "Denmark"
-   ],
-   "has_brazil": false,
-   "start_date": "2023-11-17",
-   "primary_completion": "2026-12-01",
-   "last_update": "2025-01-30",
-   "url": "https://clinicaltrials.gov/study/NCT05903807"
   },
   {
    "nct": "NCT06484361",
@@ -4502,8 +4525,8 @@
    ],
    "has_brazil": false,
    "start_date": "2025-05-13",
-   "primary_completion": "2026-03-01",
-   "last_update": "2025-11-24",
+   "primary_completion": "2026-09-01",
+   "last_update": "2026-05-26",
    "url": "https://clinicaltrials.gov/study/NCT06574880"
   },
   {
@@ -5089,7 +5112,7 @@
    "has_brazil": false,
    "start_date": "2019-07-29",
    "primary_completion": "2035-11-01",
-   "last_update": "2026-05-12",
+   "last_update": "2026-05-20",
    "url": "https://clinicaltrials.gov/study/NCT03841617"
   },
   {
@@ -5244,7 +5267,7 @@
    "has_brazil": false,
    "start_date": "2023-12-27",
    "primary_completion": "2026-11-02",
-   "last_update": "2026-05-13",
+   "last_update": "2026-05-27",
    "url": "https://clinicaltrials.gov/study/NCT05691465"
   },
   {
@@ -5555,6 +5578,41 @@
    "primary_completion": "2027-06-30",
    "last_update": "2025-10-07",
    "url": "https://clinicaltrials.gov/study/NCT07145801"
+  },
+  {
+   "nct": "NCT07150806",
+   "title": "RYZ101 for the Treatment of Progressive or Recurrent Intracranial Meningioma",
+   "phase": "Phase 1 / Phase 2",
+   "status": "RECRUITING",
+   "isotope": "225Ac",
+   "ligand": "DOTATATE",
+   "target": "SSTR",
+   "drug_class": "Alfa",
+   "drug": "Actinium Ac 225 DOTATATE RYZ101",
+   "sponsor": "Joshua Palmer",
+   "sponsor_class": "OTHER",
+   "conditions": [
+    "Recurrent Meningioma"
+   ],
+   "neoplasia": "Outro",
+   "neoplasia_all": [],
+   "interventions": [
+    "Actinium Ac 225 DOTATATE RYZ101",
+    "Biospecimen Collection",
+    "Computed Tomography",
+    "Echocardiography Test",
+    "Gallium Ga 68-DOTATATE",
+    "L-lysine/L-arginine-containing Amino Acid"
+   ],
+   "enrollment": 30,
+   "countries": [
+    "United States"
+   ],
+   "has_brazil": false,
+   "start_date": "2025-11-12",
+   "primary_completion": "2026-12-31",
+   "last_update": "2026-05-22",
+   "url": "https://clinicaltrials.gov/study/NCT07150806"
   },
   {
    "nct": "NCT07464132",
@@ -5980,39 +6038,9 @@
    ],
    "has_brazil": false,
    "start_date": "2021-12-06",
-   "primary_completion": "2026-12-15",
-   "last_update": "2024-08-23",
+   "primary_completion": "2027-12-15",
+   "last_update": "2026-05-27",
    "url": "https://clinicaltrials.gov/study/NCT04559217"
-  },
-  {
-   "nct": "NCT05214820",
-   "title": "68Ga-PSMA PET Imaging of Upper Metastatic Gastric Cancers to Determine Eligibility to Endoradiotherapy",
-   "phase": "Phase 2",
-   "status": "RECRUITING",
-   "isotope": "177Lu",
-   "ligand": "PSMA-other",
-   "target": "PSMA",
-   "drug_class": "Beta-",
-   "drug": "Radiopharmaceutical 68Ga-PSMA",
-   "sponsor": "Centre de recherche du Centre hospitalier universitaire de Sherbrooke",
-   "sponsor_class": "OTHER",
-   "conditions": [
-    "Upper Digestive Tract Cancer"
-   ],
-   "neoplasia": "Outro",
-   "neoplasia_all": [],
-   "interventions": [
-    "Radiopharmaceutical 68Ga-PSMA"
-   ],
-   "enrollment": 20,
-   "countries": [
-    "Canada"
-   ],
-   "has_brazil": false,
-   "start_date": "2022-01-17",
-   "primary_completion": "2025-06-30",
-   "last_update": "2025-02-20",
-   "url": "https://clinicaltrials.gov/study/NCT05214820"
   },
   {
    "nct": "NCT06004661",
@@ -6541,9 +6569,9 @@
     "United States"
    ],
    "has_brazil": false,
-   "start_date": "2026-03",
+   "start_date": "2026-03-03",
    "primary_completion": "2027-09",
-   "last_update": "2026-03-17",
+   "last_update": "2026-05-15",
    "url": "https://clinicaltrials.gov/study/NCT07476001"
   },
   {
@@ -6581,9 +6609,9 @@
     "United States"
    ],
    "has_brazil": false,
-   "start_date": "2026-04-01",
+   "start_date": "2026-01-30",
    "primary_completion": "2027-01-30",
-   "last_update": "2026-01-28",
+   "last_update": "2026-05-20",
    "url": "https://clinicaltrials.gov/study/NCT06860815"
   },
   {
@@ -6670,7 +6698,9 @@
     "Colorectal Neoplasms",
     "Prostate Neoplasm",
     "Endometrial Neoplasms",
-    "Neoplasm Metastasis"
+    "Neoplasm Metastasis",
+    "Stomach Neoplasms",
+    "Esophageal Neoplasms"
    ],
    "neoplasia": "Próstata",
    "neoplasia_all": [
@@ -6687,6 +6717,7 @@
    "enrollment": 421,
    "countries": [
     "Canada",
+    "China",
     "France",
     "Germany",
     "Japan",
@@ -6696,7 +6727,7 @@
    "has_brazil": false,
    "start_date": "2025-08-06",
    "primary_completion": "2030-04",
-   "last_update": "2026-04-17",
+   "last_update": "2026-05-29",
    "url": "https://clinicaltrials.gov/study/NCT07114601"
   },
   {
@@ -6855,7 +6886,7 @@
    "has_brazil": false,
    "start_date": "2025-10-22",
    "primary_completion": "2028-07",
-   "last_update": "2026-04-17",
+   "last_update": "2026-05-22",
    "url": "https://clinicaltrials.gov/study/NCT07213791"
   },
   {
@@ -7437,7 +7468,7 @@
    "has_brazil": false,
    "start_date": "2024-07-31",
    "primary_completion": "2028-05-12",
-   "last_update": "2026-04-28",
+   "last_update": "2026-05-26",
    "url": "https://clinicaltrials.gov/study/NCT06147037"
   },
   {
@@ -7605,9 +7636,9 @@
     "United States"
    ],
    "has_brazil": false,
-   "start_date": "2026-05",
+   "start_date": "2026-06",
    "primary_completion": "2028-09",
-   "last_update": "2026-05-05",
+   "last_update": "2026-05-29",
    "url": "https://clinicaltrials.gov/study/NCT07197671"
   },
   {
@@ -7640,7 +7671,7 @@
    "has_brazil": false,
    "start_date": "2025-12-05",
    "primary_completion": "2028-02",
-   "last_update": "2026-04-14",
+   "last_update": "2026-05-22",
    "url": "https://clinicaltrials.gov/study/NCT07311993"
   },
   {
@@ -7737,8 +7768,8 @@
    ],
    "has_brazil": false,
    "start_date": "2022-11-16",
-   "primary_completion": "2026-03-31",
-   "last_update": "2025-11-10",
+   "primary_completion": "2028-03-31",
+   "last_update": "2026-05-26",
    "url": "https://clinicaltrials.gov/study/NCT05195710"
   },
   {
@@ -7776,8 +7807,8 @@
    ],
    "has_brazil": false,
    "start_date": "2024-08-30",
-   "primary_completion": "2026-06",
-   "last_update": "2026-01-29",
+   "primary_completion": "2026-10",
+   "last_update": "2026-05-26",
    "url": "https://clinicaltrials.gov/study/NCT06492122"
   },
   {
@@ -7862,7 +7893,7 @@
    "has_brazil": false,
    "start_date": "2023-11-13",
    "primary_completion": "2026-12-30",
-   "last_update": "2026-04-30",
+   "last_update": "2026-05-27",
    "url": "https://clinicaltrials.gov/study/NCT05870579"
   },
   {
@@ -8325,7 +8356,7 @@
    "has_brazil": false,
    "start_date": "2025-10-21",
    "primary_completion": "2027-04-26",
-   "last_update": "2026-01-13",
+   "last_update": "2026-05-14",
    "url": "https://clinicaltrials.gov/study/NCT07197645"
   },
   {
@@ -9686,7 +9717,7 @@
    "has_brazil": false,
    "start_date": "2025-07-01",
    "primary_completion": "2028-05-19",
-   "last_update": "2025-07-29",
+   "last_update": "2026-05-18",
    "url": "https://clinicaltrials.gov/study/NCT06287944"
   },
   {
@@ -9936,6 +9967,42 @@
    "url": "https://clinicaltrials.gov/study/NCT07438847"
   },
   {
+   "nct": "NCT07595237",
+   "title": "A IIT Study of 177Lu-DOTA-SNA040",
+   "phase": "EARLY_Phase 1",
+   "status": "RECRUITING",
+   "isotope": "177Lu",
+   "ligand": "",
+   "target": "",
+   "drug_class": "Beta-",
+   "drug": "177Lu-DOTA-SNA040",
+   "sponsor": "SmartNuclide Biopharma",
+   "sponsor_class": "INDUSTRY",
+   "conditions": [
+    "Advanced Solid Tumors (Such as Gastric Cancer)",
+    "Advanced Solid Tumors (Such as Adenocarcinoma at the Gastroesophageal Junction)",
+    "Advanced Solid Tumors (Such as Pancreatic Cancer)",
+    "Advanced Solid Tumors (Such as Cholangiocarcinoma)"
+   ],
+   "neoplasia": "Pâncreas",
+   "neoplasia_all": [
+    "Pâncreas",
+    "Sólidos avançados"
+   ],
+   "interventions": [
+    "177Lu-DOTA-SNA040"
+   ],
+   "enrollment": 12,
+   "countries": [
+    "China"
+   ],
+   "has_brazil": false,
+   "start_date": "2025-11-01",
+   "primary_completion": "2025-11-24",
+   "last_update": "2026-05-19",
+   "url": "https://clinicaltrials.gov/study/NCT07595237"
+  },
+  {
    "nct": "NCT04609592",
    "title": "Study of PRRT in Metastatic, World Health Organization (WHO) Grade 1 or 2, SSTR Positive, GEP-NET Who Are Candidates for Cytoreductive Surgery",
    "phase": "Phase 1",
@@ -10094,7 +10161,7 @@
    "has_brazil": false,
    "start_date": "2025-03-07",
    "primary_completion": "2026-06",
-   "last_update": "2026-03-19",
+   "last_update": "2026-05-15",
    "url": "https://clinicaltrials.gov/study/NCT06122610"
   },
   {
@@ -10567,39 +10634,6 @@
    "url": "https://clinicaltrials.gov/study/NCT04571086"
   },
   {
-   "nct": "NCT04769817",
-   "title": "ProsTIC Registry of Men Treated With PSMA Theranostics",
-   "phase": "N/A",
-   "status": "RECRUITING",
-   "isotope": "177Lu",
-   "ligand": "PSMA-other",
-   "target": "PSMA",
-   "drug_class": "Beta-",
-   "drug": "177Lu-PSMA",
-   "sponsor": "Peter MacCallum Cancer Centre, Australia",
-   "sponsor_class": "OTHER",
-   "conditions": [
-    "Prostate Cancer",
-    "Metastatic Castration-resistant Prostate Cancer"
-   ],
-   "neoplasia": "Próstata",
-   "neoplasia_all": [
-    "Próstata"
-   ],
-   "interventions": [
-    "177Lu-PSMA"
-   ],
-   "enrollment": 500,
-   "countries": [
-    "Australia"
-   ],
-   "has_brazil": false,
-   "start_date": "2021-05-01",
-   "primary_completion": "2026-07-31",
-   "last_update": "2025-05-30",
-   "url": "https://clinicaltrials.gov/study/NCT04769817"
-  },
-  {
    "nct": "NCT05034146",
    "title": "68Ga-FAPI PET/CT in Malignant Tumors",
    "phase": "NA",
@@ -10912,7 +10946,7 @@
    "has_brazil": false,
    "start_date": "2025-07-30",
    "primary_completion": "2029-03-30",
-   "last_update": "2026-02-20",
+   "last_update": "2026-05-15",
    "url": "https://clinicaltrials.gov/study/NCT07093801"
   },
   {
@@ -11500,6 +11534,34 @@
    "primary_completion": "2043-06",
    "last_update": "2025-12-26",
    "url": "https://clinicaltrials.gov/study/NCT06828263"
+  },
+  {
+   "nct": "NCT07605156",
+   "title": "Diagnostic Value of 68Ga-Pentixafor PET/CT in Adrenal Tumors With Aldosterone and Cortisol Cosecretion",
+   "phase": "N/A",
+   "status": "RECRUITING",
+   "isotope": "",
+   "ligand": "CXCR4",
+   "target": "CXCR4",
+   "drug_class": "Outro",
+   "drug": "Diagnostic Value of 68Ga-Pentixafor PET/CT in Adrenal Tumors With Aldosterone an",
+   "sponsor": "Peking University First Hospital",
+   "sponsor_class": "OTHER",
+   "conditions": [
+    "Primary Aldosteronism Concurrent With Autonomous Cortisol Secretion"
+   ],
+   "neoplasia": "Outro",
+   "neoplasia_all": [],
+   "interventions": [],
+   "enrollment": 130,
+   "countries": [
+    "China"
+   ],
+   "has_brazil": false,
+   "start_date": "2025-12-01",
+   "primary_completion": "2027-05-31",
+   "last_update": "2026-05-22",
+   "url": "https://clinicaltrials.gov/study/NCT07605156"
   },
   {
    "nct": "NCT05435495",
@@ -12841,7 +12903,7 @@
    "has_brazil": false,
    "start_date": "2026-01-22",
    "primary_completion": "2027-06-30",
-   "last_update": "2026-04-27",
+   "last_update": "2026-05-22",
    "url": "https://clinicaltrials.gov/study/NCT07377487"
   },
   {
@@ -13195,6 +13257,39 @@
    "url": "https://clinicaltrials.gov/study/NCT07423013"
   },
   {
+   "nct": "NCT07610551",
+   "title": "Efficacy and Safety of SIRT-Y90 in Combination With Atezo + Bev for Unresectable Hepatocellular Carcinoma",
+   "phase": "N/A",
+   "status": "RECRUITING",
+   "isotope": "90Y",
+   "ligand": "",
+   "target": "",
+   "drug_class": "Beta-",
+   "drug": "Unresectable HCC patients receiving SIRT-Y90 combined with atezolizumab and beva",
+   "sponsor": "Air Force Military Medical University, China",
+   "sponsor_class": "OTHER",
+   "conditions": [
+    "HCC - Hepatocellular Carcinoma"
+   ],
+   "neoplasia": "CHC",
+   "neoplasia_all": [
+    "CHC"
+   ],
+   "interventions": [
+    "Unresectable HCC patients receiving SIRT-Y90 combined with atezolizumab and bevacizumab (including some patients who received only SIRT-Y90 treatment)",
+    "Unresectable HCC patients receiving SIRT-Y90 combined with atezolizumab and bevacizumab (including some patients who received only SIRT-Y90 treatment)"
+   ],
+   "enrollment": 50,
+   "countries": [
+    "China"
+   ],
+   "has_brazil": false,
+   "start_date": "2022-02-09",
+   "primary_completion": "2026-12-01",
+   "last_update": "2026-05-28",
+   "url": "https://clinicaltrials.gov/study/NCT07610551"
+  },
+  {
    "nct": "NCT04489719",
    "title": "Impact of DNA Repair Pathway Alterations on Sensitivity to Radium-223 in Bone Metastatic Castration-resistant Prostate Cancer",
    "phase": "N/A",
@@ -13295,6 +13390,40 @@
    "primary_completion": "2027-12-01",
    "last_update": "2025-08-05",
    "url": "https://clinicaltrials.gov/study/NCT07104058"
+  },
+  {
+   "nct": "NCT06191120",
+   "title": "FAPI Molecular Imaging for Diagnosis of the CMS4 Unfavorable Colorectal Cancer Subtype",
+   "phase": "NA",
+   "status": "RECRUITING",
+   "isotope": "",
+   "ligand": "FAPI",
+   "target": "FAP",
+   "drug_class": "Outro",
+   "drug": "[18F]-ALF-FAPI-74 PET/CT scan",
+   "sponsor": "UMC Utrecht",
+   "sponsor_class": "OTHER",
+   "conditions": [
+    "Metastatic Colorectal Cancer",
+    "Metastatic Cancer to Liver"
+   ],
+   "neoplasia": "Metástase hepática",
+   "neoplasia_all": [
+    "Metástase hepática",
+    "Colorretal"
+   ],
+   "interventions": [
+    "[18F]-ALF-FAPI-74 PET/CT scan"
+   ],
+   "enrollment": 45,
+   "countries": [
+    "Netherlands"
+   ],
+   "has_brazil": false,
+   "start_date": "2024-08-05",
+   "primary_completion": "2026-09",
+   "last_update": "2026-05-14",
+   "url": "https://clinicaltrials.gov/study/NCT06191120"
   },
   {
    "nct": "NCT06232122",
@@ -15018,6 +15147,42 @@
    "url": "https://clinicaltrials.gov/study/NCT07157514"
   },
   {
+   "nct": "NCT07613099",
+   "title": "Evaluation of Fibrotic Disease Activity in Cardiopulmonary Disorders Using 18F-Fibroblast Activation Protein Inhibitor (18F-FAPI-74 PET/CT Imaging)",
+   "phase": "Phase 3",
+   "status": "NOT_YET_RECRUITING",
+   "isotope": "",
+   "ligand": "FAPI",
+   "target": "FAP",
+   "drug_class": "Outro",
+   "drug": "[18F]FAPI-74",
+   "sponsor": "National Heart, Lung, and Blood Institute (NHLBI)",
+   "sponsor_class": "NIH",
+   "conditions": [
+    "Allogeneic Stem Cell Transplantation",
+    "Lung Allograft Transplantation",
+    "Interstitial Lung Disease",
+    "Acute Lung Injury",
+    "Pulmonary Arterial Hypertension",
+    "Cardiovascular Diseases"
+   ],
+   "neoplasia": "Outro",
+   "neoplasia_all": [],
+   "interventions": [
+    "18F-FAPI-74 PET/CT Imaging",
+    "[18F]FAPI-74"
+   ],
+   "enrollment": 210,
+   "countries": [
+    "United States"
+   ],
+   "has_brazil": false,
+   "start_date": "2026-06-03",
+   "primary_completion": "2031-05-26",
+   "last_update": "2026-05-29",
+   "url": "https://clinicaltrials.gov/study/NCT07613099"
+  },
+  {
    "nct": "NCT06959433",
    "title": "Lu-177 PSMA Treatment in Cell Renal Carcinoma",
    "phase": "Phase 3",
@@ -15603,6 +15768,38 @@
    "url": "https://clinicaltrials.gov/study/NCT07111117"
   },
   {
+   "nct": "NCT07586046",
+   "title": "Defining the Ablative Dose for Y-90 TARE",
+   "phase": "Phase 2",
+   "status": "NOT_YET_RECRUITING",
+   "isotope": "90Y",
+   "ligand": "Microspheres",
+   "target": "Vascular (intra-arterial)",
+   "drug_class": "Beta-",
+   "drug": "Yttrium-90 Radiation Segmentectomy (Y90 RS) using glass microspheres",
+   "sponsor": "Northwestern University",
+   "sponsor_class": "OTHER",
+   "conditions": [
+    "HCC - Hepatocellular Carcinoma"
+   ],
+   "neoplasia": "CHC",
+   "neoplasia_all": [
+    "CHC"
+   ],
+   "interventions": [
+    "Yttrium-90 Radiation Segmentectomy (Y90 RS) using glass microspheres"
+   ],
+   "enrollment": 30,
+   "countries": [
+    "United States"
+   ],
+   "has_brazil": false,
+   "start_date": "2026-05",
+   "primary_completion": "2029-02",
+   "last_update": "2026-05-14",
+   "url": "https://clinicaltrials.gov/study/NCT07586046"
+  },
+  {
    "nct": "NCT06478875",
    "title": "Evaluation of [68Ga]Ga-PentixaFor PET Imaging for the Identification of Unilateral Adrenal Secretion of ALdosterON in Patients With Primary Aldosteronism",
    "phase": "Phase 2",
@@ -15721,9 +15918,9 @@
     "United States"
    ],
    "has_brazil": false,
-   "start_date": "2026-05-18",
+   "start_date": "2026-06-03",
    "primary_completion": "2032-07-01",
-   "last_update": "2026-05-13",
+   "last_update": "2026-05-29",
    "url": "https://clinicaltrials.gov/study/NCT06991738"
   },
   {
@@ -16202,6 +16399,77 @@
    "url": "https://clinicaltrials.gov/study/NCT07365839"
   },
   {
+   "nct": "NCT07590856",
+   "title": "A Preliminary Efficacy of SNA028 in Patients With Advanced Colorectal Cancer Positive for GPA33",
+   "phase": "EARLY_Phase 1",
+   "status": "NOT_YET_RECRUITING",
+   "isotope": "177Lu",
+   "ligand": "",
+   "target": "",
+   "drug_class": "Beta-",
+   "drug": "GPA33-CC；177Lu-SmartD2",
+   "sponsor": "SmartNuclide Biopharma",
+   "sponsor_class": "INDUSTRY",
+   "conditions": [
+    "Colorectal Cancer"
+   ],
+   "neoplasia": "Colorretal",
+   "neoplasia_all": [
+    "Colorretal"
+   ],
+   "interventions": [
+    "GPA33-CC；177Lu-SmartD2"
+   ],
+   "enrollment": 20,
+   "countries": [
+    "China"
+   ],
+   "has_brazil": false,
+   "start_date": "2026-05-01",
+   "primary_completion": "2027-12-01",
+   "last_update": "2026-05-15",
+   "url": "https://clinicaltrials.gov/study/NCT07590856"
+  },
+  {
+   "nct": "NCT07608848",
+   "title": "First-in-human Imaging Study of Theranostic Pair [68Ga]Ga-DOTA-STR-17126 and Low-dose [177Lu]Lu-DOTA-STR-17126 in Patients With Advanced or Metastatic Cancer",
+   "phase": "EARLY_Phase 1",
+   "status": "NOT_YET_RECRUITING",
+   "isotope": "177Lu",
+   "ligand": "GRPR/NeoB",
+   "target": "GRPR",
+   "drug_class": "Beta-",
+   "drug": "[177Lu]Lu-DOTA-STR-17126",
+   "sponsor": "Integrated Haematology and Oncology Network",
+   "sponsor_class": "OTHER",
+   "conditions": [
+    "Metastatic Breast Cancer",
+    "Metastatic Prostate Cancer",
+    "GRPR-Targeted Molecular Imaging",
+    "Theranostic Radiopharmaceuticals",
+    "Cancer",
+    "Active Cancer",
+    "Theranostic",
+    "Radiopharmaceutical"
+   ],
+   "neoplasia": "Próstata",
+   "neoplasia_all": [
+    "Próstata",
+    "Mama"
+   ],
+   "interventions": [
+    "[177Lu]Lu-DOTA-STR-17126",
+    "[68Ga]Ga-DOTA-STR-17126"
+   ],
+   "enrollment": 20,
+   "countries": [],
+   "has_brazil": false,
+   "start_date": "2026-05-03",
+   "primary_completion": "2028-05-30",
+   "last_update": "2026-05-27",
+   "url": "https://clinicaltrials.gov/study/NCT07608848"
+  },
+  {
    "nct": "NCT07316686",
    "title": "Phase I Study of Docetaxel and 177-Lutetium-PSMA-I&T in First-Line Treatment for Patients With Metastatic Castration-Resistant Prostate Adenocarcinoma",
    "phase": "Phase 1",
@@ -16231,9 +16499,9 @@
     "Brazil"
    ],
    "has_brazil": true,
-   "start_date": "2026-01",
+   "start_date": "2026-06",
    "primary_completion": "2026-09",
-   "last_update": "2026-01-05",
+   "last_update": "2026-05-18",
    "url": "https://clinicaltrials.gov/study/NCT07316686"
   },
   {
@@ -16812,6 +17080,39 @@
    "url": "https://clinicaltrials.gov/study/NCT07372963"
   },
   {
+   "nct": "NCT07587814",
+   "title": "Impact of Body Composition on Dosimetry of 177Lu-PSMA Radioligand Therapy",
+   "phase": "NA",
+   "status": "NOT_YET_RECRUITING",
+   "isotope": "177Lu",
+   "ligand": "PSMA-617",
+   "target": "PSMA",
+   "drug_class": "Beta-",
+   "drug": "177Lu-PSMA-617 + SPECT/CT dosimetry",
+   "sponsor": "Centre Henri Becquerel",
+   "sponsor_class": "OTHER",
+   "conditions": [
+    "Carcinoma",
+    "Castration Resistant Prostatic Neoplasms"
+   ],
+   "neoplasia": "Próstata",
+   "neoplasia_all": [
+    "Próstata"
+   ],
+   "interventions": [
+    "177Lu-PSMA-617 + SPECT/CT dosimetry"
+   ],
+   "enrollment": 100,
+   "countries": [
+    "France"
+   ],
+   "has_brazil": false,
+   "start_date": "2026-09",
+   "primary_completion": "2028-09",
+   "last_update": "2026-05-14",
+   "url": "https://clinicaltrials.gov/study/NCT07587814"
+  },
+  {
    "nct": "NCT06911801",
    "title": "In Vitro Study of [18F]F-FAPI-74 Feasibility in Vulvar Cancer",
    "phase": "N/A",
@@ -17086,38 +17387,6 @@
    "primary_completion": "2027-12-30",
    "last_update": "2026-03-04",
    "url": "https://clinicaltrials.gov/study/NCT07448441"
-  },
-  {
-   "nct": "NCT06191120",
-   "title": "FAPI Molecular Imaging for Diagnosis of the CMS4 Unfavorable Colorectal Cancer Subtype",
-   "phase": "NA",
-   "status": "NOT_YET_RECRUITING",
-   "isotope": "",
-   "ligand": "FAPI",
-   "target": "FAP",
-   "drug_class": "Outro",
-   "drug": "[18F]-ALF-FAPI-74 PET/CT scan",
-   "sponsor": "UMC Utrecht",
-   "sponsor_class": "OTHER",
-   "conditions": [
-    "Metastatic Colorectal Cancer",
-    "Metastatic Cancer to Liver"
-   ],
-   "neoplasia": "Metástase hepática",
-   "neoplasia_all": [
-    "Metástase hepática",
-    "Colorretal"
-   ],
-   "interventions": [
-    "[18F]-ALF-FAPI-74 PET/CT scan"
-   ],
-   "enrollment": 45,
-   "countries": [],
-   "has_brazil": false,
-   "start_date": "2024-04",
-   "primary_completion": "2026-04",
-   "last_update": "2024-01-18",
-   "url": "https://clinicaltrials.gov/study/NCT06191120"
   },
   {
    "nct": "NCT07313033",
@@ -17969,7 +18238,7 @@
     "ARDT",
     "ADT"
    ],
-   "enrollment": 1145,
+   "enrollment": 1140,
    "countries": [
     "Austria",
     "Belgium",
@@ -17994,7 +18263,7 @@
    "has_brazil": false,
    "start_date": "2021-06-09",
    "primary_completion": "2025-01-13",
-   "last_update": "2026-03-11",
+   "last_update": "2026-05-27",
    "url": "https://clinicaltrials.gov/study/NCT04720157"
   },
   {
@@ -18065,7 +18334,7 @@
    "has_brazil": true,
    "start_date": "2018-06-19",
    "primary_completion": "2027-04-01",
-   "last_update": "2026-02-27",
+   "last_update": "2026-05-14",
    "url": "https://clinicaltrials.gov/study/NCT03574571"
   },
   {
@@ -18536,7 +18805,7 @@
    "has_brazil": false,
    "start_date": "2021-09-13",
    "primary_completion": "2026-02-13",
-   "last_update": "2026-04-08",
+   "last_update": "2026-05-22",
    "url": "https://clinicaltrials.gov/study/NCT05016245"
   },
   {
@@ -18701,8 +18970,8 @@
    ],
    "has_brazil": false,
    "start_date": "2023-12-11",
-   "primary_completion": "2026-06-30",
-   "last_update": "2026-04-29",
+   "primary_completion": "2026-11-30",
+   "last_update": "2026-05-22",
    "url": "https://clinicaltrials.gov/study/NCT05682443"
   },
   {
@@ -18799,7 +19068,7 @@
   },
   {
    "nct": "NCT03317392",
-   "title": "Different Doses of Olaparib Given With Radium-223 in Men With Advanced Prostate Cancer With Bone Metastasis",
+   "title": "Testing the Safety of Different Doses of Olaparib Given Radium-223 for Men With Advanced Prostate Cancer With Bone Metastasis",
    "phase": "Phase 1 / Phase 2",
    "status": "ACTIVE_NOT_RECRUITING",
    "isotope": "223Ra",
@@ -18834,7 +19103,7 @@
    "has_brazil": false,
    "start_date": "2019-02-04",
    "primary_completion": "2025-03-31",
-   "last_update": "2026-05-05",
+   "last_update": "2026-05-20",
    "url": "https://clinicaltrials.gov/study/NCT03317392"
   },
   {
@@ -19094,7 +19363,7 @@
    "has_brazil": false,
    "start_date": "2022-09-02",
    "primary_completion": "2032-09-01",
-   "last_update": "2025-05-13",
+   "last_update": "2026-05-26",
    "url": "https://clinicaltrials.gov/study/NCT05496959"
   },
   {
@@ -19678,7 +19947,7 @@
    "has_brazil": true,
    "start_date": "2024-01-03",
    "primary_completion": "2026-12-23",
-   "last_update": "2026-04-13",
+   "last_update": "2026-05-27",
    "url": "https://clinicaltrials.gov/study/NCT05849298"
   },
   {
@@ -20196,7 +20465,7 @@
    "has_brazil": false,
    "start_date": "2022-07-13",
    "primary_completion": "2029-03-09",
-   "last_update": "2026-03-17",
+   "last_update": "2026-05-29",
    "url": "https://clinicaltrials.gov/study/NCT05142696"
   },
   {
@@ -20265,6 +20534,36 @@
    "primary_completion": "2022-12-22",
    "last_update": "2024-11-08",
    "url": "https://clinicaltrials.gov/study/NCT04430192"
+  },
+  {
+   "nct": "NCT05214820",
+   "title": "68Ga-PSMA PET Imaging of Upper Metastatic Gastric Cancers to Determine Eligibility to Endoradiotherapy",
+   "phase": "Phase 2",
+   "status": "ACTIVE_NOT_RECRUITING",
+   "isotope": "177Lu",
+   "ligand": "PSMA-other",
+   "target": "PSMA",
+   "drug_class": "Beta-",
+   "drug": "Radiopharmaceutical 68Ga-PSMA",
+   "sponsor": "Centre de recherche du Centre hospitalier universitaire de Sherbrooke",
+   "sponsor_class": "OTHER",
+   "conditions": [
+    "Upper Digestive Tract Cancer"
+   ],
+   "neoplasia": "Outro",
+   "neoplasia_all": [],
+   "interventions": [
+    "Radiopharmaceutical 68Ga-PSMA"
+   ],
+   "enrollment": 20,
+   "countries": [
+    "Canada"
+   ],
+   "has_brazil": false,
+   "start_date": "2022-01-17",
+   "primary_completion": "2026-12-30",
+   "last_update": "2026-05-28",
+   "url": "https://clinicaltrials.gov/study/NCT05214820"
   },
   {
    "nct": "NCT04206319",
@@ -20586,7 +20885,7 @@
    "has_brazil": false,
    "start_date": "2023-09-20",
    "primary_completion": "2027-06-08",
-   "last_update": "2026-04-17",
+   "last_update": "2026-05-18",
    "url": "https://clinicaltrials.gov/study/NCT06052306"
   },
   {
@@ -20796,7 +21095,7 @@
    "has_brazil": false,
    "start_date": "2022-05-10",
    "primary_completion": "2025-12-03",
-   "last_update": "2026-03-16",
+   "last_update": "2026-05-22",
    "url": "https://clinicaltrials.gov/study/NCT05109728"
   },
   {
@@ -20857,21 +21156,19 @@
     "[68Ga]Ga-NeoB",
     "Temozolomide"
    ],
-   "enrollment": 40,
+   "enrollment": 42,
    "countries": [
     "France",
     "Germany",
-    "Israel",
     "Italy",
     "Portugal",
     "Spain",
-    "United Kingdom",
     "United States"
    ],
    "has_brazil": false,
    "start_date": "2024-05-15",
-   "primary_completion": "2026-12-10",
-   "last_update": "2026-02-03",
+   "primary_completion": "2028-11-08",
+   "last_update": "2026-05-14",
    "url": "https://clinicaltrials.gov/study/NCT05739942"
   },
   {
@@ -21905,6 +22202,39 @@
    "url": "https://clinicaltrials.gov/study/NCT04597125"
   },
   {
+   "nct": "NCT04769817",
+   "title": "ProsTIC Registry of Men Treated With PSMA Theranostics",
+   "phase": "N/A",
+   "status": "ACTIVE_NOT_RECRUITING",
+   "isotope": "177Lu",
+   "ligand": "PSMA-other",
+   "target": "PSMA",
+   "drug_class": "Beta-",
+   "drug": "177Lu-PSMA",
+   "sponsor": "Peter MacCallum Cancer Centre, Australia",
+   "sponsor_class": "OTHER",
+   "conditions": [
+    "Prostate Cancer",
+    "Metastatic Castration-resistant Prostate Cancer"
+   ],
+   "neoplasia": "Próstata",
+   "neoplasia_all": [
+    "Próstata"
+   ],
+   "interventions": [
+    "177Lu-PSMA"
+   ],
+   "enrollment": 500,
+   "countries": [
+    "Australia"
+   ],
+   "has_brazil": false,
+   "start_date": "2021-05-19",
+   "primary_completion": "2026-07-31",
+   "last_update": "2026-05-14",
+   "url": "https://clinicaltrials.gov/study/NCT04769817"
+  },
+  {
    "nct": "NCT01704586",
    "title": "I-124 PET/CT Based Remnant Radioiodine Ablation Decision Concept in Differentiated Thyroid Cancer",
    "phase": "NA",
@@ -22179,7 +22509,7 @@
    "has_brazil": false,
    "start_date": "2019-10-10",
    "primary_completion": "2026-09-30",
-   "last_update": "2025-11-21",
+   "last_update": "2026-05-22",
    "url": "https://clinicaltrials.gov/study/NCT03896646"
   },
   {
@@ -26287,6 +26617,39 @@
    "url": "https://clinicaltrials.gov/study/NCT00381641"
   },
   {
+   "nct": "NCT05262855",
+   "title": "Study of [68Ga]FAPI-46 PET in Patients With Pancreatic Ductal Carcinoma",
+   "phase": "Phase 2",
+   "status": "COMPLETED",
+   "isotope": "",
+   "ligand": "FAPI",
+   "target": "FAP",
+   "drug_class": "Outro",
+   "drug": "[68Ga]FAPI-46",
+   "sponsor": "SOFIE",
+   "sponsor_class": "INDUSTRY",
+   "conditions": [
+    "PDAC - Pancreatic Ductal Adenocarcinoma",
+    "FAP"
+   ],
+   "neoplasia": "Pâncreas",
+   "neoplasia_all": [
+    "Pâncreas"
+   ],
+   "interventions": [
+    "[68Ga]FAPI-46"
+   ],
+   "enrollment": 63,
+   "countries": [
+    "United States"
+   ],
+   "has_brazil": false,
+   "start_date": "2022-05-02",
+   "primary_completion": "2025-03-07",
+   "last_update": "2026-05-29",
+   "url": "https://clinicaltrials.gov/study/NCT05262855"
+  },
+  {
    "nct": "NCT00004017",
    "title": "Radiolabeled Monoclonal Antibody in Treating Patients With Glioblastoma Multiforme or Anaplastic Astrocytoma",
    "phase": "Phase 2",
@@ -26658,39 +27021,6 @@
    "primary_completion": "2025-04-01",
    "last_update": "2026-02-27",
    "url": "https://clinicaltrials.gov/study/NCT04443062"
-  },
-  {
-   "nct": "NCT05262855",
-   "title": "Study of [68Ga]FAPI-46 PET in Patients With Pancreatic Ductal Carcinoma",
-   "phase": "Phase 2",
-   "status": "COMPLETED",
-   "isotope": "",
-   "ligand": "FAPI",
-   "target": "FAP",
-   "drug_class": "Outro",
-   "drug": "[68Ga]FAPI-46",
-   "sponsor": "SOFIE",
-   "sponsor_class": "INDUSTRY",
-   "conditions": [
-    "PDAC - Pancreatic Ductal Adenocarcinoma",
-    "FAP"
-   ],
-   "neoplasia": "Pâncreas",
-   "neoplasia_all": [
-    "Pâncreas"
-   ],
-   "interventions": [
-    "[68Ga]FAPI-46"
-   ],
-   "enrollment": 58,
-   "countries": [
-    "United States"
-   ],
-   "has_brazil": false,
-   "start_date": "2022-05-02",
-   "primary_completion": "2025-03-07",
-   "last_update": "2026-01-22",
-   "url": "https://clinicaltrials.gov/study/NCT05262855"
   },
   {
    "nct": "NCT01612325",
@@ -29109,7 +29439,7 @@
    "has_brazil": false,
    "start_date": "2007-05",
    "primary_completion": "2010-03",
-   "last_update": "2025-09-30",
+   "last_update": "2026-05-22",
    "url": "https://clinicaltrials.gov/study/NCT00690560"
   },
   {
@@ -30088,7 +30418,7 @@
    "has_brazil": false,
    "start_date": "2018-04-25",
    "primary_completion": "2019-12-19",
-   "last_update": "2020-06-11",
+   "last_update": "2026-05-14",
    "url": "https://clinicaltrials.gov/study/NCT03604757"
   },
   {
@@ -31126,7 +31456,7 @@
    "has_brazil": false,
    "start_date": "2019-07-11",
    "primary_completion": "2023-06-15",
-   "last_update": "2025-07-22",
+   "last_update": "2026-05-19",
    "url": "https://clinicaltrials.gov/study/NCT03606837"
   },
   {
@@ -35883,6 +36213,38 @@
    "url": "https://clinicaltrials.gov/study/NCT05410821"
   },
   {
+   "nct": "NCT07587996",
+   "title": "Exploratory Clinical Study of ¹⁷⁷Lu-CTR-FAPI in Patients With Metastatic Solid Tumors",
+   "phase": "EARLY_Phase 1",
+   "status": "COMPLETED",
+   "isotope": "",
+   "ligand": "FAPI",
+   "target": "FAP",
+   "drug_class": "Outro",
+   "drug": "radionuclide therapy with ¹⁷⁷Lu-CTR-FAPI",
+   "sponsor": "Lanzhou University Second Hospital",
+   "sponsor_class": "OTHER",
+   "conditions": [
+    "Metastatic Solid Tumors (Any Localization)"
+   ],
+   "neoplasia": "Sólidos avançados",
+   "neoplasia_all": [
+    "Sólidos avançados"
+   ],
+   "interventions": [
+    "radionuclide therapy with ¹⁷⁷Lu-CTR-FAPI"
+   ],
+   "enrollment": 12,
+   "countries": [
+    "China"
+   ],
+   "has_brazil": false,
+   "start_date": "2024-11-20",
+   "primary_completion": "2026-03-20",
+   "last_update": "2026-05-14",
+   "url": "https://clinicaltrials.gov/study/NCT07587996"
+  },
+  {
    "nct": "NCT00992758",
    "title": "Safety and Efficacy of Iodine-131 Anti-B1 Antibody for Non Hodgkin's Lymphoma (NHL) Patients With Greater Than 25% Bone Marrow Involvement",
    "phase": "Phase 1",
@@ -37610,7 +37972,7 @@
    "has_brazil": false,
    "start_date": "2014-11",
    "primary_completion": "2018-01-01",
-   "last_update": "2020-01-21",
+   "last_update": "2026-05-14",
    "url": "https://clinicaltrials.gov/study/NCT02305459"
   },
   {
@@ -44454,7 +44816,7 @@
    "target": "GRPR",
    "drug_class": "Outro",
    "drug": "[68Ga]RM2",
-   "sponsor": "Life Molecular Imaging SA",
+   "sponsor": "Lantheus Biosciences Ltd.",
    "sponsor_class": "INDUSTRY",
    "conditions": [
     "Prostate Cancer"
@@ -44686,6 +45048,38 @@
    "primary_completion": "2020-05-06",
    "last_update": "2021-07-20",
    "url": "https://clinicaltrials.gov/study/NCT01434472"
+  },
+  {
+   "nct": "NCT05903807",
+   "title": "[68Ga]Ga-FAPI-46 PET/CT in Ovarian Cancer",
+   "phase": "Phase 2",
+   "status": "TERMINATED",
+   "isotope": "",
+   "ligand": "FAPI",
+   "target": "FAP",
+   "drug_class": "Outro",
+   "drug": "68Ga-FAPi-46",
+   "sponsor": "Aalborg University Hospital",
+   "sponsor_class": "OTHER",
+   "conditions": [
+    "Ovarian Cancer"
+   ],
+   "neoplasia": "Ovário",
+   "neoplasia_all": [
+    "Ovário"
+   ],
+   "interventions": [
+    "68Ga-FAPi-46"
+   ],
+   "enrollment": 20,
+   "countries": [
+    "Denmark"
+   ],
+   "has_brazil": false,
+   "start_date": "2023-11-17",
+   "primary_completion": "2026-05-08",
+   "last_update": "2026-05-27",
+   "url": "https://clinicaltrials.gov/study/NCT05903807"
   },
   {
    "nct": "NCT00119366",
@@ -51299,72 +51693,67 @@
    "url": "https://clinicaltrials.gov/study/NCT04770831"
   },
   {
-   "nct": "NCT05620771",
-   "title": "Therasphere® and Systemic Therapy for Patients With Hepatocellular Carcinoma That is High-risk",
+   "nct": "NCT06955169",
+   "title": "Comparing the Radiopharmaceutical Drug, [177Lu]Lu-DOTATATE, to Standard of Care Treatment for Patients With Meningioma That Has Come Back After Prior Treatment",
    "phase": "Phase 2",
    "status": "SUSPENDED",
-   "isotope": "90Y",
-   "ligand": "Microspheres",
-   "target": "Vascular (intra-arterial)",
-   "drug_class": "Beta-",
-   "drug": "Atezolizumab and Bevacizumab",
-   "sponsor": "Northwestern University",
-   "sponsor_class": "OTHER",
-   "conditions": [
-    "Hepatocellular Carcinoma"
-   ],
-   "neoplasia": "CHC",
-   "neoplasia_all": [
-    "CHC"
-   ],
-   "interventions": [
-    "Atezolizumab and Bevacizumab",
-    "Y90 + TKI"
-   ],
-   "enrollment": 84,
-   "countries": [
-    "United States"
-   ],
-   "has_brazil": false,
-   "start_date": "2022-11-30",
-   "primary_completion": "2026-07-01",
-   "last_update": "2025-10-20",
-   "url": "https://clinicaltrials.gov/study/NCT05620771"
-  },
-  {
-   "nct": "NCT07150806",
-   "title": "RYZ101 for the Treatment of Progressive or Recurrent Intracranial Meningioma",
-   "phase": "Phase 1 / Phase 2",
-   "status": "SUSPENDED",
-   "isotope": "225Ac",
+   "isotope": "177Lu",
    "ligand": "DOTATATE",
    "target": "SSTR",
-   "drug_class": "Alfa",
-   "drug": "Actinium Ac 225 DOTATATE RYZ101",
-   "sponsor": "Joshua Palmer",
+   "drug_class": "Beta-",
+   "drug": "[177Lu]Lu-DOTATATE",
+   "sponsor": "RTOG Foundation, Inc.",
    "sponsor_class": "OTHER",
    "conditions": [
-    "Recurrent Meningioma"
+    "Intracranial Meningioma"
    ],
    "neoplasia": "Outro",
    "neoplasia_all": [],
    "interventions": [
-    "Actinium Ac 225 DOTATATE RYZ101",
-    "Biospecimen Collection",
-    "Computed Tomography",
-    "Echocardiography Test",
-    "Gallium Ga 68-DOTATATE",
-    "L-lysine/L-arginine-containing Amino Acid"
+    "[177Lu]Lu-DOTATATE",
+    "Standard of Care treatments"
    ],
-   "enrollment": 30,
+   "enrollment": 153,
    "countries": [
     "United States"
    ],
    "has_brazil": false,
-   "start_date": "2025-11-12",
+   "start_date": "2025-12-24",
+   "primary_completion": "2029-08",
+   "last_update": "2026-05-22",
+   "url": "https://clinicaltrials.gov/study/NCT06955169"
+  },
+  {
+   "nct": "NCT05198479",
+   "title": "Phase II 177Lu-DOTATATE Study in Metastatic NPC With a Safety Run-in",
+   "phase": "Phase 2",
+   "status": "SUSPENDED",
+   "isotope": "177Lu",
+   "ligand": "DOTATATE",
+   "target": "SSTR",
+   "drug_class": "Beta-",
+   "drug": "77 Lu-DOTA0-Tyr3-Octreotate",
+   "sponsor": "National Cancer Centre, Singapore",
+   "sponsor_class": "OTHER",
+   "conditions": [
+    "Metastatic Nasopharyngeal Cancer"
+   ],
+   "neoplasia": "Cabeça e pescoço",
+   "neoplasia_all": [
+    "Cabeça e pescoço"
+   ],
+   "interventions": [
+    "77 Lu-DOTA0-Tyr3-Octreotate"
+   ],
+   "enrollment": 25,
+   "countries": [
+    "Singapore"
+   ],
+   "has_brazil": false,
+   "start_date": "2023-05-05",
    "primary_completion": "2026-12-31",
-   "last_update": "2026-04-17",
-   "url": "https://clinicaltrials.gov/study/NCT07150806"
+   "last_update": "2026-05-22",
+   "url": "https://clinicaltrials.gov/study/NCT05198479"
   },
   {
    "nct": "NCT06802523",
@@ -53500,38 +53889,6 @@
    "primary_completion": "2025-09-30",
    "last_update": "2023-10-03",
    "url": "https://clinicaltrials.gov/study/NCT04856215"
-  },
-  {
-   "nct": "NCT05198479",
-   "title": "Phase II 177Lu-DOTATATE Study in Metastatic NPC With a Safety Run-in",
-   "phase": "Phase 2",
-   "status": "UNKNOWN",
-   "isotope": "177Lu",
-   "ligand": "DOTATATE",
-   "target": "SSTR",
-   "drug_class": "Beta-",
-   "drug": "77 Lu-DOTA0-Tyr3-Octreotate",
-   "sponsor": "National Cancer Centre, Singapore",
-   "sponsor_class": "OTHER",
-   "conditions": [
-    "Metastatic Nasopharyngeal Cancer"
-   ],
-   "neoplasia": "Cabeça e pescoço",
-   "neoplasia_all": [
-    "Cabeça e pescoço"
-   ],
-   "interventions": [
-    "77 Lu-DOTA0-Tyr3-Octreotate"
-   ],
-   "enrollment": 25,
-   "countries": [
-    "Singapore"
-   ],
-   "has_brazil": false,
-   "start_date": "2023-05-05",
-   "primary_completion": "2024-12-31",
-   "last_update": "2023-10-11",
-   "url": "https://clinicaltrials.gov/study/NCT05198479"
   },
   {
    "nct": "NCT01354457",
@@ -59451,7 +59808,7 @@
    "nct": "NCT06743100",
    "title": "18F-Floretyrosine Expanded Access Program",
    "phase": "N/A",
-   "status": "AVAILABLE",
+   "status": "NO_LONGER_AVAILABLE",
    "isotope": "",
    "ligand": "IGF-1R",
    "target": "IGF-1R",
@@ -59476,7 +59833,7 @@
    "has_brazil": false,
    "start_date": "",
    "primary_completion": "",
-   "last_update": "2025-04-02",
+   "last_update": "2026-05-29",
    "url": "https://clinicaltrials.gov/study/NCT06743100"
   },
   {
