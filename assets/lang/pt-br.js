@@ -306,6 +306,34 @@ window._i18nRegister('pt-br', {
     footer: "© TheraTrials Oncology · uso educacional"
   },
 
+  /* ── Dossiê 177Lu-PSMA (lu-psma.html) ── */
+  lp: {
+    eyebrow: "Radiofármaco · Beta-emissor",
+    title: "<span class=\"iso-up\">177</span>Lu-PSMA-617<br><span class=\"accent\">Pluvicto</span> · a peça que mudou o mCRPC",
+    subtitle: "Radioligante terapêutico que combina um vetor pequeno-molecular ligado ao antígeno prostático específico de membrana (PSMA) com o emissor beta lutécio-177. Aprovado pelo FDA em março de 2022 para mCRPC PSMA-positivo após progressão a ARPi e taxano.",
+    isoName: "Lutécio",
+    isoHalfLife: "Meia-vida",
+    isoDecay: "Decaimento",
+    isoEnergyB: "Energia β máx",
+    isoRangeB: "Alcance β máx",
+    isoGamma: "γ útil (SPECT)",
+    isoVector: "Vetor",
+    tocTitle: "Nesta página",
+    toc1: "Cronologia", toc2: "Mecanismo molecular", toc3: "Esquema terapêutico", toc4: "Imagem teranóstica",
+    toc5: "Critérios PSMA-PET", toc6: "Ensaios pivotais", toc7: "Dosimetria", toc8: "Toxicidade",
+    toc9: "Perspectivas alfa", toc10: "Continue lendo",
+    s1h: "Cronologia",
+    s1lead: "De ligantes peptídicos preliminares ao primeiro radioligante aprovado para câncer de próstata: 25 anos entre ciência básica, registro e adoção clínica.",
+    tl1993: "<h4>Identificação do antígeno PSMA</h4><p>Horoszewicz e Heston caracterizam o glutamate carboxypeptidase II como antígeno específico da membrana prostática. Expresso em &gt;95% dos cânceres de próstata, com superexpressão em doença avançada e resistente a castração. Importante: <strong>5–15% dos mCRPC perdem expressão de PSMA</strong> após múltiplas linhas de ARPi ou em diferenciação neuroendócrina — daí a obrigatoriedade do PSMA-PET diagnóstico imediatamente antes de indicar a terapia.</p>",
+    tl2010: "<h4>Primeiros ligantes PSMA pequenos-moleculares</h4><p>Eder, Haberkorn e o grupo de Heidelberg (DKFZ) desenvolvem ligantes baseados em ureia (Glu-CO-Lys), que se ligam ao bolso ativo da PSMA com alta afinidade e internalização.</p>",
+    tl2015: "<h4>PSMA-617 e primeiros tratamentos compassivos</h4><p>Benesova e cols. publicam o PSMA-617 com farmacocinética otimizada — captação salivar reduzida e maior retenção tumoral. Heidelberg trata os primeiros pacientes com mCRPC em uso compassivo: respostas de PSA &gt;50% em ~40-60%.</p>",
+    tl2018: "<h4>Hofman et al. (Lancet Oncol) — proof of concept prospectivo</h4><p>Primeiro estudo prospectivo unicêntrico (Australia, Hofman): 30 pacientes, PSA50 57%, rPFS 7.6m. Dados que abrem caminho para o desenho do TheraP e, em paralelo, do VISION.</p>",
+    tl2021: "<h4>VISION (NEJM) e TheraP (Lancet) — fase 3 e fase 2 randomizada</h4><p>VISION confirma ganho de OS (15.3 vs 11.3m) em mCRPC pós-ARPi e pós-taxano. TheraP mostra superioridade vs cabazitaxel em PSA50 (66 vs 37%), mantendo rPFS comparável e perfil de toxicidade favorável.</p>",
+    tl2022: "<h4>Aprovação FDA do Pluvicto · 23 mar 2022</h4><p>Primeiro radioligante terapêutico para mCRPC: 7.4 GBq IV q6w × 6 ciclos em pacientes pós-ARPi e pós-taxano, com PSMA-PET positivo conforme critérios VISION.</p>",
+    tl2024: "<h4>PSMAfore (Lancet Oncol) e ENZA-p (Lancet Oncol)</h4><p>PSMAfore valida o uso pré-taxano (rPFS 12.0 vs 5.6m). ENZA-p mostra benefício de combinar Lu-PSMA com enzalutamida em primeira linha mCRPC. Em paralelo, SPLASH valida o segundo produto comercial (177Lu-PSMA-I&T, Curium).</p>",
+    tl2025: "<h4>Expansão FDA pré-taxano + dados mHSPC</h4><p>FDA expande indicação para mCRPC pré-taxano com base no PSMAfore (mar 2025). UpFrontPSMA (Lancet Oncol) demonstra benefício em mHSPC de novo de alto volume com Lu-PSMA + docetaxel. PSMAddition em recrutamento para mHSPC.</p>"
+  },
+
   /* ── Trial Matcher ── */
   tm: {
     badge: "Ferramenta clínica",

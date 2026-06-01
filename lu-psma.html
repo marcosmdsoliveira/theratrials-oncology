@@ -603,18 +603,22 @@
     </a>
     <button class="nav-toggle" aria-label="Menu" onclick="this.parentElement.querySelector('.nav').classList.toggle('open')"><i data-lucide="menu" style="width:18px;height:18px"></i></button>
     <nav class="nav">
-      <a href="index.html">Home</a>
-      <a href="database.html">Database</a>
-      <a href="trial-matcher.html">Trial Matcher</a>
-      <a href="ensaios-clinicos.html">Ensaios clínicos</a>
-      <a href="explorer.html">Explorer</a>
-      <a href="tumor-boards.html">Tumor boards</a>
-      <a href="radiofarmacos.html">Radiofármacos</a>
-      <a href="guidelines.html">Guidelines</a>
-      <a href="ferramentas.html">Ferramentas</a>
-      <a href="modalidades.html">Modalidades</a>
-      <a href="fundamentos.html">Fundamentos</a>
-      <a href="about.html">Sobre</a>
+      <a href="index.html" data-i18n="nav.home">Home</a>
+      <a href="database.html" data-i18n="nav.database">Database</a>
+      <a href="trial-matcher.html" data-i18n="nav.trialMatcher">Trial Matcher</a>
+      <a href="ensaios-clinicos.html" data-i18n="nav.ensaios">Ensaios clínicos</a>
+      <a href="explorer.html" data-i18n="nav.explorer">Explorer</a>
+      <a href="tumor-boards.html" data-i18n="nav.tumorBoards">Tumor boards</a>
+      <a href="radiofarmacos.html" data-i18n="nav.radiofarmacos">Radiofármacos</a>
+      <a href="guidelines.html" data-i18n="nav.guidelines">Guidelines</a>
+      <a href="ferramentas.html" data-i18n="nav.ferramentas">Ferramentas</a>
+      <a href="modalidades.html" data-i18n="nav.modalidades">Modalidades</a>
+      <a href="fundamentos.html" data-i18n="nav.fundamentos">Fundamentos</a>
+      <a href="about.html" data-i18n="nav.sobre">Sobre</a>
+      <button class="lang-toggle" onclick="toggleLang()" title="Switch to English" aria-label="Change language">
+        <i data-lucide="globe" style="width:14px;height:14px"></i>
+        <span class="lang-label">EN</span>
+      </button>
     </nav>
   </div>
 </header>
@@ -622,12 +626,12 @@
 <!-- ============== HERO ============== -->
 <section class="rf-hero">
   <div class="container">
-    <span class="rf-eyebrow"><i data-lucide="atom" style="width:12px;height:12px"></i> Radiofármaco · Beta-emissor</span>
-    <h1 class="rf-title">
+    <span class="rf-eyebrow"><i data-lucide="atom" style="width:12px;height:12px"></i> <span data-i18n="lp.eyebrow">Radiofármaco · Beta-emissor</span></span>
+    <h1 class="rf-title" data-i18n-html="lp.title">
       <span class="iso-up">177</span>Lu-PSMA-617
       <br><span class="accent">Pluvicto</span> · a peça que mudou o mCRPC
     </h1>
-    <p class="rf-subtitle">
+    <p class="rf-subtitle" data-i18n="lp.subtitle">
       Radioligante terapêutico que combina um vetor pequeno-molecular ligado ao antígeno prostático específico de membrana (PSMA) com o emissor beta lutécio-177. Aprovado pelo FDA em março de 2022 para mCRPC PSMA-positivo após progressão a ARPi e taxano.
     </p>
 
@@ -635,31 +639,31 @@
       <div class="iso-symbol">
         <span class="iso-mass">177</span>
         <span class="iso-element">Lu</span>
-        <span class="iso-name">Lutécio</span>
+        <span class="iso-name" data-i18n="lp.isoName">Lutécio</span>
       </div>
       <div class="iso-grid">
         <div class="item">
-          <div class="lbl">Meia-vida</div>
+          <div class="lbl" data-i18n="lp.isoHalfLife">Meia-vida</div>
           <div class="val">6.65 d</div>
         </div>
         <div class="item">
-          <div class="lbl">Decaimento</div>
+          <div class="lbl" data-i18n="lp.isoDecay">Decaimento</div>
           <div class="val">β⁻ + γ</div>
         </div>
         <div class="item">
-          <div class="lbl">Energia β máx</div>
+          <div class="lbl" data-i18n="lp.isoEnergyB">Energia β máx</div>
           <div class="val">498 keV</div>
         </div>
         <div class="item">
-          <div class="lbl">Alcance β máx</div>
+          <div class="lbl" data-i18n="lp.isoRangeB">Alcance β máx</div>
           <div class="val">~ 2,2 mm</div>
         </div>
         <div class="item">
-          <div class="lbl">γ útil (SPECT)</div>
+          <div class="lbl" data-i18n="lp.isoGamma">γ útil (SPECT)</div>
           <div class="val">208 keV (10%)</div>
         </div>
         <div class="item">
-          <div class="lbl">Vetor</div>
+          <div class="lbl" data-i18n="lp.isoVector">Vetor</div>
           <div class="val">PSMA-617</div>
         </div>
       </div>
@@ -674,17 +678,17 @@
 
       <!-- TOC -->
       <aside class="toc">
-        <h4>Nesta página</h4>
-        <a href="#cronologia">Cronologia</a>
-        <a href="#mecanismo">Mecanismo molecular</a>
-        <a href="#esquema">Esquema terapêutico</a>
-        <a href="#imagem">Imagem teranóstica</a>
-        <a href="#criterios">Critérios PSMA-PET</a>
-        <a href="#ensaios">Ensaios pivotais</a>
-        <a href="#dosimetria">Dosimetria</a>
-        <a href="#toxicidade">Toxicidade</a>
-        <a href="#perspectivas">Perspectivas alfa</a>
-        <a href="#proximos">Continue lendo</a>
+        <h4 data-i18n="lp.tocTitle">Nesta página</h4>
+        <a href="#cronologia" data-i18n="lp.toc1">Cronologia</a>
+        <a href="#mecanismo" data-i18n="lp.toc2">Mecanismo molecular</a>
+        <a href="#esquema" data-i18n="lp.toc3">Esquema terapêutico</a>
+        <a href="#imagem" data-i18n="lp.toc4">Imagem teranóstica</a>
+        <a href="#criterios" data-i18n="lp.toc5">Critérios PSMA-PET</a>
+        <a href="#ensaios" data-i18n="lp.toc6">Ensaios pivotais</a>
+        <a href="#dosimetria" data-i18n="lp.toc7">Dosimetria</a>
+        <a href="#toxicidade" data-i18n="lp.toc8">Toxicidade</a>
+        <a href="#perspectivas" data-i18n="lp.toc9">Perspectivas alfa</a>
+        <a href="#proximos" data-i18n="lp.toc10">Continue lendo</a>
       </aside>
 
       <!-- CONTEÚDO -->
@@ -692,62 +696,62 @@
 
         <!-- ============== CRONOLOGIA ============== -->
         <div id="cronologia" class="rf-section">
-          <h2><span class="num">01</span> Cronologia</h2>
-          <p class="lead">De ligantes peptídicos preliminares ao primeiro radioligante aprovado para câncer de próstata: 25 anos entre ciência básica, registro e adoção clínica.</p>
+          <h2><span class="num">01</span> <span data-i18n="lp.s1h">Cronologia</span></h2>
+          <p class="lead" data-i18n="lp.s1lead">De ligantes peptídicos preliminares ao primeiro radioligante aprovado para câncer de próstata: 25 anos entre ciência básica, registro e adoção clínica.</p>
 
           <div class="timeline">
             <div class="tl-item">
               <div class="tl-dot">1993</div>
-              <div class="tl-card">
+              <div class="tl-card" data-i18n-html="lp.tl1993">
                 <h4>Identificação do antígeno PSMA</h4>
                 <p>Horoszewicz e Heston caracterizam o glutamate carboxypeptidase II como antígeno específico da membrana prostática. Expresso em &gt;95% dos cânceres de próstata, com superexpressão em doença avançada e resistente a castração. Importante: <strong>5–15% dos mCRPC perdem expressão de PSMA</strong> após múltiplas linhas de ARPi ou em diferenciação neuroendócrina — daí a obrigatoriedade do PSMA-PET diagnóstico imediatamente antes de indicar a terapia.</p>
               </div>
             </div>
             <div class="tl-item">
               <div class="tl-dot">2010</div>
-              <div class="tl-card">
+              <div class="tl-card" data-i18n-html="lp.tl2010">
                 <h4>Primeiros ligantes PSMA pequenos-moleculares</h4>
                 <p>Eder, Haberkorn e o grupo de Heidelberg (DKFZ) desenvolvem ligantes baseados em ureia (Glu-CO-Lys), que se ligam ao bolso ativo da PSMA com alta afinidade e internalização.</p>
               </div>
             </div>
             <div class="tl-item">
               <div class="tl-dot">2015</div>
-              <div class="tl-card">
+              <div class="tl-card" data-i18n-html="lp.tl2015">
                 <h4>PSMA-617 e primeiros tratamentos compassivos</h4>
                 <p>Benesova e cols. publicam o PSMA-617 com farmacocinética otimizada — captação salivar reduzida e maior retenção tumoral. Heidelberg trata os primeiros pacientes com mCRPC em uso compassivo: respostas de PSA &gt;50% em ~40-60%.</p>
               </div>
             </div>
             <div class="tl-item">
               <div class="tl-dot">2018</div>
-              <div class="tl-card">
+              <div class="tl-card" data-i18n-html="lp.tl2018">
                 <h4>Hofman et al. (Lancet Oncol) — proof of concept prospectivo</h4>
                 <p>Primeiro estudo prospectivo unicêntrico (Australia, Hofman): 30 pacientes, PSA50 57%, rPFS 7.6m. Dados que abrem caminho para o desenho do TheraP e, em paralelo, do VISION.</p>
               </div>
             </div>
             <div class="tl-item">
               <div class="tl-dot">2021</div>
-              <div class="tl-card">
+              <div class="tl-card" data-i18n-html="lp.tl2021">
                 <h4>VISION (NEJM) e TheraP (Lancet) — fase 3 e fase 2 randomizada</h4>
                 <p>VISION confirma ganho de OS (15.3 vs 11.3m) em mCRPC pós-ARPi e pós-taxano. TheraP mostra superioridade vs cabazitaxel em PSA50 (66 vs 37%), mantendo rPFS comparável e perfil de toxicidade favorável.</p>
               </div>
             </div>
             <div class="tl-item">
               <div class="tl-dot">2022</div>
-              <div class="tl-card">
+              <div class="tl-card" data-i18n-html="lp.tl2022">
                 <h4>Aprovação FDA do Pluvicto · 23 mar 2022</h4>
                 <p>Primeiro radioligante terapêutico para mCRPC: 7.4 GBq IV q6w × 6 ciclos em pacientes pós-ARPi e pós-taxano, com PSMA-PET positivo conforme critérios VISION.</p>
               </div>
             </div>
             <div class="tl-item">
               <div class="tl-dot">2024</div>
-              <div class="tl-card">
+              <div class="tl-card" data-i18n-html="lp.tl2024">
                 <h4>PSMAfore (Lancet Oncol) e ENZA-p (Lancet Oncol)</h4>
                 <p>PSMAfore valida o uso pré-taxano (rPFS 12.0 vs 5.6m). ENZA-p mostra benefício de combinar Lu-PSMA com enzalutamida em primeira linha mCRPC. Em paralelo, SPLASH valida o segundo produto comercial (177Lu-PSMA-I&T, Curium).</p>
               </div>
             </div>
             <div class="tl-item">
               <div class="tl-dot">2025</div>
-              <div class="tl-card">
+              <div class="tl-card" data-i18n-html="lp.tl2025">
                 <h4>Expansão FDA pré-taxano + dados mHSPC</h4>
                 <p>FDA expande indicação para mCRPC pré-taxano com base no PSMAfore (mar 2025). UpFrontPSMA (Lancet Oncol) demonstra benefício em mHSPC de novo de alto volume com Lu-PSMA + docetaxel. PSMAddition em recrutamento para mHSPC.</p>
               </div>
@@ -1416,6 +1420,10 @@
 
 <script src="assets/js/cross-links.js" defer></script>
 <script src="assets/js/common.js" defer></script>
+<script src="assets/js/i18n.js"></script>
+<script src="assets/lang/pt-br.js"></script>
+<script src="assets/lang/en.js"></script>
+<script>window.addEventListener('langchange', function() { if (typeof lucide !== 'undefined') lucide.createIcons(); });</script>
 <script src="assets/js/pwa-install.js" defer></script>
 
 
