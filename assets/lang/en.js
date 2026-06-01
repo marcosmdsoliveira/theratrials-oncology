@@ -194,6 +194,42 @@ window._i18nRegister('en', {
     }
   },
 
+  /* ── Explorer (explorer.html) — main chrome ── */
+  ex: {
+    eyebrow: "Global tracker · therapeutic radiopharmaceuticals",
+    subtitle: "Active tracker of therapeutic radioligands in oncology. Filter by isotope, ligand/target, phase, neoplasm, sponsor and country. Source: <strong>ClinicalTrials.gov v2</strong>, with automatic monthly updates.",
+    srcDataset: "CT.gov dataset ·",
+    srcStudiesUpdated: "studies · updated on",
+    srcSeed: "Analyzed seed ·",
+    srcSeedTail: "studies · the GitHub Action will expand to the full catalog on the next refresh",
+    srcEmpty: "Awaiting first automated refresh of the ClinicalTrials.gov v2 API",
+    statStudies: "Studies",
+    statAfterFilters: "after filters:",
+    statBrazil: "Sites in Brazil",
+    statBrazilSub: "with BR participation",
+    statIsotopes: "Isotopes covered",
+    statIsotopesSub: "α / β⁻ / Auger / microsphere",
+    statSources: "Sources",
+    statSourcesSub: "CT.gov API",
+    clearFilters: "Clear filters",
+    fIso: "Isotope",
+    fClass: "Class",
+    fTarget: "Molecular target",
+    fLigand: "Radioligand",
+    fPhase: "Phase",
+    fStatus: "Status",
+    fNeo: "Neoplasm",
+    fSponsor: "Sponsor",
+    fGeo: "Geography",
+    onlyBrazil: "Only with a site in Brazil",
+    brBanner: "Filtering by Brazilian participation in the global tracker. For the <strong>detailed curation of trials open in Brazil</strong> (with sites, contacts and criteria in Portuguese), use <a href=\"ensaios-clinicos.html\" style=\"color:var(--amber); text-decoration:underline;\">Active clinical trials (BR)</a>.",
+    searchPh: "Search by NCT, drug, sponsor, condition, intervention…",
+    of: "of",
+    loading: "Loading radiopharmaceutical studies…",
+    footerLeft: "© 2026 TheraTrials Oncology · TheraTrials Explorer (radioligand therapy)",
+    footerRight: "Source: ClinicalTrials.gov v2 · automated monthly update"
+  },
+
   /* ── Trial Matcher ── */
   tm: {
     badge: "Clinical Tool",

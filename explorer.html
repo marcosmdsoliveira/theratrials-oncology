@@ -514,18 +514,22 @@
     </a>
     <button class="nav-toggle" aria-label="Menu" onclick="this.parentElement.querySelector('.nav').classList.toggle('open')"><i data-lucide="menu" style="width:18px;height:18px"></i></button>
     <nav class="nav">
-      <a href="index.html">Home</a>
-      <a href="database.html">Database</a>
-      <a href="trial-matcher.html">Trial Matcher</a>
-      <a href="ensaios-clinicos.html">Ensaios clínicos</a>
-      <a href="explorer.html" class="active">Explorer</a>
-      <a href="tumor-boards.html">Tumor boards</a>
-      <a href="radiofarmacos.html">Radiofármacos</a>
-      <a href="guidelines.html">Guidelines</a>
-      <a href="ferramentas.html">Ferramentas</a>
-      <a href="modalidades.html">Modalidades</a>
-      <a href="fundamentos.html">Fundamentos</a>
-      <a href="about.html">Sobre</a>
+      <a href="index.html" data-i18n="nav.home">Home</a>
+      <a href="database.html" data-i18n="nav.database">Database</a>
+      <a href="trial-matcher.html" data-i18n="nav.trialMatcher">Trial Matcher</a>
+      <a href="ensaios-clinicos.html" data-i18n="nav.ensaios">Ensaios clínicos</a>
+      <a href="explorer.html" class="active" data-i18n="nav.explorer">Explorer</a>
+      <a href="tumor-boards.html" data-i18n="nav.tumorBoards">Tumor boards</a>
+      <a href="radiofarmacos.html" data-i18n="nav.radiofarmacos">Radiofármacos</a>
+      <a href="guidelines.html" data-i18n="nav.guidelines">Guidelines</a>
+      <a href="ferramentas.html" data-i18n="nav.ferramentas">Ferramentas</a>
+      <a href="modalidades.html" data-i18n="nav.modalidades">Modalidades</a>
+      <a href="fundamentos.html" data-i18n="nav.fundamentos">Fundamentos</a>
+      <a href="about.html" data-i18n="nav.sobre">Sobre</a>
+      <button class="lang-toggle" onclick="toggleLang()" title="Switch to English" aria-label="Change language">
+        <i data-lucide="globe" style="width:14px;height:14px"></i>
+        <span class="lang-label">EN</span>
+      </button>
     </nav>
   </div>
 </header>
@@ -533,15 +537,15 @@
 <!-- ============== HERO ============== -->
 <section class="tr-hero">
   <div class="container">
-    <span class="eyebrow">Tracker global · radiofármacos terapêuticos</span>
+    <span class="eyebrow" data-i18n="ex.eyebrow">Tracker global · radiofármacos terapêuticos</span>
     <h1>TheraTrials <span class="accent">Explorer</span></h1>
-    <p>Tracker ativo de radioligantes terapêuticos em oncologia. Filtre por isótopo, ligante/alvo, fase, neoplasia, sponsor e país. Fonte: <strong>ClinicalTrials.gov v2</strong>, com atualização automática mensal.</p>
+    <p data-i18n-html="ex.subtitle">Tracker ativo de radioligantes terapêuticos em oncologia. Filtre por isótopo, ligante/alvo, fase, neoplasia, sponsor e país. Fonte: <strong>ClinicalTrials.gov v2</strong>, com atualização automática mensal.</p>
 
     <div class="src-line" :class="{ 'is-seed': data.is_seed }">
       <span class="dot"></span>
-      <span x-show="!data.is_seed && !data.is_empty">Dataset CT.gov · <strong x-text="data.totals?.trials || 0"></strong>&nbsp;estudos · atualizado em <strong x-text="prettyDate(data.generated_at)"></strong></span>
-      <span x-show="data.is_seed && !data.is_empty">Seed analisado · <strong x-text="data.totals?.trials || 0"></strong>&nbsp;estudos · GitHub Action expandirá para o catálogo completo no próximo refresh</span>
-      <span x-show="data.is_empty">Aguardando primeiro refresh automatizado da API ClinicalTrials.gov v2</span>
+      <span x-show="!data.is_seed && !data.is_empty"><span data-i18n="ex.srcDataset">Dataset CT.gov ·</span> <strong x-text="data.totals?.trials || 0"></strong>&nbsp;<span data-i18n="ex.srcStudiesUpdated">estudos · atualizado em</span> <strong x-text="prettyDate(data.generated_at)"></strong></span>
+      <span x-show="data.is_seed && !data.is_empty"><span data-i18n="ex.srcSeed">Seed analisado ·</span> <strong x-text="data.totals?.trials || 0"></strong>&nbsp;<span data-i18n="ex.srcSeedTail">estudos · GitHub Action expandirá para o catálogo completo no próximo refresh</span></span>
+      <span x-show="data.is_empty" data-i18n="ex.srcEmpty">Aguardando primeiro refresh automatizado da API ClinicalTrials.gov v2</span>
     </div>
 
     <!-- Aviso visível quando o dataset está vazio (aguardando 1º run da Action) -->
@@ -552,24 +556,24 @@
 
     <div class="tr-stats" x-show="data.totals && !data.is_empty" x-cloak>
       <div class="tr-stat-card">
-        <div class="lbl">Estudos</div>
+        <div class="lbl" data-i18n="ex.statStudies">Estudos</div>
         <div class="val" x-text="data.totals?.trials || 0"></div>
-        <div class="sub">após filtros: <span x-text="filtered().length"></span></div>
+        <div class="sub"><span data-i18n="ex.statAfterFilters">após filtros:</span> <span x-text="filtered().length"></span></div>
       </div>
       <div class="tr-stat-card">
-        <div class="lbl">Centros no Brasil</div>
+        <div class="lbl" data-i18n="ex.statBrazil">Centros no Brasil</div>
         <div class="val" x-text="data.totals?.with_brazil || 0"></div>
-        <div class="sub">com participação BR</div>
+        <div class="sub" data-i18n="ex.statBrazilSub">com participação BR</div>
       </div>
       <div class="tr-stat-card">
-        <div class="lbl">Isótopos cobertos</div>
+        <div class="lbl" data-i18n="ex.statIsotopes">Isótopos cobertos</div>
         <div class="val" x-text="Object.keys(data.facets?.isotope || {}).length"></div>
-        <div class="sub">α / β⁻ / Auger / microsfera</div>
+        <div class="sub" data-i18n="ex.statIsotopesSub">α / β⁻ / Auger / microsfera</div>
       </div>
       <div class="tr-stat-card">
-        <div class="lbl">Fontes</div>
+        <div class="lbl" data-i18n="ex.statSources">Fontes</div>
         <div class="val">v2</div>
-        <div class="sub">CT.gov API</div>
+        <div class="sub" data-i18n="ex.statSourcesSub">CT.gov API</div>
       </div>
     </div>
   </div>
@@ -583,13 +587,13 @@
       <!-- SIDEBAR DE FILTROS -->
       <aside class="tr-sidebar">
         <button class="clear-filters-btn" @click="clearFilters()" x-show="hasAnyFilter()" x-cloak>
-          <i data-lucide="x" style="width:14px;height:14px"></i> Limpar filtros
+          <i data-lucide="x" style="width:14px;height:14px"></i> <span data-i18n="ex.clearFilters">Limpar filtros</span>
         </button>
 
         <!-- ISÓTOPO -->
         <div class="filter-block">
           <div class="filter-block-header" @click="open.iso = !open.iso">
-            <h3><i data-lucide="atom" style="width:13px;height:13px"></i> Isótopo</h3>
+            <h3><i data-lucide="atom" style="width:13px;height:13px"></i> <span data-i18n="ex.fIso">Isótopo</span></h3>
             <i data-lucide="chevron-down" class="chev" :class="{ open: open.iso }" style="width:14px;height:14px"></i>
           </div>
           <div class="filter-options" x-show="open.iso" x-collapse>
@@ -605,7 +609,7 @@
         <!-- CLASSE DE DECAIMENTO -->
         <div class="filter-block">
           <div class="filter-block-header" @click="open.cls = !open.cls">
-            <h3><i data-lucide="zap" style="width:13px;height:13px"></i> Classe</h3>
+            <h3><i data-lucide="zap" style="width:13px;height:13px"></i> <span data-i18n="ex.fClass">Classe</span></h3>
             <i data-lucide="chevron-down" class="chev" :class="{ open: open.cls }" style="width:14px;height:14px"></i>
           </div>
           <div class="filter-options" x-show="open.cls" x-collapse>
@@ -621,7 +625,7 @@
         <!-- ALVO -->
         <div class="filter-block">
           <div class="filter-block-header" @click="open.tgt = !open.tgt">
-            <h3><i data-lucide="target" style="width:13px;height:13px"></i> Alvo molecular</h3>
+            <h3><i data-lucide="target" style="width:13px;height:13px"></i> <span data-i18n="ex.fTarget">Alvo molecular</span></h3>
             <i data-lucide="chevron-down" class="chev" :class="{ open: open.tgt }" style="width:14px;height:14px"></i>
           </div>
           <div class="filter-options" x-show="open.tgt" x-collapse>
@@ -637,7 +641,7 @@
         <!-- LIGANTE -->
         <div class="filter-block">
           <div class="filter-block-header" @click="open.lig = !open.lig">
-            <h3><i data-lucide="link-2" style="width:13px;height:13px"></i> Radioligante</h3>
+            <h3><i data-lucide="link-2" style="width:13px;height:13px"></i> <span data-i18n="ex.fLigand">Radioligante</span></h3>
             <i data-lucide="chevron-down" class="chev" :class="{ open: open.lig }" style="width:14px;height:14px"></i>
           </div>
           <div class="filter-options" x-show="open.lig" x-collapse>
@@ -653,7 +657,7 @@
         <!-- FASE -->
         <div class="filter-block">
           <div class="filter-block-header" @click="open.phase = !open.phase">
-            <h3><i data-lucide="git-branch" style="width:13px;height:13px"></i> Fase</h3>
+            <h3><i data-lucide="git-branch" style="width:13px;height:13px"></i> <span data-i18n="ex.fPhase">Fase</span></h3>
             <i data-lucide="chevron-down" class="chev" :class="{ open: open.phase }" style="width:14px;height:14px"></i>
           </div>
           <div class="filter-options" x-show="open.phase" x-collapse>
@@ -669,7 +673,7 @@
         <!-- STATUS -->
         <div class="filter-block">
           <div class="filter-block-header" @click="open.status = !open.status">
-            <h3><i data-lucide="activity" style="width:13px;height:13px"></i> Status</h3>
+            <h3><i data-lucide="activity" style="width:13px;height:13px"></i> <span data-i18n="ex.fStatus">Status</span></h3>
             <i data-lucide="chevron-down" class="chev" :class="{ open: open.status }" style="width:14px;height:14px"></i>
           </div>
           <div class="filter-options" x-show="open.status" x-collapse>
@@ -685,7 +689,7 @@
         <!-- NEOPLASIA -->
         <div class="filter-block">
           <div class="filter-block-header" @click="open.neo = !open.neo">
-            <h3><i data-lucide="dna" style="width:13px;height:13px"></i> Neoplasia</h3>
+            <h3><i data-lucide="dna" style="width:13px;height:13px"></i> <span data-i18n="ex.fNeo">Neoplasia</span></h3>
             <i data-lucide="chevron-down" class="chev" :class="{ open: open.neo }" style="width:14px;height:14px"></i>
           </div>
           <div class="filter-options" x-show="open.neo" x-collapse>
@@ -701,7 +705,7 @@
         <!-- SPONSOR TIPO -->
         <div class="filter-block">
           <div class="filter-block-header" @click="open.spons = !open.spons">
-            <h3><i data-lucide="building-2" style="width:13px;height:13px"></i> Sponsor</h3>
+            <h3><i data-lucide="building-2" style="width:13px;height:13px"></i> <span data-i18n="ex.fSponsor">Sponsor</span></h3>
             <i data-lucide="chevron-down" class="chev" :class="{ open: open.spons }" style="width:14px;height:14px"></i>
           </div>
           <div class="filter-options" x-show="open.spons" x-collapse>
@@ -717,12 +721,12 @@
         <!-- BRASIL -->
         <div class="filter-block">
           <div class="filter-block-header" @click="open.geo = !open.geo">
-            <h3><i data-lucide="map-pin" style="width:13px;height:13px"></i> Geografia</h3>
+            <h3><i data-lucide="map-pin" style="width:13px;height:13px"></i> <span data-i18n="ex.fGeo">Geografia</span></h3>
             <i data-lucide="chevron-down" class="chev" :class="{ open: open.geo }" style="width:14px;height:14px"></i>
           </div>
           <div class="filter-options" x-show="open.geo" x-collapse>
             <button class="filter-pill" :class="{ active: filters.only_brazil }" @click="filters.only_brazil = !filters.only_brazil">
-              <span>Apenas com centro no Brasil</span>
+              <span data-i18n="ex.onlyBrazil">Apenas com centro no Brasil</span>
               <span class="count" x-text="data.totals?.with_brazil || 0"></span>
             </button>
           </div>
@@ -734,17 +738,17 @@
         <!-- Banner: redireciona para ensaios-clinicos quando o filtro Brasil estiver ativo -->
         <div x-show="filters.only_brazil" x-cloak style="margin-bottom:1rem; padding:0.75rem 1rem; background:rgba(34,197,94,0.06); border:1px solid rgba(34,197,94,0.25); border-radius:var(--radius-md); display:flex; align-items:center; gap:0.65rem; color:#86EFAC; font-size:0.85rem;">
           <i data-lucide="map-pin" style="width:14px;height:14px"></i>
-          <span>Filtrando por participação brasileira no tracker global. Para a <strong>curadoria detalhada de estudos abertos no Brasil</strong> (com centros, contatos e critérios em português), use <a href="ensaios-clinicos.html" style="color:var(--amber); text-decoration:underline;">Ensaios clínicos ativos (BR)</a>.</span>
+          <span data-i18n-html="ex.brBanner">Filtrando por participação brasileira no tracker global. Para a <strong>curadoria detalhada de estudos abertos no Brasil</strong> (com centros, contatos e critérios em português), use <a href="ensaios-clinicos.html" style="color:var(--amber); text-decoration:underline;">Ensaios clínicos ativos (BR)</a>.</span>
         </div>
 
         <!-- Toolbar -->
         <div class="tr-toolbar">
           <div class="tr-search">
             <i data-lucide="search" style="width:16px;height:16px"></i>
-            <input type="text" placeholder="Buscar por NCT, droga, sponsor, condição, intervenção…" x-model="search">
+            <input type="text" data-i18n-placeholder="ex.searchPh" placeholder="Buscar por NCT, droga, sponsor, condição, intervenção…" x-model="search">
           </div>
           <div class="tr-result-count">
-            <strong x-text="filtered().length"></strong> de <strong x-text="(data.trials||[]).length"></strong>
+            <strong x-text="filtered().length"></strong> <span data-i18n="ex.of">de</span> <strong x-text="(data.trials||[]).length"></strong>
           </div>
           <button class="tr-export-btn" @click="exportCsv()" title="Exportar resultado atual como CSV">
             <i data-lucide="download" style="width:14px;height:14px"></i> CSV
@@ -755,7 +759,7 @@
         <div class="tr-table-wrap" x-show="loading" x-cloak>
           <div class="tr-loading">
             <div class="spin"></div>
-            <p>Carregando estudos de radiofármacos…</p>
+            <p data-i18n="ex.loading">Carregando estudos de radiofármacos…</p>
           </div>
         </div>
 
@@ -924,8 +928,8 @@
 <footer class="site-footer">
   <div class="container">
     <div class="footer-bottom">
-      <span>© 2026 TheraTrials Oncology · TheraTrials Explorer (radioligand therapy)</span>
-      <span>Fonte: ClinicalTrials.gov v2 · atualização mensal automatizada</span>
+      <span data-i18n="ex.footerLeft">© 2026 TheraTrials Oncology · TheraTrials Explorer (radioligand therapy)</span>
+      <span data-i18n="ex.footerRight">Fonte: ClinicalTrials.gov v2 · atualização mensal automatizada</span>
     </div>
   </div>
 </footer>
@@ -1143,6 +1147,14 @@
 </script>
 
 <script src="assets/js/common.js" defer></script>
+<script src="assets/js/i18n.js"></script>
+<script src="assets/lang/pt-br.js"></script>
+<script src="assets/lang/en.js"></script>
+<script>
+  window.addEventListener('langchange', () => {
+    if (typeof lucide !== 'undefined') lucide.createIcons();
+  });
+</script>
 <script src="assets/js/pwa-install.js" defer></script>
 
 </body>

@@ -194,6 +194,42 @@ window._i18nRegister('pt-br', {
     }
   },
 
+  /* ── Explorer (explorer.html) — chrome principal ── */
+  ex: {
+    eyebrow: "Tracker global · radiofármacos terapêuticos",
+    subtitle: "Tracker ativo de radioligantes terapêuticos em oncologia. Filtre por isótopo, ligante/alvo, fase, neoplasia, sponsor e país. Fonte: <strong>ClinicalTrials.gov v2</strong>, com atualização automática mensal.",
+    srcDataset: "Dataset CT.gov ·",
+    srcStudiesUpdated: "estudos · atualizado em",
+    srcSeed: "Seed analisado ·",
+    srcSeedTail: "estudos · GitHub Action expandirá para o catálogo completo no próximo refresh",
+    srcEmpty: "Aguardando primeiro refresh automatizado da API ClinicalTrials.gov v2",
+    statStudies: "Estudos",
+    statAfterFilters: "após filtros:",
+    statBrazil: "Centros no Brasil",
+    statBrazilSub: "com participação BR",
+    statIsotopes: "Isótopos cobertos",
+    statIsotopesSub: "α / β⁻ / Auger / microsfera",
+    statSources: "Fontes",
+    statSourcesSub: "CT.gov API",
+    clearFilters: "Limpar filtros",
+    fIso: "Isótopo",
+    fClass: "Classe",
+    fTarget: "Alvo molecular",
+    fLigand: "Radioligante",
+    fPhase: "Fase",
+    fStatus: "Status",
+    fNeo: "Neoplasia",
+    fSponsor: "Sponsor",
+    fGeo: "Geografia",
+    onlyBrazil: "Apenas com centro no Brasil",
+    brBanner: "Filtrando por participação brasileira no tracker global. Para a <strong>curadoria detalhada de estudos abertos no Brasil</strong> (com centros, contatos e critérios em português), use <a href=\"ensaios-clinicos.html\" style=\"color:var(--amber); text-decoration:underline;\">Ensaios clínicos ativos (BR)</a>.",
+    searchPh: "Buscar por NCT, droga, sponsor, condição, intervenção…",
+    of: "de",
+    loading: "Carregando estudos de radiofármacos…",
+    footerLeft: "© 2026 TheraTrials Oncology · TheraTrials Explorer (radioligand therapy)",
+    footerRight: "Fonte: ClinicalTrials.gov v2 · atualização mensal automatizada"
+  },
+
   /* ── Trial Matcher ── */
   tm: {
     badge: "Ferramenta clínica",
