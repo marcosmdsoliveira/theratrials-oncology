@@ -352,18 +352,22 @@
     </a>
     <button class="nav-toggle" aria-label="Menu" onclick="this.parentElement.querySelector('.nav').classList.toggle('open')"><i data-lucide="menu" style="width:18px;height:18px"></i></button>
     <nav class="nav">
-      <a href="index.html">Home</a>
-      <a href="database.html">Database</a>
-      <a href="trial-matcher.html">Trial Matcher</a>
-      <a href="ensaios-clinicos.html">Ensaios clínicos</a>
-      <a href="explorer.html">Explorer</a>
-      <a href="tumor-boards.html">Tumor boards</a>
-      <a href="radiofarmacos.html">Radiofármacos</a>
-      <a href="guidelines.html">Guidelines</a>
-      <a href="ferramentas.html">Ferramentas</a>
-      <a href="modalidades.html">Modalidades</a>
-      <a href="fundamentos.html">Fundamentos</a>
-      <a href="about.html">Sobre</a>
+      <a href="index.html" data-i18n="nav.home">Home</a>
+      <a href="database.html" data-i18n="nav.database">Database</a>
+      <a href="trial-matcher.html" data-i18n="nav.trialMatcher">Trial Matcher</a>
+      <a href="ensaios-clinicos.html" data-i18n="nav.ensaios">Ensaios clínicos</a>
+      <a href="explorer.html" data-i18n="nav.explorer">Explorer</a>
+      <a href="tumor-boards.html" data-i18n="nav.tumorBoards">Tumor boards</a>
+      <a href="radiofarmacos.html" data-i18n="nav.radiofarmacos">Radiofármacos</a>
+      <a href="guidelines.html" data-i18n="nav.guidelines">Guidelines</a>
+      <a href="ferramentas.html" data-i18n="nav.ferramentas">Ferramentas</a>
+      <a href="modalidades.html" data-i18n="nav.modalidades">Modalidades</a>
+      <a href="fundamentos.html" data-i18n="nav.fundamentos">Fundamentos</a>
+      <a href="about.html" data-i18n="nav.sobre">Sobre</a>
+      <button class="lang-toggle" onclick="toggleLang()" title="Switch to English" aria-label="Change language">
+        <i data-lucide="globe" style="width:14px;height:14px"></i>
+        <span class="lang-label">EN</span>
+      </button>
     </nav>
   </div>
 </header>
@@ -371,9 +375,9 @@
 <!-- HERO -->
 <section class="mod-hero">
   <div class="container">
-    <span class="eyebrow">Evidência por modalidade terapêutica</span>
-    <h1>Como a oncologia <span class="text-amber">se organiza</span></h1>
-    <p>Pivote o banco pela modalidade — teranóstico, terapias-alvo, PARP, ARPi, quimioterapia e imunoterapia. Útil para entender o lugar de cada classe terapêutica no algoritmo moderno.</p>
+    <span class="eyebrow" data-i18n="md.eyebrow">Evidência por modalidade terapêutica</span>
+    <h1 data-i18n-html="md.title">Como a oncologia <span class="text-amber">se organiza</span></h1>
+    <p data-i18n="md.subtitle">Pivote o banco pela modalidade — teranóstico, terapias-alvo, PARP, ARPi, quimioterapia e imunoterapia. Útil para entender o lugar de cada classe terapêutica no algoritmo moderno.</p>
   </div>
 </section>
 
@@ -384,7 +388,7 @@
       <template x-for="m in modalities" :key="m.id">
         <a :href="`#${m.id}`" :style="`--accent-color: ${m.color}`">
           <span class="dot" :style="`background: ${m.color}`"></span>
-          <span x-text="m.name"></span>
+          <span x-text="(i18nTick, tt('md.mod.'+m.id, m.name))"></span>
         </a>
       </template>
     </div>
@@ -401,12 +405,12 @@
             <i :data-lucide="m.icon" style="width:36px;height:36px"></i>
           </div>
           <div class="modality-hero-text">
-            <h2 x-text="m.name"></h2>
+            <h2 x-text="(i18nTick, tt('md.mod.'+m.id, m.name))"></h2>
             <p x-text="m.tagline"></p>
           </div>
           <div class="modality-hero-stats">
             <span class="modality-hero-count" x-text="getStudies(m).length"></span>
-            <span class="modality-hero-label">estudos</span>
+            <span class="modality-hero-label" data-i18n="md.studiesLabel">estudos</span>
           </div>
         </div>
 
@@ -455,18 +459,23 @@
 <footer class="site-footer">
   <div class="container">
     <div class="footer-bottom">
-      <span>© 2026 TheraTrials Oncology · Modalidades · 7 classes terapêuticas</span>
-      <span>Para uso educacional. Não substitui diretrizes oficiais.</span>
+      <span data-i18n="md.footerLeft">© 2026 TheraTrials Oncology · Modalidades · 7 classes terapêuticas</span>
+      <span data-i18n="md.footerRight">Para uso educacional. Não substitui diretrizes oficiais.</span>
     </div>
   </div>
 </footer>
 
 <script src="assets/js/data.js?v=12"></script>
 <script src="assets/js/common.js?v=11"></script>
+<script src="assets/js/i18n.js"></script>
+<script src="assets/lang/pt-br.js"></script>
+<script src="assets/lang/en.js"></script>
 <script>
   function modalitiesApp() {
     return {
       data: window.THERA_DATA || { studies: [] },
+      i18nTick: 0,
+      tt(key, fb) { return window.t ? window.t(key, fb) : fb; },
 
       modalities: [
         { id: 'teranostico', name: 'Teranóstico',
@@ -545,6 +554,10 @@
 
       init() {
         this.$nextTick(() => lucide.createIcons());
+        window.addEventListener('langchange', () => {
+          this.i18nTick++;
+          this.$nextTick(() => lucide.createIcons());
+        });
       },
 
       getStudies(modality) {

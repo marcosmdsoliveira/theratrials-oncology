@@ -117,6 +117,83 @@ window._i18nRegister('en', {
     footerRight: "For educational use. Does not replace official guidelines."
   },
 
+  /* ── Shared footer (footer-grid) ── */
+  ftr: {
+    tagline: "Curated clinical evidence",
+    about: "Modern oncology evidence platform — targeted therapy, immunotherapy, biomarkers, molecular imaging and theranostics. Independent editorial curation for educational use.",
+    platform: "Platform",
+    legal: "Legal",
+    database: "Database",
+    ensaiosBR: "Active clinical trials (BR)",
+    tumorBoards: "Tumor boards",
+    modalidades: "Modalities",
+    radiofarmacos: "Radiopharmaceuticals",
+    ferramentas: "Tools",
+    fundamentos: "Fundamentals",
+    sobre: "About",
+    termos: "Terms of use",
+    privacidade: "Privacy policy",
+    direitos: "Copyright",
+    bottom: "© 2026 TheraTrials Oncology · educational use · does not replace official guidelines or primary reading"
+  },
+
+  /* ── Radiopharmaceuticals (hub — radiofarmacos.html) ── */
+  rf: {
+    eyebrow: "Complete dossiers",
+    title: "Seven <span class=\"accent\">radiopharmaceuticals</span>, seven dossiers.",
+    lede: "Molecular mechanism, therapeutic regimen, pivotal trials, per-organ dosimetry and toxicity profile — in a consultable format for the next clinical decision in theranostics.",
+    conceptImg: "Imaging (diagnosis)",
+    conceptTx: "Therapy (same target)",
+    ready: "ready",
+    openDossier: "Open dossier",
+    roleLuPsma: "Beta · mCRPC post-ARPi/taxane",
+    descLuPsma: "Pluvicto. First radioligand approved for metastatic castration-resistant prostate cancer (FDA Mar 2022, EMA Dec 2022).",
+    roleLuDota: "Beta · grade 1–2 SSTR+ NET",
+    descLuDota: "Lutathera. First broad theranostic approval (2018). Standard after progression on somatostatin analogues in midgut NET.",
+    roleRa223: "Alpha · mCRPC with symptomatic bone mets",
+    descRa223: "Xofigo. First α-emitter approved in oncology (2013). Calcium-mimetic with osteoblastic tropism — exclusive for predominantly bone disease.",
+    roleY90: "Beta · locoregional hepatic TARE",
+    descY90: "Transarterial hepatic radioembolization. Glass (TheraSphere) or resin (SIR-Spheres) microspheres. Personalized dosimetry redefined OS in HCC.",
+    roleMibg: "Beta · neuroblastoma · pheochromocytoma / paraganglioma",
+    descMibg: "Norepinephrine analogue taken up by the NET (norepinephrine transporter). High-risk pediatrics and unresectable/metastatic PPGL. Mandatory thyroid blockade.",
+    roleIodo131: "Beta + gamma · Thyroid · founding radiopharmaceutical",
+    descIodo131: "Founding radiopharmaceutical of therapeutic nuclear medicine (Hertz, 1941). Differentiated thyroid carcinoma (DTC) — ablation, adjuvant and metastatic disease — and hyperthyroidism (Graves, toxic MNG, autonomous adenoma). Uptake via NIS.",
+    roleNovosAlfa: "Next generation · alpha, Auger, <sup>161</sup>Tb",
+    descNovosAlfa: "<sup>225</sup>Ac-PSMA-617, <sup>212</sup>Pb-DOTAMTATE, <sup>161</sup>Tb-PSMA. High LET, nuclear Auger, β vs α comparisons in PSMA and SSTR. 2026 pipeline.",
+    prinEyebrow: "Technical principles",
+    prinTitle: "What makes a therapeutic radiopharmaceutical effective",
+    prinSubtitle: "Four pillars decide whether a molecule goes far in the clinic.",
+    prin1Name: "Specific molecular target",
+    prin1Desc: "Receptor overexpressed in the tumor and absent (or weakly expressed) in normal tissues — defines the therapeutic window. PSMA, SSTR, NET, αvβ3 integrin, FAP.",
+    prin2Name: "Suitable radionuclide",
+    prin2Desc: "Emission (β⁻, α, Auger), energy, tissue range (mm for β; µm for α), physical half-life compatible with biodistribution. Define absorbed dose in tumor vs critical organ.",
+    prin3Name: "Stable chelator and linker",
+    prin3Desc: "DOTA, NOTA, PSMA-617 — in vivo stability prevents release of the free radiometal. The pharmacokinetic linker balances tumor uptake × renal/hepatic clearance.",
+    prin4Name: "Theranostic pairing",
+    prin4Desc: "The same molecule with a diagnostic (<sup>68</sup>Ga, <sup>64</sup>Cu, <sup>18</sup>F) and therapeutic (<sup>177</sup>Lu, <sup>225</sup>Ac, <sup>90</sup>Y) pair enables patient selection, pre-treatment dosimetry and response assessment."
+  },
+
+  /* ── Modalities (modalidades.html) ── */
+  md: {
+    eyebrow: "Evidence by therapeutic modality",
+    title: "How oncology <span class=\"text-amber\">is organized</span>",
+    subtitle: "Pivot the database by modality — theranostics, targeted therapies, PARP, ARPi, chemotherapy and immunotherapy. Useful to understand the place of each therapeutic class in the modern algorithm.",
+    studiesLabel: "studies",
+    footerLeft: "© 2026 TheraTrials Oncology · Modalities · 7 therapeutic classes",
+    footerRight: "For educational use. Does not replace official guidelines.",
+    mod: {
+      "teranostico": "Theranostics",
+      "terapia-alvo": "Targeted therapies (TKIs, ARPi, CDK4/6, PI3K, VEGFR, HIF-2α)",
+      "adc": "ADC · antibody-drug conjugates",
+      "parp": "PARP inhibitors",
+      "qt": "Cytotoxic chemotherapy",
+      "imunoterapia": "Immunotherapy",
+      "quimio-imuno": "Chemo-immunotherapy",
+      "plataforma": "Multi-arm platforms",
+      "rt_sbrt": "Radiotherapy / SBRT"
+    }
+  },
+
   /* ── Trial Matcher ── */
   tm: {
     badge: "Clinical Tool",
