@@ -297,6 +297,15 @@ window._i18nRegister('pt-br', {
     footerRight: "Para uso educacional. Não substitui diretrizes oficiais."
   },
 
+  /* ── Offline (offline.html) ── */
+  off: {
+    title: "Sem conexão · <span class=\"accent\">aguardando órbita</span>",
+    body: "Você está offline no momento. Algumas páginas que já visitou ficam disponíveis em cache. Reconecte-se à internet para acessar atualizações e novos conteúdos.",
+    retry: "Tentar novamente",
+    home: "Ir para início",
+    footer: "© TheraTrials Oncology · uso educacional"
+  },
+
   /* ── Trial Matcher ── */
   tm: {
     badge: "Ferramenta clínica",

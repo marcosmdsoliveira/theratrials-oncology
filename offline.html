@@ -152,18 +152,18 @@
 <body>
 <main class="offline-wrap">
   <div class="offline-orbit">offline</div>
-  <h1>Sem conexão · <span class="accent">aguardando órbita</span></h1>
-  <p>Você está offline no momento. Algumas páginas que já visitou ficam disponíveis em cache. Reconecte-se à internet para acessar atualizações e novos conteúdos.</p>
-  <button class="btn" onclick="location.reload()">
+  <h1 data-i18n-html="off.title">Sem conexão · <span class="accent">aguardando órbita</span></h1>
+  <p data-i18n="off.body">Você está offline no momento. Algumas páginas que já visitou ficam disponíveis em cache. Reconecte-se à internet para acessar atualizações e novos conteúdos.</p>
+  <button class="btn" onclick="location.reload()" data-i18n="off.retry">
     Tentar novamente
   </button>
-  <a href="index.html" class="btn btn-ghost">Ir para início</a>
+  <a href="index.html" class="btn btn-ghost" data-i18n="off.home">Ir para início</a>
 
   <div class="quick-links" id="quick-links">
     <!-- preenchidos via JS se houver páginas em cache -->
   </div>
 
-  <p class="small">© TheraTrials Oncology · uso educacional</p>
+  <p class="small" data-i18n="off.footer">© TheraTrials Oncology · uso educacional</p>
 </main>
 
 <script>
@@ -214,6 +214,9 @@
   // Volta automaticamente quando a internet retornar
   window.addEventListener('online', () => location.reload());
 </script>
+<script src="assets/js/i18n.js"></script>
+<script src="assets/lang/pt-br.js"></script>
+<script src="assets/lang/en.js"></script>
 <script src="assets/js/pwa-install.js" defer></script>
 
 </body>
