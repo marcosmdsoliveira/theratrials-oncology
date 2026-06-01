@@ -401,18 +401,22 @@
     </a>
     <button class="nav-toggle" aria-label="Menu" onclick="this.parentElement.querySelector('.nav').classList.toggle('open')"><i data-lucide="menu" style="width:18px;height:18px"></i></button>
     <nav class="nav">
-      <a href="index.html">Home</a>
-      <a href="database.html">Database</a>
-      <a href="trial-matcher.html">Trial Matcher</a>
-      <a href="ensaios-clinicos.html">Ensaios cl&iacute;nicos</a>
-      <a href="explorer.html">Explorer</a>
-      <a href="tumor-boards.html">Tumor boards</a>
-      <a href="radiofarmacos.html">Radiof&aacute;rmacos</a>
-      <a href="guidelines.html">Guidelines</a>
-      <a href="ferramentas.html">Ferramentas</a>
-      <a href="modalidades.html">Modalidades</a>
-      <a href="fundamentos.html">Fundamentos</a>
-      <a href="about.html">Sobre</a>
+      <a href="index.html" data-i18n="nav.home">Home</a>
+      <a href="database.html" data-i18n="nav.database">Database</a>
+      <a href="trial-matcher.html" data-i18n="nav.trialMatcher">Trial Matcher</a>
+      <a href="ensaios-clinicos.html" data-i18n="nav.ensaios">Ensaios cl&iacute;nicos</a>
+      <a href="explorer.html" data-i18n="nav.explorer">Explorer</a>
+      <a href="tumor-boards.html" data-i18n="nav.tumorBoards">Tumor boards</a>
+      <a href="radiofarmacos.html" data-i18n="nav.radiofarmacos">Radiof&aacute;rmacos</a>
+      <a href="guidelines.html" data-i18n="nav.guidelines">Guidelines</a>
+      <a href="ferramentas.html" data-i18n="nav.ferramentas">Ferramentas</a>
+      <a href="modalidades.html" data-i18n="nav.modalidades">Modalidades</a>
+      <a href="fundamentos.html" data-i18n="nav.fundamentos">Fundamentos</a>
+      <a href="about.html" data-i18n="nav.sobre">Sobre</a>
+      <button class="lang-toggle" onclick="toggleLang()" title="Switch to English" aria-label="Change language">
+        <i data-lucide="globe" style="width:14px;height:14px"></i>
+        <span class="lang-label">EN</span>
+      </button>
     </nav>
   </div>
 </header>
@@ -426,8 +430,8 @@
       <div class="nl-orbit">
         <i data-lucide="mail"></i>
       </div>
-      <h1>TheraTrials <span class="accent">Newsletter</span></h1>
-      <p class="nl-subtitle">
+      <h1 data-i18n-html="nl.title">TheraTrials <span class="accent">Newsletter</span></h1>
+      <p class="nl-subtitle" data-i18n="nl.subtitle">
         Curadoria mensal das principais novidades em teran&oacute;stica, medicina nuclear e oncologia.
         Novos ensaios, resultados publicados, guidelines atualizados e destaques da plataforma
         &mdash; diretamente no seu e-mail.
@@ -437,8 +441,8 @@
     <!-- Subscription form -->
     <section class="nl-form-wrap" id="subscribe">
       <div id="nl-form-content">
-        <h2 class="nl-form-title"><i data-lucide="bell-ring"></i> Inscreva-se gratuitamente</h2>
-        <p class="nl-form-desc">
+        <h2 class="nl-form-title"><i data-lucide="bell-ring"></i> <span data-i18n="nl.formTitle">Inscreva-se gratuitamente</span></h2>
+        <p class="nl-form-desc" data-i18n="nl.formDesc">
           Receba a newsletter mensal com as atualiza&ccedil;&otilde;es mais relevantes.
           Sem spam &mdash; apenas conte&uacute;do cient&iacute;fico selecionado.
         </p>
@@ -451,20 +455,20 @@
                  autocomplete="email">
           <button type="submit">
             <i data-lucide="send"></i>
-            Inscrever-se
+            <span data-i18n="nl.subscribe">Inscrever-se</span>
           </button>
         </form>
         <p class="nl-form-note">
           <i data-lucide="shield-check"></i>
-          Seus dados est&atilde;o seguros. Cancelamento a qualquer momento, com um clique.
+          <span data-i18n="nl.formNote">Seus dados est&atilde;o seguros. Cancelamento a qualquer momento, com um clique.</span>
         </p>
       </div>
 
       <!-- Success state -->
       <div class="nl-success" id="nl-success">
         <div class="nl-success-icon"><i data-lucide="check-circle-2"></i></div>
-        <h3>Inscri&ccedil;&atilde;o confirmada!</h3>
-        <p>Voc&ecirc; receber&aacute; a pr&oacute;xima edi&ccedil;&atilde;o no in&iacute;cio do m&ecirc;s. Verifique sua caixa de entrada para confirmar o e-mail.</p>
+        <h3 data-i18n="nl.successTitle">Inscri&ccedil;&atilde;o confirmada!</h3>
+        <p data-i18n="nl.successDesc">Voc&ecirc; receber&aacute; a pr&oacute;xima edi&ccedil;&atilde;o no in&iacute;cio do m&ecirc;s. Verifique sua caixa de entrada para confirmar o e-mail.</p>
       </div>
     </section>
 
@@ -472,30 +476,30 @@
     <section class="nl-features">
       <div class="nl-feat">
         <div class="nl-feat-icon"><i data-lucide="flask-conical"></i></div>
-        <div class="nl-feat-title">Novos ensaios</div>
-        <div class="nl-feat-desc">Estudos rec&eacute;m-adicionados ao Explorer e novos recrutamentos no Brasil</div>
+        <div class="nl-feat-title" data-i18n="nl.feat1Title">Novos ensaios</div>
+        <div class="nl-feat-desc" data-i18n="nl.feat1Desc">Estudos rec&eacute;m-adicionados ao Explorer e novos recrutamentos no Brasil</div>
       </div>
       <div class="nl-feat">
         <div class="nl-feat-icon"><i data-lucide="trending-up"></i></div>
-        <div class="nl-feat-title">Resultados</div>
-        <div class="nl-feat-desc">Publica&ccedil;&otilde;es e apresenta&ccedil;&otilde;es de destaque em congressos</div>
+        <div class="nl-feat-title" data-i18n="nl.feat2Title">Resultados</div>
+        <div class="nl-feat-desc" data-i18n="nl.feat2Desc">Publica&ccedil;&otilde;es e apresenta&ccedil;&otilde;es de destaque em congressos</div>
       </div>
       <div class="nl-feat">
         <div class="nl-feat-icon"><i data-lucide="book-open"></i></div>
-        <div class="nl-feat-title">Guidelines</div>
-        <div class="nl-feat-desc">Novos documentos e atualiza&ccedil;&otilde;es das sociedades internacionais</div>
+        <div class="nl-feat-title" data-i18n="nl.feat3Title">Guidelines</div>
+        <div class="nl-feat-desc" data-i18n="nl.feat3Desc">Novos documentos e atualiza&ccedil;&otilde;es das sociedades internacionais</div>
       </div>
       <div class="nl-feat">
         <div class="nl-feat-icon"><i data-lucide="atom"></i></div>
-        <div class="nl-feat-title">Pipeline RLT</div>
-        <div class="nl-feat-desc">Atualiza&ccedil;&otilde;es no pipeline global de radioligantes terap&ecirc;uticos</div>
+        <div class="nl-feat-title" data-i18n="nl.feat4Title">Pipeline RLT</div>
+        <div class="nl-feat-desc" data-i18n="nl.feat4Desc">Atualiza&ccedil;&otilde;es no pipeline global de radioligantes terap&ecirc;uticos</div>
       </div>
     </section>
 
     <!-- Cadence info -->
     <div class="nl-cadence">
       <div class="nl-cadence-icon"><i data-lucide="calendar-clock"></i></div>
-      <div class="nl-cadence-text">
+      <div class="nl-cadence-text" data-i18n-html="nl.cadence">
         <strong>Frequ&ecirc;ncia mensal</strong> &mdash; a newsletter &eacute; gerada automaticamente no dia 2 de cada m&ecirc;s,
         ap&oacute;s a atualiza&ccedil;&atilde;o do pipeline de dados do ClinicalTrials.gov.
       </div>
@@ -503,11 +507,11 @@
 
     <!-- Archive -->
     <section class="nl-archive" id="archive">
-      <h2 class="nl-archive-title"><i data-lucide="archive"></i> Edi&ccedil;&otilde;es anteriores</h2>
+      <h2 class="nl-archive-title"><i data-lucide="archive"></i> <span data-i18n="nl.archiveTitle">Edi&ccedil;&otilde;es anteriores</span></h2>
       <ul class="nl-archive-list" id="nl-archive-list">
         <!-- Populated dynamically by JS below -->
       </ul>
-      <p class="nl-archive-empty" id="nl-archive-empty">
+      <p class="nl-archive-empty" id="nl-archive-empty" data-i18n="nl.archiveEmpty">
         A primeira edi&ccedil;&atilde;o ser&aacute; publicada em breve. Inscreva-se acima para receber assim que estiver dispon&iacute;vel.
       </p>
     </section>
@@ -519,13 +523,17 @@
 <footer class="site-footer">
   <div class="container">
     <div class="footer-bottom">
-      <span>&copy; 2026 TheraTrials Oncology &middot; 421 estudos analisados &middot; v1.3</span>
-      <span>Para uso educacional. N&atilde;o substitui diretrizes oficiais.</span>
+      <span data-i18n="nl.footerLeft">&copy; 2026 TheraTrials Oncology &middot; 421 estudos analisados &middot; v1.3</span>
+      <span data-i18n="nl.footerRight">Para uso educacional. N&atilde;o substitui diretrizes oficiais.</span>
     </div>
   </div>
 </footer>
 
 <script src="assets/js/common.js"></script>
+<script src="assets/js/i18n.js"></script>
+<script src="assets/lang/pt-br.js"></script>
+<script src="assets/lang/en.js"></script>
+<script>window.addEventListener('langchange', function() { if (typeof lucide !== 'undefined') lucide.createIcons(); });</script>
 <script>
 // ── Newsletter page logic ──
 

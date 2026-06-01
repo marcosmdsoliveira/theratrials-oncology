@@ -243,18 +243,22 @@
     </a>
     <button class="nav-toggle" aria-label="Menu" onclick="this.parentElement.querySelector('.nav').classList.toggle('open')"><i data-lucide="menu" style="width:18px;height:18px"></i></button>
     <nav class="nav">
-      <a href="index.html">Home</a>
-      <a href="database.html">Database</a>
-      <a href="trial-matcher.html">Trial Matcher</a>
-      <a href="ensaios-clinicos.html">Ensaios cl&iacute;nicos</a>
-      <a href="explorer.html">Explorer</a>
-      <a href="tumor-boards.html">Tumor boards</a>
-      <a href="radiofarmacos.html">Radiof&aacute;rmacos</a>
-      <a href="guidelines.html">Guidelines</a>
-      <a href="ferramentas.html">Ferramentas</a>
-      <a href="modalidades.html">Modalidades</a>
-      <a href="fundamentos.html">Fundamentos</a>
-      <a href="about.html">Sobre</a>
+      <a href="index.html" data-i18n="nav.home">Home</a>
+      <a href="database.html" data-i18n="nav.database">Database</a>
+      <a href="trial-matcher.html" data-i18n="nav.trialMatcher">Trial Matcher</a>
+      <a href="ensaios-clinicos.html" data-i18n="nav.ensaios">Ensaios cl&iacute;nicos</a>
+      <a href="explorer.html" data-i18n="nav.explorer">Explorer</a>
+      <a href="tumor-boards.html" data-i18n="nav.tumorBoards">Tumor boards</a>
+      <a href="radiofarmacos.html" data-i18n="nav.radiofarmacos">Radiof&aacute;rmacos</a>
+      <a href="guidelines.html" data-i18n="nav.guidelines">Guidelines</a>
+      <a href="ferramentas.html" data-i18n="nav.ferramentas">Ferramentas</a>
+      <a href="modalidades.html" data-i18n="nav.modalidades">Modalidades</a>
+      <a href="fundamentos.html" data-i18n="nav.fundamentos">Fundamentos</a>
+      <a href="about.html" data-i18n="nav.sobre">Sobre</a>
+      <button class="lang-toggle" onclick="toggleLang()" title="Switch to English" aria-label="Change language">
+        <i data-lucide="globe" style="width:14px;height:14px"></i>
+        <span class="lang-label">EN</span>
+      </button>
     </nav>
   </div>
 </header>
@@ -266,11 +270,11 @@
       <i data-lucide="calendar-days"></i>
     </div>
 
-    <span class="wip-badge">Em constru&ccedil;&atilde;o</span>
+    <span class="wip-badge" data-i18n="ev.badge">Em constru&ccedil;&atilde;o</span>
 
-    <h1>Pr&oacute;ximos <span class="accent">Eventos Cient&iacute;ficos</span></h1>
+    <h1 data-i18n-html="ev.title">Pr&oacute;ximos <span class="accent">Eventos Cient&iacute;ficos</span></h1>
 
-    <p class="wip-subtitle">
+    <p class="wip-subtitle" data-i18n="ev.subtitle">
       Agenda centralizada de congressos, simp&oacute;sios, webinars e cursos em medicina nuclear,
       teran&oacute;stica e oncologia. Acompanhe datas, locais e deadlines de submiss&atilde;o.
     </p>
@@ -278,24 +282,24 @@
     <div class="wip-features">
       <div class="wip-feat">
         <div class="wip-feat-icon"><i data-lucide="globe"></i></div>
-        <div class="wip-feat-title">Congressos</div>
-        <div class="wip-feat-desc">EANM, SNMMI, ASCO, ASTRO, ESTRO e mais</div>
+        <div class="wip-feat-title" data-i18n="ev.feat1Title">Congressos</div>
+        <div class="wip-feat-desc" data-i18n="ev.feat1Desc">EANM, SNMMI, ASCO, ASTRO, ESTRO e mais</div>
       </div>
       <div class="wip-feat">
         <div class="wip-feat-icon"><i data-lucide="monitor-play"></i></div>
-        <div class="wip-feat-title">Webinars</div>
-        <div class="wip-feat-desc">Eventos online e h&iacute;bridos com acesso gratuito</div>
+        <div class="wip-feat-title" data-i18n="ev.feat2Title">Webinars</div>
+        <div class="wip-feat-desc" data-i18n="ev.feat2Desc">Eventos online e h&iacute;bridos com acesso gratuito</div>
       </div>
       <div class="wip-feat">
         <div class="wip-feat-icon"><i data-lucide="clock"></i></div>
-        <div class="wip-feat-title">Deadlines</div>
-        <div class="wip-feat-desc">Prazos de submiss&atilde;o de abstracts e inscri&ccedil;&otilde;es</div>
+        <div class="wip-feat-title" data-i18n="ev.feat3Title">Deadlines</div>
+        <div class="wip-feat-desc" data-i18n="ev.feat3Desc">Prazos de submiss&atilde;o de abstracts e inscri&ccedil;&otilde;es</div>
       </div>
     </div>
 
     <a href="index.html" class="wip-btn">
       <i data-lucide="arrow-left"></i>
-      Voltar para o in&iacute;cio
+      <span data-i18n="ev.back">Voltar para o in&iacute;cio</span>
     </a>
   </div>
 </main>
@@ -304,14 +308,18 @@
 <footer class="site-footer">
   <div class="container">
     <div class="footer-bottom">
-      <span>&copy; 2026 TheraTrials Oncology &middot; 421 estudos analisados &middot; v1.2</span>
-      <span>Para uso educacional. N&atilde;o substitui diretrizes oficiais.</span>
+      <span data-i18n="ev.footerLeft">&copy; 2026 TheraTrials Oncology &middot; 421 estudos analisados &middot; v1.2</span>
+      <span data-i18n="ev.footerRight">Para uso educacional. N&atilde;o substitui diretrizes oficiais.</span>
     </div>
   </div>
 </footer>
 
 <script src="assets/js/common.js"></script>
-<script>document.addEventListener('DOMContentLoaded', function() { if (typeof lucide !== 'undefined') lucide.createIcons(); });</script>
+<script src="assets/js/i18n.js"></script>
+<script src="assets/lang/pt-br.js"></script>
+<script src="assets/lang/en.js"></script>
+<script>document.addEventListener('DOMContentLoaded', function() { if (typeof lucide !== 'undefined') lucide.createIcons(); });
+  window.addEventListener('langchange', function() { if (typeof lucide !== 'undefined') lucide.createIcons(); });</script>
 <script src="assets/js/pwa-install.js" defer></script>
 
 </body>

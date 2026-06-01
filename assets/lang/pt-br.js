@@ -256,6 +256,47 @@ window._i18nRegister('pt-br', {
     footerLeft: "© 2026 TheraTrials Oncology · Radiopharmaceutical Therapy Tracker"
   },
 
+  /* ── Eventos (eventos.html) ── */
+  ev: {
+    badge: "Em construção",
+    title: "Próximos <span class=\"accent\">Eventos Científicos</span>",
+    subtitle: "Agenda centralizada de congressos, simpósios, webinars e cursos em medicina nuclear, teranóstica e oncologia. Acompanhe datas, locais e deadlines de submissão.",
+    feat1Title: "Congressos",
+    feat1Desc: "EANM, SNMMI, ASCO, ASTRO, ESTRO e mais",
+    feat2Title: "Webinars",
+    feat2Desc: "Eventos online e híbridos com acesso gratuito",
+    feat3Title: "Deadlines",
+    feat3Desc: "Prazos de submissão de abstracts e inscrições",
+    back: "Voltar para o início",
+    footerLeft: "© 2026 TheraTrials Oncology · 421 estudos analisados · v1.2",
+    footerRight: "Para uso educacional. Não substitui diretrizes oficiais."
+  },
+
+  /* ── Newsletter (newsletter.html) ── */
+  nl: {
+    title: "TheraTrials <span class=\"accent\">Newsletter</span>",
+    subtitle: "Curadoria mensal das principais novidades em teranóstica, medicina nuclear e oncologia. Novos ensaios, resultados publicados, guidelines atualizados e destaques da plataforma — diretamente no seu e-mail.",
+    formTitle: "Inscreva-se gratuitamente",
+    formDesc: "Receba a newsletter mensal com as atualizações mais relevantes. Sem spam — apenas conteúdo científico selecionado.",
+    subscribe: "Inscrever-se",
+    formNote: "Seus dados estão seguros. Cancelamento a qualquer momento, com um clique.",
+    successTitle: "Inscrição confirmada!",
+    successDesc: "Você receberá a próxima edição no início do mês. Verifique sua caixa de entrada para confirmar o e-mail.",
+    feat1Title: "Novos ensaios",
+    feat1Desc: "Estudos recém-adicionados ao Explorer e novos recrutamentos no Brasil",
+    feat2Title: "Resultados",
+    feat2Desc: "Publicações e apresentações de destaque em congressos",
+    feat3Title: "Guidelines",
+    feat3Desc: "Novos documentos e atualizações das sociedades internacionais",
+    feat4Title: "Pipeline RLT",
+    feat4Desc: "Atualizações no pipeline global de radioligantes terapêuticos",
+    cadence: "<strong>Frequência mensal</strong> — a newsletter é gerada automaticamente no dia 2 de cada mês, após a atualização do pipeline de dados do ClinicalTrials.gov.",
+    archiveTitle: "Edições anteriores",
+    archiveEmpty: "A primeira edição será publicada em breve. Inscreva-se acima para receber assim que estiver disponível.",
+    footerLeft: "© 2026 TheraTrials Oncology · 421 estudos analisados · v1.3",
+    footerRight: "Para uso educacional. Não substitui diretrizes oficiais."
+  },
+
   /* ── Trial Matcher ── */
   tm: {
     badge: "Ferramenta clínica",
