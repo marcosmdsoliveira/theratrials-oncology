@@ -845,7 +845,7 @@
           <h2 x-text="selected.drug || selected.title"></h2>
           <span class="nct" x-text="selected.nct"></span>
           <span class="badge badge-status" :class="statusClass(selected.status)" style="margin-left:0.5rem" x-text="prettyStatus(selected.status)"></span>
-          <template x-if="selected.has_brazil"><span class="badge badge-br" style="margin-left:0.3rem">Centro no Brasil</span></template>
+          <template x-if="selected.has_brazil"><span class="badge badge-br" style="margin-left:0.3rem" x-text="(i18nTick, tt('ex.mCenterBR','Centro no Brasil'))"></span></template>
         </div>
         <button class="tr-modal-close" @click="closeModal()" aria-label="Fechar">
           <i data-lucide="x" style="width:16px;height:16px"></i>
@@ -860,46 +860,46 @@
             <span class="badge badge-iso" x-text="selected.isotope || '—'"></span>
             <span class="badge" :class="classBadge(selected.drug_class)" x-text="selected.drug_class || '—'"></span>
             <span class="badge badge-phase" :class="phaseClass(selected.phase)" x-text="selected.phase"></span>
-            <template x-if="selected.target"><span class="badge" style="background:var(--graphite-3); color:var(--off-white); border-color:var(--border-soft); font-family:var(--font-mono)" x-text="'Alvo: ' + selected.target"></span></template>
-            <template x-if="selected.ligand"><span class="badge" style="background:rgba(168,85,247,0.12); color:#C4B5FD; border-color:rgba(168,85,247,0.3); font-family:var(--font-mono)" x-text="'Ligante: ' + selected.ligand"></span></template>
+            <template x-if="selected.target"><span class="badge" style="background:var(--graphite-3); color:var(--off-white); border-color:var(--border-soft); font-family:var(--font-mono)" x-text="(i18nTick, tt('ex.mTarget','Alvo:')) + ' ' + selected.target"></span></template>
+            <template x-if="selected.ligand"><span class="badge" style="background:rgba(168,85,247,0.12); color:#C4B5FD; border-color:rgba(168,85,247,0.3); font-family:var(--font-mono)" x-text="(i18nTick, tt('ex.mLigand','Ligante:')) + ' ' + selected.ligand"></span></template>
           </div>
         </div>
 
         <div class="tr-section">
-          <h3><i data-lucide="hospital" style="width:14px;height:14px"></i> Identificação</h3>
+          <h3><i data-lucide="hospital" style="width:14px;height:14px"></i> <span x-text="(i18nTick, tt('ex.mIdent','Identificação'))"></span></h3>
           <div class="tr-info-grid">
             <div class="tr-info-card"><div class="lbl">Sponsor</div><div class="val" x-text="selected.sponsor || '—'"></div></div>
-            <div class="tr-info-card"><div class="lbl">Tipo de sponsor</div><div class="val" x-text="selected.sponsor_class || '—'"></div></div>
-            <div class="tr-info-card"><div class="lbl">N alvo</div><div class="val" x-text="selected.enrollment || '—'"></div></div>
-            <div class="tr-info-card"><div class="lbl">Neoplasia (TheraTrials)</div><div class="val" x-text="(selected.neoplasia_all||[]).join(' · ') || selected.neoplasia"></div></div>
+            <div class="tr-info-card"><div class="lbl" x-text="(i18nTick, tt('ex.mSponsorType','Tipo de sponsor'))"></div><div class="val" x-text="selected.sponsor_class || '—'"></div></div>
+            <div class="tr-info-card"><div class="lbl" x-text="(i18nTick, tt('ex.mNTarget','N alvo'))"></div><div class="val" x-text="selected.enrollment || '—'"></div></div>
+            <div class="tr-info-card"><div class="lbl" x-text="(i18nTick, tt('ex.mNeoplasia','Neoplasia (TheraTrials)'))"></div><div class="val" x-text="(selected.neoplasia_all||[]).join(' · ') || selected.neoplasia"></div></div>
           </div>
         </div>
 
         <div class="tr-section">
-          <h3><i data-lucide="calendar" style="width:14px;height:14px"></i> Cronologia</h3>
+          <h3><i data-lucide="calendar" style="width:14px;height:14px"></i> <span x-text="(i18nTick, tt('ex.mChrono','Cronologia'))"></span></h3>
           <div class="tr-info-grid">
-            <div class="tr-info-card"><div class="lbl">Início</div><div class="val" x-text="selected.start_date || '—'"></div></div>
+            <div class="tr-info-card"><div class="lbl" x-text="(i18nTick, tt('ex.mStart','Início'))"></div><div class="val" x-text="selected.start_date || '—'"></div></div>
             <div class="tr-info-card"><div class="lbl">Primary completion</div><div class="val" x-text="selected.primary_completion || '—'"></div></div>
-            <div class="tr-info-card"><div class="lbl">Última atualização CT.gov</div><div class="val" x-text="selected.last_update || '—'"></div></div>
+            <div class="tr-info-card"><div class="lbl" x-text="(i18nTick, tt('ex.mLastUpdate','Última atualização CT.gov'))"></div><div class="val" x-text="selected.last_update || '—'"></div></div>
           </div>
         </div>
 
         <div class="tr-section" x-show="(selected.interventions||[]).length">
-          <h3><i data-lucide="syringe" style="width:14px;height:14px"></i> Intervenções</h3>
+          <h3><i data-lucide="syringe" style="width:14px;height:14px"></i> <span x-text="(i18nTick, tt('ex.mInterventions','Intervenções'))"></span></h3>
           <div class="row">
             <template x-for="iv in selected.interventions"><span class="badge" style="background:var(--graphite-3); color:var(--off-white); border-color:var(--border-soft);" x-text="iv"></span></template>
           </div>
         </div>
 
         <div class="tr-section" x-show="(selected.conditions||[]).length">
-          <h3><i data-lucide="stethoscope" style="width:14px;height:14px"></i> Condições (CT.gov)</h3>
+          <h3><i data-lucide="stethoscope" style="width:14px;height:14px"></i> <span x-text="(i18nTick, tt('ex.mConditions','Condições (CT.gov)'))"></span></h3>
           <div class="row">
             <template x-for="c in selected.conditions"><span class="badge" style="background:var(--graphite-3); color:var(--off-white); border-color:var(--border-soft);" x-text="c"></span></template>
           </div>
         </div>
 
         <div class="tr-section" x-show="(selected.countries||[]).length">
-          <h3><i data-lucide="globe" style="width:14px;height:14px"></i> Países (<span x-text="(selected.countries||[]).length"></span>)</h3>
+          <h3><i data-lucide="globe" style="width:14px;height:14px"></i> <span x-text="(i18nTick, tt('ex.mCountries','Países'))"></span> (<span x-text="(selected.countries||[]).length"></span>)</h3>
           <div class="row">
             <template x-for="c in selected.countries"><span class="badge" :class="c === 'Brazil' ? 'badge-br' : ''" style="background:var(--graphite-3); color:var(--off-white); border-color:var(--border-soft); font-family:var(--font-mono); font-size:0.7rem;" x-text="c"></span></template>
           </div>
@@ -908,11 +908,11 @@
         <div class="tr-actions">
           <a :href="selected.url" target="_blank" rel="noopener" class="primary">
             <i data-lucide="external-link" style="width:14px;height:14px"></i>
-            Abrir no ClinicalTrials.gov
+            <span x-text="(i18nTick, tt('ex.mOpenCT','Abrir no ClinicalTrials.gov'))"></span>
           </a>
           <a :href="'https://www.google.com/search?q=' + encodeURIComponent(selected.nct + ' ' + (selected.drug||''))" target="_blank" rel="noopener" class="ghost">
             <i data-lucide="search" style="width:14px;height:14px"></i>
-            Pesquisar publicações
+            <span x-text="(i18nTick, tt('ex.mSearchPubs','Pesquisar publicações'))"></span>
           </a>
           <a :href="'https://pubmed.ncbi.nlm.nih.gov/?term=' + encodeURIComponent(selected.nct)" target="_blank" rel="noopener" class="ghost">
             <i data-lucide="book-open" style="width:14px;height:14px"></i>
@@ -949,11 +949,14 @@
         only_brazil: false,
       },
       open: { iso: false, cls: false, tgt: false, lig: false, phase: false, status: false, neo: false, spons: false, geo: false },
+      i18nTick: 0,
+      tt(key, fb) { return window.t ? window.t(key, fb) : fb; },
 
       async init() {
         const safeIcons = () => { try { if (window.lucide) lucide.createIcons(); } catch(e){} };
         safeIcons();
         this.$nextTick(safeIcons);
+        window.addEventListener('langchange', () => { this.i18nTick++; this.$nextTick(safeIcons); });
         this.$watch('selected', () => this.$nextTick(safeIcons));
         this.$watch('search',   () => this.$nextTick(safeIcons));
         this.$watch('filters',  () => { this.$nextTick(safeIcons); this.syncHash(); }, { deep: true });
