@@ -230,6 +230,15 @@ window._i18nRegister('pt-br', {
     footerRight: "Fonte: ClinicalTrials.gov v2 · atualização mensal automatizada"
   },
 
+  /* ── Tracker (tracker.html) — especificos; reaproveita ex.* no resto ── */
+  tk: {
+    eyebrow: "Pipeline global · radiofármacos terapêuticos",
+    subtitle: "Pipeline ativo de radioligantes terapêuticos em oncologia. Filtre por isótopo, ligante/alvo, fase, neoplasia, sponsor e país. Fonte: <strong>ClinicalTrials.gov v2</strong>, com atualização automática mensal. Inspirado no <em>Radiopharmaceutical Therapy Tracker</em> da AuntMinnie e estendido para incluir país, N alvo e sponsor.",
+    srcSeedTail: "estudos · GitHub Action irá expandir para o pipeline completo no próximo dia 1",
+    brBanner: "Filtrando por participação brasileira no pipeline global. Para a <strong>curadoria detalhada de estudos abertos no Brasil</strong> (com centros, contatos e critérios em português), use <a href=\"ensaios-clinicos.html\" style=\"color:var(--amber); text-decoration:underline;\">Ensaios clínicos ativos (BR)</a>.",
+    footerLeft: "© 2026 TheraTrials Oncology · Radiopharmaceutical Therapy Tracker"
+  },
+
   /* ── Trial Matcher ── */
   tm: {
     badge: "Ferramenta clínica",
