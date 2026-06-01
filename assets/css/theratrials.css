@@ -204,16 +204,17 @@ section.compact { padding: 3rem 0; }
 .brand-name { font-size: 1.15rem; font-weight: 700; letter-spacing: -0.02em; color: var(--off-white); }
 .brand-sub { font-size: 1.15rem; letter-spacing: -0.02em; color: var(--amber); font-weight: 700; }
 
-.nav { display: flex; align-items: center; gap: 0.12rem; }
+.nav { display: flex; align-items: center; gap: 0.1rem; }
 .nav a {
   color: var(--stone);
   font-size: 0.8rem;
   font-weight: 500;
-  padding: 0.45rem 0.62rem;
+  padding: 0.45rem 0.6rem;
   border-radius: var(--radius-sm);
   transition: color 0.2s ease, background 0.2s ease;
   letter-spacing: 0.01em;
   line-height: 1.18;
+  white-space: nowrap;            /* itens sempre em 1 linha -> espacamento uniforme */
 }
 .nav a:hover { color: var(--off-white); background: rgba(143, 148, 156, 0.08); }
 .nav a.active { color: var(--amber); background: var(--amber-soft); }
@@ -231,8 +232,9 @@ section.compact { padding: 3rem 0; }
 }
 .nav-toggle:hover { border-color: var(--amber); color: var(--amber); }
 
-/* ── Navegação premium: vira drawer suspenso abaixo de 1300px (laptops + tablets + celular) ── */
-@media (max-width: 1300px) {
+/* ── Navegação premium: vira drawer suspenso abaixo de 1420px (laptops + tablets + celular).
+      Acima disso, os 12 itens cabem em UMA linha com espacamento uniforme (white-space: nowrap). ── */
+@media (max-width: 1420px) {
   .nav-toggle { display: inline-flex; align-items: center; justify-content: center; }
   .site-header .container { gap: 1rem; position: relative; }
   .nav {
