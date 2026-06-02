@@ -190,32 +190,36 @@
     </a>
     <button class="nav-toggle" aria-label="Menu" onclick="this.parentElement.querySelector('.nav').classList.toggle('open')"><i data-lucide="menu" style="width:18px;height:18px"></i></button>
     <nav class="nav">
-      <a href="index.html">Home</a>
-      <a href="database.html">Database</a>
-      <a href="trial-matcher.html">Trial Matcher</a>
-      <a href="ensaios-clinicos.html">Ensaios clínicos</a>
-      <a href="explorer.html">Explorer</a>
-      <a href="tumor-boards.html">Tumor boards</a>
-      <a href="radiofarmacos.html">Radiofármacos</a>
-      <a href="guidelines.html">Guidelines</a>
-      <a href="ferramentas.html">Ferramentas</a>
-      <a href="modalidades.html">Modalidades</a>
-      <a href="fundamentos.html">Fundamentos</a>
-      <a href="about.html">Sobre</a>
+      <a href="index.html" data-i18n="nav.home">Home</a>
+      <a href="database.html" data-i18n="nav.database">Database</a>
+      <a href="trial-matcher.html" data-i18n="nav.trialMatcher">Trial Matcher</a>
+      <a href="ensaios-clinicos.html" data-i18n="nav.ensaios">Ensaios clínicos</a>
+      <a href="explorer.html" data-i18n="nav.explorer">Explorer</a>
+      <a href="tumor-boards.html" data-i18n="nav.tumorBoards">Tumor boards</a>
+      <a href="radiofarmacos.html" data-i18n="nav.radiofarmacos">Radiofármacos</a>
+      <a href="guidelines.html" data-i18n="nav.guidelines">Guidelines</a>
+      <a href="ferramentas.html" data-i18n="nav.ferramentas">Ferramentas</a>
+      <a href="modalidades.html" data-i18n="nav.modalidades">Modalidades</a>
+      <a href="fundamentos.html" data-i18n="nav.fundamentos">Fundamentos</a>
+      <a href="about.html" data-i18n="nav.sobre">Sobre</a>
     </nav>
+    <button class="lang-toggle" onclick="toggleLang()" title="Switch to English" aria-label="Switch language">
+      <i data-lucide="globe" style="width:14px;height:14px"></i>
+      <span class="lang-label">EN</span>
+    </button>
   </div>
 </header>
 
 <section class="rf-hero">
   <div class="container">
     <span class="rf-eyebrow" style="background:rgba(245,158,11,0.12);border-color:rgba(245,158,11,0.3);color:#F59E0B">
-      <i data-lucide="atom" style="width:12px;height:12px"></i> Radiofármaco · Beta-emissor · Locorregional
+      <i data-lucide="atom" style="width:12px;height:12px"></i> <span data-i18n="y90.eyebrow">Radiofármaco · Beta-emissor · Locorregional</span>
     </span>
     <h1 class="rf-title">
       <span class="iso-up" style="color:#F59E0B">90</span>Y-Microesferas
-      <br><span style="color:#F59E0B">TARE</span> · radioembolização hepática
+      <br><span style="color:#F59E0B">TARE</span> <span data-i18n="y90.titleTail">· radioembolização hepática</span>
     </h1>
-    <p class="rf-subtitle">
+    <p class="rf-subtitle" data-i18n="y90.subtitle">
       Microesferas de vidro ou resina marcadas com ítrio-90, administradas via cateter intra-arterial hepático. Combinam três princípios: anatomia (suprimento arterial preferencial dos tumores), micropartícula (entrega seletiva) e radiação β⁻ (dano local). Utilizadas em CHC e metástases hepáticas selecionadas, com indicações regulatórias que variam por produto e país. Há também evidência e uso em colangiocarcinoma intra-hepático irressecável, geralmente em contexto selecionado/off-label conforme jurisdição e protocolo institucional.
     </p>
 
@@ -223,15 +227,15 @@
       <div class="iso-symbol yellow">
         <span class="iso-mass">90</span>
         <span class="iso-element">Y</span>
-        <span class="iso-name">Ítrio</span>
+        <span class="iso-name" data-i18n="y90.isoName">Ítrio</span>
       </div>
       <div class="iso-grid">
-        <div class="item"><div class="lbl">Meia-vida</div><div class="val">64,1 h</div></div>
-        <div class="item"><div class="lbl">Decaimento</div><div class="val">β⁻ puro</div></div>
-        <div class="item"><div class="lbl">Energia β máx</div><div class="val">2,28 MeV</div></div>
-        <div class="item"><div class="lbl">Alcance β máx</div><div class="val">11 mm</div></div>
-        <div class="item"><div class="lbl">Imagem pós</div><div class="val">PET (β⁺ ~ 32 ppm)</div></div>
-        <div class="item"><div class="lbl">Diâmetro esfera</div><div class="val">20-60 μm</div></div>
+        <div class="item"><div class="lbl" data-i18n="y90.isoHalfLifeL">Meia-vida</div><div class="val" data-i18n="y90.isoHalfLifeV">64,1 h</div></div>
+        <div class="item"><div class="lbl" data-i18n="y90.isoDecayL">Decaimento</div><div class="val" data-i18n="y90.isoDecayV">β⁻ puro</div></div>
+        <div class="item"><div class="lbl" data-i18n="y90.isoEbL">Energia β máx</div><div class="val" data-i18n="y90.isoEbV">2,28 MeV</div></div>
+        <div class="item"><div class="lbl" data-i18n="y90.isoRangeL">Alcance β máx</div><div class="val" data-i18n="y90.isoRangeV">11 mm</div></div>
+        <div class="item"><div class="lbl" data-i18n="y90.isoImgL">Imagem pós</div><div class="val" data-i18n="y90.isoImgV">PET (β⁺ ~ 32 ppm)</div></div>
+        <div class="item"><div class="lbl" data-i18n="y90.isoDiamL">Diâmetro esfera</div><div class="val" data-i18n="y90.isoDiamV">20-60 μm</div></div>
       </div>
     </div>
   </div>
@@ -242,78 +246,78 @@
     <div class="rf-layout">
 
       <aside class="toc">
-        <h4>Nesta página</h4>
-        <a href="#cronologia">Cronologia</a>
-        <a href="#mecanismo">Mecanismo</a>
-        <a href="#produtos">Vidro vs resina</a>
-        <a href="#procedimento">Procedimento</a>
-        <a href="#dosimetria">Dosimetria</a>
-        <a href="#ensaios">Ensaios pivotais</a>
-        <a href="#toxicidade">Toxicidade</a>
-        <a href="#perspectivas">Perspectivas</a>
-        <a href="#proximos">Continue lendo</a>
+        <h4 data-i18n="y90.tocTitle">Nesta página</h4>
+        <a href="#cronologia" data-i18n="y90.toc1">Cronologia</a>
+        <a href="#mecanismo" data-i18n="y90.toc2">Mecanismo</a>
+        <a href="#produtos" data-i18n="y90.toc3">Vidro vs resina</a>
+        <a href="#procedimento" data-i18n="y90.toc4">Procedimento</a>
+        <a href="#dosimetria" data-i18n="y90.toc5">Dosimetria</a>
+        <a href="#ensaios" data-i18n="y90.toc6">Ensaios pivotais</a>
+        <a href="#toxicidade" data-i18n="y90.toc7">Toxicidade</a>
+        <a href="#perspectivas" data-i18n="y90.toc8">Perspectivas</a>
+        <a href="#proximos" data-i18n="y90.toc9">Continue lendo</a>
       </aside>
 
       <main>
 
         <!-- ============== CRONOLOGIA ============== -->
         <div id="cronologia" class="rf-section">
-          <h2><span class="num">01</span> Cronologia</h2>
-          <p class="lead">Da observação anatômica de Breedis & Young (1954) à dosimetria personalizada do DOSISPHERE-01: 70 anos para sair de tratamento empírico para terapia individualizada.</p>
+          <h2><span class="num">01</span> <span data-i18n="y90.s1h">Cronologia</span></h2>
+          <p class="lead" data-i18n="y90.s1lead">Da observação anatômica de Breedis & Young (1954) à dosimetria personalizada do DOSISPHERE-01: 70 anos para sair de tratamento empírico para terapia individualizada.</p>
 
           <div class="timeline">
             <div class="tl-item">
               <div class="tl-dot">1954</div>
-              <div class="tl-card">
+              <div class="tl-card" data-i18n-html="y90.tl1">
                 <h4>Tumores hepáticos têm suprimento arterial preferencial</h4>
                 <p>Breedis e Young demonstram em estudos anatômicos que tumores hepáticos primários e metastáticos recebem &gt;80% do fluxo sanguíneo da artéria hepática, enquanto o parênquima normal é nutrido majoritariamente pela veia porta. Base conceitual de toda terapia transarterial.</p>
               </div>
             </div>
             <div class="tl-item">
               <div class="tl-dot">1960s</div>
-              <div class="tl-card">
+              <div class="tl-card" data-i18n-html="y90.tl2">
                 <h4>Primeiros estudos com <sup>90</sup>Y</h4>
                 <p>Tentativas iniciais usando partículas de <sup>90</sup>Y para tumores hepáticos. Tecnologia ainda imatura: distribuição imprevisível e dosimetria primitiva. Importância simbólica.</p>
               </div>
             </div>
             <div class="tl-item">
               <div class="tl-dot">1980s</div>
-              <div class="tl-card">
+              <div class="tl-card" data-i18n-html="y90.tl3">
                 <h4>Desenvolvimento de microesferas modernas</h4>
                 <p>Burton, Gray e cols. (Austrália) desenvolvem microesferas de resina com <sup>90</sup>Y (que se tornariam SIR-Spheres). Em paralelo, MDS Nordion (Canadá) desenvolve microesferas de vidro (TheraSphere), com diâmetro padronizado e atividade incorporada na matriz.</p>
               </div>
             </div>
             <div class="tl-item">
               <div class="tl-dot period"><span>2000</span><span>2002</span></div>
-              <div class="tl-card">
+              <div class="tl-card" data-i18n-html="y90.tl4">
                 <h4>Aprovações regulatórias</h4>
                 <p>SIR-Spheres recebe aprovação FDA via PMA (2002) para metástases hepáticas de CCR. TheraSphere recebe aprovação HDE (Humanitarian Device Exemption) para CHC. Inicia-se uso clínico ampliado.</p>
               </div>
             </div>
             <div class="tl-item">
               <div class="tl-dot">2017</div>
-              <div class="tl-card">
+              <div class="tl-card" data-i18n-html="y90.tl5">
                 <h4>SARAH e SIRveNIB · primeiro fase 3 em CHC</h4>
                 <p>Vilgrain (SARAH, França) e Chow (SIRveNIB, Ásia): comparação direta com sorafenib em CHC avançado. Endpoint primário de OS não atingido. Lição: TARE não substituiu sorafenib globalmente, mas mantém papel em subgrupos selecionados.</p>
               </div>
             </div>
             <div class="tl-item">
               <div class="tl-dot">2020</div>
-              <div class="tl-card">
+              <div class="tl-card" data-i18n-html="y90.tl6">
                 <h4>DOSISPHERE-01 · dose personalizada (Lancet Gastro Hep)</h4>
                 <p>Garin e cols.: dosimetria personalizada (≥205 Gy ao tumor) vs convencional (120 Gy lobar). ORR 71 vs 36%, OS 26,6 vs 10,7 m. Reforçou fortemente o paradigma da dosimetria personalizada, especialmente em CHC tratado com microesferas de vidro, e deve ser buscada sempre que tecnicamente viável.</p>
               </div>
             </div>
             <div class="tl-item">
               <div class="tl-dot">2021</div>
-              <div class="tl-card">
+              <div class="tl-card" data-i18n-html="y90.tl7">
                 <h4>LEGACY · radiação segmentectômica em CHC solitário (Hepatology)</h4>
                 <p>Salem e cols.: TARE com dose ablativa (&gt;400 Gy) em CHC solitário ≤8 cm. ORR 88%, OS 3 anos 86,6%. Consolidou a radioembolização segmentar ablativa como opção importante em pacientes selecionados com CHC solitário não candidatos ideais à ressecção ou ablação, embora sem comparação randomizada direta contra essas estratégias.</p>
               </div>
             </div>
             <div class="tl-item">
               <div class="tl-dot period"><span>2022</span><span>2025</span></div>
-              <div class="tl-card">
+              <div class="tl-card" data-i18n-html="y90.tl8">
                 <h4>EPOCH, RASER, combinações com IO</h4>
                 <p>EPOCH valida TARE em 2L mCRC liver-mets (PFS). RASER explora segmentectomia ablativa em CHC ≤3 cm. Estudos com atezolizumab+bevacizumab em sequência (LIRICA, EMERALD-Y90) abrem combinações imuno-radioembolização.</p>
               </div>
@@ -333,8 +337,8 @@
 
         <!-- ============== MECANISMO ============== -->
         <div id="mecanismo" class="rf-section">
-          <h2><span class="num">02</span> Mecanismo</h2>
-          <p class="lead">Microesferas de 20-60 μm injetadas seletivamente no ramo arterial hepático que nutre o tumor. Lodge nos arteríolos pré-capilares, onde o <sup>90</sup>Y emite radiação β localmente — alcance máximo de 11 mm cobre todo o microambiente tumoral.</p>
+          <h2><span class="num">02</span> <span data-i18n="y90.s2h">Mecanismo</span></h2>
+          <p class="lead" data-i18n-html="y90.s2lead">Microesferas de 20-60 μm injetadas seletivamente no ramo arterial hepático que nutre o tumor. Lodge nos arteríolos pré-capilares, onde o <sup>90</sup>Y emite radiação β localmente — alcance máximo de 11 mm cobre todo o microambiente tumoral.</p>
 
           <div class="mech-diagram">
             <img src="assets/img/y90-mecanismo.png"
@@ -345,40 +349,40 @@
             <div class="mech-stages">
               <div class="mech-stage">
                 <div class="mech-num" style="background: #F59E0B">1</div>
-                <h5>Cateterização seletiva</h5>
-                <p>O microcateter é posicionado de forma seletiva no ramo da artéria hepática que nutre o tumor, permitindo a entrega locorregional do radiofármaco diretamente ao território tumoral.</p>
+                <h5 data-i18n="y90.s2m1L">Cateterização seletiva</h5>
+                <p data-i18n="y90.s2m1T">O microcateter é posicionado de forma seletiva no ramo da artéria hepática que nutre o tumor, permitindo a entrega locorregional do radiofármaco diretamente ao território tumoral.</p>
               </div>
               <div class="mech-stage">
                 <div class="mech-num" style="background: #F59E0B">2</div>
-                <h5>Infusão das microesferas de <sup>90</sup>Y</h5>
-                <p>Microesferas de vidro ou resina marcadas com ítrio-90 são administradas lentamente pela via intra-arterial, acompanhando o fluxo arterial hepático até a lesão-alvo.</p>
+                <h5 data-i18n-html="y90.s2m2L">Infusão das microesferas de <sup>90</sup>Y</h5>
+                <p data-i18n="y90.s2m2T">Microesferas de vidro ou resina marcadas com ítrio-90 são administradas lentamente pela via intra-arterial, acompanhando o fluxo arterial hepático até a lesão-alvo.</p>
               </div>
               <div class="mech-stage">
                 <div class="mech-num" style="background: #F59E0B">3</div>
-                <h5>Distribuição preferencial ao tumor</h5>
-                <p>Os tumores hepáticos recebem suprimento predominantemente arterial, enquanto o parênquima hepático normal é irrigado principalmente pela veia porta. Essa diferença favorece maior deposição das microesferas no leito tumoral.</p>
+                <h5 data-i18n="y90.s2m3L">Distribuição preferencial ao tumor</h5>
+                <p data-i18n="y90.s2m3T">Os tumores hepáticos recebem suprimento predominantemente arterial, enquanto o parênquima hepático normal é irrigado principalmente pela veia porta. Essa diferença favorece maior deposição das microesferas no leito tumoral.</p>
               </div>
               <div class="mech-stage">
                 <div class="mech-num" style="background: #F59E0B">4</div>
-                <h5>Alojamento arteriolar e efeito embólico</h5>
-                <p>As microesferas ficam retidas em arteríolas distais e vasos pré-capilares do tumor, promovendo microembolização seletiva e permanecendo próximas às células neoplásicas.</p>
+                <h5 data-i18n="y90.s2m4L">Alojamento arteriolar e efeito embólico</h5>
+                <p data-i18n="y90.s2m4T">As microesferas ficam retidas em arteríolas distais e vasos pré-capilares do tumor, promovendo microembolização seletiva e permanecendo próximas às células neoplásicas.</p>
               </div>
               <div class="mech-stage">
                 <div class="mech-num" style="background: #F59E0B">5</div>
-                <h5>Emissão β⁻ local</h5>
-                <p>O <sup>90</sup>Y emite radiação beta menos, com deposição de dose no microambiente tumoral. O alcance tecidual permite irradiar células tumorais adjacentes às microesferas, cobrindo o volume-alvo ao redor dos vasos tratados.</p>
+                <h5 data-i18n="y90.s2m5L">Emissão β⁻ local</h5>
+                <p data-i18n-html="y90.s2m5T">O <sup>90</sup>Y emite radiação beta menos, com deposição de dose no microambiente tumoral. O alcance tecidual permite irradiar células tumorais adjacentes às microesferas, cobrindo o volume-alvo ao redor dos vasos tratados.</p>
               </div>
               <div class="mech-stage">
                 <div class="mech-num" style="background: #F59E0B">6</div>
-                <h5>Efeito terapêutico tumoral</h5>
-                <p>A combinação de entrega arterial seletiva, retenção intratumoral das microesferas e radiação β⁻ resulta em dano celular progressivo, necrose tumoral e preservação relativa do parênquima hepático não tumoral.</p>
+                <h5 data-i18n="y90.s2m6L">Efeito terapêutico tumoral</h5>
+                <p data-i18n-html="y90.s2m6T">A combinação de entrega arterial seletiva, retenção intratumoral das microesferas e radiação β⁻ resulta em dano celular progressivo, necrose tumoral e preservação relativa do parênquima hepático não tumoral.</p>
               </div>
             </div>
           </div>
 
           <div class="key-fact">
-            <div class="lbl">Bremsstrahlung e PET pós-tratamento</div>
-            <p>O <sup>90</sup>Y é considerado β⁻ "puro" mas tem uma fração β⁺ ínfima (~32 ppm) detectável por PET com tempos de aquisição prolongados. Imagem PET pós-TARE permite dosimetria voxel-a-voxel personalizada. Alternativamente, SPECT/CT de Bremsstrahlung (radiação de freamento) é barata, ampla e adequada para verificar distribuição grosseira.</p>
+            <div class="lbl" data-i18n="y90.s2kfL">Bremsstrahlung e PET pós-tratamento</div>
+            <p data-i18n-html="y90.s2kfT">O <sup>90</sup>Y é considerado β⁻ "puro" mas tem uma fração β⁺ ínfima (~32 ppm) detectável por PET com tempos de aquisição prolongados. Imagem PET pós-TARE permite dosimetria voxel-a-voxel personalizada. Alternativamente, SPECT/CT de Bremsstrahlung (radiação de freamento) é barata, ampla e adequada para verificar distribuição grosseira.</p>
           </div>
         </div>
 
@@ -394,41 +398,41 @@
 
         <!-- ============== PRODUTOS ============== -->
         <div id="produtos" class="rf-section">
-          <h2><span class="num">03</span> Vidro vs resina · TheraSphere vs SIR-Spheres</h2>
-          <p class="lead">Dois produtos comerciais com filosofias opostas: alta atividade por esfera e poucos elementos (vidro) ou baixa atividade e muitos elementos (resina). Implicações em embolização, dose e tipo de paciente.</p>
+          <h2><span class="num">03</span> <span data-i18n="y90.s3h">Vidro vs resina · TheraSphere vs SIR-Spheres</span></h2>
+          <p class="lead" data-i18n="y90.s3lead">Dois produtos comerciais com filosofias opostas: alta atividade por esfera e poucos elementos (vidro) ou baixa atividade e muitos elementos (resina). Implicações em embolização, dose e tipo de paciente.</p>
 
           <div class="prod-compare">
             <div class="prod-card glass">
-              <h4><i data-lucide="circle-dot" style="width:18px;height:18px"></i> TheraSphere · Vidro</h4>
+              <h4><i data-lucide="circle-dot" style="width:18px;height:18px"></i> <span data-i18n="y90.s3glassH">TheraSphere · Vidro</span></h4>
               <ul>
-                <li>Diâmetro <span class="v">20-30 μm</span></li>
-                <li>Atividade/esfera <span class="v">~ 2.500 Bq</span></li>
-                <li>Esferas/dose <span class="v">1-8 milhões</span></li>
-                <li>Densidade <span class="v">3,3 g/cm<sup>3</sup></span></li>
-                <li>Embolização <span class="v">mínima</span></li>
-                <li>Atividade máx <span class="v">alta · ablativa</span></li>
-                <li>Aplicação preferida <span class="v">CHC, segmentectomia</span></li>
-                <li>Aprovação BR <span class="v">ANVISA</span></li>
+                <li><span data-i18n="y90.s3g1L">Diâmetro</span> <span class="v" data-i18n="y90.s3g1V">20-30 μm</span></li>
+                <li><span data-i18n="y90.s3g2L">Atividade/esfera</span> <span class="v" data-i18n="y90.s3g2V">~ 2.500 Bq</span></li>
+                <li><span data-i18n="y90.s3g3L">Esferas/dose</span> <span class="v" data-i18n="y90.s3g3V">1-8 milhões</span></li>
+                <li><span data-i18n="y90.s3g4L">Densidade</span> <span class="v">3,3 g/cm<sup>3</sup></span></li>
+                <li><span data-i18n="y90.s3g5L">Embolização</span> <span class="v" data-i18n="y90.s3g5V">mínima</span></li>
+                <li><span data-i18n="y90.s3g6L">Atividade máx</span> <span class="v" data-i18n="y90.s3g6V">alta · ablativa</span></li>
+                <li><span data-i18n="y90.s3g7L">Aplicação preferida</span> <span class="v" data-i18n="y90.s3g7V">CHC, segmentectomia</span></li>
+                <li><span data-i18n="y90.s3g8L">Aprovação BR</span> <span class="v" data-i18n="y90.s3g8V">ANVISA</span></li>
               </ul>
             </div>
             <div class="prod-card resin">
-              <h4><i data-lucide="circle-dot" style="width:18px;height:18px"></i> SIR-Spheres · Resina</h4>
+              <h4><i data-lucide="circle-dot" style="width:18px;height:18px"></i> <span data-i18n="y90.s3resinH">SIR-Spheres · Resina</span></h4>
               <ul>
-                <li>Diâmetro <span class="v">20-60 μm</span></li>
-                <li>Atividade/esfera <span class="v">~ 50 Bq</span></li>
-                <li>Esferas/dose <span class="v">40-80 milhões</span></li>
-                <li>Densidade <span class="v">1,6 g/cm<sup>3</sup></span></li>
-                <li>Embolização <span class="v">parcial</span></li>
-                <li>Atividade máx <span class="v">limitada por embolização</span></li>
-                <li>Aplicação preferida <span class="v">mCRC, NET, mama</span></li>
-                <li>Aprovação BR <span class="v">ANVISA</span></li>
+                <li><span data-i18n="y90.s3r1L">Diâmetro</span> <span class="v" data-i18n="y90.s3r1V">20-60 μm</span></li>
+                <li><span data-i18n="y90.s3r2L">Atividade/esfera</span> <span class="v" data-i18n="y90.s3r2V">~ 50 Bq</span></li>
+                <li><span data-i18n="y90.s3r3L">Esferas/dose</span> <span class="v" data-i18n="y90.s3r3V">40-80 milhões</span></li>
+                <li><span data-i18n="y90.s3r4L">Densidade</span> <span class="v">1,6 g/cm<sup>3</sup></span></li>
+                <li><span data-i18n="y90.s3r5L">Embolização</span> <span class="v" data-i18n="y90.s3r5V">parcial</span></li>
+                <li><span data-i18n="y90.s3r6L">Atividade máx</span> <span class="v" data-i18n="y90.s3r6V">limitada por embolização</span></li>
+                <li><span data-i18n="y90.s3r7L">Aplicação preferida</span> <span class="v" data-i18n="y90.s3r7V">mCRC, NET, mama</span></li>
+                <li><span data-i18n="y90.s3r8L">Aprovação BR</span> <span class="v" data-i18n="y90.s3r8V">ANVISA</span></li>
               </ul>
             </div>
           </div>
 
           <div class="key-fact">
-            <div class="lbl">Quando escolher cada produto?</div>
-            <p>Em CHC com intenção ablativa segmentectômica (radiation segmentectomy), vidro é preferido — permite atingir &gt;200 Gy ao tumor sem embolizar excessivamente. Em metástases bilobares múltiplas, resina pode ser preferida pela maior cobertura microvascular. Disponibilidade local, expertise da equipe e custo são fatores adicionais. Em centros experientes ambos são usados conforme cenário.</p>
+            <div class="lbl" data-i18n="y90.s3kfL">Quando escolher cada produto?</div>
+            <p data-i18n-html="y90.s3kfT">Em CHC com intenção ablativa segmentectômica (radiation segmentectomy), vidro é preferido — permite atingir &gt;200 Gy ao tumor sem embolizar excessivamente. Em metástases bilobares múltiplas, resina pode ser preferida pela maior cobertura microvascular. Disponibilidade local, expertise da equipe e custo são fatores adicionais. Em centros experientes ambos são usados conforme cenário.</p>
           </div>
         </div>
 
@@ -444,33 +448,33 @@
 
         <!-- ============== PROCEDIMENTO ============== -->
         <div id="procedimento" class="rf-section">
-          <h2><span class="num">04</span> Procedimento em 6 etapas</h2>
-          <p class="lead">TARE não é um único evento — é um processo multidisciplinar com 2 procedimentos angiográficos separados por 1-2 semanas, planejamento dosimétrico personalizado e seguimento por imagem.</p>
+          <h2><span class="num">04</span> <span data-i18n="y90.s4h">Procedimento em 6 etapas</span></h2>
+          <p class="lead" data-i18n="y90.s4lead">TARE não é um único evento — é um processo multidisciplinar com 2 procedimentos angiográficos separados por 1-2 semanas, planejamento dosimétrico personalizado e seguimento por imagem.</p>
 
           <div class="proc-steps">
             <div class="proc-step">
-              <h5>Avaliação e seleção</h5>
-              <p>Imagem (CT ou MR), avaliação hepática (Child-Pugh ou ALBI), performance, função renal e cardiopulmonar. Discussão em tumor board.</p>
+              <h5 data-i18n="y90.s4p1L">Avaliação e seleção</h5>
+              <p data-i18n="y90.s4p1T">Imagem (CT ou MR), avaliação hepática (Child-Pugh ou ALBI), performance, função renal e cardiopulmonar. Discussão em tumor board.</p>
             </div>
             <div class="proc-step">
-              <h5>Mapeamento angiográfico</h5>
-              <p>1ª angiografia. Caracteriza anatomia arterial, identifica e emboliza vasos extra-hepáticos (gastroduodenal, gástrica direita, císticos) que podem causar deposição extra-hepática.</p>
+              <h5 data-i18n="y90.s4p2L">Mapeamento angiográfico</h5>
+              <p data-i18n="y90.s4p2T">1ª angiografia. Caracteriza anatomia arterial, identifica e emboliza vasos extra-hepáticos (gastroduodenal, gástrica direita, císticos) que podem causar deposição extra-hepática.</p>
             </div>
             <div class="proc-step">
-              <h5>Simulação <sup>99</sup>ᵐTc-MAA</h5>
-              <p>Injeção de macroagregados de albumina pela mesma posição de cateter planejada. SPECT/CT mede shunt pulmonar (LSF) e estima distribuição intra-hepática.</p>
+              <h5 data-i18n-html="y90.s4p3L">Simulação <sup>99</sup>ᵐTc-MAA</h5>
+              <p data-i18n="y90.s4p3T">Injeção de macroagregados de albumina pela mesma posição de cateter planejada. SPECT/CT mede shunt pulmonar (LSF) e estima distribuição intra-hepática.</p>
             </div>
             <div class="proc-step">
-              <h5>Cálculo de dose personalizado</h5>
-              <p>Modelo MIRD, Partição ou voxel-based. Define atividade injetada para entregar dose-alvo no tumor, respeitando limites de fígado normal e pulmão.</p>
+              <h5 data-i18n="y90.s4p4L">Cálculo de dose personalizado</h5>
+              <p data-i18n="y90.s4p4T">Modelo MIRD, Partição ou voxel-based. Define atividade injetada para entregar dose-alvo no tumor, respeitando limites de fígado normal e pulmão.</p>
             </div>
             <div class="proc-step">
-              <h5>Tratamento</h5>
-              <p>2ª angiografia, 1-2 semanas depois. Injeção das microesferas de <sup>90</sup>Y no ramo planejado, sob fluoroscopia. Procedimento ambulatorial ou internação curta.</p>
+              <h5 data-i18n="y90.s4p5L">Tratamento</h5>
+              <p data-i18n-html="y90.s4p5T">2ª angiografia, 1-2 semanas depois. Injeção das microesferas de <sup>90</sup>Y no ramo planejado, sob fluoroscopia. Procedimento ambulatorial ou internação curta.</p>
             </div>
             <div class="proc-step">
-              <h5>Imagem pós-TARE e seguimento</h5>
-              <p>SPECT/CT Bremsstrahlung ou PET/CT <sup>90</sup>Y nas primeiras 24-48 h para confirmar distribuição. CT/MR com contraste em 4-8 semanas (mRECIST para CHC, RECIST 1.1 para outros).</p>
+              <h5 data-i18n="y90.s4p6L">Imagem pós-TARE e seguimento</h5>
+              <p data-i18n-html="y90.s4p6T">SPECT/CT Bremsstrahlung ou PET/CT <sup>90</sup>Y nas primeiras 24-48 h para confirmar distribuição. CT/MR com contraste em 4-8 semanas (mRECIST para CHC, RECIST 1.1 para outros).</p>
             </div>
           </div>
         </div>
@@ -487,64 +491,64 @@
 
         <!-- ============== DOSIMETRIA ============== -->
         <div id="dosimetria" class="rf-section">
-          <h2><span class="num">05</span> Modelos dosimétricos</h2>
-          <p class="lead">Quatro modelos coexistem na prática: BSA (histórico, abandonado), MIRD (mass-based, padrão para resina), Partição (separa tumor e não-tumor, padrão para vidro) e Voxel-based (gold standard, baseado em SPECT/CT MAA).</p>
+          <h2><span class="num">05</span> <span data-i18n="y90.s5h">Modelos dosimétricos</span></h2>
+          <p class="lead" data-i18n="y90.s5lead">Quatro modelos coexistem na prática: BSA (histórico, abandonado), MIRD (mass-based, padrão para resina), Partição (separa tumor e não-tumor, padrão para vidro) e Voxel-based (gold standard, baseado em SPECT/CT MAA).</p>
 
           <table class="dose-table">
             <thead>
               <tr>
-                <th>Modelo</th>
-                <th>Princípio</th>
-                <th>Indicação típica</th>
-                <th>Dose-alvo padrão</th>
+                <th data-i18n="y90.s5th1">Modelo</th>
+                <th data-i18n="y90.s5th2">Princípio</th>
+                <th data-i18n="y90.s5th3">Indicação típica</th>
+                <th data-i18n="y90.s5th4">Dose-alvo padrão</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td><strong>BSA</strong> (histórico)</td>
-                <td>Atividade baseada em superfície corpórea</td>
-                <td>SIR-Spheres antigo</td>
-                <td>—</td>
+                <td data-i18n-html="y90.s5r1m"><strong>BSA</strong> (histórico)</td>
+                <td data-i18n="y90.s5r1p">Atividade baseada em superfície corpórea</td>
+                <td data-i18n="y90.s5r1i">SIR-Spheres antigo</td>
+                <td data-i18n="y90.s5r1d">—</td>
               </tr>
               <tr>
-                <td><strong>MIRD</strong> mono-compartimento</td>
-                <td>Massa hepática total · dose homogênea</td>
-                <td>Resina · SIR-Spheres</td>
-                <td>40-50 Gy fígado total</td>
+                <td data-i18n-html="y90.s5r2m"><strong>MIRD</strong> mono-compartimento</td>
+                <td data-i18n="y90.s5r2p">Massa hepática total · dose homogênea</td>
+                <td data-i18n="y90.s5r2i">Resina · SIR-Spheres</td>
+                <td data-i18n="y90.s5r2d">40-50 Gy fígado total</td>
               </tr>
               <tr>
-                <td><strong>Partição</strong></td>
-                <td>Separa tumor e não-tumor · contabiliza shunt</td>
-                <td>Vidro · TheraSphere</td>
-                <td>120 Gy lobar / 200-400 Gy ablativo</td>
+                <td data-i18n-html="y90.s5r3m"><strong>Partição</strong></td>
+                <td data-i18n="y90.s5r3p">Separa tumor e não-tumor · contabiliza shunt</td>
+                <td data-i18n="y90.s5r3i">Vidro · TheraSphere</td>
+                <td data-i18n="y90.s5r3d">120 Gy lobar / 200-400 Gy ablativo</td>
               </tr>
               <tr>
-                <td><strong>Voxel-based</strong> (3D)</td>
-                <td>Distribuição MAA + dose voxel-a-voxel</td>
-                <td>Personalizada (DOSISPHERE)</td>
-                <td>≥ 205 Gy ao tumor</td>
+                <td data-i18n-html="y90.s5r4m"><strong>Voxel-based</strong> (3D)</td>
+                <td data-i18n="y90.s5r4p">Distribuição MAA + dose voxel-a-voxel</td>
+                <td data-i18n="y90.s5r4i">Personalizada (DOSISPHERE)</td>
+                <td data-i18n="y90.s5r4d">≥ 205 Gy ao tumor</td>
               </tr>
             </tbody>
           </table>
 
-          <h4 style="margin: 1.5rem 0 0.5rem; color: var(--off-white); font-size: 1rem">Limites de segurança (referência)</h4>
+          <h4 style="margin: 1.5rem 0 0.5rem; color: var(--off-white); font-size: 1rem" data-i18n="y90.s5limH">Limites de segurança (referência)</h4>
           <table class="dose-table">
             <thead>
-              <tr><th>Órgão</th><th>Limite</th><th>Comentário</th></tr>
+              <tr><th data-i18n="y90.s5lth1">Órgão</th><th data-i18n="y90.s5lth2">Limite</th><th data-i18n="y90.s5lth3">Comentário</th></tr>
             </thead>
             <tbody>
-              <tr><td>Fígado normal — total</td><td>&lt; 70 Gy</td><td>Risco REILD acima desse</td></tr>
-              <tr><td>Fígado normal — lobar</td><td>&lt; 30 Gy (ao tecido remanescente)</td><td>Bilobar</td></tr>
-              <tr><td>Pulmão (média)</td><td>&lt; 30 Gy</td><td>Calculado via LSF do <sup>99</sup>ᵐTc-MAA</td></tr>
-              <tr><td>Pulmão por sessão</td><td>&lt; 50 Gy</td><td>Ramo arterial específico</td></tr>
-              <tr><td>Tumor (CHC, ablativa)</td><td>&gt; 205 Gy</td><td>DOSISPHERE-01 · meta</td></tr>
-              <tr><td>Tumor (CHC, lobar)</td><td>&gt; 120 Gy</td><td>Partição padrão</td></tr>
+              <tr><td data-i18n="y90.s5l1o">Fígado normal — total</td><td data-i18n-html="y90.s5l1l">&lt; 70 Gy</td><td data-i18n="y90.s5l1c">Risco REILD acima desse</td></tr>
+              <tr><td data-i18n="y90.s5l2o">Fígado normal — lobar</td><td data-i18n-html="y90.s5l2l">&lt; 30 Gy (ao tecido remanescente)</td><td data-i18n="y90.s5l2c">Bilobar</td></tr>
+              <tr><td data-i18n="y90.s5l3o">Pulmão (média)</td><td data-i18n-html="y90.s5l3l">&lt; 30 Gy</td><td data-i18n-html="y90.s5l3c">Calculado via LSF do <sup>99</sup>ᵐTc-MAA</td></tr>
+              <tr><td data-i18n="y90.s5l4o">Pulmão por sessão</td><td data-i18n-html="y90.s5l4l">&lt; 50 Gy</td><td data-i18n="y90.s5l4c">Ramo arterial específico</td></tr>
+              <tr><td data-i18n="y90.s5l5o">Tumor (CHC, ablativa)</td><td data-i18n-html="y90.s5l5l">&gt; 205 Gy</td><td data-i18n="y90.s5l5c">DOSISPHERE-01 · meta</td></tr>
+              <tr><td data-i18n="y90.s5l6o">Tumor (CHC, lobar)</td><td data-i18n-html="y90.s5l6l">&gt; 120 Gy</td><td data-i18n="y90.s5l6c">Partição padrão</td></tr>
             </tbody>
           </table>
 
           <div class="key-fact">
-            <div class="lbl">Por que dose personalizada importa?</div>
-            <p>O DOSISPHERE-01 mostrou quase duplicação de OS (26,6 vs 10,7 m, 2,5×) (26,6 vs 10,7 m) com dosimetria personalizada (≥205 Gy ao tumor) versus dose convencional fixa. A heterogeneidade de captação MAA prevê heterogeneidade de captação real, e ajustar a atividade injetada para alcançar uma dose tumoral mínima alvo é a maior alavanca de eficácia disponível atualmente.</p>
+            <div class="lbl" data-i18n="y90.s5kfL">Por que dose personalizada importa?</div>
+            <p data-i18n="y90.s5kfT">O DOSISPHERE-01 mostrou quase duplicação de OS (26,6 vs 10,7 m, 2,5×) (26,6 vs 10,7 m) com dosimetria personalizada (≥205 Gy ao tumor) versus dose convencional fixa. A heterogeneidade de captação MAA prevê heterogeneidade de captação real, e ajustar a atividade injetada para alcançar uma dose tumoral mínima alvo é a maior alavanca de eficácia disponível atualmente.</p>
           </div>
         </div>
 
@@ -560,8 +564,8 @@
 
         <!-- ============== ENSAIOS ============== -->
         <div id="ensaios" class="rf-section">
-          <h2><span class="num">06</span> Ensaios pivotais</h2>
-          <p class="lead">SARAH/SIRveNIB ensinaram limites em CHC avançado. DOSISPHERE-01 e LEGACY definiram a era da dose personalizada. EPOCH consolidou o uso em mCRC 2L.</p>
+          <h2><span class="num">06</span> <span data-i18n="y90.s6h">Ensaios pivotais</span></h2>
+          <p class="lead" data-i18n="y90.s6lead">SARAH/SIRveNIB ensinaram limites em CHC avançado. DOSISPHERE-01 e LEGACY definiram a era da dose personalizada. EPOCH consolidou o uso em mCRC 2L.</p>
 
           <div class="trials-grid">
             <div class="trial-card">
@@ -569,14 +573,14 @@
                 <span class="name">SARAH</span>
                 <span class="year">2017 · Lancet Oncol</span>
               </div>
-              <p class="pop">CHC avançado · n=459 · Y-90 vs sorafenib</p>
+              <p class="pop" data-i18n="y90.s6c1pop">CHC avançado · n=459 · Y-90 vs sorafenib</p>
               <div class="results">
-                <div class="stat-row"><div class="lbl">OS</div><div class="val">8,0 vs 9,9 m</div></div>
-                <div class="stat-row"><div class="lbl">HR OS</div><div class="val">1,15 (NS)</div></div>
-                <div class="stat-row"><div class="lbl">QoL</div><div class="val">a favor de Y-90</div></div>
-                <div class="stat-row"><div class="lbl">Endpoint primário</div><div class="val">não atingido</div></div>
+                <div class="stat-row"><div class="lbl">OS</div><div class="val" data-i18n="y90.s6c1r1V">8,0 vs 9,9 m</div></div>
+                <div class="stat-row"><div class="lbl">HR OS</div><div class="val" data-i18n="y90.s6c1r2V">1,15 (NS)</div></div>
+                <div class="stat-row"><div class="lbl" data-i18n="y90.s6c1r3L">QoL</div><div class="val" data-i18n="y90.s6c1r3V">a favor de Y-90</div></div>
+                <div class="stat-row"><div class="lbl" data-i18n="y90.s6c1r4L">Endpoint primário</div><div class="val" data-i18n="y90.s6c1r4V">não atingido</div></div>
               </div>
-              <p class="takeaway">Não-superioridade vs sorafenib em CHC avançado. Mas QoL e tolerância a favor.</p>
+              <p class="takeaway" data-i18n="y90.s6c1tk">Não-superioridade vs sorafenib em CHC avançado. Mas QoL e tolerância a favor.</p>
             </div>
 
             <div class="trial-card">
@@ -584,14 +588,14 @@
                 <span class="name">SIRveNIB</span>
                 <span class="year">2018 · J Clin Oncol</span>
               </div>
-              <p class="pop">CHC asiático · n=360 · Y-90 vs sorafenib</p>
+              <p class="pop" data-i18n="y90.s6c2pop">CHC asiático · n=360 · Y-90 vs sorafenib</p>
               <div class="results">
-                <div class="stat-row"><div class="lbl">OS</div><div class="val">8,8 vs 10,0 m</div></div>
-                <div class="stat-row"><div class="lbl">HR OS</div><div class="val">1,10 (NS)</div></div>
-                <div class="stat-row"><div class="lbl">ORR</div><div class="val">16 vs 1,7%</div></div>
-                <div class="stat-row"><div class="lbl">Toxicidade</div><div class="val">menor com Y-90</div></div>
+                <div class="stat-row"><div class="lbl">OS</div><div class="val" data-i18n="y90.s6c2r1V">8,8 vs 10,0 m</div></div>
+                <div class="stat-row"><div class="lbl">HR OS</div><div class="val" data-i18n="y90.s6c2r2V">1,10 (NS)</div></div>
+                <div class="stat-row"><div class="lbl">ORR</div><div class="val" data-i18n="y90.s6c2r3V">16 vs 1,7%</div></div>
+                <div class="stat-row"><div class="lbl" data-i18n="y90.s6c2r4L">Toxicidade</div><div class="val" data-i18n="y90.s6c2r4V">menor com Y-90</div></div>
               </div>
-              <p class="takeaway">Confirma SARAH em população asiática. ORR superior, OS comparável.</p>
+              <p class="takeaway" data-i18n="y90.s6c2tk">Confirma SARAH em população asiática. ORR superior, OS comparável.</p>
             </div>
 
             <div class="trial-card">
@@ -599,14 +603,14 @@
                 <span class="name">DOSISPHERE-01</span>
                 <span class="year">2020 · Lancet Gastro Hep</span>
               </div>
-              <p class="pop">CHC localmente avançado · n=60 · personalizada (&gt;205 Gy) vs padrão (120 Gy)</p>
+              <p class="pop" data-i18n-html="y90.s6c3pop">CHC localmente avançado · n=60 · personalizada (&gt;205 Gy) vs padrão (120 Gy)</p>
               <div class="results">
-                <div class="stat-row"><div class="lbl">ORR</div><div class="val">71 vs 36%</div></div>
-                <div class="stat-row"><div class="lbl">OS</div><div class="val">26,6 vs 10,7 m</div></div>
-                <div class="stat-row"><div class="lbl">HR OS</div><div class="val">0,42</div></div>
-                <div class="stat-row"><div class="lbl">Mensagem</div><div class="val">dose importa</div></div>
+                <div class="stat-row"><div class="lbl">ORR</div><div class="val" data-i18n="y90.s6c3r1V">71 vs 36%</div></div>
+                <div class="stat-row"><div class="lbl">OS</div><div class="val" data-i18n="y90.s6c3r2V">26,6 vs 10,7 m</div></div>
+                <div class="stat-row"><div class="lbl">HR OS</div><div class="val" data-i18n="y90.s6c3r3V">0,42</div></div>
+                <div class="stat-row"><div class="lbl" data-i18n="y90.s6c3r4L">Mensagem</div><div class="val" data-i18n="y90.s6c3r4V">dose importa</div></div>
               </div>
-              <p class="takeaway">Provou que dosimetria personalizada praticamente dobra OS. Mudou padrão de prática.</p>
+              <p class="takeaway" data-i18n="y90.s6c3tk">Provou que dosimetria personalizada praticamente dobra OS. Mudou padrão de prática.</p>
             </div>
 
             <div class="trial-card">
@@ -614,14 +618,14 @@
                 <span class="name">LEGACY</span>
                 <span class="year">2021 · Hepatology</span>
               </div>
-              <p class="pop">CHC solitário ≤ 8 cm · n=162 · radiation segmentectomy</p>
+              <p class="pop" data-i18n="y90.s6c4pop">CHC solitário ≤ 8 cm · n=162 · radiation segmentectomy</p>
               <div class="results">
-                <div class="stat-row"><div class="lbl">ORR</div><div class="val">88,3%</div></div>
-                <div class="stat-row"><div class="lbl">OS 3 anos</div><div class="val">86%</div></div>
-                <div class="stat-row"><div class="lbl">OS 5 anos</div><div class="val">~ 60%</div></div>
-                <div class="stat-row"><div class="lbl">Implicação</div><div class="val">curativa</div></div>
+                <div class="stat-row"><div class="lbl">ORR</div><div class="val" data-i18n="y90.s6c4r1V">88,3%</div></div>
+                <div class="stat-row"><div class="lbl" data-i18n="y90.s6c4r2L">OS 3 anos</div><div class="val" data-i18n="y90.s6c4r2V">86%</div></div>
+                <div class="stat-row"><div class="lbl" data-i18n="y90.s6c4r3L">OS 5 anos</div><div class="val" data-i18n="y90.s6c4r3V">~ 60%</div></div>
+                <div class="stat-row"><div class="lbl" data-i18n="y90.s6c4r4L">Implicação</div><div class="val" data-i18n="y90.s6c4r4V">curativa</div></div>
               </div>
-              <p class="takeaway">Estabeleceu radiation segmentectomy como alternativa curativa em CHC inicial não-cirúrgico.</p>
+              <p class="takeaway" data-i18n="y90.s6c4tk">Estabeleceu radiation segmentectomy como alternativa curativa em CHC inicial não-cirúrgico.</p>
             </div>
 
             <div class="trial-card">
@@ -629,14 +633,14 @@
                 <span class="name">SIRFLOX</span>
                 <span class="year">2016 · J Clin Oncol</span>
               </div>
-              <p class="pop">mCRC 1L liver-mets · n=530 · FOLFOX ± Y-90</p>
+              <p class="pop" data-i18n="y90.s6c5pop">mCRC 1L liver-mets · n=530 · FOLFOX ± Y-90</p>
               <div class="results">
-                <div class="stat-row"><div class="lbl">PFS global</div><div class="val">10,2 vs 10,7 m (NS)</div></div>
-                <div class="stat-row"><div class="lbl">PFS hepático</div><div class="val">20,5 vs 12,6 m</div></div>
-                <div class="stat-row"><div class="lbl">ORR hepático</div><div class="val">78 vs 69%</div></div>
-                <div class="stat-row"><div class="lbl">OS</div><div class="val">não significativa</div></div>
+                <div class="stat-row"><div class="lbl" data-i18n="y90.s6c5r1L">PFS global</div><div class="val" data-i18n="y90.s6c5r1V">10,2 vs 10,7 m (NS)</div></div>
+                <div class="stat-row"><div class="lbl" data-i18n="y90.s6c5r2L">PFS hepático</div><div class="val" data-i18n="y90.s6c5r2V">20,5 vs 12,6 m</div></div>
+                <div class="stat-row"><div class="lbl" data-i18n="y90.s6c5r3L">ORR hepático</div><div class="val" data-i18n="y90.s6c5r3V">78 vs 69%</div></div>
+                <div class="stat-row"><div class="lbl">OS</div><div class="val" data-i18n="y90.s6c5r4V">não significativa</div></div>
               </div>
-              <p class="takeaway">Adicionar Y-90 em 1L mCRC não melhorou PFS global. Benefício no compartimento hepático.</p>
+              <p class="takeaway" data-i18n="y90.s6c5tk">Adicionar Y-90 em 1L mCRC não melhorou PFS global. Benefício no compartimento hepático.</p>
             </div>
 
             <div class="trial-card">
@@ -644,14 +648,14 @@
                 <span class="name">EPOCH</span>
                 <span class="year">2022 · J Clin Oncol</span>
               </div>
-              <p class="pop">mCRC 2L liver-only · n=428 · QT ± Y-90</p>
+              <p class="pop" data-i18n="y90.s6c6pop">mCRC 2L liver-only · n=428 · QT ± Y-90</p>
               <div class="results">
-                <div class="stat-row"><div class="lbl">PFS hepático</div><div class="val">9,1 vs 7,2 m</div></div>
-                <div class="stat-row"><div class="lbl">PFS global</div><div class="val">8,0 vs 7,2 m</div></div>
-                <div class="stat-row"><div class="lbl">ORR</div><div class="val">34 vs 21%</div></div>
-                <div class="stat-row"><div class="lbl">OS</div><div class="val">14,0 vs 14,4 m (NS)</div></div>
+                <div class="stat-row"><div class="lbl" data-i18n="y90.s6c6r1L">PFS hepático</div><div class="val" data-i18n="y90.s6c6r1V">9,1 vs 7,2 m</div></div>
+                <div class="stat-row"><div class="lbl" data-i18n="y90.s6c6r2L">PFS global</div><div class="val" data-i18n="y90.s6c6r2V">8,0 vs 7,2 m</div></div>
+                <div class="stat-row"><div class="lbl">ORR</div><div class="val" data-i18n="y90.s6c6r3V">34 vs 21%</div></div>
+                <div class="stat-row"><div class="lbl">OS</div><div class="val" data-i18n="y90.s6c6r4V">14,0 vs 14,4 m (NS)</div></div>
               </div>
-              <p class="takeaway">Y-90 melhora controle hepático em 2L mCRC liver-mets. Sem ganho de OS.</p>
+              <p class="takeaway" data-i18n="y90.s6c6tk">Y-90 melhora controle hepático em 2L mCRC liver-mets. Sem ganho de OS.</p>
             </div>
 
             <div class="trial-card">
@@ -659,14 +663,14 @@
                 <span class="name">RASER</span>
                 <span class="year">2024 · J Hepatol</span>
               </div>
-              <p class="pop">CHC solitário ≤ 3 cm · n=29 · radiation segmentectomy ablativa</p>
+              <p class="pop" data-i18n="y90.s6c7pop">CHC solitário ≤ 3 cm · n=29 · radiation segmentectomy ablativa</p>
               <div class="results">
-                <div class="stat-row"><div class="lbl">ORR</div><div class="val">100%</div></div>
-                <div class="stat-row"><div class="lbl">CR sustentada</div><div class="val">90%</div></div>
-                <div class="stat-row"><div class="lbl">OS 1 ano</div><div class="val">96%</div></div>
-                <div class="stat-row"><div class="lbl">Conceito</div><div class="val">curativo</div></div>
+                <div class="stat-row"><div class="lbl">ORR</div><div class="val" data-i18n="y90.s6c7r1V">100%</div></div>
+                <div class="stat-row"><div class="lbl" data-i18n="y90.s6c7r2L">CR sustentada</div><div class="val" data-i18n="y90.s6c7r2V">90%</div></div>
+                <div class="stat-row"><div class="lbl" data-i18n="y90.s6c7r3L">OS 1 ano</div><div class="val" data-i18n="y90.s6c7r3V">96%</div></div>
+                <div class="stat-row"><div class="lbl" data-i18n="y90.s6c7r4L">Conceito</div><div class="val" data-i18n="y90.s6c7r4V">curativo</div></div>
               </div>
-              <p class="takeaway">Confirma curatividade em CHC inicial. Equivalência com ablação radiofrequência em discussão.</p>
+              <p class="takeaway" data-i18n="y90.s6c7tk">Confirma curatividade em CHC inicial. Equivalência com ablação radiofrequência em discussão.</p>
             </div>
 
             <div class="trial-card">
@@ -674,21 +678,21 @@
                 <span class="name">FOXFIRE-Global</span>
                 <span class="year">2017 · Lancet Oncol</span>
               </div>
-              <p class="pop">mCRC 1L liver-mets · análise pooled (SIRFLOX + FOXFIRE) · n=1103</p>
+              <p class="pop" data-i18n="y90.s6c8pop">mCRC 1L liver-mets · análise pooled (SIRFLOX + FOXFIRE) · n=1103</p>
               <div class="results">
-                <div class="stat-row"><div class="lbl">OS</div><div class="val">22,6 vs 23,3 m (NS)</div></div>
-                <div class="stat-row"><div class="lbl">HR OS</div><div class="val">1,04</div></div>
-                <div class="stat-row"><div class="lbl">PFS hepático</div><div class="val">+ 8 m</div></div>
-                <div class="stat-row"><div class="lbl">Implicação</div><div class="val">não em 1L</div></div>
+                <div class="stat-row"><div class="lbl">OS</div><div class="val" data-i18n="y90.s6c8r1V">22,6 vs 23,3 m (NS)</div></div>
+                <div class="stat-row"><div class="lbl">HR OS</div><div class="val" data-i18n="y90.s6c8r2V">1,04</div></div>
+                <div class="stat-row"><div class="lbl" data-i18n="y90.s6c8r3L">PFS hepático</div><div class="val" data-i18n="y90.s6c8r3V">+ 8 m</div></div>
+                <div class="stat-row"><div class="lbl" data-i18n="y90.s6c8r4L">Implicação</div><div class="val" data-i18n="y90.s6c8r4V">não em 1L</div></div>
               </div>
-              <p class="takeaway">Y-90 não recomendado em primeira linha rotineira de mCRC. Reservar para 2L+ liver-only.</p>
+              <p class="takeaway" data-i18n="y90.s6c8tk">Y-90 não recomendado em primeira linha rotineira de mCRC. Reservar para 2L+ liver-only.</p>
             </div>
           </div>
 
           <div style="text-align: center; margin-top: 2rem">
             <a href="database.html" class="rf-eyebrow" style="cursor:pointer; background:rgba(245,158,11,0.12);border-color:rgba(245,158,11,0.3);color:#F59E0B">
               <i data-lucide="database" style="width:14px;height:14px"></i>
-              Ver todos os estudos no Database
+              <span data-i18n="y90.s6dbLink">Ver todos os estudos no Database</span>
               <i data-lucide="arrow-right" style="width:14px;height:14px"></i>
             </a>
           </div>
@@ -706,55 +710,55 @@
 
         <!-- ============== TOXICIDADE ============== -->
         <div id="toxicidade" class="rf-section">
-          <h2><span class="num">07</span> Eventos adversos</h2>
-          <p class="lead">A síndrome pós-radioembolização (PES) é a queixa mais comum, autolimitada. REILD é a complicação mais temida, prevenida com dosimetria adequada.</p>
+          <h2><span class="num">07</span> <span data-i18n="y90.s7h">Eventos adversos</span></h2>
+          <p class="lead" data-i18n="y90.s7lead">A síndrome pós-radioembolização (PES) é a queixa mais comum, autolimitada. REILD é a complicação mais temida, prevenida com dosimetria adequada.</p>
 
           <div class="tox-grid">
             <div class="tox-item">
-              <div class="tox-name">Fadiga (PES)</div>
-              <div class="tox-pct"><span class="tox-all">~ 50%</span><span class="tox-g3">G3 &lt; 5%</span></div>
+              <div class="tox-name" data-i18n="y90.s7t1">Fadiga (PES)</div>
+              <div class="tox-pct"><span class="tox-all">~ 50%</span><span class="tox-g3" data-i18n-html="y90.s7t1g">G3 &lt; 5%</span></div>
               <div class="tox-bar"><div class="tox-bar-all" style="width:50%; background:#F59E0B"></div></div>
             </div>
             <div class="tox-item">
-              <div class="tox-name">Náusea/dor abdominal</div>
-              <div class="tox-pct"><span class="tox-all">~ 40%</span><span class="tox-g3">G3 ~ 5%</span></div>
+              <div class="tox-name" data-i18n="y90.s7t2">Náusea/dor abdominal</div>
+              <div class="tox-pct"><span class="tox-all">~ 40%</span><span class="tox-g3" data-i18n="y90.s7t2g">G3 ~ 5%</span></div>
               <div class="tox-bar"><div class="tox-bar-all" style="width:40%; background:#F59E0B"></div></div>
             </div>
             <div class="tox-item">
-              <div class="tox-name">Febre baixa transitória</div>
-              <div class="tox-pct"><span class="tox-all">~ 30%</span><span class="tox-g3">leve</span></div>
+              <div class="tox-name" data-i18n="y90.s7t3">Febre baixa transitória</div>
+              <div class="tox-pct"><span class="tox-all">~ 30%</span><span class="tox-g3" data-i18n="y90.s7t3g">leve</span></div>
               <div class="tox-bar"><div class="tox-bar-all" style="width:30%; background:#F59E0B"></div></div>
             </div>
             <div class="tox-item">
-              <div class="tox-name">REILD</div>
-              <div class="tox-pct"><span class="tox-all">~ 4%</span><span class="tox-g3">grave</span></div>
+              <div class="tox-name" data-i18n="y90.s7t4">REILD</div>
+              <div class="tox-pct"><span class="tox-all">~ 4%</span><span class="tox-g3" data-i18n="y90.s7t4g">grave</span></div>
               <div class="tox-bar"><div class="tox-bar-all" style="width:4%; background:#F87171"></div></div>
             </div>
             <div class="tox-item">
-              <div class="tox-name">Úlcera GI (deposição extra-hepática)</div>
-              <div class="tox-pct"><span class="tox-all">~ 1-3%</span><span class="tox-g3">manejo cirúrgico</span></div>
+              <div class="tox-name" data-i18n="y90.s7t5">Úlcera GI (deposição extra-hepática)</div>
+              <div class="tox-pct"><span class="tox-all">~ 1-3%</span><span class="tox-g3" data-i18n="y90.s7t5g">manejo cirúrgico</span></div>
               <div class="tox-bar"><div class="tox-bar-all" style="width:3%; background:#F87171"></div></div>
             </div>
             <div class="tox-item">
-              <div class="tox-name">Pneumonite radiogênica</div>
-              <div class="tox-pct"><span class="tox-all">&lt; 1%</span><span class="tox-g3">se LSF mal calculado</span></div>
+              <div class="tox-name" data-i18n="y90.s7t6">Pneumonite radiogênica</div>
+              <div class="tox-pct"><span class="tox-all">&lt; 1%</span><span class="tox-g3" data-i18n="y90.s7t6g">se LSF mal calculado</span></div>
               <div class="tox-bar"><div class="tox-bar-all" style="width:1%; background:#F87171"></div></div>
             </div>
             <div class="tox-item">
-              <div class="tox-name">Colecistite</div>
-              <div class="tox-pct"><span class="tox-all">~ 1-2%</span><span class="tox-g3">refluxo da artéria cística</span></div>
+              <div class="tox-name" data-i18n="y90.s7t7">Colecistite</div>
+              <div class="tox-pct"><span class="tox-all">~ 1-2%</span><span class="tox-g3" data-i18n="y90.s7t7g">refluxo da artéria cística</span></div>
               <div class="tox-bar"><div class="tox-bar-all" style="width:2%; background:#F87171"></div></div>
             </div>
             <div class="tox-item">
-              <div class="tox-name">Linfopenia</div>
-              <div class="tox-pct"><span class="tox-all">~ 30%</span><span class="tox-g3">G3 ~ 10%</span></div>
+              <div class="tox-name" data-i18n="y90.s7t8">Linfopenia</div>
+              <div class="tox-pct"><span class="tox-all">~ 30%</span><span class="tox-g3" data-i18n="y90.s7t8g">G3 ~ 10%</span></div>
               <div class="tox-bar"><div class="tox-bar-all" style="width:30%; background:#F59E0B"></div></div>
             </div>
           </div>
 
           <div class="key-fact">
-            <div class="lbl">REILD · radiation-induced liver disease</div>
-            <p>Síndrome veno-oclusiva sinusoidal: icterícia, ascite, transaminases e bilirrubina em &gt;2-8 semanas pós-tratamento, em pacientes com hepatopatia avançada (Child-Pugh B-C). Prevenção: respeitar limites dosimétricos hepáticos (&lt;70 Gy fígado total para pacientes com cirrose), seleção rigorosa de pacientes (Child-Pugh A preferido), evitar radioembolização bilobar em sessão única quando possível.</p>
+            <div class="lbl" data-i18n="y90.s7kfL">REILD · radiation-induced liver disease</div>
+            <p data-i18n-html="y90.s7kfT">Síndrome veno-oclusiva sinusoidal: icterícia, ascite, transaminases e bilirrubina em &gt;2-8 semanas pós-tratamento, em pacientes com hepatopatia avançada (Child-Pugh B-C). Prevenção: respeitar limites dosimétricos hepáticos (&lt;70 Gy fígado total para pacientes com cirrose), seleção rigorosa de pacientes (Child-Pugh A preferido), evitar radioembolização bilobar em sessão única quando possível.</p>
           </div>
         </div>
 
@@ -770,35 +774,35 @@
 
         <!-- ============== PERSPECTIVAS ============== -->
         <div id="perspectivas" class="rf-section">
-          <h2><span class="num">08</span> Perspectivas</h2>
-          <p class="lead">Três frentes em desenvolvimento: dosimetria personalizada (já realidade), combinações com imunoterapia (em fase 3) e novos isótopos (<sup>166</sup>Ho, <sup>90</sup>Y voxel-based).</p>
+          <h2><span class="num">08</span> <span data-i18n="y90.s8h">Perspectivas</span></h2>
+          <p class="lead" data-i18n-html="y90.s8lead">Três frentes em desenvolvimento: dosimetria personalizada (já realidade), combinações com imunoterapia (em fase 3) e novos isótopos (<sup>166</sup>Ho, <sup>90</sup>Y voxel-based).</p>
 
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin: 1.5rem 0">
             <div style="background: var(--graphite-2); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: var(--radius-md); padding: 1.25rem">
               <div style="font-family: var(--font-mono); color: #F59E0B; font-size: 0.85rem; margin-bottom: 0.4rem">TARE + atezo + bev</div>
-              <div style="font-size: 0.95rem; color: var(--off-white); margin-bottom: 0.35rem">EMERALD-Y90, LIRICA</div>
-              <div style="font-size: 0.82rem; color: var(--stone); line-height: 1.5">Combinação imuno-radioembolização para CHC. Sinergia conceitual entre dano radiogênico e abscopal. Resultados aguardados 2026-27.</div>
+              <div style="font-size: 0.95rem; color: var(--off-white); margin-bottom: 0.35rem" data-i18n="y90.s8c1T">EMERALD-Y90, LIRICA</div>
+              <div style="font-size: 0.82rem; color: var(--stone); line-height: 1.5" data-i18n="y90.s8c1D">Combinação imuno-radioembolização para CHC. Sinergia conceitual entre dano radiogênico e abscopal. Resultados aguardados 2026-27.</div>
             </div>
             <div style="background: var(--graphite-2); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: var(--radius-md); padding: 1.25rem">
               <div style="font-family: var(--font-mono); color: #F59E0B; font-size: 0.85rem; margin-bottom: 0.4rem"><sup>166</sup>Ho-microesferas</div>
-              <div style="font-size: 0.95rem; color: var(--off-white); margin-bottom: 0.35rem">Holmium · QuiremSpheres</div>
-              <div style="font-size: 0.82rem; color: var(--stone); line-height: 1.5">Visível em RM e SPECT (γ útil) — permite dosimetria pré e pós sem precisar de MAA. Aprovado EMA 2018, em uso crescente na Europa.</div>
+              <div style="font-size: 0.95rem; color: var(--off-white); margin-bottom: 0.35rem" data-i18n="y90.s8c2T">Holmium · QuiremSpheres</div>
+              <div style="font-size: 0.82rem; color: var(--stone); line-height: 1.5" data-i18n="y90.s8c2D">Visível em RM e SPECT (γ útil) — permite dosimetria pré e pós sem precisar de MAA. Aprovado EMA 2018, em uso crescente na Europa.</div>
             </div>
             <div style="background: var(--graphite-2); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: var(--radius-md); padding: 1.25rem">
-              <div style="font-family: var(--font-mono); color: #F59E0B; font-size: 0.85rem; margin-bottom: 0.4rem">Voxel-based dosimetria</div>
+              <div style="font-family: var(--font-mono); color: #F59E0B; font-size: 0.85rem; margin-bottom: 0.4rem" data-i18n="y90.s8c3mono">Voxel-based dosimetria</div>
               <div style="font-size: 0.95rem; color: var(--off-white); margin-bottom: 0.35rem"><sup>90</sup>Y-PET pós-procedure</div>
-              <div style="font-size: 0.82rem; color: var(--stone); line-height: 1.5">Verificação direta da distribuição. Permite ajuste em sessões adicionais e correlação dose-resposta voxel-a-voxel. Padrão emergente em centros experientes.</div>
+              <div style="font-size: 0.82rem; color: var(--stone); line-height: 1.5" data-i18n="y90.s8c3D">Verificação direta da distribuição. Permite ajuste em sessões adicionais e correlação dose-resposta voxel-a-voxel. Padrão emergente em centros experientes.</div>
             </div>
             <div style="background: var(--graphite-2); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: var(--radius-md); padding: 1.25rem">
-              <div style="font-family: var(--font-mono); color: #F59E0B; font-size: 0.85rem; margin-bottom: 0.4rem">TARE como bridge a transplante</div>
-              <div style="font-size: 0.95rem; color: var(--off-white); margin-bottom: 0.35rem">Downstaging</div>
-              <div style="font-size: 0.82rem; color: var(--stone); line-height: 1.5">Em CHC fora dos critérios de Milão, TARE pode trazer pacientes de volta a critérios. Dados consistentes em centros de transplante experientes.</div>
+              <div style="font-family: var(--font-mono); color: #F59E0B; font-size: 0.85rem; margin-bottom: 0.4rem" data-i18n="y90.s8c4mono">TARE como bridge a transplante</div>
+              <div style="font-size: 0.95rem; color: var(--off-white); margin-bottom: 0.35rem" data-i18n="y90.s8c4T">Downstaging</div>
+              <div style="font-size: 0.82rem; color: var(--stone); line-height: 1.5" data-i18n="y90.s8c4D">Em CHC fora dos critérios de Milão, TARE pode trazer pacientes de volta a critérios. Dados consistentes em centros de transplante experientes.</div>
             </div>
           </div>
 
           <div class="key-fact">
-            <div class="lbl">O paradigma do "tumor radiosensitive"</div>
-            <p>Diferentemente de Lu-PSMA e Lu-DOTATATE, onde a entrega é molecular (vetor + receptor), TARE é entrega anatômica + radiação. Isso significa que TARE pode atingir tumores sem alvos moleculares conhecidos — o requisito é apenas que sejam predominantemente nutridos por artéria hepática. CHC, mCRC liver-mets, NET-mets, mama-mets, colangiocarcinoma, melanoma uveal-mets — todos atendem esse critério.</p>
+            <div class="lbl" data-i18n="y90.s8kfL">O paradigma do "tumor radiosensitive"</div>
+            <p data-i18n="y90.s8kfT">Diferentemente de Lu-PSMA e Lu-DOTATATE, onde a entrega é molecular (vetor + receptor), TARE é entrega anatômica + radiação. Isso significa que TARE pode atingir tumores sem alvos moleculares conhecidos — o requisito é apenas que sejam predominantemente nutridos por artéria hepática. CHC, mCRC liver-mets, NET-mets, mama-mets, colangiocarcinoma, melanoma uveal-mets — todos atendem esse critério.</p>
           </div>
         </div>
 
@@ -814,27 +818,27 @@
 
         <!-- ============== PRÓXIMOS ============== -->
         <div id="proximos" class="rf-section">
-          <h2><span class="num">09</span> Continue lendo</h2>
+          <h2><span class="num">09</span> <span data-i18n="y90.s9h">Continue lendo</span></h2>
           <div class="next-grid">
             <a href="lu-dotatate.html" class="next-card">
-              <div class="lbl">Próximo radiofármaco</div>
+              <div class="lbl" data-i18n="y90.s9c1L">Próximo radiofármaco</div>
               <div class="name"><sup>177</sup>Lu-DOTATATE</div>
-              <div class="desc">PRRT em tumores neuroendócrinos. NETTER-1, COMPETE.</div>
+              <div class="desc" data-i18n="y90.s9c1D">PRRT em tumores neuroendócrinos. NETTER-1, COMPETE.</div>
             </a>
             <a href="mibg.html" class="next-card">
-              <div class="lbl">Sistema simpático</div>
+              <div class="lbl" data-i18n="y90.s9c2L">Sistema simpático</div>
               <div class="name"><sup>131</sup>I-MIBG</div>
-              <div class="desc">Neuroblastoma, feocromocitoma, paraganglioma.</div>
+              <div class="desc" data-i18n="y90.s9c2D">Neuroblastoma, feocromocitoma, paraganglioma.</div>
             </a>
             <a href="database.html" class="next-card">
-              <div class="lbl">Database</div>
-              <div class="name">Estudos Y-90</div>
-              <div class="desc">Filtre por '90Y' ou 'TARE' no Database.</div>
+              <div class="lbl" data-i18n="y90.s9c3L">Database</div>
+              <div class="name" data-i18n="y90.s9c3N">Estudos Y-90</div>
+              <div class="desc" data-i18n="y90.s9c3D">Filtre por '90Y' ou 'TARE' no Database.</div>
             </a>
             <a href="ferramentas.html#dose" class="next-card">
-              <div class="lbl">Ferramenta</div>
-              <div class="name">Dose Y-90 (BSA / MIRD)</div>
-              <div class="desc">Calculadora rápida de atividade injetada.</div>
+              <div class="lbl" data-i18n="y90.s9c4L">Ferramenta</div>
+              <div class="name" data-i18n="y90.s9c4N">Dose Y-90 (BSA / MIRD)</div>
+              <div class="desc" data-i18n="y90.s9c4D">Calculadora rápida de atividade injetada.</div>
             </a>
           </div>
         </div>
@@ -847,14 +851,21 @@
 <footer class="site-footer">
   <div class="container">
     <div class="footer-bottom">
-      <span>© 2026 TheraTrials Oncology · Plataforma de evidências em oncologia moderna</span>
-      <span style="color: var(--stone); font-size: 0.82rem; margin-left: 1rem">Dados extraídos de publicações peer-reviewed e bases regulatórias. Conteúdo educacional, não substitui julgamento clínico.</span>
+      <span data-i18n="y90.ft1">© 2026 TheraTrials Oncology · Plataforma de evidências em oncologia moderna</span>
+      <span style="color: var(--stone); font-size: 0.82rem; margin-left: 1rem" data-i18n="y90.ft2">Dados extraídos de publicações peer-reviewed e bases regulatórias. Conteúdo educacional, não substitui julgamento clínico.</span>
     </div>
   </div>
 </footer>
 
+<script src="assets/js/i18n.js"></script>
+<script src="assets/lang/pt-br.js"></script>
+<script src="assets/lang/en.js"></script>
 <script>
   document.addEventListener('DOMContentLoaded', () => {
+    if (typeof lucide !== 'undefined') lucide.createIcons();
+  });
+  // Re-render Lucide icons after a language switch (data-i18n-html may replace icon nodes)
+  window.addEventListener('langchange', () => {
     if (typeof lucide !== 'undefined') lucide.createIcons();
   });
 </script>
