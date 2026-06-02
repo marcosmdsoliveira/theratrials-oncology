@@ -341,7 +341,24 @@ window._i18nRegister('pt-br', {
     s2m5: "<div class=\"mech-num\">5</div><h5>Dano ao DNA</h5><p>A radiação induz quebras simples e duplas do DNA, estresse oxidativo e falha de reparo celular, levando à morte tumoral por apoptose, senescência ou catástrofe mitótica.</p>",
     s2m6: "<div class=\"mech-num\">6</div><h5>Efeito cross-fire</h5><p>A radiação beta pode atingir células vizinhas, inclusive com baixa ou ausente expressão de PSMA, ampliando o efeito terapêutico em tumores heterogêneos. A emissão gama do <sup>177</sup>Lu permite imagem pós-terapia e avaliação da distribuição tumoral.</p>",
     s2kf1: "<div class=\"lbl\">Por que o PSMA-617 e não PSMA-I&T?</div><p>Ambos são Glu-CO-Lys com chelator DOTA, mas o PSMA-617 incorpora um espaçador 2-naftilalanina-tranexâmico que aumenta a afinidade pelo PSMA e reduz a captação salivar e renal. O PSMA-I&T (substrato do produto Curium / SPLASH) tem chelator DOTAGA e perfil farmacocinético comparável.</p>",
-    s2kf2: "<div class=\"lbl\"><sup>177</sup>Lu n.c.a. vs c.a. — por que importa</div><p>O <strong><sup>177</sup>Lu non-carrier-added (n.c.a.)</strong>, usado no Pluvicto, é produzido a partir de <sup>176</sup>Yb por captura neutrônica seguida de separação radioquímica — entrega altíssima atividade específica (&gt;3 TBq/mg) e mínimo <sup>177</sup>ᵐLu (contaminante de meia-vida longa, 160 d). O <strong><sup>177</sup>Lu carrier-added (c.a.)</strong>, mais barato, parte de <sup>176</sup>Lu enriquecido e tem maior fração de <sup>177</sup>ᵐLu, gerando rejeitos radiativos por décadas. Em programas de teranóstico de longo prazo, n.c.a. é padrão.</p>"
+    s2kf2: "<div class=\"lbl\"><sup>177</sup>Lu n.c.a. vs c.a. — por que importa</div><p>O <strong><sup>177</sup>Lu non-carrier-added (n.c.a.)</strong>, usado no Pluvicto, é produzido a partir de <sup>176</sup>Yb por captura neutrônica seguida de separação radioquímica — entrega altíssima atividade específica (&gt;3 TBq/mg) e mínimo <sup>177</sup>ᵐLu (contaminante de meia-vida longa, 160 d). O <strong><sup>177</sup>Lu carrier-added (c.a.)</strong>, mais barato, parte de <sup>176</sup>Lu enriquecido e tem maior fração de <sup>177</sup>ᵐLu, gerando rejeitos radiativos por décadas. Em programas de teranóstico de longo prazo, n.c.a. é padrão.</p>",
+    s3h: "Esquema terapêutico",
+    s3lead: "Padrão internacional do PSMA-617: 7,4 GBq por ciclo, intervalo de 6 semanas, 6 ciclos planejados, com possibilidade de redução por toxicidade.",
+    s3pAtiv: "Atividade",
+    s3pVia: "Via", s3pViaV: "EV em 30 min",
+    s3pInt: "Intervalo", s3pIntV: "6 semanas",
+    s3pCic: "Ciclos", s3pCicV: "até 6",
+    s3pAcum: "Acumulado",
+    s3cycH: "Ciclos planejados",
+    s3w1: "Sem 0", s3w2: "Sem 6", s3w3: "Sem 12", s3w4: "Sem 18", s3w5: "Sem 24", s3w6: "Sem 30",
+    s3pm1L: "Pré-medicação",
+    s3pm1T: "Antiemético padrão · hidratação oral. <strong>Bloqueio salivar não tem padrão consolidado em PSMA</strong> (diferente do DOTATATE com aminoácidos): centros usam gelo intra-oral, ácido cítrico em pastilhas ou resfriamento parotídeo externo, com benefício clínico modesto. Botox parotídeo, mAbs anti-PSMA pré-injeção e externa-cooling estão em estudo.",
+    s3pm2L: "Não-aplicável",
+    s3pm2T: "Nefroproteção com aminoácidos (lisina/arginina) <strong>não</strong> é rotina em PSMA — perfil dosimétrico renal é mais favorável que DOTATATE. Alguns centros (Heidelberg, Melbourne) consideram Lys/Arg quando a dose tumoral renal projetada por dosimetria pré-tratamento ultrapassa 23 Gy BED, ou em pacientes com TFG basal ≤45 mL/min.",
+    s3pm3L: "Imagem pós-terapia",
+    s3pm3T: "SPECT/CT 24h pós-administração para verificação de captação tumoral e dosimetria opcional (foto γ 208 keV).",
+    s3pm4L: "Reduções de dose",
+    s3pm4T: "Para 5,5 GBq se toxicidade hematológica G3/G4 ou nefrotoxicidade. Adiamento até 4 semanas. Suspender se persistir &gt;6 semanas."
   },
 
   /* ── Trial Matcher ── */
