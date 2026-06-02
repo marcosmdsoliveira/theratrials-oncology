@@ -1747,7 +1747,7 @@ window._i18nRegister('pt-br', {
     pilar2H: "Precision orbit",
     pilar2P: "Núcleo amber = paciente e alvo molecular. Anéis ao redor = precisão, dados e evidência.",
     pilar3H: "Clarity &amp; focus",
-    pilar3P: "Forma orbital aberta transmite clareza e descoberta moderna. Foco em ensaios pacient-centric.",
+    pilar3P: "Forma orbital aberta transmite clareza e descoberta moderna. Foco em ensaios centrados no paciente.",
     pilar4H: "Insight &amp; impact",
     pilar4P: "Estrela representa breakthrough e busca pelo possível. Contraste de luz e espaço = esperança e impacto real.",
     // Fontes
@@ -2155,7 +2155,7 @@ window._i18nRegister('pt-br', {
     ftEventos: "Eventos Cient&iacute;ficos",
     ftNewsletter: "Newsletter",
     ftSobreProjeto: "Sobre o projeto",
-    ftBottom: "&copy; 2025 TheraTrials Oncology. Conteudo educacional — n&atilde;o substitui orienta&ccedil;&atilde;o m&eacute;dica individualizada."
+    ftBottom: "© 2026 TheraTrials Oncology. Conteúdo educacional — não substitui orientação médica individualizada."
   },
 
   /* ── Páginas legais (shell) ── */
@@ -2227,14 +2227,14 @@ window._i18nRegister('pt-br', {
     t06p: "Critérios para avaliação de resposta tumoral por PET/CT com FDG. PERCIST e EORTC para tumores sólidos; Deauville e Lugano para linfomas. SUL e SUVmax como métricas de referência.",
     t07h: "Tumores neuroendócrinos · scores",
     t07p: "Critérios para seleção e estratificação em TNE: imagem (Krenning, NETPET, SSTR-RADS), patologia (WHO, Ki-67) e estadiamento (ENETS TNM). Foco em decisão para Lu-DOTATATE e estratégia terapêutica.",
-    t08h: "Imunoterapia · resposta atipica",
-    t08p: "Criterios que reconhecem padroes atipicos de resposta a inibidores de checkpoint imune (pseudoprogressao, hiperprogressao, resposta tardia).",
-    t09h: "Resposta anatomica tumoral",
-    t09p: "Criterios morfologicos por TC/RM para tumores solidos. RECIST e padrao para a maioria dos ensaios.",
-    t10h: "CHC e radioembolizacao hepatica",
-    t10p: "Criterios para estratificacao BCLC, funcao hepatica, classificacao LI-RADS e resposta apos Y-90.",
-    t11h: "Oncologia clinica · escalas funcionais",
-    t11p: "Escalas universais para avaliacao funcional e comorbidade.",
+    t08h: "Imunoterapia · resposta atípica",
+    t08p: "Critérios que reconhecem padrões atípicos de resposta a inibidores de checkpoint imune (pseudoprogressão, hiperprogressão, resposta tardia).",
+    t09h: "Resposta anatômica tumoral",
+    t09p: "Critérios morfológicos por TC/RM para tumores sólidos. RECIST é padrão para a maioria dos ensaios.",
+    t10h: "CHC e radioembolização hepática",
+    t10p: "Critérios para estratificação BCLC, função hepática, classificação LI-RADS e resposta após Y-90.",
+    t11h: "Oncologia clínica · escalas funcionais",
+    t11p: "Escalas universais para avaliação funcional e comorbidade.",
     t12h: "Calculadora de função renal",
     t12p: "Estimativa de taxa de filtração glomerular por <strong>CKD-EPI 2021</strong> (equação sem raça, KDIGO recomendada), <strong>Cockcroft-Gault</strong> (clearance de creatinina, referência para ajuste de dose de fármacos) e <strong>MDRD</strong> (histórico, 4 variáveis IDMS).",
 
@@ -2263,7 +2263,7 @@ window._i18nRegister('pt-br', {
     thStatus: "Status",
     thTotal: "Total",
     btnAddPaciente: "&#xFF0B; Adicionar paciente",
-    decayDisclaimer: "<strong style=\"color:#06B6D4\">&#9888; Aviso:</strong> Esta calculadora é uma ferramenta auxiliar de referência para planejamento logístico de PET/CT. Os cálculos de decaimento radioativo devem ser validados pelo médico nuclear e físico médico responsáveis conforme protocolos institucionais, calibração do ativimetrío e condições específicas do dia. Não substitui julgamento clínico nem validação física.",
+    decayDisclaimer: "<strong style=\"color:#06B6D4\">&#9888; Aviso:</strong> Esta calculadora é uma ferramenta auxiliar de referência para planejamento logístico de PET/CT. Os cálculos de decaimento radioativo devem ser validados pelo médico nuclear e físico médico responsáveis conforme protocolos institucionais, calibração do ativímetro e condições específicas do dia. Não substitui julgamento clínico nem validação física.",
 
     /* Renal calculator */
     lblIdade: "Idade (anos)",
