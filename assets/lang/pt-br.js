@@ -2171,6 +2171,114 @@ window._i18nRegister('pt-br', {
     direitosIntro: "Atribuição de obras de terceiros, titularidade da plataforma, condições de citação e procedimento de notificação de violação."
   },
 
+  /* ── Ferramentas (ferramentas.html) ── */
+  fr: {
+    /* Hero */
+    heroEyebrow: "Ferramentas clínicas",
+    heroTitle: "Calcule, converta, <span class=\"text-amber\">decida</span>",
+    heroLead: "Estadiamento, eventos adversos, calculadora de dose, planejamento PET/CT, scores de imagem, escalas clínicas e função renal — 12 ferramentas em uma única tela.",
+
+    /* Hub tiles */
+    hub01h: "Estadiamento AJCC",
+    hub01p: "TNM 8ª/9ª edição · resumo por tumor",
+    hub02h: "Eventos adversos CTCAE",
+    hub02p: "Escala v6.0 · 5 graus por categoria",
+    hub03h: "Calculadora de dose",
+    hub03p: "Dose diagnóstica adulto e pediátrico · MN convencional e PET/CT · EANM 2016 · NA Consensus 2024",
+    hub04h: "Calculadora de Decaimento PET/CT",
+    hub04p: "Projeção de agenda · F-18 · Ga-68 · C-11 · Personalizável",
+    hub05h: "PSMA · Próstata",
+    hub05p: "PROMISE · miTNM · PSMA-RADS · PRIMARY · RECIP · PCWG · Gleason · ISUP · D'Amico",
+    hub06h: "PET/CT · resposta metabólica",
+    hub06p: "PERCIST · EORTC PET · Deauville · Lugano",
+    hub07h: "Tumores neuroendócrinos",
+    hub07p: "Krenning · NETPET · SSTR-RADS · WHO Grade · Ki-67 · ENETS TNM",
+    hub08h: "Imunoterapia",
+    hub08p: "iRECIST · irRECIST · PERCIMT · imPERCIST",
+    hub09h: "Resposta anatômica",
+    hub09p: "RECIST 1.1 · mRECIST · Choi Criteria",
+    hub10h: "CHC e radioembolização",
+    hub10p: "BCLC · Child-Pugh · ALBI · MELD · LI-RADS · LR-TR · EASL · mRECIST HCC",
+    hub11h: "Oncologia clínica",
+    hub11p: "ECOG · Karnofsky · NCI-CTCAE · Charlson",
+    hub12h: "Função renal",
+    hub12p: "CKD-EPI 2021 · Cockcroft-Gault · MDRD · Estágio DRC",
+
+    /* Tool headings + intro paragraphs */
+    t01h: "Estadiamento oncológico AJCC · TNM",
+    t01p: "Resumo prático do sistema TNM (8ª edição AJCC, com atualizações 9ª edição quando disponíveis) para os tumores mais frequentes em discussão de teranóstico, pulmão e mama. Use como referência rápida — não substitui o manual completo.",
+    t02h: "Eventos adversos · CTCAE v6.0",
+    t02p: "Common Terminology Criteria for Adverse Events — escala universal usada em ensaios clínicos para classificar eventos adversos em 5 graus. Versão 6.0 (atual).\n        <a href=\"https://ctep.cancer.gov/protocoldevelopment/electronic_applications/ctc.htm\" target=\"_blank\" rel=\"noopener\" style=\"color:#FBBF24; text-decoration:underline\">PDF oficial NCI/NIH</a>.",
+    t02note: "<i data-lucide=\"info\" style=\"width:14px;height:14px;vertical-align:-2px;margin-right:4px;color:#FBBF24\"></i>\n        <strong>Nota:</strong> muitos ensaios clínicos em andamento ainda utilizam <strong>CTCAE v5.0</strong> no protocolo original. Verifique sempre a versão especificada no protocolo do estudo antes de aplicar os critérios de grading.",
+    gLeve: "Leve",
+    gModerado: "Moderado",
+    gGrave: "Grave",
+    gAmeaca: "Ameaça à vida",
+    gFatal: "Fatal",
+    ctcaeGsub: "<em>≥G3 são os eventos relevantes para reporte regulatório e exigem ajuste de dose ou interrupção.</em>",
+    ctcaeCat: "Eventos por categoria · clique para detalhes",
+    t03h: "Calculadora de dose · Radiofármacos diagnósticos",
+    t03p: "Cálculo de atividade administrada para medicina nuclear diagnóstica, comparando <strong>EANM Dosage Card 2016</strong> (sistema de classes pediátricas) e <strong>North American Consensus 2024</strong> (dose por peso com limites).",
+    t04h: "Calculadora de Decaimento PET/CT",
+    t04p: "Projeção de atividade disponível ao longo do dia para radiofármacos PET, considerando decaimento físico, doses individuais e resíduo em seringa. Baseado na fórmula A(t) = A&#8320; &times; e<sup>&minus;ln2/t&frac12; &times; &Delta;t</sup>.",
+    t05h: "PSMA · câncer de próstata",
+    t05p: "Critérios de imagem (PROMISE, PSMA-RADS, PRIMARY, RECIP), de resposta clínica (PCWG), e de estratificação inicial (Gleason, ISUP, D'Amico). Foco em decisão prática para PSMA-PET diagnóstico, seleção para Lu-PSMA e avaliação de resposta.",
+    t06h: "PET/CT · resposta metabólica",
+    t06p: "Critérios para avaliação de resposta tumoral por PET/CT com FDG. PERCIST e EORTC para tumores sólidos; Deauville e Lugano para linfomas. SUL e SUVmax como métricas de referência.",
+    t07h: "Tumores neuroendócrinos · scores",
+    t07p: "Critérios para seleção e estratificação em TNE: imagem (Krenning, NETPET, SSTR-RADS), patologia (WHO, Ki-67) e estadiamento (ENETS TNM). Foco em decisão para Lu-DOTATATE e estratégia terapêutica.",
+    t08h: "Imunoterapia · resposta atipica",
+    t08p: "Criterios que reconhecem padroes atipicos de resposta a inibidores de checkpoint imune (pseudoprogressao, hiperprogressao, resposta tardia).",
+    t09h: "Resposta anatomica tumoral",
+    t09p: "Criterios morfologicos por TC/RM para tumores solidos. RECIST e padrao para a maioria dos ensaios.",
+    t10h: "CHC e radioembolizacao hepatica",
+    t10p: "Criterios para estratificacao BCLC, funcao hepatica, classificacao LI-RADS e resposta apos Y-90.",
+    t11h: "Oncologia clinica · escalas funcionais",
+    t11p: "Escalas universais para avaliacao funcional e comorbidade.",
+    t12h: "Calculadora de função renal",
+    t12p: "Estimativa de taxa de filtração glomerular por <strong>CKD-EPI 2021</strong> (equação sem raça, KDIGO recomendada), <strong>Cockcroft-Gault</strong> (clearance de creatinina, referência para ajuste de dose de fármacos) e <strong>MDRD</strong> (histórico, 4 variáveis IDMS).",
+
+    /* Shared input labels */
+    lblPeso: "Peso (kg)",
+
+    /* Dose calculator */
+    lblRadiofarmaco: "Radiofármaco",
+
+    /* Decay calculator labels */
+    lblRadioisotopo: "Radioisótopo",
+    lblAtividadeInicial: "Atividade inicial (mCi)",
+    lblVolumeInicial: "Volume inicial (mL)",
+    lblMeiaVida: "Meia-vida (min)",
+    lblHora1Inj: "Hora da 1ª injeção",
+    lblIntervalo: "Intervalo entre as injeções (min)",
+    lblCaptacao: "Captação (min)",
+    lblFatorDose: "Fator dose (mCi/kg)",
+    thHoraInj: "Hora injeção",
+    thHoraSaida: "Hora saída",
+    thDispMci: "Disponível (mCi)",
+    thDispMbq: "Disponível (MBq)",
+    thDosePresc: "Dose prescrita (mCi)",
+    thVolume: "Volume (mL)",
+    thRemanesc: "Remanescente (mCi)",
+    thStatus: "Status",
+    thTotal: "Total",
+    btnAddPaciente: "&#xFF0B; Adicionar paciente",
+    decayDisclaimer: "<strong style=\"color:#06B6D4\">&#9888; Aviso:</strong> Esta calculadora é uma ferramenta auxiliar de referência para planejamento logístico de PET/CT. Os cálculos de decaimento radioativo devem ser validados pelo médico nuclear e físico médico responsáveis conforme protocolos institucionais, calibração do ativimetrío e condições específicas do dia. Não substitui julgamento clínico nem validação física.",
+
+    /* Renal calculator */
+    lblIdade: "Idade (anos)",
+    lblSexo: "Sexo",
+    optMasc: "Masculino",
+    optFem: "Feminino",
+    lblAltura: "Altura (cm)",
+    lblCreatinina: "Creatinina (mg/dL)",
+    renalDisclaimer: "<strong style=\"color:#E879F9\">&#9888; Aviso:</strong> Estas equações estimam a função renal em adultos estáveis. Não são válidas para lesão renal aguda, gestação, extremos de massa muscular (amputados, caquexia severa, fisiculturistas), ou crianças. Não substitui julgamento clínico.",
+
+    /* Footer */
+    ft1: "© 2026 TheraTrials Oncology · Ferramentas · v1.2",
+    ft2: "Para uso educacional. Não substitui prescrição médica."
+  },
+
   /* ── Trial Matcher ── */
   tm: {
     badge: "Ferramenta clínica",

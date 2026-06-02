@@ -2171,6 +2171,114 @@ window._i18nRegister('en', {
     direitosIntro: "Attribution of third-party works, platform ownership, citation conditions and infringement notification procedure."
   },
 
+  /* ── Ferramentas (ferramentas.html) ── */
+  fr: {
+    /* Hero */
+    heroEyebrow: "Clinical tools",
+    heroTitle: "Calculate, convert, <span class=\"text-amber\">decide</span>",
+    heroLead: "Staging, adverse events, dose calculator, PET/CT planning, imaging scores, clinical scales and renal function — 12 tools on a single screen.",
+
+    /* Hub tiles */
+    hub01h: "AJCC staging",
+    hub01p: "TNM 8th/9th edition · summary by tumor",
+    hub02h: "CTCAE adverse events",
+    hub02p: "Scale v6.0 · 5 grades per category",
+    hub03h: "Dose calculator",
+    hub03p: "Adult and pediatric diagnostic dose · conventional NM and PET/CT · EANM 2016 · NA Consensus 2024",
+    hub04h: "PET/CT decay calculator",
+    hub04p: "Schedule projection · F-18 · Ga-68 · C-11 · Customizable",
+    hub05h: "PSMA · Prostate",
+    hub05p: "PROMISE · miTNM · PSMA-RADS · PRIMARY · RECIP · PCWG · Gleason · ISUP · D'Amico",
+    hub06h: "PET/CT · metabolic response",
+    hub06p: "PERCIST · EORTC PET · Deauville · Lugano",
+    hub07h: "Neuroendocrine tumors",
+    hub07p: "Krenning · NETPET · SSTR-RADS · WHO Grade · Ki-67 · ENETS TNM",
+    hub08h: "Immunotherapy",
+    hub08p: "iRECIST · irRECIST · PERCIMT · imPERCIST",
+    hub09h: "Anatomic response",
+    hub09p: "RECIST 1.1 · mRECIST · Choi Criteria",
+    hub10h: "HCC and radioembolization",
+    hub10p: "BCLC · Child-Pugh · ALBI · MELD · LI-RADS · LR-TR · EASL · mRECIST HCC",
+    hub11h: "Clinical oncology",
+    hub11p: "ECOG · Karnofsky · NCI-CTCAE · Charlson",
+    hub12h: "Renal function",
+    hub12p: "CKD-EPI 2021 · Cockcroft-Gault · MDRD · CKD Stage",
+
+    /* Tool headings + intro paragraphs */
+    t01h: "AJCC oncologic staging · TNM",
+    t01p: "Practical summary of the TNM system (AJCC 8th edition, with 9th edition updates where available) for the tumors most frequently discussed in theranostics, lung and breast. Use as a quick reference — it does not replace the full manual.",
+    t02h: "Adverse events · CTCAE v6.0",
+    t02p: "Common Terminology Criteria for Adverse Events — universal scale used in clinical trials to classify adverse events into 5 grades. Version 6.0 (current).\n        <a href=\"https://ctep.cancer.gov/protocoldevelopment/electronic_applications/ctc.htm\" target=\"_blank\" rel=\"noopener\" style=\"color:#FBBF24; text-decoration:underline\">Official NCI/NIH PDF</a>.",
+    t02note: "<i data-lucide=\"info\" style=\"width:14px;height:14px;vertical-align:-2px;margin-right:4px;color:#FBBF24\"></i>\n        <strong>Note:</strong> many ongoing clinical trials still use <strong>CTCAE v5.0</strong> in the original protocol. Always check the version specified in the study protocol before applying the grading criteria.",
+    gLeve: "Mild",
+    gModerado: "Moderate",
+    gGrave: "Severe",
+    gAmeaca: "Life-threatening",
+    gFatal: "Fatal",
+    ctcaeGsub: "<em>≥G3 are the events relevant for regulatory reporting and require dose adjustment or interruption.</em>",
+    ctcaeCat: "Events by category · click for details",
+    t03h: "Dose calculator · Diagnostic radiopharmaceuticals",
+    t03p: "Administered activity calculation for diagnostic nuclear medicine, comparing <strong>EANM Dosage Card 2016</strong> (pediatric class system) and <strong>North American Consensus 2024</strong> (weight-based dose with limits).",
+    t04h: "PET/CT decay calculator",
+    t04p: "Projection of available activity throughout the day for PET radiopharmaceuticals, accounting for physical decay, individual doses and syringe residue. Based on the formula A(t) = A&#8320; &times; e<sup>&minus;ln2/t&frac12; &times; &Delta;t</sup>.",
+    t05h: "PSMA · prostate cancer",
+    t05p: "Imaging criteria (PROMISE, PSMA-RADS, PRIMARY, RECIP), clinical response (PCWG), and initial stratification (Gleason, ISUP, D'Amico). Focus on practical decisions for diagnostic PSMA-PET, selection for Lu-PSMA and response assessment.",
+    t06h: "PET/CT · metabolic response",
+    t06p: "Criteria for tumor response assessment by FDG PET/CT. PERCIST and EORTC for solid tumors; Deauville and Lugano for lymphomas. SUL and SUVmax as reference metrics.",
+    t07h: "Neuroendocrine tumors · scores",
+    t07p: "Criteria for selection and stratification in NET: imaging (Krenning, NETPET, SSTR-RADS), pathology (WHO, Ki-67) and staging (ENETS TNM). Focus on decisions for Lu-DOTATATE and therapeutic strategy.",
+    t08h: "Immunotherapy · atypical response",
+    t08p: "Criteria that recognize atypical response patterns to immune checkpoint inhibitors (pseudoprogression, hyperprogression, late response).",
+    t09h: "Anatomic tumor response",
+    t09p: "Morphologic criteria by CT/MRI for solid tumors. RECIST is the standard for most trials.",
+    t10h: "HCC and hepatic radioembolization",
+    t10p: "Criteria for BCLC stratification, hepatic function, LI-RADS classification and response after Y-90.",
+    t11h: "Clinical oncology · functional scales",
+    t11p: "Universal scales for functional assessment and comorbidity.",
+    t12h: "Renal function calculator",
+    t12p: "Estimated glomerular filtration rate by <strong>CKD-EPI 2021</strong> (race-free equation, KDIGO recommended), <strong>Cockcroft-Gault</strong> (creatinine clearance, reference for drug dose adjustment) and <strong>MDRD</strong> (historical, 4-variable IDMS).",
+
+    /* Shared input labels */
+    lblPeso: "Weight (kg)",
+
+    /* Dose calculator */
+    lblRadiofarmaco: "Radiopharmaceutical",
+
+    /* Decay calculator labels */
+    lblRadioisotopo: "Radioisotope",
+    lblAtividadeInicial: "Initial activity (mCi)",
+    lblVolumeInicial: "Initial volume (mL)",
+    lblMeiaVida: "Half-life (min)",
+    lblHora1Inj: "Time of 1st injection",
+    lblIntervalo: "Interval between injections (min)",
+    lblCaptacao: "Uptake (min)",
+    lblFatorDose: "Dose factor (mCi/kg)",
+    thHoraInj: "Injection time",
+    thHoraSaida: "Exit time",
+    thDispMci: "Available (mCi)",
+    thDispMbq: "Available (MBq)",
+    thDosePresc: "Prescribed dose (mCi)",
+    thVolume: "Volume (mL)",
+    thRemanesc: "Remaining (mCi)",
+    thStatus: "Status",
+    thTotal: "Total",
+    btnAddPaciente: "&#xFF0B; Add patient",
+    decayDisclaimer: "<strong style=\"color:#06B6D4\">&#9888; Warning:</strong> This calculator is an auxiliary reference tool for PET/CT logistical planning. Radioactive decay calculations must be validated by the responsible nuclear physician and medical physicist according to institutional protocols, dose calibrator calibration and the specific conditions of the day. It does not replace clinical judgment or physical validation.",
+
+    /* Renal calculator */
+    lblIdade: "Age (years)",
+    lblSexo: "Sex",
+    optMasc: "Male",
+    optFem: "Female",
+    lblAltura: "Height (cm)",
+    lblCreatinina: "Creatinine (mg/dL)",
+    renalDisclaimer: "<strong style=\"color:#E879F9\">&#9888; Warning:</strong> These equations estimate renal function in stable adults. They are not valid for acute kidney injury, pregnancy, extremes of muscle mass (amputees, severe cachexia, bodybuilders), or children. It does not replace clinical judgment.",
+
+    /* Footer */
+    ft1: "© 2026 TheraTrials Oncology · Tools · v1.2",
+    ft2: "For educational use. Does not replace medical prescription."
+  },
+
   /* ── Trial Matcher ── */
   tm: {
     badge: "Clinical Tool",

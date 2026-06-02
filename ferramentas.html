@@ -446,28 +446,32 @@
     </a>
     <button class="nav-toggle" aria-label="Menu" onclick="this.parentElement.querySelector('.nav').classList.toggle('open')"><i data-lucide="menu" style="width:18px;height:18px"></i></button>
     <nav class="nav">
-      <a href="index.html">Home</a>
-      <a href="database.html">Database</a>
-      <a href="trial-matcher.html">Trial Matcher</a>
-      <a href="ensaios-clinicos.html">Ensaios clínicos</a>
-      <a href="explorer.html">Explorer</a>
-      <a href="tumor-boards.html">Tumor boards</a>
-      <a href="radiofarmacos.html">Radiofármacos</a>
-      <a href="guidelines.html">Guidelines</a>
-      <a href="ferramentas.html">Ferramentas</a>
-      <a href="modalidades.html">Modalidades</a>
-      <a href="fundamentos.html">Fundamentos</a>
-      <a href="about.html">Sobre</a>
+      <a href="index.html" data-i18n="nav.home">Home</a>
+      <a href="database.html" data-i18n="nav.database">Database</a>
+      <a href="trial-matcher.html" data-i18n="nav.trialMatcher">Trial Matcher</a>
+      <a href="ensaios-clinicos.html" data-i18n="nav.ensaios">Ensaios clínicos</a>
+      <a href="explorer.html" data-i18n="nav.explorer">Explorer</a>
+      <a href="tumor-boards.html" data-i18n="nav.tumorBoards">Tumor boards</a>
+      <a href="radiofarmacos.html" data-i18n="nav.radiofarmacos">Radiofármacos</a>
+      <a href="guidelines.html" data-i18n="nav.guidelines">Guidelines</a>
+      <a href="ferramentas.html" data-i18n="nav.ferramentas">Ferramentas</a>
+      <a href="modalidades.html" data-i18n="nav.modalidades">Modalidades</a>
+      <a href="fundamentos.html" data-i18n="nav.fundamentos">Fundamentos</a>
+      <a href="about.html" data-i18n="nav.sobre">Sobre</a>
     </nav>
+    <button class="lang-toggle" onclick="toggleLang()" title="Switch to English" aria-label="Switch language">
+      <i data-lucide="globe" style="width:14px;height:14px"></i>
+      <span class="lang-label">EN</span>
+    </button>
   </div>
 </header>
 
 <!-- HERO -->
 <section class="ft-hero">
   <div class="container">
-    <span class="eyebrow">Ferramentas clínicas</span>
-    <h1>Calcule, converta, <span class="text-amber">decida</span></h1>
-    <p>Estadiamento, eventos adversos, calculadora de dose, planejamento PET/CT, scores de imagem, escalas clínicas e função renal — 12 ferramentas em uma única tela.</p>
+    <span class="eyebrow" data-i18n="fr.heroEyebrow">Ferramentas clínicas</span>
+    <h1 data-i18n-html="fr.heroTitle">Calcule, converta, <span class="text-amber">decida</span></h1>
+    <p data-i18n="fr.heroLead">Estadiamento, eventos adversos, calculadora de dose, planejamento PET/CT, scores de imagem, escalas clínicas e função renal — 12 ferramentas em uma única tela.</p>
   </div>
 </section>
 
@@ -479,74 +483,74 @@
       <a href="#ajcc" class="tool-link" style="--accent: #38BDF8">
         <div class="num">01</div>
         <i data-lucide="layers-3" class="icon"></i>
-        <h3>Estadiamento AJCC</h3>
-        <p>TNM 8ª/9ª edição · resumo por tumor</p>
+        <h3 data-i18n="fr.hub01h">Estadiamento AJCC</h3>
+        <p data-i18n="fr.hub01p">TNM 8ª/9ª edição · resumo por tumor</p>
       </a>
       <a href="#ctcae" class="tool-link" style="--accent: #FBBF24">
         <div class="num">02</div>
         <i data-lucide="alert-triangle" class="icon"></i>
-        <h3>Eventos adversos CTCAE</h3>
-        <p>Escala v6.0 · 5 graus por categoria</p>
+        <h3 data-i18n="fr.hub02h">Eventos adversos CTCAE</h3>
+        <p data-i18n="fr.hub02p">Escala v6.0 · 5 graus por categoria</p>
       </a>
       <a href="#dose-calc" class="tool-link" style="--accent: #10B981">
         <div class="num">03</div>
         <i data-lucide="syringe" class="icon"></i>
-        <h3>Calculadora de dose</h3>
-        <p>Dose diagnóstica adulto e pediátrico · MN convencional e PET/CT · EANM 2016 · NA Consensus 2024</p>
+        <h3 data-i18n="fr.hub03h">Calculadora de dose</h3>
+        <p data-i18n="fr.hub03p">Dose diagnóstica adulto e pediátrico · MN convencional e PET/CT · EANM 2016 · NA Consensus 2024</p>
       </a>
       <a href="#decay-calc" class="tool-link" style="--accent: #06B6D4">
         <div class="num">04</div>
         <i data-lucide="timer" class="icon"></i>
-        <h3>Calculadora de Decaimento PET/CT</h3>
-        <p>Proje&ccedil;&atilde;o de agenda &middot; F-18 &middot; Ga-68 &middot; C-11 &middot; Personaliz&aacute;vel</p>
+        <h3 data-i18n="fr.hub04h">Calculadora de Decaimento PET/CT</h3>
+        <p data-i18n="fr.hub04p">Proje&ccedil;&atilde;o de agenda &middot; F-18 &middot; Ga-68 &middot; C-11 &middot; Personaliz&aacute;vel</p>
       </a>
       <a href="#psma" class="tool-link" style="--accent: #FF8400">
         <div class="num">05</div>
         <i data-lucide="atom" class="icon"></i>
-        <h3>PSMA · Próstata</h3>
-        <p>PROMISE · miTNM · PSMA-RADS · PRIMARY · RECIP · PCWG · Gleason · ISUP · D'Amico</p>
+        <h3 data-i18n="fr.hub05h">PSMA · Próstata</h3>
+        <p data-i18n="fr.hub05p">PROMISE · miTNM · PSMA-RADS · PRIMARY · RECIP · PCWG · Gleason · ISUP · D'Amico</p>
       </a>
       <a href="#petct" class="tool-link" style="--accent: #C084FC">
         <div class="num">06</div>
         <i data-lucide="activity" class="icon"></i>
-        <h3>PET/CT · resposta metabólica</h3>
-        <p>PERCIST · EORTC PET · Deauville · Lugano</p>
+        <h3 data-i18n="fr.hub06h">PET/CT · resposta metabólica</h3>
+        <p data-i18n="fr.hub06p">PERCIST · EORTC PET · Deauville · Lugano</p>
       </a>
       <a href="#tne" class="tool-link" style="--accent: #34D399">
         <div class="num">07</div>
         <i data-lucide="git-branch" class="icon"></i>
-        <h3>Tumores neuroendócrinos</h3>
-        <p>Krenning · NETPET · SSTR-RADS · WHO Grade · Ki-67 · ENETS TNM</p>
+        <h3 data-i18n="fr.hub07h">Tumores neuroendócrinos</h3>
+        <p data-i18n="fr.hub07p">Krenning · NETPET · SSTR-RADS · WHO Grade · Ki-67 · ENETS TNM</p>
       </a>
       <a href="#imuno" class="tool-link" style="--accent: #22D3EE">
         <div class="num">08</div>
         <i data-lucide="shield-plus" class="icon"></i>
-        <h3>Imunoterapia</h3>
-        <p>iRECIST · irRECIST · PERCIMT · imPERCIST</p>
+        <h3 data-i18n="fr.hub08h">Imunoterapia</h3>
+        <p data-i18n="fr.hub08p">iRECIST · irRECIST · PERCIMT · imPERCIST</p>
       </a>
       <a href="#anatomica" class="tool-link" style="--accent: #F472B6">
         <div class="num">09</div>
         <i data-lucide="ruler" class="icon"></i>
-        <h3>Resposta anatômica</h3>
-        <p>RECIST 1.1 · mRECIST · Choi Criteria</p>
+        <h3 data-i18n="fr.hub09h">Resposta anatômica</h3>
+        <p data-i18n="fr.hub09p">RECIST 1.1 · mRECIST · Choi Criteria</p>
       </a>
       <a href="#hcc" class="tool-link" style="--accent: #F59E0B">
         <div class="num">10</div>
         <i data-lucide="droplet" class="icon"></i>
-        <h3>CHC e radioembolização</h3>
-        <p>BCLC · Child-Pugh · ALBI · MELD · LI-RADS · LR-TR · EASL · mRECIST HCC</p>
+        <h3 data-i18n="fr.hub10h">CHC e radioembolização</h3>
+        <p data-i18n="fr.hub10p">BCLC · Child-Pugh · ALBI · MELD · LI-RADS · LR-TR · EASL · mRECIST HCC</p>
       </a>
       <a href="#clinica" class="tool-link" style="--accent: #94A3B8">
         <div class="num">11</div>
         <i data-lucide="user-check" class="icon"></i>
-        <h3>Oncologia clínica</h3>
-        <p>ECOG · Karnofsky · NCI-CTCAE · Charlson</p>
+        <h3 data-i18n="fr.hub11h">Oncologia clínica</h3>
+        <p data-i18n="fr.hub11p">ECOG · Karnofsky · NCI-CTCAE · Charlson</p>
       </a>
       <a href="#renal" class="tool-link" style="--accent: #E879F9">
         <div class="num">12</div>
         <i data-lucide="kidney" class="icon"></i>
-        <h3>Função renal</h3>
-        <p>CKD-EPI 2021 · Cockcroft-Gault · MDRD · Estágio DRC</p>
+        <h3 data-i18n="fr.hub12h">Função renal</h3>
+        <p data-i18n="fr.hub12p">CKD-EPI 2021 · Cockcroft-Gault · MDRD · Estágio DRC</p>
       </a>
     </div>
 
@@ -556,9 +560,9 @@
     <section class="tool" id="ajcc" style="--tool-accent: #38BDF8">
       <div class="tool-head">
         <div class="tool-num" style="background: rgba(56, 189, 248, 0.15); color: #38BDF8">01</div>
-        <h2>Estadiamento oncológico AJCC · TNM</h2>
+        <h2 data-i18n="fr.t01h">Estadiamento oncológico AJCC · TNM</h2>
       </div>
-      <p style="color: var(--stone); margin: 0 0 1.5rem; max-width: 720px; line-height: 1.55">
+      <p style="color: var(--stone); margin: 0 0 1.5rem; max-width: 720px; line-height: 1.55" data-i18n="fr.t01p">
         Resumo prático do sistema TNM (8ª edição AJCC, com atualizações 9ª edição quando disponíveis) para os tumores mais frequentes em discussão de teranóstico, pulmão e mama. Use como referência rápida — não substitui o manual completo.
       </p>
 
@@ -2097,13 +2101,13 @@
     <section class="tool" id="ctcae" style="--tool-accent: #FBBF24">
       <div class="tool-head">
         <div class="tool-num" style="background: rgba(251, 191, 36, 0.15); color: #FBBF24">02</div>
-        <h2>Eventos adversos · CTCAE v6.0</h2>
+        <h2 data-i18n="fr.t02h">Eventos adversos · CTCAE v6.0</h2>
       </div>
-      <p style="color: var(--stone); margin: 0 0 0.75rem; max-width: 720px; line-height: 1.55">
+      <p style="color: var(--stone); margin: 0 0 0.75rem; max-width: 720px; line-height: 1.55" data-i18n-html="fr.t02p">
         Common Terminology Criteria for Adverse Events — escala universal usada em ensaios clínicos para classificar eventos adversos em 5 graus. Versão 6.0 (atual).
         <a href="https://ctep.cancer.gov/protocoldevelopment/electronic_applications/ctc.htm" target="_blank" rel="noopener" style="color:#FBBF24; text-decoration:underline">PDF oficial NCI/NIH</a>.
       </p>
-      <p style="color: var(--stone-2); margin: 0 0 1.5rem; max-width: 720px; line-height: 1.5; font-size: 0.82rem; background: rgba(251,191,36,0.05); border: 1px solid rgba(251,191,36,0.15); border-radius: var(--radius-sm); padding: 0.65rem 0.9rem;">
+      <p style="color: var(--stone-2); margin: 0 0 1.5rem; max-width: 720px; line-height: 1.5; font-size: 0.82rem; background: rgba(251,191,36,0.05); border: 1px solid rgba(251,191,36,0.15); border-radius: var(--radius-sm); padding: 0.65rem 0.9rem;" data-i18n-html="fr.t02note">
         <i data-lucide="info" style="width:14px;height:14px;vertical-align:-2px;margin-right:4px;color:#FBBF24"></i>
         <strong>Nota:</strong> muitos ensaios clínicos em andamento ainda utilizam <strong>CTCAE v5.0</strong> no protocolo original. Verifique sempre a versão especificada no protocolo do estudo antes de aplicar os critérios de grading.
       </p>
@@ -2111,35 +2115,35 @@
       <div style="display:grid; grid-template-columns: repeat(5, 1fr); gap:0.5rem; margin: 1.5rem 0">
         <div style="background:var(--graphite-2); border:1px solid rgba(110, 231, 183, 0.3); border-top:3px solid #6EE7B7; border-radius:var(--radius-md); padding:1.1rem 0.85rem; text-align:center">
           <div style="font-family:var(--font-mono); font-size:1.3rem; font-weight:700; color:#6EE7B7; margin-bottom:0.25rem">G1</div>
-          <div style="font-size:0.78rem; color:var(--off-white); font-weight:600; margin-bottom:0.4rem">Leve</div>
+          <div style="font-size:0.78rem; color:var(--off-white); font-weight:600; margin-bottom:0.4rem" data-i18n="fr.gLeve">Leve</div>
           <div style="font-size:0.72rem; color:var(--stone); line-height:1.4">Assintomático ou sintomas leves; só observação.</div>
         </div>
         <div style="background:var(--graphite-2); border:1px solid rgba(252, 211, 77, 0.3); border-top:3px solid #FCD34D; border-radius:var(--radius-md); padding:1.1rem 0.85rem; text-align:center">
           <div style="font-family:var(--font-mono); font-size:1.3rem; font-weight:700; color:#FCD34D; margin-bottom:0.25rem">G2</div>
-          <div style="font-size:0.78rem; color:var(--off-white); font-weight:600; margin-bottom:0.4rem">Moderado</div>
+          <div style="font-size:0.78rem; color:var(--off-white); font-weight:600; margin-bottom:0.4rem" data-i18n="fr.gModerado">Moderado</div>
           <div style="font-size:0.72rem; color:var(--stone); line-height:1.4">Intervenção mínima. Limita atividades instrumentais.</div>
         </div>
         <div style="background:var(--graphite-2); border:1px solid rgba(251, 167, 74, 0.3); border-top:3px solid #FBA74A; border-radius:var(--radius-md); padding:1.1rem 0.85rem; text-align:center">
           <div style="font-family:var(--font-mono); font-size:1.3rem; font-weight:700; color:#FBA74A; margin-bottom:0.25rem">G3</div>
-          <div style="font-size:0.78rem; color:var(--off-white); font-weight:600; margin-bottom:0.4rem">Grave</div>
+          <div style="font-size:0.78rem; color:var(--off-white); font-weight:600; margin-bottom:0.4rem" data-i18n="fr.gGrave">Grave</div>
           <div style="font-size:0.72rem; color:var(--stone); line-height:1.4">Hospitalização. Limita atividades básicas.</div>
         </div>
         <div style="background:var(--graphite-2); border:1px solid rgba(248, 113, 113, 0.3); border-top:3px solid #F87171; border-radius:var(--radius-md); padding:1.1rem 0.85rem; text-align:center">
           <div style="font-family:var(--font-mono); font-size:1.3rem; font-weight:700; color:#F87171; margin-bottom:0.25rem">G4</div>
-          <div style="font-size:0.78rem; color:var(--off-white); font-weight:600; margin-bottom:0.4rem">Ameaça à vida</div>
+          <div style="font-size:0.78rem; color:var(--off-white); font-weight:600; margin-bottom:0.4rem" data-i18n="fr.gAmeaca">Ameaça à vida</div>
           <div style="font-size:0.72rem; color:var(--stone); line-height:1.4">UTI. Intervenção urgente.</div>
         </div>
         <div style="background:var(--graphite-2); border:1px solid rgba(220, 38, 38, 0.4); border-top:3px solid #DC2626; border-radius:var(--radius-md); padding:1.1rem 0.85rem; text-align:center">
           <div style="font-family:var(--font-mono); font-size:1.3rem; font-weight:700; color:#DC2626; margin-bottom:0.25rem">G5</div>
-          <div style="font-size:0.78rem; color:var(--off-white); font-weight:600; margin-bottom:0.4rem">Fatal</div>
+          <div style="font-size:0.78rem; color:var(--off-white); font-weight:600; margin-bottom:0.4rem" data-i18n="fr.gFatal">Fatal</div>
           <div style="font-size:0.72rem; color:var(--stone); line-height:1.4">Morte relacionada ao evento.</div>
         </div>
       </div>
-      <div style="text-align:center; font-size:0.78rem; color:var(--stone); margin-bottom:2rem">
+      <div style="text-align:center; font-size:0.78rem; color:var(--stone); margin-bottom:2rem" data-i18n-html="fr.ctcaeGsub">
         <em>≥G3 são os eventos relevantes para reporte regulatório e exigem ajuste de dose ou interrupção.</em>
       </div>
 
-      <h3 style="font-family:var(--font-display); font-size:1.1rem; color:var(--off-white); margin:2rem 0 1rem; font-weight:600">Eventos por categoria · clique para detalhes</h3>
+      <h3 style="font-family:var(--font-display); font-size:1.1rem; color:var(--off-white); margin:2rem 0 1rem; font-weight:600" data-i18n="fr.ctcaeCat">Eventos por categoria · clique para detalhes</h3>
       <div class="tnm-grid">
         <button type="button" class="tnm-card" onclick="openCTCAE('hema')">
           <div class="tnm-card-icon" style="background:rgba(251,191,36,0.10)"><i data-lucide="droplet" style="width:18px;height:18px;color:#FBBF24"></i></div>
@@ -2235,22 +2239,22 @@
     <section class="tool" id="dose-calc" style="--tool-accent: #10B981">
       <div class="tool-head">
         <div class="tool-num" style="background: rgba(16, 185, 129, 0.15); color: #10B981">03</div>
-        <h2>Calculadora de dose &middot; Radiof&aacute;rmacos diagn&oacute;sticos</h2>
+        <h2 data-i18n="fr.t03h">Calculadora de dose &middot; Radiof&aacute;rmacos diagn&oacute;sticos</h2>
       </div>
-      <p style="color: var(--stone); margin: 0 0 1.5rem; max-width: 720px; line-height: 1.55">
+      <p style="color: var(--stone); margin: 0 0 1.5rem; max-width: 720px; line-height: 1.55" data-i18n-html="fr.t03p">
         C&aacute;lculo de atividade administrada para medicina nuclear diagn&oacute;stica, comparando <strong>EANM Dosage Card 2016</strong> (sistema de classes pedi&aacute;tricas) e <strong>North American Consensus 2024</strong> (dose por peso com limites).
       </p>
 
       <!-- Inputs -->
       <div style="display:flex; flex-wrap:wrap; gap:1rem; margin-bottom:1.5rem; align-items:flex-end">
         <div style="flex:0 0 140px">
-          <label for="dose-weight" style="display:block; font-size:0.78rem; color:var(--stone); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.35rem">Peso (kg)</label>
+          <label for="dose-weight" style="display:block; font-size:0.78rem; color:var(--stone); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.35rem" data-i18n="fr.lblPeso">Peso (kg)</label>
           <input type="number" id="dose-weight" value="70" min="3" max="200" step="1"
                  style="width:100%; padding:0.55rem 0.7rem; background:var(--graphite-2); border:1px solid var(--border-soft); border-radius:8px; color:var(--off-white); font-family:var(--font-mono); font-size:0.95rem"
                  oninput="calcDose()">
         </div>
         <div style="flex:1 1 340px">
-          <label for="dose-radio" style="display:block; font-size:0.78rem; color:var(--stone); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.35rem">Radiof&aacute;rmaco</label>
+          <label for="dose-radio" style="display:block; font-size:0.78rem; color:var(--stone); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.35rem" data-i18n="fr.lblRadiofarmaco">Radiof&aacute;rmaco</label>
           <select id="dose-radio"
                   style="width:100%; padding:0.55rem 0.7rem; background:var(--graphite-2); border:1px solid var(--border-soft); border-radius:8px; color:var(--off-white); font-family:var(--font-body); font-size:0.9rem"
                   onchange="calcDose()">
@@ -2650,16 +2654,16 @@
     <section class="tool" id="decay-calc" style="--tool-accent: #06B6D4">
       <div class="tool-head">
         <div class="tool-num" style="background: rgba(6, 182, 212, 0.15); color: #06B6D4">04</div>
-        <h2>Calculadora de Decaimento PET/CT</h2>
+        <h2 data-i18n="fr.t04h">Calculadora de Decaimento PET/CT</h2>
       </div>
-      <p style="color: var(--stone); margin: 0 0 1.5rem; max-width: 720px; line-height: 1.55">
+      <p style="color: var(--stone); margin: 0 0 1.5rem; max-width: 720px; line-height: 1.55" data-i18n-html="fr.t04p">
         Proje&ccedil;&atilde;o de atividade dispon&iacute;vel ao longo do dia para radiof&aacute;rmacos PET, considerando decaimento f&iacute;sico, doses individuais e res&iacute;duo em seringa. Baseado na f&oacute;rmula A(t) = A&#8320; &times; e<sup>&minus;ln2/t&frac12; &times; &Delta;t</sup>.
       </p>
 
       <!-- Inputs Row 1 -->
       <div style="display:flex; flex-wrap:wrap; gap:1rem; margin-bottom:1rem; align-items:flex-end">
         <div style="flex:1 1 200px">
-          <label for="dc-isotope" style="display:block; font-size:0.78rem; color:var(--stone); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.35rem">Radiois&oacute;topo</label>
+          <label for="dc-isotope" style="display:block; font-size:0.78rem; color:var(--stone); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.35rem" data-i18n="fr.lblRadioisotopo">Radiois&oacute;topo</label>
           <select id="dc-isotope"
                   style="width:100%; padding:0.55rem 0.7rem; background:var(--graphite-2); border:1px solid var(--border-soft); border-radius:8px; color:var(--off-white); font-family:var(--font-body); font-size:0.9rem"
                   onchange="window._dcCalc &amp;&amp; window._dcCalc.onIsotopeChange()">
@@ -2672,19 +2676,19 @@
           </select>
         </div>
         <div style="flex:0 0 130px">
-          <label for="dc-a0" style="display:block; font-size:0.78rem; color:var(--stone); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.35rem">Atividade inicial (mCi)</label>
+          <label for="dc-a0" style="display:block; font-size:0.78rem; color:var(--stone); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.35rem" data-i18n="fr.lblAtividadeInicial">Atividade inicial (mCi)</label>
           <input type="number" id="dc-a0" value="21.6" min="0" step="0.1"
                  style="width:100%; padding:0.55rem 0.7rem; background:var(--graphite-2); border:1px solid var(--border-soft); border-radius:8px; color:var(--off-white); font-family:var(--font-mono); font-size:0.95rem"
                  oninput="window._dcCalc &amp;&amp; window._dcCalc.recalc()">
         </div>
         <div style="flex:0 0 110px">
-          <label for="dc-vol" style="display:block; font-size:0.78rem; color:var(--stone); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.35rem">Volume inicial (mL)</label>
+          <label for="dc-vol" style="display:block; font-size:0.78rem; color:var(--stone); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.35rem" data-i18n="fr.lblVolumeInicial">Volume inicial (mL)</label>
           <input type="number" id="dc-vol" value="6" min="0" step="0.1"
                  style="width:100%; padding:0.55rem 0.7rem; background:var(--graphite-2); border:1px solid var(--border-soft); border-radius:8px; color:var(--off-white); font-family:var(--font-mono); font-size:0.95rem"
                  oninput="window._dcCalc &amp;&amp; window._dcCalc.recalc()">
         </div>
         <div style="flex:0 0 110px">
-          <label for="dc-hl" style="display:block; font-size:0.78rem; color:var(--stone); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.35rem">Meia-vida (min)</label>
+          <label for="dc-hl" style="display:block; font-size:0.78rem; color:var(--stone); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.35rem" data-i18n="fr.lblMeiaVida">Meia-vida (min)</label>
           <input type="number" id="dc-hl" value="109.77" min="0.1" step="0.01"
                  style="width:100%; padding:0.55rem 0.7rem; background:var(--graphite-2); border:1px solid var(--border-soft); border-radius:8px; color:var(--off-white); font-family:var(--font-mono); font-size:0.95rem"
                  oninput="window._dcCalc &amp;&amp; window._dcCalc.recalc()">
@@ -2694,25 +2698,25 @@
       <!-- Inputs Row 2 -->
       <div style="display:flex; flex-wrap:wrap; gap:1rem; margin-bottom:1.5rem; align-items:flex-end">
         <div style="flex:0 0 120px">
-          <label for="dc-t0" style="display:block; font-size:0.78rem; color:var(--stone); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.35rem">Hora da 1&ordf; inje&ccedil;&atilde;o</label>
+          <label for="dc-t0" style="display:block; font-size:0.78rem; color:var(--stone); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.35rem" data-i18n="fr.lblHora1Inj">Hora da 1&ordf; inje&ccedil;&atilde;o</label>
           <input type="time" id="dc-t0" value="08:00"
                  style="width:100%; padding:0.55rem 0.7rem; background:var(--graphite-2); border:1px solid var(--border-soft); border-radius:8px; color:var(--off-white); font-family:var(--font-mono); font-size:0.95rem"
                  oninput="window._dcCalc &amp;&amp; window._dcCalc.recalc()">
         </div>
         <div style="flex:0 0 130px">
-          <label for="dc-interval" style="display:block; font-size:0.78rem; color:var(--stone); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.35rem">Intervalo entre as inje&ccedil;&otilde;es (min)</label>
+          <label for="dc-interval" style="display:block; font-size:0.78rem; color:var(--stone); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.35rem" data-i18n="fr.lblIntervalo">Intervalo entre as inje&ccedil;&otilde;es (min)</label>
           <input type="number" id="dc-interval" value="25" min="1" step="1"
                  style="width:100%; padding:0.55rem 0.7rem; background:var(--graphite-2); border:1px solid var(--border-soft); border-radius:8px; color:var(--off-white); font-family:var(--font-mono); font-size:0.95rem"
                  oninput="window._dcCalc &amp;&amp; window._dcCalc.recalc()">
         </div>
         <div style="flex:0 0 130px">
-          <label for="dc-uptake" style="display:block; font-size:0.78rem; color:var(--stone); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.35rem">Capta&ccedil;&atilde;o (min)</label>
+          <label for="dc-uptake" style="display:block; font-size:0.78rem; color:var(--stone); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.35rem" data-i18n="fr.lblCaptacao">Capta&ccedil;&atilde;o (min)</label>
           <input type="number" id="dc-uptake" value="60" min="0" step="5"
                  style="width:100%; padding:0.55rem 0.7rem; background:var(--graphite-2); border:1px solid var(--border-soft); border-radius:8px; color:var(--off-white); font-family:var(--font-mono); font-size:0.95rem"
                  oninput="window._dcCalc &amp;&amp; window._dcCalc.recalc()">
         </div>
         <div style="flex:0 0 130px">
-          <label for="dc-factor" style="display:block; font-size:0.78rem; color:var(--stone); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.35rem">Fator dose (mCi/kg)</label>
+          <label for="dc-factor" style="display:block; font-size:0.78rem; color:var(--stone); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.35rem" data-i18n="fr.lblFatorDose">Fator dose (mCi/kg)</label>
           <input type="number" id="dc-factor" value="0.09" min="0.01" step="0.01"
                  style="width:100%; padding:0.55rem 0.7rem; background:var(--graphite-2); border:1px solid var(--border-soft); border-radius:8px; color:var(--off-white); font-family:var(--font-mono); font-size:0.95rem"
                  oninput="window._dcCalc &amp;&amp; window._dcCalc.recalc()">
@@ -2725,21 +2729,21 @@
           <thead>
             <tr style="background:var(--graphite-2); text-align:left">
               <th style="padding:0.6rem 0.5rem; color:var(--stone); font-weight:600; border-bottom:1px solid var(--border-soft); width:36px">#</th>
-              <th style="padding:0.6rem 0.5rem; color:var(--stone); font-weight:600; border-bottom:1px solid var(--border-soft); width:80px">Peso (kg)</th>
-              <th style="padding:0.6rem 0.5rem; color:var(--stone); font-weight:600; border-bottom:1px solid var(--border-soft)">Hora inje&ccedil;&atilde;o</th>
-              <th style="padding:0.6rem 0.5rem; color:var(--stone); font-weight:600; border-bottom:1px solid var(--border-soft)">Hora sa&iacute;da</th>
-              <th style="padding:0.6rem 0.5rem; color:var(--stone); font-weight:600; border-bottom:1px solid var(--border-soft)">Dispon&iacute;vel (mCi)</th>
-              <th style="padding:0.6rem 0.5rem; color:var(--stone); font-weight:600; border-bottom:1px solid var(--border-soft)">Dispon&iacute;vel (MBq)</th>
-              <th style="padding:0.6rem 0.5rem; color:var(--stone); font-weight:600; border-bottom:1px solid var(--border-soft)">Dose prescrita (mCi)</th>
-              <th style="padding:0.6rem 0.5rem; color:var(--stone); font-weight:600; border-bottom:1px solid var(--border-soft)">Volume (mL)</th>
-              <th style="padding:0.6rem 0.5rem; color:var(--stone); font-weight:600; border-bottom:1px solid var(--border-soft)">Remanescente (mCi)</th>
-              <th style="padding:0.6rem 0.5rem; color:var(--stone); font-weight:600; border-bottom:1px solid var(--border-soft); width:50px">Status</th>
+              <th style="padding:0.6rem 0.5rem; color:var(--stone); font-weight:600; border-bottom:1px solid var(--border-soft); width:80px" data-i18n="fr.lblPeso">Peso (kg)</th>
+              <th style="padding:0.6rem 0.5rem; color:var(--stone); font-weight:600; border-bottom:1px solid var(--border-soft)" data-i18n="fr.thHoraInj">Hora inje&ccedil;&atilde;o</th>
+              <th style="padding:0.6rem 0.5rem; color:var(--stone); font-weight:600; border-bottom:1px solid var(--border-soft)" data-i18n="fr.thHoraSaida">Hora sa&iacute;da</th>
+              <th style="padding:0.6rem 0.5rem; color:var(--stone); font-weight:600; border-bottom:1px solid var(--border-soft)" data-i18n="fr.thDispMci">Dispon&iacute;vel (mCi)</th>
+              <th style="padding:0.6rem 0.5rem; color:var(--stone); font-weight:600; border-bottom:1px solid var(--border-soft)" data-i18n="fr.thDispMbq">Dispon&iacute;vel (MBq)</th>
+              <th style="padding:0.6rem 0.5rem; color:var(--stone); font-weight:600; border-bottom:1px solid var(--border-soft)" data-i18n="fr.thDosePresc">Dose prescrita (mCi)</th>
+              <th style="padding:0.6rem 0.5rem; color:var(--stone); font-weight:600; border-bottom:1px solid var(--border-soft)" data-i18n="fr.thVolume">Volume (mL)</th>
+              <th style="padding:0.6rem 0.5rem; color:var(--stone); font-weight:600; border-bottom:1px solid var(--border-soft)" data-i18n="fr.thRemanesc">Remanescente (mCi)</th>
+              <th style="padding:0.6rem 0.5rem; color:var(--stone); font-weight:600; border-bottom:1px solid var(--border-soft); width:50px" data-i18n="fr.thStatus">Status</th>
             </tr>
           </thead>
           <tbody id="dc-tbody"></tbody>
           <tfoot>
             <tr style="background:var(--graphite-2); font-weight:600">
-              <td colspan="2" style="padding:0.6rem 0.5rem; color:var(--off-white); border-top:2px solid var(--border-soft)">Total</td>
+              <td colspan="2" style="padding:0.6rem 0.5rem; color:var(--off-white); border-top:2px solid var(--border-soft)" data-i18n="fr.thTotal">Total</td>
               <td colspan="4" style="padding:0.6rem 0.5rem; color:var(--stone); border-top:2px solid var(--border-soft); font-family:var(--font-mono)" id="dc-summary-consumed"></td>
               <td colspan="2" style="padding:0.6rem 0.5rem; color:var(--stone); border-top:2px solid var(--border-soft); font-family:var(--font-mono)" id="dc-summary-remaining"></td>
               <td colspan="2" style="padding:0.6rem 0.5rem; border-top:2px solid var(--border-soft)"></td>
@@ -2750,10 +2754,10 @@
 
       <button type="button" onclick="window._dcCalc &amp;&amp; window._dcCalc.addPatient()"
               style="padding:0.5rem 1.2rem; background:rgba(6,182,212,0.12); border:1px solid rgba(6,182,212,0.3); border-radius:8px; color:#06B6D4; font-size:0.85rem; font-weight:600; cursor:pointer; margin-bottom:1.5rem; transition:all 0.2s"
-              onmouseover="this.style.background='rgba(6,182,212,0.22)'" onmouseout="this.style.background='rgba(6,182,212,0.12)'">&#xFF0B; Adicionar paciente</button>
+              onmouseover="this.style.background='rgba(6,182,212,0.22)'" onmouseout="this.style.background='rgba(6,182,212,0.12)'" data-i18n-html="fr.btnAddPaciente">&#xFF0B; Adicionar paciente</button>
 
       <!-- Disclaimer -->
-      <div style="background:rgba(6,182,212,0.06); border:1px solid rgba(6,182,212,0.18); border-radius:var(--radius-md); padding:0.9rem 1.1rem; font-size:0.78rem; color:var(--stone); line-height:1.55">
+      <div style="background:rgba(6,182,212,0.06); border:1px solid rgba(6,182,212,0.18); border-radius:var(--radius-md); padding:0.9rem 1.1rem; font-size:0.78rem; color:var(--stone); line-height:1.55" data-i18n-html="fr.decayDisclaimer">
         <strong style="color:#06B6D4">&#9888; Aviso:</strong> Esta calculadora &eacute; uma ferramenta auxiliar de refer&ecirc;ncia para planejamento log&iacute;stico de PET/CT. Os c&aacute;lculos de decaimento radioativo devem ser validados pelo m&eacute;dico nuclear e f&iacute;sico m&eacute;dico respons&aacute;veis conforme protocolos institucionais, calibra&ccedil;&atilde;o do ativimetr&iacute;o e condi&ccedil;&otilde;es espec&iacute;ficas do dia. N&atilde;o substitui julgamento cl&iacute;nico nem valida&ccedil;&atilde;o f&iacute;sica.
       </div>
 
@@ -2976,9 +2980,9 @@
     <section class="tool" id="psma" style="--tool-accent: #FF8400">
       <div class="tool-head">
         <div class="tool-num" style="background: rgba(255, 132, 0, 0.15); color: #FF8400">05</div>
-        <h2>PSMA · câncer de próstata</h2>
+        <h2 data-i18n="fr.t05h">PSMA · câncer de próstata</h2>
       </div>
-      <p style="color: var(--stone); margin: 0 0 1.5rem; max-width: 720px; line-height: 1.55">
+      <p style="color: var(--stone); margin: 0 0 1.5rem; max-width: 720px; line-height: 1.55" data-i18n="fr.t05p">
         Critérios de imagem (PROMISE, PSMA-RADS, PRIMARY, RECIP), de resposta clínica (PCWG), e de estratificação inicial (Gleason, ISUP, D'Amico). Foco em decisão prática para PSMA-PET diagnóstico, seleção para Lu-PSMA e avaliação de resposta.
       </p>
 
@@ -3048,9 +3052,9 @@
     <section class="tool" id="petct" style="--tool-accent: #C084FC">
       <div class="tool-head">
         <div class="tool-num" style="background: rgba(192, 132, 252, 0.15); color: #C084FC">06</div>
-        <h2>PET/CT · resposta metabólica</h2>
+        <h2 data-i18n="fr.t06h">PET/CT · resposta metabólica</h2>
       </div>
-      <p style="color: var(--stone); margin: 0 0 1.5rem; max-width: 720px; line-height: 1.55">
+      <p style="color: var(--stone); margin: 0 0 1.5rem; max-width: 720px; line-height: 1.55" data-i18n="fr.t06p">
         Critérios para avaliação de resposta tumoral por PET/CT com FDG. PERCIST e EORTC para tumores sólidos; Deauville e Lugano para linfomas. SUL e SUVmax como métricas de referência.
       </p>
 
@@ -3092,9 +3096,9 @@
     <section class="tool" id="tne" style="--tool-accent: #34D399">
       <div class="tool-head">
         <div class="tool-num" style="background: rgba(52, 211, 153, 0.15); color: #34D399">07</div>
-        <h2>Tumores neuroendócrinos · scores</h2>
+        <h2 data-i18n="fr.t07h">Tumores neuroendócrinos · scores</h2>
       </div>
-      <p style="color: var(--stone); margin: 0 0 1.5rem; max-width: 720px; line-height: 1.55">
+      <p style="color: var(--stone); margin: 0 0 1.5rem; max-width: 720px; line-height: 1.55" data-i18n="fr.t07p">
         Critérios para seleção e estratificação em TNE: imagem (Krenning, NETPET, SSTR-RADS), patologia (WHO, Ki-67) e estadiamento (ENETS TNM). Foco em decisão para Lu-DOTATATE e estratégia terapêutica.
       </p>
 
@@ -3147,9 +3151,9 @@
     <section class="tool" id="imuno" style="--tool-accent: #22D3EE">
       <div class="tool-head">
         <div class="tool-num" style="background: rgba(34, 211, 238, 0.15); color: #22D3EE">08</div>
-        <h2>Imunoterapia &middot; resposta atipica</h2>
+        <h2 data-i18n="fr.t08h">Imunoterapia &middot; resposta atipica</h2>
       </div>
-      <p style="color: var(--stone); margin: 0 0 1.5rem; max-width: 720px; line-height: 1.55">Criterios que reconhecem padroes atipicos de resposta a inibidores de checkpoint imune (pseudoprogressao, hiperprogressao, resposta tardia).</p>
+      <p style="color: var(--stone); margin: 0 0 1.5rem; max-width: 720px; line-height: 1.55" data-i18n="fr.t08p">Criterios que reconhecem padroes atipicos de resposta a inibidores de checkpoint imune (pseudoprogressao, hiperprogressao, resposta tardia).</p>
             <div class="tnm-grid">
         <button type="button" class="tnm-card" onclick="openCrit('irecist')">
           <div class="tnm-card-icon" style="background:rgba(34,211,238,0.10)"><i data-lucide="shield" style="width:18px;height:18px;color:#22D3EE"></i></div>
@@ -3185,9 +3189,9 @@
     <section class="tool" id="anatomica" style="--tool-accent: #F472B6">
       <div class="tool-head">
         <div class="tool-num" style="background: rgba(244, 114, 182, 0.15); color: #F472B6">09</div>
-        <h2>Resposta anatomica tumoral</h2>
+        <h2 data-i18n="fr.t09h">Resposta anatomica tumoral</h2>
       </div>
-      <p style="color: var(--stone); margin: 0 0 1.5rem; max-width: 720px; line-height: 1.55">Criterios morfologicos por TC/RM para tumores solidos. RECIST e padrao para a maioria dos ensaios.</p>
+      <p style="color: var(--stone); margin: 0 0 1.5rem; max-width: 720px; line-height: 1.55" data-i18n="fr.t09p">Criterios morfologicos por TC/RM para tumores solidos. RECIST e padrao para a maioria dos ensaios.</p>
             <div class="tnm-grid">
         <button type="button" class="tnm-card" onclick="openCrit('recist')">
           <div class="tnm-card-icon" style="background:rgba(244,114,182,0.10)"><i data-lucide="ruler" style="width:18px;height:18px;color:#F472B6"></i></div>
@@ -3216,9 +3220,9 @@
     <section class="tool" id="hcc" style="--tool-accent: #F59E0B">
       <div class="tool-head">
         <div class="tool-num" style="background: rgba(245, 158, 11, 0.15); color: #F59E0B">10</div>
-        <h2>CHC e radioembolizacao hepatica</h2>
+        <h2 data-i18n="fr.t10h">CHC e radioembolizacao hepatica</h2>
       </div>
-      <p style="color: var(--stone); margin: 0 0 1.5rem; max-width: 720px; line-height: 1.55">Criterios para estratificacao BCLC, funcao hepatica, classificacao LI-RADS e resposta apos Y-90.</p>
+      <p style="color: var(--stone); margin: 0 0 1.5rem; max-width: 720px; line-height: 1.55" data-i18n="fr.t10p">Criterios para estratificacao BCLC, funcao hepatica, classificacao LI-RADS e resposta apos Y-90.</p>
             <div class="tnm-grid">
         <button type="button" class="tnm-card" onclick="openCrit('bclc')">
           <div class="tnm-card-icon" style="background:rgba(245,158,11,0.10)"><i data-lucide="git-branch" style="width:18px;height:18px;color:#F59E0B"></i></div>
@@ -3282,9 +3286,9 @@
     <section class="tool" id="clinica" style="--tool-accent: #94A3B8">
       <div class="tool-head">
         <div class="tool-num" style="background: rgba(148, 163, 184, 0.15); color: #94A3B8">11</div>
-        <h2>Oncologia clinica &middot; escalas funcionais</h2>
+        <h2 data-i18n="fr.t11h">Oncologia clinica &middot; escalas funcionais</h2>
       </div>
-      <p style="color: var(--stone); margin: 0 0 1.5rem; max-width: 720px; line-height: 1.55">Escalas universais para avaliacao funcional e comorbidade.</p>
+      <p style="color: var(--stone); margin: 0 0 1.5rem; max-width: 720px; line-height: 1.55" data-i18n="fr.t11p">Escalas universais para avaliacao funcional e comorbidade.</p>
             <div class="tnm-grid">
         <button type="button" class="tnm-card" onclick="openCrit('ecog')">
           <div class="tnm-card-icon" style="background:rgba(148,163,184,0.10)"><i data-lucide="user-check" style="width:18px;height:18px;color:#94A3B8"></i></div>
@@ -3323,42 +3327,42 @@
     <section class="tool" id="renal" style="--tool-accent: #E879F9">
       <div class="tool-head">
         <div class="tool-num" style="background: rgba(232, 121, 249, 0.15); color: #E879F9">12</div>
-        <h2>Calculadora de fun&ccedil;&atilde;o renal</h2>
+        <h2 data-i18n="fr.t12h">Calculadora de fun&ccedil;&atilde;o renal</h2>
       </div>
-      <p style="color: var(--stone); margin: 0 0 1.5rem; max-width: 720px; line-height: 1.55">
+      <p style="color: var(--stone); margin: 0 0 1.5rem; max-width: 720px; line-height: 1.55" data-i18n-html="fr.t12p">
         Estimativa de taxa de filtra&ccedil;&atilde;o glomerular por <strong>CKD-EPI 2021</strong> (equa&ccedil;&atilde;o sem ra&ccedil;a, KDIGO recomendada), <strong>Cockcroft-Gault</strong> (clearance de creatinina, refer&ecirc;ncia para ajuste de dose de f&aacute;rmacos) e <strong>MDRD</strong> (hist&oacute;rico, 4 vari&aacute;veis IDMS).
       </p>
 
       <div style="display:flex; flex-wrap:wrap; gap:1rem; margin-bottom:1.5rem; align-items:flex-end">
         <div style="flex:0 0 110px">
-          <label for="renal-age" style="display:block; font-size:0.78rem; color:var(--stone); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.35rem">Idade (anos)</label>
+          <label for="renal-age" style="display:block; font-size:0.78rem; color:var(--stone); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.35rem" data-i18n="fr.lblIdade">Idade (anos)</label>
           <input type="number" id="renal-age" value="60" min="18" max="120" step="1"
                  style="width:100%; padding:0.55rem 0.7rem; background:var(--graphite-2); border:1px solid var(--border-soft); border-radius:8px; color:var(--off-white); font-family:var(--font-mono); font-size:0.95rem"
                  oninput="calcRenal()">
         </div>
         <div style="flex:0 0 120px">
-          <label for="renal-sex" style="display:block; font-size:0.78rem; color:var(--stone); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.35rem">Sexo</label>
+          <label for="renal-sex" style="display:block; font-size:0.78rem; color:var(--stone); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.35rem" data-i18n="fr.lblSexo">Sexo</label>
           <select id="renal-sex"
                   style="width:100%; padding:0.55rem 0.7rem; background:var(--graphite-2); border:1px solid var(--border-soft); border-radius:8px; color:var(--off-white); font-family:var(--font-body); font-size:0.9rem; appearance:none; background-image:url(&quot;data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238E949C' stroke-width='2'><polyline points='6 9 12 15 18 9'/></svg>&quot;); background-repeat:no-repeat; background-position:right 0.75rem center; padding-right:2.25rem"
                   onchange="calcRenal()">
-            <option value="M">Masculino</option>
-            <option value="F">Feminino</option>
+            <option value="M" data-i18n="fr.optMasc">Masculino</option>
+            <option value="F" data-i18n="fr.optFem">Feminino</option>
           </select>
         </div>
         <div style="flex:0 0 110px">
-          <label for="renal-weight" style="display:block; font-size:0.78rem; color:var(--stone); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.35rem">Peso (kg)</label>
+          <label for="renal-weight" style="display:block; font-size:0.78rem; color:var(--stone); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.35rem" data-i18n="fr.lblPeso">Peso (kg)</label>
           <input type="number" id="renal-weight" value="70" min="30" max="250" step="0.5"
                  style="width:100%; padding:0.55rem 0.7rem; background:var(--graphite-2); border:1px solid var(--border-soft); border-radius:8px; color:var(--off-white); font-family:var(--font-mono); font-size:0.95rem"
                  oninput="calcRenal()">
         </div>
         <div style="flex:0 0 110px">
-          <label for="renal-height" style="display:block; font-size:0.78rem; color:var(--stone); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.35rem">Altura (cm)</label>
+          <label for="renal-height" style="display:block; font-size:0.78rem; color:var(--stone); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.35rem" data-i18n="fr.lblAltura">Altura (cm)</label>
           <input type="number" id="renal-height" value="170" min="100" max="230" step="1"
                  style="width:100%; padding:0.55rem 0.7rem; background:var(--graphite-2); border:1px solid var(--border-soft); border-radius:8px; color:var(--off-white); font-family:var(--font-mono); font-size:0.95rem"
                  oninput="calcRenal()">
         </div>
         <div style="flex:0 0 150px">
-          <label for="renal-cr" style="display:block; font-size:0.78rem; color:var(--stone); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.35rem">Creatinina (mg/dL)</label>
+          <label for="renal-cr" style="display:block; font-size:0.78rem; color:var(--stone); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.35rem" data-i18n="fr.lblCreatinina">Creatinina (mg/dL)</label>
           <input type="number" id="renal-cr" value="1.0" min="0.1" max="30" step="0.01"
                  style="width:100%; padding:0.55rem 0.7rem; background:var(--graphite-2); border:1px solid var(--border-soft); border-radius:8px; color:var(--off-white); font-family:var(--font-mono); font-size:0.95rem"
                  oninput="calcRenal()">
@@ -3431,7 +3435,7 @@
         </div>
       </div>
 
-      <div style="background:rgba(232,121,249,0.06); border:1px solid rgba(232,121,249,0.18); border-radius:var(--radius-md); padding:0.9rem 1.1rem; font-size:0.78rem; color:var(--stone); line-height:1.55">
+      <div style="background:rgba(232,121,249,0.06); border:1px solid rgba(232,121,249,0.18); border-radius:var(--radius-md); padding:0.9rem 1.1rem; font-size:0.78rem; color:var(--stone); line-height:1.55" data-i18n-html="fr.renalDisclaimer">
         <strong style="color:#E879F9">&#9888; Aviso:</strong> Estas equa&ccedil;&otilde;es estimam a fun&ccedil;&atilde;o renal em adultos est&aacute;veis. N&atilde;o s&atilde;o v&aacute;lidas para les&atilde;o renal aguda, gesta&ccedil;&atilde;o, extremos de massa muscular (amputados, caquexia severa, fisiculturistas), ou crian&ccedil;as. N&atilde;o substitui julgamento cl&iacute;nico.
       </div>
 
@@ -3552,11 +3556,21 @@
 <footer class="site-footer">
   <div class="container">
     <div class="footer-bottom">
-      <span>© 2026 TheraTrials Oncology · Ferramentas · v1.2</span>
-      <span>Para uso educacional. Não substitui prescrição médica.</span>
+      <span data-i18n="fr.ft1">© 2026 TheraTrials Oncology · Ferramentas · v1.2</span>
+      <span data-i18n="fr.ft2">Para uso educacional. Não substitui prescrição médica.</span>
     </div>
   </div>
 </footer>
+
+<script src="assets/js/i18n.js"></script>
+<script src="assets/lang/pt-br.js"></script>
+<script src="assets/lang/en.js"></script>
+<script>
+  // Re-render Lucide icons after a language switch (data-i18n-html may replace icon nodes)
+  window.addEventListener('langchange', () => {
+    if (typeof lucide !== 'undefined') lucide.createIcons();
+  });
+</script>
 
 <script>
   // Stub mínimo do toolsApp para evitar erros do Alpine nas calculadoras
