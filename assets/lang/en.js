@@ -310,7 +310,7 @@ window._i18nRegister('en', {
   lp: {
     eyebrow: "Radiopharmaceutical · Beta-emitter",
     title: "<span class=\"iso-up\">177</span>Lu-PSMA-617<br><span class=\"accent\">Pluvicto</span> · the piece that changed mCRPC",
-    subtitle: "A therapeutic radioligand combining a small-molecule vector bound to prostate-specific membrane antigen (PSMA) with the beta emitter lutetium-177. FDA-approved in March 2022 for PSMA-positive mCRPC after progression on an ARPi and a taxane.",
+    subtitle: "A therapeutic radioligand combining a small-molecule vector bound to prostate-specific membrane antigen (PSMA) with the beta emitter lutetium-177. Initially FDA-approved in 2022 for PSMA-positive mCRPC after an ARPi and a taxane; in 2025 the indication was expanded to patients with PSMA-positive mCRPC treated with an ARPi and considered appropriate to delay taxane chemotherapy.",
     isoName: "Lutetium",
     isoHalfLife: "Half-life",
     isoDecay: "Decay",

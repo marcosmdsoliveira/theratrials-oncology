@@ -310,7 +310,7 @@ window._i18nRegister('pt-br', {
   lp: {
     eyebrow: "Radiofármaco · Beta-emissor",
     title: "<span class=\"iso-up\">177</span>Lu-PSMA-617<br><span class=\"accent\">Pluvicto</span> · a peça que mudou o mCRPC",
-    subtitle: "Radioligante terapêutico que combina um vetor pequeno-molecular ligado ao antígeno prostático específico de membrana (PSMA) com o emissor beta lutécio-177. Aprovado pelo FDA em março de 2022 para mCRPC PSMA-positivo após progressão a ARPi e taxano.",
+    subtitle: "Radioligante terapêutico que combina um vetor pequeno-molecular ligado ao antígeno prostático específico de membrana (PSMA) com o emissor beta lutécio-177. Aprovado inicialmente pelo FDA em 2022 para mCRPC PSMA-positivo pós-ARPi e pós-taxano; em 2025, a indicação foi expandida para pacientes com mCRPC PSMA-positivo tratados com ARPi e considerados apropriados para adiar a quimioterapia com taxano.",
     isoName: "Lutécio",
     isoHalfLife: "Meia-vida",
     isoDecay: "Decaimento",
