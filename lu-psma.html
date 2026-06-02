@@ -616,6 +616,10 @@
       <a href="fundamentos.html" data-i18n="nav.fundamentos">Fundamentos</a>
       <a href="about.html" data-i18n="nav.sobre">Sobre</a>
     </nav>
+    <button class="lang-toggle" onclick="toggleLang()" title="Switch to English" aria-label="Switch language">
+      <i data-lucide="globe" style="width:14px;height:14px"></i>
+      <span class="lang-label">EN</span>
+    </button>
   </div>
 </header>
 
@@ -1135,58 +1139,58 @@
 
         <!-- ============== DOSIMETRIA ============== -->
         <div id="dosimetria" class="rf-section">
-          <h2><span class="num">07</span> Dosimetria</h2>
-          <p class="lead">Tumor recebe ordens de magnitude mais radiação que qualquer órgão de risco. Glândulas salivares e lacrimais limitam mais que rins ou medula.</p>
+          <h2><span class="num">07</span> <span data-i18n="lp.s7h">Dosimetria</span></h2>
+          <p class="lead" data-i18n="lp.s7lead">Tumor recebe ordens de magnitude mais radiação que qualquer órgão de risco. Glândulas salivares e lacrimais limitam mais que rins ou medula.</p>
 
           <table class="dose-table">
             <thead>
               <tr>
-                <th>Órgão / tecido</th>
-                <th>Dose por GBq (Gy/GBq)</th>
-                <th>Visualização</th>
-                <th>Limite cumulativo (referência)</th>
+                <th data-i18n="lp.s7th1">Órgão / tecido</th>
+                <th data-i18n="lp.s7th2">Dose por GBq (Gy/GBq)</th>
+                <th data-i18n="lp.s7th3">Visualização</th>
+                <th data-i18n="lp.s7th4">Limite cumulativo (referência)</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td><strong>Tumor</strong> (mediana)</td>
+                <td data-i18n-html="lp.s7r1org"><strong>Tumor</strong> (mediana)</td>
                 <td>10 — 30</td>
                 <td><div class="dose-bar high"><div class="dose-bar-fill" style="width:100%"></div></div></td>
                 <td>—</td>
               </tr>
               <tr>
-                <td>Glândulas lacrimais</td>
-                <td>~ 2,8</td>
+                <td data-i18n="lp.s7r2org">Glândulas lacrimais</td>
+                <td data-i18n="lp.s7r2v">~ 2,8</td>
                 <td><div class="dose-bar med"><div class="dose-bar-fill" style="width:55%"></div></div></td>
-                <td>40 Gy (referência)</td>
+                <td data-i18n="lp.s7limRef">40 Gy (referência)</td>
               </tr>
               <tr>
-                <td>Parótidas</td>
-                <td>~ 1,4</td>
+                <td data-i18n="lp.s7r3org">Parótidas</td>
+                <td data-i18n="lp.s7r3v">~ 1,4</td>
                 <td><div class="dose-bar med"><div class="dose-bar-fill" style="width:35%"></div></div></td>
-                <td>40 Gy (referência)</td>
+                <td data-i18n="lp.s7limRef">40 Gy (referência)</td>
               </tr>
               <tr>
-                <td>Submandibulares</td>
-                <td>~ 1,5</td>
+                <td data-i18n="lp.s7r4org">Submandibulares</td>
+                <td data-i18n="lp.s7r4v">~ 1,5</td>
                 <td><div class="dose-bar med"><div class="dose-bar-fill" style="width:38%"></div></div></td>
-                <td>40 Gy (referência)</td>
+                <td data-i18n="lp.s7limRef">40 Gy (referência)</td>
               </tr>
               <tr>
-                <td>Rins</td>
-                <td>~ 0,7</td>
+                <td data-i18n="lp.s7r5org">Rins</td>
+                <td data-i18n="lp.s7r5v">~ 0,7</td>
                 <td><div class="dose-bar low"><div class="dose-bar-fill" style="width:18%"></div></div></td>
                 <td>23 Gy (BED)</td>
               </tr>
               <tr>
-                <td>Medula óssea (vermelha)</td>
-                <td>~ 0,03</td>
+                <td data-i18n="lp.s7r6org">Medula óssea (vermelha)</td>
+                <td data-i18n="lp.s7r6v">~ 0,03</td>
                 <td><div class="dose-bar low"><div class="dose-bar-fill" style="width:5%"></div></div></td>
                 <td>2 Gy</td>
               </tr>
               <tr>
-                <td>Fígado</td>
-                <td>~ 0,1</td>
+                <td data-i18n="lp.s7r7org">Fígado</td>
+                <td data-i18n="lp.s7r7v">~ 0,1</td>
                 <td><div class="dose-bar low"><div class="dose-bar-fill" style="width:8%"></div></div></td>
                 <td>30 Gy</td>
               </tr>
@@ -1194,8 +1198,8 @@
           </table>
 
           <div class="key-fact">
-            <div class="lbl">Dosimetria personalizada — vale a pena?</div>
-            <p>O ensaio LuTectomy e o programa PRINCE mostraram correlação entre dose tumoral absorvida e resposta. Calculadoras simples (3 SPECT/CT — 4 h, 24 h, 48 h ou 72 h) permitem estimar dose tumoral e dose renal. Em centros com infraestrutura, dose-personalizada pode otimizar resposta sem aumentar toxicidade.</p>
+            <div class="lbl" data-i18n="lp.s7kfL">Dosimetria personalizada — vale a pena?</div>
+            <p data-i18n="lp.s7kfT">O ensaio LuTectomy e o programa PRINCE mostraram correlação entre dose tumoral absorvida e resposta. Calculadoras simples (3 SPECT/CT — 4 h, 24 h, 48 h ou 72 h) permitem estimar dose tumoral e dose renal. Em centros com infraestrutura, dose-personalizada pode otimizar resposta sem aumentar toxicidade.</p>
           </div>
         </div>
 
@@ -1211,12 +1215,12 @@
 
         <!-- ============== TOXICIDADE ============== -->
         <div id="toxicidade" class="rf-section">
-          <h2><span class="num">08</span> Eventos adversos · perfil VISION</h2>
-          <p class="lead">Toxicidade overall manejável. Hematológica é dose-limitante; xerostomia é a queixa crônica mais frequente.</p>
+          <h2><span class="num">08</span> <span data-i18n="lp.s8h">Eventos adversos · perfil VISION</span></h2>
+          <p class="lead" data-i18n="lp.s8lead">Toxicidade overall manejável. Hematológica é dose-limitante; xerostomia é a queixa crônica mais frequente.</p>
 
           <div class="tox-grid">
             <div class="tox-item">
-              <div class="tox-name">Xerostomia / boca seca</div>
+              <div class="tox-name" data-i18n="lp.s8t1">Xerostomia / boca seca</div>
               <div class="tox-pct">
                 <span class="tox-all">39%</span>
                 <span class="tox-g3">G3 &lt;1%</span>
@@ -1224,7 +1228,7 @@
               <div class="tox-bar"><div class="tox-bar-all" style="width:39%"></div></div>
             </div>
             <div class="tox-item">
-              <div class="tox-name">Fadiga</div>
+              <div class="tox-name" data-i18n="lp.s8t2">Fadiga</div>
               <div class="tox-pct">
                 <span class="tox-all">43%</span>
                 <span class="tox-g3">G3 6%</span>
@@ -1232,7 +1236,7 @@
               <div class="tox-bar"><div class="tox-bar-all" style="width:43%"></div></div>
             </div>
             <div class="tox-item">
-              <div class="tox-name">Náusea</div>
+              <div class="tox-name" data-i18n="lp.s8t3">Náusea</div>
               <div class="tox-pct">
                 <span class="tox-all">35%</span>
                 <span class="tox-g3">G3 1%</span>
@@ -1240,7 +1244,7 @@
               <div class="tox-bar"><div class="tox-bar-all" style="width:35%"></div></div>
             </div>
             <div class="tox-item">
-              <div class="tox-name">Anemia</div>
+              <div class="tox-name" data-i18n="lp.s8t4">Anemia</div>
               <div class="tox-pct">
                 <span class="tox-all">32%</span>
                 <span class="tox-g3">G3-4 13%</span>
@@ -1248,7 +1252,7 @@
               <div class="tox-bar"><div class="tox-bar-all" style="width:32%"></div></div>
             </div>
             <div class="tox-item">
-              <div class="tox-name">Trombocitopenia</div>
+              <div class="tox-name" data-i18n="lp.s8t5">Trombocitopenia</div>
               <div class="tox-pct">
                 <span class="tox-all">17%</span>
                 <span class="tox-g3">G3-4 8%</span>
@@ -1256,7 +1260,7 @@
               <div class="tox-bar"><div class="tox-bar-all" style="width:17%"></div></div>
             </div>
             <div class="tox-item">
-              <div class="tox-name">Neutropenia</div>
+              <div class="tox-name" data-i18n="lp.s8t6">Neutropenia</div>
               <div class="tox-pct">
                 <span class="tox-all">8%</span>
                 <span class="tox-g3">G3-4 3%</span>
@@ -1264,7 +1268,7 @@
               <div class="tox-bar"><div class="tox-bar-all" style="width:8%"></div></div>
             </div>
             <div class="tox-item">
-              <div class="tox-name">Disfunção renal</div>
+              <div class="tox-name" data-i18n="lp.s8t7">Disfunção renal</div>
               <div class="tox-pct">
                 <span class="tox-all">9%</span>
                 <span class="tox-g3">G3 &lt;2%</span>
@@ -1272,7 +1276,7 @@
               <div class="tox-bar"><div class="tox-bar-all" style="width:9%"></div></div>
             </div>
             <div class="tox-item">
-              <div class="tox-name">Diarreia</div>
+              <div class="tox-name" data-i18n="lp.s8t8">Diarreia</div>
               <div class="tox-pct">
                 <span class="tox-all">19%</span>
                 <span class="tox-g3">G3 1%</span>
@@ -1282,8 +1286,8 @@
           </div>
 
           <div class="key-fact">
-            <div class="lbl">Manejo prático</div>
-            <p>Hemograma antes de cada ciclo é mandatório. Reduzir para 5,5 GBq se Hb &lt; 9, plaquetas &lt; 75 mil ou neutrófilos &lt; 1.500. Xerostomia raramente é dose-limitante mas afeta qualidade de vida — pilocarpina e saliva artificial podem ajudar. Função renal estável após 6 ciclos no VISION (mediana de variação de TFG &lt; 5 mL/min/1,73 m<sup>2</sup>).</p>
+            <div class="lbl" data-i18n="lp.s8kfL">Manejo prático</div>
+            <p data-i18n-html="lp.s8kfT">Hemograma antes de cada ciclo é mandatório. Reduzir para 5,5 GBq se Hb &lt; 9, plaquetas &lt; 75 mil ou neutrófilos &lt; 1.500. Xerostomia raramente é dose-limitante mas afeta qualidade de vida — pilocarpina e saliva artificial podem ajudar. Função renal estável após 6 ciclos no VISION (mediana de variação de TFG &lt; 5 mL/min/1,73 m<sup>2</sup>).</p>
           </div>
         </div>
 
@@ -1299,30 +1303,30 @@
 
         <!-- ============== PERSPECTIVAS ALFA ============== -->
         <div id="perspectivas" class="rf-section">
-          <h2><span class="num">09</span> Perspectivas: alfa, terbio, combinações</h2>
-          <p class="lead">A próxima geração explora maior densidade de ionização (alfa), eficiência por evento (Auger) e combinações com inibidores do reparo de DNA.</p>
+          <h2><span class="num">09</span> <span data-i18n="lp.s9h">Perspectivas: alfa, terbio, combinações</span></h2>
+          <p class="lead" data-i18n="lp.s9lead">A próxima geração explora maior densidade de ionização (alfa), eficiência por evento (Auger) e combinações com inibidores do reparo de DNA.</p>
 
           <div class="ab-compare">
             <div class="ab-card beta">
               <h4><i data-lucide="zap" style="width:18px;height:18px"></i> <sup>177</sup>Lu (β⁻)</h4>
               <ul>
-                <li>Energia média <span class="v">134 keV</span></li>
-                <li>Alcance médio <span class="v">~ 0,67 mm</span></li>
-                <li>LET <span class="v">0,2 keV/μm</span></li>
-                <li>Eficiência por evento <span class="v">moderada</span></li>
-                <li>Crossfire <span class="v">amplo (mm)</span></li>
-                <li>Lesões pequenas <span class="v">menos eficaz</span></li>
+                <li data-i18n-html="lp.s9bl1">Energia média <span class="v">134 keV</span></li>
+                <li data-i18n-html="lp.s9bl2">Alcance médio <span class="v">~ 0,67 mm</span></li>
+                <li data-i18n-html="lp.s9bl3">LET <span class="v">0,2 keV/μm</span></li>
+                <li data-i18n-html="lp.s9bl4">Eficiência por evento <span class="v">moderada</span></li>
+                <li data-i18n-html="lp.s9bl5">Crossfire <span class="v">amplo (mm)</span></li>
+                <li data-i18n-html="lp.s9bl6">Lesões pequenas <span class="v">menos eficaz</span></li>
               </ul>
             </div>
             <div class="ab-card alpha">
               <h4><i data-lucide="zap" style="width:18px;height:18px"></i> <sup>225</sup>Ac / <sup>212</sup>Pb (α)</h4>
               <ul>
-                <li>Energia <span class="v">5-9 MeV</span></li>
-                <li>Alcance <span class="v">50-100 μm</span></li>
-                <li>LET <span class="v">80 keV/μm</span></li>
-                <li>Eficiência por evento <span class="v">muito alta</span></li>
-                <li>Crossfire <span class="v">restrito (poucas células)</span></li>
-                <li>Lesões pequenas <span class="v">excelente alvo</span></li>
+                <li data-i18n-html="lp.s9al1">Energia <span class="v">5-9 MeV</span></li>
+                <li data-i18n-html="lp.s9al2">Alcance <span class="v">50-100 μm</span></li>
+                <li data-i18n-html="lp.s9al3">LET <span class="v">80 keV/μm</span></li>
+                <li data-i18n-html="lp.s9al4">Eficiência por evento <span class="v">muito alta</span></li>
+                <li data-i18n-html="lp.s9al5">Crossfire <span class="v">restrito (poucas células)</span></li>
+                <li data-i18n-html="lp.s9al6">Lesões pequenas <span class="v">excelente alvo</span></li>
               </ul>
             </div>
           </div>
@@ -1330,29 +1334,29 @@
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin: 1.5rem 0">
             <div style="background: var(--graphite-2); border: 1px solid rgba(192, 132, 252, 0.3); border-radius: var(--radius-md); padding: 1.25rem">
               <div style="font-family: var(--font-mono); color: #C084FC; font-size: 0.85rem; margin-bottom: 0.4rem"><sup>225</sup>Ac-PSMA-617</div>
-              <div style="font-size: 0.95rem; color: var(--off-white); margin-bottom: 0.35rem">Alfa-emissor</div>
-              <div style="font-size: 0.82rem; color: var(--stone); line-height: 1.5">Resposta em pacientes refratários ao β. Xerostomia mais intensa. Series de Heidelberg + AcTION trial.</div>
+              <div style="font-size: 0.95rem; color: var(--off-white); margin-bottom: 0.35rem" data-i18n="lp.s9c1T">Alfa-emissor</div>
+              <div style="font-size: 0.82rem; color: var(--stone); line-height: 1.5" data-i18n="lp.s9c1D">Resposta em pacientes refratários ao β. Xerostomia mais intensa. Series de Heidelberg + AcTION trial.</div>
             </div>
             <div style="background: var(--graphite-2); border: 1px solid rgba(192, 132, 252, 0.3); border-radius: var(--radius-md); padding: 1.25rem">
               <div style="font-family: var(--font-mono); color: #C084FC; font-size: 0.85rem; margin-bottom: 0.4rem"><sup>161</sup>Tb-PSMA</div>
-              <div style="font-size: 0.95rem; color: var(--off-white); margin-bottom: 0.35rem">β⁻ + Auger</div>
-              <div style="font-size: 0.82rem; color: var(--stone); line-height: 1.5">Combina elétrons Auger (alta LET local) com β⁻. Pode ser superior ao Lu para micrometástases. Fase aberta no REALITY.</div>
+              <div style="font-size: 0.95rem; color: var(--off-white); margin-bottom: 0.35rem" data-i18n="lp.s9c2T">β⁻ + Auger</div>
+              <div style="font-size: 0.82rem; color: var(--stone); line-height: 1.5" data-i18n="lp.s9c2D">Combina elétrons Auger (alta LET local) com β⁻. Pode ser superior ao Lu para micrometástases. Fase aberta no REALITY.</div>
             </div>
             <div style="background: var(--graphite-2); border: 1px solid rgba(192, 132, 252, 0.3); border-radius: var(--radius-md); padding: 1.25rem">
               <div style="font-family: var(--font-mono); color: #C084FC; font-size: 0.85rem; margin-bottom: 0.4rem"><sup>212</sup>Pb-PSMA</div>
-              <div style="font-size: 0.95rem; color: var(--off-white); margin-bottom: 0.35rem">Alfa-emissor</div>
-              <div style="font-size: 0.82rem; color: var(--stone); line-height: 1.5">Meia-vida 10,6h favorece logística regional. Estudos fase 1 (Perspective Therapeutics) em andamento.</div>
+              <div style="font-size: 0.95rem; color: var(--off-white); margin-bottom: 0.35rem" data-i18n="lp.s9c3T">Alfa-emissor</div>
+              <div style="font-size: 0.82rem; color: var(--stone); line-height: 1.5" data-i18n="lp.s9c3D">Meia-vida 10,6h favorece logística regional. Estudos fase 1 (Perspective Therapeutics) em andamento.</div>
             </div>
             <div style="background: var(--graphite-2); border: 1px solid rgba(192, 132, 252, 0.3); border-radius: var(--radius-md); padding: 1.25rem">
               <div style="font-family: var(--font-mono); color: #C084FC; font-size: 0.85rem; margin-bottom: 0.4rem">Lu-PSMA + PARPi</div>
-              <div style="font-size: 0.95rem; color: var(--off-white); margin-bottom: 0.35rem">Combinações</div>
-              <div style="font-size: 0.82rem; color: var(--stone); line-height: 1.5">LuPARP, BULLSEYE: testando sinergia com olaparib em mCRPC HRR-mutado e não-mutado.</div>
+              <div style="font-size: 0.95rem; color: var(--off-white); margin-bottom: 0.35rem" data-i18n="lp.s9c4T">Combinações</div>
+              <div style="font-size: 0.82rem; color: var(--stone); line-height: 1.5" data-i18n="lp.s9c4D">LuPARP, BULLSEYE: testando sinergia com olaparib em mCRPC HRR-mutado e não-mutado.</div>
             </div>
           </div>
 
           <div class="key-fact">
-            <div class="lbl">Olhando para 2027</div>
-            <p>O cenário 2027 deve incluir: (1) Lu-PSMA em mHSPC (PSMAddition), (2) escolha racional entre β e α por carga tumoral e padrão dosimétrico, (3) primeiras combinações com PARPi e imunoterapia, e (4) introdução do <sup>161</sup>Tb como possível substituto do <sup>177</sup>Lu para lesões pequenas.</p>
+            <div class="lbl" data-i18n="lp.s9kfL">Olhando para 2027</div>
+            <p data-i18n-html="lp.s9kfT">O cenário 2027 deve incluir: (1) Lu-PSMA em mHSPC (PSMAddition), (2) escolha racional entre β e α por carga tumoral e padrão dosimétrico, (3) primeiras combinações com PARPi e imunoterapia, e (4) introdução do <sup>161</sup>Tb como possível substituto do <sup>177</sup>Lu para lesões pequenas.</p>
           </div>
         </div>
 
@@ -1368,27 +1372,27 @@
 
         <!-- ============== PRÓXIMAS PÁGINAS ============== -->
         <div id="proximos" class="rf-section">
-          <h2><span class="num">10</span> Continue lendo</h2>
+          <h2><span class="num">10</span> <span data-i18n="lp.s10h">Continue lendo</span></h2>
           <div class="next-grid">
             <a href="lu-dotatate.html" class="next-card">
-              <div class="lbl">Próximo radiofármaco</div>
+              <div class="lbl" data-i18n="lp.s10c1L">Próximo radiofármaco</div>
               <div class="name"><sup>177</sup>Lu-DOTATATE</div>
-              <div class="desc">PRRT em tumores neuroendócrinos. NETTER-1, COMPETE, COMPOSE.</div>
+              <div class="desc" data-i18n="lp.s10c1D">PRRT em tumores neuroendócrinos. NETTER-1, COMPETE, COMPOSE.</div>
             </a>
             <a href="ra-223.html" class="next-card">
-              <div class="lbl">Alfa-emissor</div>
-              <div class="name"><sup>223</sup>Ra-Cloreto</div>
-              <div class="desc">ALSYMPCA, PEACE-3, COMRADE — só osso, alta especificidade.</div>
+              <div class="lbl" data-i18n="lp.s10c2L">Alfa-emissor</div>
+              <div class="name" data-i18n-html="lp.s10c2N"><sup>223</sup>Ra-Cloreto</div>
+              <div class="desc" data-i18n="lp.s10c2D">ALSYMPCA, PEACE-3, COMRADE — só osso, alta especificidade.</div>
             </a>
             <a href="database.html" class="next-card">
-              <div class="lbl">Database</div>
-              <div class="name">Todos os estudos</div>
-              <div class="desc">421 ensaios clínicos em 39 categorias terapêuticas, com filtros hierárquicos.</div>
+              <div class="lbl" data-i18n="lp.s10c3L">Database</div>
+              <div class="name" data-i18n="lp.s10c3N">Todos os estudos</div>
+              <div class="desc" data-i18n="lp.s10c3D">421 ensaios clínicos em 39 categorias terapêuticas, com filtros hierárquicos.</div>
             </a>
             <a href="ferramentas.html#dose" class="next-card">
-              <div class="lbl">Ferramenta</div>
-              <div class="name">Calculadora de dose</div>
-              <div class="desc">Cálculo de atividade e cronograma de ciclos para Lu-PSMA.</div>
+              <div class="lbl" data-i18n="lp.s10c4L">Ferramenta</div>
+              <div class="name" data-i18n="lp.s10c4N">Calculadora de dose</div>
+              <div class="desc" data-i18n="lp.s10c4D">Cálculo de atividade e cronograma de ciclos para Lu-PSMA.</div>
             </a>
           </div>
         </div>
@@ -1402,14 +1406,21 @@
 <footer class="site-footer">
   <div class="container">
     <div class="footer-bottom">
-      <span>© 2026 TheraTrials Oncology · Plataforma de evidências em oncologia moderna</span>
-      <span style="color: var(--stone); font-size: 0.82rem; margin-left: 1rem">Dados extraídos de publicações peer-reviewed e bases regulatórias. Conteúdo educacional, não substitui julgamento clínico.</span>
+      <span data-i18n="lp.s10ft1">© 2026 TheraTrials Oncology · Plataforma de evidências em oncologia moderna</span>
+      <span style="color: var(--stone); font-size: 0.82rem; margin-left: 1rem" data-i18n="lp.s10ft2">Dados extraídos de publicações peer-reviewed e bases regulatórias. Conteúdo educacional, não substitui julgamento clínico.</span>
     </div>
   </div>
 </footer>
 
+<script src="assets/js/i18n.js"></script>
+<script src="assets/lang/pt-br.js"></script>
+<script src="assets/lang/en.js"></script>
 <script>
   document.addEventListener('DOMContentLoaded', () => {
+    if (typeof lucide !== 'undefined') lucide.createIcons();
+  });
+  // Re-render Lucide icons after a language switch (data-i18n-html may replace icon nodes)
+  window.addEventListener('langchange', () => {
     if (typeof lucide !== 'undefined') lucide.createIcons();
   });
 </script>
