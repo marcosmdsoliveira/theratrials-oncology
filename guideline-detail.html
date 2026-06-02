@@ -645,19 +645,23 @@
     </a>
     <button class="nav-toggle" aria-label="Menu" onclick="this.parentElement.querySelector('.nav').classList.toggle('open')"><i data-lucide="menu" style="width:18px;height:18px"></i></button>
     <nav class="nav">
-      <a href="index.html">Home</a>
-      <a href="database.html">Database</a>
-      <a href="trial-matcher.html">Trial Matcher</a>
-      <a href="ensaios-clinicos.html">Ensaios clínicos</a>
-      <a href="explorer.html">Explorer</a>
-      <a href="tumor-boards.html">Tumor boards</a>
-      <a href="radiofarmacos.html">Radiofármacos</a>
-      <a href="guidelines.html" class="active">Guidelines</a>
-      <a href="ferramentas.html">Ferramentas</a>
-      <a href="modalidades.html">Modalidades</a>
-      <a href="fundamentos.html">Fundamentos</a>
-      <a href="about.html">Sobre</a>
+      <a href="index.html" data-i18n="nav.home">Home</a>
+      <a href="database.html" data-i18n="nav.database">Database</a>
+      <a href="trial-matcher.html" data-i18n="nav.trialMatcher">Trial Matcher</a>
+      <a href="ensaios-clinicos.html" data-i18n="nav.ensaios">Ensaios clínicos</a>
+      <a href="explorer.html" data-i18n="nav.explorer">Explorer</a>
+      <a href="tumor-boards.html" data-i18n="nav.tumorBoards">Tumor boards</a>
+      <a href="radiofarmacos.html" data-i18n="nav.radiofarmacos">Radiofármacos</a>
+      <a href="guidelines.html" class="active" data-i18n="nav.guidelines">Guidelines</a>
+      <a href="ferramentas.html" data-i18n="nav.ferramentas">Ferramentas</a>
+      <a href="modalidades.html" data-i18n="nav.modalidades">Modalidades</a>
+      <a href="fundamentos.html" data-i18n="nav.fundamentos">Fundamentos</a>
+      <a href="about.html" data-i18n="nav.sobre">Sobre</a>
     </nav>
+    <button class="lang-toggle" onclick="toggleLang()" title="Switch to English" aria-label="Switch language">
+      <i data-lucide="globe" style="width:14px;height:14px"></i>
+      <span class="lang-label">EN</span>
+    </button>
   </div>
 </header>
 
@@ -672,11 +676,24 @@
 <footer class="site-footer">
   <div class="container">
     <div class="footer-bottom">
-      <span>&copy; 2026 TheraTrials Oncology &middot; 421 estudos analisados &middot; v1.2</span>
-      <span>Para uso educacional. N&atilde;o substitui diretrizes oficiais.</span>
+      <span data-i18n="gd.ft1">&copy; 2026 TheraTrials Oncology &middot; 421 estudos analisados &middot; v1.2</span>
+      <span data-i18n="gd.ft2">Para uso educacional. N&atilde;o substitui diretrizes oficiais.</span>
     </div>
   </div>
 </footer>
+
+<script src="assets/js/i18n.js"></script>
+<script src="assets/lang/pt-br.js"></script>
+<script src="assets/lang/en.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    if (typeof lucide !== 'undefined') lucide.createIcons();
+  });
+  // Re-render Lucide icons after a language switch (data-i18n-html may replace icon nodes)
+  window.addEventListener('langchange', () => {
+    if (typeof lucide !== 'undefined') lucide.createIcons();
+  });
+</script>
 
 <script src="assets/js/guidelines-data.js"></script>
 <script src="assets/js/cross-links.js"></script>

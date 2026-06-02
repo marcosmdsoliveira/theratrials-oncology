@@ -2279,6 +2279,13 @@ window._i18nRegister('en', {
     ft2: "For educational use. Does not replace medical prescription."
   },
 
+  /* ── Guideline Detail (guideline-detail.html) ── */
+  gd: {
+    /* Footer */
+    ft1: "© 2026 TheraTrials Oncology · 421 studies analyzed · v1.2",
+    ft2: "For educational use. Does not replace official guidelines."
+  },
+
   /* ── Trial Matcher ── */
   tm: {
     badge: "Clinical Tool",
