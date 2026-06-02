@@ -28,7 +28,6 @@ const CORE_PAGES = [
   './fundamentos.html',
   './guidelines.html',
   './guideline-detail.html',
-  './dashboard-analise.html',
   './eventos.html',
   './newsletter.html',
   './about.html',

@@ -133,13 +133,7 @@
     <priority>0.6</priority>
   </url>
 
-  <!-- Analytics / secondary -->
-  <url>
-    <loc>https://theratrials.com/dashboard-analise.html</loc>
-    <lastmod>2026-05-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
+  <!-- Secondary -->
   <url>
     <loc>https://theratrials.com/eventos.html</loc>
     <lastmod>2026-05-24</lastmod>
