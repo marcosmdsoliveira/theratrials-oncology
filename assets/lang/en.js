@@ -2158,6 +2158,19 @@ window._i18nRegister('en', {
     ftBottom: "&copy; 2025 TheraTrials Oncology. Educational content — does not replace individualized medical advice."
   },
 
+  /* ── Legal pages (shell) ── */
+  leg: {
+    ft1: "© 2026 TheraTrials Oncology · educational use · does not replace official guidelines or primary reading",
+    ft2: "v1.0 · Updated 12/May/2026",
+    eyebrow: "Legal document",
+    privTitle: "Privacy Policy",
+    privIntro: "How TheraTrials Oncology handles personal and technical data — minimized collection, transparency and LGPD compliance.",
+    termosTitle: "Terms of Use",
+    termosIntro: "Conditions applicable to accessing and using the content of the TheraTrials Oncology platform.",
+    direitosTitle: "Copyright Notice",
+    direitosIntro: "Attribution of third-party works, platform ownership, citation conditions and infringement notification procedure."
+  },
+
   /* ── Trial Matcher ── */
   tm: {
     badge: "Clinical Tool",
