@@ -287,28 +287,32 @@
     </a>
     <button class="nav-toggle" aria-label="Menu" onclick="this.parentElement.querySelector('.nav').classList.toggle('open')"><i data-lucide="menu" style="width:18px;height:18px"></i></button>
     <nav class="nav">
-      <a href="index.html">Home</a>
-      <a href="database.html">Database</a>
-      <a href="trial-matcher.html">Trial Matcher</a>
-      <a href="ensaios-clinicos.html">Ensaios clínicos</a>
-      <a href="explorer.html">Explorer</a>
-      <a href="tumor-boards.html">Tumor boards</a>
-      <a href="radiofarmacos.html">Radiofármacos</a>
-      <a href="guidelines.html">Guidelines</a>
-      <a href="ferramentas.html">Ferramentas</a>
-      <a href="modalidades.html">Modalidades</a>
-      <a href="fundamentos.html">Fundamentos</a>
-      <a href="about.html">Sobre</a>
+      <a href="index.html" data-i18n="nav.home">Home</a>
+      <a href="database.html" data-i18n="nav.database">Database</a>
+      <a href="trial-matcher.html" data-i18n="nav.trialMatcher">Trial Matcher</a>
+      <a href="ensaios-clinicos.html" data-i18n="nav.ensaios">Ensaios clínicos</a>
+      <a href="explorer.html" data-i18n="nav.explorer">Explorer</a>
+      <a href="tumor-boards.html" data-i18n="nav.tumorBoards">Tumor boards</a>
+      <a href="radiofarmacos.html" data-i18n="nav.radiofarmacos">Radiofármacos</a>
+      <a href="guidelines.html" data-i18n="nav.guidelines">Guidelines</a>
+      <a href="ferramentas.html" data-i18n="nav.ferramentas">Ferramentas</a>
+      <a href="modalidades.html" data-i18n="nav.modalidades">Modalidades</a>
+      <a href="fundamentos.html" data-i18n="nav.fundamentos">Fundamentos</a>
+      <a href="about.html" data-i18n="nav.sobre">Sobre</a>
     </nav>
+    <button class="lang-toggle" onclick="toggleLang()" title="Switch to English" aria-label="Switch language">
+      <i data-lucide="globe" style="width:14px;height:14px"></i>
+      <span class="lang-label">EN</span>
+    </button>
   </div>
 </header>
 
 <!-- HERO -->
 <section class="about-hero">
   <div class="container">
-    <span class="eyebrow">Sobre o projeto</span>
-    <h1>Evidência <span class="text-amber">como ferramenta</span> clínica</h1>
-    <p>O TheraTrials Oncology nasceu de uma necessidade prática: transformar publicações densas em respostas rápidas para tumor boards e tomadas de decisão.</p>
+    <span class="eyebrow" data-i18n="ab.eyebrow">Sobre o projeto</span>
+    <h1 data-i18n-html="ab.heroTitle">Evidência <span class="text-amber">como ferramenta</span> clínica</h1>
+    <p data-i18n="ab.heroSub">O TheraTrials Oncology nasceu de uma necessidade prática: transformar publicações densas em respostas rápidas para tumor boards e tomadas de decisão.</p>
   </div>
 </section>
 
@@ -320,14 +324,14 @@
       <!-- TOC -->
       <aside>
         <div class="toc">
-          <div class="toc-title">Nesta página</div>
-          <a href="#missao">Missão</a>
-          <a href="#metodologia">Metodologia</a>
-          <a href="#pilares">Pilares conceituais</a>
-          <a href="#fontes">Fontes e seleção</a>
-          <a href="#disclaimer">Aviso clínico</a>
-          <a href="#glossario">Glossário</a>
-          <a href="#contato">Contato</a>
+          <div class="toc-title" data-i18n="ab.tocTitle">Nesta página</div>
+          <a href="#missao" data-i18n="ab.toc1">Missão</a>
+          <a href="#metodologia" data-i18n="ab.toc2">Metodologia</a>
+          <a href="#pilares" data-i18n="ab.toc3">Pilares conceituais</a>
+          <a href="#fontes" data-i18n="ab.toc4">Fontes e seleção</a>
+          <a href="#disclaimer" data-i18n="ab.toc5">Aviso clínico</a>
+          <a href="#glossario" data-i18n="ab.toc6">Glossário</a>
+          <a href="#contato" data-i18n="ab.toc7">Contato</a>
         </div>
       </aside>
 
@@ -335,30 +339,30 @@
       <div class="prose">
 
         <section id="missao">
-          <h2><span class="icon-box"><i data-lucide="compass" style="width:16px;height:16px"></i></span> Missão</h2>
-          <p>O <strong>TheraTrials Oncology</strong> é uma plataforma para conectar <em>tumor</em>, <em>biomarcador</em>, <em>terapia</em> e <em>evidência</em>. Foi pensada para o uso real do dia a dia — discussões em tumor boards, journal clubs, atualização rápida e ensino — onde a velocidade de acesso à informação correta importa tanto quanto a profundidade dos dados.</p>
-          <p>O foco é a <strong>oncologia moderna</strong>: terapias-alvo, imunoterapia, biomarcadores, imagem molecular e teranóstico. Cada estudo é mais que uma referência — é uma síntese que cabe na rotina clínica sem perder rigor.</p>
+          <h2><span class="icon-box"><i data-lucide="compass" style="width:16px;height:16px"></i></span> <span data-i18n="ab.missaoH">Missão</span></h2>
+          <p data-i18n-html="ab.missaoP1">O <strong>TheraTrials Oncology</strong> é uma plataforma para conectar <em>tumor</em>, <em>biomarcador</em>, <em>terapia</em> e <em>evidência</em>. Foi pensada para o uso real do dia a dia — discussões em tumor boards, journal clubs, atualização rápida e ensino — onde a velocidade de acesso à informação correta importa tanto quanto a profundidade dos dados.</p>
+          <p data-i18n-html="ab.missaoP2">O foco é a <strong>oncologia moderna</strong>: terapias-alvo, imunoterapia, biomarcadores, imagem molecular e teranóstico. Cada estudo é mais que uma referência — é uma síntese que cabe na rotina clínica sem perder rigor.</p>
         </section>
 
         <section id="metodologia">
-          <h2><span class="icon-box"><i data-lucide="microscope" style="width:16px;height:16px"></i></span> Metodologia</h2>
-          <p>Cada um dos <strong>421 estudos selecionados</strong> passa por um processo padronizado de extração e síntese:</p>
+          <h2><span class="icon-box"><i data-lucide="microscope" style="width:16px;height:16px"></i></span> <span data-i18n="ab.metodH">Metodologia</span></h2>
+          <p data-i18n-html="ab.metodP1">Cada um dos <strong>421 estudos selecionados</strong> passa por um processo padronizado de extração e síntese:</p>
           <ul>
-            <li><strong>Identificação</strong>: nome, acrônimo completo, NCT, sponsor, fase, desenho, centros, período de recrutamento.</li>
-            <li><strong>População</strong>: indicação clínica, critérios de inclusão e exclusão, estratificadores, características basais, n planejado / randomizado / analisado.</li>
-            <li><strong>Critérios moleculares e imagem</strong>: PSMA-PET (com SUV thresholds, critério VISION), Krenning score, biomarcadores (PSA, CgA, ctDNA, HRR, KRAS).</li>
-            <li><strong>Intervenção e radiofarmácia</strong>: radiofármaco específico, esquema completo (atividade × ciclos × intervalo), atividade cumulativa típica, preparo e pré-medicação contextualizada por tipo de radiofármaco, comparador detalhado.</li>
-            <li><strong>Desenho estatístico</strong>: hipótese (poder, HR esperado, α), tipo de análise (ITT/PP, ajuste cross-over IPCW/RPSFT).</li>
-            <li><strong>Desfechos</strong>: primário e secundários com resultados quantitativos (HR, IC, p-values), análises de subgrupo.</li>
-            <li><strong>Toxicidade</strong>: eventos ≥G3 quantificados por evento, eventos de interesse específico (xerostomia, mielotoxicidade, hepatotoxicidade, SOS, hipotireoidismo).</li>
-            <li><strong>Impacto</strong>: regulatório (FDA, EMA, ANVISA), inclusão em diretrizes (NCCN, EAU, ESMO), comentário prático e limitações.</li>
+            <li data-i18n-html="ab.metodLi1"><strong>Identificação</strong>: nome, acrônimo completo, NCT, sponsor, fase, desenho, centros, período de recrutamento.</li>
+            <li data-i18n-html="ab.metodLi2"><strong>População</strong>: indicação clínica, critérios de inclusão e exclusão, estratificadores, características basais, n planejado / randomizado / analisado.</li>
+            <li data-i18n-html="ab.metodLi3"><strong>Critérios moleculares e imagem</strong>: PSMA-PET (com SUV thresholds, critério VISION), Krenning score, biomarcadores (PSA, CgA, ctDNA, HRR, KRAS).</li>
+            <li data-i18n-html="ab.metodLi4"><strong>Intervenção e radiofarmácia</strong>: radiofármaco específico, esquema completo (atividade × ciclos × intervalo), atividade cumulativa típica, preparo e pré-medicação contextualizada por tipo de radiofármaco, comparador detalhado.</li>
+            <li data-i18n-html="ab.metodLi5"><strong>Desenho estatístico</strong>: hipótese (poder, HR esperado, α), tipo de análise (ITT/PP, ajuste cross-over IPCW/RPSFT).</li>
+            <li data-i18n-html="ab.metodLi6"><strong>Desfechos</strong>: primário e secundários com resultados quantitativos (HR, IC, p-values), análises de subgrupo.</li>
+            <li data-i18n-html="ab.metodLi7"><strong>Toxicidade</strong>: eventos ≥G3 quantificados por evento, eventos de interesse específico (xerostomia, mielotoxicidade, hepatotoxicidade, SOS, hipotireoidismo).</li>
+            <li data-i18n-html="ab.metodLi8"><strong>Impacto</strong>: regulatório (FDA, EMA, ANVISA), inclusão em diretrizes (NCCN, EAU, ESMO), comentário prático e limitações.</li>
           </ul>
-          <p>Quando há atualização posterior à publicação inicial — como o OS final do PSMAfore (2025), o follow-up do NETTER-1 (Lancet Oncol 2021) ou os dados ESMO 2025 do PSMAddition — a tabela apresenta a <strong>versão mais recente</strong>. Estudos sem dados publicados estão sinalizados como "em andamento" sem invenção de informações.</p>
+          <p data-i18n-html="ab.metodP2">Quando há atualização posterior à publicação inicial — como o OS final do PSMAfore (2025), o follow-up do NETTER-1 (Lancet Oncol 2021) ou os dados ESMO 2025 do PSMAddition — a tabela apresenta a <strong>versão mais recente</strong>. Estudos sem dados publicados estão sinalizados como "em andamento" sem invenção de informações.</p>
         </section>
 
         <section id="pilares">
-          <h2><span class="icon-box"><i data-lucide="layers" style="width:16px;height:16px"></i></span> Pilares conceituais</h2>
-          <p>O design da plataforma reflete a metáfora orbital da identidade visual — evidência que orbita o paciente e o alvo molecular como centros gravitacionais.</p>
+          <h2><span class="icon-box"><i data-lucide="layers" style="width:16px;height:16px"></i></span> <span data-i18n="ab.pilaresH">Pilares conceituais</span></h2>
+          <p data-i18n="ab.pilaresP">O design da plataforma reflete a metáfora orbital da identidade visual — evidência que orbita o paciente e o alvo molecular como centros gravitacionais.</p>
           <div class="pillars-grid">
             <div class="pillar-card">
               <div class="pillar-icon">
@@ -367,8 +371,8 @@
                   <circle cx="28" cy="28" r="3" fill="currentColor"/>
                 </svg>
               </div>
-              <h4>Elegant motion</h4>
-              <p>Movimento orbital elíptico = terapia guiada e progresso contínuo. Adaptabilidade e cuidado em cada trajetória.</p>
+              <h4 data-i18n="ab.pilar1H">Elegant motion</h4>
+              <p data-i18n="ab.pilar1P">Movimento orbital elíptico = terapia guiada e progresso contínuo. Adaptabilidade e cuidado em cada trajetória.</p>
             </div>
             <div class="pillar-card">
               <div class="pillar-icon">
@@ -377,8 +381,8 @@
                   <circle cx="28" cy="28" r="14" stroke="currentColor" stroke-width="1.2" stroke-dasharray="2 3" opacity="0.55"/>
                 </svg>
               </div>
-              <h4>Precision orbit</h4>
-              <p>Núcleo amber = paciente e alvo molecular. Anéis ao redor = precisão, dados e evidência.</p>
+              <h4 data-i18n="ab.pilar2H">Precision orbit</h4>
+              <p data-i18n="ab.pilar2P">Núcleo amber = paciente e alvo molecular. Anéis ao redor = precisão, dados e evidência.</p>
             </div>
             <div class="pillar-card">
               <div class="pillar-icon" style="color: var(--teal)">
@@ -387,8 +391,8 @@
                   <circle cx="48" cy="28" r="3.5" fill="currentColor"/>
                 </svg>
               </div>
-              <h4>Clarity & focus</h4>
-              <p>Forma orbital aberta transmite clareza e descoberta moderna. Foco em ensaios pacient-centric.</p>
+              <h4 data-i18n="ab.pilar3H">Clarity &amp; focus</h4>
+              <p data-i18n="ab.pilar3P">Forma orbital aberta transmite clareza e descoberta moderna. Foco em ensaios pacient-centric.</p>
             </div>
             <div class="pillar-card">
               <div class="pillar-icon">
@@ -396,33 +400,33 @@
                   <path d="M28 6 L31 25 L50 28 L31 31 L28 50 L25 31 L6 28 L25 25 Z" fill="currentColor" opacity="0.95"/>
                 </svg>
               </div>
-              <h4>Insight & impact</h4>
-              <p>Estrela representa breakthrough e busca pelo possível. Contraste de luz e espaço = esperança e impacto real.</p>
+              <h4 data-i18n="ab.pilar4H">Insight &amp; impact</h4>
+              <p data-i18n="ab.pilar4P">Estrela representa breakthrough e busca pelo possível. Contraste de luz e espaço = esperança e impacto real.</p>
             </div>
           </div>
         </section>
 
         <section id="fontes">
-          <h2><span class="icon-box"><i data-lucide="book-open" style="width:16px;height:16px"></i></span> Fontes e seleção</h2>
-          <p>Os dados são extraídos de publicações primárias <strong>peer-reviewed</strong> em periódicos de alto impacto (NEJM, Lancet, JCO, JNM, Annals of Oncology, Hepatology) e de apresentações em congressos majores (ASCO, ESMO, SNMMI, EANM, ENETS, AUA). Quando aplicável, atualizações em comunicados regulatórios (FDA, EMA) também são incorporadas.</p>
-          <p>Cada estudo da plataforma tem <strong>hyperlinks diretos</strong>:</p>
+          <h2><span class="icon-box"><i data-lucide="book-open" style="width:16px;height:16px"></i></span> <span data-i18n="ab.fontesH">Fontes e seleção</span></h2>
+          <p data-i18n-html="ab.fontesP1">Os dados são extraídos de publicações primárias <strong>peer-reviewed</strong> em periódicos de alto impacto (NEJM, Lancet, JCO, JNM, Annals of Oncology, Hepatology) e de apresentações em congressos majores (ASCO, ESMO, SNMMI, EANM, ENETS, AUA). Quando aplicável, atualizações em comunicados regulatórios (FDA, EMA) também são incorporadas.</p>
+          <p data-i18n-html="ab.fontesP2">Cada estudo da plataforma tem <strong>hyperlinks diretos</strong>:</p>
           <ul>
-            <li>Nome do estudo → <a href="https://pubmed.ncbi.nlm.nih.gov/" target="_blank" rel="noopener">PubMed</a> (PMID quando disponível, busca automática caso contrário).</li>
-            <li>NCT → <a href="https://clinicaltrials.gov/" target="_blank" rel="noopener">ClinicalTrials.gov</a> (registro oficial).</li>
+            <li data-i18n-html="ab.fontesLi1">Nome do estudo → <a href="https://pubmed.ncbi.nlm.nih.gov/" target="_blank" rel="noopener">PubMed</a> (PMID quando disponível, busca automática caso contrário).</li>
+            <li data-i18n-html="ab.fontesLi2">NCT → <a href="https://clinicaltrials.gov/" target="_blank" rel="noopener">ClinicalTrials.gov</a> (registro oficial).</li>
           </ul>
-          <p>Para diretrizes oficiais, sempre consulte:</p>
+          <p data-i18n="ab.fontesP3">Para diretrizes oficiais, sempre consulte:</p>
           <ul>
-            <li><a href="https://www.nccn.org" target="_blank" rel="noopener">NCCN Guidelines</a> — National Comprehensive Cancer Network</li>
-            <li><a href="https://www.esmo.org/guidelines" target="_blank" rel="noopener">ESMO Guidelines</a> — European Society for Medical Oncology</li>
-            <li><a href="https://uroweb.org/guidelines" target="_blank" rel="noopener">EAU Guidelines</a> — European Association of Urology</li>
-            <li><a href="https://www.enets.org" target="_blank" rel="noopener">ENETS Guidelines</a> — para tumores neuroendócrinos</li>
-            <li><a href="https://www.snmmi.org" target="_blank" rel="noopener">SNMMI</a> e <a href="https://www.eanm.org" target="_blank" rel="noopener">EANM</a> — para procedimentos de medicina nuclear</li>
+            <li data-i18n-html="ab.fontesGl1"><a href="https://www.nccn.org" target="_blank" rel="noopener">NCCN Guidelines</a> — National Comprehensive Cancer Network</li>
+            <li data-i18n-html="ab.fontesGl2"><a href="https://www.esmo.org/guidelines" target="_blank" rel="noopener">ESMO Guidelines</a> — European Society for Medical Oncology</li>
+            <li data-i18n-html="ab.fontesGl3"><a href="https://uroweb.org/guidelines" target="_blank" rel="noopener">EAU Guidelines</a> — European Association of Urology</li>
+            <li data-i18n-html="ab.fontesGl4"><a href="https://www.enets.org" target="_blank" rel="noopener">ENETS Guidelines</a> — para tumores neuroendócrinos</li>
+            <li data-i18n-html="ab.fontesGl5"><a href="https://www.snmmi.org" target="_blank" rel="noopener">SNMMI</a> e <a href="https://www.eanm.org" target="_blank" rel="noopener">EANM</a> — para procedimentos de medicina nuclear</li>
           </ul>
         </section>
 
         <section id="disclaimer">
-          <h2><span class="icon-box"><i data-lucide="alert-triangle" style="width:16px;height:16px"></i></span> Aviso clínico</h2>
-          <div class="disclaimer">
+          <h2><span class="icon-box"><i data-lucide="alert-triangle" style="width:16px;height:16px"></i></span> <span data-i18n="ab.disclaimerH">Aviso clínico</span></h2>
+          <div class="disclaimer" data-i18n-html="ab.disclaimerBody">
             <strong>⚠ Esta plataforma é uma ferramenta educacional e de revisão científica rápida.</strong>
             Os dados são extraídos e revisados com rigor a partir das publicações primárias, mas <strong>não substituem</strong> a leitura completa dos artigos originais nem as diretrizes oficiais (NCCN, EAU, ESMO, ENETS, EANM, SNMMI).
             Decisões clínicas devem sempre considerar o contexto individual do paciente, o protocolo institucional, a disponibilidade local de medicamentos e tecnologias, e o julgamento clínico do time multidisciplinar.
@@ -431,82 +435,82 @@
         </section>
 
         <section id="glossario">
-          <h2><span class="icon-box"><i data-lucide="book-marked" style="width:16px;height:16px"></i></span> Glossário</h2>
-          <p>Termos e siglas frequentes na plataforma. Use Ctrl+F para encontrar rapidamente.</p>
+          <h2><span class="icon-box"><i data-lucide="book-marked" style="width:16px;height:16px"></i></span> <span data-i18n="ab.glossH">Glossário</span></h2>
+          <p data-i18n="ab.glossP">Termos e siglas frequentes na plataforma. Use Ctrl+F para encontrar rapidamente.</p>
           <div class="glossary">
             <table>
               <thead>
-                <tr><th>Sigla / Termo</th><th>Definição</th></tr>
+                <tr><th data-i18n="ab.glossThTerm">Sigla / Termo</th><th data-i18n="ab.glossThDef">Definição</th></tr>
               </thead>
               <tbody>
-                <tr><td>ADT</td><td>Androgen deprivation therapy (privação androgênica).</td></tr>
-                <tr><td>ARPi</td><td>Androgen receptor pathway inhibitor: abiraterona, enzalutamida, apalutamida, darolutamida.</td></tr>
-                <tr><td>BCR</td><td>Recidiva bioquímica (PSA).</td></tr>
-                <tr><td>BCLC</td><td>Barcelona Clinic Liver Cancer (estadiamento HCC).</td></tr>
-                <tr><td>CHAARTED</td><td>Critério de volume em mHSPC: alto = ≥4 mets ósseas com ≥1 fora de coluna/pelve, ou viscerais.</td></tr>
-                <tr><td>CR / PR / SD / PD</td><td>Resposta completa / parcial / estável / progressiva (RECIST).</td></tr>
-                <tr><td>ctDNA</td><td>DNA tumoral circulante.</td></tr>
-                <tr><td>DCR</td><td>Disease control rate (CR + PR + SD).</td></tr>
-                <tr><td>DOTATATE</td><td>Análogo de octreotida (DOTA-Tyr3-octreotate); alvo SSTR-2.</td></tr>
-                <tr><td>Edotreotide</td><td>DOTATOC = DOTA-Tyr3-octreotide; alvo SSTR-2.</td></tr>
-                <tr><td>FDG</td><td>18F-fluorodesoxiglicose (PET metabólico).</td></tr>
-                <tr><td>GEP-NET</td><td>Tumor neuroendócrino gastroenteropancreático.</td></tr>
-                <tr><td>HCC</td><td>Carcinoma hepatocelular.</td></tr>
-                <tr><td>HRR</td><td>Homologous recombination repair (BRCA1/2, ATM etc.).</td></tr>
-                <tr><td>HRLPC</td><td>Câncer de próstata localizado de alto risco.</td></tr>
-                <tr><td>hPFS</td><td>Hepatic progression-free survival (em mCRC pós-TARE).</td></tr>
-                <tr><td>ICI</td><td>Inibidor de checkpoint imunológico.</td></tr>
-                <tr><td>IPCW / RPSFT</td><td>Métodos de ajuste de OS para cross-over.</td></tr>
-                <tr><td>Krenning score</td><td>Escala 0-4 de captação SSTR (≥3 = ≥ fígado).</td></tr>
-                <tr><td>LAR</td><td>Long-acting release (octreotide depot).</td></tr>
-                <tr><td>mCRC</td><td>Câncer colorretal metastático.</td></tr>
-                <tr><td>mCRPC</td><td>Próstata metastático resistente à castração.</td></tr>
-                <tr><td>mHSPC</td><td>Próstata metastático hormônio-sensível.</td></tr>
-                <tr><td>MTD / RP2D</td><td>Maximum tolerated dose / Recommended phase 2 dose.</td></tr>
-                <tr><td>MAA</td><td>99mTc-macroagregados de albumina (mapeamento angio Y-90).</td></tr>
-                <tr><td>OS</td><td>Sobrevida global.</td></tr>
-                <tr><td>ORR</td><td>Taxa de resposta objetiva (CR + PR).</td></tr>
-                <tr><td>pCR</td><td>Resposta patológica completa.</td></tr>
-                <tr><td>PCWG3</td><td>Prostate Cancer Working Group 3 — critérios de resposta.</td></tr>
-                <tr><td>PDA / SDA</td><td>Personalized / Standard dosimetry approach (TARE Y-90).</td></tr>
-                <tr><td>PFS</td><td>Sobrevida livre de progressão.</td></tr>
-                <tr><td>PHEO/PGL (PPGL)</td><td>Feocromocitoma / paraganglioma.</td></tr>
-                <tr><td>PNET</td><td>Tumor neuroendócrino pancreático.</td></tr>
-                <tr><td>PRRT</td><td>Peptide receptor radionuclide therapy (177Lu-DOTATATE).</td></tr>
-                <tr><td>PSA50/80/90</td><td>Redução ≥50/80/90% do PSA basal.</td></tr>
-                <tr><td>PSMA</td><td>Prostate-specific membrane antigen.</td></tr>
-                <tr><td>rPFS</td><td>Radiographic progression-free survival.</td></tr>
-                <tr><td>RIT</td><td>Radioimunoterapia (anticorpo radiomarcado).</td></tr>
-                <tr><td>RLT</td><td>Radioligand therapy (radioligante).</td></tr>
-                <tr><td>RPT</td><td>Prostatectomia radical.</td></tr>
-                <tr><td>SBRT</td><td>Stereotactic body radiotherapy.</td></tr>
-                <tr><td>SoC</td><td>Standard of care.</td></tr>
-                <tr><td>SOS</td><td>Síndrome de obstrução sinusoidal hepática.</td></tr>
-                <tr><td>SSE / SSE-FS</td><td>Symptomatic skeletal event / SSE-free survival.</td></tr>
-                <tr><td>SSTR</td><td>Receptor de somatostatina (alvo de DOTATATE).</td></tr>
-                <tr><td>TARE / SIRT</td><td>Trans-arterial radioembolization / Selective internal radiation therapy (Y-90).</td></tr>
-                <tr><td>TACE / cTACE / DEB-TACE</td><td>Quimioembolização: convencional / drug-eluting beads.</td></tr>
-                <tr><td>TKI</td><td>Inibidor de tirosina-quinase.</td></tr>
-                <tr><td>TVP</td><td>Trombose de veia porta.</td></tr>
-                <tr><td>VHL</td><td>Gene Von Hippel-Lindau (mutado em ccRCC).</td></tr>
-                <tr><td>ECOG PS</td><td>Performance status do Eastern Cooperative Oncology Group (0-5).</td></tr>
+                <tr><td>ADT</td><td data-i18n="ab.gADT">Androgen deprivation therapy (privação androgênica).</td></tr>
+                <tr><td>ARPi</td><td data-i18n="ab.gARPi">Androgen receptor pathway inhibitor: abiraterona, enzalutamida, apalutamida, darolutamida.</td></tr>
+                <tr><td>BCR</td><td data-i18n="ab.gBCR">Recidiva bioquímica (PSA).</td></tr>
+                <tr><td>BCLC</td><td data-i18n="ab.gBCLC">Barcelona Clinic Liver Cancer (estadiamento HCC).</td></tr>
+                <tr><td>CHAARTED</td><td data-i18n="ab.gCHAARTED">Critério de volume em mHSPC: alto = ≥4 mets ósseas com ≥1 fora de coluna/pelve, ou viscerais.</td></tr>
+                <tr><td>CR / PR / SD / PD</td><td data-i18n="ab.gCRPR">Resposta completa / parcial / estável / progressiva (RECIST).</td></tr>
+                <tr><td>ctDNA</td><td data-i18n="ab.gctDNA">DNA tumoral circulante.</td></tr>
+                <tr><td>DCR</td><td data-i18n="ab.gDCR">Disease control rate (CR + PR + SD).</td></tr>
+                <tr><td>DOTATATE</td><td data-i18n="ab.gDOTATATE">Análogo de octreotida (DOTA-Tyr3-octreotate); alvo SSTR-2.</td></tr>
+                <tr><td>Edotreotide</td><td data-i18n="ab.gEdotreotide">DOTATOC = DOTA-Tyr3-octreotide; alvo SSTR-2.</td></tr>
+                <tr><td>FDG</td><td data-i18n="ab.gFDG">18F-fluorodesoxiglicose (PET metabólico).</td></tr>
+                <tr><td>GEP-NET</td><td data-i18n="ab.gGEPNET">Tumor neuroendócrino gastroenteropancreático.</td></tr>
+                <tr><td>HCC</td><td data-i18n="ab.gHCC">Carcinoma hepatocelular.</td></tr>
+                <tr><td>HRR</td><td data-i18n="ab.gHRR">Homologous recombination repair (BRCA1/2, ATM etc.).</td></tr>
+                <tr><td>HRLPC</td><td data-i18n="ab.gHRLPC">Câncer de próstata localizado de alto risco.</td></tr>
+                <tr><td>hPFS</td><td data-i18n="ab.ghPFS">Hepatic progression-free survival (em mCRC pós-TARE).</td></tr>
+                <tr><td>ICI</td><td data-i18n="ab.gICI">Inibidor de checkpoint imunológico.</td></tr>
+                <tr><td>IPCW / RPSFT</td><td data-i18n="ab.gIPCW">Métodos de ajuste de OS para cross-over.</td></tr>
+                <tr><td>Krenning score</td><td data-i18n="ab.gKrenning">Escala 0-4 de captação SSTR (≥3 = ≥ fígado).</td></tr>
+                <tr><td>LAR</td><td data-i18n="ab.gLAR">Long-acting release (octreotide depot).</td></tr>
+                <tr><td>mCRC</td><td data-i18n="ab.gmCRC">Câncer colorretal metastático.</td></tr>
+                <tr><td>mCRPC</td><td data-i18n="ab.gmCRPC">Próstata metastático resistente à castração.</td></tr>
+                <tr><td>mHSPC</td><td data-i18n="ab.gmHSPC">Próstata metastático hormônio-sensível.</td></tr>
+                <tr><td>MTD / RP2D</td><td data-i18n="ab.gMTD">Maximum tolerated dose / Recommended phase 2 dose.</td></tr>
+                <tr><td>MAA</td><td data-i18n="ab.gMAA">99mTc-macroagregados de albumina (mapeamento angio Y-90).</td></tr>
+                <tr><td>OS</td><td data-i18n="ab.gOS">Sobrevida global.</td></tr>
+                <tr><td>ORR</td><td data-i18n="ab.gORR">Taxa de resposta objetiva (CR + PR).</td></tr>
+                <tr><td>pCR</td><td data-i18n="ab.gpCR">Resposta patológica completa.</td></tr>
+                <tr><td>PCWG3</td><td data-i18n="ab.gPCWG3">Prostate Cancer Working Group 3 — critérios de resposta.</td></tr>
+                <tr><td>PDA / SDA</td><td data-i18n="ab.gPDA">Personalized / Standard dosimetry approach (TARE Y-90).</td></tr>
+                <tr><td>PFS</td><td data-i18n="ab.gPFS">Sobrevida livre de progressão.</td></tr>
+                <tr><td>PHEO/PGL (PPGL)</td><td data-i18n="ab.gPHEO">Feocromocitoma / paraganglioma.</td></tr>
+                <tr><td>PNET</td><td data-i18n="ab.gPNET">Tumor neuroendócrino pancreático.</td></tr>
+                <tr><td>PRRT</td><td data-i18n="ab.gPRRT">Peptide receptor radionuclide therapy (177Lu-DOTATATE).</td></tr>
+                <tr><td>PSA50/80/90</td><td data-i18n="ab.gPSA">Redução ≥50/80/90% do PSA basal.</td></tr>
+                <tr><td>PSMA</td><td data-i18n="ab.gPSMA">Prostate-specific membrane antigen.</td></tr>
+                <tr><td>rPFS</td><td data-i18n="ab.grPFS">Radiographic progression-free survival.</td></tr>
+                <tr><td>RIT</td><td data-i18n="ab.gRIT">Radioimunoterapia (anticorpo radiomarcado).</td></tr>
+                <tr><td>RLT</td><td data-i18n="ab.gRLT">Radioligand therapy (radioligante).</td></tr>
+                <tr><td>RPT</td><td data-i18n="ab.gRPT">Prostatectomia radical.</td></tr>
+                <tr><td>SBRT</td><td data-i18n="ab.gSBRT">Stereotactic body radiotherapy.</td></tr>
+                <tr><td>SoC</td><td data-i18n="ab.gSoC">Standard of care.</td></tr>
+                <tr><td>SOS</td><td data-i18n="ab.gSOS">Síndrome de obstrução sinusoidal hepática.</td></tr>
+                <tr><td>SSE / SSE-FS</td><td data-i18n="ab.gSSE">Symptomatic skeletal event / SSE-free survival.</td></tr>
+                <tr><td>SSTR</td><td data-i18n="ab.gSSTR">Receptor de somatostatina (alvo de DOTATATE).</td></tr>
+                <tr><td>TARE / SIRT</td><td data-i18n="ab.gTARE">Trans-arterial radioembolization / Selective internal radiation therapy (Y-90).</td></tr>
+                <tr><td>TACE / cTACE / DEB-TACE</td><td data-i18n="ab.gTACE">Quimioembolização: convencional / drug-eluting beads.</td></tr>
+                <tr><td>TKI</td><td data-i18n="ab.gTKI">Inibidor de tirosina-quinase.</td></tr>
+                <tr><td>TVP</td><td data-i18n="ab.gTVP">Trombose de veia porta.</td></tr>
+                <tr><td>VHL</td><td data-i18n="ab.gVHL">Gene Von Hippel-Lindau (mutado em ccRCC).</td></tr>
+                <tr><td>ECOG PS</td><td data-i18n="ab.gECOG">Performance status do Eastern Cooperative Oncology Group (0-5).</td></tr>
               </tbody>
             </table>
           </div>
         </section>
 
         <section id="contato">
-          <h2><span class="icon-box"><i data-lucide="mail" style="width:16px;height:16px"></i></span> Contato e contribuições</h2>
-          <p>O projeto é mantido por <strong>Marcos Oliveira</strong>, médico nuclear com foco em PET/CT, teranóstico e oncologia. Sugestões de novos estudos para inclusão, correções ou parcerias são bem-vindas.</p>
-          <p>Esta é a versão <strong>1.0</strong> da plataforma, atualizada em <strong>abril/2026</strong>. Próximas expansões previstas:</p>
+          <h2><span class="icon-box"><i data-lucide="mail" style="width:16px;height:16px"></i></span> <span data-i18n="ab.contatoH">Contato e contribuições</span></h2>
+          <p data-i18n-html="ab.contatoP1">O projeto é mantido por <strong>Marcos Oliveira</strong>, médico nuclear com foco em PET/CT, teranóstico e oncologia. Sugestões de novos estudos para inclusão, correções ou parcerias são bem-vindas.</p>
+          <p data-i18n-html="ab.contatoP2">Esta é a versão <strong>1.0</strong> da plataforma, atualizada em <strong>abril/2026</strong>. Próximas expansões previstas:</p>
           <ul>
-            <li>Imunoterapia em pulmão (CheckMate, KEYNOTE) e melanoma.</li>
-            <li>ADCs (antibody-drug conjugates) em mama (DESTINY-Breast).</li>
-            <li>Terapias-alvo em câncer renal e gástrico (mutações específicas).</li>
-            <li>Modo de busca avançada por mutação molecular.</li>
-            <li>Visualizações adicionais (forest plots interativos, timelines comparativas).</li>
+            <li data-i18n="ab.contatoLi1">Imunoterapia em pulmão (CheckMate, KEYNOTE) e melanoma.</li>
+            <li data-i18n="ab.contatoLi2">ADCs (antibody-drug conjugates) em mama (DESTINY-Breast).</li>
+            <li data-i18n="ab.contatoLi3">Terapias-alvo em câncer renal e gástrico (mutações específicas).</li>
+            <li data-i18n="ab.contatoLi4">Modo de busca avançada por mutação molecular.</li>
+            <li data-i18n="ab.contatoLi5">Visualizações adicionais (forest plots interativos, timelines comparativas).</li>
           </ul>
-          <p>Para feedback ou sugestões: <a href="mailto:marcosmdsoliveira@gmail.com">marcosmdsoliveira@gmail.com</a>.</p>
+          <p data-i18n-html="ab.contatoP3">Para feedback ou sugestões: <a href="mailto:marcosmdsoliveira@gmail.com">marcosmdsoliveira@gmail.com</a>.</p>
         </section>
 
       </div>
@@ -518,13 +522,27 @@
 <footer class="site-footer">
   <div class="container">
     <div class="footer-bottom">
-      <span>© 2026 TheraTrials Oncology · v1.0 · 421 estudos analisados</span>
-      <span>elegance · clarity · impact</span>
+      <span data-i18n="ab.ft1">© 2026 TheraTrials Oncology · v1.0 · 421 estudos analisados</span>
+      <span data-i18n="ab.ft2">elegance · clarity · impact</span>
     </div>
   </div>
 </footer>
 
-<script src="assets/js/common.js"></script>
+<script src="assets/js/i18n.js"></script>
+<script src="assets/lang/pt-br.js"></script>
+<script src="assets/lang/en.js"></script>
 <script>
-  document.addEventListener('DOMContent
+  document.addEventListener('DOMContentLoaded', () => {
+    if (typeof lucide !== 'undefined') lucide.createIcons();
+  });
+  // Re-render Lucide icons after a language switch (data-i18n-html may replace icon nodes)
+  window.addEventListener('langchange', () => {
+    if (typeof lucide !== 'undefined') lucide.createIcons();
+  });
+</script>
+
+<script src="assets/js/common.js" defer></script>
 <script src="assets/js/pwa-install.js" defer></script>
+
+</body>
+</html>
