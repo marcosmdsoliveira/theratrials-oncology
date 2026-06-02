@@ -410,7 +410,20 @@
   .crit-placeholder ul { display: inline-flex; flex-wrap: wrap; gap: 0.4rem; list-style: none; padding: 0; margin: 0.85rem 0 0; justify-content: center; }
   .crit-placeholder li { font-family: var(--font-mono); font-size: 0.72rem; padding: 0.25rem 0.6rem; background: var(--graphite-3); border-radius: 4px; color: var(--off-white); }
 
-
+  /* Calculadoras (dose, decaimento, renal): no celular, empilha os campos em coluna
+     para evitar sobreposicao — os campos usam flex:0 0 Npx (largura fixa) e o input
+     type="time" do iOS tem largura minima nativa, transbordando sobre o campo ao lado. */
+  @media (max-width: 600px) {
+    .tool div[style*="align-items:flex-end"] {
+      flex-direction: column !important;
+      align-items: stretch !important;
+    }
+    .tool div[style*="align-items:flex-end"] > div {
+      flex: 1 1 auto !important;
+      width: 100% !important;
+      min-width: 0 !important;
+    }
+  }
 </style>
   <script defer src="https://cloud.umami.is/script.js" data-website-id="3c576b68-e2b3-4982-82e7-688e5a8adf58"></script>
 </head>
