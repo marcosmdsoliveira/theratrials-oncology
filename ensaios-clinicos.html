@@ -998,9 +998,11 @@
             <i data-lucide="phone" style="width:14px;height:14px"></i>
             Registro de contato oficial
           </a>
-          <button type="button" class="contact" @click="openContact(selected)">
-            <i data-lucide="mail" style="width:14px;height:14px"></i>
-            Entrar em contato com o pesquisador
+          <button type="button" class="contact" disabled aria-disabled="true"
+                  title="Em breve — disponível quando firmarmos parcerias com os centros recrutadores"
+                  style="opacity:0.55; cursor:not-allowed">
+            <i data-lucide="clock" style="width:14px;height:14px"></i>
+            Contato com o pesquisador · em breve
           </button>
           <a href="database.html" class="ghost">
             <i data-lucide="database" style="width:14px;height:14px"></i>
