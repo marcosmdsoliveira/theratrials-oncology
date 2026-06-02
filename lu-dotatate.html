@@ -127,31 +127,35 @@
     </a>
     <button class="nav-toggle" aria-label="Menu" onclick="this.parentElement.querySelector('.nav').classList.toggle('open')"><i data-lucide="menu" style="width:18px;height:18px"></i></button>
     <nav class="nav">
-      <a href="index.html">Home</a>
-      <a href="database.html">Database</a>
-      <a href="trial-matcher.html">Trial Matcher</a>
-      <a href="ensaios-clinicos.html">Ensaios clínicos</a>
-      <a href="explorer.html">Explorer</a>
-      <a href="tumor-boards.html">Tumor boards</a>
-      <a href="radiofarmacos.html">Radiofármacos</a>
-      <a href="guidelines.html">Guidelines</a>
-      <a href="ferramentas.html">Ferramentas</a>
-      <a href="modalidades.html">Modalidades</a>
-      <a href="fundamentos.html">Fundamentos</a>
-      <a href="about.html">Sobre</a>
+      <a href="index.html" data-i18n="nav.home">Home</a>
+      <a href="database.html" data-i18n="nav.database">Database</a>
+      <a href="trial-matcher.html" data-i18n="nav.trialMatcher">Trial Matcher</a>
+      <a href="ensaios-clinicos.html" data-i18n="nav.ensaios">Ensaios clínicos</a>
+      <a href="explorer.html" data-i18n="nav.explorer">Explorer</a>
+      <a href="tumor-boards.html" data-i18n="nav.tumorBoards">Tumor boards</a>
+      <a href="radiofarmacos.html" data-i18n="nav.radiofarmacos">Radiofármacos</a>
+      <a href="guidelines.html" data-i18n="nav.guidelines">Guidelines</a>
+      <a href="ferramentas.html" data-i18n="nav.ferramentas">Ferramentas</a>
+      <a href="modalidades.html" data-i18n="nav.modalidades">Modalidades</a>
+      <a href="fundamentos.html" data-i18n="nav.fundamentos">Fundamentos</a>
+      <a href="about.html" data-i18n="nav.sobre">Sobre</a>
     </nav>
+    <button class="lang-toggle" onclick="toggleLang()" title="Switch to English" aria-label="Switch language">
+      <i data-lucide="globe" style="width:14px;height:14px"></i>
+      <span class="lang-label">EN</span>
+    </button>
   </div>
 </header>
 
 <!-- ============== HERO ============== -->
 <section class="rf-hero">
   <div class="container">
-    <span class="rf-eyebrow"><i data-lucide="atom" style="width:12px;height:12px"></i> Radiofármaco · Beta-emissor · PRRT</span>
+    <span class="rf-eyebrow"><i data-lucide="atom" style="width:12px;height:12px"></i> <span data-i18n="ld.eyebrow">Radiofármaco · Beta-emissor · PRRT</span></span>
     <h1 class="rf-title">
       <span class="iso-up">177</span>Lu-DOTATATE
       <br><span class="accent">PRRT</span>
     </h1>
-    <p class="rf-subtitle">
+    <p class="rf-subtitle" data-i18n="ld.subtitle">
       Peptídeo análogo da somatostatina ligado ao chelator DOTA e marcado com lutécio-177. Aprovado pelo FDA em janeiro de 2018 para tumores neuroendócrinos gastroenteropancreáticos SSTR-positivos. Foi o primeiro radioligante terapêutico moderno a obter aprovação ampla — abrindo caminho para o que hoje chamamos de teranóstica.
     </p>
 
@@ -159,15 +163,15 @@
       <div class="iso-symbol">
         <span class="iso-mass">177</span>
         <span class="iso-element">Lu</span>
-        <span class="iso-name">Lutécio</span>
+        <span class="iso-name" data-i18n="ld.isoName">Lutécio</span>
       </div>
       <div class="iso-grid">
-        <div class="item"><div class="lbl">Meia-vida</div><div class="val">6.65 d</div></div>
-        <div class="item"><div class="lbl">Decaimento</div><div class="val">β⁻ + γ</div></div>
-        <div class="item"><div class="lbl">Energia β máx</div><div class="val">498 keV</div></div>
-        <div class="item"><div class="lbl">Alcance β máx</div><div class="val">~ 2 mm</div></div>
-        <div class="item"><div class="lbl">γ útil (SPECT)</div><div class="val">208 keV (10%)</div></div>
-        <div class="item"><div class="lbl">Vetor</div><div class="val">DOTA-Tyr<sup>3</sup>-octreotato</div></div>
+        <div class="item"><div class="lbl" data-i18n="ld.isoHalfLifeL">Meia-vida</div><div class="val">6.65 d</div></div>
+        <div class="item"><div class="lbl" data-i18n="ld.isoDecayL">Decaimento</div><div class="val">β⁻ + γ</div></div>
+        <div class="item"><div class="lbl" data-i18n="ld.isoEbL">Energia β máx</div><div class="val">498 keV</div></div>
+        <div class="item"><div class="lbl" data-i18n="ld.isoRangeBL">Alcance β máx</div><div class="val">~ 2 mm</div></div>
+        <div class="item"><div class="lbl" data-i18n="ld.isoGammaL">γ útil (SPECT)</div><div class="val">208 keV (10%)</div></div>
+        <div class="item"><div class="lbl" data-i18n="ld.isoVectorL">Vetor</div><div class="val" data-i18n-html="ld.isoVectorV">DOTA-Tyr<sup>3</sup>-octreotato</div></div>
       </div>
     </div>
   </div>
@@ -180,17 +184,17 @@
 
       <!-- TOC -->
       <aside class="toc">
-        <h4>Nesta página</h4>
-        <a href="#cronologia">Cronologia</a>
-        <a href="#mecanismo">Mecanismo molecular</a>
-        <a href="#esquema">Esquema terapêutico</a>
-        <a href="#nefroprotecao">Nefroproteção</a>
-        <a href="#imagem">Imagem teranóstica</a>
-        <a href="#ensaios">Ensaios pivotais</a>
-        <a href="#dosimetria">Dosimetria</a>
-        <a href="#toxicidade">Toxicidade</a>
-        <a href="#perspectivas">Perspectivas</a>
-        <a href="#proximos">Continue lendo</a>
+        <h4 data-i18n="ld.tocTitle">Nesta página</h4>
+        <a href="#cronologia" data-i18n="ld.toc1">Cronologia</a>
+        <a href="#mecanismo" data-i18n="ld.toc2">Mecanismo molecular</a>
+        <a href="#esquema" data-i18n="ld.toc3">Esquema terapêutico</a>
+        <a href="#nefroprotecao" data-i18n="ld.toc4">Nefroproteção</a>
+        <a href="#imagem" data-i18n="ld.toc5">Imagem teranóstica</a>
+        <a href="#ensaios" data-i18n="ld.toc6">Ensaios pivotais</a>
+        <a href="#dosimetria" data-i18n="ld.toc7">Dosimetria</a>
+        <a href="#toxicidade" data-i18n="ld.toc8">Toxicidade</a>
+        <a href="#perspectivas" data-i18n="ld.toc9">Perspectivas</a>
+        <a href="#proximos" data-i18n="ld.toc10">Continue lendo</a>
       </aside>
 
       <!-- CONTEÚDO -->
@@ -198,69 +202,69 @@
 
         <!-- ============== CRONOLOGIA ============== -->
         <div id="cronologia" class="rf-section">
-          <h2><span class="num">01</span> Cronologia</h2>
-          <p class="lead">Da descoberta da somatostatina em 1972 ao primeiro radioligante terapêutico aprovado para NETs em 2018: 46 anos de evolução paralela em endocrinologia, química peptídica e medicina nuclear.</p>
+          <h2><span class="num">01</span> <span data-i18n="ld.s1h">Cronologia</span></h2>
+          <p class="lead" data-i18n="ld.s1lead">Da descoberta da somatostatina em 1972 ao primeiro radioligante terapêutico aprovado para NETs em 2018: 46 anos de evolução paralela em endocrinologia, química peptídica e medicina nuclear.</p>
 
           <div class="timeline">
             <div class="tl-item">
               <div class="tl-dot">1972</div>
-              <div class="tl-card">
+              <div class="tl-card" data-i18n-html="ld.tl1">
                 <h4>Descoberta da somatostatina</h4>
                 <p>Brazeau, Guillemin e cols. isolam o peptídeo de 14 aminoácidos do hipotálamo ovino. Em 1979 o grupo de Schally consegue sequenciar e sintetizar análogos estáveis (octreotida).</p>
               </div>
             </div>
             <div class="tl-item">
               <div class="tl-dot">1989</div>
-              <div class="tl-card">
+              <div class="tl-card" data-i18n-html="ld.tl2">
                 <h4>OctreoScan · primeira imagem SSTR</h4>
                 <p>Krenning (Erasmus, Roterdã) introduz o <sup>111</sup>In-DTPA-D-Phe<sup>1</sup>-octreotida. Pela primeira vez é possível visualizar receptores de somatostatina em pacientes com NET. Aprovado FDA em 1994.</p>
               </div>
             </div>
             <div class="tl-item">
               <div class="tl-dot">1996</div>
-              <div class="tl-card">
+              <div class="tl-card" data-i18n-html="ld.tl3">
                 <h4>Primeira PRRT com <sup>111</sup>In-octreotida</h4>
                 <p>Krenning e Kwekkeboom usam altas atividades de <sup>111</sup>In-octreotida com elétrons Auger. Respostas modestas mas prova de conceito sólida. Os elétrons Auger com curto alcance limitavam a eficácia.</p>
               </div>
             </div>
             <div class="tl-item">
               <div class="tl-dot period"><span>2000</span><span>2005</span></div>
-              <div class="tl-card">
+              <div class="tl-card" data-i18n-html="ld.tl4">
                 <h4>Era <sup>90</sup>Y-DOTATOC e desenvolvimento do <sup>177</sup>Lu-DOTATATE</h4>
                 <p>Erasmus, Basel e Heidelberg evoluem para <sup>90</sup>Y-DOTATOC (β⁻ de alta energia, alcance maior — bom para tumores grandes mas com toxicidade renal). O <sup>177</sup>Lu-DOTATATE entra como alternativa com perfil renal melhor e boa cobertura de tumores pequenos.</p>
               </div>
             </div>
             <div class="tl-item">
               <div class="tl-dot">2008</div>
-              <div class="tl-card">
+              <div class="tl-card" data-i18n-html="ld.tl5">
                 <h4>Protocolo Erasmus consolidado</h4>
                 <p>Kwekkeboom publica série de &gt;500 pacientes tratados em Roterdã com 7,4 GBq × 4 ciclos a cada 8 semanas, com infusão de aminoácidos. Resposta objetiva 30%, PFS mediana ~33 meses.</p>
               </div>
             </div>
             <div class="tl-item">
               <div class="tl-dot">2017</div>
-              <div class="tl-card">
+              <div class="tl-card" data-i18n-html="ld.tl6">
                 <h4>NETTER-1 (NEJM)</h4>
                 <p>Strosberg e cols. publicam o estudo fase 3 randomizado em NETs midgut progressivos: PFS não atingida vs 8,5 m com octreotida 60 mg, ORR 18 vs 3%. Principal evidência regulatória.</p>
               </div>
             </div>
             <div class="tl-item">
               <div class="tl-dot">2018</div>
-              <div class="tl-card">
+              <div class="tl-card" data-i18n-html="ld.tl7">
                 <h4>Aprovação FDA da PRRT (177Lu-DOTATATE) · 26 jan 2018</h4>
                 <p>Primeira aprovação ampla de radiofármaco terapêutico moderno. Indicado para GEP-NET SSTR-positivos em adultos. Aprovação EMA havia sido em set/2017.</p>
               </div>
             </div>
             <div class="tl-item">
               <div class="tl-dot">2024</div>
-              <div class="tl-card">
+              <div class="tl-card" data-i18n-html="ld.tl8">
                 <h4>NETTER-2 (Lancet) — primeira linha em G2/G3</h4>
                 <p>Singh e cols.: GEP-NETs G2/G3 (Ki-67 10-55%), Lu-DOTATATE + octreotida 1L vs octreotida alta-dose. PFS 22,8 vs 8,5 m. Mudou paradigma de uso só em segunda linha.</p>
               </div>
             </div>
             <div class="tl-item">
               <div class="tl-dot period"><span>2024</span><span>2025</span></div>
-              <div class="tl-card">
+              <div class="tl-card" data-i18n-html="ld.tl9">
                 <h4>COMPETE, COMPOSE, OCLURANDOM</h4>
                 <p>COMPETE valida vs everolimus em G1/G2 GEP-NET. COMPOSE testa em G2/G3 vs quimioterapia FOLFOX ou CAPTEM. OCLURANDOM vs sunitinib em pNET. Posicionamento competitivo com terapias-alvo.</p>
               </div>
@@ -280,8 +284,8 @@
 
         <!-- ============== MECANISMO ============== -->
         <div id="mecanismo" class="rf-section">
-          <h2><span class="num">02</span> Mecanismo molecular</h2>
-          <p class="lead">O octreotato se liga ao receptor de somatostatina tipo 2 (SSTR2), abundantemente expresso em NETs bem-diferenciados. O complexo é internalizado e o <sup>177</sup>Lu emite radiação β no compartimento intracelular.</p>
+          <h2><span class="num">02</span> <span data-i18n="ld.s2h">Mecanismo molecular</span></h2>
+          <p class="lead" data-i18n-html="ld.s2lead">O octreotato se liga ao receptor de somatostatina tipo 2 (SSTR2), abundantemente expresso em NETs bem-diferenciados. O complexo é internalizado e o <sup>177</sup>Lu emite radiação β no compartimento intracelular.</p>
 
           <div class="mech-diagram">
             <img src="assets/img/lu-dotatate-mecanismo.png"
@@ -292,40 +296,40 @@
             <div class="mech-stages">
               <div class="mech-stage">
                 <div class="mech-num">1</div>
-                <h5>Ligação ao SSTR2</h5>
-                <p>O <sup>177</sup>Lu-DOTATATE reconhece e se liga aos receptores de somatostatina, principalmente o SSTR2, frequentemente superexpresso na membrana das células tumorais neuroendócrinas.</p>
+                <h5 data-i18n="ld.s2m1L">Ligação ao SSTR2</h5>
+                <p data-i18n-html="ld.s2m1T">O <sup>177</sup>Lu-DOTATATE reconhece e se liga aos receptores de somatostatina, principalmente o SSTR2, frequentemente superexpresso na membrana das células tumorais neuroendócrinas.</p>
               </div>
               <div class="mech-stage">
                 <div class="mech-num">2</div>
-                <h5>Internalização</h5>
-                <p>Após a ligação ao receptor, o complexo SSTR2–radioligante é internalizado por endocitose mediada por receptor, com formação de vesículas intracelulares.</p>
+                <h5 data-i18n="ld.s2m2L">Internalização</h5>
+                <p data-i18n="ld.s2m2T">Após a ligação ao receptor, o complexo SSTR2–radioligante é internalizado por endocitose mediada por receptor, com formação de vesículas intracelulares.</p>
               </div>
               <div class="mech-stage">
                 <div class="mech-num">3</div>
-                <h5>Retenção endossomo-lisossomal</h5>
-                <p>O complexo internalizado é direcionado para compartimentos endossomais e lisossomais, onde o radioligante permanece retido no interior da célula tumoral.</p>
+                <h5 data-i18n="ld.s2m3L">Retenção endossomo-lisossomal</h5>
+                <p data-i18n="ld.s2m3T">O complexo internalizado é direcionado para compartimentos endossomais e lisossomais, onde o radioligante permanece retido no interior da célula tumoral.</p>
               </div>
               <div class="mech-stage">
                 <div class="mech-num">4</div>
-                <h5>Emissão β⁻ terapêutica</h5>
-                <p>O <sup>177</sup>Lu emite partículas beta menos, capazes de depositar energia no interior da célula-alvo e no microambiente tumoral adjacente.</p>
+                <h5 data-i18n="ld.s2m4L">Emissão β⁻ terapêutica</h5>
+                <p data-i18n-html="ld.s2m4T">O <sup>177</sup>Lu emite partículas beta menos, capazes de depositar energia no interior da célula-alvo e no microambiente tumoral adjacente.</p>
               </div>
               <div class="mech-stage">
                 <div class="mech-num">5</div>
-                <h5>Dano ao DNA</h5>
-                <p>A radiação induz dano direto e indireto ao DNA, incluindo quebras de dupla fita, estresse oxidativo e falha de reparo celular, levando à morte tumoral.</p>
+                <h5 data-i18n="ld.s2m5L">Dano ao DNA</h5>
+                <p data-i18n="ld.s2m5T">A radiação induz dano direto e indireto ao DNA, incluindo quebras de dupla fita, estresse oxidativo e falha de reparo celular, levando à morte tumoral.</p>
               </div>
               <div class="mech-stage">
                 <div class="mech-num">6</div>
-                <h5>Efeito cross-fire</h5>
-                <p>O alcance tecidual da radiação beta permite atingir células vizinhas, inclusive com baixa ou ausente expressão de SSTR2, ampliando o efeito terapêutico em tumores heterogêneos. A emissão gama do <sup>177</sup>Lu permite imagem pós-terapia e avaliação da distribuição do radiofármaco.</p>
+                <h5 data-i18n="ld.s2m6L">Efeito cross-fire</h5>
+                <p data-i18n-html="ld.s2m6T">O alcance tecidual da radiação beta permite atingir células vizinhas, inclusive com baixa ou ausente expressão de SSTR2, ampliando o efeito terapêutico em tumores heterogêneos. A emissão gama do <sup>177</sup>Lu permite imagem pós-terapia e avaliação da distribuição do radiofármaco.</p>
               </div>
             </div>
           </div>
 
           <div class="key-fact">
-            <div class="lbl">SSTR2 e diferenciação tumoral</div>
-            <p>A expressão de SSTR2 cai conforme aumenta o Ki-67 e a perda de diferenciação. Tumores G1 (Ki-67 &lt;3%) tipicamente expressam SSTR2 em 80-90% dos casos, G2 (Ki-67 3-20%) em ~70%, G3 (Ki-67 &gt;20% bem-diferenciado) em ~50%, e NEC mal-diferenciados em &lt;30%. O <sup>68</sup>Ga-DOTATATE PET/CT é o teste obrigatório de seleção.</p>
+            <div class="lbl" data-i18n="ld.s2kfL">SSTR2 e diferenciação tumoral</div>
+            <p data-i18n-html="ld.s2kfT">A expressão de SSTR2 cai conforme aumenta o Ki-67 e a perda de diferenciação. Tumores G1 (Ki-67 &lt;3%) tipicamente expressam SSTR2 em 80-90% dos casos, G2 (Ki-67 3-20%) em ~70%, G3 (Ki-67 &gt;20% bem-diferenciado) em ~50%, e NEC mal-diferenciados em &lt;30%. O <sup>68</sup>Ga-DOTATATE PET/CT é o teste obrigatório de seleção.</p>
           </div>
         </div>
 
@@ -341,43 +345,43 @@
 
         <!-- ============== ESQUEMA ============== -->
         <div id="esquema" class="rf-section">
-          <h2><span class="num">03</span> Esquema terapêutico</h2>
-          <p class="lead">Protocolo Erasmus / NETTER: 7,4 GBq por ciclo, intervalo de 8 semanas, 4 ciclos planejados. Cada infusão dura ~30 min mas requer ~5 horas no centro com infusão de aminoácidos.</p>
+          <h2><span class="num">03</span> <span data-i18n="ld.s3h">Esquema terapêutico</span></h2>
+          <p class="lead" data-i18n="ld.s3lead">Protocolo Erasmus / NETTER: 7,4 GBq por ciclo, intervalo de 8 semanas, 4 ciclos planejados. Cada infusão dura ~30 min mas requer ~5 horas no centro com infusão de aminoácidos.</p>
 
           <div class="scheme-box">
             <div class="scheme-pills">
-              <div class="scheme-pill"><span class="pill-lbl">Atividade</span><span class="pill-val">7,4 GBq · 200 mCi</span></div>
-              <div class="scheme-pill"><span class="pill-lbl">Via</span><span class="pill-val">EV em 30 min</span></div>
-              <div class="scheme-pill"><span class="pill-lbl">Intervalo</span><span class="pill-val">8 semanas</span></div>
-              <div class="scheme-pill"><span class="pill-lbl">Ciclos</span><span class="pill-val">4 fixos</span></div>
-              <div class="scheme-pill"><span class="pill-lbl">Acumulado</span><span class="pill-val">29,6 GBq</span></div>
-              <div class="scheme-pill"><span class="pill-lbl">Octreotida LAR</span><span class="pill-val">30 mg q4w manutenção</span></div>
+              <div class="scheme-pill"><span class="pill-lbl" data-i18n="ld.s3p1L">Atividade</span><span class="pill-val" data-i18n="ld.s3p1V">7,4 GBq · 200 mCi</span></div>
+              <div class="scheme-pill"><span class="pill-lbl" data-i18n="ld.s3p2L">Via</span><span class="pill-val" data-i18n="ld.s3p2V">EV em 30 min</span></div>
+              <div class="scheme-pill"><span class="pill-lbl" data-i18n="ld.s3p3L">Intervalo</span><span class="pill-val" data-i18n="ld.s3p3V">8 semanas</span></div>
+              <div class="scheme-pill"><span class="pill-lbl" data-i18n="ld.s3p4L">Ciclos</span><span class="pill-val" data-i18n="ld.s3p4V">4 fixos</span></div>
+              <div class="scheme-pill"><span class="pill-lbl" data-i18n="ld.s3p5L">Acumulado</span><span class="pill-val" data-i18n="ld.s3p5V">29,6 GBq</span></div>
+              <div class="scheme-pill"><span class="pill-lbl" data-i18n="ld.s3p6L">Octreotida LAR</span><span class="pill-val" data-i18n="ld.s3p6V">30 mg q4w manutenção</span></div>
             </div>
 
-            <h4 style="margin: 0 0 0.5rem; color: var(--off-white); font-size: 1rem; font-weight: 600">Ciclos planejados</h4>
+            <h4 style="margin: 0 0 0.5rem; color: var(--off-white); font-size: 1rem; font-weight: 600" data-i18n="ld.s3cycH">Ciclos planejados</h4>
             <div class="cycle-bar" style="grid-template-columns: repeat(4, 1fr)">
-              <div class="cycle"><div class="cy-num">C1</div><div class="cy-week">Sem 0</div><div class="cy-dose">7,4 GBq</div></div>
-              <div class="cycle"><div class="cy-num">C2</div><div class="cy-week">Sem 8</div><div class="cy-dose">7,4 GBq</div></div>
-              <div class="cycle"><div class="cy-num">C3</div><div class="cy-week">Sem 16</div><div class="cy-dose">7,4 GBq</div></div>
-              <div class="cycle"><div class="cy-num">C4</div><div class="cy-week">Sem 24</div><div class="cy-dose">7,4 GBq</div></div>
+              <div class="cycle"><div class="cy-num">C1</div><div class="cy-week" data-i18n="ld.s3w1">Sem 0</div><div class="cy-dose" data-i18n="ld.s3cyDose">7,4 GBq</div></div>
+              <div class="cycle"><div class="cy-num">C2</div><div class="cy-week" data-i18n="ld.s3w2">Sem 8</div><div class="cy-dose" data-i18n="ld.s3cyDose">7,4 GBq</div></div>
+              <div class="cycle"><div class="cy-num">C3</div><div class="cy-week" data-i18n="ld.s3w3">Sem 16</div><div class="cy-dose" data-i18n="ld.s3cyDose">7,4 GBq</div></div>
+              <div class="cycle"><div class="cy-num">C4</div><div class="cy-week" data-i18n="ld.s3w4">Sem 24</div><div class="cy-dose" data-i18n="ld.s3cyDose">7,4 GBq</div></div>
             </div>
 
             <div style="margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid var(--border-soft); display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem">
               <div>
-                <div style="font-size: 0.75rem; color: var(--stone); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.35rem">Antes da terapia</div>
-                <div style="font-size: 0.9rem; color: var(--off-white); line-height: 1.55">Suspender octreotida LAR ≥4 semanas antes (idealmente 6) e octreotida curta nas 24 h prévias.</div>
+                <div style="font-size: 0.75rem; color: var(--stone); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.35rem" data-i18n="ld.s3b1L">Antes da terapia</div>
+                <div style="font-size: 0.9rem; color: var(--off-white); line-height: 1.55" data-i18n="ld.s3b1T">Suspender octreotida LAR ≥4 semanas antes (idealmente 6) e octreotida curta nas 24 h prévias.</div>
               </div>
               <div>
-                <div style="font-size: 0.75rem; color: var(--stone); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.35rem">Antiemético</div>
-                <div style="font-size: 0.9rem; color: var(--off-white); line-height: 1.55">Antagonista 5-HT3 (ondansetrona) 30 min antes da infusão de aminoácidos. Dexametasona opcional.</div>
+                <div style="font-size: 0.75rem; color: var(--stone); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.35rem" data-i18n="ld.s3b2L">Antiemético</div>
+                <div style="font-size: 0.9rem; color: var(--off-white); line-height: 1.55" data-i18n="ld.s3b2T">Antagonista 5-HT3 (ondansetrona) 30 min antes da infusão de aminoácidos. Dexametasona opcional.</div>
               </div>
               <div>
-                <div style="font-size: 0.75rem; color: var(--stone); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.35rem">Imagem pós-terapia</div>
-                <div style="font-size: 0.9rem; color: var(--off-white); line-height: 1.55">SPECT/CT 24 h pós-administração. Permite confirmar captação tumoral e fazer dosimetria do ciclo.</div>
+                <div style="font-size: 0.75rem; color: var(--stone); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.35rem" data-i18n="ld.s3b3L">Imagem pós-terapia</div>
+                <div style="font-size: 0.9rem; color: var(--off-white); line-height: 1.55" data-i18n="ld.s3b3T">SPECT/CT 24 h pós-administração. Permite confirmar captação tumoral e fazer dosimetria do ciclo.</div>
               </div>
               <div>
-                <div style="font-size: 0.75rem; color: var(--stone); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.35rem">Pós-tratamento</div>
-                <div style="font-size: 0.9rem; color: var(--off-white); line-height: 1.55">Manutenção com octreotida LAR 30 mg q4w até progressão. Retratamento (re-PRRT) pode ser considerada após 12 meses se boa resposta inicial.</div>
+                <div style="font-size: 0.75rem; color: var(--stone); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.35rem" data-i18n="ld.s3b4L">Pós-tratamento</div>
+                <div style="font-size: 0.9rem; color: var(--off-white); line-height: 1.55" data-i18n="ld.s3b4T">Manutenção com octreotida LAR 30 mg q4w até progressão. Retratamento (re-PRRT) pode ser considerada após 12 meses se boa resposta inicial.</div>
               </div>
             </div>
           </div>
@@ -395,33 +399,33 @@
 
         <!-- ============== NEFROPROTEÇÃO ============== -->
         <div id="nefroprotecao" class="rf-section">
-          <h2><span class="num">04</span> Nefroproteção · ácidos básicos</h2>
-          <p class="lead">Ao contrário de Lu-PSMA, a infusão de aminoácidos básicos (lisina + arginina) é mandatória para PRRT. O DOTATATE é reabsorvido nos túbulos proximais por receptores carregados negativamente; lisina e arginina (carga positiva) competem por essa reabsorção e reduzem a dose renal em ~50%.</p>
+          <h2><span class="num">04</span> <span data-i18n="ld.s4h">Nefroproteção · ácidos básicos</span></h2>
+          <p class="lead" data-i18n="ld.s4lead">Ao contrário de Lu-PSMA, a infusão de aminoácidos básicos (lisina + arginina) é mandatória para PRRT. O DOTATATE é reabsorvido nos túbulos proximais por receptores carregados negativamente; lisina e arginina (carga positiva) competem por essa reabsorção e reduzem a dose renal em ~50%.</p>
 
           <div class="scheme-box">
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem">
               <div>
-                <div style="font-size: 0.75rem; color: var(--amber); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.35rem">Composição padrão</div>
-                <div style="font-size: 0.92rem; color: var(--off-white); line-height: 1.55">Lisina 25 g + Arginina 25 g em 2 L de NaCl 0,9% ou similar. Início 30 min antes da infusão do radiofármaco, duração total ~4 horas.</div>
+                <div style="font-size: 0.75rem; color: var(--amber); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.35rem" data-i18n="ld.s4b1L">Composição padrão</div>
+                <div style="font-size: 0.92rem; color: var(--off-white); line-height: 1.55" data-i18n="ld.s4b1T">Lisina 25 g + Arginina 25 g em 2 L de NaCl 0,9% ou similar. Início 30 min antes da infusão do radiofármaco, duração total ~4 horas.</div>
               </div>
               <div>
-                <div style="font-size: 0.75rem; color: var(--amber); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.35rem">Aminosyn</div>
-                <div style="font-size: 0.92rem; color: var(--off-white); line-height: 1.55">Solução comercial Aminosyn 10% ou Vamin 18 — também aceita. Atenção a hipercalemia em pacientes com função renal já comprometida.</div>
+                <div style="font-size: 0.75rem; color: var(--amber); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.35rem" data-i18n="ld.s4b2L">Aminosyn</div>
+                <div style="font-size: 0.92rem; color: var(--off-white); line-height: 1.55" data-i18n="ld.s4b2T">Solução comercial Aminosyn 10% ou Vamin 18 — também aceita. Atenção a hipercalemia em pacientes com função renal já comprometida.</div>
               </div>
               <div>
-                <div style="font-size: 0.75rem; color: var(--amber); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.35rem">Toxicidade da infusão</div>
-                <div style="font-size: 0.92rem; color: var(--off-white); line-height: 1.55">Náusea (49%) e vômitos (8%) — primariamente atribuídos aos aminoácidos, não ao Lu. Bloqueio profilático com 5-HT3 + dexametasona é efetivo.</div>
+                <div style="font-size: 0.75rem; color: var(--amber); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.35rem" data-i18n="ld.s4b3L">Toxicidade da infusão</div>
+                <div style="font-size: 0.92rem; color: var(--off-white); line-height: 1.55" data-i18n="ld.s4b3T">Náusea (49%) e vômitos (8%) — primariamente atribuídos aos aminoácidos, não ao Lu. Bloqueio profilático com 5-HT3 + dexametasona é efetivo.</div>
               </div>
               <div>
-                <div style="font-size: 0.75rem; color: var(--amber); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.35rem">Função renal mínima</div>
-                <div style="font-size: 0.92rem; color: var(--off-white); line-height: 1.55">Clearance ≥50 mL/min (NETTER-1, padrão); ≥30 mL/min com cautela conforme bula FDA. Avaliar com <sup>125</sup>I-iotalamato ou <sup>99</sup>ᵐTc-DTPA antes do tratamento se TFG estimada &lt;60.</div>
+                <div style="font-size: 0.75rem; color: var(--amber); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.35rem" data-i18n="ld.s4b4L">Função renal mínima</div>
+                <div style="font-size: 0.92rem; color: var(--off-white); line-height: 1.55" data-i18n-html="ld.s4b4T">Clearance ≥50 mL/min (NETTER-1, padrão); ≥30 mL/min com cautela conforme bula FDA. Avaliar com <sup>125</sup>I-iotalamato ou <sup>99</sup>ᵐTc-DTPA antes do tratamento se TFG estimada &lt;60.</div>
               </div>
             </div>
           </div>
 
           <div class="key-fact">
-            <div class="lbl">Por que aminoácidos básicos competem com DOTATATE no rim?</div>
-            <p>A reabsorção tubular do Lu-DOTATATE depende dos receptores megalin e cubilin, que reconhecem proteínas e peptídeos pequenos com carga positiva. Lisina e arginina, ambos carregados positivamente em pH fisiológico, saturam esses receptores e impedem a reabsorção do radiopeptídeo, que então é eliminado pela urina. Resultado: queda de ~50% na dose renal absorvida.</p>
+            <div class="lbl" data-i18n="ld.s4kfL">Por que aminoácidos básicos competem com DOTATATE no rim?</div>
+            <p data-i18n="ld.s4kfT">A reabsorção tubular do Lu-DOTATATE depende dos receptores megalin e cubilin, que reconhecem proteínas e peptídeos pequenos com carga positiva. Lisina e arginina, ambos carregados positivamente em pH fisiológico, saturam esses receptores e impedem a reabsorção do radiopeptídeo, que então é eliminado pela urina. Resultado: queda de ~50% na dose renal absorvida.</p>
           </div>
         </div>
 
@@ -437,35 +441,35 @@
 
         <!-- ============== IMAGEM ============== -->
         <div id="imagem" class="rf-section">
-          <h2><span class="num">05</span> Imagem teranóstica</h2>
-          <p class="lead">A elegibilidade para Lu-DOTATATE depende de captação tumoral em PET/CT com análogo da somatostatina marcado com <sup>68</sup>Ga.</p>
+          <h2><span class="num">05</span> <span data-i18n="ld.s5h">Imagem teranóstica</span></h2>
+          <p class="lead" data-i18n-html="ld.s5lead">A elegibilidade para Lu-DOTATATE depende de captação tumoral em PET/CT com análogo da somatostatina marcado com <sup>68</sup>Ga.</p>
 
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin: 1.5rem 0">
             <div style="background: var(--graphite-2); border: 1px solid var(--border-soft); border-radius: var(--radius-md); padding: 1.25rem">
               <div style="font-family: var(--font-mono); color: var(--amber); font-size: 0.85rem; margin-bottom: 0.4rem"><sup>68</sup>Ga-DOTATATE</div>
-              <div style="font-size: 0.95rem; color: var(--off-white); margin-bottom: 0.35rem">Padrão-ouro · alta afinidade SSTR2</div>
-              <div style="font-size: 0.82rem; color: var(--stone); line-height: 1.5">Mesmo vetor que o terapêutico — máxima coerência teranóstica. Aprovado FDA Netspot 2016.</div>
+              <div style="font-size: 0.95rem; color: var(--off-white); margin-bottom: 0.35rem" data-i18n="ld.s5c1T">Padrão-ouro · alta afinidade SSTR2</div>
+              <div style="font-size: 0.82rem; color: var(--stone); line-height: 1.5" data-i18n="ld.s5c1D">Mesmo vetor que o terapêutico — máxima coerência teranóstica. Aprovado FDA Netspot 2016.</div>
             </div>
             <div style="background: var(--graphite-2); border: 1px solid var(--border-soft); border-radius: var(--radius-md); padding: 1.25rem">
               <div style="font-family: var(--font-mono); color: var(--amber); font-size: 0.85rem; margin-bottom: 0.4rem"><sup>68</sup>Ga-DOTATOC</div>
-              <div style="font-size: 0.95rem; color: var(--off-white); margin-bottom: 0.35rem">Alternativa equivalente</div>
-              <div style="font-size: 0.82rem; color: var(--stone); line-height: 1.5">Aprovado FDA 2019. Afinidade similar ao DOTATATE. Ambos apropriados para selecionar pacientes para Lu-DOTATATE.</div>
+              <div style="font-size: 0.95rem; color: var(--off-white); margin-bottom: 0.35rem" data-i18n="ld.s5c2T">Alternativa equivalente</div>
+              <div style="font-size: 0.82rem; color: var(--stone); line-height: 1.5" data-i18n="ld.s5c2D">Aprovado FDA 2019. Afinidade similar ao DOTATATE. Ambos apropriados para selecionar pacientes para Lu-DOTATATE.</div>
             </div>
             <div style="background: var(--graphite-2); border: 1px solid var(--border-soft); border-radius: var(--radius-md); padding: 1.25rem">
               <div style="font-family: var(--font-mono); color: var(--amber); font-size: 0.85rem; margin-bottom: 0.4rem"><sup>68</sup>Ga-DOTANOC</div>
-              <div style="font-size: 0.95rem; color: var(--off-white); margin-bottom: 0.35rem">Cobertura SSTR2/3/5</div>
-              <div style="font-size: 0.82rem; color: var(--stone); line-height: 1.5">Maior pan-cobertura de subtipos de SSTR. Útil em alguns NETs. Não disponível em todos os mercados.</div>
+              <div style="font-size: 0.95rem; color: var(--off-white); margin-bottom: 0.35rem" data-i18n="ld.s5c3T">Cobertura SSTR2/3/5</div>
+              <div style="font-size: 0.82rem; color: var(--stone); line-height: 1.5" data-i18n="ld.s5c3D">Maior pan-cobertura de subtipos de SSTR. Útil em alguns NETs. Não disponível em todos os mercados.</div>
             </div>
             <div style="background: var(--graphite-2); border: 1px solid var(--border-soft); border-radius: var(--radius-md); padding: 1.25rem">
               <div style="font-family: var(--font-mono); color: var(--amber); font-size: 0.85rem; margin-bottom: 0.4rem"><sup>18</sup>F-FDG (paralelo)</div>
-              <div style="font-size: 0.95rem; color: var(--off-white); margin-bottom: 0.35rem">Avaliar agressividade</div>
-              <div style="font-size: 0.82rem; color: var(--stone); line-height: 1.5">PET dual SSTR + FDG identifica NETs heterogêneos: lesões FDG+/SSTR− têm pior prognóstico e respondem menos à PRRT.</div>
+              <div style="font-size: 0.95rem; color: var(--off-white); margin-bottom: 0.35rem" data-i18n="ld.s5c4T">Avaliar agressividade</div>
+              <div style="font-size: 0.82rem; color: var(--stone); line-height: 1.5" data-i18n="ld.s5c4D">PET dual SSTR + FDG identifica NETs heterogêneos: lesões FDG+/SSTR− têm pior prognóstico e respondem menos à PRRT.</div>
             </div>
           </div>
 
           <div class="key-fact">
-            <div class="lbl">Krenning Score · escala visual de captação</div>
-            <p>Antiga escala derivada do OctreoScan, ainda usada: 0 (sem captação), 1 (&lt; fígado), 2 (= fígado), 3 (&gt; fígado), 4 (&gt; baço/rim). Para indicar Lu-DOTATATE recomenda-se score ≥ 2 em todas as lesões alvo (idealmente 3-4). Lesões score 0-1 sugerem doença SSTR-negativa que não se beneficiará da PRRT.</p>
+            <div class="lbl" data-i18n="ld.s5kfL">Krenning Score · escala visual de captação</div>
+            <p data-i18n-html="ld.s5kfT">Antiga escala derivada do OctreoScan, ainda usada: 0 (sem captação), 1 (&lt; fígado), 2 (= fígado), 3 (&gt; fígado), 4 (&gt; baço/rim). Para indicar Lu-DOTATATE recomenda-se score ≥ 2 em todas as lesões alvo (idealmente 3-4). Lesões score 0-1 sugerem doença SSTR-negativa que não se beneficiará da PRRT.</p>
           </div>
         </div>
 
@@ -481,8 +485,8 @@
 
         <!-- ============== ENSAIOS ============== -->
         <div id="ensaios" class="rf-section">
-          <h2><span class="num">06</span> Ensaios pivotais</h2>
-          <p class="lead">Trajetória da PRRT em NETs: NETTER-1 estabelece em segunda linha; NETTER-2 e COMPETE consolidam em primeira linha; ensaios em pNET ainda em curso.</p>
+          <h2><span class="num">06</span> <span data-i18n="ld.s6h">Ensaios pivotais</span></h2>
+          <p class="lead" data-i18n="ld.s6lead">Trajetória da PRRT em NETs: NETTER-1 estabelece em segunda linha; NETTER-2 e COMPETE consolidam em primeira linha; ensaios em pNET ainda em curso.</p>
 
           <div class="trials-grid">
             <div class="trial-card">
@@ -490,14 +494,14 @@
                 <span class="name">NETTER-1</span>
                 <span class="year">2017 · NEJM</span>
               </div>
-              <p class="pop">NET midgut progressivo a octreotida 30 mg · n=229 · vs octreotida 60 mg</p>
+              <p class="pop" data-i18n="ld.s6c1pop">NET midgut progressivo a octreotida 30 mg · n=229 · vs octreotida 60 mg</p>
               <div class="results">
-                <div class="stat-row"><div class="lbl">PFS</div><div class="val">não atingida vs 8,5 m</div></div>
+                <div class="stat-row"><div class="lbl">PFS</div><div class="val" data-i18n="ld.s6c1r1V">não atingida vs 8,5 m</div></div>
                 <div class="stat-row"><div class="lbl">ORR</div><div class="val">18 vs 3%</div></div>
-                <div class="stat-row"><div class="lbl">OS final</div><div class="val">48 vs 36,3 m (NS)</div></div>
-                <div class="stat-row"><div class="lbl">HR PFS</div><div class="val">0,21</div></div>
+                <div class="stat-row"><div class="lbl" data-i18n="ld.s6c1r3L">OS final</div><div class="val" data-i18n="ld.s6c1r3V">48 vs 36,3 m (NS)</div></div>
+                <div class="stat-row"><div class="lbl">HR PFS</div><div class="val" data-i18n="ld.s6c1r4V">0,21</div></div>
               </div>
-              <p class="takeaway">Aprovação FDA. PFS 4× maior. OS comprometida por crossover (~36% no braço controle).</p>
+              <p class="takeaway" data-i18n="ld.s6c1tk">Aprovação FDA. PFS 4× maior. OS comprometida por crossover (~36% no braço controle).</p>
             </div>
 
             <div class="trial-card">
@@ -505,14 +509,14 @@
                 <span class="name">NETTER-2</span>
                 <span class="year">2024 · Lancet</span>
               </div>
-              <p class="pop">GEP-NET G2/G3 (Ki-67 10-55%) · n=226 · 1L · Lu-DOTATATE + octreotida vs octreotida 60 mg</p>
+              <p class="pop" data-i18n="ld.s6c2pop">GEP-NET G2/G3 (Ki-67 10-55%) · n=226 · 1L · Lu-DOTATATE + octreotida vs octreotida 60 mg</p>
               <div class="results">
-                <div class="stat-row"><div class="lbl">PFS</div><div class="val">22,8 vs 8,5 m</div></div>
-                <div class="stat-row"><div class="lbl">ORR</div><div class="val">43 vs 9,3%</div></div>
-                <div class="stat-row"><div class="lbl">HR PFS</div><div class="val">0,28</div></div>
-                <div class="stat-row"><div class="lbl">OS</div><div class="val">imaturo</div></div>
+                <div class="stat-row"><div class="lbl">PFS</div><div class="val" data-i18n="ld.s6c2r1V">22,8 vs 8,5 m</div></div>
+                <div class="stat-row"><div class="lbl">ORR</div><div class="val" data-i18n="ld.s6c2r2V">43 vs 9,3%</div></div>
+                <div class="stat-row"><div class="lbl">HR PFS</div><div class="val" data-i18n="ld.s6c2r3V">0,28</div></div>
+                <div class="stat-row"><div class="lbl">OS</div><div class="val" data-i18n="ld.s6c2r4V">imaturo</div></div>
               </div>
-              <p class="takeaway">Mudou paradigma. Lu-DOTATATE em primeira linha para NETs G2/G3 SSTR-positivos.</p>
+              <p class="takeaway" data-i18n="ld.s6c2tk">Mudou paradigma. Lu-DOTATATE em primeira linha para NETs G2/G3 SSTR-positivos.</p>
             </div>
 
             <div class="trial-card">
@@ -520,29 +524,29 @@
                 <span class="name">COMPETE</span>
                 <span class="year">2024 · ESMO</span>
               </div>
-              <p class="pop">GEP-NET G1/G2 progressivo · n=312 · vs everolimus</p>
+              <p class="pop" data-i18n="ld.s6c3pop">GEP-NET G1/G2 progressivo · n=312 · vs everolimus</p>
               <div class="results">
-                <div class="stat-row"><div class="lbl">PFS</div><div class="val">23,9 vs 14,1 m</div></div>
+                <div class="stat-row"><div class="lbl">PFS</div><div class="val" data-i18n="ld.s6c3r1V">23,9 vs 14,1 m</div></div>
                 <div class="stat-row"><div class="lbl">ORR</div><div class="val">23 vs 7%</div></div>
-                <div class="stat-row"><div class="lbl">HR PFS</div><div class="val">0,48</div></div>
-                <div class="stat-row"><div class="lbl">QoL</div><div class="val">a favor de Lu</div></div>
+                <div class="stat-row"><div class="lbl">HR PFS</div><div class="val" data-i18n="ld.s6c3r3V">0,48</div></div>
+                <div class="stat-row"><div class="lbl">QoL</div><div class="val" data-i18n="ld.s6c3r4V">a favor de Lu</div></div>
               </div>
-              <p class="takeaway">Superioridade direta sobre everolimus em pNET e siNET G1/G2. Posicionamento no algoritmo.</p>
+              <p class="takeaway" data-i18n="ld.s6c3tk">Superioridade direta sobre everolimus em pNET e siNET G1/G2. Posicionamento no algoritmo.</p>
             </div>
 
             <div class="trial-card">
               <div class="trial-name">
                 <span class="name">COMPOSE</span>
-                <span class="year">em curso</span>
+                <span class="year" data-i18n="ld.s6c4yr">em curso</span>
               </div>
-              <p class="pop">GEP-NET G2/G3 (Ki-67 15-55%) · n=202 · vs FOLFOX ou CAPTEM</p>
+              <p class="pop" data-i18n="ld.s6c4pop">GEP-NET G2/G3 (Ki-67 15-55%) · n=202 · vs FOLFOX ou CAPTEM</p>
               <div class="results">
                 <div class="stat-row"><div class="lbl">Endpoint</div><div class="val">PFS</div></div>
-                <div class="stat-row"><div class="lbl">Status</div><div class="val">recrutando</div></div>
-                <div class="stat-row"><div class="lbl">Resultados</div><div class="val">2026</div></div>
+                <div class="stat-row"><div class="lbl">Status</div><div class="val" data-i18n="ld.s6c4r2V">recrutando</div></div>
+                <div class="stat-row"><div class="lbl" data-i18n="ld.s6c4r3L">Resultados</div><div class="val">2026</div></div>
                 <div class="stat-row"><div class="lbl">NCT</div><div class="val">04919226</div></div>
               </div>
-              <p class="takeaway">Comparação direta com QT em alta-grade. Definidor para pacientes G3 borderline.</p>
+              <p class="takeaway" data-i18n="ld.s6c4tk">Comparação direta com QT em alta-grade. Definidor para pacientes G3 borderline.</p>
             </div>
 
             <div class="trial-card">
@@ -550,66 +554,66 @@
                 <span class="name">OCLURANDOM</span>
                 <span class="year">2024</span>
               </div>
-              <p class="pop">pNET G1/G2 progressivo · n=84 · vs sunitinib</p>
+              <p class="pop" data-i18n="ld.s6c5pop">pNET G1/G2 progressivo · n=84 · vs sunitinib</p>
               <div class="results">
-                <div class="stat-row"><div class="lbl">PFS</div><div class="val">20,7 vs 11,0 m</div></div>
-                <div class="stat-row"><div class="lbl">ORR</div><div class="val">41,5 vs 9,3%</div></div>
-                <div class="stat-row"><div class="lbl">HR PFS</div><div class="val">0,38</div></div>
-                <div class="stat-row"><div class="lbl">Tipo</div><div class="val">fase 2 acadêmico</div></div>
+                <div class="stat-row"><div class="lbl">PFS</div><div class="val" data-i18n="ld.s6c5r1V">20,7 vs 11,0 m</div></div>
+                <div class="stat-row"><div class="lbl">ORR</div><div class="val" data-i18n="ld.s6c5r2V">41,5 vs 9,3%</div></div>
+                <div class="stat-row"><div class="lbl">HR PFS</div><div class="val" data-i18n="ld.s6c5r3V">0,38</div></div>
+                <div class="stat-row"><div class="lbl" data-i18n="ld.s6c5r4L">Tipo</div><div class="val" data-i18n="ld.s6c5r4V">fase 2 acadêmico</div></div>
               </div>
-              <p class="takeaway">Sinal consistente em pNET. Abre espaço para Lu antes ou em alternativa a sunitinib/everolimus.</p>
+              <p class="takeaway" data-i18n="ld.s6c5tk">Sinal consistente em pNET. Abre espaço para Lu antes ou em alternativa a sunitinib/everolimus.</p>
             </div>
 
             <div class="trial-card">
               <div class="trial-name">
                 <span class="name">PReCedeNT</span>
-                <span class="year">em curso</span>
+                <span class="year" data-i18n="ld.s6c6yr">em curso</span>
               </div>
-              <p class="pop">GEP-NET adjuvante pós-cirurgia · n=120 · vs observação</p>
+              <p class="pop" data-i18n="ld.s6c6pop">GEP-NET adjuvante pós-cirurgia · n=120 · vs observação</p>
               <div class="results">
                 <div class="stat-row"><div class="lbl">Endpoint</div><div class="val">DFS</div></div>
-                <div class="stat-row"><div class="lbl">Status</div><div class="val">recrutando</div></div>
-                <div class="stat-row"><div class="lbl">Resultados</div><div class="val">2027</div></div>
-                <div class="stat-row"><div class="lbl">Inovação</div><div class="val">cenário adjuvante</div></div>
+                <div class="stat-row"><div class="lbl">Status</div><div class="val" data-i18n="ld.s6c6r2V">recrutando</div></div>
+                <div class="stat-row"><div class="lbl" data-i18n="ld.s6c6r3L">Resultados</div><div class="val">2027</div></div>
+                <div class="stat-row"><div class="lbl" data-i18n="ld.s6c6r4L">Inovação</div><div class="val" data-i18n="ld.s6c6r4V">cenário adjuvante</div></div>
               </div>
-              <p class="takeaway">Primeira tentativa de PRRT no cenário adjuvante. Conceito ambicioso.</p>
+              <p class="takeaway" data-i18n="ld.s6c6tk">Primeira tentativa de PRRT no cenário adjuvante. Conceito ambicioso.</p>
             </div>
 
             <div class="trial-card">
               <div class="trial-name">
                 <span class="name">NETTER-P</span>
-                <span class="year">em curso</span>
+                <span class="year" data-i18n="ld.s6c7yr">em curso</span>
               </div>
-              <p class="pop">NET pediátrico (idade 12-17) · n=8 · single-arm farmacocinético</p>
+              <p class="pop" data-i18n="ld.s6c7pop">NET pediátrico (idade 12-17) · n=8 · single-arm farmacocinético</p>
               <div class="results">
-                <div class="stat-row"><div class="lbl">Objetivo</div><div class="val">PK + segurança</div></div>
-                <div class="stat-row"><div class="lbl">Status</div><div class="val">resultado preliminar</div></div>
-                <div class="stat-row"><div class="lbl">Lugar</div><div class="val">internacional</div></div>
-                <div class="stat-row"><div class="lbl">Posicionamento</div><div class="val">expansão de label</div></div>
+                <div class="stat-row"><div class="lbl" data-i18n="ld.s6c7r1L">Objetivo</div><div class="val" data-i18n="ld.s6c7r1V">PK + segurança</div></div>
+                <div class="stat-row"><div class="lbl">Status</div><div class="val" data-i18n="ld.s6c7r2V">resultado preliminar</div></div>
+                <div class="stat-row"><div class="lbl" data-i18n="ld.s6c7r3L">Lugar</div><div class="val" data-i18n="ld.s6c7r3V">internacional</div></div>
+                <div class="stat-row"><div class="lbl" data-i18n="ld.s6c7r4L">Posicionamento</div><div class="val" data-i18n="ld.s6c7r4V">expansão de label</div></div>
               </div>
-              <p class="takeaway">Pavimentação regulatória para uso em NETs pediátricos.</p>
+              <p class="takeaway" data-i18n="ld.s6c7tk">Pavimentação regulatória para uso em NETs pediátricos.</p>
             </div>
 
             <div class="trial-card">
               <div class="trial-name">
-                <span class="name">Erasmus série</span>
+                <span class="name" data-i18n="ld.s6c8name">Erasmus série</span>
                 <span class="year">2008-2024</span>
               </div>
-              <p class="pop">&gt;1500 pacientes tratados em Roterdã</p>
+              <p class="pop" data-i18n-html="ld.s6c8pop">&gt;1500 pacientes tratados em Roterdã</p>
               <div class="results">
-                <div class="stat-row"><div class="lbl">PFS</div><div class="val">~ 33 m</div></div>
-                <div class="stat-row"><div class="lbl">OS</div><div class="val">~ 46 m</div></div>
+                <div class="stat-row"><div class="lbl">PFS</div><div class="val" data-i18n="ld.s6c8r1V">~ 33 m</div></div>
+                <div class="stat-row"><div class="lbl">OS</div><div class="val" data-i18n="ld.s6c8r2V">~ 46 m</div></div>
                 <div class="stat-row"><div class="lbl">ORR</div><div class="val">30%</div></div>
-                <div class="stat-row"><div class="lbl">Toxicidade renal G3+</div><div class="val">&lt;1%</div></div>
+                <div class="stat-row"><div class="lbl" data-i18n="ld.s6c8r4L">Toxicidade renal G3+</div><div class="val">&lt;1%</div></div>
               </div>
-              <p class="takeaway">Maior experiência mundial real-world. Confirmou eficácia e segurança ao longo de 16 anos.</p>
+              <p class="takeaway" data-i18n="ld.s6c8tk">Maior experiência mundial real-world. Confirmou eficácia e segurança ao longo de 16 anos.</p>
             </div>
           </div>
 
           <div style="text-align: center; margin-top: 2rem">
             <a href="database.html" class="rf-eyebrow" style="cursor:pointer">
               <i data-lucide="database" style="width:14px;height:14px"></i>
-              Ver todos os estudos no Database
+              <span data-i18n="ld.s6dbLink">Ver todos os estudos no Database</span>
               <i data-lucide="arrow-right" style="width:14px;height:14px"></i>
             </a>
           </div>
@@ -627,32 +631,32 @@
 
         <!-- ============== DOSIMETRIA ============== -->
         <div id="dosimetria" class="rf-section">
-          <h2><span class="num">07</span> Dosimetria</h2>
-          <p class="lead">Tumor é o sítio mais irradiado. Rim é o órgão crítico — daí a importância da nefroproteção. Medula vermelha pode ser segundo limitante em pacientes com carga tumoral alta.</p>
+          <h2><span class="num">07</span> <span data-i18n="ld.s7h">Dosimetria</span></h2>
+          <p class="lead" data-i18n="ld.s7lead">Tumor é o sítio mais irradiado. Rim é o órgão crítico — daí a importância da nefroproteção. Medula vermelha pode ser segundo limitante em pacientes com carga tumoral alta.</p>
 
           <table class="dose-table">
             <thead>
               <tr>
-                <th>Órgão / tecido</th>
-                <th>Dose por GBq (Gy/GBq)</th>
-                <th>Visualização</th>
-                <th>Limite cumulativo (referência)</th>
+                <th data-i18n="ld.s7th1">Órgão / tecido</th>
+                <th data-i18n="ld.s7th2">Dose por GBq (Gy/GBq)</th>
+                <th data-i18n="ld.s7th3">Visualização</th>
+                <th data-i18n="ld.s7th4">Limite cumulativo (referência)</th>
               </tr>
             </thead>
             <tbody>
-              <tr><td><strong>Tumor</strong> (mediana)</td><td>5 — 50</td><td><div class="dose-bar high"><div class="dose-bar-fill" style="width:100%"></div></div></td><td>—</td></tr>
-              <tr><td>Baço</td><td>~ 1,5</td><td><div class="dose-bar med"><div class="dose-bar-fill" style="width:50%"></div></div></td><td>variável</td></tr>
-              <tr><td><strong>Rins</strong> (com aminoácidos)</td><td>~ 0,6 — 1,0</td><td><div class="dose-bar med"><div class="dose-bar-fill" style="width:30%"></div></div></td><td>23 Gy (BED) · 27 Gy se sem fatores de risco</td></tr>
-              <tr><td>Glândulas suprarrenais</td><td>~ 0,2</td><td><div class="dose-bar low"><div class="dose-bar-fill" style="width:10%"></div></div></td><td>—</td></tr>
-              <tr><td>Medula óssea (vermelha)</td><td>~ 0,03</td><td><div class="dose-bar low"><div class="dose-bar-fill" style="width:5%"></div></div></td><td>2 Gy</td></tr>
-              <tr><td>Hipófise</td><td>~ 0,16</td><td><div class="dose-bar low"><div class="dose-bar-fill" style="width:8%"></div></div></td><td>raramente clinicamente relevante</td></tr>
-              <tr><td>Tireoide</td><td>~ 0,05</td><td><div class="dose-bar low"><div class="dose-bar-fill" style="width:5%"></div></div></td><td>baixa expressão SSTR</td></tr>
+              <tr><td data-i18n-html="ld.s7r1org"><strong>Tumor</strong> (mediana)</td><td>5 — 50</td><td><div class="dose-bar high"><div class="dose-bar-fill" style="width:100%"></div></div></td><td>—</td></tr>
+              <tr><td data-i18n="ld.s7r2org">Baço</td><td data-i18n="ld.s7r2v">~ 1,5</td><td><div class="dose-bar med"><div class="dose-bar-fill" style="width:50%"></div></div></td><td data-i18n="ld.s7r2lim">variável</td></tr>
+              <tr><td data-i18n-html="ld.s7r3org"><strong>Rins</strong> (com aminoácidos)</td><td data-i18n="ld.s7r3v">~ 0,6 — 1,0</td><td><div class="dose-bar med"><div class="dose-bar-fill" style="width:30%"></div></div></td><td data-i18n="ld.s7r3lim">23 Gy (BED) · 27 Gy se sem fatores de risco</td></tr>
+              <tr><td data-i18n="ld.s7r4org">Glândulas suprarrenais</td><td data-i18n="ld.s7r4v">~ 0,2</td><td><div class="dose-bar low"><div class="dose-bar-fill" style="width:10%"></div></div></td><td>—</td></tr>
+              <tr><td data-i18n="ld.s7r5org">Medula óssea (vermelha)</td><td data-i18n="ld.s7r5v">~ 0,03</td><td><div class="dose-bar low"><div class="dose-bar-fill" style="width:5%"></div></div></td><td>2 Gy</td></tr>
+              <tr><td data-i18n="ld.s7r6org">Hipófise</td><td data-i18n="ld.s7r6v">~ 0,16</td><td><div class="dose-bar low"><div class="dose-bar-fill" style="width:8%"></div></div></td><td data-i18n="ld.s7r6lim">raramente clinicamente relevante</td></tr>
+              <tr><td data-i18n="ld.s7r7org">Tireoide</td><td data-i18n="ld.s7r7v">~ 0,05</td><td><div class="dose-bar low"><div class="dose-bar-fill" style="width:5%"></div></div></td><td data-i18n="ld.s7r7lim">baixa expressão SSTR</td></tr>
             </tbody>
           </table>
 
           <div class="key-fact">
-            <div class="lbl">Dose tumoral × resposta</div>
-            <p>Estudos do grupo Erasmus e Uppsala mostram correlação forte entre dose tumoral acumulada (em geral &gt;100 Gy) e resposta objetiva. Em centros teranósticos, dosimetria SPECT/CT seriada após cada ciclo permite estimar dose tumoral e ajustar necessidade de ciclos adicionais. Dose renal cumulativa &lt;23 Gy (BED) é segura mesmo em pacientes &gt;75 anos.</p>
+            <div class="lbl" data-i18n="ld.s7kfL">Dose tumoral × resposta</div>
+            <p data-i18n="ld.s7kfT">Estudos do grupo Erasmus e Uppsala mostram correlação forte entre dose tumoral acumulada (em geral &gt;100 Gy) e resposta objetiva. Em centros teranósticos, dosimetria SPECT/CT seriada após cada ciclo permite estimar dose tumoral e ajustar necessidade de ciclos adicionais. Dose renal cumulativa &lt;23 Gy (BED) é segura mesmo em pacientes &gt;75 anos.</p>
           </div>
         </div>
 
@@ -668,55 +672,55 @@
 
         <!-- ============== TOXICIDADE ============== -->
         <div id="toxicidade" class="rf-section">
-          <h2><span class="num">08</span> Eventos adversos · perfil NETTER</h2>
-          <p class="lead">A maior parte da toxicidade é leve a moderada. Náusea/vômitos peri-infusão (aminoácidos) e citopenias prolongadas são os pontos de atenção principais.</p>
+          <h2><span class="num">08</span> <span data-i18n="ld.s8h">Eventos adversos · perfil NETTER</span></h2>
+          <p class="lead" data-i18n="ld.s8lead">A maior parte da toxicidade é leve a moderada. Náusea/vômitos peri-infusão (aminoácidos) e citopenias prolongadas são os pontos de atenção principais.</p>
 
           <div class="tox-grid">
             <div class="tox-item">
-              <div class="tox-name">Náusea (peri-infusão)</div>
+              <div class="tox-name" data-i18n="ld.s8t1">Náusea (peri-infusão)</div>
               <div class="tox-pct"><span class="tox-all">59%</span><span class="tox-g3">G3 4%</span></div>
               <div class="tox-bar"><div class="tox-bar-all" style="width:59%"></div></div>
             </div>
             <div class="tox-item">
-              <div class="tox-name">Vômitos</div>
+              <div class="tox-name" data-i18n="ld.s8t2">Vômitos</div>
               <div class="tox-pct"><span class="tox-all">31%</span><span class="tox-g3">G3 4%</span></div>
               <div class="tox-bar"><div class="tox-bar-all" style="width:47%"></div></div>
             </div>
             <div class="tox-item">
-              <div class="tox-name">Fadiga</div>
+              <div class="tox-name" data-i18n="ld.s8t3">Fadiga</div>
               <div class="tox-pct"><span class="tox-all">40%</span><span class="tox-g3">G3 2%</span></div>
               <div class="tox-bar"><div class="tox-bar-all" style="width:40%"></div></div>
             </div>
             <div class="tox-item">
-              <div class="tox-name">Linfopenia</div>
+              <div class="tox-name" data-i18n="ld.s8t4">Linfopenia</div>
               <div class="tox-pct"><span class="tox-all">44%</span><span class="tox-g3">G3-4 9%</span></div>
               <div class="tox-bar"><div class="tox-bar-all" style="width:44%"></div></div>
             </div>
             <div class="tox-item">
-              <div class="tox-name">Trombocitopenia</div>
+              <div class="tox-name" data-i18n="ld.s8t5">Trombocitopenia</div>
               <div class="tox-pct"><span class="tox-all">25%</span><span class="tox-g3">G3-4 2%</span></div>
               <div class="tox-bar"><div class="tox-bar-all" style="width:25%"></div></div>
             </div>
             <div class="tox-item">
-              <div class="tox-name">Anemia</div>
+              <div class="tox-name" data-i18n="ld.s8t6">Anemia</div>
               <div class="tox-pct"><span class="tox-all">14%</span><span class="tox-g3">G3-4 1%</span></div>
               <div class="tox-bar"><div class="tox-bar-all" style="width:14%"></div></div>
             </div>
             <div class="tox-item">
-              <div class="tox-name">Toxicidade renal (queda TFG)</div>
+              <div class="tox-name" data-i18n="ld.s8t7">Toxicidade renal (queda TFG)</div>
               <div class="tox-pct"><span class="tox-all">~ 10%</span><span class="tox-g3">G3 &lt;1%</span></div>
               <div class="tox-bar"><div class="tox-bar-all" style="width:10%"></div></div>
             </div>
             <div class="tox-item">
-              <div class="tox-name">SMD/leucemia (longo prazo)</div>
-              <div class="tox-pct"><span class="tox-all">~ 2%</span><span class="tox-g3">grave</span></div>
+              <div class="tox-name" data-i18n="ld.s8t8">SMD/leucemia (longo prazo)</div>
+              <div class="tox-pct"><span class="tox-all">~ 2%</span><span class="tox-g3" data-i18n="ld.s8t8g">grave</span></div>
               <div class="tox-bar"><div class="tox-bar-all" style="width:2%"></div></div>
             </div>
           </div>
 
           <div class="key-fact">
-            <div class="lbl">Crise carcinoide</div>
-            <p>Risco real porém raro (&lt;1%) em pacientes com tumores funcionantes (síndrome carcinoide ativa). Octreotida EV deve estar disponível na sala de tratamento. Pacientes com sintomas carcinoides ativos podem receber octreotida curta nas 48 h precedentes — sem comprometer captação do Lu, segundo dados Erasmus.</p>
+            <div class="lbl" data-i18n="ld.s8kfL">Crise carcinoide</div>
+            <p data-i18n="ld.s8kfT">Risco real porém raro (&lt;1%) em pacientes com tumores funcionantes (síndrome carcinoide ativa). Octreotida EV deve estar disponível na sala de tratamento. Pacientes com sintomas carcinoides ativos podem receber octreotida curta nas 48 h precedentes — sem comprometer captação do Lu, segundo dados Erasmus.</p>
           </div>
         </div>
 
@@ -732,30 +736,30 @@
 
         <!-- ============== PERSPECTIVAS ============== -->
         <div id="perspectivas" class="rf-section">
-          <h2><span class="num">09</span> Perspectivas: alfa, retratamento, novos alvos</h2>
-          <p class="lead">A frente de pesquisa em PRRT-NET caminha por três avenidas: alfa-emissores para refratários, retratamento sistemático em respondedores e novos alvos (CXCR4, GLP-1, antagonistas SSTR).</p>
+          <h2><span class="num">09</span> <span data-i18n="ld.s9h">Perspectivas: alfa, retratamento, novos alvos</span></h2>
+          <p class="lead" data-i18n="ld.s9lead">A frente de pesquisa em PRRT-NET caminha por três avenidas: alfa-emissores para refratários, retratamento sistemático em respondedores e novos alvos (CXCR4, GLP-1, antagonistas SSTR).</p>
 
           <div class="ab-compare">
             <div class="ab-card beta">
               <h4><i data-lucide="zap" style="width:18px;height:18px"></i> <sup>177</sup>Lu-DOTATATE (β⁻)</h4>
               <ul>
-                <li>Energia média <span class="v">134 keV</span></li>
-                <li>Alcance <span class="v">~ 0,7 mm</span></li>
-                <li>Cobertura <span class="v">tumores médios/grandes</span></li>
-                <li>Toxicidade renal <span class="v">requer aminoácidos</span></li>
-                <li>Perfil hematológico <span class="v">moderado</span></li>
-                <li>Disponibilidade <span class="v">global</span></li>
+                <li data-i18n-html="ld.s9bl1">Energia média <span class="v">134 keV</span></li>
+                <li data-i18n-html="ld.s9bl2">Alcance <span class="v">~ 0,7 mm</span></li>
+                <li data-i18n-html="ld.s9bl3">Cobertura <span class="v">tumores médios/grandes</span></li>
+                <li data-i18n-html="ld.s9bl4">Toxicidade renal <span class="v">requer aminoácidos</span></li>
+                <li data-i18n-html="ld.s9bl5">Perfil hematológico <span class="v">moderado</span></li>
+                <li data-i18n-html="ld.s9bl6">Disponibilidade <span class="v">global</span></li>
               </ul>
             </div>
             <div class="ab-card alpha">
               <h4><i data-lucide="zap" style="width:18px;height:18px"></i> <sup>225</sup>Ac-DOTATATE / <sup>212</sup>Pb-DOTAMTATE (α)</h4>
               <ul>
-                <li>Energia <span class="v">5-9 MeV</span></li>
-                <li>Alcance <span class="v">50-100 μm</span></li>
-                <li>Cobertura <span class="v">micrometástases</span></li>
-                <li>Toxicidade renal <span class="v">incerta · monitorar</span></li>
-                <li>Eficiência por evento <span class="v">muito alta</span></li>
-                <li>Disponibilidade <span class="v">ensaios fase 1-2</span></li>
+                <li data-i18n-html="ld.s9al1">Energia <span class="v">5-9 MeV</span></li>
+                <li data-i18n-html="ld.s9al2">Alcance <span class="v">50-100 μm</span></li>
+                <li data-i18n-html="ld.s9al3">Cobertura <span class="v">micrometástases</span></li>
+                <li data-i18n-html="ld.s9al4">Toxicidade renal <span class="v">incerta · monitorar</span></li>
+                <li data-i18n-html="ld.s9al5">Eficiência por evento <span class="v">muito alta</span></li>
+                <li data-i18n-html="ld.s9al6">Disponibilidade <span class="v">ensaios fase 1-2</span></li>
               </ul>
             </div>
           </div>
@@ -763,29 +767,29 @@
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin: 1.5rem 0">
             <div style="background: var(--graphite-2); border: 1px solid rgba(192, 132, 252, 0.3); border-radius: var(--radius-md); padding: 1.25rem">
               <div style="font-family: var(--font-mono); color: #C084FC; font-size: 0.85rem; margin-bottom: 0.4rem"><sup>225</sup>Ac-DOTATATE</div>
-              <div style="font-size: 0.95rem; color: var(--off-white); margin-bottom: 0.35rem">Refratários ao Lu</div>
-              <div style="font-size: 0.82rem; color: var(--stone); line-height: 1.5">Series RATIO e índicas mostram resposta em ~50% de pacientes pós-Lu. Toxicidade hematológica relevante.</div>
+              <div style="font-size: 0.95rem; color: var(--off-white); margin-bottom: 0.35rem" data-i18n="ld.s9c1T">Refratários ao Lu</div>
+              <div style="font-size: 0.82rem; color: var(--stone); line-height: 1.5" data-i18n="ld.s9c1D">Series RATIO e índicas mostram resposta em ~50% de pacientes pós-Lu. Toxicidade hematológica relevante.</div>
             </div>
             <div style="background: var(--graphite-2); border: 1px solid rgba(192, 132, 252, 0.3); border-radius: var(--radius-md); padding: 1.25rem">
               <div style="font-family: var(--font-mono); color: #C084FC; font-size: 0.85rem; margin-bottom: 0.4rem"><sup>212</sup>Pb-DOTAMTATE</div>
-              <div style="font-size: 0.95rem; color: var(--off-white); margin-bottom: 0.35rem">Alphamedix · ALPHAMEDIX</div>
-              <div style="font-size: 0.82rem; color: var(--stone); line-height: 1.5">Fase 1 (NCT03466216) com sinal de eficácia. Meia-vida 10,6 h favorece logística regional.</div>
+              <div style="font-size: 0.95rem; color: var(--off-white); margin-bottom: 0.35rem" data-i18n="ld.s9c2T">Alphamedix · ALPHAMEDIX</div>
+              <div style="font-size: 0.82rem; color: var(--stone); line-height: 1.5" data-i18n="ld.s9c2D">Fase 1 (NCT03466216) com sinal de eficácia. Meia-vida 10,6 h favorece logística regional.</div>
             </div>
             <div style="background: var(--graphite-2); border: 1px solid rgba(192, 132, 252, 0.3); border-radius: var(--radius-md); padding: 1.25rem">
               <div style="font-family: var(--font-mono); color: #C084FC; font-size: 0.85rem; margin-bottom: 0.4rem"><sup>161</sup>Tb-DOTATOC</div>
-              <div style="font-size: 0.95rem; color: var(--off-white); margin-bottom: 0.35rem">β⁻ + Auger</div>
-              <div style="font-size: 0.82rem; color: var(--stone); line-height: 1.5">Dosimetria mais favorável para lesões pequenas. Estudos PSI/Bern em curso.</div>
+              <div style="font-size: 0.95rem; color: var(--off-white); margin-bottom: 0.35rem" data-i18n="ld.s9c3T">β⁻ + Auger</div>
+              <div style="font-size: 0.82rem; color: var(--stone); line-height: 1.5" data-i18n="ld.s9c3D">Dosimetria mais favorável para lesões pequenas. Estudos PSI/Bern em curso.</div>
             </div>
             <div style="background: var(--graphite-2); border: 1px solid rgba(192, 132, 252, 0.3); border-radius: var(--radius-md); padding: 1.25rem">
               <div style="font-family: var(--font-mono); color: #C084FC; font-size: 0.85rem; margin-bottom: 0.4rem">SSTR antagonistas</div>
-              <div style="font-size: 0.95rem; color: var(--off-white); margin-bottom: 0.35rem">JR11, LM3</div>
-              <div style="font-size: 0.82rem; color: var(--stone); line-height: 1.5">Antagonistas se ligam a mais sítios SSTR2 (não exigem internalização). Maior captação tumoral, menor renal.</div>
+              <div style="font-size: 0.95rem; color: var(--off-white); margin-bottom: 0.35rem" data-i18n="ld.s9c4T">JR11, LM3</div>
+              <div style="font-size: 0.82rem; color: var(--stone); line-height: 1.5" data-i18n="ld.s9c4D">Antagonistas se ligam a mais sítios SSTR2 (não exigem internalização). Maior captação tumoral, menor renal.</div>
             </div>
           </div>
 
           <div class="key-fact">
-            <div class="lbl">Retratamento com Lu-DOTATATE</div>
-            <p>Em pacientes com boa resposta inicial (PFS &gt;12 m após 4 ciclos) e progressão tardia, retratamento com 2 ciclos adicionais é seguro e eficaz na maioria das séries. Dose renal cumulativa segura: 35-40 Gy (BED) ao longo de toda a história, monitorada por dosimetria. Em centros experientes, alguns pacientes recebem &gt;6 ciclos com manutenção de função renal e medular.</p>
+            <div class="lbl" data-i18n="ld.s9kfL">Retratamento com Lu-DOTATATE</div>
+            <p data-i18n="ld.s9kfT">Em pacientes com boa resposta inicial (PFS &gt;12 m após 4 ciclos) e progressão tardia, retratamento com 2 ciclos adicionais é seguro e eficaz na maioria das séries. Dose renal cumulativa segura: 35-40 Gy (BED) ao longo de toda a história, monitorada por dosimetria. Em centros experientes, alguns pacientes recebem &gt;6 ciclos com manutenção de função renal e medular.</p>
           </div>
         </div>
 
@@ -801,27 +805,27 @@
 
         <!-- ============== PRÓXIMOS ============== -->
         <div id="proximos" class="rf-section">
-          <h2><span class="num">10</span> Continue lendo</h2>
+          <h2><span class="num">10</span> <span data-i18n="ld.s10h">Continue lendo</span></h2>
           <div class="next-grid">
             <a href="lu-psma.html" class="next-card">
-              <div class="lbl">Radiofármaco</div>
+              <div class="lbl" data-i18n="ld.s10c1L">Radiofármaco</div>
               <div class="name"><sup>177</sup>Lu-PSMA-617</div>
-              <div class="desc">VISION, TheraP, PSMAfore — radioligante para mCRPC.</div>
+              <div class="desc" data-i18n="ld.s10c1D">VISION, TheraP, PSMAfore — radioligante para mCRPC.</div>
             </a>
             <a href="ra-223.html" class="next-card">
-              <div class="lbl">Alfa-emissor</div>
-              <div class="name"><sup>223</sup>Ra-Cloreto</div>
-              <div class="desc">ALSYMPCA, PEACE-3, COMRADE — só osso, alta especificidade.</div>
+              <div class="lbl" data-i18n="ld.s10c2L">Alfa-emissor</div>
+              <div class="name" data-i18n-html="ld.s10c2N"><sup>223</sup>Ra-Cloreto</div>
+              <div class="desc" data-i18n="ld.s10c2D">ALSYMPCA, PEACE-3, COMRADE — só osso, alta especificidade.</div>
             </a>
             <a href="mibg.html" class="next-card">
-              <div class="lbl">Sistema simpático</div>
+              <div class="lbl" data-i18n="ld.s10c3L">Sistema simpático</div>
               <div class="name"><sup>131</sup>I-MIBG</div>
-              <div class="desc">Neuroblastoma, feo/paraganglioma. Histórico e MIDAS.</div>
+              <div class="desc" data-i18n="ld.s10c3D">Neuroblastoma, feo/paraganglioma. Histórico e MIDAS.</div>
             </a>
             <a href="database.html" class="next-card">
-              <div class="lbl">Database</div>
-              <div class="name">Todos os estudos</div>
-              <div class="desc">Filtre por NET / 177Lu / DOTATATE no Database.</div>
+              <div class="lbl" data-i18n="ld.s10c4L">Database</div>
+              <div class="name" data-i18n="ld.s10c4N">Todos os estudos</div>
+              <div class="desc" data-i18n="ld.s10c4D">Filtre por NET / 177Lu / DOTATATE no Database.</div>
             </a>
           </div>
         </div>
@@ -835,14 +839,21 @@
 <footer class="site-footer">
   <div class="container">
     <div class="footer-bottom">
-      <span>© 2026 TheraTrials Oncology · Plataforma de evidências em oncologia moderna</span>
-      <span style="color: var(--stone); font-size: 0.82rem; margin-left: 1rem">Dados extraídos de publicações peer-reviewed e bases regulatórias. Conteúdo educacional, não substitui julgamento clínico.</span>
+      <span data-i18n="ld.s10ft1">© 2026 TheraTrials Oncology · Plataforma de evidências em oncologia moderna</span>
+      <span style="color: var(--stone); font-size: 0.82rem; margin-left: 1rem" data-i18n="ld.s10ft2">Dados extraídos de publicações peer-reviewed e bases regulatórias. Conteúdo educacional, não substitui julgamento clínico.</span>
     </div>
   </div>
 </footer>
 
+<script src="assets/js/i18n.js"></script>
+<script src="assets/lang/pt-br.js"></script>
+<script src="assets/lang/en.js"></script>
 <script>
   document.addEventListener('DOMContentLoaded', () => {
+    if (typeof lucide !== 'undefined') lucide.createIcons();
+  });
+  // Re-render Lucide icons after a language switch (data-i18n-html may replace icon nodes)
+  window.addEventListener('langchange', () => {
     if (typeof lucide !== 'undefined') lucide.createIcons();
   });
 </script>
