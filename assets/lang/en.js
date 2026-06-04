@@ -1183,7 +1183,7 @@ window._i18nRegister('en', {
     s9c1T: "Vorinostat, panobinostat",
     s9c1D: "HDAC inhibitors increase NET expression — converting cold tumors into hot ones for MIBG. The NANT consortium led these studies.",
     s9c2mono: "MIBG + nivolumab",
-    s9c2D: "Immuno-radiation combination. Hypothesis: abscopal effect mediated by antigen release. Results expected 2026-27.",
+    s9c2D: "Immuno + radiation combination. Hypothesis: abscopal effect mediated by antigen release. Preclinical rationale, no dedicated clinical trial yet in PPGL.",
     s9c3T: "Alpha emitter · MABG",
     s9c3D: "Astatine-211 bound to MABG (an MIBG analog). Phase 1 pilot in PPGL and neuroblastoma. Logistics limited by T½ 7.2 h.",
     s9c4mono: "MIBG ↔ Lu-DOTATATE sequencing",
