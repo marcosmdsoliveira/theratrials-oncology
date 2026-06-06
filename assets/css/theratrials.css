@@ -633,6 +633,10 @@ section.compact { padding: 3rem 0; }
 .text-sm { font-size: 0.875rem; }
 .text-xs { font-size: 0.75rem; }
 
+/* Texto corrido (editorial/legal) em padrão justificado */
+.prose p,
+.prose li { text-align: justify; text-justify: inter-word; }
+
 /* Categoria dots (database e mais) */
 .cat-dot {
   width: 8px; height: 8px;
