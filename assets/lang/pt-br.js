@@ -452,7 +452,7 @@ window._i18nRegister('pt-br', {
     s7r7org: "Fígado",
     s7r7v: "~ 0,1",
     s7kfL: "Dosimetria personalizada — vale a pena?",
-    s7kfT: "O ensaio LuTectomy e o programa PRINCE mostraram correlação entre dose tumoral absorvida e resposta. Calculadoras simples (3 SPECT/CT — 4 h, 24 h, 48 h ou 72 h) permitem estimar dose tumoral e dose renal. Em centros com infraestrutura, dose-personalizada pode otimizar resposta sem aumentar toxicidade.",
+    s7kfT: "Análises dosimétricas do <strong>LuPSMA trial</strong> (Violet et al., <em>J Nucl Med</em> 2019) e do <strong>LuTectomy</strong> mostraram correlação entre a dose tumoral absorvida e a resposta. A dosimetria é feita por <strong>SPECT/CT quantitativo</strong> — clássica multi-tempo (ex.: 4, 24 e 96 h pós-dose) com software dedicado (MIM SurePlan, HERMES) para construir a curva tempo-atividade e estimar dose tumoral e renal; ou por métodos <strong>simplificados de tempo único</strong> (uma aquisição em ~48–72 h ou em 7 dias), que viabilizam a dosimetria na rotina. Em centros com infraestrutura, a dose personalizada pode otimizar a resposta sem aumentar a toxicidade.",
     s8h: "Eventos adversos · perfil VISION",
     s8lead: "Toxicidade overall manejável. Hematológica é dose-limitante; xerostomia é a queixa crônica mais frequente.",
     s8t1: "Xerostomia / boca seca",

@@ -452,7 +452,7 @@ window._i18nRegister('en', {
     s7r7org: "Liver",
     s7r7v: "~ 0.1",
     s7kfL: "Personalized dosimetry — is it worth it?",
-    s7kfT: "The LuTectomy trial and the PRINCE program showed a correlation between absorbed tumor dose and response. Simple calculators (3 SPECT/CT — 4 h, 24 h, 48 h or 72 h) allow estimation of tumor dose and renal dose. In centers with infrastructure, personalized dosing can optimize response without increasing toxicity.",
+    s7kfT: "Dosimetric analyses from the <strong>LuPSMA trial</strong> (Violet et al., <em>J Nucl Med</em> 2019) and <strong>LuTectomy</strong> showed a correlation between tumor absorbed dose and response. Dosimetry uses <strong>quantitative SPECT/CT</strong> — classically multi-time-point (e.g., 4, 24 and 96 h post-dose) with dedicated software (MIM SurePlan, HERMES) to build the time-activity curve and estimate tumor and kidney dose; or <strong>simplified single-time-point</strong> methods (one acquisition at ~48–72 h or at 7 days) that make dosimetry feasible in routine practice. In centers with the infrastructure, personalized dosing can optimize response without increasing toxicity.",
     s8h: "Adverse events · VISION profile",
     s8lead: "Overall toxicity manageable. Hematologic toxicity is dose-limiting; xerostomia is the most frequent chronic complaint.",
     s8t1: "Xerostomia / dry mouth",
