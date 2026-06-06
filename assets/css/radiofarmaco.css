@@ -426,7 +426,7 @@
 }
 .key-fact p { margin: 0; color: var(--off-white); font-size: 0.95rem; line-height: 1.55; }
 
-/* Texto corrido em padrão justificado (com hifenização p/ evitar vãos) */
+/* Texto corrido em padrão justificado (sem hifenização) */
 .rf-subtitle,
 .rf-section .lead,
 .tl-card p,
@@ -434,8 +434,6 @@
 .key-fact p {
   text-align: justify;
   text-justify: inter-word;
-  -webkit-hyphens: auto;
-  hyphens: auto;
 }
 
 /* Comparação alfa vs beta */
