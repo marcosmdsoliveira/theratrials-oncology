@@ -1682,10 +1682,7 @@ window._i18nRegister('en', {
     s7r4lim: "Closed platform · captive to Bayer registrational programs.",
     s7r5src: "Mid-size cyclotron (<sup>209</sup>Bi(α,2n)<sup>211</sup>At) · few sites",
     s7r5cap: "Local · short term",
-    s7r5lim: "T½ 7.2 h forces same-day production and delivery.",
-    s7kfL: "Brazil · 2026 scenario",
-    s7kfT: "IPEN (USP) is working on <sup>225</sup>Ac production studies via cyclotron and on international partnerships. Perspective Therapeutics' <sup>212</sup>Pb-DOTAMTATE has a plan to reach Brazilian theranostic centers as FDA/EMA approval is achieved and ANVISA follows through. Individual patients can import it with case-by-case ANVISA authorization. Centers such as the Theranostic Center at Hospital Felício Rocho are technically capable of operating α emitters once commercial access exists.",
-    // 08 Outlook
+    s7r5lim: "T½ 7.2 h forces same-day production and delivery.",    // 08 Outlook
     s8h: "Outlook · 2026-2030",
     s8lead: "Four major movements underway: (1) first registrational approvals, (2) β-α-Auger theranostic integration, (3) TTC platforms (α antibodies) and (4) combinations with PARPi and immuno.",
     p1H: "1st α approval in PRRT", p1D: "ALPHAMEDIX-2 should generate registrational data. First alpha PRRT on the market.",

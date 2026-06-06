@@ -1682,10 +1682,7 @@ window._i18nRegister('pt-br', {
     s7r4lim: "Plataforma fechada · captiva de programa registrais Bayer.",
     s7r5src: "Cíclotron médio porte (<sup>209</sup>Bi(α,2n)<sup>211</sup>At) · poucos sites",
     s7r5cap: "Local · curto prazo",
-    s7r5lim: "T½ 7,2 h obriga produção e entrega no mesmo dia.",
-    s7kfL: "Brasil · cenário 2026",
-    s7kfT: "O IPEN (USP) trabalha em estudos de produção de <sup>225</sup>Ac via cíclotron e em parcerias internacionais. <sup>212</sup>Pb-DOTAMTATE da Perspective Therapeutics tem plano de chegada a centros teranósticos brasileiros conforme aprovação FDA/EMA seja concretizada e ANVISA dê sequência. Pacientes individuais podem importar com autorização ANVISA caso a caso. Centros como o Centro Teranóstico do Hospital Felício Rocho estão tecnicamente capazes de operar α-emissores quando houver acesso comercial.",
-    // 08 Perspectivas
+    s7r5lim: "T½ 7,2 h obriga produção e entrega no mesmo dia.",    // 08 Perspectivas
     s8h: "Perspectivas · 2026-2030",
     s8lead: "Quatro grandes movimentos em curso: (1) primeiras aprovações registrais, (2) integração teranóstica β-α-Auger, (3) plataformas TTC (anticorpos α) e (4) combinações com PARPi e imuno.",
     p1H: "1ª aprovação α em PRRT", p1D: "ALPHAMEDIX-2 deve gerar dados registrais. Primeira PRRT alfa em mercado.",
