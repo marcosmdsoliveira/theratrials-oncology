@@ -100,7 +100,7 @@
   /* ── Inject CSS (only once) ── */
   var style = document.createElement('style');
   style.textContent =
-    '.cl-section{margin-top:2rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.06)}' +
+    '.cl-section{margin-top:2.5rem;margin-bottom:2.5rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.06)}' +
     '.cl-section h3{font-family:Outfit,sans-serif;font-size:1.15rem;font-weight:600;color:var(--off-white,#F5F6F7);margin-bottom:1.2rem;display:flex;align-items:center;gap:.5rem}' +
     '.cl-section h3 svg{opacity:.6}' +
     '.cl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:.75rem}' +
