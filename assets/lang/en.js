@@ -388,7 +388,7 @@ window._i18nRegister('en', {
     s5exc3: "Visceral lesion &gt; 1 cm with PSMA ≤ liver",
     s5exc4: "Any bone lesion with &gt; 1 cm of associated soft tissue with PSMA ≤ liver",
     s5kf2L: "Accepted tracer",
-    s5kf2T: "VISION used exclusively <strong><sup>68</sup>Ga-PSMA-11</strong>. The Pluvicto label and current practice also accept <strong><sup>18</sup>F-DCFPyL (Pylarify)</strong> with qualitatively equivalent criteria (dominant uptake &gt; liver in ≥1 metastatic lesion). <sup>18</sup>F-PSMA-1007, due to hepatobiliary excretion, is not recommended for therapeutic selection.",
+    s5kf2T: "VISION used <strong><sup>68</sup>Ga-PSMA-11</strong> exclusively; the Pluvicto label and international practice also accept <strong><sup>18</sup>F-DCFPyL (Pylarify)</strong>, with qualitatively equivalent criteria (dominant uptake &gt; liver in ≥1 metastatic lesion). <strong><sup>18</sup>F-PSMA-1007</strong> was not validated in the pivotal trials and, owing to hepatobiliary excretion, raises liver background — so the reference organ shifts to the <strong>spleen</strong> (lesions qualify with uptake &gt; spleen rather than &gt; liver), besides nonspecific bone uptake. Even so, thanks to the superior logistics of <sup>18</sup>F (~110 min half-life, cyclotron production and centralized distribution, no generator dependence), it is widely used for selection; in Brazil it is the predominant tracer for this reason.",
     s5kf3L: "Real-world clinical scenario",
     s5kf3T: "About 13% of patients screened for VISION were excluded by PSMA-negativity criteria, a relevant rate that reinforces the mandatory nature of diagnostic PSMA-PET before indicating treatment.",
     s6h: "Pivotal trials",

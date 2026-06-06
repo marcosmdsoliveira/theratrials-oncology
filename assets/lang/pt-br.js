@@ -388,7 +388,7 @@ window._i18nRegister('pt-br', {
     s5exc3: "Lesão visceral &gt; 1 cm com PSMA ≤ fígado",
     s5exc4: "Qualquer lesão óssea &gt; 1 cm de partes moles associadas com PSMA ≤ fígado",
     s5kf2L: "Tracer aceito",
-    s5kf2T: "O VISION usou exclusivamente <strong><sup>68</sup>Ga-PSMA-11</strong>. A bula do Pluvicto e a prática atual aceitam também <strong><sup>18</sup>F-DCFPyL (Pylarify)</strong> com critérios qualitativamente equivalentes (captação dominante &gt; fígado em ≥1 lesão metastática). <sup>18</sup>F-PSMA-1007, por excreção hepatobiliar, não é recomendado para seleção terapêutica.",
+    s5kf2T: "O VISION usou exclusivamente <strong><sup>68</sup>Ga-PSMA-11</strong>; a bula do Pluvicto e a prática internacional aceitam também o <strong><sup>18</sup>F-DCFPyL (Pylarify)</strong>, com critérios qualitativamente equivalentes (captação dominante &gt; fígado em ≥1 lesão metastática). O <strong><sup>18</sup>F-PSMA-1007</strong> não foi validado nos ensaios pivotais e, por excreção hepatobiliar, eleva o background hepático — por isso a referência de captação passa a ser o <strong>baço</strong> (qualificam-se lesões com captação &gt; baço, em vez de &gt; fígado), além de captação óssea inespecífica. Ainda assim, pela logística superior do <sup>18</sup>F (meia-vida ~110 min, produção em cíclotron e distribuição centralizada, sem dependência de gerador), é amplamente usado para seleção; no Brasil, é o traçador predominante por essa razão.",
     s5kf3L: "Cenário clínico real",
     s5kf3T: "Cerca de 13% dos pacientes triados para o VISION foram excluídos por critérios de PSMA-negatividade, uma taxa relevante que reforça a obrigatoriedade do PSMA-PET diagnóstico antes de indicar o tratamento.",
     s6h: "Ensaios pivotais",
