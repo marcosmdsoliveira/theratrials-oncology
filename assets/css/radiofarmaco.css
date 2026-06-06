@@ -426,6 +426,18 @@
 }
 .key-fact p { margin: 0; color: var(--off-white); font-size: 0.95rem; line-height: 1.55; }
 
+/* Texto corrido em padrão justificado (com hifenização p/ evitar vãos) */
+.rf-subtitle,
+.rf-section .lead,
+.tl-card p,
+.mech-stage p,
+.key-fact p {
+  text-align: justify;
+  text-justify: inter-word;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+
 /* Comparação alfa vs beta */
 .ab-compare {
   display: grid;
