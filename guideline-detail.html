@@ -666,7 +666,30 @@
 .gd-concept-icon i { width: 18px; height: 18px; }
 .gd-concept-title { font-weight: 700; color: var(--off-white); font-size: 0.9rem; line-height: 1.3; margin-bottom: 0.3rem; }
 .gd-concept-text { font-size: 0.82rem; color: var(--stone); line-height: 1.5; }
-.gd-section-extra { margin: -0.3rem 0 1.6rem; }
+.gd-section-extra { margin: 0.2rem 0 1rem; }
+/* seção como card colapsável (revelação progressiva) */
+.gd-rsection { margin-bottom: 0.7rem; border: 1px solid var(--border-soft); border-radius: 14px; background: var(--graphite-2); padding: 0 1.2rem; transition: border-color .15s; }
+.gd-rsection:hover { border-color: var(--border-mid); }
+.gd-rsection:not(.collapsed) { border-color: var(--border-mid); }
+.gd-rheader { align-items: flex-start; margin-bottom: 0; padding: 0.95rem 0; }
+.gd-rheader .gd-section-icon { margin-top: 1px; }
+.gd-rhead-text { flex: 1; min-width: 0; }
+.gd-rhead-text h2 { font-size: 1.05rem; margin: 0; }
+.gd-rsummary { font-size: 0.82rem; color: var(--stone); line-height: 1.45; margin-top: 0.3rem; font-weight: 400; }
+.gd-rsection:not(.collapsed) .gd-rsummary { display: none; }
+.gd-rsection:not(.collapsed) .gd-rheader { border-bottom: 1px solid var(--border-soft); margin-bottom: 1rem; }
+.gd-rsection .gd-section-body { max-height: 6000px; }
+.gd-rsection:not(.collapsed) .gd-section-body { padding-bottom: 1.2rem; }
+/* faixa Conceitos-chave */
+.gd-concept-strip { margin-top: 1.4rem; }
+.gd-strip-h { display: flex; align-items: center; gap: 0.45rem; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--stone); margin-bottom: 0.7rem; }
+.gd-strip-h i { width: 15px; height: 15px; color: var(--amber); }
+/* barra Expandir tudo */
+.gd-expand-bar { display: flex; align-items: center; justify-content: space-between; gap: 0.8rem; margin-bottom: 1rem; flex-wrap: wrap; }
+.gd-expand-hint { font-size: 0.78rem; color: var(--stone-2); }
+.gd-expand-all { display: inline-flex; align-items: center; gap: 0.35rem; background: var(--graphite-3); border: 1px solid var(--border-mid); color: var(--off-white); font-size: 0.78rem; font-weight: 600; padding: 0.4rem 0.85rem; border-radius: 999px; cursor: pointer; font-family: inherit; }
+.gd-expand-all:hover { border-color: var(--amber); color: var(--amber-glow, #FFA640); }
+.gd-expand-all i { width: 14px; height: 14px; }
 .gd-callout { border-radius: var(--radius-md,12px); padding: 1.1rem 1.3rem; border: 1px solid var(--border-soft); }
 .gd-callout-head { display: flex; align-items: center; gap: 0.5rem; font-weight: 700; margin-bottom: 0.5rem; }
 .gd-callout-head i { width: 17px; height: 17px; }
@@ -1013,10 +1036,23 @@
       }).join('') + '</div>';
       return '';
     }
-    var secHtml = '';
+    function richSection(sec) {
+      return '<div class="gd-section gd-rsection collapsed" id="' + sec.id + '">' +
+        '<div class="gd-section-header gd-rheader" data-section-toggle="' + sec.id + '">' +
+          '<div class="gd-section-icon" style="background:' + sec.color + '1a;color:' + sec.color + '"><i data-lucide="' + sec.icon + '"></i></div>' +
+          '<div class="gd-rhead-text"><h2>' + esc(sec.title) + '</h2>' +
+            (sec.summary ? '<div class="gd-rsummary">' + esc(sec.summary) + '</div>' : '') + '</div>' +
+          '<i data-lucide="chevron-down" class="gd-section-toggle"></i>' +
+        '</div>' +
+        '<div class="gd-section-body">' + secBody(sec) + '</div>' +
+      '</div>';
+    }
+    var conceptStrip = cc ? '<div class="gd-concept-strip"><div class="gd-strip-h"><i data-lucide="sparkles"></i> Conceitos-chave</div>' + cc + '</div>' : '';
+    var expandBar = '<div class="gd-expand-bar"><span class="gd-expand-hint">Clique em uma seção para abrir o conteúdo completo</span>' +
+      '<button class="gd-expand-all" data-expand-all="0"><i data-lucide="chevrons-up-down"></i> <span>Expandir tudo</span></button></div>';
+    var secHtml = expandBar;
     R.sections.forEach(function(sec){
-      secHtml += section(sec.id, sec.color + '1a', sec.color, sec.icon, esc(sec.title), secBody(sec));
-      if (sec.id === 'fundamento' && cc) secHtml += '<div class="gd-section-extra">' + cc + '</div>';
+      secHtml += richSection(sec);
       if (sec.id === 'indicacoes' && dontHtml) secHtml += '<div class="gd-section-extra">' + dontHtml + '</div>';
       if (sec.id === 'pontos' && cautionHtml) secHtml += '<div class="gd-section-extra">' + cautionHtml + '</div>';
     });
@@ -1056,6 +1092,7 @@
       '<section><div class="container">' +
         '<div class="gd-why"><div class="gd-why-head"><i data-lucide="compass"></i> Por que esta diretriz importa?</div><p>' + esc(R.whyItMatters) + '</p></div>' +
         '<div class="gd-onesentence"><i data-lucide="quote"></i><span>' + esc(R.oneSentence) + '</span></div>' +
+        conceptStrip +
       '</div></section>' +
       '<section><div class="container"><div class="gd-layout">' +
         '<aside class="gd-toc"><h4>Conteúdo</h4>' + tocH + '</aside>' +
@@ -1146,6 +1183,22 @@
     headers[h].addEventListener('click', function() {
       var sec = this.closest('.gd-section');
       if (sec) sec.classList.toggle('collapsed');
+    });
+  }
+
+  /* ── Expand / collapse all (rich page) ── */
+  var expandAllBtn = document.querySelector('[data-expand-all]');
+  if (expandAllBtn) {
+    expandAllBtn.addEventListener('click', function() {
+      var secs = document.querySelectorAll('.gd-rsection');
+      var expand = this.getAttribute('data-expand-all') === '0';
+      for (var i = 0; i < secs.length; i++) {
+        if (expand) secs[i].classList.remove('collapsed');
+        else secs[i].classList.add('collapsed');
+      }
+      this.setAttribute('data-expand-all', expand ? '1' : '0');
+      var lbl = this.querySelector('span');
+      if (lbl) lbl.textContent = expand ? 'Recolher tudo' : 'Expandir tudo';
     });
   }
 
