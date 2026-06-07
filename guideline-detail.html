@@ -623,11 +623,75 @@
   overflow: hidden;
 }
 
+/* ════════ Página rica modular (rich) ════════ */
+.gd-rbadges { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1rem; }
+.gd-rbadge { font-size: 0.66rem; font-weight: 700; letter-spacing: 0.04em; padding: 0.2rem 0.6rem; border-radius: 999px; border: 1px solid var(--border-soft); background: var(--graphite-4); color: var(--stone); text-transform: uppercase; }
+.gd-rbadge-soc { color: var(--teal); border-color: rgba(14,165,183,0.4); }
+.gd-rbadge-year { color: var(--amber); border-color: rgba(255,132,0,0.4); }
+.gd-rbadge-th { color: #C084FC; border-color: rgba(192,132,252,0.4); }
+.gd-rbadge-cat { color: #34D399; border-color: rgba(52,211,153,0.4); }
+.gd-rbadge-type { color: var(--off-white); }
+.gd-hero-summary { margin: 1.1rem 0 0; max-width: 72ch; color: var(--stone); line-height: 1.6; font-size: 0.95rem; }
+.gd-why { background: linear-gradient(135deg, rgba(255,132,0,0.08), rgba(14,165,183,0.05)); border: 1px solid var(--border-soft); border-radius: var(--radius-lg, 16px); padding: 1.4rem 1.6rem; margin-top: 1.5rem; }
+.gd-why-head { display: flex; align-items: center; gap: 0.5rem; font-family: var(--font-display); font-weight: 700; color: var(--off-white); margin-bottom: 0.6rem; }
+.gd-why-head i { width: 18px; height: 18px; color: var(--amber); }
+.gd-why p { margin: 0; color: var(--off-white); opacity: 0.9; line-height: 1.65; }
+.gd-onesentence { display: flex; align-items: flex-start; gap: 0.7rem; margin-top: 1rem; padding: 1rem 1.3rem; border-left: 3px solid var(--teal); background: var(--graphite-2); border-radius: 0 var(--radius-md,12px) var(--radius-md,12px) 0; }
+.gd-onesentence i { width: 18px; height: 18px; color: var(--teal); flex: 0 0 auto; margin-top: 2px; }
+.gd-onesentence span { font-size: 1.02rem; font-weight: 600; color: var(--off-white); line-height: 1.5; }
+.gd-rp { margin: 0 0 0.8rem; color: var(--off-white); opacity: 0.9; line-height: 1.7; }
+.gd-rp:last-child { margin-bottom: 0; }
+.gd-rgroup { margin-bottom: 1.2rem; }
+.gd-rgroup:last-child { margin-bottom: 0; }
+.gd-rgroup-title { font-weight: 700; color: var(--amber-glow, #FFA640); font-size: 0.95rem; margin-bottom: 0.5rem; }
+.gd-rgroup-box { background: var(--graphite-3); border: 1px solid var(--border-soft); border-left: 3px solid var(--amber); border-radius: var(--radius-md,12px); padding: 1rem 1.2rem; }
+.gd-rgroup-box .gd-rgroup-title { color: var(--amber); }
+.gd-rbullets { margin: 0; padding-left: 0; list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+.gd-rbullets li { position: relative; padding-left: 1.6rem; color: var(--off-white); opacity: 0.92; line-height: 1.6; }
+.gd-rbullets li::before { content: ""; position: absolute; left: 0; top: 0.55em; width: 7px; height: 7px; border-radius: 50%; background: var(--teal); box-shadow: 0 0 6px rgba(14,165,183,0.5); }
+.gd-rcards { display: grid; grid-template-columns: 1fr; gap: 0.9rem; }
+.gd-rcard { background: var(--graphite-3); border: 1px solid var(--border-soft); border-radius: var(--radius-md,12px); padding: 1.1rem 1.3rem; }
+.gd-rcard-head { display: flex; align-items: center; justify-content: space-between; gap: 0.6rem; margin-bottom: 0.6rem; flex-wrap: wrap; }
+.gd-rcard-title { font-weight: 700; color: var(--off-white); font-size: 1rem; }
+.gd-rcard-tag { font-size: 0.64rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.15rem 0.55rem; border-radius: 999px; background: var(--graphite-4); color: #C084FC; border: 1px solid rgba(192,132,252,0.35); }
+.gd-rtimeline { position: relative; padding-left: 0.5rem; }
+.gd-rphase { position: relative; padding-left: 2.4rem; padding-bottom: 1.4rem; }
+.gd-rphase:not(:last-child)::before { content: ""; position: absolute; left: 13px; top: 6px; bottom: -6px; width: 2px; background: var(--border-soft); }
+.gd-rphase-dot { position: absolute; left: 0; top: 0; width: 28px; height: 28px; border-radius: 50%; background: var(--graphite-4); border: 2px solid #FB923C; color: #FB923C; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.82rem; }
+.gd-rphase-title { font-weight: 700; color: #FB923C; margin-bottom: 0.4rem; }
+.gd-concept-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.8rem; }
+.gd-concept-card { background: var(--graphite-3); border: 1px solid var(--border-soft); border-radius: var(--radius-md,12px); padding: 1rem; }
+.gd-concept-card:hover { border-color: var(--border-mid); }
+.gd-concept-icon { width: 34px; height: 34px; border-radius: 9px; background: rgba(14,165,183,0.12); color: var(--teal); display: flex; align-items: center; justify-content: center; margin-bottom: 0.6rem; }
+.gd-concept-icon i { width: 18px; height: 18px; }
+.gd-concept-title { font-weight: 700; color: var(--off-white); font-size: 0.9rem; line-height: 1.3; margin-bottom: 0.3rem; }
+.gd-concept-text { font-size: 0.82rem; color: var(--stone); line-height: 1.5; }
+.gd-section-extra { margin: -0.3rem 0 1.6rem; }
+.gd-callout { border-radius: var(--radius-md,12px); padding: 1.1rem 1.3rem; border: 1px solid var(--border-soft); }
+.gd-callout-head { display: flex; align-items: center; gap: 0.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+.gd-callout-head i { width: 17px; height: 17px; }
+.gd-callout-text { color: var(--off-white); opacity: 0.9; line-height: 1.65; font-size: 0.9rem; }
+.gd-callout-warn { background: rgba(251,191,36,0.07); border-color: rgba(251,191,36,0.35); }
+.gd-callout-warn .gd-callout-head { color: var(--warn, #FBBF24); }
+.gd-callout-info { background: rgba(96,165,250,0.06); border-color: rgba(96,165,250,0.3); }
+.gd-callout-info .gd-callout-head { color: #60A5FA; }
+.gd-prmsg { background: linear-gradient(135deg, rgba(255,132,0,0.1), rgba(14,165,183,0.06)); border: 1px solid rgba(255,132,0,0.25); border-radius: var(--radius-lg,16px); padding: 1.6rem 1.8rem; }
+.gd-prmsg-head { display: flex; align-items: center; gap: 0.55rem; font-family: var(--font-display); font-size: 1.15rem; font-weight: 700; color: var(--amber); margin-bottom: 0.9rem; }
+.gd-prmsg-head i { width: 20px; height: 20px; }
+.gd-prmsg-intro { margin: 0 0 0.9rem; color: var(--off-white); line-height: 1.65; font-weight: 500; }
+.gd-prmsg-lead { margin: 0 0 0.6rem; color: var(--stone); font-weight: 600; }
+.gd-prmsg-q { margin: 0 0 1rem; padding-left: 1.3rem; display: flex; flex-direction: column; gap: 0.5rem; }
+.gd-prmsg-q li { color: var(--off-white); opacity: 0.92; line-height: 1.55; }
+.gd-prmsg-close { margin: 0; color: var(--off-white); line-height: 1.65; border-top: 1px solid var(--border-soft); padding-top: 0.9rem; }
+
 @media (max-width: 600px) {
   .gd-nav-bottom { flex-direction: column; }
   .gd-nav-link { max-width: 100%; }
   .gd-nav-link.next { text-align: left; }
+  .gd-concept-row { grid-template-columns: 1fr 1fr; }
+  .gd-rphase { padding-left: 2.2rem; }
 }
+@media (max-width: 420px) { .gd-concept-row { grid-template-columns: 1fr; } }
 </style>
 <script defer src="https://cloud.umami.is/script.js" data-website-id="3c576b68-e2b3-4982-82e7-688e5a8adf58"></script>
 </head>
@@ -915,7 +979,96 @@
     '</div>';
   }
 
+  /* ── Rich modular page builder (usado quando g.rich existe; fallback p/ as demais) ── */
+  function renderRichPage() {
+    var R = g.rich;
+    function paras(arr) { return (arr || []).map(function(p){ return '<p class="gd-rp">' + esc(p) + '</p>'; }).join(''); }
+    var rbMap = { "EANM":"soc","IAEA":"soc","SNMMI":"soc","2026":"year","Guideline":"type","PRRT":"th","SSTR":"th","Theranostics":"th","Neuroendocrine tumors":"cat" };
+    var rb = (R.badges||[]).map(function(b){ return '<span class="gd-rbadge gd-rbadge-' + (rbMap[b]||"def") + '">' + esc(b) + '</span>'; }).join('');
+    var cc = '';
+    if (R.conceptCards && R.conceptCards.length) {
+      cc = '<div class="gd-concept-row">' + R.conceptCards.map(function(c){
+        return '<div class="gd-concept-card"><div class="gd-concept-icon"><i data-lucide="' + esc(c.icon) + '"></i></div>' +
+          '<div class="gd-concept-title">' + esc(c.title) + '</div><div class="gd-concept-text">' + esc(c.text) + '</div></div>';
+      }).join('') + '</div>';
+    }
+    function calloutBox(cls, icon, title, text) {
+      return '<div class="gd-callout ' + cls + '"><div class="gd-callout-head"><i data-lucide="' + icon + '"></i> ' + esc(title) + '</div>' +
+        '<div class="gd-callout-text">' + esc(text) + '</div></div>';
+    }
+    var cautionHtml = R.cautionBox ? calloutBox('gd-callout-warn','alert-octagon', R.cautionBox.title, R.cautionBox.text) : '';
+    var dontHtml = R.dontConfuse ? calloutBox('gd-callout-info','split', R.dontConfuse.title, R.dontConfuse.text) : '';
+    function secBody(sec) {
+      if (sec.type === 'text') return paras(sec.paragraphs);
+      if (sec.type === 'grouped') return (sec.groups||[]).map(function(grp){
+        return '<div class="gd-rgroup' + (grp.box ? ' gd-rgroup-box' : '') + '"><div class="gd-rgroup-title">' + esc(grp.title) + '</div>' + paras(grp.paragraphs) + '</div>';
+      }).join('');
+      if (sec.type === 'bullets') return '<ul class="gd-rbullets">' + (sec.items||[]).map(function(it){ return '<li>' + esc(it) + '</li>'; }).join('') + '</ul>';
+      if (sec.type === 'cards') return '<div class="gd-rcards">' + (sec.cards||[]).map(function(cd){
+        return '<div class="gd-rcard"><div class="gd-rcard-head"><span class="gd-rcard-title">' + esc(cd.title) + '</span>' +
+          (cd.tag ? '<span class="gd-rcard-tag">' + esc(cd.tag) + '</span>' : '') + '</div>' + paras(cd.paragraphs) + '</div>';
+      }).join('') + '</div>';
+      if (sec.type === 'timeline') return '<div class="gd-rtimeline">' + (sec.phases||[]).map(function(ph, i){
+        return '<div class="gd-rphase"><div class="gd-rphase-dot">' + (i+1) + '</div><div class="gd-rphase-body"><div class="gd-rphase-title">' + esc(ph.title) + '</div>' + paras(ph.paragraphs) + '</div></div>';
+      }).join('') + '</div>';
+      return '';
+    }
+    var secHtml = '';
+    R.sections.forEach(function(sec){
+      secHtml += section(sec.id, sec.color + '1a', sec.color, sec.icon, esc(sec.title), secBody(sec));
+      if (sec.id === 'fundamento' && cc) secHtml += '<div class="gd-section-extra">' + cc + '</div>';
+      if (sec.id === 'indicacoes' && dontHtml) secHtml += '<div class="gd-section-extra">' + dontHtml + '</div>';
+      if (sec.id === 'pontos' && cautionHtml) secHtml += '<div class="gd-section-extra">' + cautionHtml + '</div>';
+    });
+    var pm = R.practicalMessage, pmHtml = '';
+    if (pm) {
+      pmHtml = '<div class="gd-section" id="mensagem"><div class="gd-prmsg"><div class="gd-prmsg-head"><i data-lucide="flag"></i> Mensagem prática</div>' +
+        '<p class="gd-prmsg-intro">' + esc(pm.intro) + '</p><p class="gd-prmsg-lead">' + esc(pm.leadIn) + '</p>' +
+        '<ol class="gd-prmsg-q">' + (pm.questions||[]).map(function(q){ return '<li>' + esc(q) + '</li>'; }).join('') + '</ol>' +
+        '<p class="gd-prmsg-close">' + esc(pm.closing) + '</p></div></div>';
+    }
+    var toc = R.sections.map(function(sec){ return { id: sec.id, label: sec.title }; });
+    if (pm) toc.push({ id:'mensagem', label:'Mensagem prática' });
+    var tocH = toc.map(function(t){ return '<a href="#' + t.id + '" data-toc-link="' + t.id + '">' + esc(t.label) + '</a>'; }).join('');
+    var refHtml = section('referencia', 'rgba(14,165,183,0.1)', 'var(--teal)', 'book-open', 'Referência', '<div class="gd-ref-box">' + esc(g.reference) + '</div>');
+    var clHtml = (function() {
+      var CL = window.CROSS_LINKS;
+      if (!CL || !CL.GL_TO_RF || !CL.GL_TO_RF[g.id] || !CL.GL_TO_RF[g.id].length) return '';
+      var pages = CL.GL_TO_RF[g.id], ch = '<div class="cl-grid">';
+      pages.forEach(function(page){ var rf=CL.RF[page]; if(!rf) return;
+        ch += '<a href="' + page + '" class="cl-card"><div style="position:absolute;top:0;left:0;width:3px;height:100%;background:' + rf.color + ';border-radius:3px 0 0 3px"></div>' +
+          '<div class="cl-iso" style="background:' + rf.color + '18;color:' + rf.color + '"><span class="m">' + rf.mass + '</span><span class="e">' + rf.elem + '</span></div>' +
+          '<div class="cl-info"><div class="cl-name">' + rf.name + '</div><div class="cl-desc">' + rf.desc + '</div></div></a>';
+      });
+      ch += '</div>';
+      return section('radiofarmacos-rel','rgba(255,132,0,0.1)','var(--amber)','atom','Dossiês de Radiofármacos', ch);
+    })();
+    return '<section class="gd-hero"><div class="container">' +
+        '<a href="guidelines.html" class="gd-back"><i data-lucide="arrow-left" style="width:14px;height:14px"></i> Voltar para Guidelines</a>' +
+        '<div class="gd-category-tag" style="background:' + catColor + '18;color:' + catColor + ';border:1px solid ' + catColor + '40"><i data-lucide="bookmark" style="width:12px;height:12px"></i> ' + esc(g.categoryName) + '</div>' +
+        '<h1 class="gd-title">' + esc(g.title) + '</h1>' +
+        '<div class="gd-meta">' + (g.year ? '<span class="gd-meta-item"><i data-lucide="calendar" style="width:14px;height:14px"></i> ' + esc(g.year) + '</span>' : '') +
+          '<span class="gd-meta-item"><i data-lucide="users" style="width:14px;height:14px"></i> ' + esc(g.society) + '</span>' +
+          '<span class="gd-meta-item"><i data-lucide="file-text" style="width:14px;height:14px"></i> ' + esc(g.type) + '</span></div>' +
+        '<div class="gd-rbadges">' + rb + '</div>' +
+        '<p class="gd-hero-summary">' + esc(R.summary) + '</p>' +
+      '</div></section>' +
+      '<section><div class="container">' +
+        '<div class="gd-why"><div class="gd-why-head"><i data-lucide="compass"></i> Por que esta diretriz importa?</div><p>' + esc(R.whyItMatters) + '</p></div>' +
+        '<div class="gd-onesentence"><i data-lucide="quote"></i><span>' + esc(R.oneSentence) + '</span></div>' +
+      '</div></section>' +
+      '<section><div class="container"><div class="gd-layout">' +
+        '<aside class="gd-toc"><h4>Conteúdo</h4>' + tocH + '</aside>' +
+        '<div class="gd-body">' + secHtml + pmHtml + refHtml + clHtml +
+          '<div class="gd-nav-bottom">' + prevLink + nextLink + '</div>' +
+        '</div>' +
+      '</div></div></section>';
+  }
+
   /* ── Assemble page ── */
+  if (g.rich) {
+    root.innerHTML = renderRichPage();
+  } else {
   root.innerHTML =
     /* Hero */
     '<section class="gd-hero"><div class="container">' +
@@ -981,6 +1134,7 @@
         '<div class="gd-nav-bottom">' + prevLink + nextLink + '</div>' +
       '</div>' +
     '</div></div></section>';
+  }
 
   if (typeof lucide !== 'undefined') lucide.createIcons();
 

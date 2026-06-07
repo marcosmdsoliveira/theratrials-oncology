@@ -12,7 +12,7 @@ window.GUIDELINES_DATA = [
     category: "prrt",
     categoryName: "TNE / PRRT",
     categoryColor: "#34D399",
-    scope: "Documento multissociedade que representa a mais abrangente e atualizada orientação prática sobre PRRT com análogos de somatostatina radiomarcados em tumores neuroendócrinos. Incorpora toda a evidência acumulada dos estudos pivotais NETTER-1 (177Lu-DOTATATE vs octreotide LAR 60 mg em TNE de intestino médio), NETTER-2 (primeira linha em TNE G2-G3 de alto grau), COMPETE (177Lu-Edotreotide vs Everolimus) e séries institucionais maduras com seguimento superior a 10 anos. Substitui e expande significativamente o guidance de 2013, refletindo a evolução regulatória (aprovação do Lutathera em 2018), a incorporação de PET/CT com 68Ga-DOTATATE como padrão de seleção, e a crescente importância da dosimetria individualizada. Posiciona a PRRT no contexto terapêutico atual, incluindo discussão sobre sequenciamento com terapias-alvo (everolimus, sunitinib), quimioterapia (CAPTEM) e o papel emergente de novos radionuclídeos como 225Ac-DOTATATE. Oferece recomendações graduadas conforme nível de evidência e consenso dos três órgãos.",
+    scope: "Diretriz multissociedade (EANM, IAEA, SNMMI) com orientação prática sobre PRRT — Peptide Receptor Radionuclide Therapy — em tumores neuroendócrinos SSTR-positivos. Organiza todo o fluxo assistencial: seleção por imagem molecular SSTR, escolha do radiofármaco (principalmente 177Lu-DOTATATE), administração terapêutica, nefroproteção com aminoácidos, monitoramento de toxicidade, imagem pós-terapia, dosimetria, seguimento e integração com outras modalidades. O NETTER-1 demonstrou benefício robusto em sobrevida livre de progressão em TNE de intestino médio bem diferenciados, progressivos e SSTR-positivos; na análise final houve diferença numérica de sobrevida global, sem demonstração estatisticamente significativa de benefício em OS. O NETTER-2 ampliou a discussão para uso de primeira linha em TNE gastroenteropancreáticos avançados, bem diferenciados, grau 2 ou grau 3, SSTR-positivos. Estudos como o COMPETE investigam radiofármacos alternativos e comparadores sistêmicos (ex.: everolimus) e devem ser interpretados conforme desenho, maturidade dos dados e publicação revisada por pares. Emissores alfa direcionados a SSTR, como 225Ac-DOTATATE, permanecem investigacionais na maioria dos cenários.",
     indications: [
       "TNE gastroenteropancreáticos bem diferenciados (G1-G2, Ki-67 até 20%) progressivos sob análogo de somatostatina em dose otimizada por pelo menos 3-6 meses",
       "TNE G3 (Ki-67 20-55%) com captação SSTR preservada em PET/CT com 68Ga-DOTATATE, conforme dados do NETTER-2 e séries retrospectivas",
@@ -46,7 +46,191 @@ window.GUIDELINES_DATA = [
     radiopharmaceuticals: "O radiofármaco padrão é o 177Lu-DOTATATE (Lutathera, oxodotreotide marcado com 177Lu), aprovado pela FDA em 2018 e EMA em 2017, com atividade de 7,4 GBq (200 mCi) por ciclo. O 177Lu-DOTATOC e o 177Lu-Edotreotide (investigacional, usado no estudo COMPETE) são alternativas com afinidade ligeiramente diferente pelos subtipos de receptores SSTR. O 177Lu decai por emissão beta (Emax 497 keV, alcance máximo 2 mm em tecido) com emissão gama concomitante (113 e 208 keV) que permite imageamento SPECT pós-dose. Meia-vida física de 6,65 dias. O 90Y-DOTATOC foi historicamente utilizado em centros europeus, com maior alcance beta (Emax 2,28 MeV, 11 mm) e ausência de emissão gama imagenológica direta (monitorado por PET via bremsstrahlung ou aniquilação de pares internos). Preparação do Lutathera: reconstituição conforme bula do fabricante, controle de qualidade com pureza radioquímica superior a 95% por HPLC ou TLC.",
     practicalAspects: "O fluxo terapêutico inicia com avaliação multidisciplinar (oncologista, endocrinologista e médico nuclear) incluindo confirmação histológica do TNE, grau tumoral (Ki-67) e estadiamento com PET/CT com 68Ga-DOTATATE realizado dentro de 8-12 semanas antes do primeiro ciclo. A avaliação laboratorial pré-tratamento inclui hemograma completo, creatinina sérica com cálculo de TFG (valor mínimo de 50 mL/min/1,73m2), bilirrubina total (valor máximo de 3x limite superior da normalidade), albumina, cromogranina A sérica e 5-HIAA urinário de 24h (quando indicado). O paciente deve suspender octreotide LAR 4-6 semanas antes do PET de seleção e do primeiro ciclo; lanreotide deve ser suspenso por 4 semanas; octreotide subcutâneo pode ser mantido até 24h antes. No dia do tratamento, o paciente chega em jejum de 4h; um acesso venoso periférico calibroso (18-20G) é obtido e inicia-se pré-medicação com ondansetrona 8 mg IV e dexametasona 8 mg IV para prevenção de náusea (os aminoácidos são altamente emetogenicos). A infusão de aminoácidos (lisina 25 g + arginina 25 g em 1-2 L de solução fisiológica) é iniciada 30 minutos antes da PRRT e mantida a 250-500 mL/h por 4 horas. O 177Lu-DOTATATE é administrado por bomba peristáltica ou por gravidade em 20-30 minutos, com monitoramento de sinais vitais a cada 15 minutos durante a infusão. Após a infusão, o paciente permanece em observação por 1-4 horas conforme protocolo institucional e regulação local de radioproteção. A imagem SPECT/CT pós-dose é realizada preferencialmente em 24h (janela aceitável de 4-24h para primeiro timepoint) com protocolo dedicado para 177Lu (fotopico 208 keV, colimador de média energia). O paciente recebe orientações escritas de radioproteção domiciliar: manter distância de pelo menos 1 metro de gestantes e crianças por 3-7 dias, evitar compartilhar cama por 3 noites, lavar roupas separadamente, higiene adequada de banheiro. O seguimento entre ciclos inclui hemograma completo a cada 2-4 semanas, função renal a cada ciclo, e avaliação clínica de toxicidade e sintomas. Após completar 4 ciclos, reestadiamento completo com PET/CT com 68Ga-DOTATATE e TC/RM em 3-6 meses para avaliação de resposta.",
     limitations: "A PRRT depende fundamentalmente da expressão de receptores de somatostatina demonstrada por PET/CT com 68Ga-DOTATATE; pacientes com tumores SSTR-negativos (como TNE pouco diferenciados com Ki-67 acima de 55% ou NEC) são excluidos e devem ser direcionados para quimioterapia baseada em platina. A mielotoxicidade é cumulativa e representa o principal fator limitante para o número de ciclos e retratamentos, com risco de 1-2% de síndromes mielodisplasicas ou leucemia aguda em seguimento de longo prazo. A nefrotoxicidade é rara (incidência inferior a 2%) quando a nefroproteção com aminoácidos é realizada adequadamente, mas monitoramento seriado de função renal é mandatório, especialmente em diabéticos e hipertensos. A síndrome carcinoide pode ser exacerbada durante a infusão em pacientes com alta carga tumoral hepática, requerendo octreotide de resgate. Não existem dados comparativos diretos entre PRRT e quimioterapia (CAPTEM) em TNE pancreáticos, e o sequenciamento ótimo entre estas modalidades permanece uma lacuna de evidência. A dosimetria personalizada, embora recomendada, não está amplamente disponível em todos os centros, e muitos ainda utilizam atividades fixas. O acesso ao 177Lu-DOTATATE permanece limitado em países de baixa e média renda devido a custo, logística de transporte e infraestrutura de radioproteção. Estudos em andamento avaliam a combinação de PRRT com inibidores de checkpoint imunológico e com alfa-emissores (225Ac-DOTATATE) para tumores refratários a beta-terapia.",
-    reference: "Joint EANM, IAEA, and SNMMI practical guidance on somatostatin receptor-targeted radionuclide therapy of neuroendocrine tumours. Eur J Nucl Med Mol Imaging. 2026."
+    reference: "Joint EANM, IAEA, and SNMMI practical guidance on somatostatin receptor-targeted radionuclide therapy of neuroendocrine tumours. Eur J Nucl Med Mol Imaging. 2026.",
+    rich: {
+      badges: ["Guideline", "2026", "EANM", "IAEA", "SNMMI", "PRRT", "SSTR", "Neuroendocrine tumors", "Theranostics"],
+      summary: "Diretriz multissociedade prática sobre PRRT em tumores neuroendócrinos SSTR-positivos. Organiza desde a seleção molecular por imagem SSTR até administração terapêutica, nefroproteção, monitoramento de toxicidade, imagem pós-terapia, dosimetria e integração com outras modalidades oncológicas.",
+      whyItMatters: "A PRRT deixou de ser uma terapia restrita a centros altamente especializados e passou a integrar o arsenal terapêutico dos tumores neuroendócrinos avançados SSTR-positivos. Esta diretriz é importante porque conecta três dimensões que precisam caminhar juntas: a biologia tumoral, demonstrada pela expressão de receptores de somatostatina; a decisão oncológica, baseada em grau, progressão, carga tumoral e tratamentos prévios; e a execução prática, que envolve radiofarmácia, radioproteção, aminoácidos, imagem pós-terapia, dosimetria e seguimento longitudinal.",
+      oneSentence: "A PRRT é uma terapia teranóstica que usa a expressão de receptores de somatostatina como ponte entre imagem molecular e tratamento radionuclídico.",
+      conceptCards: [
+        { icon: "scan-line", title: "Imagem molecular define o alvo", text: "O PET/CT SSTR responde à pergunta central: o tumor expressa o alvo necessário para receber esse tratamento?" },
+        { icon: "layers", title: "SSTR-positivo ≠ homogeneidade biológica", text: "Um mesmo paciente pode ter lesões intensamente SSTR-positivas e outras desdiferenciadas." },
+        { icon: "flame", title: "FDG-PET revela doença discordante", text: "Lesões FDG-positivas / SSTR-baixas sinalizam clones biologicamente mais agressivos." },
+        { icon: "radar", title: "Dosimetria é desejável, mas nem sempre disponível", text: "Muitos centros usam atividade fixa associada a critérios clínicos e laboratoriais." },
+        { icon: "repeat", title: "Re-PRRT exige reavaliação completa", text: "Não é repetição automática; depende de biologia atual e tolerância acumulada." }
+      ],
+      cautionBox: {
+        title: "Cuidado com interpretações excessivas",
+        text: "O benefício mais robusto da PRRT nos estudos pivotais está relacionado ao controle de doença e à sobrevida livre de progressão. A interpretação de sobrevida global, uso em primeira linha, retratamento, tumores G3 e combinações terapêuticas deve respeitar população estudada, desenho do estudo, maturidade dos dados e contexto clínico."
+      },
+      dontConfuse: {
+        title: "Não confundir",
+        text: "TNE bem diferenciado G3 não é sinônimo de carcinoma neuroendócrino pouco diferenciado. A PRRT pode ser considerada em TNE bem diferenciados G3 SSTR-positivos selecionados, mas carcinomas neuroendócrinos pouco diferenciados frequentemente apresentam biologia mais agressiva, maior captação FDG e menor expressão SSTR."
+      },
+      sections: [
+        {
+          id: "escopo", title: "Escopo", icon: "target", color: "#FF8400", type: "text",
+          paragraphs: [
+            "Esta diretriz multissociedade da EANM, IAEA e SNMMI reúne orientações práticas para o uso da PRRT em tumores neuroendócrinos. A PRRT (Peptide Receptor Radionuclide Therapy) é uma terapia radionuclídica com peptídeos radiomarcados que, nesse contexto, têm como alvo os receptores de somatostatina expressos pelas células tumorais. O documento organiza todo o fluxo assistencial: seleção do paciente, avaliação por imagem molecular, escolha do radiofármaco, administração terapêutica, nefroproteção, monitoramento de toxicidade, imagem pós-terapia, dosimetria, seguimento e integração com outras modalidades sistêmicas ou locorregionais.",
+            "Mais do que uma diretriz sobre radiofármaco, o documento funciona como um guia operacional para transformar a imagem molecular SSTR em decisão terapêutica segura, reprodutível e integrada ao cuidado oncológico."
+          ]
+        },
+        {
+          id: "fundamento", title: "Fundamento teranóstico", icon: "atom", color: "#0EA5B7", type: "text",
+          paragraphs: [
+            "Os tumores neuroendócrinos bem diferenciados frequentemente expressam receptores de somatostatina, principalmente SSTR2. Essa característica permite uma abordagem em duas etapas.",
+            "Na etapa diagnóstica, utiliza-se PET/CT com radiotraçadores SSTR, como 68Ga-DOTATATE, 68Ga-DOTATOC ou 64Cu-DOTATATE, para mapear a expressão do alvo tumoral.",
+            "Na etapa terapêutica, utiliza-se um análogo da somatostatina radiomarcado, principalmente 177Lu-DOTATATE, para irradiar seletivamente as lesões que expressam o receptor.",
+            "Esse modelo transforma a imagem molecular em critério de seleção terapêutica. A pergunta principal deixa de ser apenas \"onde está o tumor?\" e passa a ser \"o tumor expressa o alvo necessário para receber esse tratamento?\"."
+          ]
+        },
+        {
+          id: "indicacoes", title: "Indicações", icon: "clipboard-check", color: "#34D399", type: "grouped",
+          groups: [
+            {
+              title: "Indicações mais consolidadas",
+              paragraphs: [
+                "A PRRT é mais bem estabelecida em pacientes com tumores neuroendócrinos bem diferenciados, avançados, irressecáveis ou metastáticos, que apresentam expressão suficiente de receptores de somatostatina na imagem molecular.",
+                "As indicações mais consolidadas incluem tumores neuroendócrinos gastroenteropancreáticos G1 ou G2, especialmente quando há progressão documentada apesar do uso de análogos de somatostatina. Nos tumores de intestino médio, a evidência do NETTER-1 sustenta de forma robusta o benefício em sobrevida livre de progressão. Nos tumores pancreáticos, a PRRT também é uma opção relevante, devendo ser posicionada em relação a outras alternativas sistêmicas, como terapias-alvo e CAPTEM."
+              ]
+            },
+            {
+              title: "Cenários selecionados",
+              paragraphs: [
+                "Tumores neuroendócrinos bem diferenciados G3 podem ser considerados em pacientes selecionados, desde que mantenham expressão SSTR relevante. Nesse grupo, a avaliação deve ser mais cuidadosa, pois a heterogeneidade tumoral e a possibilidade de desdiferenciação são maiores. O FDG-PET pode ser útil para identificar lesões biologicamente mais agressivas ou discordantes.",
+                "Outros cenários, como tumores neuroendócrinos brônquicos ou tímicos, feocromocitomas/paragangliomas SSTR-positivos e tumores de primário desconhecido com expressão SSTR demonstrada, podem ser discutidos individualmente, geralmente com menor nível de evidência e maior dependência do contexto clínico."
+              ]
+            },
+            {
+              title: "A candidatura não é apenas histologia",
+              box: true,
+              paragraphs: [
+                "A indicação de PRRT não deve depender apenas do diagnóstico \"tumor neuroendócrino\". Ela deve integrar diferenciação tumoral, Ki-67, velocidade de progressão, sintomas, volume de doença, tratamentos prévios, função renal, reserva medular, performance status e padrão de captação na imagem molecular."
+              ]
+            }
+          ]
+        },
+        {
+          id: "pontos", title: "Pontos-chave", icon: "lightbulb", color: "#60A5FA", type: "bullets",
+          items: [
+            "A PRRT deve ser indicada com base na integração entre histologia, grau tumoral, progressão, carga de doença, sintomas, performance status, função renal, reserva medular e expressão SSTR.",
+            "O PET/CT com radiotraçadores SSTR é o principal método de seleção quando disponível. A captação deve ser suficiente nas lesões clinicamente relevantes, e não apenas em uma lesão isolada.",
+            "Lesões volumosas, progressivas ou discordantes com baixa captação SSTR devem levantar suspeita de heterogeneidade tumoral ou desdiferenciação. Nesses casos, o FDG-PET pode modificar a estratégia terapêutica.",
+            "O esquema mais utilizado com 177Lu-DOTATATE é 7,4 GBq por ciclo, geralmente em quatro ciclos, com intervalo aproximado de oito semanas.",
+            "A infusão de aminoácidos contendo lisina e arginina é parte essencial do protocolo, pois reduz a reabsorção tubular renal do radiopeptídeo e diminui a dose absorvida pelos rins.",
+            "O NETTER-1 consolidou o benefício da PRRT em tumores neuroendócrinos de intestino médio, com melhora robusta de sobrevida livre de progressão. A análise final de sobrevida global mostrou diferença numérica, mas sem significância estatística.",
+            "O NETTER-2 ampliou a discussão para uso de primeira linha em tumores neuroendócrinos gastroenteropancreáticos avançados, bem diferenciados, grau 2 ou 3, SSTR-positivos.",
+            "A imagem pós-terapia com SPECT/CT pode documentar biodistribuição, confirmar captação tumoral, avaliar órgãos críticos e apoiar estimativas dosimétricas.",
+            "A dosimetria personalizada é uma ferramenta promissora para individualizar tratamento, mas ainda não está universalmente implementada.",
+            "O retratamento com PRRT pode ser considerado em pacientes que tiveram benefício inicial, intervalo livre de progressão relevante, expressão SSTR preservada e função renal/medular adequada.",
+            "As principais limitações são doença SSTR-negativa, heterogeneidade tumoral, mielotoxicidade cumulativa, risco renal em pacientes vulneráveis e incertezas sobre o melhor sequenciamento com outras terapias."
+          ]
+        },
+        {
+          id: "farmacos", title: "Radiofármacos", icon: "flask-conical", color: "#C084FC", type: "cards",
+          cards: [
+            {
+              title: "177Lu-DOTATATE — padrão atual", tag: "Padrão clínico",
+              paragraphs: [
+                "O radiofármaco padrão na prática clínica contemporânea é o 177Lu-DOTATATE. Ele combina um análogo da somatostatina com afinidade predominante por SSTR2 ao lutécio-177, um radionuclídeo emissor beta com alcance tecidual limitado e emissão gama associada. Essa combinação permite tratar lesões SSTR-positivas e, ao mesmo tempo, realizar imagem pós-terapia por SPECT/CT.",
+                "O regime mais utilizado é 7,4 GBq por ciclo, geralmente em quatro ciclos. A atividade fixa permanece o padrão em muitos centros, embora a dosimetria personalizada venha ganhando importância para estimar dose absorvida em órgãos críticos e lesões tumorais."
+              ]
+            },
+            {
+              title: "Outros compostos", tag: "Variável",
+              paragraphs: [
+                "Outros compostos, como 177Lu-DOTATOC, 177Lu-edotreotide e 90Y-DOTATOC, têm papel variável conforme disponibilidade, tradição institucional, contexto regulatório e evidência clínica. O 90Y-DOTATOC possui maior alcance beta, com racional para lesões maiores, mas também maior preocupação potencial com dose renal."
+              ]
+            },
+            {
+              title: "Emissores alfa", tag: "Investigacional",
+              paragraphs: [
+                "Emissores alfa direcionados a SSTR, como 225Ac-DOTATATE, representam uma área promissora para doença refratária a beta-emissores, mas ainda devem ser considerados investigacionais na maioria dos cenários."
+              ]
+            }
+          ]
+        },
+        {
+          id: "praticos", title: "Aspectos práticos", icon: "stethoscope", color: "#FB923C", type: "timeline",
+          phases: [
+            {
+              title: "Antes do tratamento",
+              paragraphs: [
+                "Antes da PRRT, o paciente deve passar por avaliação multidisciplinar. É necessário revisar diagnóstico histológico, diferenciação tumoral, Ki-67, extensão da doença, tratamentos prévios, sintomas funcionantes, performance status, função renal, função hepática e reserva medular.",
+                "A imagem anatômica por TC ou RM deve ser integrada ao PET/CT SSTR. Essa integração é essencial para identificar lesões discordantes: lesões visíveis na imagem anatômica, mas com baixa ou ausente captação SSTR, podem indicar clones menos diferenciados e menor probabilidade de resposta à PRRT isolada."
+              ]
+            },
+            {
+              title: "Durante o tratamento",
+              paragraphs: [
+                "No dia da terapia, administra-se uma solução de aminoácidos contendo lisina e arginina, iniciada antes do radiofármaco e mantida por algumas horas. O objetivo é reduzir a dose renal. Como os aminoácidos podem causar náuseas e vômitos, a antiemese profilática deve fazer parte do protocolo.",
+                "O 177Lu-DOTATATE é administrado por via intravenosa em ambiente controlado, com monitoramento clínico e medidas de radioproteção. Após a administração, o paciente recebe orientações sobre hidratação, micção frequente, higiene, contato com crianças e gestantes e cuidados domiciliares conforme normas locais."
+              ]
+            },
+            {
+              title: "Entre os ciclos e após a terapia",
+              paragraphs: [
+                "Entre os ciclos, devem ser monitorados hemograma, função renal, função hepática, sintomas e eventos adversos. Adiamentos ou suspensão podem ser necessários em caso de toxicidade hematológica, renal, hepática ou deterioração clínica.",
+                "Após completar o tratamento, a resposta deve ser avaliada combinando imagem anatômica, imagem molecular quando indicada, marcadores bioquímicos quando aplicáveis e evolução clínica. A avaliação não deve depender apenas do SUV ou apenas do tamanho das lesões, mas da integração entre biologia tumoral, sintomas e carga de doença."
+              ]
+            }
+          ]
+        },
+        {
+          id: "dosimetria", title: "Imagem pós-terapia e dosimetria", icon: "radar", color: "#22D3EE", type: "text",
+          paragraphs: [
+            "A imagem pós-terapia com SPECT/CT de 177Lu pode documentar a biodistribuição do radiofármaco, confirmar captação tumoral, avaliar órgãos críticos e detectar achados inesperados, como extravasamento ou distribuição não habitual.",
+            "Quando realizada com metodologia quantitativa, a imagem pós-dose pode apoiar a dosimetria. A dosimetria personalizada busca estimar a dose absorvida em órgãos de risco e lesões tumorais, permitindo compreender melhor a relação entre atividade administrada, dose entregue, resposta e toxicidade.",
+            "Apesar do racional forte, a dosimetria personalizada ainda não está universalmente implementada. Muitos centros utilizam atividade fixa, associada a critérios clínicos, laboratoriais e de segurança. A tendência do campo, porém, é incorporar progressivamente métodos quantitativos mais acessíveis e reprodutíveis."
+          ]
+        },
+        {
+          id: "toxicidade", title: "Toxicidade e segurança", icon: "alert-triangle", color: "#F472B6", type: "text",
+          paragraphs: [
+            "A PRRT é geralmente bem tolerada, mas exige seguimento estruturado.",
+            "As toxicidades agudas mais comuns incluem náuseas, vômitos, fadiga e desconforto abdominal. Náuseas estão frequentemente relacionadas à infusão de aminoácidos. Em pacientes com síndrome carcinoide e alta carga tumoral, pode ocorrer exacerbação hormonal durante ou após a terapia, devendo haver plano para uso de octreotida de resgate quando necessário.",
+            "A toxicidade hematológica é um dos principais limitadores. Pode haver linfopenia, anemia, neutropenia ou trombocitopenia. O risco é maior em pacientes com infiltração medular, metástases ósseas difusas, reserva medular reduzida ou múltiplas terapias prévias. Síndrome mielodisplásica e leucemia mieloide aguda são eventos tardios raros, mas relevantes.",
+            "A nefrotoxicidade tornou-se menos frequente com o uso adequado de aminoácidos, mas continua sendo uma preocupação em pacientes com doença renal prévia, diabetes, hipertensão ou exposição a terapias nefrotóxicas. A função renal deve ser monitorada antes, durante e após o tratamento.",
+            "A toxicidade hepática deve ser considerada em pacientes com grande carga tumoral hepática, doença hepática basal ou histórico de terapias locorregionais."
+          ]
+        },
+        {
+          id: "integracao", title: "Integração com outras terapias", icon: "git-merge", color: "#94A3B8", type: "text",
+          paragraphs: [
+            "A PRRT deve ser posicionada dentro de uma estratégia terapêutica global. Ela pode ser usada após progressão sob análogos de somatostatina, em linhas subsequentes ou, em pacientes selecionados, em contexto mais precoce.",
+            "Análogos de somatostatina continuam importantes para controle hormonal e antiproliferativo. Everolimus, sunitinib, CAPTEM, terapias locorregionais hepáticas, radioterapia externa e cirurgia podem ser considerados antes ou depois da PRRT, conforme sítio primário, grau, carga tumoral, padrão de progressão, captação SSTR, captação FDG, sintomas e comorbidades.",
+            "O melhor sequenciamento ainda não está definitivamente estabelecido para todos os subgrupos. Por isso, a decisão deve evitar regras simplistas e privilegiar discussão multidisciplinar individualizada."
+          ]
+        },
+        {
+          id: "reprrt", title: "Re-PRRT", icon: "repeat", color: "#FBBF24", type: "text",
+          paragraphs: [
+            "O retratamento com PRRT pode ser considerado em pacientes que tiveram benefício clínico ou radiológico inicial, intervalo livre de progressão relevante, manutenção de expressão SSTR, função renal adequada e reserva medular preservada.",
+            "A decisão deve considerar dose cumulativa, toxicidade prévia, tratamentos recebidos após a primeira PRRT, padrão atual de progressão e presença de lesões discordantes. Sempre que disponível, a dosimetria pode ajudar a estimar segurança e viabilidade do retratamento.",
+            "O re-PRRT não deve ser encarado como repetição automática do tratamento inicial. Ele exige reavaliação completa da biologia tumoral e da tolerância acumulada."
+          ]
+        },
+        {
+          id: "limitacoes", title: "Limitações", icon: "shield-alert", color: "#F472B6", type: "text",
+          paragraphs: [
+            "A principal limitação da PRRT é a dependência da expressão SSTR. Tumores pouco diferenciados, carcinomas neuroendócrinos e lesões desdiferenciadas podem apresentar baixa expressão do alvo e responder mal ao tratamento.",
+            "Outra limitação importante é a heterogeneidade intrapaciente. Um mesmo paciente pode apresentar lesões intensamente SSTR-positivas e outras FDG-positivas/SSTR-negativas. Nesses casos, a PRRT pode controlar parte da doença, mas deixar clones biologicamente mais agressivos sem cobertura adequada.",
+            "A toxicidade hematológica é um dos principais fatores limitantes, especialmente em pacientes com metástases ósseas difusas, reserva medular reduzida ou múltiplas linhas prévias de tratamento. A nefrotoxicidade é menos frequente com aminoácidos adequados, mas continua relevante em pacientes com fatores de risco renal.",
+            "O melhor sequenciamento entre PRRT, análogos de somatostatina, everolimus, sunitinib, CAPTEM, terapias locorregionais e outras estratégias sistêmicas ainda não está completamente definido para todos os subgrupos. Por isso, a decisão deve ser individualizada e multidisciplinar."
+          ]
+        }
+      ],
+      practicalMessage: {
+        intro: "A PRRT com 177Lu-DOTATATE é uma terapia estabelecida para pacientes selecionados com tumores neuroendócrinos bem diferenciados, avançados e SSTR-positivos.",
+        leadIn: "A decisão deve responder a três perguntas:",
+        questions: [
+          "As lesões clinicamente relevantes expressam SSTR em intensidade suficiente?",
+          "O paciente tem reserva renal, medular, hepática e clínica para receber o tratamento com segurança?",
+          "A PRRT é a melhor opção dentro do sequenciamento terapêutico naquele momento da doença?"
+        ],
+        closing: "Quando essas três respostas são favoráveis, a PRRT representa uma das estratégias mais importantes da medicina nuclear terapêutica moderna."
+      }
+    }
   },
   {
     id: "prrt-iaea-eanm-snmmi-2013",
