@@ -345,6 +345,21 @@
   .sec-link { font-size: 0.75rem; color: var(--teal-glow); text-decoration: none; font-weight: 600; }
   .sec-link:hover { text-decoration: underline; }
   .sec-id { font-size: 0.68rem; color: var(--stone-2); }
+  /* expandir / detalhes */
+  .sec-card-head { cursor: pointer; }
+  .sec-card-title { cursor: pointer; }
+  .sec-card-head:hover ~ .sec-card-title, .sec-card-title:hover { color: var(--amber-glow); }
+  .sec-chevron { color: var(--stone); font-size: 0.7rem; width: 1rem; text-align: center; flex: 0 0 auto; }
+  .sec-card.sec-open { border-color: var(--border-mid); background: var(--graphite-3); }
+  .sec-detail { margin-top: 0.5rem; padding-top: 0.6rem; border-top: 1px dashed var(--border-soft); display: flex; flex-direction: column; gap: 0.45rem; }
+  .sec-drow { display: grid; grid-template-columns: 190px 1fr; gap: 0.3rem 0.6rem; font-size: 0.78rem; }
+  .sec-dk { color: var(--stone-2); text-transform: uppercase; letter-spacing: 0.04em; font-size: 0.64rem; padding-top: 0.12rem; }
+  .sec-dv { color: var(--off-white); opacity: 0.92; line-height: 1.45; }
+  .sec-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+  .sec-tag { background: var(--graphite-4); border: 1px solid var(--border-soft); color: var(--stone); font-size: 0.66rem; padding: 0.1rem 0.45rem; border-radius: 999px; }
+  .sec-toggle { margin-left: auto; background: none; border: none; color: var(--stone); font-size: 0.72rem; cursor: pointer; padding: 0; font-family: inherit; }
+  .sec-toggle:hover { color: var(--amber-glow); }
+  @media (max-width: 560px) { .sec-drow { grid-template-columns: 1fr; gap: 0.1rem; } }
 
   /* Compare drawer */
   .compare-drawer { position: fixed; bottom: 0; left: 0; right: 0; background: var(--graphite-2); border-top: 1px solid var(--border-mid); padding: 1rem 1.5rem; z-index: 80; box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.4); }
@@ -863,13 +878,14 @@
           <p class="sec-intro" data-i18n="db.secRelatedIntro">Publicações secundárias, atualizações, subestudos, análises exploratórias, abstracts e protocolos vinculados a este estudo. Cada item foi verificado em fonte primária (PubMed/Crossref).</p>
           <div class="sec-cards">
             <template x-for="c in secondaryFor(selectedStudy.uid)" :key="c.id">
-              <div class="sec-card">
-                <div class="sec-card-head">
+              <div class="sec-card" x-data="{ open: false }" :class="{ 'sec-open': open }">
+                <div class="sec-card-head" @click="open = !open">
                   <span class="sec-badge" :class="'sec-' + c.recordType" x-text="secLabel(c.recordType)"></span>
                   <span class="sec-analysis" x-text="c.analysisType"></span>
                   <span class="sec-year mono" x-text="c.year"></span>
+                  <span class="sec-chevron" x-text="open ? '▾' : '▸'"></span>
                 </div>
-                <div class="sec-card-title" x-text="c.title"></div>
+                <div class="sec-card-title" @click="open = !open" x-text="c.title"></div>
                 <div class="sec-card-orig" x-text="c.titleOriginal"></div>
                 <div class="sec-card-meta">
                   <span x-show="c.authors" x-text="c.authors"></span>
@@ -877,10 +893,19 @@
                   <span class="sec-status" :class="{ 'sec-status-warn': c.recordType === 'press_release' || c.recordType === 'congress_abstract' }" x-text="c.publicationStatus"></span>
                 </div>
                 <div class="sec-card-takeaway" x-text="c.clinicalTakeaway"></div>
+                <div class="sec-detail" x-show="open" x-collapse>
+                  <div class="sec-drow"><span class="sec-dk">Relação com o estudo-mãe</span><span class="sec-dv" x-text="c.relationshipToParent"></span></div>
+                  <div class="sec-drow"><span class="sec-dk">Tipo de análise</span><span class="sec-dv" x-text="c.analysisType"></span></div>
+                  <div class="sec-drow"><span class="sec-dk">Maturidade da evidência</span><span class="sec-dv" x-text="c.evidenceMaturity"></span></div>
+                  <div class="sec-drow"><span class="sec-dk">Status de publicação</span><span class="sec-dv" x-text="c.publicationStatus"></span></div>
+                  <div class="sec-drow" x-show="c.parentTrialPublication"><span class="sec-dk">Publicação do estudo-mãe</span><span class="sec-dv mono" x-text="c.parentTrialPublication"></span></div>
+                  <div class="sec-drow" x-show="c.category && c.category.length"><span class="sec-dk">Categorias</span><span class="sec-dv sec-tags"><template x-for="t in (c.category || [])" :key="t"><span class="sec-tag" x-text="t"></span></template></span></div>
+                </div>
                 <div class="sec-card-links">
                   <a :href="c.sourceUrl" target="_blank" rel="noopener" class="sec-link" x-text="(c.pmid ? '↗ PubMed' : (c.doi ? '↗ DOI' : '↗ Fonte'))"></a>
                   <span x-show="c.doi" class="sec-id mono" x-text="'DOI ' + c.doi"></span>
                   <span x-show="c.pmid" class="sec-id mono" x-text="'PMID ' + c.pmid"></span>
+                  <button type="button" class="sec-toggle" @click="open = !open" x-text="open ? 'Menos detalhes' : 'Mais detalhes'"></button>
                 </div>
               </div>
             </template>
