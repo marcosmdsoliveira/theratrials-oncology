@@ -2373,7 +2373,7 @@ window._i18nRegister('en', {
     pmRadiofarmacosName: "Radiopharmaceuticals",
     pmRadiofarmacosDesc: "Seven complete dossiers · ¹⁷⁷Lu, ²²³Ra, ⁹⁰Y, ¹³¹I-MIBG, ¹³¹I, novel α",
     pmFerramentasName: "Tools",
-    pmFerramentasDesc: "11 tools · AJCC TNM · CTCAE v6.0 · PSMA · PET/CT · iRECIST · BCLC · calculators",
+    pmFerramentasDesc: "12 tools · AJCC TNM · CTCAE v6.0 · PSMA · PET/CT · iRECIST · BCLC · calculators",
     pmFundamentosName: "Fundamentals",
     pmFundamentosDesc: "How clinical trials work · visual and concise",
     pmSobreName: "About",
@@ -2447,13 +2447,13 @@ window._i18nRegister('en', {
 
     /* Tools block */
     toolsBadge: "Tools",
-    toolsTitle: "11 tools · staging, toxicity, dose and response",
+    toolsTitle: "12 tools · staging, toxicity, dose and response",
     toolsDesc: "Classification systems, response criteria, dose and decay calculators for everyday clinical use. Each card opens a complete modal with tables, examples and references — without leaving the page.",
     toolsCta: "Open Tools",
 
     /* CTA final */
     ctaTitle: "Ready to connect evidence and clinical practice?",
-    ctaDesc: "420 curated clinical trials in 39 categories · global radioligand pipeline via ClinicalTrials.gov · 79 active clinical trials in Brazil · 7 radiopharmaceutical dossiers · 11 clinical tools · AJCC 8th ed., CTCAE v6.0, BCLC 2026 · direct hyperlinks to PubMed and ClinicalTrials.gov.",
+    ctaDesc: "420 curated clinical trials in 39 categories · global radioligand pipeline via ClinicalTrials.gov · 79 active clinical trials in Brazil · 7 radiopharmaceutical dossiers · 12 clinical tools · AJCC 8th ed., CTCAE v6.0, BCLC 2026 · direct hyperlinks to PubMed and ClinicalTrials.gov.",
     ctaBtnDatabase: "Access the database",
     ctaBtnExplorer: "Explorer",
     ctaBtnTumorBoards: "Tumor Boards",

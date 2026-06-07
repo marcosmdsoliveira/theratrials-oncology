@@ -2373,7 +2373,7 @@ window._i18nRegister('pt-br', {
     pmRadiofarmacosName: "Radiofármacos",
     pmRadiofarmacosDesc: "Sete dossiês completos · ¹⁷⁷Lu, ²²³Ra, ⁹⁰Y, ¹³¹I-MIBG, ¹³¹I, novos α",
     pmFerramentasName: "Ferramentas",
-    pmFerramentasDesc: "11 ferramentas · AJCC TNM · CTCAE v6.0 · PSMA · PET/CT · iRECIST · BCLC · calculadoras",
+    pmFerramentasDesc: "12 ferramentas · AJCC TNM · CTCAE v6.0 · PSMA · PET/CT · iRECIST · BCLC · calculadoras",
     pmFundamentosName: "Fundamentos",
     pmFundamentosDesc: "Como funcionam ensaios clínicos · visual e direto",
     pmSobreName: "Sobre",
@@ -2447,13 +2447,13 @@ window._i18nRegister('pt-br', {
 
     /* Tools block */
     toolsBadge: "Ferramentas",
-    toolsTitle: "11 ferramentas · estadiamento, toxicidade, dose e resposta",
+    toolsTitle: "12 ferramentas · estadiamento, toxicidade, dose e resposta",
     toolsDesc: "Sistemas de classificação, critérios de resposta, calculadoras de dose e decaimento para uso clínico cotidiano. Cada card abre um modal completo com tabelas, exemplos e referências — sem sair da página.",
     toolsCta: "Abrir Ferramentas",
 
     /* CTA final */
     ctaTitle: "Pronto para conectar evidência e prática clínica?",
-    ctaDesc: "420 ensaios clínicos analisados em 39 categorias · pipeline global de radioligantes via ClinicalTrials.gov · 79 ensaios clínicos ativos no Brasil · 7 dossiês de radiofármaco · 11 ferramentas clínicas · AJCC 8ª ed., CTCAE v6.0, BCLC 2026 · hyperlinks diretos para PubMed e ClinicalTrials.gov.",
+    ctaDesc: "420 ensaios clínicos analisados em 39 categorias · pipeline global de radioligantes via ClinicalTrials.gov · 79 ensaios clínicos ativos no Brasil · 7 dossiês de radiofármaco · 12 ferramentas clínicas · AJCC 8ª ed., CTCAE v6.0, BCLC 2026 · hyperlinks diretos para PubMed e ClinicalTrials.gov.",
     ctaBtnDatabase: "Acessar o banco",
     ctaBtnExplorer: "Explorer",
     ctaBtnTumorBoards: "Tumor boards",
