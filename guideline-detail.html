@@ -1006,8 +1006,14 @@
   function renderRichPage() {
     var R = g.rich;
     function paras(arr) { return (arr || []).map(function(p){ return '<p class="gd-rp">' + esc(p) + '</p>'; }).join(''); }
-    var rbMap = { "EANM":"soc","IAEA":"soc","SNMMI":"soc","2026":"year","Guideline":"type","PRRT":"th","SSTR":"th","Theranostics":"th","Neuroendocrine tumors":"cat" };
-    var rb = (R.badges||[]).map(function(b){ return '<span class="gd-rbadge gd-rbadge-' + (rbMap[b]||"def") + '">' + esc(b) + '</span>'; }).join('');
+    function rbClass(b) {
+      if (/^\d{4}$/.test(b)) return 'year';
+      if (/^(EANM|IAEA|SNMMI|ESMO|ATA|ACR|ACNM|ARS|NANETS)$/.test(b)) return 'soc';
+      if (/Guideline|Procedure|Practice|SOP|Standard|guidance|Recommendations|Parameter/i.test(b)) return 'type';
+      if (/PRRT|SSTR|PSMA|RLT|Theranostics|Teran|177Lu|90Y|131I|223Ra|225Ac|68Ga|TARE|Dosimetr|Radioiod|MIBG|Bone|RSO/i.test(b)) return 'th';
+      return 'cat';
+    }
+    var rb = (R.badges||[]).map(function(b){ return '<span class="gd-rbadge gd-rbadge-' + rbClass(b) + '">' + esc(b) + '</span>'; }).join('');
     var cc = '';
     if (R.conceptCards && R.conceptCards.length) {
       cc = '<div class="gd-concept-row">' + R.conceptCards.map(function(c){
