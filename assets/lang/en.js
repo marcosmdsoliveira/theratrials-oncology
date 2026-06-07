@@ -2557,6 +2557,7 @@ window._i18nRegister('en', {
     secViewDetails: "View publication details",
     secBackToStudy: "Back to trial",
     secSynthesis: "Clinical synthesis",
+    secDeep: "In-depth clinical content",
     secPubDetails: "Publication details",
     secModalDisclaimer: "Does not replace reading the primary publication at the source",
     secCitation: "Citation",

@@ -363,7 +363,17 @@
   .sec-tag { background: var(--graphite-4); border: 1px solid var(--border-soft); color: var(--stone); font-size: 0.68rem; padding: 0.12rem 0.5rem; border-radius: 999px; }
   /* modal dedicado acima do modal do estudo */
   .sec-modal-backdrop { z-index: 105; }
-  @media (max-width: 560px) { .sec-drow { grid-template-columns: 1fr; gap: 0.1rem; } }
+  /* aprofundamento clínico */
+  .sec-deep { display: flex; flex-direction: column; gap: 0.8rem; }
+  .sec-deep-row { display: grid; grid-template-columns: 150px 1fr; gap: 0.4rem 0.85rem; }
+  .sec-deep-k { color: var(--teal); text-transform: uppercase; letter-spacing: 0.04em; font-size: 0.68rem; font-weight: 700; padding-top: 0.15rem; }
+  .sec-deep-v { color: var(--off-white); opacity: 0.95; line-height: 1.55; font-size: 0.86rem; }
+  .sec-deep-list { margin: 0; padding-left: 1.1rem; display: flex; flex-direction: column; gap: 0.32rem; }
+  .sec-deep-list li { line-height: 1.5; }
+  .sec-deep-src { margin: 0.9rem 0 0; font-size: 0.72rem; color: var(--stone-2); }
+  .sec-deep-src a { color: var(--teal-glow); text-decoration: none; }
+  .sec-deep-src a:hover { text-decoration: underline; }
+  @media (max-width: 560px) { .sec-drow { grid-template-columns: 1fr; gap: 0.1rem; } .sec-deep-row { grid-template-columns: 1fr; gap: 0.15rem; } }
 
   /* Compare drawer */
   .compare-drawer { position: fixed; bottom: 0; left: 0; right: 0; background: var(--graphite-2); border-top: 1px solid var(--border-mid); padding: 1rem 1.5rem; z-index: 80; box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.4); }
@@ -997,6 +1007,18 @@
         <div class="section-block">
           <div class="section-block-title" style="color: var(--amber)"><i data-lucide="sparkles" style="width:13px;height:13px"></i> <span data-i18n="db.secSynthesis">Síntese clínica</span></div>
           <div class="field full highlight"><div class="field-text" x-text="selectedSecondary.clinicalTakeaway"></div></div>
+        </div>
+
+        <div class="section-block" x-show="selectedSecondary.deep" x-cloak>
+          <div class="section-block-title" style="color: var(--teal)"><i data-lucide="microscope" style="width:13px;height:13px"></i> <span data-i18n="db.secDeep">Aprofundamento clínico</span></div>
+          <div class="sec-deep">
+            <div class="sec-deep-row"><div class="sec-deep-k">Objetivo</div><div class="sec-deep-v" x-text="selectedSecondary.deep.objetivo"></div></div>
+            <div class="sec-deep-row"><div class="sec-deep-k">Método</div><div class="sec-deep-v" x-text="selectedSecondary.deep.metodo"></div></div>
+            <div class="sec-deep-row"><div class="sec-deep-k">Principais achados</div><div class="sec-deep-v"><ul class="sec-deep-list"><template x-for="(a, i) in (selectedSecondary.deep.achados || [])" :key="i"><li x-text="a"></li></template></ul></div></div>
+            <div class="sec-deep-row"><div class="sec-deep-k">Interpretação</div><div class="sec-deep-v" x-text="selectedSecondary.deep.interpretacao"></div></div>
+            <div class="sec-deep-row" x-show="selectedSecondary.deep.limitacoes"><div class="sec-deep-k">Limitações</div><div class="sec-deep-v" x-text="selectedSecondary.deep.limitacoes"></div></div>
+          </div>
+          <p class="sec-deep-src" x-show="selectedSecondary.sourceUrl">Conteúdo extraído do abstract oficial. <a :href="selectedSecondary.sourceUrl" target="_blank" rel="noopener" x-text="selectedSecondary.pmid ? 'Ler no PubMed ↗' : 'Abrir fonte ↗'"></a></p>
         </div>
 
         <div class="section-block">
