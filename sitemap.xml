@@ -39,12 +39,6 @@
 
   <!-- Secondary sections -->
   <url>
-    <loc>https://theratrials.com/tracker.html</loc>
-    <lastmod>2026-05-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://theratrials.com/tumor-boards.html</loc>
     <lastmod>2026-05-24</lastmod>
     <changefreq>monthly</changefreq>

@@ -8,7 +8,7 @@
    ============================================================================= */
 
 // GitHub Actions bumps this line on each deploy
-const CACHE_VERSION = 'theratrials-v2026.06.07-c9e6569';
+const CACHE_VERSION = 'theratrials-v2026.06.07-trackerstub';
 const CACHE_STATIC  = `${CACHE_VERSION}-static`;
 const CACHE_PAGES   = `${CACHE_VERSION}-pages`;
 const CACHE_RUNTIME = `${CACHE_VERSION}-runtime`;
@@ -20,7 +20,6 @@ const CORE_PAGES = [
   './database.html',
   './trial-matcher.html',
   './explorer.html',
-  './tracker.html',
   './ensaios-clinicos.html',
   './tumor-boards.html',
   './modalidades.html',
@@ -56,8 +55,6 @@ const CORE_ASSETS = [
   './assets/js/cross-links.js',
   './assets/data/explorer.json',
   './assets/data/explorer.js',
-  './assets/data/tracker.json',
-  './assets/data/tracker.js',
   './assets/js/i18n.js',
   './assets/lang/pt-br.js',
   './assets/lang/en.js',
