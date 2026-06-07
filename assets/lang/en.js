@@ -2552,6 +2552,8 @@ window._i18nRegister('en', {
     secToxicity: "Toxicity",
     secImpact: "Impact and reference",
     secStudyDetails: "Study details",
+    secRelated: "Related publications and derived analyses",
+    secRelatedIntro: "Secondary publications, updates, substudies, exploratory analyses, abstracts and protocols linked to this trial. Each item was verified against a primary source (PubMed/Crossref).",
     secCitation: "Citation",
     secFeedback: "Submit a comment or suggestion",
 

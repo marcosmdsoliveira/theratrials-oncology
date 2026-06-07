@@ -323,6 +323,29 @@
 
   .modal-footer { padding: 1rem 2rem; background: rgba(14, 15, 18, 0.6); border-top: 1px solid var(--border-soft); display: flex; justify-content: space-between; font-size: 0.7rem; color: var(--stone-2); }
 
+  /* === Publicações relacionadas / análises derivadas (cards secundários) === */
+  .sec-block .sec-intro { font-size: 0.78rem; color: var(--stone); line-height: 1.5; margin: 0 0 0.9rem; }
+  .sec-cards { display: flex; flex-direction: column; gap: 0.7rem; }
+  .sec-card { background: var(--graphite-3); border: 1px solid var(--border-soft); border-radius: var(--radius-md); padding: 0.85rem 1rem; }
+  .sec-card:hover { border-color: var(--border-mid); }
+  .sec-card-head { display: flex; align-items: center; flex-wrap: wrap; gap: 0.4rem 0.6rem; margin-bottom: 0.4rem; }
+  .sec-badge { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.07em; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 999px; background: var(--graphite-4); color: var(--stone); border: 1px solid var(--border-soft); white-space: nowrap; }
+  .sec-badge.sec-primary_trial { color: var(--amber); border-color: rgba(255, 132, 0, 0.4); }
+  .sec-badge.sec-trial_update { color: var(--teal); border-color: rgba(14, 165, 183, 0.4); }
+  .sec-badge.sec-press_release, .sec-badge.sec-congress_abstract { color: var(--warn); border-color: rgba(251, 191, 36, 0.45); }
+  .sec-analysis { font-size: 0.72rem; color: var(--stone); }
+  .sec-year { margin-left: auto; font-size: 0.72rem; color: var(--stone-2); }
+  .sec-card-title { font-weight: 600; color: var(--off-white); font-size: 0.9rem; line-height: 1.3; margin-bottom: 0.2rem; }
+  .sec-card-orig { font-size: 0.73rem; color: var(--stone); font-style: italic; line-height: 1.35; margin-bottom: 0.4rem; }
+  .sec-card-meta { display: flex; flex-wrap: wrap; gap: 0.2rem 0.75rem; font-size: 0.72rem; color: var(--stone); margin-bottom: 0.45rem; }
+  .sec-status { font-weight: 600; color: var(--success); }
+  .sec-status.sec-status-warn { color: var(--warn); }
+  .sec-card-takeaway { font-size: 0.82rem; color: var(--off-white); line-height: 1.5; opacity: 0.92; }
+  .sec-card-links { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.9rem; margin-top: 0.55rem; }
+  .sec-link { font-size: 0.75rem; color: var(--teal-glow); text-decoration: none; font-weight: 600; }
+  .sec-link:hover { text-decoration: underline; }
+  .sec-id { font-size: 0.68rem; color: var(--stone-2); }
+
   /* Compare drawer */
   .compare-drawer { position: fixed; bottom: 0; left: 0; right: 0; background: var(--graphite-2); border-top: 1px solid var(--border-mid); padding: 1rem 1.5rem; z-index: 80; box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.4); }
   .compare-drawer-inner { max-width: var(--maxw); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
@@ -835,6 +858,35 @@
           <div class="field full" style="border-color: rgba(255, 132, 0, 0.3)"><div class="field-label" data-i18n="db.fieldMainReference">Referência principal</div><div class="field-text mono" x-text="selectedStudy.ref || '—'"></div></div>
         </div>
 
+        <div class="section-block sec-block" x-show="secondaryFor(selectedStudy.uid).length" x-cloak>
+          <div class="section-block-title" style="color: var(--amber)"><i data-lucide="git-fork" style="width:13px;height:13px"></i> <span data-i18n="db.secRelated">Publicações relacionadas e análises derivadas</span> <span style="color: var(--stone); font-weight: 400" x-text="'(' + secondaryFor(selectedStudy.uid).length + ')'"></span></div>
+          <p class="sec-intro" data-i18n="db.secRelatedIntro">Publicações secundárias, atualizações, subestudos, análises exploratórias, abstracts e protocolos vinculados a este estudo. Cada item foi verificado em fonte primária (PubMed/Crossref).</p>
+          <div class="sec-cards">
+            <template x-for="c in secondaryFor(selectedStudy.uid)" :key="c.id">
+              <div class="sec-card">
+                <div class="sec-card-head">
+                  <span class="sec-badge" :class="'sec-' + c.recordType" x-text="secLabel(c.recordType)"></span>
+                  <span class="sec-analysis" x-text="c.analysisType"></span>
+                  <span class="sec-year mono" x-text="c.year"></span>
+                </div>
+                <div class="sec-card-title" x-text="c.title"></div>
+                <div class="sec-card-orig" x-text="c.titleOriginal"></div>
+                <div class="sec-card-meta">
+                  <span x-show="c.authors" x-text="c.authors"></span>
+                  <span x-show="c.journal" x-text="c.journal"></span>
+                  <span class="sec-status" :class="{ 'sec-status-warn': c.recordType === 'press_release' || c.recordType === 'congress_abstract' }" x-text="c.publicationStatus"></span>
+                </div>
+                <div class="sec-card-takeaway" x-text="c.clinicalTakeaway"></div>
+                <div class="sec-card-links">
+                  <a :href="c.sourceUrl" target="_blank" rel="noopener" class="sec-link" x-text="(c.pmid ? '↗ PubMed' : (c.doi ? '↗ DOI' : '↗ Fonte'))"></a>
+                  <span x-show="c.doi" class="sec-id mono" x-text="'DOI ' + c.doi"></span>
+                  <span x-show="c.pmid" class="sec-id mono" x-text="'PMID ' + c.pmid"></span>
+                </div>
+              </div>
+            </template>
+          </div>
+        </div>
+
         <div class="section-block">
           <div class="section-block-title" style="color: var(--stone)"><i data-lucide="map-pin" style="width:13px;height:13px"></i> <span data-i18n="db.secStudyDetails">Detalhes do estudo</span></div>
           <div class="section-block-grid">
@@ -906,6 +958,7 @@
 </footer>
 
 <script src="assets/js/data.js?v=12"></script>
+<script src="assets/js/secondary-cards.js?v=1"></script>
 <script src="assets/js/common.js?v=11"></script>
 <script src="assets/js/i18n.js"></script>
 <script src="assets/lang/pt-br.js"></script>
@@ -1128,6 +1181,20 @@ function databaseApp() {
 
     openStudy(s) { this.selectedStudy = s; if (history.replaceState) history.replaceState(null, '', '#' + s.uid); },
     closeStudy() { this.selectedStudy = null; if (history.replaceState) history.replaceState(null, '', window.location.pathname); },
+
+    // Publicações secundárias / análises derivadas vinculadas ao estudo (via parentUid).
+    secondaryFor(uid) {
+      if (!uid || !window.THERA_SECONDARY) return [];
+      const order = { primary_trial: 0, protocol: 1, trial_update: 2, secondary_publication: 3, substudy: 4, exploratory_analysis: 5, congress_abstract: 6, press_release: 7 };
+      return window.THERA_SECONDARY
+        .filter(c => c.parentUid === uid)
+        .slice()
+        .sort((a, b) => ((order[a.recordType] ?? 9) - (order[b.recordType] ?? 9)) || (a.year - b.year));
+    },
+    secLabel(rt) {
+      const m = { primary_trial: 'Estudo principal', secondary_publication: 'Publicação secundária', trial_update: 'Atualização', exploratory_analysis: 'Análise exploratória', substudy: 'Subestudo', protocol: 'Protocolo', registry_only: 'Registro', press_release: 'Press release', congress_abstract: 'Congress abstract' };
+      return m[rt] || rt;
+    },
 
     // Esconde fields cujo conteúdo é vazio, '—', '-' ou whitespace.
     // Também esconde a section-block inteira se TODOS os fields dela ficarem ocultos.

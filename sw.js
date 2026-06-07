@@ -49,6 +49,7 @@ const CORE_ASSETS = [
   './assets/css/theratrials.css',
   './assets/css/radiofarmaco.css',
   './assets/js/data.js',
+  './assets/js/secondary-cards.js',
   './assets/js/common.js',
   './assets/js/trials_br.js',
   './assets/js/guidelines-data.js',
