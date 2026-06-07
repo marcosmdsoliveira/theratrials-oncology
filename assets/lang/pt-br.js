@@ -2554,6 +2554,11 @@ window._i18nRegister('pt-br', {
     secStudyDetails: "Detalhes do estudo",
     secRelated: "Publicações relacionadas e análises derivadas",
     secRelatedIntro: "Publicações secundárias, atualizações, subestudos, análises exploratórias, abstracts e protocolos vinculados a este estudo. Cada item foi verificado em fonte primária (PubMed/Crossref).",
+    secViewDetails: "Ver detalhes da publicação",
+    secBackToStudy: "Voltar ao estudo",
+    secSynthesis: "Síntese clínica",
+    secPubDetails: "Detalhes da publicação",
+    secModalDisclaimer: "Não substitui a leitura da publicação primária na fonte",
     secCitation: "Citação",
     secFeedback: "Envie um comentário ou sugestão",
 

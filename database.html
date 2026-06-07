@@ -345,20 +345,24 @@
   .sec-link { font-size: 0.75rem; color: var(--teal-glow); text-decoration: none; font-weight: 600; }
   .sec-link:hover { text-decoration: underline; }
   .sec-id { font-size: 0.68rem; color: var(--stone-2); }
-  /* expandir / detalhes */
-  .sec-card-head { cursor: pointer; }
-  .sec-card-title { cursor: pointer; }
-  .sec-card-head:hover ~ .sec-card-title, .sec-card-title:hover { color: var(--amber-glow); }
-  .sec-chevron { color: var(--stone); font-size: 0.7rem; width: 1rem; text-align: center; flex: 0 0 auto; }
-  .sec-card.sec-open { border-color: var(--border-mid); background: var(--graphite-3); }
-  .sec-detail { margin-top: 0.5rem; padding-top: 0.6rem; border-top: 1px dashed var(--border-soft); display: flex; flex-direction: column; gap: 0.45rem; }
-  .sec-drow { display: grid; grid-template-columns: 190px 1fr; gap: 0.3rem 0.6rem; font-size: 0.78rem; }
-  .sec-dk { color: var(--stone-2); text-transform: uppercase; letter-spacing: 0.04em; font-size: 0.64rem; padding-top: 0.12rem; }
+  /* card clicável → abre modal dedicado */
+  .sec-card.sec-clickable { cursor: pointer; border-left: 3px solid var(--sec-accent, var(--border-soft)); transition: border-color .15s, transform .12s, background .15s; }
+  .sec-card.sec-clickable:hover { border-color: var(--border-mid); border-left-color: var(--sec-accent, var(--teal)); background: var(--graphite-3); transform: translateY(-1px); }
+  .sec-card.sec-clickable:focus-visible { outline: 2px solid var(--amber); outline-offset: 2px; }
+  .sec-card-cta { display: flex; align-items: center; gap: 0.35rem; margin-top: 0.6rem; font-size: 0.76rem; font-weight: 600; color: var(--amber-glow); }
+  .sec-arrow { transition: transform .15s; }
+  .sec-card.sec-clickable:hover .sec-arrow { transform: translateX(3px); }
+  /* tabela de detalhes (modal dedicado) */
+  .sec-detail { display: flex; flex-direction: column; gap: 0; }
+  .sec-drow { display: grid; grid-template-columns: 210px 1fr; gap: 0.3rem 0.7rem; font-size: 0.82rem; padding: 0.5rem 0; border-bottom: 1px solid rgba(143,148,156,0.09); }
+  .sec-drow:last-child { border-bottom: none; }
+  .sec-dk { color: var(--stone-2); text-transform: uppercase; letter-spacing: 0.04em; font-size: 0.66rem; padding-top: 0.15rem; }
   .sec-dv { color: var(--off-white); opacity: 0.92; line-height: 1.45; }
+  .sec-dv.sec-status-warn { color: var(--warn); font-weight: 600; }
   .sec-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; }
-  .sec-tag { background: var(--graphite-4); border: 1px solid var(--border-soft); color: var(--stone); font-size: 0.66rem; padding: 0.1rem 0.45rem; border-radius: 999px; }
-  .sec-toggle { margin-left: auto; background: none; border: none; color: var(--stone); font-size: 0.72rem; cursor: pointer; padding: 0; font-family: inherit; }
-  .sec-toggle:hover { color: var(--amber-glow); }
+  .sec-tag { background: var(--graphite-4); border: 1px solid var(--border-soft); color: var(--stone); font-size: 0.68rem; padding: 0.12rem 0.5rem; border-radius: 999px; }
+  /* modal dedicado acima do modal do estudo */
+  .sec-modal-backdrop { z-index: 105; }
   @media (max-width: 560px) { .sec-drow { grid-template-columns: 1fr; gap: 0.1rem; } }
 
   /* Compare drawer */
@@ -769,7 +773,7 @@
 </div>
 
 <!-- MODAL -->
-<div class="modal-backdrop" x-show="selectedStudy" @click.self="closeStudy()" @keydown.window.escape="closeStudy()" x-transition.opacity x-cloak>
+<div class="modal-backdrop" x-show="selectedStudy" @click.self="closeStudy()" @keydown.window.escape="!selectedSecondary && closeStudy()" x-transition.opacity x-cloak>
   <template x-if="selectedStudy">
     <div class="modal-content">
       <button class="modal-close" @click="closeStudy()"><i data-lucide="x" style="width:16px;height:16px"></i></button>
@@ -878,14 +882,13 @@
           <p class="sec-intro" data-i18n="db.secRelatedIntro">Publicações secundárias, atualizações, subestudos, análises exploratórias, abstracts e protocolos vinculados a este estudo. Cada item foi verificado em fonte primária (PubMed/Crossref).</p>
           <div class="sec-cards">
             <template x-for="c in secondaryFor(selectedStudy.uid)" :key="c.id">
-              <div class="sec-card" x-data="{ open: false }" :class="{ 'sec-open': open }">
-                <div class="sec-card-head" @click="open = !open">
+              <div class="sec-card sec-clickable" @click="openSecondary(c)" role="button" tabindex="0" @keydown.enter="openSecondary(c)" :style="`--sec-accent: ${secColor(c.recordType)}`">
+                <div class="sec-card-head">
                   <span class="sec-badge" :class="'sec-' + c.recordType" x-text="secLabel(c.recordType)"></span>
                   <span class="sec-analysis" x-text="c.analysisType"></span>
                   <span class="sec-year mono" x-text="c.year"></span>
-                  <span class="sec-chevron" x-text="open ? '▾' : '▸'"></span>
                 </div>
-                <div class="sec-card-title" @click="open = !open" x-text="c.title"></div>
+                <div class="sec-card-title" x-text="c.title"></div>
                 <div class="sec-card-orig" x-text="c.titleOriginal"></div>
                 <div class="sec-card-meta">
                   <span x-show="c.authors" x-text="c.authors"></span>
@@ -893,20 +896,7 @@
                   <span class="sec-status" :class="{ 'sec-status-warn': c.recordType === 'press_release' || c.recordType === 'congress_abstract' }" x-text="c.publicationStatus"></span>
                 </div>
                 <div class="sec-card-takeaway" x-text="c.clinicalTakeaway"></div>
-                <div class="sec-detail" x-show="open" x-collapse>
-                  <div class="sec-drow"><span class="sec-dk">Relação com o estudo-mãe</span><span class="sec-dv" x-text="c.relationshipToParent"></span></div>
-                  <div class="sec-drow"><span class="sec-dk">Tipo de análise</span><span class="sec-dv" x-text="c.analysisType"></span></div>
-                  <div class="sec-drow"><span class="sec-dk">Maturidade da evidência</span><span class="sec-dv" x-text="c.evidenceMaturity"></span></div>
-                  <div class="sec-drow"><span class="sec-dk">Status de publicação</span><span class="sec-dv" x-text="c.publicationStatus"></span></div>
-                  <div class="sec-drow" x-show="c.parentTrialPublication"><span class="sec-dk">Publicação do estudo-mãe</span><span class="sec-dv mono" x-text="c.parentTrialPublication"></span></div>
-                  <div class="sec-drow" x-show="c.category && c.category.length"><span class="sec-dk">Categorias</span><span class="sec-dv sec-tags"><template x-for="t in (c.category || [])" :key="t"><span class="sec-tag" x-text="t"></span></template></span></div>
-                </div>
-                <div class="sec-card-links">
-                  <a :href="c.sourceUrl" target="_blank" rel="noopener" class="sec-link" x-text="(c.pmid ? '↗ PubMed' : (c.doi ? '↗ DOI' : '↗ Fonte'))"></a>
-                  <span x-show="c.doi" class="sec-id mono" x-text="'DOI ' + c.doi"></span>
-                  <span x-show="c.pmid" class="sec-id mono" x-text="'PMID ' + c.pmid"></span>
-                  <button type="button" class="sec-toggle" @click="open = !open" x-text="open ? 'Menos detalhes' : 'Mais detalhes'"></button>
-                </div>
+                <div class="sec-card-cta"><span data-i18n="db.secViewDetails">Ver detalhes da publicação</span> <span class="sec-arrow">→</span></div>
               </div>
             </template>
           </div>
@@ -968,6 +958,86 @@
   </template>
 </div>
 
+<!-- ===== Modal dedicado: publicação secundária / análise derivada ===== -->
+<div class="modal-backdrop sec-modal-backdrop" x-show="selectedSecondary" @click.self="closeSecondary()" @keydown.window.escape="selectedSecondary && closeSecondary()" x-transition.opacity x-cloak>
+  <template x-if="selectedSecondary">
+    <div class="modal-content sec-modal" :style="`border-color: ${secColor(selectedSecondary.recordType)}55`">
+      <button class="modal-close" @click="closeSecondary()"><i data-lucide="x" style="width:16px;height:16px"></i></button>
+
+      <div class="modal-header" :style="`background: linear-gradient(135deg, ${secColor(selectedSecondary.recordType)}1f, transparent 80%)`">
+        <div class="modal-cat">
+          <span class="sec-badge" :class="'sec-' + selectedSecondary.recordType" x-text="secLabel(selectedSecondary.recordType)"></span>
+          <span x-text="selectedSecondary.parentTrialName"></span>
+          <span class="sep">·</span>
+          <span x-text="selectedSecondary.analysisType"></span>
+        </div>
+        <h2 class="modal-title" x-text="selectedSecondary.title"></h2>
+        <p class="modal-acron" x-text="selectedSecondary.titleOriginal"></p>
+        <div class="modal-meta">
+          <span x-show="selectedSecondary.authors" x-text="selectedSecondary.authors"></span>
+          <span class="sep" x-show="selectedSecondary.authors && selectedSecondary.journal">·</span>
+          <span x-show="selectedSecondary.journal" x-text="selectedSecondary.journal"></span>
+          <span class="sep">·</span>
+          <span x-text="selectedSecondary.year"></span>
+        </div>
+        <div class="modal-actions">
+          <a x-show="selectedSecondary.sourceUrl" :href="selectedSecondary.sourceUrl" target="_blank" rel="noopener" class="btn btn-primary btn-sm">
+            <i data-lucide="external-link" style="width:14px;height:14px"></i> <span x-text="selectedSecondary.pmid ? 'Abrir no PubMed' : (selectedSecondary.doi ? 'Abrir DOI' : 'Abrir fonte')"></span>
+          </a>
+          <button class="btn btn-secondary btn-sm" @click="copyText(secondaryCitation(selectedSecondary), window.t ? t('db.toastCitationCopied','Citação copiada') : 'Citação copiada')">
+            <i data-lucide="copy" style="width:14px;height:14px"></i> <span data-i18n="db.copyCitation">Copiar citação</span>
+          </button>
+          <button class="btn btn-secondary btn-sm" @click="closeSecondary()">
+            <i data-lucide="arrow-left" style="width:14px;height:14px"></i> <span data-i18n="db.secBackToStudy">Voltar ao estudo</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="modal-body">
+        <div class="section-block">
+          <div class="section-block-title" style="color: var(--amber)"><i data-lucide="sparkles" style="width:13px;height:13px"></i> <span data-i18n="db.secSynthesis">Síntese clínica</span></div>
+          <div class="field full highlight"><div class="field-text" x-text="selectedSecondary.clinicalTakeaway"></div></div>
+        </div>
+
+        <div class="section-block">
+          <div class="section-block-title"><i data-lucide="info" style="width:13px;height:13px"></i> <span data-i18n="db.secPubDetails">Detalhes da publicação</span></div>
+          <div class="sec-detail">
+            <div class="sec-drow"><span class="sec-dk">Tipo de registro</span><span class="sec-dv" x-text="secLabel(selectedSecondary.recordType)"></span></div>
+            <div class="sec-drow"><span class="sec-dk">Relação com o estudo-mãe</span><span class="sec-dv" x-text="selectedSecondary.relationshipToParent"></span></div>
+            <div class="sec-drow"><span class="sec-dk">Tipo de análise</span><span class="sec-dv" x-text="selectedSecondary.analysisType"></span></div>
+            <div class="sec-drow"><span class="sec-dk">Maturidade da evidência</span><span class="sec-dv" x-text="selectedSecondary.evidenceMaturity"></span></div>
+            <div class="sec-drow"><span class="sec-dk">Status de publicação</span><span class="sec-dv" :class="{ 'sec-status-warn': selectedSecondary.recordType==='press_release' || selectedSecondary.recordType==='congress_abstract' }" x-text="selectedSecondary.publicationStatus"></span></div>
+            <div class="sec-drow"><span class="sec-dk">Periódico / fonte</span><span class="sec-dv" x-text="selectedSecondary.journal || '—'"></span></div>
+            <div class="sec-drow"><span class="sec-dk">Ano</span><span class="sec-dv mono" x-text="selectedSecondary.year"></span></div>
+            <div class="sec-drow" x-show="selectedSecondary.authors"><span class="sec-dk">Autores</span><span class="sec-dv" x-text="selectedSecondary.authors"></span></div>
+            <div class="sec-drow" x-show="selectedSecondary.doi"><span class="sec-dk">DOI</span><span class="sec-dv mono" x-text="selectedSecondary.doi"></span></div>
+            <div class="sec-drow" x-show="selectedSecondary.pmid"><span class="sec-dk">PMID</span><span class="sec-dv mono" x-text="selectedSecondary.pmid"></span></div>
+            <div class="sec-drow" x-show="selectedSecondary.parentTrialPublication"><span class="sec-dk">Publicação do estudo-mãe</span><span class="sec-dv mono" x-text="selectedSecondary.parentTrialPublication"></span></div>
+            <div class="sec-drow" x-show="selectedSecondary.category && selectedSecondary.category.length"><span class="sec-dk">Categorias</span><span class="sec-dv sec-tags"><template x-for="t in (selectedSecondary.category || [])" :key="t"><span class="sec-tag" x-text="t"></span></template></span></div>
+          </div>
+        </div>
+
+        <div class="section-block">
+          <div class="section-block-title" style="color: #6EE7B7"><i data-lucide="quote" style="width:13px;height:13px"></i> <span data-i18n="db.secCitation">Citação</span></div>
+          <div class="cite-panel">
+            <div class="cite-text" x-text="secondaryCitation(selectedSecondary)"></div>
+            <div class="cite-actions">
+              <button class="btn btn-secondary btn-sm" @click="copyText(secondaryCitation(selectedSecondary), window.t ? t('db.toastCitationCopied','Citação copiada') : 'Citação copiada')">
+                <i data-lucide="copy" style="width:14px;height:14px"></i> <span data-i18n="db.copyCitation">Copiar citação</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <span>ID: <span class="text-mono" x-text="selectedSecondary.id"></span></span>
+        <span data-i18n="db.secModalDisclaimer">Não substitui a leitura da publicação primária na fonte</span>
+      </div>
+    </div>
+  </template>
+</div>
+
 <div x-show="toast" x-transition x-cloak style="position: fixed; bottom: 6rem; right: 1.5rem; background: var(--graphite-3); border: 1px solid var(--border-mid); padding: 0.75rem 1rem; border-radius: var(--radius-sm); box-shadow: 0 8px 24px rgba(0,0,0,0.4); z-index: 200; display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem">
   <i data-lucide="check-circle-2" style="width:16px;height:16px; color: #6EE7B7"></i>
   <span x-text="toast"></span>
@@ -1002,6 +1072,7 @@ function databaseApp() {
     filterStatus: '',
     sortBy: 'relevance',
     selectedStudy: null,
+    selectedSecondary: null,
     compareList: [],
     showCompareView: false,
     toast: '',
@@ -1025,6 +1096,7 @@ function databaseApp() {
     init() {
       this.$nextTick(() => lucide.createIcons());
       this.$watch('selectedStudy', () => { this.$nextTick(() => lucide.createIcons()); });
+      this.$watch('selectedSecondary', () => { this.$nextTick(() => lucide.createIcons()); });
       this.$watch('filteredStudies', () => { this.$nextTick(() => lucide.createIcons()); });
       this.$watch('compareList', () => { this.$nextTick(() => lucide.createIcons()); });
       this.$watch('expandedModality', () => { this.$nextTick(() => lucide.createIcons()); });
@@ -1219,6 +1291,23 @@ function databaseApp() {
     secLabel(rt) {
       const m = { primary_trial: 'Estudo principal', secondary_publication: 'Publicação secundária', trial_update: 'Atualização', exploratory_analysis: 'Análise exploratória', substudy: 'Subestudo', protocol: 'Protocolo', registry_only: 'Registro', press_release: 'Press release', congress_abstract: 'Congress abstract' };
       return m[rt] || rt;
+    },
+    secColor(rt) {
+      const m = { primary_trial: '#FF8400', trial_update: '#0EA5B7', press_release: '#FBBF24', congress_abstract: '#FBBF24', protocol: '#94A3B8' };
+      return m[rt] || '#C084FC';
+    },
+    openSecondary(c) { this.selectedSecondary = c; },
+    closeSecondary() { this.selectedSecondary = null; },
+    secondaryCitation(c) {
+      if (!c) return '';
+      const parts = [];
+      if (c.authors) parts.push(c.authors.replace(/\.$/, '') + '.');
+      parts.push((c.titleOriginal || c.title) + '.');
+      if (c.journal) parts.push(c.journal + '.');
+      if (c.year) parts.push(c.year + '.');
+      if (c.doi) parts.push('doi:' + c.doi + '.');
+      else if (c.pmid) parts.push('PMID:' + c.pmid + '.');
+      return parts.join(' ');
     },
 
     // Esconde fields cujo conteúdo é vazio, '—', '-' ou whitespace.

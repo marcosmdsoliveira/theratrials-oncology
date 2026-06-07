@@ -2554,6 +2554,11 @@ window._i18nRegister('en', {
     secStudyDetails: "Study details",
     secRelated: "Related publications and derived analyses",
     secRelatedIntro: "Secondary publications, updates, substudies, exploratory analyses, abstracts and protocols linked to this trial. Each item was verified against a primary source (PubMed/Crossref).",
+    secViewDetails: "View publication details",
+    secBackToStudy: "Back to trial",
+    secSynthesis: "Clinical synthesis",
+    secPubDetails: "Publication details",
+    secModalDisclaimer: "Does not replace reading the primary publication at the source",
     secCitation: "Citation",
     secFeedback: "Submit a comment or suggestion",
 
