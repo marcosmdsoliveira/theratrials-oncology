@@ -635,7 +635,105 @@ window.GUIDELINES_DATA = [
     radiopharmaceuticals: "Microesferas de resina marcadas com 90Y (SIR-Spheres®, fabricante Sirtex) e microesferas de vidro marcadas com 90Y (TheraSphere®, fabricante Boston Scientific). O 90Y é um beta-emissor puro com energia máxima de 2,28 MeV, meia-vida de 64,1 horas e penetração média tecidual de 2,5 mm (máxima 11 mm). As microesferas de resina têm diâmetro de 20-60 micrômetros e atividade específica de 50 Bq/esfera, sendo administradas em maior número por dose (40-80 milhões de esferas). As microesferas de vidro têm diâmetro de 20-30 micrômetros e atividade específica muito mais alta (~2.500 Bq/esfera no dia da calibração), sendo administradas em menor número (1-8 milhões), com menor efeito embólico. Para planejamento dosimétrico pré-TARE utiliza-se 99mTc-MAA (macroagregados de albumina, partículas de 10-100 micrômetros) administrados por via intra-arterial durante o mapeamento angiográfico.",
     practicalAspects: "O fluxo de TARE envolve múltiplas etapas ao longo de 2-4 semanas. Na primeira sessão (work-up angiográfico), o radiointervencionista realiza arteriografia diagnóstica com mapeamento completo da anatomia arterial hepática, identifica e emboliza colaterais gastrointestinais, e administra 99mTc-MAA pela mesma posição de cateter planejada para terapia. Após 1-4 horas, o paciente realiza SPECT/CT de abdome para cálculo de shunt hepatopulmonar e avaliação de deposição extrahepática. O médico nuclear ou físico médico realiza a dosimetria pré-terapêutica com segmentação de volumes (tumor, fígado não-tumoral, pulmão) e cálculo de atividade pelo modelo escolhido. Na segunda sessão (dia do tratamento, tipicamente 1-2 semanas após), o radiointervencionista cateteriza seletivamente a artéria hepática na mesma posição do MAA e administra as microesferas de 90Y sob fluoroscopia, com infusão lenta e intercalada com soro para prevenir estase. O procedimento dura 60-90 minutos. Imediatamente após, ou dentro de 6 horas, realiza-se 90Y-PET/CT para verificação de biodistribuição e dosimetria pós-tratamento. O paciente permanece em observação por 4-6 horas e recebe alta no mesmo dia ou no dia seguinte, com prescrição de analgésicos, antieméticos e inibidor de bomba de prótons. Seguimento: TC ou RM contrastada em 3 meses para avaliação de resposta (mRECIST para CHC), função hepática seriada (ALT, AST, bilirrubina, albumina), e marcadores tumorais (AFP para CHC, CEA para CCR). Tratamentos subsequentes (outro lobo ou retreatamento) podem ser considerados após 6-8 semanas conforme função hepática e resposta.",
     limitations: "Contraindicado em pacientes com shunt hepatopulmonar >20% sem redução possível, pois a irradiação pulmonar cumulativa >30 Gy pode causar pneumonite por radiação potencialmente fatal. Trombose de veia porta principal bilateral é contraindicação relativa; trombose lobar ou segmentar pode ser tratada com abordagem contralateral. Função hepática comprometida (Child-Pugh C, bilirrubina >2 mg/dL, ascite refratária) associa-se a risco inaceitável de REILD. Os estudos SARAH e SIRveNIB não demonstraram superioridade de sobrevida global sobre sorafenibe em análise ITT para CHC avançado, o que limitou inicialmente o posicionamento da TARE nas diretrizes oncológicas; porém, análises de subgrupo e o paradigma de dosimetria personalizada (DOSISPHERE-01) estão redefinindo o cenário. A TARE requer infraestrutura complexa (sala de hemodinâmica, medicina nuclear, equipe multidisciplinar treinada), limitando sua disponibilidade. Quimioterapia hepatotóxica recente (especialmente bevacizumabe nas 8 semanas anteriores) aumenta o risco de REILD. Doença extrahepática predominante ou em progressão é contraindicação relativa, pois a TARE trata exclusivamente doença hepática. A variabilidade entre modelos dosimétricos (BSA vs partição vs voxel) pode resultar em atividades administradas significativamente diferentes, reforçando a necessidade de padronização.",
-    reference: "Defined by EANM Dosimetry and Therapy Committees. Eur J Nucl Med Mol Imaging. 2022."
+    reference: "Defined by EANM Dosimetry and Therapy Committees. Eur J Nucl Med Mol Imaging. 2022.",
+    rich: {
+      badges: ["Procedure guideline", "2022", "EANM", "TARE", "90Y", "CHC / Fígado", "Dosimetria"],
+      summary: "Guideline procedimental abrangente da EANM para a radioembolização trans-arterial (TARE) com microesferas de 90Y em tumores hepáticos primários e metastáticos. Cobre todo o fluxo — avaliação multidisciplinar, mapeamento angiográfico, dosimetria pré-terapêutica com 99mTc-MAA, técnica de administração e seguimento — e marca a transição de modelos empíricos (BSA) para dosimetria personalizada (partição/voxel).",
+      whyItMatters: "A TARE entrega radiação interna em altas doses ao tumor hepático com efeito embólico mínimo, mas só é segura e eficaz quando a seleção, o mapeamento vascular e a dosimetria são feitos com rigor. Esta diretriz padroniza como evitar a deposição extrahepática, como respeitar os limites de dose ao pulmão e ao fígado não-tumoral, e como personalizar a atividade para entregar dose tumoricida — o paradigma consolidado pelo DOSISPHERE-01.",
+      oneSentence: "Na TARE, o mapeamento com 99mTc-MAA funciona como o exame teranóstico que prevê a biodistribuição das microesferas terapêuticas de 90Y.",
+      conceptCards: [
+        { icon: "atom", title: "90Y é beta puro de curto alcance", text: "Energia máx. 2,28 MeV, alcance médio ~2,5 mm — irradiação local intensa com poupança relativa do entorno." },
+        { icon: "scan-line", title: "O 99mTc-MAA mapeia antes de tratar", text: "Quantifica shunt hepatopulmonar (<20%) e deposição GI na mesma posição do cateter terapêutico." },
+        { icon: "sliders-horizontal", title: "Dose personalizada muda a resposta", text: "DOSISPHERE-01: dose tumoral >205 Gy elevou a resposta objetiva de 36% para 71% no CHC." },
+        { icon: "scale", title: "Não superou o sorafenibe em OS", text: "SARAH e SIRveNIB: sem superioridade de sobrevida global em ITT, mas com melhor toxicidade e qualidade de vida." },
+        { icon: "users", title: "Decisão é multidisciplinar", text: "Tumor board hepatobiliar (hepatologista, cirurgião, intervencionista, médico nuclear) define elegibilidade e timing." }
+      ],
+      cautionBox: {
+        title: "Cuidado com interpretações excessivas",
+        text: "Os estudos randomizados SARAH e SIRveNIB NÃO demonstraram superioridade de sobrevida global da TARE sobre o sorafenibe em CHC avançado na análise por intenção de tratar. O benefício documentado vem de melhor perfil de toxicidade/qualidade de vida, de análises de subgrupo (doença unilobar, função preservada) e do paradigma de dosimetria personalizada — não de uma superioridade global comprovada. Posicione a TARE no contexto do BCLC e da discussão multidisciplinar."
+      },
+      dontConfuse: {
+        title: "Não confundir",
+        text: "TARE (radioembolização) não é o mesmo que TACE/quimioembolização: a TARE atua predominantemente pela radiação das microesferas de 90Y com efeito embólico mínimo, enquanto a TACE combina embolização isquêmica com quimioterapia. Também não confunda os modelos de cálculo de atividade — BSA (empírico) pode resultar em atividade bem diferente da dosimetria personalizada por partição ou voxel."
+      },
+      sections: [
+        {
+          id: "escopo", summary: "Diretriz EANM para TARE com microesferas de 90Y em CHC e metástases hepáticas, da seleção multidisciplinar à dosimetria personalizada.",
+          title: "Escopo", icon: "target", color: "#F59E0B", type: "text",
+          paragraphs: [
+            "Guideline procedimental abrangente da EANM para radioembolização trans-arterial (TARE) com microesferas de 90Y em tumores hepáticos primários e metastáticos. O documento consolida a experiência clínica europeia acumulada ao longo de duas décadas, integrando dados dos estudos randomizados SARAH e SIRveNIB (TARE vs sorafenibe em CHC avançado) e do estudo DOSISPHERE-01 (dosimetria personalizada vs padrão em CHC).",
+            "Abrange todo o fluxo terapêutico — da avaliação multidisciplinar inicial ao seguimento — incluindo critérios de seleção, mapeamento angiográfico, dosimetria pré-terapêutica com 99mTc-MAA, técnica de administração e avaliação de resposta. Posiciona a TARE no algoritmo do CHC segundo a classificação BCLC e discute seu papel em metástases hepáticas de carcinoma colorretal (CCR), tumores neuroendócrinos (TNE) e colangiocarcinoma intra-hepático, enfatizando a transição de modelos empíricos (BSA) para dosimetria personalizada (partição ou voxel)."
+          ]
+        },
+        {
+          id: "indicacoes", summary: "CHC por estágio BCLC (ponte/downstaging, intermediário, avançado), técnicas ablativas (segmentectomia/lobectomia por radiação) e metástases hepáticas selecionadas.",
+          title: "Indicações", icon: "clipboard-check", color: "#34D399", type: "grouped",
+          groups: [
+            { title: "Carcinoma hepatocelular (CHC) por estágio BCLC", paragraphs: ["CHC BCLC B (intermediário) não candidato ou refratário a quimioembolização convencional (cTACE).", "CHC BCLC C com invasão portal segmentar ou lobar (sem trombose de veia porta principal completa bilateral).", "CHC BCLC 0/A como ponte para transplante hepático (downstaging dentro dos critérios de Milano)."] },
+            { title: "Estratégias curativas e de downstaging", paragraphs: ["Downstaging de CHC para transplante: reduzir o(s) tumor(es) para dentro dos critérios de Milano ou UCSF.", "Segmentectomia por radiação (radiation segmentectomy) para CHC unifocal ≤5 cm em segmento único.", "Lobectomia por radiação (radiation lobectomy) para induzir hipertrofia contralateral pré-hepatectomia."] },
+            { title: "Metástases hepáticas", paragraphs: ["Metástases de CCR quimiorrefratárias (pós-oxaliplatina e irinotecano) com doença predominantemente hepática.", "Metástases de TNE refratárias a PRRT, quimioterapia ou análogos de somatostatina.", "Colangiocarcinoma intra-hepático irressecável após falha de quimioterapia sistêmica.", "Metástases de mama, melanoma uveal e outros tumores com predomínio hepático (uso off-label selecionado)."] }
+          ]
+        },
+        {
+          id: "pontos", summary: "Avaliação pré-procedimento, mapeamento e MAA, modelos dosimétricos e doses-alvo, evidência (SARAH/SIRveNIB/DOSISPHERE-01), toxicidade e imagem pós-90Y.",
+          title: "Pontos-chave", icon: "lightbulb", color: "#FBBF24", type: "bullets",
+          items: [
+            "Avaliação pré-procedimento obrigatória: TC trifásica ou RM com contraste hepatoespecífico (Gd-EOB-DTPA) para volumetria tumoral e hepática; avaliação de função hepática por Child-Pugh (A ou B7 sem ascite), escore ALBI e MELD.",
+            "Mapeamento angiográfico: arteriografia celíaca e mesentérica superior com identificação de anatomia vascular variante e embolização profilática de colaterais gastrointestinais (artéria gastroduodenal, gástrica direita, cística) para prevenir deposição extrahepática.",
+            "Cintilografia com 99mTc-MAA SPECT/CT: 150-200 MBq de MAA intra-arterial na mesma posição do cateter terapêutico planejado; cálculo de shunt hepatopulmonar (limite <20% para dose padrão, <10% ideal) e avaliação de deposição extrahepática gastrointestinal.",
+            "Modelos de cálculo de atividade: BSA (empírico, cada vez menos recomendado), modelo de partição (tumoral vs não-tumoral, recomendado como mínimo) e dosimetria voxelizada (MIRD, padrão ideal de personalização).",
+            "Doses-alvo por indicação: CHC >120 Gy ao tumor (preferencial >205 Gy conforme DOSISPHERE-01), <40 Gy ao pulmão cumulativo, <70 Gy ao fígado não-tumoral com função preservada, <40 Gy se cirrose Child-Pugh B.",
+            "Resultados de SARAH e SIRveNIB: TARE não demonstrou superioridade de OS sobre sorafenibe em CHC avançado por intenção de tratar, mas com melhor perfil de toxicidade e qualidade de vida; análises post-hoc sugerem benefício em subgrupos com doença unilobar e função hepática preservada.",
+            "Dados do DOSISPHERE-01: dosimetria personalizada com dose ao tumor >205 Gy resultou em resposta objetiva significativamente superior (71% vs 36%) comparada à dosimetria padrão BSA em CHC, estabelecendo o paradigma de personalização.",
+            "Segmentectomia por radiação: doses ablativas >400 Gy ao segmento-alvo em CHC unifocal ≤5 cm, com taxas de resposta completa patológica de 60-80% em séries cirúrgicas — alternativa curativa em pacientes não cirúrgicos.",
+            "Radiation lobectomy: tratamento seletivo de um lobo com doses terapêuticas para induzir hipertrofia contralateral (>10% em 6-8 semanas), permitindo hepatectomia subsequente segura quando o volume hepático futuro é insuficiente.",
+            "Avaliação de resposta: mRECIST ou critérios EASL para CHC (baseados em realce arterial, não em tamanho), RECIST 1.1 para metástases; primeira avaliação em 3 meses pós-TARE (a resposta pode ser tardia).",
+            "Síndrome pós-embolização: fadiga (60-80%), dor abdominal (30-50%), febre baixa e náusea, autolimitadas em 1-2 semanas; tratamento sintomático com analgésicos, antieméticos e hidratação.",
+            "Toxicidade hepática: REILD (radioembolization-induced liver disease) ocorre em 0-4% quando respeitados os limites dosimétricos; risco maior em cirrose avançada, quimioterapia hepatotóxica prévia (bevacizumabe) e tratamento bilobar simultâneo.",
+            "Contraindicações absolutas: shunt hepatopulmonar >20% sem possibilidade de redução, refluxo extrahepático gastrointestinal não corrigível por embolização e insuficiência hepática descompensada (Child-Pugh C, bilirrubina >2 mg/dL).",
+            "Papel da equipe multidisciplinar: tumor board hepatobiliar com hepatologista, onco-cirurgião, radiointervencionista e médico nuclear é essencial para definir elegibilidade, timing e integração com terapias sistêmicas.",
+            "Imagem pós-procedimento: 90Y-PET/CT (método preferido, resolução espacial ~5 mm) ou 90Y-Bremsstrahlung SPECT/CT (alternativa) para verificar a distribuição das microesferas e a dosimetria pós-tratamento."
+          ]
+        },
+        {
+          id: "farmacos", summary: "Microesferas de 90Y de resina (SIR-Spheres) e de vidro (TheraSphere); planejamento pré-terapêutico com 99mTc-MAA.",
+          title: "Radiofármacos", icon: "flask-conical", color: "#C084FC", type: "cards",
+          cards: [
+            { title: "Microesferas de resina — 90Y (SIR-Spheres)", tag: "Sirtex", paragraphs: ["Diâmetro de 20-60 µm e atividade específica de ~50 Bq/esfera, administradas em maior número por dose (40-80 milhões de esferas) — maior efeito embólico relativo. O 90Y é beta-emissor puro (Emax 2,28 MeV, meia-vida 64,1 h, penetração média de 2,5 mm e máxima de 11 mm)."] },
+            { title: "Microesferas de vidro — 90Y (TheraSphere)", tag: "Boston Scientific", paragraphs: ["Diâmetro de 20-30 µm e atividade específica muito mais alta (~2.500 Bq/esfera no dia da calibração), administradas em menor número (1-8 milhões) — menor efeito embólico."] },
+            { title: "99mTc-MAA — planejamento", tag: "Pré-TARE", paragraphs: ["Macroagregados de albumina (10-100 µm) administrados por via intra-arterial durante o mapeamento angiográfico, simulando a biodistribuição das microesferas para cálculo de shunt pulmonar e dosimetria pré-terapêutica."] }
+          ]
+        },
+        {
+          id: "praticos", summary: "Fluxo em 2-4 semanas: work-up angiográfico com MAA → dia do tratamento com 90Y e PET/CT pós-dose → seguimento em 3 meses.",
+          title: "Aspectos práticos", icon: "stethoscope", color: "#FB923C", type: "timeline",
+          phases: [
+            { title: "Work-up angiográfico", paragraphs: ["O radiointervencionista realiza arteriografia diagnóstica com mapeamento completo da anatomia arterial hepática, identifica e emboliza colaterais gastrointestinais e administra 99mTc-MAA pela mesma posição de cateter planejada para a terapia. Após 1-4 horas, o paciente realiza SPECT/CT de abdome para cálculo do shunt hepatopulmonar e avaliação de deposição extrahepática.", "O médico nuclear ou físico médico realiza a dosimetria pré-terapêutica com segmentação de volumes (tumor, fígado não-tumoral, pulmão) e cálculo de atividade pelo modelo escolhido."] },
+            { title: "Dia do tratamento", paragraphs: ["Tipicamente 1-2 semanas após o work-up, o radiointervencionista cateteriza seletivamente a artéria hepática na mesma posição do MAA e administra as microesferas de 90Y sob fluoroscopia, com infusão lenta intercalada com soro para prevenir estase. O procedimento dura 60-90 minutos.", "Imediatamente após, ou em até 6 horas, realiza-se 90Y-PET/CT para verificação de biodistribuição e dosimetria pós-tratamento. O paciente permanece em observação por 4-6 horas e recebe alta no mesmo dia ou no seguinte, com analgésicos, antieméticos e inibidor de bomba de prótons."] },
+            { title: "Seguimento", paragraphs: ["TC ou RM contrastada em 3 meses para avaliação de resposta (mRECIST para CHC), função hepática seriada (ALT, AST, bilirrubina, albumina) e marcadores tumorais (AFP para CHC, CEA para CCR).", "Tratamentos subsequentes (outro lobo ou retratamento) podem ser considerados após 6-8 semanas conforme a função hepática e a resposta."] }
+          ]
+        },
+        {
+          id: "limitacoes", summary: "Shunt pulmonar alto, trombose portal, disfunção hepática, ausência de superioridade de OS, infraestrutura complexa e variabilidade dosimétrica.",
+          title: "Limitações", icon: "shield-alert", color: "#F472B6", type: "text",
+          paragraphs: [
+            "É contraindicada em pacientes com shunt hepatopulmonar >20% sem redução possível, pois a irradiação pulmonar cumulativa >30 Gy pode causar pneumonite por radiação potencialmente fatal. Trombose de veia porta principal bilateral é contraindicação relativa; trombose lobar ou segmentar pode ser tratada com abordagem contralateral. Função hepática comprometida (Child-Pugh C, bilirrubina >2 mg/dL, ascite refratária) associa-se a risco inaceitável de REILD.",
+            "Os estudos SARAH e SIRveNIB não demonstraram superioridade de sobrevida global sobre o sorafenibe em análise ITT para CHC avançado, o que limitou inicialmente o posicionamento da TARE nas diretrizes oncológicas; porém, análises de subgrupo e o paradigma de dosimetria personalizada (DOSISPHERE-01) estão redefinindo o cenário.",
+            "A TARE requer infraestrutura complexa (sala de hemodinâmica, medicina nuclear, equipe multidisciplinar treinada), o que limita sua disponibilidade. Quimioterapia hepatotóxica recente (especialmente bevacizumabe nas 8 semanas anteriores) aumenta o risco de REILD. Doença extrahepática predominante ou em progressão é contraindicação relativa, pois a TARE trata exclusivamente a doença hepática. A variabilidade entre modelos dosimétricos (BSA vs partição vs voxel) pode gerar atividades administradas significativamente diferentes, reforçando a necessidade de padronização."
+          ]
+        }
+      ],
+      practicalMessage: {
+        intro: "A TARE com 90Y é uma terapia loco-regional para tumores hepáticos selecionados, eficaz quando seleção, mapeamento vascular e dosimetria são feitos com rigor.",
+        leadIn: "A decisão deve responder a três perguntas:",
+        questions: [
+          "A doença é predominantemente hepática e a função hepática (Child-Pugh A ou B7 sem ascite) permite o tratamento?",
+          "O shunt hepatopulmonar é <20% e o refluxo gastrointestinal foi corrigido no mapeamento angiográfico?",
+          "A dosimetria foi personalizada para entregar dose tumoricida (>120 Gy, idealmente >205 Gy no CHC) poupando o parênquima não-tumoral e o pulmão?"
+        ],
+        closing: "Quando essas três respostas são favoráveis, a TARE oferece controle hepático com perfil de toxicidade favorável e potencial curativo em estratégias ablativas selecionadas."
+      }
+    }
   },
   {
     id: "tare-dosimetry-sop-2021",
@@ -769,7 +867,105 @@ window.GUIDELINES_DATA = [
     radiopharmaceuticals: "131I-Iodeto de sódio (NaI) em cápsulas gelatinosas ou solução oral, sendo o agente terapêutico padrão. Atividades administradas variam de 30 mCi (1,1 GBq) para ablação em baixo risco até 200-300 mCi (7,4-11,1 GBq) para doença metastática extensa. O 131I é beta-emissor (energia máxima 0,61 MeV, penetração média 0,4 mm) com componente gama (364 keV) que permite imageamento pós-dose. Meia-vida física de 8,02 dias. Para PCI diagnóstica, utiliza-se preferencialmente 123I (159 keV, gama puro, meia-vida 13,2 horas) na atividade de 1-2 mCi (37-74 MBq), que não causa stunning; alternativamente, 131I em dose baixa (1-3 mCi). O 124I (beta+ emissor, meia-vida 4,18 dias) pode ser utilizado para PET/CT dosimétrica pré-terapêutica em centros especializados.",
     practicalAspects: "O fluxo completo de RAI para CDT inicia com a tireoidectomia total (requisito para ablação efetiva). O preparo para RAI começa 3-4 semanas antes com suspensão de levotiroxina (ou 2 dias antes com rhTSH). A dieta hipoiódica é iniciada 1-2 semanas antes. No dia do tratamento (D0), confirma-se TSH >30 mUI/L (ou administração de rhTSH em D-2 e D-1), coleta-se Tg basal, e o paciente recebe a cápsula de 131I oral em jejum de pelo menos 2 horas. Após a administração, o paciente permanece em isolamento em quarto plumbífero (obrigatório no Brasil para atividades >1,11 GBq / 30 mCi por norma da CNEN) por 24-72 horas, até que a taxa de dose a 1 metro seja inferior ao limite regulatório de liberação (tipicamente <25 microSv/h ou <50 microSv/h conforme país). Durante o isolamento, hidratação abundante (2-3 L/dia) e estimulação de glândulas salivares. O PCI pós-dose é realizado em D5-D8: varredura planar de corpo inteiro (velocidade 5-10 cm/min, colimador de alta energia) seguida de SPECT/CT de pescoço e tórax. O SPECT/CT aumenta a sensibilidade em 15-30% comparado ao planar isolado e fornece localização anatômica precisa. Após alta, o paciente recebe orientações escritas de radioproteção domiciliar: manter distância >1 metro de crianças e gestantes por 5-7 dias, não compartilhar utensílios, descarga dupla no vaso sanitário. A levotiroxina é reiniciada em dose supressiva (TSH-alvo <0,1 mUI/L em alto risco, 0,1-0,5 em intermediário) ou substitutiva (TSH 0,5-2,0 em baixo risco com resposta excelente). Seguimento: Tg + anti-Tg em 6-12 semanas, US cervical em 6-12 meses, e reclassificação de risco pelo sistema de resposta ao tratamento ATA.",
     limitations: "CDT iodo-refratário (perda de captação de RAI ou progressão apesar de RAI) não se beneficia de doses adicionais e deve ser encaminhado para TKI (lenvatinibe, sorafenibe) ou terapias-alvo (selpercatinibe para RET+, larotrectinibe para NTRK+). O stunning effect com 131I diagnóstico pode comprometer a eficácia terapêutica, e sua relevância clínica permanece debatida; preferir 123I para PCI diagnóstica ou omitir PCI pré-terapêutica em pacientes de alto risco. Atividade cumulativa >600 mCi (22 GBq) associa-se a risco aumentado de leucemia aguda mieloide e síndrome mielodisplásica (risco absoluto ~1-2%), exigindo discussão de benefício-risco em cada retratamento. Xerostomia crônica afeta qualidade de vida significativamente em 10-30% dos pacientes com doses cumulativas elevadas. Metástases pulmonares difusas micronodulares exigem dosimetria (limite de retenção pulmonar de 80 mCi em 48h) para evitar fibrose pulmonar. A variabilidade na preparação da dieta hipoiódica entre pacientes pode afetar a eficácia da ablação. Em centros sem SPECT/CT, a PCI planar isolada pode subestimar a extensão da doença. Pacientes com anticorpos anti-Tg positivos não podem utilizar tireoglobulina como marcador confiável de seguimento, necessitando de tendência de título de anticorpos e imagem funcional. Regulamentações de radioproteção para isolamento e liberação variam significativamente entre países, criando heterogeneidade na prática.",
-    reference: "Avram AM, et al. SNMMI Procedure Standard/EANM Practice Guideline for Nuclear Medicine Evaluation and Therapy of Differentiated Thyroid Câncer. J Nucl Med. 2022;63(6):e1-e35."
+    reference: "Avram AM, et al. SNMMI Procedure Standard/EANM Practice Guideline for Nuclear Medicine Evaluation and Therapy of Differentiated Thyroid Câncer. J Nucl Med. 2022;63(6):e1-e35.",
+    rich: {
+      badges: ["Procedure standard", "2022", "SNMMI", "EANM", "131I", "CDT / Tireoide", "Radioiodo"],
+      summary: "Guideline procedimental conjunto SNMMI/EANM que padroniza a avaliação por medicina nuclear e a terapia com 131I (radioiodoterapia, RAI) no carcinoma diferenciado de tireoide (CDT). Integra a estratificação de risco da ATA 2015, o sistema dinâmico de resposta ao tratamento e a dosimetria em cenários selecionados, do preparo ao seguimento de longo prazo.",
+      whyItMatters: "A RAI é a terapia sistêmica clássica do CDT, mas o paradigma moderno é calibrar a intensidade ao risco: desintensificar (ou omitir) na doença de baixo risco e intensificar na de alto risco ou metastática. Esta diretriz define como estratificar, preparar, dosar e monitorar — e quando reconhecer a doença iodo-refratária, em que doses adicionais não ajudam.",
+      oneSentence: "No CDT, o iodo radioativo é o exemplo histórico de teranóstico: o mesmo 131I (ou 123I/124I) que diagnostica a doença iodo-ávida também a trata.",
+      conceptCards: [
+        { icon: "layers", title: "A estratificação ATA guia tudo", text: "Baixo risco: ablação não rotineira. Intermediário: ablação recomendada. Alto risco: RAI recomendada." },
+        { icon: "pill", title: "Preparo: TSH alto + dieta hipoiódica", text: "TSH >30 mUI/L por suspensão de levotiroxina ou rhTSH, com dieta hipoiódica 1-2 semanas antes." },
+        { icon: "scan-search", title: "123I evita o stunning", text: "131I diagnóstico (2-5 mCi) pode reduzir a captação terapêutica em até 50%; 123I não causa stunning." },
+        { icon: "scan-line", title: "SPECT/CT pós-dose muda o manejo", text: "Detecta captação ectópica não prevista em 10-15% dos casos e localiza a doença com precisão." },
+        { icon: "activity", title: "FDG+ / iodo– = refratariedade", text: "Captação de FDG em lesão sem captação de iodo (flip-flop) indica refratariedade e pior prognóstico." }
+      ],
+      cautionBox: {
+        title: "Cuidado com retratamentos repetidos",
+        text: "A doença iodo-refratária (perda de captação ou progressão estrutural apesar de RAI) NÃO se beneficia de doses adicionais e deve ser encaminhada a inibidores de tirosina-quinase (lenvatinibe, sorafenibe) ou terapias-alvo (selpercatinibe em RET+, larotrectinibe em NTRK+). Além disso, atividade cumulativa >600 mCi (22 GBq) associa-se a risco aumentado de leucemia aguda / síndrome mielodisplásica (~1-2%) e xerostomia crônica — pondere benefício-risco a cada retratamento."
+      },
+      dontConfuse: {
+        title: "Não confundir",
+        text: "Resposta bioquímica incompleta (Tg elevada com imagem negativa) não é o mesmo que resposta estrutural incompleta (doença mensurável persistente) — a conduta difere. E doença iodo-ávida (capta RAI, responde a doses) não se confunde com doença iodo-refratária (FDG-ávida, sem captação de iodo), em que a RAI não tem papel terapêutico."
+      },
+      sections: [
+        {
+          id: "escopo", summary: "Diretriz SNMMI/EANM para 131I no CDT (papilífero, folicular, Hürthle e pouco diferenciado iodo-ávido), ancorada na estratificação de risco ATA.",
+          title: "Escopo", icon: "target", color: "#F472B6", type: "text",
+          paragraphs: [
+            "Guideline procedimental conjunto SNMMI/EANM que padroniza a avaliação por medicina nuclear e a terapia com 131I (radioiodoterapia, RAI) no carcinoma diferenciado de tireoide (CDT), incluindo os tipos papilífero, folicular, variante de células de Hürthle e formas pouco diferenciadas com captação de iodo preservada.",
+            "Integra a estratificação de risco da ATA 2015, o sistema de resposta ao tratamento e a dosimetria em cenários selecionados, fornecendo um framework procedimental completo do preparo ao seguimento de longo prazo. Reconhece a tendência contemporânea de desintensificação na doença de baixo risco e intensificação na de alto risco ou metastática, incorporando evidência de estudos como ESTIMABL1 e HiLo (equivalência de ablação com atividades baixas de 30 mCi e preparo com rhTSH vs suspensão hormonal em baixo risco)."
+          ]
+        },
+        {
+          id: "indicacoes", summary: "Ablação por risco ATA, terapia adjuvante, doença metastática iodo-ávida, retratamento, PCI diagnóstica e cenários de Tg elevada sem doença estrutural.",
+          title: "Indicações", icon: "clipboard-check", color: "#34D399", type: "grouped",
+          groups: [
+            { title: "Ablação / adjuvância por risco ATA", paragraphs: ["Ablação de remanescente pós-tireoidectomia total em CDT de risco intermediário (invasão microscópica extratireoidiana, N1, histologia agressiva como variante de células altas ou colunar).", "Ablação em CDT de alto risco (extensão extratireoidiana macroscópica, ressecção incompleta R1/R2, metástases a distância, linfonodo >3 cm).", "Terapia adjuvante em doença residual microscópica (margens positivas) ou doença linfonodal volumosa (N1b extenso) após cirurgia.", "Ablação seletiva em baixo risco com fatores desfavoráveis isolados: tumor 1-4 cm, variante agressiva, invasão linfovascular extensa."] },
+            { title: "Doença metastática iodo-ávida", paragraphs: ["Terapia de metástases pulmonares micronodulares difusas, metástases ósseas, metástases linfonodais mediastinais ou cervicais irressecáveis.", "Retratamento em doença persistente ou recorrente com captação de RAI confirmada em PCI ou SPECT/CT."] },
+            { title: "Diagnóstico e cenários selecionados", paragraphs: ["PCI diagnóstica (pesquisa de corpo inteiro) com 123I ou 131I em baixa dose para estadiamento pós-operatório ou seguimento de doença indeterminada.", "Cenários em que a tireoglobulina pós-operatória estimulada é elevada (>1-2 ng/mL) sem doença estrutural identificável."] }
+          ]
+        },
+        {
+          id: "pontos", summary: "Estratificação ATA, atividades por risco, preparo (TSH/dieta), PCI pós-dose, dosimetria, sistema de resposta, stunning, toxicidades e integração com FDG-PET.",
+          title: "Pontos-chave", icon: "lightbulb", color: "#F9A8D4", type: "bullets",
+          items: [
+            "Estratificação de risco ATA como base da decisão: baixo risco (T1-T2 N0M0, sem invasão linfovascular, histologia clássica) — ablação não rotineira; intermediário — ablação recomendada; alto risco — terapia com RAI recomendada.",
+            "Atividades para ablação de remanescente: 30 mCi (1,1 GBq) em baixo risco selecionado (ESTIMABL1/HiLo), 50-100 mCi (1,85-3,7 GBq) em risco intermediário, 100-150 mCi (3,7-5,55 GBq) em alto risco sem doença estrutural residual.",
+            "Atividades para doença metastática: 100-200 mCi (3,7-7,4 GBq) para doença linfonodal, 150-200 mCi (5,55-7,4 GBq) para metástases pulmonares macronodulares e ósseas, 100-150 mCi para metástases pulmonares micronodulares difusas (com dosimetria mandatória por risco de fibrose pulmonar).",
+            "Preparo com TSH elevado (>30 mUI/L): opção 1 — suspensão de levotiroxina por 3-4 semanas (com ou sem triiodotironina de ponte nas primeiras 2 semanas); opção 2 — rhTSH (Thyrogen) 0,9 mg IM em D-2 e D-1, RAI em D0. rhTSH é preferido em baixo/intermediário risco sem doença estrutural e obrigatório em hipopituitarismo.",
+            "Dieta hipoiódica por 1-2 semanas antes: evitar alimentos ricos em iodo (frutos do mar, laticínios processados, sal iodado, contrastes iodados recentes), ingesta de iodo <50 µg/dia ideal.",
+            "PCI diagnóstica pós-dose (5-8 dias): imagem planar de corpo inteiro (anterior e posterior) + SPECT/CT de pescoço e tórax (obrigatório); SPECT/CT de abdome quando suspeitada doença abdominal; detecta captação ectópica não prevista em 10-15% dos casos.",
+            "Dosimetria indicada em: atividades cumulativas elevadas (>600 mCi), metástases pulmonares difusas (limite de 80 mCi de retenção pulmonar em 48h), insuficiência renal (clearance de 131I reduzido), idosos com comorbidades e retratamentos múltiplos.",
+            "Sistema de resposta ao tratamento ATA (reclassificação dinâmica): resposta excelente (Tg estimulada <1 ng/mL, imagem negativa), indeterminada (Tg 1-10 ng/mL, achados inespecíficos), bioquímica incompleta (Tg >10 ng/mL, imagem negativa), estrutural incompleta (doença mensurável persistente).",
+            "Stunning effect: PCI diagnóstica pré-terapêutica com 131I em 2-5 mCi pode reduzir a captação terapêutica em até 50%; para evitar, usar 123I para PCI diagnóstica (sem stunning) ou administrar RAI terapêutico sem PCI prévia (preferência em alto risco).",
+            "Monitoramento pós-RAI: hemograma em 6-8 semanas (nadir leucocitário), função renal, tireoglobulina (Tg) basal e estimulada, anticorpos anti-Tg (interferência no ensaio) e US cervical em 6-12 meses.",
+            "Contracepção obrigatória: mulheres devem evitar gestação por 6-12 meses pós-RAI; homens por 4-6 meses; discutir criopreservação de esperma antes de altas atividades cumulativas.",
+            "Xerostomia pós-RAI: hidratação abundante, sialagogos (limão, chicletes ácidos) e massagem salivar; as glândulas salivares são o principal órgão de toxicidade crônica em RAI repetitivo.",
+            "Risco de segundo tumor primário: atividade cumulativa >600 mCi (22 GBq) associada a risco aumentado de leucemia aguda (risco absoluto ~1%), câncer de bexiga e câncer de mama; ponderar benefício-risco em retratamentos.",
+            "Critérios de doença iodo-refratária: perda de captação em lesão conhecida no PCI pós-dose, progressão estrutural em até 12 meses pós-RAI apesar de captação, ou atividade cumulativa >600 mCi sem benefício demonstrável.",
+            "Integração com PET-FDG: 18F-FDG PET/CT indicado em CDT com Tg elevada e PCI negativa (flip-flop phenotype), em doença de alto grau/pouco diferenciada e na avaliação de doença potencialmente iodo-refratária; captação de FDG sem captação de iodo indica refratariedade e pior prognóstico."
+          ]
+        },
+        {
+          id: "farmacos", summary: "131I-iodeto de sódio é o agente terapêutico; 123I é preferido para PCI diagnóstica (sem stunning); 124I permite PET dosimétrica pré-terapêutica.",
+          title: "Radiofármacos", icon: "flask-conical", color: "#C084FC", type: "cards",
+          cards: [
+            { title: "131I-iodeto de sódio (NaI)", tag: "Terapêutico", paragraphs: ["Cápsulas gelatinosas ou solução oral, agente terapêutico padrão. Atividades de 30 mCi (1,1 GBq) para ablação de baixo risco até 200-300 mCi (7,4-11,1 GBq) para doença metastática extensa. Beta-emissor (Emax 0,61 MeV, penetração média 0,4 mm) com componente gama (364 keV) que permite imagem pós-dose; meia-vida física de 8,02 dias."] },
+            { title: "123I", tag: "PCI diagnóstica", paragraphs: ["Gama puro (159 keV, meia-vida 13,2 h), atividade de 1-2 mCi (37-74 MBq) para PCI diagnóstica, sem causar stunning — preferido sobre o 131I diagnóstico de baixa dose (1-3 mCi)."] },
+            { title: "124I", tag: "PET dosimétrica", paragraphs: ["Emissor de pósitrons (meia-vida 4,18 dias) utilizado para PET/CT dosimétrica pré-terapêutica em centros especializados."] }
+          ]
+        },
+        {
+          id: "praticos", summary: "Preparo (suspensão/rhTSH + dieta hipoiódica) → administração oral e isolamento em quarto plumbífero → PCI pós-dose (D5-D8) e reclassificação dinâmica.",
+          title: "Aspectos práticos", icon: "stethoscope", color: "#FB923C", type: "timeline",
+          phases: [
+            { title: "Preparo", paragraphs: ["O fluxo inicia após a tireoidectomia total (requisito para ablação efetiva). O preparo começa 3-4 semanas antes com suspensão de levotiroxina — ou 2 dias antes com rhTSH. A dieta hipoiódica é iniciada 1-2 semanas antes.", "No dia do tratamento (D0), confirma-se TSH >30 mUI/L (ou administração de rhTSH em D-2 e D-1), coleta-se Tg basal, e o paciente recebe a cápsula de 131I oral em jejum de pelo menos 2 horas."] },
+            { title: "Administração e isolamento", paragraphs: ["Após a administração, o paciente permanece em isolamento em quarto plumbífero (obrigatório no Brasil para atividades >1,11 GBq / 30 mCi por norma da CNEN) por 24-72 horas, até que a taxa de dose a 1 metro fique abaixo do limite regulatório de liberação (tipicamente <25-50 µSv/h conforme o país).", "Durante o isolamento: hidratação abundante (2-3 L/dia) e estimulação das glândulas salivares para reduzir toxicidade."] },
+            { title: "PCI pós-dose e seguimento", paragraphs: ["O PCI pós-dose é realizado em D5-D8: varredura planar de corpo inteiro (5-10 cm/min, colimador de alta energia) seguida de SPECT/CT de pescoço e tórax, que aumenta a sensibilidade em 15-30% e fornece localização anatômica precisa.", "Na alta, orientações escritas de radioproteção domiciliar (distância >1 m de crianças e gestantes por 5-7 dias, não compartilhar utensílios, descarga dupla). A levotiroxina é reiniciada em dose supressiva ou substitutiva conforme o risco. Seguimento: Tg + anti-Tg em 6-12 semanas, US cervical em 6-12 meses e reclassificação pelo sistema de resposta ao tratamento ATA."] }
+          ]
+        },
+        {
+          id: "limitacoes", summary: "Iodo-refratariedade, stunning debatido, toxicidade cumulativa (leucemia, xerostomia), anti-Tg interferente, dependência de SPECT/CT e heterogeneidade regulatória.",
+          title: "Limitações", icon: "shield-alert", color: "#FBA4C4", type: "text",
+          paragraphs: [
+            "O CDT iodo-refratário (perda de captação de RAI ou progressão apesar de RAI) não se beneficia de doses adicionais e deve ser encaminhado a TKI (lenvatinibe, sorafenibe) ou terapias-alvo (selpercatinibe para RET+, larotrectinibe para NTRK+). O stunning effect com 131I diagnóstico pode comprometer a eficácia terapêutica e sua relevância clínica permanece debatida — preferir 123I para PCI diagnóstica ou omitir a PCI pré-terapêutica em alto risco.",
+            "Atividade cumulativa >600 mCi (22 GBq) associa-se a risco aumentado de leucemia mieloide aguda e síndrome mielodisplásica (~1-2%), exigindo discussão de benefício-risco a cada retratamento. A xerostomia crônica afeta significativamente a qualidade de vida em 10-30% dos pacientes com doses cumulativas elevadas. Metástases pulmonares difusas micronodulares exigem dosimetria (limite de retenção pulmonar de 80 mCi em 48h) para evitar fibrose.",
+            "A variabilidade na preparação da dieta hipoiódica pode afetar a eficácia da ablação. Em centros sem SPECT/CT, a PCI planar isolada subestima a extensão da doença. Pacientes com anticorpos anti-Tg positivos não podem usar a tireoglobulina como marcador confiável, dependendo da tendência do título de anticorpos e da imagem funcional. As regulamentações de radioproteção para isolamento e liberação variam muito entre países, criando heterogeneidade na prática."
+          ]
+        }
+      ],
+      practicalMessage: {
+        intro: "A radioiodoterapia é a terapia sistêmica clássica do CDT, calibrada à estratificação de risco ATA e ao status iodo-ávido da doença.",
+        leadIn: "A decisão deve responder a três perguntas:",
+        questions: [
+          "O paciente foi submetido à tireoidectomia total e a estratificação ATA indica RAI (risco intermediário ou alto)?",
+          "O preparo está adequado — TSH >30 mUI/L (suspensão de levotiroxina ou rhTSH) e dieta hipoiódica?",
+          "A atividade está ajustada ao risco e à dosimetria, ponderando a toxicidade cumulativa e o status iodo-ávido vs refratário?"
+        ],
+        closing: "Quando essas três respostas são favoráveis, a RAI controla a doença iodo-ávida; quando a doença se torna refratária, o caminho é a terapia-alvo, não mais iodo."
+      }
+    }
   },
   {
     id: "rait-eanm-benign-2023",
@@ -904,7 +1100,106 @@ window.GUIDELINES_DATA = [
     radiopharmaceuticals: "223Ra-Dicloreto (Xofigo, Bayer) é um alfa-emissor (T1/2 = 11,4 dias) que emite partículas alfa de alto LET com alcance tecidual < 100 micrômetros, mimetizando o calcio na superficie óssea remodelada. 89Sr-Cloreto (Metastron, GE Healthcare) é um beta-emissor puro (T1/2 = 50,5 dias; Emax 1,46 MeV; alcance máximo ~8 mm no tecido) fornecido em solução pronta para uso. 153Sm-EDTMP (Quadramet, Lantheus) é um beta-emissor (T1/2 = 1,9 dias; Emax 0,81 MeV; alcance máximo ~3 mm) com emissão gama de 103 keV que permite imagem pós-terapêutica para verificação de biodistribuição. Todos concentram-se preferencialmente em áreas de remodelação óssea aumentada.",
     practicalAspects: "Avaliação pré-tratamento inclui cintilografia óssea com 99mTc-MDP/HDP para confirmar padrão osteoblastico multifocal e hemograma completo com perfil hepático e renal. Para 223Ra, verificar ausência de metástases viscerais por TC de tórax/abdome/pelve. Administração de 223Ra: IV lento em bolus (aproximadamente 1 minuto) por acesso venoso periférico calibroso, seguido de flush com soro fisiológico; procedimento ambulatorial. Não combinar com abiraterona/prednisona; enzalutamida pode ser mantida conforme avaliação multidisciplinar. Para 89Sr e 153Sm, administração IV em bolus lento (1-2 minutos) com acesso exclusivo. Cintilografia pós-dose com 153Sm (emissão gama de 103 keV) permite verificar distribuição do radiofármaco nas lesões e detectar captação extra-óssea inesperada. Monitoramento de hemograma: a cada 2 semanas nos primeiros 3 ciclos de 223Ra, depois a cada 4 semanas; para beta-emissores, semanal por 8 semanas. Avaliação de resposta de dor com escalas validadas (VAS, BPI) nos retornos ambulatoriais. Critérios de retratamento com 153Sm: intervalo mínimo de 8-12 semanas e recuperação hematológica documentada (plaquetas > 100.000, neutrófilos > 1.500). ALP e PSA devem ser dosados antes de cada ciclo de 223Ra para avaliação farmacodinamica e de progressão bioquímica.",
     limitations: "223Ra é limitado exclusivamente a metástases ósseas sintomáticas em mCRPC — não trata doença visceral, linfonodal ou de partes moles. A combinação com abiraterona/prednisona e contraindicada com base nos dados do estudo ERA 223, que demonstraram aumento de fraturas patológicas e tendência a maior mortalidade. Dados de combinação com 177Lu-PSMA-617 são anecdoticos e não há protocolo de sequenciamento validado. Beta-emissores (89Sr, 153Sm) não demonstraram benefício de sobrevida global — são estritamente paliativos para controle de dor. Mielossupressão é a principal toxicidade dose-limitante de todos os agentes, sendo mais pronunciada e prolongada com 89Sr devido a sua meia-vida longa. Eficácia limitada em lesões puramente liticas (sem componente osteoblastico) — estes pacientes não são bons candidatos. A população elegível para 223Ra é restrita pela exigência de ausência de metástases viscerais, o que exclui uma parcela significativa de pacientes com mCRPC avançado. Lesões ósseas de componente misto (litico-blastico) podem ter captação variável e resposta imprevisível.",
-    reference: "Silberstein EB, et al. SNMMI Procedure Standard/EANM Practice Guideline for Palliative Nuclear Medicine Therapies of Bone Metastases. J Nucl Med. 2023."
+    reference: "Silberstein EB, et al. SNMMI Procedure Standard/EANM Practice Guideline for Palliative Nuclear Medicine Therapies of Bone Metastases. J Nucl Med. 2023.",
+    rich: {
+      badges: ["Procedure standard", "2023", "SNMMI", "EANM", "223Ra", "Metástases ósseas", "89Sr / 153Sm"],
+      summary: "Guideline multissociedade que cobre todas as terapias paliativas com radionuclídeos para metástases ósseas: o alfa-emissor 223Ra-dicloreto (único com benefício de sobrevida em mCRPC, via ALSYMPCA) e os beta-emissores clássicos 89Sr e 153Sm-EDTMP (paliação de dor). Integra o alerta do ERA 223 (não combinar 223Ra com abiraterona/prednisona) e posiciona cada agente no cenário atual do mCRPC.",
+      whyItMatters: "Distingue claramente dois objetivos que costumam ser confundidos: prolongar a sobrevida (papel exclusivo do 223Ra no mCRPC ósseo) e paliar a dor refratária (beta-emissores). Define quem é candidato, como dosar, como evitar a combinação perigosa do ERA 223 e como monitorar a mielotoxicidade — a toxicidade dose-limitante de todos os agentes.",
+      oneSentence: "A captação na cintilografia óssea com 99mTc-MDP/HDP é o exame teranóstico que seleciona as lesões osteoblásticas que responderão aos radionuclídeos ósseos.",
+      conceptCards: [
+        { icon: "atom", title: "Alfa ≠ beta", text: "223Ra: alto LET, alcance <100 µm, dano irreparável ao DNA. 89Sr/153Sm: menor LET, maior alcance, paliação da dor." },
+        { icon: "trending-up", title: "Só o 223Ra prolonga a sobrevida", text: "ALSYMPCA: OS mediana 14,9 vs 11,3 meses (HR 0,70). Beta-emissores são estritamente paliativos." },
+        { icon: "ban", title: "ERA 223: combinação proibida", text: "223Ra + abiraterona/prednisona aumentou fraturas e mortalidade — contraindicado. Enzalutamida parece segura." },
+        { icon: "scan-line", title: "Precisa de padrão osteoblástico", text: "Captação na cintilografia óssea é pré-requisito; lesões puramente líticas não respondem." },
+        { icon: "activity", title: "ALP é o marcador do 223Ra", text: "Queda ≥30% da fosfatase alcalina em 12 semanas correlaciona-se com benefício de sobrevida." }
+      ],
+      cautionBox: {
+        title: "Cuidado com combinações e seleção",
+        text: "A combinação de 223Ra com abiraterona/prednisona é CONTRAINDICADA (ERA 223: mais fraturas patológicas e tendência a maior mortalidade). Os beta-emissores (89Sr, 153Sm) NÃO prolongam a sobrevida — são apenas paliativos da dor. O sequenciamento com 177Lu-PSMA-617 não tem dados prospectivos robustos: evite uso concomitante pela mielotoxicidade aditiva e respeite um intervalo de pelo menos 6 semanas."
+      },
+      dontConfuse: {
+        title: "Não confundir flare com progressão",
+        text: "O flare pain (piora transitória da dor nas primeiras 24-72h pós-administração, em 10-15%) pode ser preditor de boa resposta e deve ser manejado com analgésicos sem suspender o tratamento. O flare cintilográfico (aparente piora na cintilografia óssea de seguimento) também não deve ser confundido com progressão real da doença."
+      },
+      sections: [
+        {
+          id: "escopo", summary: "Diretriz SNMMI/EANM para terapia paliativa óssea com 223Ra (alfa) e 89Sr/153Sm (beta), integrando ALSYMPCA e o alerta do ERA 223.",
+          title: "Escopo", icon: "target", color: "#94A3B8", type: "text",
+          paragraphs: [
+            "Guideline procedimental consolidado e multissociedade que abrange todas as modalidades de terapia paliativa com radionuclídeos direcionadas a metástases ósseas: o alfa-emissor 223Ra-dicloreto e os beta-emissores clássicos 89Sr e 153Sm-EDTMP. Integra evidências do estudo ALSYMPCA (benefício de sobrevida global com 223Ra em mCRPC) e os dados de alerta do ERA 223, que contraindicaram a combinação de 223Ra com abiraterona/prednisona por aumento de fraturas e mortalidade.",
+            "Aborda o mecanismo de ação distinto dos alfa-emissores (alto LET, curto alcance, dano irreparável ao DNA) versus beta-emissores (menor LET, maior alcance, paliação da dor) e posiciona a terapia com radionuclídeos ósseos como complementar à radioterapia externa e à analgesia sistêmica, especialmente em doença difusa. Contextualiza o papel de cada agente no cenário atual do mCRPC, em que terapias como o 177Lu-PSMA-617 expandiram as opções."
+          ]
+        },
+        {
+          id: "indicacoes", summary: "223Ra em mCRPC ósseo sintomático sem doença visceral (ALSYMPCA), beta-emissores para dor osteoblástica refratária e pré-requisitos comuns de elegibilidade.",
+          title: "Indicações", icon: "clipboard-check", color: "#34D399", type: "grouped",
+          groups: [
+            { title: "223Ra em mCRPC (critérios ALSYMPCA)", paragraphs: ["mCRPC com metástases ósseas sintomáticas e cintilografia óssea com padrão osteoblástico multifocal, sem metástase visceral conhecida.", "Pacientes pós-docetaxel ou não candidatos/que recusam quimioterapia citotóxica, com ECOG 0-2.", "Reserva hematológica: hemoglobina ≥10 g/dL, plaquetas ≥100.000/mm³, neutrófilos ≥1.500/mm³."] },
+            { title: "Beta-emissores para paliação de dor", paragraphs: ["Dor óssea refratária a analgésicos convencionais (escada da OMS) em metástases osteoblásticas de câncer de próstata, mama ou pulmão (89Sr e 153Sm).", "Doença óssea difusa em que a radioterapia externa de campo estendido não é viável ou prática.", "Complemento à radioterapia externa localizada em pacientes com doença óssea disseminada e dor multifocal."] },
+            { title: "Pré-requisitos comuns e contraindicações", paragraphs: ["Lesões osteoblásticas com captação confirmada em cintilografia óssea com 99mTc-MDP/HDP (pré-requisito para todos os agentes); ALP sérica elevada como marcador de atividade osteoblástica.", "Ausência de compressão medular iminente (contraindicação relativa — exige avaliação neurocirúrgica/RT de urgência primeiro).", "Função renal preservada (CrCl ≥30 mL/min) para todos os agentes; sem insuficiência hepática grave."] }
+          ]
+        },
+        {
+          id: "pontos", summary: "Doses e propriedades de cada agente, ALSYMPCA, alerta ERA 223, flare, nadir hematológico, monitoramento, ALP, suspensão e sequenciamento com 177Lu-PSMA.",
+          title: "Pontos-chave", icon: "lightbulb", color: "#CBD5E1", type: "bullets",
+          items: [
+            "223Ra-dicloreto (Xofigo): 55 kBq/kg IV a cada 4 semanas, por 6 ciclos; único agente com benefício de sobrevida global demonstrado em fase III (ALSYMPCA: OS mediana 14,9 vs 11,3 meses; HR 0,70).",
+            "223Ra é alfa-emissor com alcance <100 µm no tecido ósseo, gerando dano irreparável de dupla fita de DNA nas células tumorais adjacentes à superfície óssea remodelada.",
+            "ERA 223: a combinação de 223Ra com abiraterona/prednisona aumentou fraturas e mostrou tendência a maior mortalidade — esta combinação é CONTRAINDICADA; dados observacionais sugerem segurança com enzalutamida.",
+            "89Sr-cloreto (Metastron): 148 MBq (4 mCi) ou 1,5-2,2 MBq/kg IV em dose única; meia-vida física de 50,5 dias; beta-emissor puro (Emax 1,46 MeV); resposta paliativa em 60-80% dos pacientes em 2-4 semanas.",
+            "153Sm-EDTMP (Quadramet): 37 MBq/kg IV em dose única; meia-vida de 1,9 dias; beta-emissor (Emax 0,81 MeV) com emissão gama que permite cintilografia pós-dose; início de efeito mais rápido (1-2 semanas), mas duração mais curta que o 89Sr.",
+            "Flare pain (piora transitória da dor nas primeiras 24-72h) ocorre em 10-15% dos pacientes e pode ser preditor de boa resposta — manejar com analgésicos sem suspender o tratamento.",
+            "Nadir hematológico: com 223Ra, plaquetas em 2-3 semanas, tipicamente grau 1-2; com 89Sr e 153Sm, nadir de plaquetas em 4-6 semanas, mais profundo (grau 2-3 em até 30%).",
+            "Monitoramento hematológico obrigatório: hemograma a cada 2 semanas nos 3 primeiros ciclos de 223Ra; antes de cada administração de 89Sr/153Sm e semanalmente por 8 semanas após.",
+            "ALP sérica como marcador farmacodinâmico do 223Ra: queda ≥30% em 12 semanas correlaciona-se com benefício de OS; monitorar a cada ciclo junto com o PSA.",
+            "Critérios de suspensão do 223Ra: plaquetas <50.000/mm³, neutrófilos <1.000/mm³, aparecimento de nova metástase visceral, deterioração clínica com ECOG ≥3.",
+            "Intervalo mínimo entre 153Sm e quimioterapia subsequente: 6-8 semanas para recuperação hematológica; para 89Sr o intervalo é maior (10-12 semanas) pela meia-vida longa.",
+            "A radioterapia externa pode ser combinada com 223Ra sem comprometimento significativo da eficácia, desde que não haja sobreposição de campos em medula óssea já irradiada.",
+            "Radioproteção do 223Ra: sem necessidade de isolamento hospitalar (alfa-emissor com radiação externa mínima); orientar descarte adequado de excretas por 7 dias.",
+            "Radioproteção de 89Sr e 153Sm: pode exigir internação de 24-48h conforme regulação local; orientar cuidados com fluidos corporais por 3-7 dias.",
+            "Avaliação de resposta: escala de dor (VAS ou BPI) em 4, 8 e 12 semanas; cintilografia óssea a cada 3-6 meses (atenção ao flare cintilográfico, que não deve ser confundido com progressão).",
+            "Sequenciamento com 177Lu-PSMA-617: não há dados prospectivos robustos; evitar uso concomitante pelo risco de mielotoxicidade aditiva; respeitar intervalo de pelo menos 6 semanas entre tratamentos."
+          ]
+        },
+        {
+          id: "farmacos", summary: "223Ra (alfa, mimético do cálcio), 89Sr (beta puro, meia-vida longa) e 153Sm-EDTMP (beta com gama p/ imagem) concentram-se na remodelação óssea.",
+          title: "Radiofármacos", icon: "flask-conical", color: "#C084FC", type: "cards",
+          cards: [
+            { title: "223Ra-dicloreto (Xofigo)", tag: "Alfa — Bayer", paragraphs: ["Alfa-emissor (T½ 11,4 dias) que emite partículas de alto LET com alcance tecidual <100 µm, mimetizando o cálcio na superfície óssea remodelada. Único agente ósseo com benefício de sobrevida global comprovado."] },
+            { title: "89Sr-cloreto (Metastron)", tag: "Beta — GE Healthcare", paragraphs: ["Beta-emissor puro (T½ 50,5 dias; Emax 1,46 MeV; alcance máximo ~8 mm), em solução pronta para uso. Início de paliação mais lento e duração mais longa, com nadir hematológico mais profundo e prolongado."] },
+            { title: "153Sm-EDTMP (Quadramet)", tag: "Beta+gama — Lantheus", paragraphs: ["Beta-emissor (T½ 1,9 dias; Emax 0,81 MeV; alcance máximo ~3 mm) com emissão gama de 103 keV que permite imagem pós-terapêutica para verificação de biodistribuição. Início de efeito mais rápido (1-2 semanas)."] }
+          ]
+        },
+        {
+          id: "praticos", summary: "Avaliação pré (cintilografia óssea + labs; TC para excluir víscera no 223Ra) → administração IV ambulatorial → monitoramento hematológico e resposta de dor.",
+          title: "Aspectos práticos", icon: "stethoscope", color: "#FB923C", type: "timeline",
+          phases: [
+            { title: "Avaliação pré-tratamento", paragraphs: ["Cintilografia óssea com 99mTc-MDP/HDP para confirmar o padrão osteoblástico multifocal, hemograma completo e perfil hepático e renal. Para o 223Ra, verificar a ausência de metástases viscerais por TC de tórax/abdome/pelve.", "Confirmar a reserva hematológica e a função renal mínimas exigidas; revisar medicações concomitantes — não combinar 223Ra com abiraterona/prednisona."] },
+            { title: "Administração", paragraphs: ["223Ra: IV lento em bolus (~1 minuto) por acesso periférico calibroso, seguido de flush com soro; procedimento ambulatorial. A enzalutamida pode ser mantida conforme avaliação multidisciplinar.", "89Sr e 153Sm: IV em bolus lento (1-2 minutos) com acesso exclusivo. A cintilografia pós-dose do 153Sm (gama de 103 keV) permite verificar a distribuição e detectar captação extra-óssea inesperada."] },
+            { title: "Monitoramento e resposta", paragraphs: ["Hemograma a cada 2 semanas nos 3 primeiros ciclos de 223Ra (depois a cada 4 semanas); para beta-emissores, semanal por 8 semanas. ALP e PSA antes de cada ciclo de 223Ra para avaliação farmacodinâmica e de progressão bioquímica.", "Avaliação de dor com escalas validadas (VAS, BPI) nos retornos. Retratamento com 153Sm: intervalo mínimo de 8-12 semanas e recuperação hematológica documentada (plaquetas >100.000, neutrófilos >1.500)."] }
+          ]
+        },
+        {
+          id: "limitacoes", summary: "223Ra só trata osso (sem víscera/partes moles), combinação proibida do ERA 223, beta-emissores sem ganho de OS, mielossupressão e ineficácia em lesões líticas.",
+          title: "Limitações", icon: "shield-alert", color: "#CBD5E1", type: "text",
+          paragraphs: [
+            "O 223Ra é limitado exclusivamente a metástases ósseas sintomáticas em mCRPC — não trata doença visceral, linfonodal ou de partes moles. A combinação com abiraterona/prednisona é contraindicada com base no ERA 223 (aumento de fraturas patológicas e tendência a maior mortalidade). Os dados de combinação com 177Lu-PSMA-617 são anedóticos, sem protocolo de sequenciamento validado.",
+            "Os beta-emissores (89Sr, 153Sm) não demonstraram benefício de sobrevida global — são estritamente paliativos para controle de dor. A mielossupressão é a principal toxicidade dose-limitante de todos os agentes, mais pronunciada e prolongada com o 89Sr pela meia-vida longa.",
+            "A eficácia é limitada em lesões puramente líticas (sem componente osteoblástico) — esses pacientes não são bons candidatos. A população elegível para 223Ra é restrita pela exigência de ausência de metástases viscerais, o que exclui parcela significativa dos mCRPC avançados. Lesões de componente misto (lítico-blástico) podem ter captação variável e resposta imprevisível."
+          ]
+        }
+      ],
+      practicalMessage: {
+        intro: "As terapias com radionuclídeos ósseos têm dois objetivos distintos: prolongar a sobrevida (223Ra no mCRPC ósseo) ou paliar a dor refratária (89Sr, 153Sm).",
+        leadIn: "A decisão deve responder a três perguntas:",
+        questions: [
+          "As metástases ósseas são sintomáticas e osteoblásticas na cintilografia, sem doença visceral (exigência para o 223Ra)?",
+          "A reserva hematológica e renal permite o tratamento (Hb ≥10, plaquetas ≥100.000, neutrófilos ≥1.500, CrCl ≥30)?",
+          "O objetivo é prolongar a sobrevida (223Ra, sem abiraterona/prednisona) ou paliar a dor (89Sr/153Sm)?"
+        ],
+        closing: "Quando essas três respostas estão claras, escolhe-se o agente certo para o objetivo certo — o 223Ra para sobrevida no mCRPC ósseo, os beta-emissores para alívio da dor difusa."
+      }
+    }
   },
   {
     id: "bone-eanm-beta-2018",
@@ -1043,7 +1338,107 @@ window.GUIDELINES_DATA = [
     radiopharmaceuticals: "131I-MIBG (metaiodobenzilguanidina marcada com iodo-131) é um análogo da norepinefrina que é captado pelo transportador de norepinefrina (NET/uptake-1) nas células de origem neuroendócrina simpática. 131I é um emissor beta (Emax 0,61 MeV; alcance máximo ~2 mm no tecido) e gama (364 keV — permite imagem cintilografica pós-dose). Meia-vida física de 8,02 dias. Preparação convencional: atividade específica padrão, com ligação inespecífica a albumina e outros componentes. Iobenguano I-131 de alta atividade específica (Azedra, Progenics/Lantheus) foi desenvolvido posteriormente com maior pureza e menor massa química de MIBG fria, resultando em maior captação tumoral por dose administrada. 123I-MIBG (T1/2 = 13,2h; gama 159 keV) é utilizado exclusivamente para fins diagnósticos por sua melhor qualidade de imagem e menor dose ao paciente.",
     practicalAspects: "Avaliação pré-terapia completa: cintilografia diagnóstica com 123I-MIBG (imagem planar de corpo inteiro + SPECT/CT em 24h) ou 131I-MIBG em dose tracadora; TC/RM de estadiamento; hemograma completo, função renal (creatinina, CrCl), função hepática, TSH, catecolaminas/metanefrinas plasmáticas ou urinárias. Para feocromocitoma: iniciar bloqueio alfa-adrenergico 10-14 dias antes com titulação gradual; garantir PA controlada (< 140/90 mmHg) antes de prosseguir. Revisar medicações e suspender fármacos que interferem com captação MIBG (lista detalhada nos keyPoints). Jejum de 4h antes da administração; antieméticos profiláticos. Acesso venoso periférico calibroso (18-20G) com verificação de perviedade antes da infusão — EXTRAVASAMENTO de 131I-MIBG causa necrose tecidual local e requer intervenção imediata (aspiração, irrigação, compressão). Infusão IV em 1-4 horas com bomba de infusão ou gotejamento controlado em sala dedicada. Monitoramento hemodinamico contínuo durante e até 2h após infusão em pacientes com feocromocitoma. Internação em quarto plumbífero com banheiro exclusivo; monitoramento diário de taxa de dose para liberação. Coleta de urina em recipiente blindado para decaimento quando requerido por regulação local. Imagem pós-dose: planar corpo inteiro ± SPECT/CT em 48-72h para documentação de biodistribuição e planejamento dosimétrico.",
     limitations: "Mielotoxicidade é a principal toxicidade dose-limitante, especialmente em doses altas e mieloablativas, podendo requerer suporte com G-CSF ou transplante autologo de células-tronco hematopoéticas. Hipotireoidismo pós-tratamento ocorre em 10-20% dos pacientes apesar do bloqueio adequado com iodo estável, requerendo monitoramento prolongado. Captação de MIBG é heterogênea entre tumores e lesões individuais — tumores MIBG-negativos (10-15% dos neuroblastomas, proporção maior de feocromocitomas de variante succinato desidrogenase) não são candidatos e devem ser encaminhados para alternativas como PRRT (se SSTR-positivos) ou quimioterapia. A energia gama alta do 131I (364 keV) gera significativa exposição radiológica a equipe de saúde e familiares, exigindo internação prolongada e infraestrutura blindada dedicada. Risco de crise hipertensiva grave em feocromocitoma durante a infusão, mesmo com bloqueio farmacológico adequado — necessidade de equipe treinada e medicações de emergência disponíveis. Disponibilidade limitada de 131I-MIBG de alta atividade específica (Azedra) a nível global. Menos eficaz em doença rapidamente progressiva e em tumores com baixa expressão de NET/uptake-1.",
-    reference: "Giammarile F, et al. EANM procedure guidelines for 131I-meta-iodobenzylguanidine (131I-mIBG) therapy. Eur J Nucl Med Mol Imaging. 2008;35(5):1039-1047."
+    reference: "Giammarile F, et al. EANM procedure guidelines for 131I-meta-iodobenzylguanidine (131I-mIBG) therapy. Eur J Nucl Med Mol Imaging. 2008;35(5):1039-1047.",
+    rich: {
+      badges: ["Procedure guideline", "2008", "EANM", "131I", "MIBG", "Neuroblastoma / Feo-Para", "NET / uptake-1"],
+      summary: "Guideline procedimental europeu de referência para a terapia com 131I-MIBG (metaiodobenzilguanidina) em tumores neuroectodérmicos e neuroendócrinos que captam MIBG. A MIBG é um análogo da norepinefrina que usa o transportador de norepinefrina (NET/uptake-1) para se acumular em células de origem simpática — neuroblastoma de alto risco, feocromocitoma/paraganglioma metastático e, raramente, carcinoide e carcinoma medular de tireoide MIBG-ávidos.",
+      whyItMatters: "A 131I-MIBG é uma terapia teranóstica clássica com particularidades de segurança que a tornam distinta: exige bloqueio tireoidiano mandatório, infusão lenta e, em feocromocitoma/paraganglioma, bloqueio alfa-adrenérgico prévio para prevenir crise hipertensiva. Esta diretriz padroniza o preparo, a administração e o manejo das complicações específicas desse radiofármaco.",
+      oneSentence: "A cintilografia com 123I-MIBG é o exame teranóstico que confirma a expressão do NET/uptake-1 e seleciona quem responderá à terapia com 131I-MIBG.",
+      conceptCards: [
+        { icon: "log-in", title: "MIBG entra pelo NET/uptake-1", text: "Análogo da norepinefrina captado pelo transportador de norepinefrina em células neuroendócrinas simpáticas." },
+        { icon: "shield", title: "Bloqueio tireoidiano é mandatório", text: "Lugol ou SSKI iniciados 24-48h antes e mantidos 10-14 dias, contra a captação de 131I livre pela tireoide." },
+        { icon: "heart-pulse", title: "Feo/para: bloqueio alfa primeiro", text: "Bloqueio alfa-adrenérgico 10-14 dias antes + infusão lenta; beta nunca isolado, só após alfa adequado." },
+        { icon: "scan-line", title: "Tumor MIBG-negativo não responde", text: "10-15% dos neuroblastomas e muitos feo de variante SDH escapam; encaminhar a PRRT (se SSTR+) ou QT." },
+        { icon: "droplets", title: "Mielossupressão é dose-limitante", text: "Nadir em 3-6 semanas; protocolos mieloablativos exigem coleta prévia de células-tronco (ASCT)." }
+      ],
+      cautionBox: {
+        title: "Cuidado com a crise adrenérgica e o extravasamento",
+        text: "Em feocromocitoma/paraganglioma há risco de crise hipertensiva grave durante a infusão, mesmo com bloqueio adequado: exige bloqueio alfa prévio, infusão IV lenta (1-4h), monitorização hemodinâmica e medicações de emergência (nitroprussiato, fentolamina, labetalol) com equipe treinada. O bloqueio beta NUNCA deve ser iniciado isoladamente, sem bloqueio alfa adequado. O extravasamento de 131I-MIBG causa necrose tecidual local e requer intervenção imediata."
+      },
+      dontConfuse: {
+        title: "Não confundir",
+        text: "123I-MIBG é diagnóstico (melhor qualidade de imagem, menor dose) e 131I-MIBG é terapêutico — não são intercambiáveis. E a captação de MIBG é heterogênea: um tumor MIBG-negativo não é candidato à terapia, por mais avançado que esteja, e deve ser reavaliado para PRRT (se SSTR-positivo) ou quimioterapia."
+      },
+      sections: [
+        {
+          id: "escopo", summary: "Diretriz EANM de referência para 131I-MIBG em tumores que captam MIBG via NET/uptake-1, com foco em neuroblastoma e feocromocitoma/paraganglioma.",
+          title: "Escopo", icon: "target", color: "#FB923C", type: "text",
+          paragraphs: [
+            "Guideline procedimental europeu de referência para terapia com 131I-MIBG (metaiodobenzilguanidina) em tumores neuroectodérmicos e neuroendócrinos que demonstram captação de MIBG. A MIBG é um análogo da norepinefrina que utiliza o mecanismo de captação-1 (transportador de norepinefrina, NET) para se acumular seletivamente em células de origem simpática.",
+            "Aborda o espectro completo de indicações terapêuticas: neuroblastoma de alto risco em pediatria (principal indicação por volume), feocromocitoma/paraganglioma metastático ou irressecável, carcinoide MIBG-ávido e, raramente, carcinoma medular de tireoide. A publicação em 2008 precedeu o desenvolvimento do 131I-MIBG de alta atividade específica (Azedra/iobenguano I-131), depois aprovado pela FDA para feocromocitoma/paraganglioma, mas permanece como referência fundamental para protocolos de administração, preparo e manejo de complicações."
+          ]
+        },
+        {
+          id: "indicacoes", summary: "Neuroblastoma de alto risco/recidivado, feocromocitoma e paraganglioma metastáticos MIBG-ávidos, outros tumores MIBG-ávidos selecionados e critérios de elegibilidade.",
+          title: "Indicações", icon: "clipboard-check", color: "#34D399", type: "grouped",
+          groups: [
+            { title: "Neuroblastoma", paragraphs: ["Neuroblastoma de alto risco (estágio 4/M, amplificação de MYCN, idade >18 meses) refratário à quimioterapia de indução ou em protocolo de primeira linha multimodal.", "Neuroblastoma recidivado ou progressivo após quimioterapia e/ou cirurgia, com captação MIBG confirmada em cintilografia diagnóstica."] },
+            { title: "Feocromocitoma e paraganglioma", paragraphs: ["Feocromocitoma maligno/metastático irressecável com captação MIBG confirmada e doença progressiva ou sintomática (hipertensão refratária, crises adrenérgicas).", "Paraganglioma metastático ou localmente avançado MIBG-ávido, incluindo paragangliomas de cabeça e pescoço com disseminação regional."] },
+            { title: "Outros tumores MIBG-ávidos", paragraphs: ["Tumores carcinoides MIBG-ávidos refratários a terapias sistêmicas (especialmente quando não candidatos a PRRT por baixa expressão de SSTR).", "Carcinoma medular de tireoide metastático com captação MIBG demonstrada (indicação rara; <5% dos casos são MIBG-ávidos)."] },
+            { title: "Critérios de elegibilidade", box: true, paragraphs: ["ECOG 0-2 e expectativa de vida >3 meses em adultos; status Lansky/Karnofsky adequado em pediatria.", "Função renal preservada (CrCl ≥50 mL/min) e função hepática adequada (bilirrubinas e transaminases <3× LSN).", "Plaquetas ≥80.000/mm³, neutrófilos ≥1.000/mm³, hemoglobina ≥8 g/dL (limiares mais baixos aceitáveis em neuroblastoma com suporte transfusional).", "Captação tumoral confirmada em cintilografia diagnóstica com 123I-MIBG (preferido) ou 131I-MIBG em dose traçadora."] }
+          ]
+        },
+        {
+          id: "pontos", summary: "Confirmação diagnóstica, bloqueio tireoidiano e medicações interferentes, atividades, infusão lenta, preparo do feo, mielossupressão, mieloablativo e seguimento.",
+          title: "Pontos-chave", icon: "lightbulb", color: "#FDBA74", type: "bullets",
+          items: [
+            "Avaliação pré-terapia obrigatória: cintilografia diagnóstica com 123I-MIBG (74-185 MBq IV em adultos; 5,2 MBq/kg em crianças, máximo 370 MBq) ou 131I-MIBG em dose traçadora (37-74 MBq) para confirmar captação tumoral.",
+            "Bloqueio tireoidiano MANDATÓRIO: solução de Lugol (3-5 gotas, 3×/dia) ou iodeto de potássio (SSKI; 130 mg/dia em adultos, 65 mg em crianças), iniciar 24-48h ANTES da administração e manter por 10-14 dias após, para prevenir captação tireoidiana de 131I livre.",
+            "Atividades terapêuticas em adultos: 3,7-11,2 GBq (100-300 mCi) por ciclo; em neuroblastoma pediátrico, doses calculadas por peso (444 MBq/kg em protocolos mieloablativos) ou atividade fixa conforme protocolo institucional.",
+            "Infusão IV lenta obrigatória: diluir em 50-100 mL de SF e infundir em 1-4 horas; a velocidade lenta é essencial para minimizar a liberação de catecolaminas em feocromocitoma e evitar hipertensão aguda.",
+            "Pré-medicação em feocromocitoma/paraganglioma: bloqueio alfa-adrenérgico com fenoxibenzamina (20-40 mg/dia) ou doxazosina (4-16 mg/dia), iniciado 10-14 dias antes; bloqueio beta (propranolol/atenolol) apenas APÓS bloqueio alfa adequado, nunca isoladamente.",
+            "Monitoramento hemodinâmico durante a infusão: PA e FC a cada 15 min em feocromocitoma; acesso a nitroprussiato de sódio IV, fentolamina ou labetalol para crise hipertensiva aguda; equipe de anestesia disponível.",
+            "Medicamentos que INTERFEREM com a captação de MIBG e devem ser SUSPENSOS: labetalol (4-7 dias), antidepressivos tricíclicos (6 semanas), simpaticomiméticos (descongestionantes, efedrina — 3 dias), reserpina (2 semanas), cocaína; fenilefrina tópica nasal também interfere.",
+            "Internação em quarto plumbífero dedicado por 48-96 horas conforme a atividade administrada e a taxa de dose medida a 1 metro; critério de liberação: <25 µSv/h a 1 metro (variável por regulação local).",
+            "Mielossupressão: principal toxicidade dose-limitante; nadir de plaquetas em 4-6 semanas, de neutrófilos em 3-5 semanas; recuperação em 6-8 semanas em doses convencionais.",
+            "Em protocolos mieloablativos (neuroblastoma): doses de 444-666 MBq/kg com resgate de células-tronco hematopoéticas autólogas (ASCT); coleta de CTH ANTES da administração de MIBG.",
+            "Hipotireoidismo pós-tratamento em 10-20% dos pacientes APESAR do bloqueio com iodo estável — monitorar TSH a cada 3 meses no primeiro ano e iniciar levotiroxina quando indicado.",
+            "Náusea e vômito em 30-50% dos pacientes nas primeiras 24-48h — antieméticos profiláticos (ondansetrona 8 mg IV/VO pré-infusão).",
+            "Xerostomia transitória e disfunção salivar em <10% dos pacientes — geralmente autolimitada; sialagogia com pastilhas cítricas pode auxiliar.",
+            "Cintilografia pós-dose com 131I (planar de corpo inteiro ± SPECT/CT) em 48-72h para verificação de biodistribuição e dosimetria simplificada.",
+            "Ciclos subsequentes: intervalo mínimo de 8-12 semanas entre tratamentos; retratamento baseado em resposta clínica/bioquímica e recuperação hematológica; tipicamente até 3-4 ciclos em doses convencionais.",
+            "Seguimento pós-terapia: cintilografia MIBG + TC/RM em 3-6 meses; marcadores bioquímicos (catecolaminas/metanefrinas para feocromocitoma; ferritina, LDH, NSE, VMA/HVA para neuroblastoma)."
+          ]
+        },
+        {
+          id: "farmacos", summary: "131I-MIBG convencional (terapêutico), iobenguano I-131 de alta atividade específica (Azedra) e 123I-MIBG exclusivamente diagnóstico.",
+          title: "Radiofármacos", icon: "flask-conical", color: "#C084FC", type: "cards",
+          cards: [
+            { title: "131I-MIBG convencional", tag: "Terapêutico", paragraphs: ["Análogo da norepinefrina captado pelo NET/uptake-1 em células neuroendócrinas simpáticas. O 131I é beta-emissor (Emax 0,61 MeV; alcance máximo ~2 mm) e gama (364 keV, permite imagem pós-dose); meia-vida física de 8,02 dias. Preparação de atividade específica padrão, com ligação inespecífica a albumina e maior massa química de MIBG fria."] },
+            { title: "Iobenguano I-131 (Azedra)", tag: "Alta atividade específica", paragraphs: ["Desenvolvido posteriormente, com maior pureza e menor massa química de MIBG fria, resultando em maior captação tumoral por dose administrada (Progenics/Lantheus). Aprovado pela FDA para feocromocitoma/paraganglioma, com disponibilidade global ainda limitada."] },
+            { title: "123I-MIBG", tag: "Diagnóstico", paragraphs: ["Gama (159 keV, meia-vida 13,2h) utilizado exclusivamente para fins diagnósticos, pela melhor qualidade de imagem e menor dose ao paciente — confirma a avidez por MIBG antes da terapia."] }
+          ]
+        },
+        {
+          id: "praticos", summary: "Preparo (cintilografia, bloqueios, suspensão de interferentes) → infusão lenta com acesso seguro e monitorização → internação em quarto plumbífero e imagem pós-dose.",
+          title: "Aspectos práticos", icon: "stethoscope", color: "#FB923C", type: "timeline",
+          phases: [
+            { title: "Preparo", paragraphs: ["Avaliação pré-terapia completa: cintilografia diagnóstica com 123I-MIBG (planar + SPECT/CT) ou 131I-MIBG traçador; TC/RM de estadiamento; hemograma, função renal e hepática, TSH, catecolaminas/metanefrinas. Bloqueio tireoidiano iniciado 24-48h antes.", "Para feocromocitoma: iniciar bloqueio alfa-adrenérgico 10-14 dias antes com titulação gradual e garantir PA controlada (<140/90 mmHg) antes de prosseguir. Revisar e suspender fármacos que interferem com a captação de MIBG. Jejum de 4h e antieméticos profiláticos."] },
+            { title: "Administração", paragraphs: ["Acesso venoso periférico calibroso (18-20G) com verificação de perviedade antes da infusão — o extravasamento de 131I-MIBG causa necrose tecidual local e exige intervenção imediata (aspiração, irrigação, compressão). Infusão IV em 1-4 horas com bomba ou gotejamento controlado em sala dedicada.", "Monitoramento hemodinâmico contínuo durante e até 2h após a infusão em pacientes com feocromocitoma, com medicações de emergência disponíveis."] },
+            { title: "Internação e pós-dose", paragraphs: ["Internação em quarto plumbífero com banheiro exclusivo; monitoramento diário da taxa de dose para liberação. Coleta de urina em recipiente blindado para decaimento quando exigido pela regulação local.", "Imagem pós-dose: planar de corpo inteiro ± SPECT/CT em 48-72h para documentação de biodistribuição e planejamento dosimétrico. Seguimento com cintilografia MIBG + TC/RM em 3-6 meses e marcadores bioquímicos."] }
+          ]
+        },
+        {
+          id: "limitacoes", summary: "Mielotoxicidade, hipotireoidismo apesar do bloqueio, tumores MIBG-negativos, alta energia gama do 131I, risco de crise hipertensiva e disponibilidade limitada do Azedra.",
+          title: "Limitações", icon: "shield-alert", color: "#FDBA74", type: "text",
+          paragraphs: [
+            "A mielotoxicidade é a principal toxicidade dose-limitante, especialmente em doses altas e mieloablativas, podendo exigir suporte com G-CSF ou transplante autólogo de células-tronco. O hipotireoidismo pós-tratamento ocorre em 10-20% dos pacientes apesar do bloqueio adequado com iodo estável, exigindo monitoramento prolongado.",
+            "A captação de MIBG é heterogênea entre tumores e lesões: tumores MIBG-negativos (10-15% dos neuroblastomas, proporção maior de feocromocitomas de variante succinato desidrogenase) não são candidatos e devem ser encaminhados a alternativas como PRRT (se SSTR-positivos) ou quimioterapia. A energia gama alta do 131I (364 keV) gera exposição radiológica significativa à equipe e aos familiares, exigindo internação prolongada e infraestrutura blindada dedicada.",
+            "Há risco de crise hipertensiva grave em feocromocitoma durante a infusão, mesmo com bloqueio farmacológico adequado, exigindo equipe treinada e medicações de emergência. A disponibilidade de 131I-MIBG de alta atividade específica (Azedra) é limitada globalmente. A terapia é menos eficaz em doença rapidamente progressiva e em tumores com baixa expressão de NET/uptake-1."
+          ]
+        }
+      ],
+      practicalMessage: {
+        intro: "A 131I-MIBG é uma terapia teranóstica para tumores neuroendócrinos simpáticos MIBG-ávidos — sobretudo neuroblastoma de alto risco e feocromocitoma/paraganglioma metastático.",
+        leadIn: "A decisão deve responder a três perguntas:",
+        questions: [
+          "O tumor capta MIBG na cintilografia diagnóstica (123I-MIBG)?",
+          "Em feocromocitoma/paraganglioma, o bloqueio alfa-adrenérgico está adequado e a pressão arterial controlada antes da infusão?",
+          "A reserva hematológica permite o tratamento e, em protocolo mieloablativo, há coleta de células-tronco/ASCT planejada?"
+        ],
+        closing: "Quando essas três respostas são favoráveis, a 131I-MIBG oferece terapia direcionada eficaz; quando o tumor é MIBG-negativo, o caminho é a PRRT ou a quimioterapia."
+      }
+    }
   },
   {
     id: "mibg-dosimetry-sop-2020",

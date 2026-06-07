@@ -65,18 +65,18 @@
 <link rel="apple-touch-startup-image" media="(device-width: 744px) and (device-height: 1133px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="assets/img/splash/splash-1488x2266.png">
 <link rel="apple-touch-startup-image" media="(device-width: 1133px) and (device-height: 744px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)" href="assets/img/splash/splash-2266x1488.png">
 <!-- PWA:END -->
-<title>Tumor Boards · TheraTrials Oncology</title>
-<meta name="description" content="Evidências organizadas por tipo tumoral. Próstata, NET, HCC, ccRCC, neuroblastoma, PPGL — para uso em tumor boards.">
+<title>Tumor Board Maps · TheraTrials Oncology</title>
+<meta name="description" content="Tumor Board Maps: mapas de evidência que conectam biologia tumoral, imagem molecular, estudos pivotais, guidelines e ensaios clínicos. Módulo completo de câncer de próstata (PSMA, Lu-177, Ra-223, Ac-225).">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://theratrials.com/tumor-boards.html">
-<meta property="og:title" content="Tumor Boards · TheraTrials Oncology">
-<meta property="og:description" content="Evidências organizadas por tipo tumoral para uso em tumor boards multidisciplinares em oncologia.">
+<meta property="og:title" content="Tumor Board Maps · TheraTrials Oncology">
+<meta property="og:description" content="Mapas de evidência que conectam biologia tumoral, prática clínica, guidelines e ensaios clínicos para discussão em tumor board.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://theratrials.com/tumor-boards.html">
 <meta property="og:image" content="https://theratrials.com/assets/img/og-cover.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Tumor Boards · TheraTrials Oncology">
-<meta name="twitter:description" content="Evidências organizadas por tipo tumoral para uso em tumor boards multidisciplinares em oncologia.">
+<meta name="twitter:title" content="Tumor Board Maps · TheraTrials Oncology">
+<meta name="twitter:description" content="Mapas de evidência que conectam biologia tumoral, prática clínica, guidelines e ensaios clínicos para discussão em tumor board.">
 <meta name="twitter:image" content="https://theratrials.com/assets/img/og-cover.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -425,6 +425,320 @@
   .pb-1 { background: rgba(192, 132, 252, 0.12); color: #DDB4F9; border-color: rgba(192, 132, 252, 0.3); }
   .pb-other { background: rgba(251, 191, 36, 0.12); color: #FCD34D; border-color: rgba(251, 191, 36, 0.3); }
 
+  /* ============================================================
+     TUMOR BOARD MAPS — hub + módulo de mapa clínico
+     ============================================================ */
+
+  /* Callout educacional */
+  .edu-callout {
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+    max-width: 760px;
+    margin: 1.25rem auto 0;
+    padding: 0.85rem 1rem;
+    background: rgba(96, 165, 250, 0.07);
+    border: 1px solid rgba(96, 165, 250, 0.22);
+    border-radius: var(--radius-md);
+    text-align: left;
+  }
+  .edu-callout i { color: #93C5FD; flex-shrink: 0; margin-top: 2px; }
+  .edu-callout p { font-size: 0.8rem; color: var(--stone); line-height: 1.55; margin: 0; max-width: none; }
+
+  /* Section heading genérico para a página */
+  .tbm-section-head {
+    display: flex; align-items: baseline; gap: 0.75rem;
+    margin: 0 0 0.35rem;
+  }
+  .tbm-section-head h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.3rem, 2.6vw, 1.7rem);
+    font-weight: 700; letter-spacing: -0.02em; color: var(--off-white);
+  }
+  .tbm-section-sub { color: var(--stone); font-size: 0.9rem; margin: 0 0 1.5rem; max-width: 720px; }
+
+  /* Grid de mapas (hub) */
+  .tumor-map-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+    gap: 1.25rem;
+    padding: 0.5rem 0 1rem;
+  }
+  .tumor-map-card {
+    background: var(--graphite-2);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.25s ease;
+  }
+  .tumor-map-card.is-active { cursor: pointer; }
+  .tumor-map-card.is-active::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: var(--accent-color, var(--amber)); opacity: 0; transition: opacity 0.25s ease;
+  }
+  .tumor-map-card.is-active:hover {
+    border-color: var(--accent-color, var(--amber));
+    background: var(--graphite-3); transform: translateY(-3px);
+  }
+  .tumor-map-card.is-active:hover::before { opacity: 1; }
+  .tumor-map-card.is-soon { opacity: 0.72; }
+  .tmc-head { display: flex; align-items: center; gap: 0.85rem; margin-bottom: 0.9rem; }
+  .tmc-icon {
+    width: 48px; height: 48px; border-radius: var(--radius-md);
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    color: var(--accent-color, var(--amber));
+    background: rgba(var(--accent-rgb, 255, 132, 0), 0.1);
+  }
+  .tmc-title { font-family: var(--font-display); font-size: 1.15rem; font-weight: 700; color: var(--off-white); letter-spacing: -0.015em; line-height: 1.15; }
+  .tmc-status {
+    font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;
+    padding: 0.15rem 0.5rem; border-radius: 100px; margin-top: 0.3rem; display: inline-block;
+  }
+  .tmc-status.on { background: rgba(52, 211, 153, 0.14); color: #6EE7B7; }
+  .tmc-status.soon { background: var(--graphite-4); color: var(--stone); }
+  .tmc-badges { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 1.1rem; }
+  .tmc-foot { margin-top: auto; display: flex; align-items: center; justify-content: space-between; }
+  .tmc-open { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.85rem; font-weight: 600; color: var(--accent-color, var(--amber)); }
+  .tumor-map-card.is-active:hover .tmc-open i { transform: translateX(3px); }
+  .tmc-open i { transition: transform 0.2s ease; }
+
+  /* Pílulas de modalidade (badges) */
+  .mod-pill {
+    display: inline-block; font-family: var(--font-mono);
+    font-size: 0.62rem; font-weight: 500; letter-spacing: 0.02em;
+    padding: 0.18rem 0.5rem; border-radius: 100px;
+    border: 1px solid var(--border-soft); color: var(--stone); background: var(--graphite-3);
+  }
+  .mod-pill.psma   { color: #FCD34D; border-color: rgba(251,191,36,0.3); background: rgba(251,191,36,0.08); }
+  .mod-pill.lu177  { color: #FFA640; border-color: rgba(255,132,0,0.3);  background: rgba(255,132,0,0.08); }
+  .mod-pill.ra223  { color: #93C5FD; border-color: rgba(96,165,250,0.3); background: rgba(96,165,250,0.08); }
+  .mod-pill.ac225  { color: #DDB4F9; border-color: rgba(192,132,252,0.3);background: rgba(192,132,252,0.08); }
+  .mod-pill.stage  { color: #6EE7B7; border-color: rgba(52,211,153,0.3); background: rgba(52,211,153,0.08); }
+
+  /* ===================== MÓDULO DE MAPA ===================== */
+  .map-module {
+    background: var(--graphite-2);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-xl);
+    padding: 1.75rem;
+    margin: 1.5rem 0 3rem;
+    scroll-margin-top: 90px;
+    --accent-color: #FF8400; --accent-rgb: 255, 132, 0;
+  }
+  .mm-head { margin-bottom: 1.25rem; }
+  .mm-title {
+    font-family: var(--font-display); font-weight: 700; letter-spacing: -0.025em;
+    font-size: clamp(1.5rem, 3vw, 2.1rem); color: var(--off-white);
+    display: flex; align-items: center; gap: 0.7rem; margin-bottom: 0.4rem;
+  }
+  .mm-title i { color: var(--accent-color); }
+  .mm-sub { color: var(--stone); font-size: 0.95rem; max-width: 720px; }
+
+  /* Sub-nav em pílulas (TOC interno) */
+  .mm-nav {
+    position: sticky; top: 0; z-index: 5;
+    display: flex; gap: 0.4rem; overflow-x: auto; padding: 0.85rem 0;
+    margin-bottom: 0.5rem; border-bottom: 1px solid var(--border-soft);
+    background: linear-gradient(var(--graphite-2), var(--graphite-2));
+    -webkit-overflow-scrolling: touch; scrollbar-width: thin;
+  }
+  .mm-nav::-webkit-scrollbar { height: 4px; }
+  .mm-nav a {
+    flex-shrink: 0; font-size: 0.74rem; font-weight: 600; white-space: nowrap;
+    padding: 0.35rem 0.7rem; border-radius: 100px; color: var(--stone);
+    border: 1px solid var(--border-soft); background: var(--graphite-3);
+    text-decoration: none; transition: all 0.15s ease;
+  }
+  .mm-nav a:hover { color: var(--off-white); border-color: var(--accent-color); }
+
+  /* Blocos de seção do mapa */
+  .pm-block { padding: 1.75rem 0; border-bottom: 1px solid var(--border-soft); scroll-margin-top: 80px; }
+  .pm-block:last-child { border-bottom: none; }
+  .pm-block-head { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.4rem; }
+  .pm-block-head .pm-num {
+    font-family: var(--font-mono); font-size: 0.7rem; font-weight: 600;
+    color: var(--accent-color); background: rgba(var(--accent-rgb),0.1);
+    width: 26px; height: 26px; border-radius: 7px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .pm-block-head h3 { font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; color: var(--off-white); letter-spacing: -0.015em; }
+  .pm-lead { color: var(--stone); font-size: 0.92rem; line-height: 1.65; margin: 0.5rem 0 1rem; max-width: 820px; }
+  .pm-lead strong { color: var(--off-white); font-weight: 600; }
+
+  /* Cards de conceito (teoria) */
+  .concept-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 0.85rem; }
+  .concept-card {
+    background: var(--graphite-3); border: 1px solid var(--border-soft);
+    border-radius: var(--radius-md); padding: 1.1rem;
+  }
+  .concept-card .cc-ic { width: 34px; height: 34px; border-radius: 9px; display: flex; align-items: center; justify-content: center; margin-bottom: 0.65rem; color: var(--accent-color); background: rgba(var(--accent-rgb),0.1); }
+  .concept-card h4 { font-family: var(--font-display); font-size: 0.95rem; font-weight: 700; color: var(--off-white); margin-bottom: 0.4rem; line-height: 1.25; }
+  .concept-card p { font-size: 0.82rem; color: var(--stone); line-height: 1.55; margin: 0; }
+
+  /* Perguntas do board (grupos) */
+  .q-groups { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 0.85rem; }
+  .q-group { background: var(--graphite-3); border: 1px solid var(--border-soft); border-radius: var(--radius-md); padding: 1.1rem; }
+  .q-group-title { display: flex; align-items: center; gap: 0.5rem; font-family: var(--font-display); font-size: 0.9rem; font-weight: 700; color: var(--off-white); margin-bottom: 0.7rem; }
+  .q-group-title i { color: var(--accent-color); width: 16px; height: 16px; }
+  .q-group ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; }
+  .q-group li { position: relative; padding-left: 1.1rem; font-size: 0.82rem; color: var(--stone); line-height: 1.5; }
+  .q-group li::before { content: '?'; position: absolute; left: 0; top: 0; color: var(--accent-color); font-weight: 700; font-family: var(--font-mono); font-size: 0.78rem; }
+
+  /* Timeline terapêutica */
+  .therapy-timeline { display: flex; flex-direction: column; gap: 0; }
+  .tt-phase { position: relative; padding: 0 0 1.1rem 1.6rem; border-left: 2px solid var(--border-soft); }
+  .tt-phase:last-child { border-left-color: transparent; padding-bottom: 0; }
+  .tt-dot { position: absolute; left: -7px; top: 2px; width: 12px; height: 12px; border-radius: 50%; background: var(--accent-color); box-shadow: 0 0 0 3px var(--graphite-2); }
+  .tt-phase h4 { font-family: var(--font-display); font-size: 0.95rem; font-weight: 700; color: var(--off-white); margin-bottom: 0.3rem; }
+  .tt-phase p { font-size: 0.82rem; color: var(--stone); line-height: 1.55; margin: 0 0 0.45rem; }
+  .tt-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+  .tt-mat { font-size: 0.66rem; font-weight: 600; padding: 0.12rem 0.45rem; border-radius: 100px; }
+  .tt-mat.high { background: rgba(52,211,153,0.14); color: #6EE7B7; }
+  .tt-mat.mid  { background: rgba(96,165,250,0.14); color: #93C5FD; }
+  .tt-mat.low  { background: rgba(192,132,252,0.14); color: #DDB4F9; }
+  .tt-mat.none { background: var(--graphite-4); color: var(--stone); }
+
+  /* Mapa de evidências — cards de cenário */
+  .evidence-map { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 1rem; }
+  .evidence-scenario-card {
+    background: var(--graphite-3); border: 1px solid var(--border-soft);
+    border-left: 3px solid var(--sc-color, var(--amber));
+    border-radius: var(--radius-md); padding: 1.15rem; display: flex; flex-direction: column;
+  }
+  .esc-tag { font-size: 0.62rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--sc-color, var(--amber)); margin-bottom: 0.35rem; }
+  .esc-title { font-family: var(--font-display); font-size: 1rem; font-weight: 700; color: var(--off-white); line-height: 1.25; margin-bottom: 0.65rem; }
+  .esc-studies { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-bottom: 0.7rem; }
+  .esc-study-chip {
+    font-family: var(--font-mono); font-size: 0.66rem; font-weight: 500;
+    padding: 0.18rem 0.5rem; border-radius: 6px; cursor: pointer; text-decoration: none;
+    color: var(--off-white); background: var(--graphite-4); border: 1px solid var(--border-soft);
+    transition: all 0.15s ease; display: inline-flex; align-items: center; gap: 0.25rem;
+  }
+  .esc-study-chip:hover { border-color: var(--sc-color, var(--amber)); color: var(--sc-color, var(--amber)); }
+  .esc-msg { font-size: 0.8rem; color: var(--stone); line-height: 1.55; margin: 0; }
+
+  /* Estudos-chave — grid de cards */
+  .keystudy-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 0.9rem; }
+  .keystudy-card {
+    background: var(--graphite-3); border: 1px solid var(--border-soft);
+    border-radius: var(--radius-md); padding: 1.15rem; display: flex; flex-direction: column; gap: 0.5rem;
+  }
+  .ks-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 0.5rem; }
+  .ks-name { font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; color: var(--off-white); letter-spacing: -0.01em; }
+  .ks-scn { font-size: 0.62rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--stone); background: var(--graphite-4); padding: 0.15rem 0.45rem; border-radius: 6px; white-space: nowrap; }
+  .ks-row { font-size: 0.8rem; color: var(--stone); line-height: 1.5; }
+  .ks-row b { color: var(--off-white); font-weight: 600; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em; display: block; margin-bottom: 1px; }
+  .ks-msg { font-size: 0.82rem; color: var(--stone); line-height: 1.55; border-left: 2px solid var(--accent-color); padding-left: 0.6rem; }
+  .ks-foot { display: flex; gap: 0.5rem; flex-wrap: wrap; padding-top: 0.5rem; margin-top: auto; border-top: 1px solid var(--border-soft); }
+  .ks-link { display: inline-flex; align-items: center; gap: 0.3rem; font-size: 0.72rem; font-weight: 600; color: var(--stone); text-decoration: none; padding: 0.25rem 0.5rem; border-radius: 6px; transition: all 0.15s ease; }
+  .ks-link:hover { color: var(--amber); background: rgba(255,132,0,0.06); }
+
+  /* Trial lineage */
+  .trial-lineage { display: flex; flex-direction: column; gap: 0.6rem; }
+  .tl-parent { background: var(--graphite-3); border: 1px solid var(--border-soft); border-radius: var(--radius-md); overflow: hidden; }
+  .tl-parent > summary { list-style: none; cursor: pointer; padding: 0.9rem 1.1rem; display: flex; align-items: center; gap: 0.6rem; transition: background 0.15s ease; }
+  .tl-parent > summary::-webkit-details-marker { display: none; }
+  .tl-parent > summary:hover { background: var(--graphite-4); }
+  .tl-chev { color: var(--stone); transition: transform 0.2s ease; flex-shrink: 0; }
+  .tl-parent[open] .tl-chev { transform: rotate(90deg); }
+  .tl-parent-name { font-family: var(--font-display); font-weight: 700; color: var(--off-white); font-size: 0.95rem; flex: 1; }
+  .tl-count { font-family: var(--font-mono); font-size: 0.7rem; color: var(--stone); background: var(--graphite-4); padding: 0.15rem 0.5rem; border-radius: 100px; }
+  .tl-pubs { padding: 0.25rem 1.1rem 1rem; display: flex; flex-direction: column; gap: 0.4rem; }
+  .tl-pub { display: flex; align-items: flex-start; gap: 0.6rem; padding: 0.55rem 0; border-top: 1px solid var(--border-soft); }
+  .tl-rt { font-size: 0.58rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; padding: 0.15rem 0.45rem; border-radius: 5px; white-space: nowrap; flex-shrink: 0; margin-top: 1px; background: var(--graphite-4); color: var(--stone); }
+  .tl-pub-title { font-size: 0.82rem; color: var(--stone); line-height: 1.45; }
+  .tl-pub-title .tl-yr { font-family: var(--font-mono); color: var(--stone-2); font-size: 0.72rem; }
+
+  /* Checklist copiável */
+  .board-checklist { background: var(--graphite-3); border: 1px solid var(--border-soft); border-radius: var(--radius-md); padding: 1.25rem; }
+  .bc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 0.4rem 1.25rem; margin-bottom: 1rem; }
+  .bc-item { display: flex; align-items: flex-start; gap: 0.5rem; font-size: 0.83rem; color: var(--stone); line-height: 1.45; padding: 0.2rem 0; }
+  .bc-item i { color: var(--accent-color); flex-shrink: 0; margin-top: 2px; width: 14px; height: 14px; }
+  .copy-checklist-btn { cursor: pointer; }
+
+  /* Cards de links finais */
+  .link-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 0.75rem; }
+  .link-card {
+    display: flex; align-items: center; gap: 0.7rem; text-decoration: none;
+    background: var(--graphite-3); border: 1px solid var(--border-soft);
+    border-radius: var(--radius-md); padding: 0.9rem 1rem; transition: all 0.18s ease;
+  }
+  .link-card:hover { border-color: var(--amber); background: var(--graphite-4); transform: translateY(-2px); }
+  .link-card i { color: var(--amber); flex-shrink: 0; }
+  .link-card span { font-size: 0.85rem; font-weight: 600; color: var(--off-white); }
+
+  /* Toast */
+  .tb-toast {
+    position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%);
+    background: var(--graphite-4); color: var(--off-white); border: 1px solid var(--amber);
+    padding: 0.65rem 1.1rem; border-radius: 100px; font-size: 0.85rem; font-weight: 600;
+    z-index: 200; box-shadow: 0 8px 24px rgba(0,0,0,0.4); display: flex; align-items: center; gap: 0.5rem;
+  }
+
+  @media (max-width: 640px) {
+    .map-module { padding: 1.1rem; }
+    .pm-block { padding: 1.35rem 0; }
+    .edu-callout { margin-left: 0; margin-right: 0; }
+  }
+
+  /* ---- Jornada do paciente: sub-headers internos ---- */
+  .pm-subhead { display: flex; align-items: center; gap: 0.5rem; margin: 1.75rem 0 0.5rem; padding-top: 1.25rem; border-top: 1px dashed var(--border-soft); }
+  .pm-subhead i { color: var(--accent-color, var(--amber)); }
+  .pm-subhead h4 { font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; color: var(--off-white); letter-spacing: -0.01em; }
+
+  /* ---- Jornada do paciente: timeline de etapas (accordion) ---- */
+  .journey-timeline { display: flex; flex-direction: column; gap: 0.55rem; }
+  .journey-step-card { background: var(--graphite-3); border: 1px solid var(--border-soft); border-radius: var(--radius-md); overflow: hidden; }
+  .journey-step-card > summary { list-style: none; cursor: pointer; padding: 0.85rem 1.1rem; display: flex; align-items: center; gap: 0.7rem; transition: background 0.15s ease; }
+  .journey-step-card > summary::-webkit-details-marker { display: none; }
+  .journey-step-card > summary:hover { background: var(--graphite-4); }
+  .js-num { flex-shrink: 0; width: 26px; height: 26px; border-radius: 7px; display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700; color: var(--accent-color, var(--amber)); background: rgba(var(--accent-rgb, 255,132,0), 0.12); }
+  .js-step-title { flex: 1; font-family: var(--font-display); font-weight: 700; font-size: 0.95rem; color: var(--off-white); line-height: 1.2; }
+  .js-chev { color: var(--stone); transition: transform 0.2s ease; flex-shrink: 0; }
+  .journey-step-card[open] .js-chev { transform: rotate(90deg); }
+  .js-body { padding: 0.25rem 1.1rem 1.1rem; display: flex; flex-direction: column; gap: 0.5rem; }
+  .js-row { font-size: 0.82rem; color: var(--stone); line-height: 1.5; }
+  .js-row b { display: block; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--off-white); margin-bottom: 1px; font-weight: 700; }
+  .js-row.warn b { color: #FCD34D; }
+  .js-row.opt b { color: #6EE7B7; }
+  .js-links { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.25rem; }
+  .js-link { display: inline-flex; align-items: center; gap: 0.3rem; font-size: 0.7rem; font-weight: 600; color: var(--stone); text-decoration: none; padding: 0.25rem 0.55rem; border-radius: 6px; border: 1px solid var(--border-soft); background: var(--graphite-2); transition: all 0.15s ease; }
+  .js-link:hover { color: var(--amber); border-color: var(--amber); }
+
+  /* ---- Gargalos e indicadores ---- */
+  .bottleneck-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 0.85rem; margin-top: 0.85rem; }
+  .journey-bottleneck-card { background: var(--graphite-3); border: 1px solid var(--border-soft); border-left: 3px solid #FBBF24; border-radius: var(--radius-md); padding: 1rem 1.1rem; display: flex; flex-direction: column; gap: 0.5rem; }
+  .jb-title { font-family: var(--font-display); font-weight: 700; font-size: 0.9rem; color: var(--off-white); line-height: 1.3; display: flex; align-items: baseline; gap: 0.45rem; }
+  .jb-n { font-family: var(--font-mono); font-size: 0.7rem; color: #FCD34D; flex-shrink: 0; }
+  .jb-row { font-size: 0.8rem; color: var(--stone); line-height: 1.5; }
+  .jb-row b { display: block; font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1px; font-weight: 700; color: var(--off-white); }
+  .jb-row.opt b, .optimization-opportunity b { color: #6EE7B7; }
+  .jb-foot { display: flex; flex-wrap: wrap; gap: 0.45rem; align-items: center; margin-top: auto; padding-top: 0.5rem; border-top: 1px solid var(--border-soft); }
+  .institutional-metric { font-size: 0.66rem; font-weight: 600; line-height: 1.3; color: #93C5FD; background: rgba(96,165,250,0.08); border: 1px solid rgba(96,165,250,0.22); padding: 0.2rem 0.5rem; border-radius: 6px; }
+
+  /* ---- Elementos do laudo PSMA ---- */
+  .psma-report-elements { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 0.3rem 1.25rem; background: var(--graphite-3); border: 1px solid var(--border-soft); border-radius: var(--radius-md); padding: 1.1rem 1.25rem; }
+  .pre-item { display: flex; align-items: center; gap: 0.35rem; font-size: 0.83rem; color: var(--stone); line-height: 1.5; }
+  .pre-item i { color: var(--accent-color, var(--amber)); flex-shrink: 0; }
+
+  /* ---- Checklists múltiplos ---- */
+  .rlt-checklist { background: var(--graphite-3); border: 1px solid var(--border-soft); border-radius: var(--radius-md); padding: 1.1rem 1.25rem; margin-bottom: 0.85rem; }
+  .rlt-checklist-head { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 0.85rem; }
+  .rlt-checklist-head h4 { display: flex; align-items: center; gap: 0.5rem; font-family: var(--font-display); font-size: 0.98rem; font-weight: 700; color: var(--off-white); }
+  .rlt-checklist-head h4 i { color: var(--accent-color, var(--amber)); }
+
+  /* ---- Blocos colapsáveis internos (gargalos, laudo) ---- */
+  .pm-collapse > summary { list-style: none; cursor: pointer; }
+  .pm-collapse > summary::-webkit-details-marker { display: none; }
+  .pm-collapse > summary.pm-subhead { margin-bottom: 0; }
+  .pm-collapse > summary:hover h4 { color: var(--amber-glow); }
+  .pm-collapse-hint { margin-left: auto; font-size: 0.7rem; font-weight: 600; color: var(--stone-2); white-space: nowrap; }
+  .pm-collapse-chev { color: var(--stone); transition: transform 0.2s ease; flex-shrink: 0; }
+  .pm-collapse[open] .pm-collapse-chev { transform: rotate(90deg); }
+
   [x-cloak] { display: none !important; }
 </style>
   <script defer src="https://cloud.umami.is/script.js" data-website-id="3c576b68-e2b3-4982-82e7-688e5a8adf58"></script>
@@ -471,9 +785,844 @@
 <!-- HERO -->
 <section class="tb-hero">
   <div class="container">
-    <span class="eyebrow" data-i18n="tb.eyebrow">Evidência por tipo tumoral</span>
-    <h1 data-i18n-html="tb.title">Tumor <span class="text-amber">boards</span></h1>
-    <p data-i18n="tb.subtitle">Evidências organizadas para discussão clínica. Selecione o tumor e veja os ensaios agrupados por modalidade terapêutica e linha de tratamento — sem precisar filtrar manualmente o banco.</p>
+    <span class="eyebrow">Tumor Board Maps</span>
+    <h1>Tumor Board <span class="text-amber">Maps</span></h1>
+    <p>Mapas de evidência que conectam biologia tumoral, prática clínica, guidelines e ensaios clínicos.</p>
+    <p style="margin-top:0.85rem;font-size:0.92rem">Os Tumor Board Maps do TheraTrials foram criados para transformar evidência científica complexa em raciocínio clínico estruturado. Cada mapa conecta fundamentos biológicos, critérios de imagem molecular, principais estudos clínicos, diretrizes, ferramentas práticas e ensaios ativos — ajudando equipes multidisciplinares a preparar discussões de casos com mais clareza e rigor científico.</p>
+    <div class="edu-callout">
+      <i data-lucide="graduation-cap" style="width:18px;height:18px"></i>
+      <p>Conteúdo destinado à educação médica e à discussão científica. Não substitui avaliação clínica individualizada, protocolos institucionais, julgamento médico ou consulta às fontes primárias.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HUB: CARDS DOS MAPAS -->
+<section style="padding: 1.5rem 0 0">
+  <div class="container">
+    <div class="tbm-section-head"><h2>Mapas disponíveis</h2></div>
+    <p class="tbm-section-sub">Comece pelo mapa completo de câncer de próstata. Outros tumores estão em desenvolvimento.</p>
+    <div class="tumor-map-grid">
+
+      <!-- PRÓSTATA — ativo -->
+      <article class="tumor-map-card is-active" style="--accent-color:#FF8400;--accent-rgb:255,132,0" @click="openProstateMap()" id="hub-prostata">
+        <div class="tmc-head">
+          <div class="tmc-icon"><i data-lucide="circle-dot" style="width:24px;height:24px"></i></div>
+          <div>
+            <div class="tmc-title">Câncer de próstata</div>
+            <span class="tmc-status on">Mapa completo</span>
+          </div>
+        </div>
+        <div class="tmc-badges">
+          <span class="mod-pill psma">PSMA</span>
+          <span class="mod-pill lu177">Lu-177</span>
+          <span class="mod-pill ra223">Ra-223</span>
+          <span class="mod-pill ac225">Ac-225</span>
+          <span class="mod-pill stage">mCRPC</span>
+          <span class="mod-pill stage">mHSPC</span>
+        </div>
+        <div class="tmc-foot">
+          <span class="tmc-open">Abrir mapa <i data-lucide="arrow-right" style="width:15px;height:15px"></i></span>
+        </div>
+      </article>
+
+      <!-- EM DESENVOLVIMENTO -->
+      <template x-for="soon in upcomingMaps" :key="soon.id">
+        <article class="tumor-map-card is-soon" :style="`--accent-color:${soon.color};--accent-rgb:${hexToRgb(soon.color)}`">
+          <div class="tmc-head">
+            <div class="tmc-icon"><i :data-lucide="soon.icon" style="width:24px;height:24px"></i></div>
+            <div>
+              <div class="tmc-title" x-text="soon.name"></div>
+              <span class="tmc-status soon">Em desenvolvimento</span>
+            </div>
+          </div>
+          <div class="tmc-badges">
+            <template x-for="b in soon.badges" :key="b"><span class="mod-pill" x-text="b"></span></template>
+          </div>
+          <div class="tmc-foot">
+            <span style="font-size:0.78rem;color:var(--stone-2)">Em breve</span>
+          </div>
+        </article>
+      </template>
+
+    </div>
+  </div>
+</section>
+
+<!-- MÓDULO: TUMOR BOARD MAP — CÂNCER DE PRÓSTATA -->
+<section x-show="openMap === 'prostata'" x-cloak id="map-prostata" style="padding:0">
+  <div class="container">
+    <div class="map-module">
+
+      <button class="detail-back" @click="closeMap()">
+        <i data-lucide="arrow-left" style="width:14px;height:14px"></i>
+        <span>Voltar aos mapas</span>
+      </button>
+
+      <div class="mm-head">
+        <h1 class="mm-title"><i data-lucide="circle-dot" style="width:30px;height:30px"></i> Tumor Board Map — Câncer de Próstata</h1>
+        <p class="mm-sub">Da biologia do PSMA aos principais trials de radioligantes, critérios de seleção e estudos ativos.</p>
+      </div>
+
+      <!-- Sub-nav interno -->
+      <nav class="mm-nav">
+        <a href="#pm-1">1 · Visão geral</a>
+        <a href="#pm-2">2 · Teoria essencial</a>
+        <a href="#pm-3">3 · Perguntas do board</a>
+        <a href="#pm-4">4 · Jornada terapêutica</a>
+        <a href="#pm-5">5 · Jornada do paciente</a>
+        <a href="#pm-6">6 · Mapa de evidências</a>
+        <a href="#pm-7">7 · Estudos-chave</a>
+        <a href="#pm-8">8 · Trial Lineage</a>
+        <a href="#pm-9">9 · Critérios práticos</a>
+        <a href="#pm-10">10 · Ensaios ativos</a>
+        <a href="#pm-11">11 · Guidelines</a>
+        <a href="#pm-12">12 · Ferramentas</a>
+        <a href="#pm-13">13 · Checklists</a>
+        <a href="#pm-14">14 · Próximos passos</a>
+      </nav>
+
+      <!-- 1. VISÃO GERAL -->
+      <div class="pm-block" id="pm-1">
+        <div class="pm-block-head"><span class="pm-num">1</span><h3>Visão geral</h3></div>
+        <p class="pm-lead">O <strong>câncer de próstata metastático resistente à castração (mCRPC)</strong> representa o cenário mais maduro para as terapias com radioligantes direcionadas ao PSMA. A discussão em tumor board deve integrar, de forma estruturada, o <strong>estágio da doença</strong>, o <strong>histórico terapêutico</strong>, a <strong>expressão de PSMA na imagem molecular</strong>, a presença de <strong>doença discordante</strong>, a <strong>reserva medular</strong>, a <strong>função renal</strong>, os sintomas, os tratamentos prévios, a disponibilidade terapêutica e a possibilidade de inclusão em ensaios clínicos.</p>
+        <p class="pm-lead">O objetivo deste mapa é oferecer uma ponte entre a biologia tumoral, a imagem molecular, as terapias com radiofármacos, a evidência clínica e a aplicação prática em tumor board — <em>do conceito biológico ao ensaio clínico aplicável</em>.</p>
+      </div>
+
+      <!-- 2. TEORIA ESSENCIAL -->
+      <div class="pm-block" id="pm-2">
+        <div class="pm-block-head"><span class="pm-num">2</span><h3>Teoria essencial</h3></div>
+        <div class="concept-grid">
+          <div class="concept-card">
+            <div class="cc-ic"><i data-lucide="crosshair" style="width:18px;height:18px"></i></div>
+            <h4>PSMA como alvo molecular</h4>
+            <p>O PSMA é uma glicoproteína transmembrana frequentemente superexpressa no câncer de próstata, sobretudo em doença avançada, metastática e resistente à castração. A expressão pode ser heterogênea entre lesões e variar ao longo da evolução tumoral.</p>
+          </div>
+          <div class="concept-card">
+            <div class="cc-ic"><i data-lucide="scan-line" style="width:18px;height:18px"></i></div>
+            <h4>Imagem molecular como ferramenta de seleção</h4>
+            <p>O PET/CT com PSMA identifica doença PSMA-positiva e seleciona candidatos a radioligantes. Em cenários selecionados — suspeita de fenótipo agressivo, doença desdiferenciada ou lesões com baixa expressão de PSMA — pode ser necessário avaliar doença discordante com FDG PET.</p>
+          </div>
+          <div class="concept-card">
+            <div class="cc-ic"><i data-lucide="atom" style="width:18px;height:18px"></i></div>
+            <h4>Terapia com radioligantes</h4>
+            <p>A terapia com radioligantes combina um vetor molecular direcionado ao PSMA com um radionuclídeo terapêutico, permitindo a entrega seletiva de radiação às células tumorais que expressam o alvo.</p>
+          </div>
+          <div class="concept-card">
+            <div class="cc-ic"><i data-lucide="git-compare" style="width:18px;height:18px"></i></div>
+            <h4>Beta versus alfa-emissores</h4>
+            <p>Beta-emissores como o Lu-177 têm maior experiência clínica e evidência mais madura. Alfa-emissores como o Ac-225 (e outros emergentes) estão em investigação, com racional de maior LET e maior potencial de dano ao DNA, mas também desafios de toxicidade, produção, dosimetria e evidência ainda menos madura.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. PERGUNTAS DO TUMOR BOARD -->
+      <div class="pm-block" id="pm-3">
+        <div class="pm-block-head"><span class="pm-num">3</span><h3>Perguntas do tumor board</h3></div>
+        <p class="pm-lead">Perguntas práticas que o board precisa responder, organizadas por eixo de decisão.</p>
+        <div class="q-groups">
+          <div class="q-group">
+            <div class="q-group-title"><i data-lucide="layers"></i> Estágio e linha terapêutica</div>
+            <ul>
+              <li>O paciente está em mHSPC, nmCRPC ou mCRPC?</li>
+              <li>Já recebeu ARPi (abiraterona, enzalutamida, apalutamida, darolutamida)?</li>
+              <li>Já recebeu docetaxel ou cabazitaxel?</li>
+            </ul>
+          </div>
+          <div class="q-group">
+            <div class="q-group-title"><i data-lucide="scan-line"></i> Imagem molecular</div>
+            <ul>
+              <li>A doença é PSMA-positiva em intensidade e extensão suficientes?</li>
+              <li>Há lesões suspeitas PSMA-negativas ou discordantes?</li>
+              <li>Existe indicação de FDG PET para avaliar heterogeneidade ou agressividade biológica?</li>
+            </ul>
+          </div>
+          <div class="q-group">
+            <div class="q-group-title"><i data-lucide="shield-alert"></i> Segurança e elegibilidade</div>
+            <ul>
+              <li>Há reserva medular adequada?</li>
+              <li>A função renal é aceitável?</li>
+              <li>Há doença visceral, especialmente hepática?</li>
+              <li>O paciente tem sintomas ósseos importantes?</li>
+            </ul>
+          </div>
+          <div class="q-group">
+            <div class="q-group-title"><i data-lucide="target"></i> Objetivo terapêutico</div>
+            <ul>
+              <li>O objetivo é controle sistêmico, paliação, adiamento de quimioterapia, ponte terapêutica ou inclusão em ensaio?</li>
+            </ul>
+          </div>
+          <div class="q-group">
+            <div class="q-group-title"><i data-lucide="flask-conical"></i> Acesso e pesquisa clínica</div>
+            <ul>
+              <li>Existe opção aprovada e acesso local?</li>
+              <li>Há protocolo de pesquisa disponível ou necessidade de encaminhamento?</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. JORNADA TERAPÊUTICA -->
+      <div class="pm-block" id="pm-4">
+        <div class="pm-block-head"><span class="pm-num">4</span><h3>Jornada terapêutica</h3></div>
+        <p class="pm-lead">Em que momento da história do câncer de próstata cada modalidade entra. Cada fase traz estudos reais do Database — <strong>não só radioligantes</strong> (ARPi, quimioterapia, PARP, radioterapia). Clique em um estudo para abrir a ficha.</p>
+        <div class="therapy-timeline">
+          <div class="tt-phase">
+            <span class="tt-dot"></span>
+            <h4>1 · Doença localizada / alto risco</h4>
+            <p>Radioterapia e cirurgia no centro; PSMA PET ganha espaço no estadiamento. Radioligante sistêmico só em pesquisa.</p>
+            <div class="esc-studies">
+              <a class="esc-study-chip" href="database.html#rt_prostata_local_0">PACE-B</a>
+              <a class="esc-study-chip" href="database.html#rt_prostata_local_2">FLAME</a>
+              <a class="esc-study-chip" href="database.html#lupsma_prostata_9">LuTectomy</a>
+            </div>
+            <div class="tt-tags"><span class="tt-mat high">RT/cirurgia estabelecidas</span></div>
+          </div>
+          <div class="tt-phase">
+            <span class="tt-dot"></span>
+            <h4>2 · Recidiva bioquímica</h4>
+            <p>PSMA PET localiza a recidiva e guia terapia dirigida; radioligante sistêmico ainda investigacional.</p>
+            <div class="esc-studies">
+              <a class="esc-study-chip" href="database.html#rt_prostata_local_4">RADICALS-RT</a>
+              <a class="esc-study-chip" href="database.html#rt_prostata_local_5">GETUG-AFU 16</a>
+              <a class="esc-study-chip" href="database.html#lupsma_prostata_11">BULLSEYE</a>
+            </div>
+            <div class="tt-tags"><span class="tt-mat mid">Imagem-guiada</span></div>
+          </div>
+          <div class="tt-phase">
+            <span class="tt-dot"></span>
+            <h4>3 · mHSPC</h4>
+            <p>Intensificação precoce com ARPi e/ou docetaxel; radioligante em combinação ainda investigacional.</p>
+            <div class="esc-studies">
+              <a class="esc-study-chip" href="database.html#prostata_contexto_4">ARASENS</a>
+              <a class="esc-study-chip" href="database.html#prostata_contexto_5">PEACE-1</a>
+              <a class="esc-study-chip" href="database.html#lupsma_prostata_7">PSMAddition</a>
+              <a class="esc-study-chip" href="database.html#lupsma_prostata_6">UpFrontPSMA</a>
+            </div>
+            <div class="tt-tags"><span class="tt-mat high">ARPi/quimio estabelecidas</span><span class="tt-mat low">RLT investigacional</span></div>
+          </div>
+          <div class="tt-phase">
+            <span class="tt-dot"></span>
+            <h4>4 · nmCRPC</h4>
+            <p>Manejo com ARPi de 2ª geração; radioligante sem papel estabelecido.</p>
+            <div class="esc-studies">
+              <a class="esc-study-chip" href="database.html#prostata_contexto_14">SPARTAN</a>
+              <a class="esc-study-chip" href="database.html#prostata_contexto_15">PROSPER</a>
+              <a class="esc-study-chip" href="database.html#prostata_contexto_16">ARAMIS</a>
+            </div>
+            <div class="tt-tags"><span class="tt-mat high">ARPi estabelecida</span></div>
+          </div>
+          <div class="tt-phase">
+            <span class="tt-dot"></span>
+            <h4>5 · mCRPC pré-taxano (pós-ARPi)</h4>
+            <p>ARPi, PARP (em HRR+) e antecipação do radioligante antes da quimio — evidência em expansão.</p>
+            <div class="esc-studies">
+              <a class="esc-study-chip" href="database.html#prostata_contexto_9">PREVAIL</a>
+              <a class="esc-study-chip" href="database.html#prostata_contexto_17">PROfound</a>
+              <a class="esc-study-chip" href="database.html#lupsma_prostata_2">PSMAfore</a>
+              <a class="esc-study-chip" href="database.html#lupsma_prostata_3">SPLASH</a>
+            </div>
+            <div class="tt-tags"><span class="tt-mat mid">Evidência em expansão</span></div>
+          </div>
+          <div class="tt-phase">
+            <span class="tt-dot"></span>
+            <h4>6 · mCRPC pós-ARPi e pós-taxano</h4>
+            <p>Cenário de evidência mais madura para Lu-177-PSMA, ao lado de taxano e ARPi.</p>
+            <div class="esc-studies">
+              <a class="esc-study-chip" href="database.html#lupsma_prostata_0">VISION</a>
+              <a class="esc-study-chip" href="database.html#lupsma_prostata_1">TheraP</a>
+              <a class="esc-study-chip" href="database.html#prostata_contexto_12">AFFIRM</a>
+            </div>
+            <div class="tt-tags"><span class="tt-mat high">Evidência mais madura (RLT)</span></div>
+          </div>
+          <div class="tt-phase">
+            <span class="tt-dot"></span>
+            <h4>7 · Doença refratária / terapias experimentais</h4>
+            <p>Alfa-emissores (Ac-225, Pb-212) e novos radioligantes; evidência clínica ainda precoce.</p>
+            <div class="esc-studies">
+              <a class="esc-study-chip" href="database.html#novos_psma_0">225Ac-PSMA-617</a>
+              <a class="esc-study-chip" href="database.html#novos_psma_3">VIOLET</a>
+              <a class="esc-study-chip" href="database.html#novos_psma_7">212Pb-PSMA</a>
+            </div>
+            <div class="tt-tags"><span class="tt-mat low">Experimental</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. JORNADA DO PACIENTE ATÉ RLT PSMA -->
+      <div class="pm-block patient-journey-section" id="pm-5">
+        <div class="pm-block-head"><span class="pm-num">5</span><h3>Jornada do Paciente até Terapia com Radioligantes PSMA</h3></div>
+        <p class="pm-lead" style="font-weight:600;color:var(--off-white)">Do reconhecimento da progressão à discussão multidisciplinar, documentação, acesso e monitoramento.</p>
+        <div class="edu-callout" style="max-width:none;margin:0 0 1.25rem">
+          <i data-lucide="info" style="width:18px;height:18px"></i>
+          <p>Esta seção tem finalidade educacional e de melhoria de jornada assistencial. Não define elegibilidade individual, não recomenda tratamento e não substitui julgamento médico, bula, guidelines, protocolos institucionais ou consulta às fontes primárias.</p>
+        </div>
+
+        <p class="pm-lead" style="margin-bottom:0.75rem"><strong>Enquanto a Jornada terapêutica</strong> (seção anterior) descreve <em>em que momento da doença</em> cada modalidade entra, esta seção descreve <strong>como o paciente percorre o sistema assistencial</strong> até ser reconhecido, avaliado, discutido e eventualmente encaminhado.</p>
+
+        <div class="journey-timeline">
+
+          <details class="journey-step-card" open>
+            <summary><span class="js-num">1</span><span class="js-step-title">Diagnóstico e estratificação inicial</span><i class="js-chev" data-lucide="chevron-right" style="width:16px;height:16px"></i></summary>
+            <div class="js-body">
+              <div class="js-row"><b>Objetivo</b>Classificar risco, estágio e extensão da doença desde o diagnóstico.</div>
+              <div class="js-row"><b>Profissionais envolvidos</b>Urologia, oncologia, radiologia e medicina nuclear (quando houver indicação de imagem molecular).</div>
+              <div class="js-row"><b>Dados necessários</b>Histologia, ISUP/Gleason, PSA, estadiamento, sintomas e exames de imagem.</div>
+              <div class="js-links">
+                <a class="js-link" href="database.html?cat=prostata"><i data-lucide="database" style="width:12px;height:12px"></i> Database</a>
+                <a class="js-link" href="ferramentas.html#ajcc"><i data-lucide="layers" style="width:12px;height:12px"></i> Estadiamento</a>
+                <a class="js-link" href="guideline-detail.html#psma-pet-imaging-v2-2023"><i data-lucide="book-open" style="width:12px;height:12px"></i> Imagem PSMA</a>
+                <a class="js-link" href="#pm-6"><i data-lucide="map" style="width:12px;height:12px"></i> Mapa de evidências</a>
+              </div>
+            </div>
+          </details>
+
+          <details class="journey-step-card">
+            <summary><span class="js-num">2</span><span class="js-step-title">Progressão e definição do estado da doença</span><i class="js-chev" data-lucide="chevron-right" style="width:16px;height:16px"></i></summary>
+            <div class="js-body">
+              <div class="js-row"><b>Objetivo</b>Reconhecer transições clínicas relevantes — recidiva bioquímica, doença metastática hormônio-sensível (mHSPC), nmCRPC ou mCRPC.</div>
+              <div class="js-row"><b>Profissionais envolvidos</b>Oncologia, urologia, medicina nuclear e radiologia.</div>
+              <div class="js-row"><b>Dados necessários</b>PSA seriado, testosterona, imagem, histórico terapêutico, sintomas e progressão radiológica.</div>
+              <div class="js-links">
+                <a class="js-link" href="database.html?cat=prostata"><i data-lucide="database" style="width:12px;height:12px"></i> Database</a>
+                <a class="js-link" href="ferramentas.html#psma"><i data-lucide="crosshair" style="width:12px;height:12px"></i> Critérios PSMA/PCWG</a>
+                <a class="js-link" href="#pm-9"><i data-lucide="list-checks" style="width:12px;height:12px"></i> Critérios práticos</a>
+              </div>
+            </div>
+          </details>
+
+          <details class="journey-step-card">
+            <summary><span class="js-num">3</span><span class="js-step-title">Identificação do candidato potencial para discussão</span><i class="js-chev" data-lucide="chevron-right" style="width:16px;height:16px"></i></summary>
+            <div class="js-body">
+              <div class="js-row"><b>Objetivo</b>Reconhecer pacientes que podem se beneficiar de avaliação multidisciplinar para terapia com radioligantes PSMA ou ensaios clínicos.</div>
+              <div class="js-row"><b>Profissionais envolvidos</b>Oncologia, medicina nuclear e urologia.</div>
+              <div class="js-row"><b>Dados necessários</b>Estado da doença, tratamentos prévios, performance status, reserva medular, função renal, extensão tumoral e presença de doença visceral.</div>
+              <div class="js-row" style="font-size:0.76rem;color:var(--stone-2)"><b>Linguagem</b>Preferir “candidato potencial para discussão”, “paciente a ser avaliado” ou “adequado para revisão multidisciplinar” — evitar afirmar “paciente elegível”, que exige avaliação formal pela equipe responsável.</div>
+              <div class="js-links">
+                <a class="js-link" href="#pm-13"><i data-lucide="clipboard-check" style="width:12px;height:12px"></i> Checklist de encaminhamento</a>
+                <a class="js-link" href="#pm-9"><i data-lucide="list-checks" style="width:12px;height:12px"></i> Critérios práticos</a>
+                <a class="js-link" href="database.html?cat=prostata"><i data-lucide="database" style="width:12px;height:12px"></i> Database</a>
+              </div>
+            </div>
+          </details>
+
+          <details class="journey-step-card">
+            <summary><span class="js-num">4</span><span class="js-step-title">PSMA PET e avaliação de heterogeneidade</span><i class="js-chev" data-lucide="chevron-right" style="width:16px;height:16px"></i></summary>
+            <div class="js-body">
+              <div class="js-row"><b>Objetivo</b>Avaliar expressão do alvo, carga tumoral, distribuição da doença e possível heterogeneidade biológica.</div>
+              <div class="js-row"><b>Profissionais envolvidos</b>Medicina nuclear, radiologia e oncologia.</div>
+              <div class="js-row"><b>Dados necessários</b>PET/CT PSMA recente, descrição da intensidade de captação, lesões de maior risco, lesões com baixa ou ausente expressão de PSMA e comparação com exames prévios.</div>
+              <div class="js-links">
+                <a class="js-link" href="ferramentas.html#psma"><i data-lucide="crosshair" style="width:12px;height:12px"></i> Ferramenta PSMA</a>
+                <a class="js-link" href="database.html?cat=prostata"><i data-lucide="database" style="width:12px;height:12px"></i> Database</a>
+                <a class="js-link" href="guideline-detail.html#psma-rlt-eanm-snmmi-2023"><i data-lucide="book-open" style="width:12px;height:12px"></i> Guidelines PSMA-RLT</a>
+                <a class="js-link" href="#pm-13"><i data-lucide="clipboard-check" style="width:12px;height:12px"></i> Checklist de apresentação</a>
+              </div>
+            </div>
+          </details>
+
+          <details class="journey-step-card">
+            <summary><span class="js-num">5</span><span class="js-step-title">Discussão em tumor board</span><i class="js-chev" data-lucide="chevron-right" style="width:16px;height:16px"></i></summary>
+            <div class="js-body">
+              <div class="js-row"><b>Objetivo</b>Integrar evidência, imagem, história terapêutica, segurança, acesso e pesquisa clínica.</div>
+              <div class="js-row"><b>Profissionais envolvidos</b>Oncologia, medicina nuclear, radiologia, urologia, pesquisa clínica, enfermagem e física médica/radioproteção (quando aplicável).</div>
+              <div class="js-row"><b>Dados necessários</b>Caso completo com pergunta clínica objetiva, status de imagem, história terapêutica e dados de segurança.</div>
+              <div class="js-links">
+                <a class="js-link" href="#pm-13"><i data-lucide="clipboard-check" style="width:12px;height:12px"></i> Checklist de apresentação</a>
+                <a class="js-link" href="#pm-11"><i data-lucide="book-open" style="width:12px;height:12px"></i> Guidelines</a>
+                <a class="js-link" href="#pm-10"><i data-lucide="microscope" style="width:12px;height:12px"></i> Ensaios ativos</a>
+              </div>
+            </div>
+          </details>
+
+          <details class="journey-step-card">
+            <summary><span class="js-num">6</span><span class="js-step-title">Pré-terapia, documentação e acesso</span><i class="js-chev" data-lucide="chevron-right" style="width:16px;height:16px"></i></summary>
+            <div class="js-body">
+              <div class="js-row"><b>Objetivo</b>Organizar exames, autorizações, relatório médico, agendamento e logística do radiofármaco.</div>
+              <div class="js-row"><b>Profissionais envolvidos</b>Medicina nuclear, oncologia, enfermagem, equipe administrativa e física médica/radioproteção.</div>
+              <div class="js-row"><b>Dados necessários</b>Relatório médico, laudo PSMA, exames laboratoriais, função renal, hemograma, autorização, termo de consentimento e orientações de radioproteção.</div>
+              <div class="js-links">
+                <a class="js-link" href="#pm-13"><i data-lucide="clipboard-check" style="width:12px;height:12px"></i> Checklist de pré-terapia</a>
+                <a class="js-link" href="ferramentas.html#renal"><i data-lucide="droplet" style="width:12px;height:12px"></i> Função renal</a>
+                <a class="js-link" href="guideline-detail.html#service-eanm-snmmi-iaea-2022"><i data-lucide="book-open" style="width:12px;height:12px"></i> Serviço/radioproteção</a>
+              </div>
+            </div>
+          </details>
+
+          <details class="journey-step-card">
+            <summary><span class="js-num">7</span><span class="js-step-title">Administração e monitoramento</span><i class="js-chev" data-lucide="chevron-right" style="width:16px;height:16px"></i></summary>
+            <div class="js-body">
+              <div class="js-row"><b>Objetivo</b>Realizar a terapia com segurança e monitorar toxicidade e resposta entre ciclos.</div>
+              <div class="js-row"><b>Profissionais envolvidos</b>Medicina nuclear, enfermagem, física médica e oncologia.</div>
+              <div class="js-row"><b>Dados necessários</b>Exames pré-ciclo, sintomas, toxicidades, medicações concomitantes, eventos adversos, resposta clínica e laboratorial.</div>
+              <div class="js-links">
+                <a class="js-link" href="ferramentas.html#ctcae"><i data-lucide="alert-triangle" style="width:12px;height:12px"></i> CTCAE</a>
+                <a class="js-link" href="ferramentas.html#renal"><i data-lucide="droplet" style="width:12px;height:12px"></i> Função renal</a>
+                <a class="js-link" href="guideline-detail.html#posttherapy-snmmi-acnm-lu177-2025"><i data-lucide="book-open" style="width:12px;height:12px"></i> Imagem pós-terapia</a>
+              </div>
+            </div>
+          </details>
+
+          <details class="journey-step-card">
+            <summary><span class="js-num">8</span><span class="js-step-title">Seguimento, resposta e próxima linha</span><i class="js-chev" data-lucide="chevron-right" style="width:16px;height:16px"></i></summary>
+            <div class="js-body">
+              <div class="js-row"><b>Objetivo</b>Avaliar resposta, progressão, toxicidade tardia e próximas opções terapêuticas ou ensaios clínicos.</div>
+              <div class="js-row"><b>Profissionais envolvidos</b>Oncologia, medicina nuclear e radiologia.</div>
+              <div class="js-row"><b>Dados necessários</b>PSA, imagem, sintomas, performance status, toxicidade acumulada e disponibilidade de trials.</div>
+              <div class="js-links">
+                <a class="js-link" href="trial-matcher.html"><i data-lucide="git-compare" style="width:12px;height:12px"></i> Trial Matcher</a>
+                <a class="js-link" href="ensaios-clinicos.html"><i data-lucide="microscope" style="width:12px;height:12px"></i> Ensaios ativos</a>
+                <a class="js-link" href="database.html?cat=prostata"><i data-lucide="database" style="width:12px;height:12px"></i> Database</a>
+              </div>
+            </div>
+          </details>
+
+        </div>
+
+        <!-- Gargalos da Jornada e Oportunidades de Otimização -->
+        <details class="pm-collapse">
+          <summary class="pm-subhead" id="pm-5-gargalos">
+            <i data-lucide="alert-triangle" style="width:18px;height:18px"></i>
+            <h4>Gargalos da Jornada e Oportunidades de Otimização</h4>
+            <span class="pm-collapse-hint">10 gargalos + indicadores</span>
+            <i class="pm-collapse-chev" data-lucide="chevron-right" style="width:16px;height:16px"></i>
+          </summary>
+        <p class="pm-lead">Os indicadores abaixo são apresentados como <strong>métricas de melhoria institucional</strong> — não são metas promocionais nem comerciais, e devem ser adaptados ao contexto de cada serviço.</p>
+        <div class="bottleneck-grid">
+
+          <div class="journey-bottleneck-card">
+            <div class="jb-title"><span class="jb-n">1</span> Progressão reconhecida tardiamente</div>
+            <div class="jb-row"><b>Consequência</b>Janela terapêutica reduzida; paciente chega à avaliação em pior estado clínico.</div>
+            <div class="jb-row opt"><b>Oportunidade</b>Checklist de progressão; PSA/testosterona seriados; discussão precoce em tumor board.</div>
+            <div class="jb-foot"><a class="js-link" href="#pm-9"><i data-lucide="list-checks" style="width:12px;height:12px"></i> Critérios práticos</a><span class="institutional-metric">Tempo: progressão → solicitação de PSMA PET</span></div>
+          </div>
+
+          <div class="journey-bottleneck-card">
+            <div class="jb-title"><span class="jb-n">2</span> PSMA PET solicitado tarde</div>
+            <div class="jb-row"><b>Consequência</b>Atraso na caracterização da doença e na decisão terapêutica.</div>
+            <div class="jb-row opt"><b>Oportunidade</b>Fluxos de indicação de imagem por linha terapêutica.</div>
+            <div class="jb-foot"><a class="js-link" href="guideline-detail.html#psma-pet-imaging-v2-2023"><i data-lucide="book-open" style="width:12px;height:12px"></i> Guidelines de imagem</a><span class="institutional-metric">Tempo: progressão → PSMA PET</span></div>
+          </div>
+
+          <div class="journey-bottleneck-card">
+            <div class="jb-title"><span class="jb-n">3</span> Laudo PSMA não orientado à discussão terapêutica</div>
+            <div class="jb-row"><b>Consequência</b>Informação insuficiente para o tumor board decidir.</div>
+            <div class="jb-row opt"><b>Oportunidade</b>Modelo de laudo orientado à RLT (ver elementos abaixo).</div>
+            <div class="jb-foot"><a class="js-link" href="ferramentas.html#psma"><i data-lucide="crosshair" style="width:12px;height:12px"></i> Ferramenta PSMA</a><span class="institutional-metric">% laudos com descrição de lesões de baixa/ausente expressão</span></div>
+          </div>
+
+          <div class="journey-bottleneck-card">
+            <div class="jb-title"><span class="jb-n">4</span> Falta de avaliação de heterogeneidade ou lesões discordantes</div>
+            <div class="jb-row"><b>Consequência</b>Risco de subestimar fenótipo agressivo ou doença discordante.</div>
+            <div class="jb-row opt"><b>Oportunidade</b>Descrever lesões discordantes; considerar FDG PET em cenários selecionados.</div>
+            <div class="jb-foot"><a class="js-link" href="guideline-detail.html#psma-rlt-eanm-snmmi-2023"><i data-lucide="book-open" style="width:12px;height:12px"></i> Guidelines PSMA-RLT</a><span class="institutional-metric">% laudos com avaliação de heterogeneidade</span></div>
+          </div>
+
+          <div class="journey-bottleneck-card">
+            <div class="jb-title"><span class="jb-n">5</span> Encaminhamento tardio à medicina nuclear</div>
+            <div class="jb-row"><b>Consequência</b>Paciente com ECOG ou reserva medular comprometidos na avaliação.</div>
+            <div class="jb-row opt"><b>Oportunidade</b>Encaminhamento precoce; critérios educacionais de triagem.</div>
+            <div class="jb-foot"><a class="js-link" href="#pm-13"><i data-lucide="clipboard-check" style="width:12px;height:12px"></i> Checklist de encaminhamento</a><span class="institutional-metric">Tempo: PSMA PET → avaliação em medicina nuclear</span></div>
+          </div>
+
+          <div class="journey-bottleneck-card">
+            <div class="jb-title"><span class="jb-n">6</span> Dados clínicos incompletos para tumor board</div>
+            <div class="jb-row"><b>Consequência</b>Discussão improdutiva; decisões adiadas.</div>
+            <div class="jb-row opt"><b>Oportunidade</b>Checklist pré-board; apresentação padronizada.</div>
+            <div class="jb-foot"><a class="js-link" href="#pm-13"><i data-lucide="clipboard-check" style="width:12px;height:12px"></i> Checklist de apresentação</a><span class="institutional-metric">% casos com checklist completo</span></div>
+          </div>
+
+          <div class="journey-bottleneck-card">
+            <div class="jb-title"><span class="jb-n">7</span> Documentação insuficiente para autorização</div>
+            <div class="jb-row"><b>Consequência</b>Atraso ou negativa de autorização.</div>
+            <div class="jb-row opt"><b>Oportunidade</b>Pacote documental padronizado.</div>
+            <div class="jb-foot"><a class="js-link" href="#pm-13"><i data-lucide="clipboard-check" style="width:12px;height:12px"></i> Checklist de pré-terapia</a><span class="institutional-metric">% processos com documentação completa na 1ª submissão</span></div>
+          </div>
+
+          <div class="journey-bottleneck-card">
+            <div class="jb-title"><span class="jb-n">8</span> Atraso entre decisão e primeiro ciclo</div>
+            <div class="jb-row"><b>Consequência</b>Progressão no intervalo; perda de oportunidade terapêutica.</div>
+            <div class="jb-row opt"><b>Oportunidade</b>Fluxo logístico com responsáveis definidos.</div>
+            <div class="jb-foot"><a class="js-link" href="#pm-13"><i data-lucide="clipboard-check" style="width:12px;height:12px"></i> Checklist de pré-terapia</a><span class="institutional-metric">Tempo: decisão em tumor board → primeiro ciclo</span></div>
+          </div>
+
+          <div class="journey-bottleneck-card">
+            <div class="jb-title"><span class="jb-n">9</span> Monitoramento laboratorial irregular</div>
+            <div class="jb-row"><b>Consequência</b>Toxicidade reconhecida tardiamente.</div>
+            <div class="jb-row opt"><b>Oportunidade</b>Calendário de ciclos; lembretes laboratoriais.</div>
+            <div class="jb-foot"><a class="js-link" href="ferramentas.html#ctcae"><i data-lucide="alert-triangle" style="width:12px;height:12px"></i> CTCAE</a><span class="institutional-metric">% ciclos com exames dentro do prazo</span></div>
+          </div>
+
+          <div class="journey-bottleneck-card">
+            <div class="jb-title"><span class="jb-n">10</span> Falta de reavaliação estruturada pós-terapia</div>
+            <div class="jb-row"><b>Consequência</b>Demora para rediscussão e definição da próxima linha.</div>
+            <div class="jb-row opt"><b>Oportunidade</b>Fluxo de reavaliação; integração com Trial Matcher.</div>
+            <div class="jb-foot"><a class="js-link" href="trial-matcher.html"><i data-lucide="git-compare" style="width:12px;height:12px"></i> Trial Matcher</a><span class="institutional-metric">% pacientes rediscutidos / avaliados para ensaio quando aplicável</span></div>
+          </div>
+
+        </div>
+        </details>
+
+        <!-- Elementos do laudo PSMA -->
+        <details class="pm-collapse">
+          <summary class="pm-subhead">
+            <i data-lucide="file-text" style="width:18px;height:18px"></i>
+            <h4>Elementos úteis em um laudo PSMA orientado à discussão terapêutica</h4>
+            <span class="pm-collapse-hint">12 elementos</span>
+            <i class="pm-collapse-chev" data-lucide="chevron-right" style="width:16px;height:16px"></i>
+          </summary>
+        <p class="pm-lead">Lista educacional de elementos que tornam um laudo PSMA mais útil para a discussão em tumor board. Não é um modelo de laudo completo e <strong>não afirma elegibilidade automática</strong> — a interpretação final é sempre clínica e multidisciplinar.</p>
+        <div class="psma-report-elements">
+          <div class="pre-item"><i data-lucide="dot" style="width:14px;height:14px"></i> Radiotraçador utilizado</div>
+          <div class="pre-item"><i data-lucide="dot" style="width:14px;height:14px"></i> Data do exame</div>
+          <div class="pre-item"><i data-lucide="dot" style="width:14px;height:14px"></i> Indicação clínica</div>
+          <div class="pre-item"><i data-lucide="dot" style="width:14px;height:14px"></i> Distribuição da doença</div>
+          <div class="pre-item"><i data-lucide="dot" style="width:14px;height:14px"></i> Intensidade relativa de captação</div>
+          <div class="pre-item"><i data-lucide="dot" style="width:14px;height:14px"></i> Lesões de maior carga tumoral</div>
+          <div class="pre-item"><i data-lucide="dot" style="width:14px;height:14px"></i> Lesões com baixa ou ausente expressão de PSMA</div>
+          <div class="pre-item"><i data-lucide="dot" style="width:14px;height:14px"></i> Doença visceral</div>
+          <div class="pre-item"><i data-lucide="dot" style="width:14px;height:14px"></i> Doença óssea extensa</div>
+          <div class="pre-item"><i data-lucide="dot" style="width:14px;height:14px"></i> Comparação com exames anteriores</div>
+          <div class="pre-item"><i data-lucide="dot" style="width:14px;height:14px"></i> Impressão final orientada à pergunta clínica</div>
+          <div class="pre-item"><i data-lucide="dot" style="width:14px;height:14px"></i> Recomendação de correlação clínica e discussão multidisciplinar</div>
+        </div>
+        </details>
+      </div>
+
+      <!-- 6. MAPA DE EVIDÊNCIAS -->
+      <div class="pm-block" id="pm-6">
+        <div class="pm-block-head"><span class="pm-num">6</span><h3>Mapa de evidências</h3></div>
+        <p class="pm-lead">Cenários clínicos e os estudos-chave associados. Clique em um estudo para abrir sua ficha no Database.</p>
+        <div class="evidence-map">
+          <div class="evidence-scenario-card" style="--sc-color:#34D399">
+            <span class="esc-tag">Cenário A · pós-ARPi + pós-taxano</span>
+            <div class="esc-title">mCRPC multi-tratado</div>
+            <div class="esc-studies">
+              <a class="esc-study-chip" href="database.html#lupsma_prostata_0"><i data-lucide="file-text" style="width:11px;height:11px"></i> VISION</a>
+              <a class="esc-study-chip" href="database.html#lupsma_prostata_1"><i data-lucide="file-text" style="width:11px;height:11px"></i> TheraP</a>
+            </div>
+            <p class="esc-msg">Cenário de evidência mais madura para Lu-177-PSMA, com necessidade de revisar tratamentos prévios, critérios de imagem, reserva medular, função renal e presença de doença discordante.</p>
+          </div>
+          <div class="evidence-scenario-card" style="--sc-color:#60A5FA">
+            <span class="esc-tag">Cenário B · pré-taxano</span>
+            <div class="esc-title">mCRPC pós-ARPi, sem quimioterapia</div>
+            <div class="esc-studies">
+              <a class="esc-study-chip" href="database.html#lupsma_prostata_2"><i data-lucide="file-text" style="width:11px;height:11px"></i> PSMAfore</a>
+              <a class="esc-study-chip" href="database.html#lupsma_prostata_3"><i data-lucide="file-text" style="width:11px;height:11px"></i> SPLASH</a>
+              <a class="esc-study-chip" href="database.html#lupsma_prostata_4"><i data-lucide="file-text" style="width:11px;height:11px"></i> ECLIPSE</a>
+            </div>
+            <p class="esc-msg">Cenário de antecipação da terapia com radioligante antes da quimioterapia, com evidência em expansão e necessidade de contextualizar maturidade dos dados, acesso e status regulatório.</p>
+          </div>
+          <div class="evidence-scenario-card" style="--sc-color:#C084FC">
+            <span class="esc-tag">Cenário C · mHSPC</span>
+            <div class="esc-title">Intensificação precoce</div>
+            <div class="esc-studies">
+              <a class="esc-study-chip" href="database.html#lupsma_prostata_7"><i data-lucide="file-text" style="width:11px;height:11px"></i> PSMAddition</a>
+            </div>
+            <p class="esc-msg">Cenário investigacional de intensificação precoce com radioligantes, geralmente em combinação com tratamento sistêmico padrão.</p>
+          </div>
+          <div class="evidence-scenario-card" style="--sc-color:#94A3B8">
+            <span class="esc-tag">Cenário D · doença óssea sintomática</span>
+            <div class="esc-title">Predomínio ósseo</div>
+            <div class="esc-studies">
+              <a class="esc-study-chip" href="database.html#ra223_prostata_0"><i data-lucide="file-text" style="width:11px;height:11px"></i> ALSYMPCA</a>
+            </div>
+            <p class="esc-msg">Cenário clássico de Ra-223 em doença óssea sintomática, com racional diferente da terapia direcionada ao PSMA. O Ra-223 é cálcio-mimético e não depende da expressão de PSMA.</p>
+          </div>
+          <div class="evidence-scenario-card" style="--sc-color:#F472B6">
+            <span class="esc-tag">Cenário E · alfa e novos emissores</span>
+            <div class="esc-title">Campo em expansão</div>
+            <div class="esc-studies">
+              <a class="esc-study-chip" href="database.html#novos_psma_0"><i data-lucide="file-text" style="width:11px;height:11px"></i> 225Ac-PSMA-617</a>
+              <a class="esc-study-chip" href="database.html#novos_psma_7"><i data-lucide="file-text" style="width:11px;height:11px"></i> 212Pb-PSMA</a>
+              <a class="esc-study-chip" href="database.html#novos_psma_5"><i data-lucide="file-text" style="width:11px;height:11px"></i> 225Ac-J591</a>
+            </div>
+            <p class="esc-msg">Campo em expansão, com racional radiobiológico promissor, mas evidência clínica ainda mais precoce e necessidade de cautela quanto a toxicidade, produção, dosimetria e extrapolação de dados.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. ESTUDOS-CHAVE -->
+      <div class="pm-block" id="pm-7">
+        <div class="pm-block-head"><span class="pm-num">7</span><h3>Estudos-chave</h3></div>
+        <p class="pm-lead">Resumo de desenho dos principais estudos. <strong>Resultados numéricos, desfechos e toxicidades estão na ficha de cada estudo no Database</strong> — este mapa não reproduz hazard ratios, valores de p ou taxas de resposta.</p>
+        <div class="keystudy-grid">
+          <div class="keystudy-card">
+            <div class="ks-top"><span class="ks-name">VISION</span><span class="ks-scn">pós-ARPi + pós-taxano</span></div>
+            <div class="ks-row"><b>População</b>mCRPC PSMA-positivo, previamente tratado com ARPi e taxano.</div>
+            <div class="ks-row"><b>Intervenção / comparador</b>177Lu-PSMA-617 + cuidado padrão vs cuidado padrão.</div>
+            <p class="ks-msg">Estudo de referência para a aprovação do Lu-177-PSMA neste cenário. Seleção por PET-PSMA é determinante.</p>
+            <div class="ks-foot">
+              <a class="ks-link" href="database.html#lupsma_prostata_0"><i data-lucide="database" style="width:13px;height:13px"></i> Ficha no Database</a>
+            </div>
+          </div>
+          <div class="keystudy-card">
+            <div class="ks-top"><span class="ks-name">TheraP</span><span class="ks-scn">pós-docetaxel</span></div>
+            <div class="ks-row"><b>População</b>mCRPC PSMA-positivo, candidatos a cabazitaxel.</div>
+            <div class="ks-row"><b>Intervenção / comparador</b>177Lu-PSMA-617 vs cabazitaxel.</div>
+            <p class="ks-msg">Comparação direta com cabazitaxel; seleção por PSMA PET e FDG PET. Desfechos detalhados na ficha.</p>
+            <div class="ks-foot">
+              <a class="ks-link" href="database.html#lupsma_prostata_1"><i data-lucide="database" style="width:13px;height:13px"></i> Ficha no Database</a>
+            </div>
+          </div>
+          <div class="keystudy-card">
+            <div class="ks-top"><span class="ks-name">PSMAfore</span><span class="ks-scn">pré-taxano</span></div>
+            <div class="ks-row"><b>População</b>mCRPC PSMA-positivo, pós-ARPi, sem quimioterapia prévia.</div>
+            <div class="ks-row"><b>Intervenção / comparador</b>177Lu-PSMA-617 vs troca de ARPi.</div>
+            <p class="ks-msg">Antecipação da terapia antes da quimioterapia. A análise de sobrevida foi confundida por crossover — ver ficha.</p>
+            <div class="ks-foot">
+              <a class="ks-link" href="database.html#lupsma_prostata_2"><i data-lucide="database" style="width:13px;height:13px"></i> Ficha no Database</a>
+            </div>
+          </div>
+          <div class="keystudy-card">
+            <div class="ks-top"><span class="ks-name">SPLASH</span><span class="ks-scn">pré-taxano</span></div>
+            <div class="ks-row"><b>População</b>mCRPC PSMA-positivo, pós-ARPi.</div>
+            <div class="ks-row"><b>Intervenção</b>177Lu-PNT2002 (radioligante PSMA).</div>
+            <p class="ks-msg">Cenário pré-taxano com radioligante alternativo. Detalhes disponíveis na ficha do estudo.</p>
+            <div class="ks-foot">
+              <a class="ks-link" href="database.html#lupsma_prostata_3"><i data-lucide="database" style="width:13px;height:13px"></i> Ficha no Database</a>
+            </div>
+          </div>
+          <div class="keystudy-card">
+            <div class="ks-top"><span class="ks-name">ECLIPSE</span><span class="ks-scn">pré-taxano</span></div>
+            <div class="ks-row"><b>População</b>mCRPC PSMA-positivo, pós-ARPi.</div>
+            <div class="ks-row"><b>Intervenção</b>Radioligante PSMA (estudo confirmatório).</div>
+            <p class="ks-msg">Estudo confirmatório no cenário pré-taxano. Detalhes disponíveis na ficha do estudo.</p>
+            <div class="ks-foot">
+              <a class="ks-link" href="database.html#lupsma_prostata_4"><i data-lucide="database" style="width:13px;height:13px"></i> Ficha no Database</a>
+            </div>
+          </div>
+          <div class="keystudy-card">
+            <div class="ks-top"><span class="ks-name">PSMAddition</span><span class="ks-scn">mHSPC</span></div>
+            <div class="ks-row"><b>População</b>Câncer de próstata hormônio-sensível metastático.</div>
+            <div class="ks-row"><b>Intervenção</b>177Lu-PSMA-617 em combinação com tratamento padrão.</div>
+            <p class="ks-msg">Intensificação precoce investigacional. Detalhes disponíveis na ficha do estudo.</p>
+            <div class="ks-foot">
+              <a class="ks-link" href="database.html#lupsma_prostata_7"><i data-lucide="database" style="width:13px;height:13px"></i> Ficha no Database</a>
+            </div>
+          </div>
+          <div class="keystudy-card">
+            <div class="ks-top"><span class="ks-name">ALSYMPCA</span><span class="ks-scn">ósseo sintomático</span></div>
+            <div class="ks-row"><b>População</b>mCRPC com metástases ósseas sintomáticas, sem metástase visceral conhecida.</div>
+            <div class="ks-row"><b>Intervenção / comparador</b>223Ra-dicloreto vs placebo.</div>
+            <p class="ks-msg">Base do Ra-223 em doença óssea sintomática; racional cálcio-mimético, independente do PSMA.</p>
+            <div class="ks-foot">
+              <a class="ks-link" href="database.html#ra223_prostata_0"><i data-lucide="database" style="width:13px;height:13px"></i> Ficha no Database</a>
+            </div>
+          </div>
+          <div class="keystudy-card">
+            <div class="ks-top"><span class="ks-name">Alfa-emissores</span><span class="ks-scn">experimental</span></div>
+            <div class="ks-row"><b>Agentes</b>225Ac-PSMA-617, 225Ac-J591, 212Pb-PSMA e outros radioligantes emergentes.</div>
+            <p class="ks-msg">Campo em investigação; evidência clínica precoce. Consulte as fichas para o estágio de cada programa.</p>
+            <div class="ks-foot">
+              <a class="ks-link" href="database.html#novos_psma_0"><i data-lucide="database" style="width:13px;height:13px"></i> 225Ac-PSMA-617</a>
+              <a class="ks-link" href="database.html?cat=prostata"><i data-lucide="search" style="width:13px;height:13px"></i> Ver todos</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7. TRIAL LINEAGE -->
+      <div class="pm-block" id="pm-8">
+        <div class="pm-block-head"><span class="pm-num">8</span><h3>Trial Lineage — publicações secundárias e análises derivadas</h3></div>
+        <p class="pm-lead">Um estudo pivotal não é uma publicação única, mas uma <strong>família de evidências</strong>: follow-ups, subgrupos, qualidade de vida, segurança, biomarcadores, dosimetria, análises exploratórias e abstracts. As publicações abaixo vêm do catálogo do TheraTrials.</p>
+        <div class="trial-lineage">
+          <template x-for="parent in lineageParents" :key="parent.key">
+            <details class="tl-parent" x-show="secList(parent).length">
+              <summary>
+                <i class="tl-chev" data-lucide="chevron-right" style="width:16px;height:16px"></i>
+                <span class="tl-parent-name" x-text="parent.name"></span>
+                <span class="tl-count" x-text="secList(parent).length + ' pub.'"></span>
+              </summary>
+              <div class="tl-pubs">
+                <template x-for="pub in secList(parent)" :key="pub.id">
+                  <div class="tl-pub">
+                    <span class="tl-rt" x-text="secLabel(pub.recordType)"></span>
+                    <div class="tl-pub-title"><span x-text="pub.title"></span> <span class="tl-yr" x-text="'· ' + (pub.year || '')"></span></div>
+                  </div>
+                </template>
+              </div>
+            </details>
+          </template>
+        </div>
+        <p class="tbm-section-sub" style="margin:1rem 0 0;font-size:0.8rem">Estudos sem entradas catalogadas de publicações secundárias não aparecem nesta lista. As fichas completas, com citações e links oficiais, estão no <a href="database.html?cat=prostata" style="color:var(--amber)">Database</a>.</p>
+      </div>
+
+      <!-- 8. CRITÉRIOS PRÁTICOS -->
+      <div class="pm-block" id="pm-9">
+        <div class="pm-block-head"><span class="pm-num">9</span><h3>Critérios práticos de discussão</h3></div>
+        <p class="pm-lead">Checklist clínico a revisar antes de discutir Lu-177-PSMA ou outras terapias.</p>
+        <div class="q-groups">
+          <div class="q-group">
+            <div class="q-group-title"><i data-lucide="user"></i> Dados clínicos</div>
+            <ul><li>Idade</li><li>ECOG / Karnofsky</li><li>Sintomas e dor óssea</li><li>Comorbidades</li><li>Expectativa e objetivo terapêutico</li></ul>
+          </div>
+          <div class="q-group">
+            <div class="q-group-title"><i data-lucide="history"></i> Histórico oncológico</div>
+            <ul><li>Diagnóstico histológico</li><li>Status de castração</li><li>PSA atual e cinética</li><li>Terapias prévias e respostas/toxicidades a ARPi e taxanos</li><li>Uso prévio de Ra-223, se houver</li></ul>
+          </div>
+          <div class="q-group">
+            <div class="q-group-title"><i data-lucide="scan-line"></i> Imagem molecular</div>
+            <ul><li>PET/CT PSMA</li><li>Padrão de captação</li><li>Heterogeneidade e lesões discordantes</li><li>Considerar FDG PET em cenários selecionados</li></ul>
+          </div>
+          <div class="q-group">
+            <div class="q-group-title"><i data-lucide="shield-alert"></i> Segurança</div>
+            <ul><li>Hemograma e reserva medular</li><li>Função renal e hepática</li><li>Extensão de doença óssea</li><li>Doença visceral</li><li>Risco de toxicidade hematológica, xerostomia, náusea e fadiga conforme a terapia</li></ul>
+          </div>
+          <div class="q-group">
+            <div class="q-group-title"><i data-lucide="flask-conical"></i> Acesso e pesquisa</div>
+            <ul><li>Terapia aprovada / disponível</li><li>Possibilidade de inclusão em trial</li><li>Centro com experiência</li><li>Necessidade de encaminhamento</li></ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 9. ENSAIOS CLÍNICOS ATIVOS -->
+      <div class="pm-block" id="pm-10">
+        <div class="pm-block-head"><span class="pm-num">10</span><h3>Ensaios clínicos ativos relacionados</h3></div>
+        <p class="pm-lead">Esta seção conecta com os ensaios em andamento ou recrutando relacionados a câncer de próstata, PSMA, radioligantes, alfa-terapia, combinações sistêmicas e modalidades emergentes. <strong>A elegibilidade final depende sempre do protocolo oficial e da avaliação do centro responsável.</strong></p>
+        <div class="link-cards" style="max-width:520px">
+          <a class="link-card" href="ensaios-clinicos.html">
+            <i data-lucide="microscope" style="width:18px;height:18px"></i>
+            <span>Ver ensaios ativos — filtrar por “Próstata”</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 10. GUIDELINES CONECTADOS -->
+      <div class="pm-block" id="pm-11">
+        <div class="pm-block-head"><span class="pm-num">11</span><h3>Guidelines conectados</h3></div>
+        <p class="pm-lead">Diretrizes relevantes já disponíveis no TheraTrials.</p>
+        <div class="link-cards">
+          <a class="link-card" href="guideline-detail.html#psma-rlt-eanm-snmmi-2023"><i data-lucide="book-open" style="width:18px;height:18px"></i><span>PSMA-RLT (177Lu) · EANM/SNMMI 2023</span></a>
+          <a class="link-card" href="guideline-detail.html#psma-pet-imaging-v2-2023"><i data-lucide="book-open" style="width:18px;height:18px"></i><span>PSMA PET/CT · imagem (v2.0)</span></a>
+          <a class="link-card" href="guideline-detail.html#psma-eanm-2019"><i data-lucide="book-open" style="width:18px;height:18px"></i><span>177Lu-PSMA · EANM 2019</span></a>
+          <a class="link-card" href="guideline-detail.html#bone-snmmi-eanm-palliative-2023"><i data-lucide="book-open" style="width:18px;height:18px"></i><span>Terapias ósseas paliativas (Ra-223)</span></a>
+          <a class="link-card" href="guideline-detail.html#dosim-eanm-lu177-2022"><i data-lucide="book-open" style="width:18px;height:18px"></i><span>Dosimetria · 177Lu</span></a>
+          <a class="link-card" href="guideline-detail.html#posttherapy-snmmi-acnm-lu177-2025"><i data-lucide="book-open" style="width:18px;height:18px"></i><span>Imagem pós-terapia · 177Lu</span></a>
+          <a class="link-card" href="guidelines.html"><i data-lucide="library" style="width:18px;height:18px"></i><span>Ver todas as guidelines</span></a>
+        </div>
+      </div>
+
+      <!-- 11. FERRAMENTAS ÚTEIS -->
+      <div class="pm-block" id="pm-12">
+        <div class="pm-block-head"><span class="pm-num">12</span><h3>Ferramentas úteis</h3></div>
+        <p class="pm-lead">Calculadoras e critérios já disponíveis na página de Ferramentas.</p>
+        <div class="link-cards">
+          <a class="link-card" href="ferramentas.html#clinica"><i data-lucide="activity" style="width:18px;height:18px"></i><span>ECOG / Karnofsky</span></a>
+          <a class="link-card" href="ferramentas.html#ctcae"><i data-lucide="alert-triangle" style="width:18px;height:18px"></i><span>Eventos adversos · CTCAE</span></a>
+          <a class="link-card" href="ferramentas.html#renal"><i data-lucide="droplet" style="width:18px;height:18px"></i><span>Função renal (CKD-EPI / Cockcroft)</span></a>
+          <a class="link-card" href="ferramentas.html#psma"><i data-lucide="crosshair" style="width:18px;height:18px"></i><span>Critérios PSMA (PROMISE, PSMA-RADS, PCWG)</span></a>
+          <a class="link-card" href="ferramentas.html#petct"><i data-lucide="scan-line" style="width:18px;height:18px"></i><span>Resposta metabólica (PERCIST)</span></a>
+          <a class="link-card" href="ferramentas.html#anatomica"><i data-lucide="ruler" style="width:18px;height:18px"></i><span>Resposta anatômica (RECIST 1.1)</span></a>
+        </div>
+      </div>
+
+      <!-- 12. CHECKLIST PARA APRESENTAÇÃO DE CASO -->
+      <div class="pm-block" id="pm-13">
+        <div class="pm-block-head"><span class="pm-num">13</span><h3>Checklists</h3></div>
+        <p class="pm-lead">Três conjuntos de <strong>itens para revisão</strong> (dados mínimos para discussão). São listas de organização, não critérios de elegibilidade — a <em>avaliação formal de elegibilidade é feita pela equipe responsável</em>. Cada um pode ser copiado em texto.</p>
+
+        <!-- Checklist 1 -->
+        <div class="rlt-checklist">
+          <div class="rlt-checklist-head">
+            <h4><i data-lucide="send" style="width:16px;height:16px"></i> Encaminhamento para discussão de RLT PSMA</h4>
+            <button class="btn btn-secondary btn-sm copy-checklist-btn" @click="copyChecklist('encaminhamento')"><i data-lucide="copy" style="width:14px;height:14px"></i> Copiar</button>
+          </div>
+          <div class="bc-grid">
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Diagnóstico histológico</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Estágio atual da doença</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Status de castração</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> PSA atual e cinética</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Tratamentos prévios</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> ARPi prévio</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Taxano prévio, quando aplicável</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Ra-223 prévio, se houver</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> PET/CT PSMA recente</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Descrição de heterogeneidade</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> FDG PET, se disponível ou indicado</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Hemograma</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Função renal</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Função hepática</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> ECOG / Karnofsky</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Extensão óssea</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Doença visceral</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Sintomas</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Objetivo da discussão</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Possibilidade de ensaio clínico</div>
+          </div>
+        </div>
+
+        <!-- Checklist 2 -->
+        <div class="rlt-checklist">
+          <div class="rlt-checklist-head">
+            <h4><i data-lucide="presentation" style="width:16px;height:16px"></i> Apresentação de caso no tumor board</h4>
+            <button class="btn btn-secondary btn-sm copy-checklist-btn" @click="copyChecklist('board')"><i data-lucide="copy" style="width:14px;height:14px"></i> Copiar</button>
+          </div>
+          <div class="bc-grid">
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Pergunta clínica objetiva</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Linha terapêutica atual</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Histórico de tratamentos</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Resposta / toxicidade prévia</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Status de imagem</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> PSMA PET</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> FDG PET, se pertinente</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Dados laboratoriais</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Performance status</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Sintomas</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Opções aprovadas</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Ensaios clínicos disponíveis</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Limitações ou incertezas</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Próximo passo proposto para discussão</div>
+          </div>
+        </div>
+
+        <!-- Checklist 3 -->
+        <div class="rlt-checklist">
+          <div class="rlt-checklist-head">
+            <h4><i data-lucide="folder-check" style="width:16px;height:16px"></i> Pré-terapia, documentação e acesso</h4>
+            <button class="btn btn-secondary btn-sm copy-checklist-btn" @click="copyChecklist('preterapia')"><i data-lucide="copy" style="width:14px;height:14px"></i> Copiar</button>
+          </div>
+          <div class="bc-grid">
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Relatório médico</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Laudo PSMA</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Exames laboratoriais atualizados</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Hemograma</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Creatinina / eTFG</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Função hepática</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Avaliação de sintomas</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Registro de medicações</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Consentimento institucional, se aplicável</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Orientações de radioproteção</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Autorização</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Agendamento</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Logística do radiofármaco</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Comunicação com oncologista assistente</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Plano de monitoramento entre ciclos</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 13. LINKS INTERNOS E PRÓXIMOS PASSOS -->
+      <div class="pm-block" id="pm-14">
+        <div class="pm-block-head"><span class="pm-num">14</span><h3>Links internos e próximos passos</h3></div>
+        <div class="link-cards">
+          <a class="link-card" href="database.html?cat=prostata"><i data-lucide="database" style="width:18px;height:18px"></i><span>Abrir Database (próstata)</span></a>
+          <a class="link-card" href="database.html?cat=prostata"><i data-lucide="git-compare" style="width:18px;height:18px"></i><span>Comparar estudos de PSMA</span></a>
+          <a class="link-card" href="ensaios-clinicos.html"><i data-lucide="microscope" style="width:18px;height:18px"></i><span>Ver ensaios ativos</span></a>
+          <a class="link-card" href="guidelines.html"><i data-lucide="book-open" style="width:18px;height:18px"></i><span>Abrir guidelines</span></a>
+          <a class="link-card" href="ferramentas.html"><i data-lucide="wrench" style="width:18px;height:18px"></i><span>Abrir ferramentas</span></a>
+          <a class="link-card" href="about.html"><i data-lucide="message-square-plus" style="width:18px;height:18px"></i><span>Sugerir estudo ou correção</span></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EXPLORAR ESTUDOS POR TUMOR (browser existente, preservado) -->
+<section style="padding: 1rem 0 0">
+  <div class="container">
+    <div class="tbm-section-head"><h2>Explorar estudos por tumor</h2></div>
+    <p class="tbm-section-sub">Navegue por todos os tipos tumorais cobertos e veja os ensaios agrupados por modalidade terapêutica e linha de tratamento — sem precisar filtrar manualmente o banco.</p>
   </div>
 </section>
 
@@ -600,6 +1749,12 @@
   </div>
 </section>
 
+<!-- TOAST -->
+<div class="tb-toast" x-show="toast" x-cloak x-transition>
+  <i data-lucide="check-circle" style="width:16px;height:16px"></i>
+  <span x-text="toast"></span>
+</div>
+
 <!-- FOOTER -->
 <footer class="site-footer">
   <div class="container">
@@ -611,6 +1766,7 @@
 </footer>
 
 <script src="assets/js/data.js?v=12"></script>
+<script src="assets/js/secondary-cards.js?v=1"></script>
 <script src="assets/js/common.js?v=11"></script>
 <script src="assets/js/i18n.js"></script>
 <script src="assets/lang/pt-br.js"></script>
@@ -620,8 +1776,105 @@
     return {
       data: window.THERA_DATA || { studies: [] },
       selectedTumor: null,
+      openMap: null,
+      toast: '',
       i18nTick: 0,
       tt(key, fb) { return window.t ? window.t(key, fb) : fb; },
+
+      // ---- Tumor Board Maps: mapas em desenvolvimento (hub) ----
+      upcomingMaps: [
+        { id: 'net',        name: 'Tumores neuroendócrinos',          icon: 'activity',      color: '#10B981', badges: ['SSTR', 'Lu-177', 'PRRT'] },
+        { id: 'hcc',        name: 'Carcinoma hepatocelular / TARE',   icon: 'droplet',       color: '#F59E0B', badges: ['Y-90', 'TARE', 'BCLC'] },
+        { id: 'mama',       name: 'Mama',                             icon: 'flower-2',      color: '#EC4899', badges: ['HER2', 'FAPI', 'FES'] },
+        { id: 'pulmao',     name: 'Pulmão',                           icon: 'wind',          color: '#22D3EE', badges: ['DLL3', 'FAPI'] },
+        { id: 'tireoide',   name: 'Tireoide',                         icon: 'circle-dot',    color: '#06B6D4', badges: ['I-131', 'RAI'] },
+        { id: 'meningioma', name: 'Meningioma',                       icon: 'brain',         color: '#A855F7', badges: ['SSTR', 'Lu-177'] },
+      ],
+
+      // ---- Trial Lineage: trials-pai de próstata (vínculo real via THERA_SECONDARY) ----
+      lineageParents: [
+        { key: 'vision',  name: 'VISION',      uid: 'lupsma_prostata_0' },
+        { key: 'therap',  name: 'TheraP',      uid: 'lupsma_prostata_1' },
+        { key: 'psmafore',name: 'PSMAfore',    uid: 'lupsma_prostata_2' },
+        { key: 'splash',  name: 'SPLASH',      uid: 'lupsma_prostata_3' },
+        { key: 'enzap',   name: 'ENZA-p',      uid: 'lupsma_prostata_5' },
+        { key: 'lupsma',  name: 'LuPSMA (Hofman 2018)', uid: null, nameMatch: 'lupsma' },
+        { key: 'alsympca',name: 'ALSYMPCA',    uid: 'ra223_prostata_0' },
+      ],
+
+      // Publicações secundárias reais ligadas ao trial-pai (sem inventar nada)
+      secList(parent) {
+        const all = window.THERA_SECONDARY || [];
+        const out = all.filter(c => {
+          if (parent.uid) return c.parentUid === parent.uid;
+          if (parent.nameMatch) return String(c.parentTrialName || '').toLowerCase().includes(parent.nameMatch);
+          return false;
+        });
+        const order = { primary_trial: 0, secondary_publication: 1, trial_update: 2, substudy: 3, exploratory_analysis: 4, congress_abstract: 5, press_release: 6, protocol: 7, registry_only: 8 };
+        return out.slice().sort((a, b) => (order[a.recordType] ?? 9) - (order[b.recordType] ?? 9) || (a.year || 0) - (b.year || 0));
+      },
+      secLabel(rt) {
+        return ({
+          primary_trial: 'Estudo primário',
+          secondary_publication: 'Publicação secundária',
+          trial_update: 'Atualização',
+          substudy: 'Subestudo',
+          exploratory_analysis: 'Análise exploratória',
+          congress_abstract: 'Abstract',
+          press_release: 'Press release',
+          protocol: 'Protocolo',
+          registry_only: 'Registro',
+        })[rt] || 'Publicação';
+      },
+
+      openProstateMap() {
+        this.openMap = 'prostata';
+      },
+      closeMap() {
+        this.openMap = null;
+        this.$nextTick(() => document.getElementById('hub-prostata')?.scrollIntoView({ behavior: 'smooth', block: 'center' }));
+      },
+
+      checklists: {
+        encaminhamento: {
+          title: 'Encaminhamento para discussão de RLT PSMA',
+          items: ['Diagnóstico histológico', 'Estágio atual da doença', 'Status de castração', 'PSA atual e cinética', 'Tratamentos prévios', 'ARPi prévio', 'Taxano prévio, quando aplicável', 'Ra-223 prévio, se houver', 'PET/CT PSMA recente', 'Descrição de heterogeneidade', 'FDG PET, se disponível ou indicado', 'Hemograma', 'Função renal', 'Função hepática', 'ECOG / Karnofsky', 'Extensão óssea', 'Doença visceral', 'Sintomas', 'Objetivo da discussão', 'Possibilidade de ensaio clínico'],
+        },
+        board: {
+          title: 'Apresentação de caso no tumor board',
+          items: ['Pergunta clínica objetiva', 'Linha terapêutica atual', 'Histórico de tratamentos', 'Resposta / toxicidade prévia', 'Status de imagem', 'PSMA PET', 'FDG PET, se pertinente', 'Dados laboratoriais', 'Performance status', 'Sintomas', 'Opções aprovadas', 'Ensaios clínicos disponíveis', 'Limitações ou incertezas', 'Próximo passo proposto para discussão'],
+        },
+        preterapia: {
+          title: 'Pré-terapia, documentação e acesso',
+          items: ['Relatório médico', 'Laudo PSMA', 'Exames laboratoriais atualizados', 'Hemograma', 'Creatinina / eTFG', 'Função hepática', 'Avaliação de sintomas', 'Registro de medicações', 'Consentimento institucional, se aplicável', 'Orientações de radioproteção', 'Autorização', 'Agendamento', 'Logística do radiofármaco', 'Comunicação com oncologista assistente', 'Plano de monitoramento entre ciclos'],
+        },
+      },
+      copyChecklist(kind) {
+        const cl = this.checklists[kind] || this.checklists.board;
+        const txt = [
+          'CHECKLIST — ' + cl.title + ' · Câncer de próstata',
+          '(Itens para revisão / dados mínimos para discussão — não são critérios de elegibilidade.)',
+          '',
+          ...cl.items.map(i => '[ ] ' + i),
+          '',
+          'Fonte: TheraTrials Oncology — Tumor Board Map (educacional).',
+        ].join('\n');
+        const done = () => this.showToast('Checklist copiado');
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(txt).then(done).catch(() => this.showToast('Não foi possível copiar'));
+        } else {
+          const ta = document.createElement('textarea');
+          ta.value = txt; ta.style.position = 'fixed'; ta.style.opacity = '0';
+          document.body.appendChild(ta); ta.select();
+          try { document.execCommand('copy'); done(); } catch (e) { this.showToast('Não foi possível copiar'); }
+          document.body.removeChild(ta);
+        }
+      },
+      showToast(msg) {
+        this.toast = msg;
+        clearTimeout(this._toastT);
+        this._toastT = setTimeout(() => { this.toast = ''; }, 2200);
+      },
 
       tumors: [
         { id: 'prostata', name: 'Câncer de próstata', tagline: 'mHSPC · mCRPC · nmCRPC · ARPi · PARP · teranóstico PSMA · α-PSMA · 223Ra · RT/SBRT', icon: 'circle-dot', color: '#FF8400',
@@ -665,6 +1918,14 @@
             lucide.createIcons();
             if (this.selectedTumor) {
               setTimeout(() => document.getElementById('detail')?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 80);
+            }
+          });
+        });
+        this.$watch('openMap', () => {
+          this.$nextTick(() => {
+            lucide.createIcons();
+            if (this.openMap) {
+              setTimeout(() => document.getElementById('map-prostata')?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 80);
             }
           });
         });
