@@ -964,7 +964,7 @@
       <!-- 4. JORNADA TERAPÊUTICA -->
       <div class="pm-block" id="pm-4">
         <div class="pm-block-head"><span class="pm-num">4</span><h3>Jornada terapêutica</h3></div>
-        <p class="pm-lead">Em que momento da história do câncer de próstata cada modalidade entra. Cada fase traz estudos reais do Database — <strong>não só radioligantes</strong> (ARPi, quimioterapia, PARP, radioterapia). Clique em um estudo para abrir a ficha.</p>
+        <p class="pm-lead">Em que momento da história do câncer de próstata cada modalidade entra. Cada fase traz estudos reais do Database — <strong>não só radioligantes</strong> (ARPi, quimioterapia, PARP, radioterapia, imunoterapia). Seleção representativa; o conjunto completo (demais PARP, intensificações do ADT etc.) está no <a href="database.html?cat=prostata" style="color:var(--amber)">Database</a>. Clique em um estudo para abrir a ficha.</p>
         <div class="therapy-timeline">
           <div class="tt-phase">
             <span class="tt-dot"></span>
@@ -972,6 +972,8 @@
             <p>Radioterapia e cirurgia no centro; PSMA PET ganha espaço no estadiamento. Radioligante sistêmico só em pesquisa.</p>
             <div class="esc-studies">
               <a class="esc-study-chip" href="database.html#rt_prostata_local_0">PACE-B</a>
+              <a class="esc-study-chip" href="database.html#rt_prostata_local_3">CHHiP</a>
+              <a class="esc-study-chip" href="database.html#rt_prostata_local_1">HYPO-RT-PC</a>
               <a class="esc-study-chip" href="database.html#rt_prostata_local_2">FLAME</a>
               <a class="esc-study-chip" href="database.html#lupsma_prostata_9">LuTectomy</a>
             </div>
@@ -982,21 +984,26 @@
             <h4>2 · Recidiva bioquímica</h4>
             <p>PSMA PET localiza a recidiva e guia terapia dirigida; radioligante sistêmico ainda investigacional.</p>
             <div class="esc-studies">
+              <a class="esc-study-chip" href="database.html#prostata_contexto_23">EMBARK</a>
               <a class="esc-study-chip" href="database.html#rt_prostata_local_4">RADICALS-RT</a>
               <a class="esc-study-chip" href="database.html#rt_prostata_local_5">GETUG-AFU 16</a>
+              <a class="esc-study-chip" href="database.html#rt_sbrt_oligo_0">STOMP</a>
+              <a class="esc-study-chip" href="database.html#rt_sbrt_oligo_1">ORIOLE</a>
               <a class="esc-study-chip" href="database.html#lupsma_prostata_11">BULLSEYE</a>
             </div>
-            <div class="tt-tags"><span class="tt-mat mid">Imagem-guiada</span></div>
+            <div class="tt-tags"><span class="tt-mat high">ARPi na recidiva (EMBARK)</span><span class="tt-mat mid">RT / oligometastático</span></div>
           </div>
           <div class="tt-phase">
             <span class="tt-dot"></span>
             <h4>3 · mHSPC</h4>
             <p>Intensificação precoce com ARPi e/ou docetaxel; radioligante em combinação ainda investigacional.</p>
             <div class="esc-studies">
+              <a class="esc-study-chip" href="database.html#prostata_contexto_0">CHAARTED</a>
+              <a class="esc-study-chip" href="database.html#prostata_contexto_3">LATITUDE</a>
+              <a class="esc-study-chip" href="database.html#prostata_contexto_8">ENZAMET</a>
               <a class="esc-study-chip" href="database.html#prostata_contexto_4">ARASENS</a>
               <a class="esc-study-chip" href="database.html#prostata_contexto_5">PEACE-1</a>
               <a class="esc-study-chip" href="database.html#lupsma_prostata_7">PSMAddition</a>
-              <a class="esc-study-chip" href="database.html#lupsma_prostata_6">UpFrontPSMA</a>
             </div>
             <div class="tt-tags"><span class="tt-mat high">ARPi/quimio estabelecidas</span><span class="tt-mat low">RLT investigacional</span></div>
           </div>
@@ -1017,9 +1024,11 @@
             <p>ARPi, PARP (em HRR+) e antecipação do radioligante antes da quimio — evidência em expansão.</p>
             <div class="esc-studies">
               <a class="esc-study-chip" href="database.html#prostata_contexto_9">PREVAIL</a>
+              <a class="esc-study-chip" href="database.html#prostata_contexto_10">COU-AA-302</a>
+              <a class="esc-study-chip" href="database.html#prostata_contexto_11">IMPACT (sipuleucel-T)</a>
               <a class="esc-study-chip" href="database.html#prostata_contexto_17">PROfound</a>
+              <a class="esc-study-chip" href="database.html#prostata_contexto_19">PROpel</a>
               <a class="esc-study-chip" href="database.html#lupsma_prostata_2">PSMAfore</a>
-              <a class="esc-study-chip" href="database.html#lupsma_prostata_3">SPLASH</a>
             </div>
             <div class="tt-tags"><span class="tt-mat mid">Evidência em expansão</span></div>
           </div>
@@ -1030,7 +1039,9 @@
             <div class="esc-studies">
               <a class="esc-study-chip" href="database.html#lupsma_prostata_0">VISION</a>
               <a class="esc-study-chip" href="database.html#lupsma_prostata_1">TheraP</a>
+              <a class="esc-study-chip" href="database.html#prostata_contexto_22">CARD</a>
               <a class="esc-study-chip" href="database.html#prostata_contexto_12">AFFIRM</a>
+              <a class="esc-study-chip" href="database.html#prostata_contexto_13">COU-AA-301</a>
             </div>
             <div class="tt-tags"><span class="tt-mat high">Evidência mais madura (RLT)</span></div>
           </div>
@@ -1908,7 +1919,7 @@
       },
 
       init() {
-        this.$nextTick(() => lucide.createIcons());
+        this.$nextTick(() => { lucide.createIcons(); this.retargetLinks(); });
         window.addEventListener('langchange', () => {
           this.i18nTick++;
           this.$nextTick(() => lucide.createIcons());
@@ -1916,6 +1927,7 @@
         this.$watch('selectedTumor', () => {
           this.$nextTick(() => {
             lucide.createIcons();
+            this.retargetLinks();
             if (this.selectedTumor) {
               setTimeout(() => document.getElementById('detail')?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 80);
             }
@@ -1924,10 +1936,25 @@
         this.$watch('openMap', () => {
           this.$nextTick(() => {
             lucide.createIcons();
+            this.retargetLinks();
             if (this.openMap) {
               setTimeout(() => document.getElementById('map-prostata')?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 80);
             }
           });
+        });
+      },
+
+      // Mantém o usuário no Tumor Board: links que saem para outra página do site
+      // (database, guidelines, ferramentas, etc.) abrem em nova aba. Âncoras internas
+      // (#pm-*) e o menu/rodapé continuam navegando normalmente.
+      retargetLinks() {
+        document.querySelectorAll('section a[href]').forEach(a => {
+          const href = a.getAttribute('href') || '';
+          if (/\.html(\?|#|$)/i.test(href) && a.target !== '_blank') {
+            a.target = '_blank';
+            a.rel = 'noopener';
+            a.title = a.title || 'Abre em nova aba';
+          }
         });
       },
 
@@ -1972,9 +1999,9 @@
         })).sort((a, b) => a.order - b.order);
       },
 
-            goToDatabase(s) {
-        // Abre o database e foca o estudo via UID na URL hash
-        window.location.href = `database.html#${s.uid}`;
+      goToDatabase(s) {
+        // Abre o database (estudo focado via UID) em NOVA ABA — mantém o Tumor Board aberto
+        window.open(`database.html#${s.uid}`, '_blank', 'noopener');
       },
 
       phaseShort(fase) { return TheraTrials.phaseShort(fase); },
