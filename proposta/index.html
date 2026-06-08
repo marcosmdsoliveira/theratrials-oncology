@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta · Portal de Ensaios & Trial Matcher — TheraTrials</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<style>
+:root{
+  --bg:#0E0F12; --g1:#101216; --g2:#14161B; --g3:#1B1E25; --g4:#252932;
+  --amber:#FF8400; --amber2:#FFA640; --cyan:#0EA5B7; --violet:#A855F7; --green:#22c55e;
+  --off:#F5F6F7; --stone:#8E949C; --stone2:#5C616A;
+  --bsoft:rgba(143,148,156,0.18); --bmid:rgba(143,148,156,0.35);
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--off);font-family:'Inter',sans-serif}
+a{color:inherit;text-decoration:none}
+.mono{font-family:'JetBrains Mono',monospace}
+.wrap{max-width:1140px;margin:0 auto;padding:0 1.25rem}
+
+/* ── Top bar ── */
+.top{position:sticky;top:0;z-index:50;background:rgba(14,15,18,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--bsoft)}
+.top-in{display:flex;align-items:center;gap:1rem;height:60px}
+.brand{display:flex;align-items:center;gap:.6rem;font-family:'Outfit';font-weight:700;font-size:1.05rem}
+.brand .dot{width:10px;height:10px;border-radius:50%;background:var(--amber);box-shadow:0 0 10px var(--amber)}
+.brand small{color:var(--stone);font-weight:500;font-size:.7rem;letter-spacing:.04em}
+.proto{margin-left:.4rem;font-family:'JetBrains Mono';font-size:.58rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;
+  color:#fbbf24;background:rgba(251,191,36,.1);border:1px solid rgba(251,191,36,.28);padding:.2rem .5rem;border-radius:999px}
+.vnav{margin-left:auto;display:flex;gap:.2rem;flex-wrap:wrap}
+.vnav button{font-family:'Outfit';font-weight:600;font-size:.8rem;color:var(--stone);background:transparent;border:none;
+  padding:.5rem .8rem;border-radius:8px;cursor:pointer;transition:.15s}
+.vnav button:hover{color:var(--off);background:var(--g3)}
+.vnav button.on{color:var(--amber);background:rgba(255,132,0,.1)}
+@media(max-width:820px){.vnav button{font-size:.72rem;padding:.45rem .55rem}.brand small{display:none}}
+
+/* ── Generic ── */
+.view{display:none;padding:2rem 0 4rem}
+.view.on{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+h1.h{font-family:'Outfit';font-weight:800;letter-spacing:-.03em;font-size:clamp(1.5rem,4vw,2.2rem);margin:0 0 .5rem}
+.sub{color:var(--stone);font-size:.92rem;max-width:680px;line-height:1.6;margin:0 0 1.5rem}
+.accent{color:var(--amber)}
+.eyebrow{font-family:'JetBrains Mono';font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--cyan);margin-bottom:.6rem}
+.card{background:var(--g2);border:1px solid var(--bsoft);border-radius:16px}
+.btn{display:inline-flex;align-items:center;gap:.45rem;font-family:'Outfit';font-weight:600;font-size:.85rem;
+  border:none;border-radius:10px;cursor:pointer;padding:.6rem 1.1rem;transition:.15s}
+.btn-pri{background:linear-gradient(135deg,var(--amber),#E07000);color:#fff}
+.btn-pri:hover{background:linear-gradient(135deg,var(--amber2),var(--amber));transform:translateY(-1px);box-shadow:0 4px 16px rgba(255,132,0,.3)}
+.btn-ghost{background:var(--g3);border:1px solid var(--bsoft);color:var(--stone)}
+.btn-ghost:hover{color:var(--off);border-color:var(--bmid)}
+.btn i,.btn svg{width:15px;height:15px}
+.badge{font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;padding:.2rem .5rem;border-radius:6px;display:inline-flex;align-items:center;gap:.25rem}
+.b-rec{background:rgba(34,197,94,.12);color:var(--green)}
+.b-test{background:rgba(14,165,183,.12);color:var(--cyan)}
+.b-spons{background:rgba(168,85,247,.14);color:#c9a3f5}
+.tag{font-size:.68rem;padding:.18rem .5rem;border-radius:5px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:var(--stone);white-space:nowrap}
+.tag.bio{background:rgba(14,165,183,.08);border-color:rgba(14,165,183,.2);color:var(--cyan)}
+
+/* ── Filters ── */
+.filters{padding:1.4rem;margin-bottom:1.5rem}
+.fgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.9rem}
+.field label{display:block;font-family:'Outfit';font-size:.72rem;font-weight:600;color:var(--amber);text-transform:uppercase;letter-spacing:.04em;margin-bottom:.35rem}
+.field select,.field input{width:100%;padding:.6rem .8rem;border-radius:9px;border:1px solid var(--bmid);background:var(--g3);color:var(--off);font-family:'Inter';font-size:.85rem;outline:none}
+.field select:focus,.field input:focus{border-color:var(--amber);box-shadow:0 0 0 3px rgba(255,132,0,.15)}
+.ufchips{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.9rem}
+.ufchip{font-family:'JetBrains Mono';font-size:.7rem;font-weight:600;padding:.35rem .7rem;border-radius:999px;cursor:pointer;
+  background:var(--g3);border:1px solid var(--bsoft);color:var(--stone);transition:.15s}
+.ufchip:hover{border-color:var(--bmid);color:var(--off)}
+.ufchip.on{background:rgba(255,132,0,.12);border-color:rgba(255,132,0,.35);color:var(--amber)}
+.togrow{display:flex;gap:1.2rem;flex-wrap:wrap;margin-top:1rem;align-items:center}
+.tog{display:flex;align-items:center;gap:.45rem;font-size:.8rem;color:var(--stone);cursor:pointer;user-select:none}
+.tog input{accent-color:var(--amber);width:15px;height:15px}
+.rcount{margin-left:auto;font-family:'JetBrains Mono';font-size:.78rem;color:var(--stone)}
+.rcount strong{color:var(--amber)}
+
+/* ── Result cards ── */
+.results{display:grid;gap:.85rem}
+.tcard{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:1.2rem;transition:.15s;position:relative}
+.tcard:hover{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.13)}
+.tcard.spons{border-color:rgba(168,85,247,.4);background:linear-gradient(180deg,rgba(168,85,247,.06),rgba(255,255,255,.02))}
+.tc-top{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;margin-bottom:.55rem}
+.tc-center{display:inline-flex;align-items:center;gap:.35rem;font-family:'Outfit';font-weight:700;font-size:.72rem;padding:.2rem .55rem;border-radius:6px}
+.tc-phase{font-family:'JetBrains Mono';font-size:.64rem;font-weight:600;padding:.18rem .45rem;border-radius:5px;background:rgba(255,255,255,.06);color:var(--stone)}
+.tc-title{font-family:'Outfit';font-weight:700;font-size:1.05rem;margin:.1rem 0 .15rem}
+.tc-cenario{font-size:.84rem;color:var(--stone);line-height:1.5;margin-bottom:.6rem}
+.tc-tags{display:flex;flex-wrap:wrap;gap:.35rem;margin-bottom:.7rem}
+.tc-foot{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}
+.tc-meta{font-size:.72rem;color:var(--stone2);display:inline-flex;align-items:center;gap:.3rem}
+.tc-meta i{width:12px;height:12px}
+
+/* ── Detail ── */
+.back{display:inline-flex;align-items:center;gap:.4rem;color:var(--stone);font-size:.82rem;cursor:pointer;margin-bottom:1.2rem}
+.back:hover{color:var(--amber)}
+.dhead{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;margin-bottom:.4rem}
+.dgrid{display:grid;grid-template-columns:1.6fr 1fr;gap:1.25rem;margin-top:1.5rem}
+@media(max-width:840px){.dgrid{grid-template-columns:1fr}}
+.block{padding:1.25rem;margin-bottom:1.1rem}
+.block h3{font-family:'Outfit';font-weight:700;font-size:.95rem;margin:0 0 .8rem;display:flex;align-items:center;gap:.45rem}
+.block h3 i{width:16px;height:16px;color:var(--amber)}
+.arm{background:var(--g3);border:1px solid var(--bsoft);border-radius:10px;padding:.7rem .85rem;margin-bottom:.5rem;font-size:.84rem}
+.arm b{color:var(--amber);font-family:'Outfit';font-size:.7rem;text-transform:uppercase;letter-spacing:.04em;display:block;margin-bottom:.2rem}
+.crit{font-size:.83rem;color:var(--stone);line-height:1.5;display:flex;gap:.5rem;padding:.3rem 0}
+.crit i{width:14px;height:14px;flex-shrink:0;margin-top:.15rem}
+.crit.inc i{color:var(--green)} .crit.exc i{color:#ef4444}
+.piRow{display:flex;align-items:center;gap:.6rem;padding:.5rem 0;border-bottom:1px solid var(--bsoft);font-size:.84rem}
+.piRow:last-child{border:none}
+.piRow .uf{font-family:'JetBrains Mono';font-size:.66rem;font-weight:700;background:var(--g3);border:1px solid var(--bsoft);border-radius:5px;padding:.15rem .4rem;color:var(--cyan)}
+
+/* pre-screener */
+.ps-item{display:flex;align-items:flex-start;gap:.6rem;padding:.45rem 0;font-size:.83rem;color:var(--off);border-bottom:1px solid var(--bsoft)}
+.ps-item:last-child{border:none}
+.ps-item input{accent-color:var(--amber);width:16px;height:16px;margin-top:.1rem}
+.ps-verdict{margin-top:.9rem;padding:.8rem 1rem;border-radius:10px;font-size:.85rem;font-weight:600;display:none}
+.ps-verdict.ok{display:block;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.3);color:#86efac}
+.ps-verdict.no{display:block;background:rgba(251,191,36,.08);border:1px solid rgba(251,191,36,.28);color:#fcd34d}
+
+/* referral form */
+.ff label{display:block;font-size:.74rem;font-weight:600;color:var(--stone);margin:.6rem 0 .25rem}
+.ff input,.ff textarea{width:100%;padding:.55rem .75rem;border-radius:9px;border:1px solid var(--bmid);background:var(--g3);color:var(--off);font-family:'Inter';font-size:.84rem;outline:none}
+.ff input:focus,.ff textarea:focus{border-color:var(--amber)}
+.ff-ok{display:none;text-align:center;padding:1.4rem .5rem}
+.ff-ok.show{display:block}
+
+/* ── Center profile ── */
+.cprofile{padding:1.6rem;display:flex;gap:1.25rem;align-items:flex-start;flex-wrap:wrap;margin-bottom:1.5rem}
+.clogo{width:64px;height:64px;border-radius:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Outfit';font-weight:800;font-size:1.5rem;color:#fff}
+.cmeta{flex:1;min-width:240px}
+.cmeta .vbadge{display:inline-flex;align-items:center;gap:.3rem;font-size:.66rem;font-weight:700;color:var(--green);background:rgba(34,197,94,.12);padding:.2rem .5rem;border-radius:6px;margin-left:.5rem}
+
+/* ── Painel ── */
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin-bottom:1.5rem}
+.kpi{padding:1.2rem}
+.kpi .n{font-family:'Outfit';font-weight:800;font-size:2rem;color:var(--off)}
+.kpi .l{font-size:.78rem;color:var(--stone);margin-top:.2rem}
+.kpi .d{font-size:.7rem;color:var(--green);margin-top:.3rem}
+.bar{display:flex;align-items:center;gap:.7rem;margin-bottom:.55rem;font-size:.82rem}
+.bar .nm{width:130px;flex-shrink:0;color:var(--off)}
+.bar .track{flex:1;height:10px;background:var(--g3);border-radius:999px;overflow:hidden}
+.bar .fill{height:100%;background:linear-gradient(90deg,var(--amber),var(--amber2));border-radius:999px}
+.bar .v{width:74px;text-align:right;font-family:'JetBrains Mono';font-size:.72rem;color:var(--stone)}
+table.leads{width:100%;border-collapse:collapse;font-size:.82rem}
+table.leads th{text-align:left;color:var(--stone);font-weight:600;font-size:.72rem;text-transform:uppercase;letter-spacing:.04em;padding:.5rem .4rem;border-bottom:1px solid var(--bsoft)}
+table.leads td{padding:.55rem .4rem;border-bottom:1px solid var(--bsoft);color:var(--off)}
+
+/* ── Modelo comercial ── */
+.tiers{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1rem;margin:1.5rem 0}
+.tier{padding:1.3rem;display:flex;flex-direction:column;gap:.5rem}
+.tier .who{font-family:'JetBrains Mono';font-size:.62rem;text-transform:uppercase;letter-spacing:.06em;color:var(--cyan)}
+.tier h4{font-family:'Outfit';font-weight:700;font-size:1.05rem;margin:.1rem 0}
+.tier .price{font-family:'Outfit';font-weight:800;font-size:1.2rem;color:var(--amber)}
+.tier ul{margin:.4rem 0 0;padding-left:1.1rem;color:var(--stone);font-size:.82rem;line-height:1.6}
+.tier.feat{border-color:rgba(255,132,0,.4);background:linear-gradient(180deg,rgba(255,132,0,.05),var(--g2))}
+.funnel{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;margin:1rem 0 1.5rem}
+.fstep{flex:1;min-width:140px;background:var(--g3);border:1px solid var(--bsoft);border-radius:10px;padding:.8rem;text-align:center;font-size:.8rem}
+.fstep b{display:block;font-family:'Outfit';color:var(--off);margin-bottom:.15rem}
+.farrow{color:var(--amber);font-size:1.2rem}
+.note{font-size:.78rem;color:var(--stone2);line-height:1.5;background:var(--g2);border:1px solid var(--bsoft);border-left:3px solid var(--amber);border-radius:8px;padding:.8rem 1rem;margin-top:1rem}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top"><div class="wrap top-in">
+  <div class="brand"><span class="dot"></span> TheraTrials <small>· Portal de Ensaios</small><span class="proto">Protótipo · dados ilustrativos</span></div>
+  <nav class="vnav">
+    <button data-v="buscar" class="on" onclick="go('buscar')">Buscar ensaios</button>
+    <button data-v="centro" onclick="go('centro','oncoclinicas')">Perfil do centro</button>
+    <button data-v="painel" onclick="go('painel')">Painel do parceiro</button>
+    <button data-v="modelo" onclick="go('modelo')">Modelo comercial</button>
+  </nav>
+</div></div>
+
+<div class="wrap">
+
+<!-- ══════════ VIEW: BUSCAR ══════════ -->
+<section id="v-buscar" class="view on">
+  <div class="eyebrow">Lado da demanda · o oncologista</div>
+  <h1 class="h">Encontre o <span class="accent">ensaio certo</span>, no centro certo, perto do paciente</h1>
+  <p class="sub">Busca unificada nos estudos abertos de centros recrutadores parceiros. Filtre por tumor, <strong>estado</strong>, biomarcador, patrocinador e status — e <strong>encaminhe o paciente</strong> com um clique.</p>
+
+  <div class="card filters">
+    <div class="fgrid">
+      <div class="field"><label>Tumor / neoplasia</label><select id="f-tumor" onchange="render()"><option value="">Todos os tumores</option></select></div>
+      <div class="field"><label>Biomarcador / alvo</label><input id="f-bio" placeholder="KRAS G12C, HER2, PIK3CA, PD-L1…" oninput="render()"></div>
+      <div class="field"><label>Patrocinador</label><select id="f-spons" onchange="render()"><option value="">Qualquer patrocinador</option></select></div>
+      <div class="field"><label>Centro</label><select id="f-centro" onchange="render()"><option value="">Todos os centros</option></select></div>
+    </div>
+    <div class="ufchips" id="ufchips"></div>
+    <div class="togrow">
+      <label class="tog"><input type="checkbox" id="f-rec" checked onchange="render()"> Apenas recrutando</label>
+      <label class="tog"><input type="checkbox" id="f-test" onchange="render()"> Apenas com teste de biomarcador fornecido</label>
+      <span class="rcount" id="rcount"></span>
+    </div>
+  </div>
+
+  <div class="results" id="results"></div>
+</section>
+
+<!-- ══════════ VIEW: ENSAIO (detalhe) ══════════ -->
+<section id="v-ensaio" class="view"></section>
+
+<!-- ══════════ VIEW: CENTRO ══════════ -->
+<section id="v-centro" class="view"></section>
+
+<!-- ══════════ VIEW: PAINEL ══════════ -->
+<section id="v-painel" class="view">
+  <div class="eyebrow">Lado da oferta · o que se vende como assinatura</div>
+  <h1 class="h">Painel do parceiro <span class="accent">— Oncoclínicas</span></h1>
+  <p class="sub">Métricas de visibilidade e <strong>geração de leads</strong> que o centro/patrocinador recebe. É o ativo recorrente: transforma tráfego de oncologistas em encaminhamentos rastreáveis e em relatório mensal.</p>
+  <div id="painel-body"></div>
+</section>
+
+<!-- ══════════ VIEW: MODELO ══════════ -->
+<section id="v-modelo" class="view">
+  <div class="eyebrow">A lógica de receita</div>
+  <h1 class="h">Como o portal <span class="accent">monetiza</span></h1>
+  <p class="sub">O ativo é o <strong>funil de encaminhamento</strong>: hoje o oncologista encontra o ensaio e o valor vaza num link externo. O portal captura esse funil e o entrega — mensurável — a quem tem a dor do recrutamento.</p>
+
+  <div class="funnel">
+    <div class="fstep"><b>Oncologista</b>busca por perfil do paciente</div><span class="farrow">→</span>
+    <div class="fstep"><b>Encontra o ensaio</b>no centro mais próximo</div><span class="farrow">→</span>
+    <div class="fstep"><b>Pré-triagem</b>de elegibilidade</div><span class="farrow">→</span>
+    <div class="fstep"><b>Encaminha o paciente</b>lead rastreável ao centro</div><span class="farrow">→</span>
+    <div class="fstep"><b>Inclusão</b>↑ recrutamento do patrocinador</div>
+  </div>
+
+  <div class="tiers">
+    <div class="tier"><span class="who">Centro recrutador</span><h4>Listagem básica</h4><span class="price">Grátis</span><ul><li>Ensaios abertos indexados</li><li>Selo "parceiro verificado"</li><li>Aparece na busca por cidade/tumor</li></ul></div>
+    <div class="tier feat"><span class="who">Centro · patrocinador</span><h4>Destaque patrocinado</h4><span class="price">R$ · mensal</span><ul><li>Slot "Destaque" no topo (rotulado)</li><li>Card ampliado + logo</li><li>Prioridade por tumor/região</li></ul></div>
+    <div class="tier"><span class="who">Centro recrutador</span><h4>Perfil + painel de leads</h4><span class="price">R$ · assinatura</span><ul><li>Página de vitrine do centro</li><li>Formulário de encaminhamento</li><li>Painel de leads e métricas</li></ul></div>
+    <div class="tier"><span class="who">Indústria farmacêutica</span><h4>Relatório de recrutamento</h4><span class="price">R$ · contrato</span><ul><li>Alcance por região e por ensaio</li><li>Leads e tempo até encaminhamento</li><li>Co-branding e dossiês de pipeline</li></ul></div>
+  </div>
+
+  <div class="note"><strong>Princípios inegociáveis:</strong> separação explícita entre conteúdo editorial e patrocinado (tudo rotulado "Patrocinado"); captura de leads conforme a LGPD; e o aviso permanente de que a ferramenta é educacional e não substitui a avaliação de elegibilidade formal pela equipe do centro.</div>
+</section>
+
+</div><!-- /wrap -->
+
+<script src="dados.js"></script>
+<script>
+/* ---------- helpers ---------- */
+function esc(s){return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
+function ufLabel(uf){return UF_CIDADE[uf]||uf}
+function centroCor(id){return (CENTROS[id]||{}).cor||'#FF8400'}
+function byId(id){return ENSAIOS.find(e=>e.id===id)}
+
+/* ---------- state ---------- */
+var selUF = new Set();
+
+/* ---------- init filters ---------- */
+(function init(){
+  var ft=document.getElementById('f-tumor');
+  Object.keys(TUMORES).sort((a,b)=>TUMORES[a].localeCompare(TUMORES[b])).forEach(k=>{var o=document.createElement('option');o.value=k;o.textContent=TUMORES[k];ft.appendChild(o)});
+  var sp=new Set(ENSAIOS.map(e=>e.patrocinador).filter(Boolean));
+  var fs=document.getElementById('f-spons');
+  [...sp].sort().forEach(s=>{var o=document.createElement('option');o.value=s;o.textContent=s;fs.appendChild(o)});
+  var fc=document.getElementById('f-centro');
+  Object.values(CENTROS).forEach(c=>{var o=document.createElement('option');o.value=c.id;o.textContent=c.curto;fc.appendChild(o)});
+  var ufs=new Set(); ENSAIOS.forEach(e=>e.ufs.forEach(u=>ufs.add(u)));
+  var chips=document.getElementById('ufchips');
+  chips.innerHTML='<span style="font-size:.72rem;color:var(--stone);align-self:center;margin-right:.2rem">Estado:</span>'+
+    [...ufs].sort().map(u=>'<span class="ufchip" data-uf="'+u+'" onclick="toggleUF(\''+u+'\')">'+u+' · '+esc(ufLabel(u))+'</span>').join('');
+  render();
+})();
+function toggleUF(u){selUF.has(u)?selUF.delete(u):selUF.add(u);document.querySelectorAll('.ufchip').forEach(c=>c.classList.toggle('on',selUF.has(c.dataset.uf)));render()}
+
+/* ---------- filtering + render results ---------- */
+function passes(e){
+  var tumor=document.getElementById('f-tumor').value;
+  var bio=document.getElementById('f-bio').value.trim().toLowerCase();
+  var spons=document.getElementById('f-spons').value;
+  var centro=document.getElementById('f-centro').value;
+  var onlyRec=document.getElementById('f-rec').checked;
+  var onlyTest=document.getElementById('f-test').checked;
+  if(tumor && e.tumor!==tumor) return false;
+  if(spons && e.patrocinador!==spons) return false;
+  if(centro && e.centro!==centro) return false;
+  if(onlyRec && !/recrut/i.test(e.status)) return false;
+  if(onlyTest && !e.testeFornecido) return false;
+  if(selUF.size && !e.ufs.some(u=>selUF.has(u))) return false;
+  if(bio){var hay=((e.biomarcadores||[]).join(' ')+' '+e.drogas+' '+e.cenario).toLowerCase();if(hay.indexOf(bio)===-1) return false}
+  return true;
+}
+function render(){
+  var list=ENSAIOS.filter(passes);
+  // destaque first
+  list.sort((a,b)=>(b.destaque?1:0)-(a.destaque?1:0));
+  document.getElementById('rcount').innerHTML='<strong>'+list.length+'</strong> ensaio'+(list.length===1?'':'s')+' · '+
+    list.filter(e=>e.testeFornecido).length+' com teste fornecido';
+  document.getElementById('results').innerHTML = list.length? list.map(cardHTML).join('') :
+    '<div class="card" style="padding:2.5rem;text-align:center;color:var(--stone)"><i data-lucide="search-x" style="width:38px;height:38px;opacity:.4"></i><p>Nenhum ensaio com esses filtros. Amplie os critérios.</p></div>';
+  lucide.createIcons();
+}
+function cardHTML(e){
+  var c=CENTROS[e.centro], cor=c.cor;
+  var bios=(e.biomarcadores||[]).map(b=>'<span class="tag bio">'+esc(b)+'</span>').join('');
+  var cities=e.ufs.map(ufLabel).join(' · ');
+  return '<div class="tcard'+(e.destaque?' spons':'')+'">'+
+    (e.destaque?'<div style="margin-bottom:.5rem"><span class="badge b-spons"><i data-lucide="megaphone" style="width:11px;height:11px"></i> Destaque · Patrocinado</span></div>':'')+
+    '<div class="tc-top">'+
+      '<span class="tc-center" style="background:'+cor+'1e;color:'+cor+'"><i data-lucide="building-2" style="width:12px;height:12px"></i> '+esc(c.curto)+'</span>'+
+      '<span class="tc-phase">'+esc(e.fase)+'</span>'+
+      '<span class="tag">'+esc(TUMORES[e.tumor])+'</span>'+
+      (/recrut/i.test(e.status)?'<span class="badge b-rec"><i data-lucide="dot" style="width:11px;height:11px"></i> Recrutando</span>':'')+
+      (e.testeFornecido?'<span class="badge b-test"><i data-lucide="flask-conical" style="width:11px;height:11px"></i> Teste grátis</span>':'')+
+    '</div>'+
+    '<div class="tc-title">'+esc(e.nome)+'</div>'+
+    '<div class="tc-cenario">'+esc(e.cenario)+'</div>'+
+    '<div class="tc-tags">'+bios+'<span class="tag">'+esc(e.drogas.length>54?e.drogas.slice(0,54)+'…':e.drogas)+'</span></div>'+
+    '<div class="tc-foot">'+
+      '<button class="btn btn-pri" onclick="go(\'ensaio\',\''+e.id+'\')"><i data-lucide="user-plus"></i> Encaminhar paciente</button>'+
+      '<button class="btn btn-ghost" onclick="go(\'ensaio\',\''+e.id+'\')"><i data-lucide="file-text"></i> Ver ensaio</button>'+
+      '<span class="tc-meta"><i data-lucide="map-pin"></i> '+esc(cities)+'</span>'+
+      '<span class="tc-meta"><i data-lucide="briefcase"></i> '+esc(e.patrocinador||'—')+'</span>'+
+    '</div>'+
+  '</div>';
+}
+
+/* ---------- detail view ---------- */
+function renderEnsaio(id){
+  var e=byId(id); if(!e){go('buscar');return}
+  var c=CENTROS[e.centro], cor=c.cor;
+  var arms='<div class="arm"><b>Intervenção</b>'+esc(e.drogas)+'</div>'+(e.comparador&&e.comparador!=='—'?'<div class="arm"><b>Comparador</b>'+esc(e.comparador)+'</div>':'');
+  var inc=(e.inclusao||[]).map(x=>'<div class="crit inc"><i data-lucide="check-circle-2"></i>'+esc(x)+'</div>').join('');
+  var exc=(e.exclusao||[]).filter(x=>x&&x!=='—').map(x=>'<div class="crit exc"><i data-lucide="x-circle"></i>'+esc(x)+'</div>').join('');
+  var pis=(e.pis||[]).map(p=>'<div class="piRow"><span class="uf">'+esc(p.uf)+'</span> <span>'+esc(p.nome)+'</span> <span style="margin-left:auto;color:var(--stone)">'+esc(ufLabel(p.uf))+'</span></div>').join('');
+  var psInc=(e.inclusao||[]).map((x,i)=>'<label class="ps-item"><input type="checkbox" data-k="inc" onchange="psCalc()"> '+esc(x)+'</label>').join('');
+  var psExc=(e.exclusao||[]).filter(x=>x&&x!=='—').map((x,i)=>'<label class="ps-item"><input type="checkbox" data-k="exc" onchange="psCalc()"> '+esc(x)+'</label>').join('');
+  var nctLink = e.nct? 'https://clinicaltrials.gov/study/'+e.nct : 'https://clinicaltrials.gov/search?cond='+encodeURIComponent(TUMORES[e.tumor])+'&term='+encodeURIComponent(e.nome)+'&locStr=Brazil';
+
+  document.getElementById('v-ensaio').innerHTML =
+   '<div class="back" onclick="go(\'buscar\')"><i data-lucide="arrow-left"></i> Voltar à busca</div>'+
+   '<div class="dhead">'+
+     '<span class="tc-center" style="background:'+cor+'1e;color:'+cor+';cursor:pointer" onclick="go(\'centro\',\''+c.id+'\')"><i data-lucide="building-2" style="width:12px;height:12px"></i> '+esc(c.curto)+'</span>'+
+     '<span class="tc-phase">'+esc(e.fase)+'</span><span class="tag">'+esc(TUMORES[e.tumor])+'</span>'+
+     (/recrut/i.test(e.status)?'<span class="badge b-rec"><i data-lucide="dot" style="width:11px;height:11px"></i> Recrutando</span>':'')+
+     (e.testeFornecido?'<span class="badge b-test"><i data-lucide="flask-conical" style="width:11px;height:11px"></i> Teste de biomarcador fornecido</span>':'')+
+     (e.destaque?'<span class="badge b-spons"><i data-lucide="megaphone" style="width:11px;height:11px"></i> Patrocinado</span>':'')+
+   '</div>'+
+   '<h1 class="h" style="margin:.2rem 0 .3rem">'+esc(e.nome)+'</h1>'+
+   '<p class="sub" style="margin-bottom:.5rem">'+esc(e.cenario)+'</p>'+
+   '<div style="display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:.5rem">'+(e.biomarcadores||[]).map(b=>'<span class="tag bio">'+esc(b)+'</span>').join('')+
+     '<span class="tag"><i data-lucide="briefcase" style="width:11px;height:11px;vertical-align:-2px"></i> '+esc(e.patrocinador||'—')+'</span></div>'+
+
+   '<div class="dgrid">'+
+     '<div>'+
+       '<div class="card block"><h3><i data-lucide="git-branch"></i> Braços de tratamento</h3>'+arms+'</div>'+
+       '<div class="card block"><h3><i data-lucide="list-checks"></i> Pré-triagem de elegibilidade <span style="font-weight:400;color:var(--stone);font-size:.72rem;margin-left:.3rem">(orientativa)</span></h3>'+
+         (psInc?'<div style="font-size:.74rem;color:var(--green);font-weight:600;margin:.2rem 0 .3rem">O paciente ATENDE a:</div>'+psInc:'')+
+         (psExc?'<div style="font-size:.74rem;color:#ef4444;font-weight:600;margin:.7rem 0 .3rem">O paciente NÃO possui:</div>'+psExc:'')+
+         '<div class="ps-verdict" id="ps-v"></div></div>'+
+       '<div class="card block"><h3><i data-lucide="clipboard-list"></i> Critérios principais</h3>'+
+         (inc?'<div style="font-size:.74rem;color:var(--stone);text-transform:uppercase;letter-spacing:.04em;margin-bottom:.3rem">Inclusão</div>'+inc:'')+
+         (exc?'<div style="font-size:.74rem;color:var(--stone);text-transform:uppercase;letter-spacing:.04em;margin:.7rem 0 .3rem">Exclusão</div>'+exc:'')+
+         '<a href="'+nctLink+'" target="_blank" rel="noopener" class="btn btn-ghost" style="margin-top:.8rem"><i data-lucide="external-link"></i> Critérios completos no ClinicalTrials.gov'+(e.nct?' · '+esc(e.nct):'')+'</a></div>'+
+     '</div>'+
+
+     '<div>'+
+       '<div class="card block" style="border-color:'+cor+'44">'+
+         '<h3><i data-lucide="send"></i> Encaminhar paciente</h3>'+
+         '<div id="ff-form">'+
+           '<div class="ff">'+
+             '<label>Seu nome (médico solicitante)</label><input id="ff-nome" placeholder="Dr(a). …">'+
+             '<label>CRM / UF</label><input id="ff-crm" placeholder="CRM 00000 / UF">'+
+             '<label>E-mail ou WhatsApp para retorno</label><input id="ff-cont" placeholder="email@… ou (00) 00000-0000">'+
+             '<label>Resumo de elegibilidade (opcional)</label><textarea id="ff-obs" rows="3" placeholder="Idade, biomarcador, linha, comorbidades…"></textarea>'+
+             '<button class="btn btn-pri" style="width:100%;justify-content:center;margin-top:.8rem" onclick="sendRef()"><i data-lucide="user-plus"></i> Enviar encaminhamento ao centro</button>'+
+             '<div style="font-size:.7rem;color:var(--stone2);margin-top:.6rem;line-height:1.5">Ao enviar, o centro recrutador recebe o lead e entra em contato. Ferramenta educacional — a elegibilidade final é confirmada pela equipe do estudo. (Demo: nada é enviado.)</div>'+
+           '</div>'+
+         '</div>'+
+         '<div class="ff-ok" id="ff-ok"><i data-lucide="check-circle-2" style="width:42px;height:42px;color:var(--green)"></i>'+
+           '<h3 style="justify-content:center;margin:.6rem 0 .3rem">Encaminhamento registrado</h3>'+
+           '<p style="font-size:.82rem;color:var(--stone)">O <strong>'+esc(c.curto)+'</strong> recebeu o lead e retornará pelo contato informado.<br><span style="color:var(--stone2);font-size:.72rem">(Demonstração — nenhum dado foi transmitido.)</span></p></div>'+
+       '</div>'+
+       '<div class="card block"><h3><i data-lucide="stethoscope"></i> Centros e investigadores</h3>'+(pis||'<div style="color:var(--stone);font-size:.84rem">'+esc(c.curto)+'</div>')+
+         '<div style="margin-top:.8rem;font-size:.78rem;color:var(--stone);display:flex;align-items:center;gap:.4rem"><i data-lucide="phone" style="width:13px;height:13px"></i> '+esc(e.contato||c.tel)+'</div></div>'+
+     '</div>'+
+   '</div>';
+  window.scrollTo(0,0); lucide.createIcons();
+}
+function psCalc(){
+  var incs=[...document.querySelectorAll('.ps-item input[data-k=inc]')];
+  var excs=[...document.querySelectorAll('.ps-item input[data-k=exc]')];
+  var allInc=incs.length>0 && incs.every(i=>i.checked);
+  var anyExc=excs.some(i=>i.checked);
+  var v=document.getElementById('ps-v'); if(!v) return;
+  if(incs.length===0 && excs.length===0){return}
+  if(allInc && !anyExc){v.className='ps-verdict ok';v.innerHTML='<i data-lucide="check-circle-2" style="width:15px;height:15px;vertical-align:-2px"></i> Perfil compatível — candidato potencial. Encaminhe ao centro para confirmação formal.'}
+  else{v.className='ps-verdict no';v.innerHTML='<i data-lucide="alert-triangle" style="width:15px;height:15px;vertical-align:-2px"></i> Pode não ser elegível com os itens marcados — vale discutir com o centro mesmo assim.'}
+  lucide.createIcons();
+}
+function sendRef(){
+  document.getElementById('ff-form').style.display='none';
+  document.getElementById('ff-ok').classList.add('show');
+  lucide.createIcons();
+}
+
+/* ---------- center profile ---------- */
+function renderCentro(id){
+  var c=CENTROS[id]; if(!c){go('buscar');return}
+  var list=ENSAIOS.filter(e=>e.centro===id);
+  var initials=c.curto.split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase();
+  document.getElementById('v-centro').innerHTML=
+   '<div class="back" onclick="go(\'buscar\')"><i data-lucide="arrow-left"></i> Voltar à busca</div>'+
+   '<div class="card cprofile">'+
+     '<div class="clogo" style="background:linear-gradient(135deg,'+c.cor+','+c.cor+'99)">'+esc(initials)+'</div>'+
+     '<div class="cmeta">'+
+       '<div style="font-family:Outfit;font-weight:800;font-size:1.4rem">'+esc(c.curto)+(c.verificado?'<span class="vbadge"><i data-lucide="badge-check" style="width:12px;height:12px"></i> Parceiro verificado</span>':'')+'</div>'+
+       '<div style="color:var(--stone);font-size:.86rem;margin:.3rem 0">'+esc(c.nome)+'</div>'+
+       '<div style="display:flex;flex-wrap:wrap;gap:1rem;margin-top:.6rem;font-size:.8rem;color:var(--stone)">'+
+         '<span><i data-lucide="map-pin" style="width:13px;height:13px;vertical-align:-2px"></i> '+esc(c.cobertura)+'</span>'+
+         '<span><i data-lucide="phone" style="width:13px;height:13px;vertical-align:-2px"></i> '+esc(c.tel)+'</span>'+
+         '<span><i data-lucide="globe" style="width:13px;height:13px;vertical-align:-2px"></i> '+esc(c.site)+'</span></div>'+
+       '<div style="margin-top:.5rem;font-size:.8rem;color:var(--off)"><i data-lucide="user-round" style="width:13px;height:13px;vertical-align:-2px;color:'+c.cor+'"></i> '+esc(c.lideres)+'</div>'+
+     '</div>'+
+     '<button class="btn btn-pri" onclick="go(\'painel\')"><i data-lucide="bar-chart-3"></i> Ver painel de leads</button>'+
+   '</div>'+
+   '<div class="eyebrow" style="margin-top:.5rem">'+list.length+' estudos abertos · vitrine do centro</div>'+
+   '<div class="results">'+list.map(cardHTML).join('')+'</div>';
+  window.scrollTo(0,0); lucide.createIcons();
+}
+
+/* ---------- painel ---------- */
+function renderPainel(){
+  var m=PAINEL_MOCK, maxV=Math.max(...m.porEnsaio.map(x=>x.views)), maxU=Math.max(...m.porUF.map(x=>x.v));
+  document.getElementById('painel-body').innerHTML=
+   '<div class="kpis">'+
+     '<div class="card kpi"><div class="n">'+m.visualizacoes.toLocaleString('pt-BR')+'</div><div class="l">Visualizações de ensaios</div><div class="d">▲ período: '+m.periodo+'</div></div>'+
+     '<div class="card kpi"><div class="n">'+m.encaminhamentos+'</div><div class="l">Encaminhamentos (leads) gerados</div><div class="d">▲ +'+m.encaminhamentos+' no período</div></div>'+
+     '<div class="card kpi"><div class="n">'+m.taxaConversao+'%</div><div class="l">Taxa de conversão visualização → lead</div></div>'+
+     '<div class="card kpi"><div class="n">'+m.porEnsaio.length+'</div><div class="l">Ensaios ativos com tráfego</div></div>'+
+   '</div>'+
+   '<div class="dgrid">'+
+     '<div class="card block"><h3><i data-lucide="bar-chart-3"></i> Desempenho por ensaio</h3>'+
+       m.porEnsaio.map(x=>'<div class="bar"><span class="nm">'+esc(x.ensaio)+'</span><span class="track"><span class="fill" style="width:'+Math.round(x.views/maxV*100)+'%"></span></span><span class="v">'+x.views+' · '+x.leads+' leads</span></div>').join('')+'</div>'+
+     '<div class="card block"><h3><i data-lucide="map"></i> Origem dos médicos (UF)</h3>'+
+       m.porUF.map(x=>'<div class="bar"><span class="nm">'+esc(x.uf)+'</span><span class="track"><span class="fill" style="width:'+Math.round(x.v/maxU*100)+'%;background:linear-gradient(90deg,var(--cyan),#67e8f9)"></span></span><span class="v">'+x.v+'%</span></div>').join('')+
+       '<div class="note" style="margin-top:1rem">Recorte por região mostra ao patrocinador onde concentrar centros e mídia — e ao centro, de onde vêm os encaminhamentos.</div></div>'+
+   '</div>'+
+   '<div class="card block"><h3><i data-lucide="inbox"></i> Leads recentes (amostra)</h3>'+
+     '<table class="leads"><thead><tr><th>Data</th><th>Ensaio</th><th>Médico</th><th>UF</th><th>Status</th></tr></thead><tbody>'+
+     [['07/05','SUNRAY-02','Dr. A. (oncologia)','SP','Contatado'],['06/05','CHERRY-PICK','Dra. M. (mastologia)','RJ','Triagem'],['05/05','CodeBreaK 202','Dr. R. (oncologia)','BA','Agendado'],['04/05','RLY-2608','Dra. L. (oncologia)','MG','Contatado']]
+       .map(r=>'<tr><td class="mono">'+r[0]+'</td><td>'+r[1]+'</td><td>'+r[2]+'</td><td class="mono">'+r[3]+'</td><td><span class="badge b-rec">'+r[4]+'</span></td></tr>').join('')+
+     '</tbody></table>'+
+     '<div class="note" style="margin-top:1rem"><strong>Este painel é o produto recorrente.</strong> O relatório mensal de alcance + leads é o que sustenta a assinatura do centro e o contrato com a indústria. (Dados de demonstração.)</div></div>';
+  lucide.createIcons();
+}
+
+/* ---------- router ---------- */
+function go(v,param){
+  document.querySelectorAll('.view').forEach(s=>s.classList.remove('on'));
+  document.getElementById('v-'+v).classList.add('on');
+  document.querySelectorAll('.vnav button').forEach(b=>b.classList.toggle('on', b.dataset.v===v || (v==='ensaio'&&b.dataset.v==='buscar')));
+  if(v==='ensaio') renderEnsaio(param);
+  else if(v==='centro') renderCentro(param||'oncoclinicas');
+  else if(v==='painel') renderPainel();
+  if(v==='buscar') window.scrollTo(0,0);
+  lucide.createIcons();
+}
+document.addEventListener('DOMContentLoaded',function(){lucide.createIcons()});
+</script>
+</body>
+</html>
