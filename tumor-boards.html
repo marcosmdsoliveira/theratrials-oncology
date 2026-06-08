@@ -853,7 +853,7 @@
 <section style="padding: 1.5rem 0 0">
   <div class="container">
     <div class="tbm-section-head"><h2>Mapas disponíveis</h2></div>
-    <p class="tbm-section-sub">Comece pelo mapa completo de câncer de próstata. Outros tumores estão em desenvolvimento.</p>
+    <p class="tbm-section-sub">Mapas completos de câncer de próstata e tumores neuroendócrinos. Outros tumores estão em desenvolvimento.</p>
     <div class="tumor-map-grid">
 
       <!-- PRÓSTATA — ativo -->
@@ -872,6 +872,28 @@
           <span class="mod-pill ac225">Ac-225</span>
           <span class="mod-pill stage">mCRPC</span>
           <span class="mod-pill stage">mHSPC</span>
+        </div>
+        <div class="tmc-foot">
+          <span class="tmc-open">Abrir mapa <i data-lucide="arrow-right" style="width:15px;height:15px"></i></span>
+        </div>
+      </article>
+
+      <!-- NET — ativo -->
+      <article class="tumor-map-card is-active" style="--accent-color:#10B981;--accent-rgb:16,185,129" @click="openTumorMap('net')" id="hub-net">
+        <div class="tmc-head">
+          <div class="tmc-icon"><i data-lucide="activity" style="width:24px;height:24px"></i></div>
+          <div>
+            <div class="tmc-title">Tumores neuroendócrinos</div>
+            <span class="tmc-status on">Mapa completo</span>
+          </div>
+        </div>
+        <div class="tmc-badges">
+          <span class="mod-pill">SSTR</span>
+          <span class="mod-pill lu177">Lu-177</span>
+          <span class="mod-pill">PRRT</span>
+          <span class="mod-pill ac225">α-PRRT</span>
+          <span class="mod-pill stage">G1–G3</span>
+          <span class="mod-pill stage">GEP-NET</span>
         </div>
         <div class="tmc-foot">
           <span class="tmc-open">Abrir mapa <i data-lucide="arrow-right" style="width:15px;height:15px"></i></span>
@@ -1728,6 +1750,789 @@
   </div>
 </section>
 
+<!-- MÓDULO: TUMOR BOARD MAP — TUMORES NEUROENDÓCRINOS (NET) -->
+<section x-show="openMap === 'net'" x-cloak id="map-net" style="padding:0">
+  <div class="container">
+    <div class="map-module" style="--accent-color:#10B981;--accent-rgb:16,185,129">
+
+      <button class="detail-back" @click="closeMap()">
+        <i data-lucide="arrow-left" style="width:14px;height:14px"></i>
+        <span>Voltar aos mapas</span>
+      </button>
+
+      <div class="mm-head">
+        <h1 class="mm-title"><i data-lucide="activity" style="width:30px;height:30px"></i> Tumor Board Map — Tumores Neuroendócrinos</h1>
+        <p class="mm-sub">Da biologia do receptor de somatostatina à PRRT com 177Lu-DOTATATE, critérios de seleção e estudos ativos.</p>
+      </div>
+
+      <nav class="mm-nav">
+        <a href="#net-1">1 · Visão geral</a>
+        <a href="#net-2">2 · Teoria essencial</a>
+        <a href="#net-3">3 · Perguntas do board</a>
+        <a href="#net-4">4 · Jornada terapêutica</a>
+        <a href="#net-5">5 · Jornada do paciente</a>
+        <a href="#net-6">6 · Mapa de evidências</a>
+        <a href="#net-7">7 · Estudos-chave</a>
+        <a href="#net-8">8 · Trial Lineage</a>
+        <a href="#net-9">9 · Critérios práticos</a>
+        <a href="#net-10">10 · Ensaios ativos</a>
+        <a href="#net-11">11 · Guidelines</a>
+        <a href="#net-12">12 · Ferramentas</a>
+        <a href="#net-13">13 · Checklists</a>
+        <a href="#net-14">14 · Próximos passos</a>
+      </nav>
+
+      <!-- 1. VISÃO GERAL -->
+      <div class="pm-block" id="net-1">
+        <div class="pm-block-head"><span class="pm-num">1</span><h3>Visão geral</h3></div>
+        <p class="pm-lead">Os <strong>NETs bem diferenciados que expressam receptores de somatostatina (SSTR)</strong> são o cenário de maior maturidade da PRRT com 177Lu-DOTATATE. A discussão em tumor board integra o grau e a diferenciação, o sítio primário e a funcionalidade, a expressão de SSTR na imagem, a extensão da doença, a função renal e hepática, os sintomas e a possibilidade de ensaio clínico.</p>
+      </div>
+
+      <!-- 2. TEORIA ESSENCIAL -->
+      <div class="pm-block" id="net-2">
+        <div class="pm-block-head"><span class="pm-num">2</span><h3>Teoria essencial</h3></div>
+        <div class="concept-grid">
+          <div class="concept-card">
+            <div class="cc-ic"><i data-lucide="crosshair" style="width:18px;height:18px"></i></div>
+            <h4>SSTR como alvo molecular</h4>
+            <p>Os NETs bem diferenciados superexpressam receptores de somatostatina, sobretudo o subtipo SSTR2. Esse alvo sustenta a imagem (DOTATATE), a terapia (PRRT) e a ação dos análogos de somatostatina.</p>
+          </div>
+          <div class="concept-card">
+            <div class="cc-ic"><i data-lucide="scan-line" style="width:18px;height:18px"></i></div>
+            <h4>Imagem molecular como ferramenta de seleção</h4>
+            <p>O 68Ga-DOTATATE PET/CT mapeia a expressão de SSTR (escore de Krenning) e seleciona candidatos a PRRT. O FDG PET complementa em tumores de alto grau ou com suspeita de doença discordante.</p>
+          </div>
+          <div class="concept-card">
+            <div class="cc-ic"><i data-lucide="atom" style="width:18px;height:18px"></i></div>
+            <h4>Terapia com radioligantes (PRRT)</h4>
+            <p>A PRRT acopla um análogo de somatostatina (DOTATATE) a um radionuclídeo terapêutico, entregando radiação às células que expressam SSTR — o princípio teranóstico clássico no NET.</p>
+          </div>
+          <div class="concept-card">
+            <div class="cc-ic"><i data-lucide="git-compare" style="width:18px;height:18px"></i></div>
+            <h4>Beta versus alfa-emissores</h4>
+            <p>O 177Lu-DOTATATE (beta) tem a evidência mais madura. Os alfa-emissores (212Pb, 225Ac) concentram alta energia em alcance curto, com potencial em doença refratária — ainda investigacionais.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. PERGUNTAS DO TUMOR BOARD -->
+      <div class="pm-block" id="net-3">
+        <div class="pm-block-head"><span class="pm-num">3</span><h3>Perguntas do tumor board</h3></div>
+        <p class="pm-lead">As perguntas que estruturam a decisão em tumor board, agrupadas por eixo.</p>
+        <div class="q-groups">
+          <div class="q-group">
+            <div class="q-group-title"><i data-lucide="layers"></i> Grau e diferenciação</div>
+            <ul>
+              <li>É NET bem diferenciado ou NEC pouco diferenciado?</li>
+              <li>Qual o grau (Ki67: G1, G2 ou G3)?</li>
+              <li>Qual o sítio primário e é funcionante?</li>
+            </ul>
+          </div>
+          <div class="q-group">
+            <div class="q-group-title"><i data-lucide="scan-line"></i> Imagem molecular</div>
+            <ul>
+              <li>A doença é SSTR-positiva (escore de Krenning suficiente)?</li>
+              <li>Há lesões SSTR-negativas ou discordantes?</li>
+              <li>Há indicação de FDG PET (alto grau ou desdiferenciação)?</li>
+            </ul>
+          </div>
+          <div class="q-group">
+            <div class="q-group-title"><i data-lucide="shield-alert"></i> Segurança e reserva clínica</div>
+            <ul>
+              <li>A função renal é adequada (eTFG)?</li>
+              <li>Há reserva medular adequada?</li>
+              <li>Há doença hepática extensa?</li>
+              <li>Há sintomas de síndrome carcinoide?</li>
+            </ul>
+          </div>
+          <div class="q-group">
+            <div class="q-group-title"><i data-lucide="target"></i> Objetivo terapêutico</div>
+            <ul>
+              <li>O objetivo é controle tumoral, controle de sintomas, antecipação da PRRT, ponte ou inclusão em ensaio?</li>
+            </ul>
+          </div>
+          <div class="q-group">
+            <div class="q-group-title"><i data-lucide="flask-conical"></i> Acesso e pesquisa clínica</div>
+            <ul>
+              <li>Existe opção aprovada e acesso local?</li>
+              <li>Há protocolo de pesquisa disponível ou necessidade de encaminhamento?</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. JORNADA TERAPÊUTICA -->
+      <div class="pm-block" id="net-4">
+        <div class="pm-block-head"><span class="pm-num">4</span><h3>Jornada terapêutica</h3></div>
+        <p class="pm-lead">A jornada no NET depende de dois eixos: a <strong>diferenciação/grau</strong> (NET bem-diferenciado vs NEC) e a <strong>extensão</strong> (ressecável vs metastático). Somados à expressão de SSTR, esses estados definem o papel da cirurgia, dos análogos de somatostatina, da PRRT, das terapias-alvo e da quimioterapia.</p>
+
+        <!-- Matriz de estados da doença -->
+        <div class="ds-matrix">
+          <div class="ds-corner"></div>
+          <div class="ds-colhead">Localizado / ressecável <small>M0</small></div>
+          <div class="ds-colhead">Metastático <small>M1</small></div>
+
+          <div class="ds-rowlabel hs">Bem-diferenciado (NET)</div>
+          <div class="ds-cell" style="--c:#34D399">
+            <div class="ds-tag">NET localizado / ressecável <span class="ds-m">M0</span></div>
+            <p class="ds-def">Doença confinada ou ressecável, <strong>bem diferenciada</strong>.</p>
+            <div class="ds-rx"><b>Tratamento típico</b>Cirurgia (intenção curativa) · vigilância em G1 selecionados</div>
+          </div>
+          <div class="ds-cell is-rlt" style="--c:#FF8400">
+            <div class="ds-tag">NET metastático SSTR+ <span class="ds-m">M1</span> <span class="ds-rlt-badge">PRRT</span></div>
+            <p class="ds-def">Bem diferenciado, metastático/irressecável, com <strong>expressão de SSTR</strong>.</p>
+            <div class="ds-rx"><b>Tratamento típico</b>SSA → <sup>177</sup>Lu-DOTATATE · everolimus · sunitinibe (pNET)</div>
+          </div>
+
+          <div class="ds-rowlabel cr">Pouco-diferenciado (NEC)</div>
+          <div class="ds-cell" style="--c:#C084FC">
+            <div class="ds-tag">NEC localizado (raro) <span class="ds-m">M0</span></div>
+            <p class="ds-def">Pouco diferenciado e localizado — apresentação incomum.</p>
+            <div class="ds-rx"><b>Tratamento típico</b>Cirurgia ± quimioterapia / radioterapia</div>
+          </div>
+          <div class="ds-cell" style="--c:#F472B6">
+            <div class="ds-tag">NEC G3 metastático <span class="ds-m">M1</span></div>
+            <p class="ds-def">Pouco diferenciado e metastático — comportamento agressivo.</p>
+            <div class="ds-rx"><b>Tratamento típico</b>Quimioterapia à base de platina · PRRT em casos selecionados SSTR+</div>
+          </div>
+        </div>
+
+        <div class="ds-legend">
+          <div><b>Grau / diferenciação</b> = Ki67 e morfologia (G1 &lt;3%, G2 3-20%, G3 &gt;20%; NET bem-diferenciado vs NEC pouco-diferenciado).</div>
+          <div><b>M0 vs M1</b> = doença ressecável/localizada vs metastática irressecável na imagem.</div>
+        </div>
+
+        <div class="ds-note">
+          <i data-lucide="git-pull-request-arrow" style="width:18px;height:18px"></i>
+          <p><b>Expressão de SSTR (porta da PRRT):</b> o 68Ga-DOTATATE PET e o escore de Krenning definem a elegibilidade para PRRT. Tumores SSTR-negativos ou predominantemente FDG-ávidos têm comportamento mais agressivo e racional terapêutico distinto.</p>
+        </div>
+
+        <div class="pm-subhead">
+          <i data-lucide="route" style="width:18px;height:18px"></i>
+          <h4>Onde cada modalidade entra</h4>
+        </div>
+        <p class="pm-lead">Onde cada modalidade entra ao longo da história do NET, com estudos reais — cirurgia, SSA, PRRT, terapias-alvo e quimioterapia. Clique para abrir a ficha; a lista completa está no <a href="database.html?cat=net" target="_blank" rel="noopener" style="color:var(--amber)">Database</a>.</p>
+        <div class="therapy-timeline">
+          <div class="tt-phase" style="--c:#34D399">
+            <span class="tt-dot"></span>
+            <h4>1 · Localizado / ressecável</h4>
+            <p>Cirurgia com intenção curativa; vigilância em G1 pequenos selecionados.</p>
+            <div class="esc-studies">
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#net_gep_20">ENETS / ESMO</a>
+            </div>
+            <div class="tt-tags"><span class="tt-mat high">Cirurgia estabelecida</span></div>
+          </div>
+          <div class="tt-phase" style="--c:#FF8400">
+            <span class="tt-dot"></span>
+            <h4>2 · Avançado bem-diferenciado · 1ª linha</h4>
+            <p>Análogos de somatostatina controlam sintomas e crescimento tumoral.</p>
+            <div class="esc-studies">
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#net_gep_11">PROMID</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#net_gep_12">CLARINET</a>
+            </div>
+            <div class="tt-tags"><span class="tt-mat high">SSA estabelecido</span></div>
+          </div>
+          <div class="tt-phase" style="--c:#FF8400">
+            <span class="tt-dot"></span>
+            <h4>3 · Progressão sob SSA</h4>
+            <p>PRRT, terapias-alvo e tratamento loco-regional (TARE) em doença hepática-dominante.</p>
+            <div class="esc-studies">
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#net_gep_0">NETTER-1</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#net_gep_14">RADIANT-4</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#net_gep_13">RADIANT-3</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#net_gep_15">Sunitinibe</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#net_gep_21">TARE</a>
+            </div>
+            <div class="tt-tags"><span class="tt-mat high">PRRT / alvo estabelecidos</span></div>
+          </div>
+          <div class="tt-phase" style="--c:#FF8400">
+            <span class="tt-dot"></span>
+            <h4>4 · PRRT — expansão de uso</h4>
+            <p>177Lu-DOTATATE movido para linhas mais precoces e graus mais altos (G2/G3).</p>
+            <div class="esc-studies">
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#net_gep_1">NETTER-2</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#net_gep_3">COMPETE</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#net_gep_5">COMPOSE</a>
+            </div>
+            <div class="tt-tags"><span class="tt-mat high">NETTER-2 (1ª linha G2/G3)</span><span class="tt-mat mid">Em expansão</span></div>
+          </div>
+          <div class="tt-phase" style="--c:#F472B6">
+            <span class="tt-dot"></span>
+            <h4>5 · NEC G3 / pouco diferenciado</h4>
+            <p>Quimioterapia à base de platina; capecitabina+temozolomida (CAPTEM) em pNET selecionados.</p>
+            <div class="esc-studies">
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#net_gep_16">NORDIC NEC</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#net_gep_17">CAPTEM (E2211)</a>
+            </div>
+            <div class="tt-tags"><span class="tt-mat mid">Quimioterapia (padrão NEC)</span></div>
+          </div>
+          <div class="tt-phase" style="--c:#F472B6">
+            <span class="tt-dot"></span>
+            <h4>6 · Refratário / novos emissores</h4>
+            <p>Alfa-PRRT (212Pb, 225Ac) e novos agentes; evidência clínica ainda precoce.</p>
+            <div class="esc-studies">
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#net_gep_8">ALPHAMEDIX</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#net_gep_9">VMT-α-NET</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#net_gep_10">67Cu-SARTATE</a>
+            </div>
+            <div class="tt-tags"><span class="tt-mat low">Experimental</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. JORNADA DO PACIENTE ATÉ PRRT -->
+      <div class="pm-block patient-journey-section" id="net-5">
+        <div class="pm-block-head"><span class="pm-num">5</span><h3>Jornada do Paciente até a PRRT</h3></div>
+        <p class="pm-lead" style="font-weight:600;color:var(--off-white)">Do diagnóstico e graduação à seleção por SSTR PET, discussão multidisciplinar, PRRT e monitoramento.</p>
+        <div class="edu-callout" style="max-width:none;margin:0 0 1.25rem">
+          <i data-lucide="info" style="width:18px;height:18px"></i>
+          <p>Esta seção tem finalidade educacional e de melhoria de jornada assistencial. Não define elegibilidade individual, não recomenda tratamento e não substitui julgamento médico, bula, guidelines, protocolos institucionais ou consulta às fontes primárias.</p>
+        </div>
+
+        <p class="pm-lead" style="margin-bottom:0.75rem">A existência da PRRT não basta. O paciente precisa ter o grau e a diferenciação definidos, a imagem de SSTR adequada, ser discutido em equipe e superar os gargalos de acesso. As etapas abaixo mapeiam esse percurso assistencial.</p>
+
+        <div class="journey-timeline">
+
+          <details class="journey-step-card" open>
+            <summary><span class="js-num">1</span><span class="js-step-title">Diagnóstico, diferenciação e graduação</span><i class="js-chev" data-lucide="chevron-right" style="width:16px;height:16px"></i></summary>
+            <div class="js-body">
+              <div class="js-row"><b>Objetivo</b>Definir histologia, diferenciação (NET vs NEC) e grau (Ki67).</div>
+              <div class="js-row"><b>Profissionais envolvidos</b>Patologia, oncologia, endocrinologia, cirurgia e medicina nuclear.</div>
+              <div class="js-row"><b>Dados necessários</b>Histologia, Ki67, sítio primário, funcionalidade e marcadores (cromogranina A, 5-HIAA).</div>
+              <div class="js-links">
+                <a class="js-link" target="_blank" rel="noopener" href="database.html?cat=net"><i data-lucide="database" style="width:12px;height:12px"></i> Database</a>
+                <a class="js-link" target="_blank" rel="noopener" href="ferramentas.html#tne"><i data-lucide="gauge" style="width:12px;height:12px"></i> Scores de NET</a>
+                <a class="js-link" href="#net-6"><i data-lucide="map" style="width:12px;height:12px"></i> Mapa de evidências</a>
+              </div>
+            </div>
+          </details>
+
+          <details class="journey-step-card">
+            <summary><span class="js-num">2</span><span class="js-step-title">Estadiamento e SSTR PET</span><i class="js-chev" data-lucide="chevron-right" style="width:16px;height:16px"></i></summary>
+            <div class="js-body">
+              <div class="js-row"><b>Objetivo</b>Estadiar e avaliar a expressão de SSTR para selecionar a PRRT.</div>
+              <div class="js-row"><b>Profissionais envolvidos</b>Medicina nuclear, radiologia e oncologia.</div>
+              <div class="js-row"><b>Dados necessários</b>68Ga-DOTATATE PET com escore de Krenning, TC/RM e FDG PET quando G3 ou discordância.</div>
+              <div class="js-links">
+                <a class="js-link" target="_blank" rel="noopener" href="ferramentas.html#tne"><i data-lucide="gauge" style="width:12px;height:12px"></i> Krenning / SSTR-RADS</a>
+                <a class="js-link" target="_blank" rel="noopener" href="guideline-detail.html#prrt-sstr-pet-imaging-2023"><i data-lucide="book-open" style="width:12px;height:12px"></i> Imagem SSTR PET</a>
+                <a class="js-link" target="_blank" rel="noopener" href="database.html?cat=net"><i data-lucide="database" style="width:12px;height:12px"></i> Database</a>
+              </div>
+            </div>
+          </details>
+
+          <details class="journey-step-card">
+            <summary><span class="js-num">3</span><span class="js-step-title">Identificação do candidato potencial à PRRT</span><i class="js-chev" data-lucide="chevron-right" style="width:16px;height:16px"></i></summary>
+            <div class="js-body">
+              <div class="js-row"><b>Objetivo</b>Reconhecer pacientes que podem se beneficiar de avaliação multidisciplinar para PRRT ou ensaios clínicos.</div>
+              <div class="js-row"><b>Profissionais envolvidos</b>Oncologia e medicina nuclear.</div>
+              <div class="js-row"><b>Dados necessários</b>Estado da doença, tratamentos prévios, performance status, função renal e medular, extensão tumoral.</div>
+              <div class="js-row" style="font-size:0.76rem;color:var(--stone-2)"><b>Linguagem</b>Preferir “candidato potencial para discussão”, “paciente a ser avaliado” ou “adequado para revisão multidisciplinar” — evitar afirmar “paciente elegível”, que exige avaliação formal pela equipe responsável.</div>
+              <div class="js-links">
+                <a class="js-link" href="#net-13"><i data-lucide="clipboard-check" style="width:12px;height:12px"></i> Checklist de encaminhamento</a>
+                <a class="js-link" href="#net-9"><i data-lucide="list-checks" style="width:12px;height:12px"></i> Critérios práticos</a>
+                <a class="js-link" target="_blank" rel="noopener" href="database.html?cat=net"><i data-lucide="database" style="width:12px;height:12px"></i> Database</a>
+              </div>
+            </div>
+          </details>
+
+          <details class="journey-step-card">
+            <summary><span class="js-num">4</span><span class="js-step-title">SSTR vs FDG e avaliação de heterogeneidade</span><i class="js-chev" data-lucide="chevron-right" style="width:16px;height:16px"></i></summary>
+            <div class="js-body">
+              <div class="js-row"><b>Objetivo</b>Avaliar a expressão de SSTR e identificar doença discordante ou heterogênea.</div>
+              <div class="js-row"><b>Profissionais envolvidos</b>Medicina nuclear, radiologia e oncologia.</div>
+              <div class="js-row"><b>Dados necessários</b>SSTR PET recente, escore de Krenning, FDG PET, lesões SSTR-negativas e comparação com exames prévios.</div>
+              <div class="js-links">
+                <a class="js-link" target="_blank" rel="noopener" href="ferramentas.html#tne"><i data-lucide="gauge" style="width:12px;height:12px"></i> Scores de NET</a>
+                <a class="js-link" target="_blank" rel="noopener" href="guideline-detail.html#prrt-eanm-iaea-snmmi-2026"><i data-lucide="book-open" style="width:12px;height:12px"></i> Guidelines PRRT</a>
+                <a class="js-link" href="#net-13"><i data-lucide="clipboard-check" style="width:12px;height:12px"></i> Checklist de apresentação</a>
+              </div>
+            </div>
+          </details>
+
+          <details class="journey-step-card">
+            <summary><span class="js-num">5</span><span class="js-step-title">Discussão em tumor board</span><i class="js-chev" data-lucide="chevron-right" style="width:16px;height:16px"></i></summary>
+            <div class="js-body">
+              <div class="js-row"><b>Objetivo</b>Integrar evidência, imagem, história terapêutica, segurança, acesso e pesquisa clínica.</div>
+              <div class="js-row"><b>Profissionais envolvidos</b>Oncologia, medicina nuclear, radiologia, endocrinologia, cirurgia, pesquisa clínica, enfermagem e física médica/radioproteção (quando aplicável).</div>
+              <div class="js-row"><b>Dados necessários</b>Caso completo com pergunta clínica objetiva, grau/diferenciação, status de imagem e dados de segurança.</div>
+              <div class="js-links">
+                <a class="js-link" href="#net-13"><i data-lucide="clipboard-check" style="width:12px;height:12px"></i> Checklist de apresentação</a>
+                <a class="js-link" href="#net-11"><i data-lucide="book-open" style="width:12px;height:12px"></i> Guidelines</a>
+                <a class="js-link" href="#net-10"><i data-lucide="microscope" style="width:12px;height:12px"></i> Ensaios ativos</a>
+              </div>
+            </div>
+          </details>
+
+          <details class="journey-step-card">
+            <summary><span class="js-num">6</span><span class="js-step-title">Pré-terapia, documentação e acesso</span><i class="js-chev" data-lucide="chevron-right" style="width:16px;height:16px"></i></summary>
+            <div class="js-body">
+              <div class="js-row"><b>Objetivo</b>Organizar exames, proteção renal, autorizações, relatório médico, agendamento e logística do radiofármaco.</div>
+              <div class="js-row"><b>Profissionais envolvidos</b>Medicina nuclear, oncologia, enfermagem, equipe administrativa e física médica/radioproteção.</div>
+              <div class="js-row"><b>Dados necessários</b>Relatório médico, laudo de SSTR PET, exames laboratoriais, função renal, hemograma, autorização, termo de consentimento e orientações de radioproteção.</div>
+              <div class="js-links">
+                <a class="js-link" href="#net-13"><i data-lucide="clipboard-check" style="width:12px;height:12px"></i> Checklist de pré-terapia</a>
+                <a class="js-link" target="_blank" rel="noopener" href="ferramentas.html#renal"><i data-lucide="droplet" style="width:12px;height:12px"></i> Função renal</a>
+                <a class="js-link" target="_blank" rel="noopener" href="guideline-detail.html#service-eanm-snmmi-iaea-2022"><i data-lucide="book-open" style="width:12px;height:12px"></i> Serviço/radioproteção</a>
+              </div>
+            </div>
+          </details>
+
+          <details class="journey-step-card">
+            <summary><span class="js-num">7</span><span class="js-step-title">Administração e monitoramento</span><i class="js-chev" data-lucide="chevron-right" style="width:16px;height:16px"></i></summary>
+            <div class="js-body">
+              <div class="js-row"><b>Objetivo</b>Realizar a PRRT com segurança (proteção renal com aminoácidos) e monitorar toxicidade e resposta entre ciclos.</div>
+              <div class="js-row"><b>Profissionais envolvidos</b>Medicina nuclear, enfermagem, física médica e oncologia.</div>
+              <div class="js-row"><b>Dados necessários</b>Exames pré-ciclo, função renal, hemograma, sintomas, toxicidades, medicações concomitantes e resposta.</div>
+              <div class="js-links">
+                <a class="js-link" target="_blank" rel="noopener" href="ferramentas.html#ctcae"><i data-lucide="alert-triangle" style="width:12px;height:12px"></i> CTCAE</a>
+                <a class="js-link" target="_blank" rel="noopener" href="ferramentas.html#renal"><i data-lucide="droplet" style="width:12px;height:12px"></i> Função renal</a>
+                <a class="js-link" target="_blank" rel="noopener" href="guideline-detail.html#dosim-eanm-lu177-2022"><i data-lucide="book-open" style="width:12px;height:12px"></i> Dosimetria 177Lu</a>
+              </div>
+            </div>
+          </details>
+
+          <details class="journey-step-card">
+            <summary><span class="js-num">8</span><span class="js-step-title">Seguimento, resposta e próxima linha</span><i class="js-chev" data-lucide="chevron-right" style="width:16px;height:16px"></i></summary>
+            <div class="js-body">
+              <div class="js-row"><b>Objetivo</b>Avaliar resposta, progressão, toxicidade tardia e próximas opções terapêuticas ou ensaios clínicos.</div>
+              <div class="js-row"><b>Profissionais envolvidos</b>Oncologia, medicina nuclear e radiologia.</div>
+              <div class="js-row"><b>Dados necessários</b>Imagem (SSTR PET, TC/RM), marcadores, performance status e toxicidade acumulada.</div>
+              <div class="js-links">
+                <a class="js-link" target="_blank" rel="noopener" href="trial-matcher.html"><i data-lucide="git-compare" style="width:12px;height:12px"></i> Trial Matcher</a>
+                <a class="js-link" target="_blank" rel="noopener" href="ensaios-clinicos.html"><i data-lucide="microscope" style="width:12px;height:12px"></i> Ensaios ativos</a>
+                <a class="js-link" target="_blank" rel="noopener" href="database.html?cat=net"><i data-lucide="database" style="width:12px;height:12px"></i> Database</a>
+              </div>
+            </div>
+          </details>
+
+        </div>
+
+        <!-- Gargalos -->
+        <details class="pm-collapse">
+          <summary class="pm-subhead" id="net-5-gargalos">
+            <i data-lucide="alert-triangle" style="width:18px;height:18px"></i>
+            <h4>Gargalos da Jornada e Oportunidades de Otimização</h4>
+            <span class="pm-collapse-hint">10 gargalos + indicadores</span>
+            <i class="pm-collapse-chev" data-lucide="chevron-right" style="width:16px;height:16px"></i>
+          </summary>
+        <p class="pm-lead">Os indicadores abaixo são apresentados como <strong>métricas de melhoria institucional</strong> — não são metas promocionais nem comerciais, e devem ser adaptados ao contexto de cada serviço.</p>
+        <div class="bottleneck-grid">
+
+          <div class="journey-bottleneck-card">
+            <div class="jb-title"><span class="jb-n">1</span> Grau / diferenciação não definidos (Ki67 ausente)</div>
+            <div class="jb-row"><b>Consequência</b>Estado da doença mal classificado; conduta inadequada ao grau.</div>
+            <div class="jb-row opt"><b>Oportunidade</b>Revisão patológica com Ki67 e diferenciação padronizados.</div>
+            <div class="jb-foot"><a class="js-link" target="_blank" rel="noopener" href="ferramentas.html#tne"><i data-lucide="gauge" style="width:12px;height:12px"></i> Scores de NET</a><span class="institutional-metric">% laudos com Ki67 e diferenciação</span></div>
+          </div>
+
+          <div class="journey-bottleneck-card">
+            <div class="jb-title"><span class="jb-n">2</span> SSTR PET solicitado tarde</div>
+            <div class="jb-row"><b>Consequência</b>Atraso na seleção da PRRT e na decisão.</div>
+            <div class="jb-row opt"><b>Oportunidade</b>Fluxos de indicação de imagem por linha terapêutica.</div>
+            <div class="jb-foot"><a class="js-link" target="_blank" rel="noopener" href="guideline-detail.html#prrt-sstr-pet-imaging-2023"><i data-lucide="book-open" style="width:12px;height:12px"></i> Imagem SSTR PET</a><span class="institutional-metric">Tempo: progressão → SSTR PET</span></div>
+          </div>
+
+          <div class="journey-bottleneck-card">
+            <div class="jb-title"><span class="jb-n">3</span> Laudo SSTR PET sem escore de Krenning</div>
+            <div class="jb-row"><b>Consequência</b>Informação insuficiente para o tumor board decidir.</div>
+            <div class="jb-row opt"><b>Oportunidade</b>Modelo de laudo orientado à PRRT (ver elementos abaixo).</div>
+            <div class="jb-foot"><a class="js-link" target="_blank" rel="noopener" href="ferramentas.html#tne"><i data-lucide="gauge" style="width:12px;height:12px"></i> Krenning / SSTR-RADS</a><span class="institutional-metric">% laudos com escore de Krenning</span></div>
+          </div>
+
+          <div class="journey-bottleneck-card">
+            <div class="jb-title"><span class="jb-n">4</span> Falta de FDG PET em alto grau / discordância</div>
+            <div class="jb-row"><b>Consequência</b>Subestima agressividade e doença desdiferenciada.</div>
+            <div class="jb-row opt"><b>Oportunidade</b>Considerar FDG PET em G3 e suspeita de discordância.</div>
+            <div class="jb-foot"><a class="js-link" target="_blank" rel="noopener" href="guideline-detail.html#prrt-eanm-iaea-snmmi-2026"><i data-lucide="book-open" style="width:12px;height:12px"></i> Guidelines PRRT</a><span class="institutional-metric">% G3 com FDG PET avaliado</span></div>
+          </div>
+
+          <div class="journey-bottleneck-card">
+            <div class="jb-title"><span class="jb-n">5</span> Encaminhamento tardio à medicina nuclear</div>
+            <div class="jb-row"><b>Consequência</b>Paciente com ECOG ou reserva comprometidos na avaliação.</div>
+            <div class="jb-row opt"><b>Oportunidade</b>Encaminhamento precoce; critérios educacionais de triagem.</div>
+            <div class="jb-foot"><a class="js-link" href="#net-13"><i data-lucide="clipboard-check" style="width:12px;height:12px"></i> Checklist de encaminhamento</a><span class="institutional-metric">Tempo: SSTR PET → avaliação em medicina nuclear</span></div>
+          </div>
+
+          <div class="journey-bottleneck-card">
+            <div class="jb-title"><span class="jb-n">6</span> Dados clínicos incompletos para tumor board</div>
+            <div class="jb-row"><b>Consequência</b>Discussão improdutiva; decisões adiadas.</div>
+            <div class="jb-row opt"><b>Oportunidade</b>Checklist pré-board; apresentação padronizada.</div>
+            <div class="jb-foot"><a class="js-link" href="#net-13"><i data-lucide="clipboard-check" style="width:12px;height:12px"></i> Checklist de apresentação</a><span class="institutional-metric">% casos com checklist completo</span></div>
+          </div>
+
+          <div class="journey-bottleneck-card">
+            <div class="jb-title"><span class="jb-n">7</span> Documentação insuficiente para autorização</div>
+            <div class="jb-row"><b>Consequência</b>Atraso ou negativa de autorização.</div>
+            <div class="jb-row opt"><b>Oportunidade</b>Pacote documental padronizado.</div>
+            <div class="jb-foot"><a class="js-link" href="#net-13"><i data-lucide="clipboard-check" style="width:12px;height:12px"></i> Checklist de pré-terapia</a><span class="institutional-metric">% processos com documentação completa na 1ª submissão</span></div>
+          </div>
+
+          <div class="journey-bottleneck-card">
+            <div class="jb-title"><span class="jb-n">8</span> Atraso entre decisão e primeiro ciclo</div>
+            <div class="jb-row"><b>Consequência</b>Progressão no intervalo; perda de oportunidade terapêutica.</div>
+            <div class="jb-row opt"><b>Oportunidade</b>Fluxo logístico com responsáveis definidos.</div>
+            <div class="jb-foot"><a class="js-link" href="#net-13"><i data-lucide="clipboard-check" style="width:12px;height:12px"></i> Checklist de pré-terapia</a><span class="institutional-metric">Tempo: decisão em tumor board → primeiro ciclo</span></div>
+          </div>
+
+          <div class="journey-bottleneck-card">
+            <div class="jb-title"><span class="jb-n">9</span> Monitoramento renal/hematológico irregular</div>
+            <div class="jb-row"><b>Consequência</b>Toxicidade reconhecida tardiamente (a função renal é crítica na PRRT).</div>
+            <div class="jb-row opt"><b>Oportunidade</b>Calendário de ciclos, proteção renal e lembretes laboratoriais.</div>
+            <div class="jb-foot"><a class="js-link" target="_blank" rel="noopener" href="ferramentas.html#renal"><i data-lucide="droplet" style="width:12px;height:12px"></i> Função renal</a><span class="institutional-metric">% ciclos com exames dentro do prazo</span></div>
+          </div>
+
+          <div class="journey-bottleneck-card">
+            <div class="jb-title"><span class="jb-n">10</span> Falta de reavaliação estruturada pós-PRRT</div>
+            <div class="jb-row"><b>Consequência</b>Demora para rediscussão e definição da próxima linha.</div>
+            <div class="jb-row opt"><b>Oportunidade</b>Fluxo de reavaliação; integração com Trial Matcher.</div>
+            <div class="jb-foot"><a class="js-link" target="_blank" rel="noopener" href="trial-matcher.html"><i data-lucide="git-compare" style="width:12px;height:12px"></i> Trial Matcher</a><span class="institutional-metric">% pacientes rediscutidos / avaliados para ensaio quando aplicável</span></div>
+          </div>
+
+        </div>
+        </details>
+
+        <!-- Elementos do laudo SSTR PET -->
+        <details class="pm-collapse">
+          <summary class="pm-subhead">
+            <i data-lucide="file-text" style="width:18px;height:18px"></i>
+            <h4>Elementos úteis em um laudo de SSTR PET orientado à discussão terapêutica</h4>
+            <span class="pm-collapse-hint">12 elementos</span>
+            <i class="pm-collapse-chev" data-lucide="chevron-right" style="width:16px;height:16px"></i>
+          </summary>
+        <p class="pm-lead">Lista educacional de elementos que tornam um laudo de SSTR PET mais útil para a discussão em tumor board. Não é um modelo de laudo completo e <strong>não afirma elegibilidade automática</strong> — a interpretação final é sempre clínica e multidisciplinar.</p>
+        <div class="psma-report-elements">
+          <div class="pre-item"><i data-lucide="dot" style="width:14px;height:14px"></i> Radiotraçador utilizado (68Ga-DOTATATE/DOTATOC/DOTANOC)</div>
+          <div class="pre-item"><i data-lucide="dot" style="width:14px;height:14px"></i> Data do exame</div>
+          <div class="pre-item"><i data-lucide="dot" style="width:14px;height:14px"></i> Indicação clínica</div>
+          <div class="pre-item"><i data-lucide="dot" style="width:14px;height:14px"></i> Escore de Krenning / intensidade de captação</div>
+          <div class="pre-item"><i data-lucide="dot" style="width:14px;height:14px"></i> Distribuição da doença</div>
+          <div class="pre-item"><i data-lucide="dot" style="width:14px;height:14px"></i> Lesões de maior carga tumoral</div>
+          <div class="pre-item"><i data-lucide="dot" style="width:14px;height:14px"></i> Lesões com baixa ou ausente expressão de SSTR</div>
+          <div class="pre-item"><i data-lucide="dot" style="width:14px;height:14px"></i> Doença hepática e sua extensão</div>
+          <div class="pre-item"><i data-lucide="dot" style="width:14px;height:14px"></i> Achados em FDG PET, quando disponível (discordância)</div>
+          <div class="pre-item"><i data-lucide="dot" style="width:14px;height:14px"></i> Comparação com exames anteriores</div>
+          <div class="pre-item"><i data-lucide="dot" style="width:14px;height:14px"></i> Impressão final orientada à pergunta clínica</div>
+          <div class="pre-item"><i data-lucide="dot" style="width:14px;height:14px"></i> Recomendação de correlação clínica e discussão multidisciplinar</div>
+        </div>
+        </details>
+      </div>
+
+      <!-- 6. MAPA DE EVIDÊNCIAS -->
+      <div class="pm-block" id="net-6">
+        <div class="pm-block-head"><span class="pm-num">6</span><h3>Mapa de evidências</h3></div>
+        <p class="pm-lead">Cenários clínicos e os estudos-chave associados. Clique em um estudo para abrir sua ficha no Database.</p>
+        <div class="evidence-map">
+          <div class="evidence-scenario-card" style="--sc-color:#34D399">
+            <span class="esc-tag">Cenário A · midgut pós-SSA</span>
+            <div class="esc-title">NET de intestino médio, progressão sob SSA</div>
+            <div class="esc-studies">
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#net_gep_0"><i data-lucide="file-text" style="width:11px;height:11px"></i> NETTER-1</a>
+            </div>
+            <p class="esc-msg">Onde a PRRT (177Lu-DOTATATE) tem a evidência mais madura, após progressão sob análogo de somatostatina.</p>
+          </div>
+          <div class="evidence-scenario-card" style="--sc-color:#60A5FA">
+            <span class="esc-tag">Cenário B · G2/G3 1ª linha</span>
+            <div class="esc-title">GEP-NET de grau mais alto</div>
+            <div class="esc-studies">
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#net_gep_1"><i data-lucide="file-text" style="width:11px;height:11px"></i> NETTER-2</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#net_gep_3"><i data-lucide="file-text" style="width:11px;height:11px"></i> COMPETE</a>
+            </div>
+            <p class="esc-msg">PRRT movida para linha mais precoce e graus mais altos. Evidência em expansão.</p>
+          </div>
+          <div class="evidence-scenario-card" style="--sc-color:#C084FC">
+            <span class="esc-tag">Cenário C · terapia-alvo (pNET)</span>
+            <div class="esc-title">NET pancreático avançado</div>
+            <div class="esc-studies">
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#net_gep_13"><i data-lucide="file-text" style="width:11px;height:11px"></i> RADIANT-3</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#net_gep_15"><i data-lucide="file-text" style="width:11px;height:11px"></i> Sunitinibe</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#net_gep_14"><i data-lucide="file-text" style="width:11px;height:11px"></i> RADIANT-4</a>
+            </div>
+            <p class="esc-msg">Everolimus e sunitinibe controlam a doença avançada; a sequência com a PRRT é definida caso a caso.</p>
+          </div>
+          <div class="evidence-scenario-card" style="--sc-color:#94A3B8">
+            <span class="esc-tag">Cenário D · controle com SSA</span>
+            <div class="esc-title">Avançado bem-diferenciado, 1ª linha</div>
+            <div class="esc-studies">
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#net_gep_11"><i data-lucide="file-text" style="width:11px;height:11px"></i> PROMID</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#net_gep_12"><i data-lucide="file-text" style="width:11px;height:11px"></i> CLARINET</a>
+            </div>
+            <p class="esc-msg">Análogos de somatostatina como base do controle tumoral e sintomático.</p>
+          </div>
+          <div class="evidence-scenario-card" style="--sc-color:#F472B6">
+            <span class="esc-tag">Cenário E · NEC e novos emissores</span>
+            <div class="esc-title">Pouco diferenciado / experimental</div>
+            <div class="esc-studies">
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#net_gep_16"><i data-lucide="file-text" style="width:11px;height:11px"></i> NORDIC NEC</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#net_gep_17"><i data-lucide="file-text" style="width:11px;height:11px"></i> CAPTEM</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#net_gep_8"><i data-lucide="file-text" style="width:11px;height:11px"></i> ALPHAMEDIX</a>
+            </div>
+            <p class="esc-msg">NEC G3 tratado com quimioterapia; alfa-emissores em investigação para doença SSTR+ refratária.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7. ESTUDOS-CHAVE -->
+      <div class="pm-block" id="net-7">
+        <div class="pm-block-head"><span class="pm-num">7</span><h3>Estudos-chave</h3></div>
+        <p class="pm-lead">Desenho dos principais estudos. <strong>Resultados, desfechos e toxicidades ficam na ficha de cada um no Database</strong> — este mapa não reproduz hazard ratios, valores de p ou taxas de resposta.</p>
+        <div class="keystudy-grid">
+          <div class="keystudy-card">
+            <div class="ks-top"><span class="ks-name">NETTER-1</span><span class="ks-scn">midgut pós-SSA</span></div>
+            <div class="ks-row"><b>População</b>NET de intestino médio avançado, em progressão sob análogo de somatostatina.</div>
+            <div class="ks-row"><b>Intervenção / comparador</b>177Lu-DOTATATE + octreotida LAR vs octreotida LAR em alta dose.</div>
+            <p class="ks-msg">Base da aprovação da PRRT em NET; seleção por expressão de SSTR.</p>
+            <div class="ks-foot"><a class="ks-link" target="_blank" rel="noopener" href="database.html#net_gep_0"><i data-lucide="database" style="width:13px;height:13px"></i> Ficha no Database</a></div>
+          </div>
+          <div class="keystudy-card">
+            <div class="ks-top"><span class="ks-name">NETTER-2</span><span class="ks-scn">G2/G3 1ª linha</span></div>
+            <div class="ks-row"><b>População</b>GEP-NET G2/G3 avançado, em 1ª linha.</div>
+            <div class="ks-row"><b>Intervenção / comparador</b>177Lu-DOTATATE + SSA vs SSA em alta dose.</div>
+            <p class="ks-msg">Move a PRRT para a 1ª linha em graus mais altos.</p>
+            <div class="ks-foot"><a class="ks-link" target="_blank" rel="noopener" href="database.html#net_gep_1"><i data-lucide="database" style="width:13px;height:13px"></i> Ficha no Database</a></div>
+          </div>
+          <div class="keystudy-card">
+            <div class="ks-top"><span class="ks-name">CLARINET</span><span class="ks-scn">SSA</span></div>
+            <div class="ks-row"><b>População</b>NET enteropancreático não-funcionante.</div>
+            <div class="ks-row"><b>Intervenção / comparador</b>Lanreotida vs placebo.</div>
+            <p class="ks-msg">Efeito antitumoral do análogo de somatostatina.</p>
+            <div class="ks-foot"><a class="ks-link" target="_blank" rel="noopener" href="database.html#net_gep_12"><i data-lucide="database" style="width:13px;height:13px"></i> Ficha no Database</a></div>
+          </div>
+          <div class="keystudy-card">
+            <div class="ks-top"><span class="ks-name">PROMID</span><span class="ks-scn">SSA · midgut</span></div>
+            <div class="ks-row"><b>População</b>NET de intestino médio.</div>
+            <div class="ks-row"><b>Intervenção / comparador</b>Octreotida LAR vs placebo.</div>
+            <p class="ks-msg">Controle de progressão com análogo de somatostatina.</p>
+            <div class="ks-foot"><a class="ks-link" target="_blank" rel="noopener" href="database.html#net_gep_11"><i data-lucide="database" style="width:13px;height:13px"></i> Ficha no Database</a></div>
+          </div>
+          <div class="keystudy-card">
+            <div class="ks-top"><span class="ks-name">RADIANT-4</span><span class="ks-scn">alvo · GI/pulmão</span></div>
+            <div class="ks-row"><b>População</b>NET não-funcionante de pulmão ou trato gastrointestinal.</div>
+            <div class="ks-row"><b>Intervenção / comparador</b>Everolimus vs placebo.</div>
+            <p class="ks-msg">Inibição de mTOR como opção em NET não-funcionante.</p>
+            <div class="ks-foot"><a class="ks-link" target="_blank" rel="noopener" href="database.html#net_gep_14"><i data-lucide="database" style="width:13px;height:13px"></i> Ficha no Database</a></div>
+          </div>
+          <div class="keystudy-card">
+            <div class="ks-top"><span class="ks-name">Sunitinibe</span><span class="ks-scn">alvo · pNET</span></div>
+            <div class="ks-row"><b>População</b>NET pancreático avançado.</div>
+            <div class="ks-row"><b>Intervenção / comparador</b>Sunitinibe vs placebo.</div>
+            <p class="ks-msg">Antiangiogênico no pNET.</p>
+            <div class="ks-foot"><a class="ks-link" target="_blank" rel="noopener" href="database.html#net_gep_15"><i data-lucide="database" style="width:13px;height:13px"></i> Ficha no Database</a></div>
+          </div>
+          <div class="keystudy-card">
+            <div class="ks-top"><span class="ks-name">NORDIC NEC</span><span class="ks-scn">NEC G3</span></div>
+            <div class="ks-row"><b>População</b>NEC gastrointestinal pouco diferenciado.</div>
+            <div class="ks-row"><b>Intervenção</b>Quimioterapia à base de platina (estudo observacional).</div>
+            <p class="ks-msg">Referência de manejo do NEC G3 pouco diferenciado.</p>
+            <div class="ks-foot"><a class="ks-link" target="_blank" rel="noopener" href="database.html#net_gep_16"><i data-lucide="database" style="width:13px;height:13px"></i> Ficha no Database</a></div>
+          </div>
+          <div class="keystudy-card">
+            <div class="ks-top"><span class="ks-name">CAPTEM (E2211)</span><span class="ks-scn">pNET</span></div>
+            <div class="ks-row"><b>População</b>NET pancreático avançado.</div>
+            <div class="ks-row"><b>Intervenção / comparador</b>Capecitabina + temozolomida vs temozolomida.</div>
+            <p class="ks-msg">Esquema oral ativo no pNET.</p>
+            <div class="ks-foot"><a class="ks-link" target="_blank" rel="noopener" href="database.html#net_gep_17"><i data-lucide="database" style="width:13px;height:13px"></i> Ficha no Database</a></div>
+          </div>
+          <div class="keystudy-card">
+            <div class="ks-top"><span class="ks-name">Alfa-emissores</span><span class="ks-scn">experimental</span></div>
+            <div class="ks-row"><b>Agentes</b>212Pb-DOTAMTATE (ALPHAMEDIX), VMT-α-NET, 67Cu-SARTATE e outros agentes emergentes.</div>
+            <p class="ks-msg">Em investigação para NET SSTR+ refratário; evidência clínica precoce.</p>
+            <div class="ks-foot">
+              <a class="ks-link" target="_blank" rel="noopener" href="database.html#net_gep_8"><i data-lucide="database" style="width:13px;height:13px"></i> ALPHAMEDIX</a>
+              <a class="ks-link" target="_blank" rel="noopener" href="database.html?cat=net"><i data-lucide="search" style="width:13px;height:13px"></i> Ver todos</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8. TRIAL LINEAGE -->
+      <div class="pm-block" id="net-8">
+        <div class="pm-block-head"><span class="pm-num">8</span><h3>Trial Lineage — publicações secundárias e análises derivadas</h3></div>
+        <p class="pm-lead">Um estudo pivotal raramente é uma publicação única: gera uma <strong>família de evidências</strong> — follow-ups, subgrupos, qualidade de vida, segurança, biomarcadores, dosimetria e abstracts de congresso.</p>
+        <div class="trial-lineage">
+          <template x-for="parent in lineageParents" :key="parent.key">
+            <details class="tl-parent" x-show="secList(parent).length">
+              <summary>
+                <i class="tl-chev" data-lucide="chevron-right" style="width:16px;height:16px"></i>
+                <span class="tl-parent-name" x-text="parent.name"></span>
+                <span class="tl-count" x-text="secList(parent).length + ' pub.'"></span>
+              </summary>
+              <div class="tl-pubs">
+                <template x-for="pub in secList(parent)" :key="pub.id">
+                  <div class="tl-pub">
+                    <span class="tl-rt" x-text="secLabel(pub.recordType)"></span>
+                    <div class="tl-pub-title"><span x-text="pub.title"></span> <span class="tl-yr" x-text="'· ' + (pub.year || '')"></span></div>
+                  </div>
+                </template>
+              </div>
+            </details>
+          </template>
+        </div>
+        <p class="tbm-section-sub" style="margin:1rem 0 0;font-size:0.8rem">Estudos sem entradas catalogadas de publicações secundárias não aparecem nesta lista. As fichas completas, com citações e links oficiais, estão no <a href="database.html?cat=net" target="_blank" rel="noopener" style="color:var(--amber)">Database</a>.</p>
+      </div>
+
+      <!-- 9. CRITÉRIOS PRÁTICOS -->
+      <div class="pm-block" id="net-9">
+        <div class="pm-block-head"><span class="pm-num">9</span><h3>Critérios práticos de discussão</h3></div>
+        <p class="pm-lead">Checklist clínico a revisar antes de discutir PRRT ou outras terapias.</p>
+        <div class="q-groups">
+          <div class="q-group">
+            <div class="q-group-title"><i data-lucide="user"></i> Dados clínicos</div>
+            <ul><li>Idade</li><li>ECOG / Karnofsky</li><li>Sintomas (incl. síndrome carcinoide)</li><li>Comorbidades</li><li>Expectativa e objetivo terapêutico</li></ul>
+          </div>
+          <div class="q-group">
+            <div class="q-group-title"><i data-lucide="history"></i> Histórico oncológico</div>
+            <ul><li>Diagnóstico e grau (Ki67)</li><li>Diferenciação (NET vs NEC)</li><li>Sítio primário e funcionalidade</li><li>Terapias prévias e respostas/toxicidades (SSA, alvo, quimio)</li><li>Marcadores (cromogranina A, 5-HIAA)</li></ul>
+          </div>
+          <div class="q-group">
+            <div class="q-group-title"><i data-lucide="scan-line"></i> Imagem molecular</div>
+            <ul><li>68Ga-DOTATATE PET</li><li>Escore de Krenning</li><li>Heterogeneidade e lesões discordantes</li><li>FDG PET em alto grau</li></ul>
+          </div>
+          <div class="q-group">
+            <div class="q-group-title"><i data-lucide="shield-alert"></i> Segurança</div>
+            <ul><li>Hemograma e reserva medular</li><li>Função renal (eTFG) — crítica na PRRT</li><li>Função hepática e extensão hepática</li><li>Risco de toxicidade renal e hematológica</li></ul>
+          </div>
+          <div class="q-group">
+            <div class="q-group-title"><i data-lucide="flask-conical"></i> Acesso e pesquisa</div>
+            <ul><li>Terapia aprovada / disponível</li><li>Possibilidade de inclusão em trial</li><li>Centro com experiência</li><li>Necessidade de encaminhamento</li></ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 10. ENSAIOS CLÍNICOS ATIVOS -->
+      <div class="pm-block" id="net-10">
+        <div class="pm-block-head"><span class="pm-num">10</span><h3>Ensaios clínicos ativos relacionados</h3></div>
+        <p class="pm-lead">Ensaios em andamento ou recrutando em tumores neuroendócrinos — SSTR, PRRT, alfa-emissores, combinações e terapias-alvo. <strong>A elegibilidade final depende sempre do protocolo oficial e do centro responsável.</strong></p>
+        <div class="link-cards" style="max-width:520px">
+          <a class="link-card" target="_blank" rel="noopener" href="ensaios-clinicos.html">
+            <i data-lucide="microscope" style="width:18px;height:18px"></i>
+            <span>Ver ensaios ativos — filtrar por “Neuroendócrinos”</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 11. GUIDELINES CONECTADOS -->
+      <div class="pm-block" id="net-11">
+        <div class="pm-block-head"><span class="pm-num">11</span><h3>Guidelines conectados</h3></div>
+        <p class="pm-lead">Diretrizes relevantes já disponíveis no TheraTrials.</p>
+        <div class="link-cards">
+          <a class="link-card" target="_blank" rel="noopener" href="guideline-detail.html#prrt-eanm-iaea-snmmi-2026"><i data-lucide="book-open" style="width:18px;height:18px"></i><span>PRRT (177Lu-DOTATATE) · EANM/IAEA/SNMMI 2026</span></a>
+          <a class="link-card" target="_blank" rel="noopener" href="guideline-detail.html#prrt-iaea-eanm-snmmi-2013"><i data-lucide="book-open" style="width:18px;height:18px"></i><span>PRRT · IAEA/EANM/SNMMI 2013</span></a>
+          <a class="link-card" target="_blank" rel="noopener" href="guideline-detail.html#prrt-nanets-snmmi-dotatate"><i data-lucide="book-open" style="width:18px;height:18px"></i><span>PRRT · NANETS/SNMMI (DOTATATE)</span></a>
+          <a class="link-card" target="_blank" rel="noopener" href="guideline-detail.html#prrt-sstr-pet-imaging-2023"><i data-lucide="book-open" style="width:18px;height:18px"></i><span>Imagem SSTR PET</span></a>
+          <a class="link-card" target="_blank" rel="noopener" href="guideline-detail.html#dosim-eanm-lu177-2022"><i data-lucide="book-open" style="width:18px;height:18px"></i><span>Dosimetria · 177Lu</span></a>
+          <a class="link-card" target="_blank" rel="noopener" href="guidelines.html"><i data-lucide="library" style="width:18px;height:18px"></i><span>Ver todas as guidelines</span></a>
+        </div>
+      </div>
+
+      <!-- 12. FERRAMENTAS ÚTEIS -->
+      <div class="pm-block" id="net-12">
+        <div class="pm-block-head"><span class="pm-num">12</span><h3>Ferramentas úteis</h3></div>
+        <p class="pm-lead">Calculadoras e critérios já disponíveis na página de Ferramentas.</p>
+        <div class="link-cards">
+          <a class="link-card" target="_blank" rel="noopener" href="ferramentas.html#tne"><i data-lucide="gauge" style="width:18px;height:18px"></i><span>Scores de NET (Krenning, NETPET, SSTR-RADS)</span></a>
+          <a class="link-card" target="_blank" rel="noopener" href="ferramentas.html#petct"><i data-lucide="scan-line" style="width:18px;height:18px"></i><span>Resposta metabólica (PERCIST)</span></a>
+          <a class="link-card" target="_blank" rel="noopener" href="ferramentas.html#renal"><i data-lucide="droplet" style="width:18px;height:18px"></i><span>Função renal (CKD-EPI / Cockcroft)</span></a>
+          <a class="link-card" target="_blank" rel="noopener" href="ferramentas.html#anatomica"><i data-lucide="ruler" style="width:18px;height:18px"></i><span>Resposta anatômica (RECIST 1.1)</span></a>
+          <a class="link-card" target="_blank" rel="noopener" href="ferramentas.html#ctcae"><i data-lucide="alert-triangle" style="width:18px;height:18px"></i><span>Eventos adversos · CTCAE</span></a>
+          <a class="link-card" target="_blank" rel="noopener" href="ferramentas.html#clinica"><i data-lucide="activity" style="width:18px;height:18px"></i><span>ECOG / Karnofsky</span></a>
+        </div>
+      </div>
+
+      <!-- 13. CHECKLISTS -->
+      <div class="pm-block" id="net-13">
+        <div class="pm-block-head"><span class="pm-num">13</span><h3>Checklists</h3></div>
+        <p class="pm-lead">Três listas de <strong>itens para revisão</strong> — organização do caso, não critérios de elegibilidade (a avaliação formal cabe à equipe responsável). Cada uma pode ser copiada em texto.</p>
+
+        <div class="rlt-checklist">
+          <div class="rlt-checklist-head">
+            <h4><i data-lucide="send" style="width:16px;height:16px"></i> Encaminhamento para discussão de PRRT (NET)</h4>
+            <button class="btn btn-secondary btn-sm copy-checklist-btn" @click="copyChecklist('encaminhamento')"><i data-lucide="copy" style="width:14px;height:14px"></i> Copiar</button>
+          </div>
+          <div class="bc-grid">
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Diagnóstico histológico e grau (Ki67)</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Diferenciação: NET bem-diferenciado vs NEC</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Sítio primário e funcionalidade</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Estadiamento e extensão da doença</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Tratamentos prévios (SSA, alvo, quimioterapia)</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> 68Ga-DOTATATE PET com escore de Krenning</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> FDG PET, se G3 ou suspeita de discordância</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Cromogranina A / 5-HIAA, se funcionante</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Hemograma</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Função renal (eTFG)</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Função hepática</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> ECOG / Karnofsky</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Sintomas (incl. síndrome carcinoide)</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Objetivo da discussão</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Possibilidade de ensaio clínico</div>
+          </div>
+        </div>
+
+        <div class="rlt-checklist">
+          <div class="rlt-checklist-head">
+            <h4><i data-lucide="presentation" style="width:16px;height:16px"></i> Apresentação de caso no tumor board</h4>
+            <button class="btn btn-secondary btn-sm copy-checklist-btn" @click="copyChecklist('board')"><i data-lucide="copy" style="width:14px;height:14px"></i> Copiar</button>
+          </div>
+          <div class="bc-grid">
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Pergunta clínica objetiva</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Grau / diferenciação e Ki67</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Sítio primário e funcionalidade</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Linha terapêutica atual</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Histórico de tratamentos</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Resposta / toxicidade prévia</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Status de imagem (SSTR PET ± FDG)</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Marcadores e dados laboratoriais</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Performance status</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Sintomas</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Opções aprovadas</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Ensaios clínicos disponíveis</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Limitações ou incertezas</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Próximo passo proposto para discussão</div>
+          </div>
+        </div>
+
+        <div class="rlt-checklist">
+          <div class="rlt-checklist-head">
+            <h4><i data-lucide="folder-check" style="width:16px;height:16px"></i> Pré-terapia, documentação e acesso</h4>
+            <button class="btn btn-secondary btn-sm copy-checklist-btn" @click="copyChecklist('preterapia')"><i data-lucide="copy" style="width:14px;height:14px"></i> Copiar</button>
+          </div>
+          <div class="bc-grid">
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Relatório médico</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Laudo de SSTR PET (Krenning)</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Exames laboratoriais atualizados</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Hemograma</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Creatinina / eTFG</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Função hepática</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Avaliação de sintomas</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Proteção renal com aminoácidos prevista</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Manejo do análogo de somatostatina conforme protocolo</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Consentimento institucional, se aplicável</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Orientações de radioproteção</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Autorização</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Agendamento</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Logística do radiofármaco</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Plano de monitoramento entre ciclos</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 14. LINKS INTERNOS E PRÓXIMOS PASSOS -->
+      <div class="pm-block" id="net-14">
+        <div class="pm-block-head"><span class="pm-num">14</span><h3>Links internos e próximos passos</h3></div>
+        <div class="link-cards">
+          <a class="link-card" target="_blank" rel="noopener" href="database.html?cat=net"><i data-lucide="database" style="width:18px;height:18px"></i><span>Abrir Database (NET)</span></a>
+          <a class="link-card" target="_blank" rel="noopener" href="database.html?cat=net"><i data-lucide="git-compare" style="width:18px;height:18px"></i><span>Comparar estudos de PRRT</span></a>
+          <a class="link-card" target="_blank" rel="noopener" href="ensaios-clinicos.html"><i data-lucide="microscope" style="width:18px;height:18px"></i><span>Ver ensaios ativos</span></a>
+          <a class="link-card" target="_blank" rel="noopener" href="guidelines.html"><i data-lucide="book-open" style="width:18px;height:18px"></i><span>Abrir guidelines</span></a>
+          <a class="link-card" target="_blank" rel="noopener" href="ferramentas.html"><i data-lucide="wrench" style="width:18px;height:18px"></i><span>Abrir ferramentas</span></a>
+          <a class="link-card" target="_blank" rel="noopener" href="about.html"><i data-lucide="message-square-plus" style="width:18px;height:18px"></i><span>Sugerir estudo ou correção</span></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- EXPLORAR ESTUDOS POR TUMOR (browser existente, preservado) -->
 <section style="padding: 1rem 0 0">
   <div class="container">
@@ -1893,7 +2698,6 @@
 
       // ---- Tumor Board Maps: mapas em desenvolvimento (hub) ----
       upcomingMaps: [
-        { id: 'net',        name: 'Tumores neuroendócrinos',          icon: 'activity',      color: '#10B981', badges: ['SSTR', 'Lu-177', 'PRRT'] },
         { id: 'hcc',        name: 'Carcinoma hepatocelular / TARE',   icon: 'droplet',       color: '#F59E0B', badges: ['Y-90', 'TARE', 'BCLC'] },
         { id: 'mama',       name: 'Mama',                             icon: 'flower-2',      color: '#EC4899', badges: ['HER2', 'FAPI', 'FES'] },
         { id: 'pulmao',     name: 'Pulmão',                           icon: 'wind',          color: '#22D3EE', badges: ['DLL3', 'FAPI'] },
@@ -1901,16 +2705,23 @@
         { id: 'meningioma', name: 'Meningioma',                       icon: 'brain',         color: '#A855F7', badges: ['SSTR', 'Lu-177'] },
       ],
 
-      // ---- Trial Lineage: trials-pai de próstata (vínculo real via THERA_SECONDARY) ----
-      lineageParents: [
-        { key: 'vision',  name: 'VISION',      uid: 'lupsma_prostata_0' },
-        { key: 'therap',  name: 'TheraP',      uid: 'lupsma_prostata_1' },
-        { key: 'psmafore',name: 'PSMAfore',    uid: 'lupsma_prostata_2' },
-        { key: 'splash',  name: 'SPLASH',      uid: 'lupsma_prostata_3' },
-        { key: 'enzap',   name: 'ENZA-p',      uid: 'lupsma_prostata_5' },
-        { key: 'lupsma',  name: 'LuPSMA (Hofman 2018)', uid: null, nameMatch: 'lupsma' },
-        { key: 'alsympca',name: 'ALSYMPCA',    uid: 'ra223_prostata_0' },
-      ],
+      // ---- Trial Lineage por tumor (vínculo real via THERA_SECONDARY) ----
+      lineageParentsByTumor: {
+        prostata: [
+          { key: 'vision',  name: 'VISION',      uid: 'lupsma_prostata_0' },
+          { key: 'therap',  name: 'TheraP',      uid: 'lupsma_prostata_1' },
+          { key: 'psmafore',name: 'PSMAfore',    uid: 'lupsma_prostata_2' },
+          { key: 'splash',  name: 'SPLASH',      uid: 'lupsma_prostata_3' },
+          { key: 'enzap',   name: 'ENZA-p',      uid: 'lupsma_prostata_5' },
+          { key: 'lupsma',  name: 'LuPSMA (Hofman 2018)', uid: null, nameMatch: 'lupsma' },
+          { key: 'alsympca',name: 'ALSYMPCA',    uid: 'ra223_prostata_0' },
+        ],
+        net: [
+          { key: 'netter1', name: 'NETTER-1', uid: 'net_gep_0' },
+          { key: 'netter2', name: 'NETTER-2', uid: 'net_gep_1' },
+        ],
+      },
+      get lineageParents() { return this.lineageParentsByTumor[this.openMap] || []; },
 
       // Publicações secundárias reais ligadas ao trial-pai (sem inventar nada)
       secList(parent) {
@@ -1937,32 +2748,54 @@
         })[rt] || 'Publicação';
       },
 
+      openTumorMap(id) {
+        this.openMap = id;
+      },
       openProstateMap() {
         this.openMap = 'prostata';
       },
       closeMap() {
+        const prev = this.openMap;
         this.openMap = null;
-        this.$nextTick(() => document.getElementById('hub-prostata')?.scrollIntoView({ behavior: 'smooth', block: 'center' }));
+        this.$nextTick(() => document.getElementById('hub-' + (prev || 'prostata'))?.scrollIntoView({ behavior: 'smooth', block: 'center' }));
       },
 
-      checklists: {
-        encaminhamento: {
-          title: 'Encaminhamento para discussão de RLT PSMA',
-          items: ['Diagnóstico histológico', 'Estágio atual da doença', 'Status de castração', 'PSA atual e cinética', 'Tratamentos prévios', 'ARPi prévio', 'Taxano prévio, quando aplicável', 'Ra-223 prévio, se houver', 'PET/CT PSMA recente', 'Descrição de heterogeneidade', 'FDG PET, se disponível ou indicado', 'Hemograma', 'Função renal', 'Função hepática', 'ECOG / Karnofsky', 'Extensão óssea', 'Doença visceral', 'Sintomas', 'Objetivo da discussão', 'Possibilidade de ensaio clínico'],
+      mapNames: { prostata: 'Câncer de próstata', net: 'Tumores neuroendócrinos' },
+      checklistsByTumor: {
+        prostata: {
+          encaminhamento: {
+            title: 'Encaminhamento para discussão de RLT PSMA',
+            items: ['Diagnóstico histológico', 'Estágio atual da doença', 'Status de castração', 'PSA atual e cinética', 'Tratamentos prévios', 'ARPi prévio', 'Taxano prévio, quando aplicável', 'Ra-223 prévio, se houver', 'PET/CT PSMA recente', 'Descrição de heterogeneidade', 'FDG PET, se disponível ou indicado', 'Hemograma', 'Função renal', 'Função hepática', 'ECOG / Karnofsky', 'Extensão óssea', 'Doença visceral', 'Sintomas', 'Objetivo da discussão', 'Possibilidade de ensaio clínico'],
+          },
+          board: {
+            title: 'Apresentação de caso no tumor board',
+            items: ['Pergunta clínica objetiva', 'Linha terapêutica atual', 'Histórico de tratamentos', 'Resposta / toxicidade prévia', 'Status de imagem', 'PSMA PET', 'FDG PET, se pertinente', 'Dados laboratoriais', 'Performance status', 'Sintomas', 'Opções aprovadas', 'Ensaios clínicos disponíveis', 'Limitações ou incertezas', 'Próximo passo proposto para discussão'],
+          },
+          preterapia: {
+            title: 'Pré-terapia, documentação e acesso',
+            items: ['Relatório médico', 'Laudo PSMA', 'Exames laboratoriais atualizados', 'Hemograma', 'Creatinina / eTFG', 'Função hepática', 'Avaliação de sintomas', 'Registro de medicações', 'Consentimento institucional, se aplicável', 'Orientações de radioproteção', 'Autorização', 'Agendamento', 'Logística do radiofármaco', 'Comunicação com oncologista assistente', 'Plano de monitoramento entre ciclos'],
+          },
         },
-        board: {
-          title: 'Apresentação de caso no tumor board',
-          items: ['Pergunta clínica objetiva', 'Linha terapêutica atual', 'Histórico de tratamentos', 'Resposta / toxicidade prévia', 'Status de imagem', 'PSMA PET', 'FDG PET, se pertinente', 'Dados laboratoriais', 'Performance status', 'Sintomas', 'Opções aprovadas', 'Ensaios clínicos disponíveis', 'Limitações ou incertezas', 'Próximo passo proposto para discussão'],
-        },
-        preterapia: {
-          title: 'Pré-terapia, documentação e acesso',
-          items: ['Relatório médico', 'Laudo PSMA', 'Exames laboratoriais atualizados', 'Hemograma', 'Creatinina / eTFG', 'Função hepática', 'Avaliação de sintomas', 'Registro de medicações', 'Consentimento institucional, se aplicável', 'Orientações de radioproteção', 'Autorização', 'Agendamento', 'Logística do radiofármaco', 'Comunicação com oncologista assistente', 'Plano de monitoramento entre ciclos'],
+        net: {
+          encaminhamento: {
+            title: 'Encaminhamento para discussão de PRRT (NET)',
+            items: ['Diagnóstico histológico e grau (Ki67)', 'Diferenciação: NET bem-diferenciado vs NEC', 'Sítio primário e funcionalidade', 'Estadiamento e extensão da doença', 'Tratamentos prévios (SSA, alvo, quimioterapia)', '68Ga-DOTATATE PET com escore de Krenning', 'FDG PET, se G3 ou suspeita de discordância', 'Cromogranina A / 5-HIAA, se funcionante', 'Hemograma', 'Função renal (eTFG)', 'Função hepática', 'ECOG / Karnofsky', 'Sintomas (incl. síndrome carcinoide)', 'Objetivo da discussão', 'Possibilidade de ensaio clínico'],
+          },
+          board: {
+            title: 'Apresentação de caso no tumor board',
+            items: ['Pergunta clínica objetiva', 'Grau / diferenciação e Ki67', 'Sítio primário e funcionalidade', 'Linha terapêutica atual', 'Histórico de tratamentos', 'Resposta / toxicidade prévia', 'Status de imagem (SSTR PET ± FDG)', 'Marcadores e dados laboratoriais', 'Performance status', 'Sintomas', 'Opções aprovadas', 'Ensaios clínicos disponíveis', 'Limitações ou incertezas', 'Próximo passo proposto para discussão'],
+          },
+          preterapia: {
+            title: 'Pré-terapia, documentação e acesso',
+            items: ['Relatório médico', 'Laudo de SSTR PET (Krenning)', 'Exames laboratoriais atualizados', 'Hemograma', 'Creatinina / eTFG', 'Função hepática', 'Avaliação de sintomas', 'Proteção renal com aminoácidos prevista', 'Manejo do análogo de somatostatina conforme protocolo', 'Consentimento institucional, se aplicável', 'Orientações de radioproteção', 'Autorização', 'Agendamento', 'Logística do radiofármaco', 'Plano de monitoramento entre ciclos'],
+          },
         },
       },
+      get checklists() { return this.checklistsByTumor[this.openMap] || this.checklistsByTumor.prostata; },
       copyChecklist(kind) {
         const cl = this.checklists[kind] || this.checklists.board;
         const txt = [
-          'CHECKLIST — ' + cl.title + ' · Câncer de próstata',
+          'CHECKLIST — ' + cl.title + ' · ' + (this.mapNames[this.openMap] || ''),
           '(Itens para revisão / dados mínimos para discussão — não são critérios de elegibilidade.)',
           '',
           ...cl.items.map(i => '[ ] ' + i),
@@ -2037,7 +2870,7 @@
             lucide.createIcons();
             this.retargetLinks();
             if (this.openMap) {
-              setTimeout(() => document.getElementById('map-prostata')?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 80);
+              setTimeout(() => document.getElementById('map-' + this.openMap)?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 80);
             }
           });
         });
