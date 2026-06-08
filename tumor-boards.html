@@ -1002,6 +1002,27 @@
         </div>
       </article>
 
+      <!-- MENINGIOMA — ativo -->
+      <article class="tumor-map-card is-active" style="--accent-color:#A855F7;--accent-rgb:168,85,247" @click="openTumorMap('meningioma')" id="hub-meningioma">
+        <div class="tmc-head">
+          <div class="tmc-icon"><i data-lucide="brain" style="width:24px;height:24px"></i></div>
+          <div>
+            <div class="tmc-title">Meningioma</div>
+            <span class="tmc-status on">Mapa completo</span>
+          </div>
+        </div>
+        <div class="tmc-badges">
+          <span class="mod-pill psma">SSTR · DOTATATE</span>
+          <span class="mod-pill lu177">PRRT 177Lu</span>
+          <span class="mod-pill stage">Grau OMS 1/2/3</span>
+          <span class="mod-pill">Cirurgia · RT</span>
+          <span class="mod-pill">FAK-NF2</span>
+        </div>
+        <div class="tmc-foot">
+          <span class="tmc-open">Abrir mapa <i data-lucide="arrow-right" style="width:15px;height:15px"></i></span>
+        </div>
+      </article>
+
       <!-- EM DESENVOLVIMENTO -->
       <template x-for="soon in upcomingMaps" :key="soon.id">
         <article class="tumor-map-card is-soon" :style="`--accent-color:${soon.color};--accent-rgb:${hexToRgb(soon.color)}`">
@@ -5855,6 +5876,777 @@
   </div>
 </section>
 
+<!-- MÓDULO: TUMOR BOARD MAP — MENINGIOMA -->
+<section x-show="openMap === 'meningioma'" x-cloak id="map-meningioma" style="padding:0">
+  <div class="container">
+    <div class="map-module" style="--accent-color:#A855F7;--accent-rgb:168,85,247">
+
+      <button class="detail-back" @click="closeMap()">
+        <i data-lucide="arrow-left" style="width:14px;height:14px"></i>
+        <span>Voltar aos mapas</span>
+      </button>
+
+      <div class="mm-head">
+        <h1 class="mm-title"><i data-lucide="brain" style="width:30px;height:30px"></i> Tumor Board Map — Meningioma</h1>
+        <p class="mm-sub">Da graduação OMS e da cirurgia à radioterapia e ao teranóstico do receptor de somatostatina — 68Ga-DOTATATE PET e PRRT (177Lu/90Y) — passando pela escassa, mas crescente, terapia sistêmica e de precisão.</p>
+      </div>
+
+      <nav class="mm-nav">
+        <a href="#men-1">1 · Visão geral</a>
+        <a href="#men-2">2 · Teoria essencial</a>
+        <a href="#men-3">3 · Perguntas do board</a>
+        <a href="#men-4">4 · Jornada terapêutica</a>
+        <a href="#men-5">5 · Jornada do paciente</a>
+        <a href="#men-6">6 · Mapa de evidências</a>
+        <a href="#men-7">7 · Estudos-chave</a>
+        <a href="#men-8">8 · Trial Lineage</a>
+        <a href="#men-9">9 · Critérios práticos</a>
+        <a href="#men-10">10 · Ensaios ativos</a>
+        <a href="#men-11">11 · Guidelines</a>
+        <a href="#men-12">12 · Ferramentas</a>
+        <a href="#men-13">13 · Checklists</a>
+        <a href="#men-14">14 · Próximos passos</a>
+      </nav>
+
+      <!-- 1. VISÃO GERAL -->
+      <div class="pm-block" id="men-1">
+        <div class="pm-block-head"><span class="pm-num">1</span><h3>Visão geral</h3></div>
+        <p class="pm-lead">O meningioma é o tumor primário do SNC mais comum e, na maioria, <strong>grau 1 (OMS)</strong> e curável com cirurgia. A complexidade está nos tumores de <strong>grau 2 (atípico)</strong> e <strong>grau 3 (anaplásico)</strong>, que recidivam, e nas lesões irressecáveis de base de crânio. A base do tratamento é <strong>cirurgia e radioterapia</strong>; a terapia sistêmica é limitada e largamente investigacional. É aqui que o meningioma se torna um caso teranóstico de interesse: ele expressa fortemente o <strong>receptor de somatostatina (SSTR2)</strong>, o que sustenta o 68Ga-DOTATATE PET (imagem e planejamento de RT) e a <strong>PRRT</strong> (177Lu/90Y-DOTATATE/DOTATOC) no cenário recorrente — promissora, sobretudo no grau 1, mas ainda sem aprovação.</p>
+      </div>
+
+      <!-- 2. TEORIA ESSENCIAL -->
+      <div class="pm-block" id="men-2">
+        <div class="pm-block-head"><span class="pm-num">2</span><h3>Teoria essencial</h3></div>
+        <div class="concept-grid">
+          <div class="concept-card">
+            <div class="cc-ic"><i data-lucide="crosshair" style="width:18px;height:18px"></i></div>
+            <h4>SSTR2 como alvo teranóstico</h4>
+            <p>O meningioma expressa SSTR2 de forma intensa e difusa. O 68Ga-DOTATATE/DOTATOC mapeia essa avidez (imagem) e o mesmo vetor marcado com 177Lu/90Y entrega radiação dirigida (PRRT) — o princípio teranóstico clássico.</p>
+          </div>
+          <div class="concept-card">
+            <div class="cc-ic"><i data-lucide="layers" style="width:18px;height:18px"></i></div>
+            <h4>Graduação OMS define o risco</h4>
+            <p>Grau 1 (benigno), grau 2 (atípico) e grau 3 (anaplásico) — definidos por mitoses, invasão cerebral e, cada vez mais, por classes de metilação. O grau orienta a necessidade de radioterapia e o risco de recidiva.</p>
+          </div>
+          <div class="concept-card">
+            <div class="cc-ic"><i data-lucide="scan-line" style="width:18px;height:18px"></i></div>
+            <h4>Cirurgia e radioterapia como base</h4>
+            <p>A extensão da ressecção (grau de Simpson) é o principal fator prognóstico. A radioterapia (fracionada ou radiocirurgia) trata o resíduo, o grau 2/3 e as lesões irressecáveis; o DOTATATE PET refina o alvo.</p>
+          </div>
+          <div class="concept-card">
+            <div class="cc-ic"><i data-lucide="flask-conical" style="width:18px;height:18px"></i></div>
+            <h4>Sistêmico limitado, precisão emergente</h4>
+            <p>Não há terapia sistêmica aprovada. Bevacizumabe e CEVOREM (everolimo+octreotídeo) estabilizam; a trabectedina foi negativa. A precisão (FAK em NF2-mutado) e a PRRT são as fronteiras investigacionais.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. PERGUNTAS DO TUMOR BOARD -->
+      <div class="pm-block" id="men-3">
+        <div class="pm-block-head"><span class="pm-num">3</span><h3>Perguntas do tumor board</h3></div>
+        <p class="pm-lead">As perguntas que estruturam a decisão em tumor board, agrupadas por eixo.</p>
+        <div class="q-groups">
+          <div class="q-group">
+            <div class="q-group-title"><i data-lucide="layers"></i> Grau e ressecção</div>
+            <ul>
+              <li>Qual o grau OMS (1/2/3)?</li>
+              <li>Qual a extensão da ressecção (Simpson)?</li>
+              <li>Há doença residual ou irressecável?</li>
+            </ul>
+          </div>
+          <div class="q-group">
+            <div class="q-group-title"><i data-lucide="scan-line"></i> Imagem e SSTR</div>
+            <ul>
+              <li>A lesão é SSTR-ávida (DOTATATE PET / Krenning)?</li>
+              <li>O DOTATATE PET refina o alvo de RT?</li>
+              <li>Há suspeita de desdiferenciação (FDG)?</li>
+            </ul>
+          </div>
+          <div class="q-group">
+            <div class="q-group-title"><i data-lucide="git-branch"></i> Cenário e tratamentos prévios</div>
+            <ul>
+              <li>Doença inicial ou recorrente/refratária?</li>
+              <li>Radioterapia prévia e margem de retratamento?</li>
+              <li>Taxa de crescimento (volumetria)?</li>
+            </ul>
+          </div>
+          <div class="q-group">
+            <div class="q-group-title"><i data-lucide="target"></i> Objetivo terapêutico</div>
+            <ul>
+              <li>Controle local definitivo, controle da doença recorrente ou inclusão em ensaio (incl. PRRT)?</li>
+            </ul>
+          </div>
+          <div class="q-group">
+            <div class="q-group-title"><i data-lucide="shield-alert"></i> Segurança e acesso</div>
+            <ul>
+              <li>Função renal (relevante para PRRT) e hemograma?</li>
+              <li>Mutações acionáveis (NF2, SMO, AKT1)?</li>
+              <li>Acesso a PRRT ou a protocolo de pesquisa?</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. JORNADA TERAPÊUTICA -->
+      <div class="pm-block" id="men-4">
+        <div class="pm-block-head"><span class="pm-num">4</span><h3>Jornada terapêutica</h3></div>
+        <p class="pm-lead">A jornada depende de dois eixos: o <strong>grau OMS</strong> (1, 2 atípico, 3 anaplásico) e o <strong>cenário</strong> (inicial — cirurgia ± radioterapia — vs recorrente/refratário). A <strong>SSTR-avidez</strong> ao DOTATATE PET é o eixo transversal que abre a imagem dirigida e a candidatura à PRRT.</p>
+
+        <!-- Matriz grau × cenário (3×2) -->
+        <div class="ds-matrix">
+          <div class="ds-corner"></div>
+          <div class="ds-colhead">Inicial <small>cirurgia ± RT</small></div>
+          <div class="ds-colhead">Recorrente <small>refratário</small></div>
+
+          <div class="ds-rowlabel" style="background:rgba(52,211,153,0.12);color:#6EE7B7">Grau 1</div>
+          <div class="ds-cell" style="--c:#34D399">
+            <div class="ds-tag">Grau 1 inicial</div>
+            <p class="ds-def">Meningioma benigno, frequentemente curável.</p>
+            <div class="ds-rx"><b>Conduta típica</b>Cirurgia (Simpson) ou observação de lesões pequenas/assintomáticas · SRS/RT se residual ou sintomático</div>
+          </div>
+          <div class="ds-cell" style="--c:#34D399">
+            <div class="ds-tag">Grau 1 recorrente</div>
+            <p class="ds-def">Recidiva após cirurgia/RT.</p>
+            <div class="ds-rx"><b>Conduta típica</b>Re-cirurgia ou radiocirurgia · PRRT investigacional se SSTR-ávido (mais ativa no grau 1)</div>
+          </div>
+
+          <div class="ds-rowlabel" style="background:rgba(255,132,0,0.12);color:#FFA640">Grau 2 atípico</div>
+          <div class="ds-cell" style="--c:#FF8400">
+            <div class="ds-tag">Grau 2 inicial</div>
+            <p class="ds-def">Atípico, com maior risco de recidiva.</p>
+            <div class="ds-rx"><b>Conduta típica</b>Cirurgia + radioterapia conforme extensão da ressecção (papel da RT adjuvante em estudo — ROAM)</div>
+          </div>
+          <div class="ds-cell" style="--c:#FF8400">
+            <div class="ds-tag">Grau 2 recorrente</div>
+            <p class="ds-def">Recidiva de doença atípica.</p>
+            <div class="ds-rx"><b>Conduta típica</b>Re-radioterapia · salvage sistêmico (bevacizumabe, CEVOREM) · PRRT · ensaio clínico</div>
+          </div>
+
+          <div class="ds-rowlabel" style="background:rgba(248,113,113,0.12);color:#FCA5A5">Grau 3 anaplásico</div>
+          <div class="ds-cell" style="--c:#F87171">
+            <div class="ds-tag">Grau 3 inicial</div>
+            <p class="ds-def">Anaplásico/maligno, agressivo.</p>
+            <div class="ds-rx"><b>Conduta típica</b>Cirurgia + radioterapia (alta dose)</div>
+          </div>
+          <div class="ds-cell" style="--c:#F87171">
+            <div class="ds-tag">Grau 3 recorrente</div>
+            <p class="ds-def">Recidiva de doença anaplásica.</p>
+            <div class="ds-rx"><b>Conduta típica</b>Sistêmico salvage · PRRT · precisão (FAK em NF2-mutado) · ensaio clínico</div>
+          </div>
+        </div>
+
+        <div class="ds-legend">
+          <div><b>Grau OMS</b> = 1 (benigno), 2 (atípico), 3 (anaplásico) — por mitoses, invasão cerebral e classe de metilação.</div>
+          <div><b>Inicial vs recorrente</b> = cirurgia ± RT na apresentação vs doença que recidiva/progride.</div>
+        </div>
+
+        <div class="ds-note">
+          <i data-lucide="git-pull-request-arrow" style="width:18px;height:18px"></i>
+          <p><b>SSTR-avidez (porta do teranóstico):</b> o meningioma expressa fortemente o SSTR2. O 68Ga-DOTATATE PET mapeia essa avidez — refinando o delineamento de RT e a detecção de doença residual — e identifica candidatos à <strong>PRRT</strong> (177Lu/90Y-DOTATATE/DOTATOC), hoje investigacional e mais ativa no grau 1.</p>
+        </div>
+
+        <div class="ds-note">
+          <i data-lucide="alert-triangle" style="width:18px;height:18px"></i>
+          <p><b>Terapia sistêmica é um terreno difícil:</b> não há agente sistêmico aprovado para meningioma. O benchmark histórico de PFS-6 no grau 2/3 é ~26%. Bevacizumabe e CEVOREM (everolimo + octreotídeo) mostram estabilização; a trabectedina foi negativa; a precisão (FAK em NF2-mutado) e a imunoterapia (modesta) seguem investigacionais.</p>
+        </div>
+
+        <div class="pm-subhead">
+          <i data-lucide="route" style="width:18px;height:18px"></i>
+          <h4>Onde cada modalidade entra</h4>
+        </div>
+        <p class="pm-lead">Onde cada modalidade entra ao longo do grau e do cenário, com estudos reais. Clique para abrir a ficha; a lista completa está no <a href="database.html" target="_blank" rel="noopener" style="color:var(--amber)">Database</a>.</p>
+        <div class="therapy-timeline">
+          <div class="tt-phase" style="--c:#22D3EE">
+            <span class="tt-dot"></span>
+            <h4>1 · Imagem SSTR — DOTATATE PET</h4>
+            <p>68Ga-DOTATATE/DOTATOC para diagnóstico, delineamento de RT e doença residual.</p>
+            <div class="esc-studies">
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#meningioma_0">68Ga-DOTATATE PET</a>
+            </div>
+            <div class="tt-tags"><span class="tt-mat high">Imagem SSTR (recomendada)</span></div>
+          </div>
+          <div class="tt-phase" style="--c:#FF8400">
+            <span class="tt-dot"></span>
+            <h4>2 · Radioterapia — grau 2/3 e residual</h4>
+            <p>RT adjuvante de alta dose no grau 2/3 e radiocirurgia; papel adjuvante no grau 2 em estudo.</p>
+            <div class="esc-studies">
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#meningioma_6">EORTC 22042-26042</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#meningioma_5">ROAM / EORTC-1308</a>
+            </div>
+            <div class="tt-tags"><span class="tt-mat high">Radioterapia</span></div>
+          </div>
+          <div class="tt-phase" style="--c:#A855F7">
+            <span class="tt-dot"></span>
+            <h4>3 · PRRT no recorrente SSTR-ávido</h4>
+            <p>177Lu/90Y-DOTATATE/DOTATOC no recorrente/refratário — investigacional, mais ativa no grau 1.</p>
+            <div class="esc-studies">
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#meningioma_1">177Lu-DOTATATE</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#meningioma_2">90Y-DOTATOC</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#meningioma_3">PRRT (meta-análise)</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#meningioma_4">LUMEN-1 (em curso)</a>
+            </div>
+            <div class="tt-tags"><span class="tt-mat mid">PRRT · investigacional</span></div>
+          </div>
+          <div class="tt-phase" style="--c:#FB923C">
+            <span class="tt-dot"></span>
+            <h4>4 · Sistêmico salvage</h4>
+            <p>Estabilização modesta no recorrente refratário, fora de cirurgia/RT.</p>
+            <div class="esc-studies">
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#meningioma_7">Bevacizumabe</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#meningioma_9">CEVOREM</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#meningioma_8">Sunitinibe</a>
+            </div>
+            <div class="tt-tags"><span class="tt-mat mid">Salvage · investigacional</span></div>
+          </div>
+          <div class="tt-phase" style="--c:#F87171">
+            <span class="tt-dot"></span>
+            <h4>5 · Precisão — FAK em NF2-mutado</h4>
+            <p>Terapia dirigida por subtipo genômico; sinal promissor no eixo FAK-NF2.</p>
+            <div class="esc-studies">
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#meningioma_10">Alliance A071401</a>
+            </div>
+            <div class="tt-tags"><span class="tt-mat mid">Precisão · investigacional</span></div>
+          </div>
+          <div class="tt-phase" style="--c:#F472B6">
+            <span class="tt-dot"></span>
+            <h4>6 · Imunoterapia e limites</h4>
+            <p>Benefício modesto da imunoterapia; trabectedina negativa (o que não funciona também informa).</p>
+            <div class="esc-studies">
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#meningioma_11">Pembrolizumabe</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#meningioma_12">EORTC-1320 (negativo)</a>
+            </div>
+            <div class="tt-tags"><span class="tt-mat low">Imuno / negativo</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. JORNADA DO PACIENTE -->
+      <div class="pm-block patient-journey-section" id="men-5">
+        <div class="pm-block-head"><span class="pm-num">5</span><h3>Jornada do Paciente no Meningioma</h3></div>
+        <p class="pm-lead" style="font-weight:600;color:var(--off-white)">Do diagnóstico e da imagem SSTR à cirurgia, à radioterapia, à reavaliação na recidiva e à candidatura ao teranóstico.</p>
+        <div class="edu-callout" style="max-width:none;margin:0 0 1.25rem">
+          <i data-lucide="info" style="width:18px;height:18px"></i>
+          <p>Esta seção tem finalidade educacional e de melhoria de jornada assistencial. Não define elegibilidade individual, não recomenda tratamento e não substitui julgamento médico, bula, guidelines, protocolos institucionais ou consulta às fontes primárias.</p>
+        </div>
+
+        <p class="pm-lead" style="margin-bottom:0.75rem">O cuidado eficaz depende de uma cadeia: imagem e graduação, cirurgia, radioterapia conforme o grau, reavaliação da SSTR-avidez na recidiva e candidatura criteriosa à PRRT ou a ensaios. As etapas abaixo mapeiam esse percurso.</p>
+
+        <div class="journey-timeline">
+
+          <details class="journey-step-card" open>
+            <summary><span class="js-num">1</span><span class="js-step-title">Diagnóstico e imagem</span><i class="js-chev" data-lucide="chevron-right" style="width:16px;height:16px"></i></summary>
+            <div class="js-body">
+              <div class="js-row"><b>Objetivo</b>Caracterizar a lesão por RM com contraste e, quando útil, por 68Ga-DOTATATE PET (SSTR).</div>
+              <div class="js-row"><b>Profissionais envolvidos</b>Radiologia, medicina nuclear, neurocirurgia e radio-oncologia.</div>
+              <div class="js-row"><b>Dados necessários</b>RM, localização, relação com estruturas críticas, SSTR-avidez/Krenning quando indicada.</div>
+              <div class="js-links">
+                <a class="js-link" target="_blank" rel="noopener" href="database.html#meningioma_0"><i data-lucide="scan-line" style="width:12px;height:12px"></i> DOTATATE PET</a>
+                <a class="js-link" href="#men-6"><i data-lucide="map" style="width:12px;height:12px"></i> Mapa de evidências</a>
+              </div>
+            </div>
+          </details>
+
+          <details class="journey-step-card">
+            <summary><span class="js-num">2</span><span class="js-step-title">Cirurgia e graduação OMS</span><i class="js-chev" data-lucide="chevron-right" style="width:16px;height:16px"></i></summary>
+            <div class="js-body">
+              <div class="js-row"><b>Objetivo</b>Ressecar com segurança e definir o grau OMS.</div>
+              <div class="js-row"><b>Profissionais envolvidos</b>Neurocirurgia e neuropatologia.</div>
+              <div class="js-row"><b>Dados necessários</b>Extensão da ressecção (Simpson), mitoses, invasão cerebral e classe de metilação quando disponível.</div>
+              <div class="js-links">
+                <a class="js-link" href="#men-9"><i data-lucide="list-checks" style="width:12px;height:12px"></i> Critérios práticos</a>
+                <a class="js-link" target="_blank" rel="noopener" href="database.html"><i data-lucide="database" style="width:12px;height:12px"></i> Database</a>
+              </div>
+            </div>
+          </details>
+
+          <details class="journey-step-card">
+            <summary><span class="js-num">3</span><span class="js-step-title">Decisão de radioterapia</span><i class="js-chev" data-lucide="chevron-right" style="width:16px;height:16px"></i></summary>
+            <div class="js-body">
+              <div class="js-row"><b>Objetivo</b>Definir radioterapia adjuvante (grau 2/3) ou radiocirurgia conforme grau, ressecção e localização.</div>
+              <div class="js-row"><b>Profissionais envolvidos</b>Radio-oncologia, neurocirurgia e medicina nuclear (delineamento).</div>
+              <div class="js-row"><b>Dados necessários</b>Grau, Simpson, volume residual, DOTATATE PET para o alvo.</div>
+              <div class="js-links">
+                <a class="js-link" target="_blank" rel="noopener" href="database.html#meningioma_6"><i data-lucide="book-open" style="width:12px;height:12px"></i> EORTC 22042</a>
+                <a class="js-link" href="#men-4"><i data-lucide="route" style="width:12px;height:12px"></i> Jornada terapêutica</a>
+              </div>
+            </div>
+          </details>
+
+          <details class="journey-step-card">
+            <summary><span class="js-num">4</span><span class="js-step-title">Discussão em tumor board</span><i class="js-chev" data-lucide="chevron-right" style="width:16px;height:16px"></i></summary>
+            <div class="js-body">
+              <div class="js-row"><b>Objetivo</b>Integrar grau, ressecção, SSTR-avidez, RT prévia, função renal e pesquisa.</div>
+              <div class="js-row"><b>Profissionais envolvidos</b>Neurocirurgia, radio-oncologia, medicina nuclear, neuro-oncologia, neuropatologia e pesquisa clínica.</div>
+              <div class="js-row"><b>Dados necessários</b>Caso completo com pergunta clínica objetiva.</div>
+              <div class="js-links">
+                <a class="js-link" href="#men-13"><i data-lucide="clipboard-check" style="width:12px;height:12px"></i> Checklist de apresentação</a>
+                <a class="js-link" href="#men-10"><i data-lucide="microscope" style="width:12px;height:12px"></i> Ensaios ativos</a>
+              </div>
+            </div>
+          </details>
+
+          <details class="journey-step-card">
+            <summary><span class="js-num">5</span><span class="js-step-title">Recidiva e reavaliação SSTR</span><i class="js-chev" data-lucide="chevron-right" style="width:16px;height:16px"></i></summary>
+            <div class="js-body">
+              <div class="js-row"><b>Objetivo</b>Caracterizar a recidiva e reavaliar a SSTR-avidez e a taxa de crescimento.</div>
+              <div class="js-row"><b>Profissionais envolvidos</b>Medicina nuclear, radiologia e neuro-oncologia.</div>
+              <div class="js-row"><b>Dados necessários</b>RM volumétrica, 68Ga-DOTATATE PET, escore de Krenning, FDG se suspeita de desdiferenciação.</div>
+              <div class="js-links">
+                <a class="js-link" target="_blank" rel="noopener" href="database.html#meningioma_0"><i data-lucide="scan-line" style="width:12px;height:12px"></i> DOTATATE PET</a>
+                <a class="js-link" target="_blank" rel="noopener" href="ferramentas.html#anatomica"><i data-lucide="ruler" style="width:12px;height:12px"></i> Resposta (RANO/RECIST)</a>
+              </div>
+            </div>
+          </details>
+
+          <details class="journey-step-card">
+            <summary><span class="js-num">6</span><span class="js-step-title">Candidatura à PRRT</span><i class="js-chev" data-lucide="chevron-right" style="width:16px;height:16px"></i></summary>
+            <div class="js-body">
+              <div class="js-row"><b>Objetivo</b>Avaliar candidatura à PRRT (investigacional) em doença recorrente SSTR-ávida sem opção local.</div>
+              <div class="js-row"><b>Profissionais envolvidos</b>Medicina nuclear, física médica e neuro-oncologia.</div>
+              <div class="js-row"><b>Dados necessários</b>SSTR-avidez (Krenning), função renal, RT prévia, proteção renal e dosimetria planejadas.</div>
+              <div class="js-links">
+                <a class="js-link" href="#men-13"><i data-lucide="folder-check" style="width:12px;height:12px"></i> Checklist de pré-terapia</a>
+                <a class="js-link" target="_blank" rel="noopener" href="ferramentas.html#renal"><i data-lucide="droplet" style="width:12px;height:12px"></i> Função renal</a>
+              </div>
+            </div>
+          </details>
+
+          <details class="journey-step-card">
+            <summary><span class="js-num">7</span><span class="js-step-title">Sistêmico salvage e precisão</span><i class="js-chev" data-lucide="chevron-right" style="width:16px;height:16px"></i></summary>
+            <div class="js-body">
+              <div class="js-row"><b>Objetivo</b>Considerar opções sistêmicas (estabilização) e precisão por subtipo quando não há cirurgia/RT/PRRT.</div>
+              <div class="js-row"><b>Profissionais envolvidos</b>Neuro-oncologia e patologia molecular.</div>
+              <div class="js-row"><b>Dados necessários</b>Bevacizumabe/CEVOREM como salvage; mutação NF2 para via FAK; expectativa realista de benefício.</div>
+              <div class="js-links">
+                <a class="js-link" target="_blank" rel="noopener" href="database.html#meningioma_9"><i data-lucide="book-open" style="width:12px;height:12px"></i> CEVOREM</a>
+                <a class="js-link" target="_blank" rel="noopener" href="database.html#meningioma_10"><i data-lucide="book-open" style="width:12px;height:12px"></i> A071401</a>
+              </div>
+            </div>
+          </details>
+
+          <details class="journey-step-card">
+            <summary><span class="js-num">8</span><span class="js-step-title">Ensaios e seguimento</span><i class="js-chev" data-lucide="chevron-right" style="width:16px;height:16px"></i></summary>
+            <div class="js-body">
+              <div class="js-row"><b>Objetivo</b>Priorizar ensaios clínicos (incl. PRRT) e estruturar o seguimento por imagem.</div>
+              <div class="js-row"><b>Profissionais envolvidos</b>Neuro-oncologia, medicina nuclear e pesquisa clínica.</div>
+              <div class="js-row"><b>Dados necessários</b>Reavaliação volumétrica (RANO), critérios de progressão e opções de protocolo.</div>
+              <div class="js-links">
+                <a class="js-link" target="_blank" rel="noopener" href="trial-matcher.html"><i data-lucide="git-compare" style="width:12px;height:12px"></i> Trial Matcher</a>
+                <a class="js-link" target="_blank" rel="noopener" href="ensaios-clinicos.html"><i data-lucide="microscope" style="width:12px;height:12px"></i> Ensaios ativos</a>
+                <a class="js-link" target="_blank" rel="noopener" href="database.html"><i data-lucide="database" style="width:12px;height:12px"></i> Database</a>
+              </div>
+            </div>
+          </details>
+
+        </div>
+
+        <!-- Gargalos -->
+        <details class="pm-collapse">
+          <summary class="pm-subhead" id="men-5-gargalos">
+            <i data-lucide="alert-triangle" style="width:18px;height:18px"></i>
+            <h4>Gargalos da Jornada e Oportunidades de Otimização</h4>
+            <span class="pm-collapse-hint">10 gargalos + indicadores</span>
+            <i class="pm-collapse-chev" data-lucide="chevron-right" style="width:16px;height:16px"></i>
+          </summary>
+        <p class="pm-lead">Os indicadores abaixo são apresentados como <strong>métricas de melhoria institucional</strong> — não são metas promocionais nem comerciais, e devem ser adaptados ao contexto de cada serviço.</p>
+        <div class="bottleneck-grid">
+
+          <div class="journey-bottleneck-card">
+            <div class="jb-title"><span class="jb-n">1</span> DOTATATE PET não usado no planejamento de RT</div>
+            <div class="jb-row"><b>Consequência</b>GTV impreciso, sobretudo em base de crânio e extensão óssea.</div>
+            <div class="jb-row opt"><b>Oportunidade</b>Delineamento de RT guiado por 68Ga-DOTATATE PET quando indicado.</div>
+            <div class="jb-foot"><a class="js-link" target="_blank" rel="noopener" href="database.html#meningioma_0"><i data-lucide="scan-line" style="width:12px;height:12px"></i> DOTATATE PET</a><span class="institutional-metric">% RT planejada com DOTATATE PET</span></div>
+          </div>
+
+          <div class="journey-bottleneck-card">
+            <div class="jb-title"><span class="jb-n">2</span> Graduação OMS incompleta</div>
+            <div class="jb-row"><b>Consequência</b>Risco de recidiva mal estimado.</div>
+            <div class="jb-row opt"><b>Oportunidade</b>Laudo padronizado (mitoses, invasão cerebral) e classe de metilação quando disponível.</div>
+            <div class="jb-foot"><a class="js-link" target="_blank" rel="noopener" href="database.html"><i data-lucide="database" style="width:12px;height:12px"></i> Database</a><span class="institutional-metric">% com graduação OMS completa</span></div>
+          </div>
+
+          <div class="journey-bottleneck-card">
+            <div class="jb-title"><span class="jb-n">3</span> Ressecção incompleta sem plano de RT</div>
+            <div class="jb-row"><b>Consequência</b>Recidiva precoce no grau 2/3.</div>
+            <div class="jb-row opt"><b>Oportunidade</b>Discussão estruturada de RT adjuvante no grau 2/3.</div>
+            <div class="jb-foot"><a class="js-link" target="_blank" rel="noopener" href="database.html#meningioma_6"><i data-lucide="book-open" style="width:12px;height:12px"></i> EORTC 22042</a><span class="institutional-metric">% grau 2/3 com RT avaliada</span></div>
+          </div>
+
+          <div class="journey-bottleneck-card">
+            <div class="jb-title"><span class="jb-n">4</span> Recidiva sem reavaliação de SSTR-avidez</div>
+            <div class="jb-row"><b>Consequência</b>Perde-se a candidatura à PRRT.</div>
+            <div class="jb-row opt"><b>Oportunidade</b>68Ga-DOTATATE PET na recidiva refratária.</div>
+            <div class="jb-foot"><a class="js-link" target="_blank" rel="noopener" href="database.html#meningioma_0"><i data-lucide="scan-line" style="width:12px;height:12px"></i> DOTATATE PET</a><span class="institutional-metric">% recidivas com DOTATATE PET</span></div>
+          </div>
+
+          <div class="journey-bottleneck-card">
+            <div class="jb-title"><span class="jb-n">5</span> PRRT cogitada sem Krenning documentado</div>
+            <div class="jb-row"><b>Consequência</b>Seleção inadequada para PRRT.</div>
+            <div class="jb-row opt"><b>Oportunidade</b>Confirmar SSTR-avidez (Krenning) antes de indicar PRRT.</div>
+            <div class="jb-foot"><a class="js-link" href="#men-13"><i data-lucide="clipboard-check" style="width:12px;height:12px"></i> Checklist</a><span class="institutional-metric">% PRRT com Krenning documentado</span></div>
+          </div>
+
+          <div class="journey-bottleneck-card">
+            <div class="jb-title"><span class="jb-n">6</span> Sistêmico sem benefício usado fora de ensaio</div>
+            <div class="jb-row"><b>Consequência</b>Toxicidade sem ganho consistente.</div>
+            <div class="jb-row opt"><b>Oportunidade</b>Priorizar ensaio; salvage sistêmico criterioso e informado.</div>
+            <div class="jb-foot"><a class="js-link" target="_blank" rel="noopener" href="trial-matcher.html"><i data-lucide="git-compare" style="width:12px;height:12px"></i> Trial Matcher</a><span class="institutional-metric">% avançados avaliados para ensaio</span></div>
+          </div>
+
+          <div class="journey-bottleneck-card">
+            <div class="jb-title"><span class="jb-n">7</span> Função renal não avaliada antes da PRRT</div>
+            <div class="jb-row"><b>Consequência</b>Risco de nefrotoxicidade.</div>
+            <div class="jb-row opt"><b>Oportunidade</b>eTFG e proteção renal com aminoácidos na PRRT.</div>
+            <div class="jb-foot"><a class="js-link" target="_blank" rel="noopener" href="ferramentas.html#renal"><i data-lucide="droplet" style="width:12px;height:12px"></i> Função renal</a><span class="institutional-metric">% PRRT com proteção renal</span></div>
+          </div>
+
+          <div class="journey-bottleneck-card">
+            <div class="jb-title"><span class="jb-n">8</span> Dados incompletos para tumor board</div>
+            <div class="jb-row"><b>Consequência</b>Discussão improdutiva; decisões adiadas.</div>
+            <div class="jb-row opt"><b>Oportunidade</b>Checklist pré-board; apresentação padronizada.</div>
+            <div class="jb-foot"><a class="js-link" href="#men-13"><i data-lucide="clipboard-check" style="width:12px;height:12px"></i> Checklist</a><span class="institutional-metric">% casos com checklist completo</span></div>
+          </div>
+
+          <div class="journey-bottleneck-card">
+            <div class="jb-title"><span class="jb-n">9</span> Reavaliação não-volumétrica na progressão</div>
+            <div class="jb-row"><b>Consequência</b>Progressão subestimada (meningiomas crescem lentamente).</div>
+            <div class="jb-row opt"><b>Oportunidade</b>Volumetria 3D e critérios RANO no seguimento.</div>
+            <div class="jb-foot"><a class="js-link" target="_blank" rel="noopener" href="ferramentas.html#anatomica"><i data-lucide="ruler" style="width:12px;height:12px"></i> Resposta (RANO)</a><span class="institutional-metric">% com avaliação volumétrica</span></div>
+          </div>
+
+          <div class="journey-bottleneck-card">
+            <div class="jb-title"><span class="jb-n">10</span> Acesso tardio a PRRT/ensaio</div>
+            <div class="jb-row"><b>Consequência</b>Perde-se a janela terapêutica.</div>
+            <div class="jb-row opt"><b>Oportunidade</b>Integração precoce com Trial Matcher e centros de PRRT.</div>
+            <div class="jb-foot"><a class="js-link" target="_blank" rel="noopener" href="trial-matcher.html"><i data-lucide="git-compare" style="width:12px;height:12px"></i> Trial Matcher</a><span class="institutional-metric">% encaminhados a PRRT/ensaio</span></div>
+          </div>
+
+        </div>
+        </details>
+
+        <!-- Imagem molecular e teranóstico -->
+        <details class="pm-collapse">
+          <summary class="pm-subhead">
+            <i data-lucide="scan-line" style="width:18px;height:18px"></i>
+            <h4>Onde a imagem molecular e o teranóstico agregam no meningioma</h4>
+            <span class="pm-collapse-hint">6 cenários</span>
+            <i class="pm-collapse-chev" data-lucide="chevron-right" style="width:16px;height:16px"></i>
+          </summary>
+        <p class="pm-lead">Lista educacional dos cenários em que a imagem molecular e os radiofármacos podem contribuir. O que é RECOMENDADO vs INVESTIGACIONAL está explícito — a interpretação final é sempre clínica e multidisciplinar.</p>
+        <div class="psma-report-elements">
+          <div class="pre-item"><i data-lucide="dot" style="width:14px;height:14px"></i> 68Ga-DOTATATE/DOTATOC PET (recomendado RANO/PET): delineamento de GTV para RT, doença residual e extensão óssea/transdural</div>
+          <div class="pre-item"><i data-lucide="dot" style="width:14px;height:14px"></i> Diferenciação tumor vs cicatriz/fibrose pós-tratamento</div>
+          <div class="pre-item"><i data-lucide="dot" style="width:14px;height:14px"></i> Escore de Krenning e SSTR-avidez: seleção de candidatos à PRRT</div>
+          <div class="pre-item"><i data-lucide="dot" style="width:14px;height:14px"></i> PRRT 177Lu/90Y-DOTATATE/DOTATOC (investigacional): mais ativa no grau 1, modesta no alto grau</div>
+          <div class="pre-item"><i data-lucide="dot" style="width:14px;height:14px"></i> 18F-FDG PET: suspeita de desdiferenciação/comportamento agressivo no alto grau</div>
+          <div class="pre-item"><i data-lucide="dot" style="width:14px;height:14px"></i> Dosimetria e proteção renal: planejamento e segurança da PRRT</div>
+        </div>
+        </details>
+      </div>
+
+      <!-- 6. MAPA DE EVIDÊNCIAS -->
+      <div class="pm-block" id="men-6">
+        <div class="pm-block-head"><span class="pm-num">6</span><h3>Mapa de evidências</h3></div>
+        <p class="pm-lead">Cenários clínicos e os estudos-chave associados. Clique em um estudo para abrir sua ficha no Database.</p>
+        <div class="evidence-map">
+          <div class="evidence-scenario-card" style="--sc-color:#22D3EE">
+            <span class="esc-tag">Cenário A · imagem SSTR</span>
+            <div class="esc-title">DOTATATE PET no diagnóstico e na RT</div>
+            <div class="esc-studies">
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#meningioma_0"><i data-lucide="file-text" style="width:11px;height:11px"></i> 68Ga-DOTATATE PET</a>
+            </div>
+            <p class="esc-msg">Mapeia SSTR-avidez, refina o GTV de RT e detecta doença residual/óssea melhor que a RM isolada.</p>
+          </div>
+          <div class="evidence-scenario-card" style="--sc-color:#A855F7">
+            <span class="esc-tag">Cenário B · PRRT no recorrente</span>
+            <div class="esc-title">Teranóstico SSTR (investigacional)</div>
+            <div class="esc-studies">
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#meningioma_1"><i data-lucide="file-text" style="width:11px;height:11px"></i> 177Lu-DOTATATE</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#meningioma_2"><i data-lucide="file-text" style="width:11px;height:11px"></i> 90Y-DOTATOC</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#meningioma_3"><i data-lucide="file-text" style="width:11px;height:11px"></i> PRRT (meta-análise)</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#meningioma_4"><i data-lucide="file-text" style="width:11px;height:11px"></i> LUMEN-1</a>
+            </div>
+            <p class="esc-msg">Controle de doença dependente do grau (marcante no grau 1, mínimo no grau 3); o ensaio randomizado LUMEN-1 está em curso.</p>
+          </div>
+          <div class="evidence-scenario-card" style="--sc-color:#FF8400">
+            <span class="esc-tag">Cenário C · radioterapia grau 2/3</span>
+            <div class="esc-title">RT adjuvante e o debate do grau 2</div>
+            <div class="esc-studies">
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#meningioma_6"><i data-lucide="file-text" style="width:11px;height:11px"></i> EORTC 22042</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#meningioma_5"><i data-lucide="file-text" style="width:11px;height:11px"></i> ROAM / EORTC-1308</a>
+            </div>
+            <p class="esc-msg">RT de alta dose sustenta o controle no grau 2 ressecado; o papel da RT adjuvante de rotina segue em estudo.</p>
+          </div>
+          <div class="evidence-scenario-card" style="--sc-color:#FB923C">
+            <span class="esc-tag">Cenário D · sistêmico salvage</span>
+            <div class="esc-title">Estabilização modesta</div>
+            <div class="esc-studies">
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#meningioma_7"><i data-lucide="file-text" style="width:11px;height:11px"></i> Bevacizumabe</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#meningioma_9"><i data-lucide="file-text" style="width:11px;height:11px"></i> CEVOREM</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#meningioma_8"><i data-lucide="file-text" style="width:11px;height:11px"></i> Sunitinibe</a>
+            </div>
+            <p class="esc-msg">Sem agente aprovado; estabilização do crescimento como benefício realista no recorrente refratário.</p>
+          </div>
+          <div class="evidence-scenario-card" style="--sc-color:#F87171">
+            <span class="esc-tag">Cenário E · precisão e imunoterapia</span>
+            <div class="esc-title">Subtipo genômico e limites</div>
+            <div class="esc-studies">
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#meningioma_10"><i data-lucide="file-text" style="width:11px;height:11px"></i> A071401</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#meningioma_11"><i data-lucide="file-text" style="width:11px;height:11px"></i> Pembrolizumabe</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#meningioma_12"><i data-lucide="file-text" style="width:11px;height:11px"></i> EORTC-1320</a>
+            </div>
+            <p class="esc-msg">FAK em NF2-mutado é promissor; imunoterapia modesta; trabectedina negativa.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7. ESTUDOS-CHAVE -->
+      <div class="pm-block" id="men-7">
+        <div class="pm-block-head"><span class="pm-num">7</span><h3>Estudos-chave</h3></div>
+        <p class="pm-lead">Desenho dos principais estudos. <strong>Resultados, desfechos e toxicidades ficam na ficha de cada um no Database</strong> — este mapa não reproduz hazard ratios, valores de p ou taxas detalhadas.</p>
+        <div class="keystudy-grid">
+          <div class="keystudy-card">
+            <div class="ks-top"><span class="ks-name">68Ga-DOTATATE PET</span><span class="ks-scn">imagem SSTR · recomendada</span></div>
+            <div class="ks-row"><b>População</b>Meningioma para diagnóstico, planejamento de RT e doença residual.</div>
+            <div class="ks-row"><b>Modalidade</b>68Ga-DOTATATE/DOTATOC PET vs RM (correlação histológica).</div>
+            <p class="ks-msg">Imagem SSTR que refina o alvo de RT (RANO/PET).</p>
+            <div class="ks-foot"><a class="ks-link" target="_blank" rel="noopener" href="database.html#meningioma_0"><i data-lucide="database" style="width:13px;height:13px"></i> Ficha no Database</a></div>
+          </div>
+          <div class="keystudy-card">
+            <div class="ks-top"><span class="ks-name">177Lu-DOTATATE</span><span class="ks-scn">PRRT · recorrente refratário</span></div>
+            <div class="ks-row"><b>População</b>Meningioma progressivo SSTR-ávido, pós-cirurgia e RT.</div>
+            <div class="ks-row"><b>Intervenção</b>PRRT com 177Lu-DOTATATE (coorte).</div>
+            <p class="ks-msg">Estabilização modesta em população fortemente pré-tratada.</p>
+            <div class="ks-foot"><a class="ks-link" target="_blank" rel="noopener" href="database.html#meningioma_1"><i data-lucide="database" style="width:13px;height:13px"></i> Ficha no Database</a></div>
+          </div>
+          <div class="keystudy-card">
+            <div class="ks-top"><span class="ks-name">PRRT — meta-análise IPD</span><span class="ks-scn">por grau OMS</span></div>
+            <div class="ks-row"><b>População</b>Meningioma refratário tratado com PRRT (90Y/177Lu), dados individuais.</div>
+            <div class="ks-row"><b>Análise</b>Controle de doença e PFS-6 estratificados por grau.</div>
+            <p class="ks-msg">Atividade marcante no grau 1, decrescente no grau 2/3.</p>
+            <div class="ks-foot"><a class="ks-link" target="_blank" rel="noopener" href="database.html#meningioma_3"><i data-lucide="database" style="width:13px;height:13px"></i> Ficha no Database</a></div>
+          </div>
+          <div class="keystudy-card">
+            <div class="ks-top"><span class="ks-name">LUMEN-1</span><span class="ks-scn">PRRT randomizado · em curso</span></div>
+            <div class="ks-row"><b>População</b>Meningioma recorrente SSTR-ávido (OMS 1–3).</div>
+            <div class="ks-row"><b>Intervenção / comparador</b>177Lu-DOTATATE vs padrão de cuidado.</div>
+            <p class="ks-msg">Primeiro ensaio randomizado de PRRT em meningioma (EORTC).</p>
+            <div class="ks-foot"><a class="ks-link" target="_blank" rel="noopener" href="database.html#meningioma_4"><i data-lucide="database" style="width:13px;height:13px"></i> Ficha no Database</a></div>
+          </div>
+          <div class="keystudy-card">
+            <div class="ks-top"><span class="ks-name">EORTC 22042-26042</span><span class="ks-scn">RT · grau 2/3</span></div>
+            <div class="ks-row"><b>População</b>Meningioma atípico/anaplásico ressecado.</div>
+            <div class="ks-row"><b>Intervenção</b>RT de alta dose (60 Gy, IMRT/SIB).</div>
+            <p class="ks-msg">Sustenta a RT adjuvante no grau 2 com ressecção completa.</p>
+            <div class="ks-foot"><a class="ks-link" target="_blank" rel="noopener" href="database.html#meningioma_6"><i data-lucide="database" style="width:13px;height:13px"></i> Ficha no Database</a></div>
+          </div>
+          <div class="keystudy-card">
+            <div class="ks-top"><span class="ks-name">ROAM / EORTC-1308</span><span class="ks-scn">RT adjuvante grau 2 · em curso</span></div>
+            <div class="ks-row"><b>População</b>Meningioma atípico (grau 2) ressecado completamente.</div>
+            <div class="ks-row"><b>Intervenção / comparador</b>RT adjuvante precoce vs observação.</div>
+            <p class="ks-msg">Definirá se a RT adjuvante deve ser padrão no grau 2.</p>
+            <div class="ks-foot"><a class="ks-link" target="_blank" rel="noopener" href="database.html#meningioma_5"><i data-lucide="database" style="width:13px;height:13px"></i> Ficha no Database</a></div>
+          </div>
+          <div class="keystudy-card">
+            <div class="ks-top"><span class="ks-name">Bevacizumabe</span><span class="ks-scn">salvage · anti-VEGF</span></div>
+            <div class="ks-row"><b>População</b>Meningioma progressivo grau 1–3 refratário.</div>
+            <div class="ks-row"><b>Intervenção</b>Bevacizumabe (fase 2, braço único).</div>
+            <p class="ks-msg">Estabilização como melhor resposta na maioria.</p>
+            <div class="ks-foot"><a class="ks-link" target="_blank" rel="noopener" href="database.html#meningioma_7"><i data-lucide="database" style="width:13px;height:13px"></i> Ficha no Database</a></div>
+          </div>
+          <div class="keystudy-card">
+            <div class="ks-top"><span class="ks-name">CEVOREM</span><span class="ks-scn">salvage · mTOR + SSA</span></div>
+            <div class="ks-row"><b>População</b>Meningioma agressivo recorrente (grau 2/3).</div>
+            <div class="ks-row"><b>Intervenção</b>Everolimo + octreotídeo LAR (fase 2).</div>
+            <p class="ks-msg">Redução da taxa de crescimento tumoral.</p>
+            <div class="ks-foot"><a class="ks-link" target="_blank" rel="noopener" href="database.html#meningioma_9"><i data-lucide="database" style="width:13px;height:13px"></i> Ficha no Database</a></div>
+          </div>
+          <div class="keystudy-card">
+            <div class="ks-top"><span class="ks-name">Alliance A071401</span><span class="ks-scn">precisão · FAK-NF2</span></div>
+            <div class="ks-row"><b>População</b>Meningioma recorrente por subtipo genômico (NF2, SMO, AKT1).</div>
+            <div class="ks-row"><b>Intervenção</b>FAK-inibidor em NF2-mutado (e outros braços).</div>
+            <p class="ks-msg">Sinal promissor do eixo FAK-NF2 (atingiu PFS-6m).</p>
+            <div class="ks-foot"><a class="ks-link" target="_blank" rel="noopener" href="database.html#meningioma_10"><i data-lucide="database" style="width:13px;height:13px"></i> Ficha no Database</a></div>
+          </div>
+          <div class="keystudy-card">
+            <div class="ks-top"><span class="ks-name">EORTC-1320</span><span class="ks-scn">trabectedina · negativo</span></div>
+            <div class="ks-row"><b>População</b>Meningioma grau 2/3 recorrente.</div>
+            <div class="ks-row"><b>Intervenção / comparador</b>Trabectedina vs cuidado local.</div>
+            <p class="ks-msg">Negativo — sem benefício e maior toxicidade.</p>
+            <div class="ks-foot"><a class="ks-link" target="_blank" rel="noopener" href="database.html#meningioma_12"><i data-lucide="database" style="width:13px;height:13px"></i> Ficha no Database</a></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8. TRIAL LINEAGE -->
+      <div class="pm-block" id="men-8">
+        <div class="pm-block-head"><span class="pm-num">8</span><h3>Trial Lineage — publicações secundárias e análises derivadas</h3></div>
+        <p class="pm-lead">Um estudo pivotal raramente é uma publicação única: gera uma <strong>família de evidências</strong> — follow-ups, subgrupos, qualidade de vida, segurança, biomarcadores e abstracts de congresso.</p>
+        <div class="ds-note" style="background:rgba(143,148,156,0.07);border-color:var(--border-soft)">
+          <i data-lucide="construction" style="width:18px;height:18px;color:var(--stone)"></i>
+          <p>O Trial Lineage de meningioma está <b>em desenvolvimento</b> — as publicações secundárias serão conectadas ao catálogo. Por ora, as fichas completas, com citações e links oficiais, estão no <a href="database.html" target="_blank" rel="noopener" style="color:var(--amber)">Database</a>.</p>
+        </div>
+      </div>
+
+      <!-- 9. CRITÉRIOS PRÁTICOS -->
+      <div class="pm-block" id="men-9">
+        <div class="pm-block-head"><span class="pm-num">9</span><h3>Critérios práticos de discussão</h3></div>
+        <p class="pm-lead">Checklist clínico a revisar antes de discutir radioterapia, PRRT ou terapia sistêmica.</p>
+        <div class="q-groups">
+          <div class="q-group">
+            <div class="q-group-title"><i data-lucide="user"></i> Dados clínicos</div>
+            <ul><li>Idade</li><li>ECOG / Karnofsky</li><li>Sintomas neurológicos</li><li>Comorbidades</li><li>Objetivo terapêutico</li></ul>
+          </div>
+          <div class="q-group">
+            <div class="q-group-title"><i data-lucide="layers"></i> Patologia e ressecção</div>
+            <ul><li>Grau OMS (1/2/3)</li><li>Mitoses e invasão cerebral</li><li>Classe de metilação, se disponível</li><li>Extensão da ressecção (Simpson)</li><li>Mutações (NF2, SMO, AKT1)</li></ul>
+          </div>
+          <div class="q-group">
+            <div class="q-group-title"><i data-lucide="scan-line"></i> Imagem e SSTR</div>
+            <ul><li>RM volumétrica</li><li>68Ga-DOTATATE PET e Krenning</li><li>SSTR-avidez</li><li>FDG, se suspeita de desdiferenciação</li></ul>
+          </div>
+          <div class="q-group">
+            <div class="q-group-title"><i data-lucide="shield-alert"></i> Segurança</div>
+            <ul><li>Função renal (PRRT)</li><li>Hemograma</li><li>Radioterapia prévia (dose acumulada)</li><li>Estruturas críticas próximas</li></ul>
+          </div>
+          <div class="q-group">
+            <div class="q-group-title"><i data-lucide="flask-conical"></i> Acesso e pesquisa</div>
+            <ul><li>Acesso a PRRT</li><li>Necessidade de teste molecular</li><li>Possibilidade de inclusão em trial</li><li>Encaminhamento</li></ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 10. ENSAIOS CLÍNICOS ATIVOS -->
+      <div class="pm-block" id="men-10">
+        <div class="pm-block-head"><span class="pm-num">10</span><h3>Ensaios clínicos ativos relacionados</h3></div>
+        <p class="pm-lead">Ensaios em andamento ou recrutando em meningioma — PRRT (177Lu/90Y-DOTATATE), radioterapia, terapia de precisão por subtipo genômico e imunoterapia. <strong>A elegibilidade final depende sempre do protocolo oficial e do centro responsável.</strong></p>
+        <div class="link-cards" style="max-width:520px">
+          <a class="link-card" target="_blank" rel="noopener" href="ensaios-clinicos.html">
+            <i data-lucide="microscope" style="width:18px;height:18px"></i>
+            <span>Ver ensaios ativos — filtrar por “Meningioma”</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 11. GUIDELINES E REFERÊNCIAS -->
+      <div class="pm-block" id="men-11">
+        <div class="pm-block-head"><span class="pm-num">11</span><h3>Guidelines e referências</h3></div>
+        <p class="pm-lead">As recomendações de manejo do meningioma seguem diretrizes de neuro-oncologia (<strong>EANO</strong>, NCCN) e a recomendação de imagem do <strong>RANO/PET Group</strong> — referências externas. As guidelines de <strong>SSTR-PET e PRRT</strong> hospedadas no TheraTrials (derivadas dos TNE) são as referências teranósticas transferíveis mais próximas.</p>
+        <div class="link-cards">
+          <a class="link-card" target="_blank" rel="noopener" href="guideline-detail.html#prrt-sstr-pet-imaging-2023"><i data-lucide="scan-line" style="width:18px;height:18px"></i><span>Imagem SSTR-PET (DOTATATE) · referência</span></a>
+          <a class="link-card" target="_blank" rel="noopener" href="guideline-detail.html#prrt-eanm-iaea-snmmi-2026"><i data-lucide="atom" style="width:18px;height:18px"></i><span>PRRT 177Lu-DOTATATE · princípios (EANM/IAEA/SNMMI)</span></a>
+          <a class="link-card" target="_blank" rel="noopener" href="database.html#meningioma_0"><i data-lucide="file-text" style="width:18px;height:18px"></i><span>68Ga-DOTATATE PET em meningioma (ficha)</span></a>
+          <a class="link-card" target="_blank" rel="noopener" href="guidelines.html"><i data-lucide="library" style="width:18px;height:18px"></i><span>Biblioteca de guidelines (radiofármacos)</span></a>
+        </div>
+      </div>
+
+      <!-- 12. FERRAMENTAS ÚTEIS -->
+      <div class="pm-block" id="men-12">
+        <div class="pm-block-head"><span class="pm-num">12</span><h3>Ferramentas úteis</h3></div>
+        <p class="pm-lead">Calculadoras e critérios já disponíveis na página de Ferramentas.</p>
+        <div class="link-cards">
+          <a class="link-card" target="_blank" rel="noopener" href="ferramentas.html#anatomica"><i data-lucide="ruler" style="width:18px;height:18px"></i><span>Resposta por imagem (RANO/RECIST 1.1)</span></a>
+          <a class="link-card" target="_blank" rel="noopener" href="ferramentas.html#renal"><i data-lucide="droplet" style="width:18px;height:18px"></i><span>Função renal (PRRT)</span></a>
+          <a class="link-card" target="_blank" rel="noopener" href="ferramentas.html#ctcae"><i data-lucide="alert-triangle" style="width:18px;height:18px"></i><span>Eventos adversos · CTCAE</span></a>
+          <a class="link-card" target="_blank" rel="noopener" href="ferramentas.html#clinica"><i data-lucide="activity" style="width:18px;height:18px"></i><span>ECOG / Karnofsky</span></a>
+        </div>
+      </div>
+
+      <!-- 13. CHECKLISTS -->
+      <div class="pm-block" id="men-13">
+        <div class="pm-block-head"><span class="pm-num">13</span><h3>Checklists</h3></div>
+        <p class="pm-lead">Três listas de <strong>itens para revisão</strong> — organização do caso, não critérios de elegibilidade (a avaliação formal cabe à equipe responsável). Cada uma pode ser copiada em texto.</p>
+
+        <div class="rlt-checklist">
+          <div class="rlt-checklist-head">
+            <h4><i data-lucide="send" style="width:16px;height:16px"></i> Encaminhamento para discussão multidisciplinar (meningioma)</h4>
+            <button class="btn btn-secondary btn-sm copy-checklist-btn" @click="copyChecklist('encaminhamento')"><i data-lucide="copy" style="width:14px;height:14px"></i> Copiar</button>
+          </div>
+          <div class="bc-grid">
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Diagnóstico histológico e grau OMS (1/2/3)</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Critérios de graduação (mitoses, invasão cerebral) e metilação, se disponível</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Extensão da ressecção (grau de Simpson)</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Localização (base de crânio, foice, seio cavernoso)</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> RM com contraste recente</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> 68Ga-DOTATATE PET (SSTR) e escore de Krenning</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Status de SSTR-avidez</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> FDG PET, se suspeita de desdiferenciação</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Radioterapia prévia (dose/campo)</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Padrão de recidiva/progressão (volumetria)</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Mutações acionáveis (NF2, SMO, AKT1), se testadas</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Função renal (relevante para PRRT)</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Hemograma</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> ECOG / Karnofsky e sintomas neurológicos</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Objetivo da discussão</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Possibilidade de ensaio clínico</div>
+          </div>
+        </div>
+
+        <div class="rlt-checklist">
+          <div class="rlt-checklist-head">
+            <h4><i data-lucide="presentation" style="width:16px;height:16px"></i> Apresentação de caso no tumor board</h4>
+            <button class="btn btn-secondary btn-sm copy-checklist-btn" @click="copyChecklist('board')"><i data-lucide="copy" style="width:14px;height:14px"></i> Copiar</button>
+          </div>
+          <div class="bc-grid">
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Pergunta clínica objetiva</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Grau OMS e extensão da ressecção (Simpson)</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Localização e relação com estruturas críticas</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Status de SSTR-avidez (DOTATATE PET / Krenning)</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Radioterapia prévia e margem de retratamento</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Linha terapêutica atual e tratamentos prévios</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Padrão de progressão (taxa de crescimento volumétrico)</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Mutações acionáveis (NF2, SMO, AKT1)</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Função renal e performance status</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Sintomas neurológicos</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Opções aprovadas vs investigacionais</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Ensaios clínicos disponíveis (incl. PRRT)</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Limitações ou incertezas</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Próximo passo proposto para discussão</div>
+          </div>
+        </div>
+
+        <div class="rlt-checklist">
+          <div class="rlt-checklist-head">
+            <h4><i data-lucide="folder-check" style="width:16px;height:16px"></i> Pré-terapia (PRRT/sistêmico), documentação e acesso</h4>
+            <button class="btn btn-secondary btn-sm copy-checklist-btn" @click="copyChecklist('preterapia')"><i data-lucide="copy" style="width:14px;height:14px"></i> Copiar</button>
+          </div>
+          <div class="bc-grid">
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Relatório médico</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Confirmação de SSTR-avidez (DOTATATE PET, Krenning)</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> RM volumétrica recente para baseline</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Radioterapia prévia (dose acumulada a estruturas críticas)</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Função renal (eTFG) e hemograma</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Proteção renal com aminoácidos prevista (PRRT)</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Plano de dosimetria, quando aplicável</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Avaliação de função orgânica para terapia sistêmica</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Consentimento institucional, se aplicável</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Orientações de radioproteção (PRRT)</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Autorização</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Agendamento</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Logística do radiofármaco</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Comunicação com neurocirurgia/radio-oncologia</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Plano de seguimento e avaliação de resposta (RANO)</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 14. LINKS INTERNOS E PRÓXIMOS PASSOS -->
+      <div class="pm-block" id="men-14">
+        <div class="pm-block-head"><span class="pm-num">14</span><h3>Links internos e próximos passos</h3></div>
+        <div class="link-cards">
+          <a class="link-card" target="_blank" rel="noopener" href="database.html"><i data-lucide="database" style="width:18px;height:18px"></i><span>Abrir Database (meningioma)</span></a>
+          <a class="link-card" target="_blank" rel="noopener" href="database.html"><i data-lucide="git-compare" style="width:18px;height:18px"></i><span>Comparar estudos de meningioma</span></a>
+          <a class="link-card" target="_blank" rel="noopener" href="ensaios-clinicos.html"><i data-lucide="microscope" style="width:18px;height:18px"></i><span>Ver ensaios ativos</span></a>
+          <a class="link-card" target="_blank" rel="noopener" href="guidelines.html"><i data-lucide="book-open" style="width:18px;height:18px"></i><span>Abrir guidelines</span></a>
+          <a class="link-card" target="_blank" rel="noopener" href="ferramentas.html"><i data-lucide="wrench" style="width:18px;height:18px"></i><span>Abrir ferramentas</span></a>
+          <a class="link-card" target="_blank" rel="noopener" href="about.html"><i data-lucide="message-square-plus" style="width:18px;height:18px"></i><span>Sugerir estudo ou correção</span></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- EXPLORAR ESTUDOS POR TUMOR (browser existente, preservado) -->
 <section style="padding: 1rem 0 0">
   <div class="container">
@@ -6020,7 +6812,6 @@
 
       // ---- Tumor Board Maps: mapas em desenvolvimento (hub) ----
       upcomingMaps: [
-        { id: 'meningioma', name: 'Meningioma',                       icon: 'brain',         color: '#A855F7', badges: ['SSTR', 'Lu-177'] },
       ],
 
       // ---- Trial Lineage por tumor (vínculo real via THERA_SECONDARY) ----
@@ -6042,6 +6833,7 @@
         tireoide: [],
         mama: [],
         pulmao: [],
+        meningioma: [],
       },
       get lineageParents() { return this.lineageParentsByTumor[this.openMap] || []; },
 
@@ -6082,7 +6874,7 @@
         this.$nextTick(() => document.getElementById('hub-' + (prev || 'prostata'))?.scrollIntoView({ behavior: 'smooth', block: 'center' }));
       },
 
-      mapNames: { prostata: 'Câncer de próstata', net: 'Tumores neuroendócrinos', hcc: 'Carcinoma hepatocelular e vias biliares', tireoide: 'Câncer de tireoide', mama: 'Câncer de mama', pulmao: 'Câncer de pulmão' },
+      mapNames: { prostata: 'Câncer de próstata', net: 'Tumores neuroendócrinos', hcc: 'Carcinoma hepatocelular e vias biliares', tireoide: 'Câncer de tireoide', mama: 'Câncer de mama', pulmao: 'Câncer de pulmão', meningioma: 'Meningioma' },
       checklistsByTumor: {
         prostata: {
           encaminhamento: {
@@ -6168,6 +6960,20 @@
             items: ['Relatório médico', 'Confirmação de histologia e driver molecular', 'NGS completo e PD-L1', 'Imagem de SNC (RM de crânio)', 'Função pulmonar e cardíaca', 'Hemograma', 'Função renal e hepática', 'Avaliação de pneumonite/doença intersticial prévia', 'Acesso venoso, se necessário', 'Consentimento institucional, se aplicável', 'Plano de manejo de toxicidades de classe (irAE; cutânea/diarreia de EGFR-TKI; pneumonite)', 'Autorização', 'Agendamento', 'Logística do agente / radiofármaco', 'Plano de seguimento e avaliação de resposta'],
           },
         },
+        meningioma: {
+          encaminhamento: {
+            title: 'Encaminhamento para discussão multidisciplinar (meningioma)',
+            items: ['Diagnóstico histológico e grau OMS (1/2/3)', 'Critérios de graduação (mitoses, invasão cerebral) e classe de metilação, se disponível', 'Extensão da ressecção (grau de Simpson)', 'Localização (base de crânio, foice, seio cavernoso)', 'RM com contraste recente', '68Ga-DOTATATE PET (SSTR) e escore de Krenning', 'Status de SSTR-avidez', 'FDG PET, se suspeita de desdiferenciação em alto grau', 'Radioterapia prévia (dose/campo)', 'Padrão de recidiva/progressão (volumetria)', 'Mutações acionáveis (NF2, SMO, AKT1/PIK3CA), se testadas', 'Função renal (relevante para PRRT)', 'Hemograma', 'ECOG / Karnofsky e sintomas neurológicos', 'Objetivo da discussão', 'Possibilidade de ensaio clínico'],
+          },
+          board: {
+            title: 'Apresentação de caso no tumor board',
+            items: ['Pergunta clínica objetiva', 'Grau OMS e extensão da ressecção (Simpson)', 'Localização e relação com estruturas críticas', 'Status de SSTR-avidez (DOTATATE PET / Krenning)', 'Radioterapia prévia e margem de retratamento', 'Linha terapêutica atual e tratamentos prévios', 'Padrão de progressão (taxa de crescimento volumétrico)', 'Mutações acionáveis (NF2, SMO, AKT1)', 'Função renal e performance status', 'Sintomas neurológicos', 'Opções aprovadas vs investigacionais', 'Ensaios clínicos disponíveis (incl. PRRT)', 'Limitações ou incertezas', 'Próximo passo proposto para discussão'],
+          },
+          preterapia: {
+            title: 'Pré-terapia (PRRT/sistêmico), documentação e acesso',
+            items: ['Relatório médico', 'Confirmação de SSTR-avidez (DOTATATE PET, Krenning)', 'RM volumétrica recente para baseline', 'Radioterapia prévia (dose acumulada a estruturas críticas)', 'Função renal (eTFG) e hemograma', 'Proteção renal com aminoácidos prevista (PRRT)', 'Plano de dosimetria, quando aplicável', 'Avaliação de função orgânica para terapia sistêmica', 'Consentimento institucional, se aplicável', 'Orientações de radioproteção (PRRT)', 'Autorização', 'Agendamento', 'Logística do radiofármaco', 'Comunicação com neurocirurgia/radio-oncologia', 'Plano de seguimento e avaliação de resposta (RANO)'],
+          },
+        },
       },
       get checklists() { return this.checklistsByTumor[this.openMap] || this.checklistsByTumor.prostata; },
       copyChecklist(kind) {
@@ -6220,6 +7026,8 @@
           match: (s) => TheraTrials.hasTumor(s,'mama_her2pos','mama_hrpos','mama_tnbc') || ['breast_her2','breast_hrpos','breast_tnbc_brca','breast_radio_dev'].includes(s.category_id) || (s.category_id === 'rt_sbrt_oligo' && /(mama|breast|NRG-BR)/i.test((s.indicacao||'') + ' ' + (s.estudo||''))) },
         { id: 'tireoide', name: 'Tireoide', tagline: 'CDT (vigilância ativa, ablação RAI, ESTIMABL2) · MTC (selpercatinib) · ATC (BRAF/MEK) · TKIs (lenvatinib) · redifferentiation · ATA 2025', icon: 'circle-dot', color: '#06B6D4',
           match: (s) => TheraTrials.hasTumor(s,'tireoide_cdt','tireoide_mtc','tireoide_atc') || s.category_id === 'tireoide_avancado' },
+        { id: 'meningioma', name: 'Meningioma', tagline: 'SSTR/DOTATATE PET · PRRT 177Lu/90Y (investigacional) · RT adjuvante (grau 2/3) · sistêmico salvage (bevacizumab, CEVOREM) · precisão FAK-NF2', icon: 'brain', color: '#A855F7',
+          match: (s) => s.category_id === 'meningioma' },
         { id: 'melanoma', name: 'Melanoma', tagline: 'Avançado · ICI (nivo+ipi, LAG-3 relatlimab) · BRAF/MEK · adjuvante e neoadjuvante (NADINA, KN-716)', icon: 'sparkles', color: '#A855F7',
           match: (s) => TheraTrials.hasTumor(s,'melanoma_cutaneo','melanoma_uveal') || ['melanoma_avancado','melanoma_adjuvante'].includes(s.category_id) },
       ],
