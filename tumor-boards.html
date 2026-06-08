@@ -794,6 +794,23 @@
     .ds-rowlabel { writing-mode: horizontal-tb; transform: none; justify-content: flex-start; padding: 0.35rem 0.7rem; }
   }
 
+  /* ---- Escada BCLC (estados do HCC, linear 0→A→B→C→D) ---- */
+  .bclc-head { display: flex; align-items: center; gap: 0.5rem; font-size: 0.74rem; font-weight: 700; letter-spacing: 0.04em; color: var(--stone); margin: 0.25rem 0 0.55rem; }
+  .bclc-head .bclc-flow { font-family: var(--font-mono); color: var(--off-white); }
+  .bclc-ladder { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.5rem; margin: 0 0 0.85rem; }
+  @media (max-width: 860px) { .bclc-ladder { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 520px) { .bclc-ladder { grid-template-columns: 1fr; } }
+  .bclc-stage { background: var(--graphite-3); border: 1px solid var(--border-soft); border-top: 3px solid var(--c, var(--amber)); border-radius: var(--radius-md); padding: 0.8rem 0.85rem; display: flex; flex-direction: column; gap: 0.4rem; }
+  .bclc-badge { font-family: var(--font-display); font-weight: 700; font-size: 1rem; color: var(--c, var(--off-white)); line-height: 1.1; }
+  .bclc-badge small { display: block; font-size: 0.68rem; font-weight: 600; color: var(--stone); margin-top: 1px; }
+  .bclc-def { font-size: 0.76rem; color: var(--stone); line-height: 1.45; margin: 0; }
+  .bclc-rx { font-size: 0.75rem; color: var(--off-white); line-height: 1.4; }
+  .bclc-rx b { display: block; font-size: 0.58rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--stone-2); margin-bottom: 1px; }
+  .bclc-tare { margin-top: auto; font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; padding: 0.18rem 0.45rem; border-radius: 5px; align-self: flex-start; }
+  .bclc-tare.yes { background: rgba(245,158,11,0.16); color: #FBBF24; }
+  .bclc-tare.opt { background: rgba(96,165,250,0.14); color: #93C5FD; }
+  .bclc-tare.no  { background: var(--graphite-4); color: var(--stone-2); }
+
   [x-cloak] { display: none !important; }
 </style>
   <script defer src="https://cloud.umami.is/script.js" data-website-id="3c576b68-e2b3-4982-82e7-688e5a8adf58"></script>
@@ -894,6 +911,28 @@
           <span class="mod-pill ac225">α-PRRT</span>
           <span class="mod-pill stage">G1–G3</span>
           <span class="mod-pill stage">GEP-NET</span>
+        </div>
+        <div class="tmc-foot">
+          <span class="tmc-open">Abrir mapa <i data-lucide="arrow-right" style="width:15px;height:15px"></i></span>
+        </div>
+      </article>
+
+      <!-- HCC / FÍGADO — ativo -->
+      <article class="tumor-map-card is-active" style="--accent-color:#F59E0B;--accent-rgb:245,158,11" @click="openTumorMap('hcc')" id="hub-hcc">
+        <div class="tmc-head">
+          <div class="tmc-icon"><i data-lucide="droplet" style="width:24px;height:24px"></i></div>
+          <div>
+            <div class="tmc-title">Fígado — HCC e vias biliares</div>
+            <span class="tmc-status on">Mapa completo</span>
+          </div>
+        </div>
+        <div class="tmc-badges">
+          <span class="mod-pill lu177">Y-90</span>
+          <span class="mod-pill">TARE</span>
+          <span class="mod-pill psma">BCLC</span>
+          <span class="mod-pill">LI-RADS</span>
+          <span class="mod-pill stage">HCC</span>
+          <span class="mod-pill stage">Colangio</span>
         </div>
         <div class="tmc-foot">
           <span class="tmc-open">Abrir mapa <i data-lucide="arrow-right" style="width:15px;height:15px"></i></span>
@@ -2533,6 +2572,793 @@
   </div>
 </section>
 
+<!-- MÓDULO: TUMOR BOARD MAP — FÍGADO (HCC E VIAS BILIARES) / TARE -->
+<section x-show="openMap === 'hcc'" x-cloak id="map-hcc" style="padding:0">
+  <div class="container">
+    <div class="map-module" style="--accent-color:#F59E0B;--accent-rgb:245,158,11">
+
+      <button class="detail-back" @click="closeMap()">
+        <i data-lucide="arrow-left" style="width:14px;height:14px"></i>
+        <span>Voltar aos mapas</span>
+      </button>
+
+      <div class="mm-head">
+        <h1 class="mm-title"><i data-lucide="droplet" style="width:30px;height:30px"></i> Tumor Board Map — Fígado: HCC e Vias Biliares</h1>
+        <p class="mm-sub">Do nódulo hepático (LI-RADS) ao estadiamento BCLC e à radioembolização (TARE) com 90Y, incluindo colangiocarcinoma.</p>
+      </div>
+
+      <nav class="mm-nav">
+        <a href="#hcc-1">1 · Visão geral</a>
+        <a href="#hcc-2">2 · Teoria essencial</a>
+        <a href="#hcc-3">3 · Perguntas do board</a>
+        <a href="#hcc-4">4 · Jornada terapêutica</a>
+        <a href="#hcc-5">5 · Jornada do paciente</a>
+        <a href="#hcc-6">6 · Mapa de evidências</a>
+        <a href="#hcc-7">7 · Estudos-chave</a>
+        <a href="#hcc-8">8 · Trial Lineage</a>
+        <a href="#hcc-9">9 · Critérios práticos</a>
+        <a href="#hcc-10">10 · Ensaios ativos</a>
+        <a href="#hcc-11">11 · Guidelines</a>
+        <a href="#hcc-12">12 · Ferramentas</a>
+        <a href="#hcc-13">13 · Checklists</a>
+        <a href="#hcc-14">14 · Próximos passos</a>
+      </nav>
+
+      <!-- 1. VISÃO GERAL -->
+      <div class="pm-block" id="hcc-1">
+        <div class="pm-block-head"><span class="pm-num">1</span><h3>Visão geral</h3></div>
+        <p class="pm-lead">O <strong>carcinoma hepatocelular (HCC)</strong> surge tipicamente no fígado cirrótico e costuma ser diagnosticado por imagem (LI-RADS), muitas vezes sem biópsia. O <strong>estadiamento BCLC</strong> liga o estágio da doença e a função hepática ao tratamento — e é onde a <strong>radioembolização (TARE) com 90Y</strong> se posiciona. O colangiocarcinoma é uma entidade distinta, guiada por ressecabilidade e biologia molecular.</p>
+      </div>
+
+      <!-- 2. TEORIA ESSENCIAL -->
+      <div class="pm-block" id="hcc-2">
+        <div class="pm-block-head"><span class="pm-num">2</span><h3>Teoria essencial</h3></div>
+        <div class="concept-grid">
+          <div class="concept-card">
+            <div class="cc-ic"><i data-lucide="scan-line" style="width:18px;height:18px"></i></div>
+            <h4>Nódulo hepático e LI-RADS</h4>
+            <p>No fígado cirrótico, o nódulo é caracterizado por TC/RM multifásica. O LI-RADS padroniza a probabilidade de HCC — a categoria LR-5 corresponde a HCC definitivo e dispensa biópsia.</p>
+          </div>
+          <div class="concept-card">
+            <div class="cc-ic"><i data-lucide="layers" style="width:18px;height:18px"></i></div>
+            <h4>Estadiamento BCLC</h4>
+            <p>O BCLC integra carga tumoral, função hepática (Child-Pugh/ALBI) e performance status, ligando cada estágio (0/A/B/C/D) a um tratamento de referência.</p>
+          </div>
+          <div class="concept-card">
+            <div class="cc-ic"><i data-lucide="atom" style="width:18px;height:18px"></i></div>
+            <h4>TARE / radioembolização 90Y</h4>
+            <p>Microesferas de 90Y são entregues por via intra-arterial no tumor. O 99mTc-MAA mapeia o shunt hepatopulmonar e a distribuição antes da terapia — o princípio teranóstico da TARE.</p>
+          </div>
+          <div class="concept-card">
+            <div class="cc-ic"><i data-lucide="git-compare" style="width:18px;height:18px"></i></div>
+            <h4>HCC versus colangiocarcinoma</h4>
+            <p>Entidades distintas: o HCC segue o BCLC; o colangiocarcinoma é guiado por ressecabilidade e alvos moleculares (FGFR2, IDH1, HER2, BRAF). O colangio intra-hepático irressecável também pode receber TARE.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. PERGUNTAS DO TUMOR BOARD -->
+      <div class="pm-block" id="hcc-3">
+        <div class="pm-block-head"><span class="pm-num">3</span><h3>Perguntas do tumor board</h3></div>
+        <p class="pm-lead">As perguntas que estruturam a decisão em tumor board, agrupadas por eixo.</p>
+        <div class="q-groups">
+          <div class="q-group">
+            <div class="q-group-title"><i data-lucide="layers"></i> Estágio e função hepática</div>
+            <ul>
+              <li>É HCC, colangiocarcinoma ou metástase?</li>
+              <li>Qual o estágio BCLC?</li>
+              <li>Qual a função hepática (Child-Pugh, ALBI) e o performance status?</li>
+            </ul>
+          </div>
+          <div class="q-group">
+            <div class="q-group-title"><i data-lucide="scan-line"></i> Imagem</div>
+            <ul>
+              <li>A lesão é LR-5 (HCC definitivo)?</li>
+              <li>Qual a carga e a distribuição (uni ou bilobar)?</li>
+              <li>Há invasão vascular ou doença extra-hepática?</li>
+            </ul>
+          </div>
+          <div class="q-group">
+            <div class="q-group-title"><i data-lucide="shield-alert"></i> Candidatura à TARE e segurança</div>
+            <ul>
+              <li>O shunt hepatopulmonar é aceitável?</li>
+              <li>Há refluxo gastrointestinal corrigível por embolização?</li>
+              <li>A reserva hepática e a bilirrubina suportam o tratamento?</li>
+            </ul>
+          </div>
+          <div class="q-group">
+            <div class="q-group-title"><i data-lucide="target"></i> Objetivo terapêutico</div>
+            <ul>
+              <li>Curativo (ablação/segmentectomia), ponte/downstaging para transplante, controle ou paliação?</li>
+            </ul>
+          </div>
+          <div class="q-group">
+            <div class="q-group-title"><i data-lucide="flask-conical"></i> Acesso e pesquisa clínica</div>
+            <ul>
+              <li>Há infraestrutura (hemodinâmica + medicina nuclear) e equipe multidisciplinar?</li>
+              <li>Existe opção aprovada, acesso local ou protocolo de pesquisa?</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. JORNADA TERAPÊUTICA -->
+      <div class="pm-block" id="hcc-4">
+        <div class="pm-block-head"><span class="pm-num">4</span><h3>Jornada terapêutica</h3></div>
+        <p class="pm-lead">O tratamento do HCC segue o <strong>BCLC</strong>, que liga o estágio e a função hepática à terapia. A escada abaixo mostra os 5 estágios e onde a <strong>TARE (90Y)</strong> entra. O colangiocarcinoma segue uma lógica distinta (ressecabilidade + biologia molecular).</p>
+
+        <!-- Escada BCLC -->
+        <div class="bclc-head"><i data-lucide="git-branch" style="width:15px;height:15px"></i> Estadiamento BCLC <span class="bclc-flow">0 → A → B → C → D</span></div>
+        <div class="bclc-ladder">
+          <div class="bclc-stage" style="--c:#34D399">
+            <div class="bclc-badge">BCLC 0<small>Muito precoce</small></div>
+            <p class="bclc-def">Nódulo único ≤2 cm, Child-Pugh A, PS 0.</p>
+            <div class="bclc-rx"><b>Padrão</b>Ablação ou ressecção</div>
+            <span class="bclc-tare yes">TARE: segmentectomia</span>
+          </div>
+          <div class="bclc-stage" style="--c:#60A5FA">
+            <div class="bclc-badge">BCLC A<small>Precoce</small></div>
+            <p class="bclc-def">Único ou ≤3 nódulos ≤3 cm, função preservada, PS 0.</p>
+            <div class="bclc-rx"><b>Padrão</b>Ressecção · transplante · ablação</div>
+            <span class="bclc-tare yes">TARE: segmentectomia / downstaging</span>
+          </div>
+          <div class="bclc-stage" style="--c:#FBBF24">
+            <div class="bclc-badge">BCLC B<small>Intermediário</small></div>
+            <p class="bclc-def">Multinodular, função preservada, PS 0.</p>
+            <div class="bclc-rx"><b>Padrão</b>TACE (quimioembolização)</div>
+            <span class="bclc-tare yes">TARE: alternativa à TACE</span>
+          </div>
+          <div class="bclc-stage" style="--c:#FB923C">
+            <div class="bclc-badge">BCLC C<small>Avançado</small></div>
+            <p class="bclc-def">Invasão vascular ou doença extra-hepática, PS 1-2.</p>
+            <div class="bclc-rx"><b>Padrão</b>Terapia sistêmica (1ª linha)</div>
+            <span class="bclc-tare opt">TARE: invasão portal selecionada</span>
+          </div>
+          <div class="bclc-stage" style="--c:#F87171">
+            <div class="bclc-badge">BCLC D<small>Terminal</small></div>
+            <p class="bclc-def">PS &gt;2 ou Child-Pugh C.</p>
+            <div class="bclc-rx"><b>Padrão</b>Cuidados de suporte · transplante selecionado</div>
+            <span class="bclc-tare no">TARE: sem papel</span>
+          </div>
+        </div>
+
+        <div class="ds-legend">
+          <div><b>Função hepática</b> = Child-Pugh e ALBI. Toda decisão depende dela e do performance status — não apenas da carga tumoral.</div>
+          <div><b>TARE no BCLC</b> = segmentectomia por radiação (0/A), alternativa à TACE (B) e casos selecionados com invasão portal (C).</div>
+        </div>
+
+        <div class="ds-note">
+          <i data-lucide="git-pull-request-arrow" style="width:18px;height:18px"></i>
+          <p><b>Colangiocarcinoma:</b> não usa o BCLC. O manejo é guiado por ressecabilidade e biologia molecular — gemcitabina/cisplatina ± durvalumabe ou pembrolizumabe, e alvos como FGFR2, IDH1, HER2 e BRAF V600E. O colangio intra-hepático irressecável pode receber TARE.</p>
+        </div>
+
+        <div class="pm-subhead">
+          <i data-lucide="route" style="width:18px;height:18px"></i>
+          <h4>Onde cada modalidade entra</h4>
+        </div>
+        <p class="pm-lead">Onde cada modalidade entra ao longo do espectro hepático, com estudos reais — TARE, TACE, sistêmico e colangiocarcinoma. Clique para abrir a ficha; a lista completa está no <a href="database.html?cat=hcc" target="_blank" rel="noopener" style="color:var(--amber)">Database</a>.</p>
+        <div class="therapy-timeline">
+          <div class="tt-phase" style="--c:#34D399">
+            <span class="tt-dot"></span>
+            <h4>1 · BCLC 0/A · precoce — TARE ablativa</h4>
+            <p>Segmentectomia por radiação com altas doses ao segmento; intenção ablativa ou ponte ao transplante em irressecáveis.</p>
+            <div class="esc-studies">
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#hepatobiliar_3">LEGACY</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#hepatobiliar_4">RASER</a>
+            </div>
+            <div class="tt-tags"><span class="tt-mat high">Segmentectomia por radiação</span></div>
+          </div>
+          <div class="tt-phase" style="--c:#60A5FA">
+            <span class="tt-dot"></span>
+            <h4>2 · BCLC B · intermediário — TARE vs TACE</h4>
+            <p>Radioembolização como alternativa à quimioembolização; combinações loco-regional + imunoterapia em estudo.</p>
+            <div class="esc-studies">
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#hepatobiliar_5">PREMIERE</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#hepatobiliar_6">TRACE</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#hepatobiliar_2">DOSISPHERE-01</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#hepatobiliar_26">EMERALD-1</a>
+            </div>
+            <div class="tt-tags"><span class="tt-mat high">TARE / TACE</span></div>
+          </div>
+          <div class="tt-phase" style="--c:#FBBF24">
+            <span class="tt-dot"></span>
+            <h4>3 · BCLC C · avançado — TARE vs sistêmico</h4>
+            <p>TARE em invasão portal selecionada, comparada ao tratamento sistêmico.</p>
+            <div class="esc-studies">
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#hepatobiliar_0">SARAH</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#hepatobiliar_1">SIRveNIB</a>
+            </div>
+            <div class="tt-tags"><span class="tt-mat mid">TARE vs sorafenibe</span></div>
+          </div>
+          <div class="tt-phase" style="--c:#FB923C">
+            <span class="tt-dot"></span>
+            <h4>4 · BCLC C · sistêmico 1ª linha</h4>
+            <p>Imunoterapia + antiangiogênico como padrão sistêmico de 1ª linha.</p>
+            <div class="esc-studies">
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#hepatobiliar_11">IMbrave150</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#hepatobiliar_12">HIMALAYA</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#hepatobiliar_19">CheckMate 9DW</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#hepatobiliar_10">REFLECT</a>
+            </div>
+            <div class="tt-tags"><span class="tt-mat high">Sistêmico estabelecido</span></div>
+          </div>
+          <div class="tt-phase" style="--c:#F87171">
+            <span class="tt-dot"></span>
+            <h4>5 · Sistêmico 2ª linha / adjuvante</h4>
+            <p>Após a 1ª linha; adjuvante pós-tratamento curativo em investigação.</p>
+            <div class="esc-studies">
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#hepatobiliar_27">RESORCE</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#hepatobiliar_13">CELESTIAL</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#hepatobiliar_28">REACH-2</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#hepatobiliar_25">IMbrave050</a>
+            </div>
+            <div class="tt-tags"><span class="tt-mat high">2ª linha / adjuvante</span></div>
+          </div>
+          <div class="tt-phase" style="--c:#94A3B8">
+            <span class="tt-dot"></span>
+            <h4>6 · Metástases hepáticas de CCR — TARE</h4>
+            <p>Radioembolização em metástases colorretais quimiorrefratárias, com doença predominantemente hepática.</p>
+            <div class="esc-studies">
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#hepatobiliar_8">EPOCH</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#hepatobiliar_7">SIRFLOX / FOXFIRE</a>
+            </div>
+            <div class="tt-tags"><span class="tt-mat mid">mCRC selecionado</span></div>
+          </div>
+          <div class="tt-phase" style="--c:#F472B6">
+            <span class="tt-dot"></span>
+            <h4>7 · Colangiocarcinoma (vias biliares)</h4>
+            <p>Sistêmico (gemcitabina/cisplatina ± imunoterapia) e alvos moleculares; TARE no intra-hepático irressecável.</p>
+            <div class="esc-studies">
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#hepatobiliar_15">TOPAZ-1</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#hepatobiliar_14">ABC-02</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#hepatobiliar_30">KEYNOTE-966</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#hepatobiliar_16">FIGHT-202</a>
+            </div>
+            <div class="tt-tags"><span class="tt-mat high">Colangio</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. JORNADA DO PACIENTE ATÉ A TARE -->
+      <div class="pm-block patient-journey-section" id="hcc-5">
+        <div class="pm-block-head"><span class="pm-num">5</span><h3>Jornada do Paciente até a TARE</h3></div>
+        <p class="pm-lead" style="font-weight:600;color:var(--off-white)">Do nódulo (LI-RADS) ao estadiamento BCLC, mapeamento angiográfico, dosimetria, administração e seguimento.</p>
+        <div class="edu-callout" style="max-width:none;margin:0 0 1.25rem">
+          <i data-lucide="info" style="width:18px;height:18px"></i>
+          <p>Esta seção tem finalidade educacional e de melhoria de jornada assistencial. Não define elegibilidade individual, não recomenda tratamento e não substitui julgamento médico, bula, guidelines, protocolos institucionais ou consulta às fontes primárias.</p>
+        </div>
+
+        <p class="pm-lead" style="margin-bottom:0.75rem">A TARE depende de uma cadeia precisa: caracterizar o nódulo, estadiar pelo BCLC e pela função hepática, mapear a anatomia arterial, fazer a dosimetria e discutir em equipe. As etapas abaixo mapeiam esse percurso assistencial.</p>
+
+        <div class="journey-timeline">
+
+          <details class="journey-step-card" open>
+            <summary><span class="js-num">1</span><span class="js-step-title">Diagnóstico e caracterização (LI-RADS)</span><i class="js-chev" data-lucide="chevron-right" style="width:16px;height:16px"></i></summary>
+            <div class="js-body">
+              <div class="js-row"><b>Objetivo</b>Caracterizar o nódulo e definir o diagnóstico (HCC, colangiocarcinoma ou metástase).</div>
+              <div class="js-row"><b>Profissionais envolvidos</b>Hepatologia, radiologia, oncologia, cirurgia hepatobiliar e medicina nuclear.</div>
+              <div class="js-row"><b>Dados necessários</b>TC/RM multifásica, categoria LI-RADS, AFP e biópsia quando indicada.</div>
+              <div class="js-links">
+                <a class="js-link" target="_blank" rel="noopener" href="ferramentas.html#hcc"><i data-lucide="git-branch" style="width:12px;height:12px"></i> BCLC / LI-RADS</a>
+                <a class="js-link" target="_blank" rel="noopener" href="database.html?cat=hcc"><i data-lucide="database" style="width:12px;height:12px"></i> Database</a>
+                <a class="js-link" href="#hcc-6"><i data-lucide="map" style="width:12px;height:12px"></i> Mapa de evidências</a>
+              </div>
+            </div>
+          </details>
+
+          <details class="journey-step-card">
+            <summary><span class="js-num">2</span><span class="js-step-title">Estadiamento BCLC e função hepática</span><i class="js-chev" data-lucide="chevron-right" style="width:16px;height:16px"></i></summary>
+            <div class="js-body">
+              <div class="js-row"><b>Objetivo</b>Estadiar pelo BCLC e avaliar a função hepática (Child-Pugh/ALBI).</div>
+              <div class="js-row"><b>Profissionais envolvidos</b>Hepatologia, oncologia e radiologia.</div>
+              <div class="js-row"><b>Dados necessários</b>Carga e distribuição tumoral, invasão vascular, Child-Pugh, ALBI, MELD e performance status.</div>
+              <div class="js-links">
+                <a class="js-link" target="_blank" rel="noopener" href="ferramentas.html#hcc"><i data-lucide="git-branch" style="width:12px;height:12px"></i> BCLC / Child-Pugh / ALBI</a>
+                <a class="js-link" target="_blank" rel="noopener" href="database.html?cat=hcc"><i data-lucide="database" style="width:12px;height:12px"></i> Database</a>
+              </div>
+            </div>
+          </details>
+
+          <details class="journey-step-card">
+            <summary><span class="js-num">3</span><span class="js-step-title">Identificação do candidato potencial à TARE</span><i class="js-chev" data-lucide="chevron-right" style="width:16px;height:16px"></i></summary>
+            <div class="js-body">
+              <div class="js-row"><b>Objetivo</b>Reconhecer pacientes que podem se beneficiar de avaliação para TARE ou outra terapia loco-regional/sistêmica.</div>
+              <div class="js-row"><b>Profissionais envolvidos</b>Radiologia intervencionista, medicina nuclear, oncologia e hepatologia.</div>
+              <div class="js-row"><b>Dados necessários</b>Estágio BCLC, função hepática, distribuição da doença e presença de doença extra-hepática.</div>
+              <div class="js-row" style="font-size:0.76rem;color:var(--stone-2)"><b>Linguagem</b>Preferir “candidato potencial para discussão”, “paciente a ser avaliado” ou “adequado para revisão multidisciplinar” — evitar afirmar “paciente elegível”, que exige avaliação formal pela equipe responsável.</div>
+              <div class="js-links">
+                <a class="js-link" href="#hcc-13"><i data-lucide="clipboard-check" style="width:12px;height:12px"></i> Checklist de encaminhamento</a>
+                <a class="js-link" href="#hcc-9"><i data-lucide="list-checks" style="width:12px;height:12px"></i> Critérios práticos</a>
+                <a class="js-link" target="_blank" rel="noopener" href="database.html?cat=hcc"><i data-lucide="database" style="width:12px;height:12px"></i> Database</a>
+              </div>
+            </div>
+          </details>
+
+          <details class="journey-step-card">
+            <summary><span class="js-num">4</span><span class="js-step-title">Mapeamento angiográfico e 99mTc-MAA</span><i class="js-chev" data-lucide="chevron-right" style="width:16px;height:16px"></i></summary>
+            <div class="js-body">
+              <div class="js-row"><b>Objetivo</b>Mapear a anatomia arterial, embolizar colaterais e quantificar o shunt hepatopulmonar.</div>
+              <div class="js-row"><b>Profissionais envolvidos</b>Radiologia intervencionista, medicina nuclear e física médica.</div>
+              <div class="js-row"><b>Dados necessários</b>Arteriografia, 99mTc-MAA SPECT/CT, shunt hepatopulmonar e deposição gastrointestinal.</div>
+              <div class="js-links">
+                <a class="js-link" target="_blank" rel="noopener" href="guideline-detail.html#tare-eanm-procedure-2022"><i data-lucide="book-open" style="width:12px;height:12px"></i> Guideline TARE</a>
+                <a class="js-link" target="_blank" rel="noopener" href="ferramentas.html#hcc"><i data-lucide="git-branch" style="width:12px;height:12px"></i> Ferramentas HCC</a>
+              </div>
+            </div>
+          </details>
+
+          <details class="journey-step-card">
+            <summary><span class="js-num">5</span><span class="js-step-title">Discussão em tumor board hepatobiliar</span><i class="js-chev" data-lucide="chevron-right" style="width:16px;height:16px"></i></summary>
+            <div class="js-body">
+              <div class="js-row"><b>Objetivo</b>Integrar evidência, imagem, função hepática, segurança, acesso e pesquisa clínica.</div>
+              <div class="js-row"><b>Profissionais envolvidos</b>Hepatologia, oncologia, radiologia, cirurgia hepatobiliar, radiologia intervencionista, medicina nuclear e física médica.</div>
+              <div class="js-row"><b>Dados necessários</b>Caso completo com pergunta clínica objetiva, estágio BCLC, função hepática e dados de segurança.</div>
+              <div class="js-links">
+                <a class="js-link" href="#hcc-13"><i data-lucide="clipboard-check" style="width:12px;height:12px"></i> Checklist de apresentação</a>
+                <a class="js-link" href="#hcc-11"><i data-lucide="book-open" style="width:12px;height:12px"></i> Guidelines</a>
+                <a class="js-link" href="#hcc-10"><i data-lucide="microscope" style="width:12px;height:12px"></i> Ensaios ativos</a>
+              </div>
+            </div>
+          </details>
+
+          <details class="journey-step-card">
+            <summary><span class="js-num">6</span><span class="js-step-title">Pré-terapia, dosimetria e acesso</span><i class="js-chev" data-lucide="chevron-right" style="width:16px;height:16px"></i></summary>
+            <div class="js-body">
+              <div class="js-row"><b>Objetivo</b>Realizar a dosimetria pré-terapêutica, organizar autorizações e a logística das microesferas.</div>
+              <div class="js-row"><b>Profissionais envolvidos</b>Medicina nuclear, física médica, radiologia intervencionista e equipe administrativa.</div>
+              <div class="js-row"><b>Dados necessários</b>Segmentação/volumetria, modelo dosimétrico, autorização, termo de consentimento e orientações de radioproteção.</div>
+              <div class="js-links">
+                <a class="js-link" href="#hcc-13"><i data-lucide="clipboard-check" style="width:12px;height:12px"></i> Checklist de pré-terapia</a>
+                <a class="js-link" target="_blank" rel="noopener" href="guideline-detail.html#tare-dosimetry-sop-2021"><i data-lucide="book-open" style="width:12px;height:12px"></i> Dosimetria TARE</a>
+                <a class="js-link" target="_blank" rel="noopener" href="ferramentas.html#hcc"><i data-lucide="git-branch" style="width:12px;height:12px"></i> Ferramentas HCC</a>
+              </div>
+            </div>
+          </details>
+
+          <details class="journey-step-card">
+            <summary><span class="js-num">7</span><span class="js-step-title">Administração de 90Y e imagem pós-dose</span><i class="js-chev" data-lucide="chevron-right" style="width:16px;height:16px"></i></summary>
+            <div class="js-body">
+              <div class="js-row"><b>Objetivo</b>Administrar as microesferas e verificar a biodistribuição (90Y-PET/CT ou Bremsstrahlung SPECT/CT).</div>
+              <div class="js-row"><b>Profissionais envolvidos</b>Radiologia intervencionista, medicina nuclear e física médica.</div>
+              <div class="js-row"><b>Dados necessários</b>Posição do cateter, atividade administrada, imagem pós-dose e função hepática pós-procedimento.</div>
+              <div class="js-links">
+                <a class="js-link" target="_blank" rel="noopener" href="guideline-detail.html#tare-glass-microspheres-2025"><i data-lucide="book-open" style="width:12px;height:12px"></i> Microesferas 90Y</a>
+                <a class="js-link" target="_blank" rel="noopener" href="ferramentas.html#ctcae"><i data-lucide="alert-triangle" style="width:12px;height:12px"></i> CTCAE</a>
+              </div>
+            </div>
+          </details>
+
+          <details class="journey-step-card">
+            <summary><span class="js-num">8</span><span class="js-step-title">Seguimento e resposta (mRECIST)</span><i class="js-chev" data-lucide="chevron-right" style="width:16px;height:16px"></i></summary>
+            <div class="js-body">
+              <div class="js-row"><b>Objetivo</b>Avaliar resposta (mRECIST/EASL), função hepática, REILD e próximas opções terapêuticas ou ensaios.</div>
+              <div class="js-row"><b>Profissionais envolvidos</b>Oncologia, radiologia, hepatologia e medicina nuclear.</div>
+              <div class="js-row"><b>Dados necessários</b>TC/RM em 3 meses, mRECIST, função hepática seriada e marcadores (AFP).</div>
+              <div class="js-links">
+                <a class="js-link" target="_blank" rel="noopener" href="ferramentas.html#anatomica"><i data-lucide="ruler" style="width:12px;height:12px"></i> mRECIST</a>
+                <a class="js-link" target="_blank" rel="noopener" href="trial-matcher.html"><i data-lucide="git-compare" style="width:12px;height:12px"></i> Trial Matcher</a>
+                <a class="js-link" target="_blank" rel="noopener" href="ensaios-clinicos.html"><i data-lucide="microscope" style="width:12px;height:12px"></i> Ensaios ativos</a>
+              </div>
+            </div>
+          </details>
+
+        </div>
+
+        <!-- Gargalos -->
+        <details class="pm-collapse">
+          <summary class="pm-subhead" id="hcc-5-gargalos">
+            <i data-lucide="alert-triangle" style="width:18px;height:18px"></i>
+            <h4>Gargalos da Jornada e Oportunidades de Otimização</h4>
+            <span class="pm-collapse-hint">10 gargalos + indicadores</span>
+            <i class="pm-collapse-chev" data-lucide="chevron-right" style="width:16px;height:16px"></i>
+          </summary>
+        <p class="pm-lead">Os indicadores abaixo são apresentados como <strong>métricas de melhoria institucional</strong> — não são metas promocionais nem comerciais, e devem ser adaptados ao contexto de cada serviço.</p>
+        <div class="bottleneck-grid">
+
+          <div class="journey-bottleneck-card">
+            <div class="jb-title"><span class="jb-n">1</span> Nódulo não caracterizado por LI-RADS</div>
+            <div class="jb-row"><b>Consequência</b>Diagnóstico atrasado ou incerto.</div>
+            <div class="jb-row opt"><b>Oportunidade</b>Protocolo de imagem multifásica com classificação LI-RADS.</div>
+            <div class="jb-foot"><a class="js-link" target="_blank" rel="noopener" href="ferramentas.html#hcc"><i data-lucide="git-branch" style="width:12px;height:12px"></i> LI-RADS</a><span class="institutional-metric">% nódulos com classificação LI-RADS</span></div>
+          </div>
+
+          <div class="journey-bottleneck-card">
+            <div class="jb-title"><span class="jb-n">2</span> Estágio BCLC e função hepática não documentados</div>
+            <div class="jb-row"><b>Consequência</b>Conduta inadequada ao estágio e à reserva hepática.</div>
+            <div class="jb-row opt"><b>Oportunidade</b>Registro padronizado de BCLC, Child-Pugh e ALBI.</div>
+            <div class="jb-foot"><a class="js-link" target="_blank" rel="noopener" href="ferramentas.html#hcc"><i data-lucide="git-branch" style="width:12px;height:12px"></i> BCLC / ALBI</a><span class="institutional-metric">% casos com BCLC e ALBI registrados</span></div>
+          </div>
+
+          <div class="journey-bottleneck-card">
+            <div class="jb-title"><span class="jb-n">3</span> Encaminhamento tardio à radiointervenção / medicina nuclear</div>
+            <div class="jb-row"><b>Consequência</b>Janela terapêutica reduzida.</div>
+            <div class="jb-row opt"><b>Oportunidade</b>Encaminhamento precoce ao tumor board hepatobiliar.</div>
+            <div class="jb-foot"><a class="js-link" href="#hcc-13"><i data-lucide="clipboard-check" style="width:12px;height:12px"></i> Checklist de encaminhamento</a><span class="institutional-metric">Tempo: diagnóstico → avaliação loco-regional</span></div>
+          </div>
+
+          <div class="journey-bottleneck-card">
+            <div class="jb-title"><span class="jb-n">4</span> Mapeamento / MAA mal documentado (shunt)</div>
+            <div class="jb-row"><b>Consequência</b>Risco de pneumonite por radiação ou deposição extra-hepática.</div>
+            <div class="jb-row opt"><b>Oportunidade</b>SPECT/CT do MAA padronizado com cálculo de shunt.</div>
+            <div class="jb-foot"><a class="js-link" target="_blank" rel="noopener" href="guideline-detail.html#tare-eanm-procedure-2022"><i data-lucide="book-open" style="width:12px;height:12px"></i> Guideline TARE</a><span class="institutional-metric">% procedimentos com shunt quantificado</span></div>
+          </div>
+
+          <div class="journey-bottleneck-card">
+            <div class="jb-title"><span class="jb-n">5</span> Ausência de dosimetria personalizada</div>
+            <div class="jb-row"><b>Consequência</b>Subdose tumoral ou sobredose ao fígado não-tumoral.</div>
+            <div class="jb-row opt"><b>Oportunidade</b>Dosimetria por partição ou voxel.</div>
+            <div class="jb-foot"><a class="js-link" target="_blank" rel="noopener" href="guideline-detail.html#tare-dosimetry-sop-2021"><i data-lucide="book-open" style="width:12px;height:12px"></i> Dosimetria TARE</a><span class="institutional-metric">% TARE com dosimetria personalizada</span></div>
+          </div>
+
+          <div class="journey-bottleneck-card">
+            <div class="jb-title"><span class="jb-n">6</span> Dados clínicos incompletos para tumor board</div>
+            <div class="jb-row"><b>Consequência</b>Discussão improdutiva; decisões adiadas.</div>
+            <div class="jb-row opt"><b>Oportunidade</b>Checklist pré-board; apresentação padronizada.</div>
+            <div class="jb-foot"><a class="js-link" href="#hcc-13"><i data-lucide="clipboard-check" style="width:12px;height:12px"></i> Checklist de apresentação</a><span class="institutional-metric">% casos com checklist completo</span></div>
+          </div>
+
+          <div class="journey-bottleneck-card">
+            <div class="jb-title"><span class="jb-n">7</span> Documentação insuficiente para autorização</div>
+            <div class="jb-row"><b>Consequência</b>Atraso ou negativa de autorização.</div>
+            <div class="jb-row opt"><b>Oportunidade</b>Pacote documental padronizado.</div>
+            <div class="jb-foot"><a class="js-link" href="#hcc-13"><i data-lucide="clipboard-check" style="width:12px;height:12px"></i> Checklist de pré-terapia</a><span class="institutional-metric">% processos com documentação completa na 1ª submissão</span></div>
+          </div>
+
+          <div class="journey-bottleneck-card">
+            <div class="jb-title"><span class="jb-n">8</span> Atraso entre mapeamento e tratamento</div>
+            <div class="jb-row"><b>Consequência</b>Progressão ou alteração anatômica no intervalo.</div>
+            <div class="jb-row opt"><b>Oportunidade</b>Fluxo logístico com responsáveis definidos.</div>
+            <div class="jb-foot"><a class="js-link" href="#hcc-13"><i data-lucide="clipboard-check" style="width:12px;height:12px"></i> Checklist de pré-terapia</a><span class="institutional-metric">Tempo: MAA → administração de 90Y</span></div>
+          </div>
+
+          <div class="journey-bottleneck-card">
+            <div class="jb-title"><span class="jb-n">9</span> Monitoramento hepático irregular pós-TARE</div>
+            <div class="jb-row"><b>Consequência</b>REILD (doença hepática induzida) reconhecida tardiamente.</div>
+            <div class="jb-row opt"><b>Oportunidade</b>Calendário de seguimento e função hepática seriada.</div>
+            <div class="jb-foot"><a class="js-link" target="_blank" rel="noopener" href="ferramentas.html#ctcae"><i data-lucide="alert-triangle" style="width:12px;height:12px"></i> CTCAE</a><span class="institutional-metric">% pacientes com função hepática no prazo</span></div>
+          </div>
+
+          <div class="journey-bottleneck-card">
+            <div class="jb-title"><span class="jb-n">10</span> Falta de reavaliação por mRECIST pós-TARE</div>
+            <div class="jb-row"><b>Consequência</b>Demora para definir a próxima linha.</div>
+            <div class="jb-row opt"><b>Oportunidade</b>Fluxo de reavaliação por mRECIST; integração com Trial Matcher.</div>
+            <div class="jb-foot"><a class="js-link" target="_blank" rel="noopener" href="trial-matcher.html"><i data-lucide="git-compare" style="width:12px;height:12px"></i> Trial Matcher</a><span class="institutional-metric">% reavaliados por mRECIST em 3 meses</span></div>
+          </div>
+
+        </div>
+        </details>
+
+        <!-- Elementos do relatório de TARE -->
+        <details class="pm-collapse">
+          <summary class="pm-subhead">
+            <i data-lucide="file-text" style="width:18px;height:18px"></i>
+            <h4>Elementos úteis em um relatório de TARE (mapeamento + dosimetria)</h4>
+            <span class="pm-collapse-hint">12 elementos</span>
+            <i class="pm-collapse-chev" data-lucide="chevron-right" style="width:16px;height:16px"></i>
+          </summary>
+        <p class="pm-lead">Lista educacional de elementos que tornam o relatório de TARE mais útil para a discussão em tumor board. Não é um modelo completo e <strong>não afirma elegibilidade automática</strong> — a interpretação final é sempre clínica e multidisciplinar.</p>
+        <div class="psma-report-elements">
+          <div class="pre-item"><i data-lucide="dot" style="width:14px;height:14px"></i> Indicação e estágio BCLC</div>
+          <div class="pre-item"><i data-lucide="dot" style="width:14px;height:14px"></i> Função hepática (Child-Pugh, ALBI, bilirrubina)</div>
+          <div class="pre-item"><i data-lucide="dot" style="width:14px;height:14px"></i> Volumetria tumoral e hepática</div>
+          <div class="pre-item"><i data-lucide="dot" style="width:14px;height:14px"></i> Anatomia arterial e colaterais embolizadas</div>
+          <div class="pre-item"><i data-lucide="dot" style="width:14px;height:14px"></i> Shunt hepatopulmonar (99mTc-MAA)</div>
+          <div class="pre-item"><i data-lucide="dot" style="width:14px;height:14px"></i> Deposição extra-hepática</div>
+          <div class="pre-item"><i data-lucide="dot" style="width:14px;height:14px"></i> Modelo dosimétrico utilizado</div>
+          <div class="pre-item"><i data-lucide="dot" style="width:14px;height:14px"></i> Dose ao tumor e ao fígado não-tumoral</div>
+          <div class="pre-item"><i data-lucide="dot" style="width:14px;height:14px"></i> Atividade administrada</div>
+          <div class="pre-item"><i data-lucide="dot" style="width:14px;height:14px"></i> Imagem pós-dose (90Y-PET/CT) e biodistribuição</div>
+          <div class="pre-item"><i data-lucide="dot" style="width:14px;height:14px"></i> Impressão final orientada à pergunta clínica</div>
+          <div class="pre-item"><i data-lucide="dot" style="width:14px;height:14px"></i> Recomendação de seguimento e correlação multidisciplinar</div>
+        </div>
+        </details>
+      </div>
+
+      <!-- 6. MAPA DE EVIDÊNCIAS -->
+      <div class="pm-block" id="hcc-6">
+        <div class="pm-block-head"><span class="pm-num">6</span><h3>Mapa de evidências</h3></div>
+        <p class="pm-lead">Cenários clínicos e os estudos-chave associados. Clique em um estudo para abrir sua ficha no Database.</p>
+        <div class="evidence-map">
+          <div class="evidence-scenario-card" style="--sc-color:#34D399">
+            <span class="esc-tag">Cenário A · precoce — TARE ablativa</span>
+            <div class="esc-title">BCLC 0/A irressecável</div>
+            <div class="esc-studies">
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#hepatobiliar_3"><i data-lucide="file-text" style="width:11px;height:11px"></i> LEGACY</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#hepatobiliar_4"><i data-lucide="file-text" style="width:11px;height:11px"></i> RASER</a>
+            </div>
+            <p class="esc-msg">Segmentectomia por radiação com altas doses ao segmento; intenção ablativa ou ponte ao transplante em selecionados.</p>
+          </div>
+          <div class="evidence-scenario-card" style="--sc-color:#60A5FA">
+            <span class="esc-tag">Cenário B · intermediário — TARE vs TACE</span>
+            <div class="esc-title">BCLC B multinodular</div>
+            <div class="esc-studies">
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#hepatobiliar_5"><i data-lucide="file-text" style="width:11px;height:11px"></i> PREMIERE</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#hepatobiliar_6"><i data-lucide="file-text" style="width:11px;height:11px"></i> TRACE</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#hepatobiliar_26"><i data-lucide="file-text" style="width:11px;height:11px"></i> EMERALD-1</a>
+            </div>
+            <p class="esc-msg">Radioembolização como alternativa à quimioembolização; combinações loco-regional + imunoterapia em estudo.</p>
+          </div>
+          <div class="evidence-scenario-card" style="--sc-color:#FBBF24">
+            <span class="esc-tag">Cenário C · dosimetria personalizada</span>
+            <div class="esc-title">Otimização de dose</div>
+            <div class="esc-studies">
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#hepatobiliar_2"><i data-lucide="file-text" style="width:11px;height:11px"></i> DOSISPHERE-01</a>
+            </div>
+            <p class="esc-msg">A dosimetria personalizada (dose-alvo elevada ao tumor) aumenta a resposta objetiva; paradigma atual da TARE.</p>
+          </div>
+          <div class="evidence-scenario-card" style="--sc-color:#FB923C">
+            <span class="esc-tag">Cenário D · avançado — TARE vs sistêmico</span>
+            <div class="esc-title">BCLC C</div>
+            <div class="esc-studies">
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#hepatobiliar_0"><i data-lucide="file-text" style="width:11px;height:11px"></i> SARAH</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#hepatobiliar_1"><i data-lucide="file-text" style="width:11px;height:11px"></i> SIRveNIB</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#hepatobiliar_11"><i data-lucide="file-text" style="width:11px;height:11px"></i> IMbrave150</a>
+            </div>
+            <p class="esc-msg">A TARE não superou o sorafenibe em sobrevida; o sistêmico (atezo+bev) é o padrão no avançado.</p>
+          </div>
+          <div class="evidence-scenario-card" style="--sc-color:#F472B6">
+            <span class="esc-tag">Cenário E · colangiocarcinoma</span>
+            <div class="esc-title">Vias biliares</div>
+            <div class="esc-studies">
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#hepatobiliar_15"><i data-lucide="file-text" style="width:11px;height:11px"></i> TOPAZ-1</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#hepatobiliar_14"><i data-lucide="file-text" style="width:11px;height:11px"></i> ABC-02</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#hepatobiliar_16"><i data-lucide="file-text" style="width:11px;height:11px"></i> FIGHT-202</a>
+            </div>
+            <p class="esc-msg">Gemcitabina/cisplatina ± durvalumabe e alvos moleculares; TARE no intra-hepático irressecável.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7. ESTUDOS-CHAVE -->
+      <div class="pm-block" id="hcc-7">
+        <div class="pm-block-head"><span class="pm-num">7</span><h3>Estudos-chave</h3></div>
+        <p class="pm-lead">Desenho dos principais estudos. <strong>Resultados, desfechos e toxicidades ficam na ficha de cada um no Database</strong> — este mapa não reproduz hazard ratios, valores de p ou taxas de resposta.</p>
+        <div class="keystudy-grid">
+          <div class="keystudy-card">
+            <div class="ks-top"><span class="ks-name">SARAH</span><span class="ks-scn">avançado · TARE vs sorafenibe</span></div>
+            <div class="ks-row"><b>População</b>HCC avançado (BCLC C ou B inelegível a TACE).</div>
+            <div class="ks-row"><b>Intervenção / comparador</b>TARE 90Y (resina) vs sorafenibe.</div>
+            <p class="ks-msg">TARE não superou o sorafenibe em sobrevida, com melhor tolerância.</p>
+            <div class="ks-foot"><a class="ks-link" target="_blank" rel="noopener" href="database.html#hepatobiliar_0"><i data-lucide="database" style="width:13px;height:13px"></i> Ficha no Database</a></div>
+          </div>
+          <div class="keystudy-card">
+            <div class="ks-top"><span class="ks-name">SIRveNIB</span><span class="ks-scn">avançado · TARE vs sorafenibe</span></div>
+            <div class="ks-row"><b>População</b>HCC localmente avançado (Ásia-Pacífico).</div>
+            <div class="ks-row"><b>Intervenção / comparador</b>TARE 90Y vs sorafenibe.</div>
+            <p class="ks-msg">Confirma a ausência de superioridade de sobrevida, com perfil de toxicidade favorável.</p>
+            <div class="ks-foot"><a class="ks-link" target="_blank" rel="noopener" href="database.html#hepatobiliar_1"><i data-lucide="database" style="width:13px;height:13px"></i> Ficha no Database</a></div>
+          </div>
+          <div class="keystudy-card">
+            <div class="ks-top"><span class="ks-name">DOSISPHERE-01</span><span class="ks-scn">dosimetria</span></div>
+            <div class="ks-row"><b>População</b>HCC com dose-alvo planejada.</div>
+            <div class="ks-row"><b>Intervenção / comparador</b>Dosimetria personalizada vs padrão (BSA).</div>
+            <p class="ks-msg">A dose tumoral elevada aumentou a resposta objetiva; estabeleceu a personalização.</p>
+            <div class="ks-foot"><a class="ks-link" target="_blank" rel="noopener" href="database.html#hepatobiliar_2"><i data-lucide="database" style="width:13px;height:13px"></i> Ficha no Database</a></div>
+          </div>
+          <div class="keystudy-card">
+            <div class="ks-top"><span class="ks-name">LEGACY</span><span class="ks-scn">segmentectomia</span></div>
+            <div class="ks-row"><b>População</b>HCC solitário, irressecável.</div>
+            <div class="ks-row"><b>Intervenção</b>TARE 90Y (vidro) — segmentectomia por radiação.</div>
+            <p class="ks-msg">Altas taxas de resposta e controle local; ponte ou intenção curativa em selecionados.</p>
+            <div class="ks-foot"><a class="ks-link" target="_blank" rel="noopener" href="database.html#hepatobiliar_3"><i data-lucide="database" style="width:13px;height:13px"></i> Ficha no Database</a></div>
+          </div>
+          <div class="keystudy-card">
+            <div class="ks-top"><span class="ks-name">PREMIERE</span><span class="ks-scn">TARE vs TACE</span></div>
+            <div class="ks-row"><b>População</b>HCC BCLC A/B.</div>
+            <div class="ks-row"><b>Intervenção / comparador</b>TARE vs quimioembolização convencional (cTACE).</div>
+            <p class="ks-msg">Maior tempo até progressão com a radioembolização.</p>
+            <div class="ks-foot"><a class="ks-link" target="_blank" rel="noopener" href="database.html#hepatobiliar_5"><i data-lucide="database" style="width:13px;height:13px"></i> Ficha no Database</a></div>
+          </div>
+          <div class="keystudy-card">
+            <div class="ks-top"><span class="ks-name">IMbrave150</span><span class="ks-scn">sistêmico 1ª linha</span></div>
+            <div class="ks-row"><b>População</b>HCC avançado, 1ª linha.</div>
+            <div class="ks-row"><b>Intervenção / comparador</b>Atezolizumabe + bevacizumabe vs sorafenibe.</div>
+            <p class="ks-msg">Padrão sistêmico de 1ª linha no HCC avançado.</p>
+            <div class="ks-foot"><a class="ks-link" target="_blank" rel="noopener" href="database.html#hepatobiliar_11"><i data-lucide="database" style="width:13px;height:13px"></i> Ficha no Database</a></div>
+          </div>
+          <div class="keystudy-card">
+            <div class="ks-top"><span class="ks-name">HIMALAYA</span><span class="ks-scn">sistêmico 1ª linha</span></div>
+            <div class="ks-row"><b>População</b>HCC avançado, 1ª linha.</div>
+            <div class="ks-row"><b>Intervenção / comparador</b>Durvalumabe + tremelimumabe (STRIDE) vs sorafenibe.</div>
+            <p class="ks-msg">Dupla imunoterapia como alternativa em 1ª linha.</p>
+            <div class="ks-foot"><a class="ks-link" target="_blank" rel="noopener" href="database.html#hepatobiliar_12"><i data-lucide="database" style="width:13px;height:13px"></i> Ficha no Database</a></div>
+          </div>
+          <div class="keystudy-card">
+            <div class="ks-top"><span class="ks-name">EMERALD-1</span><span class="ks-scn">intermediário · TACE+IO</span></div>
+            <div class="ks-row"><b>População</b>HCC BCLC B elegível a TACE.</div>
+            <div class="ks-row"><b>Intervenção / comparador</b>TACE + durvalumabe ± bevacizumabe vs TACE.</div>
+            <p class="ks-msg">Combinação loco-regional + imunoterapia no estágio intermediário.</p>
+            <div class="ks-foot"><a class="ks-link" target="_blank" rel="noopener" href="database.html#hepatobiliar_26"><i data-lucide="database" style="width:13px;height:13px"></i> Ficha no Database</a></div>
+          </div>
+          <div class="keystudy-card">
+            <div class="ks-top"><span class="ks-name">TOPAZ-1</span><span class="ks-scn">colangio · 1ª linha</span></div>
+            <div class="ks-row"><b>População</b>Câncer de vias biliares avançado, 1ª linha.</div>
+            <div class="ks-row"><b>Intervenção / comparador</b>Gemcitabina/cisplatina + durvalumabe vs gemcitabina/cisplatina.</div>
+            <p class="ks-msg">Imunoterapia somada à quimioterapia no colangiocarcinoma.</p>
+            <div class="ks-foot"><a class="ks-link" target="_blank" rel="noopener" href="database.html#hepatobiliar_15"><i data-lucide="database" style="width:13px;height:13px"></i> Ficha no Database</a></div>
+          </div>
+          <div class="keystudy-card">
+            <div class="ks-top"><span class="ks-name">EPOCH</span><span class="ks-scn">mets CCR</span></div>
+            <div class="ks-row"><b>População</b>Metástases hepáticas de câncer colorretal (2ª linha).</div>
+            <div class="ks-row"><b>Intervenção / comparador</b>TARE + quimioterapia vs quimioterapia.</div>
+            <p class="ks-msg">Benefício loco-regional em metástases colorretais selecionadas.</p>
+            <div class="ks-foot"><a class="ks-link" target="_blank" rel="noopener" href="database.html#hepatobiliar_8"><i data-lucide="database" style="width:13px;height:13px"></i> Ficha no Database</a></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8. TRIAL LINEAGE -->
+      <div class="pm-block" id="hcc-8">
+        <div class="pm-block-head"><span class="pm-num">8</span><h3>Trial Lineage — publicações secundárias e análises derivadas</h3></div>
+        <p class="pm-lead">Um estudo pivotal raramente é uma publicação única: gera uma <strong>família de evidências</strong> — follow-ups, subgrupos, qualidade de vida, segurança, dosimetria e abstracts de congresso.</p>
+        <div class="ds-note" style="background:rgba(143,148,156,0.07);border-color:var(--border-soft)">
+          <i data-lucide="construction" style="width:18px;height:18px;color:var(--stone)"></i>
+          <p>O Trial Lineage de HCC e vias biliares está <b>em desenvolvimento</b> — as publicações secundárias serão conectadas ao catálogo. Por ora, as fichas completas, com citações e links oficiais, estão no <a href="database.html?cat=hcc" target="_blank" rel="noopener" style="color:var(--amber)">Database</a>.</p>
+        </div>
+      </div>
+
+      <!-- 9. CRITÉRIOS PRÁTICOS -->
+      <div class="pm-block" id="hcc-9">
+        <div class="pm-block-head"><span class="pm-num">9</span><h3>Critérios práticos de discussão</h3></div>
+        <p class="pm-lead">Checklist clínico a revisar antes de discutir TARE ou outras terapias.</p>
+        <div class="q-groups">
+          <div class="q-group">
+            <div class="q-group-title"><i data-lucide="user"></i> Dados clínicos</div>
+            <ul><li>Idade</li><li>ECOG / Karnofsky</li><li>Sintomas</li><li>Comorbidades (cirrose, etiologia)</li><li>Expectativa e objetivo terapêutico</li></ul>
+          </div>
+          <div class="q-group">
+            <div class="q-group-title"><i data-lucide="history"></i> Diagnóstico e estágio</div>
+            <ul><li>Tipo (HCC / colangio / metástase)</li><li>LI-RADS ou histologia</li><li>Estágio BCLC</li><li>Função hepática (Child-Pugh, ALBI, MELD)</li><li>AFP (HCC) / CA 19-9 (vias biliares)</li></ul>
+          </div>
+          <div class="q-group">
+            <div class="q-group-title"><i data-lucide="scan-line"></i> Imagem e candidatura à TARE</div>
+            <ul><li>TC/RM multifásica</li><li>Carga e distribuição</li><li>Invasão vascular</li><li>Shunt hepatopulmonar (99mTc-MAA)</li><li>Dosimetria</li></ul>
+          </div>
+          <div class="q-group">
+            <div class="q-group-title"><i data-lucide="shield-alert"></i> Segurança</div>
+            <ul><li>Bilirrubina e função hepática</li><li>Hemograma e função renal</li><li>Risco de REILD</li><li>Doença extra-hepática</li><li>Reserva do fígado não-tumoral</li></ul>
+          </div>
+          <div class="q-group">
+            <div class="q-group-title"><i data-lucide="flask-conical"></i> Acesso e pesquisa</div>
+            <ul><li>Infraestrutura (hemodinâmica + medicina nuclear)</li><li>Equipe multidisciplinar</li><li>Terapia aprovada / disponível</li><li>Inclusão em trial</li><li>Necessidade de encaminhamento</li></ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 10. ENSAIOS CLÍNICOS ATIVOS -->
+      <div class="pm-block" id="hcc-10">
+        <div class="pm-block-head"><span class="pm-num">10</span><h3>Ensaios clínicos ativos relacionados</h3></div>
+        <p class="pm-lead">Ensaios em andamento ou recrutando em HCC, colangiocarcinoma e radioembolização — TARE, combinações loco-regional + imunoterapia, sistêmico e alvos moleculares. <strong>A elegibilidade final depende sempre do protocolo oficial e do centro responsável.</strong></p>
+        <div class="link-cards" style="max-width:520px">
+          <a class="link-card" target="_blank" rel="noopener" href="ensaios-clinicos.html">
+            <i data-lucide="microscope" style="width:18px;height:18px"></i>
+            <span>Ver ensaios ativos — filtrar por “Hepatobiliar”</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 11. GUIDELINES CONECTADOS -->
+      <div class="pm-block" id="hcc-11">
+        <div class="pm-block-head"><span class="pm-num">11</span><h3>Guidelines conectados</h3></div>
+        <p class="pm-lead">Diretrizes relevantes já disponíveis no TheraTrials.</p>
+        <div class="link-cards">
+          <a class="link-card" target="_blank" rel="noopener" href="guideline-detail.html#tare-eanm-procedure-2022"><i data-lucide="book-open" style="width:18px;height:18px"></i><span>TARE · EANM procedure 2022</span></a>
+          <a class="link-card" target="_blank" rel="noopener" href="guideline-detail.html#tare-dosimetry-sop-2021"><i data-lucide="book-open" style="width:18px;height:18px"></i><span>Dosimetria TARE · SOP 2021</span></a>
+          <a class="link-card" target="_blank" rel="noopener" href="guideline-detail.html#tare-glass-microspheres-2025"><i data-lucide="book-open" style="width:18px;height:18px"></i><span>Microesferas de vidro 90Y · 2025</span></a>
+          <a class="link-card" target="_blank" rel="noopener" href="guideline-detail.html#service-eanm-snmmi-iaea-2022"><i data-lucide="book-open" style="width:18px;height:18px"></i><span>Serviço / radioproteção</span></a>
+          <a class="link-card" target="_blank" rel="noopener" href="guidelines.html"><i data-lucide="library" style="width:18px;height:18px"></i><span>Ver todas as guidelines</span></a>
+        </div>
+      </div>
+
+      <!-- 12. FERRAMENTAS ÚTEIS -->
+      <div class="pm-block" id="hcc-12">
+        <div class="pm-block-head"><span class="pm-num">12</span><h3>Ferramentas úteis</h3></div>
+        <p class="pm-lead">Calculadoras e critérios já disponíveis na página de Ferramentas.</p>
+        <div class="link-cards">
+          <a class="link-card" target="_blank" rel="noopener" href="ferramentas.html#hcc"><i data-lucide="git-branch" style="width:18px;height:18px"></i><span>BCLC · Child-Pugh · ALBI · LI-RADS · mRECIST</span></a>
+          <a class="link-card" target="_blank" rel="noopener" href="ferramentas.html#anatomica"><i data-lucide="ruler" style="width:18px;height:18px"></i><span>Resposta anatômica (RECIST / mRECIST)</span></a>
+          <a class="link-card" target="_blank" rel="noopener" href="ferramentas.html#petct"><i data-lucide="scan-line" style="width:18px;height:18px"></i><span>Resposta metabólica (PERCIST)</span></a>
+          <a class="link-card" target="_blank" rel="noopener" href="ferramentas.html#renal"><i data-lucide="droplet" style="width:18px;height:18px"></i><span>Função renal</span></a>
+          <a class="link-card" target="_blank" rel="noopener" href="ferramentas.html#ctcae"><i data-lucide="alert-triangle" style="width:18px;height:18px"></i><span>Eventos adversos · CTCAE</span></a>
+          <a class="link-card" target="_blank" rel="noopener" href="ferramentas.html#clinica"><i data-lucide="activity" style="width:18px;height:18px"></i><span>ECOG / Karnofsky</span></a>
+        </div>
+      </div>
+
+      <!-- 13. CHECKLISTS -->
+      <div class="pm-block" id="hcc-13">
+        <div class="pm-block-head"><span class="pm-num">13</span><h3>Checklists</h3></div>
+        <p class="pm-lead">Três listas de <strong>itens para revisão</strong> — organização do caso, não critérios de elegibilidade (a avaliação formal cabe à equipe responsável). Cada uma pode ser copiada em texto.</p>
+
+        <div class="rlt-checklist">
+          <div class="rlt-checklist-head">
+            <h4><i data-lucide="send" style="width:16px;height:16px"></i> Encaminhamento para discussão de TARE (fígado)</h4>
+            <button class="btn btn-secondary btn-sm copy-checklist-btn" @click="copyChecklist('encaminhamento')"><i data-lucide="copy" style="width:14px;height:14px"></i> Copiar</button>
+          </div>
+          <div class="bc-grid">
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Diagnóstico (LI-RADS ou histologia)</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Tipo: HCC, colangiocarcinoma ou metástase</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Estágio BCLC (no HCC)</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Função hepática: Child-Pugh e ALBI</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Performance status (ECOG)</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Carga e distribuição da doença (uni/bilobar)</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Invasão vascular (trombose portal)</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Doença extra-hepática</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> TC trifásica / RM com contraste hepatoespecífico</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Bilirrubina e função hepática</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Hemograma</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Função renal</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> AFP (HCC) / CA 19-9 (vias biliares)</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Tratamentos prévios (sistêmico, TACE)</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Objetivo da discussão</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Possibilidade de ensaio clínico</div>
+          </div>
+        </div>
+
+        <div class="rlt-checklist">
+          <div class="rlt-checklist-head">
+            <h4><i data-lucide="presentation" style="width:16px;height:16px"></i> Apresentação de caso no tumor board</h4>
+            <button class="btn btn-secondary btn-sm copy-checklist-btn" @click="copyChecklist('board')"><i data-lucide="copy" style="width:14px;height:14px"></i> Copiar</button>
+          </div>
+          <div class="bc-grid">
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Pergunta clínica objetiva</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Diagnóstico e tipo (HCC / colangio / metástase)</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Estágio BCLC e função hepática (Child-Pugh / ALBI)</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Carga tumoral e distribuição</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Invasão vascular e doença extra-hepática</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Tratamentos prévios e respostas</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Status de imagem (TC/RM, mRECIST)</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Dados laboratoriais e marcadores</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Performance status</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Sintomas</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Opções aprovadas</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Ensaios clínicos disponíveis</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Limitações ou incertezas</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Próximo passo proposto para discussão</div>
+          </div>
+        </div>
+
+        <div class="rlt-checklist">
+          <div class="rlt-checklist-head">
+            <h4><i data-lucide="folder-check" style="width:16px;height:16px"></i> Pré-terapia, documentação e acesso (TARE)</h4>
+            <button class="btn btn-secondary btn-sm copy-checklist-btn" @click="copyChecklist('preterapia')"><i data-lucide="copy" style="width:14px;height:14px"></i> Copiar</button>
+          </div>
+          <div class="bc-grid">
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Relatório médico</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Imagem trifásica / RM recente</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Volumetria e segmentação (tumor / fígado)</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Mapeamento angiográfico planejado</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> 99mTc-MAA: shunt hepatopulmonar</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Dosimetria pré-terapêutica</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Exames laboratoriais (bilirrubina, ALBI)</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Hemograma</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Função renal</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Embolização profilática de colaterais GI</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Consentimento institucional, se aplicável</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Orientações de radioproteção</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Autorização</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Agendamento</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Plano de seguimento e resposta (mRECIST)</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 14. LINKS INTERNOS E PRÓXIMOS PASSOS -->
+      <div class="pm-block" id="hcc-14">
+        <div class="pm-block-head"><span class="pm-num">14</span><h3>Links internos e próximos passos</h3></div>
+        <div class="link-cards">
+          <a class="link-card" target="_blank" rel="noopener" href="database.html?cat=hcc"><i data-lucide="database" style="width:18px;height:18px"></i><span>Abrir Database (fígado)</span></a>
+          <a class="link-card" target="_blank" rel="noopener" href="database.html?cat=hcc"><i data-lucide="git-compare" style="width:18px;height:18px"></i><span>Comparar estudos de TARE</span></a>
+          <a class="link-card" target="_blank" rel="noopener" href="ensaios-clinicos.html"><i data-lucide="microscope" style="width:18px;height:18px"></i><span>Ver ensaios ativos</span></a>
+          <a class="link-card" target="_blank" rel="noopener" href="guidelines.html"><i data-lucide="book-open" style="width:18px;height:18px"></i><span>Abrir guidelines</span></a>
+          <a class="link-card" target="_blank" rel="noopener" href="ferramentas.html"><i data-lucide="wrench" style="width:18px;height:18px"></i><span>Abrir ferramentas</span></a>
+          <a class="link-card" target="_blank" rel="noopener" href="about.html"><i data-lucide="message-square-plus" style="width:18px;height:18px"></i><span>Sugerir estudo ou correção</span></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- EXPLORAR ESTUDOS POR TUMOR (browser existente, preservado) -->
 <section style="padding: 1rem 0 0">
   <div class="container">
@@ -2698,7 +3524,6 @@
 
       // ---- Tumor Board Maps: mapas em desenvolvimento (hub) ----
       upcomingMaps: [
-        { id: 'hcc',        name: 'Carcinoma hepatocelular / TARE',   icon: 'droplet',       color: '#F59E0B', badges: ['Y-90', 'TARE', 'BCLC'] },
         { id: 'mama',       name: 'Mama',                             icon: 'flower-2',      color: '#EC4899', badges: ['HER2', 'FAPI', 'FES'] },
         { id: 'pulmao',     name: 'Pulmão',                           icon: 'wind',          color: '#22D3EE', badges: ['DLL3', 'FAPI'] },
         { id: 'tireoide',   name: 'Tireoide',                         icon: 'circle-dot',    color: '#06B6D4', badges: ['I-131', 'RAI'] },
@@ -2720,6 +3545,7 @@
           { key: 'netter1', name: 'NETTER-1', uid: 'net_gep_0' },
           { key: 'netter2', name: 'NETTER-2', uid: 'net_gep_1' },
         ],
+        hcc: [],
       },
       get lineageParents() { return this.lineageParentsByTumor[this.openMap] || []; },
 
@@ -2760,7 +3586,7 @@
         this.$nextTick(() => document.getElementById('hub-' + (prev || 'prostata'))?.scrollIntoView({ behavior: 'smooth', block: 'center' }));
       },
 
-      mapNames: { prostata: 'Câncer de próstata', net: 'Tumores neuroendócrinos' },
+      mapNames: { prostata: 'Câncer de próstata', net: 'Tumores neuroendócrinos', hcc: 'Carcinoma hepatocelular e vias biliares' },
       checklistsByTumor: {
         prostata: {
           encaminhamento: {
@@ -2788,6 +3614,20 @@
           preterapia: {
             title: 'Pré-terapia, documentação e acesso',
             items: ['Relatório médico', 'Laudo de SSTR PET (Krenning)', 'Exames laboratoriais atualizados', 'Hemograma', 'Creatinina / eTFG', 'Função hepática', 'Avaliação de sintomas', 'Proteção renal com aminoácidos prevista', 'Manejo do análogo de somatostatina conforme protocolo', 'Consentimento institucional, se aplicável', 'Orientações de radioproteção', 'Autorização', 'Agendamento', 'Logística do radiofármaco', 'Plano de monitoramento entre ciclos'],
+          },
+        },
+        hcc: {
+          encaminhamento: {
+            title: 'Encaminhamento para discussão de TARE (fígado)',
+            items: ['Diagnóstico (LI-RADS ou histologia)', 'Tipo: HCC, colangiocarcinoma ou metástase', 'Estágio BCLC (no HCC)', 'Função hepática: Child-Pugh e ALBI', 'Performance status (ECOG)', 'Carga e distribuição da doença (uni/bilobar)', 'Invasão vascular (trombose portal)', 'Doença extra-hepática', 'TC trifásica / RM com contraste hepatoespecífico', 'Bilirrubina e função hepática', 'Hemograma', 'Função renal', 'AFP (HCC) / CA 19-9 (vias biliares)', 'Tratamentos prévios (sistêmico, TACE)', 'Objetivo da discussão', 'Possibilidade de ensaio clínico'],
+          },
+          board: {
+            title: 'Apresentação de caso no tumor board',
+            items: ['Pergunta clínica objetiva', 'Diagnóstico e tipo (HCC / colangio / metástase)', 'Estágio BCLC e função hepática (Child-Pugh / ALBI)', 'Carga tumoral e distribuição', 'Invasão vascular e doença extra-hepática', 'Tratamentos prévios e respostas', 'Status de imagem (TC/RM, mRECIST)', 'Dados laboratoriais e marcadores', 'Performance status', 'Sintomas', 'Opções aprovadas', 'Ensaios clínicos disponíveis', 'Limitações ou incertezas', 'Próximo passo proposto para discussão'],
+          },
+          preterapia: {
+            title: 'Pré-terapia, documentação e acesso (TARE)',
+            items: ['Relatório médico', 'Imagem trifásica / RM recente', 'Volumetria e segmentação (tumor / fígado)', 'Mapeamento angiográfico planejado', '99mTc-MAA: shunt hepatopulmonar', 'Dosimetria pré-terapêutica', 'Exames laboratoriais (bilirrubina, ALBI)', 'Hemograma', 'Função renal', 'Embolização profilática de colaterais GI', 'Consentimento institucional, se aplicável', 'Orientações de radioproteção', 'Autorização', 'Agendamento', 'Plano de seguimento e resposta (mRECIST)'],
           },
         },
       },
