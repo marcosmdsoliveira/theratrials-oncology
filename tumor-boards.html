@@ -589,9 +589,10 @@
 
   /* Timeline terapêutica */
   .therapy-timeline { display: flex; flex-direction: column; gap: 0; }
-  .tt-phase { position: relative; padding: 0 0 1.1rem 1.6rem; border-left: 2px solid var(--border-soft); }
+  .tt-phase { position: relative; padding: 0 0 1.1rem 1.6rem; border-left: 2px solid color-mix(in srgb, var(--c, var(--border-soft)) 55%, var(--border-soft)); }
   .tt-phase:last-child { border-left-color: transparent; padding-bottom: 0; }
-  .tt-dot { position: absolute; left: -7px; top: 2px; width: 12px; height: 12px; border-radius: 50%; background: var(--accent-color); box-shadow: 0 0 0 3px var(--graphite-2); }
+  .tt-dot { position: absolute; left: -7px; top: 2px; width: 13px; height: 13px; border-radius: 50%; background: var(--c, var(--accent-color)); box-shadow: 0 0 0 3px var(--graphite-2), 0 0 10px -1px var(--c, var(--accent-color)); }
+  .tt-phase h4 { color: color-mix(in srgb, var(--c, var(--off-white)) 35%, var(--off-white)); }
   .tt-phase h4 { font-family: var(--font-display); font-size: 0.95rem; font-weight: 700; color: var(--off-white); margin-bottom: 0.3rem; }
   .tt-phase p { font-size: 0.82rem; color: var(--stone); line-height: 1.55; margin: 0 0 0.45rem; }
   .tt-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; }
@@ -739,6 +740,60 @@
   .pm-collapse-chev { color: var(--stone); transition: transform 0.2s ease; flex-shrink: 0; }
   .pm-collapse[open] .pm-collapse-chev { transform: rotate(90deg); }
 
+  /* ---- Estados da doença · matriz 2×2 (castração × metástase) ---- */
+  .ds-matrix {
+    display: grid;
+    grid-template-columns: 30px 1fr 1fr;
+    gap: 0.5rem;
+    margin: 0.25rem 0 0.85rem;
+    align-items: stretch;
+  }
+  .ds-corner { }
+  .ds-colhead {
+    text-align: center; align-self: end;
+    font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;
+    color: var(--stone); padding-bottom: 0.2rem;
+  }
+  .ds-colhead small { display: block; font-weight: 500; text-transform: none; letter-spacing: 0; color: var(--stone-2); font-size: 0.64rem; }
+  .ds-rowlabel {
+    writing-mode: vertical-rl; transform: rotate(180deg);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.66rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em;
+    border-radius: 8px; padding: 0.3rem 0;
+  }
+  .ds-rowlabel.hs { background: rgba(52,211,153,0.10); color: #6EE7B7; }
+  .ds-rowlabel.cr { background: rgba(255,132,0,0.10); color: #FFA640; }
+  .ds-cell {
+    background: var(--graphite-3); border: 1px solid var(--border-soft);
+    border-top: 3px solid var(--c, var(--amber));
+    border-radius: var(--radius-md); padding: 0.8rem 0.9rem;
+    display: flex; flex-direction: column; gap: 0.45rem;
+  }
+  .ds-cell.is-rlt { background: rgba(255,132,0,0.06); border-color: rgba(255,132,0,0.28); }
+  .ds-tag { font-family: var(--font-display); font-weight: 700; font-size: 0.98rem; color: var(--off-white); display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap; line-height: 1.2; }
+  .ds-m { font-family: var(--font-mono); font-size: 0.6rem; font-weight: 600; padding: 0.1rem 0.38rem; border-radius: 5px; background: var(--graphite-4); color: var(--stone); }
+  .ds-rlt-badge { font-size: 0.56rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; padding: 0.12rem 0.42rem; border-radius: 5px; background: var(--amber); color: #0E0F12; }
+  .ds-def { font-size: 0.79rem; color: var(--stone); line-height: 1.5; margin: 0; }
+  .ds-rx { font-size: 0.76rem; color: var(--off-white); line-height: 1.4; }
+  .ds-rx b { display: block; color: var(--stone-2); font-weight: 700; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1px; }
+  .ds-legend { display: flex; flex-wrap: wrap; gap: 0.4rem 1.5rem; font-size: 0.74rem; color: var(--stone); line-height: 1.5; margin: 0.1rem 0 0; }
+  .ds-legend div { flex: 1; min-width: 240px; }
+  .ds-legend b { color: var(--off-white); font-weight: 600; }
+  .ds-note {
+    display: flex; gap: 0.6rem; align-items: flex-start;
+    margin: 0.9rem 0 0; padding: 0.75rem 0.9rem;
+    background: rgba(96,165,250,0.07); border: 1px solid rgba(96,165,250,0.22);
+    border-radius: var(--radius-md);
+  }
+  .ds-note i { color: #93C5FD; flex-shrink: 0; margin-top: 1px; }
+  .ds-note p { font-size: 0.8rem; color: var(--stone); line-height: 1.55; margin: 0; }
+  .ds-note b { color: var(--off-white); }
+  @media (max-width: 640px) {
+    .ds-matrix { grid-template-columns: 1fr; }
+    .ds-corner, .ds-colhead { display: none; }
+    .ds-rowlabel { writing-mode: horizontal-tb; transform: none; justify-content: flex-start; padding: 0.35rem 0.7rem; }
+  }
+
   [x-cloak] { display: none !important; }
 </style>
   <script defer src="https://cloud.umami.is/script.js" data-website-id="3c576b68-e2b3-4982-82e7-688e5a8adf58"></script>
@@ -882,8 +937,7 @@
       <!-- 1. VISÃO GERAL -->
       <div class="pm-block" id="pm-1">
         <div class="pm-block-head"><span class="pm-num">1</span><h3>Visão geral</h3></div>
-        <p class="pm-lead">O <strong>câncer de próstata metastático resistente à castração (mCRPC)</strong> representa o cenário mais maduro para as terapias com radioligantes direcionadas ao PSMA. A discussão em tumor board deve integrar, de forma estruturada, o <strong>estágio da doença</strong>, o <strong>histórico terapêutico</strong>, a <strong>expressão de PSMA na imagem molecular</strong>, a presença de <strong>doença discordante</strong>, a <strong>reserva medular</strong>, a <strong>função renal</strong>, os sintomas, os tratamentos prévios, a disponibilidade terapêutica e a possibilidade de inclusão em ensaios clínicos.</p>
-        <p class="pm-lead">O objetivo deste mapa é oferecer uma ponte entre a biologia tumoral, a imagem molecular, as terapias com radiofármacos, a evidência clínica e a aplicação prática em tumor board — <em>do conceito biológico ao ensaio clínico aplicável</em>.</p>
+        <p class="pm-lead">O <strong>mCRPC</strong> é o cenário com evidência clínica mais consolidada para as terapias com radioligantes direcionadas ao PSMA. A discussão em tumor board integra o estado da doença, os tratamentos prévios, a expressão de PSMA, a heterogeneidade tumoral, a reserva clínica, o acesso terapêutico e a possibilidade de ensaio clínico.</p>
       </div>
 
       <!-- 2. TEORIA ESSENCIAL -->
@@ -893,22 +947,22 @@
           <div class="concept-card">
             <div class="cc-ic"><i data-lucide="crosshair" style="width:18px;height:18px"></i></div>
             <h4>PSMA como alvo molecular</h4>
-            <p>O PSMA é uma glicoproteína transmembrana frequentemente superexpressa no câncer de próstata, sobretudo em doença avançada, metastática e resistente à castração. A expressão pode ser heterogênea entre lesões e variar ao longo da evolução tumoral.</p>
+            <p>Glicoproteína de membrana superexpressa no câncer de próstata, sobretudo na doença avançada e resistente à castração. A expressão varia entre lesões e ao longo do tempo — por isso a imagem precede a terapia.</p>
           </div>
           <div class="concept-card">
             <div class="cc-ic"><i data-lucide="scan-line" style="width:18px;height:18px"></i></div>
             <h4>Imagem molecular como ferramenta de seleção</h4>
-            <p>O PET/CT com PSMA identifica doença PSMA-positiva e seleciona candidatos a radioligantes. Em cenários selecionados — suspeita de fenótipo agressivo, doença desdiferenciada ou lesões com baixa expressão de PSMA — pode ser necessário avaliar doença discordante com FDG PET.</p>
+            <p>O PET/CT-PSMA mapeia a doença PSMA-positiva e seleciona candidatos a radioligantes. Na suspeita de fenótipo agressivo ou lesões de baixa captação, o FDG PET ajuda a revelar doença discordante.</p>
           </div>
           <div class="concept-card">
             <div class="cc-ic"><i data-lucide="atom" style="width:18px;height:18px"></i></div>
             <h4>Terapia com radioligantes</h4>
-            <p>A terapia com radioligantes combina um vetor molecular direcionado ao PSMA com um radionuclídeo terapêutico, permitindo a entrega seletiva de radiação às células tumorais que expressam o alvo.</p>
+            <p>Um vetor dirigido ao PSMA, acoplado a um radionuclídeo, entrega radiação diretamente às células que expressam o alvo, poupando relativamente o tecido normal.</p>
           </div>
           <div class="concept-card">
             <div class="cc-ic"><i data-lucide="git-compare" style="width:18px;height:18px"></i></div>
             <h4>Beta versus alfa-emissores</h4>
-            <p>Beta-emissores como o Lu-177 têm maior experiência clínica e evidência mais madura. Alfa-emissores como o Ac-225 (e outros emergentes) estão em investigação, com racional de maior LET e maior potencial de dano ao DNA, mas também desafios de toxicidade, produção, dosimetria e evidência ainda menos madura.</p>
+            <p>O Lu-177 (beta) tem a evidência mais madura. Os alfa-emissores, como o Ac-225, concentram alta energia em alcance curto (LET elevado), com potencial em doença refratária — mas ainda esbarram em toxicidade, produção e dados clínicos limitados.</p>
           </div>
         </div>
       </div>
@@ -916,7 +970,7 @@
       <!-- 3. PERGUNTAS DO TUMOR BOARD -->
       <div class="pm-block" id="pm-3">
         <div class="pm-block-head"><span class="pm-num">3</span><h3>Perguntas do tumor board</h3></div>
-        <p class="pm-lead">Perguntas práticas que o board precisa responder, organizadas por eixo de decisão.</p>
+        <p class="pm-lead">As perguntas que estruturam a decisão em tumor board, agrupadas por eixo.</p>
         <div class="q-groups">
           <div class="q-group">
             <div class="q-group-title"><i data-lucide="layers"></i> Estágio e linha terapêutica</div>
@@ -935,7 +989,7 @@
             </ul>
           </div>
           <div class="q-group">
-            <div class="q-group-title"><i data-lucide="shield-alert"></i> Segurança e elegibilidade</div>
+            <div class="q-group-title"><i data-lucide="shield-alert"></i> Segurança e reserva clínica</div>
             <ul>
               <li>Há reserva medular adequada?</li>
               <li>A função renal é aceitável?</li>
@@ -962,9 +1016,56 @@
       <!-- 4. JORNADA TERAPÊUTICA -->
       <div class="pm-block" id="pm-4">
         <div class="pm-block-head"><span class="pm-num">4</span><h3>Jornada terapêutica</h3></div>
-        <p class="pm-lead">Em que momento da história do câncer de próstata cada modalidade entra. Cada fase traz estudos reais do Database — <strong>não só radioligantes</strong> (ARPi, quimioterapia, PARP, radioterapia, imunoterapia). Seleção representativa; o conjunto completo (demais PARP, intensificações do ADT etc.) está no <a href="database.html?cat=prostata" style="color:var(--amber)">Database</a>. Clique em um estudo para abrir a ficha.</p>
+        <p class="pm-lead">A jornada terapêutica no câncer de próstata depende de dois eixos: a <strong>presença de metástases</strong> e a <strong>sensibilidade à castração</strong>. Esses estados definem o papel relativo da terapia local, da intensificação sistêmica, da imagem molecular, dos radioligantes e dos ensaios clínicos.</p>
+
+        <!-- Matriz de estados da doença -->
+        <div class="ds-matrix">
+          <div class="ds-corner"></div>
+          <div class="ds-colhead">Não-metastático <small>M0</small></div>
+          <div class="ds-colhead">Metastático <small>M1</small></div>
+
+          <div class="ds-rowlabel hs">Hormônio-sensível</div>
+          <div class="ds-cell" style="--c:#34D399">
+            <div class="ds-tag">Localizada · Recidiva bioquímica <span class="ds-m">M0</span></div>
+            <p class="ds-def">Doença confinada, ou apenas <strong>PSA em ascensão após tratamento local</strong> — testosterona ainda sensível.</p>
+            <div class="ds-rx"><b>Tratamento típico</b>RT · cirurgia · vigilância ativa · RT de resgate</div>
+          </div>
+          <div class="ds-cell" style="--c:#60A5FA">
+            <div class="ds-tag">mHSPC <span class="ds-m">M1</span></div>
+            <p class="ds-def">Metástases com a doença <strong>ainda sensível à castração</strong> (de novo ou em recidiva).</p>
+            <div class="ds-rx"><b>Tratamento típico</b>ADT + ARPi e/ou docetaxel (intensificação precoce)</div>
+          </div>
+
+          <div class="ds-rowlabel cr">Castração-resistente</div>
+          <div class="ds-cell" style="--c:#C084FC">
+            <div class="ds-tag">nmCRPC <span class="ds-m">M0</span></div>
+            <p class="ds-def"><strong>PSA em ascensão apesar da castração</strong>, sem metástase visível na imagem convencional.</p>
+            <div class="ds-rx"><b>Tratamento típico</b>ARPi de 2ª geração (apalutamida, enzalutamida, darolutamida)</div>
+          </div>
+          <div class="ds-cell is-rlt" style="--c:#FF8400">
+            <div class="ds-tag">mCRPC <span class="ds-m">M1</span> <span class="ds-rlt-badge">RLT-PSMA</span></div>
+            <p class="ds-def">Progressão (PSA, imagem ou clínica) <strong>apesar da testosterona de castração</strong>, com metástases.</p>
+            <div class="ds-rx"><b>Tratamento típico</b>Taxano · <sup>177</sup>Lu-PSMA · <sup>223</sup>Ra (ósseo) · PARP (HRR+)</div>
+          </div>
+        </div>
+
+        <div class="ds-legend">
+          <div><b>Castração</b> = testosterona &lt;50 ng/dL (cirúrgica ou por ADT). A doença é <b>resistente</b> quando progride apesar disso.</div>
+          <div><b>M0 vs M1</b> = ausência ou presença de metástases na imagem (TC/cintilografia). O <b>PSMA PET</b> é mais sensível e pode reclassificar M0→M1.</div>
+        </div>
+
+        <div class="ds-note">
+          <i data-lucide="git-pull-request-arrow" style="width:18px;height:18px"></i>
+          <p><b>Recidiva bioquímica (BCR):</b> o PSA volta a subir após tratamento local com intenção curativa — a doença permanece hormônio-sensível. O PSMA PET localiza a recidiva e ajuda a decidir entre terapia <b>dirigida</b> (RT de resgate / SBRT em oligometástases) e <b>sistêmica</b>.</p>
+        </div>
+
+        <div class="pm-subhead">
+          <i data-lucide="route" style="width:18px;height:18px"></i>
+          <h4>Onde cada modalidade entra</h4>
+        </div>
+        <p class="pm-lead">Onde cada modalidade entra, estado a estado, com estudos reais — <strong>não só radioligantes</strong> (ARPi, quimioterapia, PARP, radioterapia, imunoterapia). Clique para abrir a ficha; a lista completa está no <a href="database.html?cat=prostata" style="color:var(--amber)">Database</a>.</p>
         <div class="therapy-timeline">
-          <div class="tt-phase">
+          <div class="tt-phase" style="--c:#34D399">
             <span class="tt-dot"></span>
             <h4>1 · Doença localizada / alto risco</h4>
             <p>Radioterapia e cirurgia no centro; PSMA PET ganha espaço no estadiamento. Radioligante sistêmico só em pesquisa.</p>
@@ -977,7 +1078,7 @@
             </div>
             <div class="tt-tags"><span class="tt-mat high">RT/cirurgia estabelecidas</span></div>
           </div>
-          <div class="tt-phase">
+          <div class="tt-phase" style="--c:#34D399">
             <span class="tt-dot"></span>
             <h4>2 · Recidiva bioquímica</h4>
             <p>PSMA PET localiza a recidiva e guia terapia dirigida; radioligante sistêmico ainda investigacional.</p>
@@ -991,7 +1092,7 @@
             </div>
             <div class="tt-tags"><span class="tt-mat high">ARPi na recidiva (EMBARK)</span><span class="tt-mat mid">RT / oligometastático</span></div>
           </div>
-          <div class="tt-phase">
+          <div class="tt-phase" style="--c:#60A5FA">
             <span class="tt-dot"></span>
             <h4>3 · mHSPC</h4>
             <p>Intensificação precoce com ARPi e/ou docetaxel; radioligante em combinação ainda investigacional.</p>
@@ -1005,7 +1106,7 @@
             </div>
             <div class="tt-tags"><span class="tt-mat high">ARPi/quimio estabelecidas</span><span class="tt-mat low">RLT investigacional</span></div>
           </div>
-          <div class="tt-phase">
+          <div class="tt-phase" style="--c:#C084FC">
             <span class="tt-dot"></span>
             <h4>4 · nmCRPC</h4>
             <p>Manejo com ARPi de 2ª geração; radioligante sem papel estabelecido.</p>
@@ -1016,7 +1117,7 @@
             </div>
             <div class="tt-tags"><span class="tt-mat high">ARPi estabelecida</span></div>
           </div>
-          <div class="tt-phase">
+          <div class="tt-phase" style="--c:#FF8400">
             <span class="tt-dot"></span>
             <h4>5 · mCRPC pré-taxano (pós-ARPi)</h4>
             <p>ARPi, PARP (em HRR+) e antecipação do radioligante antes da quimio — evidência em expansão.</p>
@@ -1030,7 +1131,7 @@
             </div>
             <div class="tt-tags"><span class="tt-mat mid">Evidência em expansão</span></div>
           </div>
-          <div class="tt-phase">
+          <div class="tt-phase" style="--c:#FF8400">
             <span class="tt-dot"></span>
             <h4>6 · mCRPC pós-ARPi e pós-taxano</h4>
             <p>Cenário de evidência mais madura para Lu-177-PSMA, ao lado de taxano e ARPi.</p>
@@ -1043,7 +1144,7 @@
             </div>
             <div class="tt-tags"><span class="tt-mat high">Evidência mais madura (RLT)</span></div>
           </div>
-          <div class="tt-phase">
+          <div class="tt-phase" style="--c:#F472B6">
             <span class="tt-dot"></span>
             <h4>7 · Doença refratária / terapias experimentais</h4>
             <p>Alfa-emissores (Ac-225, Pb-212) e novos radioligantes; evidência clínica ainda precoce.</p>
@@ -1066,7 +1167,7 @@
           <p>Esta seção tem finalidade educacional e de melhoria de jornada assistencial. Não define elegibilidade individual, não recomenda tratamento e não substitui julgamento médico, bula, guidelines, protocolos institucionais ou consulta às fontes primárias.</p>
         </div>
 
-        <p class="pm-lead" style="margin-bottom:0.75rem"><strong>Enquanto a Jornada terapêutica</strong> (seção anterior) descreve <em>em que momento da doença</em> cada modalidade entra, esta seção descreve <strong>como o paciente percorre o sistema assistencial</strong> até ser reconhecido, avaliado, discutido e eventualmente encaminhado.</p>
+        <p class="pm-lead" style="margin-bottom:0.75rem">A existência da terapia não basta. O paciente precisa ser reconhecido no momento certo, ter a imagem adequada, ser discutido em equipe e superar os gargalos de acesso. As etapas abaixo mapeiam esse percurso assistencial.</p>
 
         <div class="journey-timeline">
 
@@ -1309,7 +1410,7 @@
               <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#lupsma_prostata_0"><i data-lucide="file-text" style="width:11px;height:11px"></i> VISION</a>
               <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#lupsma_prostata_1"><i data-lucide="file-text" style="width:11px;height:11px"></i> TheraP</a>
             </div>
-            <p class="esc-msg">Cenário de evidência mais madura para Lu-177-PSMA, com necessidade de revisar tratamentos prévios, critérios de imagem, reserva medular, função renal e presença de doença discordante.</p>
+            <p class="esc-msg">Onde o Lu-177-PSMA tem a evidência mais madura. Revisar tratamentos prévios, critérios de imagem, reserva medular e renal e doença discordante.</p>
           </div>
           <div class="evidence-scenario-card" style="--sc-color:#60A5FA">
             <span class="esc-tag">Cenário B · pré-taxano</span>
@@ -1319,7 +1420,7 @@
               <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#lupsma_prostata_3"><i data-lucide="file-text" style="width:11px;height:11px"></i> SPLASH</a>
               <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#lupsma_prostata_4"><i data-lucide="file-text" style="width:11px;height:11px"></i> ECLIPSE</a>
             </div>
-            <p class="esc-msg">Cenário de antecipação da terapia com radioligante antes da quimioterapia, com evidência em expansão e necessidade de contextualizar maturidade dos dados, acesso e status regulatório.</p>
+            <p class="esc-msg">Antecipa o radioligante antes da quimioterapia. Evidência em expansão — pesar maturidade dos dados, acesso e status regulatório.</p>
           </div>
           <div class="evidence-scenario-card" style="--sc-color:#C084FC">
             <span class="esc-tag">Cenário C · mHSPC</span>
@@ -1327,7 +1428,7 @@
             <div class="esc-studies">
               <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#lupsma_prostata_7"><i data-lucide="file-text" style="width:11px;height:11px"></i> PSMAddition</a>
             </div>
-            <p class="esc-msg">Cenário investigacional de intensificação precoce com radioligantes, geralmente em combinação com tratamento sistêmico padrão.</p>
+            <p class="esc-msg">Intensificação precoce com radioligante somado ao tratamento sistêmico padrão. Ainda investigacional.</p>
           </div>
           <div class="evidence-scenario-card" style="--sc-color:#94A3B8">
             <span class="esc-tag">Cenário D · doença óssea sintomática</span>
@@ -1335,7 +1436,7 @@
             <div class="esc-studies">
               <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#ra223_prostata_0"><i data-lucide="file-text" style="width:11px;height:11px"></i> ALSYMPCA</a>
             </div>
-            <p class="esc-msg">Cenário clássico de Ra-223 em doença óssea sintomática, com racional diferente da terapia direcionada ao PSMA. O Ra-223 é cálcio-mimético e não depende da expressão de PSMA.</p>
+            <p class="esc-msg">Doença óssea sintomática sem metástase visceral. O Ra-223 é cálcio-mimético: atua no osso e não depende da expressão de PSMA.</p>
           </div>
           <div class="evidence-scenario-card" style="--sc-color:#F472B6">
             <span class="esc-tag">Cenário E · alfa e novos emissores</span>
@@ -1345,7 +1446,7 @@
               <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#novos_psma_7"><i data-lucide="file-text" style="width:11px;height:11px"></i> 212Pb-PSMA</a>
               <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#novos_psma_5"><i data-lucide="file-text" style="width:11px;height:11px"></i> 225Ac-J591</a>
             </div>
-            <p class="esc-msg">Campo em expansão, com racional radiobiológico promissor, mas evidência clínica ainda mais precoce e necessidade de cautela quanto a toxicidade, produção, dosimetria e extrapolação de dados.</p>
+            <p class="esc-msg">Racional radiobiológico promissor, evidência clínica ainda precoce. Cautela com toxicidade, produção e dosimetria.</p>
           </div>
         </div>
       </div>
@@ -1353,13 +1454,13 @@
       <!-- 6. ESTUDOS-CHAVE -->
       <div class="pm-block" id="pm-7">
         <div class="pm-block-head"><span class="pm-num">7</span><h3>Estudos-chave</h3></div>
-        <p class="pm-lead">Resumo de desenho dos principais estudos. <strong>Resultados numéricos, desfechos e toxicidades estão na ficha de cada estudo no Database</strong> — este mapa não reproduz hazard ratios, valores de p ou taxas de resposta.</p>
+        <p class="pm-lead">Desenho dos principais estudos. <strong>Resultados, desfechos e toxicidades ficam na ficha de cada um no Database</strong> — este mapa não reproduz hazard ratios, valores de p ou taxas de resposta.</p>
         <div class="keystudy-grid">
           <div class="keystudy-card">
             <div class="ks-top"><span class="ks-name">VISION</span><span class="ks-scn">pós-ARPi + pós-taxano</span></div>
             <div class="ks-row"><b>População</b>mCRPC PSMA-positivo, previamente tratado com ARPi e taxano.</div>
             <div class="ks-row"><b>Intervenção / comparador</b>177Lu-PSMA-617 + cuidado padrão vs cuidado padrão.</div>
-            <p class="ks-msg">Estudo de referência para a aprovação do Lu-177-PSMA neste cenário. Seleção por PET-PSMA é determinante.</p>
+            <p class="ks-msg">Base da aprovação do Lu-177-PSMA neste cenário; a seleção por PET-PSMA é determinante.</p>
             <div class="ks-foot">
               <a class="ks-link" target="_blank" rel="noopener" href="database.html#lupsma_prostata_0"><i data-lucide="database" style="width:13px;height:13px"></i> Ficha no Database</a>
             </div>
@@ -1368,7 +1469,7 @@
             <div class="ks-top"><span class="ks-name">TheraP</span><span class="ks-scn">pós-docetaxel</span></div>
             <div class="ks-row"><b>População</b>mCRPC PSMA-positivo, candidatos a cabazitaxel.</div>
             <div class="ks-row"><b>Intervenção / comparador</b>177Lu-PSMA-617 vs cabazitaxel.</div>
-            <p class="ks-msg">Comparação direta com cabazitaxel; seleção por PSMA PET e FDG PET. Desfechos detalhados na ficha.</p>
+            <p class="ks-msg">Comparação direta com cabazitaxel, com seleção por PSMA e FDG PET.</p>
             <div class="ks-foot">
               <a class="ks-link" target="_blank" rel="noopener" href="database.html#lupsma_prostata_1"><i data-lucide="database" style="width:13px;height:13px"></i> Ficha no Database</a>
             </div>
@@ -1377,7 +1478,7 @@
             <div class="ks-top"><span class="ks-name">PSMAfore</span><span class="ks-scn">pré-taxano</span></div>
             <div class="ks-row"><b>População</b>mCRPC PSMA-positivo, pós-ARPi, sem quimioterapia prévia.</div>
             <div class="ks-row"><b>Intervenção / comparador</b>177Lu-PSMA-617 vs troca de ARPi.</div>
-            <p class="ks-msg">Antecipação da terapia antes da quimioterapia. A análise de sobrevida foi confundida por crossover — ver ficha.</p>
+            <p class="ks-msg">Antecipa a terapia antes da quimioterapia; a sobrevida global foi confundida por crossover.</p>
             <div class="ks-foot">
               <a class="ks-link" target="_blank" rel="noopener" href="database.html#lupsma_prostata_2"><i data-lucide="database" style="width:13px;height:13px"></i> Ficha no Database</a>
             </div>
@@ -1386,7 +1487,7 @@
             <div class="ks-top"><span class="ks-name">SPLASH</span><span class="ks-scn">pré-taxano</span></div>
             <div class="ks-row"><b>População</b>mCRPC PSMA-positivo, pós-ARPi.</div>
             <div class="ks-row"><b>Intervenção</b>177Lu-PNT2002 (radioligante PSMA).</div>
-            <p class="ks-msg">Cenário pré-taxano com radioligante alternativo. Detalhes disponíveis na ficha do estudo.</p>
+            <p class="ks-msg">Cenário pré-taxano com radioligante alternativo (177Lu-PNT2002).</p>
             <div class="ks-foot">
               <a class="ks-link" target="_blank" rel="noopener" href="database.html#lupsma_prostata_3"><i data-lucide="database" style="width:13px;height:13px"></i> Ficha no Database</a>
             </div>
@@ -1395,7 +1496,7 @@
             <div class="ks-top"><span class="ks-name">ECLIPSE</span><span class="ks-scn">pré-taxano</span></div>
             <div class="ks-row"><b>População</b>mCRPC PSMA-positivo, pós-ARPi.</div>
             <div class="ks-row"><b>Intervenção</b>Radioligante PSMA (estudo confirmatório).</div>
-            <p class="ks-msg">Estudo confirmatório no cenário pré-taxano. Detalhes disponíveis na ficha do estudo.</p>
+            <p class="ks-msg">Confirmatório no cenário pré-taxano.</p>
             <div class="ks-foot">
               <a class="ks-link" target="_blank" rel="noopener" href="database.html#lupsma_prostata_4"><i data-lucide="database" style="width:13px;height:13px"></i> Ficha no Database</a>
             </div>
@@ -1404,7 +1505,7 @@
             <div class="ks-top"><span class="ks-name">PSMAddition</span><span class="ks-scn">mHSPC</span></div>
             <div class="ks-row"><b>População</b>Câncer de próstata hormônio-sensível metastático.</div>
             <div class="ks-row"><b>Intervenção</b>177Lu-PSMA-617 em combinação com tratamento padrão.</div>
-            <p class="ks-msg">Intensificação precoce investigacional. Detalhes disponíveis na ficha do estudo.</p>
+            <p class="ks-msg">Intensificação precoce no mHSPC; ainda investigacional.</p>
             <div class="ks-foot">
               <a class="ks-link" target="_blank" rel="noopener" href="database.html#lupsma_prostata_7"><i data-lucide="database" style="width:13px;height:13px"></i> Ficha no Database</a>
             </div>
@@ -1421,7 +1522,7 @@
           <div class="keystudy-card">
             <div class="ks-top"><span class="ks-name">Alfa-emissores</span><span class="ks-scn">experimental</span></div>
             <div class="ks-row"><b>Agentes</b>225Ac-PSMA-617, 225Ac-J591, 212Pb-PSMA e outros radioligantes emergentes.</div>
-            <p class="ks-msg">Campo em investigação; evidência clínica precoce. Consulte as fichas para o estágio de cada programa.</p>
+            <p class="ks-msg">Em investigação, com evidência clínica precoce; o estágio de cada programa está nas fichas.</p>
             <div class="ks-foot">
               <a class="ks-link" target="_blank" rel="noopener" href="database.html#novos_psma_0"><i data-lucide="database" style="width:13px;height:13px"></i> 225Ac-PSMA-617</a>
               <a class="ks-link" target="_blank" rel="noopener" href="database.html?cat=prostata"><i data-lucide="search" style="width:13px;height:13px"></i> Ver todos</a>
@@ -1433,7 +1534,7 @@
       <!-- 7. TRIAL LINEAGE -->
       <div class="pm-block" id="pm-8">
         <div class="pm-block-head"><span class="pm-num">8</span><h3>Trial Lineage — publicações secundárias e análises derivadas</h3></div>
-        <p class="pm-lead">Um estudo pivotal não é uma publicação única, mas uma <strong>família de evidências</strong>: follow-ups, subgrupos, qualidade de vida, segurança, biomarcadores, dosimetria, análises exploratórias e abstracts. As publicações abaixo vêm do catálogo do TheraTrials.</p>
+        <p class="pm-lead">Um estudo pivotal raramente é uma publicação única: gera uma <strong>família de evidências</strong> — follow-ups, subgrupos, qualidade de vida, segurança, biomarcadores, dosimetria e abstracts de congresso.</p>
         <div class="trial-lineage">
           <template x-for="parent in lineageParents" :key="parent.key">
             <details class="tl-parent" x-show="secList(parent).length">
@@ -1487,7 +1588,7 @@
       <!-- 9. ENSAIOS CLÍNICOS ATIVOS -->
       <div class="pm-block" id="pm-10">
         <div class="pm-block-head"><span class="pm-num">10</span><h3>Ensaios clínicos ativos relacionados</h3></div>
-        <p class="pm-lead">Esta seção conecta com os ensaios em andamento ou recrutando relacionados a câncer de próstata, PSMA, radioligantes, alfa-terapia, combinações sistêmicas e modalidades emergentes. <strong>A elegibilidade final depende sempre do protocolo oficial e da avaliação do centro responsável.</strong></p>
+        <p class="pm-lead">Ensaios em andamento ou recrutando em câncer de próstata — PSMA, radioligantes, alfa-terapia, combinações sistêmicas e modalidades emergentes. <strong>A elegibilidade final depende sempre do protocolo oficial e do centro responsável.</strong></p>
         <div class="link-cards" style="max-width:520px">
           <a class="link-card" target="_blank" rel="noopener" href="ensaios-clinicos.html">
             <i data-lucide="microscope" style="width:18px;height:18px"></i>
@@ -1528,7 +1629,7 @@
       <!-- 12. CHECKLIST PARA APRESENTAÇÃO DE CASO -->
       <div class="pm-block" id="pm-13">
         <div class="pm-block-head"><span class="pm-num">13</span><h3>Checklists</h3></div>
-        <p class="pm-lead">Três conjuntos de <strong>itens para revisão</strong> (dados mínimos para discussão). São listas de organização, não critérios de elegibilidade — a <em>avaliação formal de elegibilidade é feita pela equipe responsável</em>. Cada um pode ser copiado em texto.</p>
+        <p class="pm-lead">Três listas de <strong>itens para revisão</strong> — organização do caso, não critérios de elegibilidade (a avaliação formal cabe à equipe responsável). Cada uma pode ser copiada em texto.</p>
 
         <!-- Checklist 1 -->
         <div class="rlt-checklist">
