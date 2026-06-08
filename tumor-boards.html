@@ -981,6 +981,27 @@
         </div>
       </article>
 
+      <!-- PULMÃO — ativo -->
+      <article class="tumor-map-card is-active" style="--accent-color:#22D3EE;--accent-rgb:34,211,238" @click="openTumorMap('pulmao')" id="hub-pulmao">
+        <div class="tmc-head">
+          <div class="tmc-icon"><i data-lucide="wind" style="width:24px;height:24px"></i></div>
+          <div>
+            <div class="tmc-title">Câncer de pulmão</div>
+            <span class="tmc-status on">Mapa completo</span>
+          </div>
+        </div>
+        <div class="tmc-badges">
+          <span class="mod-pill stage">NSCLC drivers</span>
+          <span class="mod-pill psma">Imuno 1L</span>
+          <span class="mod-pill">Perioperatório</span>
+          <span class="mod-pill stage">SCLC</span>
+          <span class="mod-pill lu177">DLL3 · FAPI</span>
+        </div>
+        <div class="tmc-foot">
+          <span class="tmc-open">Abrir mapa <i data-lucide="arrow-right" style="width:15px;height:15px"></i></span>
+        </div>
+      </article>
+
       <!-- EM DESENVOLVIMENTO -->
       <template x-for="soon in upcomingMaps" :key="soon.id">
         <article class="tumor-map-card is-soon" :style="`--accent-color:${soon.color};--accent-rgb:${hexToRgb(soon.color)}`">
@@ -5015,6 +5036,825 @@
   </div>
 </section>
 
+<!-- MÓDULO: TUMOR BOARD MAP — CÂNCER DE PULMÃO -->
+<section x-show="openMap === 'pulmao'" x-cloak id="map-pulmao" style="padding:0">
+  <div class="container">
+    <div class="map-module" style="--accent-color:#22D3EE;--accent-rgb:34,211,238">
+
+      <button class="detail-back" @click="closeMap()">
+        <i data-lucide="arrow-left" style="width:14px;height:14px"></i>
+        <span>Voltar aos mapas</span>
+      </button>
+
+      <div class="mm-head">
+        <h1 class="mm-title"><i data-lucide="wind" style="width:30px;height:30px"></i> Tumor Board Map — Câncer de Pulmão</h1>
+        <p class="mm-sub">Do NSCLC guiado por driver molecular e PD-L1 ao perioperatório, ao estágio III e ao SCLC — incluindo o alvo emergente DLL3 e os radioligantes (DLL3/FAPI) em desenvolvimento.</p>
+      </div>
+
+      <nav class="mm-nav">
+        <a href="#pul-1">1 · Visão geral</a>
+        <a href="#pul-2">2 · Teoria essencial</a>
+        <a href="#pul-3">3 · Perguntas do board</a>
+        <a href="#pul-4">4 · Jornada terapêutica</a>
+        <a href="#pul-5">5 · Jornada do paciente</a>
+        <a href="#pul-6">6 · Mapa de evidências</a>
+        <a href="#pul-7">7 · Estudos-chave</a>
+        <a href="#pul-8">8 · Trial Lineage</a>
+        <a href="#pul-9">9 · Critérios práticos</a>
+        <a href="#pul-10">10 · Ensaios ativos</a>
+        <a href="#pul-11">11 · Guidelines</a>
+        <a href="#pul-12">12 · Ferramentas</a>
+        <a href="#pul-13">13 · Checklists</a>
+        <a href="#pul-14">14 · Próximos passos</a>
+      </nav>
+
+      <!-- 1. VISÃO GERAL -->
+      <div class="pm-block" id="pul-1">
+        <div class="pm-block-head"><span class="pm-num">1</span><h3>Visão geral</h3></div>
+        <p class="pm-lead">O câncer de pulmão divide-se em <strong>não-pequenas células (NSCLC)</strong> e <strong>pequenas células (SCLC)</strong>, com lógicas terapêuticas distintas. No NSCLC, a primeira pergunta é molecular: a presença de um <strong>driver acionável</strong> (EGFR, ALK, ROS1, RET, MET, KRAS G12C, HER2, BRAF, NTRK) direciona para terapia-alvo; sua ausência, somada ao <strong>PD-L1</strong>, orienta a imunoterapia. Some-se a isso o estádio — ressecável, estágio III irressecável (quimiorradiação + consolidação) e metastático. No SCLC, a base é quimioterapia-platina com imunoterapia, e o alvo emergente é o <strong>DLL3</strong>. A medicina nuclear contribui com o FDG-PET no estadiamento e com radioligantes (DLL3/FAPI) em pesquisa.</p>
+      </div>
+
+      <!-- 2. TEORIA ESSENCIAL -->
+      <div class="pm-block" id="pul-2">
+        <div class="pm-block-head"><span class="pm-num">2</span><h3>Teoria essencial</h3></div>
+        <div class="concept-grid">
+          <div class="concept-card">
+            <div class="cc-ic"><i data-lucide="dna" style="width:18px;height:18px"></i></div>
+            <h4>Driver molecular como porta</h4>
+            <p>No NSCLC, o NGS abrangente busca drivers acionáveis. Cada alteração tem um inibidor próprio — do osimertinibe (EGFR) ao selpercatinibe (RET) — e geralmente contraindica a imunoterapia isolada de 1ª linha.</p>
+          </div>
+          <div class="concept-card">
+            <div class="cc-ic"><i data-lucide="shield-plus" style="width:18px;height:18px"></i></div>
+            <h4>PD-L1 e imunoterapia</h4>
+            <p>Na ausência de driver, o PD-L1 (TPS) e a histologia orientam a 1ª linha: imunoterapia isolada em PD-L1 alto, ou combinada à quimioterapia. Também ancora o perioperatório e a consolidação no estágio III.</p>
+          </div>
+          <div class="concept-card">
+            <div class="cc-ic"><i data-lucide="layers" style="width:18px;height:18px"></i></div>
+            <h4>Estádio define a estratégia</h4>
+            <p>Ressecável (cirurgia ± perioperatório), estágio III irressecável (quimiorradiação + consolidação com durvalumab) e metastático seguem caminhos distintos — e a decisão é multidisciplinar.</p>
+          </div>
+          <div class="concept-card">
+            <div class="cc-ic"><i data-lucide="atom" style="width:18px;height:18px"></i></div>
+            <h4>DLL3 e os radioligantes</h4>
+            <p>No SCLC, o DLL3 é o alvo emergente: o tarlatamab (BiTE anti-DLL3) já é aprovado em 2ª linha, e radioligantes anti-DLL3 (177Lu/225Ac) e anti-FAP (FAPI) estão em desenvolvimento clínico inicial.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. PERGUNTAS DO TUMOR BOARD -->
+      <div class="pm-block" id="pul-3">
+        <div class="pm-block-head"><span class="pm-num">3</span><h3>Perguntas do tumor board</h3></div>
+        <p class="pm-lead">As perguntas que estruturam a decisão em tumor board, agrupadas por eixo.</p>
+        <div class="q-groups">
+          <div class="q-group">
+            <div class="q-group-title"><i data-lucide="layers"></i> Histologia e estádio</div>
+            <ul>
+              <li>É NSCLC (escamoso/não-escamoso) ou SCLC?</li>
+              <li>Qual o estádio (I–IV)?</li>
+              <li>Ressecável, estágio III irressecável ou metastático?</li>
+            </ul>
+          </div>
+          <div class="q-group">
+            <div class="q-group-title"><i data-lucide="dna"></i> Biomarcadores</div>
+            <ul>
+              <li>Há driver acionável (EGFR, ALK, ROS1, RET, MET ex14, KRAS G12C, HER2, BRAF, NTRK)?</li>
+              <li>Qual o PD-L1 (TPS)?</li>
+              <li>NGS abrangente foi realizado?</li>
+            </ul>
+          </div>
+          <div class="q-group">
+            <div class="q-group-title"><i data-lucide="scan-line"></i> Imagem e estadiamento</div>
+            <ul>
+              <li>FDG-PET/CT e RM de crânio realizados?</li>
+              <li>Confirmação invasiva do mediastino, quando indicada?</li>
+              <li>Avaliação de resposta planejada (incl. SNC)?</li>
+            </ul>
+          </div>
+          <div class="q-group">
+            <div class="q-group-title"><i data-lucide="target"></i> Objetivo terapêutico</div>
+            <ul>
+              <li>Curativo (ressecável/estágio III) ou controle da doença metastática? Inclusão em ensaio?</li>
+            </ul>
+          </div>
+          <div class="q-group">
+            <div class="q-group-title"><i data-lucide="shield-alert"></i> Segurança e acesso</div>
+            <ul>
+              <li>Função pulmonar/cardíaca e risco de pneumonite?</li>
+              <li>Disponibilidade do TKI/ADC/imunoterapia ou de protocolo de pesquisa?</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. JORNADA TERAPÊUTICA -->
+      <div class="pm-block" id="pul-4">
+        <div class="pm-block-head"><span class="pm-num">4</span><h3>Jornada terapêutica</h3></div>
+        <p class="pm-lead">A jornada depende de dois eixos: a <strong>biologia</strong> (NSCLC com driver, NSCLC sem driver guiado por PD-L1, ou SCLC) e o <strong>estádio</strong> (localizado/perioperatório vs avançado/metastático). O estágio III irressecável tem um caminho próprio: quimiorradiação seguida de consolidação.</p>
+
+        <!-- Matriz biologia × estádio (3×2) -->
+        <div class="ds-matrix">
+          <div class="ds-corner"></div>
+          <div class="ds-colhead">Localizado <small>perioperatório (I–III)</small></div>
+          <div class="ds-colhead">Avançado <small>metastático (IV)</small></div>
+
+          <div class="ds-rowlabel" style="background:rgba(14,165,183,0.12);color:#5EEAD4">NSCLC com driver</div>
+          <div class="ds-cell" style="--c:#0EA5B7">
+            <div class="ds-tag">NSCLC driver+ localizado</div>
+            <p class="ds-def">Doença ressecável com driver acionável.</p>
+            <div class="ds-rx"><b>Tratamento típico</b>Cirurgia · TKI adjuvante guiado por driver (osimertinibe no EGFR; alectinibe no ALK) · quimioterapia (neo)adjuvante</div>
+          </div>
+          <div class="ds-cell" style="--c:#0EA5B7">
+            <div class="ds-tag">NSCLC driver+ avançado</div>
+            <p class="ds-def">Metastático com driver acionável.</p>
+            <div class="ds-rx"><b>Tratamento típico</b>TKI/ADC dirigido por driver (EGFR, ALK, ROS1, RET, MET, KRAS G12C, HER2, NTRK)</div>
+          </div>
+
+          <div class="ds-rowlabel" style="background:rgba(34,211,238,0.12);color:#67E8F9">NSCLC sem driver</div>
+          <div class="ds-cell" style="--c:#22D3EE">
+            <div class="ds-tag">NSCLC sem driver localizado</div>
+            <p class="ds-def">Ressecável ou estágio III irressecável, guiado por PD-L1.</p>
+            <div class="ds-rx"><b>Tratamento típico</b>IO + QT perioperatório/adjuvante · estágio III irressecável: quimiorradiação + consolidação com durvalumab</div>
+          </div>
+          <div class="ds-cell" style="--c:#22D3EE">
+            <div class="ds-tag">NSCLC sem driver avançado</div>
+            <p class="ds-def">Metastático sem driver, guiado por PD-L1 e histologia.</p>
+            <div class="ds-rx"><b>Tratamento típico</b>Imunoterapia isolada (PD-L1 alto) ou imunoterapia + quimioterapia</div>
+          </div>
+
+          <div class="ds-rowlabel" style="background:rgba(251,191,36,0.12);color:#FCD34D">SCLC</div>
+          <div class="ds-cell" style="--c:#FBBF24">
+            <div class="ds-tag">SCLC limitado</div>
+            <p class="ds-def">Doença limitada (limited-stage).</p>
+            <div class="ds-rx"><b>Tratamento típico</b>Quimiorradiação concomitante · consolidação com durvalumab · ICP conforme indicação</div>
+          </div>
+          <div class="ds-cell" style="--c:#FBBF24">
+            <div class="ds-tag">SCLC extenso</div>
+            <p class="ds-def">Doença extensa (extensive-stage).</p>
+            <div class="ds-rx"><b>Tratamento típico</b>Quimioterapia-platina + imunoterapia (1L) · tarlatamab (DLL3) em 2L · radioligante DLL3 investigacional</div>
+          </div>
+        </div>
+
+        <div class="ds-legend">
+          <div><b>Biologia</b> = driver acionável (NGS) vs PD-L1 no NSCLC; SCLC como entidade própria.</div>
+          <div><b>Localizado vs avançado</b> = ressecável/estágio III vs metastático (estágio IV).</div>
+        </div>
+
+        <div class="ds-note">
+          <i data-lucide="git-pull-request-arrow" style="width:18px;height:18px"></i>
+          <p><b>Driver molecular (porta da terapia-alvo):</b> NGS abrangente e PD-L1 antes da 1ª linha. A presença de driver acionável direciona para TKI/ADC; a ausência, para imunoterapia ± quimioterapia guiada por PD-L1 — e a imunoterapia isolada costuma ser evitada em tumores com driver.</p>
+        </div>
+
+        <div class="ds-note">
+          <i data-lucide="atom" style="width:18px;height:18px"></i>
+          <p><b>Teranóstico em pulmão:</b> o FDG-PET é central no estadiamento. O alvo emergente é o <strong>DLL3</strong> no SCLC — o tarlatamab (BiTE anti-DLL3) já é aprovado em 2ª linha, e radioligantes anti-DLL3 (177Lu/225Ac) e anti-FAP (FAPI) estão em desenvolvimento clínico inicial.</p>
+        </div>
+
+        <div class="pm-subhead">
+          <i data-lucide="route" style="width:18px;height:18px"></i>
+          <h4>Onde cada modalidade entra</h4>
+        </div>
+        <p class="pm-lead">Onde cada modalidade entra ao longo da biologia e do estádio, com estudos reais. Clique para abrir a ficha; a lista completa está no <a href="database.html" target="_blank" rel="noopener" style="color:var(--amber)">Database</a>.</p>
+        <div class="therapy-timeline">
+          <div class="tt-phase" style="--c:#0EA5B7">
+            <span class="tt-dot"></span>
+            <h4>1 · NSCLC driver+ localizado — TKI adjuvante</h4>
+            <p>Cirurgia e terapia-alvo adjuvante guiada por driver (EGFR, ALK).</p>
+            <div class="esc-studies">
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#adaura-osimertinib-adjuvante-em-nsclc-egfr-ressecado">ADAURA</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#alina-alectinib-adjuvante-em-nsclc-alk">ALINA</a>
+            </div>
+            <div class="tt-tags"><span class="tt-mat high">TKI adjuvante por driver</span></div>
+          </div>
+          <div class="tt-phase" style="--c:#14B8A6">
+            <span class="tt-dot"></span>
+            <h4>2 · NSCLC driver+ avançado — terapia-alvo</h4>
+            <p>TKI/ADC dirigido por driver na doença metastática.</p>
+            <div class="esc-studies">
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#flaura-osimertinib-1l-em-nsclc-egfr">FLAURA</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#flaura2-osi-qt-vs-osi-1l-em-nsclc-egfr">FLAURA2</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#mariposa-amivantamab-lazertinib-vs-osi-1l-egfr">MARIPOSA</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#alex-alectinib-vs-crizotinib-1l-em-nsclc-alk">ALEX</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#crown-lorlatinib-vs-crizotinib-1l-em-nsclc-alk">CROWN</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#codebreak-200-sotorasib-vs-docetaxel-em-kras-g12c">CodeBreaK 200</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#krystal-1-adagrasib-em-nsclc-kras-g12c">KRYSTAL-1</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#libretto-001-selpercatinib-em-nsclc-ret-rearranjado">LIBRETTO-001</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#geometry-mono-1-capmatinib-em-met-ex14">GEOMETRY mono-1</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#destiny-lung-t-dxd-em-nsclc-her2-mutado">DESTINY-Lung</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#entrectinib-pooled-ros1-e-ntrk-em-nsclc">ENTRECTINIB</a>
+            </div>
+            <div class="tt-tags"><span class="tt-mat high">Terapia-alvo por driver</span></div>
+          </div>
+          <div class="tt-phase" style="--c:#34D399">
+            <span class="tt-dot"></span>
+            <h4>3 · NSCLC sem driver — perioperatório</h4>
+            <p>Imunoterapia + quimioterapia neoadjuvante/perioperatória e adjuvante.</p>
+            <div class="esc-studies">
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#checkmate-816-nivo-qt-neoadjuvante">CheckMate-816</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#keynote-671-pembro-perioperat-rio-neo-adj">KEYNOTE-671</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#aegean-durvalumab-perioperat-rio">AEGEAN</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#impower010-atezolizumab-adjuvante-ap-s-qt-adjuvante">IMpower010</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#keynote-091-pearls-pembrolizumab-adjuvante">KEYNOTE-091</a>
+            </div>
+            <div class="tt-tags"><span class="tt-mat high">IO perioperatória</span></div>
+          </div>
+          <div class="tt-phase" style="--c:#A855F7">
+            <span class="tt-dot"></span>
+            <h4>4 · NSCLC estágio III irressecável — consolidação</h4>
+            <p>Quimiorradiação seguida de consolidação (durvalumab; osimertinibe no EGFR).</p>
+            <div class="esc-studies">
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#rt_consolidacao_0">PACIFIC</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#rt_consolidacao_1">LAURA</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#rt_consolidacao_2">KEYNOTE-799</a>
+            </div>
+            <div class="tt-tags"><span class="tt-mat high">Quimiorradiação + consolidação</span></div>
+          </div>
+          <div class="tt-phase" style="--c:#22D3EE">
+            <span class="tt-dot"></span>
+            <h4>5 · NSCLC sem driver avançado — imunoterapia 1L</h4>
+            <p>Imunoterapia isolada (PD-L1 alto) ou combinada à quimioterapia por histologia.</p>
+            <div class="esc-studies">
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#keynote-024-pembrolizumab-vs-qt-em-nsclc-pd-l1-50">KEYNOTE-024</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#keynote-189-pembro-pemetrexed-platina-em-nsclc-n-o-escamoso-1l">KEYNOTE-189</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#keynote-407-pembro-qt-em-nsclc-escamoso-1l">KEYNOTE-407</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#checkmate-227-nivolumab-ipilimumab-em-nsclc-1l">CheckMate-227</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#checkmate-9la-nivo-ipi-qt-curta-em-nsclc-1l">CheckMate-9LA</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#impower150-atezo-bev-qt-em-nsclc-n-o-escamoso-1l">IMpower150</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#poseidon-durva-treme-qt-vs-qt-em-nsclc-1l">POSEIDON</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#empower-lung-1-cemiplimab-vs-qt-em-nsclc-pd-l1-50-1l">EMPOWER-Lung 1</a>
+            </div>
+            <div class="tt-tags"><span class="tt-mat high">Imunoterapia ± quimio</span></div>
+          </div>
+          <div class="tt-phase" style="--c:#FBBF24">
+            <span class="tt-dot"></span>
+            <h4>6 · SCLC — quimio-imunoterapia e DLL3</h4>
+            <p>Platina + imunoterapia (extenso); consolidação no limitado; tarlatamab (DLL3) em 2L.</p>
+            <div class="esc-studies">
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#impower133-atezo-ep-em-sclc-extensivo-1l">IMpower133</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#caspian-durva-treme-ep-em-sclc-extensivo-1l">CASPIAN</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#keynote-604-pembro-ep-em-sclc-extensivo-1l">KEYNOTE-604</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#rt_consolidacao_4">ADRIATIC</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#dellphi-301-tarlatamab-dll3-bite-em-sclc-p-s-2l">DeLLphi-301</a>
+            </div>
+            <div class="tt-tags"><span class="tt-mat high">Platina-IO · DLL3</span></div>
+          </div>
+          <div class="tt-phase" style="--c:#C084FC">
+            <span class="tt-dot"></span>
+            <h4>7 · Radiofármacos &amp; imagem molecular</h4>
+            <p>Radioligantes anti-DLL3 (SCLC) e anti-FAP (FAPI) em desenvolvimento; FDG/FAPI na imagem.</p>
+            <div class="esc-studies">
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#177lu-dll3-225ac-dll3-radioligante-dll3-em-sclc">177Lu/225Ac-DLL3</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#177lu-fapi-s-ries-radioligante-fap-em-pulm-o">177Lu/225Ac-FAPI</a>
+            </div>
+            <div class="tt-tags"><span class="tt-mat mid">Radioligante · investigacional</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. JORNADA DO PACIENTE -->
+      <div class="pm-block patient-journey-section" id="pul-5">
+        <div class="pm-block-head"><span class="pm-num">5</span><h3>Jornada do Paciente no Câncer de Pulmão</h3></div>
+        <p class="pm-lead" style="font-weight:600;color:var(--off-white)">Do diagnóstico e perfil molecular ao estadiamento, à decisão por estágio, ao tratamento e à reavaliação na progressão.</p>
+        <div class="edu-callout" style="max-width:none;margin:0 0 1.25rem">
+          <i data-lucide="info" style="width:18px;height:18px"></i>
+          <p>Esta seção tem finalidade educacional e de melhoria de jornada assistencial. Não define elegibilidade individual, não recomenda tratamento e não substitui julgamento médico, bula, guidelines, protocolos institucionais ou consulta às fontes primárias.</p>
+        </div>
+
+        <p class="pm-lead" style="margin-bottom:0.75rem">O cuidado eficaz depende de uma cadeia: definir histologia e driver, estadiar (incluindo o SNC), decidir por estágio, tratar conforme a biologia e reavaliar na progressão. As etapas abaixo mapeiam esse percurso.</p>
+
+        <div class="journey-timeline">
+
+          <details class="journey-step-card" open>
+            <summary><span class="js-num">1</span><span class="js-step-title">Diagnóstico e histologia</span><i class="js-chev" data-lucide="chevron-right" style="width:16px;height:16px"></i></summary>
+            <div class="js-body">
+              <div class="js-row"><b>Objetivo</b>Confirmar histologia (NSCLC escamoso/não-escamoso vs SCLC) com amostra adequada para molecular.</div>
+              <div class="js-row"><b>Profissionais envolvidos</b>Pneumologia, radiologia intervencionista, patologia e oncologia.</div>
+              <div class="js-row"><b>Dados necessários</b>Biópsia/citologia, imuno-histoquímica, amostra suficiente para NGS.</div>
+              <div class="js-links">
+                <a class="js-link" target="_blank" rel="noopener" href="ferramentas.html#ajcc"><i data-lucide="layers" style="width:12px;height:12px"></i> Estadiamento</a>
+                <a class="js-link" target="_blank" rel="noopener" href="database.html"><i data-lucide="database" style="width:12px;height:12px"></i> Database</a>
+                <a class="js-link" href="#pul-6"><i data-lucide="map" style="width:12px;height:12px"></i> Mapa de evidências</a>
+              </div>
+            </div>
+          </details>
+
+          <details class="journey-step-card">
+            <summary><span class="js-num">2</span><span class="js-step-title">Biomarcadores (NGS e PD-L1)</span><i class="js-chev" data-lucide="chevron-right" style="width:16px;height:16px"></i></summary>
+            <div class="js-body">
+              <div class="js-row"><b>Objetivo</b>Identificar driver acionável e quantificar o PD-L1 antes da 1ª linha.</div>
+              <div class="js-row"><b>Profissionais envolvidos</b>Patologia molecular e oncologia.</div>
+              <div class="js-row"><b>Dados necessários</b>NGS abrangente (EGFR, ALK, ROS1, RET, MET ex14, KRAS G12C, HER2, BRAF, NTRK), PD-L1 (TPS) e turnaround adequado.</div>
+              <div class="js-links">
+                <a class="js-link" href="#pul-9"><i data-lucide="list-checks" style="width:12px;height:12px"></i> Critérios práticos</a>
+                <a class="js-link" target="_blank" rel="noopener" href="database.html"><i data-lucide="database" style="width:12px;height:12px"></i> Database</a>
+              </div>
+            </div>
+          </details>
+
+          <details class="journey-step-card">
+            <summary><span class="js-num">3</span><span class="js-step-title">Estadiamento (incl. SNC)</span><i class="js-chev" data-lucide="chevron-right" style="width:16px;height:16px"></i></summary>
+            <div class="js-body">
+              <div class="js-row"><b>Objetivo</b>Definir o estádio TNM com imagem completa e confirmação mediastinal quando indicada.</div>
+              <div class="js-row"><b>Profissionais envolvidos</b>Radiologia, medicina nuclear, pneumologia e cirurgia torácica.</div>
+              <div class="js-row"><b>Dados necessários</b>FDG-PET/CT, RM de crânio, avaliação invasiva do mediastino (EBUS/mediastinoscopia) conforme caso.</div>
+              <div class="js-links">
+                <a class="js-link" target="_blank" rel="noopener" href="ferramentas.html#ajcc"><i data-lucide="layers" style="width:12px;height:12px"></i> Estadiamento</a>
+                <a class="js-link" target="_blank" rel="noopener" href="ferramentas.html#anatomica"><i data-lucide="ruler" style="width:12px;height:12px"></i> Resposta (RECIST)</a>
+              </div>
+            </div>
+          </details>
+
+          <details class="journey-step-card">
+            <summary><span class="js-num">4</span><span class="js-step-title">Decisão por estágio</span><i class="js-chev" data-lucide="chevron-right" style="width:16px;height:16px"></i></summary>
+            <div class="js-body">
+              <div class="js-row"><b>Objetivo</b>Definir a estratégia conforme ressecabilidade e biologia.</div>
+              <div class="js-row"><b>Profissionais envolvidos</b>Cirurgia torácica, oncologia clínica e radio-oncologia.</div>
+              <div class="js-row"><b>Dados necessários</b>Ressecável (cirurgia ± perioperatório), estágio III irressecável (quimiorradiação + consolidação) ou metastático (sistêmico por biologia).</div>
+              <div class="js-links">
+                <a class="js-link" href="#pul-4"><i data-lucide="route" style="width:12px;height:12px"></i> Jornada terapêutica</a>
+                <a class="js-link" href="#pul-7"><i data-lucide="microscope" style="width:12px;height:12px"></i> Estudos-chave</a>
+              </div>
+            </div>
+          </details>
+
+          <details class="journey-step-card">
+            <summary><span class="js-num">5</span><span class="js-step-title">Discussão em tumor board</span><i class="js-chev" data-lucide="chevron-right" style="width:16px;height:16px"></i></summary>
+            <div class="js-body">
+              <div class="js-row"><b>Objetivo</b>Integrar histologia, driver/PD-L1, estádio, função pulmonar, acesso e pesquisa.</div>
+              <div class="js-row"><b>Profissionais envolvidos</b>Oncologia, cirurgia torácica, radio-oncologia, pneumologia, patologia, medicina nuclear e pesquisa clínica.</div>
+              <div class="js-row"><b>Dados necessários</b>Caso completo com pergunta clínica objetiva.</div>
+              <div class="js-links">
+                <a class="js-link" href="#pul-13"><i data-lucide="clipboard-check" style="width:12px;height:12px"></i> Checklist de apresentação</a>
+                <a class="js-link" href="#pul-10"><i data-lucide="microscope" style="width:12px;height:12px"></i> Ensaios ativos</a>
+              </div>
+            </div>
+          </details>
+
+          <details class="journey-step-card">
+            <summary><span class="js-num">6</span><span class="js-step-title">Tratamento por cenário</span><i class="js-chev" data-lucide="chevron-right" style="width:16px;height:16px"></i></summary>
+            <div class="js-body">
+              <div class="js-row"><b>Objetivo</b>Executar a estratégia definida (terapia-alvo, imunoterapia, quimiorradiação + consolidação, ou quimio-IO no SCLC).</div>
+              <div class="js-row"><b>Profissionais envolvidos</b>Oncologia clínica, radio-oncologia e medicina nuclear.</div>
+              <div class="js-row"><b>Dados necessários</b>Esquema, manejo de toxicidades de classe e plano de imagem.</div>
+              <div class="js-links">
+                <a class="js-link" href="#pul-6"><i data-lucide="map" style="width:12px;height:12px"></i> Mapa de evidências</a>
+                <a class="js-link" target="_blank" rel="noopener" href="ferramentas.html#ctcae"><i data-lucide="alert-triangle" style="width:12px;height:12px"></i> CTCAE</a>
+              </div>
+            </div>
+          </details>
+
+          <details class="journey-step-card">
+            <summary><span class="js-num">7</span><span class="js-step-title">Avaliação de resposta</span><i class="js-chev" data-lucide="chevron-right" style="width:16px;height:16px"></i></summary>
+            <div class="js-body">
+              <div class="js-row"><b>Objetivo</b>Avaliar resposta sistêmica e do SNC e vigiar toxicidades (pneumonite/irAE).</div>
+              <div class="js-row"><b>Profissionais envolvidos</b>Oncologia, radiologia e medicina nuclear.</div>
+              <div class="js-row"><b>Dados necessários</b>RECIST, reavaliação de SNC, monitorização de pneumonite por imunoterapia.</div>
+              <div class="js-links">
+                <a class="js-link" target="_blank" rel="noopener" href="ferramentas.html#anatomica"><i data-lucide="ruler" style="width:12px;height:12px"></i> RECIST</a>
+                <a class="js-link" target="_blank" rel="noopener" href="ferramentas.html#ctcae"><i data-lucide="alert-triangle" style="width:12px;height:12px"></i> CTCAE</a>
+              </div>
+            </div>
+          </details>
+
+          <details class="journey-step-card">
+            <summary><span class="js-num">8</span><span class="js-step-title">Progressão, próxima linha e ensaios</span><i class="js-chev" data-lucide="chevron-right" style="width:16px;height:16px"></i></summary>
+            <div class="js-body">
+              <div class="js-row"><b>Objetivo</b>Caracterizar a resistência (rebiópsia/ctDNA) e definir a próxima linha ou inclusão em ensaio.</div>
+              <div class="js-row"><b>Profissionais envolvidos</b>Oncologia clínica, patologia molecular e pesquisa clínica.</div>
+              <div class="js-row"><b>Dados necessários</b>Mecanismo de resistência (ex. MET, T790M), DLL3 no SCLC, opções de ADC/radioligante e protocolos.</div>
+              <div class="js-links">
+                <a class="js-link" target="_blank" rel="noopener" href="trial-matcher.html"><i data-lucide="git-compare" style="width:12px;height:12px"></i> Trial Matcher</a>
+                <a class="js-link" target="_blank" rel="noopener" href="ensaios-clinicos.html"><i data-lucide="microscope" style="width:12px;height:12px"></i> Ensaios ativos</a>
+                <a class="js-link" target="_blank" rel="noopener" href="database.html"><i data-lucide="database" style="width:12px;height:12px"></i> Database</a>
+              </div>
+            </div>
+          </details>
+
+        </div>
+
+        <!-- Gargalos -->
+        <details class="pm-collapse">
+          <summary class="pm-subhead" id="pul-5-gargalos">
+            <i data-lucide="alert-triangle" style="width:18px;height:18px"></i>
+            <h4>Gargalos da Jornada e Oportunidades de Otimização</h4>
+            <span class="pm-collapse-hint">10 gargalos + indicadores</span>
+            <i class="pm-collapse-chev" data-lucide="chevron-right" style="width:16px;height:16px"></i>
+          </summary>
+        <p class="pm-lead">Os indicadores abaixo são apresentados como <strong>métricas de melhoria institucional</strong> — não são metas promocionais nem comerciais, e devem ser adaptados ao contexto de cada serviço.</p>
+        <div class="bottleneck-grid">
+
+          <div class="journey-bottleneck-card">
+            <div class="jb-title"><span class="jb-n">1</span> NGS incompleto ou início de tratamento antes do resultado</div>
+            <div class="jb-row"><b>Consequência</b>Driver acionável perdido; imunoterapia indevida em tumor com driver.</div>
+            <div class="jb-row opt"><b>Oportunidade</b>NGS abrangente reflexo, com turnaround monitorado, antes da 1ª linha.</div>
+            <div class="jb-foot"><a class="js-link" href="#pul-9"><i data-lucide="list-checks" style="width:12px;height:12px"></i> Critérios</a><span class="institutional-metric">% com NGS completo antes da 1ª linha</span></div>
+          </div>
+
+          <div class="journey-bottleneck-card">
+            <div class="jb-title"><span class="jb-n">2</span> PD-L1 não avaliado</div>
+            <div class="jb-row"><b>Consequência</b>Escolha imprecisa da imunoterapia de 1ª linha.</div>
+            <div class="jb-row opt"><b>Oportunidade</b>PD-L1 (TPS) de rotina no NSCLC avançado sem driver.</div>
+            <div class="jb-foot"><a class="js-link" href="#pul-6"><i data-lucide="map" style="width:12px;height:12px"></i> Evidências</a><span class="institutional-metric">% NSCLC sem driver com PD-L1</span></div>
+          </div>
+
+          <div class="journey-bottleneck-card">
+            <div class="jb-title"><span class="jb-n">3</span> Amostra insuficiente para molecular</div>
+            <div class="jb-row"><b>Consequência</b>Rebiópsia ou ausência de perfil molecular.</div>
+            <div class="jb-row opt"><b>Oportunidade</b>Priorizar amostra adequada; ctDNA complementar quando indicado.</div>
+            <div class="jb-foot"><a class="js-link" target="_blank" rel="noopener" href="database.html"><i data-lucide="database" style="width:12px;height:12px"></i> Database</a><span class="institutional-metric">% amostras adequadas para NGS</span></div>
+          </div>
+
+          <div class="journey-bottleneck-card">
+            <div class="jb-title"><span class="jb-n">4</span> Estadiamento de SNC ausente</div>
+            <div class="jb-row"><b>Consequência</b>Metástases cerebrais não detectadas alteram o tratamento.</div>
+            <div class="jb-row opt"><b>Oportunidade</b>RM de crânio no estadiamento conforme estágio/histologia.</div>
+            <div class="jb-foot"><a class="js-link" target="_blank" rel="noopener" href="ferramentas.html#ajcc"><i data-lucide="layers" style="width:12px;height:12px"></i> Estadiamento</a><span class="institutional-metric">% estadiados com imagem de SNC</span></div>
+          </div>
+
+          <div class="journey-bottleneck-card">
+            <div class="jb-title"><span class="jb-n">5</span> Pneumonite por imunoterapia subnotificada</div>
+            <div class="jb-row"><b>Consequência</b>Toxicidade pulmonar grave reconhecida tarde.</div>
+            <div class="jb-row opt"><b>Oportunidade</b>Vigilância de pneumonite e algoritmo de manejo/suspensão.</div>
+            <div class="jb-foot"><a class="js-link" target="_blank" rel="noopener" href="ferramentas.html#ctcae"><i data-lucide="alert-triangle" style="width:12px;height:12px"></i> CTCAE</a><span class="institutional-metric">% em IO com vigilância de pneumonite</span></div>
+          </div>
+
+          <div class="journey-bottleneck-card">
+            <div class="jb-title"><span class="jb-n">6</span> Consolidação no estágio III não ofertada</div>
+            <div class="jb-row"><b>Consequência</b>Perde-se a consolidação após quimiorradiação (durvalumab; osimertinibe no EGFR).</div>
+            <div class="jb-row opt"><b>Oportunidade</b>Encaminhamento estruturado pós-quimiorradiação para consolidação.</div>
+            <div class="jb-foot"><a class="js-link" target="_blank" rel="noopener" href="database.html#rt_consolidacao_0"><i data-lucide="book-open" style="width:12px;height:12px"></i> PACIFIC</a><span class="institutional-metric">% estágio III com consolidação avaliada</span></div>
+          </div>
+
+          <div class="journey-bottleneck-card">
+            <div class="jb-title"><span class="jb-n">7</span> Reavaliação de resistência ausente na progressão</div>
+            <div class="jb-row"><b>Consequência</b>Próxima linha sem caracterizar o mecanismo (ex. MET, transformação).</div>
+            <div class="jb-row opt"><b>Oportunidade</b>Rebiópsia/ctDNA na progressão de terapia-alvo.</div>
+            <div class="jb-foot"><a class="js-link" target="_blank" rel="noopener" href="database.html"><i data-lucide="database" style="width:12px;height:12px"></i> Database</a><span class="institutional-metric">% progressões com reavaliação molecular</span></div>
+          </div>
+
+          <div class="journey-bottleneck-card">
+            <div class="jb-title"><span class="jb-n">8</span> Toxicidade de classe mal manejada</div>
+            <div class="jb-row"><b>Consequência</b>Descontinuação por cutânea/diarreia (EGFR-TKI) ou irAE.</div>
+            <div class="jb-row opt"><b>Oportunidade</b>Protocolos de manejo proativo e graduação por CTCAE.</div>
+            <div class="jb-foot"><a class="js-link" target="_blank" rel="noopener" href="ferramentas.html#ctcae"><i data-lucide="alert-triangle" style="width:12px;height:12px"></i> CTCAE</a><span class="institutional-metric">% ciclos com monitoramento no prazo</span></div>
+          </div>
+
+          <div class="journey-bottleneck-card">
+            <div class="jb-title"><span class="jb-n">9</span> SCLC sem reavaliação para 2ª linha</div>
+            <div class="jb-row"><b>Consequência</b>Atraso no tarlatamab (DLL3) ou em ensaio.</div>
+            <div class="jb-row opt"><b>Oportunidade</b>Reavaliação estruturada na progressão do SCLC.</div>
+            <div class="jb-foot"><a class="js-link" target="_blank" rel="noopener" href="database.html#dellphi-301-tarlatamab-dll3-bite-em-sclc-p-s-2l"><i data-lucide="book-open" style="width:12px;height:12px"></i> DeLLphi-301</a><span class="institutional-metric">% SCLC reavaliados para 2ª linha</span></div>
+          </div>
+
+          <div class="journey-bottleneck-card">
+            <div class="jb-title"><span class="jb-n">10</span> Encaminhamento tardio para ensaio/radioligante</div>
+            <div class="jb-row"><b>Consequência</b>Perde-se a janela para protocolos (incl. radioligantes DLL3/FAPI).</div>
+            <div class="jb-row opt"><b>Oportunidade</b>Integração precoce com Trial Matcher na doença avançada.</div>
+            <div class="jb-foot"><a class="js-link" target="_blank" rel="noopener" href="trial-matcher.html"><i data-lucide="git-compare" style="width:12px;height:12px"></i> Trial Matcher</a><span class="institutional-metric">% avançados avaliados para ensaio</span></div>
+          </div>
+
+        </div>
+        </details>
+
+        <!-- Imagem molecular e teranóstico -->
+        <details class="pm-collapse">
+          <summary class="pm-subhead">
+            <i data-lucide="scan-line" style="width:18px;height:18px"></i>
+            <h4>Onde a imagem molecular e o teranóstico agregam no pulmão</h4>
+            <span class="pm-collapse-hint">6 cenários</span>
+            <i class="pm-collapse-chev" data-lucide="chevron-right" style="width:16px;height:16px"></i>
+          </summary>
+        <p class="pm-lead">Lista educacional dos cenários em que a imagem molecular e os radiofármacos podem contribuir. O que é APROVADO vs INVESTIGACIONAL está explícito — a interpretação final é sempre clínica e multidisciplinar.</p>
+        <div class="psma-report-elements">
+          <div class="pre-item"><i data-lucide="dot" style="width:14px;height:14px"></i> 18F-FDG PET/CT (padrão): estadiamento e avaliação de resposta no NSCLC e SCLC</div>
+          <div class="pre-item"><i data-lucide="dot" style="width:14px;height:14px"></i> RM de crânio: rastreio de metástases do SNC (não-nuclear, mas essencial ao estadiamento)</div>
+          <div class="pre-item"><i data-lucide="dot" style="width:14px;height:14px"></i> Cintilografia óssea / 18F-NaF: avaliação de doença óssea quando indicado</div>
+          <div class="pre-item"><i data-lucide="dot" style="width:14px;height:14px"></i> 68Ga-FAPI PET (investigacional): detecção tumoral/estromal, útil em lesões pouco ávidas por FDG</div>
+          <div class="pre-item"><i data-lucide="dot" style="width:14px;height:14px"></i> Imagem/terapia anti-DLL3 (investigacional): alvo emergente no SCLC (tarlatamab aprovado; radioligante em pesquisa)</div>
+          <div class="pre-item"><i data-lucide="dot" style="width:14px;height:14px"></i> Radioligantes 177Lu/225Ac (DLL3, FAPI) (investigacional): em desenvolvimento clínico inicial — fora de protocolo, não recomendados</div>
+        </div>
+        </details>
+      </div>
+
+      <!-- 6. MAPA DE EVIDÊNCIAS -->
+      <div class="pm-block" id="pul-6">
+        <div class="pm-block-head"><span class="pm-num">6</span><h3>Mapa de evidências</h3></div>
+        <p class="pm-lead">Cenários clínicos e os estudos-chave associados. Clique em um estudo para abrir sua ficha no Database.</p>
+        <div class="evidence-map">
+          <div class="evidence-scenario-card" style="--sc-color:#0EA5B7">
+            <span class="esc-tag">Cenário A · NSCLC com driver</span>
+            <div class="esc-title">Terapia-alvo dirigida</div>
+            <div class="esc-studies">
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#flaura-osimertinib-1l-em-nsclc-egfr"><i data-lucide="file-text" style="width:11px;height:11px"></i> FLAURA</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#alex-alectinib-vs-crizotinib-1l-em-nsclc-alk"><i data-lucide="file-text" style="width:11px;height:11px"></i> ALEX</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#crown-lorlatinib-vs-crizotinib-1l-em-nsclc-alk"><i data-lucide="file-text" style="width:11px;height:11px"></i> CROWN</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#codebreak-200-sotorasib-vs-docetaxel-em-kras-g12c"><i data-lucide="file-text" style="width:11px;height:11px"></i> CodeBreaK 200</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#libretto-001-selpercatinib-em-nsclc-ret-rearranjado"><i data-lucide="file-text" style="width:11px;height:11px"></i> LIBRETTO-001</a>
+            </div>
+            <p class="esc-msg">Cada driver tem seu inibidor; o NGS antecede a decisão de 1ª linha.</p>
+          </div>
+          <div class="evidence-scenario-card" style="--sc-color:#22D3EE">
+            <span class="esc-tag">Cenário B · NSCLC sem driver avançado</span>
+            <div class="esc-title">Imunoterapia ± quimioterapia</div>
+            <div class="esc-studies">
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#keynote-024-pembrolizumab-vs-qt-em-nsclc-pd-l1-50"><i data-lucide="file-text" style="width:11px;height:11px"></i> KEYNOTE-024</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#keynote-189-pembro-pemetrexed-platina-em-nsclc-n-o-escamoso-1l"><i data-lucide="file-text" style="width:11px;height:11px"></i> KEYNOTE-189</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#checkmate-227-nivolumab-ipilimumab-em-nsclc-1l"><i data-lucide="file-text" style="width:11px;height:11px"></i> CheckMate-227</a>
+            </div>
+            <p class="esc-msg">PD-L1 alto: imunoterapia isolada; caso contrário, combinada à quimioterapia por histologia.</p>
+          </div>
+          <div class="evidence-scenario-card" style="--sc-color:#34D399">
+            <span class="esc-tag">Cenário C · perioperatório e estágio III</span>
+            <div class="esc-title">IO peri/adjuvante e consolidação</div>
+            <div class="esc-studies">
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#checkmate-816-nivo-qt-neoadjuvante"><i data-lucide="file-text" style="width:11px;height:11px"></i> CheckMate-816</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#keynote-671-pembro-perioperat-rio-neo-adj"><i data-lucide="file-text" style="width:11px;height:11px"></i> KEYNOTE-671</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#rt_consolidacao_0"><i data-lucide="file-text" style="width:11px;height:11px"></i> PACIFIC</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#rt_consolidacao_1"><i data-lucide="file-text" style="width:11px;height:11px"></i> LAURA</a>
+            </div>
+            <p class="esc-msg">IO neoadjuvante/perioperatória na doença ressecável; consolidação após quimiorradiação no estágio III.</p>
+          </div>
+          <div class="evidence-scenario-card" style="--sc-color:#FBBF24">
+            <span class="esc-tag">Cenário D · SCLC</span>
+            <div class="esc-title">Quimio-imunoterapia e DLL3</div>
+            <div class="esc-studies">
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#impower133-atezo-ep-em-sclc-extensivo-1l"><i data-lucide="file-text" style="width:11px;height:11px"></i> IMpower133</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#caspian-durva-treme-ep-em-sclc-extensivo-1l"><i data-lucide="file-text" style="width:11px;height:11px"></i> CASPIAN</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#rt_consolidacao_4"><i data-lucide="file-text" style="width:11px;height:11px"></i> ADRIATIC</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#dellphi-301-tarlatamab-dll3-bite-em-sclc-p-s-2l"><i data-lucide="file-text" style="width:11px;height:11px"></i> DeLLphi-301</a>
+            </div>
+            <p class="esc-msg">Platina + imunoterapia em 1L; consolidação no limitado; tarlatamab (DLL3) em 2L.</p>
+          </div>
+          <div class="evidence-scenario-card" style="--sc-color:#C084FC">
+            <span class="esc-tag">Cenário E · radiofármacos &amp; imagem</span>
+            <div class="esc-title">DLL3 e FAPI em desenvolvimento</div>
+            <div class="esc-studies">
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#177lu-dll3-225ac-dll3-radioligante-dll3-em-sclc"><i data-lucide="file-text" style="width:11px;height:11px"></i> 177Lu/225Ac-DLL3</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#177lu-fapi-s-ries-radioligante-fap-em-pulm-o"><i data-lucide="file-text" style="width:11px;height:11px"></i> 177Lu/225Ac-FAPI</a>
+            </div>
+            <p class="esc-msg">Radioligantes anti-DLL3 (SCLC) e anti-FAP em fases iniciais; FDG/FAPI na imagem.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7. ESTUDOS-CHAVE -->
+      <div class="pm-block" id="pul-7">
+        <div class="pm-block-head"><span class="pm-num">7</span><h3>Estudos-chave</h3></div>
+        <p class="pm-lead">Desenho dos principais estudos. <strong>Resultados, desfechos e toxicidades ficam na ficha de cada um no Database</strong> — este mapa não reproduz hazard ratios, valores de p ou taxas de resposta.</p>
+        <div class="keystudy-grid">
+          <div class="keystudy-card">
+            <div class="ks-top"><span class="ks-name">FLAURA</span><span class="ks-scn">EGFR · 1L</span></div>
+            <div class="ks-row"><b>População</b>NSCLC avançado EGFR-mutado, 1ª linha.</div>
+            <div class="ks-row"><b>Intervenção / comparador</b>Osimertinibe vs EGFR-TKI de 1ª geração.</div>
+            <p class="ks-msg">Osimertinibe como padrão de 1ª linha no EGFR.</p>
+            <div class="ks-foot"><a class="ks-link" target="_blank" rel="noopener" href="database.html#flaura-osimertinib-1l-em-nsclc-egfr"><i data-lucide="database" style="width:13px;height:13px"></i> Ficha no Database</a></div>
+          </div>
+          <div class="keystudy-card">
+            <div class="ks-top"><span class="ks-name">ALEX</span><span class="ks-scn">ALK · 1L</span></div>
+            <div class="ks-row"><b>População</b>NSCLC avançado ALK-positivo, 1ª linha.</div>
+            <div class="ks-row"><b>Intervenção / comparador</b>Alectinibe vs crizotinibe.</div>
+            <p class="ks-msg">TKI de nova geração com controle de SNC no ALK.</p>
+            <div class="ks-foot"><a class="ks-link" target="_blank" rel="noopener" href="database.html#alex-alectinib-vs-crizotinib-1l-em-nsclc-alk"><i data-lucide="database" style="width:13px;height:13px"></i> Ficha no Database</a></div>
+          </div>
+          <div class="keystudy-card">
+            <div class="ks-top"><span class="ks-name">CodeBreaK 200</span><span class="ks-scn">KRAS G12C</span></div>
+            <div class="ks-row"><b>População</b>NSCLC KRAS G12C pré-tratado.</div>
+            <div class="ks-row"><b>Intervenção / comparador</b>Sotorasibe vs docetaxel.</div>
+            <p class="ks-msg">Inibição direta de KRAS G12C após progressão.</p>
+            <div class="ks-foot"><a class="ks-link" target="_blank" rel="noopener" href="database.html#codebreak-200-sotorasib-vs-docetaxel-em-kras-g12c"><i data-lucide="database" style="width:13px;height:13px"></i> Ficha no Database</a></div>
+          </div>
+          <div class="keystudy-card">
+            <div class="ks-top"><span class="ks-name">KEYNOTE-024</span><span class="ks-scn">IO 1L · PD-L1 ≥50%</span></div>
+            <div class="ks-row"><b>População</b>NSCLC avançado sem driver, PD-L1 ≥50%.</div>
+            <div class="ks-row"><b>Intervenção / comparador</b>Pembrolizumabe vs quimioterapia.</div>
+            <p class="ks-msg">Imunoterapia isolada no PD-L1 alto.</p>
+            <div class="ks-foot"><a class="ks-link" target="_blank" rel="noopener" href="database.html#keynote-024-pembrolizumab-vs-qt-em-nsclc-pd-l1-50"><i data-lucide="database" style="width:13px;height:13px"></i> Ficha no Database</a></div>
+          </div>
+          <div class="keystudy-card">
+            <div class="ks-top"><span class="ks-name">KEYNOTE-189</span><span class="ks-scn">IO + QT · não-escamoso</span></div>
+            <div class="ks-row"><b>População</b>NSCLC não-escamoso avançado sem driver, 1ª linha.</div>
+            <div class="ks-row"><b>Intervenção / comparador</b>Pembrolizumabe + pemetrexede + platina vs quimioterapia.</div>
+            <p class="ks-msg">Quimio-imunoterapia padrão no não-escamoso.</p>
+            <div class="ks-foot"><a class="ks-link" target="_blank" rel="noopener" href="database.html#keynote-189-pembro-pemetrexed-platina-em-nsclc-n-o-escamoso-1l"><i data-lucide="database" style="width:13px;height:13px"></i> Ficha no Database</a></div>
+          </div>
+          <div class="keystudy-card">
+            <div class="ks-top"><span class="ks-name">CheckMate-816</span><span class="ks-scn">neoadjuvante</span></div>
+            <div class="ks-row"><b>População</b>NSCLC ressecável (estágios II–IIIA).</div>
+            <div class="ks-row"><b>Intervenção / comparador</b>Nivolumabe + quimioterapia neoadjuvante vs quimioterapia.</div>
+            <p class="ks-msg">Imunoterapia neoadjuvante no ressecável.</p>
+            <div class="ks-foot"><a class="ks-link" target="_blank" rel="noopener" href="database.html#checkmate-816-nivo-qt-neoadjuvante"><i data-lucide="database" style="width:13px;height:13px"></i> Ficha no Database</a></div>
+          </div>
+          <div class="keystudy-card">
+            <div class="ks-top"><span class="ks-name">PACIFIC</span><span class="ks-scn">estágio III · consolidação</span></div>
+            <div class="ks-row"><b>População</b>NSCLC estágio III irressecável sem progressão após quimiorradiação.</div>
+            <div class="ks-row"><b>Intervenção / comparador</b>Durvalumabe de consolidação vs placebo.</div>
+            <p class="ks-msg">Consolidação com durvalumab após quimiorradiação.</p>
+            <div class="ks-foot"><a class="ks-link" target="_blank" rel="noopener" href="database.html#rt_consolidacao_0"><i data-lucide="database" style="width:13px;height:13px"></i> Ficha no Database</a></div>
+          </div>
+          <div class="keystudy-card">
+            <div class="ks-top"><span class="ks-name">LAURA</span><span class="ks-scn">estágio III · EGFR</span></div>
+            <div class="ks-row"><b>População</b>NSCLC estágio III irressecável EGFR-mutado pós-quimiorradiação.</div>
+            <div class="ks-row"><b>Intervenção / comparador</b>Osimertinibe de consolidação vs placebo.</div>
+            <p class="ks-msg">Consolidação dirigida por driver no estágio III EGFR.</p>
+            <div class="ks-foot"><a class="ks-link" target="_blank" rel="noopener" href="database.html#rt_consolidacao_1"><i data-lucide="database" style="width:13px;height:13px"></i> Ficha no Database</a></div>
+          </div>
+          <div class="keystudy-card">
+            <div class="ks-top"><span class="ks-name">ADAURA</span><span class="ks-scn">EGFR · adjuvante</span></div>
+            <div class="ks-row"><b>População</b>NSCLC EGFR-mutado ressecado (IB–IIIA).</div>
+            <div class="ks-row"><b>Intervenção / comparador</b>Osimertinibe adjuvante vs placebo.</div>
+            <p class="ks-msg">Terapia-alvo adjuvante no EGFR ressecado.</p>
+            <div class="ks-foot"><a class="ks-link" target="_blank" rel="noopener" href="database.html#adaura-osimertinib-adjuvante-em-nsclc-egfr-ressecado"><i data-lucide="database" style="width:13px;height:13px"></i> Ficha no Database</a></div>
+          </div>
+          <div class="keystudy-card">
+            <div class="ks-top"><span class="ks-name">IMpower133</span><span class="ks-scn">SCLC extenso · 1L</span></div>
+            <div class="ks-row"><b>População</b>SCLC de doença extensa, 1ª linha.</div>
+            <div class="ks-row"><b>Intervenção / comparador</b>Atezolizumabe + etoposídeo-platina vs quimioterapia.</div>
+            <p class="ks-msg">Quimio-imunoterapia no SCLC extenso.</p>
+            <div class="ks-foot"><a class="ks-link" target="_blank" rel="noopener" href="database.html#impower133-atezo-ep-em-sclc-extensivo-1l"><i data-lucide="database" style="width:13px;height:13px"></i> Ficha no Database</a></div>
+          </div>
+          <div class="keystudy-card">
+            <div class="ks-top"><span class="ks-name">ADRIATIC</span><span class="ks-scn">SCLC limitado · consolidação</span></div>
+            <div class="ks-row"><b>População</b>SCLC de doença limitada sem progressão após quimiorradiação.</div>
+            <div class="ks-row"><b>Intervenção / comparador</b>Durvalumabe de consolidação vs placebo.</div>
+            <p class="ks-msg">Consolidação com durvalumab no SCLC limitado.</p>
+            <div class="ks-foot"><a class="ks-link" target="_blank" rel="noopener" href="database.html#rt_consolidacao_4"><i data-lucide="database" style="width:13px;height:13px"></i> Ficha no Database</a></div>
+          </div>
+          <div class="keystudy-card">
+            <div class="ks-top"><span class="ks-name">DeLLphi-301</span><span class="ks-scn">SCLC · DLL3 (BiTE)</span></div>
+            <div class="ks-row"><b>População</b>SCLC pré-tratado (≥2ª linha).</div>
+            <div class="ks-row"><b>Intervenção</b>Tarlatamab (BiTE anti-DLL3).</div>
+            <p class="ks-msg">Validação clínica do DLL3 como alvo no SCLC.</p>
+            <div class="ks-foot"><a class="ks-link" target="_blank" rel="noopener" href="database.html#dellphi-301-tarlatamab-dll3-bite-em-sclc-p-s-2l"><i data-lucide="database" style="width:13px;height:13px"></i> Ficha no Database</a></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8. TRIAL LINEAGE -->
+      <div class="pm-block" id="pul-8">
+        <div class="pm-block-head"><span class="pm-num">8</span><h3>Trial Lineage — publicações secundárias e análises derivadas</h3></div>
+        <p class="pm-lead">Um estudo pivotal raramente é uma publicação única: gera uma <strong>família de evidências</strong> — follow-ups, subgrupos, qualidade de vida, segurança, biomarcadores e abstracts de congresso.</p>
+        <div class="ds-note" style="background:rgba(143,148,156,0.07);border-color:var(--border-soft)">
+          <i data-lucide="construction" style="width:18px;height:18px;color:var(--stone)"></i>
+          <p>O Trial Lineage de pulmão está <b>em desenvolvimento</b> — as publicações secundárias serão conectadas ao catálogo. Por ora, as fichas completas, com citações e links oficiais, estão no <a href="database.html" target="_blank" rel="noopener" style="color:var(--amber)">Database</a>.</p>
+        </div>
+      </div>
+
+      <!-- 9. CRITÉRIOS PRÁTICOS -->
+      <div class="pm-block" id="pul-9">
+        <div class="pm-block-head"><span class="pm-num">9</span><h3>Critérios práticos de discussão</h3></div>
+        <p class="pm-lead">Checklist clínico a revisar antes de discutir uma decisão sistêmica.</p>
+        <div class="q-groups">
+          <div class="q-group">
+            <div class="q-group-title"><i data-lucide="user"></i> Dados clínicos</div>
+            <ul><li>Idade e tabagismo</li><li>ECOG / Karnofsky</li><li>Sintomas</li><li>Comorbidades</li><li>Função pulmonar</li><li>Objetivo terapêutico</li></ul>
+          </div>
+          <div class="q-group">
+            <div class="q-group-title"><i data-lucide="dna"></i> Histológico e molecular</div>
+            <ul><li>Histologia (NSCLC escamoso/não-escamoso vs SCLC)</li><li>Driver (EGFR, ALK, ROS1, RET, MET ex14, KRAS G12C, HER2, BRAF, NTRK)</li><li>PD-L1 (TPS)</li><li>NGS abrangente</li><li>Tratamentos prévios</li></ul>
+          </div>
+          <div class="q-group">
+            <div class="q-group-title"><i data-lucide="scan-line"></i> Imagem e estadiamento</div>
+            <ul><li>TNM e estágio</li><li>FDG-PET/CT</li><li>RM de crânio</li><li>Confirmação mediastinal, quando indicada</li><li>Avaliação de resposta (RECIST)</li></ul>
+          </div>
+          <div class="q-group">
+            <div class="q-group-title"><i data-lucide="shield-alert"></i> Segurança</div>
+            <ul><li>Função pulmonar e cardíaca</li><li>Risco de pneumonite/ILD</li><li>Hemograma e função renal/hepática</li><li>Toxicidades de classe (irAE, EGFR-TKI)</li></ul>
+          </div>
+          <div class="q-group">
+            <div class="q-group-title"><i data-lucide="flask-conical"></i> Acesso e pesquisa</div>
+            <ul><li>Disponibilidade do TKI/ADC/imunoterapia</li><li>Necessidade de teste molecular</li><li>Possibilidade de inclusão em trial (incl. radioligantes)</li><li>Encaminhamento</li></ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 10. ENSAIOS CLÍNICOS ATIVOS -->
+      <div class="pm-block" id="pul-10">
+        <div class="pm-block-head"><span class="pm-num">10</span><h3>Ensaios clínicos ativos relacionados</h3></div>
+        <p class="pm-lead">Ensaios em andamento ou recrutando em câncer de pulmão — terapia-alvo por driver, imunoterapia, perioperatório, SCLC e radiofármacos/alvos emergentes (DLL3, FAPI). <strong>A elegibilidade final depende sempre do protocolo oficial e do centro responsável.</strong></p>
+        <div class="link-cards" style="max-width:520px">
+          <a class="link-card" target="_blank" rel="noopener" href="ensaios-clinicos.html">
+            <i data-lucide="microscope" style="width:18px;height:18px"></i>
+            <span>Ver ensaios ativos — filtrar por “Pulmão”</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 11. GUIDELINES E REFERÊNCIAS -->
+      <div class="pm-block" id="pul-11">
+        <div class="pm-block-head"><span class="pm-num">11</span><h3>Guidelines e referências</h3></div>
+        <p class="pm-lead">As recomendações sistêmicas em câncer de pulmão seguem diretrizes oncológicas internacionais (<strong>NCCN, ESMO, ASCO</strong>) e nacionais — referências externas, não hospedadas aqui. A biblioteca de guidelines do TheraTrials cobre os radiofármacos; abaixo, os programas de <strong>radioligantes e imagem molecular</strong> mais relevantes para o pulmão.</p>
+        <div class="link-cards">
+          <a class="link-card" target="_blank" rel="noopener" href="database.html#177lu-dll3-225ac-dll3-radioligante-dll3-em-sclc"><i data-lucide="atom" style="width:18px;height:18px"></i><span>Radioligante anti-DLL3 (SCLC)</span></a>
+          <a class="link-card" target="_blank" rel="noopener" href="database.html#177lu-fapi-s-ries-radioligante-fap-em-pulm-o"><i data-lucide="atom" style="width:18px;height:18px"></i><span>Radioligante anti-FAP (FAPI)</span></a>
+          <a class="link-card" target="_blank" rel="noopener" href="database.html#dellphi-301-tarlatamab-dll3-bite-em-sclc-p-s-2l"><i data-lucide="scan-line" style="width:18px;height:18px"></i><span>DLL3 como alvo (tarlatamab)</span></a>
+          <a class="link-card" target="_blank" rel="noopener" href="guidelines.html"><i data-lucide="library" style="width:18px;height:18px"></i><span>Biblioteca de guidelines (radiofármacos)</span></a>
+        </div>
+      </div>
+
+      <!-- 12. FERRAMENTAS ÚTEIS -->
+      <div class="pm-block" id="pul-12">
+        <div class="pm-block-head"><span class="pm-num">12</span><h3>Ferramentas úteis</h3></div>
+        <p class="pm-lead">Calculadoras e critérios já disponíveis na página de Ferramentas.</p>
+        <div class="link-cards">
+          <a class="link-card" target="_blank" rel="noopener" href="ferramentas.html#ajcc"><i data-lucide="layers" style="width:18px;height:18px"></i><span>Estadiamento AJCC · TNM</span></a>
+          <a class="link-card" target="_blank" rel="noopener" href="ferramentas.html#anatomica"><i data-lucide="ruler" style="width:18px;height:18px"></i><span>Resposta anatômica (RECIST 1.1)</span></a>
+          <a class="link-card" target="_blank" rel="noopener" href="ferramentas.html#ctcae"><i data-lucide="alert-triangle" style="width:18px;height:18px"></i><span>Eventos adversos · CTCAE</span></a>
+          <a class="link-card" target="_blank" rel="noopener" href="ferramentas.html#clinica"><i data-lucide="activity" style="width:18px;height:18px"></i><span>ECOG / Karnofsky</span></a>
+          <a class="link-card" target="_blank" rel="noopener" href="ferramentas.html#renal"><i data-lucide="droplet" style="width:18px;height:18px"></i><span>Função renal</span></a>
+        </div>
+      </div>
+
+      <!-- 13. CHECKLISTS -->
+      <div class="pm-block" id="pul-13">
+        <div class="pm-block-head"><span class="pm-num">13</span><h3>Checklists</h3></div>
+        <p class="pm-lead">Três listas de <strong>itens para revisão</strong> — organização do caso, não critérios de elegibilidade (a avaliação formal cabe à equipe responsável). Cada uma pode ser copiada em texto.</p>
+
+        <div class="rlt-checklist">
+          <div class="rlt-checklist-head">
+            <h4><i data-lucide="send" style="width:16px;height:16px"></i> Encaminhamento para discussão multidisciplinar (pulmão)</h4>
+            <button class="btn btn-secondary btn-sm copy-checklist-btn" @click="copyChecklist('encaminhamento')"><i data-lucide="copy" style="width:14px;height:14px"></i> Copiar</button>
+          </div>
+          <div class="bc-grid">
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Diagnóstico histológico (NSCLC escamoso/não-escamoso vs SCLC)</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Estadiamento TNM e estágio (I–IV)</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Painel molecular (EGFR, ALK, ROS1, RET, MET ex14, KRAS G12C, HER2, BRAF, NTRK)</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> PD-L1 (TPS)</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> NGS abrangente solicitado</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Status de ressecabilidade</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Função pulmonar (espirometria/DLCO)</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Imagem (TC, PET/CT, RM de crânio)</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Adequação da amostra (biópsia/citologia)</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Tratamentos prévios e respostas</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> ECOG / Karnofsky</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Tabagismo e comorbidades</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Objetivo da discussão</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Possibilidade de ensaio clínico</div>
+          </div>
+        </div>
+
+        <div class="rlt-checklist">
+          <div class="rlt-checklist-head">
+            <h4><i data-lucide="presentation" style="width:16px;height:16px"></i> Apresentação de caso no tumor board</h4>
+            <button class="btn btn-secondary btn-sm copy-checklist-btn" @click="copyChecklist('board')"><i data-lucide="copy" style="width:14px;height:14px"></i> Copiar</button>
+          </div>
+          <div class="bc-grid">
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Pergunta clínica objetiva</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Histologia (NSCLC/SCLC) e estágio</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Driver molecular e PD-L1</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Cenário: ressecável vs irressecável (estágio III) vs metastático</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Linha terapêutica atual</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Histórico de tratamentos e resposta/toxicidade</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Status de imagem (incl. SNC)</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Performance status</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Sintomas</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Opções aprovadas</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Ensaios clínicos disponíveis</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Limitações ou incertezas</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Próximo passo proposto para discussão</div>
+          </div>
+        </div>
+
+        <div class="rlt-checklist">
+          <div class="rlt-checklist-head">
+            <h4><i data-lucide="folder-check" style="width:16px;height:16px"></i> Pré-tratamento sistêmico, biomarcadores e acesso</h4>
+            <button class="btn btn-secondary btn-sm copy-checklist-btn" @click="copyChecklist('preterapia')"><i data-lucide="copy" style="width:14px;height:14px"></i> Copiar</button>
+          </div>
+          <div class="bc-grid">
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Relatório médico</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Confirmação de histologia e driver molecular</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> NGS completo e PD-L1</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Imagem de SNC (RM de crânio)</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Função pulmonar e cardíaca</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Hemograma</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Função renal e hepática</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Avaliação de pneumonite/doença intersticial prévia</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Acesso venoso, se necessário</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Consentimento institucional, se aplicável</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Plano de manejo de toxicidades de classe (irAE; EGFR-TKI; pneumonite)</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Autorização</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Agendamento</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Logística do agente / radiofármaco</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Plano de seguimento e avaliação de resposta</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 14. LINKS INTERNOS E PRÓXIMOS PASSOS -->
+      <div class="pm-block" id="pul-14">
+        <div class="pm-block-head"><span class="pm-num">14</span><h3>Links internos e próximos passos</h3></div>
+        <div class="link-cards">
+          <a class="link-card" target="_blank" rel="noopener" href="database.html"><i data-lucide="database" style="width:18px;height:18px"></i><span>Abrir Database (pulmão)</span></a>
+          <a class="link-card" target="_blank" rel="noopener" href="database.html"><i data-lucide="git-compare" style="width:18px;height:18px"></i><span>Comparar estudos de pulmão</span></a>
+          <a class="link-card" target="_blank" rel="noopener" href="ensaios-clinicos.html"><i data-lucide="microscope" style="width:18px;height:18px"></i><span>Ver ensaios ativos</span></a>
+          <a class="link-card" target="_blank" rel="noopener" href="guidelines.html"><i data-lucide="book-open" style="width:18px;height:18px"></i><span>Abrir guidelines</span></a>
+          <a class="link-card" target="_blank" rel="noopener" href="ferramentas.html"><i data-lucide="wrench" style="width:18px;height:18px"></i><span>Abrir ferramentas</span></a>
+          <a class="link-card" target="_blank" rel="noopener" href="about.html"><i data-lucide="message-square-plus" style="width:18px;height:18px"></i><span>Sugerir estudo ou correção</span></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- EXPLORAR ESTUDOS POR TUMOR (browser existente, preservado) -->
 <section style="padding: 1rem 0 0">
   <div class="container">
@@ -5180,7 +6020,6 @@
 
       // ---- Tumor Board Maps: mapas em desenvolvimento (hub) ----
       upcomingMaps: [
-        { id: 'pulmao',     name: 'Pulmão',                           icon: 'wind',          color: '#22D3EE', badges: ['DLL3', 'FAPI'] },
         { id: 'meningioma', name: 'Meningioma',                       icon: 'brain',         color: '#A855F7', badges: ['SSTR', 'Lu-177'] },
       ],
 
@@ -5202,6 +6041,7 @@
         hcc: [],
         tireoide: [],
         mama: [],
+        pulmao: [],
       },
       get lineageParents() { return this.lineageParentsByTumor[this.openMap] || []; },
 
@@ -5242,7 +6082,7 @@
         this.$nextTick(() => document.getElementById('hub-' + (prev || 'prostata'))?.scrollIntoView({ behavior: 'smooth', block: 'center' }));
       },
 
-      mapNames: { prostata: 'Câncer de próstata', net: 'Tumores neuroendócrinos', hcc: 'Carcinoma hepatocelular e vias biliares', tireoide: 'Câncer de tireoide', mama: 'Câncer de mama' },
+      mapNames: { prostata: 'Câncer de próstata', net: 'Tumores neuroendócrinos', hcc: 'Carcinoma hepatocelular e vias biliares', tireoide: 'Câncer de tireoide', mama: 'Câncer de mama', pulmao: 'Câncer de pulmão' },
       checklistsByTumor: {
         prostata: {
           encaminhamento: {
@@ -5312,6 +6152,20 @@
           preterapia: {
             title: 'Pré-tratamento sistêmico, biomarcadores e acesso',
             items: ['Relatório médico', 'Confirmação de subtipo e biomarcadores', 'FEVE basal (antes de terapia anti-HER2/antraciclina)', 'Hemograma', 'Função renal e hepática', 'Glicemia/HbA1c (antes de inibidor de PI3K/AKT)', 'Avaliação de fertilidade e teste de gravidez', 'Avaliação cardiovascular', 'Acesso venoso / portacath, se necessário', 'Consentimento institucional, se aplicável', 'Plano de manejo de toxicidades de classe (DPI no T-DXd; diarreia em TKI; hiperglicemia em PI3K/AKT; imuno-relacionadas)', 'Autorização', 'Agendamento', 'Logística do agente / ADC', 'Plano de seguimento e avaliação de resposta'],
+          },
+        },
+        pulmao: {
+          encaminhamento: {
+            title: 'Encaminhamento para discussão multidisciplinar (pulmão)',
+            items: ['Diagnóstico histológico (NSCLC escamoso/não-escamoso vs SCLC)', 'Estadiamento TNM e estágio (I–IV)', 'Painel molecular (EGFR, ALK, ROS1, RET, MET ex14, KRAS G12C, HER2, BRAF, NTRK)', 'PD-L1 (TPS)', 'NGS abrangente solicitado', 'Status de ressecabilidade', 'Função pulmonar (espirometria/DLCO)', 'Imagem (TC tórax/abdome, PET/CT, RM de crânio)', 'Adequação da amostra (biópsia/citologia)', 'Tratamentos prévios e respostas', 'ECOG / Karnofsky', 'Tabagismo e comorbidades', 'Objetivo da discussão', 'Possibilidade de ensaio clínico'],
+          },
+          board: {
+            title: 'Apresentação de caso no tumor board',
+            items: ['Pergunta clínica objetiva', 'Histologia (NSCLC/SCLC) e estágio', 'Driver molecular e PD-L1', 'Cenário: ressecável vs irressecável (estágio III) vs metastático', 'Linha terapêutica atual', 'Histórico de tratamentos e resposta/toxicidade', 'Status de imagem (incl. SNC)', 'Performance status', 'Sintomas', 'Opções aprovadas', 'Ensaios clínicos disponíveis', 'Limitações ou incertezas', 'Próximo passo proposto para discussão'],
+          },
+          preterapia: {
+            title: 'Pré-tratamento sistêmico, biomarcadores e acesso',
+            items: ['Relatório médico', 'Confirmação de histologia e driver molecular', 'NGS completo e PD-L1', 'Imagem de SNC (RM de crânio)', 'Função pulmonar e cardíaca', 'Hemograma', 'Função renal e hepática', 'Avaliação de pneumonite/doença intersticial prévia', 'Acesso venoso, se necessário', 'Consentimento institucional, se aplicável', 'Plano de manejo de toxicidades de classe (irAE; cutânea/diarreia de EGFR-TKI; pneumonite)', 'Autorização', 'Agendamento', 'Logística do agente / radiofármaco', 'Plano de seguimento e avaliação de resposta'],
           },
         },
       },
