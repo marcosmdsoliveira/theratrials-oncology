@@ -939,6 +939,27 @@
         </div>
       </article>
 
+      <!-- TIREOIDE — ativo -->
+      <article class="tumor-map-card is-active" style="--accent-color:#06B6D4;--accent-rgb:6,182,212" @click="openTumorMap('tireoide')" id="hub-tireoide">
+        <div class="tmc-head">
+          <div class="tmc-icon"><i data-lucide="circle-dot" style="width:24px;height:24px"></i></div>
+          <div>
+            <div class="tmc-title">Câncer de tireoide</div>
+            <span class="tmc-status on">Mapa completo</span>
+          </div>
+        </div>
+        <div class="tmc-badges">
+          <span class="mod-pill lu177">I-131</span>
+          <span class="mod-pill">RAI</span>
+          <span class="mod-pill psma">Iodo-ávido</span>
+          <span class="mod-pill stage">CDT</span>
+          <span class="mod-pill stage">CMT / CAT</span>
+        </div>
+        <div class="tmc-foot">
+          <span class="tmc-open">Abrir mapa <i data-lucide="arrow-right" style="width:15px;height:15px"></i></span>
+        </div>
+      </article>
+
       <!-- EM DESENVOLVIMENTO -->
       <template x-for="soon in upcomingMaps" :key="soon.id">
         <article class="tumor-map-card is-soon" :style="`--accent-color:${soon.color};--accent-rgb:${hexToRgb(soon.color)}`">
@@ -3380,6 +3401,788 @@
   </div>
 </section>
 
+<!-- MÓDULO: TUMOR BOARD MAP — CÂNCER DE TIREOIDE -->
+<section x-show="openMap === 'tireoide'" x-cloak id="map-tireoide" style="padding:0">
+  <div class="container">
+    <div class="map-module" style="--accent-color:#06B6D4;--accent-rgb:6,182,212">
+
+      <button class="detail-back" @click="closeMap()">
+        <i data-lucide="arrow-left" style="width:14px;height:14px"></i>
+        <span>Voltar aos mapas</span>
+      </button>
+
+      <div class="mm-head">
+        <h1 class="mm-title"><i data-lucide="circle-dot" style="width:30px;height:30px"></i> Tumor Board Map — Câncer de Tireoide</h1>
+        <p class="mm-sub">Do nódulo e da estratificação de risco ATA à radioiodoterapia (I-131), à iodo-refratariedade e aos alvos no CMT e no CAT.</p>
+      </div>
+
+      <nav class="mm-nav">
+        <a href="#tir-1">1 · Visão geral</a>
+        <a href="#tir-2">2 · Teoria essencial</a>
+        <a href="#tir-3">3 · Perguntas do board</a>
+        <a href="#tir-4">4 · Jornada terapêutica</a>
+        <a href="#tir-5">5 · Jornada do paciente</a>
+        <a href="#tir-6">6 · Mapa de evidências</a>
+        <a href="#tir-7">7 · Estudos-chave</a>
+        <a href="#tir-8">8 · Trial Lineage</a>
+        <a href="#tir-9">9 · Critérios práticos</a>
+        <a href="#tir-10">10 · Ensaios ativos</a>
+        <a href="#tir-11">11 · Guidelines</a>
+        <a href="#tir-12">12 · Ferramentas</a>
+        <a href="#tir-13">13 · Checklists</a>
+        <a href="#tir-14">14 · Próximos passos</a>
+      </nav>
+
+      <!-- 1. VISÃO GERAL -->
+      <div class="pm-block" id="tir-1">
+        <div class="pm-block-head"><span class="pm-num">1</span><h3>Visão geral</h3></div>
+        <p class="pm-lead">O <strong>carcinoma diferenciado de tireoide (CDT) iodo-ávido</strong> é o exemplo histórico de teranóstico: o mesmo radioiodo (I-131) que diagnostica também trata. A discussão em tumor board integra o tipo histológico, a estratificação de risco ATA, o status de iodo-avidez, a tireoglobulina, a extensão da doença e a terapia-alvo quando o tumor se torna refratário. O carcinoma medular (CMT) e o anaplásico (CAT) seguem lógicas distintas, fora do radioiodo.</p>
+      </div>
+
+      <!-- 2. TEORIA ESSENCIAL -->
+      <div class="pm-block" id="tir-2">
+        <div class="pm-block-head"><span class="pm-num">2</span><h3>Teoria essencial</h3></div>
+        <div class="concept-grid">
+          <div class="concept-card">
+            <div class="cc-ic"><i data-lucide="crosshair" style="width:18px;height:18px"></i></div>
+            <h4>O iodo e o NIS como alvo</h4>
+            <p>As células foliculares captam iodo pelo simportador sódio-iodo (NIS). Isso sustenta a imagem (cintilografia/PCI) e a terapia (I-131) — o princípio teranóstico do radioiodo no CDT.</p>
+          </div>
+          <div class="concept-card">
+            <div class="cc-ic"><i data-lucide="scan-line" style="width:18px;height:18px"></i></div>
+            <h4>Imagem e iodo-avidez</h4>
+            <p>A pesquisa de corpo inteiro (PCI) com radioiodo mapeia a doença iodo-ávida. O FDG PET complementa quando há suspeita de refratariedade ou desdiferenciação (fenótipo flip-flop).</p>
+          </div>
+          <div class="concept-card">
+            <div class="cc-ic"><i data-lucide="atom" style="width:18px;height:18px"></i></div>
+            <h4>Radioiodoterapia (RAI)</h4>
+            <p>O I-131 é beta-emissor com componente gama: trata as células que captam iodo e permite imagem pós-dose. A atividade é calibrada ao risco ATA, com preparo de TSH e dieta hipoiódica.</p>
+          </div>
+          <div class="concept-card">
+            <div class="cc-ic"><i data-lucide="git-compare" style="width:18px;height:18px"></i></div>
+            <h4>Quando o iodo deixa de funcionar</h4>
+            <p>Na doença iodo-refratária, a terapia migra para inibidores de tirosina-quinase (lenvatinibe, sorafenibe). A redifferentiation (inibidores de MEK/BRAF) busca restaurar a captação de iodo.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. PERGUNTAS DO TUMOR BOARD -->
+      <div class="pm-block" id="tir-3">
+        <div class="pm-block-head"><span class="pm-num">3</span><h3>Perguntas do tumor board</h3></div>
+        <p class="pm-lead">As perguntas que estruturam a decisão em tumor board, agrupadas por eixo.</p>
+        <div class="q-groups">
+          <div class="q-group">
+            <div class="q-group-title"><i data-lucide="layers"></i> Tipo e risco</div>
+            <ul>
+              <li>É CDT, CMT ou CAT?</li>
+              <li>Qual a estratificação de risco ATA?</li>
+              <li>Há variante de pior prognóstico?</li>
+            </ul>
+          </div>
+          <div class="q-group">
+            <div class="q-group-title"><i data-lucide="scan-line"></i> Imagem e iodo-avidez</div>
+            <ul>
+              <li>A doença é iodo-ávida (PCI)?</li>
+              <li>Há lesões FDG-ávidas ou discordantes?</li>
+              <li>Há indicação de FDG PET (suspeita de refratariedade)?</li>
+            </ul>
+          </div>
+          <div class="q-group">
+            <div class="q-group-title"><i data-lucide="activity"></i> Marcadores e bioquímica</div>
+            <ul>
+              <li>Qual a tireoglobulina (Tg) e sua cinética?</li>
+              <li>Há anticorpos anti-Tg interferentes?</li>
+              <li>Calcitonina e CEA no CMT?</li>
+            </ul>
+          </div>
+          <div class="q-group">
+            <div class="q-group-title"><i data-lucide="target"></i> Objetivo terapêutico</div>
+            <ul>
+              <li>Ablação/adjuvância, tratamento de doença metastática iodo-ávida, controle no refratário ou inclusão em ensaio?</li>
+            </ul>
+          </div>
+          <div class="q-group">
+            <div class="q-group-title"><i data-lucide="flask-conical"></i> Acesso e pesquisa clínica</div>
+            <ul>
+              <li>Há quarto plumbífero e estrutura para a RAI?</li>
+              <li>Existe opção aprovada (TKI/alvo) ou protocolo de pesquisa?</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. JORNADA TERAPÊUTICA -->
+      <div class="pm-block" id="tir-4">
+        <div class="pm-block-head"><span class="pm-num">4</span><h3>Jornada terapêutica</h3></div>
+        <p class="pm-lead">A jornada no CDT depende de dois eixos: a <strong>iodo-avidez</strong> (a doença ainda capta radioiodo?) e a <strong>extensão</strong> (localizada vs metastática). Somados à estratificação de risco ATA, eles definem o papel da cirurgia, da radioiodoterapia, da supressão de TSH e das terapias-alvo.</p>
+
+        <!-- Matriz de estados da doença -->
+        <div class="ds-matrix">
+          <div class="ds-corner"></div>
+          <div class="ds-colhead">Não-metastático <small>M0</small></div>
+          <div class="ds-colhead">Metastático <small>M1</small></div>
+
+          <div class="ds-rowlabel hs">Iodo-ávido</div>
+          <div class="ds-cell" style="--c:#34D399">
+            <div class="ds-tag">CDT localizado / locorregional <span class="ds-m">M0</span></div>
+            <p class="ds-def">Captação de iodo preservada; doença confinada ou locorregional.</p>
+            <div class="ds-rx"><b>Tratamento típico</b>Cirurgia ± RAI ablativa (conforme risco ATA) · supressão de TSH · vigilância em microcarcinomas</div>
+          </div>
+          <div class="ds-cell is-rlt" style="--c:#FF8400">
+            <div class="ds-tag">CDT metastático iodo-ávido <span class="ds-m">M1</span> <span class="ds-rlt-badge">RAI</span></div>
+            <p class="ds-def">Metástases que <strong>captam radioiodo</strong>.</p>
+            <div class="ds-rx"><b>Tratamento típico</b>Radioiodoterapia (I-131) terapêutica · supressão de TSH</div>
+          </div>
+
+          <div class="ds-rowlabel cr">Iodo-refratário</div>
+          <div class="ds-cell" style="--c:#C084FC">
+            <div class="ds-tag">Refratário não-metastático (raro) <span class="ds-m">M0</span></div>
+            <p class="ds-def">Perda de captação sem metástase a distância — apresentação incomum.</p>
+            <div class="ds-rx"><b>Tratamento típico</b>Vigilância · radioterapia local · redifferentiation (investigacional)</div>
+          </div>
+          <div class="ds-cell" style="--c:#F472B6">
+            <div class="ds-tag">CDT metastático iodo-refratário <span class="ds-m">M1</span></div>
+            <p class="ds-def">Progride <strong>apesar do radioiodo</strong>, com perda de captação.</p>
+            <div class="ds-rx"><b>Tratamento típico</b>TKI (lenvatinibe, sorafenibe; cabozantinibe em 2ª linha) · redifferentiation</div>
+          </div>
+        </div>
+
+        <div class="ds-legend">
+          <div><b>Iodo-avidez</b> = captação de I-131 na cintilografia/PCI. A doença é refratária quando perde captação ou progride apesar da RAI.</div>
+          <div><b>M0 vs M1</b> = doença confinada/locorregional vs metástases a distância na imagem.</div>
+        </div>
+
+        <div class="ds-note">
+          <i data-lucide="git-pull-request-arrow" style="width:18px;height:18px"></i>
+          <p><b>Iodo-avidez (porta da RAI):</b> a captação de radioiodo define quem se beneficia do I-131. Tumores iodo-refratários (perda de captação, FDG-ávidos, desdiferenciados) seguem para terapia-alvo; a redifferentiation (inibidores de MEK/BRAF) busca restaurar a captação.</p>
+        </div>
+
+        <div class="ds-note">
+          <i data-lucide="git-fork" style="width:18px;height:18px"></i>
+          <p><b>CMT e CAT não usam radioiodo.</b> O carcinoma medular (CMT, células C) é guiado por RET — selpercatinibe (LIBRETTO) — e por TKI multi-alvo (cabozantinibe, vandetanibe). O carcinoma anaplásico (CAT) é agressivo: dabrafenibe + trametinibe em BRAF V600E, com imunoterapia em estudo.</p>
+        </div>
+
+        <div class="pm-subhead">
+          <i data-lucide="route" style="width:18px;height:18px"></i>
+          <h4>Onde cada modalidade entra</h4>
+        </div>
+        <p class="pm-lead">Onde cada modalidade entra ao longo do espectro tireoidiano, com estudos reais — vigilância, cirurgia, RAI, redifferentiation, TKI e alvos no CMT/CAT. Clique para abrir a ficha; a lista completa está no <a href="database.html?cat=tireoide" target="_blank" rel="noopener" style="color:var(--amber)">Database</a>.</p>
+        <div class="therapy-timeline">
+          <div class="tt-phase" style="--c:#34D399">
+            <span class="tt-dot"></span>
+            <h4>1 · CDT inicial — vigilância / cirurgia</h4>
+            <p>Microcarcinomas em vigilância ativa; cirurgia (lobectomia/tireoidectomia) conforme o risco.</p>
+            <div class="esc-studies">
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#tireoide_avancado_11">Kuma (Ito/Miyauchi)</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#tireoide_avancado_12">MSKCC AS</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#tireoide_avancado_14">Lobectomia (Nixon)</a>
+            </div>
+            <div class="tt-tags"><span class="tt-mat high">Vigilância / cirurgia</span></div>
+          </div>
+          <div class="tt-phase" style="--c:#60A5FA">
+            <span class="tt-dot"></span>
+            <h4>2 · Ablação com RAI — desintensificação</h4>
+            <p>RAI ablativa conforme risco ATA; o baixo risco pode dispensar a ablação.</p>
+            <div class="esc-studies">
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#tireoide_avancado_17">ESTIMABL2</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#tireoide_avancado_18">IoN</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#tireoide_avancado_15">HiLo</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#tireoide_avancado_16">ESTIMABL</a>
+            </div>
+            <div class="tt-tags"><span class="tt-mat high">RAI / desintensificação</span></div>
+          </div>
+          <div class="tt-phase" style="--c:#FF8400">
+            <span class="tt-dot"></span>
+            <h4>3 · Metastático iodo-ávido — RAI terapêutica</h4>
+            <p>I-131 terapêutica com supressão de TSH; reestratificação dinâmica da resposta.</p>
+            <div class="esc-studies">
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#tireoide_avancado_22">Mazzaferri</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#tireoide_avancado_23">Risco dinâmico (Tuttle)</a>
+            </div>
+            <div class="tt-tags"><span class="tt-mat high">RAI terapêutica (teranóstico)</span></div>
+          </div>
+          <div class="tt-phase" style="--c:#C084FC">
+            <span class="tt-dot"></span>
+            <h4>4 · Redifferentiation — resgatar captação</h4>
+            <p>Inibidores de MEK/BRAF para restaurar a avidez ao iodo em refratários selecionados.</p>
+            <div class="esc-studies">
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#tireoide_avancado_19">Ho (selumetinibe)</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#tireoide_avancado_21">Rothenberg (dabrafenibe)</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#tireoide_avancado_20">ASTRA</a>
+            </div>
+            <div class="tt-tags"><span class="tt-mat mid">Redifferentiation (investigacional)</span></div>
+          </div>
+          <div class="tt-phase" style="--c:#FB923C">
+            <span class="tt-dot"></span>
+            <h4>5 · CDT iodo-refratário — terapia-alvo</h4>
+            <p>Inibidores de tirosina-quinase antiangiogênicos no CDT refratário progressivo.</p>
+            <div class="esc-studies">
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#tireoide_avancado_0">SELECT</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#tireoide_avancado_1">DECISION</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#tireoide_avancado_2">COSMIC-311</a>
+            </div>
+            <div class="tt-tags"><span class="tt-mat high">TKI estabelecido</span></div>
+          </div>
+          <div class="tt-phase" style="--c:#F87171">
+            <span class="tt-dot"></span>
+            <h4>6 · CMT — alvos RET</h4>
+            <p>Carcinoma medular: selpercatinibe (RET) e TKI multi-alvo.</p>
+            <div class="esc-studies">
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#tireoide_avancado_4">LIBRETTO-531</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#tireoide_avancado_3">LIBRETTO-001</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#tireoide_avancado_6">EXAM</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#tireoide_avancado_5">ZETA</a>
+            </div>
+            <div class="tt-tags"><span class="tt-mat high">RET / TKI</span></div>
+          </div>
+          <div class="tt-phase" style="--c:#F472B6">
+            <span class="tt-dot"></span>
+            <h4>7 · CAT — BRAF e doença agressiva</h4>
+            <p>Carcinoma anaplásico: dabrafenibe + trametinibe (BRAF V600E), imunoterapia e agnósticos (NTRK).</p>
+            <div class="esc-studies">
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#tireoide_avancado_7">ROAR (ATC)</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#tireoide_avancado_9">Spartalizumabe</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#tireoide_avancado_8">Larotrectinibe</a>
+            </div>
+            <div class="tt-tags"><span class="tt-mat high">CAT / BRAF</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. JORNADA DO PACIENTE ATÉ A RAI -->
+      <div class="pm-block patient-journey-section" id="tir-5">
+        <div class="pm-block-head"><span class="pm-num">5</span><h3>Jornada do Paciente até a Radioiodoterapia</h3></div>
+        <p class="pm-lead" style="font-weight:600;color:var(--off-white)">Do diagnóstico e estratificação de risco ATA ao preparo, administração do I-131, reestratificação dinâmica e refratariedade.</p>
+        <div class="edu-callout" style="max-width:none;margin:0 0 1.25rem">
+          <i data-lucide="info" style="width:18px;height:18px"></i>
+          <p>Esta seção tem finalidade educacional e de melhoria de jornada assistencial. Não define elegibilidade individual, não recomenda tratamento e não substitui julgamento médico, bula, guidelines, protocolos institucionais ou consulta às fontes primárias.</p>
+        </div>
+
+        <p class="pm-lead" style="margin-bottom:0.75rem">A RAI eficaz depende de uma cadeia: definir o tipo e o risco ATA, decidir a indicação, preparar o TSH e a dieta, administrar o I-131 e reestratificar a resposta. As etapas abaixo mapeiam esse percurso assistencial.</p>
+
+        <div class="journey-timeline">
+
+          <details class="journey-step-card" open>
+            <summary><span class="js-num">1</span><span class="js-step-title">Diagnóstico e citologia</span><i class="js-chev" data-lucide="chevron-right" style="width:16px;height:16px"></i></summary>
+            <div class="js-body">
+              <div class="js-row"><b>Objetivo</b>Definir a citologia/histologia (Bethesda), a variante e o tipo (CDT, CMT ou CAT).</div>
+              <div class="js-row"><b>Profissionais envolvidos</b>Endocrinologia, patologia, cirurgia de cabeça e pescoço e medicina nuclear.</div>
+              <div class="js-row"><b>Dados necessários</b>PAAF/Bethesda, histologia, mutações (BRAF/RET) e calcitonina no CMT.</div>
+              <div class="js-links">
+                <a class="js-link" target="_blank" rel="noopener" href="ferramentas.html#ajcc"><i data-lucide="layers" style="width:12px;height:12px"></i> Estadiamento</a>
+                <a class="js-link" target="_blank" rel="noopener" href="database.html?cat=tireoide"><i data-lucide="database" style="width:12px;height:12px"></i> Database</a>
+                <a class="js-link" href="#tir-6"><i data-lucide="map" style="width:12px;height:12px"></i> Mapa de evidências</a>
+              </div>
+            </div>
+          </details>
+
+          <details class="journey-step-card">
+            <summary><span class="js-num">2</span><span class="js-step-title">Cirurgia e estratificação de risco ATA</span><i class="js-chev" data-lucide="chevron-right" style="width:16px;height:16px"></i></summary>
+            <div class="js-body">
+              <div class="js-row"><b>Objetivo</b>Definir a extensão cirúrgica e estratificar o risco ATA.</div>
+              <div class="js-row"><b>Profissionais envolvidos</b>Cirurgia de cabeça e pescoço, endocrinologia e patologia.</div>
+              <div class="js-row"><b>Dados necessários</b>Tipo de cirurgia, histopatologia, invasão, linfonodos, estadiamento e categoria de risco ATA.</div>
+              <div class="js-links">
+                <a class="js-link" target="_blank" rel="noopener" href="ferramentas.html#ajcc"><i data-lucide="layers" style="width:12px;height:12px"></i> Estadiamento</a>
+                <a class="js-link" target="_blank" rel="noopener" href="guideline-detail.html#rait-ata-dtc-2025"><i data-lucide="book-open" style="width:12px;height:12px"></i> ATA 2025</a>
+                <a class="js-link" target="_blank" rel="noopener" href="database.html?cat=tireoide"><i data-lucide="database" style="width:12px;height:12px"></i> Database</a>
+              </div>
+            </div>
+          </details>
+
+          <details class="journey-step-card">
+            <summary><span class="js-num">3</span><span class="js-step-title">Decisão de RAI (ablação / adjuvância / terapia)</span><i class="js-chev" data-lucide="chevron-right" style="width:16px;height:16px"></i></summary>
+            <div class="js-body">
+              <div class="js-row"><b>Objetivo</b>Decidir se e quanto de RAI conforme o risco — incluindo a desintensificação no baixo risco.</div>
+              <div class="js-row"><b>Profissionais envolvidos</b>Medicina nuclear, endocrinologia e oncologia.</div>
+              <div class="js-row"><b>Dados necessários</b>Risco ATA, tireoglobulina pós-operatória, PCI diagnóstica e status de iodo-avidez.</div>
+              <div class="js-row" style="font-size:0.76rem;color:var(--stone-2)"><b>Linguagem</b>Preferir “candidato potencial para discussão”, “paciente a ser avaliado” ou “adequado para revisão multidisciplinar” — evitar afirmar “paciente elegível”, que exige avaliação formal pela equipe responsável.</div>
+              <div class="js-links">
+                <a class="js-link" href="#tir-13"><i data-lucide="clipboard-check" style="width:12px;height:12px"></i> Checklist de encaminhamento</a>
+                <a class="js-link" href="#tir-9"><i data-lucide="list-checks" style="width:12px;height:12px"></i> Critérios práticos</a>
+                <a class="js-link" target="_blank" rel="noopener" href="guideline-detail.html#rait-snmmi-eanm-dtc-2022"><i data-lucide="book-open" style="width:12px;height:12px"></i> Guideline RAI</a>
+              </div>
+            </div>
+          </details>
+
+          <details class="journey-step-card">
+            <summary><span class="js-num">4</span><span class="js-step-title">Preparo (TSH e dieta hipoiódica)</span><i class="js-chev" data-lucide="chevron-right" style="width:16px;height:16px"></i></summary>
+            <div class="js-body">
+              <div class="js-row"><b>Objetivo</b>Preparar o TSH elevado e a dieta hipoiódica para otimizar a captação.</div>
+              <div class="js-row"><b>Profissionais envolvidos</b>Medicina nuclear e endocrinologia.</div>
+              <div class="js-row"><b>Dados necessários</b>Suspensão de levotiroxina ou rhTSH, dieta hipoiódica, Tg basal, beta-hCG e exclusão de contraste iodado recente.</div>
+              <div class="js-links">
+                <a class="js-link" target="_blank" rel="noopener" href="guideline-detail.html#rait-snmmi-eanm-dtc-2022"><i data-lucide="book-open" style="width:12px;height:12px"></i> Guideline RAI</a>
+                <a class="js-link" href="#tir-13"><i data-lucide="clipboard-check" style="width:12px;height:12px"></i> Checklist de pré-terapia</a>
+              </div>
+            </div>
+          </details>
+
+          <details class="journey-step-card">
+            <summary><span class="js-num">5</span><span class="js-step-title">Discussão em tumor board</span><i class="js-chev" data-lucide="chevron-right" style="width:16px;height:16px"></i></summary>
+            <div class="js-body">
+              <div class="js-row"><b>Objetivo</b>Integrar risco, imagem, bioquímica, segurança, acesso e pesquisa clínica.</div>
+              <div class="js-row"><b>Profissionais envolvidos</b>Endocrinologia, medicina nuclear, oncologia, cirurgia de cabeça e pescoço, patologia e pesquisa clínica.</div>
+              <div class="js-row"><b>Dados necessários</b>Caso completo com pergunta clínica objetiva, risco ATA, status de imagem e bioquímica.</div>
+              <div class="js-links">
+                <a class="js-link" href="#tir-13"><i data-lucide="clipboard-check" style="width:12px;height:12px"></i> Checklist de apresentação</a>
+                <a class="js-link" href="#tir-11"><i data-lucide="book-open" style="width:12px;height:12px"></i> Guidelines</a>
+                <a class="js-link" href="#tir-10"><i data-lucide="microscope" style="width:12px;height:12px"></i> Ensaios ativos</a>
+              </div>
+            </div>
+          </details>
+
+          <details class="journey-step-card">
+            <summary><span class="js-num">6</span><span class="js-step-title">Administração da RAI e PCI pós-dose</span><i class="js-chev" data-lucide="chevron-right" style="width:16px;height:16px"></i></summary>
+            <div class="js-body">
+              <div class="js-row"><b>Objetivo</b>Administrar o I-131 com radioproteção e realizar a pesquisa de corpo inteiro pós-dose.</div>
+              <div class="js-row"><b>Profissionais envolvidos</b>Medicina nuclear, física médica e enfermagem.</div>
+              <div class="js-row"><b>Dados necessários</b>Atividade definida, isolamento (quarto plumbífero), PCI pós-dose com SPECT/CT e critérios de liberação.</div>
+              <div class="js-links">
+                <a class="js-link" target="_blank" rel="noopener" href="guideline-detail.html#rait-snmmi-eanm-dtc-2022"><i data-lucide="book-open" style="width:12px;height:12px"></i> Guideline RAI</a>
+                <a class="js-link" target="_blank" rel="noopener" href="guideline-detail.html#service-eanm-snmmi-iaea-2022"><i data-lucide="book-open" style="width:12px;height:12px"></i> Serviço/radioproteção</a>
+                <a class="js-link" target="_blank" rel="noopener" href="ferramentas.html#ctcae"><i data-lucide="alert-triangle" style="width:12px;height:12px"></i> CTCAE</a>
+              </div>
+            </div>
+          </details>
+
+          <details class="journey-step-card">
+            <summary><span class="js-num">7</span><span class="js-step-title">Reestratificação dinâmica de risco</span><i class="js-chev" data-lucide="chevron-right" style="width:16px;height:16px"></i></summary>
+            <div class="js-body">
+              <div class="js-row"><b>Objetivo</b>Reclassificar a resposta ao tratamento (excelente, indeterminada, bioquímica incompleta ou estrutural incompleta).</div>
+              <div class="js-row"><b>Profissionais envolvidos</b>Endocrinologia, medicina nuclear e radiologia.</div>
+              <div class="js-row"><b>Dados necessários</b>Tireoglobulina e anti-Tg, ultrassom cervical, imagem e o sistema de resposta ao tratamento ATA.</div>
+              <div class="js-links">
+                <a class="js-link" target="_blank" rel="noopener" href="guideline-detail.html#rait-ata-dtc-2025"><i data-lucide="book-open" style="width:12px;height:12px"></i> ATA 2025</a>
+                <a class="js-link" target="_blank" rel="noopener" href="database.html?cat=tireoide"><i data-lucide="database" style="width:12px;height:12px"></i> Database</a>
+              </div>
+            </div>
+          </details>
+
+          <details class="journey-step-card">
+            <summary><span class="js-num">8</span><span class="js-step-title">Refratariedade e próxima linha</span><i class="js-chev" data-lucide="chevron-right" style="width:16px;height:16px"></i></summary>
+            <div class="js-body">
+              <div class="js-row"><b>Objetivo</b>Reconhecer a iodo-refratariedade e definir TKI, redifferentiation ou ensaios clínicos.</div>
+              <div class="js-row"><b>Profissionais envolvidos</b>Oncologia, medicina nuclear e endocrinologia.</div>
+              <div class="js-row"><b>Dados necessários</b>Critérios de refratariedade, FDG PET, tireoglobulina/imagem e opções de terapia-alvo.</div>
+              <div class="js-links">
+                <a class="js-link" target="_blank" rel="noopener" href="trial-matcher.html"><i data-lucide="git-compare" style="width:12px;height:12px"></i> Trial Matcher</a>
+                <a class="js-link" target="_blank" rel="noopener" href="ensaios-clinicos.html"><i data-lucide="microscope" style="width:12px;height:12px"></i> Ensaios ativos</a>
+                <a class="js-link" target="_blank" rel="noopener" href="database.html?cat=tireoide"><i data-lucide="database" style="width:12px;height:12px"></i> Database</a>
+              </div>
+            </div>
+          </details>
+
+        </div>
+
+        <!-- Gargalos -->
+        <details class="pm-collapse">
+          <summary class="pm-subhead" id="tir-5-gargalos">
+            <i data-lucide="alert-triangle" style="width:18px;height:18px"></i>
+            <h4>Gargalos da Jornada e Oportunidades de Otimização</h4>
+            <span class="pm-collapse-hint">10 gargalos + indicadores</span>
+            <i class="pm-collapse-chev" data-lucide="chevron-right" style="width:16px;height:16px"></i>
+          </summary>
+        <p class="pm-lead">Os indicadores abaixo são apresentados como <strong>métricas de melhoria institucional</strong> — não são metas promocionais nem comerciais, e devem ser adaptados ao contexto de cada serviço.</p>
+        <div class="bottleneck-grid">
+
+          <div class="journey-bottleneck-card">
+            <div class="jb-title"><span class="jb-n">1</span> Estratificação de risco ATA não documentada</div>
+            <div class="jb-row"><b>Consequência</b>Decisão de RAI inadequada (sobre ou subtratamento).</div>
+            <div class="jb-row opt"><b>Oportunidade</b>Registro padronizado do risco ATA e do sistema de resposta.</div>
+            <div class="jb-foot"><a class="js-link" target="_blank" rel="noopener" href="guideline-detail.html#rait-ata-dtc-2025"><i data-lucide="book-open" style="width:12px;height:12px"></i> ATA 2025</a><span class="institutional-metric">% casos com risco ATA registrado</span></div>
+          </div>
+
+          <div class="journey-bottleneck-card">
+            <div class="jb-title"><span class="jb-n">2</span> Indicação de RAI sem critério</div>
+            <div class="jb-row"><b>Consequência</b>RAI desnecessária no baixo risco ou omitida quando indicada.</div>
+            <div class="jb-row opt"><b>Oportunidade</b>Indicação por risco, com desintensificação no baixo risco.</div>
+            <div class="jb-foot"><a class="js-link" target="_blank" rel="noopener" href="guideline-detail.html#rait-snmmi-eanm-dtc-2022"><i data-lucide="book-open" style="width:12px;height:12px"></i> Guideline RAI</a><span class="institutional-metric">% RAI conforme estratificação de risco</span></div>
+          </div>
+
+          <div class="journey-bottleneck-card">
+            <div class="jb-title"><span class="jb-n">3</span> Preparo inadequado (TSH / dieta)</div>
+            <div class="jb-row"><b>Consequência</b>Captação subótima e ablação ineficaz.</div>
+            <div class="jb-row opt"><b>Oportunidade</b>Checklist de preparo (TSH >30 mUI/L, dieta hipoiódica).</div>
+            <div class="jb-foot"><a class="js-link" href="#tir-13"><i data-lucide="clipboard-check" style="width:12px;height:12px"></i> Checklist de pré-terapia</a><span class="institutional-metric">% com TSH adequado e dieta cumprida</span></div>
+          </div>
+
+          <div class="journey-bottleneck-card">
+            <div class="jb-title"><span class="jb-n">4</span> Stunning por iodo diagnóstico de alta dose</div>
+            <div class="jb-row"><b>Consequência</b>Redução da captação terapêutica subsequente.</div>
+            <div class="jb-row opt"><b>Oportunidade</b>Usar 123I na PCI diagnóstica (sem stunning) ou omitir a PCI prévia em alto risco.</div>
+            <div class="jb-foot"><a class="js-link" target="_blank" rel="noopener" href="guideline-detail.html#rait-snmmi-eanm-dtc-2022"><i data-lucide="book-open" style="width:12px;height:12px"></i> Guideline RAI</a><span class="institutional-metric">% PCI diagnóstica com 123I</span></div>
+          </div>
+
+          <div class="journey-bottleneck-card">
+            <div class="jb-title"><span class="jb-n">5</span> Falta de SPECT/CT na PCI pós-dose</div>
+            <div class="jb-row"><b>Consequência</b>Subestima doença ectópica e localização imprecisa.</div>
+            <div class="jb-row opt"><b>Oportunidade</b>PCI pós-dose com SPECT/CT de rotina.</div>
+            <div class="jb-foot"><a class="js-link" target="_blank" rel="noopener" href="guideline-detail.html#rait-snmmi-eanm-dtc-2022"><i data-lucide="book-open" style="width:12px;height:12px"></i> Guideline RAI</a><span class="institutional-metric">% PCI pós-dose com SPECT/CT</span></div>
+          </div>
+
+          <div class="journey-bottleneck-card">
+            <div class="jb-title"><span class="jb-n">6</span> Dados clínicos incompletos para tumor board</div>
+            <div class="jb-row"><b>Consequência</b>Discussão improdutiva; decisões adiadas.</div>
+            <div class="jb-row opt"><b>Oportunidade</b>Checklist pré-board; apresentação padronizada.</div>
+            <div class="jb-foot"><a class="js-link" href="#tir-13"><i data-lucide="clipboard-check" style="width:12px;height:12px"></i> Checklist de apresentação</a><span class="institutional-metric">% casos com checklist completo</span></div>
+          </div>
+
+          <div class="journey-bottleneck-card">
+            <div class="jb-title"><span class="jb-n">7</span> Anti-Tg não considerado no seguimento</div>
+            <div class="jb-row"><b>Consequência</b>Tireoglobulina falsamente baixa; doença subestimada.</div>
+            <div class="jb-row opt"><b>Oportunidade</b>Registrar anti-Tg e acompanhar a tendência do título.</div>
+            <div class="jb-foot"><a class="js-link" target="_blank" rel="noopener" href="guideline-detail.html#rait-ata-dtc-2025"><i data-lucide="book-open" style="width:12px;height:12px"></i> ATA 2025</a><span class="institutional-metric">% seguimentos com anti-Tg avaliado</span></div>
+          </div>
+
+          <div class="journey-bottleneck-card">
+            <div class="jb-title"><span class="jb-n">8</span> Refratariedade reconhecida tardiamente</div>
+            <div class="jb-row"><b>Consequência</b>Atraso no início da terapia-alvo.</div>
+            <div class="jb-row opt"><b>Oportunidade</b>Aplicar os critérios de iodo-refratariedade e considerar FDG PET.</div>
+            <div class="jb-foot"><a class="js-link" href="#tir-9"><i data-lucide="list-checks" style="width:12px;height:12px"></i> Critérios práticos</a><span class="institutional-metric">Tempo: refratariedade → início de TKI</span></div>
+          </div>
+
+          <div class="journey-bottleneck-card">
+            <div class="jb-title"><span class="jb-n">9</span> Monitoramento de toxicidade do TKI irregular</div>
+            <div class="jb-row"><b>Consequência</b>Toxicidade reconhecida tardiamente (HAS, mãos-pés, proteinúria).</div>
+            <div class="jb-row opt"><b>Oportunidade</b>Calendário de monitoramento e graduação por CTCAE.</div>
+            <div class="jb-foot"><a class="js-link" target="_blank" rel="noopener" href="ferramentas.html#ctcae"><i data-lucide="alert-triangle" style="width:12px;height:12px"></i> CTCAE</a><span class="institutional-metric">% ciclos com monitoramento no prazo</span></div>
+          </div>
+
+          <div class="journey-bottleneck-card">
+            <div class="jb-title"><span class="jb-n">10</span> Falta de reavaliação estruturada pós-RAI / pós-TKI</div>
+            <div class="jb-row"><b>Consequência</b>Demora para definir a próxima linha.</div>
+            <div class="jb-row opt"><b>Oportunidade</b>Reestratificação dinâmica e integração com Trial Matcher.</div>
+            <div class="jb-foot"><a class="js-link" target="_blank" rel="noopener" href="trial-matcher.html"><i data-lucide="git-compare" style="width:12px;height:12px"></i> Trial Matcher</a><span class="institutional-metric">% pacientes reavaliados / avaliados para ensaio</span></div>
+          </div>
+
+        </div>
+        </details>
+
+        <!-- Elementos do laudo de PCI -->
+        <details class="pm-collapse">
+          <summary class="pm-subhead">
+            <i data-lucide="file-text" style="width:18px;height:18px"></i>
+            <h4>Elementos úteis em um laudo de PCI / cintilografia de iodo</h4>
+            <span class="pm-collapse-hint">12 elementos</span>
+            <i class="pm-collapse-chev" data-lucide="chevron-right" style="width:16px;height:16px"></i>
+          </summary>
+        <p class="pm-lead">Lista educacional de elementos que tornam o laudo de PCI mais útil para a discussão em tumor board. Não é um modelo de laudo completo e <strong>não afirma elegibilidade automática</strong> — a interpretação final é sempre clínica e multidisciplinar.</p>
+        <div class="psma-report-elements">
+          <div class="pre-item"><i data-lucide="dot" style="width:14px;height:14px"></i> Radioisótopo e atividade (I-131 / I-123)</div>
+          <div class="pre-item"><i data-lucide="dot" style="width:14px;height:14px"></i> Data e tipo de preparo (TSH, dieta hipoiódica)</div>
+          <div class="pre-item"><i data-lucide="dot" style="width:14px;height:14px"></i> Indicação clínica</div>
+          <div class="pre-item"><i data-lucide="dot" style="width:14px;height:14px"></i> Captação no leito tireoidiano (remanescente)</div>
+          <div class="pre-item"><i data-lucide="dot" style="width:14px;height:14px"></i> Captação metastática (linfonodal, pulmonar, óssea)</div>
+          <div class="pre-item"><i data-lucide="dot" style="width:14px;height:14px"></i> Lesões iodo-negativas / discordantes</div>
+          <div class="pre-item"><i data-lucide="dot" style="width:14px;height:14px"></i> SPECT/CT para localização anatômica</div>
+          <div class="pre-item"><i data-lucide="dot" style="width:14px;height:14px"></i> Estimativa de retenção / dosimetria, quando aplicável</div>
+          <div class="pre-item"><i data-lucide="dot" style="width:14px;height:14px"></i> Comparação com exames anteriores</div>
+          <div class="pre-item"><i data-lucide="dot" style="width:14px;height:14px"></i> Correlação com a tireoglobulina</div>
+          <div class="pre-item"><i data-lucide="dot" style="width:14px;height:14px"></i> Impressão final orientada à pergunta clínica</div>
+          <div class="pre-item"><i data-lucide="dot" style="width:14px;height:14px"></i> Recomendação de seguimento e correlação multidisciplinar</div>
+        </div>
+        </details>
+      </div>
+
+      <!-- 6. MAPA DE EVIDÊNCIAS -->
+      <div class="pm-block" id="tir-6">
+        <div class="pm-block-head"><span class="pm-num">6</span><h3>Mapa de evidências</h3></div>
+        <p class="pm-lead">Cenários clínicos e os estudos-chave associados. Clique em um estudo para abrir sua ficha no Database.</p>
+        <div class="evidence-map">
+          <div class="evidence-scenario-card" style="--sc-color:#34D399">
+            <span class="esc-tag">Cenário A · desintensificação da RAI</span>
+            <div class="esc-title">CDT de baixo risco</div>
+            <div class="esc-studies">
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#tireoide_avancado_17"><i data-lucide="file-text" style="width:11px;height:11px"></i> ESTIMABL2</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#tireoide_avancado_18"><i data-lucide="file-text" style="width:11px;height:11px"></i> IoN</a>
+            </div>
+            <p class="esc-msg">O baixo risco pode dispensar a RAI ablativa; desintensificação validada por não-inferioridade.</p>
+          </div>
+          <div class="evidence-scenario-card" style="--sc-color:#60A5FA">
+            <span class="esc-tag">Cenário B · ablação — dose e preparo</span>
+            <div class="esc-title">Baixo/intermediário risco</div>
+            <div class="esc-studies">
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#tireoide_avancado_15"><i data-lucide="file-text" style="width:11px;height:11px"></i> HiLo</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#tireoide_avancado_16"><i data-lucide="file-text" style="width:11px;height:11px"></i> ESTIMABL</a>
+            </div>
+            <p class="esc-msg">Baixa atividade (30 mCi) e rhTSH equivalem à alta dose e à suspensão hormonal para a ablação.</p>
+          </div>
+          <div class="evidence-scenario-card" style="--sc-color:#FB923C">
+            <span class="esc-tag">Cenário C · iodo-refratário — terapia-alvo</span>
+            <div class="esc-title">CDT refratário progressivo</div>
+            <div class="esc-studies">
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#tireoide_avancado_0"><i data-lucide="file-text" style="width:11px;height:11px"></i> SELECT</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#tireoide_avancado_1"><i data-lucide="file-text" style="width:11px;height:11px"></i> DECISION</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#tireoide_avancado_2"><i data-lucide="file-text" style="width:11px;height:11px"></i> COSMIC-311</a>
+            </div>
+            <p class="esc-msg">Lenvatinibe e sorafenibe em 1ª linha; cabozantinibe em 2ª, após progressão a TKI.</p>
+          </div>
+          <div class="evidence-scenario-card" style="--sc-color:#C084FC">
+            <span class="esc-tag">Cenário D · redifferentiation</span>
+            <div class="esc-title">Resgatar a captação de iodo</div>
+            <div class="esc-studies">
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#tireoide_avancado_19"><i data-lucide="file-text" style="width:11px;height:11px"></i> Ho (selumetinibe)</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#tireoide_avancado_21"><i data-lucide="file-text" style="width:11px;height:11px"></i> Rothenberg</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#tireoide_avancado_20"><i data-lucide="file-text" style="width:11px;height:11px"></i> ASTRA</a>
+            </div>
+            <p class="esc-msg">Inibidores de MEK/BRAF para restaurar a captação; ASTRA (selumetinibe adjuvante) foi negativo.</p>
+          </div>
+          <div class="evidence-scenario-card" style="--sc-color:#F472B6">
+            <span class="esc-tag">Cenário E · CMT e CAT</span>
+            <div class="esc-title">Fora do radioiodo</div>
+            <div class="esc-studies">
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#tireoide_avancado_4"><i data-lucide="file-text" style="width:11px;height:11px"></i> LIBRETTO-531</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#tireoide_avancado_6"><i data-lucide="file-text" style="width:11px;height:11px"></i> EXAM</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#tireoide_avancado_7"><i data-lucide="file-text" style="width:11px;height:11px"></i> ROAR (ATC)</a>
+            </div>
+            <p class="esc-msg">CMT guiado por RET (selpercatinibe); CAT por BRAF (dabrafenibe+trametinibe) — entidades fora do radioiodo.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7. ESTUDOS-CHAVE -->
+      <div class="pm-block" id="tir-7">
+        <div class="pm-block-head"><span class="pm-num">7</span><h3>Estudos-chave</h3></div>
+        <p class="pm-lead">Desenho dos principais estudos. <strong>Resultados, desfechos e toxicidades ficam na ficha de cada um no Database</strong> — este mapa não reproduz hazard ratios, valores de p ou taxas de resposta.</p>
+        <div class="keystudy-grid">
+          <div class="keystudy-card">
+            <div class="ks-top"><span class="ks-name">ESTIMABL2</span><span class="ks-scn">baixo risco · desintensificação</span></div>
+            <div class="ks-row"><b>População</b>CDT de baixo risco pós-tireoidectomia.</div>
+            <div class="ks-row"><b>Intervenção / comparador</b>Seguimento sem RAI vs RAI ablativa.</div>
+            <p class="ks-msg">Não-inferioridade da omissão da RAI no baixo risco.</p>
+            <div class="ks-foot"><a class="ks-link" target="_blank" rel="noopener" href="database.html#tireoide_avancado_17"><i data-lucide="database" style="width:13px;height:13px"></i> Ficha no Database</a></div>
+          </div>
+          <div class="keystudy-card">
+            <div class="ks-top"><span class="ks-name">IoN</span><span class="ks-scn">baixo risco · omitir RAI</span></div>
+            <div class="ks-row"><b>População</b>CDT de baixo risco.</div>
+            <div class="ks-row"><b>Intervenção / comparador</b>Sem RAI vs RAI ablativa.</div>
+            <p class="ks-msg">Avalia a segurança de não ablacionar no baixo risco.</p>
+            <div class="ks-foot"><a class="ks-link" target="_blank" rel="noopener" href="database.html#tireoide_avancado_18"><i data-lucide="database" style="width:13px;height:13px"></i> Ficha no Database</a></div>
+          </div>
+          <div class="keystudy-card">
+            <div class="ks-top"><span class="ks-name">HiLo</span><span class="ks-scn">ablação · dose / preparo</span></div>
+            <div class="ks-row"><b>População</b>CDT de baixo/intermediário risco.</div>
+            <div class="ks-row"><b>Intervenção / comparador</b>30 vs 100 mCi; rhTSH vs suspensão hormonal.</div>
+            <p class="ks-msg">Baixa atividade e rhTSH equivalem à alta dose e à suspensão para a ablação.</p>
+            <div class="ks-foot"><a class="ks-link" target="_blank" rel="noopener" href="database.html#tireoide_avancado_15"><i data-lucide="database" style="width:13px;height:13px"></i> Ficha no Database</a></div>
+          </div>
+          <div class="keystudy-card">
+            <div class="ks-top"><span class="ks-name">SELECT</span><span class="ks-scn">refratário · lenvatinibe</span></div>
+            <div class="ks-row"><b>População</b>CDT iodo-refratário progressivo.</div>
+            <div class="ks-row"><b>Intervenção / comparador</b>Lenvatinibe vs placebo.</div>
+            <p class="ks-msg">Lenvatinibe melhora a PFS no CDT refratário.</p>
+            <div class="ks-foot"><a class="ks-link" target="_blank" rel="noopener" href="database.html#tireoide_avancado_0"><i data-lucide="database" style="width:13px;height:13px"></i> Ficha no Database</a></div>
+          </div>
+          <div class="keystudy-card">
+            <div class="ks-top"><span class="ks-name">DECISION</span><span class="ks-scn">refratário · sorafenibe</span></div>
+            <div class="ks-row"><b>População</b>CDT iodo-refratário.</div>
+            <div class="ks-row"><b>Intervenção / comparador</b>Sorafenibe vs placebo.</div>
+            <p class="ks-msg">Primeiro TKI a melhorar a PFS no CDT refratário.</p>
+            <div class="ks-foot"><a class="ks-link" target="_blank" rel="noopener" href="database.html#tireoide_avancado_1"><i data-lucide="database" style="width:13px;height:13px"></i> Ficha no Database</a></div>
+          </div>
+          <div class="keystudy-card">
+            <div class="ks-top"><span class="ks-name">COSMIC-311</span><span class="ks-scn">refratário · 2ª linha</span></div>
+            <div class="ks-row"><b>População</b>CDT refratário após VEGFR-TKI.</div>
+            <div class="ks-row"><b>Intervenção / comparador</b>Cabozantinibe vs placebo.</div>
+            <p class="ks-msg">Cabozantinibe após progressão a TKI prévio.</p>
+            <div class="ks-foot"><a class="ks-link" target="_blank" rel="noopener" href="database.html#tireoide_avancado_2"><i data-lucide="database" style="width:13px;height:13px"></i> Ficha no Database</a></div>
+          </div>
+          <div class="keystudy-card">
+            <div class="ks-top"><span class="ks-name">LIBRETTO-531</span><span class="ks-scn">CMT · RET 1ª linha</span></div>
+            <div class="ks-row"><b>População</b>CMT avançado RET-mutado.</div>
+            <div class="ks-row"><b>Intervenção / comparador</b>Selpercatinibe vs cabozantinibe/vandetanibe.</div>
+            <p class="ks-msg">Selpercatinibe superior ao TKI multi-alvo no CMT RET+.</p>
+            <div class="ks-foot"><a class="ks-link" target="_blank" rel="noopener" href="database.html#tireoide_avancado_4"><i data-lucide="database" style="width:13px;height:13px"></i> Ficha no Database</a></div>
+          </div>
+          <div class="keystudy-card">
+            <div class="ks-top"><span class="ks-name">EXAM</span><span class="ks-scn">CMT · cabozantinibe</span></div>
+            <div class="ks-row"><b>População</b>CMT avançado progressivo.</div>
+            <div class="ks-row"><b>Intervenção / comparador</b>Cabozantinibe vs placebo.</div>
+            <p class="ks-msg">Cabozantinibe melhora a PFS no carcinoma medular.</p>
+            <div class="ks-foot"><a class="ks-link" target="_blank" rel="noopener" href="database.html#tireoide_avancado_6"><i data-lucide="database" style="width:13px;height:13px"></i> Ficha no Database</a></div>
+          </div>
+          <div class="keystudy-card">
+            <div class="ks-top"><span class="ks-name">ROAR (ATC)</span><span class="ks-scn">CAT · BRAF V600E</span></div>
+            <div class="ks-row"><b>População</b>Carcinoma anaplásico BRAF V600E.</div>
+            <div class="ks-row"><b>Intervenção</b>Dabrafenibe + trametinibe.</div>
+            <p class="ks-msg">Resposta no anaplásico BRAF-mutado, doença historicamente fatal.</p>
+            <div class="ks-foot"><a class="ks-link" target="_blank" rel="noopener" href="database.html#tireoide_avancado_7"><i data-lucide="database" style="width:13px;height:13px"></i> Ficha no Database</a></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8. TRIAL LINEAGE -->
+      <div class="pm-block" id="tir-8">
+        <div class="pm-block-head"><span class="pm-num">8</span><h3>Trial Lineage — publicações secundárias e análises derivadas</h3></div>
+        <p class="pm-lead">Um estudo pivotal raramente é uma publicação única: gera uma <strong>família de evidências</strong> — follow-ups, subgrupos, qualidade de vida, segurança, biomarcadores e abstracts de congresso.</p>
+        <div class="ds-note" style="background:rgba(143,148,156,0.07);border-color:var(--border-soft)">
+          <i data-lucide="construction" style="width:18px;height:18px;color:var(--stone)"></i>
+          <p>O Trial Lineage de tireoide está <b>em desenvolvimento</b> — as publicações secundárias serão conectadas ao catálogo. Por ora, as fichas completas, com citações e links oficiais, estão no <a href="database.html?cat=tireoide" target="_blank" rel="noopener" style="color:var(--amber)">Database</a>.</p>
+        </div>
+      </div>
+
+      <!-- 9. CRITÉRIOS PRÁTICOS -->
+      <div class="pm-block" id="tir-9">
+        <div class="pm-block-head"><span class="pm-num">9</span><h3>Critérios práticos de discussão</h3></div>
+        <p class="pm-lead">Checklist clínico a revisar antes de discutir RAI ou terapia-alvo.</p>
+        <div class="q-groups">
+          <div class="q-group">
+            <div class="q-group-title"><i data-lucide="user"></i> Dados clínicos</div>
+            <ul><li>Idade</li><li>ECOG / Karnofsky</li><li>Sintomas</li><li>Comorbidades</li><li>Expectativa e objetivo terapêutico</li></ul>
+          </div>
+          <div class="q-group">
+            <div class="q-group-title"><i data-lucide="history"></i> Histológico e bioquímico</div>
+            <ul><li>Tipo (CDT / CMT / CAT) e variante</li><li>Estratificação de risco ATA</li><li>Tireoglobulina e anti-Tg / calcitonina-CEA (CMT)</li><li>Mutações (BRAF, RET)</li><li>Tratamentos prévios (RAI, TKI)</li></ul>
+          </div>
+          <div class="q-group">
+            <div class="q-group-title"><i data-lucide="scan-line"></i> Imagem e iodo-avidez</div>
+            <ul><li>Pesquisa de corpo inteiro (PCI)</li><li>Status de iodo-avidez</li><li>US cervical, TC/RM</li><li>FDG PET em suspeita de refratariedade</li></ul>
+          </div>
+          <div class="q-group">
+            <div class="q-group-title"><i data-lucide="shield-alert"></i> Segurança</div>
+            <ul><li>Hemograma e função renal</li><li>Glândulas salivares (xerostomia) na RAI repetida</li><li>Atividade cumulativa de I-131</li><li>Toxicidade esperada do TKI (HAS, mãos-pés, proteinúria)</li></ul>
+          </div>
+          <div class="q-group">
+            <div class="q-group-title"><i data-lucide="flask-conical"></i> Acesso e pesquisa</div>
+            <ul><li>Quarto plumbífero e estrutura para RAI</li><li>Terapia-alvo aprovada / disponível</li><li>Possibilidade de inclusão em trial</li><li>Necessidade de encaminhamento</li></ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 10. ENSAIOS CLÍNICOS ATIVOS -->
+      <div class="pm-block" id="tir-10">
+        <div class="pm-block-head"><span class="pm-num">10</span><h3>Ensaios clínicos ativos relacionados</h3></div>
+        <p class="pm-lead">Ensaios em andamento ou recrutando em câncer de tireoide — RAI, redifferentiation, terapia-alvo (TKI, RET, BRAF) e modalidades emergentes. <strong>A elegibilidade final depende sempre do protocolo oficial e do centro responsável.</strong></p>
+        <div class="link-cards" style="max-width:520px">
+          <a class="link-card" target="_blank" rel="noopener" href="ensaios-clinicos.html">
+            <i data-lucide="microscope" style="width:18px;height:18px"></i>
+            <span>Ver ensaios ativos — filtrar por “Tireoide”</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 11. GUIDELINES CONECTADOS -->
+      <div class="pm-block" id="tir-11">
+        <div class="pm-block-head"><span class="pm-num">11</span><h3>Guidelines conectados</h3></div>
+        <p class="pm-lead">Diretrizes relevantes já disponíveis no TheraTrials.</p>
+        <div class="link-cards">
+          <a class="link-card" target="_blank" rel="noopener" href="guideline-detail.html#rait-snmmi-eanm-dtc-2022"><i data-lucide="book-open" style="width:18px;height:18px"></i><span>Radioiodoterapia no CDT · SNMMI/EANM 2022</span></a>
+          <a class="link-card" target="_blank" rel="noopener" href="guideline-detail.html#rait-ata-dtc-2025"><i data-lucide="book-open" style="width:18px;height:18px"></i><span>ATA 2025 · manejo do câncer de tireoide</span></a>
+          <a class="link-card" target="_blank" rel="noopener" href="guideline-detail.html#rait-eanm-benign-2023"><i data-lucide="book-open" style="width:18px;height:18px"></i><span>Radioiodo em doença tireoidiana benigna · EANM 2023</span></a>
+          <a class="link-card" target="_blank" rel="noopener" href="guideline-detail.html#service-eanm-snmmi-iaea-2022"><i data-lucide="book-open" style="width:18px;height:18px"></i><span>Serviço / radioproteção</span></a>
+          <a class="link-card" target="_blank" rel="noopener" href="guidelines.html"><i data-lucide="library" style="width:18px;height:18px"></i><span>Ver todas as guidelines</span></a>
+        </div>
+      </div>
+
+      <!-- 12. FERRAMENTAS ÚTEIS -->
+      <div class="pm-block" id="tir-12">
+        <div class="pm-block-head"><span class="pm-num">12</span><h3>Ferramentas úteis</h3></div>
+        <p class="pm-lead">Calculadoras e critérios já disponíveis na página de Ferramentas.</p>
+        <div class="link-cards">
+          <a class="link-card" target="_blank" rel="noopener" href="ferramentas.html#ajcc"><i data-lucide="layers" style="width:18px;height:18px"></i><span>Estadiamento AJCC · TNM</span></a>
+          <a class="link-card" target="_blank" rel="noopener" href="ferramentas.html#anatomica"><i data-lucide="ruler" style="width:18px;height:18px"></i><span>Resposta anatômica (RECIST 1.1)</span></a>
+          <a class="link-card" target="_blank" rel="noopener" href="ferramentas.html#ctcae"><i data-lucide="alert-triangle" style="width:18px;height:18px"></i><span>Eventos adversos · CTCAE</span></a>
+          <a class="link-card" target="_blank" rel="noopener" href="ferramentas.html#renal"><i data-lucide="droplet" style="width:18px;height:18px"></i><span>Função renal</span></a>
+          <a class="link-card" target="_blank" rel="noopener" href="ferramentas.html#clinica"><i data-lucide="activity" style="width:18px;height:18px"></i><span>ECOG / Karnofsky</span></a>
+        </div>
+      </div>
+
+      <!-- 13. CHECKLISTS -->
+      <div class="pm-block" id="tir-13">
+        <div class="pm-block-head"><span class="pm-num">13</span><h3>Checklists</h3></div>
+        <p class="pm-lead">Três listas de <strong>itens para revisão</strong> — organização do caso, não critérios de elegibilidade (a avaliação formal cabe à equipe responsável). Cada uma pode ser copiada em texto.</p>
+
+        <div class="rlt-checklist">
+          <div class="rlt-checklist-head">
+            <h4><i data-lucide="send" style="width:16px;height:16px"></i> Encaminhamento para discussão de tireoide (RAI / terapia-alvo)</h4>
+            <button class="btn btn-secondary btn-sm copy-checklist-btn" @click="copyChecklist('encaminhamento')"><i data-lucide="copy" style="width:14px;height:14px"></i> Copiar</button>
+          </div>
+          <div class="bc-grid">
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Diagnóstico histológico (CDT / CMT / CAT)</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Variante e características de agressividade</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Estadiamento (TNM / AJCC)</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Estratificação de risco ATA</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Status pós-cirúrgico (tireoidectomia/lobectomia)</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Tireoglobulina (Tg) e anti-Tg; calcitonina/CEA (CMT)</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Pesquisa de corpo inteiro (PCI) / cintilografia de iodo</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> FDG PET, se suspeita de refratariedade</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Status de iodo-avidez</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> TSH e função tireoidiana</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Hemograma</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Função renal</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> ECOG / Karnofsky</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Tratamentos prévios (RAI, TKI)</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Objetivo da discussão</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Possibilidade de ensaio clínico</div>
+          </div>
+        </div>
+
+        <div class="rlt-checklist">
+          <div class="rlt-checklist-head">
+            <h4><i data-lucide="presentation" style="width:16px;height:16px"></i> Apresentação de caso no tumor board</h4>
+            <button class="btn btn-secondary btn-sm copy-checklist-btn" @click="copyChecklist('board')"><i data-lucide="copy" style="width:14px;height:14px"></i> Copiar</button>
+          </div>
+          <div class="bc-grid">
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Pergunta clínica objetiva</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Tipo histológico e variante</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Estratificação de risco ATA / status de resposta</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Status de iodo-avidez (ávido / refratário)</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Tg ou calcitonina e cinética</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Status de imagem (PCI, TC/RM, FDG PET)</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Linha terapêutica atual</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Histórico de tratamentos e respostas</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Performance status</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Sintomas</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Opções aprovadas</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Ensaios clínicos disponíveis</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Limitações ou incertezas</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Próximo passo proposto para discussão</div>
+          </div>
+        </div>
+
+        <div class="rlt-checklist">
+          <div class="rlt-checklist-head">
+            <h4><i data-lucide="folder-check" style="width:16px;height:16px"></i> Pré-terapia, preparo e acesso (RAI)</h4>
+            <button class="btn btn-secondary btn-sm copy-checklist-btn" @click="copyChecklist('preterapia')"><i data-lucide="copy" style="width:14px;height:14px"></i> Copiar</button>
+          </div>
+          <div class="bc-grid">
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Relatório médico</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Status pós-tireoidectomia</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Preparo de TSH (suspensão de levotiroxina ou rhTSH)</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Dieta hipoiódica</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Tireoglobulina basal/estimulada</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Exclusão de contraste iodado recente</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Beta-hCG (mulheres em idade fértil)</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Hemograma e função renal</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Atividade de I-131 definida (conforme risco)</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Orientações de radioproteção e isolamento</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Consentimento institucional, se aplicável</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Autorização</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Agendamento (quarto plumbífero)</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Plano de PCI pós-dose</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Plano de seguimento (Tg, US, reestratificação)</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 14. LINKS INTERNOS E PRÓXIMOS PASSOS -->
+      <div class="pm-block" id="tir-14">
+        <div class="pm-block-head"><span class="pm-num">14</span><h3>Links internos e próximos passos</h3></div>
+        <div class="link-cards">
+          <a class="link-card" target="_blank" rel="noopener" href="database.html?cat=tireoide"><i data-lucide="database" style="width:18px;height:18px"></i><span>Abrir Database (tireoide)</span></a>
+          <a class="link-card" target="_blank" rel="noopener" href="database.html?cat=tireoide"><i data-lucide="git-compare" style="width:18px;height:18px"></i><span>Comparar estudos de tireoide</span></a>
+          <a class="link-card" target="_blank" rel="noopener" href="ensaios-clinicos.html"><i data-lucide="microscope" style="width:18px;height:18px"></i><span>Ver ensaios ativos</span></a>
+          <a class="link-card" target="_blank" rel="noopener" href="guidelines.html"><i data-lucide="book-open" style="width:18px;height:18px"></i><span>Abrir guidelines</span></a>
+          <a class="link-card" target="_blank" rel="noopener" href="ferramentas.html"><i data-lucide="wrench" style="width:18px;height:18px"></i><span>Abrir ferramentas</span></a>
+          <a class="link-card" target="_blank" rel="noopener" href="about.html"><i data-lucide="message-square-plus" style="width:18px;height:18px"></i><span>Sugerir estudo ou correção</span></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- EXPLORAR ESTUDOS POR TUMOR (browser existente, preservado) -->
 <section style="padding: 1rem 0 0">
   <div class="container">
@@ -3547,7 +4350,6 @@
       upcomingMaps: [
         { id: 'mama',       name: 'Mama',                             icon: 'flower-2',      color: '#EC4899', badges: ['HER2', 'FAPI', 'FES'] },
         { id: 'pulmao',     name: 'Pulmão',                           icon: 'wind',          color: '#22D3EE', badges: ['DLL3', 'FAPI'] },
-        { id: 'tireoide',   name: 'Tireoide',                         icon: 'circle-dot',    color: '#06B6D4', badges: ['I-131', 'RAI'] },
         { id: 'meningioma', name: 'Meningioma',                       icon: 'brain',         color: '#A855F7', badges: ['SSTR', 'Lu-177'] },
       ],
 
@@ -3567,6 +4369,7 @@
           { key: 'netter2', name: 'NETTER-2', uid: 'net_gep_1' },
         ],
         hcc: [],
+        tireoide: [],
       },
       get lineageParents() { return this.lineageParentsByTumor[this.openMap] || []; },
 
@@ -3607,7 +4410,7 @@
         this.$nextTick(() => document.getElementById('hub-' + (prev || 'prostata'))?.scrollIntoView({ behavior: 'smooth', block: 'center' }));
       },
 
-      mapNames: { prostata: 'Câncer de próstata', net: 'Tumores neuroendócrinos', hcc: 'Carcinoma hepatocelular e vias biliares' },
+      mapNames: { prostata: 'Câncer de próstata', net: 'Tumores neuroendócrinos', hcc: 'Carcinoma hepatocelular e vias biliares', tireoide: 'Câncer de tireoide' },
       checklistsByTumor: {
         prostata: {
           encaminhamento: {
@@ -3649,6 +4452,20 @@
           preterapia: {
             title: 'Pré-terapia, documentação e acesso (TARE)',
             items: ['Relatório médico', 'Imagem trifásica / RM recente', 'Volumetria e segmentação (tumor / fígado)', 'Mapeamento angiográfico planejado', '99mTc-MAA: shunt hepatopulmonar', 'Dosimetria pré-terapêutica', 'Exames laboratoriais (bilirrubina, ALBI)', 'Hemograma', 'Função renal', 'Embolização profilática de colaterais GI', 'Consentimento institucional, se aplicável', 'Orientações de radioproteção', 'Autorização', 'Agendamento', 'Plano de seguimento e resposta (mRECIST)'],
+          },
+        },
+        tireoide: {
+          encaminhamento: {
+            title: 'Encaminhamento para discussão de tireoide (RAI / terapia-alvo)',
+            items: ['Diagnóstico histológico (CDT / CMT / CAT)', 'Variante e características de agressividade', 'Estadiamento (TNM/AJCC)', 'Estratificação de risco ATA', 'Status pós-cirúrgico (tireoidectomia/lobectomia)', 'Tireoglobulina (Tg) e anti-Tg; calcitonina/CEA (CMT)', 'Pesquisa de corpo inteiro (PCI) / cintilografia de iodo', 'FDG PET, se suspeita de refratariedade', 'Status de iodo-avidez', 'TSH e função tireoidiana', 'Hemograma', 'Função renal', 'ECOG / Karnofsky', 'Tratamentos prévios (RAI, TKI)', 'Objetivo da discussão', 'Possibilidade de ensaio clínico'],
+          },
+          board: {
+            title: 'Apresentação de caso no tumor board',
+            items: ['Pergunta clínica objetiva', 'Tipo histológico e variante', 'Estratificação de risco ATA / status de resposta', 'Status de iodo-avidez (ávido / refratário)', 'Tg ou calcitonina e cinética', 'Status de imagem (PCI, TC/RM, FDG PET)', 'Linha terapêutica atual', 'Histórico de tratamentos e respostas', 'Performance status', 'Sintomas', 'Opções aprovadas', 'Ensaios clínicos disponíveis', 'Limitações ou incertezas', 'Próximo passo proposto para discussão'],
+          },
+          preterapia: {
+            title: 'Pré-terapia, preparo e acesso (RAI)',
+            items: ['Relatório médico', 'Status pós-tireoidectomia', 'Preparo de TSH (suspensão de levotiroxina ou rhTSH)', 'Dieta hipoiódica', 'Tireoglobulina basal/estimulada', 'Exclusão de contraste iodado recente', 'Beta-hCG (mulheres em idade fértil)', 'Hemograma e função renal', 'Atividade de I-131 definida (conforme risco)', 'Orientações de radioproteção e isolamento', 'Consentimento institucional, se aplicável', 'Autorização', 'Agendamento (quarto plumbífero)', 'Plano de PCI pós-dose', 'Plano de seguimento (Tg, US, reestratificação)'],
           },
         },
       },
