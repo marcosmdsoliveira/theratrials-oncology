@@ -960,6 +960,27 @@
         </div>
       </article>
 
+      <!-- MAMA — ativo -->
+      <article class="tumor-map-card is-active" style="--accent-color:#EC4899;--accent-rgb:236,72,153" @click="openTumorMap('mama')" id="hub-mama">
+        <div class="tmc-head">
+          <div class="tmc-icon"><i data-lucide="flower-2" style="width:24px;height:24px"></i></div>
+          <div>
+            <div class="tmc-title">Câncer de mama</div>
+            <span class="tmc-status on">Mapa completo</span>
+          </div>
+        </div>
+        <div class="tmc-badges">
+          <span class="mod-pill stage">HR+/HER2−</span>
+          <span class="mod-pill psma">HER2+</span>
+          <span class="mod-pill">TNBC</span>
+          <span class="mod-pill lu177">T-DXd · ADC</span>
+          <span class="mod-pill">FES · HER2-PET</span>
+        </div>
+        <div class="tmc-foot">
+          <span class="tmc-open">Abrir mapa <i data-lucide="arrow-right" style="width:15px;height:15px"></i></span>
+        </div>
+      </article>
+
       <!-- EM DESENVOLVIMENTO -->
       <template x-for="soon in upcomingMaps" :key="soon.id">
         <article class="tumor-map-card is-soon" :style="`--accent-color:${soon.color};--accent-rgb:${hexToRgb(soon.color)}`">
@@ -4183,6 +4204,817 @@
   </div>
 </section>
 
+<!-- MÓDULO: TUMOR BOARD MAP — CÂNCER DE MAMA -->
+<section x-show="openMap === 'mama'" x-cloak id="map-mama" style="padding:0">
+  <div class="container">
+    <div class="map-module" style="--accent-color:#EC4899;--accent-rgb:236,72,153">
+
+      <button class="detail-back" @click="closeMap()">
+        <i data-lucide="arrow-left" style="width:14px;height:14px"></i>
+        <span>Voltar aos mapas</span>
+      </button>
+
+      <div class="mm-head">
+        <h1 class="mm-title"><i data-lucide="flower-2" style="width:30px;height:30px"></i> Tumor Board Map — Câncer de Mama</h1>
+        <p class="mm-sub">Dos três subtipos moleculares (HR+/HER2−, HER2+, TNBC) e seus biomarcadores aos ADCs, ao conceito HER2-low e ao papel — sobretudo de imagem — da medicina nuclear.</p>
+      </div>
+
+      <nav class="mm-nav">
+        <a href="#mama-1">1 · Visão geral</a>
+        <a href="#mama-2">2 · Teoria essencial</a>
+        <a href="#mama-3">3 · Perguntas do board</a>
+        <a href="#mama-4">4 · Jornada terapêutica</a>
+        <a href="#mama-5">5 · Jornada do paciente</a>
+        <a href="#mama-6">6 · Mapa de evidências</a>
+        <a href="#mama-7">7 · Estudos-chave</a>
+        <a href="#mama-8">8 · Trial Lineage</a>
+        <a href="#mama-9">9 · Critérios práticos</a>
+        <a href="#mama-10">10 · Ensaios ativos</a>
+        <a href="#mama-11">11 · Guidelines</a>
+        <a href="#mama-12">12 · Ferramentas</a>
+        <a href="#mama-13">13 · Checklists</a>
+        <a href="#mama-14">14 · Próximos passos</a>
+      </nav>
+
+      <!-- 1. VISÃO GERAL -->
+      <div class="pm-block" id="mama-1">
+        <div class="pm-block-head"><span class="pm-num">1</span><h3>Visão geral</h3></div>
+        <p class="pm-lead">O câncer de mama não é uma doença única: a conduta é definida pelo <strong>subtipo molecular</strong> — <strong>HR+/HER2−</strong> (luminal), <strong>HER2+</strong> e <strong>triplo-negativo (TNBC)</strong> — e pelo <strong>estádio</strong> (inicial/(neo)adjuvante vs avançado). Sobre esses eixos somam-se biomarcadores que abrem terapias dirigidas (BRCA, PIK3CA/AKT, ESR1, PD-L1) e o conceito de <strong>HER2-low/ultralow</strong>, que estendeu o trastuzumabe deruxtecana a tumores antes ditos HER2-negativos. A medicina nuclear contribui sobretudo com <strong>imagem molecular</strong> (FES, FDG, HER2-PET); a terapia com radiofármacos permanece investigacional.</p>
+      </div>
+
+      <!-- 2. TEORIA ESSENCIAL -->
+      <div class="pm-block" id="mama-2">
+        <div class="pm-block-head"><span class="pm-num">2</span><h3>Teoria essencial</h3></div>
+        <div class="concept-grid">
+          <div class="concept-card">
+            <div class="cc-ic"><i data-lucide="layers" style="width:18px;height:18px"></i></div>
+            <h4>Os três subtipos</h4>
+            <p>Receptores hormonais (RE/RP), HER2 e a ausência dos três (TNBC) definem subtipos com biologia e tratamento distintos. O subtipo orienta toda a árvore de decisão — da (neo)adjuvância à doença avançada.</p>
+          </div>
+          <div class="concept-card">
+            <div class="cc-ic"><i data-lucide="crosshair" style="width:18px;height:18px"></i></div>
+            <h4>Receptor como alvo e como imagem</h4>
+            <p>RE e HER2 são alvos terapêuticos e também alvos de imagem molecular: o 18F-FES mapeia o receptor de estrogênio e o 89Zr-trastuzumabe, o HER2 — um princípio análogo ao teranóstico, aqui sobretudo diagnóstico.</p>
+          </div>
+          <div class="concept-card">
+            <div class="cc-ic"><i data-lucide="package" style="width:18px;height:18px"></i></div>
+            <h4>ADCs e o conceito HER2-low</h4>
+            <p>Os conjugados anticorpo-fármaco (T-DXd anti-HER2; sacituzumabe govitecana anti-Trop-2) entregam quimioterapia dirigida. O T-DXd é ativo mesmo em expressão HER2 baixa (HER2-low/ultralow), criando uma categoria transversal aos subtipos.</p>
+          </div>
+          <div class="concept-card">
+            <div class="cc-ic"><i data-lucide="scan-line" style="width:18px;height:18px"></i></div>
+            <h4>O lugar da medicina nuclear</h4>
+            <p>Na mama, a medicina nuclear é majoritariamente de imagem (FES, FDG, HER2-PET, FAPI; cintilografia óssea). A terapia com radiofármacos é investigacional — o rádio-223 em metástases ósseas foi negativo.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. PERGUNTAS DO TUMOR BOARD -->
+      <div class="pm-block" id="mama-3">
+        <div class="pm-block-head"><span class="pm-num">3</span><h3>Perguntas do tumor board</h3></div>
+        <p class="pm-lead">As perguntas que estruturam a decisão em tumor board, agrupadas por eixo.</p>
+        <div class="q-groups">
+          <div class="q-group">
+            <div class="q-group-title"><i data-lucide="layers"></i> Subtipo e estádio</div>
+            <ul>
+              <li>É HR+/HER2−, HER2+ ou TNBC?</li>
+              <li>Doença inicial/(neo)adjuvante ou avançada/metastática?</li>
+              <li>Há expressão HER2-low ou ultralow?</li>
+            </ul>
+          </div>
+          <div class="q-group">
+            <div class="q-group-title"><i data-lucide="dna"></i> Biomarcadores</div>
+            <ul>
+              <li>Mutação germinativa BRCA1/2?</li>
+              <li>PIK3CA / AKT1 / PTEN (HR+)?</li>
+              <li>ESR1 em ctDNA pós-progressão endócrina?</li>
+              <li>PD-L1 (CPS) no TNBC?</li>
+            </ul>
+          </div>
+          <div class="q-group">
+            <div class="q-group-title"><i data-lucide="scan-line"></i> Imagem</div>
+            <ul>
+              <li>Estadiamento sistêmico adequado ao risco?</li>
+              <li>Status de RE incerto/discordante — indicar FES PET?</li>
+              <li>Avaliação de resposta planejada?</li>
+            </ul>
+          </div>
+          <div class="q-group">
+            <div class="q-group-title"><i data-lucide="target"></i> Objetivo terapêutico</div>
+            <ul>
+              <li>(Neo)adjuvância curativa, controle da doença avançada, ou inclusão em ensaio?</li>
+            </ul>
+          </div>
+          <div class="q-group">
+            <div class="q-group-title"><i data-lucide="shield-alert"></i> Segurança e acesso</div>
+            <ul>
+              <li>FEVE e risco cardiovascular (anti-HER2/antraciclina)?</li>
+              <li>Glicemia (inibidor de PI3K/AKT)?</li>
+              <li>Acesso ao agente/ADC ou a protocolo de pesquisa?</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. JORNADA TERAPÊUTICA -->
+      <div class="pm-block" id="mama-4">
+        <div class="pm-block-head"><span class="pm-num">4</span><h3>Jornada terapêutica</h3></div>
+        <p class="pm-lead">A jornada depende de dois eixos: o <strong>subtipo molecular</strong> (HR+/HER2−, HER2+, TNBC) e o <strong>estádio</strong> (inicial/(neo)adjuvante vs avançado/metastático). Biomarcadores adicionais (BRCA, PIK3CA/AKT, ESR1, PD-L1) e o status HER2-low refinam a escolha dentro de cada cenário.</p>
+
+        <!-- Matriz subtipo × estádio (3×2) -->
+        <div class="ds-matrix">
+          <div class="ds-corner"></div>
+          <div class="ds-colhead">Inicial <small>(neo)adjuvante</small></div>
+          <div class="ds-colhead">Avançado <small>metastático</small></div>
+
+          <div class="ds-rowlabel" style="background:rgba(236,72,153,0.12);color:#F9A8D4">HR+/HER2−</div>
+          <div class="ds-cell" style="--c:#EC4899">
+            <div class="ds-tag">HR+/HER2− inicial</div>
+            <p class="ds-def">Doença hormônio-sensível ressecável.</p>
+            <div class="ds-rx"><b>Tratamento típico</b>Cirurgia · endócrino adjuvante (IA/tamoxifeno ± supressão ovariana) · CDK4/6 adjuvante (abemaciclibe/ribociclibe) no alto risco</div>
+          </div>
+          <div class="ds-cell" style="--c:#EC4899">
+            <div class="ds-tag">HR+/HER2− avançado</div>
+            <p class="ds-def">Metastático hormônio-sensível.</p>
+            <div class="ds-rx"><b>Tratamento típico</b>Endócrino + CDK4/6 (1L) · depois alvos por biomarcador (PI3K/AKT, ESR1) e ADC</div>
+          </div>
+
+          <div class="ds-rowlabel" style="background:rgba(168,85,247,0.12);color:#D8B4FE">HER2+</div>
+          <div class="ds-cell" style="--c:#A855F7">
+            <div class="ds-tag">HER2+ inicial</div>
+            <p class="ds-def">Doença HER2-amplificada ressecável.</p>
+            <div class="ds-rx"><b>Tratamento típico</b>QT + duplo bloqueio HER2 (trastuzumabe + pertuzumabe) neo/adjuvante · T-DM1 se doença residual · neratinibe estendido</div>
+          </div>
+          <div class="ds-cell" style="--c:#A855F7">
+            <div class="ds-tag">HER2+ avançado</div>
+            <p class="ds-def">Metastático HER2+.</p>
+            <div class="ds-rx"><b>Tratamento típico</b>THP/duplo bloqueio + taxano (1L) · T-DXd (2L) · tucatinibe + trastuzumabe + capecitabina (doença de SNC)</div>
+          </div>
+
+          <div class="ds-rowlabel" style="background:rgba(251,113,133,0.12);color:#FDA4AF">TNBC</div>
+          <div class="ds-cell" style="--c:#FB7185">
+            <div class="ds-tag">TNBC inicial</div>
+            <p class="ds-def">Triplo-negativo de alto risco.</p>
+            <div class="ds-rx"><b>Tratamento típico</b>QT + pembrolizumabe (neo/adjuvante) · PARP adjuvante (olaparibe) se gBRCA</div>
+          </div>
+          <div class="ds-cell" style="--c:#FB7185">
+            <div class="ds-tag">TNBC avançado</div>
+            <p class="ds-def">Metastático triplo-negativo.</p>
+            <div class="ds-rx"><b>Tratamento típico</b>Pembrolizumabe + QT (PD-L1 CPS≥10) · ADC (sacituzumabe govitecana) · PARP (gBRCA)</div>
+          </div>
+        </div>
+
+        <div class="ds-legend">
+          <div><b>Subtipo</b> = RE/RP, HER2 (incl. HER2-low/ultralow) e Ki-67 definem a árvore de decisão.</div>
+          <div><b>Inicial vs avançado</b> = doença ressecável/(neo)adjuvante vs metastática.</div>
+        </div>
+
+        <div class="ds-note">
+          <i data-lucide="git-pull-request-arrow" style="width:18px;height:18px"></i>
+          <p><b>HER2-low e HER2-ultralow:</b> tumores HER2 IHC 1+ ou 2+/ISH− (low) e IHC >0–<1+ (ultralow) — antes classificados como HER2-negativos — respondem ao trastuzumabe deruxtecana (T-DXd). DESTINY-Breast04 e 06 criaram essa categoria terapêutica transversal, sobretudo no HR+ pós-endócrino.</p>
+        </div>
+
+        <div class="ds-note">
+          <i data-lucide="scan-line" style="width:18px;height:18px"></i>
+          <p><b>Medicina nuclear na mama:</b> o papel é sobretudo de <strong>imagem molecular</strong> — o 18F-FES (Cerianna) mapeia o receptor de estrogênio e o FDG/HER2-PET estadeiam e avaliam resposta. A terapia com radiofármacos é investigacional: o rádio-223 em metástases ósseas de mama foi negativo, e radioligantes anti-HER2/FAP seguem em pesquisa.</p>
+        </div>
+
+        <div class="pm-subhead">
+          <i data-lucide="route" style="width:18px;height:18px"></i>
+          <h4>Onde cada modalidade entra</h4>
+        </div>
+        <p class="pm-lead">Onde cada modalidade entra ao longo dos subtipos e cenários, com estudos reais. Clique para abrir a ficha; a lista completa está no <a href="database.html" target="_blank" rel="noopener" style="color:var(--amber)">Database</a>.</p>
+        <div class="therapy-timeline">
+          <div class="tt-phase" style="--c:#EC4899">
+            <span class="tt-dot"></span>
+            <h4>1 · HR+/HER2− inicial — cirurgia + endócrino (± CDK4/6)</h4>
+            <p>Endocrinoterapia adjuvante; supressão ovariana e CDK4/6 adjuvante no alto risco.</p>
+            <div class="esc-studies">
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#soft-text-supressao-ovariana-adjuvante">SOFT/TEXT</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#monarche-abemaciclib-adjuvante-alto-risco">monarchE</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#natalee-ribociclib-adjuvante-incluindo-n0">NATALEE</a>
+            </div>
+            <div class="tt-tags"><span class="tt-mat high">Endócrino / CDK4/6 adjuvante</span></div>
+          </div>
+          <div class="tt-phase" style="--c:#F472B6">
+            <span class="tt-dot"></span>
+            <h4>2 · HR+/HER2− avançado — endócrino + CDK4/6, depois alvos</h4>
+            <p>CDK4/6 + endócrino em 1L; depois PI3K/AKT, SERD oral e ADC conforme biomarcador.</p>
+            <div class="esc-studies">
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#monaleesa-2-ribociclib-letrozol-1l">MONALEESA-2</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#monarch-3-abemaciclib-ai-1l">MONARCH-3</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#paloma-2-palbociclib-letrozol-1l">PALOMA-2</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#solar-1-alpelisib-fulvestrant-pik3ca-mut">SOLAR-1</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#capitello-291-capivasertib-fulvestrant">CAPItello-291</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#emerald-elacestrant-oral-serd-p-s-cdk4-6">EMERALD</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#inavo120-inavolisib-palbo-fulvestrant-pik3ca-mut">INAVO120</a>
+            </div>
+            <div class="tt-tags"><span class="tt-mat high">Endócrino + alvos</span></div>
+          </div>
+          <div class="tt-phase" style="--c:#A855F7">
+            <span class="tt-dot"></span>
+            <h4>3 · HER2+ inicial — duplo bloqueio (neo)adjuvante</h4>
+            <p>QT + trastuzumabe + pertuzumabe; escalonamento com T-DM1 se doença residual.</p>
+            <div class="esc-studies">
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#neosphere-pertuzumab-neoadjuvante-her2">NeoSphere</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#aphinity-pertuzumab-adjuvante-her2">APHINITY</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#katherine-t-dm1-adjuvante-ap-s-resposta-incompleta-neoadj">KATHERINE</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#extenet-neratinib-adjuvante-ap-s-trastuzumab">ExteNET</a>
+            </div>
+            <div class="tt-tags"><span class="tt-mat high">Duplo bloqueio (neo)adjuvante</span></div>
+          </div>
+          <div class="tt-phase" style="--c:#8B5CF6">
+            <span class="tt-dot"></span>
+            <h4>4 · HER2+ avançado — THP → T-DXd → tucatinibe</h4>
+            <p>Duplo bloqueio + taxano em 1L; T-DXd em 2L; tucatinibe na doença de SNC.</p>
+            <div class="esc-studies">
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#cleopatra-pertuzumab-trastuzumab-docetaxel-1l-her2">CLEOPATRA</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#destiny-breast03-t-dxd-vs-t-dm1-em-her2-2l">DESTINY-Breast03</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#destiny-breast02-t-dxd-pos-t-dm1-her2">DESTINY-Breast02</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#her2climb-tucatinib-trastuzumab-capecitabina-her2-p-s-2l">HER2CLIMB</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#emilia-t-dm1-vs-lapatinib-capecitabina-2l-her2">EMILIA</a>
+            </div>
+            <div class="tt-tags"><span class="tt-mat high">Bloqueio HER2 + ADC</span></div>
+          </div>
+          <div class="tt-phase" style="--c:#FB7185">
+            <span class="tt-dot"></span>
+            <h4>5 · TNBC — quimio + imunoterapia; PARP em gBRCA</h4>
+            <p>Pembrolizumabe perioperatório e em 1L (CPS≥10); ADC e PARP nas linhas seguintes.</p>
+            <div class="esc-studies">
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#keynote-522-pembro-neoadjuvante-tnbc">KEYNOTE-522</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#keynote-355-pembro-qt-1l-tnbc-pd-l1">KEYNOTE-355</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#impassion130-atezolizumab-nabpaclitaxel-tnbc-1l">IMpassion130</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#ascent-sacituzumab-govitecan-vs-qt-em-tnbc-p-s-2l">ASCENT</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#olympia-olaparib-adjuvante-em-brca-alto-risco">OlympiA</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#olympiad-olaparib-em-mbc-brca">OlympiAD</a>
+            </div>
+            <div class="tt-tags"><span class="tt-mat high">IO · ADC · PARP</span></div>
+          </div>
+          <div class="tt-phase" style="--c:#FF8400">
+            <span class="tt-dot"></span>
+            <h4>6 · HER2-low / ultralow — T-DXd transversal</h4>
+            <p>Trastuzumabe deruxtecana em tumores HER2-baixos, sobretudo HR+ pós-endócrino.</p>
+            <div class="esc-studies">
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#destiny-breast04-t-dxd-em-her2-low-ihc-1-2-ish">DESTINY-Breast04</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#destiny-breast06-t-dxd-em-her2-low-ultralow-p-s-et">DESTINY-Breast06</a>
+            </div>
+            <div class="tt-tags"><span class="tt-mat mid">ADC anti-HER2 transversal</span></div>
+          </div>
+          <div class="tt-phase" style="--c:#22D3EE">
+            <span class="tt-dot"></span>
+            <h4>7 · Imagem molecular &amp; radiofármacos</h4>
+            <p>FES (receptor de estrogênio), HER2-PET e FAPI na imagem; rádio-223 investigacional (negativo).</p>
+            <div class="esc-studies">
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#fes-pet-fluoroestradiol-receptor-estrogenio">18F-FES PET</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#zephir-89zr-trastuzumab-her2-pet">ZEPHIR (HER2-PET)</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#fapi-s-ries-em-mama-imagem-e-terapia">FAPI</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#ra223-mama-osseo-fase2">Rádio-223 (negativo)</a>
+            </div>
+            <div class="tt-tags"><span class="tt-mat low">Imagem · investigacional</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. JORNADA DO PACIENTE -->
+      <div class="pm-block patient-journey-section" id="mama-5">
+        <div class="pm-block-head"><span class="pm-num">5</span><h3>Jornada do Paciente no Câncer de Mama</h3></div>
+        <p class="pm-lead" style="font-weight:600;color:var(--off-white)">Do diagnóstico e subtipagem aos biomarcadores, à (neo)adjuvância, à doença avançada e ao papel da imagem molecular na decisão.</p>
+        <div class="edu-callout" style="max-width:none;margin:0 0 1.25rem">
+          <i data-lucide="info" style="width:18px;height:18px"></i>
+          <p>Esta seção tem finalidade educacional e de melhoria de jornada assistencial. Não define elegibilidade individual, não recomenda tratamento e não substitui julgamento médico, bula, guidelines, protocolos institucionais ou consulta às fontes primárias.</p>
+        </div>
+
+        <p class="pm-lead" style="margin-bottom:0.75rem">O cuidado eficaz depende de uma cadeia: definir o subtipo e os biomarcadores, decidir (neo)adjuvância, tratar a doença avançada por subtipo e reavaliar na progressão. As etapas abaixo mapeiam esse percurso.</p>
+
+        <div class="journey-timeline">
+
+          <details class="journey-step-card" open>
+            <summary><span class="js-num">1</span><span class="js-step-title">Diagnóstico e subtipo</span><i class="js-chev" data-lucide="chevron-right" style="width:16px;height:16px"></i></summary>
+            <div class="js-body">
+              <div class="js-row"><b>Objetivo</b>Definir histologia, grau e subtipo (RE/RP, HER2 incl. HER2-low/ultralow, Ki-67).</div>
+              <div class="js-row"><b>Profissionais envolvidos</b>Patologia, mastologia e oncologia.</div>
+              <div class="js-row"><b>Dados necessários</b>Histologia, imuno-histoquímica (RE/RP, HER2), Ki-67 e, quando 2+, ISH.</div>
+              <div class="js-links">
+                <a class="js-link" target="_blank" rel="noopener" href="ferramentas.html#ajcc"><i data-lucide="layers" style="width:12px;height:12px"></i> Estadiamento</a>
+                <a class="js-link" target="_blank" rel="noopener" href="database.html"><i data-lucide="database" style="width:12px;height:12px"></i> Database</a>
+                <a class="js-link" href="#mama-6"><i data-lucide="map" style="width:12px;height:12px"></i> Mapa de evidências</a>
+              </div>
+            </div>
+          </details>
+
+          <details class="journey-step-card">
+            <summary><span class="js-num">2</span><span class="js-step-title">Biomarcadores e estadiamento</span><i class="js-chev" data-lucide="chevron-right" style="width:16px;height:16px"></i></summary>
+            <div class="js-body">
+              <div class="js-row"><b>Objetivo</b>Testar biomarcadores acionáveis e estadiar conforme o risco.</div>
+              <div class="js-row"><b>Profissionais envolvidos</b>Oncologia, patologia molecular e genética clínica.</div>
+              <div class="js-row"><b>Dados necessários</b>BRCA germinativo, PIK3CA/AKT1/PTEN, ESR1 (ctDNA na progressão), PD-L1 (CPS no TNBC), estadiamento por imagem.</div>
+              <div class="js-links">
+                <a class="js-link" href="#mama-9"><i data-lucide="list-checks" style="width:12px;height:12px"></i> Critérios práticos</a>
+                <a class="js-link" target="_blank" rel="noopener" href="database.html"><i data-lucide="database" style="width:12px;height:12px"></i> Database</a>
+              </div>
+            </div>
+          </details>
+
+          <details class="journey-step-card">
+            <summary><span class="js-num">3</span><span class="js-step-title">Cirurgia e/ou neoadjuvância</span><i class="js-chev" data-lucide="chevron-right" style="width:16px;height:16px"></i></summary>
+            <div class="js-body">
+              <div class="js-row"><b>Objetivo</b>Decidir entre tratamento neoadjuvante (frequente em HER2+ e TNBC) e cirurgia inicial.</div>
+              <div class="js-row"><b>Profissionais envolvidos</b>Mastologia, oncologia e radio-oncologia.</div>
+              <div class="js-row"><b>Dados necessários</b>Subtipo, estádio, resposta esperada e candidatura à desescalada/escalonamento guiado por resposta.</div>
+              <div class="js-links">
+                <a class="js-link" href="#mama-7"><i data-lucide="microscope" style="width:12px;height:12px"></i> Estudos-chave</a>
+                <a class="js-link" target="_blank" rel="noopener" href="ferramentas.html#anatomica"><i data-lucide="ruler" style="width:12px;height:12px"></i> Resposta (RECIST)</a>
+              </div>
+            </div>
+          </details>
+
+          <details class="journey-step-card">
+            <summary><span class="js-num">4</span><span class="js-step-title">Terapia adjuvante</span><i class="js-chev" data-lucide="chevron-right" style="width:16px;height:16px"></i></summary>
+            <div class="js-body">
+              <div class="js-row"><b>Objetivo</b>Reduzir o risco de recidiva conforme o subtipo.</div>
+              <div class="js-row"><b>Profissionais envolvidos</b>Oncologia clínica e mastologia.</div>
+              <div class="js-row"><b>Dados necessários</b>Endócrino ± CDK4/6 (HR+); anti-HER2 ± T-DM1/neratinibe (HER2+); pembrolizumabe e PARP em gBRCA (TNBC).</div>
+              <div class="js-links">
+                <a class="js-link" href="#mama-4"><i data-lucide="route" style="width:12px;height:12px"></i> Jornada terapêutica</a>
+                <a class="js-link" target="_blank" rel="noopener" href="database.html"><i data-lucide="database" style="width:12px;height:12px"></i> Database</a>
+              </div>
+            </div>
+          </details>
+
+          <details class="journey-step-card">
+            <summary><span class="js-num">5</span><span class="js-step-title">Discussão em tumor board</span><i class="js-chev" data-lucide="chevron-right" style="width:16px;height:16px"></i></summary>
+            <div class="js-body">
+              <div class="js-row"><b>Objetivo</b>Integrar subtipo, biomarcadores, cardiotoxicidade, acesso e pesquisa.</div>
+              <div class="js-row"><b>Profissionais envolvidos</b>Oncologia, mastologia, patologia, radiologia/medicina nuclear, radio-oncologia e pesquisa clínica.</div>
+              <div class="js-row"><b>Dados necessários</b>Caso completo com pergunta clínica objetiva.</div>
+              <div class="js-links">
+                <a class="js-link" href="#mama-13"><i data-lucide="clipboard-check" style="width:12px;height:12px"></i> Checklist de apresentação</a>
+                <a class="js-link" href="#mama-10"><i data-lucide="microscope" style="width:12px;height:12px"></i> Ensaios ativos</a>
+              </div>
+            </div>
+          </details>
+
+          <details class="journey-step-card">
+            <summary><span class="js-num">6</span><span class="js-step-title">Doença avançada — 1ª linha por subtipo</span><i class="js-chev" data-lucide="chevron-right" style="width:16px;height:16px"></i></summary>
+            <div class="js-body">
+              <div class="js-row"><b>Objetivo</b>Definir a 1ª linha conforme subtipo e biomarcadores.</div>
+              <div class="js-row"><b>Profissionais envolvidos</b>Oncologia clínica e medicina nuclear (imagem).</div>
+              <div class="js-row"><b>Dados necessários</b>Endócrino + CDK4/6 (HR+); duplo bloqueio + taxano (HER2+); pembrolizumabe + QT se CPS≥10 (TNBC).</div>
+              <div class="js-links">
+                <a class="js-link" href="#mama-6"><i data-lucide="map" style="width:12px;height:12px"></i> Mapa de evidências</a>
+                <a class="js-link" target="_blank" rel="noopener" href="database.html"><i data-lucide="database" style="width:12px;height:12px"></i> Database</a>
+              </div>
+            </div>
+          </details>
+
+          <details class="journey-step-card">
+            <summary><span class="js-num">7</span><span class="js-step-title">Imagem molecular na decisão</span><i class="js-chev" data-lucide="chevron-right" style="width:16px;height:16px"></i></summary>
+            <div class="js-body">
+              <div class="js-row"><b>Objetivo</b>Esclarecer status de RE/HER2 e avaliar resposta quando a imagem convencional é insuficiente.</div>
+              <div class="js-row"><b>Profissionais envolvidos</b>Medicina nuclear e radiologia.</div>
+              <div class="js-row"><b>Dados necessários</b>FES PET (RE incerto/discordante), FDG PET (estadiamento), HER2-PET e FAPI em pesquisa.</div>
+              <div class="js-links">
+                <a class="js-link" href="#mama-2"><i data-lucide="scan-line" style="width:12px;height:12px"></i> Teoria essencial</a>
+                <a class="js-link" target="_blank" rel="noopener" href="database.html#fes-pet-fluoroestradiol-receptor-estrogenio"><i data-lucide="database" style="width:12px;height:12px"></i> 18F-FES</a>
+              </div>
+            </div>
+          </details>
+
+          <details class="journey-step-card">
+            <summary><span class="js-num">8</span><span class="js-step-title">Linhas subsequentes e ensaios</span><i class="js-chev" data-lucide="chevron-right" style="width:16px;height:16px"></i></summary>
+            <div class="js-body">
+              <div class="js-row"><b>Objetivo</b>Sequenciar ADCs e alvos por biomarcador e avaliar inclusão em ensaios.</div>
+              <div class="js-row"><b>Profissionais envolvidos</b>Oncologia clínica e pesquisa clínica.</div>
+              <div class="js-row"><b>Dados necessários</b>Status de HER2-low, ESR1/PIK3CA/AKT na progressão, gBRCA e opções de ADC.</div>
+              <div class="js-links">
+                <a class="js-link" target="_blank" rel="noopener" href="trial-matcher.html"><i data-lucide="git-compare" style="width:12px;height:12px"></i> Trial Matcher</a>
+                <a class="js-link" target="_blank" rel="noopener" href="ensaios-clinicos.html"><i data-lucide="microscope" style="width:12px;height:12px"></i> Ensaios ativos</a>
+                <a class="js-link" target="_blank" rel="noopener" href="database.html"><i data-lucide="database" style="width:12px;height:12px"></i> Database</a>
+              </div>
+            </div>
+          </details>
+
+        </div>
+
+        <!-- Gargalos -->
+        <details class="pm-collapse">
+          <summary class="pm-subhead" id="mama-5-gargalos">
+            <i data-lucide="alert-triangle" style="width:18px;height:18px"></i>
+            <h4>Gargalos da Jornada e Oportunidades de Otimização</h4>
+            <span class="pm-collapse-hint">10 gargalos + indicadores</span>
+            <i class="pm-collapse-chev" data-lucide="chevron-right" style="width:16px;height:16px"></i>
+          </summary>
+        <p class="pm-lead">Os indicadores abaixo são apresentados como <strong>métricas de melhoria institucional</strong> — não são metas promocionais nem comerciais, e devem ser adaptados ao contexto de cada serviço.</p>
+        <div class="bottleneck-grid">
+
+          <div class="journey-bottleneck-card">
+            <div class="jb-title"><span class="jb-n">1</span> Subtipo/HER2-low não reavaliado na recidiva</div>
+            <div class="jb-row"><b>Consequência</b>Terapia subótima por mudança de subtipo entre primário e metástase.</div>
+            <div class="jb-row opt"><b>Oportunidade</b>Rebiópsia e reteste de RE/HER2 (incl. HER2-low) na recidiva.</div>
+            <div class="jb-foot"><a class="js-link" target="_blank" rel="noopener" href="database.html"><i data-lucide="database" style="width:12px;height:12px"></i> Database</a><span class="institutional-metric">% recidivas com rebiópsia/reteste</span></div>
+          </div>
+
+          <div class="journey-bottleneck-card">
+            <div class="jb-title"><span class="jb-n">2</span> Teste germinativo de BRCA não solicitado</div>
+            <div class="jb-row"><b>Consequência</b>Perda de PARP (adjuvante e avançado) e de aconselhamento genético.</div>
+            <div class="jb-row opt"><b>Oportunidade</b>Teste de gBRCA conforme critérios (TNBC, jovens, história familiar, alto risco).</div>
+            <div class="jb-foot"><a class="js-link" href="#mama-9"><i data-lucide="list-checks" style="width:12px;height:12px"></i> Critérios</a><span class="institutional-metric">% elegíveis testados para gBRCA</span></div>
+          </div>
+
+          <div class="journey-bottleneck-card">
+            <div class="jb-title"><span class="jb-n">3</span> PIK3CA / AKT / ESR1 não testados na progressão</div>
+            <div class="jb-row"><b>Consequência</b>Perda de alvos (alpelisibe, capivasertibe, elacestrante).</div>
+            <div class="jb-row opt"><b>Oportunidade</b>NGS/ctDNA na progressão endócrina do HR+.</div>
+            <div class="jb-foot"><a class="js-link" target="_blank" rel="noopener" href="database.html"><i data-lucide="database" style="width:12px;height:12px"></i> Database</a><span class="institutional-metric">% HR+ avançados com NGS/ctDNA</span></div>
+          </div>
+
+          <div class="journey-bottleneck-card">
+            <div class="jb-title"><span class="jb-n">4</span> PD-L1 (CPS) não avaliado no TNBC</div>
+            <div class="jb-row"><b>Consequência</b>Perde imunoterapia de 1ª linha (CPS≥10).</div>
+            <div class="jb-row opt"><b>Oportunidade</b>CPS de rotina no TNBC metastático antes da 1ª linha.</div>
+            <div class="jb-foot"><a class="js-link" href="#mama-6"><i data-lucide="map" style="width:12px;height:12px"></i> Evidências</a><span class="institutional-metric">% mTNBC com CPS avaliado</span></div>
+          </div>
+
+          <div class="journey-bottleneck-card">
+            <div class="jb-title"><span class="jb-n">5</span> FEVE não monitorada em anti-HER2/antraciclina</div>
+            <div class="jb-row"><b>Consequência</b>Cardiotoxicidade reconhecida tardiamente.</div>
+            <div class="jb-row opt"><b>Oportunidade</b>FEVE basal e seriada; cardio-oncologia conforme risco.</div>
+            <div class="jb-foot"><a class="js-link" target="_blank" rel="noopener" href="ferramentas.html#clinica"><i data-lucide="activity" style="width:12px;height:12px"></i> Avaliação clínica</a><span class="institutional-metric">% com FEVE seriada documentada</span></div>
+          </div>
+
+          <div class="journey-bottleneck-card">
+            <div class="jb-title"><span class="jb-n">6</span> Pneumonite/DPI do T-DXd subnotificada</div>
+            <div class="jb-row"><b>Consequência</b>Toxicidade pulmonar grave reconhecida tarde.</div>
+            <div class="jb-row opt"><b>Oportunidade</b>Vigilância de DPI (sintomas, TC) e algoritmo de manejo/suspensão.</div>
+            <div class="jb-foot"><a class="js-link" target="_blank" rel="noopener" href="ferramentas.html#ctcae"><i data-lucide="alert-triangle" style="width:12px;height:12px"></i> CTCAE</a><span class="institutional-metric">% em T-DXd com vigilância de DPI</span></div>
+          </div>
+
+          <div class="journey-bottleneck-card">
+            <div class="jb-title"><span class="jb-n">7</span> Status de RE incerto/discordante</div>
+            <div class="jb-row"><b>Consequência</b>Decisão endócrina insegura em lesões de difícil biópsia.</div>
+            <div class="jb-row opt"><b>Oportunidade</b>FES PET nos casos equívocos, com suspensão prévia de tamoxifeno/SERD.</div>
+            <div class="jb-foot"><a class="js-link" target="_blank" rel="noopener" href="database.html#fes-pet-fluoroestradiol-receptor-estrogenio"><i data-lucide="scan-line" style="width:12px;height:12px"></i> 18F-FES</a><span class="institutional-metric">% casos equívocos com FES</span></div>
+          </div>
+
+          <div class="journey-bottleneck-card">
+            <div class="jb-title"><span class="jb-n">8</span> Dados incompletos para tumor board</div>
+            <div class="jb-row"><b>Consequência</b>Discussão improdutiva; decisões adiadas.</div>
+            <div class="jb-row opt"><b>Oportunidade</b>Checklist pré-board; apresentação padronizada.</div>
+            <div class="jb-foot"><a class="js-link" href="#mama-13"><i data-lucide="clipboard-check" style="width:12px;height:12px"></i> Checklist</a><span class="institutional-metric">% casos com checklist completo</span></div>
+          </div>
+
+          <div class="journey-bottleneck-card">
+            <div class="jb-title"><span class="jb-n">9</span> Toxicidade de classe mal manejada</div>
+            <div class="jb-row"><b>Consequência</b>Descontinuação por diarreia (TKI) ou hiperglicemia (PI3K/AKT).</div>
+            <div class="jb-row opt"><b>Oportunidade</b>Protocolos de manejo proativo e graduação por CTCAE.</div>
+            <div class="jb-foot"><a class="js-link" target="_blank" rel="noopener" href="ferramentas.html#ctcae"><i data-lucide="alert-triangle" style="width:12px;height:12px"></i> CTCAE</a><span class="institutional-metric">% ciclos com monitoramento no prazo</span></div>
+          </div>
+
+          <div class="journey-bottleneck-card">
+            <div class="jb-title"><span class="jb-n">10</span> Reavaliação tardia na progressão</div>
+            <div class="jb-row"><b>Consequência</b>Atraso na próxima linha ou em ensaio.</div>
+            <div class="jb-row opt"><b>Oportunidade</b>Reestadiamento estruturado e integração com Trial Matcher.</div>
+            <div class="jb-foot"><a class="js-link" target="_blank" rel="noopener" href="trial-matcher.html"><i data-lucide="git-compare" style="width:12px;height:12px"></i> Trial Matcher</a><span class="institutional-metric">% reavaliados / avaliados para ensaio</span></div>
+          </div>
+
+        </div>
+        </details>
+
+        <!-- Onde a imagem molecular agrega -->
+        <details class="pm-collapse">
+          <summary class="pm-subhead">
+            <i data-lucide="scan-line" style="width:18px;height:18px"></i>
+            <h4>Onde a imagem molecular agrega na mama</h4>
+            <span class="pm-collapse-hint">6 cenários</span>
+            <i class="pm-collapse-chev" data-lucide="chevron-right" style="width:16px;height:16px"></i>
+          </summary>
+        <p class="pm-lead">Lista educacional dos cenários em que a imagem molecular pode contribuir. O que é APROVADO vs INVESTIGACIONAL está explícito — a interpretação final é sempre clínica e multidisciplinar.</p>
+        <div class="psma-report-elements">
+          <div class="pre-item"><i data-lucide="dot" style="width:14px;height:14px"></i> 18F-FES (Cerianna, aprovado): confirma RE em lesões de difícil biópsia e avalia discordância/heterogeneidade</div>
+          <div class="pre-item"><i data-lucide="dot" style="width:14px;height:14px"></i> 18F-FDG PET/CT: estadiamento sistêmico em doença localmente avançada/metastática</div>
+          <div class="pre-item"><i data-lucide="dot" style="width:14px;height:14px"></i> 89Zr-trastuzumabe HER2-PET (investigacional): mapeia expressão e heterogeneidade de HER2</div>
+          <div class="pre-item"><i data-lucide="dot" style="width:14px;height:14px"></i> 68Ga-FAPI PET (investigacional): detecção tumoral/estromal, útil em lesões pouco ávidas por FDG</div>
+          <div class="pre-item"><i data-lucide="dot" style="width:14px;height:14px"></i> Cintilografia óssea / 18F-NaF: avaliação de doença óssea</div>
+          <div class="pre-item"><i data-lucide="dot" style="width:14px;height:14px"></i> Rádio-223 (investigacional em mama, ensaios negativos): não recomendado fora de protocolo</div>
+        </div>
+        </details>
+      </div>
+
+      <!-- 6. MAPA DE EVIDÊNCIAS -->
+      <div class="pm-block" id="mama-6">
+        <div class="pm-block-head"><span class="pm-num">6</span><h3>Mapa de evidências</h3></div>
+        <p class="pm-lead">Cenários clínicos e os estudos-chave associados. Clique em um estudo para abrir sua ficha no Database.</p>
+        <div class="evidence-map">
+          <div class="evidence-scenario-card" style="--sc-color:#EC4899">
+            <span class="esc-tag">Cenário A · HR+/HER2− avançado</span>
+            <div class="esc-title">Endócrino + CDK4/6 e alvos</div>
+            <div class="esc-studies">
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#monaleesa-2-ribociclib-letrozol-1l"><i data-lucide="file-text" style="width:11px;height:11px"></i> MONALEESA-2</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#monarch-3-abemaciclib-ai-1l"><i data-lucide="file-text" style="width:11px;height:11px"></i> MONARCH-3</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#solar-1-alpelisib-fulvestrant-pik3ca-mut"><i data-lucide="file-text" style="width:11px;height:11px"></i> SOLAR-1</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#capitello-291-capivasertib-fulvestrant"><i data-lucide="file-text" style="width:11px;height:11px"></i> CAPItello-291</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#emerald-elacestrant-oral-serd-p-s-cdk4-6"><i data-lucide="file-text" style="width:11px;height:11px"></i> EMERALD</a>
+            </div>
+            <p class="esc-msg">CDK4/6 + endócrino em 1L; após progressão, alvos por biomarcador (PIK3CA, AKT, ESR1).</p>
+          </div>
+          <div class="evidence-scenario-card" style="--sc-color:#A855F7">
+            <span class="esc-tag">Cenário B · HER2+ avançado</span>
+            <div class="esc-title">Bloqueio HER2 e ADC</div>
+            <div class="esc-studies">
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#cleopatra-pertuzumab-trastuzumab-docetaxel-1l-her2"><i data-lucide="file-text" style="width:11px;height:11px"></i> CLEOPATRA</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#destiny-breast03-t-dxd-vs-t-dm1-em-her2-2l"><i data-lucide="file-text" style="width:11px;height:11px"></i> DESTINY-Breast03</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#her2climb-tucatinib-trastuzumab-capecitabina-her2-p-s-2l"><i data-lucide="file-text" style="width:11px;height:11px"></i> HER2CLIMB</a>
+            </div>
+            <p class="esc-msg">Duplo bloqueio + taxano em 1L; T-DXd em 2L; tucatinibe com atividade em metástases cerebrais.</p>
+          </div>
+          <div class="evidence-scenario-card" style="--sc-color:#FF8400">
+            <span class="esc-tag">Cenário C · HER2-low / ultralow</span>
+            <div class="esc-title">T-DXd transversal aos subtipos</div>
+            <div class="esc-studies">
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#destiny-breast04-t-dxd-em-her2-low-ihc-1-2-ish"><i data-lucide="file-text" style="width:11px;height:11px"></i> DESTINY-Breast04</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#destiny-breast06-t-dxd-em-her2-low-ultralow-p-s-et"><i data-lucide="file-text" style="width:11px;height:11px"></i> DESTINY-Breast06</a>
+            </div>
+            <p class="esc-msg">Trastuzumabe deruxtecana em tumores HER2-baixos, sobretudo HR+ após terapia endócrina.</p>
+          </div>
+          <div class="evidence-scenario-card" style="--sc-color:#FB7185">
+            <span class="esc-tag">Cenário D · TNBC e BRCA</span>
+            <div class="esc-title">Imunoterapia, ADC e PARP</div>
+            <div class="esc-studies">
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#keynote-522-pembro-neoadjuvante-tnbc"><i data-lucide="file-text" style="width:11px;height:11px"></i> KEYNOTE-522</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#keynote-355-pembro-qt-1l-tnbc-pd-l1"><i data-lucide="file-text" style="width:11px;height:11px"></i> KEYNOTE-355</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#ascent-sacituzumab-govitecan-vs-qt-em-tnbc-p-s-2l"><i data-lucide="file-text" style="width:11px;height:11px"></i> ASCENT</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#olympia-olaparib-adjuvante-em-brca-alto-risco"><i data-lucide="file-text" style="width:11px;height:11px"></i> OlympiA</a>
+            </div>
+            <p class="esc-msg">Pembrolizumabe perioperatório/1L (CPS≥10); ADC anti-Trop-2; PARP em gBRCA.</p>
+          </div>
+          <div class="evidence-scenario-card" style="--sc-color:#22D3EE">
+            <span class="esc-tag">Cenário E · imagem &amp; radiofármacos</span>
+            <div class="esc-title">Sobretudo diagnóstico</div>
+            <div class="esc-studies">
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#fes-pet-fluoroestradiol-receptor-estrogenio"><i data-lucide="file-text" style="width:11px;height:11px"></i> 18F-FES</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#zephir-89zr-trastuzumab-her2-pet"><i data-lucide="file-text" style="width:11px;height:11px"></i> ZEPHIR</a>
+              <a class="esc-study-chip" target="_blank" rel="noopener" href="database.html#ra223-mama-osseo-fase2"><i data-lucide="file-text" style="width:11px;height:11px"></i> Rádio-223</a>
+            </div>
+            <p class="esc-msg">FES (RE) e HER2-PET na caracterização; rádio-223 terapêutico foi negativo em mama.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7. ESTUDOS-CHAVE -->
+      <div class="pm-block" id="mama-7">
+        <div class="pm-block-head"><span class="pm-num">7</span><h3>Estudos-chave</h3></div>
+        <p class="pm-lead">Desenho dos principais estudos. <strong>Resultados, desfechos e toxicidades ficam na ficha de cada um no Database</strong> — este mapa não reproduz hazard ratios, valores de p ou taxas de resposta.</p>
+        <div class="keystudy-grid">
+          <div class="keystudy-card">
+            <div class="ks-top"><span class="ks-name">MONALEESA-2</span><span class="ks-scn">HR+ avançado · CDK4/6 1L</span></div>
+            <div class="ks-row"><b>População</b>HR+/HER2− avançado, pós-menopausa, 1ª linha.</div>
+            <div class="ks-row"><b>Intervenção / comparador</b>Ribociclibe + letrozol vs placebo + letrozol.</div>
+            <p class="ks-msg">CDK4/6 + IA como padrão de 1ª linha.</p>
+            <div class="ks-foot"><a class="ks-link" target="_blank" rel="noopener" href="database.html#monaleesa-2-ribociclib-letrozol-1l"><i data-lucide="database" style="width:13px;height:13px"></i> Ficha no Database</a></div>
+          </div>
+          <div class="keystudy-card">
+            <div class="ks-top"><span class="ks-name">SOLAR-1</span><span class="ks-scn">HR+ · PIK3CA-mutado</span></div>
+            <div class="ks-row"><b>População</b>HR+/HER2− avançado PIK3CA-mutado, pós-IA.</div>
+            <div class="ks-row"><b>Intervenção / comparador</b>Alpelisibe + fulvestranto vs placebo + fulvestranto.</div>
+            <p class="ks-msg">1ª terapia dirigida a PIK3CA em mama.</p>
+            <div class="ks-foot"><a class="ks-link" target="_blank" rel="noopener" href="database.html#solar-1-alpelisib-fulvestrant-pik3ca-mut"><i data-lucide="database" style="width:13px;height:13px"></i> Ficha no Database</a></div>
+          </div>
+          <div class="keystudy-card">
+            <div class="ks-top"><span class="ks-name">CAPItello-291</span><span class="ks-scn">HR+ · via AKT</span></div>
+            <div class="ks-row"><b>População</b>HR+/HER2− avançado após progressão endócrina.</div>
+            <div class="ks-row"><b>Intervenção / comparador</b>Capivasertibe + fulvestranto vs placebo + fulvestranto.</div>
+            <p class="ks-msg">Inibição de AKT em PIK3CA/AKT1/PTEN alterados.</p>
+            <div class="ks-foot"><a class="ks-link" target="_blank" rel="noopener" href="database.html#capitello-291-capivasertib-fulvestrant"><i data-lucide="database" style="width:13px;height:13px"></i> Ficha no Database</a></div>
+          </div>
+          <div class="keystudy-card">
+            <div class="ks-top"><span class="ks-name">CLEOPATRA</span><span class="ks-scn">HER2+ avançado · 1L</span></div>
+            <div class="ks-row"><b>População</b>HER2+ metastático, 1ª linha.</div>
+            <div class="ks-row"><b>Intervenção / comparador</b>Pertuzumabe + trastuzumabe + docetaxel vs placebo + trastuzumabe + docetaxel.</div>
+            <p class="ks-msg">Duplo bloqueio HER2 + taxano como padrão de 1L.</p>
+            <div class="ks-foot"><a class="ks-link" target="_blank" rel="noopener" href="database.html#cleopatra-pertuzumab-trastuzumab-docetaxel-1l-her2"><i data-lucide="database" style="width:13px;height:13px"></i> Ficha no Database</a></div>
+          </div>
+          <div class="keystudy-card">
+            <div class="ks-top"><span class="ks-name">DESTINY-Breast03</span><span class="ks-scn">HER2+ avançado · 2L</span></div>
+            <div class="ks-row"><b>População</b>HER2+ metastático após trastuzumabe e taxano.</div>
+            <div class="ks-row"><b>Intervenção / comparador</b>T-DXd vs T-DM1.</div>
+            <p class="ks-msg">T-DXd estabelecido como padrão de 2ª linha.</p>
+            <div class="ks-foot"><a class="ks-link" target="_blank" rel="noopener" href="database.html#destiny-breast03-t-dxd-vs-t-dm1-em-her2-2l"><i data-lucide="database" style="width:13px;height:13px"></i> Ficha no Database</a></div>
+          </div>
+          <div class="keystudy-card">
+            <div class="ks-top"><span class="ks-name">HER2CLIMB</span><span class="ks-scn">HER2+ · metástases cerebrais</span></div>
+            <div class="ks-row"><b>População</b>HER2+ metastático pré-tratado, incluindo doença de SNC.</div>
+            <div class="ks-row"><b>Intervenção / comparador</b>Tucatinibe + trastuzumabe + capecitabina vs placebo + trastuzumabe + capecitabina.</div>
+            <p class="ks-msg">Benefício prospectivo em metástases cerebrais ativas.</p>
+            <div class="ks-foot"><a class="ks-link" target="_blank" rel="noopener" href="database.html#her2climb-tucatinib-trastuzumab-capecitabina-her2-p-s-2l"><i data-lucide="database" style="width:13px;height:13px"></i> Ficha no Database</a></div>
+          </div>
+          <div class="keystudy-card">
+            <div class="ks-top"><span class="ks-name">DESTINY-Breast04</span><span class="ks-scn">HER2-low</span></div>
+            <div class="ks-row"><b>População</b>Metastático HER2-low (IHC 1+ ou 2+/ISH−), pré-tratado.</div>
+            <div class="ks-row"><b>Intervenção / comparador</b>T-DXd vs quimioterapia de escolha do médico.</div>
+            <p class="ks-msg">Criou a categoria terapêutica HER2-low.</p>
+            <div class="ks-foot"><a class="ks-link" target="_blank" rel="noopener" href="database.html#destiny-breast04-t-dxd-em-her2-low-ihc-1-2-ish"><i data-lucide="database" style="width:13px;height:13px"></i> Ficha no Database</a></div>
+          </div>
+          <div class="keystudy-card">
+            <div class="ks-top"><span class="ks-name">KEYNOTE-522</span><span class="ks-scn">TNBC inicial · perioperatório</span></div>
+            <div class="ks-row"><b>População</b>TNBC inicial de alto risco.</div>
+            <div class="ks-row"><b>Intervenção / comparador</b>Pembrolizumabe neoadjuvante + adjuvante + quimio vs quimio neoadjuvante isolada.</div>
+            <p class="ks-msg">Imunoterapia perioperatória padrão no TNBC de alto risco.</p>
+            <div class="ks-foot"><a class="ks-link" target="_blank" rel="noopener" href="database.html#keynote-522-pembro-neoadjuvante-tnbc"><i data-lucide="database" style="width:13px;height:13px"></i> Ficha no Database</a></div>
+          </div>
+          <div class="keystudy-card">
+            <div class="ks-top"><span class="ks-name">ASCENT</span><span class="ks-scn">TNBC avançado · ADC</span></div>
+            <div class="ks-row"><b>População</b>TNBC metastático pré-tratado.</div>
+            <div class="ks-row"><b>Intervenção / comparador</b>Sacituzumabe govitecana vs quimioterapia de escolha do médico.</div>
+            <p class="ks-msg">ADC anti-Trop-2 no TNBC avançado.</p>
+            <div class="ks-foot"><a class="ks-link" target="_blank" rel="noopener" href="database.html#ascent-sacituzumab-govitecan-vs-qt-em-tnbc-p-s-2l"><i data-lucide="database" style="width:13px;height:13px"></i> Ficha no Database</a></div>
+          </div>
+          <div class="keystudy-card">
+            <div class="ks-top"><span class="ks-name">OlympiA</span><span class="ks-scn">gBRCA · adjuvante</span></div>
+            <div class="ks-row"><b>População</b>Mama inicial HER2-negativa de alto risco com gBRCA.</div>
+            <div class="ks-row"><b>Intervenção / comparador</b>Olaparibe adjuvante (1 ano) vs placebo.</div>
+            <p class="ks-msg">PARP adjuvante em gBRCA de alto risco.</p>
+            <div class="ks-foot"><a class="ks-link" target="_blank" rel="noopener" href="database.html#olympia-olaparib-adjuvante-em-brca-alto-risco"><i data-lucide="database" style="width:13px;height:13px"></i> Ficha no Database</a></div>
+          </div>
+          <div class="keystudy-card">
+            <div class="ks-top"><span class="ks-name">18F-FES PET</span><span class="ks-scn">imagem do RE · aprovado</span></div>
+            <div class="ks-row"><b>População</b>Mama recorrente/metastática com status de RE a esclarecer.</div>
+            <div class="ks-row"><b>Modalidade</b>Fluoroestradiol F-18 (Cerianna) vs IHC do RE.</div>
+            <p class="ks-msg">Imagem do receptor de estrogênio como adjunto à biópsia.</p>
+            <div class="ks-foot"><a class="ks-link" target="_blank" rel="noopener" href="database.html#fes-pet-fluoroestradiol-receptor-estrogenio"><i data-lucide="database" style="width:13px;height:13px"></i> Ficha no Database</a></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8. TRIAL LINEAGE -->
+      <div class="pm-block" id="mama-8">
+        <div class="pm-block-head"><span class="pm-num">8</span><h3>Trial Lineage — publicações secundárias e análises derivadas</h3></div>
+        <p class="pm-lead">Um estudo pivotal raramente é uma publicação única: gera uma <strong>família de evidências</strong> — follow-ups, subgrupos, qualidade de vida, segurança, biomarcadores e abstracts de congresso.</p>
+        <div class="ds-note" style="background:rgba(143,148,156,0.07);border-color:var(--border-soft)">
+          <i data-lucide="construction" style="width:18px;height:18px;color:var(--stone)"></i>
+          <p>O Trial Lineage de mama está <b>em desenvolvimento</b> — as publicações secundárias serão conectadas ao catálogo. Por ora, as fichas completas, com citações e links oficiais, estão no <a href="database.html" target="_blank" rel="noopener" style="color:var(--amber)">Database</a>.</p>
+        </div>
+      </div>
+
+      <!-- 9. CRITÉRIOS PRÁTICOS -->
+      <div class="pm-block" id="mama-9">
+        <div class="pm-block-head"><span class="pm-num">9</span><h3>Critérios práticos de discussão</h3></div>
+        <p class="pm-lead">Checklist clínico a revisar antes de discutir uma decisão sistêmica.</p>
+        <div class="q-groups">
+          <div class="q-group">
+            <div class="q-group-title"><i data-lucide="user"></i> Dados clínicos</div>
+            <ul><li>Idade e status menopausal</li><li>ECOG / Karnofsky</li><li>Sintomas</li><li>Comorbidades</li><li>Objetivo terapêutico</li></ul>
+          </div>
+          <div class="q-group">
+            <div class="q-group-title"><i data-lucide="dna"></i> Histológico e molecular</div>
+            <ul><li>Subtipo (RE/RP, HER2, Ki-67)</li><li>HER2-low / ultralow</li><li>BRCA germinativo</li><li>PIK3CA / AKT1 / PTEN</li><li>ESR1 (ctDNA)</li><li>PD-L1 (CPS) no TNBC</li></ul>
+          </div>
+          <div class="q-group">
+            <div class="q-group-title"><i data-lucide="scan-line"></i> Imagem</div>
+            <ul><li>Estadiamento sistêmico conforme risco</li><li>FES PET, se RE incerto</li><li>HER2-PET/FAPI em pesquisa</li><li>Avaliação de resposta (RECIST)</li></ul>
+          </div>
+          <div class="q-group">
+            <div class="q-group-title"><i data-lucide="shield-alert"></i> Segurança</div>
+            <ul><li>FEVE e risco cardiovascular</li><li>Glicemia/HbA1c (PI3K/AKT)</li><li>Vigilância de DPI (T-DXd)</li><li>Hemograma e função renal/hepática</li></ul>
+          </div>
+          <div class="q-group">
+            <div class="q-group-title"><i data-lucide="flask-conical"></i> Acesso e pesquisa</div>
+            <ul><li>Disponibilidade do agente/ADC</li><li>Necessidade de teste molecular</li><li>Possibilidade de inclusão em trial</li><li>Encaminhamento</li></ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 10. ENSAIOS CLÍNICOS ATIVOS -->
+      <div class="pm-block" id="mama-10">
+        <div class="pm-block-head"><span class="pm-num">10</span><h3>Ensaios clínicos ativos relacionados</h3></div>
+        <p class="pm-lead">Ensaios em andamento ou recrutando em câncer de mama — ADCs, alvos por biomarcador (PI3K/AKT, ESR1/SERDs orais), imunoterapia, PARP e imagem molecular. <strong>A elegibilidade final depende sempre do protocolo oficial e do centro responsável.</strong></p>
+        <div class="link-cards" style="max-width:520px">
+          <a class="link-card" target="_blank" rel="noopener" href="ensaios-clinicos.html">
+            <i data-lucide="microscope" style="width:18px;height:18px"></i>
+            <span>Ver ensaios ativos — filtrar por “Mama”</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 11. GUIDELINES E REFERÊNCIAS -->
+      <div class="pm-block" id="mama-11">
+        <div class="pm-block-head"><span class="pm-num">11</span><h3>Guidelines e referências</h3></div>
+        <p class="pm-lead">As recomendações sistêmicas em câncer de mama seguem diretrizes oncológicas internacionais (<strong>NCCN, ESMO, ASCO</strong>) e nacionais — referências externas, não hospedadas aqui. A biblioteca de guidelines do TheraTrials cobre os radiofármacos; abaixo, os estudos de <strong>imagem molecular</strong> mais relevantes para a mama.</p>
+        <div class="link-cards">
+          <a class="link-card" target="_blank" rel="noopener" href="database.html#fes-pet-fluoroestradiol-receptor-estrogenio"><i data-lucide="scan-line" style="width:18px;height:18px"></i><span>18F-FES PET (Cerianna) · imagem do RE</span></a>
+          <a class="link-card" target="_blank" rel="noopener" href="database.html#zephir-89zr-trastuzumab-her2-pet"><i data-lucide="scan-line" style="width:18px;height:18px"></i><span>89Zr-trastuzumabe HER2-PET (ZEPHIR)</span></a>
+          <a class="link-card" target="_blank" rel="noopener" href="database.html#fapi-s-ries-em-mama-imagem-e-terapia"><i data-lucide="scan-line" style="width:18px;height:18px"></i><span>FAPI em mama (imagem)</span></a>
+          <a class="link-card" target="_blank" rel="noopener" href="guidelines.html"><i data-lucide="library" style="width:18px;height:18px"></i><span>Biblioteca de guidelines (radiofármacos)</span></a>
+        </div>
+      </div>
+
+      <!-- 12. FERRAMENTAS ÚTEIS -->
+      <div class="pm-block" id="mama-12">
+        <div class="pm-block-head"><span class="pm-num">12</span><h3>Ferramentas úteis</h3></div>
+        <p class="pm-lead">Calculadoras e critérios já disponíveis na página de Ferramentas.</p>
+        <div class="link-cards">
+          <a class="link-card" target="_blank" rel="noopener" href="ferramentas.html#ajcc"><i data-lucide="layers" style="width:18px;height:18px"></i><span>Estadiamento AJCC · TNM</span></a>
+          <a class="link-card" target="_blank" rel="noopener" href="ferramentas.html#anatomica"><i data-lucide="ruler" style="width:18px;height:18px"></i><span>Resposta anatômica (RECIST 1.1)</span></a>
+          <a class="link-card" target="_blank" rel="noopener" href="ferramentas.html#ctcae"><i data-lucide="alert-triangle" style="width:18px;height:18px"></i><span>Eventos adversos · CTCAE</span></a>
+          <a class="link-card" target="_blank" rel="noopener" href="ferramentas.html#clinica"><i data-lucide="activity" style="width:18px;height:18px"></i><span>ECOG / Karnofsky</span></a>
+          <a class="link-card" target="_blank" rel="noopener" href="ferramentas.html#renal"><i data-lucide="droplet" style="width:18px;height:18px"></i><span>Função renal</span></a>
+        </div>
+      </div>
+
+      <!-- 13. CHECKLISTS -->
+      <div class="pm-block" id="mama-13">
+        <div class="pm-block-head"><span class="pm-num">13</span><h3>Checklists</h3></div>
+        <p class="pm-lead">Três listas de <strong>itens para revisão</strong> — organização do caso, não critérios de elegibilidade (a avaliação formal cabe à equipe responsável). Cada uma pode ser copiada em texto.</p>
+
+        <div class="rlt-checklist">
+          <div class="rlt-checklist-head">
+            <h4><i data-lucide="send" style="width:16px;height:16px"></i> Encaminhamento para discussão multidisciplinar (mama)</h4>
+            <button class="btn btn-secondary btn-sm copy-checklist-btn" @click="copyChecklist('encaminhamento')"><i data-lucide="copy" style="width:14px;height:14px"></i> Copiar</button>
+          </div>
+          <div class="bc-grid">
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Diagnóstico histológico e grau</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Subtipo: RE/RP, HER2 (incl. HER2-low/ultralow), Ki-67</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Estadiamento (TNM/AJCC)</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Status menopausal</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Mutação germinativa BRCA1/2</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> PIK3CA / AKT1 / PTEN (HR+)</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> ESR1 em ctDNA (pós-progressão endócrina)</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> PD-L1 (CPS no TNBC)</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Imagem locorregional (mamografia/US/RM)</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Estadiamento sistêmico conforme risco</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> FES PET, se status de RE for incerto</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Tratamentos prévios e respostas</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> ECOG / Karnofsky</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> FEVE e comorbidades cardiovasculares</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Objetivo da discussão</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Possibilidade de ensaio clínico</div>
+          </div>
+        </div>
+
+        <div class="rlt-checklist">
+          <div class="rlt-checklist-head">
+            <h4><i data-lucide="presentation" style="width:16px;height:16px"></i> Apresentação de caso no tumor board</h4>
+            <button class="btn btn-secondary btn-sm copy-checklist-btn" @click="copyChecklist('board')"><i data-lucide="copy" style="width:14px;height:14px"></i> Copiar</button>
+          </div>
+          <div class="bc-grid">
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Pergunta clínica objetiva</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Subtipo molecular e estádio</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Biomarcadores (BRCA, PIK3CA/AKT/PTEN, ESR1, PD-L1, HER2-low)</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Cenário: inicial/(neo)adjuvante vs avançado</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Linha terapêutica atual</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Histórico de tratamentos e resposta/toxicidade</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> FEVE e status cardiovascular</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Status de imagem (locorregional e sistêmica)</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Performance status</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Sintomas</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Opções aprovadas</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Ensaios clínicos disponíveis</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Limitações ou incertezas</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Próximo passo proposto para discussão</div>
+          </div>
+        </div>
+
+        <div class="rlt-checklist">
+          <div class="rlt-checklist-head">
+            <h4><i data-lucide="folder-check" style="width:16px;height:16px"></i> Pré-tratamento sistêmico, biomarcadores e acesso</h4>
+            <button class="btn btn-secondary btn-sm copy-checklist-btn" @click="copyChecklist('preterapia')"><i data-lucide="copy" style="width:14px;height:14px"></i> Copiar</button>
+          </div>
+          <div class="bc-grid">
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Relatório médico</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Confirmação de subtipo e biomarcadores</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> FEVE basal (antes de anti-HER2/antraciclina)</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Hemograma</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Função renal e hepática</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Glicemia/HbA1c (antes de inibidor de PI3K/AKT)</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Avaliação de fertilidade e teste de gravidez</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Avaliação cardiovascular</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Acesso venoso / portacath, se necessário</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Consentimento institucional, se aplicável</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Plano de manejo de toxicidades de classe (DPI/diarreia/hiperglicemia/imuno)</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Autorização</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Agendamento</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Logística do agente / ADC</div>
+            <div class="bc-item"><i data-lucide="check" style="width:14px;height:14px"></i> Plano de seguimento e avaliação de resposta</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 14. LINKS INTERNOS E PRÓXIMOS PASSOS -->
+      <div class="pm-block" id="mama-14">
+        <div class="pm-block-head"><span class="pm-num">14</span><h3>Links internos e próximos passos</h3></div>
+        <div class="link-cards">
+          <a class="link-card" target="_blank" rel="noopener" href="database.html"><i data-lucide="database" style="width:18px;height:18px"></i><span>Abrir Database (mama)</span></a>
+          <a class="link-card" target="_blank" rel="noopener" href="database.html"><i data-lucide="git-compare" style="width:18px;height:18px"></i><span>Comparar estudos de mama</span></a>
+          <a class="link-card" target="_blank" rel="noopener" href="ensaios-clinicos.html"><i data-lucide="microscope" style="width:18px;height:18px"></i><span>Ver ensaios ativos</span></a>
+          <a class="link-card" target="_blank" rel="noopener" href="guidelines.html"><i data-lucide="book-open" style="width:18px;height:18px"></i><span>Abrir guidelines</span></a>
+          <a class="link-card" target="_blank" rel="noopener" href="ferramentas.html"><i data-lucide="wrench" style="width:18px;height:18px"></i><span>Abrir ferramentas</span></a>
+          <a class="link-card" target="_blank" rel="noopener" href="about.html"><i data-lucide="message-square-plus" style="width:18px;height:18px"></i><span>Sugerir estudo ou correção</span></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- EXPLORAR ESTUDOS POR TUMOR (browser existente, preservado) -->
 <section style="padding: 1rem 0 0">
   <div class="container">
@@ -4348,7 +5180,6 @@
 
       // ---- Tumor Board Maps: mapas em desenvolvimento (hub) ----
       upcomingMaps: [
-        { id: 'mama',       name: 'Mama',                             icon: 'flower-2',      color: '#EC4899', badges: ['HER2', 'FAPI', 'FES'] },
         { id: 'pulmao',     name: 'Pulmão',                           icon: 'wind',          color: '#22D3EE', badges: ['DLL3', 'FAPI'] },
         { id: 'meningioma', name: 'Meningioma',                       icon: 'brain',         color: '#A855F7', badges: ['SSTR', 'Lu-177'] },
       ],
@@ -4370,6 +5201,7 @@
         ],
         hcc: [],
         tireoide: [],
+        mama: [],
       },
       get lineageParents() { return this.lineageParentsByTumor[this.openMap] || []; },
 
@@ -4410,7 +5242,7 @@
         this.$nextTick(() => document.getElementById('hub-' + (prev || 'prostata'))?.scrollIntoView({ behavior: 'smooth', block: 'center' }));
       },
 
-      mapNames: { prostata: 'Câncer de próstata', net: 'Tumores neuroendócrinos', hcc: 'Carcinoma hepatocelular e vias biliares', tireoide: 'Câncer de tireoide' },
+      mapNames: { prostata: 'Câncer de próstata', net: 'Tumores neuroendócrinos', hcc: 'Carcinoma hepatocelular e vias biliares', tireoide: 'Câncer de tireoide', mama: 'Câncer de mama' },
       checklistsByTumor: {
         prostata: {
           encaminhamento: {
@@ -4466,6 +5298,20 @@
           preterapia: {
             title: 'Pré-terapia, preparo e acesso (RAI)',
             items: ['Relatório médico', 'Status pós-tireoidectomia', 'Preparo de TSH (suspensão de levotiroxina ou rhTSH)', 'Dieta hipoiódica', 'Tireoglobulina basal/estimulada', 'Exclusão de contraste iodado recente', 'Beta-hCG (mulheres em idade fértil)', 'Hemograma e função renal', 'Atividade de I-131 definida (conforme risco)', 'Orientações de radioproteção e isolamento', 'Consentimento institucional, se aplicável', 'Autorização', 'Agendamento (quarto plumbífero)', 'Plano de PCI pós-dose', 'Plano de seguimento (Tg, US, reestratificação)'],
+          },
+        },
+        mama: {
+          encaminhamento: {
+            title: 'Encaminhamento para discussão multidisciplinar (mama)',
+            items: ['Diagnóstico histológico e grau', 'Subtipo: RE/RP, HER2 (incl. HER2-low/ultralow), Ki-67', 'Estadiamento (TNM/AJCC)', 'Status menopausal', 'Mutação germinativa BRCA1/2', 'PIK3CA / AKT1 / PTEN (HR+)', 'ESR1 em ctDNA (pós-progressão endócrina)', 'PD-L1 (CPS no TNBC)', 'Imagem locorregional (mamografia/US/RM)', 'Estadiamento sistêmico conforme risco (TC, cintilografia óssea ou PET)', 'FES PET, se status de RE for incerto', 'Tratamentos prévios e respostas', 'ECOG / Karnofsky', 'FEVE e comorbidades cardiovasculares', 'Objetivo da discussão', 'Possibilidade de ensaio clínico'],
+          },
+          board: {
+            title: 'Apresentação de caso no tumor board',
+            items: ['Pergunta clínica objetiva', 'Subtipo molecular e estádio', 'Biomarcadores (BRCA, PIK3CA/AKT/PTEN, ESR1, PD-L1, HER2-low/ultralow)', 'Cenário: inicial/(neo)adjuvante vs avançado', 'Linha terapêutica atual', 'Histórico de tratamentos e resposta/toxicidade', 'FEVE e status cardiovascular', 'Status de imagem (locorregional e sistêmica)', 'Performance status', 'Sintomas', 'Opções aprovadas', 'Ensaios clínicos disponíveis', 'Limitações ou incertezas', 'Próximo passo proposto para discussão'],
+          },
+          preterapia: {
+            title: 'Pré-tratamento sistêmico, biomarcadores e acesso',
+            items: ['Relatório médico', 'Confirmação de subtipo e biomarcadores', 'FEVE basal (antes de terapia anti-HER2/antraciclina)', 'Hemograma', 'Função renal e hepática', 'Glicemia/HbA1c (antes de inibidor de PI3K/AKT)', 'Avaliação de fertilidade e teste de gravidez', 'Avaliação cardiovascular', 'Acesso venoso / portacath, se necessário', 'Consentimento institucional, se aplicável', 'Plano de manejo de toxicidades de classe (DPI no T-DXd; diarreia em TKI; hiperglicemia em PI3K/AKT; imuno-relacionadas)', 'Autorização', 'Agendamento', 'Logística do agente / ADC', 'Plano de seguimento e avaliação de resposta'],
           },
         },
       },
