@@ -1047,7 +1047,7 @@
 </section>
 
 <!-- MÓDULO: TUMOR BOARD MAP — CÂNCER DE PRÓSTATA -->
-<section x-show="openMap === 'prostata'" x-cloak id="map-prostata" style="padding:0">
+<section x-show="openMap === 'prostata'" x-cloak id="map-prostata" data-gloss-auto style="padding:0">
   <div class="container">
     <div class="map-module">
 
@@ -1874,7 +1874,7 @@
 </section>
 
 <!-- MÓDULO: TUMOR BOARD MAP — TUMORES NEUROENDÓCRINOS (NET) -->
-<section x-show="openMap === 'net'" x-cloak id="map-net" style="padding:0">
+<section x-show="openMap === 'net'" x-cloak id="map-net" data-gloss-auto style="padding:0">
   <div class="container">
     <div class="map-module" style="--accent-color:#10B981;--accent-rgb:16,185,129">
 
@@ -2657,7 +2657,7 @@
 </section>
 
 <!-- MÓDULO: TUMOR BOARD MAP — FÍGADO (HCC E VIAS BILIARES) / TARE -->
-<section x-show="openMap === 'hcc'" x-cloak id="map-hcc" style="padding:0">
+<section x-show="openMap === 'hcc'" x-cloak id="map-hcc" data-gloss-auto style="padding:0">
   <div class="container">
     <div class="map-module" style="--accent-color:#F59E0B;--accent-rgb:245,158,11">
 
@@ -3465,7 +3465,7 @@
 </section>
 
 <!-- MÓDULO: TUMOR BOARD MAP — CÂNCER DE TIREOIDE -->
-<section x-show="openMap === 'tireoide'" x-cloak id="map-tireoide" style="padding:0">
+<section x-show="openMap === 'tireoide'" x-cloak id="map-tireoide" data-gloss-auto style="padding:0">
   <div class="container">
     <div class="map-module" style="--accent-color:#06B6D4;--accent-rgb:6,182,212">
 
@@ -4247,7 +4247,7 @@
 </section>
 
 <!-- MÓDULO: TUMOR BOARD MAP — CÂNCER DE MAMA -->
-<section x-show="openMap === 'mama'" x-cloak id="map-mama" style="padding:0">
+<section x-show="openMap === 'mama'" x-cloak id="map-mama" data-gloss-auto style="padding:0">
   <div class="container">
     <div class="map-module" style="--accent-color:#EC4899;--accent-rgb:236,72,153">
 
@@ -5062,7 +5062,7 @@
 </section>
 
 <!-- MÓDULO: TUMOR BOARD MAP — CÂNCER DE PULMÃO -->
-<section x-show="openMap === 'pulmao'" x-cloak id="map-pulmao" style="padding:0">
+<section x-show="openMap === 'pulmao'" x-cloak id="map-pulmao" data-gloss-auto style="padding:0">
   <div class="container">
     <div class="map-module" style="--accent-color:#22D3EE;--accent-rgb:34,211,238">
 
@@ -5886,7 +5886,7 @@
 </section>
 
 <!-- MÓDULO: TUMOR BOARD MAP — MENINGIOMA -->
-<section x-show="openMap === 'meningioma'" x-cloak id="map-meningioma" style="padding:0">
+<section x-show="openMap === 'meningioma'" x-cloak id="map-meningioma" data-gloss-auto style="padding:0">
   <div class="container">
     <div class="map-module" style="--accent-color:#A855F7;--accent-rgb:168,85,247">
 
@@ -6794,6 +6794,11 @@
 </div>
 
 <!-- FOOTER -->
+<!-- Botão flutuante: legenda de siglas -->
+<button class="gloss-fab" onclick="if(window.TheraTrials)TheraTrials.openGlossaryModal()" title="Legenda das siglas e métricas">
+  <i data-lucide="book-open-text"></i> <span>Siglas</span>
+</button>
+
 <footer class="site-footer">
   <div class="container">
     <div class="footer-bottom">
@@ -6806,6 +6811,7 @@
 <script src="assets/js/data.js?v=12"></script>
 <script src="assets/js/secondary-cards.js?v=1"></script>
 <script src="assets/js/common.js?v=11"></script>
+<script src="assets/js/glossario.js?v=5"></script>
 <script src="assets/js/i18n.js"></script>
 <script src="assets/lang/pt-br.js"></script>
 <script src="assets/lang/en.js"></script>

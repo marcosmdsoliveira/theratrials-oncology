@@ -451,6 +451,52 @@
 
   body.modal-open { overflow: hidden; }
   [x-cloak] { display: none !important; }
+
+  /* === Glossário: siglas com tooltip nos cards e no modal === */
+  abbr.gloss-term {
+    text-decoration: none;
+    border-bottom: 1px dotted rgba(255, 132, 0, 0.55);
+    cursor: help;
+    font-style: normal;
+    -webkit-tap-highlight-color: transparent;
+  }
+  abbr.gloss-term:hover, abbr.gloss-term:focus-visible {
+    border-bottom-color: var(--amber); color: var(--amber-glow); outline: none;
+  }
+  .gloss-tip {
+    position: fixed; z-index: 9999; pointer-events: none;
+    background: var(--graphite-4, #1c1f26); color: var(--off-white);
+    border: 1px solid var(--border-mid); border-radius: var(--radius-sm, 8px);
+    padding: 0.5rem 0.7rem; font-size: 0.78rem; line-height: 1.45;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.55);
+    opacity: 0; transform: translateY(3px); transition: opacity .12s, transform .12s;
+  }
+  .gloss-tip.below { transform: translateY(-3px); }
+  .gloss-tip.on { opacity: 1; transform: translateY(0); }
+  .gloss-tip strong { color: var(--amber-glow); font-family: var(--font-mono); margin-right: 0.15rem; }
+
+  /* Botão "Legenda" na barra */
+  .gloss-btn {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    background: var(--graphite-3); border: 1px solid var(--border-mid);
+    color: var(--stone); font-size: 0.78rem; font-weight: 500;
+    padding: 0.45rem 0.7rem; border-radius: var(--radius-sm, 8px); cursor: pointer;
+  }
+  .gloss-btn:hover { color: var(--off-white); border-color: var(--border-strong, var(--border-mid)); background: var(--graphite-4); }
+
+  /* Modal da legenda */
+  .gloss-modal-body { padding: 1.5rem 2rem 2rem; max-height: 68vh; overflow-y: auto; }
+  .gloss-intro { font-size: 0.85rem; color: var(--stone); line-height: 1.55; margin: 0 0 1.25rem; }
+  .gloss-group { margin-bottom: 1.5rem; }
+  .gloss-group-title {
+    display: flex; align-items: center; gap: 0.45rem; font-size: 0.72rem;
+    text-transform: uppercase; letter-spacing: 0.08em; color: var(--amber);
+    font-weight: 700; margin-bottom: 0.7rem;
+  }
+  .gloss-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 0.35rem 1.25rem; }
+  .gloss-item { display: flex; gap: 0.55rem; align-items: baseline; padding: 0.3rem 0; border-bottom: 1px solid var(--border-soft); }
+  .gloss-item dt { font-family: var(--font-mono); font-size: 0.8rem; color: var(--off-white); font-weight: 600; min-width: 58px; flex-shrink: 0; }
+  .gloss-item dd { margin: 0; font-size: 0.8rem; color: var(--stone); line-height: 1.4; }
 </style>
   <script defer src="https://cloud.umami.is/script.js" data-website-id="3c576b68-e2b3-4982-82e7-688e5a8adf58"></script>
 <script type="application/ld+json">
@@ -470,7 +516,7 @@
 }
 </script>
 </head>
-<body x-data="databaseApp()" x-init="init()" :class="{ 'modal-open': selectedStudy }">
+<body x-data="databaseApp()" x-init="init()" :class="{ 'modal-open': selectedStudy || showGlossary }">
 <noscript>
   <div style="background:#14161B;color:#F5F6F7;text-align:center;padding:1.5rem;font-family:system-ui,sans-serif;border-bottom:2px solid #FF8400;">
     <strong>JavaScript desativado.</strong> O TheraTrials Oncology necessita de JavaScript para funcionar. Por favor, ative-o no seu navegador.
@@ -655,6 +701,10 @@
               <span data-i18n="db.favoritesBtn">Favoritos</span>
               <span class="badge" x-text="favorites.length"></span>
             </button>
+            <button class="gloss-btn" @click="openGlossary()" :title="window.t ? t('db.glossaryTooltip','Legenda das siglas e métricas') : 'Legenda das siglas e métricas'">
+              <i data-lucide="book-open-text" style="width:14px;height:14px"></i>
+              <span data-i18n="db.glossaryBtn">Legenda</span>
+            </button>
             <button class="export-btn" @click="exportCSV()" :title="window.t ? t('db.exportTooltip','Exportar lista filtrada (CSV)') : 'Exportar lista filtrada (CSV)'">
               <i data-lucide="download" style="width:14px;height:14px"></i>
               <span data-i18n="db.exportBtn">Exportar</span>
@@ -725,7 +775,7 @@
               <p class="card-indication line-clamp-2" x-text="s.indicacao"></p>
               <div class="card-primary">
                 <div class="card-primary-label" data-i18n="db.primaryEndpoint">Desfecho primário</div>
-                <p class="card-primary-text line-clamp-3" x-text="TheraTrials.cleanText(s.primario)"></p>
+                <p class="card-primary-text line-clamp-3" x-html="TheraTrials.annotateAbbr(TheraTrials.cleanText(s.primario))"></p>
               </div>
               <div class="card-footer">
                 <div class="card-meta">
@@ -827,20 +877,20 @@
         <div class="section-block">
           <div class="section-block-title"><i data-lucide="users" style="width:13px;height:13px"></i> <span data-i18n="db.secPopulation">População</span></div>
           <div class="section-block-grid">
-            <div class="field"><div class="field-label" data-i18n="db.fieldIndication">Indicação</div><div class="field-text" x-text="selectedStudy.indicacao || '—'"></div></div>
+            <div class="field"><div class="field-label" data-i18n="db.fieldIndication">Indicação</div><div class="field-text" x-html="TheraTrials.annotateAbbr(selectedStudy.indicacao || '—')"></div></div>
             <div class="field"><div class="field-label" data-i18n="db.fieldN">N (planejado / randomizado / analisado)</div><div class="field-text" x-text="selectedStudy.n || '—'"></div></div>
-            <div class="field"><div class="field-label" data-i18n="db.fieldInclusion">Inclusão</div><div class="field-text" x-text="selectedStudy.incl || '—'"></div></div>
-            <div class="field"><div class="field-label" data-i18n="db.fieldExclusion">Exclusão</div><div class="field-text" x-text="selectedStudy.excl || '—'"></div></div>
-            <div class="field"><div class="field-label" data-i18n="db.fieldStratifiers">Estratificadores</div><div class="field-text" x-text="selectedStudy.estrat || '—'"></div></div>
-            <div class="field"><div class="field-label" data-i18n="db.fieldBaseline">Características basais</div><div class="field-text" x-text="selectedStudy.basal || '—'"></div></div>
+            <div class="field"><div class="field-label" data-i18n="db.fieldInclusion">Inclusão</div><div class="field-text" x-html="TheraTrials.annotateAbbr(selectedStudy.incl || '—')"></div></div>
+            <div class="field"><div class="field-label" data-i18n="db.fieldExclusion">Exclusão</div><div class="field-text" x-html="TheraTrials.annotateAbbr(selectedStudy.excl || '—')"></div></div>
+            <div class="field"><div class="field-label" data-i18n="db.fieldStratifiers">Estratificadores</div><div class="field-text" x-html="TheraTrials.annotateAbbr(selectedStudy.estrat || '—')"></div></div>
+            <div class="field"><div class="field-label" data-i18n="db.fieldBaseline">Características basais</div><div class="field-text" x-html="TheraTrials.annotateAbbr(selectedStudy.basal || '—')"></div></div>
           </div>
         </div>
 
         <div class="section-block">
           <div class="section-block-title" style="color: var(--teal)"><i data-lucide="dna" style="width:13px;height:13px"></i> <span x-text="(window.TheraTrials && TheraTrials.isRadioStudy(selectedStudy)) ? 'Critérios moleculares e imagem' : 'Critérios moleculares'"></span></div>
           <div class="section-block-grid">
-            <div class="field"><div class="field-label" x-text="(window.TheraTrials && TheraTrials.isRadioStudy(selectedStudy)) ? 'Critério molecular / PET' : 'Critério molecular'"></div><div class="field-text" x-text="selectedStudy.molecular || '—'"></div></div>
-            <div class="field"><div class="field-label" data-i18n="db.fieldBiomarkers">Biomarcadores</div><div class="field-text" x-text="selectedStudy.biomarc || '—'"></div></div>
+            <div class="field"><div class="field-label" x-text="(window.TheraTrials && TheraTrials.isRadioStudy(selectedStudy)) ? 'Critério molecular / PET' : 'Critério molecular'"></div><div class="field-text" x-html="TheraTrials.annotateAbbr(selectedStudy.molecular || '—')"></div></div>
+            <div class="field"><div class="field-label" data-i18n="db.fieldBiomarkers">Biomarcadores</div><div class="field-text" x-html="TheraTrials.annotateAbbr(selectedStudy.biomarc || '—')"></div></div>
           </div>
         </div>
 
@@ -848,40 +898,40 @@
           <div class="section-block-title"><i data-lucide="syringe" style="width:13px;height:13px"></i> <span x-text="(window.TheraTrials && TheraTrials.isRadioStudy(selectedStudy)) ? 'Intervenção e radiofarmácia' : 'Intervenção'"></span></div>
           <div class="section-block-grid">
             <div class="field full highlight"><div class="field-label" x-text="(window.TheraTrials && TheraTrials.isRadioStudy(selectedStudy)) ? 'Radiofármaco / Intervenção' : 'Intervenção'"></div><div class="field-text" style="font-weight: 500" x-text="selectedStudy.radiofarmaco || '—'"></div></div>
-            <div class="field"><div class="field-label" data-i18n="db.fieldRegimen">Esquema</div><div class="field-text" x-text="selectedStudy.esquema || '—'"></div></div>
+            <div class="field"><div class="field-label" data-i18n="db.fieldRegimen">Esquema</div><div class="field-text" x-html="TheraTrials.annotateAbbr(selectedStudy.esquema || '—')"></div></div>
             <div class="field"><div class="field-label" x-text="(window.TheraTrials && TheraTrials.isRadioStudy(selectedStudy)) ? 'Atividade cumulativa típica' : 'Dose cumulativa típica'"></div><div class="field-text mono" x-text="selectedStudy.cumul || '—'"></div></div>
-            <div class="field full"><div class="field-label" data-i18n="db.fieldPreparation">Preparo e pré-medicação</div><div class="field-text" x-text="selectedStudy.preparo || '—'"></div></div>
-            <div class="field full"><div class="field-label" data-i18n="db.fieldComparator">Comparador</div><div class="field-text" x-text="selectedStudy.comparador || '—'"></div></div>
+            <div class="field full"><div class="field-label" data-i18n="db.fieldPreparation">Preparo e pré-medicação</div><div class="field-text" x-html="TheraTrials.annotateAbbr(selectedStudy.preparo || '—')"></div></div>
+            <div class="field full"><div class="field-label" data-i18n="db.fieldComparator">Comparador</div><div class="field-text" x-html="TheraTrials.annotateAbbr(selectedStudy.comparador || '—')"></div></div>
           </div>
         </div>
 
         <div class="section-block">
           <div class="section-block-title"><i data-lucide="sigma" style="width:13px;height:13px"></i> <span data-i18n="db.secStatistics">Desenho estatístico</span></div>
           <div class="section-block-grid">
-            <div class="field"><div class="field-label" data-i18n="db.fieldHypothesis">Hipótese estatística</div><div class="field-text" x-text="selectedStudy.estatistica || '—'"></div></div>
-            <div class="field"><div class="field-label" data-i18n="db.fieldAnalyses">Análises (ITT/PP, ajustes)</div><div class="field-text" x-text="selectedStudy.analises || '—'"></div></div>
+            <div class="field"><div class="field-label" data-i18n="db.fieldHypothesis">Hipótese estatística</div><div class="field-text" x-html="TheraTrials.annotateAbbr(selectedStudy.estatistica || '—')"></div></div>
+            <div class="field"><div class="field-label" data-i18n="db.fieldAnalyses">Análises (ITT/PP, ajustes)</div><div class="field-text" x-html="TheraTrials.annotateAbbr(selectedStudy.analises || '—')"></div></div>
           </div>
         </div>
 
         <div class="section-block">
           <div class="section-block-title"><i data-lucide="target" style="width:13px;height:13px"></i> <span data-i18n="db.secEndpoints">Desfechos</span></div>
-          <div class="field full highlight" style="margin-bottom: 0.75rem"><div class="field-label" data-i18n="db.fieldPrimaryResult">Primário (resultado)</div><div class="field-text" x-text="selectedStudy.primario || '—'"></div></div>
-          <div class="field full" style="margin-bottom: 0.75rem"><div class="field-label" data-i18n="db.fieldSecondary">Secundários</div><div class="field-text" x-text="selectedStudy.secundario || '—'"></div></div>
-          <div class="field full"><div class="field-label" data-i18n="db.fieldSubgroups">Subgrupos / análises exploratórias</div><div class="field-text" x-text="selectedStudy.subgrupo || '—'"></div></div>
+          <div class="field full highlight" style="margin-bottom: 0.75rem"><div class="field-label" data-i18n="db.fieldPrimaryResult">Primário (resultado)</div><div class="field-text" x-html="TheraTrials.annotateAbbr(selectedStudy.primario || '—')"></div></div>
+          <div class="field full" style="margin-bottom: 0.75rem"><div class="field-label" data-i18n="db.fieldSecondary">Secundários</div><div class="field-text" x-html="TheraTrials.annotateAbbr(selectedStudy.secundario || '—')"></div></div>
+          <div class="field full"><div class="field-label" data-i18n="db.fieldSubgroups">Subgrupos / análises exploratórias</div><div class="field-text" x-html="TheraTrials.annotateAbbr(selectedStudy.subgrupo || '—')"></div></div>
         </div>
 
         <div class="section-block">
           <div class="section-block-title" style="color: #F472B6"><i data-lucide="alert-triangle" style="width:13px;height:13px"></i> <span data-i18n="db.secToxicity">Toxicidade</span></div>
           <div class="section-block-grid">
-            <div class="field"><div class="field-label" data-i18n="db.fieldG3Events">Eventos ≥G3</div><div class="field-text" x-text="selectedStudy.tox_g3 || '—'"></div></div>
-            <div class="field"><div class="field-label" data-i18n="db.fieldSpecificEvents">Eventos de interesse específico</div><div class="field-text" x-text="selectedStudy.tox_interesse || '—'"></div></div>
+            <div class="field"><div class="field-label" data-i18n="db.fieldG3Events">Eventos ≥G3</div><div class="field-text" x-html="TheraTrials.annotateAbbr(selectedStudy.tox_g3 || '—')"></div></div>
+            <div class="field"><div class="field-label" data-i18n="db.fieldSpecificEvents">Eventos de interesse específico</div><div class="field-text" x-html="TheraTrials.annotateAbbr(selectedStudy.tox_interesse || '—')"></div></div>
           </div>
         </div>
 
         <div class="section-block">
           <div class="section-block-title"><i data-lucide="award" style="width:13px;height:13px"></i> <span data-i18n="db.secImpact">Impacto e referência</span></div>
-          <div class="field full highlight" style="margin-bottom: 0.75rem"><div class="field-label" data-i18n="db.fieldRegulatoryImpact">Impacto regulatório / diretrizes</div><div class="field-text" x-text="selectedStudy.impacto_reg || '—'"></div></div>
-          <div class="field full" style="margin-bottom: 0.75rem"><div class="field-label" data-i18n="db.fieldLimitations">Limitações</div><div class="field-text" x-text="selectedStudy.limit || '—'"></div></div>
+          <div class="field full highlight" style="margin-bottom: 0.75rem"><div class="field-label" data-i18n="db.fieldRegulatoryImpact">Impacto regulatório / diretrizes</div><div class="field-text" x-html="TheraTrials.annotateAbbr(selectedStudy.impacto_reg || '—')"></div></div>
+          <div class="field full" style="margin-bottom: 0.75rem"><div class="field-label" data-i18n="db.fieldLimitations">Limitações</div><div class="field-text" x-html="TheraTrials.annotateAbbr(selectedStudy.limit || '—')"></div></div>
           <div class="field full" style="border-color: rgba(255, 132, 0, 0.3)"><div class="field-label" data-i18n="db.fieldMainReference">Referência principal</div><div class="field-text mono" x-text="selectedStudy.ref || '—'"></div></div>
         </div>
 
@@ -913,7 +963,7 @@
         <div class="section-block">
           <div class="section-block-title" style="color: var(--stone)"><i data-lucide="map-pin" style="width:13px;height:13px"></i> <span data-i18n="db.secStudyDetails">Detalhes do estudo</span></div>
           <div class="section-block-grid">
-            <div class="field"><div class="field-label" data-i18n="db.fieldDesign">Desenho</div><div class="field-text" x-text="selectedStudy.desenho || '—'"></div></div>
+            <div class="field"><div class="field-label" data-i18n="db.fieldDesign">Desenho</div><div class="field-text" x-html="TheraTrials.annotateAbbr(selectedStudy.desenho || '—')"></div></div>
             <div class="field"><div class="field-label" data-i18n="db.fieldCenters">Centros</div><div class="field-text" x-text="selectedStudy.centros || '—'"></div></div>
           </div>
         </div>
@@ -1058,6 +1108,34 @@
   </template>
 </div>
 
+<!-- Modal: Legenda de siglas -->
+<div class="modal-backdrop" x-show="showGlossary" @click.self="showGlossary=false" @keydown.window.escape="showGlossary && (showGlossary=false)" x-transition.opacity x-cloak>
+  <div class="modal-content" style="max-width: 880px">
+    <button class="modal-close" @click="showGlossary=false"><i data-lucide="x" style="width:16px;height:16px"></i></button>
+    <div class="modal-header">
+      <div class="modal-cat"><i data-lucide="book-open-text" style="width:13px;height:13px"></i> <span data-i18n="db.glossaryKicker">Guia rápido</span></div>
+      <h2 class="modal-title" data-i18n="db.glossaryTitle">Legenda de siglas e métricas</h2>
+    </div>
+    <div class="gloss-modal-body">
+      <p class="gloss-intro" data-i18n="db.glossaryIntro">Siglas e métricas de ensaios clínicos usadas nos cards e nos detalhes de cada estudo. Nos textos, as siglas conhecidas aparecem <abbr class="gloss-term" data-term="OS" tabindex="0">sublinhadas</abbr> — passe o mouse ou toque para ver a definição. Definições didáticas; sempre confira a publicação primária.</p>
+      <template x-for="g in glossaryGroups" :key="g.id">
+        <div class="gloss-group">
+          <div class="gloss-group-title"><i :data-lucide="g.icon" style="width:13px;height:13px"></i> <span x-text="g.label"></span></div>
+          <dl class="gloss-grid">
+            <template x-for="it in g.items" :key="it.abbr">
+              <div class="gloss-item"><dt x-text="it.abbr"></dt><dd x-text="it.def"></dd></div>
+            </template>
+          </dl>
+        </div>
+      </template>
+    </div>
+    <div class="modal-footer">
+      <span data-i18n="db.glossaryCount">Referência de siglas · TheraTrials Oncology</span>
+      <span data-i18n="db.glossaryDisclaimer">Definições didáticas · não substituem a publicação primária</span>
+    </div>
+  </div>
+</div>
+
 <div x-show="toast" x-transition x-cloak style="position: fixed; bottom: 6rem; right: 1.5rem; background: var(--graphite-3); border: 1px solid var(--border-mid); padding: 0.75rem 1rem; border-radius: var(--radius-sm); box-shadow: 0 8px 24px rgba(0,0,0,0.4); z-index: 200; display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem">
   <i data-lucide="check-circle-2" style="width:16px;height:16px; color: #6EE7B7"></i>
   <span x-text="toast"></span>
@@ -1075,6 +1153,7 @@
 <script src="assets/js/data.js?v=12"></script>
 <script src="assets/js/secondary-cards.js?v=1"></script>
 <script src="assets/js/common.js?v=11"></script>
+<script src="assets/js/glossario.js?v=5"></script>
 <script src="assets/js/i18n.js"></script>
 <script src="assets/lang/pt-br.js"></script>
 <script src="assets/lang/en.js"></script>
@@ -1095,6 +1174,8 @@ function databaseApp() {
     selectedSecondary: null,
     compareList: [],
     showCompareView: false,
+    showGlossary: false,
+    langTick: 0,
     toast: '',
     expandedModality: '',
     favorites: [],
@@ -1132,9 +1213,21 @@ function databaseApp() {
         if (nts) this.notes = JSON.parse(nts);
       } catch (e) {}
 
+      this.$watch('showGlossary', () => { this.$nextTick(() => lucide.createIcons()); });
+
       this.handleHash();
       window.addEventListener('hashchange', () => this.handleHash());
-      window.addEventListener('langchange', () => { this.$nextTick(() => lucide.createIcons()); });
+      window.addEventListener('langchange', () => { this.langTick++; this.$nextTick(() => lucide.createIcons()); });
+    },
+
+    get glossaryGroups() {
+      this.langTick; // dependência reativa: recomputa ao trocar idioma
+      return (window.TheraTrials && TheraTrials.glossaryGroups) ? TheraTrials.glossaryGroups(window.getLang ? getLang() : 'pt-br') : [];
+    },
+
+    openGlossary() {
+      this.showGlossary = true;
+      this.$nextTick(() => lucide.createIcons());
     },
 
     handleHash() {

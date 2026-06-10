@@ -472,6 +472,11 @@
 
 </main>
 
+<!-- Botão flutuante: legenda de siglas -->
+<button class="gloss-fab" onclick="if(window.TheraTrials)TheraTrials.openGlossaryModal()" title="Legenda das siglas e métricas">
+  <i data-lucide="book-open-text"></i> <span data-i18n="tm.glossaryBtn">Siglas</span>
+</button>
+
 <!-- FOOTER -->
 <footer class="site-footer">
   <div class="container">
@@ -486,6 +491,7 @@
 <script src="assets/js/data.js?v=12"></script>
 <script src="assets/js/trials_br.js"></script>
 <script src="assets/js/common.js"></script>
+<script src="assets/js/glossario.js?v=5"></script>
 <!-- i18n engine + lang files -->
 <script src="assets/js/i18n.js"></script>
 <script src="assets/lang/pt-br.js"></script>
@@ -819,6 +825,9 @@
     }
 
     container.innerHTML = html;
+
+    // Anota siglas nos cards recém-gerados (tooltips de glossário)
+    if (window.TheraTrials && TheraTrials.annotateDOM) TheraTrials.annotateDOM(container);
 
     // Re-init Lucide for new elements
     if (typeof lucide !== 'undefined') lucide.createIcons();
