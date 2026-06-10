@@ -1151,7 +1151,7 @@
 </footer>
 
 <script src="assets/js/data.js?v=12"></script>
-<script src="assets/js/secondary-cards.js?v=1"></script>
+<script src="assets/js/secondary-cards.js?v=2"></script>
 <script src="assets/js/common.js?v=11"></script>
 <script src="assets/js/glossario.js?v=5"></script>
 <script src="assets/js/i18n.js"></script>
@@ -1395,18 +1395,18 @@ function databaseApp() {
     // Publicações secundárias / análises derivadas vinculadas ao estudo (via parentUid).
     secondaryFor(uid) {
       if (!uid || !window.THERA_SECONDARY) return [];
-      const order = { primary_trial: 0, protocol: 1, trial_update: 2, secondary_publication: 3, substudy: 4, exploratory_analysis: 5, congress_abstract: 6, press_release: 7 };
+      const order = { primary_trial: 0, protocol: 1, trial_update: 2, secondary_publication: 3, substudy: 4, exploratory_analysis: 5, evidence_review: 6, congress_abstract: 7, press_release: 8 };
       return window.THERA_SECONDARY
         .filter(c => c.parentUid === uid)
         .slice()
         .sort((a, b) => ((order[a.recordType] ?? 9) - (order[b.recordType] ?? 9)) || (a.year - b.year));
     },
     secLabel(rt) {
-      const m = { primary_trial: 'Estudo principal', secondary_publication: 'Publicação secundária', trial_update: 'Atualização', exploratory_analysis: 'Análise exploratória', substudy: 'Subestudo', protocol: 'Protocolo', registry_only: 'Registro', press_release: 'Press release', congress_abstract: 'Congress abstract' };
+      const m = { primary_trial: 'Estudo principal', secondary_publication: 'Publicação secundária', trial_update: 'Atualização', exploratory_analysis: 'Análise exploratória', substudy: 'Subestudo', protocol: 'Protocolo', registry_only: 'Registro', evidence_review: 'Revisão de evidência', press_release: 'Press release', congress_abstract: 'Congress abstract' };
       return m[rt] || rt;
     },
     secColor(rt) {
-      const m = { primary_trial: '#FF8400', trial_update: '#0EA5B7', press_release: '#FBBF24', congress_abstract: '#FBBF24', protocol: '#94A3B8' };
+      const m = { primary_trial: '#FF8400', trial_update: '#0EA5B7', press_release: '#FBBF24', congress_abstract: '#FBBF24', protocol: '#94A3B8', evidence_review: '#34D399' };
       return m[rt] || '#C084FC';
     },
     openSecondary(c) { this.selectedSecondary = c; },

@@ -1169,6 +1169,74 @@ window.THERA_SECONDARY = [
       "interpretacao": "Rádio-223 manteve-se bem tolerado, com baixa mielossupressão e sem novos sinais de segurança em 3 anos.",
       "limitacoes": "Seguimento curto (3 anos)."
     }
+  },
+  {
+    "id": "psma-rlt-protecao-salivar-evidencia-vision",
+    "title": "Proteção das glândulas salivares na PSMA-RLT — revisão de evidência",
+    "recordType": "evidence_review",
+    "parentUid": "lupsma_prostata_0",
+    "parentTrialName": "VISION",
+    "parentTrialPublication": "Sartor O, et al. N Engl J Med 2021;385:1091-1103 (NCT03511664)",
+    "relationshipToParent": "Tópico transversal de toxicidade da terapia com radioligantes PSMA (aplica-se a toda a classe Lu-PSMA)",
+    "publicationStatus": "Síntese de evidência — múltiplas fontes primárias verificadas",
+    "analysisType": "Toxicidade salivar — estratégias de proteção",
+    "evidenceMaturity": "Baixo nível — sem ensaio randomizado com desfecho clínico de xerostomia",
+    "year": 2026,
+    "journal": null,
+    "titleOriginal": "Estratégias de proteção das glândulas salivares na terapia com radioligantes PSMA (resfriamento externo, MSG, toxina botulínica, sialendoscopia, sialagogos, hidratação) — síntese de evidência",
+    "authors": null,
+    "doi": null,
+    "pmid": null,
+    "sourceUrl": null,
+    "category": ["Xerostomia", "Glândulas salivares", "Proteção / toxicidade", "177Lu-PSMA-617"],
+    "clinicalTakeaway": "Nenhuma estratégia de proteção das glândulas salivares na PSMA-RLT tem eficácia comprovada por ensaio randomizado com desfecho clínico de xerostomia ou redução de dose absorvida. O resfriamento externo com ice packs não reduz a captação durante a terapia com 177Lu-PSMA-617 (Yilmaz, J Nucl Med 2019); o MSG reduz a captação salivar mas também a tumoral, sendo inviável; toxina botulínica e sialendoscopia são apenas promissoras em séries pequenas.",
+    "deep": {
+      "objetivo": "Sintetizar a evidência clínica para prevenção/redução da xerostomia e da dose absorvida às glândulas salivares na terapia com radioligantes PSMA (177Lu/225Ac-PSMA), por estratégia de proteção.",
+      "metodo": "Revisão de fontes primárias (ensaios prospectivos de imagem com SUV como surrogate, séries de uso compassivo e relatos de caso), com verificação adversarial das alegações. Desfechos: redução de captação/dose salivar e/ou incidência de xerostomia clínica.",
+      "achados": [
+        "Resfriamento externo (ice packs) — van Kalmthout et al., EJNMMI Res 2018 (n=89, 68Ga-PSMA PET): redução parotídea de apenas ~12%, sem efeito em submandibulares nem no grupo bilateral. Yilmaz et al., J Nucl Med 2019;60(10):1388 (n=19, durante 177Lu-PSMA-617): 'External cooling does not reduce uptake of 177Lu-PSMA-617 by the PGs'. Sem benefício comprovado.",
+        "Monossódio glutamato (MSG) — Tönnesmann/Rousseau, J Nucl Med 2021;62(1):81 e Rauscher/Armstrong, J Nucl Med 2021;62(9):1244 (prospectivos randomizados, imagem): reduz a captação salivar em 45–53%, mas reduz em paralelo a captação tumoral em 38–52%; os autores concluem ser estratégia clinicamente inviável.",
+        "Toxina botulínica intraglandular — Baum 2018 (relato n=1, queda de SUV de até 64%); Mueller et al., Toxins 2022 (uso compassivo n=10, bem tolerada, preservação salivar ~71% vs comparador histórico); TANDEM-PSMA-RLT 2025 (abstract, n=14). Promissora, porém sem ensaio randomizado e sem desfecho clínico de xerostomia.",
+        "Sialendoscopia / lavagem ductal — Rathke/Bulut, Eur J Nucl Med Mol Imaging 2019 (n=11, 225Ac-PSMA): melhora sintomática (Xerostomia Questionnaire 77,7→42,7; Xerostomia Inventory 44,5→25,8) porém sem dosimetria; intervenção de resgate, não preventiva.",
+        "Sialagogos (limão / ácido cítrico / vitamina C / balas), hidratação, losartana e pilocarpina — sem evidência primária em PSMA-RLT; uso empírico extrapolado da radioterapia externa e do 131I (lacuna de evidência)."
+      ],
+      "interpretacao": "Até o momento, nenhuma estratégia de proteção salivar tem eficácia comprovada por ensaio randomizado com desfecho clínico de xerostomia ou de dose absorvida real de 177Lu. A maioria dos dados usa captação/SUV em PET diagnóstico como surrogate, que não se transfere de forma confiável para a terapia — os ice packs reduzem o SUV na imagem, mas não durante a terapia. Parte da evidência de toxina botulínica/sialendoscopia provém de 225Ac-PSMA (emissor alfa, mais sialotóxico).",
+      "limitacoes": "Predomínio de evidência de baixo nível (relato n=1, uso compassivo com comparador histórico, séries não controladas, abstracts de congresso). Não foram localizadas recomendações formais da EANM/SNMMI a favor de qualquer método específico. Campo em rápida evolução."
+    }
+  },
+  {
+    "id": "psma-rlt-protecao-salivar-evidencia-therap",
+    "title": "Proteção das glândulas salivares na PSMA-RLT — revisão de evidência",
+    "recordType": "evidence_review",
+    "parentUid": "lupsma_prostata_1",
+    "parentTrialName": "TheraP",
+    "parentTrialPublication": "Hofman MS, et al. Lancet 2021;397:797-804 (NCT03392428)",
+    "relationshipToParent": "Tópico transversal de toxicidade da terapia com radioligantes PSMA (aplica-se a toda a classe Lu-PSMA)",
+    "publicationStatus": "Síntese de evidência — múltiplas fontes primárias verificadas",
+    "analysisType": "Toxicidade salivar — estratégias de proteção",
+    "evidenceMaturity": "Baixo nível — sem ensaio randomizado com desfecho clínico de xerostomia",
+    "year": 2026,
+    "journal": null,
+    "titleOriginal": "Estratégias de proteção das glândulas salivares na terapia com radioligantes PSMA (resfriamento externo, MSG, toxina botulínica, sialendoscopia, sialagogos, hidratação) — síntese de evidência",
+    "authors": null,
+    "doi": null,
+    "pmid": null,
+    "sourceUrl": null,
+    "category": ["Xerostomia", "Glândulas salivares", "Proteção / toxicidade", "177Lu-PSMA-617"],
+    "clinicalTakeaway": "Nenhuma estratégia de proteção das glândulas salivares na PSMA-RLT tem eficácia comprovada por ensaio randomizado com desfecho clínico de xerostomia ou redução de dose absorvida. O resfriamento externo com ice packs não reduz a captação durante a terapia com 177Lu-PSMA-617 (Yilmaz, J Nucl Med 2019); o MSG reduz a captação salivar mas também a tumoral, sendo inviável; toxina botulínica e sialendoscopia são apenas promissoras em séries pequenas.",
+    "deep": {
+      "objetivo": "Sintetizar a evidência clínica para prevenção/redução da xerostomia e da dose absorvida às glândulas salivares na terapia com radioligantes PSMA (177Lu/225Ac-PSMA), por estratégia de proteção.",
+      "metodo": "Revisão de fontes primárias (ensaios prospectivos de imagem com SUV como surrogate, séries de uso compassivo e relatos de caso), com verificação adversarial das alegações. Desfechos: redução de captação/dose salivar e/ou incidência de xerostomia clínica.",
+      "achados": [
+        "Resfriamento externo (ice packs) — van Kalmthout et al., EJNMMI Res 2018 (n=89, 68Ga-PSMA PET): redução parotídea de apenas ~12%, sem efeito em submandibulares nem no grupo bilateral. Yilmaz et al., J Nucl Med 2019;60(10):1388 (n=19, durante 177Lu-PSMA-617): 'External cooling does not reduce uptake of 177Lu-PSMA-617 by the PGs'. Sem benefício comprovado.",
+        "Monossódio glutamato (MSG) — Tönnesmann/Rousseau, J Nucl Med 2021;62(1):81 e Rauscher/Armstrong, J Nucl Med 2021;62(9):1244 (prospectivos randomizados, imagem): reduz a captação salivar em 45–53%, mas reduz em paralelo a captação tumoral em 38–52%; os autores concluem ser estratégia clinicamente inviável.",
+        "Toxina botulínica intraglandular — Baum 2018 (relato n=1, queda de SUV de até 64%); Mueller et al., Toxins 2022 (uso compassivo n=10, bem tolerada, preservação salivar ~71% vs comparador histórico); TANDEM-PSMA-RLT 2025 (abstract, n=14). Promissora, porém sem ensaio randomizado e sem desfecho clínico de xerostomia.",
+        "Sialendoscopia / lavagem ductal — Rathke/Bulut, Eur J Nucl Med Mol Imaging 2019 (n=11, 225Ac-PSMA): melhora sintomática (Xerostomia Questionnaire 77,7→42,7; Xerostomia Inventory 44,5→25,8) porém sem dosimetria; intervenção de resgate, não preventiva.",
+        "Sialagogos (limão / ácido cítrico / vitamina C / balas), hidratação, losartana e pilocarpina — sem evidência primária em PSMA-RLT; uso empírico extrapolado da radioterapia externa e do 131I (lacuna de evidência)."
+      ],
+      "interpretacao": "Até o momento, nenhuma estratégia de proteção salivar tem eficácia comprovada por ensaio randomizado com desfecho clínico de xerostomia ou de dose absorvida real de 177Lu. A maioria dos dados usa captação/SUV em PET diagnóstico como surrogate, que não se transfere de forma confiável para a terapia — os ice packs reduzem o SUV na imagem, mas não durante a terapia. Parte da evidência de toxina botulínica/sialendoscopia provém de 225Ac-PSMA (emissor alfa, mais sialotóxico).",
+      "limitacoes": "Predomínio de evidência de baixo nível (relato n=1, uso compassivo com comparador histórico, séries não controladas, abstracts de congresso). Não foram localizadas recomendações formais da EANM/SNMMI a favor de qualquer método específico. Campo em rápida evolução."
+    }
   }
 ];
 
