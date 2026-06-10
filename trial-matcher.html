@@ -365,7 +365,7 @@
     <h1 data-i18n-html="tm.title">Trial <span class="accent">Matcher</span></h1>
     <p data-i18n="tm.subtitle">Encontre ensaios cl&iacute;nicos relevantes para seu paciente.
        Filtre por tumor, biomarcador, linha terap&ecirc;utica e modalidade
-       &mdash; busca simult&acirc;nea em 459 estudos analisados e 79 ensaios ativos no Brasil.</p>
+       &mdash; busca simult&acirc;nea em 465 estudos analisados e 79 ensaios ativos no Brasil.</p>
   </section>
 
   <!-- Filters -->
@@ -600,7 +600,7 @@
 
     var results = [];
 
-    // ── Search Database (459 studies) ──
+    // ── Search Database (465 studies) ──
     if (sources.database && window.THERA_DATA && window.THERA_DATA.studies) {
       window.THERA_DATA.studies.forEach(function(s) {
         var score = 0;
@@ -947,7 +947,7 @@
       errorEl.style.borderColor = 'rgba(251,191,36,0.2)';
       errorEl.querySelector('h3').style.color = '#FBBF24';
       errorEl.querySelector('h3').textContent = t('tm.errorPartialDB', 'Database parcialmente indisponível');
-      errorMsg.textContent = t('tm.errorPartialDBMsg', 'O banco principal (459 estudos) não carregou. Apenas ensaios brasileiros (79 ativos) estão disponíveis.');
+      errorMsg.textContent = t('tm.errorPartialDBMsg', 'O banco principal (465 estudos) não carregou. Apenas ensaios brasileiros (79 ativos) estão disponíveis.');
       // Disable database source chip
       var dbChip = document.querySelector('.tm-source-chip.database');
       if (dbChip) { dbChip.classList.remove('active'); sources.database = false; dbChip.style.opacity = '0.3'; dbChip.style.pointerEvents = 'none'; }
@@ -961,7 +961,7 @@
       errorEl.style.borderColor = 'rgba(251,191,36,0.2)';
       errorEl.querySelector('h3').style.color = '#FBBF24';
       errorEl.querySelector('h3').textContent = t('tm.errorPartialBR', 'Ensaios Brasil indisponíveis');
-      errorMsg.textContent = t('tm.errorPartialBRMsg', 'O banco de ensaios brasileiros não carregou. Apenas o Database principal (459 estudos) está disponível.');
+      errorMsg.textContent = t('tm.errorPartialBRMsg', 'O banco de ensaios brasileiros não carregou. Apenas o Database principal (465 estudos) está disponível.');
       // Disable brasil source chip
       var brChip = document.querySelector('.tm-source-chip.brasil');
       if (brChip) { brChip.classList.remove('active'); sources.brasil = false; brChip.style.opacity = '0.3'; brChip.style.pointerEvents = 'none'; }

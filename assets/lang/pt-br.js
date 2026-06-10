@@ -113,7 +113,7 @@ window._i18nRegister('pt-br', {
     pillService: "Serviço",
     of: "de",
     documents: "documentos",
-    footerLeft: "© 2026 TheraTrials Oncology · 459 estudos analisados · v1.2",
+    footerLeft: "© 2026 TheraTrials Oncology · 465 estudos analisados · v1.2",
     footerRight: "Para uso educacional. Não substitui diretrizes oficiais."
   },
 
@@ -268,7 +268,7 @@ window._i18nRegister('pt-br', {
     feat3Title: "Deadlines",
     feat3Desc: "Prazos de submissão de abstracts e inscrições",
     back: "Voltar para o início",
-    footerLeft: "© 2026 TheraTrials Oncology · 459 estudos analisados · v1.2",
+    footerLeft: "© 2026 TheraTrials Oncology · 465 estudos analisados · v1.2",
     footerRight: "Para uso educacional. Não substitui diretrizes oficiais."
   },
 
@@ -293,7 +293,7 @@ window._i18nRegister('pt-br', {
     cadence: "<strong>Frequência mensal</strong> — a newsletter é gerada automaticamente no dia 2 de cada mês, após a atualização do pipeline de dados do ClinicalTrials.gov.",
     archiveTitle: "Edições anteriores",
     archiveEmpty: "A primeira edição será publicada em breve. Inscreva-se acima para receber assim que estiver disponível.",
-    footerLeft: "© 2026 TheraTrials Oncology · 459 estudos analisados · v1.3",
+    footerLeft: "© 2026 TheraTrials Oncology · 465 estudos analisados · v1.3",
     footerRight: "Para uso educacional. Não substitui diretrizes oficiais."
   },
 
@@ -497,7 +497,7 @@ window._i18nRegister('pt-br', {
     s10c2D: "ALSYMPCA, PEACE-3, COMRADE — só osso, alta especificidade.",
     s10c3L: "Database",
     s10c3N: "Todos os estudos",
-    s10c3D: "459 ensaios clínicos em 40 categorias terapêuticas, com filtros hierárquicos.",
+    s10c3D: "465 ensaios clínicos em 40 categorias terapêuticas, com filtros hierárquicos.",
     s10c4L: "Ferramenta",
     s10c4N: "Calculadora de dose",
     s10c4D: "Cálculo de atividade e cronograma de ciclos para Lu-PSMA.",
@@ -1725,7 +1725,7 @@ window._i18nRegister('pt-br', {
     missaoP2: "O foco é a <strong>oncologia moderna</strong>: terapias-alvo, imunoterapia, biomarcadores, imagem molecular e teranóstico. Cada estudo é mais que uma referência — é uma síntese que cabe na rotina clínica sem perder rigor.",
     // Metodologia
     metodH: "Metodologia",
-    metodP1: "Cada um dos <strong>459 estudos selecionados</strong> passa por um processo padronizado de extração e síntese:",
+    metodP1: "Cada um dos <strong>465 estudos selecionados</strong> passa por um processo padronizado de extração e síntese:",
     metodLi1: "<strong>Identificação</strong>: nome, acrônimo completo, NCT, sponsor, fase, desenho, centros, período de recrutamento.",
     metodLi2: "<strong>População</strong>: indicação clínica, critérios de inclusão e exclusão, estratificadores, características basais, n planejado / randomizado / analisado.",
     metodLi3: "<strong>Critérios moleculares e imagem</strong>: PSMA-PET (com SUV thresholds, critério VISION), Krenning score, biomarcadores (PSA, CgA, ctDNA, HRR, KRAS).",
@@ -1828,7 +1828,7 @@ window._i18nRegister('pt-br', {
     contatoLi5: "Visualizações adicionais (forest plots interativos, timelines comparativas).",
     contatoP3: "Para feedback ou sugestões: <a href=\"mailto:marcosmdsoliveira@gmail.com\">marcosmdsoliveira@gmail.com</a>.",
     // Footer
-    ft1: "© 2026 TheraTrials Oncology · v1.0 · 459 estudos analisados",
+    ft1: "© 2026 TheraTrials Oncology · v1.0 · 465 estudos analisados",
     ft2: "elegance · clarity · impact"
   },
 
@@ -2278,7 +2278,7 @@ window._i18nRegister('pt-br', {
   /* ── Guideline Detail (guideline-detail.html) ── */
   gd: {
     /* Footer */
-    ft1: "© 2026 TheraTrials Oncology · 459 estudos analisados · v1.2",
+    ft1: "© 2026 TheraTrials Oncology · 465 estudos analisados · v1.2",
     ft2: "Para uso educacional. Não substitui diretrizes oficiais."
   },
 
@@ -2286,7 +2286,7 @@ window._i18nRegister('pt-br', {
   tm: {
     badge: "Ferramenta clínica",
     title: "Trial <span class=\"accent\">Matcher</span>",
-    subtitle: "Encontre ensaios clínicos relevantes para seu paciente. Filtre por tumor, biomarcador, linha terapêutica e modalidade — busca simultânea em 459 estudos analisados e 79 ensaios ativos no Brasil.",
+    subtitle: "Encontre ensaios clínicos relevantes para seu paciente. Filtre por tumor, biomarcador, linha terapêutica e modalidade — busca simultânea em 465 estudos analisados e 79 ensaios ativos no Brasil.",
     fTumor: "Tumor / Neoplasia",
     fTumorAll: "Todos os tumores",
     fBio: "Biomarcador / Alvo",
@@ -2339,9 +2339,9 @@ window._i18nRegister('pt-br', {
     footerLine1: "© 2026 TheraTrials Oncology · Trial Matcher · v1.3",
     footerLine2: "Ferramenta educacional. Não substitui avaliação de elegibilidade formal.",
     errorPartialDB: "Database parcialmente indisponível",
-    errorPartialDBMsg: "O banco principal (459 estudos) não carregou. Apenas ensaios brasileiros (79 ativos) estão disponíveis.",
+    errorPartialDBMsg: "O banco principal (465 estudos) não carregou. Apenas ensaios brasileiros (79 ativos) estão disponíveis.",
     errorPartialBR: "Ensaios Brasil indisponíveis",
-    errorPartialBRMsg: "O banco de ensaios brasileiros não carregou. Apenas o Database principal (459 estudos) está disponível."
+    errorPartialBRMsg: "O banco de ensaios brasileiros não carregou. Apenas o Database principal (465 estudos) está disponível."
   },
 
   /* ── Home (index.html) ── */
@@ -2362,7 +2362,7 @@ window._i18nRegister('pt-br', {
 
     /* Platform map cards */
     pmDatabaseName: "Database",
-    pmDatabaseDesc: "Mais de 459 ensaios · 40 categorias · favoritos · citações",
+    pmDatabaseDesc: "Mais de 465 ensaios · 40 categorias · favoritos · citações",
     pmExplorerName: "TheraTrials Explorer",
     pmExplorerDesc: "Pipeline global de radioligantes · dados do ClinicalTrials.gov · atualização mensal",
     pmEnsaiosBRName: "Ensaios clínicos ativos (BR)",
@@ -2393,7 +2393,7 @@ window._i18nRegister('pt-br', {
 
     /* Database block */
     dbBadge: "Database",
-    dbTitle: "Mais de 459 ensaios clínicos · 40 categorias",
+    dbTitle: "Mais de 465 ensaios clínicos · 40 categorias",
     dbDesc: "Pesquisa por tumor, modalidade ou estudo individual, com atualizações semanais. Cobertura: teranóstico (próstata, NET, HCC/mCRC, ccRCC, neuroblastoma/PPGL), pulmão (NSCLC drivers, IO 1L, perioperatório, SCLC), mama (HER2+, HR+/HER2-, TNBC, BRCA-mut, imagem molecular) e uro-oncologia (ccRCC IO+TKI, RCC adjuvante e não-clear, urotelial avançado e perioperatório/NMIBC). Cada linha leva a uma ficha com mais de 30 campos.",
     dbCta: "Abrir Database",
     dbFeat1Name: "Filtros hierárquicos",
@@ -2454,7 +2454,7 @@ window._i18nRegister('pt-br', {
 
     /* CTA final */
     ctaTitle: "Pronto para conectar evidência e prática clínica?",
-    ctaDesc: "459 ensaios clínicos analisados em 40 categorias · pipeline global de radioligantes via ClinicalTrials.gov · 79 ensaios clínicos ativos no Brasil · 7 dossiês de radiofármaco · 12 ferramentas clínicas · AJCC 8ª ed., CTCAE v6.0, BCLC 2026 · hyperlinks diretos para PubMed e ClinicalTrials.gov.",
+    ctaDesc: "465 ensaios clínicos analisados em 40 categorias · pipeline global de radioligantes via ClinicalTrials.gov · 79 ensaios clínicos ativos no Brasil · 7 dossiês de radiofármaco · 12 ferramentas clínicas · AJCC 8ª ed., CTCAE v6.0, BCLC 2026 · hyperlinks diretos para PubMed e ClinicalTrials.gov.",
     ctaBtnDatabase: "Acessar o banco",
     ctaBtnExplorer: "Explorer",
     ctaBtnTumorBoards: "Tumor boards",
@@ -2480,7 +2480,7 @@ window._i18nRegister('pt-br', {
 
   /* ── Database page (database.html) ── */
   db: {
-    heroEyebrow: "Banco de evidências · 459 estudos analisados",
+    heroEyebrow: "Banco de evidências · 465 estudos analisados",
     heroTitle: "Encontre, compare e cite <span class=\"text-amber\">com clareza</span>",
     heroSubtitle: "Filtre por tumor, modalidade, fase ou linha. Clique em qualquer estudo para ver os 31 campos detalhados, salvar como favorito, anotar ou copiar a citação formatada.",
     searchPlaceholder: "Buscar estudo, NCT, radiofármaco, doença...",
@@ -2626,7 +2626,7 @@ window._i18nRegister('pt-br', {
     toastCopied: "Copiado",
 
     /* Footer */
-    footerLine1: "© 2026 TheraTrials Oncology · 459 estudos analisados · v1.0",
+    footerLine1: "© 2026 TheraTrials Oncology · 465 estudos analisados · v1.0",
     footerLine2: "Para uso educacional. Não substitui diretrizes oficiais."
   },
 
