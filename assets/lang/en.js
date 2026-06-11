@@ -113,7 +113,7 @@ window._i18nRegister('en', {
     pillService: "Service",
     of: "of",
     documents: "documents",
-    footerLeft: "© 2026 TheraTrials Oncology · 472 studies analyzed · v1.2",
+    footerLeft: "© 2026 TheraTrials Oncology · 475 studies analyzed · v1.2",
     footerRight: "For educational use. Does not replace official guidelines."
   },
 
@@ -268,7 +268,7 @@ window._i18nRegister('en', {
     feat3Title: "Deadlines",
     feat3Desc: "Abstract submission and registration deadlines",
     back: "Back to home",
-    footerLeft: "© 2026 TheraTrials Oncology · 472 studies analyzed · v1.2",
+    footerLeft: "© 2026 TheraTrials Oncology · 475 studies analyzed · v1.2",
     footerRight: "For educational use. Does not replace official guidelines."
   },
 
@@ -293,7 +293,7 @@ window._i18nRegister('en', {
     cadence: "<strong>Monthly cadence</strong> — the newsletter is generated automatically on the 2nd of each month, after the ClinicalTrials.gov data pipeline update.",
     archiveTitle: "Past issues",
     archiveEmpty: "The first issue will be published soon. Subscribe above to receive it as soon as it's available.",
-    footerLeft: "© 2026 TheraTrials Oncology · 472 studies analyzed · v1.3",
+    footerLeft: "© 2026 TheraTrials Oncology · 475 studies analyzed · v1.3",
     footerRight: "For educational use. Does not replace official guidelines."
   },
 
@@ -497,7 +497,7 @@ window._i18nRegister('en', {
     s10c2D: "ALSYMPCA, PEACE-3, COMRADE — bone only, high specificity.",
     s10c3L: "Database",
     s10c3N: "All studies",
-    s10c3D: "472 clinical trials in 40 therapeutic categories, with hierarchical filters.",
+    s10c3D: "475 clinical trials in 40 therapeutic categories, with hierarchical filters.",
     s10c4L: "Tool",
     s10c4N: "Dose calculator",
     s10c4D: "Activity calculation and cycle schedule for Lu-PSMA.",
@@ -1828,7 +1828,7 @@ window._i18nRegister('en', {
     contatoLi5: "Additional visualizations (interactive forest plots, comparative timelines).",
     contatoP3: "For feedback or suggestions: <a href=\"mailto:marcosmdsoliveira@gmail.com\">marcosmdsoliveira@gmail.com</a>.",
     // Footer
-    ft1: "© 2026 TheraTrials Oncology · v1.0 · 472 studies analyzed",
+    ft1: "© 2026 TheraTrials Oncology · v1.0 · 475 studies analyzed",
     ft2: "elegance · clarity · impact"
   },
 
@@ -2278,7 +2278,7 @@ window._i18nRegister('en', {
   /* ── Guideline Detail (guideline-detail.html) ── */
   gd: {
     /* Footer */
-    ft1: "© 2026 TheraTrials Oncology · 472 studies analyzed · v1.2",
+    ft1: "© 2026 TheraTrials Oncology · 475 studies analyzed · v1.2",
     ft2: "For educational use. Does not replace official guidelines."
   },
 
@@ -2286,7 +2286,7 @@ window._i18nRegister('en', {
   tm: {
     badge: "Clinical Tool",
     title: "Trial <span class=\"accent\">Matcher</span>",
-    subtitle: "Find relevant clinical trials for your patient. Filter by tumor, biomarker, therapy line, and modality — simultaneous search across 472 curated studies and 79 active trials in Brazil.",
+    subtitle: "Find relevant clinical trials for your patient. Filter by tumor, biomarker, therapy line, and modality — simultaneous search across 475 curated studies and 79 active trials in Brazil.",
     fTumor: "Tumor / Neoplasm",
     fTumorAll: "All tumors",
     fBio: "Biomarker / Target",
@@ -2339,9 +2339,9 @@ window._i18nRegister('en', {
     footerLine1: "© 2026 TheraTrials Oncology · Trial Matcher · v1.3",
     footerLine2: "Educational tool. Does not replace formal eligibility assessment.",
     errorPartialDB: "Database partially unavailable",
-    errorPartialDBMsg: "The main database (472 studies) failed to load. Only Brazilian trials (79 active) are available.",
+    errorPartialDBMsg: "The main database (475 studies) failed to load. Only Brazilian trials (79 active) are available.",
     errorPartialBR: "Brazil Trials unavailable",
-    errorPartialBRMsg: "Brazilian trials database failed to load. Only the main Database (472 studies) is available."
+    errorPartialBRMsg: "Brazilian trials database failed to load. Only the main Database (475 studies) is available."
   },
 
   /* ── Home (index.html) ── */
@@ -2362,7 +2362,7 @@ window._i18nRegister('en', {
 
     /* Platform map cards */
     pmDatabaseName: "Database",
-    pmDatabaseDesc: "Over 472 trials · 40 categories · favorites · citations",
+    pmDatabaseDesc: "Over 475 trials · 40 categories · favorites · citations",
     pmExplorerName: "TheraTrials Explorer",
     pmExplorerDesc: "Global radioligand pipeline · ClinicalTrials.gov data · monthly updates",
     pmEnsaiosBRName: "Active Clinical Trials (BR)",
@@ -2393,7 +2393,7 @@ window._i18nRegister('en', {
 
     /* Database block */
     dbBadge: "Database",
-    dbTitle: "Over 472 clinical trials · 40 categories",
+    dbTitle: "Over 475 clinical trials · 40 categories",
     dbDesc: "Search by tumor type, modality or individual study, with weekly updates. Coverage: theranostics (prostate, NET, HCC/mCRC, ccRCC, neuroblastoma/PPGL), lung (NSCLC drivers, IO 1L, perioperative, SCLC), breast (HER2+, HR+/HER2-, TNBC, BRCA-mut, molecular imaging) and uro-oncology (ccRCC IO+TKI, adjuvant and non-clear cell RCC, advanced urothelial and perioperative/NMIBC). Each entry opens a record with over 30 fields.",
     dbCta: "Open Database",
     dbFeat1Name: "Hierarchical filters",
@@ -2454,7 +2454,7 @@ window._i18nRegister('en', {
 
     /* CTA final */
     ctaTitle: "Ready to connect evidence and clinical practice?",
-    ctaDesc: "472 curated clinical trials in 40 categories · global radioligand pipeline via ClinicalTrials.gov · 79 active clinical trials in Brazil · 7 radiopharmaceutical dossiers · 12 clinical tools · AJCC 8th ed., CTCAE v6.0, BCLC 2026 · direct hyperlinks to PubMed and ClinicalTrials.gov.",
+    ctaDesc: "475 curated clinical trials in 40 categories · global radioligand pipeline via ClinicalTrials.gov · 79 active clinical trials in Brazil · 7 radiopharmaceutical dossiers · 12 clinical tools · AJCC 8th ed., CTCAE v6.0, BCLC 2026 · direct hyperlinks to PubMed and ClinicalTrials.gov.",
     ctaBtnDatabase: "Access the database",
     ctaBtnExplorer: "Explorer",
     ctaBtnTumorBoards: "Tumor Boards",
@@ -2480,7 +2480,7 @@ window._i18nRegister('en', {
 
   /* ── Database page (database.html) ── */
   db: {
-    heroEyebrow: "Evidence database · 472 curated studies",
+    heroEyebrow: "Evidence database · 475 curated studies",
     heroTitle: "Find, compare, and cite <span class=\"text-amber\">with clarity</span>",
     heroSubtitle: "Filter by tumor, modality, phase, or therapy line. Click any study to view 31 detailed fields, save as a favorite, add notes, or copy a formatted citation.",
     searchPlaceholder: "Search study, NCT, radiopharmaceutical, disease...",
@@ -2626,7 +2626,7 @@ window._i18nRegister('en', {
     toastCopied: "Copied",
 
     /* Footer */
-    footerLine1: "© 2026 TheraTrials Oncology · 472 studies analyzed · v1.0",
+    footerLine1: "© 2026 TheraTrials Oncology · 475 studies analyzed · v1.0",
     footerLine2: "For educational use. Does not replace official guidelines."
   },
 
