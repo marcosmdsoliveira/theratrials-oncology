@@ -68,6 +68,10 @@
       terms: [
         { a: 'SSTR',  pt: 'Receptor de somatostatina',                      en: 'Somatostatin receptor' },
         { a: 'HER2',  pt: 'Receptor 2 do fator de crescimento epidérmico',  en: 'Human epidermal growth factor receptor 2' },
+        { a: 'HR+',   pt: 'Receptor hormonal positivo (RE e/ou RP) — mama',  en: 'Hormone receptor-positive (ER and/or PR) — breast' },
+        { a: 'HR-',   pt: 'Receptor hormonal negativo — mama',               en: 'Hormone receptor-negative — breast' },
+        { a: 'HR−', hidden: true, pt: 'Receptor hormonal negativo — mama', en: 'Hormone receptor-negative — breast' },
+        { a: 'HR–', hidden: true, pt: 'Receptor hormonal negativo — mama', en: 'Hormone receptor-negative — breast' },
         { a: 'EGFR',  pt: 'Receptor do fator de crescimento epidérmico',    en: 'Epidermal growth factor receptor' },
         { a: 'ALK',   pt: 'Quinase do linfoma anaplásico (gene/proteína)',  en: 'Anaplastic lymphoma kinase' },
         { a: 'BRAF',  pt: 'Gene/proteína BRAF',                             en: 'BRAF gene/protein' },
@@ -227,7 +231,8 @@
     return GLOSSARY.map(function (g) {
       return {
         id: g.id, icon: g.icon, label: en ? g.en : g.pt,
-        items: g.terms.map(function (t) { return { abbr: t.a, def: en ? t.en : t.pt }; })
+        items: g.terms.filter(function (t) { return !t.hidden; })
+          .map(function (t) { return { abbr: t.a, def: en ? t.en : t.pt }; })
       };
     });
   };
