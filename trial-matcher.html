@@ -522,11 +522,9 @@
 
   <!-- Hero -->
   <section class="tm-hero">
-    <div class="tm-hero-badge"><i data-lucide="sparkles"></i> <span data-i18n="tm.badge">Ferramenta cl&iacute;nica</span></div>
+    <div class="tm-hero-badge"><i data-lucide="circle-dot"></i> <span data-i18n="tm.badge">Recrutamento ativo &middot; Brasil</span></div>
     <h1 data-i18n-html="tm.title">Trial <span class="accent">Matcher</span></h1>
-    <p data-i18n="tm.subtitle">Ensaios cl&iacute;nicos abertos para recrutamento no Brasil.
-       Filtre por tumor, localidade (UF), biomarcador, linha terap&ecirc;utica, modalidade e fase
-       &mdash; e clique em qualquer card para ver a ficha completa do estudo.</p>
+    <p data-i18n-html="tm.subtitle">Banco selecionado de ensaios cl&iacute;nicos <strong>n&atilde;o teran&oacute;sticos</strong> em oncologia com recrutamento aberto no Brasil &mdash; imunoterapia, terapia-alvo, ADCs, quimioterapia, hormonioterapia, cirurgia e radioterapia. Filtre por neoplasia, modalidade, fase, biomarcador, linha terap&ecirc;utica e localidade. Para m&eacute;dicos, pesquisadores e pacientes encaminhados por especialistas.</p>
     <div class="tm-disclaimer">
       <i data-lucide="info"></i>
       <div data-i18n-html="tm.disclaimer">
@@ -552,7 +550,9 @@
       </div>
       <div class="tm-field">
         <label data-i18n="tm.fBio">Biomarcador / Alvo</label>
-        <input type="text" id="f-biomarker" placeholder="Ex: PSMA, HER2, KRAS G12C, PD-L1..." data-i18n-placeholder="tm.fBioHint">
+        <select id="f-biomarker">
+          <option value="" data-i18n="tm.fBioAll">Qualquer biomarcador</option>
+        </select>
       </div>
       <div class="tm-field">
         <label data-i18n="tm.fLine">Linha terap&ecirc;utica</label>
@@ -741,6 +741,19 @@
     ufSel.appendChild(opt);
   });
 
+  // ── Populate biomarcador filter (alvos presentes nos ensaios BR, ordem alfabética) ──
+  // Lista auto-sincronizada com os dados: qualquer marcador novo de um ensaio aparece aqui.
+  var bioSet = new Set();
+  (window.THERA_TRIALS_BR || []).forEach(function(t) {
+    (t.biomarcadores || []).forEach(function(b) { b = (b || '').trim(); if (b) bioSet.add(b); });
+  });
+  var bioSel = document.getElementById('f-biomarker');
+  Array.from(bioSet).sort(function(a, b) { return a.localeCompare(b, 'pt'); }).forEach(function(b) {
+    var opt = document.createElement('option');
+    opt.value = b; opt.textContent = b;
+    bioSel.appendChild(opt);
+  });
+
   // ── Clear ──
   window.clearFilters = function() {
     document.getElementById('f-tumor').value = '';
@@ -781,10 +794,10 @@
           score += 3;
         }
 
-        // Biomarker
+        // Biomarcador (seleção exata da lista)
         if (bio) {
-          var bioHay = ((t.biomarcadores || []).join(' ') + ' ' + (t.subtipo || '')).toLowerCase();
-          if (bioHay.indexOf(bio) === -1) return;
+          var hasBio = (t.biomarcadores || []).some(function(b){ return (b || '').toLowerCase() === bio; });
+          if (!hasBio) return;
           score += 4;
         }
 

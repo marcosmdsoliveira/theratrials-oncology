@@ -2284,15 +2284,16 @@ window._i18nRegister('pt-br', {
 
   /* ── Trial Matcher ── */
   tm: {
-    badge: "Ferramenta clínica",
+    badge: "Recrutamento ativo · Brasil",
     title: "Trial <span class=\"accent\">Matcher</span>",
-    subtitle: "Ensaios clínicos abertos para recrutamento no Brasil. Filtre por tumor, localidade (UF), biomarcador, linha terapêutica, modalidade e fase — e clique em qualquer card para ver a ficha completa do estudo.",
+    subtitle: "Banco selecionado de ensaios clínicos <strong>não teranósticos</strong> em oncologia com recrutamento aberto no Brasil — imunoterapia, terapia-alvo, ADCs, quimioterapia, hormonioterapia, cirurgia e radioterapia. Filtre por neoplasia, modalidade, fase, biomarcador, linha terapêutica e localidade. Para médicos, pesquisadores e pacientes encaminhados por especialistas.",
     disclaimer: "<strong>Aviso:</strong> esta ferramenta é informativa. As informações são consolidadas a partir de registros públicos (ClinicalTrials.gov, REBEC, ANVISA) e fontes oficiais dos patrocinadores. <strong>A elegibilidade final depende sempre da avaliação do centro responsável pelo estudo</strong>. Datas, status e critérios podem mudar — sempre confirmar com a fonte original e a equipe local antes de qualquer encaminhamento.",
     fTumor: "Tumor / Neoplasia",
     fTumorAll: "Todos os tumores",
     fUf: "Localidade (UF)",
     fUfAll: "Qualquer estado (Brasil)",
     fBio: "Biomarcador / Alvo",
+    fBioAll: "Qualquer biomarcador",
     fBioHint: "Ex: PSMA, HER2, KRAS G12C, PD-L1...",
     fLine: "Linha terapêutica",
     fLineAll: "Qualquer linha",

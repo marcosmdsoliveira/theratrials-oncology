@@ -2284,15 +2284,16 @@ window._i18nRegister('en', {
 
   /* ── Trial Matcher ── */
   tm: {
-    badge: "Clinical Tool",
+    badge: "Active recruitment · Brazil",
     title: "Trial <span class=\"accent\">Matcher</span>",
-    subtitle: "Clinical trials open for recruitment in Brazil. Filter by tumor, location (state), biomarker, therapy line, modality and phase — and click any card for the full study record.",
+    subtitle: "Curated database of <strong>non-theranostic</strong> oncology clinical trials with open recruitment in Brazil — immunotherapy, targeted therapy, ADCs, chemotherapy, hormone therapy, surgery and radiotherapy. Filter by neoplasm, modality, phase, biomarker, treatment line and location. For physicians, researchers and patients referred by specialists.",
     disclaimer: "<strong>Notice:</strong> this tool is informational. Information is consolidated from public registries (ClinicalTrials.gov, REBEC, ANVISA) and official sponsor sources. <strong>Final eligibility always depends on assessment by the site responsible for the study</strong>. Dates, status and criteria may change — always confirm with the original source and the local team before any referral.",
     fTumor: "Tumor / Neoplasm",
     fTumorAll: "All tumors",
     fUf: "Location (state)",
     fUfAll: "Any state (Brazil)",
     fBio: "Biomarker / Target",
+    fBioAll: "Any biomarker",
     fBioHint: "E.g.: PSMA, HER2, KRAS G12C, PD-L1...",
     fLine: "Therapy Line",
     fLineAll: "Any line",
