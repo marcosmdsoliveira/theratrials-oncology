@@ -105,6 +105,8 @@
 .tm-field select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23FF8400' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 4l4 4 4-4'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 0.75rem center; padding-right: 2rem; }
 .tm-field select:focus, .tm-field input:focus { border-color: var(--amber, #FF8400); box-shadow: 0 0 0 3px rgba(255,132,0,0.15); }
 .tm-field select:hover, .tm-field input:hover { border-color: var(--stone, #8E949C); }
+.tm-field select:disabled { opacity: 0.4; cursor: not-allowed; background-image: none; }
+.tm-field select:disabled:hover { border-color: var(--border-mid, rgba(143,148,156,0.35)); }
 .tm-field input::placeholder { color: var(--stone-2, #5C616A); }
 
 /* ── Action bar ── */
@@ -544,6 +546,14 @@
         </select>
       </div>
       <div class="tm-field">
+        <label data-i18n="tm.fStatus">Recrutamento</label>
+        <select id="f-status">
+          <option value="br" selected data-i18n="tm.fStatusBr">Abertos no Brasil (BR)</option>
+          <option value="aberto" data-i18n="tm.fStatusOpen">Abertos (todas as fontes)</option>
+          <option value="" data-i18n="tm.fStatusAll">Qualquer situa&ccedil;&atilde;o</option>
+        </select>
+      </div>
+      <div class="tm-field">
         <label data-i18n="tm.fUf">Localidade (UF)</label>
         <select id="f-uf">
           <option value="" data-i18n="tm.fUfAll">Qualquer estado (Brasil)</option>
@@ -585,13 +595,6 @@
           <option value="3" data-i18n="tm.fPhase3">Fase 3</option>
           <option value="2" data-i18n="tm.fPhase2">Fase 2+</option>
           <option value="1" data-i18n="tm.fPhase1">Fase 1+</option>
-        </select>
-      </div>
-      <div class="tm-field">
-        <label data-i18n="tm.fStatus">Recrutamento</label>
-        <select id="f-status">
-          <option value="aberto" selected data-i18n="tm.fStatusOpen">Somente ensaios abertos</option>
-          <option value="" data-i18n="tm.fStatusAll">Qualquer situa&ccedil;&atilde;o</option>
         </select>
       </div>
       <div class="tm-field">
@@ -786,8 +789,8 @@
     document.getElementById('f-phase').value = '';
     document.getElementById('f-free').value = '';
     document.getElementById('f-uf').value = '';
-    // Volta ao estado inicial: somente ensaios abertos
-    document.getElementById('f-status').value = 'aberto';
+    // Volta ao estado inicial: abertos no Brasil (BR)
+    document.getElementById('f-status').value = 'br';
     runMatcher();
   };
 
@@ -800,13 +803,20 @@
     var phase = document.getElementById('f-phase').value;
     var free = document.getElementById('f-free').value.trim().toLowerCase();
     var status = document.getElementById('f-status').value;
-    var uf = document.getElementById('f-uf').value;
+
+    // "Localidade (UF)" só se aplica a "Abertos no Brasil (BR)" — habilita/desabilita conforme o Recrutamento.
+    var ufEl = document.getElementById('f-uf');
+    var ufEnabled = (status === 'br');
+    ufEl.disabled = !ufEnabled;
+    ufEl.title = ufEnabled ? '' : 'Disponível em "Abertos no Brasil (BR)"';
+    if (!ufEnabled) ufEl.value = '';
+    var uf = ufEl.value;
 
     var results = [];
 
     // ── Search Database (475 studies) ──
-    // UF é específico do Brasil: ao filtrar por estado, o Database não se aplica.
-    if (sources.database && !uf && window.THERA_DATA && window.THERA_DATA.studies) {
+    // "Abertos no Brasil (BR)" e o filtro por UF são específicos do Brasil: o Database não se aplica.
+    if (sources.database && status !== 'br' && window.THERA_DATA && window.THERA_DATA.studies) {
       window.THERA_DATA.studies.forEach(function(s) {
         var score = 0;
         var tumorGroup = (TUMOR_MAP[s.category_id] || '').toLowerCase();
@@ -956,8 +966,8 @@
           score += 2;
         }
 
-        // Recrutamento (somente ensaios abertos) — ensaios BR são recrutando
-        if (status === 'aberto') {
+        // Recrutamento — "Abertos no Brasil (BR)" e "Abertos (todas as fontes)" exigem ensaio aberto
+        if (status === 'aberto' || status === 'br') {
           var stBr = (t.status || '').toLowerCase();
           if (stBr.indexOf('recrut') === -1 && stBr.indexOf('aberto') === -1 && stBr.indexOf('andamento') === -1) return;
           score += 1;
