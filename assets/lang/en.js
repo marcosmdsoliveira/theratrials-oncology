@@ -2286,7 +2286,7 @@ window._i18nRegister('en', {
   tm: {
     badge: "Clinical Tool",
     title: "Trial <span class=\"accent\">Matcher</span>",
-    subtitle: "Simultaneous search across 475 curated studies and 79 trials open for recruitment in Brazil. Filter by tumor, location (state), biomarker, therapy line, modality and phase — and click any card for the full study record.",
+    subtitle: "Clinical trials open for recruitment in Brazil. Filter by tumor, location (state), biomarker, therapy line, modality and phase — and click any card for the full study record.",
     disclaimer: "<strong>Notice:</strong> this tool is informational. Information is consolidated from public registries (ClinicalTrials.gov, REBEC, ANVISA) and official sponsor sources. <strong>Final eligibility always depends on assessment by the site responsible for the study</strong>. Dates, status and criteria may change — always confirm with the original source and the local team before any referral.",
     fTumor: "Tumor / Neoplasm",
     fTumorAll: "All tumors",

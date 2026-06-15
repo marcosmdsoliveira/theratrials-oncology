@@ -503,7 +503,6 @@
       <a href="index.html" data-i18n="nav.home">Home</a>
       <a href="database.html" data-i18n="nav.database">Database</a>
       <a href="trial-matcher.html" data-i18n="nav.trialMatcher">Trial Matcher</a>
-      <a href="ensaios-clinicos.html" data-i18n="nav.ensaios">Ensaios cl&iacute;nicos</a>
       <a href="explorer.html" data-i18n="nav.explorer">Explorer</a>
       <a href="tumor-boards.html" data-i18n="nav.tumorBoards">Tumor boards</a>
       <a href="radiofarmacos.html" data-i18n="nav.radiofarmacos">Radiof&aacute;rmacos</a>
@@ -525,7 +524,7 @@
   <section class="tm-hero">
     <div class="tm-hero-badge"><i data-lucide="sparkles"></i> <span data-i18n="tm.badge">Ferramenta cl&iacute;nica</span></div>
     <h1 data-i18n-html="tm.title">Trial <span class="accent">Matcher</span></h1>
-    <p data-i18n="tm.subtitle">Busca simult&acirc;nea em 475 estudos analisados e 79 ensaios abertos no Brasil.
+    <p data-i18n="tm.subtitle">Ensaios cl&iacute;nicos abertos para recrutamento no Brasil.
        Filtre por tumor, localidade (UF), biomarcador, linha terap&ecirc;utica, modalidade e fase
        &mdash; e clique em qualquer card para ver a ficha completa do estudo.</p>
     <div class="tm-disclaimer">
@@ -543,14 +542,6 @@
         <label data-i18n="tm.fTumor">Tumor / Neoplasia</label>
         <select id="f-tumor">
           <option value="" data-i18n="tm.fTumorAll">Todos os tumores</option>
-        </select>
-      </div>
-      <div class="tm-field">
-        <label data-i18n="tm.fStatus">Recrutamento</label>
-        <select id="f-status">
-          <option value="br" selected data-i18n="tm.fStatusBr">Abertos no Brasil (BR)</option>
-          <option value="aberto" data-i18n="tm.fStatusOpen">Abertos (todas as fontes)</option>
-          <option value="" data-i18n="tm.fStatusAll">Qualquer situa&ccedil;&atilde;o</option>
         </select>
       </div>
       <div class="tm-field">
@@ -601,19 +592,6 @@
         <label data-i18n="tm.fFree">Busca livre</label>
         <input type="text" id="f-free" placeholder="Qualquer termo: droga, NCT, estudo..." data-i18n-placeholder="tm.fFreeHint">
       </div>
-    </div>
-
-    <!-- Source toggles -->
-    <div class="tm-sources">
-      <div class="tm-sources-label"><i data-lucide="layers"></i> <span data-i18n="tm.sources">Fontes</span></div>
-      <span class="tm-source-chip database" data-source="database" onclick="toggleSource(this)">
-        <i data-lucide="square" class="tm-check"></i>
-        <i data-lucide="database"></i> <span data-i18n="tm.srcDatabase">Database</span> <span class="tm-source-count">475</span>
-      </span>
-      <span class="tm-source-chip brasil active" data-source="brasil" onclick="toggleSource(this)">
-        <i data-lucide="check-square" class="tm-check"></i>
-        <i data-lucide="map-pin"></i> <span data-i18n="tm.srcBrasil">Ensaios Brasil</span> <span class="tm-source-count">79</span>
-      </span>
     </div>
 
     <!-- Actions -->
@@ -677,8 +655,7 @@
   </div>
 </footer>
 
-<!-- Data sources -->
-<script src="assets/js/data.js?v=12"></script>
+<!-- Data source: ensaios abertos no Brasil -->
 <script src="assets/js/trials_br.js"></script>
 <script src="assets/js/common.js"></script>
 <script src="assets/js/glossario.js?v=5"></script>
@@ -764,22 +741,6 @@
     ufSel.appendChild(opt);
   });
 
-  // ── Sources state ──
-  // Padrão: abre mostrando os ensaios ABERTOS no Brasil (Ensaios Brasil).
-  // O Database fica desligado por padrão e pode ser ativado pelo usuário.
-  var sources = { database: false, brasil: true };
-
-  window.toggleSource = function(el) {
-    var src = el.getAttribute('data-source');
-    sources[src] = !sources[src];
-    el.classList.toggle('active', sources[src]);
-    // Swap check icon
-    var chk = el.querySelector('.tm-check');
-    if (chk) chk.setAttribute('data-lucide', sources[src] ? 'check-square' : 'square');
-    lucide.createIcons();
-    runMatcher();
-  };
-
   // ── Clear ──
   window.clearFilters = function() {
     document.getElementById('f-tumor').value = '';
@@ -789,8 +750,6 @@
     document.getElementById('f-phase').value = '';
     document.getElementById('f-free').value = '';
     document.getElementById('f-uf').value = '';
-    // Volta ao estado inicial: abertos no Brasil (BR)
-    document.getElementById('f-status').value = 'br';
     runMatcher();
   };
 
@@ -802,109 +761,12 @@
     var modality = document.getElementById('f-modality').value.toLowerCase();
     var phase = document.getElementById('f-phase').value;
     var free = document.getElementById('f-free').value.trim().toLowerCase();
-    var status = document.getElementById('f-status').value;
-
-    // "Localidade (UF)" só se aplica a "Abertos no Brasil (BR)" — habilita/desabilita conforme o Recrutamento.
-    var ufEl = document.getElementById('f-uf');
-    var ufEnabled = (status === 'br');
-    ufEl.disabled = !ufEnabled;
-    ufEl.title = ufEnabled ? '' : 'Disponível em "Abertos no Brasil (BR)"';
-    if (!ufEnabled) ufEl.value = '';
-    var uf = ufEl.value;
+    var uf = document.getElementById('f-uf').value;
 
     var results = [];
 
-    // ── Search Database (475 studies) ──
-    // "Abertos no Brasil (BR)" e o filtro por UF são específicos do Brasil: o Database não se aplica.
-    if (sources.database && status !== 'br' && window.THERA_DATA && window.THERA_DATA.studies) {
-      window.THERA_DATA.studies.forEach(function(s) {
-        var score = 0;
-        var tumorGroup = (TUMOR_MAP[s.category_id] || '').toLowerCase();
-
-        // Tumor filter
-        if (tumor && tumorGroup.indexOf(tumor) === -1) return;
-        if (tumor) score += 3;
-
-        // Biomarker
-        if (bio) {
-          var haystack = ((s.biomarc || '') + ' ' + (s.molecular || '') + ' ' + (s.radiofarmaco || '')).toLowerCase();
-          if (haystack.indexOf(bio) === -1) return;
-          score += 4;
-        }
-
-        // Therapy line
-        if (line) {
-          var ind = (s.indicacao || '').toLowerCase();
-          var cat = (s.category_id || '').toLowerCase();
-          if (line === '1' && ind.indexOf('1') === -1 && ind.indexOf('primeira') === -1 && ind.indexOf('1l') === -1 && ind.indexOf('frontline') === -1) return;
-          if (line === '2' && ind.indexOf('pós') === -1 && ind.indexOf('2') === -1 && ind.indexOf('segunda') === -1 && ind.indexOf('refrat') === -1 && ind.indexOf('recidiv') === -1) return;
-          if (line === 'periop' && cat.indexOf('periop') === -1 && ind.indexOf('adjuv') === -1 && ind.indexOf('neoadjuv') === -1 && cat.indexOf('adjuvante') === -1) return;
-          if (line === 'salvage' && ind.indexOf('últim') === -1 && ind.indexOf('resgate') === -1 && ind.indexOf('heavily') === -1 && ind.indexOf('último') === -1 && ind.indexOf('pós-') === -1) {
-            // allow mCRPC post-taxane studies as salvage
-            if (ind.indexOf('pós') === -1) return;
-          }
-          score += 2;
-        }
-
-        // Modality
-        if (modality) {
-          var modHay = ((s.radiofarmaco || '') + ' ' + (s.category_name || '') + ' ' + (s.indicacao || '') + ' ' + (s.category_id || '')).toLowerCase();
-          if (modality === 'radioligante') {
-            if (modHay.indexOf('lu') === -1 && modHay.indexOf('psma') === -1 && modHay.indexOf('dotatate') === -1 && modHay.indexOf('radio') === -1 && modHay.indexOf('prrt') === -1 && modHay.indexOf('mibg') === -1 && modHay.indexOf('ra-223') === -1 && modHay.indexOf('ra223') === -1) return;
-          } else if (modality === 'radioterapia') {
-            if (modHay.indexOf('rt') === -1 && modHay.indexOf('sbrt') === -1 && modHay.indexOf('radioterapia') === -1) return;
-          } else {
-            if (modHay.indexOf(modality) === -1) return;
-          }
-          score += 2;
-        }
-
-        // Phase
-        if (phase) {
-          var faseStr = (s.fase || '').toLowerCase();
-          if (phase === '3' && faseStr.indexOf('3') === -1) return;
-          if (phase === '2' && faseStr.indexOf('2') === -1 && faseStr.indexOf('3') === -1) return;
-          score += 1;
-        }
-
-        // Free text
-        if (free) {
-          var blob = JSON.stringify(s).toLowerCase();
-          if (blob.indexOf(free) === -1) return;
-          score += 2;
-        }
-
-        // Recrutamento (somente ensaios abertos)
-        if (status === 'aberto') {
-          var stDb = (s.status || '').toLowerCase();
-          if (stDb.indexOf('andamento') === -1 && stDb.indexOf('recrut') === -1) return;
-          score += 1;
-        }
-
-        // Must match at least one filter
-        if (!tumor && !bio && !line && !modality && !phase && !free && !status && !uf) return;
-
-        results.push({
-          source: 'database',
-          title: s.estudo || s.acron || 'Estudo',
-          indication: s.indicacao || '',
-          phase: s.fase || '',
-          biomarkers: s.biomarc || '',
-          molecular: s.molecular || '',
-          drug: s.radiofarmaco || '',
-          category: s.category_name || '',
-          nct: s.nct || '',
-          nct_url: s.nct_url || (s.nct ? 'https://clinicaltrials.gov/study/' + s.nct : ''),
-          pubmed_url: s.pubmed_url || '',
-          status: s.status || '',
-          score: score,
-          raw: s
-        });
-      });
-    }
-
-    // ── Search Brazil trials (79 active) ──
-    if (sources.brasil && window.THERA_TRIALS_BR) {
+    // ── Ensaios abertos no Brasil (única fonte) ──
+    if (window.THERA_TRIALS_BR) {
       window.THERA_TRIALS_BR.forEach(function(t) {
         var score = 0;
         var tumorGroup = (BR_TUMOR_MAP[t.neoplasia] || t.neoplasia_label || '').toLowerCase();
@@ -965,15 +827,6 @@
           if (blob.indexOf(free) === -1) return;
           score += 2;
         }
-
-        // Recrutamento — "Abertos no Brasil (BR)" e "Abertos (todas as fontes)" exigem ensaio aberto
-        if (status === 'aberto' || status === 'br') {
-          var stBr = (t.status || '').toLowerCase();
-          if (stBr.indexOf('recrut') === -1 && stBr.indexOf('aberto') === -1 && stBr.indexOf('andamento') === -1) return;
-          score += 1;
-        }
-
-        if (!tumor && !bio && !line && !modality && !phase && !free && !status && !uf) return;
 
         results.push({
           source: 'brasil',
@@ -1141,9 +994,8 @@
 
     var statusTxt = shortStatusEA(raw.status);
     var statusCls = statusClassEA(raw.status);
-    var srcLabel = isBr ? t('tm.cardBrasil', 'Brasil') : t('tm.cardDatabase', 'Database');
 
-    var tags = '<span class="ea-tag src">' + escHtml(srcLabel) + '</span>';
+    var tags = '';
     if (faseTag) tags += '<span class="ea-tag fase">' + escHtml(faseTag.length > 18 ? faseTag.slice(0, 16) + '…' : faseTag) + '</span>';
     if (neo) tags += '<span class="ea-tag">' + escHtml(neo) + '</span>';
     bios.forEach(function(b){ if (b && b.length < 40) tags += '<span class="ea-tag bio">' + escHtml(b) + '</span>'; });
@@ -1321,7 +1173,7 @@
     sel.addEventListener('change', function() { runMatcher(); });
   });
 
-  // ── Data loading check ──
+  // ── Data loading check (fonte única: ensaios abertos no Brasil) ──
   function checkDataLoaded() {
     var loadingEl = document.getElementById('tm-loading');
     var errorEl = document.getElementById('tm-error');
@@ -1329,60 +1181,19 @@
     var filtersEl = document.querySelector('.tm-filters');
     var resultsEl = document.getElementById('tm-results');
 
-    var dbOk = !!(window.THERA_DATA && window.THERA_DATA.studies && window.THERA_DATA.studies.length > 0);
     var brOk = !!(window.THERA_TRIALS_BR && window.THERA_TRIALS_BR.length > 0);
 
-    if (!dbOk && !brOk) {
-      // Both failed
+    if (!brOk) {
       loadingEl.style.display = 'none';
       errorEl.style.display = '';
       filtersEl.style.opacity = '0.4';
       filtersEl.style.pointerEvents = 'none';
       resultsEl.style.display = 'none';
       errorEl.querySelector('h3').textContent = t('tm.errorTitle', 'Erro ao carregar dados');
-      errorMsg.textContent = t('tm.errorMsg', 'Não foi possível carregar o banco de estudos. Verifique sua conexão e tente novamente.');
-    } else if (!dbOk) {
-      // Only database failed — show warning but allow BR search
-      loadingEl.style.display = 'none';
-      errorEl.style.display = '';
-      errorEl.style.background = 'rgba(251,191,36,0.06)';
-      errorEl.style.borderColor = 'rgba(251,191,36,0.2)';
-      errorEl.querySelector('h3').style.color = '#FBBF24';
-      errorEl.querySelector('h3').textContent = t('tm.errorPartialDB', 'Database parcialmente indisponível');
-      errorMsg.textContent = t('tm.errorPartialDBMsg', 'O banco principal (475 estudos) não carregou. Apenas ensaios brasileiros (79 ativos) estão disponíveis.');
-      // Disable database source chip
-      var dbChip = document.querySelector('.tm-source-chip.database');
-      if (dbChip) { dbChip.classList.remove('active'); sources.database = false; dbChip.style.opacity = '0.3'; dbChip.style.pointerEvents = 'none'; }
-      var chk = dbChip && dbChip.querySelector('.tm-check');
-      if (chk) chk.setAttribute('data-lucide', 'square');
-    } else if (!brOk) {
-      // Only BR failed — show warning but allow DB search
-      loadingEl.style.display = 'none';
-      errorEl.style.display = '';
-      errorEl.style.background = 'rgba(251,191,36,0.06)';
-      errorEl.style.borderColor = 'rgba(251,191,36,0.2)';
-      errorEl.querySelector('h3').style.color = '#FBBF24';
-      errorEl.querySelector('h3').textContent = t('tm.errorPartialBR', 'Ensaios Brasil indisponíveis');
-      errorMsg.textContent = t('tm.errorPartialBRMsg', 'O banco de ensaios brasileiros não carregou. Apenas o Database principal (475 estudos) está disponível.');
-      // Disable brasil source chip
-      var brChip = document.querySelector('.tm-source-chip.brasil');
-      if (brChip) { brChip.classList.remove('active'); sources.brasil = false; brChip.style.opacity = '0.3'; brChip.style.pointerEvents = 'none'; }
-      var chkBr = brChip && brChip.querySelector('.tm-check');
-      if (chkBr) chkBr.setAttribute('data-lucide', 'square');
+      errorMsg.textContent = t('tm.errorMsg', 'Não foi possível carregar os ensaios. Verifique sua conexão e tente novamente.');
     } else {
-      // All good
       loadingEl.style.display = 'none';
       errorEl.style.display = 'none';
-    }
-
-    // Update source counts with real numbers
-    if (dbOk) {
-      var dbCount = document.querySelector('.tm-source-chip.database .tm-source-count');
-      if (dbCount) dbCount.textContent = window.THERA_DATA.studies.length;
-    }
-    if (brOk) {
-      var brCount = document.querySelector('.tm-source-chip.brasil .tm-source-count');
-      if (brCount) brCount.textContent = window.THERA_TRIALS_BR.length;
     }
 
     if (typeof lucide !== 'undefined') lucide.createIcons();
@@ -1396,10 +1207,8 @@
   function initView() {
     checkDataLoaded();
     document.getElementById('tm-results').style.display = '';
-    // Estado inicial: mostra os ensaios abertos no Brasil automaticamente
-    var brOk = !!(window.THERA_TRIALS_BR && window.THERA_TRIALS_BR.length > 0);
-    var dbOk = !!(window.THERA_DATA && window.THERA_DATA.studies && window.THERA_DATA.studies.length > 0);
-    if (brOk || dbOk) runMatcher();
+    // Estado inicial: mostra todos os ensaios abertos no Brasil automaticamente
+    if (window.THERA_TRIALS_BR && window.THERA_TRIALS_BR.length > 0) runMatcher();
   }
   if (document.readyState === 'complete') {
     initView();
