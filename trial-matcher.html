@@ -268,6 +268,7 @@
 /* ── Show more button ── */
 .tm-show-more {
   display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+  grid-column: 1 / -1;
   width: 100%; padding: 0.8rem; margin-top: 0.75rem; border-radius: 10px;
   border: 1px solid var(--border-soft, rgba(143,148,156,0.18));
   background: var(--graphite-2, #14161B);
@@ -291,16 +292,61 @@
 .lang-toggle:hover { border-color: var(--amber, #FF8400); color: var(--amber, #FF8400); }
 .lang-toggle .lang-label { font-size: 0.72rem; letter-spacing: 0.03em; }
 
-/* ── Card clicável + “Ver detalhes” ── */
-.tm-card { cursor: pointer; }
-.tm-card:focus-visible { outline: 2px solid var(--amber, #FF8400); outline-offset: 2px; }
-.tm-card-more {
-  margin-left: auto; display: inline-flex; align-items: center; gap: 0.25rem;
-  font-size: 0.72rem; font-weight: 600; color: var(--amber, #FF8400);
-  font-family: 'Inter', sans-serif; white-space: nowrap;
+/* ── Cards no estilo "Ensaios Clínicos" (.ea-card) ── */
+.tm-cards {
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 1.15rem;
 }
-.tm-card-more i { width: 12px; height: 12px; }
-.tm-card:hover .tm-card-more { text-decoration: underline; }
+.ea-card {
+  background: var(--graphite-2); border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg); padding: 1.4rem 1.5rem;
+  cursor: pointer; transition: all 0.2s ease; position: relative; overflow: hidden;
+  display: flex; flex-direction: column; gap: 0.7rem;
+}
+.ea-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: var(--neoplasia-color, var(--amber)); opacity: 0.7;
+}
+.ea-card:hover { transform: translateY(-3px); border-color: var(--neoplasia-color, var(--amber)); box-shadow: 0 8px 24px rgba(0,0,0,0.25); }
+.ea-card:focus-visible { outline: 2px solid var(--amber, #FF8400); outline-offset: 2px; }
+.ea-card-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 0.75rem; }
+.ea-card-name { font-family: var(--font-display); font-size: 1.15rem; font-weight: 700; color: var(--off-white); letter-spacing: -0.01em; line-height: 1.2; }
+.ea-card-name .nct-mini { font-family: var(--font-mono); font-size: 0.7rem; color: var(--stone-2); font-weight: 400; margin-left: 0.5rem; }
+.ea-status {
+  display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.2rem 0.55rem;
+  border-radius: 100px; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em;
+  font-weight: 600; flex-shrink: 0; white-space: nowrap;
+}
+.ea-status.recrutando { background: rgba(52, 211, 153, 0.15); color: #6EE7B7; border: 1px solid rgba(52, 211, 153, 0.3); }
+.ea-status.andamento  { background: rgba(251, 191, 36, 0.15); color: #FCD34D; border: 1px solid rgba(251, 191, 36, 0.3); }
+.ea-status.publicado  { background: rgba(96, 165, 250, 0.15); color: #93C5FD; border: 1px solid rgba(96, 165, 250, 0.3); }
+.ea-status.apresentado{ background: rgba(168, 85, 247, 0.15); color: #C4B5FD; border: 1px solid rgba(168, 85, 247, 0.3); }
+.ea-status.aprovado   { background: rgba(14, 165, 183, 0.15); color: #67E8F9; border: 1px solid rgba(14, 165, 183, 0.3); }
+.ea-card-titulo { color: var(--stone); font-size: 0.85rem; line-height: 1.5; }
+.ea-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+.ea-tag {
+  display: inline-flex; align-items: center; gap: 0.3rem; padding: 0.18rem 0.55rem;
+  background: var(--graphite-3); border: 1px solid var(--border-soft); border-radius: 100px;
+  font-size: 0.7rem; color: var(--off-white); font-family: var(--font-mono);
+}
+.ea-tag.fase { background: rgba(255, 132, 0, 0.1); color: var(--amber); border-color: rgba(255, 132, 0, 0.3); }
+.ea-tag.bio { background: rgba(14, 165, 183, 0.1); color: var(--teal); border-color: rgba(14, 165, 183, 0.3); }
+.ea-tag.src { color: var(--stone); text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.62rem; }
+.ea-card-meta {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 0.65rem 1rem; margin-top: 0.5rem;
+  padding-top: 0.7rem; border-top: 1px solid var(--border-soft); font-size: 0.78rem;
+}
+.ea-card-meta .item { display: flex; flex-direction: column; gap: 0.15rem; min-width: 0; }
+.ea-card-meta .lbl { font-size: 0.65rem; color: var(--stone-2); text-transform: uppercase; letter-spacing: 0.06em; }
+.ea-card-meta .val { color: var(--off-white); }
+.ea-card-footer {
+  display: flex; justify-content: space-between; align-items: center; gap: 0.75rem;
+  padding-top: 0.75rem; margin-top: auto; border-top: 1px solid var(--border-soft); font-size: 0.75rem;
+}
+.ea-card-footer .city { color: var(--stone); display: flex; align-items: center; gap: 0.35rem; min-width: 0; }
+.ea-card-footer .city span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ea-card-footer .city i { flex-shrink: 0; }
+.ea-card-footer .more { color: var(--amber); display: flex; align-items: center; gap: 0.3rem; flex-shrink: 0; font-weight: 600; }
 
 /* ── Modal de detalhe ── */
 .tm-modal-bg {
@@ -969,74 +1015,99 @@
 
     // Scroll to new cards if loading more
     if (!isNew && start > 0) {
-      var cards = container.querySelectorAll('.tm-card');
+      var cards = container.querySelectorAll('.ea-card');
       if (cards[start]) cards[start].scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   }
 
+  // Cor da borda superior por neoplasia (ensaios BR)
+  var BR_NEO_COLOR = {};
+  ((window.THERA_TRIALS_BR_META && window.THERA_TRIALS_BR_META.neoplasias) || []).forEach(function(n){ BR_NEO_COLOR[n.id] = n.color; });
+
+  function statusClassEA(st) {
+    var s = (st || '').toLowerCase();
+    if (s.indexOf('recrut') > -1) return 'recrutando';
+    if (s.indexOf('andamento') > -1 || s.indexOf('ativo') > -1 || s.indexOf('active') > -1) return 'andamento';
+    if (s.indexOf('public') > -1) return 'publicado';
+    if (s.indexOf('apresent') > -1) return 'apresentado';
+    if (s.indexOf('aprovad') > -1) return 'aprovado';
+    return '';
+  }
+  function shortStatusEA(st) {
+    var s = (st || '').toLowerCase();
+    if (s.indexOf('recrut') > -1) return st;
+    if (s.indexOf('andamento') > -1) return 'Em andamento';
+    if (s.indexOf('public') > -1) return 'Publicado';
+    if (s.indexOf('apresent') > -1) return 'Apresentado';
+    if (s.indexOf('aprovad') > -1) return 'Aprovado';
+    return st && st.length > 22 ? st.slice(0, 20) + '…' : (st || '');
+  }
+  function metaItem(lbl, val, full) {
+    var v = val || '—';
+    if (v.length > 160) v = v.slice(0, 158) + '…';
+    return '<div class="item"' + (full ? ' style="grid-column:1/-1"' : '') +
+      '><div class="lbl">' + escHtml(lbl) + '</div><div class="val">' + escHtml(v) + '</div></div>';
+  }
+
   function renderCard(r, idx) {
-    // Phase badge class
-    var phaseClass = '';
-    var pLow = (r.phase || '').toLowerCase();
-    if (pLow.indexOf('3') > -1) phaseClass = ' fase3';
-    else if (pLow.indexOf('2') > -1) phaseClass = ' fase2';
-    else if (pLow.indexOf('1') > -1) phaseClass = ' fase1';
+    var raw = r.raw || {};
+    var isBr = r.source === 'brasil';
 
-    // Phase short label
-    var phaseLabel = r.phase || '';
-    if (phaseLabel.length > 20) {
-      // Shorten
-      if (pLow.indexOf('3') > -1) phaseLabel = 'Fase 3';
-      else if (pLow.indexOf('2') > -1) phaseLabel = 'Fase 2';
-      else if (pLow.indexOf('1') > -1) phaseLabel = 'Fase 1/2';
+    // Mapeamento de campos por fonte (BR vs Database)
+    var name, nct, titulo, faseTag, neo, color, bios, m1, m2, m3, footerIcon, footerText;
+    if (isBr) {
+      name = raw.nome || raw.titulo || 'Ensaio';
+      nct = raw.nct || '';
+      titulo = (raw.titulo && raw.titulo !== name) ? raw.titulo : (raw.cenario_clinico || '');
+      faseTag = raw.fase ? 'Fase ' + raw.fase : '';
+      neo = raw.neoplasia_label || '';
+      color = BR_NEO_COLOR[raw.neoplasia] || '#94a3b8';
+      bios = (raw.biomarcadores || []).slice(0, 3);
+      m1 = ['Linha', raw.linha_terapeutica];
+      m2 = ['Cenário', raw.cenario_clinico];
+      m3 = ['Intervenção', raw.intervencao];
+      footerIcon = 'map-pin';
+      footerText = (raw.centros || []).slice(0, 3).join(' · ') || 'Centros no Brasil';
+    } else {
+      name = raw.acron || raw.estudo || 'Estudo';
+      nct = raw.nct || '';
+      titulo = raw.indicacao || raw.estudo || '';
+      faseTag = raw.fase || '';
+      neo = raw.category_name || '';
+      color = raw.category_color || '#FF8400';
+      bios = (raw.biomarc ? raw.biomarc.split(/[,;]/) : []).map(function(b){ return b.trim(); }).filter(Boolean).slice(0, 3);
+      m1 = ['Esquema', raw.esquema];
+      m2 = ['Comparador', raw.comparador];
+      m3 = ['Desfecho primário', raw.primario];
+      footerIcon = 'database';
+      footerText = t('tm.cardDatabase', 'Database');
     }
 
-    // Status
-    var statusClass = '';
-    var sLow = (r.status || '').toLowerCase();
-    if (sLow.indexOf('recrut') > -1) statusClass = 'recrutando';
-    else if (sLow.indexOf('public') > -1) statusClass = 'publicado';
-    else if (sLow.indexOf('ativo') > -1 || sLow.indexOf('active') > -1) statusClass = 'ativo';
+    var statusTxt = shortStatusEA(raw.status);
+    var statusCls = statusClassEA(raw.status);
+    var srcLabel = isBr ? t('tm.cardBrasil', 'Brasil') : t('tm.cardDatabase', 'Database');
 
-    // Tags
-    var tags = '';
-    if (r.category) tags += '<span class="tm-tag">' + escHtml(r.category) + '</span>';
-    if (r.biomarkers) {
-      var bios = r.biomarkers.split(/[,;]/).slice(0, 3);
-      bios.forEach(function(b) {
-        b = b.trim();
-        if (b && b.length < 40) tags += '<span class="tm-tag bio">' + escHtml(b) + '</span>';
-      });
-    }
-    if (r.drug && r.drug.length < 60) tags += '<span class="tm-tag highlight">' + escHtml(r.drug.substring(0, 55)) + '</span>';
+    var tags = '<span class="ea-tag src">' + escHtml(srcLabel) + '</span>';
+    if (faseTag) tags += '<span class="ea-tag fase">' + escHtml(faseTag.length > 18 ? faseTag.slice(0, 16) + '…' : faseTag) + '</span>';
+    if (neo) tags += '<span class="ea-tag">' + escHtml(neo) + '</span>';
+    bios.forEach(function(b){ if (b && b.length < 40) tags += '<span class="ea-tag bio">' + escHtml(b) + '</span>'; });
 
-    // Links (stopPropagation: não abrir o modal ao clicar num link externo)
-    var links = '';
-    if (r.nct_url) links += '<a href="' + escHtml(r.nct_url) + '" target="_blank" rel="noopener" class="tm-card-link" onclick="event.stopPropagation()"><i data-lucide="external-link"></i>' + (r.nct || 'ClinicalTrials.gov') + '</a>';
-    if (r.pubmed_url) links += '<a href="' + escHtml(r.pubmed_url) + '" target="_blank" rel="noopener" class="tm-card-link" onclick="event.stopPropagation()"><i data-lucide="book-open"></i>PubMed</a>';
+    var titShort = titulo && titulo.length > 180 ? titulo.slice(0, 178) + '…' : titulo;
 
-    // Brazil centers
-    var centrosHtml = '';
-    if (r.source === 'brasil' && r.centros_br && r.centros_br.length > 0) {
-      centrosHtml = '<div style="font-size:0.72rem;color:#0EA5B7;margin-top:0.5rem;"><i data-lucide="map-pin" style="width:11px;height:11px;display:inline;vertical-align:-2px;margin-right:3px;"></i>' + escHtml(r.centros_br.slice(0, 3).join(' · ')) + '</div>';
-    }
-
-    return '<div class="tm-card" data-idx="' + idx + '" role="button" tabindex="0" ' +
+    return '<article class="ea-card" style="--neoplasia-color:' + escHtml(color) + '" data-idx="' + idx + '" role="button" tabindex="0" ' +
         'onclick="openTrialDetail(this)" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){event.preventDefault();openTrialDetail(this);}">' +
-      '<span class="tm-card-source ' + r.source + '">' + (r.source === 'brasil' ? t('tm.cardBrasil', 'Brasil') : t('tm.cardDatabase', 'Database')) + '</span>' +
-      '<div class="tm-card-header">' +
-        '<span class="tm-card-phase' + phaseClass + '">' + escHtml(phaseLabel) + '</span>' +
-        '<span class="tm-card-title">' + escHtml(r.title) + '</span>' +
+      '<div class="ea-card-top">' +
+        '<div class="ea-card-name">' + escHtml(name) + (nct ? '<span class="nct-mini">' + escHtml(nct) + '</span>' : '') + '</div>' +
+        (statusTxt ? '<span class="ea-status ' + statusCls + '">' + escHtml(statusTxt) + '</span>' : '') +
       '</div>' +
-      '<div class="tm-card-indication">' + escHtml(r.indication.substring(0, 200)) + '</div>' +
-      '<div class="tm-card-tags">' + tags + '</div>' +
-      '<div class="tm-card-footer">' +
-        (r.status ? '<span class="tm-card-status ' + statusClass + '">' + escHtml(r.status) + '</span>' : '') +
-        links +
-        '<span class="tm-card-more">' + t('tm.viewDetails', 'Ver detalhes') + ' <i data-lucide="arrow-right"></i></span>' +
+      (titShort ? '<div class="ea-card-titulo">' + escHtml(titShort) + '</div>' : '') +
+      '<div class="ea-tags">' + tags + '</div>' +
+      '<div class="ea-card-meta">' + metaItem(m1[0], m1[1]) + metaItem(m2[0], m2[1]) + metaItem(m3[0], m3[1], true) + '</div>' +
+      '<div class="ea-card-footer">' +
+        '<span class="city"><i data-lucide="' + footerIcon + '" style="width:12px;height:12px"></i><span>' + escHtml(footerText) + '</span></span>' +
+        '<span class="more">' + t('tm.viewDetails', 'Ver detalhes') + ' <i data-lucide="arrow-right" style="width:12px;height:12px"></i></span>' +
       '</div>' +
-      centrosHtml +
-    '</div>';
+    '</article>';
   }
 
   function escHtml(str) {
