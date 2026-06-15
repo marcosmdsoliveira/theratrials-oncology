@@ -2415,7 +2415,7 @@ window._i18nRegister('pt-br', {
     expFeat4Desc: "Baixe a tabela filtrada para uso em planilhas e apresentações.",
 
     /* Ensaios BR block */
-    eaBadge: "Ensaios clínicos ativos (BR)",
+    eaBadge: "Recrutamento ativo · Brasil",
     eaTitle: "Recrutamento aberto",
     eaDesc: "Ensaios clínicos em oncologia recrutando agora no Brasil. Belo Horizonte como localidade inicial — em expansão. Para médicos, pesquisadores e pacientes encaminhados por especialistas.",
     eaCta: "Abrir lista completa",

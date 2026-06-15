@@ -2415,7 +2415,7 @@ window._i18nRegister('en', {
     expFeat4Desc: "Download the filtered table for use in spreadsheets and presentations.",
 
     /* Ensaios BR block */
-    eaBadge: "Active Clinical Trials (BR)",
+    eaBadge: "Active recruitment · Brazil",
     eaTitle: "Open recruitment",
     eaDesc: "Oncology clinical trials currently recruiting in Brazil. Belo Horizonte as the initial site — expanding. For physicians, researchers and patients referred by specialists.",
     eaCta: "Open full list",
