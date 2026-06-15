@@ -176,6 +176,8 @@
         { a: 'irAEs', pt: 'Eventos adversos imunorrelacionados',            en: 'Immune-related adverse events' },
         { a: 'HFS',   pt: 'Síndrome mão-pé (eritrodisestesia palmoplantar)', en: 'Hand-foot syndrome' },
         { a: 'SoC',   pt: 'Tratamento padrão (standard of care)',           en: 'Standard of care' },
+        { a: 'PK/PD', pt: 'Perfil farmacocinético/farmacodinâmico',         en: 'Pharmacokinetic/pharmacodynamic profile' },
+        { a: 'PK',    pt: 'Farmacocinética',                                en: 'Pharmacokinetics' },
         { a: 'R/R',   pt: 'Recidivante / refratário',                       en: 'Relapsed / refractory' },
         { a: 'R/M',   pt: 'Recidivante / metastático',                      en: 'Recurrent / metastatic' }
       ]
