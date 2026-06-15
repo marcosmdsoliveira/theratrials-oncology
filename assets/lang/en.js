@@ -2289,6 +2289,8 @@ window._i18nRegister('en', {
     subtitle: "Find relevant clinical trials for your patient. Filter by tumor, biomarker, therapy line, and modality — simultaneous search across 475 curated studies and 79 active trials in Brazil.",
     fTumor: "Tumor / Neoplasm",
     fTumorAll: "All tumors",
+    fUf: "Location (state)",
+    fUfAll: "Any state (Brazil)",
     fBio: "Biomarker / Target",
     fBioHint: "E.g.: PSMA, HER2, KRAS G12C, PD-L1...",
     fLine: "Therapy Line",

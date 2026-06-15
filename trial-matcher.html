@@ -525,6 +525,12 @@
         </select>
       </div>
       <div class="tm-field">
+        <label data-i18n="tm.fUf">Localidade (UF)</label>
+        <select id="f-uf">
+          <option value="" data-i18n="tm.fUfAll">Qualquer estado (Brasil)</option>
+        </select>
+      </div>
+      <div class="tm-field">
         <label data-i18n="tm.fBio">Biomarcador / Alvo</label>
         <input type="text" id="f-biomarker" placeholder="Ex: PSMA, HER2, KRAS G12C, PD-L1..." data-i18n-placeholder="tm.fBioHint">
       </div>
@@ -724,6 +730,18 @@
     sel.appendChild(opt);
   });
 
+  // ── Populate UF filter (estados dos ensaios BR, ordem alfabética) ──
+  var ufSet = new Set();
+  (window.THERA_TRIALS_BR || []).forEach(function(t) {
+    (t.estados || []).forEach(function(uf) { if (uf) ufSet.add(uf); });
+  });
+  var ufSel = document.getElementById('f-uf');
+  Array.from(ufSet).sort().forEach(function(uf) {
+    var opt = document.createElement('option');
+    opt.value = uf; opt.textContent = uf;
+    ufSel.appendChild(opt);
+  });
+
   // ── Sources state ──
   // Padrão: abre mostrando os ensaios ABERTOS no Brasil (Ensaios Brasil).
   // O Database fica desligado por padrão e pode ser ativado pelo usuário.
@@ -748,6 +766,7 @@
     document.getElementById('f-modality').value = '';
     document.getElementById('f-phase').value = '';
     document.getElementById('f-free').value = '';
+    document.getElementById('f-uf').value = '';
     // Volta ao estado inicial: somente ensaios abertos
     document.getElementById('f-status').value = 'aberto';
     runMatcher();
@@ -762,11 +781,13 @@
     var phase = document.getElementById('f-phase').value;
     var free = document.getElementById('f-free').value.trim().toLowerCase();
     var status = document.getElementById('f-status').value;
+    var uf = document.getElementById('f-uf').value;
 
     var results = [];
 
     // ── Search Database (475 studies) ──
-    if (sources.database && window.THERA_DATA && window.THERA_DATA.studies) {
+    // UF é específico do Brasil: ao filtrar por estado, o Database não se aplica.
+    if (sources.database && !uf && window.THERA_DATA && window.THERA_DATA.studies) {
       window.THERA_DATA.studies.forEach(function(s) {
         var score = 0;
         var tumorGroup = (TUMOR_MAP[s.category_id] || '').toLowerCase();
@@ -832,7 +853,7 @@
         }
 
         // Must match at least one filter
-        if (!tumor && !bio && !line && !modality && !phase && !free && !status) return;
+        if (!tumor && !bio && !line && !modality && !phase && !free && !status && !uf) return;
 
         results.push({
           source: 'database',
@@ -862,6 +883,12 @@
         // Tumor
         if (tumor && tumorGroup.indexOf(tumor) === -1) return;
         if (tumor) score += 3;
+
+        // Localidade (UF / estado)
+        if (uf) {
+          if ((t.estados || []).indexOf(uf) === -1) return;
+          score += 3;
+        }
 
         // Biomarker
         if (bio) {
@@ -917,7 +944,7 @@
           score += 1;
         }
 
-        if (!tumor && !bio && !line && !modality && !phase && !free && !status) return;
+        if (!tumor && !bio && !line && !modality && !phase && !free && !status && !uf) return;
 
         results.push({
           source: 'brasil',

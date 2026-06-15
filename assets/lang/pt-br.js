@@ -2289,6 +2289,8 @@ window._i18nRegister('pt-br', {
     subtitle: "Encontre ensaios clínicos relevantes para seu paciente. Filtre por tumor, biomarcador, linha terapêutica e modalidade — busca simultânea em 475 estudos analisados e 79 ensaios ativos no Brasil.",
     fTumor: "Tumor / Neoplasia",
     fTumorAll: "Todos os tumores",
+    fUf: "Localidade (UF)",
+    fUfAll: "Qualquer estado (Brasil)",
     fBio: "Biomarcador / Alvo",
     fBioHint: "Ex: PSMA, HER2, KRAS G12C, PD-L1...",
     fLine: "Linha terapêutica",
