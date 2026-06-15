@@ -416,6 +416,13 @@
         </select>
       </div>
       <div class="tm-field">
+        <label data-i18n="tm.fStatus">Recrutamento</label>
+        <select id="f-status">
+          <option value="aberto" selected data-i18n="tm.fStatusOpen">Somente ensaios abertos</option>
+          <option value="" data-i18n="tm.fStatusAll">Qualquer situa&ccedil;&atilde;o</option>
+        </select>
+      </div>
+      <div class="tm-field">
         <label data-i18n="tm.fFree">Busca livre</label>
         <input type="text" id="f-free" placeholder="Qualquer termo: droga, NCT, estudo..." data-i18n-placeholder="tm.fFreeHint">
       </div>
@@ -424,9 +431,9 @@
     <!-- Source toggles -->
     <div class="tm-sources">
       <div class="tm-sources-label"><i data-lucide="layers"></i> <span data-i18n="tm.sources">Fontes</span></div>
-      <span class="tm-source-chip database active" data-source="database" onclick="toggleSource(this)">
-        <i data-lucide="check-square" class="tm-check"></i>
-        <i data-lucide="database"></i> <span data-i18n="tm.srcDatabase">Database</span> <span class="tm-source-count">420</span>
+      <span class="tm-source-chip database" data-source="database" onclick="toggleSource(this)">
+        <i data-lucide="square" class="tm-check"></i>
+        <i data-lucide="database"></i> <span data-i18n="tm.srcDatabase">Database</span> <span class="tm-source-count">475</span>
       </span>
       <span class="tm-source-chip brasil active" data-source="brasil" onclick="toggleSource(this)">
         <i data-lucide="check-square" class="tm-check"></i>
@@ -563,7 +570,9 @@
   });
 
   // ── Sources state ──
-  var sources = { database: true, brasil: true };
+  // Padrão: abre mostrando os ensaios ABERTOS no Brasil (Ensaios Brasil).
+  // O Database fica desligado por padrão e pode ser ativado pelo usuário.
+  var sources = { database: false, brasil: true };
 
   window.toggleSource = function(el) {
     var src = el.getAttribute('data-source');
@@ -584,9 +593,9 @@
     document.getElementById('f-modality').value = '';
     document.getElementById('f-phase').value = '';
     document.getElementById('f-free').value = '';
-    document.getElementById('tm-cards').innerHTML = '';
-    document.getElementById('tm-empty').style.display = '';
-    document.getElementById('tm-count').textContent = '';
+    // Volta ao estado inicial: somente ensaios abertos
+    document.getElementById('f-status').value = 'aberto';
+    runMatcher();
   };
 
   // ── Matcher ──
@@ -597,6 +606,7 @@
     var modality = document.getElementById('f-modality').value.toLowerCase();
     var phase = document.getElementById('f-phase').value;
     var free = document.getElementById('f-free').value.trim().toLowerCase();
+    var status = document.getElementById('f-status').value;
 
     var results = [];
 
@@ -659,8 +669,15 @@
           score += 2;
         }
 
+        // Recrutamento (somente ensaios abertos)
+        if (status === 'aberto') {
+          var stDb = (s.status || '').toLowerCase();
+          if (stDb.indexOf('andamento') === -1 && stDb.indexOf('recrut') === -1) return;
+          score += 1;
+        }
+
         // Must match at least one filter
-        if (!tumor && !bio && !line && !modality && !phase && !free) return;
+        if (!tumor && !bio && !line && !modality && !phase && !free && !status) return;
 
         results.push({
           source: 'database',
@@ -737,7 +754,14 @@
           score += 2;
         }
 
-        if (!tumor && !bio && !line && !modality && !phase && !free) return;
+        // Recrutamento (somente ensaios abertos) — ensaios BR são recrutando
+        if (status === 'aberto') {
+          var stBr = (t.status || '').toLowerCase();
+          if (stBr.indexOf('recrut') === -1 && stBr.indexOf('aberto') === -1 && stBr.indexOf('andamento') === -1) return;
+          score += 1;
+        }
+
+        if (!tumor && !bio && !line && !modality && !phase && !free && !status) return;
 
         results.push({
           source: 'brasil',
@@ -991,14 +1015,18 @@
   document.getElementById('tm-results').style.display = 'none';
 
   // Wait for data scripts to execute
-  if (document.readyState === 'complete') {
+  function initView() {
     checkDataLoaded();
     document.getElementById('tm-results').style.display = '';
+    // Estado inicial: mostra os ensaios abertos no Brasil automaticamente
+    var brOk = !!(window.THERA_TRIALS_BR && window.THERA_TRIALS_BR.length > 0);
+    var dbOk = !!(window.THERA_DATA && window.THERA_DATA.studies && window.THERA_DATA.studies.length > 0);
+    if (brOk || dbOk) runMatcher();
+  }
+  if (document.readyState === 'complete') {
+    initView();
   } else {
-    window.addEventListener('load', function() {
-      checkDataLoaded();
-      document.getElementById('tm-results').style.display = '';
-    });
+    window.addEventListener('load', initView);
   }
 
   // ── Re-render dynamic strings on language change ──
