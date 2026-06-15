@@ -291,12 +291,113 @@
 .lang-toggle:hover { border-color: var(--amber, #FF8400); color: var(--amber, #FF8400); }
 .lang-toggle .lang-label { font-size: 0.72rem; letter-spacing: 0.03em; }
 
+/* ── Card clicável + “Ver detalhes” ── */
+.tm-card { cursor: pointer; }
+.tm-card:focus-visible { outline: 2px solid var(--amber, #FF8400); outline-offset: 2px; }
+.tm-card-more {
+  margin-left: auto; display: inline-flex; align-items: center; gap: 0.25rem;
+  font-size: 0.72rem; font-weight: 600; color: var(--amber, #FF8400);
+  font-family: 'Inter', sans-serif; white-space: nowrap;
+}
+.tm-card-more i { width: 12px; height: 12px; }
+.tm-card:hover .tm-card-more { text-decoration: underline; }
+
+/* ── Modal de detalhe ── */
+.tm-modal-bg {
+  position: fixed; inset: 0; z-index: 1000; display: none;
+  align-items: flex-start; justify-content: center;
+  padding: 4vh 1rem; overflow-y: auto;
+  background: rgba(0,0,0,0.7); backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px);
+}
+.tm-modal-bg.on { display: flex; }
+.tm-modal {
+  position: relative; width: 100%; max-width: 760px; margin: auto;
+  background: var(--graphite-2, #14161B);
+  border: 1px solid var(--border-mid, rgba(143,148,156,0.35));
+  border-radius: 16px; box-shadow: 0 24px 70px rgba(0,0,0,0.55);
+  animation: tm-modal-in 0.18s ease-out;
+}
+@keyframes tm-modal-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.tm-modal-close {
+  position: absolute; top: 0.9rem; right: 0.9rem; z-index: 2;
+  width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center;
+  border-radius: 8px; border: 1px solid var(--border-soft, rgba(143,148,156,0.18));
+  background: var(--graphite-3, #1B1E25); color: var(--stone, #8E949C);
+  cursor: pointer; transition: all 0.2s;
+}
+.tm-modal-close:hover { color: var(--off-white); border-color: var(--border-mid); background: var(--graphite-4, #252932); }
+.tm-modal-close i { width: 16px; height: 16px; }
+.tm-modal-head {
+  padding: 1.4rem 3.2rem 1rem 1.5rem;
+  border-bottom: 1px solid var(--border-soft, rgba(143,148,156,0.18));
+}
+.tm-modal-head h2 {
+  font-family: 'Outfit', sans-serif; font-size: 1.15rem; font-weight: 700;
+  color: var(--off-white, #F5F6F7); margin: 0 0 0.35rem; line-height: 1.35;
+}
+.tm-d-nct {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.72rem;
+  color: var(--stone, #8E949C); margin-right: 0.4rem;
+}
+.tm-modal-body { padding: 1.25rem 1.5rem 1.5rem; }
+.tm-d-titulo { font-size: 0.9rem; color: var(--off-white); line-height: 1.5; margin: 0 0 1.1rem; }
+.tm-d-section { margin-bottom: 1.3rem; }
+.tm-d-section h3 {
+  display: flex; align-items: center; gap: 0.4rem;
+  font-family: 'Outfit', sans-serif; font-size: 0.82rem; font-weight: 600;
+  color: var(--amber, #FF8400); text-transform: uppercase; letter-spacing: 0.04em;
+  margin: 0 0 0.6rem;
+}
+.tm-d-section h3 i { width: 14px; height: 14px; }
+.tm-d-text { font-size: 0.86rem; color: var(--off-white, #F5F6F7); line-height: 1.6; margin: 0; }
+.tm-d-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.6rem; }
+.tm-d-card {
+  background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 10px; padding: 0.7rem 0.85rem;
+}
+.tm-d-lbl {
+  font-family: 'Outfit', sans-serif; font-size: 0.66rem; font-weight: 600;
+  color: var(--stone, #8E949C); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.3rem;
+}
+.tm-d-val { font-size: 0.84rem; color: var(--off-white, #F5F6F7); line-height: 1.55; }
+.tm-d-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.2rem; }
+.tm-d-pill {
+  display: inline-flex; flex-direction: column; gap: 0.15rem;
+  background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 9px; padding: 0.45rem 0.7rem;
+}
+.tm-d-pill .lbl { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--stone); font-weight: 600; }
+.tm-d-pill .val { font-size: 0.82rem; color: var(--off-white); font-weight: 500; }
+.tm-d-list { margin: 0; padding-left: 1.1rem; }
+.tm-d-list li { font-size: 0.84rem; color: var(--off-white, #F5F6F7); line-height: 1.55; margin-bottom: 0.35rem; }
+.tm-d-list.exclusion li::marker { color: #ef4444; }
+.tm-d-actions { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.4rem; }
+.tm-d-btn {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  padding: 0.6rem 1rem; border-radius: 9px; font-size: 0.8rem; font-weight: 600;
+  text-decoration: none; font-family: 'Inter', sans-serif; transition: all 0.2s; cursor: pointer;
+}
+.tm-d-btn i { width: 14px; height: 14px; }
+.tm-d-btn.primary { background: linear-gradient(135deg, #FF8400, #E07000); color: #fff; border: none; }
+.tm-d-btn.primary:hover { background: linear-gradient(135deg, #FFA640, #FF8400); }
+.tm-d-btn.ghost {
+  background: var(--graphite-3, #1B1E25); color: var(--stone, #8E949C);
+  border: 1px solid var(--border-soft, rgba(143,148,156,0.18));
+}
+.tm-d-btn.ghost:hover { color: var(--off-white); border-color: var(--border-mid); }
+.tm-d-source {
+  margin-top: 1.3rem; padding-top: 1rem; border-top: 1px solid var(--border-soft, rgba(143,148,156,0.18));
+  font-size: 0.74rem; color: var(--stone, #8E949C); line-height: 1.55;
+}
+
 /* ── Responsive ── */
 @media (max-width: 600px) {
   .tm-filters-grid { grid-template-columns: 1fr; }
   .tm-actions { flex-direction: column; align-items: stretch; }
   .tm-result-count { margin-left: 0; text-align: center; }
   .lang-toggle { margin-left: 0; margin-top: 0.5rem; }
+  .tm-modal-head { padding-right: 3rem; }
+  .tm-d-grid { grid-template-columns: 1fr; }
 }
 </style>
 
@@ -478,6 +579,14 @@
   </section>
 
 </main>
+
+<!-- Modal de detalhe do estudo (preenchido via JS ao clicar num card) -->
+<div class="tm-modal-bg" id="tm-modal" onclick="if(event.target===this)closeTrialDetail()">
+  <div class="tm-modal" role="dialog" aria-modal="true" aria-label="Detalhes do estudo">
+    <button class="tm-modal-close" onclick="closeTrialDetail()" aria-label="Fechar"><i data-lucide="x"></i></button>
+    <div id="tm-modal-content"></div>
+  </div>
+</div>
 
 <!-- Botão flutuante: legenda de siglas -->
 <button class="gloss-fab" onclick="if(window.TheraTrials)TheraTrials.openGlossaryModal()" title="Legenda das siglas e métricas">
@@ -692,7 +801,8 @@
           nct_url: s.nct_url || (s.nct ? 'https://clinicaltrials.gov/study/' + s.nct : ''),
           pubmed_url: s.pubmed_url || '',
           status: s.status || '',
-          score: score
+          score: score,
+          raw: s
         });
       });
     }
@@ -778,7 +888,8 @@
           status: t.status || 'Recrutando',
           centros_br: t.centros || [],
           estados: t.estados || [],
-          score: score
+          score: score,
+          raw: t
         });
       });
     }
@@ -836,7 +947,7 @@
     html = html.replace(/<button class="tm-show-more"[^]*?<\/button>/g, '');
 
     for (var i = start; i < end; i++) {
-      html += renderCard(results[i]);
+      html += renderCard(results[i], i);
     }
     visibleCount = end;
 
@@ -863,7 +974,7 @@
     }
   }
 
-  function renderCard(r) {
+  function renderCard(r, idx) {
     // Phase badge class
     var phaseClass = '';
     var pLow = (r.phase || '').toLowerCase();
@@ -899,10 +1010,10 @@
     }
     if (r.drug && r.drug.length < 60) tags += '<span class="tm-tag highlight">' + escHtml(r.drug.substring(0, 55)) + '</span>';
 
-    // Links
+    // Links (stopPropagation: não abrir o modal ao clicar num link externo)
     var links = '';
-    if (r.nct_url) links += '<a href="' + escHtml(r.nct_url) + '" target="_blank" rel="noopener" class="tm-card-link"><i data-lucide="external-link"></i>' + (r.nct || 'ClinicalTrials.gov') + '</a>';
-    if (r.pubmed_url) links += '<a href="' + escHtml(r.pubmed_url) + '" target="_blank" rel="noopener" class="tm-card-link"><i data-lucide="book-open"></i>PubMed</a>';
+    if (r.nct_url) links += '<a href="' + escHtml(r.nct_url) + '" target="_blank" rel="noopener" class="tm-card-link" onclick="event.stopPropagation()"><i data-lucide="external-link"></i>' + (r.nct || 'ClinicalTrials.gov') + '</a>';
+    if (r.pubmed_url) links += '<a href="' + escHtml(r.pubmed_url) + '" target="_blank" rel="noopener" class="tm-card-link" onclick="event.stopPropagation()"><i data-lucide="book-open"></i>PubMed</a>';
 
     // Brazil centers
     var centrosHtml = '';
@@ -910,7 +1021,8 @@
       centrosHtml = '<div style="font-size:0.72rem;color:#0EA5B7;margin-top:0.5rem;"><i data-lucide="map-pin" style="width:11px;height:11px;display:inline;vertical-align:-2px;margin-right:3px;"></i>' + escHtml(r.centros_br.slice(0, 3).join(' · ')) + '</div>';
     }
 
-    return '<div class="tm-card">' +
+    return '<div class="tm-card" data-idx="' + idx + '" role="button" tabindex="0" ' +
+        'onclick="openTrialDetail(this)" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){event.preventDefault();openTrialDetail(this);}">' +
       '<span class="tm-card-source ' + r.source + '">' + (r.source === 'brasil' ? t('tm.cardBrasil', 'Brasil') : t('tm.cardDatabase', 'Database')) + '</span>' +
       '<div class="tm-card-header">' +
         '<span class="tm-card-phase' + phaseClass + '">' + escHtml(phaseLabel) + '</span>' +
@@ -921,6 +1033,7 @@
       '<div class="tm-card-footer">' +
         (r.status ? '<span class="tm-card-status ' + statusClass + '">' + escHtml(r.status) + '</span>' : '') +
         links +
+        '<span class="tm-card-more">' + t('tm.viewDetails', 'Ver detalhes') + ' <i data-lucide="arrow-right"></i></span>' +
       '</div>' +
       centrosHtml +
     '</div>';
@@ -930,6 +1043,144 @@
     if (!str) return '';
     return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
   }
+
+  // ════════════════════════════════════════════════════════════
+  //  Modal de detalhe do estudo (abre ao clicar no card)
+  // ════════════════════════════════════════════════════════════
+  // Helpers de montagem (só renderiza o bloco se houver conteúdo)
+  function dRow(lbl, val) {
+    if (!val) return '';
+    return '<div class="tm-d-card"><div class="tm-d-lbl">' + escHtml(lbl) + '</div><div class="tm-d-val">' + escHtml(val) + '</div></div>';
+  }
+  function dSection(icon, title, inner) {
+    if (!inner) return '';
+    return '<div class="tm-d-section"><h3><i data-lucide="' + icon + '"></i> ' + escHtml(title) + '</h3>' + inner + '</div>';
+  }
+  function dList(arr) {
+    if (!arr || !arr.length) return '';
+    return '<ul class="tm-d-list">' + arr.map(function(c){ return '<li>' + escHtml(c) + '</li>'; }).join('') + '</ul>';
+  }
+  function dPills(pairs) {
+    var out = pairs.filter(function(p){ return p[1]; }).map(function(p){
+      return '<span class="tm-d-pill"><span class="lbl">' + escHtml(p[0]) + '</span><span class="val">' + escHtml(p[1]) + '</span></span>';
+    }).join('');
+    return out ? '<div class="tm-d-pills">' + out + '</div>' : '';
+  }
+
+  // Ficha de um ensaio brasileiro (THERA_TRIALS_BR)
+  function renderBrasilDetail(s) {
+    var head = '<div class="tm-modal-head">' +
+      '<div><h2>' + escHtml(s.nome || s.titulo || 'Ensaio') + '</h2>' +
+      (s.nct ? '<span class="tm-d-nct">' + escHtml(s.nct) + '</span>' : '') +
+      (s.status ? '<span class="tm-card-status recrutando" style="margin-left:.5rem">' + escHtml(s.status) + '</span>' : '') +
+      '</div></div>';
+
+    var body = '';
+    if (s.titulo && s.titulo !== s.nome) body += '<p class="tm-d-titulo"><strong>' + escHtml(s.titulo) + '</strong></p>';
+    body += dPills([
+      ['Fase', s.fase ? 'Fase ' + s.fase : ''],
+      ['Neoplasia', s.neoplasia_label],
+      ['Linha', s.linha_terapeutica],
+      ['Biomarcador', (s.biomarcadores || []).join(', ')]
+    ]);
+    body += dSection('lightbulb', 'Racional', s.racional ? '<p class="tm-d-text">' + escHtml(s.racional) + '</p>' : '');
+    body += dSection('users', 'População e cenário clínico',
+      (dRow('Subtipo', s.subtipo) + dRow('Cenário clínico', s.cenario_clinico)) ?
+      '<div class="tm-d-grid">' + dRow('Subtipo', s.subtipo) + dRow('Cenário clínico', s.cenario_clinico) + '</div>' : '');
+    body += dSection('syringe', 'Intervenção e comparador',
+      '<div class="tm-d-grid">' + dRow('Braço experimental', s.intervencao) + dRow('Comparador / controle', s.comparador) +
+      dRow('Testes fornecidos pelo estudo', s.testes_fornecidos) + dRow('Patrocinador', s.patrocinador) + '</div>');
+    body += dSection('check-circle-2', 'Critérios principais de inclusão', dList(s.criterios_principais));
+    body += dSection('x-circle', 'Critérios de exclusão relevantes', dList(s.criterios_exclusao));
+    if (s.centros && s.centros.length) {
+      body += dSection('map-pin', 'Centros participantes no Brasil',
+        '<div class="tm-d-pills">' + s.centros.map(function(c){ return '<span class="tm-d-pill"><span class="val">' + escHtml(c) + '</span></span>'; }).join('') + '</div>');
+    }
+
+    var actions = '<div class="tm-d-actions">';
+    if (s.fonte_url) actions += '<a href="' + escHtml(s.fonte_url) + '" target="_blank" rel="noopener" class="tm-d-btn primary"><i data-lucide="external-link"></i> Registro oficial / ClinicalTrials.gov</a>';
+    if (s.contato_url && s.contato_url !== s.fonte_url) actions += '<a href="' + escHtml(s.contato_url) + '" target="_blank" rel="noopener" class="tm-d-btn ghost"><i data-lucide="phone"></i> Registro de contato oficial</a>';
+    actions += '<a href="database.html" class="tm-d-btn ghost"><i data-lucide="database"></i> Ver evidência no Database</a>';
+    actions += '</div>';
+
+    var foot = s.data_atualizacao ? '<div class="tm-d-source"><strong>Fonte da curadoria:</strong> registros públicos (ClinicalTrials.gov, REBEC), patrocinadores e literatura primária. Última atualização: ' + escHtml(s.data_atualizacao) + '. <em>Confirme sempre com o centro responsável.</em></div>' : '';
+
+    return head + '<div class="tm-modal-body">' + body + actions + foot + '</div>';
+  }
+
+  // Ficha de um estudo do Database (THERA_DATA — schema de 40 campos)
+  function renderDatabaseDetail(s) {
+    var titulo = s.estudo || s.acron || 'Estudo';
+    var head = '<div class="tm-modal-head">' +
+      '<div><h2>' + escHtml(titulo) + '</h2>' +
+      (s.acron && s.acron !== titulo ? '<span class="tm-d-nct">' + escHtml(s.acron) + '</span> ' : '') +
+      (s.nct ? '<span class="tm-d-nct">' + escHtml(s.nct) + '</span>' : '') +
+      (s.status ? '<span class="tm-card-status publicado" style="margin-left:.5rem">' + escHtml(s.status) + '</span>' : '') +
+      '</div></div>';
+
+    var body = '';
+    body += dPills([
+      ['Fase', s.fase],
+      ['Desenho', s.desenho],
+      ['N', s.n],
+      ['Neoplasia', s.category_name]
+    ]);
+    body += dSection('target', 'Indicação', s.indicacao ? '<p class="tm-d-text">' + escHtml(s.indicacao) + '</p>' : '');
+    body += dSection('users', 'População',
+      (dRow('Critérios de inclusão', s.incl) + dRow('Critérios de exclusão', s.excl) + dRow('Estratificação', s.estrat) + dRow('Características basais', s.basal)) ?
+      '<div class="tm-d-grid">' + dRow('Critérios de inclusão', s.incl) + dRow('Critérios de exclusão', s.excl) + dRow('Estratificação', s.estrat) + dRow('Características basais', s.basal) + '</div>' : '');
+    body += dSection('dna', 'Biomarcadores e molecular',
+      (dRow('Biomarcador', s.biomarc) + dRow('Molecular', s.molecular) + dRow('Radiofármaco', s.radiofarmaco)) ?
+      '<div class="tm-d-grid">' + dRow('Biomarcador', s.biomarc) + dRow('Molecular', s.molecular) + dRow('Radiofármaco', s.radiofarmaco) + '</div>' : '');
+    body += dSection('syringe', 'Intervenção',
+      (dRow('Esquema', s.esquema) + dRow('Atividade cumulativa', s.cumul) + dRow('Comparador', s.comparador)) ?
+      '<div class="tm-d-grid">' + dRow('Esquema', s.esquema) + dRow('Atividade cumulativa', s.cumul) + dRow('Comparador', s.comparador) + '</div>' : '');
+    body += dSection('bar-chart-3', 'Desfechos',
+      (dRow('Desfecho primário', s.primario) + dRow('Desfechos secundários', s.secundario) + dRow('Subgrupos', s.subgrupo) + dRow('Estatística', s.estatistica)) ?
+      '<div class="tm-d-grid">' + dRow('Desfecho primário', s.primario) + dRow('Desfechos secundários', s.secundario) + dRow('Subgrupos', s.subgrupo) + dRow('Estatística', s.estatistica) + '</div>' : '');
+    body += dSection('alert-triangle', 'Segurança',
+      (dRow('Toxicidade G3+', s.tox_g3) + dRow('Toxicidade de interesse', s.tox_interesse)) ?
+      '<div class="tm-d-grid">' + dRow('Toxicidade G3+', s.tox_g3) + dRow('Toxicidade de interesse', s.tox_interesse) + '</div>' : '');
+    body += dSection('scale', 'Impacto e limitações',
+      (dRow('Impacto regulatório / prático', s.impacto_reg) + dRow('Limitações', s.limit)) ?
+      '<div class="tm-d-grid">' + dRow('Impacto regulatório / prático', s.impacto_reg) + dRow('Limitações', s.limit) + '</div>' : '');
+    if (s.ref) body += dSection('book-open', 'Referência', '<p class="tm-d-text">' + escHtml(s.ref) + '</p>');
+
+    var actions = '<div class="tm-d-actions">';
+    var nctUrl = s.nct_url || (s.nct ? 'https://clinicaltrials.gov/study/' + s.nct : '');
+    if (nctUrl) actions += '<a href="' + escHtml(nctUrl) + '" target="_blank" rel="noopener" class="tm-d-btn primary"><i data-lucide="external-link"></i> ' + (s.nct || 'ClinicalTrials.gov') + '</a>';
+    if (s.pubmed_url) actions += '<a href="' + escHtml(s.pubmed_url) + '" target="_blank" rel="noopener" class="tm-d-btn ghost"><i data-lucide="book-open"></i> PubMed</a>';
+    actions += '<a href="database.html" class="tm-d-btn ghost"><i data-lucide="database"></i> Abrir no Database</a>';
+    actions += '</div>';
+
+    return head + '<div class="tm-modal-body">' + body + actions + '</div>';
+  }
+
+  window.openTrialDetail = function(cardEl) {
+    var idx = parseInt(cardEl.getAttribute('data-idx'), 10);
+    var r = allResults[idx];
+    if (!r || !r.raw) return;
+    var content = document.getElementById('tm-modal-content');
+    content.innerHTML = (r.source === 'brasil') ? renderBrasilDetail(r.raw) : renderDatabaseDetail(r.raw);
+    var modal = document.getElementById('tm-modal');
+    modal.classList.add('on');
+    document.body.style.overflow = 'hidden';
+    // Anota siglas + ícones do conteúdo recém-montado
+    if (window.TheraTrials && TheraTrials.annotateDOM) TheraTrials.annotateDOM(content);
+    if (typeof lucide !== 'undefined') lucide.createIcons();
+    var closeBtn = modal.querySelector('.tm-modal-close');
+    if (closeBtn) closeBtn.focus();
+  };
+  window.closeTrialDetail = function() {
+    var modal = document.getElementById('tm-modal');
+    if (modal && modal.classList.contains('on')) {
+      modal.classList.remove('on');
+      document.body.style.overflow = '';
+    }
+  };
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeTrialDetail();
+  });
 
   // ── Auto-search on Enter ──
   document.querySelectorAll('.tm-field input').forEach(function(input) {

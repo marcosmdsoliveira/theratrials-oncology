@@ -2339,6 +2339,7 @@ window._i18nRegister('en', {
     remaining: "remaining",
     cardDatabase: "Database",
     cardBrasil: "Brazil",
+    viewDetails: "View details",
     footerLine1: "© 2026 TheraTrials Oncology · Trial Matcher · v1.3",
     footerLine2: "Educational tool. Does not replace formal eligibility assessment.",
     errorPartialDB: "Database partially unavailable",
