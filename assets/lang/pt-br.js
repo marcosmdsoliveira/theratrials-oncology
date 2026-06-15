@@ -2286,7 +2286,8 @@ window._i18nRegister('pt-br', {
   tm: {
     badge: "Ferramenta clínica",
     title: "Trial <span class=\"accent\">Matcher</span>",
-    subtitle: "Encontre ensaios clínicos relevantes para seu paciente. Filtre por tumor, biomarcador, linha terapêutica e modalidade — busca simultânea em 475 estudos analisados e 79 ensaios ativos no Brasil.",
+    subtitle: "Busca simultânea em 475 estudos analisados e 79 ensaios abertos no Brasil. Filtre por tumor, localidade (UF), biomarcador, linha terapêutica, modalidade e fase — e clique em qualquer card para ver a ficha completa do estudo.",
+    disclaimer: "<strong>Aviso:</strong> esta ferramenta é informativa. As informações são consolidadas a partir de registros públicos (ClinicalTrials.gov, REBEC, ANVISA) e fontes oficiais dos patrocinadores. <strong>A elegibilidade final depende sempre da avaliação do centro responsável pelo estudo</strong>. Datas, status e critérios podem mudar — sempre confirmar com a fonte original e a equipe local antes de qualquer encaminhamento.",
     fTumor: "Tumor / Neoplasia",
     fTumorAll: "Todos os tumores",
     fUf: "Localidade (UF)",

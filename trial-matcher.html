@@ -65,7 +65,20 @@
   font-weight: 700; letter-spacing: -0.03em; color: var(--off-white, #F5F6F7); margin: 0 0 0.6rem;
 }
 .tm-hero h1 .accent { color: #FF8400; }
-.tm-hero p { color: var(--stone, #8E949C); font-size: 0.92rem; max-width: 560px; margin: 0 auto; line-height: 1.6; }
+.tm-hero p { color: var(--stone, #8E949C); font-size: 0.92rem; max-width: 620px; margin: 0 auto; line-height: 1.6; }
+
+/* ── Aviso informativo ── */
+.tm-disclaimer {
+  max-width: 840px; margin: 1.5rem auto 0;
+  background: rgba(251, 191, 36, 0.05);
+  border: 1px solid rgba(251, 191, 36, 0.25);
+  border-radius: 12px;
+  padding: 0.85rem 1.15rem;
+  color: #FCD34D; font-size: 0.85rem; line-height: 1.5;
+  display: flex; align-items: flex-start; gap: 0.75rem; text-align: left;
+}
+.tm-disclaimer i { flex-shrink: 0; margin-top: 2px; width: 18px; height: 18px; }
+.tm-disclaimer strong { color: var(--off-white, #F5F6F7); }
 
 /* ── Filter panel ── */
 .tm-filters {
@@ -510,9 +523,15 @@
   <section class="tm-hero">
     <div class="tm-hero-badge"><i data-lucide="sparkles"></i> <span data-i18n="tm.badge">Ferramenta cl&iacute;nica</span></div>
     <h1 data-i18n-html="tm.title">Trial <span class="accent">Matcher</span></h1>
-    <p data-i18n="tm.subtitle">Encontre ensaios cl&iacute;nicos relevantes para seu paciente.
-       Filtre por tumor, biomarcador, linha terap&ecirc;utica e modalidade
-       &mdash; busca simult&acirc;nea em 475 estudos analisados e 79 ensaios ativos no Brasil.</p>
+    <p data-i18n="tm.subtitle">Busca simult&acirc;nea em 475 estudos analisados e 79 ensaios abertos no Brasil.
+       Filtre por tumor, localidade (UF), biomarcador, linha terap&ecirc;utica, modalidade e fase
+       &mdash; e clique em qualquer card para ver a ficha completa do estudo.</p>
+    <div class="tm-disclaimer">
+      <i data-lucide="info"></i>
+      <div data-i18n-html="tm.disclaimer">
+        <strong>Aviso:</strong> esta ferramenta &eacute; informativa. As informa&ccedil;&otilde;es s&atilde;o consolidadas a partir de registros p&uacute;blicos (ClinicalTrials.gov, REBEC, ANVISA) e fontes oficiais dos patrocinadores. <strong>A elegibilidade final depende sempre da avalia&ccedil;&atilde;o do centro respons&aacute;vel pelo estudo</strong>. Datas, status e crit&eacute;rios podem mudar &mdash; sempre confirmar com a fonte original e a equipe local antes de qualquer encaminhamento.
+      </div>
+    </div>
   </section>
 
   <!-- Filters -->
