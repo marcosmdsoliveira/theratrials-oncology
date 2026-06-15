@@ -105,8 +105,6 @@
 .tm-field select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23FF8400' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 4l4 4 4-4'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 0.75rem center; padding-right: 2rem; }
 .tm-field select:focus, .tm-field input:focus { border-color: var(--amber, #FF8400); box-shadow: 0 0 0 3px rgba(255,132,0,0.15); }
 .tm-field select:hover, .tm-field input:hover { border-color: var(--stone, #8E949C); }
-.tm-field select:disabled { opacity: 0.4; cursor: not-allowed; background-image: none; }
-.tm-field select:disabled:hover { border-color: var(--border-mid, rgba(143,148,156,0.35)); }
 .tm-field input::placeholder { color: var(--stone-2, #5C616A); }
 
 /* ── Action bar ── */
@@ -137,48 +135,6 @@
 }
 .tm-result-count strong { color: #FF8400; }
 
-/* ── Source toggle ── */
-.tm-sources {
-  display: flex; gap: 0; margin-top: 1.25rem;
-  background: var(--graphite-3, #1B1E25); border-radius: 10px;
-  border: 1px solid var(--border-soft, rgba(143,148,156,0.18));
-  overflow: hidden;
-}
-.tm-sources-label {
-  display: flex; align-items: center; gap: 0.35rem;
-  padding: 0.6rem 0.9rem; font-family: 'Outfit', sans-serif;
-  font-size: 0.72rem; font-weight: 600; color: var(--stone, #8E949C);
-  text-transform: uppercase; letter-spacing: 0.04em;
-  border-right: 1px solid var(--border-soft, rgba(143,148,156,0.18));
-  white-space: nowrap; user-select: none;
-}
-.tm-sources-label i { width: 13px; height: 13px; }
-.tm-source-chip {
-  display: inline-flex; align-items: center; gap: 0.45rem;
-  padding: 0.6rem 1rem; font-size: 0.8rem;
-  font-weight: 600; cursor: pointer; transition: all 0.2s; border: none;
-  font-family: 'Inter', sans-serif; user-select: none;
-  border-right: 1px solid var(--border-soft, rgba(143,148,156,0.18));
-  position: relative;
-}
-.tm-source-chip:last-child { border-right: none; }
-.tm-source-chip i { width: 14px; height: 14px; }
-.tm-source-chip .tm-check { width: 12px; height: 12px; }
-.tm-source-chip.database { color: var(--stone-2, #5C616A); background: transparent; }
-.tm-source-chip.database.active { color: #FF8400; background: rgba(255,132,0,0.1); }
-.tm-source-chip.brasil { color: var(--stone-2, #5C616A); background: transparent; }
-.tm-source-chip.brasil.active { color: #0EA5B7; background: rgba(14,165,183,0.1); }
-.tm-source-chip:hover:not(.active) { background: rgba(255,255,255,0.04); color: var(--stone, #8E949C); }
-.tm-source-count {
-  font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 400;
-  opacity: 0.7; margin-left: 0.15rem;
-}
-@media (max-width: 600px) {
-  .tm-sources { flex-wrap: wrap; }
-  .tm-sources-label { width: 100%; border-right: none; border-bottom: 1px solid var(--border-soft); }
-  .tm-source-chip { flex: 1; justify-content: center; }
-}
-
 /* ── Results ── */
 .tm-results { margin-top: 1.5rem; }
 .tm-empty {
@@ -188,58 +144,8 @@
 .tm-empty h3 { font-family: 'Outfit', sans-serif; font-size: 1.1rem; color: var(--off-white); margin: 0 0 0.5rem; }
 .tm-empty p { font-size: 0.85rem; max-width: 400px; margin: 0 auto; }
 
-/* ── Result cards ── */
+/* ── Results grid + status pill (usado no modal) ── */
 .tm-cards { display: grid; gap: 0.75rem; }
-.tm-card {
-  background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06);
-  border-radius: 12px; padding: 1.25rem; transition: all 0.2s; position: relative;
-  overflow: hidden;
-}
-.tm-card:hover { background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.12); }
-.tm-card-source {
-  position: absolute; top: 0; right: 0; padding: 0.3rem 0.7rem;
-  font-size: 0.6rem; font-weight: 600; text-transform: uppercase;
-  letter-spacing: 0.05em; border-radius: 0 12px 0 8px;
-}
-.tm-card-source.database { background: rgba(255,132,0,0.12); color: #FF8400; }
-.tm-card-source.brasil { background: rgba(14,165,183,0.12); color: #0EA5B7; }
-
-.tm-card-header { display: flex; align-items: flex-start; gap: 0.75rem; margin-bottom: 0.75rem; }
-.tm-card-phase {
-  font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; font-weight: 600;
-  padding: 0.2rem 0.5rem; border-radius: 6px; white-space: nowrap;
-  background: rgba(255,255,255,0.06); color: var(--stone);
-  flex-shrink: 0;
-}
-.tm-card-phase.fase3 { background: rgba(34,211,238,0.1); color: #22d3ee; }
-.tm-card-phase.fase2 { background: rgba(168,85,247,0.1); color: #a855f7; }
-.tm-card-phase.fase1 { background: rgba(251,191,36,0.1); color: #fbbf24; }
-
-.tm-card-title {
-  font-family: 'Outfit', sans-serif; font-size: 0.95rem; font-weight: 600;
-  color: var(--off-white, #F5F6F7); line-height: 1.4;
-}
-.tm-card-indication {
-  font-size: 0.82rem; color: var(--stone, #8E949C); line-height: 1.55; margin-bottom: 0.75rem;
-}
-
-.tm-card-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.75rem; }
-.tm-tag {
-  font-size: 0.68rem; padding: 0.2rem 0.5rem; border-radius: 5px;
-  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
-  color: var(--stone); white-space: nowrap;
-}
-.tm-tag.highlight { background: rgba(255,132,0,0.08); border-color: rgba(255,132,0,0.2); color: #FF8400; }
-.tm-tag.bio { background: rgba(14,165,183,0.08); border-color: rgba(14,165,183,0.2); color: #0EA5B7; }
-
-.tm-card-footer { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
-.tm-card-link {
-  display: inline-flex; align-items: center; gap: 0.3rem;
-  font-size: 0.75rem; color: #FF8400; text-decoration: none;
-  font-weight: 500; transition: color 0.2s;
-}
-.tm-card-link:hover { color: #FFA640; text-decoration: underline; }
-.tm-card-link i { width: 12px; height: 12px; }
 .tm-card-status {
   font-size: 0.68rem; padding: 0.15rem 0.5rem; border-radius: 5px;
   font-weight: 500;
@@ -674,34 +580,6 @@
   // i18n helper (safe fallback if i18n.js not loaded)
   var t = window.t || function(key, fb) { return fb || key; };
 
-  // ── Tumor mapping (category_id → friendly group) ──
-  var TUMOR_MAP = {
-    'lupsma_prostata': 'Próstata', 'ra223_prostata': 'Próstata',
-    'lupsma_ccrcc': 'Rim (ccRCC)', 'novos_psma': 'Próstata',
-    'prostata_contexto': 'Próstata',
-    'nsclc_imuno': 'Pulmão (NSCLC)', 'nsclc_alvo': 'Pulmão (NSCLC)',
-    'nsclc_periop': 'Pulmão (NSCLC)', 'sclc': 'Pulmão (SCLC)',
-    'lung_radio_dev': 'Pulmão',
-    'breast_her2': 'Mama', 'breast_hrpos': 'Mama',
-    'breast_tnbc_brca': 'Mama', 'breast_radio_dev': 'Mama',
-    'rcc_avancado': 'Rim (ccRCC)', 'rcc_adjuvante_naocc': 'Rim',
-    'urotelial_avancado': 'Urotelial', 'urotelial_periop_nmibc': 'Urotelial',
-    'tireoide_avancado': 'Tireoide',
-    'esofago_egj': 'Esôfago / EGJ', 'colorretal': 'Colorretal',
-    'pancreas': 'Pâncreas',
-    'hepatobiliar': 'Hepatobiliar (CHC/Colangiocarcinoma)',
-    'teranostico_emergente': 'Teranóstico (pipeline)',
-    'net_gep': 'NETs (GEP/Brônquicos)', 'ppgl': 'Feocromocitoma/Paraganglioma',
-    'neuroblastoma': 'Neuroblastoma',
-    'hnscc': 'Cabeça e Pescoço', 'melanoma_avancado': 'Melanoma',
-    'melanoma_adjuvante': 'Melanoma',
-    'mieloma': 'Mieloma Múltiplo', 'linfoma_dlbcl': 'Linfoma',
-    'lma': 'Leucemia (LMA)',
-    'ovario': 'Ovário', 'endometrio': 'Endométrio', 'cervix': 'Cérvix',
-    'rt_sbrt_oligo': 'Oligometástase (RT/SBRT)',
-    'rt_prostata_local': 'Próstata (RT)', 'rt_consolidacao': 'Consolidação RT+IO'
-  };
-
   // trials_br neoplasia → friendly group
   var BR_TUMOR_MAP = {
     'prostata': 'Próstata', 'pulmao': 'Pulmão (NSCLC)',
@@ -717,9 +595,8 @@
     'pediatrico': 'Neuroblastoma', 'penis': 'Outros'
   };
 
-  // ── Populate tumor filter ──
+  // ── Populate tumor filter (grupos de tumor presentes nos ensaios BR) ──
   var tumorSet = new Set();
-  Object.values(TUMOR_MAP).forEach(function(v) { tumorSet.add(v); });
   Object.values(BR_TUMOR_MAP).forEach(function(v) { tumorSet.add(v); });
   var tumors = Array.from(tumorSet).sort();
   var sel = document.getElementById('f-tumor');
@@ -973,37 +850,20 @@
 
   function renderCard(r, idx) {
     var raw = r.raw || {};
-    var isBr = r.source === 'brasil';
 
-    // Mapeamento de campos por fonte (BR vs Database)
-    var name, nct, titulo, faseTag, neo, color, bios, m1, m2, m3, footerIcon, footerText;
-    if (isBr) {
-      name = raw.nome || raw.titulo || 'Ensaio';
-      nct = raw.nct || '';
-      titulo = (raw.titulo && raw.titulo !== name) ? raw.titulo : (raw.cenario_clinico || '');
-      faseTag = raw.fase ? 'Fase ' + raw.fase : '';
-      neo = raw.neoplasia_label || '';
-      color = BR_NEO_COLOR[raw.neoplasia] || '#94a3b8';
-      bios = (raw.biomarcadores || []).slice(0, 3);
-      m1 = ['Linha', raw.linha_terapeutica];
-      m2 = ['Cenário', raw.cenario_clinico];
-      m3 = ['Intervenção', raw.intervencao];
-      footerIcon = 'map-pin';
-      footerText = (raw.centros || []).slice(0, 3).join(' · ') || 'Centros no Brasil';
-    } else {
-      name = raw.acron || raw.estudo || 'Estudo';
-      nct = raw.nct || '';
-      titulo = raw.indicacao || raw.estudo || '';
-      faseTag = raw.fase || '';
-      neo = raw.category_name || '';
-      color = raw.category_color || '#FF8400';
-      bios = (raw.biomarc ? raw.biomarc.split(/[,;]/) : []).map(function(b){ return b.trim(); }).filter(Boolean).slice(0, 3);
-      m1 = ['Esquema', raw.esquema];
-      m2 = ['Comparador', raw.comparador];
-      m3 = ['Desfecho primário', raw.primario];
-      footerIcon = 'database';
-      footerText = t('tm.cardDatabase', 'Database');
-    }
+    // Mapeamento de campos do ensaio (THERA_TRIALS_BR)
+    var name = raw.nome || raw.titulo || 'Ensaio';
+    var nct = raw.nct || '';
+    var titulo = (raw.titulo && raw.titulo !== name) ? raw.titulo : (raw.cenario_clinico || '');
+    var faseTag = raw.fase ? 'Fase ' + raw.fase : '';
+    var neo = raw.neoplasia_label || '';
+    var color = BR_NEO_COLOR[raw.neoplasia] || '#94a3b8';
+    var bios = (raw.biomarcadores || []).slice(0, 3);
+    var m1 = ['Linha', raw.linha_terapeutica];
+    var m2 = ['Cenário', raw.cenario_clinico];
+    var m3 = ['Intervenção', raw.intervencao];
+    var footerIcon = 'map-pin';
+    var footerText = (raw.centros || []).slice(0, 3).join(' · ') || 'Centros no Brasil';
 
     var statusTxt = shortStatusEA(raw.status);
     var statusCls = statusClassEA(raw.status);
@@ -1100,60 +960,12 @@
     return head + '<div class="tm-modal-body">' + body + actions + foot + '</div>';
   }
 
-  // Ficha de um estudo do Database (THERA_DATA — schema de 40 campos)
-  function renderDatabaseDetail(s) {
-    var titulo = s.estudo || s.acron || 'Estudo';
-    var head = '<div class="tm-modal-head">' +
-      '<div><h2>' + escHtml(titulo) + '</h2>' +
-      (s.acron && s.acron !== titulo ? '<span class="tm-d-nct">' + escHtml(s.acron) + '</span> ' : '') +
-      (s.nct ? '<span class="tm-d-nct">' + escHtml(s.nct) + '</span>' : '') +
-      (s.status ? '<span class="tm-card-status publicado" style="margin-left:.5rem">' + escHtml(s.status) + '</span>' : '') +
-      '</div></div>';
-
-    var body = '';
-    body += dPills([
-      ['Fase', s.fase],
-      ['Desenho', s.desenho],
-      ['N', s.n],
-      ['Neoplasia', s.category_name]
-    ]);
-    body += dSection('target', 'Indicação', s.indicacao ? '<p class="tm-d-text">' + escHtml(s.indicacao) + '</p>' : '');
-    body += dSection('users', 'População',
-      (dRow('Critérios de inclusão', s.incl) + dRow('Critérios de exclusão', s.excl) + dRow('Estratificação', s.estrat) + dRow('Características basais', s.basal)) ?
-      '<div class="tm-d-grid">' + dRow('Critérios de inclusão', s.incl) + dRow('Critérios de exclusão', s.excl) + dRow('Estratificação', s.estrat) + dRow('Características basais', s.basal) + '</div>' : '');
-    body += dSection('dna', 'Biomarcadores e molecular',
-      (dRow('Biomarcador', s.biomarc) + dRow('Molecular', s.molecular) + dRow('Radiofármaco', s.radiofarmaco)) ?
-      '<div class="tm-d-grid">' + dRow('Biomarcador', s.biomarc) + dRow('Molecular', s.molecular) + dRow('Radiofármaco', s.radiofarmaco) + '</div>' : '');
-    body += dSection('syringe', 'Intervenção',
-      (dRow('Esquema', s.esquema) + dRow('Atividade cumulativa', s.cumul) + dRow('Comparador', s.comparador)) ?
-      '<div class="tm-d-grid">' + dRow('Esquema', s.esquema) + dRow('Atividade cumulativa', s.cumul) + dRow('Comparador', s.comparador) + '</div>' : '');
-    body += dSection('bar-chart-3', 'Desfechos',
-      (dRow('Desfecho primário', s.primario) + dRow('Desfechos secundários', s.secundario) + dRow('Subgrupos', s.subgrupo) + dRow('Estatística', s.estatistica)) ?
-      '<div class="tm-d-grid">' + dRow('Desfecho primário', s.primario) + dRow('Desfechos secundários', s.secundario) + dRow('Subgrupos', s.subgrupo) + dRow('Estatística', s.estatistica) + '</div>' : '');
-    body += dSection('alert-triangle', 'Segurança',
-      (dRow('Toxicidade G3+', s.tox_g3) + dRow('Toxicidade de interesse', s.tox_interesse)) ?
-      '<div class="tm-d-grid">' + dRow('Toxicidade G3+', s.tox_g3) + dRow('Toxicidade de interesse', s.tox_interesse) + '</div>' : '');
-    body += dSection('scale', 'Impacto e limitações',
-      (dRow('Impacto regulatório / prático', s.impacto_reg) + dRow('Limitações', s.limit)) ?
-      '<div class="tm-d-grid">' + dRow('Impacto regulatório / prático', s.impacto_reg) + dRow('Limitações', s.limit) + '</div>' : '');
-    if (s.ref) body += dSection('book-open', 'Referência', '<p class="tm-d-text">' + escHtml(s.ref) + '</p>');
-
-    var actions = '<div class="tm-d-actions">';
-    var nctUrl = s.nct_url || (s.nct ? 'https://clinicaltrials.gov/study/' + s.nct : '');
-    if (nctUrl) actions += '<a href="' + escHtml(nctUrl) + '" target="_blank" rel="noopener" class="tm-d-btn primary"><i data-lucide="external-link"></i> ' + (s.nct || 'ClinicalTrials.gov') + '</a>';
-    if (s.pubmed_url) actions += '<a href="' + escHtml(s.pubmed_url) + '" target="_blank" rel="noopener" class="tm-d-btn ghost"><i data-lucide="book-open"></i> PubMed</a>';
-    actions += '<a href="database.html" class="tm-d-btn ghost"><i data-lucide="database"></i> Abrir no Database</a>';
-    actions += '</div>';
-
-    return head + '<div class="tm-modal-body">' + body + actions + '</div>';
-  }
-
   window.openTrialDetail = function(cardEl) {
     var idx = parseInt(cardEl.getAttribute('data-idx'), 10);
     var r = allResults[idx];
     if (!r || !r.raw) return;
     var content = document.getElementById('tm-modal-content');
-    content.innerHTML = (r.source === 'brasil') ? renderBrasilDetail(r.raw) : renderDatabaseDetail(r.raw);
+    content.innerHTML = renderBrasilDetail(r.raw);
     var modal = document.getElementById('tm-modal');
     modal.classList.add('on');
     document.body.style.overflow = 'hidden';
