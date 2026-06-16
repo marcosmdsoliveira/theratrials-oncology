@@ -1,9 +1,11 @@
-name: Validate database PubMed links
+name: Validate database & trial links
 
-# Roda a cada push que altere o dataset (data.js) e valida que TODOS os
-# pubmed_url apontam para o PMID correto do ensaio (via NCT[si] + título
-# do ClinicalTrials.gov). Falha o check se houver PMID fabricado/errado —
-# este é o guard permanente contra a contaminação de pubmed_url.
+# Roda a cada push que altere os datasets e valida que TODOS os links
+# apontam para o registro correto:
+#  - data.js: pubmed_url (PMID real via NCT[si]) + nct_url (NCT do ensaio)
+#  - trials_br.js: NCT dos cards do Trial Matcher (existe, URLs consistentes,
+#    recrutando, Brasil entre os locais)
+# Falha o check se houver PMID/NCT fabricado ou link inconsistente.
 #
 # Também pode ser disparado manualmente (workflow_dispatch).
 
@@ -12,11 +14,14 @@ on:
     branches: [main]
     paths:
       - 'assets/js/data.js'
+      - 'assets/js/trials_br.js'
       - 'scripts/validate_pubmed.mjs'
       - 'scripts/validate_nct.mjs'
+      - 'scripts/validate_trials_br.mjs'
   pull_request:
     paths:
       - 'assets/js/data.js'
+      - 'assets/js/trials_br.js'
   workflow_dispatch:
 
 permissions:
@@ -46,6 +51,10 @@ jobs:
         if: always()
         run: node scripts/validate_nct.mjs --json nct-report.json
 
+      - name: Validate Trial Matcher (trials_br) links
+        if: always()
+        run: node scripts/validate_trials_br.mjs --json trials-br-report.json
+
       - name: Upload reports
         if: always()
         uses: actions/upload-artifact@v4
@@ -54,4 +63,5 @@ jobs:
           path: |
             pubmed-report.json
             nct-report.json
+            trials-br-report.json
           if-no-files-found: ignore
