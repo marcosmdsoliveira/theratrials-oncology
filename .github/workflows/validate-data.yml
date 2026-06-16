@@ -13,6 +13,7 @@ on:
     paths:
       - 'assets/js/data.js'
       - 'scripts/validate_pubmed.mjs'
+      - 'scripts/validate_nct.mjs'
   pull_request:
     paths:
       - 'assets/js/data.js'
@@ -39,12 +40,18 @@ jobs:
           node-version: '20'
 
       - name: Validate pubmed_url integrity
-        run: node scripts/validate_pubmed.mjs --json validation-report.json
+        run: node scripts/validate_pubmed.mjs --json pubmed-report.json
 
-      - name: Upload report
+      - name: Validate ClinicalTrials.gov (NCT) integrity
+        if: always()
+        run: node scripts/validate_nct.mjs --json nct-report.json
+
+      - name: Upload reports
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: pubmed-validation-report
-          path: validation-report.json
+          name: data-validation-reports
+          path: |
+            pubmed-report.json
+            nct-report.json
           if-no-files-found: ignore
