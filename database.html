@@ -844,7 +844,7 @@
         </div>
         <h2 class="modal-title" x-text="selectedStudy.estudo"></h2>
         <p class="modal-fulltitle" x-show="selectedStudy.titulo_full" x-text="selectedStudy.titulo_full"></p>
-        <p class="modal-acron" x-text="selectedStudy.acron"></p>
+        <p class="modal-acron" x-show="!selectedStudy.titulo_full" x-text="selectedStudy.acron"></p>
         <div class="modal-meta">
           <span class="text-mono" x-text="selectedStudy.nct"></span>
           <span class="sep">·</span>
