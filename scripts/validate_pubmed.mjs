@@ -156,6 +156,15 @@ async function titles(ids) {
     if (++i % 40 === 0) console.error(`  ${i}/${pmidStudies.length}`);
   }
 
+  // Informational: PubMed *search* placeholder links (?term=). These are not
+  // failures — they mark trials whose primary paper was not yet indexed when
+  // added. Re-check periodically: a real article may now exist (NCT[si]).
+  const placeholders = tagged.filter(t => t.c.kind === 'search');
+  if (placeholders.length) {
+    console.error(`\n--- NOTE: ${placeholders.length} placeholder search link(s) — resolve to a real PMID when published ---`);
+    placeholders.forEach(t => console.error(`  ${t.s.uid} | ${t.s.estudo} | ${t.nct || 'no NCT'} | ${t.s.pubmed_url}`));
+  }
+
   const by = results.reduce((a, r) => (a[r.status] = (a[r.status] || 0) + 1, a), {});
   const fails = results.filter(r => r.status === 'FAIL');
   const warns = results.filter(r => r.status === 'WARN');
