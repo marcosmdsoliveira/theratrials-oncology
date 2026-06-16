@@ -91,6 +91,14 @@ async function titles(ids) {
     b.forEach(id => out[id] = (j && j.result && j.result[id] && j.result[id].title) || '');
     await sleep(350);
   }
+  // Re-fetch empties individually: distinguishes a transient batch failure
+  // (network/rate-limit) from a genuinely dead PMID, so CI does not flake.
+  const empties = ids.filter(id => !out[id]);
+  for (const id of empties) {
+    const j = await jget('https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=pubmed&retmode=json&id=' + id, 4);
+    out[id] = (j && j.result && j.result[id] && j.result[id].title) || '';
+    await sleep(300);
+  }
   return out;
 }
 
