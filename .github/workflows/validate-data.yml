@@ -1,0 +1,50 @@
+name: Validate database PubMed links
+
+# Roda a cada push que altere o dataset (data.js) e valida que TODOS os
+# pubmed_url apontam para o PMID correto do ensaio (via NCT[si] + título
+# do ClinicalTrials.gov). Falha o check se houver PMID fabricado/errado —
+# este é o guard permanente contra a contaminação de pubmed_url.
+#
+# Também pode ser disparado manualmente (workflow_dispatch).
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'assets/js/data.js'
+      - 'scripts/validate_pubmed.mjs'
+  pull_request:
+    paths:
+      - 'assets/js/data.js'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: validate-data-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Validate pubmed_url integrity
+        run: node scripts/validate_pubmed.mjs --json validation-report.json
+
+      - name: Upload report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pubmed-validation-report
+          path: validation-report.json
+          if-no-files-found: ignore
