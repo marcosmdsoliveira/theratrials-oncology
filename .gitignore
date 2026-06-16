@@ -62,5 +62,13 @@ credentials.json
 *.scratch.html
 DEBUG_*
 
+# Relatórios do validador de dados (scripts/validate_pubmed.mjs)
+report.json
+validation-report.json
+
+# Scratch de auditoria (prefixo _)
+_*.json
+_*.mjs.tmp
+
 # Backups numerados (data.js.bak_pre_batchN, etc.)
 *.bak_*
