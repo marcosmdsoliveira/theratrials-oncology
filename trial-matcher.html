@@ -352,6 +352,17 @@
   border: 1px solid var(--border-soft, rgba(143,148,156,0.18));
 }
 .tm-d-btn.ghost:hover { color: var(--off-white); border-color: var(--border-mid); }
+.tm-d-btn.disabled {
+  background: var(--graphite-3, #1B1E25); color: var(--stone-2, #6B7178);
+  border: 1px dashed var(--border-soft, rgba(143,148,156,0.22));
+  cursor: not-allowed; opacity: 0.75;
+}
+.tm-d-btn.disabled:hover { background: var(--graphite-3, #1B1E25); }
+.tm-d-btn .soon-pill {
+  margin-left: 0.45rem; padding: 0.08rem 0.4rem; border-radius: 999px;
+  font-size: 0.62rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
+  background: rgba(255,132,0,0.14); color: #FFA640; border: 1px solid rgba(255,132,0,0.28);
+}
 .tm-d-source {
   margin-top: 1.3rem; padding-top: 1rem; border-top: 1px solid var(--border-soft, rgba(143,148,156,0.18));
   font-size: 0.74rem; color: var(--stone, #8E949C); line-height: 1.55;
@@ -951,7 +962,8 @@
 
     var actions = '<div class="tm-d-actions">';
     if (s.fonte_url) actions += '<a href="' + escHtml(s.fonte_url) + '" target="_blank" rel="noopener" class="tm-d-btn primary"><i data-lucide="external-link"></i> Registro oficial / ClinicalTrials.gov</a>';
-    if (s.contato_url && s.contato_url !== s.fonte_url) actions += '<a href="' + escHtml(s.contato_url) + '" target="_blank" rel="noopener" class="tm-d-btn ghost"><i data-lucide="phone"></i> Registro de contato oficial</a>';
+    // Contato com o centro recrutador — em desenvolvimento (visível, porém desabilitado por enquanto)
+    actions += '<button type="button" class="tm-d-btn disabled" disabled aria-disabled="true" title="Em breve: contato direto com o centro recrutador pela plataforma"><i data-lucide="mail"></i> Entrar em contato com o centro recrutador<span class="soon-pill">Em breve</span></button>';
     actions += '<a href="database.html" class="tm-d-btn ghost"><i data-lucide="database"></i> Ver evidência no Database</a>';
     actions += '</div>';
 
