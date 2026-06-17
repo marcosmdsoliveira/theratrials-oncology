@@ -46,8 +46,25 @@
     if (Array.isArray(study.modalities) && study.modalities.length) {
       return study.modalities.some(m => TheraTrials.RADIO_MODALITIES.has(m));
     }
-    // Fallback: category_id legado
+    // Decisão POR ESTUDO: radio sse o badge de modalidade for teranóstico (radiofármaco, #FF8400).
+    // Antes era por category_id, mas categorias mistas (hepatobiliar, neuroblastoma, ppgl) marcavam
+    // estudos de imuno/alvo/QT/ADC como radio → modal exibia rótulos de radiofarmácia indevidos.
+    if (typeof TheraTrials.studyModality === 'function') {
+      var m = TheraTrials.studyModality(study);
+      return !!(m && m.color === '#FF8400');
+    }
+    // Fallback final: category_id legado
     return TheraTrials.RADIO_CATEGORIES.has(study.category_id);
+  };
+
+  // Campo "tem conteúdo real"? (para esconder campos vazios/placeholder em cards não-radio)
+  TheraTrials.fieldMeaningful = function(v) {
+    if (v === undefined || v === null) return false;
+    var t = String(v).trim().toLowerCase();
+    if (!t || t === '—' || t === '-' || t === '–' || t === 'n/a' || t === 'na') return false;
+    if (/^sem\s+crit[ée]rio/.test(t)) return false;            // "Sem critério molecular."
+    if (/^n[ãa]o[-\s]?radiof[áa]rmaco\b/.test(t)) return false; // placeholder "Não-radiofármaco; ..."
+    return true;
   };
 
   TheraTrials.studyTitle = function(estudo) {
