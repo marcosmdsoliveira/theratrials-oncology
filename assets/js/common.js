@@ -137,16 +137,54 @@
 
     // 4) IMUNOTERAPIA (ICIs, vacinas, BiTE, CAR-T, ADCs imuno, anti-GD2)
     // Terminação flexível (\w* ao final) para aceitar variantes pt-BR (-mab/-mabe, -nib/-nibe)
-    const RE_IMMUNO = /\b(pembrolizumab|pembro|keytruda|nivolumab|nivo|opdivo|ipilimumab|yervoy|atezolizumab|atezo|tecentriq|durvalumab|durva|imfinzi|tremelimumab|treme|imjudo|avelumab|bavencio|cemiplimab|libtayo|tislelizumab|tevimbra|sintilimab|tyvyt|camrelizumab|toripalimab|loqtorzi|dostarlimab|jemperli|spartalizumab|relatlimab|opdualag|sipuleucel|provenge|dinutuximab|unituxin|naxitamab|danyelza|hu3f8|3f8|car-t|cilta|carvykti|abecma|yescarta|teclistamab|tecvayli|elranatamab|talvey|talquetamab|epcoritamab|glofitamab|columvi|mosunetuzumab|lunsumio|blinatumomab|blincyto|amivantamab|rybrevant|enfortumab|padcev|sacituzumab|trodelvy|datopotamab|dato-dxd|n-803|nogapendekin|anktiva|tarlatamab|imdelltra|lifileucel|amtagvi|ivonescimab|nadofaragene|firadenovec|adstiladrin|imc-f106c|brenetafusp|ima203|interferon|interleukin|il-2|gm-csf)\w*/i;
+    const RE_IMMUNO = /\b(pembrolizumab|pembro|keytruda|nivolumab|nivo|opdivo|ipilimumab|yervoy|atezolizumab|atezo|tecentriq|durvalumab|durva|imfinzi|tremelimumab|treme|imjudo|avelumab|bavencio|cemiplimab|libtayo|tislelizumab|tevimbra|sintilimab|tyvyt|camrelizumab|toripalimab|loqtorzi|dostarlimab|jemperli|spartalizumab|relatlimab|opdualag|sipuleucel|provenge|dinutuximab|unituxin|naxitamab|danyelza|hu3f8|3f8|car-t|cilta|carvykti|abecma|yescarta|teclistamab|tecvayli|elranatamab|talvey|talquetamab|epcoritamab|glofitamab|columvi|mosunetuzumab|lunsumio|blinatumomab|blincyto|amivantamab|rybrevant|n-803|nogapendekin|anktiva|tarlatamab|imdelltra|lifileucel|amtagvi|ivonescimab|nadofaragene|firadenovec|adstiladrin|imc-f106c|brenetafusp|ima203|interferon|interleukin|il-2|gm-csf)\w*/i;
     if (RE_IMMUNO.test(blobNarrow) || /\bipi\b/i.test(blobNarrow)) {
       return { label: 'Imunoterapia', color: '#34D399', icon: 'shield-plus' };
     }
 
-    // 5) TERAPIA-ALVO (TKIs, ARPi, CDK4/6, PARPi, anti-HER2, BRAF/MEK, KRAS, RET, NTRK, ALK, MET, EGFR, VEGF)
+    // 4.3) ADC — conjugados anticorpo-fármaco. ACIMA do alvo genérico: num combo o ADC
+    // costuma ser o agente novo. Detecta por payload (-deruxtecana/-vedotina/-govitecana/
+    // -emtansina/-brengitecano) + nomes específicos. Não casa mAb "nu" (trastuzumabe/
+    // pertuzumabe isolados → seguem Terapia-alvo). ADC+IO já saiu como Imunoterapia acima.
+    const RE_ADC = /\b(t-?dxd|t-?dm1|deruxteca\w*|vedotin\w*|goviteca\w*|emtansin\w*|entansin\w*|brengiteca\w*|tirumoteca\w*|sacituzumab\w*|trodelvy|datopotamab\w*|datroway|enfortumab\w*|padcev|enhertu|kadcyla|mirvetuximab\w*|elahere|tisotumab\w*|tivdak|polatuzumab\w*|polivy|loncastuximab\w*|zynlonta|brentuximab\w*|adcetris|gemtuzumab\w*|mylotarg|inotuzumab\w*|besponsa|belantamab\w*|blenrep|telisotuzumab\w*|patritumab\w*|izalontamab\w*|iza-bren)/i;
+    if (RE_ADC.test(blobNarrow)) {
+      return { label: 'ADC', color: '#2563EB', icon: 'link-2' };
+    }
+
+    // 4.6) PARP — inibidores de PARP. ACIMA do alvo genérico: em combos ARPi+PARP
+    // (PROpel, TALAPRO, MAGNITUDE) o agente novo testado é o PARP.
+    const RE_PARP = /\b(olaparib|lynparza|rucaparib|rubraca|niraparib|zejula|talazoparib|talzenna|veliparib|pamiparib|fluzoparib|senaparib)\w*/i;
+    if (RE_PARP.test(blobNarrow)) {
+      return { label: 'PARP', color: '#E11D48', icon: 'dna' };
+    }
+
+    // 5) TERAPIA-ALVO (TKIs, PI3K/AKT/mTOR, anti-HER2 mAb, BRAF/MEK, KRAS, RET, NTRK, ALK, MET, EGFR, VEGF)
+    // ARPi, SERD, CDK4/6, PARP e ADC foram extraídos p/ tags próprias (checados acima/abaixo).
     // Terminação flexível para tolerar variantes pt-BR
-    const RE_TARGETED = /\b(olaparib|lynparza|rucaparib|rubraca|niraparib|zejula|talazoparib|talzenna|veliparib|abirateron|zytiga|enzalutamid|xtandi|apalutamid|erleada|darolutamid|nubeqa|relugolix|palbociclib|ibrance|ribociclib|kisqali|abemaciclib|verzenio|alpelisib|piqray|capivasertib|truqap|inavolisib|trastuzumab|herceptin|pertuzumab|perjeta|t-dxd|enhertu|t-dm1|kadcyla|tucatinib|tukysa|lapatinib|tykerb|sotorasib|lumakras|adagrasib|krazati|encorafenib|braftovi|vemurafenib|zelboraf|dabrafenib|tafinlar|trametinib|mekinist|cobimetinib|cotellic|binimetinib|mektovi|selumetinib|koselugo|selpercatinib|retsevmo|pralsetinib|gavreto|larotrectinib|vitrakvi|entrectinib|rozlytrek|repotrectinib|augtyro|crizotinib|xalkori|lorlatinib|lorbrena|alectinib|alecensa|brigatinib|alunbrig|ceritinib|zykadia|gefitinib|iressa|erlotinib|tarceva|afatinib|giotrif|gilotrif|osimertinib|tagrisso|lazertinib|lazcluze|cetuximab|erbitux|panitumumab|vectibix|sunitinib|sutent|sorafenib|nexavar|regorafenib|stivarga|lenvatinib|lenvima|cabozantinib|cabometyx|cometriq|axitinib|inlyta|pazopanib|votrient|fruquintinib|fruzaqla|surufatinib|sulanda|everolimus|afinitor|temsirolimus|torisel|venetoclax|venclexta|ivosidenib|tibsovo|enasidenib|idhifa|pemigatinib|pemazyre|infigratinib|truseltiq|futibatinib|lytgobi|zanidatamab|ziihera|nirogacestat|ogsiveo|belzutifan|welireg|ramucirumab|cyramza|bevacizumab|avastin|aflibercept|zaltrap|tivozanib|fotivda|ponatinib|iclusig|dasatinib|sprycel|nilotinib|tasigna|imatinib|gleevec|bosutinib|bosulif|ruxolitinib|jakafi|fedratinib|inrebic|pacritinib|vonjo|momelotinib|ojjaara|idelalisib|zydelig|duvelisib|copiktra|copanlisib|aliqopa|umbralisib|ukoniq|ibrutinib|imbruvica|acalabrutinib|calquence|zanubrutinib|brukinsa|pirtobrutinib|jaypirca|midostaurin|rydapt|gilteritinib|xospata|quizartinib|vanflyta|olutasidenib|rezlidhia|elacestrant|orserdu|imlunestrant|camizestrant|giredestrant|amcenestrant|trilaciclib|cosela|mirvetuximab|elahere|tisotumab|tivdak|tafasitamab|monjuvi|polatuzumab|polivy|loncastuximab|zynlonta|brentuximab|adcetris|gemtuzumab|mylotarg|inotuzumab|besponsa|moxetumomab|lumoxiti|belantamab|blenrep|lenalidomida|revlimid|pomalidomida|pomalyst|talidomida|thalomid|iberdomida|mezigdomida|bortezomib|velcade|carfilzomib|kyprolis|ixazomib|ninlaro|daratumumab|darzalex|isatuximab|sarclisa|elotuzumab|empliciti|tazemetostat|tazverik|rivoceranib|apatinib|telisotuzumab|octreotid|sandostatin|lanreotid|somatuline|pasireotid|signifor|surufatinib|orteronel|asciminib|scemblix|capmatinib|tabrecta|erdafitinib|balversa|vandetanib|caprelsa|zolbetuximab|vyloy|patritumab|revumenib|revuforj|selinexor|xpovio|everolimo|izalontamab|sunvozertinib|zegfrovy|neladalkib|daraxonrasib)\w*/i;
+    const RE_TARGETED = /\b(olaparib|lynparza|rucaparib|rubraca|niraparib|zejula|talazoparib|talzenna|veliparib|relugolix|alpelisib|piqray|capivasertib|truqap|inavolisib|trastuzumab|herceptin|pertuzumab|perjeta|t-dxd|enhertu|t-dm1|kadcyla|tucatinib|tukysa|lapatinib|tykerb|sotorasib|lumakras|adagrasib|krazati|encorafenib|braftovi|vemurafenib|zelboraf|dabrafenib|tafinlar|trametinib|mekinist|cobimetinib|cotellic|binimetinib|mektovi|selumetinib|koselugo|selpercatinib|retsevmo|pralsetinib|gavreto|larotrectinib|vitrakvi|entrectinib|rozlytrek|repotrectinib|augtyro|crizotinib|xalkori|lorlatinib|lorbrena|alectinib|alecensa|brigatinib|alunbrig|ceritinib|zykadia|gefitinib|iressa|erlotinib|tarceva|afatinib|giotrif|gilotrif|osimertinib|tagrisso|lazertinib|lazcluze|cetuximab|erbitux|panitumumab|vectibix|sunitinib|sutent|sorafenib|nexavar|regorafenib|stivarga|lenvatinib|lenvima|cabozantinib|cabometyx|cometriq|axitinib|inlyta|pazopanib|votrient|fruquintinib|fruzaqla|surufatinib|sulanda|everolimus|afinitor|temsirolimus|torisel|venetoclax|venclexta|ivosidenib|tibsovo|enasidenib|idhifa|pemigatinib|pemazyre|infigratinib|truseltiq|futibatinib|lytgobi|zanidatamab|ziihera|nirogacestat|ogsiveo|belzutifan|welireg|ramucirumab|cyramza|bevacizumab|avastin|aflibercept|zaltrap|tivozanib|fotivda|ponatinib|iclusig|dasatinib|sprycel|nilotinib|tasigna|imatinib|gleevec|bosutinib|bosulif|ruxolitinib|jakafi|fedratinib|inrebic|pacritinib|vonjo|momelotinib|ojjaara|idelalisib|zydelig|duvelisib|copiktra|copanlisib|aliqopa|umbralisib|ukoniq|ibrutinib|imbruvica|acalabrutinib|calquence|zanubrutinib|brukinsa|pirtobrutinib|jaypirca|midostaurin|rydapt|gilteritinib|xospata|quizartinib|vanflyta|olutasidenib|rezlidhia|trilaciclib|cosela|mirvetuximab|elahere|tisotumab|tivdak|tafasitamab|monjuvi|polatuzumab|polivy|loncastuximab|zynlonta|brentuximab|adcetris|gemtuzumab|mylotarg|inotuzumab|besponsa|moxetumomab|lumoxiti|belantamab|blenrep|lenalidomida|revlimid|pomalidomida|pomalyst|talidomida|thalomid|iberdomida|mezigdomida|bortezomib|velcade|carfilzomib|kyprolis|ixazomib|ninlaro|daratumumab|darzalex|isatuximab|sarclisa|elotuzumab|empliciti|tazemetostat|tazverik|rivoceranib|apatinib|telisotuzumab|octreotid|sandostatin|lanreotid|somatuline|pasireotid|signifor|surufatinib|orteronel|asciminib|scemblix|capmatinib|tabrecta|erdafitinib|balversa|vandetanib|caprelsa|zolbetuximab|vyloy|patritumab|revumenib|revuforj|selinexor|xpovio|everolimo|izalontamab|sunvozertinib|zegfrovy|neladalkib|daraxonrasib)\w*/i;
     if (RE_TARGETED.test(blobNarrow)) {
       return { label: 'Terapia-alvo', color: '#0EA5B7', icon: 'target' };
+    }
+
+    // 5.3) CDK4/6 — ABAIXO do alvo genérico: assim INAVO120 (inavolisibe=PI3K novo + palbo
+    // backbone) fica Terapia-alvo, e combos SERD+CDK4/6 (PALOMA-3) ficam CDK4/6 (agente novo).
+    const RE_CDK = /\b(palbociclib|ibrance|ribociclib|kisqali|abemaciclib|verzenio|dalpiciclib|lerociclib)\w*/i;
+    if (RE_CDK.test(blobNarrow)) {
+      return { label: 'CDK4/6', color: '#0D9488', icon: 'timer' };
+    }
+
+    // 5.6) ARPi — inibidores da via do receptor de andrógeno (próstata). Backbone em combos:
+    // ARPi+PARP já saiu como PARP acima; só ARPi "definidor" chega aqui (LATITUDE, PREVAIL…).
+    const RE_ARPI = /\b(abirateron\w*|zytiga|enzalutamid\w*|xtandi|apalutamid\w*|erleada|darolutamid\w*|nubeqa)/i;
+    if (RE_ARPI.test(blobNarrow)) {
+      return { label: 'ARPi', color: '#0E7490', icon: 'mars' };
+    }
+
+    // 5.8) SERD — degradadores seletivos do receptor de estrógeno (mama HR+). Backbone em
+    // combos: SERD+CDK4/6→CDK4/6, SERD+PI3K/AKT→Terapia-alvo; só SERD puro (EMERALD, lidERA).
+    const RE_SERD = /\b(fulvestrant\w*|faslodex|elacestrant\w*|orserdu|giredestrant\w*|camizestrant\w*|imlunestrant\w*|amcenestrant\w*|rintodestrant\w*)/i;
+    if (RE_SERD.test(blobNarrow)) {
+      return { label: 'SERD', color: '#DB2777', icon: 'venus' };
     }
 
     // 6) QUIMIOTERAPIA (citotóxicos clássicos) — terminação flexível
@@ -172,7 +210,12 @@
     if (cat !== 'prostata_contexto') {
       const esq = String(s.esquema || '').toLowerCase();
       if (RE_IMMUNO.test(esq) || /\bipi\b/i.test(esq)) return { label: 'Imunoterapia', color: '#34D399', icon: 'shield-plus' };
+      if (RE_ADC.test(esq)) return { label: 'ADC', color: '#2563EB', icon: 'link-2' };
+      if (RE_PARP.test(esq)) return { label: 'PARP', color: '#E11D48', icon: 'dna' };
       if (RE_TARGETED.test(esq)) return { label: 'Terapia-alvo', color: '#0EA5B7', icon: 'target' };
+      if (RE_CDK.test(esq)) return { label: 'CDK4/6', color: '#0D9488', icon: 'timer' };
+      if (RE_ARPI.test(esq)) return { label: 'ARPi', color: '#0E7490', icon: 'mars' };
+      if (RE_SERD.test(esq)) return { label: 'SERD', color: '#DB2777', icon: 'venus' };
       if (RE_CHEMO.test(esq)) return { label: 'Quimioterapia', color: '#FBBF24', icon: 'flask-conical' };
     }
 
