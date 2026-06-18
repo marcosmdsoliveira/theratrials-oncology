@@ -320,6 +320,17 @@
   .field.highlight { background: rgba(255, 132, 0, 0.06); border-color: rgba(255, 132, 0, 0.3); }
   .field-label { font-size: 0.62rem; color: var(--stone); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; margin-bottom: 0.35rem; }
   .field-text { font-size: 0.82rem; color: var(--off-white); line-height: 1.55; white-space: pre-line; }
+
+  /* === Campos oncológicos (scaffolding Fase 2) — opcionais, ocultos até popular === */
+  .modal-linha { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.05em; color: #c7cdf5; background: rgba(129,140,248,0.18); border: 1px solid rgba(129,140,248,0.45); padding: 0.1rem 0.5rem; border-radius: 999px; text-transform: none; }
+  .takehome-callout { display: flex; gap: 0.55rem; align-items: flex-start; margin-bottom: 1.5rem; padding: 0.8rem 1rem; background: rgba(110,231,183,0.07); border: 1px solid rgba(110,231,183,0.25); border-left: 3px solid #6EE7B7; border-radius: var(--radius-sm); }
+  .takehome-callout svg { color: #6EE7B7; flex-shrink: 0; margin-top: 2px; }
+  .takehome-callout .th-text { color: var(--off-white-2, #cbd0d6); font-size: 0.92rem; line-height: 1.45; }
+  .field.result-hl { background: rgba(110,231,183,0.06); border-color: rgba(110,231,183,0.3); border-left: 3px solid #6EE7B7; }
+  .field.result-hl .field-text { color: #d6f7e9; font-weight: 600; }
+  .card-chips { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 0.55rem; }
+  .chip-linha { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.04em; color: #c7cdf5; background: rgba(129,140,248,0.16); border: 1px solid rgba(129,140,248,0.4); padding: 0.08rem 0.45rem; border-radius: 999px; }
+  .card-result { font-size: 0.74rem; font-weight: 600; color: #8defc0; background: rgba(110,231,183,0.06); border-left: 2px solid #6EE7B7; padding: 0.4rem 0.6rem; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; margin-bottom: 0.7rem; line-height: 1.4; }
   .field-text.mono { font-family: var(--font-mono); }
 
   .modal-footer { padding: 1rem 2rem; background: rgba(14, 15, 18, 0.6); border-top: 1px solid var(--border-soft); display: flex; justify-content: space-between; font-size: 0.7rem; color: var(--stone-2); }
@@ -772,6 +783,8 @@
               </div>
               <h3 class="card-title" x-text="TheraTrials.studyTitle(s.estudo)"></h3>
               <div class="card-nct" x-text="s.nct"></div>
+              <div class="card-chips" x-show="s.linha" x-cloak><span class="chip-linha" x-text="s.linha"></span></div>
+              <div class="card-result" x-show="s.resultado_chave" x-html="TheraTrials.annotateAbbr(s.resultado_chave)" x-cloak></div>
               <p class="card-indication line-clamp-2" x-text="s.indicacao"></p>
               <div class="card-primary">
                 <div class="card-primary-label" data-i18n="db.primaryEndpoint">Desfecho primário</div>
@@ -841,6 +854,7 @@
           <span class="cat-dot" :class="`cat-${selectedStudy.category_id}`"></span>
           <span x-text="selectedStudy.category_name"></span>
           <span class="pb" :class="phaseClassShort(selectedStudy.fase)" x-text="selectedStudy.fase" style="margin-left: 0.5rem"></span>
+          <span class="modal-linha" x-show="selectedStudy.linha" x-text="selectedStudy.linha" style="margin-left: 0.5rem" x-cloak></span>
         </div>
         <h2 class="modal-title" x-text="selectedStudy.estudo"></h2>
         <p class="modal-fulltitle" x-show="selectedStudy.titulo_full" x-text="selectedStudy.titulo_full"></p>
@@ -875,6 +889,11 @@
 
       <div class="modal-body" x-effect="selectedStudy && $nextTick(() => hideEmptyFields())">
 
+        <div class="takehome-callout" x-show="selectedStudy.takehome" x-cloak>
+          <i data-lucide="lightbulb" style="width:16px;height:16px"></i>
+          <div class="th-text" x-text="selectedStudy.takehome"></div>
+        </div>
+
         <div class="section-block">
           <div class="section-block-title"><i data-lucide="users" style="width:13px;height:13px"></i> <span data-i18n="db.secPopulation">População</span></div>
           <div class="section-block-grid">
@@ -901,7 +920,7 @@
             <div class="field full highlight"><div class="field-label" x-text="(window.TheraTrials && TheraTrials.isRadioStudy(selectedStudy)) ? 'Radiofármaco / Intervenção' : 'Intervenção'"></div><div class="field-text" style="font-weight: 500" x-text="selectedStudy.radiofarmaco || '—'"></div></div>
             <div class="field"><div class="field-label" data-i18n="db.fieldRegimen">Esquema</div><div class="field-text" x-html="TheraTrials.annotateAbbr(selectedStudy.esquema || '—')"></div></div>
             <div class="field" x-show="!window.TheraTrials || TheraTrials.isRadioStudy(selectedStudy) || TheraTrials.fieldMeaningful(selectedStudy.cumul)"><div class="field-label" x-text="(window.TheraTrials && TheraTrials.isRadioStudy(selectedStudy)) ? 'Atividade cumulativa típica' : 'Dose cumulativa típica'"></div><div class="field-text mono" x-text="selectedStudy.cumul || '—'"></div></div>
-            <div class="field full" x-show="!window.TheraTrials || TheraTrials.isRadioStudy(selectedStudy) || TheraTrials.fieldMeaningful(selectedStudy.preparo)"><div class="field-label" data-i18n="db.fieldPreparation">Preparo e pré-medicação</div><div class="field-text" x-html="TheraTrials.annotateAbbr(selectedStudy.preparo || '—')"></div></div>
+            <div class="field full" x-show="!window.TheraTrials || TheraTrials.isRadioStudy(selectedStudy) || TheraTrials.fieldMeaningful(selectedStudy.preparo)"><div class="field-label" x-text="(window.TheraTrials && TheraTrials.isRadioStudy(selectedStudy)) ? 'Preparo e pré-medicação' : 'Pré-medicação / profilaxia'"></div><div class="field-text" x-html="TheraTrials.annotateAbbr(selectedStudy.preparo || '—')"></div></div>
             <div class="field full"><div class="field-label" data-i18n="db.fieldComparator">Comparador</div><div class="field-text" x-html="TheraTrials.annotateAbbr(selectedStudy.comparador || '—')"></div></div>
           </div>
         </div>
@@ -916,6 +935,7 @@
 
         <div class="section-block">
           <div class="section-block-title"><i data-lucide="target" style="width:13px;height:13px"></i> <span data-i18n="db.secEndpoints">Desfechos</span></div>
+          <div class="field full result-hl" style="margin-bottom: 0.75rem"><div class="field-label">Resultado-chave</div><div class="field-text" x-html="TheraTrials.annotateAbbr(selectedStudy.resultado_chave || '—')"></div></div>
           <div class="field full highlight" style="margin-bottom: 0.75rem"><div class="field-label" data-i18n="db.fieldPrimaryResult">Primário (resultado)</div><div class="field-text" x-html="TheraTrials.annotateAbbr(selectedStudy.primario || '—')"></div></div>
           <div class="field full" style="margin-bottom: 0.75rem"><div class="field-label" data-i18n="db.fieldSecondary">Secundários</div><div class="field-text" x-html="TheraTrials.annotateAbbr(selectedStudy.secundario || '—')"></div></div>
           <div class="field full"><div class="field-label" data-i18n="db.fieldSubgroups">Subgrupos / análises exploratórias</div><div class="field-text" x-html="TheraTrials.annotateAbbr(selectedStudy.subgrupo || '—')"></div></div>
@@ -931,6 +951,7 @@
 
         <div class="section-block">
           <div class="section-block-title"><i data-lucide="award" style="width:13px;height:13px"></i> <span data-i18n="db.secImpact">Impacto e referência</span></div>
+          <div class="field full" style="margin-bottom: 0.75rem"><div class="field-label">Aprovação regulatória (FDA / EMA / ANVISA)</div><div class="field-text" x-text="selectedStudy.aprovacao || '—'"></div></div>
           <div class="field full highlight" style="margin-bottom: 0.75rem"><div class="field-label" data-i18n="db.fieldRegulatoryImpact">Impacto regulatório / diretrizes</div><div class="field-text" x-html="TheraTrials.annotateAbbr(selectedStudy.impacto_reg || '—')"></div></div>
           <div class="field full" style="margin-bottom: 0.75rem"><div class="field-label" data-i18n="db.fieldLimitations">Limitações</div><div class="field-text" x-html="TheraTrials.annotateAbbr(selectedStudy.limit || '—')"></div></div>
           <div class="field full" style="border-color: rgba(255, 132, 0, 0.3)"><div class="field-label" data-i18n="db.fieldMainReference">Referência principal</div><div class="field-text mono" x-text="selectedStudy.ref || '—'"></div></div>
