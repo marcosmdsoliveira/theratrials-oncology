@@ -1693,7 +1693,7 @@ window._i18nRegister('pt-br', {
     p5H: "Combinações com PARPi", p5N: "α + bloqueio reparo", p5D: "Sinergia conceitual perfeita: α causa DSB densas; PARPi impede reparo. Estudos pré-clínicos promissores.",
     p6H: "Combinações com imuno", p6N: "Efeito abscopal mediado por α", p6D: "Quebras densas liberam neoantígenos e ativam STING. Combinações com anti-PD-1 em estudos fase 1.",
     s8kfL: "A teranóstica em camadas",
-    s8kfT: "O futuro mais provável não é \"α substitui β\" — é uma <strong>teranóstica em camadas</strong>: imagem PET para selecionar e quantificar; β para tratar a maior parte da carga (dose-controlada, ampla); α (ou Auger) para resgatar refratários ou tratar micromets residuais; combinações com PARPi e imunoterapia para potencializar e ativar resposta sistêmica. Cada paciente um plano. Marcos, esta é a fronteira onde o seu Centro Teranóstico do HFR se posiciona para os próximos 5 anos.",
+    s8kfT: "O futuro mais provável não é \"α substitui β\" — é uma <strong>teranóstica em camadas</strong>: imagem PET para selecionar e quantificar; β para tratar a maior parte da carga (dose-controlada, ampla); α (ou Auger) para resgatar refratários ou tratar micromets residuais; combinações com PARPi e imunoterapia para potencializar e ativar resposta sistêmica. Cada paciente um plano.",
     // 09 Continue lendo
     s9h: "Continue lendo",
     s9c1L: "Referência β em PSMA", s9c1D: "Base sobre a qual o <sup>225</sup>Ac-PSMA e <sup>161</sup>Tb-PSMA constroem.",

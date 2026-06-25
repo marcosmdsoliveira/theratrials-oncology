@@ -1693,7 +1693,7 @@ window._i18nRegister('en', {
     p5H: "Combinations with PARPi", p5N: "α + repair blockade", p5D: "Perfect conceptual synergy: α causes dense DSB; PARPi prevents repair. Promising preclinical studies.",
     p6H: "Combinations with immuno", p6N: "α-mediated abscopal effect", p6D: "Dense breaks release neoantigens and activate STING. Combinations with anti-PD-1 in phase 1 studies.",
     s8kfL: "Layered theranostics",
-    s8kfT: "The most likely future is not \"α replaces β\" — it is <strong>layered theranostics</strong>: PET imaging to select and quantify; β to treat most of the burden (dose-controlled, broad); α (or Auger) to salvage refractory cases or treat residual micromets; combinations with PARPi and immunotherapy to potentiate and activate a systemic response. One plan per patient. Marcos, this is the frontier where your HFR Theranostic Center positions itself for the next 5 years.",
+    s8kfT: "The most likely future is not \"α replaces β\" — it is <strong>layered theranostics</strong>: PET imaging to select and quantify; β to treat most of the burden (dose-controlled, broad); α (or Auger) to salvage refractory cases or treat residual micromets; combinations with PARPi and immunotherapy to potentiate and activate a systemic response. One plan per patient.",
     // 09 Keep reading
     s9h: "Keep reading",
     s9c1L: "β reference in PSMA", s9c1D: "The basis on which <sup>225</sup>Ac-PSMA and <sup>161</sup>Tb-PSMA build.",
