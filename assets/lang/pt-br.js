@@ -1680,7 +1680,7 @@ window._i18nRegister('pt-br', {
     s7r3lim: "<sup>224</sup>Ra-mãe vem de <sup>228</sup>Th — supply finito mas razoável.",
     s7r4src: "<sup>227</sup>Ac → <sup>227</sup>Th (Bayer in-house)",
     s7r4cap: "Limitada à própria Bayer",
-    s7r4lim: "Plataforma fechada · captiva de programa registrais Bayer.",
+    s7r4lim: "Plataforma fechada · cativa dos programas registrais da Bayer.",
     s7r5src: "Cíclotron médio porte (<sup>209</sup>Bi(α,2n)<sup>211</sup>At) · poucos sites",
     s7r5cap: "Local · curto prazo",
     s7r5lim: "T½ 7,2 h obriga produção e entrega no mesmo dia.",    // 08 Perspectivas
