@@ -10,17 +10,29 @@ pede a Claude que redija os campos que exigem julgamento clínico — `racional`
 Os campos factuais (nct, fase, status, centros, estados, patrocinador) NÃO passam
 por aqui: vêm prontos do br_discover.py. O modelo só escreve o que é interpretação.
 
-Usa a Batch API: 50% de desconto e nenhuma pressa (roda uma vez por mês).
+Dois modos, mesmo resultado:
 
-⚠️ A saída deste script é RASCUNHO. Vai para um Pull Request, nunca direto para
-   produção — todo card precisa de revisão clínica antes de publicar.
+  LOCAL (sem custo) — para quem já assina Claude Pro/Max. O script exporta os
+  prompts, você cura numa sessão do Claude Code e devolve o JSON. A assinatura
+  e a API são faturamentos separados, então este caminho não gera cobrança.
 
-Uso:
-    python3 scripts/br_curate.py --enviar                 # cria o batch
-    python3 scripts/br_curate.py --enviar --neoplasia mama --limite 20
-    python3 scripts/br_curate.py --status msgbatch_01ABC  # acompanha
-    python3 scripts/br_curate.py --colher msgbatch_01ABC  # baixa o resultado
-    python3 scripts/br_curate.py --estimar                # só o custo, sem enviar
+  API (Batch, -50%) — automático, roda sozinho no GitHub Actions uma vez por
+  mês. Exige o secret ANTHROPIC_API_KEY e créditos no console.anthropic.com.
+
+⚠️ A saída é RASCUNHO nos dois modos. Vai para um Pull Request, nunca direto
+   para produção — todo card precisa de revisão clínica antes de publicar.
+
+Uso — modo LOCAL:
+    python3 scripts/br_curate.py --exportar --neoplasia breast
+        → grava _br_prompts.json; peça ao Claude Code para curar
+    python3 scripts/br_curate.py --importar cards.json
+        → anexa os campos factuais e grava _br_curated.json
+
+Uso — modo API:
+    python3 scripts/br_curate.py --enviar --neoplasia breast --limite 44
+    python3 scripts/br_curate.py --status msgbatch_01ABC
+    python3 scripts/br_curate.py --colher msgbatch_01ABC
+    python3 scripts/br_curate.py --estimar     # custo, sem enviar nada
 """
 from __future__ import annotations
 
@@ -30,13 +42,10 @@ import re
 import sys
 from pathlib import Path
 
-import anthropic
-from anthropic.types.message_create_params import MessageCreateParamsNonStreaming
-from anthropic.types.messages.batch_create_params import Request
-
 SCRIPTS = Path(__file__).resolve().parent
 DISCOVERY = SCRIPTS / "_br_discovery.json"
 SAIDA = SCRIPTS / "_br_curated.json"
+PROMPTS = SCRIPTS / "_br_prompts.json"
 
 MODELO = "claude-opus-5"
 # Um card curado tem ~26 campos e roda perto de 4.800 caracteres; 4000 tokens
@@ -221,7 +230,12 @@ def prompt(e: dict) -> str:
     return "\n".join(linhas)
 
 
-def montar(estudos: list[dict]) -> list[Request]:
+def montar(estudos: list[dict]):
+    """Requests da Batch API. Importa o SDK só aqui — o modo local não precisa dele."""
+    import anthropic  # noqa: F401  (validado no chamador)
+    from anthropic.types.message_create_params import MessageCreateParamsNonStreaming
+    from anthropic.types.messages.batch_create_params import Request
+
     return [
         Request(
             custom_id=e["nct"],
@@ -235,6 +249,21 @@ def montar(estudos: list[dict]) -> list[Request]:
         )
         for e in estudos
     ]
+
+
+def anexar_factual(curado: dict, base: dict) -> dict:
+    """Campos factuais vêm da descoberta, nunca do modelo."""
+    curado["_factual"] = {
+        "nct": base.get("nct", ""),
+        "fase": base.get("fases", []),
+        "status_ctgov": base.get("status_ctgov", ""),
+        "centros": base.get("centros_br", []),
+        "cidades": base.get("cidades_br", []),
+        "estados": base.get("ufs_br", []),
+        "patrocinador": base.get("patrocinador", ""),
+        "data_atualizacao": base.get("ultima_atualizacao", ""),
+    }
+    return curado
 
 
 def selecionar(args) -> list[dict]:
@@ -264,14 +293,68 @@ def estimar(estudos: list[dict]) -> None:
 
 def main() -> int:
     ap = argparse.ArgumentParser()
+    ap.add_argument("--exportar", action="store_true", help="modo local: grava os prompts")
+    ap.add_argument("--importar", metavar="CARDS.json", help="modo local: recebe os cards")
     ap.add_argument("--enviar", action="store_true")
     ap.add_argument("--estimar", action="store_true")
     ap.add_argument("--status", metavar="BATCH_ID")
     ap.add_argument("--colher", metavar="BATCH_ID")
-    ap.add_argument("--neoplasia", help="filtra o lote por condição (ex.: mama)")
+    ap.add_argument("--neoplasia", help="filtra o lote por condição (ex.: breast)")
     ap.add_argument("--limite", type=int, default=0)
     args = ap.parse_args()
 
+    # ── modo LOCAL ────────────────────────────────────────────────────────────
+    if args.exportar:
+        estudos = selecionar(args)
+        if not estudos:
+            print("nenhum estudo selecionado", file=sys.stderr)
+            return 1
+        PROMPTS.write_text(json.dumps({
+            "sistema": SISTEMA,
+            "schema": SCHEMA,
+            "estudos": [{"nct": e["nct"], "prompt": prompt(e)} for e in estudos],
+        }, ensure_ascii=False, indent=1), encoding="utf-8")
+        print(f"{len(estudos)} estudos -> {PROMPTS.name}")
+        print("Peça ao Claude Code: cure os estudos de _br_prompts.json seguindo o "
+              "schema, e salve os cards num JSON.")
+        print("Depois: python3 scripts/br_curate.py --importar <arquivo>")
+        return 0
+
+    if args.importar:
+        entrada = json.loads(Path(args.importar).read_text(encoding="utf-8"))
+        cards_in = entrada["cards"] if isinstance(entrada, dict) else entrada
+        d = json.loads(DISCOVERY.read_text(encoding="utf-8"))
+        por_nct = {e["nct"]: e for e in d["novos"]}
+
+        cards, descartados, orfaos = [], [], []
+        obrigatorios = set(SCHEMA["required"])
+        for c in cards_in:
+            nct = c.get("nct") or c.get("_nct", "")
+            if nct not in por_nct:
+                orfaos.append(nct or "(sem nct)")
+                continue
+            faltando = obrigatorios - set(c)
+            if faltando:
+                print(f"  {nct}: campos faltando -> {', '.join(sorted(faltando))}",
+                      file=sys.stderr)
+                orfaos.append(nct)
+                continue
+            if c.get("descartar"):
+                descartados.append({"nct": nct, "motivo": c.get("motivo_descarte", "")})
+                continue
+            cards.append(anexar_factual(c, por_nct[nct]))
+
+        SAIDA.write_text(json.dumps(
+            {"batch": "local", "cards": cards,
+             "descartados": descartados, "falhas": orfaos},
+            ensure_ascii=False, indent=1), encoding="utf-8")
+        baixa = sum(1 for c in cards if c.get("confianca") == "baixa")
+        print(f"curados {len(cards)} | descartados {len(descartados)} | rejeitados {len(orfaos)}")
+        print(f"  confiança baixa (revisar primeiro): {baixa}")
+        print(f"gravado: {SAIDA.name}")
+        return 0 if not orfaos else 1
+
+    # ── modo API ──────────────────────────────────────────────────────────────
     if args.estimar or args.enviar:
         estudos = selecionar(args)
         if not estudos:
@@ -281,6 +364,7 @@ def main() -> int:
         if args.estimar:
             return 0
 
+        import anthropic
         cliente = anthropic.Anthropic()
         lote = cliente.messages.batches.create(requests=montar(estudos))
         print(f"\nbatch criado: {lote.id}")
@@ -288,6 +372,7 @@ def main() -> int:
         return 0
 
     if args.status:
+        import anthropic
         lote = anthropic.Anthropic().messages.batches.retrieve(args.status)
         c = lote.request_counts
         print(f"{lote.id}: {lote.processing_status}")
@@ -296,6 +381,7 @@ def main() -> int:
         return 0
 
     if args.colher:
+        import anthropic
         cliente = anthropic.Anthropic()
         d = json.loads(DISCOVERY.read_text(encoding="utf-8"))
         por_nct = {e["nct"]: e for e in d["novos"]}

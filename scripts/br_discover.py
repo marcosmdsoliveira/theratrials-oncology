@@ -218,6 +218,21 @@ def eh_oncologico(e: dict) -> bool:
     return any(ONCOLOGICO.search(c) for c in e.get("condicoes", []))
 
 
+# O Trial Matcher lista ensaios de TRATAMENTO antineoplásico — o que o médico
+# pode oferecer ao paciente. A busca por condição também traz estudos de suporte
+# e reabilitação (dança, exercício, meditação em VR, wearables, luvas cirúrgicas):
+# pesquisa legítima, mas de outra natureza.
+# `InterventionType` é um campo estruturado do registro, então o corte é objetivo
+# — não depende de interpretar título.
+TIPOS_TRATAMENTO = {
+    "DRUG", "BIOLOGICAL", "RADIATION", "PROCEDURE", "GENETIC", "COMBINATION_PRODUCT",
+}
+
+
+def eh_tratamento(e: dict) -> bool:
+    return any(i.get("tipo") in TIPOS_TRATAMENTO for i in e.get("intervencoes", []))
+
+
 def publicados() -> dict[str, dict]:
     """Lê os NCTs já publicados direto do trials_br.js, sem executar JS.
 
@@ -256,11 +271,16 @@ STATUS_MAP = {
 
 
 def classificar(achatados: list[dict], ja: dict[str, dict]) -> dict:
-    novos, mudou_status, inalterados, teranosticos, nao_onco = [], [], [], [], []
+    novos, mudou_status, inalterados = [], [], []
+    teranosticos, nao_onco, suporte = [], [], []
     for e in achatados:
         if not eh_oncologico(e):
             nao_onco.append({"nct": e["nct"], "condicoes": e["condicoes"],
                              "titulo": e["titulo_breve"][:70]})
+            continue
+        if not eh_tratamento(e):
+            suporte.append({"nct": e["nct"], "titulo": e["titulo_breve"][:70],
+                            "tipos": sorted({i["tipo"] for i in e["intervencoes"]})})
             continue
         if eh_teranostico(e):
             teranosticos.append(e)
@@ -287,7 +307,7 @@ def classificar(achatados: list[dict], ja: dict[str, dict]) -> dict:
     return {
         "novos": novos, "mudou_status": mudou_status,
         "inalterados": inalterados, "teranosticos": teranosticos,
-        "sumiram": sumiram, "nao_oncologicos": nao_onco,
+        "sumiram": sumiram, "nao_oncologicos": nao_onco, "suporte": suporte,
     }
 
 
@@ -318,12 +338,17 @@ def main() -> int:
     print(f"  teranósticos (-> data.js) .. {len(d['teranosticos'])}")
     print(f"  publicados que sumiram ..... {len(d['sumiram'])}")
     print(f"  descartados: não-oncológico  {len(d['nao_oncologicos'])}")
+    print(f"  descartados: não é tratamento {len(d['suporte'])}")
     print("=" * 62)
 
     if d["nao_oncologicos"]:
-        print("\nDESCARTADOS (condição declarada não é oncológica):")
-        for x in d["nao_oncologicos"][:10]:
+        print("\nDESCARTADOS — condição não é oncológica:")
+        for x in d["nao_oncologicos"][:8]:
             print(f"   {x['nct']}  {', '.join(x['condicoes'])[:52]}")
+    if d["suporte"]:
+        print("\nDESCARTADOS — suporte/reabilitação, não tratamento antineoplásico:")
+        for x in d["suporte"][:8]:
+            print(f"   {x['nct']}  [{','.join(x['tipos'])[:22]:24s}] {x['titulo'][:42]}")
 
     if d["mudou_status"]:
         print("\nMUDANÇA DE STATUS:")
