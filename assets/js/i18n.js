@@ -147,20 +147,25 @@
   window.getLang = function () { return currentLang; };
 
   // ── Initialize ──
+  //
+  // Os dicionários são carregados SOB DEMANDA (loadTranslations injeta o <script>).
+  // Até 2026-08 as páginas traziam pt-br.js E en.js em tags estáticas — 154 KB gzip
+  // em toda visita, sendo que ninguém usa dois idiomas ao mesmo tempo.
+  //
+  // Hoje:
+  //   • visitante pt-BR  → NENHUM dicionário. O HTML já está em português e as
+  //     chamadas em runtime são todas t(chave, fallbackEmPortuguês).
+  //   • visitante inglês → só en.js.
+  //   • ao trocar de idioma → setLang() carrega o que faltar, uma única vez.
   function init() {
     currentLang = detectLang();
-    // PT-BR is the default (already in HTML), only load if different
     if (currentLang !== 'pt-br') {
       loadTranslations(currentLang, function () {
         applyTranslations();
       });
     } else {
-      // Still load PT-BR for toggle capability
-      loadTranslations('pt-br', function () {
-        updateToggleUI();
-      });
-      // Pre-load English for instant switching
-      loadTranslations('en', function () {});
+      // Nada a baixar: o conteúdo em pt-BR já está no HTML.
+      updateToggleUI();
     }
   }
 
