@@ -1,0 +1,112 @@
+name: Trial Matcher — descobrir e enfileirar curadoria
+
+# Etapa 1 de 2 do pipeline mensal do Trial Matcher.
+#
+# Consulta o ClinicalTrials.gov, faz o diff contra trials_br.js e enfileira os
+# estudos novos na Batch API. Não publica nada — quem publica é o workflow
+# `trials-br-publicar.yml`, que roda no dia seguinte e abre um Pull Request.
+#
+# Duas etapas porque um batch pode levar até 24h (na prática, minutos), e um job
+# do Actions não deve ficar bloqueado esperando.
+
+on:
+  schedule:
+    - cron: '30 5 3 * *'   # dia 3, 05:30 UTC (≈ 02:30 BRT) — após explorer/tracker do dia 1
+  workflow_dispatch:
+    inputs:
+      neoplasia:
+        description: 'Filtra o lote por condição (ex.: breast, lung). Vazio = todas.'
+        required: false
+        default: ''
+      limite:
+        description: 'Máximo de estudos neste lote (0 = sem limite)'
+        required: false
+        default: '40'
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: trials-br
+  cancel-in-progress: false
+
+jobs:
+  descobrir:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      # Primeira dependência externa do projeto — todo o resto roda em stdlib.
+      # Necessária para a Batch API; o br_discover.py não precisa dela.
+      - name: Instalar SDK
+        run: pip install --quiet anthropic
+
+      - name: Descobrir e diferenciar
+        run: python3 scripts/br_discover.py | tee _resumo.txt
+
+      - name: Verificar credencial
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          if [ -z "$ANTHROPIC_API_KEY" ]; then
+            echo "::error title=ANTHROPIC_API_KEY ausente::A descoberta rodou, mas sem a chave nao da para curar. Configure em Settings > Secrets and variables > Actions."
+            exit 1
+          fi
+
+      - name: Enfileirar curadoria
+        id: lote
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          ARGS="--enviar"
+          [ -n "${{ github.event.inputs.neoplasia }}" ] && ARGS="$ARGS --neoplasia ${{ github.event.inputs.neoplasia }}"
+          LIM="${{ github.event.inputs.limite }}"; LIM="${LIM:-40}"
+          [ "$LIM" != "0" ] && ARGS="$ARGS --limite $LIM"
+          python3 scripts/br_curate.py $ARGS | tee _lote.txt
+          ID=$(grep -oE 'msgbatch_[A-Za-z0-9]+' _lote.txt | head -1)
+          echo "batch_id=$ID" >> "$GITHUB_OUTPUT"
+
+      # Só o id do batch atravessa para a etapa 2 — 12 bytes por mês.
+      # O _br_discovery.json (~1,5 MB) NÃO é commitado: a etapa 2 refaz a
+      # descoberta, que é determinística, roda em segundos e não custa nada.
+      # Commitá-lo mensalmente incharia o repositório sem necessidade.
+      - name: Registrar o batch pendente
+        run: |
+          echo "${{ steps.lote.outputs.batch_id }}" > scripts/batch_pendente.txt
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add scripts/batch_pendente.txt
+          git commit -m "trials-br: enfileira ${{ steps.lote.outputs.batch_id }} [skip ci]" || exit 0
+          git push
+
+      - name: Resumo
+        run: |
+          { echo '## Trial Matcher — descoberta'; echo; echo '```'; cat _resumo.txt; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Abrir issue se falhou
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const t = `Pipeline do Trial Matcher falhou na descoberta (${new Date().toISOString().slice(0,10)})`;
+            const abertas = await github.rest.issues.listForRepo({
+              owner: context.repo.owner, repo: context.repo.repo,
+              state: 'open', labels: 'trials-br-falha',
+            });
+            if (abertas.data.some(i => i.title === t)) return;
+            await github.rest.issues.create({
+              owner: context.repo.owner, repo: context.repo.repo,
+              title: t, labels: ['trials-br-falha'],
+              body: [
+                'A etapa de descoberta/enfileiramento falhou — nenhum card foi gerado este mês.',
+                '',
+                `Run: ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`,
+                '',
+                'Causa mais comum: secret `ANTHROPIC_API_KEY` ausente ou expirado.',
+              ].join('\n'),
+            });
