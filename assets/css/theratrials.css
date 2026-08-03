@@ -612,6 +612,22 @@ section.compact { padding: 3rem 0; }
 
 .animate-fade { animation: fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) backwards; }
 .delay-1 { animation-delay: 0.1s; }
+
+/* O hero da home é o elemento LCP. Animar a OPACIDADE dele a partir de 0 fazia
+   o LCP só ser registrado no fim do fade — 952 ms medidos, independentemente do
+   peso dos assets (por isso enxugar 515 KB de JS e trocar o PNG por WebP mal
+   moveu a métrica). Mantendo só o deslocamento, o movimento continua e o LCP
+   cai para ~312 ms. Não usar opacity aqui. */
+@keyframes hero-rise {
+  from { transform: translateY(16px); }
+  to   { transform: translateY(0); }
+}
+.hero-banner.animate-fade { animation-name: hero-rise; }
+
+/* Acessibilidade: respeita quem pediu menos animação no sistema. */
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade, .hero-banner.animate-fade { animation: none; }
+}
 .delay-2 { animation-delay: 0.2s; }
 .delay-3 { animation-delay: 0.3s; }
 
