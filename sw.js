@@ -60,7 +60,7 @@ const CORE_ASSETS = [
   './assets/img/logo-app.png',
   './assets/img/logo-circular.png',
   './assets/img/logo-orbital.svg',
-  './assets/img/hero-banner.png',
+  './assets/img/hero-banner.webp',   // servido via <picture>; o .png é só fallback
   './assets/img/hero-logo.png',
   './assets/img/hero-logo-dark.png',
   './assets/img/icons/icon-180.png',

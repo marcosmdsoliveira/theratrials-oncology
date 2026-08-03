@@ -80,6 +80,8 @@
 <meta name="twitter:image" content="https://theratrials.com/assets/img/og-cover.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Hero é o elemento LCP: descobrir cedo, sem esperar o parser chegar no <picture>. -->
+<link rel="preload" as="image" href="assets/img/hero-banner.webp" type="image/webp" fetchpriority="high">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/theratrials.css">
 <script defer src="https://unpkg.com/lucide@1.28.0/dist/umd/lucide.min.js" integrity="sha384-VrnzGPiSyQxm3mI2VhlssyR85zugSHtxMkgO42qV3wUAbNk1oRdZkCWjXKOhuVu6" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -909,7 +911,11 @@
   </div>
   <div class="container">
     <h1 data-i18n="home.heroH1" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">TheraTrials Oncology — Evidência clínica em oncologia moderna e teranóstica</h1>
-    <img src="assets/img/hero-banner.png" alt="TheraTrials Oncology" class="hero-banner animate-fade">
+    <picture>
+      <source srcset="assets/img/hero-banner.webp" type="image/webp">
+      <img src="assets/img/hero-banner.png" alt="TheraTrials Oncology" class="hero-banner animate-fade"
+           width="1672" height="941" fetchpriority="high" decoding="async">
+    </picture>
   </div>
   <div class="hero-after">
     <p class="hero-sub animate-fade" data-i18n="home.heroSub">Análise objetiva e acesso aos ensaios clínicos, informações relevantes e atualizadas, além das melhores ferramentas para apoiar decisões clínicas reais em oncologia.</p>
