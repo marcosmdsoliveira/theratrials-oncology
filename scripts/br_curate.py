@@ -295,6 +295,19 @@ def selecionar(args) -> list[dict]:
     if recusados:
         print(f"[curate] {len(d['novos']) - len(novos)} estudos pulados "
               f"(já descartados antes)", file=sys.stderr)
+
+    # O Trial Matcher lista recrutamento aberto. Estudo ainda não recrutando
+    # fica de fora da curadoria por decisão do autor (2026-08-04) — e sai daqui,
+    # não do br_descartados.json: quando o CT.gov virar o status para
+    # RECRUITING, ele entra sozinho na descoberta seguinte. Descartá-lo o
+    # excluiria para sempre.
+    if not args.incluir_nao_abertos:
+        abertos = [e for e in novos if e.get("status_ctgov") == "RECRUITING"]
+        adiados = len(novos) - len(abertos)
+        if adiados:
+            print(f"[curate] {adiados} estudos adiados (ainda não recrutando; "
+                  f"--incluir-nao-abertos para trazê-los)", file=sys.stderr)
+        novos = abertos
     if args.neoplasia:
         alvo = args.neoplasia.lower()
         novos = [e for e in novos
@@ -327,6 +340,8 @@ def main() -> int:
     ap.add_argument("--colher", metavar="BATCH_ID")
     ap.add_argument("--neoplasia", help="filtra o lote por condição (ex.: breast)")
     ap.add_argument("--limite", type=int, default=0)
+    ap.add_argument("--incluir-nao-abertos", action="store_true",
+                    help="traz também os NOT_YET_RECRUITING (fora por padrão)")
     args = ap.parse_args()
 
     # ── modo LOCAL ────────────────────────────────────────────────────────────

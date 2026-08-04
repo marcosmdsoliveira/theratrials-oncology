@@ -6625,7 +6625,7 @@ window.THERA_TRIALS_BR = [
   {
     // ⚠ RASCUNHO — confiança media. Bayer, fase 1/2, 400 participantes, 3 centros no Brasil (Natal, São José do Rio Preto, São Paulo). O texto recebido é o resumo em linguagem leiga e te
     id: 'sevabertinibe-bay-2927088',
-    nome: 'Sevabertinibe (BAY 2927088)',
+    nome: 'Sevabertinibe',
     titulo: 'Sevabertinibe, primeiro em humanos, em NSCLC avançado com mutação de EGFR e/ou HER2',
     nct: 'NCT05099172',
     fase: 'Ib/II',
@@ -7015,7 +7015,7 @@ window.THERA_TRIALS_BR = [
   {
     // ⚠ RASCUNHO — confiança media. Pfizer, fase 1a/1b, 124 participantes, 4 centros no Brasil em 3 estados. Classificado como tumores sólidos por recrutar melanoma, glioma, tireoide e N
     id: 'pf-07799544-braf-v600',
-    nome: 'PF-07799544 (BRAF V600)',
+    nome: 'PF-07799544 + PF-07799933',
     titulo: 'PF-07799544 com PF-07799933 em tumores sólidos avançados com mutação BRAF V600',
     nct: 'NCT05538130',
     fase: 'I',
@@ -7289,7 +7289,7 @@ window.THERA_TRIALS_BR = [
   {
     // ⚠ RASCUNHO — confiança media. BeOne Medicines, fase 1, 392 participantes, 4 centros no Brasil em 3 estados. Classificado como tumores sólidos por recrutar hepatocarcinoma, gástrico
     id: 'bgb-b2033-gpc3',
-    nome: 'BGB-B2033 (GPC3)',
+    nome: 'BGB-B2033 + tislelizumabe',
     titulo: 'BGB-B2033 isolado ou com tislelizumabe, com ou sem bevacizumabe, em tumores sólidos avançados selecionados',
     nct: 'NCT06427941',
     fase: 'I',
@@ -7362,7 +7362,7 @@ window.THERA_TRIALS_BR = [
   {
     // ⚠ RASCUNHO — confiança media. MSD, fase 1b/2, 140 participantes, 4 centros no Brasil em 2 estados. O MK-1084 é o mesmo calderasibe do KANDLELIT-004, que está neste PR — lá em 1ª li
     id: 'keymaker-u01f',
-    nome: 'KEYMAKER-U01F',
+    nome: 'KEYMAKER-U01 Substudy 01F',
     titulo: 'MK-1084 combinado a conjugados anticorpo-fármaco em NSCLC não-escamoso KRAS G12C já tratado',
     nct: 'NCT07286149',
     fase: 'Ib/II',
@@ -7637,7 +7637,7 @@ window.THERA_TRIALS_BR = [
   {
     // ⚠ RASCUNHO — confiança media. BioNTech, fase 2/3, 1260 participantes, apenas 1 centro no Brasil (São José do Vale do Rio Preto/RJ). ACHADO ÚTIL PARA A REVISÃO: este registro identi
     id: 'bnt327-lung-protocolo-mestre',
-    nome: 'BNT327 Lung (protocolo mestre)',
+    nome: 'Pumitamibe + dupla de platina',
     titulo: 'Pumitamibe (BNT327) com quimioterapia vs pembrolizumabe com quimioterapia em 1ª linha de NSCLC, em dois subestudos por histologia',
     nct: 'NCT06712316',
     fase: 'II/III',
@@ -7813,71 +7813,6 @@ window.THERA_TRIALS_BR = [
     data_atualizacao: '2026-07-20',
   },
 
-  {
-    // ⚠ RASCUNHO — confiança media. ATENÇÃO: status `NOT_YET_RECRUITING` no ClinicalTrials.gov — o card entra como 'Ainda não recrutando', não como aberto. Bristol-Myers Squibb, fase III
-    id: 'izabright-lung02',
-    nome: 'IZABRIGHT-Lung02',
-    titulo: 'Izalontamabe brengitecana + osimertinibe vs osimertinibe isolado ou com dupla de platina em 1ª linha de NSCLC EGFR-mutado',
-    nct: 'NCT07680790',
-    fase: 'III',
-    status: 'Ainda não recrutando',
-    neoplasia: 'pulmao',
-    neoplasia_label: 'Pulmão · NSCLC',
-    subtipo: 'NSCLC não-escamoso localmente avançado (IIIB/IIIC), metastático (IVA/IVB) ou recorrente, com mutação sensibilizante de EGFR (deleção do éxon 19 ou L858R no éxon 21)',
-    linha_terapeutica: '1ª linha',
-    cenario_clinico: 'Doença recém-diagnosticada sem indicação de cirurgia curativa nem de radioterapia definitiva, com necessidade de tratamento sistêmico',
-    modalidade: ['ADC', 'bispecífico', 'terapia-alvo', 'combinação'],
-    biomarcadores: ['EGFR'],
-    testes_fornecidos: '',
-    intervencao: 'Izalontamabe brengitecana (iza-bren, BMS-986507) + osimertinibe',
-    comparador: 'Osimertinibe em monoterapia, ou osimertinibe com quimioterapia à base de platina (pemetrexede com carboplatina ou cisplatina)',
-    racional: 'Endereça a 1ª linha do EGFR-mutado, em que o osimertinibe isolado e o osimertinibe com platina são as opções padrão. O mesmo iza-bren é testado no IZABRIGHT-Breast01, já neste PR, onde o registro o descreve como conjugado anticorpo-fármaco biespecífico anti-EGFR e anti-HER3 com carga inibidora de topoisomerase.',
-    criterios_principais: [
-      'NSCLC não-escamoso confirmado histológica ou citologicamente, recém-diagnosticado localmente avançado (IIIB/IIIC), metastático (IVA/IVB) ou recorrente, sem indicação de cirurgia curativa ou radioterapia definitiva',
-      'Mutação sensibilizante de EGFR documentada: deleção do éxon 19 ou substituição L858R no éxon 21',
-      'Doença extracraniana mensurável por RECIST v1.1',
-      'ECOG 0 ou 1',
-    ],
-    criterios_exclusao: [
-      'Metástase em sistema nervoso central instável, sintomática ou não controlada, incluindo doença leptomeníngea e compressão medular',
-      'História de doença pulmonar intersticial ou pneumonite que exigiu corticoide (grau 2 ou maior), ou doença intersticial atual ou suspeita',
-      'Doença cardíaca clinicamente significativa',
-    ],
-    centros: [
-      'Barretos / SP',
-      'Campinas / SP',
-      'Florianópolis / SC',
-      'Ijuí / RS',
-      'Rio de Janeiro / RJ',
-      'Salvador / BA',
-      'Sorocaba / SP',
-      'São Paulo / SP',
-      'Vitória / ES',
-    ],
-    estados: [
-      'BA',
-      'ES',
-      'RJ',
-      'RS',
-      'SC',
-      'SP',
-    ],
-    cidades: [
-      'Barretos',
-      'Campinas',
-      'Florianópolis',
-      'Ijuí',
-      'Rio de Janeiro',
-      'Salvador',
-      'Sorocaba',
-      'São Paulo',
-      'Vitória',
-    ],
-    patrocinador: 'Bristol-Myers Squibb',
-    fonte_url: 'https://clinicaltrials.gov/study/NCT07680790',
-    contato_url: 'https://clinicaltrials.gov/study/NCT07680790',
-    data_atualizacao: '2026-07-15',
-  },
 
   {
     // ⚠ RASCUNHO — confiança media. Pfizer, fase 2, apenas 40 participantes e 1 centro no Brasil (Porto Alegre/RS). Quarto card de pequenas células do PR e o único de doença transformada
@@ -7971,7 +7906,7 @@ window.THERA_TRIALS_BR = [
   {
     // ⚠ RASCUNHO — confiança media. AbbVie, fase 2, 150 participantes, 7 centros no Brasil em 7 estados. O registro alerta que a carga de tratamento pode ser maior que a do padrão de cui
     id: 'telisotuzumabe-vedotina-c-met',
-    nome: 'Telisotuzumabe vedotina (c-Met)',
+    nome: 'Telisotuzumabe vedotina',
     titulo: 'Três esquemas de dose de telisotuzumabe vedotina em NSCLC não-escamoso c-Met superexpresso, EGFR selvagem, já tratado',
     nct: 'NCT06568939',
     fase: 'II',
@@ -8031,7 +7966,7 @@ window.THERA_TRIALS_BR = [
   {
     // ⚠ RASCUNHO — confiança alta. Estudo acadêmico brasileiro conduzido por investigadora individual (Aline Fusco Fares, MD), fase 2, braço único, 33 participantes, centro único em São
     id: 'nivolumabe-em-baixa-dose-neoadjuvante',
-    nome: 'Nivolumabe em baixa dose neoadjuvante',
+    nome: 'Nivolumabe 0,3 mg/kg + dupla de platina',
     titulo: 'Nivolumabe 0,3 mg/kg com dupla de platina como neoadjuvante em NSCLC ressecável estádio IB–IIIA',
     nct: 'NCT06667154',
     fase: 'II',
