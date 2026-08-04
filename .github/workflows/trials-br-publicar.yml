@@ -84,6 +84,13 @@ jobs:
         if: steps.b.outputs.vazio != 'true'
         run: python3 scripts/br_centros.py --aplicar | tee _centros.txt
 
+      # Depois do merge e antes de validar: a home anuncia o número de ensaios
+      # abertos no Brasil em 8 lugares, PT e EN. Sem isso o PR publica cards
+      # novos e deixa o texto do site mentindo.
+      - name: Sincronizar as contagens do texto do site
+        if: steps.b.outputs.id != ''
+        run: node scripts/sync_counts.mjs
+
       - name: Validar links dos cards novos
         if: steps.b.outputs.vazio != 'true'
         run: node scripts/validate_trials_br.mjs

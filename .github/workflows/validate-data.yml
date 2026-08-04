@@ -18,10 +18,17 @@ on:
       - 'scripts/validate_pubmed.mjs'
       - 'scripts/validate_nct.mjs'
       - 'scripts/validate_trials_br.mjs'
+      - 'index.html'
+      - 'assets/lang/pt-br.js'
+      - 'assets/lang/en.js'
+      - 'scripts/sync_counts.mjs'
   pull_request:
     paths:
       - 'assets/js/data.js'
       - 'assets/js/trials_br.js'
+      - 'index.html'
+      - 'assets/lang/pt-br.js'
+      - 'assets/lang/en.js'
   workflow_dispatch:
 
 permissions:
@@ -44,7 +51,13 @@ jobs:
         with:
           node-version: '20'
 
+      # Barato e offline: roda antes dos validadores de link, que gastam
+      # minutos batendo em NCBI e CT.gov.
+      - name: Conferir as contagens escritas no texto do site
+        run: node scripts/sync_counts.mjs --check
+
       - name: Validate pubmed_url integrity
+        if: always()
         run: node scripts/validate_pubmed.mjs --json pubmed-report.json
 
       - name: Validate ClinicalTrials.gov (NCT) integrity
