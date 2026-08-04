@@ -4122,7 +4122,7 @@ window.THERA_TRIALS_BR = [
   },
 
   {
-    // ⚠ RASCUNHO — confiança media. Texto de elegibilidade truncado no registro consultado — critérios de exclusão não puderam ser extraídos. CONFERIR no ClinicalTrials.gov. Apenas 2 cen
+    // ⚠ RASCUNHO — confiança alta. Critérios de exclusão transcritos do ClinicalTrials.gov pelo autor e resumidos em 2026-08-04. Apenas 2 centros no Brasil.
     id: 'disitamab-vedotina-fase-1b-2',
     nome: 'Disitamab vedotina (fase 1b/2)',
     titulo: 'Disitamab vedotina em monoterapia em câncer de mama avançado com expressão de HER2 (HER2+, HER2-low e HER2-ultralow)',
@@ -4147,7 +4147,14 @@ window.THERA_TRIALS_BR = [
       'HER2 avaliado por IHQ/ISH conforme critérios ASCO/CAP',
       'Tratamento prévio para doença avançada',
     ],
-    criterios_exclusao: [],
+    criterios_exclusao: [
+      'Hipersensibilidade conhecida a qualquer excipiente da formulação da disitamabe vedotina',
+      'Metástase ativa em sistema nervoso central e/ou leptomeníngea',
+      'Outra neoplasia invasora nos 3 anos anteriores ao primeiro dia de tratamento, ou qualquer evidência de doença residual de neoplasia prévia',
+      'Terapia prévia com conjugado anticorpo-fármaco de carga MMAE',
+      'Terapia sistêmica antineoplásica ou radioterapia nas 2 semanas anteriores, ou 5 meias-vidas, o que for menor — se a última terapia continha agente à base de anticorpo, o intervalo exigido é de 28 dias ou 5 meias-vidas, o que for menor',
+      'Não recuperação dos eventos adversos das terapias prévias',
+    ],
     centros: ['Lages / SC', 'São Caetano do Sul / SP'],
     estados: ['SC', 'SP'],
     cidades: ['Lages', 'São Caetano do Sul'],
@@ -5703,12 +5710,12 @@ window.THERA_TRIALS_BR = [
   },
 
   {
-    // ⚠ RASCUNHO — confiança media. Novartis, fase IIIb (o registro classifica como PHASE3), 1400 participantes, 11 centros no Brasil em 5 estados. Braço único, sem randomização. O proto
+    // ⚠ RASCUNHO — confiança alta. Novartis, fase IIIb confirmada pelo autor em 2026-08-04 (o CT.gov registra como PHASE3). 1400 participantes, 11 centros em 5 estados, braço único. O protocolo limita a 30% os participantes com endocrinoterapia prévia entre 12 e 36 meses, teto que não se aplica a participantes negras — é limite de recrutamento, não critério individual.
     id: 'adjuvant-wider',
     nome: 'Adjuvant WIDER',
     titulo: 'Ribociclibe + endocrinoterapia adjuvante por 36 meses em mama inicial HR+/HER2- de risco elevado',
     nct: 'NCT05827081',
-    fase: 'III',
+    fase: 'IIIb',
     status: 'Recrutando',
     neoplasia: 'mama',
     neoplasia_label: 'Mama · HR+/HER2-',
@@ -5759,16 +5766,16 @@ window.THERA_TRIALS_BR = [
   },
 
   {
-    // ⚠ RASCUNHO — confiança media. BridgeBio Oncology Therapeutics, fase 1a/1b, 392 participantes, 4 centros no Brasil (Porto Alegre, Sorocaba, São Paulo). Classificado como mama porque
+    // ⚠ RASCUNHO — confiança alta. BridgeBio Oncology Therapeutics, fase 1a/1b, 392 participantes, 4 centros no Brasil (Porto Alegre, Sorocaba, São Paulo). Reclassificado de `mama` para `solidos` pelo autor em 2026-08-04: o estudo recruta mama, colorretal e pulmão em coortes distintas, e forçá-lo num sítio só o escondia dos demais. A exigência de linhas prévias difere por coorte, daí `Conforme protocolo`.
     id: 'breaker-101',
     nome: 'BREAKER-101',
     titulo: 'BBO-10203, bloqueador da interação PI3Kα:RAS, isolado ou combinado, em tumores sólidos avançados',
     nct: 'NCT06625775',
     fase: 'I',
     status: 'Recrutando',
-    neoplasia: 'mama',
-    neoplasia_label: 'Mama',
-    subtipo: 'Coortes de mama avançada HER2-positiva e HR-positiva/HER2-negativa; o estudo também abre coortes de colorretal e pulmão KRAS-mutados',
+    neoplasia: 'solidos',
+    neoplasia_label: 'Tumores sólidos',
+    subtipo: 'Tumores sólidos avançados selecionados por alteração molecular e por coorte. Condições registradas: mama metastática e avançada, mama HER2-positiva metastática e avançada, mama HR-positiva/HER2-negativa avançada, tumores relacionados a mutação de HER2, colorretal metastático e colorretal metastático KRAS-mutado, pulmão metastático e pulmão avançado',
     linha_terapeutica: 'Conforme protocolo',
     cenario_clinico: 'Doença localmente avançada irressecável ou metastática após tratamento padrão, com exigência de linhas prévias que varia por coorte',
     modalidade: ['terapia-alvo', 'combinação'],
@@ -5917,6 +5924,9 @@ window.THERA_TRIALS_BR_META = {
     { id: 'ovario',         label: 'Ovário',                  color: '#c084fc' },
     { id: 'vias_biliares',  label: 'Vias biliares',           color: '#86efac' },
     { id: 'penis',          label: 'Pênis',                   color: '#67e8f9' },
+    // Para ensaio que recruta por alteração molecular ou por coortes de vários
+    // sítios, em vez de por um único tumor — não force um sítio só nesses casos.
+    { id: 'solidos',        label: 'Tumores sólidos',         color: '#94d3d8' },
   ],
   modalidades: [
     { id: 'terapia-alvo',     label: 'Terapia-alvo' },
@@ -5937,6 +5947,9 @@ window.THERA_TRIALS_BR_META = {
     { id: 'II',    label: 'Fase II' },
     { id: 'II/III', label: 'Fase II/III' },
     { id: 'III',   label: 'Fase III' },
+    // IIIb: registral já concluído, estudo desenhado para uma população
+    // próxima da prática clínica. O CT.gov registra como PHASE3.
+    { id: 'IIIb',  label: 'Fase IIIb' },
     { id: 'IV',    label: 'Fase IV' },
     // Ensaio intervencional sem fase de desenvolvimento — radioterapia,
     // cirurgia, dispositivo. É o 'NA' do ClinicalTrials.gov, que não é

@@ -605,7 +605,8 @@
     'cabeca_pescoco': 'Cabeça e Pescoço',
     'ovario': 'Ovário', 'endometrio': 'Endométrio', 'cervix': 'Cérvix',
     'linfoma': 'Linfoma', 'mieloma': 'Mieloma Múltiplo',
-    'pediatrico': 'Neuroblastoma', 'penis': 'Outros'
+    'pediatrico': 'Neuroblastoma', 'penis': 'Outros',
+    'solidos': 'Tumores sólidos'
   };
 
   // ── Populate tumor filter (grupos de tumor presentes nos ensaios BR) ──
@@ -866,7 +867,7 @@
   // radioterapia sem fase de desenvolvimento, 'Fase Sem fase'.
   function rotuloFase(f) {
     if (!f) return '';
-    return /^(I|II|III|IV|Ib\/II|II\/III)$/.test(f) ? 'Fase ' + f : f;
+    return /^(I|II|III|IIIb|IV|Ib\/II|II\/III)$/.test(f) ? 'Fase ' + f : f;
   }
 
   // ── Centros: agrupamento por unidade da federação ──────────────
