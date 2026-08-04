@@ -350,6 +350,13 @@
 }
 .tm-d-cid:first-child { margin-top: 0; }
 .tm-d-anon { color: var(--stone); font-size: 0.74rem; }
+/* Ressalva sobre o que o registro NÃO informa — nunca conteúdo clínico. */
+.tm-d-nota {
+  margin: 0.6rem 0 0; padding: 0.5rem 0.7rem;
+  border-left: 2px solid var(--amber, #f59e0b);
+  background: rgba(245,158,11,0.06);
+  font-size: 0.78rem; line-height: 1.5; color: var(--stone, #9ca3af);
+}
 .tm-d-list { margin: 0; padding-left: 1.1rem; }
 .tm-d-list li { font-size: 0.84rem; color: var(--off-white, #F5F6F7); line-height: 1.55; margin-bottom: 0.35rem; }
 .tm-d-list.exclusion li::marker { color: #ef4444; }
@@ -1083,7 +1090,12 @@
       '<div class="tm-d-grid">' + dRow('Braço experimental', s.intervencao) + dRow('Comparador / controle', s.comparador) +
       dRow('Testes fornecidos pelo estudo', s.testes_fornecidos) + dRow('Patrocinador', s.patrocinador) + '</div>');
     body += dSection('check-circle-2', 'Critérios principais de inclusão', dList(s.criterios_principais));
-    body += dSection('x-circle', 'Critérios de exclusão relevantes', dList(s.criterios_exclusao));
+    // `nota_criterios` explica uma limitação do próprio registro — estudo cesta
+    // cujo CT.gov só publica exclusões de algumas coortes, por exemplo. Vai
+    // logo abaixo da lista para o leitor não concluir que a lista está completa.
+    body += dSection('x-circle', 'Critérios de exclusão relevantes',
+      dList(s.criterios_exclusao) +
+      (s.nota_criterios ? '<p class="tm-d-nota">' + escHtml(s.nota_criterios) + '</p>' : ''));
     if (s.centros && s.centros.length) {
       // data-no-gloss: aqui as siglas são unidades da federação, não termos
       // clínicos. Sem isso o glossário anota "Curitiba / PR" como "resposta

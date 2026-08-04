@@ -6514,6 +6514,7 @@ window.THERA_TRIALS_BR = [
       'NSCLC avançado com mutação de KRAS que apresente mutação KRAS G12R, ou outro driver acionável — EGFR, ALK, ROS1, BRAF, RET, MET, inserção no éxon 20 de EGFR, NTRK ou HER2',
       'Metástase cerebral não tratada e/ou não estável',
     ],
+    nota_criterios: 'Estudo cesta. O ClinicalTrials.gov publica critérios de exclusão apenas para as coortes de colorretal KRAS-mutado e de pulmão; não há exclusões específicas das coortes de mama no registro. Confirme com o centro antes de encaminhar.',
     centros: [
       'FUTTURA Oncologia — Porto Alegre / RS',
       'Hospital São Lucas da PUCRS — Porto Alegre / RS',
