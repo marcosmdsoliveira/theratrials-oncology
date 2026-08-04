@@ -886,16 +886,24 @@
   }
 
   // Sudeste primeiro, em ordem fixa — é onde está a maior parte dos
-  // pacientes e dos encaminhamentos. Os demais estados vêm em seguida
-  // pelo número de centros: quando o rodapé trunca, sobra o que mais pesa.
+  // pacientes e dos encaminhamentos. Os demais vêm por número de centros,
+  // para que o truncamento do rodapé descarte o que menos pesa.
+  //
+  // O Sudeste ocupa no máximo 3 das 4 posições visíveis: sem esse teto os
+  // estudos grandes terminavam todos em 'SP · RJ · MG · ES' e o rodapé
+  // deixava de distinguir um card do outro. A 4ª posição revela um estado
+  // de fora — mas se não houver nenhum, a UF do Sudeste que sobrou volta
+  // para lá em vez de virar '+1'.
   var PRIORIDADE_UF = { SP: 1, RJ: 2, MG: 3, ES: 4 };
+  var TETO_SUDESTE = 3;
   function ordenarUFs(grupos) {
-    return grupos.slice().sort(function(a, b) {
-      var pa = PRIORIDADE_UF[a.uf] || 0, pb = PRIORIDADE_UF[b.uf] || 0;
-      if (!pa !== !pb) return pa ? -1 : 1;
-      if (pa && pb) return pa - pb;
-      return b.cidades.length - a.cidades.length || (a.uf < b.uf ? -1 : 1);
-    }).map(function(g) { return g.uf; });
+    var sudeste = [], outros = [];
+    grupos.forEach(function(g) { (PRIORIDADE_UF[g.uf] ? sudeste : outros).push(g); });
+    sudeste.sort(function(a, b) { return PRIORIDADE_UF[a.uf] - PRIORIDADE_UF[b.uf]; });
+    outros.sort(function(a, b) { return b.cidades.length - a.cidades.length || (a.uf < b.uf ? -1 : 1); });
+    return sudeste.slice(0, TETO_SUDESTE)
+      .concat(outros.slice(0, 1), sudeste.slice(TETO_SUDESTE), outros.slice(1))
+      .map(function(g) { return g.uf; });
   }
 
   // Resumo do rodapé do card fechado.
