@@ -36,7 +36,33 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
 const nctIn = u => (u || '').match(/NCT\d{8}/)?.[0] || null;
 async function jget(u, t = 3) { for (let i = 0; i < t; i++) { try { const r = await fetch(u); if (r.status === 404) return { __nf: 1 }; if (r.ok) return await r.json(); } catch {} await sleep(500); } return null; }
 
+// Dois cards com o mesmo NCT significam ou estudo curado em duplicata, ou um
+// deles carregando o registro errado. Os dois casos já aconteceram e passaram
+// batido: o card do SUNRAY-02 ficou publicado com o NCT do SUNRAY-01 (e por
+// tabela herdou os centros dele), e havia dois pares de cards duplicados. Nada
+// disso quebra — o estudo só aparece duas vezes, ou aponta para o registro
+// errado. Verificação local, sem rede, roda antes de qualquer fetch.
+function checarNctRepetido(trials) {
+  const porNct = new Map();
+  for (const t of trials) {
+    const n = (t.nct || '').match(/NCT\d{8}/)?.[0];
+    if (!n) continue;
+    if (!porNct.has(n)) porNct.set(n, []);
+    porNct.get(n).push(t.nome || t.id || '?');
+  }
+  return [...porNct.entries()].filter(([, nomes]) => nomes.length > 1);
+}
+
 (async () => {
+  const repetidos = checarNctRepetido(trials);
+  if (repetidos.length) {
+    console.error('\n--- FAIL: NCT usado por mais de um card ---');
+    for (const [nct, nomes] of repetidos) console.error(`  ${nct} -> ${nomes.join(', ')}`);
+    console.error('\nCada NCT deve pertencer a um único card. Verifique se são');
+    console.error('duplicatas do mesmo estudo ou se um deles está com o NCT errado.');
+    process.exit(1);
+  }
+
   const results = [], notes = [];
   let i = 0;
   for (const tr of trials) {
