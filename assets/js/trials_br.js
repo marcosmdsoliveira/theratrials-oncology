@@ -9529,45 +9529,6 @@ window.THERA_TRIALS_BR = [
   // ============== NOVOS ESTUDOS — GI (2026-08-04) — RASCUNHO, revisar antes de publicar ==============
 
   {
-    id: 'metronidazol-neoadjuvante-em-reto',
-    nome: 'Metronidazol neoadjuvante em reto',
-    titulo: 'Modulação do microbioma intestinal com metronidazol na neoadjuvância do câncer de reto localmente avançado',
-    nct: 'NCT06793137',
-    fase: 'II',
-    status: 'Recrutando',
-    neoplasia: 'colorretal',
-    neoplasia_label: 'Colorretal',
-    subtipo: 'Adenocarcinoma de reto médio e baixo, localmente avançado',
-    linha_terapeutica: 'Perioperatório',
-    cenario_clinico: 'Neoadjuvância com quimiorradioterapia, com objetivo de preservação de órgão',
-    modalidade: ['cirurgia_rt'],
-    biomarcadores: [],
-    testes_fornecidos: '',
-    intervencao: 'Metronidazol oral nos primeiros sete dias da radioterapia, somado ao tratamento neoadjuvante padrão',
-    comparador: '— (braço único)',
-    racional: 'Estudos de microbiota associam a superpopulação de certas bactérias anaeróbias a pior resposta ao tratamento. O estudo testa se modular o microbioma com antibiótico durante a radioterapia aumenta a taxa de resposta, num cenário em que os esquemas atuais atingiram um platô.',
-    criterios_principais: [
-      'Idade acima de 18 anos com adenocarcinoma de reto médio ou baixo, localmente avançado ou cuja localização exija amputação retal',
-      'Tumor abaixo da reflexão peritoneal, definido por ressonância magnética',
-      'Candidato a amputação retal: margem distal a menos de 2,0 cm da linha pectínea por retoscopia, ou a menos de 2,0 cm do anel anorretal por palpação ou ressonância',
-      'Reto médio candidato a radioterapia: fáscia mesorretal comprometida por extensão direta do tumor ou por linfonodo acometido, ou tumor cT4',
-    ],
-    criterios_exclusao: [
-      'Performance status insuficiente para o tratamento neoadjuvante total',
-      'Histologia diferente de adenocarcinoma',
-      'Adenocarcinoma com fenótipo de instabilidade de microssatélites por imuno-histoquímica',
-      'Tumor de reto médio sem indicação de radioterapia pelo protocolo institucional — cT3N0 com fáscia mesorretal livre, ou cT1-3 N+ com fáscia mesorretal livre',
-    ],
-    centros: ['A.C.Camargo Cancer Center — São Paulo / SP'],
-    estados: ['SP'],
-    cidades: ['São Paulo'],
-    patrocinador: 'AC Camargo Cancer Center',
-    fonte_url: 'https://clinicaltrials.gov/study/NCT06793137',
-    contato_url: 'https://clinicaltrials.gov/study/NCT06793137',
-    data_atualizacao: '2025-01-29',
-  },
-
-  {
     id: 'cchoww',
     nome: 'CCHOWW',
     titulo: 'Quimiorradioterapia e consolidação com ou sem oxaliplatina no câncer de reto distal, com estratégia Watch and Wait',
@@ -10446,8 +10407,8 @@ window.THERA_TRIALS_BR = [
     nct: 'NCT05208047',
     fase: 'III',
     status: 'Recrutando',
-    neoplasia: 'solidos',
-    neoplasia_label: 'Tumores sólidos',
+    neoplasia: 'gist',
+    neoplasia_label: 'GIST',
     subtipo: 'Tumor estromal gastrointestinal (GIST) localmente avançado, metastático e/ou irressecável',
     linha_terapeutica: '2ª linha',
     cenario_clinico: 'Progressão ou intolerância ao imatinibe; há também subestudo de 1ª linha em KIT éxon 9',
@@ -10635,8 +10596,8 @@ window.THERA_TRIALS_BR = [
     nct: 'NCT07218926',
     fase: 'III',
     status: 'Recrutando',
-    neoplasia: 'solidos',
-    neoplasia_label: 'Tumores sólidos',
+    neoplasia: 'gist',
+    neoplasia_label: 'GIST',
     subtipo: 'Tumor estromal gastrointestinal (GIST) metastático e/ou cirurgicamente irressecável',
     linha_terapeutica: '2ª linha',
     cenario_clinico: 'Progressão ou intolerância ao imatinibe em 1ª linha',
@@ -11060,6 +11021,10 @@ window.THERA_TRIALS_BR_META = {
     { id: 'ovario',         label: 'Ovário',                  color: '#c084fc' },
     { id: 'vias_biliares',  label: 'Vias biliares',           color: '#86efac' },
     { id: 'penis',          label: 'Pênis',                   color: '#67e8f9' },
+    // GIST é sarcoma, não adenocarcinoma: recruta por mutação de KIT/PDGFRA e
+    // segue linha terapêutica própria (imatinibe, depois sunitinibe). Cair em
+    // 'gastrico' induzia erro clínico, e em 'solidos' escondia a entidade.
+    { id: 'gist',           label: 'GIST',                    color: '#d8b4fe' },
     // Para ensaio que recruta por alteração molecular ou por coortes de vários
     // sítios, em vez de por um único tumor — não force um sítio só nesses casos.
     { id: 'solidos',        label: 'Tumores sólidos',         color: '#94d3d8' },
