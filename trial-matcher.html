@@ -335,6 +335,12 @@
 }
 .tm-d-pill .lbl { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--stone); font-weight: 600; }
 .tm-d-pill .val { font-size: 0.82rem; color: var(--off-white); font-weight: 500; }
+/* Centros agrupados por UF: grade de estados em vez de uma fila de pills
+   repetindo a sigla em cada cidade. */
+.tm-d-pills.tm-d-uf { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); align-items: stretch; }
+.tm-d-uf .tm-d-pill .lbl { color: var(--amber); font-size: 0.66rem; letter-spacing: 0.08em; }
+.tm-d-uf .tm-d-pill .val { font-weight: 400; line-height: 1.5; }
+.tm-d-uf .tm-d-pill.sem-uf .lbl { color: var(--stone); letter-spacing: 0.04em; }
 .tm-d-list { margin: 0; padding-left: 1.1rem; }
 .tm-d-list li { font-size: 0.84rem; color: var(--off-white, #F5F6F7); line-height: 1.55; margin-bottom: 0.35rem; }
 .tm-d-list.exclusion li::marker { color: #ef4444; }
@@ -856,6 +862,57 @@
       '><div class="lbl">' + escHtml(lbl) + '</div><div class="val">' + escHtml(v) + '</div></div>';
   }
 
+  // ── Centros: agrupamento por unidade da federação ──────────────
+  // Os centros vêm como strings 'Cidade / UF'. Alguns registros do
+  // ClinicalTrials.gov não preenchem o estado — nesses casos a entrada
+  // é só a cidade, e ela vai para o grupo sem sigla, nunca é descartada.
+  function agruparPorUF(centros) {
+    var mapa = {}, ordem = [], soltos = [];
+    (centros || []).forEach(function(c) {
+      var m = /^(.*?)\s*\/\s*([A-Z]{2})$/.exec((c || '').trim());
+      if (!m) { if (c) soltos.push(c); return; }
+      var uf = m[2];
+      if (!mapa[uf]) { mapa[uf] = []; ordem.push(uf); }
+      mapa[uf].push(m[1]);
+    });
+    // Ordem alfabética por UF: no modal a tarefa é procurar o próprio
+    // estado numa lista que chega a 17 entradas.
+    ordem.sort();
+    var grupos = ordem.map(function(uf) { return { uf: uf, cidades: mapa[uf].sort() }; });
+    if (soltos.length) grupos.push({ uf: '', cidades: soltos.sort() });
+    return grupos;
+  }
+
+  // Resumo do rodapé do card fechado. Prioriza as UFs com mais centros —
+  // listar as primeiras em ordem alfabética esconderia justamente SP e RJ,
+  // que concentram a maior parte dos sítios.
+  function resumoLocais(centros) {
+    var grupos = agruparPorUF(centros);
+    var n = (centros || []).length;
+    if (!n) return { texto: 'Centros no Brasil', titulo: '' };
+
+    var completo = grupos.map(function(g) {
+      return (g.uf ? g.uf + ': ' : '') + g.cidades.join(', ');
+    }).join('\n');
+
+    if (n === 1) return { texto: centros[0], titulo: '' };
+
+    var ufs = grupos.filter(function(g) { return g.uf; })
+      .sort(function(a, b) { return b.cidades.length - a.cidades.length || (a.uf < b.uf ? -1 : 1); })
+      .map(function(g) { return g.uf; });
+
+    var contagem = n + ' centros';
+    if (!ufs.length) return { texto: contagem, titulo: completo };
+
+    var MOSTRAR = 4;
+    var visiveis = ufs.slice(0, MOSTRAR).join(' · ');
+    var resto = ufs.length - MOSTRAR;
+    return {
+      texto: contagem + ' · ' + visiveis + (resto > 0 ? ' +' + resto : ''),
+      titulo: completo
+    };
+  }
+
   function renderCard(r, idx) {
     var raw = r.raw || {};
 
@@ -871,7 +928,7 @@
     var m2 = ['Cenário', raw.cenario_clinico];
     var m3 = ['Intervenção', raw.intervencao];
     var footerIcon = 'map-pin';
-    var footerText = (raw.centros || []).slice(0, 3).join(' · ') || 'Centros no Brasil';
+    var locais = resumoLocais(raw.centros);
 
     var statusTxt = shortStatusEA(raw.status);
     var statusCls = statusClassEA(raw.status);
@@ -893,7 +950,8 @@
       '<div class="ea-tags">' + tags + '</div>' +
       '<div class="ea-card-meta">' + metaItem(m1[0], m1[1]) + metaItem(m2[0], m2[1]) + metaItem(m3[0], m3[1], true) + '</div>' +
       '<div class="ea-card-footer">' +
-        '<span class="city" data-no-gloss><i data-lucide="' + footerIcon + '" style="width:12px;height:12px"></i><span>' + escHtml(footerText) + '</span></span>' +
+        '<span class="city" data-no-gloss' + (locais.titulo ? ' title="' + escHtml(locais.titulo) + '"' : '') +
+          '><i data-lucide="' + footerIcon + '" style="width:12px;height:12px"></i><span>' + escHtml(locais.texto) + '</span></span>' +
         '<span class="more">' + t('tm.viewDetails', 'Ver detalhes') + ' <i data-lucide="arrow-right" style="width:12px;height:12px"></i></span>' +
       '</div>' +
     '</article>';
@@ -957,8 +1015,22 @@
       // clínicos. Sem isso o glossário anota "Curitiba / PR" como "resposta
       // parcial" e "Boa Vista / RR" como "risco relativo" — as duas únicas
       // UFs que colidem com o vocabulário do glossário.
-      body += dSection('map-pin', 'Centros participantes no Brasil',
-        '<div class="tm-d-pills" data-no-gloss>' + s.centros.map(function(c){ return '<span class="tm-d-pill"><span class="val">' + escHtml(c) + '</span></span>'; }).join('') + '</div>');
+      var grupos = agruparPorUF(s.centros);
+      // Só conta como estado o grupo que tem sigla — o grupo 'UF não
+      // informada' não é uma unidade da federação.
+      var nUF = grupos.filter(function(g) { return g.uf; }).length;
+      var titulo = 'Centros participantes no Brasil — ' + s.centros.length +
+        (s.centros.length === 1 ? ' centro' : ' centros') +
+        (nUF > 1 ? ' em ' + nUF + ' estados' : '');
+      body += dSection('map-pin', titulo,
+        '<div class="tm-d-pills tm-d-uf" data-no-gloss>' + grupos.map(function(g) {
+          // Grupo sem sigla: o registro no ClinicalTrials.gov não preencheu o
+          // estado. Rotular é mais honesto do que exibir um pill mudo — e
+          // não inventamos a UF a partir do nome da cidade.
+          return '<span class="tm-d-pill' + (g.uf ? '' : ' sem-uf') + '">' +
+            '<span class="lbl">' + escHtml(g.uf || 'UF não informada') + '</span>' +
+            '<span class="val">' + escHtml(g.cidades.join(' · ')) + '</span></span>';
+        }).join('') + '</div>');
     }
 
     var actions = '<div class="tm-d-actions">';
