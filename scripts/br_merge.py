@@ -120,8 +120,19 @@ def card_js(c: dict) -> str:
     ]
     corpo = "".join(f"    {k}: {v},\n" for k, v in campos)
     # Rastro para a revisão: fica no diff do PR e sai quando o revisor aprovar.
-    marca = (f"    // ⚠ RASCUNHO — confiança {c.get('confianca', '?')}. "
-             f"{c.get('notas_revisor', '').replace(chr(10), ' ')[:150]}\n")
+    # A nota é quebrada em linhas, não truncada. Cortar em 150 caracteres
+    # decepava a nota no meio da palavra e, pior, jogava fora justamente o
+    # trecho acionável — o "CONFERIR tal coisa" costuma vir no fim.
+    nota = " ".join(c.get("notas_revisor", "").split())
+    marca = ""
+    linha = f"    // ⚠ RASCUNHO — confiança {c.get('confianca', '?')}."
+    for palavra in nota.split(" "):
+        if len(linha) + len(palavra) + 1 > 100:
+            marca += linha + "\n"
+            linha = "    //   " + palavra
+        else:
+            linha += " " + palavra
+    marca += linha + "\n"
     return "  {\n" + marca + corpo + "  },\n"
 
 
