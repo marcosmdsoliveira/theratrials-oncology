@@ -3643,40 +3643,6 @@ window.THERA_TRIALS_BR = [
     data_atualizacao: '2026-05-19',
   },
 
-  // --- COLORRETAL ---
-  {
-    id: 'beyond-crc',
-    nome: 'Beyond CRC',
-    titulo: 'Estudo observacional em pacientes com câncer colorretal ≤50 anos',
-    nct: '',
-    fase: 'Observacional',
-    status: 'Recrutando',
-    neoplasia: 'colorretal',
-    neoplasia_label: 'Colorretal',
-    subtipo: 'Câncer colorretal em pacientes jovens (≤50 anos)',
-    linha_terapeutica: 'Conforme protocolo',
-    cenario_clinico: 'Pacientes com CCR ≤50 anos',
-    modalidade: [],
-    biomarcadores: [],
-    testes_fornecidos: '',
-    intervencao: 'Análise de sangue + fezes + tecido (observacional)',
-    comparador: '',
-    racional: 'Estudo observacional para análise de sangue, fezes e tecido em pacientes com câncer colorretal com idade ≤50 anos, antes do tratamento sistêmico ou cirurgia, ou até 3 meses após controle de doença.',
-    criterios_principais: [
-      'CCR com idade ≤50 anos',
-      'Antes de tratamento sistêmico ou cirurgia',
-      'Ou até 3 meses após controle de doença',
-    ],
-    criterios_exclusao: [],
-    centros: ['Rio de Janeiro / RJ', 'Belo Horizonte / MG'],
-    estados: ['RJ', 'MG'],
-    cidades: ['Rio de Janeiro', 'Belo Horizonte'],
-    patrocinador: 'Oncoclinicas',
-    fonte_url: '',
-    contato_url: '',
-    data_atualizacao: '2026-05-19',
-  },
-
   // --- VIAS BILIARES ---
   {
     id: 's095031-210',
