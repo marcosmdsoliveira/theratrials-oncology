@@ -6625,8 +6625,8 @@ window.THERA_TRIALS_BR = [
   {
     // ⚠ RASCUNHO — confiança media. Bayer, fase 1/2, 400 participantes, 3 centros no Brasil (Natal, São José do Rio Preto, São Paulo). O texto recebido é o resumo em linguagem leiga e te
     id: 'sevabertinibe-bay-2927088',
-    nome: 'Sevabertinibe',
-    titulo: 'Sevabertinibe, primeiro em humanos, em NSCLC avançado com mutação de EGFR e/ou HER2',
+    nome: 'Sevabertinibe para NSCLC com mutação de EGFR ou HER2',
+    titulo: 'Estudo primeiro em humanos, com escalonamento de dose, backfill, expansão e extensão',
     nct: 'NCT05099172',
     fase: 'Ib/II',
     status: 'Recrutando',
@@ -6807,8 +6807,8 @@ window.THERA_TRIALS_BR = [
   {
     // ⚠ RASCUNHO — confiança media. Bristol-Myers Squibb, fase 2, 160 participantes, 4 centros no Brasil em 3 estados. Estudo sem acrônimo no registro; o nome do card foi construído a pa
     id: 'imzokitugue-pumitamibe',
-    nome: 'Imzokitugue + pumitamibe',
-    titulo: 'Imzokitugue com pumitamibe e dupla de platina vs pumitamibe e dupla de platina em 1ª linha de NSCLC avançado',
+    nome: 'Imzokitugue + pumitamibe para NSCLC avançado de 1ª linha',
+    titulo: 'Acréscimo do imzokitugue ao esquema de pumitamibe com dupla de platina, em quatro braços',
     nct: 'NCT07680764',
     fase: 'II',
     status: 'Recrutando',
@@ -7015,8 +7015,8 @@ window.THERA_TRIALS_BR = [
   {
     // ⚠ RASCUNHO — confiança media. Pfizer, fase 1a/1b, 124 participantes, 4 centros no Brasil em 3 estados. Classificado como tumores sólidos por recrutar melanoma, glioma, tireoide e N
     id: 'pf-07799544-braf-v600',
-    nome: 'PF-07799544 + PF-07799933',
-    titulo: 'PF-07799544 com PF-07799933 em tumores sólidos avançados com mutação BRAF V600',
+    nome: 'PF-07799544 + PF-07799933 para tumores sólidos BRAF V600 mutado',
+    titulo: 'Estudo mestre aberto: fase 1a de monoterapia (encerrada para inclusão) e fase 1b da combinação oral',
     nct: 'NCT05538130',
     fase: 'I',
     status: 'Recrutando',
@@ -7289,8 +7289,8 @@ window.THERA_TRIALS_BR = [
   {
     // ⚠ RASCUNHO — confiança media. BeOne Medicines, fase 1, 392 participantes, 4 centros no Brasil em 3 estados. Classificado como tumores sólidos por recrutar hepatocarcinoma, gástrico
     id: 'bgb-b2033-gpc3',
-    nome: 'BGB-B2033 + tislelizumabe',
-    titulo: 'BGB-B2033 isolado ou com tislelizumabe, com ou sem bevacizumabe, em tumores sólidos avançados selecionados',
+    nome: 'BGB-B2033 para tumores sólidos GPC3-positivos ou produtores de AFP',
+    titulo: 'Primeiro em humanos, isolado ou com tislelizumabe, com ou sem bevacizumabe, em escalonamento e expansão de dose',
     nct: 'NCT06427941',
     fase: 'I',
     status: 'Recrutando',
@@ -7637,8 +7637,8 @@ window.THERA_TRIALS_BR = [
   {
     // ⚠ RASCUNHO — confiança media. BioNTech, fase 2/3, 1260 participantes, apenas 1 centro no Brasil (São José do Vale do Rio Preto/RJ). ACHADO ÚTIL PARA A REVISÃO: este registro identi
     id: 'bnt327-lung-protocolo-mestre',
-    nome: 'Pumitamibe + dupla de platina',
-    titulo: 'Pumitamibe (BNT327) com quimioterapia vs pembrolizumabe com quimioterapia em 1ª linha de NSCLC, em dois subestudos por histologia',
+    nome: 'Pumitamibe para NSCLC avançado de 1ª linha',
+    titulo: 'Protocolo mestre vs pembrolizumabe, ambos com quimioterapia, em dois subestudos separados por histologia',
     nct: 'NCT06712316',
     fase: 'II/III',
     status: 'Recrutando',
@@ -7906,8 +7906,8 @@ window.THERA_TRIALS_BR = [
   {
     // ⚠ RASCUNHO — confiança media. AbbVie, fase 2, 150 participantes, 7 centros no Brasil em 7 estados. O registro alerta que a carga de tratamento pode ser maior que a do padrão de cui
     id: 'telisotuzumabe-vedotina-c-met',
-    nome: 'Telisotuzumabe vedotina',
-    titulo: 'Três esquemas de dose de telisotuzumabe vedotina em NSCLC não-escamoso c-Met superexpresso, EGFR selvagem, já tratado',
+    nome: 'Telisotuzumabe vedotina para NSCLC c-Met superexpresso',
+    titulo: 'Três esquemas de dose comparados entre si, com randomização 1:1:1, em doença não-escamosa já tratada e EGFR selvagem',
     nct: 'NCT06568939',
     fase: 'II',
     status: 'Recrutando',
@@ -7966,8 +7966,8 @@ window.THERA_TRIALS_BR = [
   {
     // ⚠ RASCUNHO — confiança alta. Estudo acadêmico brasileiro conduzido por investigadora individual (Aline Fusco Fares, MD), fase 2, braço único, 33 participantes, centro único em São
     id: 'nivolumabe-em-baixa-dose-neoadjuvante',
-    nome: 'Nivolumabe 0,3 mg/kg + dupla de platina',
-    titulo: 'Nivolumabe 0,3 mg/kg com dupla de platina como neoadjuvante em NSCLC ressecável estádio IB–IIIA',
+    nome: 'Nivolumabe em baixa dose para NSCLC ressecável IB–IIIA',
+    titulo: 'Neoadjuvância com nivolumabe 0,3 mg/kg e dupla de platina por 3 ciclos, em braço único, com resposta patológica como desfecho',
     nct: 'NCT06667154',
     fase: 'II',
     status: 'Recrutando',
