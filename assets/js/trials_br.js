@@ -11,7 +11,7 @@ window.THERA_TRIALS_BR = [
     id: 'sunray-02',
     nome: 'SUNRAY-02',
     titulo: 'Olomorasibe + Pembrolizumabe (ressecado II–IIIB) ou + Durvalumabe (irressecável estágio III) em NSCLC KRAS G12C',
-    nct: 'NCT06119581',
+    nct: 'NCT06890598',
     fase: 'III',
     status: 'Recrutando',
     neoplasia: 'pulmao',
@@ -40,31 +40,21 @@ window.THERA_TRIALS_BR = [
     ],
     centros: [
       'Barretos / SP',
+      'Belo Horizonte / MG',
+      'Belém / PA',
       'Bento Gonçalves / RS',
-      'Bequimão / MA',
-      'Brasília / DF',
-      'Curitiba / PR',
+      'Campinas / SP',
       'Fortaleza / CE',
-      'Ijuí / RS',
       'Londrina / PR',
       'Natal / RN',
       'Porto Alegre / RS',
-      'Pouso Alegre / MG',
       'Rio de Janeiro / RJ',
-      'Salvador / BA',
-      'Santo André / SP',
-      'São José do Rio Preto / SP',
-      'São José dos Campos / SP',
       'São Paulo / SP',
-      'Vitória / ES',
     ],
     estados: [
-      'BA',
       'CE',
-      'DF',
-      'ES',
-      'MA',
       'MG',
+      'PA',
       'PR',
       'RJ',
       'RN',
@@ -73,27 +63,20 @@ window.THERA_TRIALS_BR = [
     ],
     cidades: [
       'Barretos',
+      'Belo Horizonte',
+      'Belém',
       'Bento Gonçalves',
-      'Bequimão',
-      'Brasília',
-      'Curitiba',
+      'Campinas',
       'Fortaleza',
-      'Ijuí',
       'Londrina',
       'Natal',
       'Porto Alegre',
-      'Pouso Alegre',
       'Rio de Janeiro',
-      'Salvador',
-      'Santo André',
-      'São José do Rio Preto',
-      'São José dos Campos',
       'São Paulo',
-      'Vitória',
     ],
     patrocinador: 'Eli Lilly',
-    fonte_url: 'https://clinicaltrials.gov/study/NCT06119581',
-    contato_url: 'https://clinicaltrials.gov/study/NCT06119581',
+    fonte_url: 'https://clinicaltrials.gov/study/NCT06890598',
+    contato_url: 'https://clinicaltrials.gov/study/NCT06890598',
     data_atualizacao: '2026-05-01',
   },
 
@@ -891,56 +874,6 @@ window.THERA_TRIALS_BR = [
   },
 
   // ============== LINFOMA ==============
-  {
-    id: 'nct06191744',
-    nome: 'Epcoritamab-R2',
-    titulo: 'Epcoritamab SC + rituximabe + lenalidomida (R2) em linfoma folicular não tratado',
-    nct: 'NCT06191744',
-    fase: 'III',
-    status: 'Recrutando',
-    neoplasia: 'linfoma',
-    neoplasia_label: 'Linfoma',
-    subtipo: 'Linfoma folicular (grau 1-3a) não tratado préviamente',
-    linha_terapeutica: '1ª linha',
-    cenario_clinico: '1ª linha',
-    modalidade: ["bispecífico", "combinação", "quimioterapia"],
-        biomarcadores: ['CD20'],
-    testes_fornecidos: 'Conforme protocolo do estudo',
-    intervencao: 'Epcoritamab + Prednisone + Rituximab + Lenalidomide',
-    comparador: 'R-CHOP ou R-lenalidomida (padrao)',
-    racional: 'Estudo fase III avaliando epcoritamab (bispecifico anti-CD20/CD3 subcutâneo) em combinação com rituximabe + lenalidomida (R2) em linfoma folicular 1ª linha. Bispecifico anti-CD20 pode permitir tratamento livre de quimioterapia em LF.',
-    criterios_principais: [],
-    criterios_exclusao: [],
-    centros: [
-      'Belo Horizonte / MG',
-      'Brasília / DF',
-      'Curitiba / PR',
-      'Jaú / SP',
-      'Ribeirão Preto / SP',
-      'Rio de Janeiro / RJ',
-      'São Paulo / SP',
-    ],
-    estados: [
-      'DF',
-      'MG',
-      'PR',
-      'RJ',
-      'SP',
-    ],
-    cidades: [
-      'Belo Horizonte',
-      'Brasília',
-      'Curitiba',
-      'Jaú',
-      'Ribeirão Preto',
-      'Rio de Janeiro',
-      'São Paulo',
-    ],
-    patrocinador: 'Genmab',
-    fonte_url: 'https://clinicaltrials.gov/study/NCT06191744',
-    contato_url: 'https://clinicaltrials.gov/study/NCT06191744',
-    data_atualizacao: '2026-05-19',
-  },
   {
     id: 'nct06084936',
     nome: 'Glofitamab MCL',
@@ -1838,61 +1771,6 @@ window.THERA_TRIALS_BR = [
     patrocinador: 'Pfizer',
     fonte_url: 'https://clinicaltrials.gov/study/NCT06629779',
     contato_url: 'https://clinicaltrials.gov/study/NCT06629779',
-    data_atualizacao: '2026-05-19',
-  },
-  {
-    id: 'nct06952803',
-    nome: 'Saruparib Prostata',
-    titulo: 'Saruparib + RT/ADT padrao vs placebo + RT/ADT em cancer de prostata de alto risco com mutação BRCA',
-    nct: 'NCT06952803',
-    fase: 'III',
-    status: 'Recrutando',
-    neoplasia: 'prostata',
-    neoplasia_label: 'Próstata',
-    subtipo: 'Cancer de prostata localizado de alto risco com mutação BRCA1/2',
-    linha_terapeutica: 'Perioperatório',
-    cenario_clinico: 'Perioperatório',
-    modalidade: ["terapia-alvo"],
-        biomarcadores: ['BRCA', 'HRD', 'AR'],
-    testes_fornecidos: 'Conforme protocolo do estudo',
-    intervencao: 'Saruparib + Abiraterone + Prednisolone/Prednisone + Androgen Deprivation Therapy (ADT)',
-    comparador: 'Placebo + radioterapia + privacao androgênica (ADT)',
-    racional: 'Estudo fase III avaliando saruparib (PARPi seletivo PARP1) adicionado a RT + ADT padrao em cancer de prostata de alto risco com mutação BRCA. PARPi em estádio precoce pode prevenir metástases em tumores com deficiência de reparo homólogo.',
-    criterios_principais: [],
-    criterios_exclusao: [],
-    centros: [
-      'Cachoeiro de Itapemirim / ES',
-      'Curitiba / PR',
-      'Jaú / SP',
-      'Londrina / PR',
-      'Pelotas / RS',
-      'Porto Alegre / RS',
-      'Rio de Janeiro / RJ',
-      'Salvador / BA',
-      'São Paulo / SP',
-    ],
-    estados: [
-      'BA',
-      'ES',
-      'PR',
-      'RJ',
-      'RS',
-      'SP',
-    ],
-    cidades: [
-      'Cachoeiro de Itapemirim',
-      'Curitiba',
-      'Jaú',
-      'Londrina',
-      'Pelotas',
-      'Porto Alegre',
-      'Rio de Janeiro',
-      'Salvador',
-      'São Paulo',
-    ],
-    patrocinador: 'AstraZeneca',
-    fonte_url: 'https://clinicaltrials.gov/study/NCT06952803',
-    contato_url: 'https://clinicaltrials.gov/study/NCT06952803',
     data_atualizacao: '2026-05-19',
   },
   {
@@ -3177,38 +3055,6 @@ window.THERA_TRIALS_BR = [
 
   // --- CABEÇA E PESCOÇO ---
   {
-    id: 'brava-penile',
-    nome: 'BRAVA-Penile',
-    titulo: 'Cemiplimabe manutenção vs melhor cuidado de suporte após QT 1L baseada em platina em câncer de pênis avançado/recorrente',
-    nct: 'NCT07101822',
-    fase: 'II',
-    status: 'Ainda não recrutando',
-    neoplasia: 'penis',
-    neoplasia_label: 'Pênis',
-    subtipo: 'CCE de pênis avançado ou recorrente',
-    linha_terapeutica: 'Manutenção',
-    cenario_clinico: 'Avançado/recorrente pós-QT 1L baseada em platina',
-    modalidade: ['imunoterapia'],
-    biomarcadores: [],
-    testes_fornecidos: '',
-    intervencao: 'Cemiplimabe (manutenção)',
-    comparador: 'Melhor cuidado de suporte (BSC)',
-    racional: 'Estudo fase II randomizado avaliando cemiplimabe como terapia de manutenção comparado ao melhor cuidado de suporte em pacientes com câncer de pênis avançado ou recorrente após quimioterapia de primeira linha baseada em platina.',
-    criterios_principais: [
-      'CCE de pênis EC III ou IV ou doença recidivada',
-      'QT de 1ª linha baseada em platina (4-6 ciclos)',
-      'Doença mensurável',
-    ],
-    criterios_exclusao: [],
-    centros: ['São Paulo / SP'],
-    estados: ['SP'],
-    cidades: ['São Paulo'],
-    patrocinador: 'Regeneron / Hospital Albert Einstein',
-    fonte_url: 'https://clinicaltrials.gov/study/NCT07101822',
-    contato_url: 'https://clinicaltrials.gov/study/NCT07101822',
-    data_atualizacao: '2026-05-19',
-  },
-  {
     id: 'evolve-hnscc',
     nome: 'eVOLVE-HNSCC',
     titulo: 'Volrustomig como observação pós quimiorradioterapia em CEC de cabeça e pescoço localmente avançado',
@@ -3972,7 +3818,7 @@ window.THERA_TRIALS_BR = [
   },
   {
     id: 'm22-003',
-    nome: 'M22-003',
+    nome: 'EPCORE FL-2',
     titulo: 'Epcoritamabe + R2 vs imuno-QT em linfoma folicular 1L com indicação de tratamento',
     nct: 'NCT06191744',
     fase: 'III',
@@ -4032,7 +3878,9 @@ window.THERA_TRIALS_BR = [
   // ============== NOVOS ESTUDOS (2026-08-03) — RASCUNHO, revisar antes de publicar ==============
 
   {
-    // ⚠ RASCUNHO — confiança alta. Estudo brasileiro (Hospital do Coração), 2 centros em São Paulo, 750 pacientes previstos. Conferir se a linha 'Conforme protocolo' é adequada — não há
+    // ⚠ RASCUNHO — confiança alta. Estudo brasileiro (Hospital do Coração), 2 centros em São Paulo,
+    //   750 pacientes previstos. Conferir se a linha 'Conforme protocolo' é adequada — não há linha
+    //   sistêmica envolvida, é tratamento local definitivo de doença inicial.
     id: 'crystal-six',
     nome: 'CRYSTAL-SIX',
     titulo: 'Crioablação versus cirurgia no tratamento local do câncer de mama inicial',
@@ -4075,7 +3923,10 @@ window.THERA_TRIALS_BR = [
   },
 
   {
-    // ⚠ RASCUNHO — confiança media. O texto de elegibilidade veio truncado no registro consultado — os critérios acima derivam do resumo oficial e do desenho dos braços. CONFERIR a lista
+    // ⚠ RASCUNHO — confiança media. O texto de elegibilidade veio truncado no registro consultado —
+    //   os critérios acima derivam do resumo oficial e do desenho dos braços. CONFERIR a lista
+    //   completa de inclusão/exclusão no ClinicalTrials.gov antes de publicar. 5 centros (Ijuí,
+    //   Lages, Porto Alegre, São Paulo, Vitória).
     id: 'pf-07248144-fulvestranto-fase-3',
     nome: 'PF-07248144 + fulvestranto (fase 3)',
     titulo: 'Inibidor de KAT6 (PF-07248144) + fulvestranto versus escolha do investigador em mama HR+/HER2− após CDK4/6',
@@ -4122,7 +3973,9 @@ window.THERA_TRIALS_BR = [
   },
 
   {
-    // ⚠ RASCUNHO — confiança alta. Critérios de exclusão transcritos do ClinicalTrials.gov pelo autor e resumidos em 2026-08-04. Apenas 2 centros no Brasil.
+    // ⚠ RASCUNHO — confiança media. Texto de elegibilidade truncado no registro consultado —
+    //   critérios de exclusão não puderam ser extraídos. CONFERIR no ClinicalTrials.gov. Apenas 2
+    //   centros no Brasil (Lages e São Caetano do Sul). Fase 1b/2: a fase foi mapeada como 'Ib/II'.
     id: 'disitamab-vedotina-fase-1b-2',
     nome: 'Disitamab vedotina (fase 1b/2)',
     titulo: 'Disitamab vedotina em monoterapia em câncer de mama avançado com expressão de HER2 (HER2+, HER2-low e HER2-ultralow)',
@@ -4165,7 +4018,9 @@ window.THERA_TRIALS_BR = [
   },
 
   {
-    // ⚠ RASCUNHO — confiança alta. Estudo brasileiro (Instituto D'Or), 5 centros, 40 pacientes. Conferir se 'TNBC' é o rótulo de biomarcador desejado ou se convém registrar 'TILs' — a e
+    // ⚠ RASCUNHO — confiança alta. Estudo brasileiro (Instituto D'Or), 5 centros, 40 pacientes.
+    //   Conferir se 'TNBC' é o rótulo de biomarcador desejado ou se convém registrar 'TILs' — a
+    //   estratificação por TILs é o eixo do desenho e hoje não há entrada correspondente no META.
     id: 'despatil',
     nome: 'DespaTIL',
     titulo: 'Desescalonamento de quimioterapia neoadjuvante guiado por TILs e resposta radiológica em TNBC estágio I-II',
@@ -4222,7 +4077,9 @@ window.THERA_TRIALS_BR = [
   },
 
   {
-    // ⚠ RASCUNHO — confiança alta. Ampla presença nacional — 14 centros em 10 estados. Homens e mulheres pré, peri ou pós-menopausa são elegíveis; pré/perimenopausadas e homens precisam
+    // ⚠ RASCUNHO — confiança alta. Ampla presença nacional — 14 centros em 10 estados. Homens e
+    //   mulheres pré, peri ou pós-menopausa são elegíveis; pré/perimenopausadas e homens precisam
+    //   aceitar agonista de GnRH.
     id: 'opera-01',
     nome: 'OPERA-01',
     titulo: 'Palazestranto (OP-1250) em monoterapia versus terapia endócrina padrão em mama ER+/HER2− avançada após CDK4/6',
@@ -4299,7 +4156,9 @@ window.THERA_TRIALS_BR = [
   },
 
   {
-    // ⚠ RASCUNHO — confiança alta. O maior lote do grupo: 30 centros em 12 estados, 4.220 pacientes previstos. Classifiquei como 'Perioperatório' por ser adjuvância estendida — avaliar 
+    // ⚠ RASCUNHO — confiança alta. O maior lote do grupo: 30 centros em 12 estados, 4.220 pacientes
+    //   previstos. Classifiquei como 'Perioperatório' por ser adjuvância estendida — avaliar se
+    //   'Manutenção' descreve melhor no vocabulário do Trial Matcher.
     id: 'elegant',
     nome: 'ELEGANT',
     titulo: 'Elacestranto versus terapia endócrina padrão em mama inicial ER+/HER2− linfonodo-positiva de alto risco',
@@ -4402,7 +4261,10 @@ window.THERA_TRIALS_BR = [
   // ============== NOVOS ESTUDOS (2026-08-03) — RASCUNHO, revisar antes de publicar ==============
 
   {
-    // ⚠ RASCUNHO — confiança alta. Desenho em duas partes: fase 2 aberta de otimização de dose e fase 3 duplo-cega contra placebo. 16 centros no Brasil, incluindo Bequimão (MA) e Mossor
+    // ⚠ RASCUNHO — confiança alta. Desenho em duas partes: fase 2 aberta de otimização de dose e
+    //   fase 3 duplo-cega contra placebo. 16 centros no Brasil, incluindo Bequimão (MA) e Mossoró
+    //   (RN) — cobertura fora do eixo Sul-Sudeste. Texto de elegibilidade truncado no registro
+    //   consultado; os critérios de exclusão não puderam ser extraídos.
     id: 'pikalo-2',
     nome: 'PIKALO-2',
     titulo: 'Tersolisibe (LY4064809) + inibidor de CDK4/6 + terapia endócrina em 1ª linha de mama HR+/HER2− com PIK3CA mutado',
@@ -4473,7 +4335,9 @@ window.THERA_TRIALS_BR = [
   },
 
   {
-    // ⚠ RASCUNHO — confiança alta. Três braços, aberto. 10 centros no Brasil, incluindo Teresina (PI) e Recife (PE). O PD-L1 é testado centralmente pelo patrocinador — vale destacar iss
+    // ⚠ RASCUNHO — confiança alta. Três braços, aberto. 10 centros no Brasil, incluindo Teresina
+    //   (PI) e Recife (PE). O PD-L1 é testado centralmente pelo patrocinador — vale destacar isso
+    //   no card, é um facilitador prático de encaminhamento.
     id: 'tropion-breast05',
     nome: 'TROPION-Breast05',
     titulo: 'Dato-DXd ± durvalumabe versus quimioterapia + pembrolizumabe em 1ª linha de TNBC PD-L1 positivo',
@@ -4538,7 +4402,9 @@ window.THERA_TRIALS_BR = [
   },
 
   {
-    // ⚠ RASCUNHO — confiança alta. Critério de elegibilidade molecular pouco usual — exige a AUSÊNCIA de mutação de PIK3CA junto com a perda de 8p. Vale destacar no card para não ser co
+    // ⚠ RASCUNHO — confiança alta. Critério de elegibilidade molecular pouco usual — exige a
+    //   AUSÊNCIA de mutação de PIK3CA junto com a perda de 8p. Vale destacar no card para não ser
+    //   confundido com os estudos de PIK3CA mutado. Fase II, 80 pacientes, 4 centros.
     id: 'inavolisibe-ribociclibe-chr8p-loss',
     nome: 'Inavolisibe + ribociclibe (chr8p loss)',
     titulo: 'Inavolisibe + ribociclibe + fulvestranto em mama HR+/HER2− resistente a endócrino, com perda de 8p e PIK3CA selvagem',
@@ -4575,7 +4441,10 @@ window.THERA_TRIALS_BR = [
   },
 
   {
-    // ⚠ RASCUNHO — confiança media. Estudo cesta: mama HR+/HER2− é o foco das coortes de expansão, mas o escalonamento aceita outros tumores sólidos e NSCLC. Classifiquei como mama por s
+    // ⚠ RASCUNHO — confiança media. Estudo cesta: mama HR+/HER2− é o foco das coortes de expansão,
+    //   mas o escalonamento aceita outros tumores sólidos e NSCLC. Classifiquei como mama por ser a
+    //   população predominante — AVALIAR se convém, ou se cabe melhor como estudo de fase 1
+    //   multi-tumor. 11 centros, incluindo Petrópolis (RJ) e Natal (RN).
     id: 'bgb-43395-fase-1a-1b',
     nome: 'BGB-43395 (fase 1a/1b)',
     titulo: 'BGB-43395, inibidor seletivo de CDK4, isolado ou combinado a terapia endócrina em mama HR+/HER2− metastática',
@@ -4638,7 +4507,9 @@ window.THERA_TRIALS_BR = [
   },
 
   {
-    // ⚠ RASCUNHO — confiança alta. Estudo brasileiro (Instituto Brasileiro de Controle do Câncer), apenas 36 pacientes e 1 centro em São Paulo. Amostra pequena — conferir se o Trial Mat
+    // ⚠ RASCUNHO — confiança alta. Estudo brasileiro (Instituto Brasileiro de Controle do Câncer),
+    //   apenas 36 pacientes e 1 centro em São Paulo. Amostra pequena — conferir se o Trial Matcher
+    //   quer listar estudos desse porte.
     id: 'hyphen',
     nome: 'HYPHEN',
     titulo: 'Radioterapia ultra-hipofracionada (26 Gy/5 frações) versus moderada com irradiação nodal regional em mama',
@@ -4685,7 +4556,8 @@ window.THERA_TRIALS_BR = [
   // ============== NOVOS ESTUDOS (2026-08-03) — RASCUNHO, revisar antes de publicar ==============
 
   {
-    // ⚠ RASCUNHO — confiança alta. Latin American Cooperative Oncology Group, 444 pacientes, 18 centros em 9 estados — a maior capilaridade deste lote. Só mulheres.
+    // ⚠ RASCUNHO — confiança alta. Latin American Cooperative Oncology Group, 444 pacientes, 18
+    //   centros em 9 estados — a maior capilaridade deste lote. Só mulheres.
     id: 'neosamba',
     nome: 'NEOSAMBA',
     titulo: 'Ordem de antraciclina e taxano na quimioterapia neoadjuvante do câncer de mama HER2-negativo localmente avançado',
@@ -4763,7 +4635,10 @@ window.THERA_TRIALS_BR = [
   },
 
   {
-    // ⚠ RASCUNHO — confiança media. Texto de elegibilidade truncado no registro consultado — o resumo menciona 'critérios rigorosos baseados em comorbidades específicas' que não puderam 
+    // ⚠ RASCUNHO — confiança media. Texto de elegibilidade truncado no registro consultado — o
+    //   resumo menciona 'critérios rigorosos baseados em comorbidades específicas' que não puderam
+    //   ser extraídos. CONFERIR no ClinicalTrials.gov. Patrocínio MedSIR (acadêmico espanhol), 240
+    //   pacientes, 5 centros incluindo Bento Gonçalves (RS).
     id: 'adela',
     nome: 'ADELA',
     titulo: 'Elacestranto + everolimo versus elacestranto isolado em mama ER+/HER2− com ESR1 mutado após CDK4/6',
@@ -4810,7 +4685,9 @@ window.THERA_TRIALS_BR = [
   },
 
   {
-    // ⚠ RASCUNHO — confiança alta. Complementar ao TROPION-Breast05 deste mesmo lote de curadoria, que exige CPS ≥10 — juntos cobrem o espectro do TNBC de primeira linha. Vale um link c
+    // ⚠ RASCUNHO — confiança alta. Complementar ao TROPION-Breast05 deste mesmo lote de curadoria,
+    //   que exige CPS ≥10 — juntos cobrem o espectro do TNBC de primeira linha. Vale um link
+    //   cruzado entre os dois cards. 1.000 pacientes, 6 centros.
     id: 'trofuse-011',
     nome: 'TroFuse-011',
     titulo: 'Sacituzumabe tirumotecana isolada ou com pembrolizumabe versus quimioterapia em 1ª linha de TNBC com PD-L1 CPS <10',
@@ -4859,7 +4736,9 @@ window.THERA_TRIALS_BR = [
   },
 
   {
-    // ⚠ RASCUNHO — confiança alta. Aceitar mama ER-low (1-10%) é incomum e amplia a população elegível além do TNBC clássico — vale destacar no card. BioNTech, 558 pacientes, 5 centros 
+    // ⚠ RASCUNHO — confiança alta. Aceitar mama ER-low (1-10%) é incomum e amplia a população
+    //   elegível além do TNBC clássico — vale destacar no card. BioNTech, 558 pacientes, 5 centros
+    //   incluindo Pelotas (RS).
     id: 'rosetta-breast-01',
     nome: 'ROSETTA Breast-01',
     titulo: 'Pumitamig (bispecífico PD-L1/VEGF) + quimioterapia versus placebo + quimioterapia em TNBC PD-L1 negativo, 1ª linha',
@@ -4911,7 +4790,10 @@ window.THERA_TRIALS_BR = [
   },
 
   {
-    // ⚠ RASCUNHO — confiança alta. Hospital de Câncer de Barretos, 120 pacientes, centro único. Desfecho é toxicidade da reconstrução, não controle oncológico — mas a intervenção é radi
+    // ⚠ RASCUNHO — confiança alta. Hospital de Câncer de Barretos, 120 pacientes, centro único.
+    //   Desfecho é toxicidade da reconstrução, não controle oncológico — mas a intervenção é
+    //   radioterapia adjuvante, tratamento antineoplásico, então mantive. Se o critério for
+    //   'desfecho oncológico primário', reavaliar.
     id: 'promart',
     nome: 'PROMART',
     titulo: 'Radioterapia hipofracionada (40 Gy/15 frações) pós-mastectomia com reconstrução imediata por prótese',
@@ -4952,7 +4834,9 @@ window.THERA_TRIALS_BR = [
   },
 
   {
-    // ⚠ RASCUNHO — confiança alta. 1.200 pacientes, 6 centros — inclui Santa Cruz do Sul (RS) e Teresina (PI). Confirmação central de HR/HER2 é exigida; considerar destacar como facilit
+    // ⚠ RASCUNHO — confiança alta. 1.200 pacientes, 6 centros — inclui Santa Cruz do Sul (RS) e
+    //   Teresina (PI). Confirmação central de HR/HER2 é exigida; considerar destacar como
+    //   facilitador de encaminhamento.
     id: 'mk-2870-010',
     nome: 'MK-2870-010',
     titulo: 'Sacituzumabe tirumotecana isolada ou com pembrolizumabe versus escolha do médico em mama HR+/HER2− avançada',
@@ -4999,7 +4883,10 @@ window.THERA_TRIALS_BR = [
   },
 
   {
-    // ⚠ RASCUNHO — confiança alta. É dos poucos estudos do lote na fase de manutenção — o paciente entra depois da indução, não no diagnóstico. Isso muda o momento do encaminhamento e v
+    // ⚠ RASCUNHO — confiança alta. É dos poucos estudos do lote na fase de manutenção — o paciente
+    //   entra depois da indução, não no diagnóstico. Isso muda o momento do encaminhamento e vale
+    //   deixar claro no card. Terapia endócrina opcional é permitida a critério do investigador. 11
+    //   centros, incluindo Porto Velho (RO).
     id: 'inavo122',
     nome: 'INAVO122',
     titulo: 'Inavolisibe + Phesgo como manutenção após indução de 1ª linha em mama HER2+ com PIK3CA mutado',
@@ -5064,7 +4951,10 @@ window.THERA_TRIALS_BR = [
   },
 
   {
-    // ⚠ RASCUNHO — confiança media. O registro não informa a classe farmacológica do GDC-4198 — deixei o racional sem afirmar mecanismo, para não inventar. CONFERIR em fonte do patrocina
+    // ⚠ RASCUNHO — confiança media. O registro não informa a classe farmacológica do GDC-4198 —
+    //   deixei o racional sem afirmar mecanismo, para não inventar. CONFERIR em fonte do
+    //   patrocinador (Genentech) antes de publicar; se a classe for conhecida, o racional melhora
+    //   bastante. Texto de elegibilidade truncado. Fase Ib/II, 285 pacientes, 5 centros.
     id: 'moonrose',
     nome: 'MoonROSE',
     titulo: 'GDC-4198 isolado ou com giredestranto versus abemaciclibe + giredestranto em mama ER+/HER2− após CDK4/6',
@@ -5102,7 +4992,10 @@ window.THERA_TRIALS_BR = [
   // ============== NOVOS ESTUDOS (2026-08-03) — RASCUNHO, revisar antes de publicar ==============
 
   {
-    // ⚠ RASCUNHO — confiança alta. Estudo acadêmico do AC Camargo, fase II, 80 participantes, centro único em São Paulo. O registro descreve desenho fatorial com duas coortes definidas 
+    // ⚠ RASCUNHO — confiança alta. Estudo acadêmico do AC Camargo, fase II, 80 participantes,
+    //   centro único em São Paulo. O registro descreve desenho fatorial com duas coortes definidas
+    //   pelo status HER2 das CTCs. Não há informação sobre duração do tratamento adjuvante nem
+    //   sobre o desfecho primário no registro fornecido.
     id: 'her2cell',
     nome: 'HER2Cell',
     titulo: 'Desescalonamento adjuvante guiado por células tumorais circulantes em mama HER2+ inicial com resposta patológica completa',
@@ -5143,7 +5036,11 @@ window.THERA_TRIALS_BR = [
   },
 
   {
-    // ⚠ RASCUNHO — confiança alta. Fase 2 multi-institucional coordenada pelo University Health Network (Toronto), com um centro no Brasil (São Paulo). Registro sem número de fase forma
+    // ⚠ RASCUNHO — confiança alta. Fase 2 multi-institucional coordenada pelo University Health
+    //   Network (Toronto), com um centro no Brasil (São Paulo). Registro sem número de fase formal
+    //   (NA) por ser estudo de radioterapia; classificado como fase II conforme o título oficial.
+    //   Linha terapêutica marcada como perioperatório por se tratar de radioterapia adjuvante após
+    //   cirurgia conservadora — o cenário de fundo é recidiva local, descrito em cenario_clinico.
     id: 'preserve',
     nome: 'PRESERVE',
     titulo: 'Reirradiação parcial de mama ultra-hipofracionada (26 Gy em 5 frações) após cirurgia conservadora por recidiva em mama previamente irradiada',
@@ -5189,7 +5086,10 @@ window.THERA_TRIALS_BR = [
   },
 
   {
-    // ⚠ RASCUNHO — confiança alta. Roche, fase III, 450 participantes, 13 centros no Brasil em 11 estados. O registro não especifica qual inibidor de CDK4/6 será usado — fica a critério
+    // ⚠ RASCUNHO — confiança alta. Roche, fase III, 450 participantes, 13 centros no Brasil em 11
+    //   estados. O registro não especifica qual inibidor de CDK4/6 será usado — fica a critério do
+    //   investigador entre os agentes com esquema de 21 ou 28 dias. Exclusão de diabetes é
+    //   relevante na prática e foi mantida na lista.
     id: 'inavo123',
     nome: 'INAVO123',
     titulo: 'Inavolisibe + inibidor de CDK4/6 + letrozol vs placebo + iCDK4/6 + letrozol em mama avançada HR+/HER2- PIK3CA-mutada sensível à endocrinoterapia',
@@ -5274,7 +5174,12 @@ window.THERA_TRIALS_BR = [
   },
 
   {
-    // ⚠ RASCUNHO — confiança alta. Roche, fase III, 1050 participantes, 20 centros no Brasil em 12 estados. Critérios de exclusão transcritos do ClinicalTrials.gov pelo autor e resumidos em 2026-08-04; a lacuna que mantinha a confiança em `media` foi fechada.
+    // ⚠ RASCUNHO — confiança media. Roche, fase III, 1050 participantes, 20 centros no Brasil em 12
+    //   estados. O texto de elegibilidade fornecido está truncado no critério de resistência à
+    //   endocrinoterapia — a definição completa e a lista de exclusão não constam do registro
+    //   recebido, por isso criterios_exclusao ficou vazio e a confiança é média. Vale conferir a
+    //   exclusão de quimioterapia prévia para doença avançada e de metástase em SNC no registro
+    //   oficial antes de publicar.
     id: 'pionera-breast-cancer',
     nome: 'pionERA Breast Cancer',
     titulo: 'Giredestranto vs fulvestranto, ambos com inibidor de CDK4/6, em mama avançada RE+/HER2- resistente à endocrinoterapia adjuvante',
@@ -5361,7 +5266,11 @@ window.THERA_TRIALS_BR = [
   },
 
   {
-    // ⚠ RASCUNHO — confiança alta. Celcuity, fase 3, 1180 participantes, 11 centros em 7 estados. Dois estudos paralelos com janelas distintas de intervalo desde o inibidor de CDK4/6 prévio. Critérios de exclusão transcritos do ClinicalTrials.gov pelo autor e resumidos em 2026-08-04; a lacuna que mantinha a confiança em `media` foi fechada.
+    // ⚠ RASCUNHO — confiança media. Celcuity, fase 3, 1180 participantes, 11 centros no Brasil em 7
+    //   estados. O registro descreve dois estudos paralelos (Study 1 e Study 2) com janelas
+    //   diferentes de intervalo desde o inibidor de CDK4/6 prévio; o texto de elegibilidade
+    //   recebido está truncado nesse ponto, então os critérios foram resumidos de forma
+    //   conservadora. Confiança média por isso.
     id: 'viktoria-2',
     nome: 'VIKTORIA-2',
     titulo: 'Gedatolisibe + palbociclibe + endocrinoterapia vs ribociclibe + endocrinoterapia em 1ª linha de mama avançada HR+/HER2-',
@@ -5435,7 +5344,12 @@ window.THERA_TRIALS_BR = [
   },
 
   {
-    // ⚠ RASCUNHO — confiança alta. MSD, fase 3, 1530 participantes, 8 centros em 6 estados. Critérios de exclusão transcritos do ClinicalTrials.gov pelo autor e resumidos em 2026-08-04; a lacuna que mantinha a confiança em `media` foi fechada.
+    // ⚠ RASCUNHO — confiança media. MSD, fase 3, 1530 participantes, 8 centros no Brasil em 6
+    //   estados. O texto de elegibilidade recebido termina nos critérios de contracepção, sem a
+    //   seção de exclusão — por isso criterios_exclusao ficou vazio e a confiança é média. Vale
+    //   conferir no registro oficial as exclusões de doença metastática, toxicidade residual da
+    //   neoadjuvância e doença autoimune antes de publicar. O acrônimo público do estudo pode ser
+    //   TroFuse-012; o registro fornecido traz apenas o código MK-2870-012, que foi o adotado.
     id: 'mk-2870-012',
     nome: 'MK-2870-012',
     titulo: 'Sacituzumabe tirumotecana + pembrolizumabe vs escolha do médico como adjuvante em mama triplo-negativa sem resposta patológica completa',
@@ -5518,7 +5432,12 @@ window.THERA_TRIALS_BR = [
   // ============== NOVOS ESTUDOS (2026-08-03) — RASCUNHO, revisar antes de publicar ==============
 
   {
-    // ⚠ RASCUNHO — confiança alta. MSD, fase 3, 1000 participantes, 6 centros em 5 estados. O registro declara a lista de inclusão como parcial. Critérios de exclusão transcritos do ClinicalTrials.gov pelo autor e resumidos em 2026-08-04; a lacuna que mantinha a confiança em `media` foi fechada.
+    // ⚠ RASCUNHO — confiança media. MSD, fase 3, 1000 participantes, 6 centros no Brasil em 5
+    //   estados. O registro traz a lista de inclusão explicitamente como parcial ('include but are
+    //   not limited to') e o texto recebido está truncado no critério de HIV, sem a seção de
+    //   exclusão — por isso criterios_exclusao ficou vazio e a confiança é média. Vale conferir no
+    //   registro oficial as exclusões de doença pulmonar intersticial (relevante para ADCs com
+    //   deruxtecana) e de metástase em SNC antes de publicar.
     id: 'herthena-breast04',
     nome: 'HERTHENA-Breast04',
     titulo: 'Patritumabe deruxtecana vs escolha do médico em mama avançada HR+/HER2- após inibidor de CDK4/6',
@@ -5591,7 +5510,12 @@ window.THERA_TRIALS_BR = [
   },
 
   {
-    // ⚠ RASCUNHO — confiança media. Bristol-Myers Squibb, fase 2/3 com desenho inferencialmente contínuo, 500 participantes, 11 centros no Brasil em 8 estados. O registro fecha a elegibi
+    // ⚠ RASCUNHO — confiança media. Bristol-Myers Squibb, fase 2/3 com desenho inferencialmente
+    //   contínuo, 500 participantes, 11 centros no Brasil em 8 estados. O registro fecha a
+    //   elegibilidade com 'outros critérios de inclusão/exclusão definidos pelo protocolo' e não
+    //   publica a lista de exclusão — por isso criterios_exclusao ficou vazio. Os braços A1 e A2
+    //   são descritos sem detalhamento de dose no registro; o card diz apenas que são dois braços
+    //   experimentais, sem inventar esquema.
     id: 'izabright-breast01',
     nome: 'IZABRIGHT-Breast01',
     titulo: 'Izalontamabe brengitecana vs quimioterapia de escolha do médico em 1ª linha de mama triplo-negativa ou RE-baixo inelegível a anti-PD-(L)1',
@@ -5666,7 +5590,10 @@ window.THERA_TRIALS_BR = [
   },
 
   {
-    // ⚠ RASCUNHO — confiança alta. Roche, fase II, 60 participantes, 4 centros no Brasil em 4 estados, apenas mulheres. Estudo sem acrônimo no registro; o nome do card foi construído a 
+    // ⚠ RASCUNHO — confiança alta. Roche, fase II, 60 participantes, 4 centros no Brasil em 4
+    //   estados, apenas mulheres. Estudo sem acrônimo no registro; o nome do card foi construído a
+    //   partir do fármaco e do cenário. O braço D é explicitamente não randomizado. O registro não
+    //   informa o desfecho primário no texto recebido.
     id: 'inavolisibe-neoadjuvante',
     nome: 'Inavolisibe neoadjuvante',
     titulo: 'Inavolisibe + ribociclibe + letrozol como neoadjuvante em mama inicial RE+/HER2- PIK3CA-mutada',
@@ -5710,7 +5637,14 @@ window.THERA_TRIALS_BR = [
   },
 
   {
-    // ⚠ RASCUNHO — confiança alta. Novartis, fase IIIb confirmada pelo autor em 2026-08-04 (o CT.gov registra como PHASE3). 1400 participantes, 11 centros em 5 estados, braço único. O protocolo limita a 30% os participantes com endocrinoterapia prévia entre 12 e 36 meses, teto que não se aplica a participantes negras — é limite de recrutamento, não critério individual.
+    // ⚠ RASCUNHO — confiança media. Novartis, fase IIIb (o registro classifica como PHASE3), 1400
+    //   participantes, 11 centros no Brasil em 5 estados. Braço único, sem randomização. O
+    //   protocolo limita a 30% a proporção de participantes com endocrinoterapia prévia entre 12 e
+    //   36 meses, e esse teto não se aplica a participantes negras — é um limite de recrutamento,
+    //   não critério individual, por isso não entrou na lista. Para quem tem endocrinoterapia
+    //   prévia acima de 12 meses, o reestadiamento é fortemente recomendado antes da inclusão. A
+    //   lista de exclusão no registro recebido está resumida em 'key inclusion criteria'; confiança
+    //   média por isso.
     id: 'adjuvant-wider',
     nome: 'Adjuvant WIDER',
     titulo: 'Ribociclibe + endocrinoterapia adjuvante por 36 meses em mama inicial HR+/HER2- de risco elevado',
@@ -5766,7 +5700,13 @@ window.THERA_TRIALS_BR = [
   },
 
   {
-    // ⚠ RASCUNHO — confiança alta. BridgeBio Oncology Therapeutics, fase 1a/1b, 392 participantes, 4 centros no Brasil (Porto Alegre, Sorocaba, São Paulo). Reclassificado de `mama` para `solidos` pelo autor em 2026-08-04: o estudo recruta mama, colorretal e pulmão em coortes distintas, e forçá-lo num sítio só o escondia dos demais. A exigência de linhas prévias difere por coorte, daí `Conforme protocolo`.
+    // ⚠ RASCUNHO — confiança media. BridgeBio Oncology Therapeutics, fase 1a/1b, 392 participantes,
+    //   4 centros no Brasil (Porto Alegre, Sorocaba, São Paulo). Classificado como mama porque 4
+    //   das 5 coortes são de mama, mas o estudo também recruta colorretal e pulmão KRAS-mutados —
+    //   quem procurar por essas neoplasias não encontrará este card, limitação registrada em
+    //   subtipo. O texto de elegibilidade recebido está truncado na coorte de fulvestranto e não
+    //   traz a lista de exclusão. A exigência de linhas prévias difere por coorte, por isso
+    //   linha_terapeutica ficou como 'Conforme protocolo'.
     id: 'breaker-101',
     nome: 'BREAKER-101',
     titulo: 'BBO-10203, bloqueador da interação PI3Kα:RAS, isolado ou combinado, em tumores sólidos avançados',
@@ -5804,7 +5744,10 @@ window.THERA_TRIALS_BR = [
   },
 
   {
-    // ⚠ RASCUNHO — confiança alta. Instituto Brasileiro de Controle do Câncer, 36 participantes, centro único em São Paulo. Registro sem número de fase (NA) por ser estudo de radioterap
+    // ⚠ RASCUNHO — confiança alta. Instituto Brasileiro de Controle do Câncer, 36 participantes,
+    //   centro único em São Paulo. Registro sem número de fase (NA) por ser estudo de radioterapia.
+    //   Estudo acadêmico brasileiro, de porte pequeno, voltado à realidade local — a justificativa
+    //   declarada é a ausência de dado comparativo na população brasileira.
     id: 'lapidary',
     nome: 'LAPIDARY',
     titulo: 'Irradiação parcial acelerada vs irradiação de mama total, padrão ou hipofracionada, após cirurgia conservadora em mama inicial',
@@ -5853,7 +5796,10 @@ window.THERA_TRIALS_BR = [
   },
 
   {
-    // ⚠ RASCUNHO — confiança alta. ICESP, fase II randomizado, 74 participantes, centro único em São Paulo. O braço controle é registrado como 'sem intervenção' — terapia sistêmica padr
+    // ⚠ RASCUNHO — confiança alta. ICESP, fase II randomizado, 74 participantes, centro único em
+    //   São Paulo. O braço controle é registrado como 'sem intervenção' — terapia sistêmica padrão
+    //   isolada. Estudo acadêmico brasileiro sobre uma pergunta ainda em aberto no cenário
+    //   oligometastático.
     id: 'lara',
     nome: 'LARA',
     titulo: 'Terapia local dos sítios oligometastáticos somada à terapia sistêmica em mama HR+ oligometastática',
@@ -5896,6 +5842,2757 @@ window.THERA_TRIALS_BR = [
     data_atualizacao: '2022-08-08',
   },
 
+
+  // ============== NOVOS ESTUDOS (2026-08-04) — RASCUNHO, revisar antes de publicar ==============
+
+  {
+    // ⚠ RASCUNHO — confiança alta. ICESP, fase II, braço único, 28 participantes, 8 centros em 7
+    //   estados. Card recuperado em 2026-08-04 por decisão do autor: tinha sido descartado por não
+    //   caber em nenhuma neoplasia da taxonomia, e a criação de `solidos` resolveu isso. O texto de
+    //   elegibilidade recebido termina na lista de tumores raros, sem a seção de exclusão — por
+    //   isso criterios_exclusao ficou vazio. O subtipo cita as condições mais representativas; a
+    //   lista completa do registro tem 41.
+    id: 'antares',
+    nome: 'ANTARES',
+    titulo: 'Nivolumabe agnóstico ao sítio tumoral em tumores raros avançados com PD-L1 CPS ≥ 10',
+    nct: 'NCT06638931',
+    fase: 'II',
+    status: 'Recrutando',
+    neoplasia: 'solidos',
+    neoplasia_label: 'Tumores sólidos',
+    subtipo: 'Tumores raros avançados ou metastáticos, de qualquer sítio, com PD-L1 CPS ≥ 10. Entre as 41 condições registradas: adenocarcinoma de úraco, carcinoma de paratireoide, carcinoma fibrolamelar, angiossarcoma, carcinoma secretório e metaplásico de mama, colangiocarcinoma, mesotelioma, carcinoma adenoide cístico, neoplasias de pênis, vulva, vagina, uretra e intestino delgado, sarcomas de partes moles, osteossarcoma, tumores neuroendócrinos, carcinoma de sítio primário desconhecido e neuroblastoma',
+    linha_terapeutica: 'Recidivado / refratário',
+    cenario_clinico: 'Doença avançada ou metastática com progressão radiológica documentada, ou intolerância, após os tratamentos aprovados e acessíveis para aquela neoplasia',
+    modalidade: ['imunoterapia'],
+    biomarcadores: ['PD-L1', 'CPS ≥ 10'],
+    testes_fornecidos: 'Além do PD-L1 exigido para entrada, o estudo avalia ctDNA e microvesículas como biomarcadores',
+    intervencao: 'Nivolumabe 480 mg intravenoso a cada 4 semanas, até toxicidade limitante, progressão, ou no máximo 12 meses (13 ciclos)',
+    comparador: 'Braço único, sem comparador',
+    racional: 'Estudo cesta acadêmico que trata a expressão de PD-L1 como critério de seleção no lugar do sítio tumoral. A população-alvo são tumores raros — incidência abaixo de 6 por 100.000 — que ficam de fora dos ensaios registrais e por isso têm poucas opções depois do tratamento padrão. Além da lista de 41 condições, o protocolo prevê incluir outros tumores raros mediante avaliação e aprovação da diretoria do estudo.',
+    criterios_principais: [
+      'Idade a partir de 18 anos',
+      'Câncer raro confirmado por exame histopatológico, dentro da lista do protocolo ou aprovado caso a caso pela diretoria do estudo',
+      'PD-L1 por imuno-histoquímica com CPS igual ou maior que 10',
+      'Progressão ou intolerância aos tratamentos já aprovados e acessíveis para aquela neoplasia',
+      'Progressão radiológica documentada após o último tratamento de rotina',
+      'ECOG 0 ou 1',
+      'Lesão mensurável por RECIST v1.1 — lesão previamente irradiada só serve como alvo se houver progressão confirmada por imagem antes da inclusão',
+      'Expectativa de vida acima de 12 semanas',
+      'Função orgânica preservada: neutrófilos ≥ 1.000, hemoglobina ≥ 8,0 g/dL (transfusão permitida), plaquetas ≥ 100.000, bilirrubina total ≤ 1,5× LSN (≤ 3,0× na síndrome de Gilbert), AST e ALT ≤ 2,5× LSN (≤ 5× com metástase hepática), clearance de creatinina acima de 30 mL/min',
+    ],
+    criterios_exclusao: [],
+    centros: [
+      'Brasília / DF',
+      'Curitiba / PR',
+      'Fortaleza / CE',
+      'Recife / PE',
+      'Rio de Janeiro / RJ',
+      'Salvador / BA',
+      'São Paulo / SP',
+    ],
+    estados: [
+      'BA',
+      'CE',
+      'DF',
+      'PE',
+      'PR',
+      'RJ',
+      'SP',
+    ],
+    cidades: [
+      'Brasília',
+      'Curitiba',
+      'Fortaleza',
+      'Recife',
+      'Rio de Janeiro',
+      'Salvador',
+      'São Paulo',
+    ],
+    patrocinador: 'Instituto do Cancer do Estado de São Paulo',
+    fonte_url: 'https://clinicaltrials.gov/study/NCT06638931',
+    contato_url: 'https://clinicaltrials.gov/study/NCT06638931',
+    data_atualizacao: '2026-04-15',
+  },
+
+  {
+    // ⚠ RASCUNHO — confiança media. AstraZeneca, fase III, 1160 participantes, 9 centros no Brasil
+    //   em 5 estados. Classe do rilvegostomig validada pelo autor em 2026-08-04: anticorpo
+    //   biespecífico anti-PD-1/TIGIT (AZD2936). O registro não a declarava — a exclusão de
+    //   anti-TIGIT prévio era o único indício. A confiança segue média por causa da elegibilidade
+    //   truncada, não da classe. Estudo irmão do ARTEMIDE-Lung03, de mesmo desenho para o
+    //   não-escamoso.
+    id: 'artemide-lung02',
+    nome: 'ARTEMIDE-Lung02',
+    titulo: 'Rilvegostomig vs pembrolizumabe, ambos com quimioterapia à base de platina, em 1ª linha de NSCLC escamoso PD-L1 positivo',
+    nct: 'NCT06692738',
+    fase: 'III',
+    status: 'Recrutando',
+    neoplasia: 'pulmao',
+    neoplasia_label: 'Pulmão · NSCLC',
+    subtipo: 'NSCLC escamoso estádio IIIB/C ou IV, sem indicação de tratamento curativo, com PD-L1 TC ≥ 1%',
+    linha_terapeutica: '1ª linha',
+    cenario_clinico: 'Doença localmente avançada ou metastática sem terapia sistêmica prévia não curativa, e sem driver acionável com terapia-alvo de 1ª linha disponível localmente',
+    modalidade: [
+      'bispecífico',
+      'imunoterapia',
+      'quimioterapia',
+      'combinação',
+    ],
+    biomarcadores: ['PD-L1'],
+    testes_fornecidos: 'Exige amostra tumoral aceitável para confirmar expressão de PD-L1 TC ≥ 1%',
+    intervencao: 'Rilvegostomig intravenoso no dia 1 de cada ciclo de 21 dias, com carboplatina e paclitaxel ou nab-paclitaxel por até 4 ciclos, seguido de rilvegostomig',
+    comparador: 'Pembrolizumabe intravenoso no mesmo esquema, com carboplatina e paclitaxel ou nab-paclitaxel por até 4 ciclos, seguido de pembrolizumabe',
+    racional: 'Rilvegostomig (AZD2936) é anticorpo biespecífico anti-PD-1/TIGIT, que se liga aos dois alvos simultaneamente. O estudo o compara ao pembrolizumabe sobre a mesma espinha dorsal de quimioterapia com platina, na 1ª linha do escamoso PD-L1 positivo, onde o padrão atual é o bloqueio de PD-1 com dupla de platina.',
+    criterios_principais: [
+      'NSCLC escamoso documentado histológica ou citologicamente',
+      'Estádio IIIB/C ou IV pela 8ª edição do AJCC, sem indicação de tratamento curativo',
+      'Ausência de driver oncogênico acionável com terapia-alvo de 1ª linha aprovada e disponível localmente',
+      'Amostra tumoral aceitável confirmando PD-L1 TC ≥ 1%',
+      'Ao menos uma lesão não irradiada mensurável por RECIST 1.1 (≥ 10 mm no maior diâmetro; linfonodo com eixo curto ≥ 15 mm)',
+      'Função orgânica e medular adequadas',
+    ],
+    criterios_exclusao: [
+      'Componente histológico de pequenas células ou neuroendócrino',
+      'Metástase cerebral, salvo se assintomática, estável e sem corticoide ou anticonvulsivante por ao menos 7 dias — com no mínimo 2 semanas entre o fim da terapia local e a randomização',
+      'Qualquer terapia sistêmica não curativa prévia para NSCLC',
+      'Tratamento prévio com anti-PD-1 ou anti-PD-L1',
+      'Exposição prévia a terapia anti-TIGIT ou a qualquer outro agente dirigido a receptores ou mecanismos imunorreguladores',
+      'Outra neoplasia primária, exceto tratada com intenção curativa, sem doença ativa há 2 anos ou mais e de baixo risco de recorrência',
+      'Doença autoimune ou inflamatória, ativa ou prévia documentada, que exija tratamento sistêmico crônico com imunossupressor ou modificador de doença',
+    ],
+    centros: [
+      'Barretos / SP',
+      'Florianópolis / SC',
+      'Ijuí / RS',
+      'Londrina / PR',
+      'Porto Alegre / RS',
+      'Salvador / BA',
+      'São Paulo / SP',
+      'Taubaté / SP',
+    ],
+    estados: [
+      'BA',
+      'PR',
+      'RS',
+      'SC',
+      'SP',
+    ],
+    cidades: [
+      'Barretos',
+      'Florianópolis',
+      'Ijuí',
+      'Londrina',
+      'Porto Alegre',
+      'Salvador',
+      'São Paulo',
+      'Taubaté',
+    ],
+    patrocinador: 'AstraZeneca',
+    fonte_url: 'https://clinicaltrials.gov/study/NCT06692738',
+    contato_url: 'https://clinicaltrials.gov/study/NCT06692738',
+    data_atualizacao: '2026-07-14',
+  },
+
+  {
+    // ⚠ RASCUNHO — confiança media. AstraZeneca, 304 participantes, 3 centros no Brasil (Barretos,
+    //   Porto Alegre, São Paulo). O registro classifica como PHASE1 e o título oficial diz fase Ib
+    //   — o card seguiu o registro. O texto de elegibilidade recebido está truncado no primeiro
+    //   critério de inclusão, sem o restante nem a seção de exclusão; por isso os critérios estão
+    //   mínimos e a confiança é média. O braço 1C (pemetrexede) consta como não iniciado no
+    //   registro. Estudo com muitos braços: convém conferir no registro oficial quais estão abertos
+    //   nos centros brasileiros.
+    id: 'destiny-lung03',
+    nome: 'DESTINY-Lung03',
+    titulo: 'T-DXd com agentes de imunoterapia, com ou sem quimioterapia, em 1ª linha de NSCLC não-escamoso com superexpressão de HER2',
+    nct: 'NCT04686305',
+    fase: 'I',
+    status: 'Recrutando',
+    neoplasia: 'pulmao',
+    neoplasia_label: 'Pulmão · NSCLC',
+    subtipo: 'NSCLC não-escamoso irressecável localmente avançado ou metastático, com superexpressão de HER2',
+    linha_terapeutica: '1ª linha',
+    cenario_clinico: 'Doença avançada ou metastática sem tratamento sistêmico prévio nesse cenário',
+    modalidade: [
+      'ADC',
+      'bispecífico',
+      'imunoterapia',
+      'quimioterapia',
+      'combinação',
+    ],
+    biomarcadores: ['HER2'],
+    testes_fornecidos: '',
+    intervencao: 'Trastuzumabe deruxtecana intravenoso, isolado ou combinado a durvalumabe, volrustomibe ou rilvegostomig, com ou sem cisplatina ou carboplatina, conforme o braço',
+    comparador: 'Sem comparador — estudo aberto de braços experimentais paralelos',
+    racional: 'Estudo de segurança e tolerabilidade que testa combinações do conjugado anticorpo-fármaco anti-HER2 com diferentes agentes de imunoterapia — entre eles o rilvegostomig (AZD2936), biespecífico anti-PD-1/TIGIT, com e sem quimioterapia, no cenário de 1ª linha do NSCLC com superexpressão de HER2. A eficácia é desfecho secundário.',
+    criterios_principais: [
+      'NSCLC não-escamoso irressecável localmente avançado ou metastático documentado histologicamente',
+      'Superexpressão de HER2',
+    ],
+    criterios_exclusao: [],
+    centros: ['Barretos / SP', 'Porto Alegre / RS', 'São Paulo / SP'],
+    estados: ['RS', 'SP'],
+    cidades: ['Barretos', 'Porto Alegre', 'São Paulo'],
+    patrocinador: 'AstraZeneca',
+    fonte_url: 'https://clinicaltrials.gov/study/NCT04686305',
+    contato_url: 'https://clinicaltrials.gov/study/NCT04686305',
+    data_atualizacao: '2026-04-13',
+  },
+
+  {
+    // ⚠ RASCUNHO — confiança alta. MSD, fase 3, 851 participantes, 7 centros em 4 estados.
+    //   Critérios de exclusão transcritos do ClinicalTrials.gov pelo autor em 2026-08-04. Regra de
+    //   doença pulmonar intersticial deste estudo: exclui história que exigiu corticoide, doença
+    //   atual e suspeita — e, na randomização da manutenção, também quem apresentou pneumonite
+    //   durante a indução. Classificado como 1ª linha porque é onde o paciente entra; a
+    //   randomização acontece na manutenção.
+    id: 'mk-2870-023',
+    nome: 'MK-2870-023',
+    titulo: 'Pembrolizumabe com ou sem sacituzumabe tirumotecana de manutenção em NSCLC escamoso metastático de 1ª linha',
+    nct: 'NCT06422143',
+    fase: 'III',
+    status: 'Recrutando',
+    neoplasia: 'pulmao',
+    neoplasia_label: 'Pulmão · NSCLC',
+    subtipo: 'NSCLC escamoso estádio IV (M1a, M1b ou M1c) confirmado histológica ou citologicamente',
+    linha_terapeutica: '1ª linha',
+    cenario_clinico: 'Indução com pembrolizumabe e carboplatina/taxano por 4 ciclos; a randomização define se a manutenção com pembrolizumabe recebe ou não sacituzumabe tirumotecana',
+    modalidade: ['imunoterapia', 'ADC', 'quimioterapia', 'combinação'],
+    biomarcadores: [],
+    testes_fornecidos: 'Exige tecido de arquivo ou biópsia nova de lesão não irradiada',
+    intervencao: 'Manutenção com pembrolizumabe + sacituzumabe tirumotecana, após indução com pembrolizumabe 200 mg a cada 3 semanas, carboplatina AUC 6 e paclitaxel 200 mg/m² a cada 3 semanas, ou nab-paclitaxel 100 mg/m² semanal, por 4 ciclos',
+    comparador: 'Manutenção com pembrolizumabe 400 mg a cada 6 semanas por 96 semanas, sem o conjugado',
+    racional: 'Testa se acrescentar um conjugado anticorpo-fármaco à fase de manutenção prolonga a sobrevida global no escamoso metastático, cenário em que a manutenção padrão é o anti-PD-1 isolado. Todos os participantes recebem a mesma indução.',
+    criterios_principais: [
+      'NSCLC escamoso estádio IV confirmado histológica ou citologicamente (AJCC 8ª edição)',
+      'Doença mensurável por RECIST 1.1',
+      'Expectativa de vida de ao menos 3 meses',
+      'ECOG 0 ou 1 nos 7 dias anteriores à alocação',
+      'Tecido tumoral de arquivo ou biópsia nova de lesão não irradiada',
+      'Eventos adversos de terapias prévias recuperados a grau 1 ou menos',
+      'HIV permitido se bem controlado em antirretroviral; HBsAg positivo permitido com 4 semanas de antiviral e carga viral indetectável; história de hepatite C permitida com carga viral indetectável na triagem',
+    ],
+    criterios_exclusao: [
+      'SCLC ou componente de pequenas células em tumor misto',
+      'Doença grave da superfície ocular ou das glândulas de Meibômio, blefarite, ou doença corneana que prejudique a cicatrização',
+      'Doença inflamatória intestinal ativa em imunossupressor, ou história de doença inflamatória intestinal',
+      'Doença cardiovascular ou cerebrovascular significativa e não controlada nos 6 meses anteriores: NYHA III/IV, angina instável, infarto, arritmia sintomática, QTcF acima de 480 ms',
+      'Quimioterapia, terapia-alvo ou biológica prévia para NSCLC metastático — tratamento de doença não metastática é permitido se concluído ao menos 12 meses antes do diagnóstico metastático',
+      'Anti-PD-1, anti-PD-L1, anti-PD-L2 prévio, ou agente dirigido a outro receptor estimulador ou coinibidor de célula T — anti-PD-(L)1 para doença não metastática é permitido se concluído há 12 meses ou mais',
+      'Conjugado anticorpo-fármaco prévio dirigido a TROP2, ou ADC contendo inibidor de topoisomerase I',
+      'Radioterapia pulmonar acima de 30 Gy nos 6 meses anteriores',
+      'Radioterapia nas 2 semanas anteriores, ou toxicidade da radiação que exija corticoide',
+      'História de pneumonite ou doença pulmonar intersticial não infecciosa que exigiu corticoide; doença atual, ou suspeita que não possa ser excluída. Na randomização da manutenção, ter apresentado pneumonite ou doença intersticial durante a indução também exclui',
+      'Indutor ou inibidor forte de CYP3A4 que não possa ser suspenso — washout de 2 semanas antes do sacituzumabe tirumotecana',
+      'Metástase conhecida em sistema nervoso central ou meningite carcinomatosa',
+      'Doença autoimune ativa tratada sistemicamente nos últimos 2 anos — reposição hormonal ou fisiológica é permitida',
+      'Outra neoplasia em progressão ou tratada ativamente nos últimos 3 anos',
+      'Vacina viva ou viva atenuada nos 30 dias anteriores',
+      'Infecção ativa em tratamento sistêmico; HIV recém-diagnosticado, ou com história de sarcoma de Kaposi ou doença de Castleman multicêntrica',
+      'Transplante alogênico de tecido ou órgão sólido',
+      'Recuperação inadequada de cirurgia de grande porte, ou complicação cirúrgica em andamento',
+      'Hipersensibilidade grave (grau 3 ou maior) à intervenção, aos excipientes ou a outra terapia biológica',
+    ],
+    centros: [
+      'Porto Alegre / RS',
+      'Recife / PE',
+      'Santa Cruz do Sul / RS',
+      'São José do Rio Preto / SP',
+      'São Paulo / SP',
+      'Teresina / PI',
+    ],
+    estados: ['PE', 'PI', 'RS', 'SP'],
+    cidades: [
+      'Porto Alegre',
+      'Recife',
+      'Santa Cruz do Sul',
+      'São José do Rio Preto',
+      'São Paulo',
+      'Teresina',
+    ],
+    patrocinador: 'Merck Sharp & Dohme LLC',
+    fonte_url: 'https://clinicaltrials.gov/study/NCT06422143',
+    contato_url: 'https://clinicaltrials.gov/study/NCT06422143',
+    data_atualizacao: '2026-07-20',
+  },
+
+  {
+    // ⚠ RASCUNHO — confiança media. MSD, fase 3, 680 participantes, 10 centros no Brasil em 6
+    //   estados. O registro declara as duas listas explicitamente como parciais ('include but are
+    //   not limited to') e o texto recebido corta no primeiro critério de exclusão — por isso
+    //   criterios_exclusao ficou vazio e a confiança é média. O EGFR entra como biomarcador por ser
+    //   critério de exclusão molecular, não por seleção positiva.
+    id: 'interpath-009',
+    nome: 'INTerpath-009',
+    titulo: 'Pembrolizumabe adjuvante com ou sem intismerana autógena em NSCLC ressecável sem resposta patológica completa',
+    nct: 'NCT06623422',
+    fase: 'III',
+    status: 'Recrutando',
+    neoplasia: 'pulmao',
+    neoplasia_label: 'Pulmão · NSCLC',
+    subtipo: 'NSCLC ressecável estádio clínico II, IIIA ou IIIB (N2), sem resposta patológica completa após a neoadjuvância',
+    linha_terapeutica: 'Perioperatório',
+    cenario_clinico: 'Adjuvante, após neoadjuvância com pembrolizumabe e dupla de platina seguida de cirurgia, em quem não atingiu resposta patológica completa',
+    modalidade: ['vacina', 'imunoterapia', 'combinação'],
+    biomarcadores: ['EGFR'],
+    testes_fornecidos: '',
+    intervencao: 'Pembrolizumabe 200 mg intravenoso a cada 3 semanas + intismerana autógena (V940) intramuscular, na fase adjuvante',
+    comparador: 'Pembrolizumabe 200 mg intravenoso a cada 3 semanas + placebo intramuscular',
+    racional: 'Leva a vacina individualizada de mRNA ao cenário adjuvante do NSCLC com doença residual após neoadjuvância — população de risco elevado em que o padrão atual é o anti-PD-1 isolado. Todos recebem a mesma neoadjuvância antes da randomização.',
+    criterios_principais: [
+      'NSCLC ressecável estádio clínico II, IIIA ou IIIB (N2) pela 8ª edição do AJCC, sem tratamento prévio',
+      'Ausência de resposta patológica completa após neoadjuvância com quimioterapia e pembrolizumabe seguida de cirurgia',
+      'Confirmação de que terapia dirigida a EGFR não está indicada como tratamento primário (ausência de mutações ativadoras como del19 ou L858R)',
+      'ECOG 0 ou 1 nos 7 dias anteriores à primeira dose',
+      'HIV permitido se bem controlado em antirretroviral; HBsAg positivo permitido com 4 semanas de antiviral e carga viral indetectável; história de hepatite C permitida com carga viral indetectável na triagem',
+    ],
+    criterios_exclusao: [],
+    centros: [
+      'Barretos / SP',
+      'Bento Gonçalves / RS',
+      'Fortaleza / CE',
+      'Goiânia / GO',
+      'Natal / RN',
+      'Passo Fundo / RS',
+      'Porto Alegre / RS',
+      'Rio de Janeiro / RJ',
+      'Santa Cruz do Sul / RS',
+    ],
+    estados: [
+      'CE',
+      'GO',
+      'RJ',
+      'RN',
+      'RS',
+      'SP',
+    ],
+    cidades: [
+      'Barretos',
+      'Bento Gonçalves',
+      'Fortaleza',
+      'Goiânia',
+      'Natal',
+      'Passo Fundo',
+      'Porto Alegre',
+      'Rio de Janeiro',
+      'Santa Cruz do Sul',
+    ],
+    patrocinador: 'Merck Sharp & Dohme LLC',
+    fonte_url: 'https://clinicaltrials.gov/study/NCT06623422',
+    contato_url: 'https://clinicaltrials.gov/study/NCT06623422',
+    data_atualizacao: '2026-07-31',
+  },
+
+  {
+    // ⚠ RASCUNHO — confiança media. AstraZeneca, fase III, 1160 participantes, 10 centros no Brasil
+    //   em 5 estados. Classe do rilvegostomig validada pelo autor em 2026-08-04: biespecífico
+    //   anti-PD-1/TIGIT; o registro não a declara. O texto de exclusão recebido está truncado no
+    //   critério de terapia sistêmica prévia. Confiança média por isso.
+    id: 'artemide-lung03',
+    nome: 'ARTEMIDE-Lung03',
+    titulo: 'Rilvegostomig vs pembrolizumabe, ambos com dupla de platina, em 1ª linha de NSCLC não-escamoso PD-L1 positivo',
+    nct: 'NCT06627647',
+    fase: 'III',
+    status: 'Recrutando',
+    neoplasia: 'pulmao',
+    neoplasia_label: 'Pulmão · NSCLC',
+    subtipo: 'NSCLC não-escamoso estádio IIIB/C ou IV, sem indicação de tratamento curativo, com PD-L1 TC ≥ 1%',
+    linha_terapeutica: '1ª linha',
+    cenario_clinico: 'Doença localmente avançada ou metastática sem EGFR sensibilizante, sem rearranjo de ALK ou ROS1, e sem outro driver acionável com terapia-alvo de 1ª linha disponível localmente',
+    modalidade: [
+      'bispecífico',
+      'imunoterapia',
+      'quimioterapia',
+      'combinação',
+    ],
+    biomarcadores: ['PD-L1', 'EGFR', 'ALK', 'ROS1'],
+    testes_fornecidos: 'Exige amostra tumoral aceitável para confirmar expressão de PD-L1 TC ≥ 1%',
+    intervencao: 'Rilvegostomig intravenoso no dia 1 de cada ciclo de 21 dias com dupla de platina por até 4 ciclos, seguido de rilvegostomig com pemetrexede na manutenção',
+    comparador: 'Pembrolizumabe no mesmo esquema, com dupla de platina, seguido de pembrolizumabe com pemetrexede na manutenção',
+    racional: 'Mesmo desenho do ARTEMIDE-Lung02, aplicado ao não-escamoso: compara o biespecífico anti-PD-1/TIGIT rilvegostomig (AZD2936) e o pembrolizumabe sobre a mesma espinha dorsal de platina, com manutenção de pemetrexede nos dois braços.',
+    criterios_principais: [
+      'NSCLC não-escamoso documentado histológica ou citologicamente',
+      'Estádio IIIB/C ou IV pela 8ª edição do AJCC, sem indicação de tratamento curativo',
+      'Ausência de mutação sensibilizante de EGFR (incluindo del19, L858R, L861Q, G719X e S768I) e de rearranjo de ALK ou ROS1',
+      'Ausência de outro driver oncogênico acionável com terapia-alvo de 1ª linha aprovada e disponível localmente',
+      'Amostra tumoral aceitável confirmando PD-L1 TC ≥ 1%',
+      'Ao menos uma lesão não irradiada mensurável por RECIST 1.1 (≥ 10 mm no maior diâmetro; linfonodo com eixo curto ≥ 15 mm)',
+      'Função orgânica e medular adequadas',
+    ],
+    criterios_exclusao: [
+      'Componente histológico de pequenas células ou neuroendócrino',
+      'Metástase cerebral, salvo se assintomática, estável e sem corticoide ou anticonvulsivante por ao menos 7 dias — com no mínimo 2 semanas entre o fim da terapia local e a randomização',
+      'Terapia sistêmica prévia para NSCLC, exceto neoadjuvante, adjuvante ou quimiorradioterapia definitiva com intenção curativa, desde que a progressão tenha ocorrido depois',
+    ],
+    centros: [
+      'Ijuí / RS',
+      'Londrina / PR',
+      'Passo Fundo / RS',
+      'Porto Alegre / RS',
+      'Salvador / BA',
+      'São Paulo / SP',
+      'Taubaté / SP',
+      'Vitória / ES',
+    ],
+    estados: [
+      'BA',
+      'ES',
+      'PR',
+      'RS',
+      'SP',
+    ],
+    cidades: [
+      'Ijuí',
+      'Londrina',
+      'Passo Fundo',
+      'Porto Alegre',
+      'Salvador',
+      'São Paulo',
+      'Taubaté',
+      'Vitória',
+    ],
+    patrocinador: 'AstraZeneca',
+    fonte_url: 'https://clinicaltrials.gov/study/NCT06627647',
+    contato_url: 'https://clinicaltrials.gov/study/NCT06627647',
+    data_atualizacao: '2026-07-14',
+  },
+
+  {
+    // ⚠ RASCUNHO — confiança media. Bristol-Myers Squibb, fase 2/3, 590 participantes, 15 centros
+    //   no Brasil em 7 estados. O registro fecha a elegibilidade com 'outros critérios definidos
+    //   pelo protocolo'. Os seis braços aparecem sem detalhamento de dose ou de esquema de
+    //   quimioterapia, então o card não especifica regime — quatro braços estão rotulados como
+    //   comparador ativo e dois como placebo, rotulagem que parece inconsistente com a descrição e
+    //   vale conferir no registro oficial. Confiança média por isso.
+    id: 'mountaintap-29',
+    nome: 'MountainTAP-29',
+    titulo: 'Navlimetostate + pembrolizumabe + quimioterapia vs placebo em 1ª linha de NSCLC metastático com deleção homozigótica de MTAP',
+    nct: 'NCT07063745',
+    fase: 'II/III',
+    status: 'Recrutando',
+    neoplasia: 'pulmao',
+    neoplasia_label: 'Pulmão · NSCLC',
+    subtipo: 'NSCLC metastático (estádio IV ou recorrente) com deleção homozigótica de MTAP ou perda de MTAP',
+    linha_terapeutica: '1ª linha',
+    cenario_clinico: 'Doença metastática sem terapia sistêmica antineoplásica prévia nesse cenário',
+    modalidade: ['terapia-alvo', 'imunoterapia', 'quimioterapia', 'combinação'],
+    biomarcadores: ['MTAP'],
+    testes_fornecidos: '',
+    intervencao: 'Navlimetostate (BMS-986504), inibidor de PRMT5 MTA-cooperativo, com pembrolizumabe e quimioterapia',
+    comparador: 'Placebo com pembrolizumabe e quimioterapia',
+    racional: 'A deleção de MTAP torna a célula tumoral dependente de PRMT5, e o navlimetostate é descrito no registro como inibidor de PRMT5 MTA-cooperativo — seletividade que explora essa dependência. O estudo acrescenta o agente ao padrão de 1ª linha numa população definida por essa alteração.',
+    criterios_principais: [
+      'NSCLC metastático (estádio IV ou recorrente, AJCC 9ª edição) confirmado histologicamente',
+      'Deleção homozigótica de MTAP ou perda de MTAP',
+      'Sem terapia sistêmica antineoplásica prévia para doença metastática',
+      'ECOG 0 ou 1',
+      'Ao menos uma lesão mensurável por RECIST v1.1',
+    ],
+    criterios_exclusao: [
+      'No não-escamoso, mutação oncogênica alvo ou alteração genética acionável com padrão de cuidado disponível em 1ª linha',
+      'Metástase cerebral sintomática ou compressão medular',
+      'Qualquer terapia sistêmica prévia (quimioterapia, imunoterapia, terapia-alvo ou biológica) para NSCLC metastático — um ciclo do padrão antes da randomização é permitido quando há necessidade de tratamento imediato',
+      'Comprometimento conhecido ou suspeito da função gastrointestinal que impeça absorver ou engolir medicação oral sem mastigar ou triturar',
+    ],
+    centros: [
+      'Barretos / SP',
+      'Bauru / SP',
+      'Blumenau / SC',
+      'Campinas / SP',
+      'Fortaleza / CE',
+      'Natal / RN',
+      'Porto Alegre / RS',
+      'Rio de Janeiro / RJ',
+      'Santa Cruz do Sul / RS',
+      'São Caetano do Sul / SP',
+      'São José do Rio Preto / SP',
+      'São Paulo / SP',
+      'Vitória / ES',
+    ],
+    estados: [
+      'CE',
+      'ES',
+      'RJ',
+      'RN',
+      'RS',
+      'SC',
+      'SP',
+    ],
+    cidades: [
+      'Barretos',
+      'Bauru',
+      'Blumenau',
+      'Campinas',
+      'Fortaleza',
+      'Natal',
+      'Porto Alegre',
+      'Rio de Janeiro',
+      'Santa Cruz do Sul',
+      'São Caetano do Sul',
+      'São José do Rio Preto',
+      'São Paulo',
+      'Vitória',
+    ],
+    patrocinador: 'Bristol-Myers Squibb',
+    fonte_url: 'https://clinicaltrials.gov/study/NCT07063745',
+    contato_url: 'https://clinicaltrials.gov/study/NCT07063745',
+    data_atualizacao: '2026-07-20',
+  },
+
+  {
+    // ⚠ RASCUNHO — confiança media. MSD, fase 3, 600 participantes, 10 centros no Brasil em 7
+    //   estados. O registro declara as duas listas como parciais e o texto recebido corta no
+    //   primeiro critério de exclusão, ainda na frase sobre tumores mistos. Confiança média por
+    //   isso.
+    id: 'kandlelit-004',
+    nome: 'KANDLELIT-004',
+    titulo: 'Calderasibe + pembrolizumabe vs placebo + pembrolizumabe em 1ª linha de NSCLC KRAS G12C com PD-L1 TPS ≥ 50%',
+    nct: 'NCT06345729',
+    fase: 'III',
+    status: 'Recrutando',
+    neoplasia: 'pulmao',
+    neoplasia_label: 'Pulmão · NSCLC',
+    subtipo: 'NSCLC localmente avançado ou metastático com mutação KRAS G12C e PD-L1 TPS ≥ 50%',
+    linha_terapeutica: '1ª linha',
+    cenario_clinico: 'Estádio IIIB/IIIC recém-diagnosticado sem indicação de ressecção ou de quimiorradioterapia curativa por decisão multidisciplinar, ou estádio IV',
+    modalidade: ['terapia-alvo', 'imunoterapia', 'combinação'],
+    biomarcadores: ['KRAS G12C', 'PD-L1'],
+    testes_fornecidos: 'Teste central de KRAS G12C e de PD-L1 a partir de tecido de arquivo (até 5 anos) ou de biópsia nova de lesão não irradiada',
+    intervencao: 'Calderasibe (MK-1084) em comprimidos orais + pembrolizumabe 200 mg intravenoso a cada 3 semanas por até 35 ciclos',
+    comparador: 'Placebo oral 1x/dia + pembrolizumabe 200 mg intravenoso a cada 3 semanas por até 35 ciclos',
+    racional: 'Combina inibição direta de KRAS G12C com bloqueio de PD-1 na 1ª linha da população que hoje recebe pembrolizumabe isolado por ter PD-L1 alto. Os dois desfechos primários são sobrevida livre de progressão por revisão central independente e sobrevida global.',
+    criterios_principais: [
+      'NSCLC confirmado histológica ou citologicamente',
+      'Estádio IIIB/IIIC recém-diagnosticado sem indicação de ressecção ou quimiorradioterapia curativa, ou estádio IV (M1a, M1b ou M1c) pela 8ª edição do AJCC',
+      'Mutação KRAS G12C e PD-L1 TPS ≥ 50% confirmados centralmente',
+      'Tecido de arquivo de até 5 anos ou biópsia nova de lesão não irradiada',
+      'Eventos adversos de terapias prévias recuperados a menos de grau 1 ou ao basal',
+      'HIV permitido se bem controlado em antirretroviral; HBsAg positivo permitido com 4 semanas de antiviral e carga viral indetectável; história de hepatite C permitida com carga viral indetectável',
+    ],
+    criterios_exclusao: ['Diagnóstico de carcinoma de pequenas células'],
+    centros: [
+      'Barretos / SP',
+      'Belo Horizonte / MG',
+      'Ijuí / RS',
+      'Natal / RN',
+      'Passo Fundo / RS',
+      'Porto Alegre / RS',
+      'Recife / PE',
+      'Rio de Janeiro / RJ',
+      'Teresina / PI',
+    ],
+    estados: [
+      'MG',
+      'PE',
+      'PI',
+      'RJ',
+      'RN',
+      'RS',
+      'SP',
+    ],
+    cidades: [
+      'Barretos',
+      'Belo Horizonte',
+      'Ijuí',
+      'Natal',
+      'Passo Fundo',
+      'Porto Alegre',
+      'Recife',
+      'Rio de Janeiro',
+      'Teresina',
+    ],
+    patrocinador: 'Merck Sharp & Dohme LLC',
+    fonte_url: 'https://clinicaltrials.gov/study/NCT06345729',
+    contato_url: 'https://clinicaltrials.gov/study/NCT06345729',
+    data_atualizacao: '2026-06-15',
+  },
+
+  {
+    // ⚠ RASCUNHO — confiança media. Pfizer, fase 3, 1410 participantes, 9 centros no Brasil em 5
+    //   estados. Classe do PF-08634404 (SSGJ-707) validada pelo autor em 2026-08-04: biespecífico
+    //   tetravalente anti-PD-1/VEGF-A. A modalidade foi corrigida para incluir imunoterapia,
+    //   bispecífico e anti-angiogênico. O texto de elegibilidade recebido é o resumo em linguagem
+    //   leiga, sem a seção formal de exclusão. Confiança média por isso; convém confirmar a classe
+    //   do fármaco em fonte do patrocinador antes de publicar.
+    id: 'symbiotic-lung-01',
+    nome: 'Symbiotic-Lung-01',
+    titulo: 'PF-08634404 + quimioterapia vs pembrolizumabe + quimioterapia em 1ª linha de NSCLC localmente avançado ou metastático',
+    nct: 'NCT07222566',
+    fase: 'III',
+    status: 'Recrutando',
+    neoplasia: 'pulmao',
+    neoplasia_label: 'Pulmão · NSCLC',
+    subtipo: 'NSCLC escamoso (Parte 1) ou não-escamoso (Parte 2), estádio IIIB/IIIC ou IV, sem alteração genômica acionável conhecida',
+    linha_terapeutica: '1ª linha',
+    cenario_clinico: 'Doença sem indicação de ressecção completa nem de quimiorradioterapia curativa, sem tratamento prévio para doença avançada ou metastática',
+    modalidade: [
+      'bispecífico',
+      'imunoterapia',
+      'anti-angiogênico',
+      'quimioterapia',
+      'combinação',
+    ],
+    biomarcadores: [],
+    testes_fornecidos: '',
+    intervencao: 'PF-08634404 intravenoso com quimioterapia específica para o tipo histológico, seguido de manutenção com PF-08634404 isolado (escamoso) ou com quimioterápico (não-escamoso)',
+    comparador: 'Pembrolizumabe intravenoso com a mesma quimioterapia, seguido de manutenção com pembrolizumabe isolado (escamoso) ou com quimioterápico (não-escamoso)',
+    racional: 'PF-08634404 (SSGJ-707) é anticorpo biespecífico tetravalente anti-PD-1/VEGF-A. Comparação direta contra o padrão atual de 1ª linha — anti-PD-1 com quimioterapia — em duas partes separadas por histologia, cada uma com o regime quimioterápico correspondente. A avaliação de resposta é a cada 6 semanas nas primeiras 48 semanas e a cada 12 semanas depois.',
+    criterios_principais: [
+      'Idade a partir de 18 anos',
+      'NSCLC escamoso ou não-escamoso localmente avançado (estádio IIIB/IIIC) ou metastático (estádio IV)',
+      'Sem indicação de ressecção cirúrgica completa nem de quimiorradioterapia curativa',
+      'Ausência de alterações genômicas acionáveis conhecidas',
+      'Sem tratamento prévio para doença avançada ou metastática',
+    ],
+    criterios_exclusao: [],
+    centros: [
+      'Passo Fundo / RS',
+      'Porto Alegre / RS',
+      'Recife / PE',
+      'Ribeirão Preto / SP',
+      'Salvador / BA',
+      'Santo André / SP',
+      'São Paulo / SP',
+      'Vitória / ES',
+    ],
+    estados: [
+      'BA',
+      'ES',
+      'PE',
+      'RS',
+      'SP',
+    ],
+    cidades: [
+      'Passo Fundo',
+      'Porto Alegre',
+      'Recife',
+      'Ribeirão Preto',
+      'Salvador',
+      'Santo André',
+      'São Paulo',
+      'Vitória',
+    ],
+    patrocinador: 'Pfizer',
+    fonte_url: 'https://clinicaltrials.gov/study/NCT07222566',
+    contato_url: 'https://clinicaltrials.gov/study/NCT07222566',
+    data_atualizacao: '2026-07-22',
+  },
+
+
+  // ============== NOVOS ESTUDOS (2026-08-04) — RASCUNHO, revisar antes de publicar ==============
+
+  {
+    // ⚠ RASCUNHO — confiança media. Bristol-Myers Squibb, fase 3, 850 participantes, 6 centros no
+    //   Brasil em 4 estados. Classe do pumitamig validada pelo autor em 2026-08-04: biespecífico
+    //   anti-PD-L1/VEGF-A (BNT327 / BMS-986545). Isso explica a exclusão de hemorragia pulmonar e
+    //   de eventos trombóticos, que na curadoria original ficara só como indício anotado. O
+    //   registro segue sem informar dose ou esquema dos braços. O registro fecha com 'outros
+    //   critérios definidos pelo protocolo'. Confiança média por isso.
+    id: 'rosetta-lung-201',
+    nome: 'ROSETTA Lung-201',
+    titulo: 'Pumitamig vs durvalumabe como consolidação após quimiorradioterapia concomitante em NSCLC estádio III irressecável',
+    nct: 'NCT07361497',
+    fase: 'III',
+    status: 'Recrutando',
+    neoplasia: 'pulmao',
+    neoplasia_label: 'Pulmão · NSCLC',
+    subtipo: 'NSCLC estádio III irressecável, sem progressão após quimiorradioterapia concomitante com platina',
+    linha_terapeutica: 'Perioperatório / consolidação',
+    cenario_clinico: 'Consolidação após ao menos 2 ciclos de quimiorradioterapia concomitante com platina e dose total de radiação de no mínimo 54 Gy, sem doença progressiva ao fim do tratamento',
+    modalidade: [
+      'bispecífico',
+      'imunoterapia',
+      'anti-angiogênico',
+    ],
+    biomarcadores: ['EGFR', 'ALK'],
+    testes_fornecidos: '',
+    intervencao: 'Pumitamig em monoterapia',
+    comparador: 'Durvalumabe',
+    racional: 'Pumitamig (BNT327 / BMS-986545) é anticorpo biespecífico anti-PD-L1/VEGF-A. O estudo o compara ao durvalumabe, que é o padrão de consolidação após quimiorradioterapia no estádio III irressecável. Ambos os braços entram depois da quimiorradioterapia, sem outra terapia antineoplásica prévia para a doença localmente avançada.',
+    criterios_principais: [
+      'NSCLC confirmado histológica ou citologicamente, estádio III irressecável',
+      'Ao menos 2 ciclos de quimiorradioterapia concomitante com platina, com dose total de radiação de no mínimo 54 Gy',
+      'Ausência de doença progressiva após a quimiorradioterapia',
+      'ECOG 0 ou 1',
+    ],
+    criterios_exclusao: [
+      'Na histologia não-escamosa, mutação de EGFR ou rearranjo de ALK documentados',
+      'Doença autoimune ativa',
+      'Comprometimento cardiovascular significativo: hipertensão não controlada apesar de tratamento otimizado, insuficiência cardíaca congestiva, doença coronariana ativa nos 6 meses anteriores, arritmia ventricular, evento trombótico, embólico ou hemorrágico maior nos 6 meses anteriores, ou risco significativo de hemorragia pulmonar',
+      'Doença pulmonar avançada ou clinicamente significativa nos 6 meses anteriores, história de doença pulmonar intersticial ou pneumonite que exigiu corticoide sistêmico (grau 2 ou maior), ou doença intersticial atual ou suspeita',
+      'Qualquer terapia antineoplásica prévia, além da própria quimiorradioterapia, para a doença estádio III localmente avançada',
+    ],
+    centros: [
+      'Barretos / SP',
+      'Natal / RN',
+      'Porto Alegre / RS',
+      'São José do Rio Preto / SP',
+      'São Paulo / SP',
+      'Teresina / PI',
+    ],
+    estados: ['PI', 'RN', 'RS', 'SP'],
+    cidades: [
+      'Barretos',
+      'Natal',
+      'Porto Alegre',
+      'São José do Rio Preto',
+      'São Paulo',
+      'Teresina',
+    ],
+    patrocinador: 'Bristol-Myers Squibb',
+    fonte_url: 'https://clinicaltrials.gov/study/NCT07361497',
+    contato_url: 'https://clinicaltrials.gov/study/NCT07361497',
+    data_atualizacao: '2026-07-20',
+  },
+
+  {
+    // ⚠ RASCUNHO — confiança media. Pfizer, fase 3, 714 participantes, 26 centros no Brasil em 12
+    //   estados — o maior número de centros entre os cards de pulmão. Diferente dos outros estudos
+    //   deste lote, o registro declara o mecanismo do sigvotatug vedotina de forma explícita, e
+    //   por isso ele aparece no racional. O texto de elegibilidade recebido corta no critério de
+    //   resolução de efeitos de terapia prévia, sem a seção de exclusão completa. Confiança média
+    //   por isso.
+    id: 'be6a-lung-02',
+    nome: 'Be6A Lung-02',
+    titulo: 'Sigvotatug vedotina + pembrolizumabe vs pembrolizumabe isolado em 1ª linha de NSCLC com PD-L1 TPS ≥ 50%',
+    nct: 'NCT06758401',
+    fase: 'III',
+    status: 'Recrutando',
+    neoplasia: 'pulmao',
+    neoplasia_label: 'Pulmão · NSCLC',
+    subtipo: 'NSCLC estádio IIIB/IIIC sem indicação de ressecção ou quimiorradioterapia definitiva, ou estádio IV, com PD-L1 em 50% ou mais das células tumorais',
+    linha_terapeutica: '1ª linha',
+    cenario_clinico: 'Doença localmente avançada irressecável ou metastática, em candidato a pembrolizumabe em monoterapia pelas diretrizes locais',
+    modalidade: ['ADC', 'imunoterapia', 'combinação'],
+    biomarcadores: [
+      'PD-L1',
+      'Integrina beta-6',
+      'EGFR',
+      'ALK',
+      'ROS1',
+    ],
+    testes_fornecidos: 'PD-L1 TPS por teste local',
+    intervencao: 'Sigvotatug vedotina intravenosa a cada 2 semanas + pembrolizumabe intravenoso a cada 6 semanas; o pembrolizumabe por até cerca de 2 anos e o conjugado enquanto houver resposta',
+    comparador: 'Pembrolizumabe intravenoso a cada 6 semanas em monoterapia, por até cerca de 2 anos',
+    racional: 'Sigvotatug vedotina é descrito no registro como conjugado anticorpo-fármaco com carga MMAE dirigido à integrina beta-6. O estudo testa se acrescentá-lo ao pembrolizumabe supera o anti-PD-1 isolado justamente na população de PD-L1 alto, que hoje é tratada com monoterapia.',
+    criterios_principais: [
+      'NSCLC estádio IIIB ou IIIC confirmado patologicamente, sem indicação de ressecção cirúrgica ou quimiorradioterapia definitiva, ou estádio IV (AJCC 8ª edição)',
+      'PD-L1 em 50% ou mais das células tumorais (TPS ≥ 50%) por teste local',
+      'Na histologia não-escamosa, testes negativos documentados para EGFR, ALK e ROS1, e sem alteração genômica conhecida em NTRK, BRAF, RET, MET ou outra com terapia de 1ª linha aprovada',
+      'Candidato a pembrolizumabe em monoterapia pelas diretrizes locais',
+      'Doença mensurável por RECIST v1.1',
+      'Resolução dos efeitos agudos de terapia prévia',
+    ],
+    criterios_exclusao: ['Carcinoma neuroendócrino de grandes células'],
+    centros: [
+      'Barretos / SP',
+      'Bragança Paulista / SP',
+      'Brasília / DF',
+      'Curitiba / PR',
+      'Fortaleza / CE',
+      'Ijuí / RS',
+      'Jaú / SP',
+      'Lages / SC',
+      'Natal / RN',
+      'Porto Alegre / RS',
+      'Recife / PE',
+      'Ribeirão Preto / SP',
+      'Rio de Janeiro / RJ',
+      'Salvador / BA',
+      'Santo André / SP',
+      'São José do Rio Preto / SP',
+      'São Paulo / SP',
+      'Teresina / PI',
+      'Vitória / ES',
+    ],
+    estados: [
+      'BA',
+      'CE',
+      'DF',
+      'ES',
+      'PE',
+      'PI',
+      'PR',
+      'RJ',
+      'RN',
+      'RS',
+      'SC',
+      'SP',
+    ],
+    cidades: [
+      'Barretos',
+      'Bragança Paulista',
+      'Brasília',
+      'Curitiba',
+      'Fortaleza',
+      'Ijuí',
+      'Jaú',
+      'Lages',
+      'Natal',
+      'Porto Alegre',
+      'Recife',
+      'Ribeirão Preto',
+      'Rio de Janeiro',
+      'Salvador',
+      'Santo André',
+      'São José do Rio Preto',
+      'São Paulo',
+      'Teresina',
+      'Vitória',
+    ],
+    patrocinador: 'Pfizer',
+    fonte_url: 'https://clinicaltrials.gov/study/NCT06758401',
+    contato_url: 'https://clinicaltrials.gov/study/NCT06758401',
+    data_atualizacao: '2026-07-22',
+  },
+
+  {
+    // ⚠ RASCUNHO — confiança media. MSD, fase 3, 868 participantes, 9 centros no Brasil em 5
+    //   estados. O registro declara as duas listas explicitamente como parciais ('include but are
+    //   not limited to') e o texto recebido corta no primeiro critério de exclusão. Confiança média
+    //   por isso. Estudo irmão do INTerpath-009, que está neste mesmo lote de curadoria com
+    //   população distinta.
+    id: 'interpath-002',
+    nome: 'INTerpath-002',
+    titulo: 'Intismerana autógena + pembrolizumabe vs placebo + pembrolizumabe como adjuvante em NSCLC ressecado II a IIIB (N2)',
+    nct: 'NCT06077760',
+    fase: 'III',
+    status: 'Recrutando',
+    neoplasia: 'pulmao',
+    neoplasia_label: 'Pulmão · NSCLC',
+    subtipo: 'NSCLC escamoso ou não-escamoso completamente ressecado com margens negativas, estádio patológico II, IIIA ou IIIB (N2)',
+    linha_terapeutica: 'Perioperatório',
+    cenario_clinico: 'Adjuvante após ressecção completa e ao menos uma dose de quimioterapia adjuvante com dupla de platina, sem evidência de doença antes da randomização',
+    modalidade: ['vacina', 'imunoterapia', 'combinação'],
+    biomarcadores: [],
+    testes_fornecidos: '',
+    intervencao: 'Intismerana autógena (mRNA-4157) 1 mg intramuscular a cada 3 semanas por 9 doses + pembrolizumabe 400 mg intravenoso a cada 6 semanas por até 9 doses, por até cerca de 1 ano',
+    comparador: 'Placebo intramuscular correspondente a cada 3 semanas por 9 doses + pembrolizumabe 400 mg intravenoso a cada 6 semanas, no mesmo esquema',
+    racional: 'Testa a vacina individualizada de mRNA somada ao pembrolizumabe adjuvante em doença ressecada de risco elevado, com sobrevida livre de doença por avaliação do investigador como desfecho primário. Diferente do INTerpath-009, aqui a população é a ressecada que recebeu quimioterapia adjuvante, e não a que ficou com doença residual após neoadjuvância.',
+    criterios_principais: [
+      'NSCLC completamente ressecado com margens negativas, estádio patológico II, IIIA ou IIIB (N2) pela 8ª edição do AJCC, escamoso ou não-escamoso',
+      'Sem evidência de doença antes da randomização',
+      'Ao menos uma dose de quimioterapia adjuvante padrão com dupla de platina',
+      'No máximo 24 semanas entre a ressecção com intenção curativa e a primeira dose de pembrolizumabe',
+      'HIV permitido se bem controlado em antirretroviral; HBsAg positivo permitido com 4 semanas de antiviral e carga viral indetectável; história de hepatite C permitida com carga viral indetectável na triagem',
+    ],
+    criterios_exclusao: [
+      'Carcinoma de pequenas células, tumor misto com componente de pequenas células, ou tumor neuroendócrino',
+    ],
+    centros: [
+      'Barretos / SP',
+      'Fortaleza / CE',
+      'Natal / RN',
+      'Porto Alegre / RS',
+      'Rio de Janeiro / RJ',
+      'São José do Rio Preto / SP',
+      'São Paulo / SP',
+    ],
+    estados: [
+      'CE',
+      'RJ',
+      'RN',
+      'RS',
+      'SP',
+    ],
+    cidades: [
+      'Barretos',
+      'Fortaleza',
+      'Natal',
+      'Porto Alegre',
+      'Rio de Janeiro',
+      'São José do Rio Preto',
+      'São Paulo',
+    ],
+    patrocinador: 'Merck Sharp & Dohme LLC',
+    fonte_url: 'https://clinicaltrials.gov/study/NCT06077760',
+    contato_url: 'https://clinicaltrials.gov/study/NCT06077760',
+    data_atualizacao: '2026-07-31',
+  },
+
+  {
+    // ⚠ RASCUNHO — confiança media. AstraZeneca, fase III, 830 participantes, 15 centros no Brasil
+    //   em 8 estados. Classe do rilvegostomig validada pelo autor em 2026-08-04: biespecífico
+    //   anti-PD-1/TIGIT; o registro não a declara. O registro não define numericamente o corte de
+    //   'PD-L1 alto' no texto recebido, apenas exige teste central — o card não inventou o valor. O
+    //   texto de exclusão está truncado no critério de metástase cerebral. Confiança média por
+    //   isso.
+    id: 'artemide-lung04',
+    nome: 'ARTEMIDE-Lung04',
+    titulo: 'Rilvegostomig vs pembrolizumabe, ambos em monoterapia, em 1ª linha de NSCLC metastático com PD-L1 alto',
+    nct: 'NCT06868277',
+    fase: 'III',
+    status: 'Recrutando',
+    neoplasia: 'pulmao',
+    neoplasia_label: 'Pulmão · NSCLC',
+    subtipo: 'NSCLC metastático estádio IV, todos os subtipos histológicos, com PD-L1 alto',
+    linha_terapeutica: '1ª linha',
+    cenario_clinico: 'Doença metastática sem indicação de tratamento curativo, sem EGFR sensibilizante, sem rearranjo de ALK ou ROS1, e sem outro driver acionável com terapia-alvo de 1ª linha aprovada localmente',
+    modalidade: [
+      'bispecífico',
+      'imunoterapia',
+    ],
+    biomarcadores: ['PD-L1', 'EGFR', 'ALK', 'ROS1'],
+    testes_fornecidos: 'Exige amostra tumoral aceitável para teste central antes da randomização',
+    intervencao: 'Rilvegostomig intravenoso no dia 1 de cada ciclo de 21 dias',
+    comparador: 'Pembrolizumabe intravenoso no dia 1 de cada ciclo de 21 dias',
+    racional: 'Rilvegostomig (AZD2936) é anticorpo biespecífico anti-PD-1/TIGIT. Comparação cabeça a cabeça em monoterapia, sem quimioterapia nos dois braços, na população de PD-L1 alto que hoje recebe anti-PD-1 isolado. Diferente dos ARTEMIDE-Lung02 e Lung03, aqui não há espinha dorsal de platina.',
+    criterios_principais: [
+      'NSCLC documentado histológica ou citologicamente, qualquer subtipo histológico',
+      'Estádio IV pela 8ª edição do AJCC, sem indicação de tratamento curativo',
+      'Ausência de mutação sensibilizante de EGFR e de rearranjo de ALK ou ROS1 — resultado negativo é exigido em toda histologia não-escamosa',
+      'Ausência de outro driver oncogênico acionável com terapia-alvo de 1ª linha aprovada localmente',
+      'ECOG/OMS 0 ou 1, sem deterioração nas 2 semanas anteriores',
+      'Expectativa de vida mínima de 12 semanas',
+      'Amostra tumoral aceitável para teste central antes da randomização',
+      'Ao menos uma lesão não irradiada mensurável por RECIST 1.1 (≥ 10 mm no maior diâmetro; linfonodo com eixo curto ≥ 15 mm)',
+      'Função orgânica e medular adequadas',
+    ],
+    criterios_exclusao: [
+      'Doença sistêmica grave ou não controlada que inviabilize a participação ou a adesão ao protocolo',
+      'História de transplante de órgão',
+      'Doença autoimune ou inflamatória, ativa ou prévia documentada, que exija tratamento crônico com corticoide ou outro imunossupressor',
+      'Outra neoplasia primária, exceto tratada com intenção curativa, sem doença ativa há 2 anos ou mais e de baixo risco de recorrência',
+      'Componente histológico de pequenas células ou neuroendócrino',
+      'Metástase cerebral, salvo se assintomática nas condições definidas pelo protocolo',
+    ],
+    centros: [
+      'Blumenau / SC',
+      'Fortaleza / CE',
+      'Ijuí / RS',
+      'Itajaí / SC',
+      'Londrina / PR',
+      'Passo Fundo / RS',
+      'Porto Alegre / RS',
+      'Porto Velho / RO',
+      'Salvador / BA',
+      'Santo André / SP',
+      'São Paulo / SP',
+      'Teresina / PI',
+    ],
+    estados: [
+      'BA',
+      'CE',
+      'PI',
+      'PR',
+      'RO',
+      'RS',
+      'SC',
+      'SP',
+    ],
+    cidades: [
+      'Blumenau',
+      'Fortaleza',
+      'Ijuí',
+      'Itajaí',
+      'Londrina',
+      'Passo Fundo',
+      'Porto Alegre',
+      'Porto Velho',
+      'Salvador',
+      'Santo André',
+      'São Paulo',
+      'Teresina',
+    ],
+    patrocinador: 'AstraZeneca',
+    fonte_url: 'https://clinicaltrials.gov/study/NCT06868277',
+    contato_url: 'https://clinicaltrials.gov/study/NCT06868277',
+    data_atualizacao: '2026-08-03',
+  },
+
+  {
+    // ⚠ RASCUNHO — confiança media. Bayer, fase 1/2, 400 participantes, 3 centros no Brasil (Natal,
+    //   São José do Rio Preto, São Paulo). O texto recebido é o resumo em linguagem leiga e termina
+    //   na descrição das 4 partes do estudo, sem a lista formal de inclusão e exclusão — por isso
+    //   os critérios estão mínimos e a confiança é média. Convém conferir no registro oficial quais
+    //   linhas prévias são exigidas em cada parte antes de publicar.
+    id: 'sevabertinibe-bay-2927088',
+    nome: 'Sevabertinibe para NSCLC com mutação de EGFR ou HER2',
+    titulo: 'Estudo primeiro em humanos, com escalonamento de dose, backfill, expansão e extensão',
+    nct: 'NCT05099172',
+    fase: 'Ib/II',
+    status: 'Recrutando',
+    neoplasia: 'pulmao',
+    neoplasia_label: 'Pulmão · NSCLC',
+    subtipo: 'NSCLC avançado com mutação de EGFR e/ou de HER2',
+    linha_terapeutica: 'Conforme protocolo',
+    cenario_clinico: 'Doença avançada, com o estudo dividido em escalonamento de dose, backfill, expansão e extensão',
+    modalidade: ['terapia-alvo'],
+    biomarcadores: ['EGFR', 'HER2'],
+    testes_fornecidos: '',
+    intervencao: 'Sevabertinibe (BAY 2927088), inibidor das proteínas EGFR e HER2 mutadas, em diferentes níveis de dose',
+    comparador: 'Braço único aberto, sem comparador',
+    racional: 'Estudo primeiro em humanos que busca a dose máxima tolerada ou a dose máxima administrada, além de descrever a farmacocinética. A parte de extensão avalia taxa de resposta objetiva por revisão independente. O registro descreve o fármaco como bloqueador das proteínas EGFR e HER2 mutadas.',
+    criterios_principais: ['NSCLC avançado com mutação de EGFR e/ou de HER2'],
+    criterios_exclusao: [],
+    centros: ['Natal / RN', 'São José do Rio Preto / SP', 'São Paulo / SP'],
+    estados: ['RN', 'SP'],
+    cidades: ['Natal', 'São José do Rio Preto', 'São Paulo'],
+    patrocinador: 'Bayer',
+    fonte_url: 'https://clinicaltrials.gov/study/NCT05099172',
+    contato_url: 'https://clinicaltrials.gov/study/NCT05099172',
+    data_atualizacao: '2026-07-01',
+  },
+
+  {
+    // ⚠ RASCUNHO — confiança media. AstraZeneca, fase Ib/II, 152 participantes, 7 centros no Brasil
+    //   em 4 estados. Classe do rilvegostomig validada pelo autor em 2026-08-04: biespecífico
+    //   anti-PD-1/TIGIT. Só o subestudo 2 aparece descrito no registro recebido — sendo plataforma,
+    //   outros subestudos podem estar abertos ou por abrir, e nem todos necessariamente nos centros
+    //   brasileiros. A linha terapêutica ficou como 'Conforme protocolo' porque o registro não
+    //   define exigência de linhas prévias. O texto de exclusão está truncado. Confiança média por
+    //   isso.
+    id: 'altair',
+    nome: 'ALTAIR',
+    titulo: 'Plataforma de combinações novas em NSCLC avançado ou metastático — rilvegostomig com ramucirumabe e quimioterapia',
+    nct: 'NCT06996782',
+    fase: 'Ib/II',
+    status: 'Recrutando',
+    neoplasia: 'pulmao',
+    neoplasia_label: 'Pulmão · NSCLC',
+    subtipo: 'NSCLC escamoso ou não-escamoso estádio IV; o subestudo 2 exige PD-L1 TPS ≥ 1%',
+    linha_terapeutica: 'Conforme protocolo',
+    cenario_clinico: 'Doença metastática, em estudo de plataforma com subestudos que avaliam combinações distintas',
+    modalidade: [
+      'bispecífico',
+      'imunoterapia',
+      'anti-angiogênico',
+      'quimioterapia',
+      'combinação',
+    ],
+    biomarcadores: ['PD-L1', 'EGFR', 'ALK'],
+    testes_fornecidos: 'Tecido tumoral de arquivo obrigatório na triagem, ou biópsia nova quando o de arquivo não estiver disponível e for clinicamente viável',
+    intervencao: 'Subestudo 2: rilvegostomig + ramucirumabe + quimioterapia com platina, em run-in de segurança seguido de expansão de dose',
+    comparador: 'Na expansão do não-escamoso, randomização 1:1 entre rilvegostomig + quimioterapia + ramucirumabe e rilvegostomig + quimioterapia; no escamoso, braço único com a tripla',
+    racional: 'Estudo de plataforma desenhado para testar várias combinações sob um único protocolo, o que permite acrescentar ou encerrar braços sem abrir novo estudo. O subestudo 2 avalia se somar o antiangiogênico ramucirumabe à combinação do biespecífico anti-PD-1/TIGIT rilvegostomig (AZD2936) com platina agrega, com desenho que separa escamoso e não-escamoso.',
+    criterios_principais: [
+      'NSCLC escamoso ou não-escamoso confirmado, estádio IV',
+      'Tecido tumoral de arquivo aceitável, ou biópsia nova quando indisponível e clinicamente viável',
+      'Doença mensurável com ao menos uma lesão de 10 mm ou mais no maior diâmetro',
+      'Expectativa de vida mínima de 12 semanas',
+      'Função orgânica e medular adequadas',
+      'No subestudo 2: PD-L1 TPS ≥ 1% por laudo local, coagulação e urinálise adequadas, peso mínimo de 30 kg',
+    ],
+    criterios_exclusao: [
+      'Mutação de EGFR, fusão de ALK ou qualquer outra alteração genômica com terapia-alvo aprovada em 1ª linha pelo padrão local',
+      'Componente histológico de pequenas células ou neuroendócrino',
+      'Doença sistêmica grave ou não controlada, incluindo hipertensão não controlada e doença hemorrágica ativa',
+      'Infecção ativa ou em curso',
+      'Doença pulmonar intersticial ou pneumonite de qualquer grau',
+    ],
+    centros: [
+      'Barretos / SP',
+      'Fortaleza / CE',
+      'Natal / RN',
+      'Pelotas / RS',
+      'Porto Alegre / RS',
+      'São Paulo / SP',
+    ],
+    estados: ['CE', 'RN', 'RS', 'SP'],
+    cidades: [
+      'Barretos',
+      'Fortaleza',
+      'Natal',
+      'Pelotas',
+      'Porto Alegre',
+      'São Paulo',
+    ],
+    patrocinador: 'AstraZeneca',
+    fonte_url: 'https://clinicaltrials.gov/study/NCT06996782',
+    contato_url: 'https://clinicaltrials.gov/study/NCT06996782',
+    data_atualizacao: '2026-07-21',
+  },
+
+  {
+    // ⚠ RASCUNHO — confiança media. Hoffmann-La Roche, fase Ib/II, 320 participantes, 2 centros no
+    //   Brasil (Barretos e São Paulo). O texto de elegibilidade recebido corta no critério de
+    //   tratamento sistêmico prévio, sem a seção de exclusão. O registro não informa a classe
+    //   farmacológica do divarasibe; o racional não afirma mecanismo, embora o acrônimo e a seleção
+    //   por KRAS G12C sejam sugestivos. Confiança média por isso.
+    id: 'krascendo-170',
+    nome: 'KRAScendo 170',
+    titulo: 'Divarasibe isolado ou combinado a pembrolizumabe e quimioterapia em NSCLC avançado KRAS G12C sem tratamento prévio',
+    nct: 'NCT05789082',
+    fase: 'Ib/II',
+    status: 'Recrutando',
+    neoplasia: 'pulmao',
+    neoplasia_label: 'Pulmão · NSCLC',
+    subtipo: 'NSCLC localmente avançado irressecável ou metastático com mutação KRAS G12C, sem tratamento sistêmico prévio',
+    linha_terapeutica: '1ª linha',
+    cenario_clinico: 'Doença avançada sem indicação de cirurgia curativa nem de quimiorradioterapia definitiva, e sem tratamento sistêmico prévio nesse cenário',
+    modalidade: ['terapia-alvo', 'imunoterapia', 'quimioterapia', 'combinação'],
+    biomarcadores: ['KRAS G12C'],
+    testes_fornecidos: 'Confirmação de elegibilidade por biomarcador; exige tecido pré-tratamento em bloco de parafina ou 15 lâminas não coradas (10 podem bastar mediante consulta ao patrocinador)',
+    intervencao: 'Divarasibe oral 1x/dia nos dias 1 a 21 de cada ciclo de 21 dias, isolado (coortes C e D) ou com pembrolizumabe 200 mg a cada 3 semanas (coorte A), ou ainda com pembrolizumabe e dupla de platina com pemetrexede (coorte B)',
+    comparador: 'Sem comparador — coortes experimentais paralelas com randomização entre níveis de dose na fase de expansão',
+    racional: 'Divarasibe (GDC-6036) é inibidor covalente seletivo de KRAS G12C, pequena molécula oral que estabiliza a proteína no estado inativo. O estudo avalia segurança, farmacocinética e atividade em quatro coortes que vão da monoterapia à combinação com anti-PD-1 e quimioterapia, no cenário sem tratamento prévio do NSCLC KRAS G12C. Na expansão, participantes são randomizados entre níveis de dose da combinação.',
+    criterios_principais: [
+      'NSCLC localmente avançado irressecável ou metastático documentado histológica ou citologicamente, sem indicação de cirurgia curativa ou quimiorradioterapia definitiva',
+      'Mutação KRAS G12C confirmada',
+      'Sem tratamento sistêmico prévio para doença avançada irressecável ou metastática',
+      'Tecido tumoral pré-tratamento com laudo anatomopatológico, em bloco de parafina ou lâminas seriadas',
+      'ECOG 0 ou 1',
+    ],
+    criterios_exclusao: [],
+    centros: ['Barretos / SP', 'São Paulo / SP'],
+    estados: ['SP'],
+    cidades: ['Barretos', 'São Paulo'],
+    patrocinador: 'Hoffmann-La Roche',
+    fonte_url: 'https://clinicaltrials.gov/study/NCT05789082',
+    contato_url: 'https://clinicaltrials.gov/study/NCT05789082',
+    data_atualizacao: '2026-07-13',
+  },
+
+
+  // ============== NOVOS ESTUDOS (2026-08-04) — RASCUNHO, revisar antes de publicar ==============
+
+  {
+    // ⚠ RASCUNHO — confiança alta. Daiichi Sankyo, fase 3, 540 participantes, 11 centros em 3
+    //   estados. Critérios de exclusão transcritos do ClinicalTrials.gov pelo autor em 2026-08-04.
+    //   É o mais restritivo quanto à doença pulmonar intersticial entre os cards com ADC deste PR:
+    //   exclui QUALQUER história, independentemente de ter exigido corticoide, e o registro lista
+    //   os achados de imagem que caracterizam suspeita — que entraram como critério, porque quem lê
+    //   o card decide a partir de uma tomografia.
+    id: 'ideate-lung02',
+    nome: 'IDeate-Lung02',
+    titulo: 'Ifinatamabe deruxtecana vs escolha do médico em carcinoma de pequenas células recidivado',
+    nct: 'NCT06203210',
+    fase: 'III',
+    status: 'Recrutando',
+    neoplasia: 'pulmao',
+    neoplasia_label: 'Pulmão · SCLC',
+    subtipo: 'Carcinoma de pequenas células de pulmão em doença extensa, recidivado após uma linha com platina',
+    linha_terapeutica: '2ª linha',
+    cenario_clinico: 'Progressão radiológica documentada durante ou após a única linha sistêmica prévia com platina, com intervalo livre de quimioterapia de 30 dias ou mais',
+    modalidade: ['ADC'],
+    biomarcadores: ['B7-H3'],
+    testes_fornecidos: 'Exige amostra tumoral basal em quantidade e qualidade adequadas',
+    intervencao: 'Ifinatamabe deruxtecana 12 mg/kg intravenoso no dia 1 de cada ciclo de 21 dias, em monoterapia, até toxicidade inaceitável ou progressão',
+    comparador: 'Escolha do médico entre topotecana, lurbinectedina ou anrubicina, na dose e frequência da bula local',
+    racional: 'Ifinatamabe deruxtecana é descrito no registro como conjugado anticorpo-fármaco dirigido a B7-H3. O comparador reúne as três opções usadas hoje na 2ª linha do pequenas células, cenário em que a sobrevida é curta e as alternativas são poucas.',
+    criterios_principais: [
+      'Carcinoma de pequenas células de pulmão em doença extensa, documentado histológica ou citologicamente',
+      'Apenas uma linha sistêmica prévia com platina, com ao menos 2 ciclos e intervalo livre de quimioterapia de 30 dias ou mais',
+      'Progressão radiológica documentada durante ou após a terapia sistêmica mais recente',
+      'Amostra tumoral basal adequada em quantidade e qualidade',
+      'Ao menos uma lesão mensurável por RECIST v1.1',
+      'ECOG 0 ou 1 nos 7 dias anteriores ao primeiro ciclo',
+      'Sem evidência de doença cerebral ou leptomeníngea por história e exame físico, sem corticoide ou anticonvulsivante e com estado neurológico estável por ao menos 2 semanas',
+    ],
+    criterios_exclusao: [
+      'Tratamento prévio com orlotamabe, enoblituzumabe ou outro agente dirigido a B7-H3, incluindo o próprio ifinatamabe deruxtecana',
+      'Descontinuação prévia de conjugado anticorpo-fármaco com derivado de exatecano (por exemplo trastuzumabe deruxtecana) por toxicidade relacionada ao tratamento',
+      'Uso prévio de qualquer um dos comparadores do estudo, ou de qualquer inibidor de topoisomerase I',
+      'Qualquer história de doença pulmonar intersticial ou pneumonite, independentemente de ter exigido corticoide; doença atual, suspeita ou não descartada por imagem. Pneumonite por radiação que não exigiu corticoide pode ser aceita',
+      'Achados de imagem compatíveis com doença intersticial suspeita: fibrose pulmonar, fibrose com enfisema, anormalidades intersticiais, vidro fosco extenso, reticulações, bronquiectasias de tração e faveolamento',
+      'Comprometimento pulmonar clinicamente grave por doença intercorrente: doença pulmonar de base, envolvimento pulmonar por doença autoimune, do tecido conjuntivo ou inflamatória, pneumonectomia prévia, ou necessidade de oxigênio suplementar',
+      'AVC, ataque isquêmico transitório ou outro evento tromboembólico arterial nos 6 meses anteriores',
+      'Doença cardiovascular significativa ou não controlada',
+      'Doença corneana clinicamente significativa',
+      'Washout insuficiente antes da randomização, conforme definido pelo protocolo',
+    ],
+    centros: [
+      'Barretos / SP',
+      'Florianópolis / SC',
+      'Itajaí / SC',
+      'Porto Alegre / RS',
+      'Santo André / SP',
+      'São José do Rio Preto / SP',
+      'São Paulo / SP',
+    ],
+    estados: ['RS', 'SC', 'SP'],
+    cidades: [
+      'Barretos',
+      'Florianópolis',
+      'Itajaí',
+      'Porto Alegre',
+      'Santo André',
+      'São José do Rio Preto',
+      'São Paulo',
+    ],
+    patrocinador: 'Daiichi Sankyo',
+    fonte_url: 'https://clinicaltrials.gov/study/NCT06203210',
+    contato_url: 'https://clinicaltrials.gov/study/NCT06203210',
+    data_atualizacao: '2026-06-02',
+  },
+
+  {
+    // ⚠ RASCUNHO — confiança media. Bristol-Myers Squibb, fase 2, 160 participantes, 4 centros no
+    //   Brasil em 3 estados. Estudo sem acrônimo no registro; o nome do card foi construído a
+    //   partir dos dois fármacos. Classes validadas pelo autor em 2026-08-04: imzokitug
+    //   (BMS-986340) é anticorpo monoclonal anti-CCR8 com depleção de células T reguladoras, e
+    //   pumitamig é biespecífico anti-PD-L1/VEGF-A. O registro segue sem detalhar dose ou esquema
+    //   dos quatro braços. O pumitamig também aparece no ROSETTA Lung-201, do mesmo patrocinador.
+    //   Confiança média.
+    id: 'imzokitug-pumitamig',
+    nome: 'Imzokitug + pumitamig para NSCLC avançado de 1ª linha',
+    titulo: 'Acréscimo do imzokitug ao esquema de pumitamig com dupla de platina, em quatro braços',
+    nct: 'NCT07680764',
+    fase: 'II',
+    status: 'Recrutando',
+    neoplasia: 'pulmao',
+    neoplasia_label: 'Pulmão · NSCLC',
+    subtipo: 'NSCLC escamoso ou não-escamoso estádio IV, ou doença recorrente irressecável',
+    linha_terapeutica: '1ª linha',
+    cenario_clinico: 'Doença avançada ou metastática sem terapia sistêmica antineoplásica prévia como tratamento primário',
+    modalidade: [
+      'bispecífico',
+      'imunoterapia',
+      'anti-angiogênico',
+      'quimioterapia',
+      'combinação',
+    ],
+    biomarcadores: [],
+    testes_fornecidos: 'Exige tecido tumoral fresco ou de arquivo obtido nos 5 meses anteriores à inclusão',
+    intervencao: 'Imzokitug + pumitamig + quimioterapia com dupla de platina',
+    comparador: 'Pumitamig + quimioterapia com dupla de platina',
+    racional: 'Imzokitug (BMS-986340) é anticorpo monoclonal anti-CCR8 que promove depleção de células T reguladoras no microambiente tumoral; pumitamig (BNT327) é biespecífico anti-PD-L1/VEGF-A. O estudo avalia o acréscimo do imzokitug a um esquema que já combina pumitamig e dupla de platina, na 1ª linha da doença avançada sem alteração genômica acionável. O desenho tem quatro braços, todos rotulados como experimentais no registro.',
+    criterios_principais: [
+      'NSCLC escamoso ou não-escamoso estádio IV confirmado histologicamente, ou doença recorrente irressecável (AJCC 9ª edição)',
+      'Sem terapia sistêmica antineoplásica prévia como tratamento primário da doença avançada ou metastática',
+      'Tecido tumoral fresco ou de arquivo obtido nos 5 meses anteriores à assinatura do consentimento',
+      'ECOG 0 ou 1',
+      'Doença mensurável por RECIST v1.1',
+    ],
+    criterios_exclusao: [
+      'Alteração genômica acionável documentada com terapia-alvo aprovada em 1ª linha',
+      'Tratamento prévio com imuno-oncologia',
+      'Metástase em sistema nervoso central não tratada',
+    ],
+    centros: ['Barretos / SP', 'Natal / RN', 'Porto Alegre / RS', 'São Paulo / SP'],
+    estados: ['RN', 'RS', 'SP'],
+    cidades: ['Barretos', 'Natal', 'Porto Alegre', 'São Paulo'],
+    patrocinador: 'Bristol-Myers Squibb',
+    fonte_url: 'https://clinicaltrials.gov/study/NCT07680764',
+    contato_url: 'https://clinicaltrials.gov/study/NCT07680764',
+    data_atualizacao: '2026-07-24',
+  },
+
+  {
+    // ⚠ RASCUNHO — confiança media. AstraZeneca, fase III, 860 participantes, 11 centros no Brasil
+    //   em 5 estados. Classe do domvanalimabe validada pelo autor em 2026-08-04: anticorpo
+    //   monoclonal Fc-silent anti-TIGIT. O texto de exclusão recebido corta no terceiro item. Junto
+    //   com o ROSETTA Lung-201, cobre o mesmo cenário de consolidação pós-quimiorradioterapia com
+    //   desenhos distintos: aqui o durvalumabe está nos dois braços, lá ele é o comparador.
+    id: 'pacific-8',
+    nome: 'PACIFIC-8',
+    titulo: 'Durvalumabe + domvanalimabe vs durvalumabe + placebo após quimiorradioterapia em NSCLC estádio III irressecável',
+    nct: 'NCT05211895',
+    fase: 'III',
+    status: 'Recrutando',
+    neoplasia: 'pulmao',
+    neoplasia_label: 'Pulmão · NSCLC',
+    subtipo: 'NSCLC estádio III localmente avançado irressecável, PD-L1 ≥ 1% por laboratório central, EGFR e ALK selvagens',
+    linha_terapeutica: 'Perioperatório / consolidação',
+    cenario_clinico: 'Consolidação após quimiorradioterapia concomitante definitiva com platina, sem progressão ao fim do tratamento',
+    modalidade: ['imunoterapia', 'combinação'],
+    biomarcadores: ['PD-L1', 'EGFR', 'ALK'],
+    testes_fornecidos: 'PD-L1 por laboratório central em amostra tumoral obtida antes da quimiorradioterapia; status de EGFR e ALK local ou central',
+    intervencao: 'Durvalumabe + domvanalimabe intravenosos a cada 4 semanas, a partir do dia 1, por até 12 meses',
+    comparador: 'Durvalumabe + placebo intravenosos a cada 4 semanas, no mesmo esquema e duração',
+    racional: 'Domvanalimabe é anticorpo monoclonal Fc-silent anti-TIGIT. O estudo testa seu acréscimo ao durvalumabe na consolidação pós-quimiorradioterapia, cenário em que o durvalumabe isolado é o padrão. O protocolo exige quimiorradioterapia concomitante — não sequencial — com dose total de radiação de 60 Gy ±10%, preferencialmente por IMRT.',
+    criterios_principais: [
+      'NSCLC documentado histológica ou citologicamente, tratado com quimiorradioterapia concomitante para doença localmente avançada irressecável (estádio III)',
+      'Amostra tumoral obtida antes da quimiorradioterapia',
+      'PD-L1 ≥ 1% por laboratório central',
+      'EGFR e ALK selvagens, documentados local ou centralmente',
+      'Sem progressão após a quimiorradioterapia concomitante definitiva com platina',
+      'Ao menos 2 ciclos de quimioterapia com platina concomitantes à radioterapia',
+      'Dose total de radiação de 60 Gy ±10% (54 a 66 Gy), por IMRT (preferencial) ou técnica conformacional 3D',
+      'Performance status OMS 0 ou 1 na randomização',
+      'Função orgânica e medular adequadas',
+    ],
+    criterios_exclusao: [
+      'Outra neoplasia primária, exceto tratada com intenção curativa sem doença ativa e sem tratamento nos 3 anos anteriores e de baixo risco de recorrência, câncer de pele não-melanoma ou lentigo maligno adequadamente ressecado, e carcinoma in situ adequadamente tratado incluindo tumores Ta',
+      'Histologia mista de pequenas e não-pequenas células',
+      'Quimiorradioterapia sequencial em vez de concomitante (indução não conta como sequencial)',
+    ],
+    centros: [
+      'Barretos / SP',
+      'Londrina / PR',
+      'Porto Alegre / RS',
+      'Porto Velho / RO',
+      'Rio de Janeiro / RJ',
+      'Santo André / SP',
+      'São Paulo / SP',
+      'Taubaté / SP',
+    ],
+    estados: [
+      'PR',
+      'RJ',
+      'RO',
+      'RS',
+      'SP',
+    ],
+    cidades: [
+      'Barretos',
+      'Londrina',
+      'Porto Alegre',
+      'Porto Velho',
+      'Rio de Janeiro',
+      'Santo André',
+      'São Paulo',
+      'Taubaté',
+    ],
+    patrocinador: 'AstraZeneca',
+    fonte_url: 'https://clinicaltrials.gov/study/NCT05211895',
+    contato_url: 'https://clinicaltrials.gov/study/NCT05211895',
+    data_atualizacao: '2026-06-10',
+  },
+
+  {
+    // ⚠ RASCUNHO — confiança media. Boehringer Ingelheim, fase 3, 400 participantes, 7 centros no
+    //   Brasil em 4 estados — inclui Maceió, que é centro raro na base. O registro declara o
+    //   zongertinibe como tratamento oral dirigido a HER2, o que autoriza a descrição usada. Tanto
+    //   a inclusão quanto a exclusão trazem a ressalva 'further criteria apply' e o texto recebido
+    //   corta no primeiro item de exclusão. Confiança média por isso.
+    id: 'beamion-lung-3',
+    nome: 'Beamion LUNG-3',
+    titulo: 'Zongertinibe adjuvante vs padrão de cuidado em NSCLC ressecado estádio II–IIIB com mutação ativadora do domínio tirosina-quinase de HER2',
+    nct: 'NCT07195695',
+    fase: 'III',
+    status: 'Recrutando',
+    neoplasia: 'pulmao',
+    neoplasia_label: 'Pulmão · NSCLC',
+    subtipo: 'NSCLC primário completamente ressecado, estádio II a IIIB, com mutação ativadora do domínio tirosina-quinase (TKD) de HER2',
+    linha_terapeutica: 'Perioperatório',
+    cenario_clinico: 'Adjuvante após cirurgia com intenção curativa e terapia sistêmica perioperatória conforme diretriz — neoadjuvância com platina, com ou sem imunoterapia, ou quimioterapia adjuvante com platina',
+    modalidade: ['terapia-alvo'],
+    biomarcadores: ['HER2'],
+    testes_fornecidos: 'Confirmação retrospectiva do status de HER2 em laboratório central, a partir de amostra tumoral de arquivo enviada após a inclusão',
+    intervencao: 'Zongertinibe, inibidor oral dirigido a HER2, em monoterapia adjuvante',
+    comparador: 'Padrão de cuidado conforme diretriz local: imunoterapia adjuvante aprovada (pembrolizumabe, atezolizumabe, durvalumabe ou nivolumabe) ou vigilância ativa',
+    racional: 'Leva o bloqueio oral de HER2 ao cenário adjuvante numa população selecionada por mutação do domínio tirosina-quinase, em que o padrão atual é imunoterapia ou apenas vigilância. O desfecho principal é sobrevida livre de doença; segurança e desfechos relatados pelo paciente também são avaliados.',
+    criterios_principais: [
+      'Idade a partir de 18 anos ou da maioridade legal do país',
+      'Mutação ativadora do domínio tirosina-quinase (TKD) de HER2 documentada',
+      'NSCLC primário confirmado histologicamente, completamente ressecado',
+      'Classificação pré-terapêutica não superior ao estádio IIIB',
+      'Terapia sistêmica perioperatória conforme diretriz: neoadjuvância com platina, com ou sem imunoterapia, ou quimioterapia adjuvante com platina',
+      'Amostra tumoral de arquivo enviada ao laboratório central após a inclusão',
+      'ECOG 0 ou 1, com função orgânica adequada',
+    ],
+    criterios_exclusao: ['NSCLC de histologia mista ou com marcadores neuroendócrinos positivos'],
+    centros: [
+      'Barretos / SP',
+      'Maceió / AL',
+      'Natal / RN',
+      'Porto Alegre / RS',
+      'Santo André / SP',
+      'São Paulo / SP',
+    ],
+    estados: ['AL', 'RN', 'RS', 'SP'],
+    cidades: [
+      'Barretos',
+      'Maceió',
+      'Natal',
+      'Porto Alegre',
+      'Santo André',
+      'São Paulo',
+    ],
+    patrocinador: 'Boehringer Ingelheim',
+    fonte_url: 'https://clinicaltrials.gov/study/NCT07195695',
+    contato_url: 'https://clinicaltrials.gov/study/NCT07195695',
+    data_atualizacao: '2026-07-24',
+  },
+
+  {
+    // ⚠ RASCUNHO — confiança alta. MSD, fase 3, 780 participantes, 7 centros em 3 estados.
+    //   Critérios de exclusão transcritos do ClinicalTrials.gov pelo autor em 2026-08-04. Regra de
+    //   doença pulmonar intersticial deste estudo: exclui história, doença atual e suspeita não
+    //   excluída na avaliação inicial.
+    id: 'trofuse-019',
+    nome: 'TroFuse-019',
+    titulo: 'Pembrolizumabe adjuvante com ou sem sacituzumabe tirumotecana em NSCLC ressecável sem resposta patológica completa',
+    nct: 'NCT06312137',
+    fase: 'III',
+    status: 'Recrutando',
+    neoplasia: 'pulmao',
+    neoplasia_label: 'Pulmão · NSCLC',
+    subtipo: 'NSCLC ressecável estádio II a IIIB (N2) sem resposta patológica completa após neoadjuvância',
+    linha_terapeutica: 'Perioperatório',
+    cenario_clinico: 'Adjuvante, após neoadjuvância com pembrolizumabe e dupla de platina seguida de cirurgia, em quem não atingiu resposta patológica completa',
+    modalidade: ['ADC', 'imunoterapia', 'combinação'],
+    biomarcadores: [],
+    testes_fornecidos: '',
+    intervencao: 'Sacituzumabe tirumotecana 4 mg/kg intravenoso a cada 2 semanas por até 12 doses (cerca de 24 semanas), com pembrolizumabe, na fase adjuvante',
+    comparador: 'Pembrolizumabe 200 mg intravenoso em monoterapia a cada 6 semanas por até 7 ciclos (cerca de 42 semanas)',
+    racional: 'Testa se acrescentar o conjugado anti-TROP2 ao pembrolizumabe adjuvante melhora a sobrevida livre de doença em quem ficou com doença residual após a neoadjuvância. A neoadjuvância é a mesma nos dois braços: pembrolizumabe com dupla de platina escolhida por histologia.',
+    criterios_principais: [
+      'NSCLC ressecável estádio II a IIIB (N2)',
+      'Neoadjuvância com pembrolizumabe e dupla de platina seguida de cirurgia',
+      'Ausência de resposta patológica completa na cirurgia',
+    ],
+    criterios_exclusao: [
+      'NSCLC de sulco superior, carcinoma neuroendócrino de grandes células, tumor sarcomatoide, ou SCLC / componente de pequenas células em tumor misto',
+      'Neuropatia periférica grau 2 ou maior',
+      'Doença ocular relevante: olho seco grave, doença grave das glândulas de Meibômio, blefarite grave, ou doença corneana que impeça ou retarde a cicatrização',
+      'Doença inflamatória intestinal ativa em imunossupressor, ou história de doença inflamatória intestinal',
+      'Doença cardiovascular ou cerebrovascular significativa e não controlada nos 6 meses anteriores: ICC NYHA III/IV, angina instável, infarto, arritmia sintomática não controlada, QTcF acima de 480 ms',
+      'Tratamento neoadjuvante prévio para o diagnóstico atual de NSCLC',
+      'Terapia antineoplásica sistêmica, agente ou dispositivo investigacional nas 4 semanas anteriores',
+      'Radioterapia nas 2 semanas anteriores, ou toxicidade da radiação que exija corticoide',
+      'História de doença pulmonar intersticial ou pneumonite não infecciosa; doença atual, ou suspeita que não possa ser excluída na avaliação inicial',
+      'Imunodeficiência, corticoide sistêmico crônico acima de 10 mg/dia de equivalente de prednisona, ou outro imunossupressor nos 7 dias anteriores',
+      'Doença autoimune ativa tratada sistemicamente nos últimos 2 anos',
+      'Outra neoplasia em progressão ou tratada ativamente nos últimos 5 anos',
+      'Vacina viva ou viva atenuada nos 30 dias anteriores — vacina inativada é permitida',
+      'Infecção ativa em terapia sistêmica; HIV com história de sarcoma de Kaposi ou doença de Castleman multicêntrica; hepatite B e C ativas concomitantes',
+      'Transplante alogênico de tecido ou órgão sólido',
+      'Recuperação inadequada de cirurgia de grande porte, ou complicação cirúrgica em andamento',
+      'Hipersensibilidade grave (grau 3 ou maior) à intervenção, aos excipientes ou a outra terapia biológica',
+    ],
+    centros: [
+      'Barretos / SP',
+      'Natal / RN',
+      'Porto Alegre / RS',
+      'Santa Cruz do Sul / RS',
+      'São José do Rio Preto / SP',
+      'São Paulo / SP',
+    ],
+    estados: ['RN', 'RS', 'SP'],
+    cidades: [
+      'Barretos',
+      'Natal',
+      'Porto Alegre',
+      'Santa Cruz do Sul',
+      'São José do Rio Preto',
+      'São Paulo',
+    ],
+    patrocinador: 'Merck Sharp & Dohme LLC',
+    fonte_url: 'https://clinicaltrials.gov/study/NCT06312137',
+    contato_url: 'https://clinicaltrials.gov/study/NCT06312137',
+    data_atualizacao: '2026-07-20',
+  },
+
+  {
+    // ⚠ RASCUNHO — confiança media. Pfizer, fase 1a/1b, 124 participantes, 4 centros no Brasil em 3
+    //   estados. Classificado como tumores sólidos por recrutar melanoma, glioma, tireoide e NSCLC
+    //   em coortes distintas — apareceu na busca por pulmão. Aceita a partir de 16 anos, o que é
+    //   incomum na base. A fase 1a de monoterapia está fechada; só a 1b recruta. Classe do
+    //   PF-07799544 validada pelo autor em 2026-08-04: polfurmetinibe, inibidor oral de MEK com
+    //   penetração cerebral. O registro não informa a classe de nenhum dos dois agentes. Confiança
+    //   média por isso.
+    id: 'pf-07799544-braf-v600',
+    nome: 'PF-07799544 + PF-07799933 para tumores sólidos BRAF V600 mutado',
+    titulo: 'Estudo mestre aberto: fase 1a de monoterapia (encerrada para inclusão) e fase 1b da combinação oral',
+    nct: 'NCT05538130',
+    fase: 'I',
+    status: 'Recrutando',
+    neoplasia: 'solidos',
+    neoplasia_label: 'Tumores sólidos',
+    subtipo: 'Tumores sólidos metastáticos ou recorrentes com mutação BRAF V600, exceto colorretal. Condições registradas incluem melanoma, glioma de alto e de baixo grau, câncer diferenciado de tireoide e NSCLC',
+    linha_terapeutica: 'Conforme protocolo',
+    cenario_clinico: 'Doença metastática ou recorrente, com exigência de terapia prévia que varia conforme a coorte tumoral',
+    modalidade: ['terapia-alvo', 'combinação'],
+    biomarcadores: ['BRAF V600'],
+    testes_fornecidos: '',
+    intervencao: 'PF-07799544 + PF-07799933, ambos comprimidos orais 2x/dia, por até 2 anos, com possibilidade de continuar além disso',
+    comparador: 'Sem comparador — estudo aberto de escalonamento e expansão de dose',
+    racional: 'PF-07799544 (polfurmetinibe) é inibidor oral de MEK com penetração cerebral. Estudo mestre em duas fases: a 1a, de monoterapia, já está fechada para inclusão, e a 1b avalia a combinação dos dois agentes orais. A seleção é pela mutação BRAF V600, independentemente do sítio tumoral, com exceção do colorretal.',
+    criterios_principais: [
+      'Tumor sólido avançado ou metastático, exceto colorretal',
+      'Mutação BRAF V600 comprovada',
+      'Doença mensurável por RECIST v1.1',
+      'Terapia prévia conforme a coorte tumoral',
+      'Função orgânica adequada conforme o protocolo',
+      'Idade a partir de 16 anos',
+    ],
+    criterios_exclusao: [
+      'Outra neoplasia ativa nos 3 anos anteriores',
+      'Doença leptomeníngea',
+      'História ou evidência atual de oclusão de veia retiniana, ou história de doença degenerativa da retina',
+      'Distúrbio neuromuscular concomitante associado a elevação de creatinoquinase',
+      'Doença gastrointestinal ativa conforme definição do protocolo',
+      'História de doença pulmonar intersticial conforme definição do protocolo',
+    ],
+    centros: ['Lages / SC', 'Porto Alegre / RS', 'São Caetano do Sul / SP', 'São Paulo / SP'],
+    estados: ['RS', 'SC', 'SP'],
+    cidades: ['Lages', 'Porto Alegre', 'São Caetano do Sul', 'São Paulo'],
+    patrocinador: 'Pfizer',
+    fonte_url: 'https://clinicaltrials.gov/study/NCT05538130',
+    contato_url: 'https://clinicaltrials.gov/study/NCT05538130',
+    data_atualizacao: '2026-07-29',
+  },
+
+  {
+    // ⚠ RASCUNHO — confiança alta. AC Camargo Cancer Center, fase II randomizado, 100
+    //   participantes, 2 centros em São Paulo. Primeiro card de tumor neuroendócrino da base —
+    //   exigiu criar a neoplasia `net` na taxonomia. Apareceu na busca por pulmão por incluir NET
+    //   de origem pulmonar. Estudo acadêmico brasileiro de desescalonamento de dose, com everolimo
+    //   já aprovado nos dois braços: o paciente recebe tratamento padrão em qualquer alocação, e a
+    //   pergunta é sobre toxicidade e equivalência. Aceita a partir de 16 anos.
+    id: 'evenet',
+    nome: 'EVENET',
+    titulo: 'Everolimo 5 mg vs 10 mg ao dia em tumores neuroendócrinos bem diferenciados avançados',
+    nct: 'NCT06472388',
+    fase: 'II',
+    status: 'Recrutando',
+    neoplasia: 'net',
+    neoplasia_label: 'Tumores neuroendócrinos',
+    subtipo: 'Tumor neuroendócrino bem diferenciado grau 1 ou 2, de origem gastrointestinal, pancreática, pulmonar ou primário oculto, metastático ou localmente avançado irressecável',
+    linha_terapeutica: '2ª linha',
+    cenario_clinico: 'Progressão radiológica por RECIST 1.1 nos últimos 6 meses, após ao menos uma linha sistêmica prévia suspensa há mais de 3 semanas',
+    modalidade: ['terapia-alvo'],
+    biomarcadores: [],
+    testes_fornecidos: '',
+    intervencao: 'Everolimo 5 mg via oral ao dia, continuamente, até progressão, intolerância ou retirada do consentimento; redução de dose por toxicidade é permitida',
+    comparador: 'Everolimo 10 mg via oral ao dia, no mesmo esquema — a dose aprovada',
+    racional: 'Estudo de quase-equivalência que testa se metade da dose aprovada mantém o efeito com menos toxicidade. A justificativa declarada no registro é que um estudo de fase I mostrou inibição da proliferação celular pelo bloqueio da via mTOR já com 5 mg/dia, enquanto a dose de 10 mg carrega efeitos adversos relevantes. É desescalonamento de dose, não um agente novo.',
+    criterios_principais: [
+      'Tumor neuroendócrino bem diferenciado grau 1 ou 2 confirmado histologicamente, de origem gastrointestinal, pancreática, pulmonar ou primário oculto',
+      'Doença metastática ou localmente avançada irressecável, mensurável por imagem',
+      'Progressão por RECIST 1.1 nos últimos 6 meses, avaliada pelo investigador local',
+      'Ao menos uma linha sistêmica prévia, suspensa há mais de 3 semanas',
+      'ECOG 0 a 2',
+      'Hemoglobina acima de 8 g/dL, neutrófilos ≥ 1.500/mm³, plaquetas acima de 90.000/mm³, AST e ALT ≤ 2,5× LSN (≤ 5× com metástase hepática), bilirrubina ≤ 1,5× LSN e creatinina abaixo de 1,5 mg/dL',
+    ],
+    criterios_exclusao: [
+      'Doença agressiva com necessidade de terapia citotóxica',
+      'Comorbidade grave ou não controlada que torne o paciente inapto ao everolimo, a critério do investigador',
+      'Neoplasia mista neuroendócrina não-neuroendócrina (MiNEN)',
+    ],
+    centros: ['São Paulo / SP'],
+    estados: ['SP'],
+    cidades: ['São Paulo'],
+    patrocinador: 'AC Camargo Cancer Center',
+    fonte_url: 'https://clinicaltrials.gov/study/NCT06472388',
+    contato_url: 'https://clinicaltrials.gov/study/NCT06472388',
+    data_atualizacao: '2024-06-25',
+  },
+
+
+  // ============== NOVOS ESTUDOS (2026-08-04) — RASCUNHO, revisar antes de publicar ==============
+
+  {
+    // ⚠ RASCUNHO — confiança alta. AstraZeneca, fase III, 744 participantes, 14 centros no Brasil
+    //   em 5 estados. Critérios de exclusão transcritos do ClinicalTrials.gov pelo autor em
+    //   2026-08-04. A regra pulmonar deste estudo vai além da doença intersticial: inclui
+    //   pneumonite por radiação, doença induzida por fármaco, suspeita radiológica e
+    //   comprometimento funcional pulmonar grave. A modalidade ADC do Dato-DXd se apoia no
+    //   TROPION-Lung10, que exige teste de TROP2 na inclusão.
+    id: 'tropion-lung15',
+    nome: 'TROPION-Lung15',
+    titulo: 'Dato-DXd com ou sem osimertinibe vs dupla de platina em NSCLC EGFR-mutado após progressão ao osimertinibe',
+    nct: 'NCT06417814',
+    fase: 'III',
+    status: 'Recrutando',
+    neoplasia: 'pulmao',
+    neoplasia_label: 'Pulmão · NSCLC',
+    subtipo: 'NSCLC não-escamoso localmente avançado ou metastático com mutação sensibilizante de EGFR, após progressão ao osimertinibe',
+    linha_terapeutica: '2ª linha',
+    cenario_clinico: 'Progressão radiológica extracraniana ao osimertinibe em monoterapia como linha mais recente, no cenário adjuvante, localmente avançado ou metastático, com no máximo 2 linhas prévias de inibidor de tirosina-quinase de EGFR',
+    modalidade: ['ADC', 'terapia-alvo', 'quimioterapia', 'combinação'],
+    biomarcadores: ['EGFR'],
+    testes_fornecidos: '',
+    intervencao: 'Dato-DXd 6 mg/kg intravenoso a cada 3 semanas + osimertinibe 80 mg oral 1x/dia (grupo 1), ou Dato-DXd 6 mg/kg em monoterapia (grupo 2)',
+    comparador: 'Pemetrexede 500 mg/m² com carboplatina AUC 5 ou cisplatina 75 mg/m² a cada 3 semanas por 4 ciclos, seguido de manutenção com pemetrexede',
+    racional: 'Endereça o cenário pós-osimertinibe, em que a dupla de platina é o padrão. O desenho separa duas perguntas: se manter o osimertinibe junto do conjugado agrega, e se o conjugado isolado já supera a quimioterapia.',
+    criterios_principais: [
+      'NSCLC não-escamoso confirmado histológica ou citologicamente',
+      'Mutação de EGFR associada a sensibilidade a inibidor de tirosina-quinase (Ex19del, L858R, G719X, S768I ou L861Q), isolada ou combinada a outras mutações de EGFR, podendo incluir T790M',
+      'Progressão radiológica extracraniana documentada ao osimertinibe em monoterapia como linha mais recente',
+      'No máximo 2 linhas prévias de inibidor de tirosina-quinase de EGFR',
+    ],
+    criterios_exclusao: [
+      'Quimioterapia, inibidor de VEGF, imunoterapia ou qualquer terapia antineoplásica no cenário metastático; quimioterapia com platina no cenário não metastático nos 12 meses anteriores à randomização',
+      'História de doença pulmonar intersticial ou pneumonite não infecciosa, incluindo pneumonite por radiação que exigiu corticoide e doença intersticial induzida por fármaco; doença atual ou suspeita não excluída por imagem',
+      'Comprometimento grave da função pulmonar por doença pulmonar intercorrente',
+      'Doença sistêmica grave ou não controlada: sangramento ativo, infecção ativa, doença intersticial ou pneumonite ativa, ou doença cardíaca',
+      'Retenção significativa de líquido em terceiro espaço — ascite ou derrame pleural — não manejável por drenagens repetidas',
+      'Compressão medular instável ou metástase cerebral instável',
+      'Metástase cerebral sintomática, incluindo envolvimento leptomeníngeo',
+      'Doença corneana clinicamente significativa',
+      'Outra neoplasia primária, exceto tratada com intenção curativa e sem doença ativa conhecida nos 2 anos anteriores',
+      'Infecção não controlada que exija antibiótico, antiviral ou antifúngico sistêmico; infecção suspeita ou não excluível; antibiótico sistêmico nos 14 dias anteriores',
+      'HIV conhecido sem controle adequado',
+    ],
+    centros: [
+      'Barretos / SP',
+      'Betim / MG',
+      'Blumenau / SC',
+      'Florianópolis / SC',
+      'Itajaí / SC',
+      'Pelotas / RS',
+      'Porto Alegre / RS',
+      'Rio de Janeiro / RJ',
+      'São Paulo / SP',
+    ],
+    estados: [
+      'MG',
+      'RJ',
+      'RS',
+      'SC',
+      'SP',
+    ],
+    cidades: [
+      'Barretos',
+      'Betim',
+      'Blumenau',
+      'Florianópolis',
+      'Itajaí',
+      'Pelotas',
+      'Porto Alegre',
+      'Rio de Janeiro',
+      'São Paulo',
+    ],
+    patrocinador: 'AstraZeneca',
+    fonte_url: 'https://clinicaltrials.gov/study/NCT06417814',
+    contato_url: 'https://clinicaltrials.gov/study/NCT06417814',
+    data_atualizacao: '2026-05-14',
+  },
+
+  {
+    // ⚠ RASCUNHO — confiança media. Bristol-Myers Squibb, fase 3, 750 participantes, 7 centros no
+    //   Brasil em 4 estados. Classe do pumitamig validada pelo autor em 2026-08-04: biespecífico
+    //   anti-PD-L1/VEGF-A — não anti-PD-1, distinção que importa. O registro segue sem informar
+    //   dose ou esquema dos braços. O registro fecha com 'outros critérios definidos pelo
+    //   protocolo'.
+    id: 'rosetta-lung-202',
+    nome: 'ROSETTA Lung-202',
+    titulo: 'Pumitamig vs pembrolizumabe, ambos em monoterapia, em 1ª linha de NSCLC avançado com PD-L1 ≥ 50%',
+    nct: 'NCT07361510',
+    fase: 'III',
+    status: 'Recrutando',
+    neoplasia: 'pulmao',
+    neoplasia_label: 'Pulmão · NSCLC',
+    subtipo: 'NSCLC escamoso ou não-escamoso, estádio IIIB/IIIC ou IV, com expressão de PD-L1 ≥ 50%',
+    linha_terapeutica: '1ª linha',
+    cenario_clinico: 'Doença localmente avançada ou metastática sem terapia sistêmica antitumoral prévia',
+    modalidade: [
+      'bispecífico',
+      'imunoterapia',
+      'anti-angiogênico',
+    ],
+    biomarcadores: ['PD-L1'],
+    testes_fornecidos: '',
+    intervencao: 'Pumitamig em monoterapia',
+    comparador: 'Pembrolizumabe em monoterapia',
+    racional: 'Pumitamig (BNT327 / BMS-986545) é anticorpo biespecífico anti-PD-L1/VEGF-A. Comparação cabeça a cabeça em monoterapia, sem quimioterapia nos dois braços, na população de PD-L1 alto que hoje recebe anti-PD-1 isolado. Segundo estudo do pumitamig na base, ao lado do ROSETTA Lung-201, que testa o mesmo agente na consolidação pós-quimiorradioterapia.',
+    criterios_principais: [
+      'NSCLC escamoso ou não-escamoso confirmado histológica ou citologicamente, estádio IIIB/IIIC ou IV',
+      'Expressão de PD-L1 ≥ 50%',
+      'Sem terapia sistêmica antitumoral prévia para doença localmente avançada ou metastática',
+      'Doença mensurável por RECIST v1.1',
+      'ECOG 0 ou 1',
+    ],
+    criterios_exclusao: [
+      'Alteração genômica acionável documentada com terapia aprovada em 1ª linha',
+      'Metástase em sistema nervoso central sintomática e não tratada, metástase leptomeníngea ou compressão medular',
+      'Comprometimento cardiovascular significativo: hipertensão não controlada apesar de tratamento otimizado, insuficiência cardíaca congestiva, doença coronariana ativa nos 6 meses anteriores, arritmia ventricular, evento trombótico, embólico ou hemorrágico maior nos 6 meses anteriores, ou risco significativo de hemorragia pulmonar',
+      'Doença autoimune ativa',
+    ],
+    centros: [
+      'Barretos / SP',
+      'Fortaleza / CE',
+      'Natal / RN',
+      'Porto Alegre / RS',
+      'São Paulo / SP',
+      'Taubaté / SP',
+    ],
+    estados: ['CE', 'RN', 'RS', 'SP'],
+    cidades: [
+      'Barretos',
+      'Fortaleza',
+      'Natal',
+      'Porto Alegre',
+      'São Paulo',
+      'Taubaté',
+    ],
+    patrocinador: 'Bristol-Myers Squibb',
+    fonte_url: 'https://clinicaltrials.gov/study/NCT07361510',
+    contato_url: 'https://clinicaltrials.gov/study/NCT07361510',
+    data_atualizacao: '2026-07-20',
+  },
+
+  {
+    // ⚠ RASCUNHO — confiança media. Boehringer Ingelheim, fase III, 670 participantes, 4 centros no
+    //   Brasil em 2 estados. Segundo card de pequenas células, ao lado do IDeate-Lung02, mas em
+    //   cenário oposto: aqui é 1ª linha, lá é recidiva. O registro descreve o obrixtamig apenas
+    //   como 'molécula do tipo anticorpo'. Classe validada pelo autor em 2026-08-04: engajador de
+    //   células T IgG-like anti-DLL3/CD3 (BI 764532), de formato próprio — deliberadamente não
+    //   rotulado como BiTE, ao contrário do tarlatamabe. O texto de elegibilidade corta no critério
+    //   de metástase cerebral, sem a seção de exclusão. Confiança média por isso.
+    id: 'dareon-lung-1',
+    nome: 'DAREON-Lung-1',
+    titulo: 'Obrixtamig somado a atezolizumabe, carboplatina e etoposídeo em 1ª linha de pequenas células em doença extensa',
+    nct: 'NCT07472517',
+    fase: 'III',
+    status: 'Recrutando',
+    neoplasia: 'pulmao',
+    neoplasia_label: 'Pulmão · SCLC',
+    subtipo: 'Carcinoma de pequenas células de pulmão em doença extensa (ES-SCLC) confirmado histologicamente',
+    linha_terapeutica: '1ª linha',
+    cenario_clinico: 'Sem tratamento sistêmico antineoplásico prévio para doença extensa — tratamento recebido em doença limitada é aceito se concluído há mais de 6 meses do diagnóstico da doença extensa',
+    modalidade: [
+      'bispecífico',
+      'imunoterapia',
+      'quimioterapia',
+      'combinação',
+    ],
+    biomarcadores: ['DLL3'],
+    testes_fornecidos: 'Análise central do status de DLL3 pelo teste VENTANA DLL3 (SP347) RxDx em tecido de arquivo em parafina, com resultado obrigatório antes da randomização',
+    intervencao: 'Obrixtamig intravenoso somado a atezolizumabe, carboplatina e etoposídeo',
+    comparador: 'Atezolizumabe, carboplatina e etoposídeo — o padrão de 1ª linha',
+    racional: 'Testa o acréscimo do obrixtamig ao esquema padrão de 1ª linha da doença extensa. Obrixtamig (BI 764532) é engajador de células T IgG-like anti-DLL3/CD3 — compartilha os alvos do tarlatamabe, mas tem formato molecular próprio. O estudo avalia em paralelo um dispositivo em desenvolvimento para medir DLL3. Participantes do braço com obrixtamig pernoitam no centro após as duas primeiras administrações.',
+    criterios_principais: [
+      'Carcinoma de pequenas células em doença extensa confirmado histologicamente',
+      'Sem tratamento sistêmico antineoplásico prévio para doença extensa; tratamento em doença limitada é aceito se concluído há mais de 6 meses do diagnóstico da doença extensa',
+      'Tecido de arquivo em parafina adequado para análise central de DLL3, com resultado disponível antes da randomização',
+      'Metástase cerebral assintomática é aceita conforme as condições do protocolo, incluindo tratamento prévio da metástase',
+    ],
+    criterios_exclusao: [],
+    centros: ['Barretos / SP', 'Porto Alegre / RS', 'São José do Rio Preto / SP'],
+    estados: ['RS', 'SP'],
+    cidades: ['Barretos', 'Porto Alegre', 'São José do Rio Preto'],
+    patrocinador: 'Boehringer Ingelheim',
+    fonte_url: 'https://clinicaltrials.gov/study/NCT07472517',
+    contato_url: 'https://clinicaltrials.gov/study/NCT07472517',
+    data_atualizacao: '2026-07-21',
+  },
+
+  {
+    // ⚠ RASCUNHO — confiança media. Johnson & Johnson, fase 2, 130 participantes, 3 centros no
+    //   Brasil (Barretos e São Paulo). Classe do JNJ-90301900 validada pelo autor em 2026-08-04:
+    //   nanopartícula intratumoral de óxido de háfnio ativada por radioterapia, do programa depois
+    //   chamado NBTXR3 — não é anticorpo, radiofármaco nem terapia sistêmica. O texto de
+    //   elegibilidade corta no critério de lesão-alvo, sem a seção de exclusão. A exigência de
+    //   lesão acessível à injeção é o filtro prático mais restritivo e está na lista. Confiança
+    //   média por isso.
+    id: 'converge',
+    nome: 'CONVERGE',
+    titulo: 'JNJ-90301900 intratumoral somado à quimiorradioterapia seguida de durvalumabe em NSCLC estádio III irressecável',
+    nct: 'NCT06667908',
+    fase: 'II',
+    status: 'Recrutando',
+    neoplasia: 'pulmao',
+    neoplasia_label: 'Pulmão · NSCLC',
+    subtipo: 'NSCLC estádio III localmente avançado e irressecável, com lesão-alvo passível de injeção',
+    linha_terapeutica: 'Perioperatório / consolidação',
+    cenario_clinico: 'Candidato ao padrão de quimiorradioterapia concomitante com dupla de platina seguida de consolidação com durvalumabe, com diagnóstico anatomopatológico nos 3 meses anteriores à inclusão',
+    modalidade: ['cirurgia_rt', 'imunoterapia', 'combinação'],
+    biomarcadores: [],
+    testes_fornecidos: '',
+    intervencao: 'JNJ-90301900 injetado por via intratumoral e/ou intranodal, em duas coortes de volume (22% e 33% do volume tumoral bruto), somado à quimiorradioterapia concomitante e seguido de consolidação com durvalumabe',
+    comparador: 'Quimiorradioterapia concomitante seguida de consolidação com durvalumabe, sem o agente injetado',
+    racional: 'JNJ-90301900 é nanopartícula de óxido de háfnio, injetada no tumor e ativada pela radioterapia — não é anticorpo, radiofármaco nem terapia sistêmica. O estudo avalia se o agente aplicado diretamente no tumor e nos linfonodos acometidos aumenta a taxa de resposta objetiva quando somado ao padrão do estádio III irressecável. A primeira parte testa a viabilidade do procedimento de injeção; a segunda avalia eficácia e segurança contra o controle. A radioterapia é administrada por IMRT, com carboplatina e paclitaxel.',
+    criterios_principais: [
+      'Candidato ao padrão de quimiorradioterapia concomitante com dupla de platina seguida de consolidação com durvalumabe, conforme diretriz local',
+      'NSCLC comprovado histológica ou citologicamente nos 3 meses anteriores à inclusão',
+      'Doença estádio III localmente avançada e irressecável pela 8ª edição da classificação',
+      'Ao menos uma lesão-alvo por RECIST v1.1 — lesão pulmonar primária ou linfonodo acometido — passível de injeção',
+    ],
+    criterios_exclusao: [],
+    centros: ['Barretos / SP', 'São Paulo / SP'],
+    estados: ['SP'],
+    cidades: ['Barretos', 'São Paulo'],
+    patrocinador: 'Johnson & Johnson Enterprise Innovation Inc.',
+    fonte_url: 'https://clinicaltrials.gov/study/NCT06667908',
+    contato_url: 'https://clinicaltrials.gov/study/NCT06667908',
+    data_atualizacao: '2026-07-06',
+  },
+
+  {
+    // ⚠ RASCUNHO — confiança media. BeOne Medicines, fase 1, 392 participantes, 4 centros no Brasil
+    //   em 3 estados. Classificado como tumores sólidos por recrutar hepatocarcinoma, gástrico,
+    //   tumor de saco vitelino e NSCLC escamoso em coortes distintas — apareceu na busca por pulmão
+    //   pela coorte de NSCLC GPC3-positivo. As partes C e D são de expansão restritas à Ásia e aos
+    //   Estados Unidos, então não se aplicam aos centros brasileiros. O texto de elegibilidade
+    //   corta no primeiro critério. Classe do BGB-B2033 validada pelo autor em 2026-08-04:
+    //   biespecífico GPC3/4-1BB, agonista condicional de 4-1BB — depende da ligação ao GPC3 tumoral
+    //   para ativar o 4-1BB localmente. Confiança média por isso.
+    id: 'bgb-b2033-gpc3',
+    nome: 'BGB-B2033 para tumores sólidos GPC3-positivos ou produtores de AFP',
+    titulo: 'Primeiro em humanos, isolado ou com tislelizumabe, com ou sem bevacizumabe, em escalonamento e expansão de dose',
+    nct: 'NCT06427941',
+    fase: 'I',
+    status: 'Recrutando',
+    neoplasia: 'solidos',
+    neoplasia_label: 'Tumores sólidos',
+    subtipo: 'Tumores sólidos irressecáveis, localmente avançados ou metastáticos, em quatro populações registradas: carcinoma hepatocelular, câncer gástrico produtor de alfafetoproteína, tumor de saco vitelino extragonadal e NSCLC escamoso GPC3-positivo',
+    linha_terapeutica: 'Conforme protocolo',
+    cenario_clinico: 'Doença irressecável, localmente avançada ou metastática, com exigências que variam por tipo tumoral — no hepatocarcinoma, estádio C de Barcelona, ou estádio B sem indicação de terapia locorregional ou já progredido a ela',
+    modalidade: [
+      'bispecífico',
+      'imunoterapia',
+      'anti-angiogênico',
+      'combinação',
+    ],
+    biomarcadores: ['GPC3', 'AFP'],
+    testes_fornecidos: '',
+    intervencao: 'BGB-B2033 intravenoso, em monoterapia com escalonamento de dose (parte A) ou combinado a tislelizumabe, com ou sem bevacizumabe (parte B)',
+    comparador: 'Sem comparador — estudo primeiro em humanos, com coortes de escalonamento e de expansão',
+    racional: 'BGB-B2033 é anticorpo biespecífico GPC3/4-1BB, agonista condicional de 4-1BB: depende da ligação ao GPC3 tumoral para ativar o 4-1BB localmente. Estudo primeiro em humanos que avalia segurança, tolerabilidade, farmacocinética, farmacodinâmica e atividade antitumoral, isolado e em dupla ou tripla combinação. As quatro populações registradas compartilham a expressão de glipicano-3 ou a produção de alfafetoproteína como eixo de seleção.',
+    criterios_principais: [
+      'Tumor sólido irressecável, localmente avançado ou metastático, em uma das quatro populações registradas',
+      'Carcinoma hepatocelular confirmado histológica ou citologicamente em estádio C de Barcelona, ou estádio B sem indicação de terapia locorregional ou já progredido a ela',
+    ],
+    criterios_exclusao: [],
+    centros: [
+      'Porto Alegre / RS',
+      'Salvador / BA',
+      'São José do Rio Preto / SP',
+      'São Paulo / SP',
+    ],
+    estados: ['BA', 'RS', 'SP'],
+    cidades: ['Porto Alegre', 'Salvador', 'São José do Rio Preto', 'São Paulo'],
+    patrocinador: 'BeOne Medicines',
+    fonte_url: 'https://clinicaltrials.gov/study/NCT06427941',
+    contato_url: 'https://clinicaltrials.gov/study/NCT06427941',
+    data_atualizacao: '2026-07-29',
+  },
+
+  {
+    // ⚠ RASCUNHO — confiança media. Pfizer, fase 3, 680 participantes, 5 centros no Brasil em 3
+    //   estados. Diferente dos outros cards de agente investigacional deste lote, o registro rotula
+    //   explicitamente o PF-08046054 como conjugado anticorpo-fármaco, o que sustenta a modalidade
+    //   e a menção no racional; o alvo, porém, não é declarado. O texto de elegibilidade corta no
+    //   critério de terapia prévia. Confiança média por isso.
+    id: 'padl1nk-005',
+    nome: 'PADL1NK-005',
+    titulo: 'PF-08046054 vs docetaxel em NSCLC PD-L1 positivo já tratado com anti-PD-(L)1 e platina',
+    nct: 'NCT07144280',
+    fase: 'III',
+    status: 'Recrutando',
+    neoplasia: 'pulmao',
+    neoplasia_label: 'Pulmão · NSCLC',
+    subtipo: 'NSCLC estádio IIIB ou IIIC irressecável sem indicação de quimiorradioterapia definitiva, ou estádio IV, com PD-L1 em 1% ou mais das células tumorais',
+    linha_terapeutica: '2ª linha',
+    cenario_clinico: 'Progressão durante ou após inibidor de PD-1 ou PD-L1 e quimioterapia com platina; quem tem alteração genômica acionável precisa ter recebido também a terapia-alvo correspondente',
+    modalidade: ['ADC'],
+    biomarcadores: ['PD-L1'],
+    testes_fornecidos: '',
+    intervencao: 'PF-08046054 (SGN-PDL1V), conjugado anticorpo-fármaco, intravenoso duas vezes a cada ciclo de 21 dias, por até cerca de 5 anos enquanto houver resposta',
+    comparador: 'Docetaxel intravenoso uma vez a cada ciclo de 21 dias',
+    racional: 'O comparador é o docetaxel, padrão após falha de imunoterapia e platina, cenário em que as opções são escassas. O registro classifica o PF-08046054 como conjugado anticorpo-fármaco, e a seleção exige PD-L1 positivo mesmo após progressão a anti-PD-(L)1.',
+    criterios_principais: [
+      'NSCLC confirmado histológica ou citologicamente, estádio IIIB ou IIIC irressecável sem indicação de quimiorradioterapia definitiva, ou estádio IV (AJCC 8ª edição)',
+      'PD-L1 em 1% ou mais das células tumorais por imuno-histoquímica local com clones 22C3 ou SP263',
+      'Progressão durante ou após inibidor de PD-1 ou PD-L1 e quimioterapia com platina',
+      'Quem tem alteração genômica acionável conhecida precisa ter recebido o esquema alvo correspondente',
+    ],
+    criterios_exclusao: ['Componente ou histologia neuroendócrina'],
+    centros: ['Blumenau / SC', 'Passo Fundo / RS', 'São Paulo / SP'],
+    estados: ['RS', 'SC', 'SP'],
+    cidades: ['Blumenau', 'Passo Fundo', 'São Paulo'],
+    patrocinador: 'Pfizer',
+    fonte_url: 'https://clinicaltrials.gov/study/NCT07144280',
+    contato_url: 'https://clinicaltrials.gov/study/NCT07144280',
+    data_atualizacao: '2026-07-22',
+  },
+
+  {
+    // ⚠ RASCUNHO — confiança media. MSD, fase 1b/2, 140 participantes, 4 centros no Brasil em 2
+    //   estados. O MK-1084 é o mesmo calderasibe do KANDLELIT-004, que está neste PR — lá em 1ª
+    //   linha com pembrolizumabe, aqui em 2ª linha com conjugados. O registro declara as listas
+    //   como parciais e o texto corta no critério de tecido tumoral, sem exclusões. Sendo braços
+    //   rotativos, convém confirmar quais combinações estão abertas nos centros brasileiros antes
+    //   de encaminhar. Confiança média por isso.
+    id: 'keymaker-u01f',
+    nome: 'KEYMAKER-U01 Substudy 01F',
+    titulo: 'MK-1084 combinado a conjugados anticorpo-fármaco em NSCLC não-escamoso KRAS G12C já tratado',
+    nct: 'NCT07286149',
+    fase: 'Ib/II',
+    status: 'Recrutando',
+    neoplasia: 'pulmao',
+    neoplasia_label: 'Pulmão · NSCLC',
+    subtipo: 'NSCLC não-escamoso avançado ou metastático com mutação KRAS G12C',
+    linha_terapeutica: '2ª linha',
+    cenario_clinico: 'Progressão documentada após 1 a 2 linhas prévias de anti-PD-1 ou anti-PD-L1 e de quimioterapia com platina',
+    modalidade: ['terapia-alvo', 'ADC', 'combinação'],
+    biomarcadores: ['KRAS G12C'],
+    testes_fornecidos: 'Exige tecido tumoral de arquivo ou biópsia nova de lesão não irradiada para análise de biomarcadores; a mutação KRAS G12C pode ser demonstrada em tecido ou em ctDNA',
+    intervencao: 'MK-1084 oral combinado a patritumabe deruxtecana (HER3-DXd) ou a sacituzumabe tirumotecana, conforme o braço',
+    comparador: 'Sem comparador — estudo guarda-chuva de braços rotativos, todos experimentais',
+    racional: 'Subestudo de plataforma que testa combinações do inibidor de KRAS G12C com conjugados anticorpo-fármaco de alvos distintos, no cenário após imunoterapia e platina. O desenho de braços rotativos permite abrir e encerrar combinações sob o mesmo protocolo — o braço com cetuximabe foi descontinuado na emenda 3.',
+    criterios_principais: [
+      'NSCLC não-escamoso avançado ou metastático confirmado histológica ou citologicamente',
+      'Mutação KRAS G12C demonstrada em tecido tumoral ou em ctDNA',
+      'Progressão documentada após 1 a 2 linhas prévias de anti-PD-1 ou anti-PD-L1 e de quimioterapia com platina',
+      'Tecido tumoral de arquivo ou biópsia nova de lesão não irradiada para análise de biomarcadores',
+    ],
+    criterios_exclusao: [],
+    centros: [
+      'Barretos / SP',
+      'Porto Alegre / RS',
+      'São José do Rio Preto / SP',
+      'São Paulo / SP',
+    ],
+    estados: ['RS', 'SP'],
+    cidades: ['Barretos', 'Porto Alegre', 'São José do Rio Preto', 'São Paulo'],
+    patrocinador: 'Merck Sharp & Dohme LLC',
+    fonte_url: 'https://clinicaltrials.gov/study/NCT07286149',
+    contato_url: 'https://clinicaltrials.gov/study/NCT07286149',
+    data_atualizacao: '2026-07-22',
+  },
+
+  {
+    // ⚠ RASCUNHO — confiança media. AstraZeneca, fase III, 675 participantes, 10 centros no Brasil
+    //   em 7 estados — inclui Ipatinga e Santa Maria, cidades que ainda não apareciam na base.
+    //   Diferente do TROPION-Lung15, aqui a inclusão exige teste de TROP2 ao lado do PD-L1, o que
+    //   sustenta a modalidade ADC atribuída ao Dato-DXd. O rilvegostomig segue sem classe
+    //   declarada, como nos três ARTEMIDE. O texto de elegibilidade corta na função medular, sem a
+    //   seção de exclusão. Confiança média por isso.
+    id: 'tropion-lung10',
+    nome: 'TROPION-Lung10',
+    titulo: 'Dato-DXd + rilvegostomig ou rilvegostomig isolado vs pembrolizumabe em 1ª linha de NSCLC não-escamoso com PD-L1 TC ≥ 50%',
+    nct: 'NCT06357533',
+    fase: 'III',
+    status: 'Recrutando',
+    neoplasia: 'pulmao',
+    neoplasia_label: 'Pulmão · NSCLC',
+    subtipo: 'NSCLC não-escamoso estádio IIIB, IIIC ou IV, com PD-L1 TC ≥ 50% e sem alteração genômica acionável',
+    linha_terapeutica: '1ª linha',
+    cenario_clinico: 'Doença sem indicação de cirurgia curativa nem de quimiorradioterapia definitiva, sem EGFR sensibilizante, sem rearranjo de ALK ou ROS1 e sem outro driver com terapia-alvo de 1ª linha disponível localmente',
+    modalidade: [
+      'ADC',
+      'bispecífico',
+      'imunoterapia',
+      'combinação',
+    ],
+    biomarcadores: [
+      'PD-L1',
+      'TROP2',
+      'EGFR',
+      'ALK',
+      'ROS1',
+    ],
+    testes_fornecidos: 'Exige amostra tumoral para determinar status de PD-L1, de TROP2 e outros biomarcadores',
+    intervencao: 'Dato-DXd + rilvegostomig intravenosos a cada 3 semanas (braço 1), ou rilvegostomig em monoterapia a cada 3 semanas (braço 2)',
+    comparador: 'Pembrolizumabe em monoterapia intravenoso a cada 3 semanas',
+    racional: 'Desenho de três braços que separa duas perguntas contra o mesmo controle: se o rilvegostomig (AZD2936), biespecífico anti-PD-1/TIGIT, isolado supera o pembrolizumabe, e se somar o conjugado a ele agrega. A população é a de PD-L1 alto sem driver acionável, hoje tratada com anti-PD-1 em monoterapia.',
+    criterios_principais: [
+      'NSCLC não-escamoso documentado histológica ou citologicamente',
+      'Estádio IIIB, IIIC ou IV metastático (AJCC 8ª edição), sem indicação de cirurgia curativa ou quimiorradioterapia definitiva',
+      'Ausência de mutação sensibilizante de EGFR, de rearranjo de ALK ou ROS1, e de outra alteração genômica com terapia-alvo de 1ª linha aprovada e disponível localmente',
+      'PD-L1 TC ≥ 50% conhecido',
+      'Amostra tumoral para determinar PD-L1, TROP2 e outros biomarcadores',
+      'Ao menos uma lesão não irradiada que qualifique como alvo por RECIST 1.1',
+      'ECOG 0 ou 1',
+      'Função medular adequada',
+    ],
+    criterios_exclusao: [],
+    centros: [
+      'Barretos / SP',
+      'Curitiba / PR',
+      'Florianópolis / SC',
+      'Ipatinga / MG',
+      'Natal / RN',
+      'Porto Alegre / RS',
+      'Rio de Janeiro / RJ',
+      'Santa Maria / RS',
+      'São Paulo / SP',
+      'Taubaté / SP',
+    ],
+    estados: [
+      'MG',
+      'PR',
+      'RJ',
+      'RN',
+      'RS',
+      'SC',
+      'SP',
+    ],
+    cidades: [
+      'Barretos',
+      'Curitiba',
+      'Florianópolis',
+      'Ipatinga',
+      'Natal',
+      'Porto Alegre',
+      'Rio de Janeiro',
+      'Santa Maria',
+      'São Paulo',
+      'Taubaté',
+    ],
+    patrocinador: 'AstraZeneca',
+    fonte_url: 'https://clinicaltrials.gov/study/NCT06357533',
+    contato_url: 'https://clinicaltrials.gov/study/NCT06357533',
+    data_atualizacao: '2026-07-15',
+  },
+
+
+  // ============== NOVOS ESTUDOS (2026-08-04) — RASCUNHO, revisar antes de publicar ==============
+
+  {
+    // ⚠ RASCUNHO — confiança media. Mirati Therapeutics, fase 2/3, 626 participantes, 13 centros no
+    //   Brasil em 6 estados. O texto de exclusão recebido corta na primeira frase ('terapia
+    //   sistêmica prévia'). Classe do adagrasibe validada pelo autor em 2026-08-04: inibidor
+    //   covalente seletivo de KRAS G12C. Confiança média por isso.
+    id: 'krystal-7',
+    nome: 'KRYSTAL-7',
+    titulo: 'Adagrasibe com pembrolizumabe vs pembrolizumabe em 1ª linha de NSCLC avançado KRAS G12C',
+    nct: 'NCT04613596',
+    fase: 'II/III',
+    status: 'Recrutando',
+    neoplasia: 'pulmao',
+    neoplasia_label: 'Pulmão · NSCLC',
+    subtipo: 'NSCLC irressecável ou metastático com mutação KRAS G12C; a fase 2 aceita qualquer PD-L1 TPS e a fase 3 exige TPS ≥ 50%',
+    linha_terapeutica: '1ª linha',
+    cenario_clinico: 'Candidato a tratamento de 1ª linha da doença avançada, com coortes separadas por expressão de PD-L1',
+    modalidade: ['terapia-alvo', 'imunoterapia', 'combinação'],
+    biomarcadores: ['KRAS G12C', 'PD-L1'],
+    testes_fornecidos: '',
+    intervencao: 'Adagrasibe 400 mg por via oral 2x/dia com pembrolizumabe 200 mg intravenoso a cada 3 semanas; na coorte 1b, adagrasibe 600 mg 2x/dia em monoterapia',
+    comparador: 'Pembrolizumabe 200 mg intravenoso a cada 3 semanas (coorte 4, fase 3)',
+    racional: 'Adagrasibe é inibidor covalente seletivo de KRAS G12C. O estudo combina essa inibição com bloqueio de PD-1 em 1ª linha. O desenho cobre todo o espectro de PD-L1: na fase 2, coortes de TPS abaixo de 1% (com e sem pembrolizumabe) e de TPS ≥ 1%; na fase 3, comparação randomizada restrita ao TPS ≥ 50%, população que hoje recebe anti-PD-1 isolado.',
+    criterios_principais: [
+      'NSCLC irressecável ou metastático com mutação KRAS G12C, confirmado histologicamente',
+      'Fase 2: qualquer PD-L1 TPS; fase 3: escamoso ou não-escamoso com PD-L1 TPS ≥ 50%',
+      'Fase 3: doença mensurável por RECIST 1.1',
+      'Fase 3: sem metástase cerebral, ou metástase cerebral tratada ou não tratada que não exija terapia local imediata',
+    ],
+    criterios_exclusao: [],
+    centros: [
+      'Barretos / SP',
+      'Florianópolis / SC',
+      'Ijuí / RS',
+      'Lajeado / RS',
+      'Natal / RN',
+      'Porto Alegre / RS',
+      'Rio de Janeiro / RJ',
+      'Salvador / BA',
+      'São José do Rio Preto / SP',
+      'São Paulo / SP',
+    ],
+    estados: [
+      'BA',
+      'RJ',
+      'RN',
+      'RS',
+      'SC',
+      'SP',
+    ],
+    cidades: [
+      'Barretos',
+      'Florianópolis',
+      'Ijuí',
+      'Lajeado',
+      'Natal',
+      'Porto Alegre',
+      'Rio de Janeiro',
+      'Salvador',
+      'São José do Rio Preto',
+      'São Paulo',
+    ],
+    patrocinador: 'Mirati Therapeutics Inc.',
+    fonte_url: 'https://clinicaltrials.gov/study/NCT04613596',
+    contato_url: 'https://clinicaltrials.gov/study/NCT04613596',
+    data_atualizacao: '2026-07-09',
+  },
+
+  {
+    // ⚠ RASCUNHO — confiança media. MSD, fase 3, 400 participantes, apenas 1 centro no Brasil
+    //   (Santo André/SP) — o mais restrito deste lote. O registro descreve o MK-3475A como produto
+    //   coformulado de hialuronidase e pembrolizumabe em dose fixa subcutânea, o que sustenta a
+    //   descrição usada. O texto de elegibilidade corta no critério de HIV, sem a seção de
+    //   exclusão. Terceiro card com calderasibe no PR, ao lado de KANDLELIT-004 (1ª linha) e
+    //   KEYMAKER-U01F (2ª linha). Confiança média por isso.
+    id: 'kandlelit-013',
+    nome: 'KANDLELIT-013',
+    titulo: 'Calderasibe + pembrolizumabe subcutâneo vs placebo + pembrolizumabe subcutâneo como adjuvante em NSCLC ressecado KRAS G12C',
+    nct: 'NCT07431827',
+    fase: 'III',
+    status: 'Recrutando',
+    neoplasia: 'pulmao',
+    neoplasia_label: 'Pulmão · NSCLC',
+    subtipo: 'NSCLC de histologia predominantemente não-escamosa, completamente ressecado, estádio patológico IIA a IIIB (N2), com mutação KRAS G12C',
+    linha_terapeutica: 'Perioperatório',
+    cenario_clinico: 'Adjuvante após ressecção completa, tendo recebido neoadjuvância com pembrolizumabe e dupla de platina ou quimioterapia adjuvante com platina, sem evidência de doença na avaliação radiológica pós-operatória',
+    modalidade: ['terapia-alvo', 'imunoterapia', 'combinação'],
+    biomarcadores: ['KRAS G12C'],
+    testes_fornecidos: '',
+    intervencao: 'Calderasibe (MK-1084) oral 1x/dia + pembrolizumabe com berahialuronidase alfa (MK-3475A) subcutâneo a cada 6 semanas, por até 9 doses',
+    comparador: 'Placebo oral 1x/dia + pembrolizumabe com berahialuronidase alfa subcutâneo, no mesmo esquema',
+    racional: 'Leva o inibidor de KRAS G12C ao cenário adjuvante, somado ao anti-PD-1 em formulação subcutânea coformulada com hialuronidase. O desfecho principal é sobrevida livre de doença por avaliação do investigador. Aceita tanto quem já foi operado fora do estudo quanto quem chega antes da cirurgia.',
+    criterios_principais: [
+      'NSCLC de histologia predominantemente não-escamosa, recém-diagnosticado e ressecável em estádio clínico IIA a IIIB (N2), ou já completamente ressecado em estádio patológico IIA a IIIB (N2)',
+      'Mutação KRAS G12C no tecido tumoral',
+      'Neoadjuvância prévia com dupla de platina e pembrolizumabe (ou MK-3475A), ou quimioterapia adjuvante com dupla de platina — inclusive se realizadas fora do estudo',
+      'No máximo 12 semanas entre a cirurgia pós-neoadjuvância, ou a última dose da quimioterapia adjuvante, e a primeira dose do estudo',
+      'Sem evidência de doença em tomografia de tórax e abdome com contraste (ou ressonância) nos 28 dias anteriores à randomização',
+      'ECOG 0 ou 1 nos 10 dias anteriores à primeira dose',
+    ],
+    criterios_exclusao: [],
+    centros: ['Santo André / SP'],
+    estados: ['SP'],
+    cidades: ['Santo André'],
+    patrocinador: 'Merck Sharp & Dohme LLC',
+    fonte_url: 'https://clinicaltrials.gov/study/NCT07431827',
+    contato_url: 'https://clinicaltrials.gov/study/NCT07431827',
+    data_atualizacao: '2026-08-03',
+  },
+
+  {
+    // ⚠ RASCUNHO — confiança media. Amgen, fase 3, 330 participantes, 5 centros no Brasil em 4
+    //   estados. Terceiro card de pequenas células do PR, ao lado do DAREON-Lung-1 (mesma linha,
+    //   agente diferente) e do IDeate-Lung02 (recidiva). Classe do tarlatamabe validada pelo autor
+    //   em 2026-08-04: engajador biespecífico de células T anti-DLL3/CD3, do tipo BiTE. A
+    //   modalidade passou a incluir bispecífico. O texto de exclusão corta no critério de doença
+    //   intersticial. Confiança média por isso.
+    id: 'dellphi-312',
+    nome: 'DeLLphi-312',
+    titulo: 'Tarlatamabe somado a durvalumabe, carboplatina e etoposídeo em 1ª linha de pequenas células em doença extensa',
+    nct: 'NCT07005128',
+    fase: 'III',
+    status: 'Recrutando',
+    neoplasia: 'pulmao',
+    neoplasia_label: 'Pulmão · SCLC',
+    subtipo: 'Carcinoma de pequenas células em doença extensa, estádio IV, ou T3–T4 por nódulos pulmonares múltiplos extensos demais para um plano de radioterapia tolerável',
+    linha_terapeutica: '1ª linha',
+    cenario_clinico: 'Doença extensa sem tratamento prévio, em paciente apto ao esquema de carboplatina, etoposídeo e durvalumabe como 1ª linha',
+    modalidade: [
+      'bispecífico',
+      'imunoterapia',
+      'quimioterapia',
+      'combinação',
+    ],
+    biomarcadores: [],
+    testes_fornecidos: '',
+    intervencao: 'Tarlatamabe intravenoso somado a durvalumabe, carboplatina e etoposídeo por 4 ciclos, seguido de tarlatamabe e durvalumabe',
+    comparador: 'Durvalumabe, carboplatina e etoposídeo por 4 ciclos, seguido de durvalumabe — o padrão de 1ª linha',
+    racional: 'Tarlatamabe é engajador biespecífico de células T anti-DLL3/CD3, do tipo BiTE. O estudo testa se acrescentá-lo ao esquema padrão de 1ª linha prolonga a sobrevida global na doença extensa. O tarlatamabe permanece na manutenção junto do durvalumabe, depois dos 4 ciclos com platina.',
+    criterios_principais: [
+      'Carcinoma de pequenas células em doença extensa documentado histológica ou citologicamente (estádio IV pelo AJCC 2017), ou T3–T4 por nódulos pulmonares múltiplos extensos demais para radioterapia tolerável',
+      'Doença mensurável por RECIST 1.1',
+      'Apto a receber carboplatina, etoposídeo e durvalumabe em 1ª linha, a critério do investigador',
+      'Expectativa de vida mínima de 12 semanas',
+      'Idade a partir de 18 anos, ou da maioridade legal do país',
+    ],
+    criterios_exclusao: [
+      'Outra neoplasia nos últimos 2 anos',
+      'Metástase em sistema nervoso central sintomática ou doença leptomeníngea',
+      'História de evento grave ou ameaçador à vida com terapia imunomediada',
+      'Trombose arterial (AVC ou ataque isquêmico transitório) nos 6 meses anteriores à primeira dose',
+      'Doença autoimune ou inflamatória ativa',
+      'Infecção ativa por HIV ou hepatite B ou C ativa',
+      'Doença pulmonar intersticial',
+    ],
+    centros: [
+      'Belo Horizonte / MG',
+      'Natal / RN',
+      'Porto Alegre / RS',
+      'São José do Rio Preto / SP',
+      'São Paulo / SP',
+    ],
+    estados: ['MG', 'RN', 'RS', 'SP'],
+    cidades: [
+      'Belo Horizonte',
+      'Natal',
+      'Porto Alegre',
+      'São José do Rio Preto',
+      'São Paulo',
+    ],
+    patrocinador: 'Amgen',
+    fonte_url: 'https://clinicaltrials.gov/study/NCT07005128',
+    contato_url: 'https://clinicaltrials.gov/study/NCT07005128',
+    data_atualizacao: '2026-07-16',
+  },
+
+  {
+    // ⚠ RASCUNHO — confiança media. BioNTech, fase 2/3, 1260 participantes, apenas 1 centro no
+    //   Brasil (São José do Vale do Rio Preto/RJ). ACHADO ÚTIL PARA A REVISÃO: este registro
+    //   identifica o fármaco como BNT327 no título e como pumitamig nos braços — é o mesmo agente
+    //   dos estudos ROSETTA Lung-201 e Lung-202, da Bristol-Myers Squibb, e do estudo com
+    //   imzokitug. Nenhum dos quatro registros declara a classe, mas confirmam tratar-se do mesmo
+    //   composto em codesenvolvimento. Estudo sem acrônimo; o nome do card foi construído a partir
+    //   do código do fármaco. O texto de exclusão corta no primeiro item. Confiança média por isso.
+    id: 'bnt327-lung-protocolo-mestre',
+    nome: 'Pumitamig para NSCLC avançado de 1ª linha',
+    titulo: 'Protocolo mestre vs pembrolizumabe, ambos com quimioterapia, em dois subestudos separados por histologia',
+    nct: 'NCT06712316',
+    fase: 'II/III',
+    status: 'Recrutando',
+    neoplasia: 'pulmao',
+    neoplasia_label: 'Pulmão · NSCLC',
+    subtipo: 'NSCLC estádio IIIB ou IIIC sem indicação de cirurgia ou radioterapia curativa, ou estádio IV; subestudo A para não-escamoso e subestudo B para escamoso',
+    linha_terapeutica: '1ª linha',
+    cenario_clinico: 'Doença sem tratamento sistêmico prévio, com o esquema de quimioterapia definido pela histologia',
+    modalidade: [
+      'bispecífico',
+      'imunoterapia',
+      'anti-angiogênico',
+      'quimioterapia',
+      'combinação',
+    ],
+    biomarcadores: [],
+    testes_fornecidos: '',
+    intervencao: 'Pumitamig intravenoso com carboplatina e pemetrexede (subestudo A, não-escamoso) ou com carboplatina e paclitaxel (subestudo B, escamoso); a fase 2 testa duas doses e a fase 3 leva adiante uma terceira',
+    comparador: 'Pembrolizumabe com a mesma quimioterapia de cada subestudo',
+    racional: 'Pumitamig (BNT327 / BMS-986545) é anticorpo biespecífico anti-PD-L1/VEGF-A. Protocolo mestre que separa os participantes por histologia, já que a escolha do quimioterápico padrão difere entre escamoso e não-escamoso. A fase 2 seleciona a dose e a fase 3 compara contra pembrolizumabe com quimioterapia, que é o padrão de 1ª linha.',
+    criterios_principais: [
+      'NSCLC estádio IIIB ou IIIC sem indicação de cirurgia ou radioterapia curativa, ou estádio IV (UICC/AJCC 9ª edição), sem tratamento sistêmico prévio',
+      'Ao menos uma lesão mensurável por RECIST v1.1 — lesão previamente tratada localmente em geral não serve como alvo, e metástase óssea ou de SNC isolada não conta como mensurável',
+      'ECOG 0 ou 1',
+      'Função orgânica adequada',
+    ],
+    criterios_exclusao: [
+      'NSCLC com componente histológico de pequenas células ou neuroendócrino',
+    ],
+    centros: ['São José do Vale do Rio Preto / RJ'],
+    estados: ['RJ'],
+    cidades: ['São José do Vale do Rio Preto'],
+    patrocinador: 'BioNTech SE',
+    fonte_url: 'https://clinicaltrials.gov/study/NCT06712316',
+    contato_url: 'https://clinicaltrials.gov/study/NCT06712316',
+    data_atualizacao: '2026-07-01',
+  },
+
+  {
+    // ⚠ RASCUNHO — confiança media. Bristol-Myers Squibb, fase 3, 1000 participantes, 15 centros no
+    //   Brasil em 8 estados — inclui Timbó/SC, cidade nova na base. Chama atenção que status
+    //   desconhecido de EGFR, ALK ou ROS1 seja critério de exclusão: exige testagem molecular
+    //   completa antes da inclusão. Classe do relatlimabe validada pelo autor em 2026-08-04:
+    //   anticorpo monoclonal inibidor de checkpoint anti-LAG-3. O texto de exclusão corta no
+    //   critério de RET. Confiança média por isso.
+    id: 'relativity-1093',
+    nome: 'RELATIVITY-1093',
+    titulo: 'Nivolumabe + relatlimabe em dose fixa com quimioterapia vs pembrolizumabe com quimioterapia em 1ª linha de NSCLC não-escamoso PD-L1 ≥ 1%',
+    nct: 'NCT06561386',
+    fase: 'III',
+    status: 'Recrutando',
+    neoplasia: 'pulmao',
+    neoplasia_label: 'Pulmão · NSCLC',
+    subtipo: 'NSCLC não-escamoso estádio IV ou recorrente, com PD-L1 em 1% ou mais das células tumorais',
+    linha_terapeutica: '1ª linha',
+    cenario_clinico: 'Doença avançada ou metastática sem terapia sistêmica antineoplásica prévia como tratamento primário',
+    modalidade: ['imunoterapia', 'quimioterapia', 'combinação'],
+    biomarcadores: [
+      'PD-L1',
+      'EGFR',
+      'ALK',
+      'ROS1',
+      'BRAF',
+    ],
+    testes_fornecidos: 'PD-L1 por laboratório central com o ensaio VENTANA PD-L1 (SP263) CDx durante a triagem, antes da randomização',
+    intervencao: 'Nivolumabe + relatlimabe em combinação de dose fixa, com quimioterapia (carboplatina ou cisplatina com pemetrexede)',
+    comparador: 'Pembrolizumabe com a mesma quimioterapia',
+    racional: 'Compara duas espinhas dorsais de imunoterapia sobre a mesma quimioterapia na 1ª linha do não-escamoso PD-L1 positivo. O relatlimabe é anticorpo monoclonal inibidor de checkpoint anti-LAG-3, e vem em produto de dose fixa combinada com o nivolumabe, e a seleção por PD-L1 é feita centralmente antes da randomização.',
+    criterios_principais: [
+      'NSCLC não-escamoso estádio IV ou recorrente confirmado histologicamente, sem terapia sistêmica antineoplásica prévia como tratamento primário',
+      'PD-L1 ≥ 1% em células tumorais por laboratório central (ensaio VENTANA SP263 CDx)',
+      'Doença mensurável por tomografia ou ressonância conforme RECIST v1.1',
+      'ECOG 0 ou 1 na triagem',
+      'Expectativa de vida de ao menos 3 meses na randomização',
+    ],
+    criterios_exclusao: [
+      'Mutação de EGFR, ALK ou ROS1 sensível a inibidor alvo disponível — status desconhecido também exclui',
+      'Mutação BRAF V600E sensível a inibidor alvo disponível, ou rearranjo de RET',
+      'Gestação ou amamentação',
+    ],
+    centros: [
+      'Barretos / SP',
+      'Bauru / SP',
+      'Belo Horizonte / MG',
+      'Belém / PA',
+      'Fortaleza / CE',
+      'Itajaí / SC',
+      'Natal / RN',
+      'Porto Alegre / RS',
+      'Rio de Janeiro / RJ',
+      'São Caetano do Sul / SP',
+      'São Paulo / SP',
+      'Taubaté / SP',
+      'Timbó / SC',
+    ],
+    estados: [
+      'CE',
+      'MG',
+      'PA',
+      'RJ',
+      'RN',
+      'RS',
+      'SC',
+      'SP',
+    ],
+    cidades: [
+      'Barretos',
+      'Bauru',
+      'Belo Horizonte',
+      'Belém',
+      'Fortaleza',
+      'Itajaí',
+      'Natal',
+      'Porto Alegre',
+      'Rio de Janeiro',
+      'São Caetano do Sul',
+      'São Paulo',
+      'Taubaté',
+      'Timbó',
+    ],
+    patrocinador: 'Bristol-Myers Squibb',
+    fonte_url: 'https://clinicaltrials.gov/study/NCT06561386',
+    contato_url: 'https://clinicaltrials.gov/study/NCT06561386',
+    data_atualizacao: '2026-07-20',
+  },
+
+  {
+    // ⚠ RASCUNHO — confiança media. MSD, fase 3, 675 participantes, 9 centros no Brasil em 6
+    //   estados. Diferente dos outros registros de calderasibe, este declara explicitamente que o
+    //   fármaco é terapia-alvo para KRAS G12C — o que sustenta retroativamente a modalidade
+    //   atribuída ao KANDLELIT-004 e ao KANDLELIT-013, ambos neste PR. O registro declara as duas
+    //   listas como parciais e o texto corta cedo, por isso os critérios estão enxutos. Confiança
+    //   média por isso.
+    id: 'kandlelit-007',
+    nome: 'KANDLELIT-007',
+    titulo: 'Calderasibe + pembrolizumabe subcutâneo vs pembrolizumabe subcutâneo com quimioterapia em 1ª linha de NSCLC não-escamoso KRAS G12C',
+    nct: 'NCT07190248',
+    fase: 'III',
+    status: 'Recrutando',
+    neoplasia: 'pulmao',
+    neoplasia_label: 'Pulmão · NSCLC',
+    subtipo: 'NSCLC não-escamoso avançado ou metastático com mutação KRAS G12C',
+    linha_terapeutica: '1ª linha',
+    cenario_clinico: 'Estádio IIIB ou IIIC sem indicação de ressecção curativa ou quimiorradioterapia, ou estádio IV (M1a, M1b ou M1c)',
+    modalidade: ['terapia-alvo', 'imunoterapia', 'combinação'],
+    biomarcadores: ['KRAS G12C'],
+    testes_fornecidos: '',
+    intervencao: 'Calderasibe oral até critério de descontinuação + pembrolizumabe com berahialuronidase alfa subcutâneo em dose fixa, no dia 1 de cada ciclo de 6 semanas, por até 18 ciclos (cerca de 2 anos)',
+    comparador: 'Pembrolizumabe com berahialuronidase alfa subcutâneo no mesmo esquema + pemetrexede 500 mg/m² intravenoso, com carboplatina ou cisplatina à escolha do investigador',
+    racional: 'O registro descreve o calderasibe como terapia-alvo para a mutação KRAS G12C. A pergunta é se substituir a quimioterapia pelo inibidor alvo, mantendo o anti-PD-1, prolonga a sobrevida livre de progressão em 1ª linha — ou seja, poupar quimioterapia na população KRAS G12C.',
+    criterios_principais: [
+      'NSCLC não-escamoso estádio IIIB ou IIIC sem indicação de ressecção curativa ou quimiorradioterapia, ou estádio IV (M1a, M1b ou M1c)',
+      'Mutação KRAS G12C',
+      'HIV positivo permitido se bem controlado em antirretroviral',
+    ],
+    criterios_exclusao: ['Diagnóstico de carcinoma de pequenas células'],
+    centros: [
+      'Florianópolis / SC',
+      'Fortaleza / CE',
+      'Porto Alegre / RS',
+      'Recife / PE',
+      'Ribeirão Preto / SP',
+      'Santo André / SP',
+      'São Paulo / SP',
+      'Vitória / ES',
+    ],
+    estados: [
+      'CE',
+      'ES',
+      'PE',
+      'RS',
+      'SC',
+      'SP',
+    ],
+    cidades: [
+      'Florianópolis',
+      'Fortaleza',
+      'Porto Alegre',
+      'Recife',
+      'Ribeirão Preto',
+      'Santo André',
+      'São Paulo',
+      'Vitória',
+    ],
+    patrocinador: 'Merck Sharp & Dohme LLC',
+    fonte_url: 'https://clinicaltrials.gov/study/NCT07190248',
+    contato_url: 'https://clinicaltrials.gov/study/NCT07190248',
+    data_atualizacao: '2026-07-20',
+  },
+
+
+  {
+    // ⚠ RASCUNHO — confiança media. Pfizer, fase 2, apenas 40 participantes e 1 centro no Brasil
+    //   (Porto Alegre/RS). Quarto card de pequenas células do PR e o único de doença transformada —
+    //   cenário que a base não cobria. Mesmo fármaco do Symbiotic-Lung-01; nenhum dos dois
+    //   registros declara a classe, validada pelo autor em 2026-08-04 (SSGJ-707, biespecífico
+    //   tetravalente anti-PD-1/VEGF-A). O texto de elegibilidade corta no ECOG, sem a seção de
+    //   exclusão. Confiança média por isso.
+    id: 'symbiotic-lung-14',
+    nome: 'Symbiotic-Lung-14',
+    titulo: 'PF-08634404 com quimioterapia em pequenas células transformado a partir de NSCLC EGFR-mutado',
+    nct: 'NCT07476287',
+    fase: 'II',
+    status: 'Recrutando',
+    neoplasia: 'pulmao',
+    neoplasia_label: 'Pulmão · SCLC',
+    subtipo: 'Carcinoma de pequenas células transformado (T-SCLC), a partir de NSCLC com mutação de EGFR tratado com inibidor de tirosina-quinase',
+    linha_terapeutica: '1ª linha',
+    cenario_clinico: 'Sem terapia sistêmica para o pequenas células transformado — um único ciclo de quimioterapia pode ser permitido',
+    modalidade: [
+      'bispecífico',
+      'imunoterapia',
+      'anti-angiogênico',
+      'quimioterapia',
+      'combinação',
+    ],
+    biomarcadores: ['EGFR'],
+    testes_fornecidos: '',
+    intervencao: 'PF-08634404 intravenoso com quimioterapia, seguido de manutenção com PF-08634404 isolado',
+    comparador: 'Braço único, sem comparador',
+    racional: 'PF-08634404 (SSGJ-707) é anticorpo biespecífico tetravalente anti-PD-1/VEGF-A. O estudo endereça a transformação para pequenas células após inibidor de tirosina-quinase no EGFR-mutado — evento raro, agressivo e sem padrão estabelecido. O registro descreve o T-SCLC como câncer de pulmão raro em que um tipo se transforma em outro mais agressivo depois que o tratamento deixa de funcionar.',
+    criterios_principais: [
+      'Idade a partir de 18 anos',
+      'Pequenas células transformado confirmado histológica ou citologicamente, com diagnóstico prévio de NSCLC com mutação de EGFR que se transformou após tratamento com inibidor de tirosina-quinase',
+      'Sem terapia sistêmica prévia para o pequenas células transformado — um único ciclo de quimioterapia pode ser permitido',
+      'Ao menos uma lesão mensurável por RECIST v1.1',
+      'Tecido tumoral suficiente do diagnóstico do pequenas células transformado',
+    ],
+    criterios_exclusao: [],
+    centros: ['Porto Alegre / RS'],
+    estados: ['RS'],
+    cidades: ['Porto Alegre'],
+    patrocinador: 'Pfizer',
+    fonte_url: 'https://clinicaltrials.gov/study/NCT07476287',
+    contato_url: 'https://clinicaltrials.gov/study/NCT07476287',
+    data_atualizacao: '2026-07-29',
+  },
+
+
+  // ============== NOVOS ESTUDOS (2026-08-04) — RASCUNHO, revisar antes de publicar ==============
+
+  {
+    // ⚠ RASCUNHO — confiança media. AstraZeneca, fase III, 582 participantes, 5 centros no Brasil
+    //   em 4 estados, com duração estimada de cerca de 8 anos. Terceiro card com Dato-DXd no PR, ao
+    //   lado dos TROPION-Lung10 e Lung15. O texto de elegibilidade corta no critério de
+    //   estadiamento, sem a seção formal de exclusão — os dois itens listados vêm do próprio
+    //   critério de inclusão, que exclui essas histologias. Confiança média por isso.
+    id: 'tropion-lung14',
+    nome: 'TROPION-Lung14',
+    titulo: 'Osimertinibe com ou sem Dato-DXd em 1ª linha de NSCLC EGFR-mutado localmente avançado ou metastático',
+    nct: 'NCT06350097',
+    fase: 'III',
+    status: 'Recrutando',
+    neoplasia: 'pulmao',
+    neoplasia_label: 'Pulmão · NSCLC',
+    subtipo: 'NSCLC não-escamoso estádio IIIB, IIIC, IV ou recorrente, com mutação de EGFR (deleção do éxon 19 e/ou L858R)',
+    linha_terapeutica: '1ª linha',
+    cenario_clinico: 'Doença localmente avançada ou metastática sem indicação de tratamento curativo, sem terapia sistêmica prévia nesse cenário',
+    modalidade: ['ADC', 'terapia-alvo', 'combinação'],
+    biomarcadores: ['EGFR'],
+    testes_fornecidos: '',
+    intervencao: 'Osimertinibe 80 mg oral 1x/dia + Dato-DXd 6 mg/kg intravenoso a cada 3 semanas',
+    comparador: 'Osimertinibe 80 mg oral 1x/dia em monoterapia',
+    racional: 'Testa se somar o conjugado ao osimertinibe desde a 1ª linha adia a progressão, em vez de reservá-lo para depois da falha — pergunta oposta à do TROPION-Lung15, que atua no cenário pós-osimertinibe. O acompanhamento é a cada 3 semanas no braço da combinação e mais espaçado no braço de monoterapia.',
+    criterios_principais: [
+      'Idade a partir de 18 anos',
+      'NSCLC não-escamoso documentado histológica ou citologicamente — histologia mista é aceita se o adenocarcinoma for predominante',
+      'Estádio IIIB, IIIC, IV metastático ou recorrente (AJCC 8ª edição), sem indicação de tratamento curativo',
+      'Mutação de EGFR: deleção do éxon 19 e/ou L858R',
+    ],
+    criterios_exclusao: [
+      'Histologia mista de pequenas células com NSCLC',
+      'Variante sarcomatoide do NSCLC',
+    ],
+    centros: [
+      'Barretos / SP',
+      'Natal / RN',
+      'Porto Alegre / RS',
+      'Salvador / BA',
+      'São Paulo / SP',
+    ],
+    estados: ['BA', 'RN', 'RS', 'SP'],
+    cidades: [
+      'Barretos',
+      'Natal',
+      'Porto Alegre',
+      'Salvador',
+      'São Paulo',
+    ],
+    patrocinador: 'AstraZeneca',
+    fonte_url: 'https://clinicaltrials.gov/study/NCT06350097',
+    contato_url: 'https://clinicaltrials.gov/study/NCT06350097',
+    data_atualizacao: '2026-05-06',
+  },
+
+  {
+    // ⚠ RASCUNHO — confiança media. AbbVie, fase 2, 150 participantes, 7 centros no Brasil em 7
+    //   estados. O registro alerta que a carga de tratamento pode ser maior que a do padrão de
+    //   cuidado — informação relevante para o paciente e que não costuma constar dos registros.
+    //   Classe validada pelo autor em 2026-08-04: conjugado anticorpo-fármaco anti-c-Met com carga
+    //   de MMAE, inibidor de microtúbulos. O registro declarava só o alvo, pelo critério de
+    //   seleção. O texto de elegibilidade corta no terceiro critério, sem a seção de exclusão.
+    //   Confiança média por isso.
+    id: 'telisotuzumabe-vedotina-c-met',
+    nome: 'Telisotuzumabe vedotina para NSCLC c-Met superexpresso',
+    titulo: 'Três esquemas de dose comparados entre si, com randomização 1:1:1, em doença não-escamosa já tratada e EGFR selvagem',
+    nct: 'NCT06568939',
+    fase: 'II',
+    status: 'Recrutando',
+    neoplasia: 'pulmao',
+    neoplasia_label: 'Pulmão · NSCLC',
+    subtipo: 'NSCLC não-escamoso localmente avançado ou metastático, com superexpressão de c-Met e EGFR selvagem',
+    linha_terapeutica: '2ª linha',
+    cenario_clinico: 'Doença já tratada, com superexpressão de c-Met definida por imuno-histoquímica em laboratório designado pelo patrocinador',
+    modalidade: ['ADC'],
+    biomarcadores: ['c-Met', 'EGFR'],
+    testes_fornecidos: 'Imuno-histoquímica de c-Met em laboratório designado pelo patrocinador, com corte de 25% ou mais de células tumorais com marcação 3+ (alto: ≥ 50% 3+; intermediário: 25% a menos de 50%)',
+    intervencao: 'Telisotuzumabe vedotina intravenoso em um de três esquemas de dose, com randomização 1:1:1',
+    comparador: 'Sem comparador externo — os três braços são de dose do mesmo agente',
+    racional: 'Telisotuzumabe vedotina é conjugado anticorpo-fármaco anti-c-Met com carga de monometil auristatina E (MMAE), inibidor de microtúbulos. Estudo de otimização de dose: os três braços recebem o mesmo agente em esquemas diferentes, para definir a posologia. A seleção é por superexpressão de c-Met, com corte quantitativo definido em imuno-histoquímica central.',
+    criterios_principais: [
+      'NSCLC não-escamoso documentado histológica ou citologicamente, localmente avançado ou metastático',
+      'Superexpressão de c-Met: 25% ou mais de células tumorais com marcação 3+ em imuno-histoquímica de laboratório designado pelo patrocinador',
+      'EGFR selvagem',
+      'Doença já tratada previamente',
+      'Expectativa de vida projetada de ao menos 12 semanas',
+    ],
+    criterios_exclusao: [],
+    centros: [
+      'Curitiba / PR',
+      'Florianópolis / SC',
+      'Fortaleza / CE',
+      'Ijuí / RS',
+      'Natal / RN',
+      'Recife / PE',
+      'São Paulo / SP',
+    ],
+    estados: [
+      'CE',
+      'PE',
+      'PR',
+      'RN',
+      'RS',
+      'SC',
+      'SP',
+    ],
+    cidades: [
+      'Curitiba',
+      'Florianópolis',
+      'Fortaleza',
+      'Ijuí',
+      'Natal',
+      'Recife',
+      'São Paulo',
+    ],
+    patrocinador: 'AbbVie',
+    fonte_url: 'https://clinicaltrials.gov/study/NCT06568939',
+    contato_url: 'https://clinicaltrials.gov/study/NCT06568939',
+    data_atualizacao: '2026-07-24',
+  },
+
+  {
+    // ⚠ RASCUNHO — confiança alta. Estudo acadêmico brasileiro conduzido por investigadora
+    //   individual (Aline Fusco Fares, MD), fase 2, braço único, 33 participantes, centro único em
+    //   São José do Rio Preto. Diferente do NCT07084610, que foi descartado neste PR, aqui a
+    //   intervenção NÃO é padrão de cuidado: a dose de nivolumabe é uma fração da usual, e é
+    //   exatamente essa a pergunta do estudo. Por isso entra na base. O critério de ressecabilidade
+    //   avaliada por três cirurgiões nominalmente identificados no protocolo é incomum e foi
+    //   mantido em forma genérica. O texto de exclusão corta em 'bulky'.
+    id: 'nivolumabe-em-baixa-dose-neoadjuvante',
+    nome: 'Nivolumabe em baixa dose para NSCLC ressecável IB–IIIA',
+    titulo: 'Neoadjuvância com nivolumabe 0,3 mg/kg e dupla de platina por 3 ciclos, em braço único, com resposta patológica como desfecho',
+    nct: 'NCT06667154',
+    fase: 'II',
+    status: 'Recrutando',
+    neoplasia: 'pulmao',
+    neoplasia_label: 'Pulmão · NSCLC',
+    subtipo: 'NSCLC estádio clínico IB, II ou IIIA, ressecável, EGFR negativo e sem expressão de ALK ou ROS1',
+    linha_terapeutica: 'Perioperatório',
+    cenario_clinico: 'Neoadjuvância antes de cirurgia, com ressecabilidade confirmada por avaliação multidisciplinar de três cirurgiões torácicos',
+    modalidade: ['imunoterapia', 'quimioterapia', 'combinação'],
+    biomarcadores: ['PD-L1', 'EGFR', 'ALK', 'ROS1'],
+    testes_fornecidos: '',
+    intervencao: 'Nivolumabe 0,3 mg/kg a cada 21 dias por 3 ciclos, com carboplatina AUC 5 ou 6 associada a paclitaxel 175 mg/m² ou pemetrexede 500 mg/m²',
+    comparador: 'Braço único, sem comparador',
+    racional: 'Testa uma dose de nivolumabe muito abaixo da usada na prática, mantendo a dupla de platina, no cenário neoadjuvante. Os desfechos são resposta patológica maior e resposta patológica completa. A pergunta é de acesso: se a dose reduzida preservar a resposta, o custo do esquema cai substancialmente.',
+    criterios_principais: [
+      'Idade a partir de 18 anos, em tratamento no Hospital de Base',
+      'NSCLC com estadiamento clínico IB, II ou IIIA',
+      'Tumor negativo para expressão de EGFR e sem expressão proteica de ALK e ROS1, com PD-L1 documentado e avaliável',
+      'Tumor considerado ressecável na avaliação inicial de três cirurgiões de oncologia torácica, após revisão multidisciplinar',
+      'ECOG 0 ou 1, sem declínio nas 2 semanas anteriores',
+      'Hemoglobina ≥ 9,0 g/dL, neutrófilos ≥ 1,5 × 10⁹/L e plaquetas ≥ 100 × 10⁹/L — sem uso de G-CSF ou transfusão para atingir esses valores',
+      'Bilirrubina ≤ 1,5× LSN (exceto síndrome de Gilbert), ALT e AST ≤ 2,5× LSN, clearance de creatinina ≥ 50 mL/min',
+      'Expectativa de vida acima de 6 meses',
+    ],
+    criterios_exclusao: [
+      'Estádios IA, IIIB N3, IIIC, IVA e IVB',
+      'Tumor T4 com invasão de aorta, esôfago e/ou coração',
+      'Doença volumosa (bulky)',
+    ],
+    centros: ['São José do Rio Preto / SP'],
+    estados: ['SP'],
+    cidades: ['São José do Rio Preto'],
+    patrocinador: 'Aline Fusco Fares, MD',
+    fonte_url: 'https://clinicaltrials.gov/study/NCT06667154',
+    contato_url: 'https://clinicaltrials.gov/study/NCT06667154',
+    data_atualizacao: '2024-10-31',
+  },
+
+  {
+    // ⚠ RASCUNHO — confiança media. Hoffmann-La Roche, fase III, 600 participantes, 7 centros no
+    //   Brasil em 5 estados. Segundo card com divarasibe no PR, ao lado do KRAScendo 170, que é
+    //   fase Ib/II do mesmo fármaco — este é o desdobramento de fase III. Classe do divarasibe
+    //   validada pelo autor em 2026-08-04: inibidor covalente seletivo de KRAS G12C (GDC-6036). O
+    //   texto de exclusão corta no critério de metástase sintomática. Confiança média por isso.
+    id: 'krascendo-2',
+    nome: 'Krascendo 2',
+    titulo: 'Divarasibe + pembrolizumabe vs pembrolizumabe com pemetrexede e platina em 1ª linha de NSCLC não-escamoso KRAS G12C',
+    nct: 'NCT06793215',
+    fase: 'III',
+    status: 'Recrutando',
+    neoplasia: 'pulmao',
+    neoplasia_label: 'Pulmão · NSCLC',
+    subtipo: 'NSCLC não-escamoso avançado ou metastático com mutação KRAS G12C, sem tratamento prévio',
+    linha_terapeutica: '1ª linha',
+    cenario_clinico: 'Doença sem indicação de cirurgia curativa nem de quimiorradioterapia definitiva, sem tratamento sistêmico prévio para doença avançada',
+    modalidade: ['terapia-alvo', 'imunoterapia', 'combinação'],
+    biomarcadores: ['KRAS G12C', 'PD-L1'],
+    testes_fornecidos: 'Exige documentação do status de PD-L1 no tecido tumoral e amostra tumoral representativa disponível',
+    intervencao: 'Divarasibe oral 1x/dia + pembrolizumabe intravenoso a cada 3 semanas',
+    comparador: 'Pembrolizumabe + pemetrexede + carboplatina ou cisplatina, intravenosos a cada 3 semanas',
+    racional: 'Assim como o KANDLELIT-007, testa a substituição da quimioterapia por um inibidor de KRAS G12C ao lado do anti-PD-1 na 1ª linha — o divarasibe (GDC-6036) é inibidor covalente seletivo de KRAS G12C, e a diferença para o estudo irmão é o inibidor e a formulação do pembrolizumabe. O paciente precisa ser elegível a esquema com platina, já que pode ser alocado no braço padrão.',
+    criterios_principais: [
+      'NSCLC não-escamoso avançado ou metastático confirmado histológica ou citologicamente, sem indicação de cirurgia curativa ou quimiorradioterapia definitiva',
+      'Mutação KRAS G12C documentada',
+      'Status de PD-L1 conhecido no tecido tumoral, com amostra representativa disponível',
+      'Sem tratamento sistêmico prévio para doença avançada ou metastática',
+      'Elegível a esquema de quimioterapia com platina',
+      'Doença mensurável por RECIST v1.1',
+      'ECOG 0 ou 1',
+      'Função de órgãos-alvo adequada',
+    ],
+    criterios_exclusao: [
+      'Segundo driver oncogênico concomitante conhecido com tratamento alvo disponível',
+    ],
+    centros: [
+      'Barretos / SP',
+      'Curitiba / PR',
+      'Fortaleza / CE',
+      'Natal / RN',
+      'Porto Alegre / RS',
+      'São Paulo / SP',
+    ],
+    estados: [
+      'CE',
+      'PR',
+      'RN',
+      'RS',
+      'SP',
+    ],
+    cidades: [
+      'Barretos',
+      'Curitiba',
+      'Fortaleza',
+      'Natal',
+      'Porto Alegre',
+      'São Paulo',
+    ],
+    patrocinador: 'Hoffmann-La Roche',
+    fonte_url: 'https://clinicaltrials.gov/study/NCT06793215',
+    contato_url: 'https://clinicaltrials.gov/study/NCT06793215',
+    data_atualizacao: '2026-07-07',
+  },
+
+  {
+    // ⚠ RASCUNHO — confiança alta. Nuvalent, fase 3, 450 participantes, 8 centros no Brasil em 3
+    //   estados. Único card do PR em ALK-positivo, e um dos poucos de todo o lote de pulmão com as
+    //   duas listas de elegibilidade completas no registro. O título oficial declara o neladalkib
+    //   como inibidor seletivo de ALK, o que sustenta a descrição do racional.
+    id: 'alkazar',
+    nome: 'ALKAZAR',
+    titulo: 'Neladalkib vs alectinibe em 1ª linha de NSCLC avançado ALK-positivo sem inibidor prévio',
+    nct: 'NCT06765109',
+    fase: 'III',
+    status: 'Recrutando',
+    neoplasia: 'pulmao',
+    neoplasia_label: 'Pulmão · NSCLC',
+    subtipo: 'NSCLC localmente avançado sem indicação de tratamento multimodal, ou metastático, com rearranjo de ALK documentado',
+    linha_terapeutica: '1ª linha',
+    cenario_clinico: 'Sem tratamento sistêmico antineoplásico prévio para NSCLC — quimioterapia adjuvante ou neoadjuvante é aceita se concluída há mais de 12 meses; inibidor de ALK prévio não é aceito em nenhum cenário',
+    modalidade: ['terapia-alvo'],
+    biomarcadores: ['ALK'],
+    testes_fornecidos: 'Exige tecido tumoral pré-tratamento; o rearranjo de ALK pode ser documentado em tecido ou em sangue',
+    intervencao: 'Neladalkib (NVL-655) 150 mg via oral 1x/dia',
+    comparador: 'Alectinibe 600 mg via oral 2x/dia',
+    racional: 'O registro descreve o neladalkib como inibidor seletivo de ALK, comparado de forma direta ao alectinibe, que é padrão de 1ª linha no ALK-positivo. O desfecho principal é sobrevida livre de progressão.',
+    criterios_principais: [
+      'NSCLC localmente avançado sem indicação de tratamento multimodal, ou metastático, confirmado histológica ou citologicamente',
+      'Rearranjo de ALK documentado em tecido ou em sangue',
+      'Sem tratamento sistêmico antineoplásico prévio para NSCLC — quimioterapia adjuvante ou neoadjuvante aceita se há mais de 12 meses da randomização',
+      'Nenhum inibidor de tirosina-quinase de ALK prévio, em qualquer cenário',
+      'Doença mensurável por RECIST 1.1',
+      'Tecido tumoral pré-tratamento disponível',
+    ],
+    criterios_exclusao: [
+      'Alteração de driver oncogênico conhecida diferente de ALK',
+      'Alergia ou hipersensibilidade conhecida a excipientes do neladalkib ou do alectinibe',
+      'Radioterapia em curso ou recente, conforme as janelas do protocolo',
+      'Cirurgia de grande porte nas 4 semanas anteriores à randomização',
+      'Infecção não controlada com necessidade de terapia sistêmica; tuberculose ativa; hepatite B ou C ativa',
+      'QTcF acima de 470 ms em avaliações repetidas',
+      'Doença cardiovascular clinicamente significativa',
+      'Metástase cerebral com sintomas neurológicos progressivos ou que exija aumento de corticoide',
+      'Neoplasia ativa que tenha exigido terapia nos 2 anos anteriores',
+    ],
+    centros: [
+      'Barretos / SP',
+      'Belo Horizonte / MG',
+      'Porto Alegre / RS',
+      'São José do Rio Preto / SP',
+      'São Paulo / SP',
+    ],
+    estados: ['MG', 'RS', 'SP'],
+    cidades: [
+      'Barretos',
+      'Belo Horizonte',
+      'Porto Alegre',
+      'São José do Rio Preto',
+      'São Paulo',
+    ],
+    patrocinador: 'Nuvalent Inc.',
+    fonte_url: 'https://clinicaltrials.gov/study/NCT06765109',
+    contato_url: 'https://clinicaltrials.gov/study/NCT06765109',
+    data_atualizacao: '2026-07-21',
+  },
+
+  {
+    // ⚠ RASCUNHO — confiança media. Bristol-Myers Squibb, fase 3, 530 participantes, 7 centros em 4
+    //   estados. O autor conferiu o registro em 2026-08-04 e confirmou que ele traz apenas três
+    //   categorias amplas de exclusão, em linguagem genérica — o card reproduz essa imprecisão em
+    //   vez de especificá-la por conta própria. A confiança segue media por limitação da fonte, não
+    //   da curadoria. Convém confirmar com o centro antes de encaminhar paciente.
+    id: 'tigos',
+    nome: 'TIGOS',
+    titulo: 'BMS-986489 (anti-fucosil-GM1 + nivolumabe em dose fixa) com carboplatina e etoposídeo vs atezolizumabe com carboplatina e etoposídeo em 1ª linha de pequenas células em doença extensa',
+    nct: 'NCT06646276',
+    fase: 'III',
+    status: 'Recrutando',
+    neoplasia: 'pulmao',
+    neoplasia_label: 'Pulmão · SCLC',
+    subtipo: 'Carcinoma de pequenas células de pulmão em doença extensa',
+    linha_terapeutica: '1ª linha',
+    cenario_clinico: 'Doença extensa sem tratamento prévio, com ao menos uma lesão mensurável fora do sistema nervoso central',
+    modalidade: ['imunoterapia', 'quimioterapia', 'combinação'],
+    biomarcadores: ['Fucosil-GM1'],
+    testes_fornecidos: '',
+    intervencao: 'BMS-986489, combinação em dose fixa de BMS-986012 (anti-fucosil-GM1) com nivolumabe, associada a carboplatina e etoposídeo',
+    comparador: 'Atezolizumabe com carboplatina e etoposídeo — o padrão de 1ª linha',
+    racional: 'O registro descreve o BMS-986489 como combinação em dose fixa de um agente anti-fucosil-GM1 com nivolumabe. O estudo o compara ao esquema padrão de 1ª linha da doença extensa, com a mesma espinha dorsal de carboplatina e etoposídeo nos dois braços.',
+    criterios_principais: [
+      'Carcinoma de pequenas células de pulmão em doença extensa',
+      'Ao menos uma lesão mensurável por tomografia ou ressonância, fora do encéfalo e do sistema nervoso',
+      'Capaz de realizar as atividades habituais com pouca ou nenhuma ajuda, conforme a escala ECOG',
+    ],
+    criterios_exclusao: [
+      'Tratamento prévio de determinados tipos para a doença extensa',
+      'Metástase cerebral sintomática',
+      'Determinadas doenças pulmonares, cardíacas, infecções, doenças autoimunes ou outras neoplasias',
+      'Neuropatia sensitiva periférica',
+    ],
+    centros: [
+      'Barretos / SP',
+      'Fortaleza / CE',
+      'Itajaí / SC',
+      'Porto Alegre / RS',
+      'Santa Cruz do Sul / RS',
+      'São Paulo / SP',
+    ],
+    estados: ['CE', 'RS', 'SC', 'SP'],
+    cidades: [
+      'Barretos',
+      'Fortaleza',
+      'Itajaí',
+      'Porto Alegre',
+      'Santa Cruz do Sul',
+      'São Paulo',
+    ],
+    patrocinador: 'Bristol-Myers Squibb',
+    fonte_url: 'https://clinicaltrials.gov/study/NCT06646276',
+    contato_url: 'https://clinicaltrials.gov/study/NCT06646276',
+    data_atualizacao: '2026-07-20',
+  },
+
 ];
 
 /* ============================================================
@@ -5927,6 +8624,10 @@ window.THERA_TRIALS_BR_META = {
     // Para ensaio que recruta por alteração molecular ou por coortes de vários
     // sítios, em vez de por um único tumor — não force um sítio só nesses casos.
     { id: 'solidos',        label: 'Tumores sólidos',         color: '#94d3d8' },
+    // Os tumores neuroendócrinos atravessam sítios (pâncreas, TGI, pulmão,
+    // primário oculto) e são recrutados como entidade própria. O Database já os
+    // trata assim, na categoria net_gep.
+    { id: 'net',            label: 'Tumores neuroendócrinos', color: '#7dd3fc' },
   ],
   modalidades: [
     { id: 'terapia-alvo',     label: 'Terapia-alvo' },

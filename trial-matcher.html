@@ -606,12 +606,19 @@
     'ovario': 'Ovário', 'endometrio': 'Endométrio', 'cervix': 'Cérvix',
     'linfoma': 'Linfoma', 'mieloma': 'Mieloma Múltiplo',
     'pediatrico': 'Neuroblastoma', 'penis': 'Outros',
-    'solidos': 'Tumores sólidos'
+    'solidos': 'Tumores sólidos', 'net': 'Tumores neuroendócrinos'
   };
 
   // ── Populate tumor filter (grupos de tumor presentes nos ensaios BR) ──
+  // Monta a lista a partir das neoplasias que de fato têm card, não do
+  // BR_TUMOR_MAP inteiro. Com a lista fixa, remover o último card de uma
+  // neoplasia deixava a opção no dropdown devolvendo zero resultados — foi o
+  // que aconteceu com 'Outros' ao sair o único card de pênis.
   var tumorSet = new Set();
-  Object.values(BR_TUMOR_MAP).forEach(function(v) { tumorSet.add(v); });
+  (window.THERA_TRIALS_BR || []).forEach(function(t) {
+    var g = BR_TUMOR_MAP[t.neoplasia] || t.neoplasia_label;
+    if (g) tumorSet.add(g);
+  });
   var tumors = Array.from(tumorSet).sort();
   var sel = document.getElementById('f-tumor');
   tumors.forEach(function(t) {
