@@ -30,11 +30,6 @@
   "motivo": "Cardio-oncologia / prevenção de toxicidade, não tratamento antineoplásico. Testa dapagliflozina versus placebo sobre o remodelamento miocárdico induzido por antraciclina; a quimioterapia é padrão nos dois braços e não é objeto do estudo. Mesmo critério aplicado ao SCHOLAR-2."
  },
  {
-  "nct": "NCT06638931",
-  "nome": "ANTARES",
-  "motivo": "Estudo basket agnóstico ao sítio tumoral, com 41 condições registradas (carcinoma secretório e metaplásico de mama, colangiocarcinoma, pênis, ovário, sarcomas, tumor de sítio primário desconhecido e outros). O card do Trial Matcher aceita uma única neoplasia, então publicá-lo sob 'mama' o esconderia de todos os demais tumores e o ofereceria a pacientes de mama que não se qualificam — só as histologias raras entram."
- },
- {
   "nct": "NCT05660395",
   "nome": "LOTIS-10",
   "motivo": "Card removido em 2026-08-04 por decisão do autor: o estudo foi encerrado (TERMINATED no ClinicalTrials.gov) e o card ainda dizia Recrutando."
