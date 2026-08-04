@@ -1015,34 +1015,6 @@ window.THERA_TRIALS_BR = [
     contato_url: 'https://clinicaltrials.gov/study/NCT05533775',
     data_atualizacao: '2026-05-19',
   },
-  {
-    id: 'nct05660395',
-    nome: 'LOTIS-10',
-    titulo: 'Loncastuximab tesirine em LDGCB/LGCB-AG R/R com insuficiencia hepática (LOTIS-10)',
-    nct: 'NCT05660395',
-    fase: 'I',
-    status: 'Recrutando',
-    neoplasia: 'linfoma',
-    neoplasia_label: 'Linfoma',
-    subtipo: 'LDGCB ou LGCB de alto grau R/R com comprometimento hepático',
-    linha_terapeutica: 'Recidivado / refratário',
-    cenario_clinico: 'Recidivado / refratário',
-    modalidade: ["ADC"],
-        biomarcadores: ['CD19'],
-    testes_fornecidos: 'Conforme protocolo do estudo',
-    intervencao: 'Loncastuximab Tesirine',
-    comparador: 'Braço único (sem comparador)',
-    racional: 'Estudo fase I avaliando farmacocinética e segurança de loncastuximab tesirine (ADC anti-CD19) em pacientes com LDGCB ou LGCB de alto grau R/R com insuficiencia hepática moderada a grave. Define dose recomendada nesta população especial.',
-    criterios_principais: [],
-    criterios_exclusao: [],
-    centros: ['Brasília / DF', 'Porto Alegre / RS', 'São Paulo / SP'],
-    estados: ['DF', 'RS', 'SP'],
-    cidades: ['Brasília', 'Porto Alegre', 'São Paulo'],
-    patrocinador: 'ADC Therapeutics S.A.',
-    fonte_url: 'https://clinicaltrials.gov/study/NCT05660395',
-    contato_url: 'https://clinicaltrials.gov/study/NCT05660395',
-    data_atualizacao: '2026-05-19',
-  },
 
   // ============== MAMA ==============
   {
@@ -2540,40 +2512,6 @@ window.THERA_TRIALS_BR = [
     patrocinador: 'Janssen',
     fonte_url: 'https://clinicaltrials.gov/study/NCT05498428',
     contato_url: 'https://clinicaltrials.gov/study/NCT05498428',
-    data_atualizacao: '2026-05-19',
-  },
-  {
-    id: 'benito',
-    nome: 'BENITO',
-    titulo: 'MB12 (biossimilar pembrolizumabe) + QT vs Keytruda + QT em CPNPC não escamoso estágio IV',
-    nct: 'NCT06687369',
-    fase: 'III',
-    status: 'Recrutando',
-    neoplasia: 'pulmao',
-    neoplasia_label: 'Pulmão · NSCLC',
-    subtipo: 'CPNPC não escamoso sem mutação driver',
-    linha_terapeutica: '1ª linha',
-    cenario_clinico: 'Estágio IV, sem mutação driver',
-    modalidade: ['imunoterapia', 'quimioterapia'],
-    biomarcadores: [],
-    testes_fornecidos: '',
-    intervencao: 'MB12 (biossimilar) + Pemetrexede + Carboplatina',
-    comparador: 'Keytruda + Pemetrexede + Carboplatina',
-    racional: 'Estudo fase III comparando farmacocinética, eficácia e segurança do MB12 (biossimilar proposto do pembrolizumabe) versus Keytruda em combinação com quimioterapia para CPNPC não escamoso estágio IV.',
-    criterios_principais: [
-      'CPNPC estágio IV não escamoso',
-      'Sem mutação EGFR ou translocação ALK',
-      'Sem tratamento sistêmico prévio para doença metastática',
-    ],
-    criterios_exclusao: [
-      'Histologia predominantemente escamosa',
-    ],
-    centros: ['Rio de Janeiro / RJ'],
-    estados: ['RJ'],
-    cidades: ['Rio de Janeiro'],
-    patrocinador: 'mAbxience',
-    fonte_url: 'https://clinicaltrials.gov/study/NCT06687369',
-    contato_url: 'https://clinicaltrials.gov/study/NCT06687369',
     data_atualizacao: '2026-05-19',
   },
   {
@@ -5329,7 +5267,7 @@ window.THERA_TRIALS_BR = [
   },
 
   {
-    // ⚠ RASCUNHO — confiança media. Roche, fase III, 1050 participantes, 20 centros no Brasil em 12 estados. O texto de elegibilidade fornecido está truncado no critério de resistência à
+    // ⚠ RASCUNHO — confiança alta. Roche, fase III, 1050 participantes, 20 centros no Brasil em 12 estados. Critérios de exclusão transcritos do ClinicalTrials.gov pelo autor e resumidos em 2026-08-04; a lacuna que mantinha a confiança em `media` foi fechada.
     id: 'pionera-breast-cancer',
     nome: 'pionERA Breast Cancer',
     titulo: 'Giredestranto vs fulvestranto, ambos com inibidor de CDK4/6, em mama avançada RE+/HER2- resistente à endocrinoterapia adjuvante',
@@ -5354,7 +5292,13 @@ window.THERA_TRIALS_BR = [
       'Resistência à endocrinoterapia adjuvante prévia, definida por recidiva em tratamento após ≥12 meses ou fora dele',
       'Pré, peri ou pós-menopausadas e homens elegíveis, com agonista de LHRH quando indicado',
     ],
-    criterios_exclusao: [],
+    criterios_exclusao: [
+      'Terapia sistêmica prévia para doença localmente avançada irressecável ou metastática (quimioterapia, imunoterapia ou terapia biológica)',
+      'Tratamento prévio com outro SERD (fulvestranto ou SERD oral) ou com outro agente novo dirigido ao receptor de estrogênio',
+      'Disseminação visceral avançada e sintomática, com risco de complicação ameaçadora à vida em curto prazo',
+      'Doença cardíaca ativa ou história de disfunção cardíaca',
+      'História clinicamente significativa de doença hepática',
+    ],
     centros: [
       'Barretos / SP',
       'Brasília / DF',
@@ -5410,7 +5354,7 @@ window.THERA_TRIALS_BR = [
   },
 
   {
-    // ⚠ RASCUNHO — confiança media. Celcuity, fase 3, 1180 participantes, 11 centros no Brasil em 7 estados. O registro descreve dois estudos paralelos (Study 1 e Study 2) com janelas di
+    // ⚠ RASCUNHO — confiança alta. Celcuity, fase 3, 1180 participantes, 11 centros em 7 estados. Dois estudos paralelos com janelas distintas de intervalo desde o inibidor de CDK4/6 prévio. Critérios de exclusão transcritos do ClinicalTrials.gov pelo autor e resumidos em 2026-08-04; a lacuna que mantinha a confiança em `media` foi fechada.
     id: 'viktoria-2',
     nome: 'VIKTORIA-2',
     titulo: 'Gedatolisibe + palbociclibe + endocrinoterapia vs ribociclibe + endocrinoterapia em 1ª linha de mama avançada HR+/HER2-',
@@ -5436,8 +5380,15 @@ window.THERA_TRIALS_BR = [
       'Inibidor de CDK4/6 (neo)adjuvante prévio permitido conforme o intervalo desde a suspensão',
     ],
     criterios_exclusao: [
-      'Fulvestranto (neo)adjuvante prévio com duração de 6 meses ou mais',
-      'Progressão durante ou em até 6 meses da suspensão do inibidor de CDK4/6 (neo)adjuvante, conforme o estudo',
+      'Terapia sistêmica antineoplásica prévia para doença avançada',
+      'Tratamento prévio com inibidor de PI3K, de AKT ou de mTOR',
+      'Tratamento prévio com outro SERD — fulvestranto (neo)adjuvante é a exceção, permitido apenas se durou menos de 6 meses',
+      'Diabetes tipo 1, ou tipo 2 não controlado exigindo insulina diária',
+      'Metástase cerebral ou leptomeníngea ativa, ou conhecida e não tratada',
+      'História de anormalidade cardiovascular clinicamente significativa',
+      'Condição oftalmológica clinicamente significativa',
+      'História de doença pulmonar intersticial sintomática (pneumonite) ou de hepatite induzida por fármaco',
+      'Segunda neoplasia concomitante, exceto pele não-melanoma adequadamente tratada — neoplasia prévia curada, em remissão e de baixo risco é permitida',
     ],
     centros: [
       'Belo Horizonte / MG',
@@ -5477,7 +5428,7 @@ window.THERA_TRIALS_BR = [
   },
 
   {
-    // ⚠ RASCUNHO — confiança media. MSD, fase 3, 1530 participantes, 8 centros no Brasil em 6 estados. O texto de elegibilidade recebido termina nos critérios de contracepção, sem a seçã
+    // ⚠ RASCUNHO — confiança alta. MSD, fase 3, 1530 participantes, 8 centros em 6 estados. Critérios de exclusão transcritos do ClinicalTrials.gov pelo autor e resumidos em 2026-08-04; a lacuna que mantinha a confiança em `media` foi fechada.
     id: 'mk-2870-012',
     nome: 'MK-2870-012',
     titulo: 'Sacituzumabe tirumotecana + pembrolizumabe vs escolha do médico como adjuvante em mama triplo-negativa sem resposta patológica completa',
@@ -5505,7 +5456,23 @@ window.THERA_TRIALS_BR = [
       'Apto a manter pembrolizumabe adjuvante',
       'Radioterapia adjuvante concluída, quando indicada',
     ],
-    criterios_exclusao: [],
+    criterios_exclusao: [
+      'Mutação germinativa de BRCA (deletéria ou suspeita) com elegibilidade a olaparibe adjuvante, onde ele esteja aprovado e disponível',
+      'Neuropatia periférica grau maior que 2',
+      'Doença ocular relevante: olho seco grave, disfunção grave das glândulas de Meibomius, blefarite ou doença corneana que atrase a cicatrização',
+      'Doença inflamatória intestinal ativa ou prévia (Crohn, retocolite) ou diarreia crônica',
+      'Doença cardiovascular ou cerebrovascular não controlada nos 6 meses anteriores: ICC classe III–IV, angina instável, infarto, arritmia sintomática não controlada, QTcF acima de 480 ms',
+      'Conjugado anticorpo-fármaco prévio dirigido a TROP2, ou ADC com inibidor de topoisomerase I',
+      'Qualquer terapia antineoplásica na fase adjuvante além da radioterapia (quimioterapia, alvo, inibidor de PARP, ADC, imunoterapia)',
+      'Anti-PD-1, anti-PD-L1, anti-PD-L2 ou outro agente dirigido a receptor de célula T — exceto o pembrolizumabe da neoadjuvância do triplo-negativo inicial',
+      'Terapia sistêmica antineoplásica ou agente investigacional nas 4 semanas anteriores à randomização, exceto a quimioterapia neoadjuvante do triplo-negativo inicial',
+      'Radioterapia nas 3 semanas anteriores, ou corticoide por toxicidade da radioterapia que não possa ser suspenso',
+      'Indutor ou inibidor forte de CYP3A4 que não possa ser suspenso (washout de 2 semanas)',
+      'Pneumonite ou doença pulmonar intersticial não infecciosa, atual ou prévia com uso de corticoide',
+      'Doença autoimune ativa tratada nos últimos 2 anos, imunodeficiência, ou corticoide sistêmico acima de 10 mg/dia de prednisona ou equivalente',
+      'Outra neoplasia em progressão ou que exigiu tratamento ativo nos últimos 5 anos',
+      'Vacina viva ou viva atenuada nos 30 dias anteriores; infecção ativa em terapia sistêmica; hepatite B e C ativas concomitantes; transplante alogênico de tecido ou órgão sólido',
+    ],
     centros: [
       'Fortaleza / CE',
       'Lages / SC',
@@ -5544,7 +5511,7 @@ window.THERA_TRIALS_BR = [
   // ============== NOVOS ESTUDOS (2026-08-03) — RASCUNHO, revisar antes de publicar ==============
 
   {
-    // ⚠ RASCUNHO — confiança media. MSD, fase 3, 1000 participantes, 6 centros no Brasil em 5 estados. O registro traz a lista de inclusão explicitamente como parcial ('include but are n
+    // ⚠ RASCUNHO — confiança alta. MSD, fase 3, 1000 participantes, 6 centros em 5 estados. O registro declara a lista de inclusão como parcial. Critérios de exclusão transcritos do ClinicalTrials.gov pelo autor e resumidos em 2026-08-04; a lacuna que mantinha a confiança em `media` foi fechada.
     id: 'herthena-breast04',
     nome: 'HERTHENA-Breast04',
     titulo: 'Patritumabe deruxtecana vs escolha do médico em mama avançada HR+/HER2- após inibidor de CDK4/6',
@@ -5569,7 +5536,24 @@ window.THERA_TRIALS_BR = [
       'Recidiva durante endocrinoterapia adjuvante com iCDK4/6, ou em até 24 meses da última dose do iCDK4/6 adjuvante',
       'Doença mensurável por RECIST 1.1',
     ],
-    criterios_exclusao: [],
+    criterios_exclusao: [
+      'Mama passível de tratamento com intenção curativa',
+      'Elegibilidade a mais uma linha baseada em endocrinoterapia no cenário avançado, a critério do investigador',
+      'Mutação germinativa de BRCA (deletéria ou suspeita) em que inibidor de PARP seja opção de tratamento',
+      'Crise visceral atual, ou risco de crise visceral iminente com comprometimento de órgão',
+      'Quimioterapia prévia para doença localmente avançada irressecável ou metastática',
+      'Anticorpo anti-HER3 prévio, ADC com inibidor de topoisomerase I (por exemplo T-DXd) ou qualquer outra terapia com inibidor de topoisomerase I',
+      'Terapia sistêmica antineoplásica nas 4 semanas anteriores (ou 5 meias-vidas, o que for menor); quem recebeu endocrinoterapia com inibidor de CDK4/6 precisa de ao menos 2 semanas',
+      'Radioterapia extra-SNC, ou corticoide por toxicidade da radioterapia, nos 14 dias anteriores',
+      'Saturação de oxigênio em repouso abaixo de 92%, ou necessidade de oxigênio suplementar intermitente ou crônico',
+      'Doença cardiovascular ou cerebrovascular significativa e não controlada',
+      'Neuropatia periférica grau 2 ou maior',
+      'Doença corneana clinicamente significativa',
+      'Pneumonite ou doença pulmonar intersticial não infecciosa — atual, prévia com uso de corticoide, ou suspeita não descartada por imagem na triagem',
+      'Imunodeficiência ou corticoterapia sistêmica crônica',
+      'Outra neoplasia em progressão ou que exigiu tratamento ativo nos últimos 3 anos',
+      'Hipersensibilidade grave (grau 3 ou maior) ao HER3-DXd ou a todas as opções de comparador disponíveis',
+    ],
     centros: [
       'Lages / SC',
       'Natal / RN',
