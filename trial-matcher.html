@@ -337,9 +337,19 @@
 .tm-d-pill .val { font-size: 0.82rem; color: var(--off-white); font-weight: 500; }
 /* Centros agrupados por UF: grade de estados em vez de uma fila de pills
    repetindo a sigla em cada cidade. */
-.tm-d-pills.tm-d-uf { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); align-items: stretch; }
+/* 240px, não 190px: cada célula agora traz nomes de hospital, não só cidade. */
+.tm-d-pills.tm-d-uf { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); align-items: stretch; }
 .tm-d-uf .tm-d-pill .lbl { color: var(--amber); font-size: 0.66rem; letter-spacing: 0.08em; }
-.tm-d-uf .tm-d-pill .val { font-weight: 400; line-height: 1.5; }
+.tm-d-uf .tm-d-pill .val { font-weight: 400; line-height: 1.45; font-size: 0.78rem; }
+/* Cada UF lista suas cidades; sob a cidade, as instituições. A cidade é o
+   cabeçalho, e ganha respiro acima exceto na primeira. */
+.tm-d-cid {
+  display: block; font-size: 0.63rem; text-transform: uppercase;
+  letter-spacing: 0.06em; color: var(--stone); font-weight: 600;
+  margin-top: 0.5rem; margin-bottom: 0.1rem;
+}
+.tm-d-cid:first-child { margin-top: 0; }
+.tm-d-anon { color: var(--stone); font-size: 0.74rem; }
 .tm-d-list { margin: 0; padding-left: 1.1rem; }
 .tm-d-list li { font-size: 0.84rem; color: var(--off-white, #F5F6F7); line-height: 1.55; margin-bottom: 0.35rem; }
 .tm-d-list.exclusion li::marker { color: #ef4444; }
@@ -878,27 +888,46 @@
   }
 
   // ── Centros: agrupamento por unidade da federação ──────────────
-  // Os centros vêm como strings 'Cidade / UF'. Entradas sem a sigla são
-  // omitidas: o registro de origem não informou o estado e o nome da
-  // cidade não permite deduzi-lo com segurança ('Valência' tanto pode ser
-  // Valença/BA quanto Valença/RJ). São dois casos em 722 centros.
+  // Cada entrada é 'Instituição — Cidade / UF', ou só 'Cidade / UF' quando o
+  // patrocinador não nomeia o centro no registro (aparece como "Research
+  // Site", "Local Institution - 0165"). Existe um centro ali; só não dá para
+  // dizer qual. Entradas sem a sigla da UF são omitidas: o registro não
+  // informou o estado e o nome da cidade não permite deduzi-lo com segurança.
+  var RE_CENTRO = /^(?:(.*?)\s*—\s*)?(.*?)\s*\/\s*([A-Z]{2})$/;
+
   function agruparPorUF(centros) {
     var mapa = {}, ordem = [];
     (centros || []).forEach(function(c) {
-      var m = /^(.*?)\s*\/\s*([A-Z]{2})$/.exec((c || '').trim());
+      var m = RE_CENTRO.exec((c || '').trim());
       if (!m) return;
-      var uf = m[2];
-      if (!mapa[uf]) { mapa[uf] = []; ordem.push(uf); }
-      mapa[uf].push(m[1]);
+      var uf = m[3], cidade = m[2], inst = m[1] || '';
+      if (!mapa[uf]) { mapa[uf] = { cidades: {}, ordem: [] }; ordem.push(uf); }
+      var g = mapa[uf];
+      if (!g.cidades[cidade]) { g.cidades[cidade] = []; g.ordem.push(cidade); }
+      if (inst) g.cidades[cidade].push(inst);
     });
     // Ordem alfabética por UF: no modal a tarefa é procurar o próprio
     // estado numa lista que chega a 17 entradas.
     ordem.sort();
-    return ordem.map(function(uf) { return { uf: uf, cidades: mapa[uf].sort() }; });
+    return ordem.map(function(uf) {
+      var g = mapa[uf];
+      return {
+        uf: uf,
+        cidades: g.ordem.sort().map(function(nome) {
+          return { cidade: nome, instituicoes: g.cidades[nome].sort() };
+        })
+      };
+    });
   }
 
+  // Conta CENTROS, não cidades. Uma cidade sem instituição nomeada ainda vale
+  // um centro — o registro confirma que há um, apenas não diz o nome.
   function totalCentros(grupos) {
-    return grupos.reduce(function(a, g) { return a + g.cidades.length; }, 0);
+    return grupos.reduce(function(a, g) {
+      return a + g.cidades.reduce(function(b, c) {
+        return b + (c.instituicoes.length || 1);
+      }, 0);
+    }, 0);
   }
 
   // Sudeste primeiro, em ordem fixa — é onde está a maior parte dos
@@ -912,11 +941,14 @@
   // para lá em vez de virar '+1'.
   var PRIORIDADE_UF = { SP: 1, RJ: 2, MG: 3, ES: 4 };
   var TETO_SUDESTE = 3;
+  function centrosDaUF(g) {
+    return g.cidades.reduce(function(a, c) { return a + (c.instituicoes.length || 1); }, 0);
+  }
   function ordenarUFs(grupos) {
     var sudeste = [], outros = [];
     grupos.forEach(function(g) { (PRIORIDADE_UF[g.uf] ? sudeste : outros).push(g); });
     sudeste.sort(function(a, b) { return PRIORIDADE_UF[a.uf] - PRIORIDADE_UF[b.uf]; });
-    outros.sort(function(a, b) { return b.cidades.length - a.cidades.length || (a.uf < b.uf ? -1 : 1); });
+    outros.sort(function(a, b) { return centrosDaUF(b) - centrosDaUF(a) || (a.uf < b.uf ? -1 : 1); });
     return sudeste.slice(0, TETO_SUDESTE)
       .concat(outros.slice(0, 1), sudeste.slice(TETO_SUDESTE), outros.slice(1))
       .map(function(g) { return g.uf; });
@@ -929,10 +961,19 @@
     if (!n) return { texto: 'Centros no Brasil', titulo: '' };
 
     var completo = grupos.map(function(g) {
-      return g.uf + ': ' + g.cidades.join(', ');
+      return g.uf + ': ' + g.cidades.map(function(c) {
+        return c.instituicoes.length ? c.instituicoes.join(', ') + ' (' + c.cidade + ')'
+                                     : c.cidade;
+      }).join(', ');
     }).join('\n');
 
-    if (n === 1) return { texto: grupos[0].cidades[0] + ' / ' + grupos[0].uf, titulo: '' };
+    if (n === 1) {
+      var c0 = grupos[0].cidades[0];
+      return {
+        texto: (c0.instituicoes[0] || c0.cidade) + ' / ' + grupos[0].uf,
+        titulo: c0.instituicoes.length ? c0.instituicoes[0] + ' — ' + c0.cidade : ''
+      };
+    }
 
     var ufs = ordenarUFs(grupos);
     var contagem = n + ' centros';
@@ -1056,8 +1097,17 @@
           (grupos.length > 1 ? ' em ' + grupos.length + ' estados' : '');
         body += dSection('map-pin', titulo,
           '<div class="tm-d-pills tm-d-uf" data-no-gloss>' + grupos.map(function(g) {
+            var corpo = g.cidades.map(function(c) {
+              // Cidade sem instituição nomeada: o registro confirma o centro
+              // mas omite o nome. Dizer isso é melhor do que sugerir que a
+              // cidade inteira é o centro.
+              var lista = c.instituicoes.length
+                ? c.instituicoes.map(escHtml).join('<br>')
+                : '<em class="tm-d-anon">centro não identificado no registro</em>';
+              return '<span class="tm-d-cid">' + escHtml(c.cidade) + '</span>' + lista;
+            }).join('');
             return '<span class="tm-d-pill"><span class="lbl">' + escHtml(g.uf) + '</span>' +
-              '<span class="val">' + escHtml(g.cidades.join(' · ')) + '</span></span>';
+              '<span class="val">' + corpo + '</span></span>';
           }).join('') + '</div>');
       }
     }

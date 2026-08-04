@@ -29,6 +29,9 @@ import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from br_instituicoes import resolver  # noqa: E402
+
 API = "https://clinicaltrials.gov/api/v2/studies"
 SITE = Path(__file__).resolve().parent.parent
 TRIALS_JS = SITE / "assets" / "js" / "trials_br.js"
@@ -112,7 +115,16 @@ ALIAS_CIDADE = {
     "sao jose rio": "São José do Rio Preto",
     # bairros de São Paulo
     "liberdade": "São Paulo", "vila mariana": "São Paulo", "vila olimpia": "São Paulo",
+    # nome do hospital ou do bairro no campo cidade
+    "santa lucia": "Brasília",      # Hospital Santa Lúcia, Asa Sul
+    "bequimao": "São Luís",         # bairro onde fica o Hospital São Domingos
 }
+
+# Locais que o ClinicalTrials.gov marca como country='Brazil' mas não são.
+# São erros de digitação do patrocinador no próprio registro: o Hospital La Fe
+# fica em Valência, na Espanha, e entrou como brasileiro. Sem isso o centro
+# aparece no card e conta como centro no Brasil.
+NAO_BRASIL = {"valencia", "valenciennes"}
 
 # Valores que não são município — o centro entra na lista, mas sem cidade/UF.
 NAO_CIDADE = {
@@ -133,7 +145,7 @@ def _chave(cidade: str) -> str:
 def normalizar_cidade(bruto: str) -> str:
     """Devolve o município canônico, ou '' se o valor não for uma cidade."""
     k = _chave(bruto)
-    if not k or k in NAO_CIDADE:
+    if not k or k in NAO_CIDADE or k in NAO_BRASIL:
         return ""
     if k in ALIAS_CIDADE:
         return ALIAS_CIDADE[k]
@@ -246,23 +258,39 @@ def achatar(s: dict) -> dict:
     # reassociá-las depois por posição produz "Salvador / RJ" — as listas são
     # deduplicadas e ordenadas de forma independente, então o índice i de uma
     # não corresponde ao da outra.
-    locais = []
-    vistos = set()
+    #
+    # A unidade aqui é a INSTITUIÇÃO, não o município. Deduplicar por cidade
+    # (como era até 2026-08) fundia os três hospitais de São Paulo de um mesmo
+    # estudo num único "São Paulo", e o card dizia "18 centros" para 18
+    # cidades. Ver br_instituicoes.py para a resolução dos nomes.
+    nomeados: set[tuple[str, str]] = set()
+    anonimas: set[str] = set()
     for l in br:
+        st = l.get("status") or ""
+        if st and "RECRUITING" not in st.upper():
+            continue          # centro já encerrado não é centro recrutador
         cidade = normalizar_cidade(l.get("city") or "")
-        if not cidade or cidade in vistos:
+        if not cidade:
             continue
-        vistos.add(cidade)
-        # `state` do CT.gov vem por extenso e inconsistente; o mapa local é
-        # mais confiável. Sem correspondência, fica vazio e o card mostra só
-        # a cidade — melhor do que uma UF errada.
-        locais.append({"cidade": cidade, "uf": CIDADE_UF.get(cidade, "")})
-    locais.sort(key=lambda x: x["cidade"])
+        nome, _motivo = resolver(l.get("facility") or "", cidade)
+        if nome:
+            nomeados.add((nome, cidade))
+        else:
+            anonimas.add(cidade)
 
-    cidades = [l["cidade"] for l in locais]
+    # `state` do CT.gov vem por extenso e inconsistente; o mapa local é mais
+    # confiável. Sem correspondência, fica vazio e o card mostra só a cidade —
+    # melhor do que uma UF errada.
+    locais = [{"instituicao": n, "cidade": c, "uf": CIDADE_UF.get(c, "")}
+              for n, c in nomeados]
+    for c in sorted(anonimas - {c for _, c in nomeados}):
+        locais.append({"instituicao": "", "cidade": c, "uf": CIDADE_UF.get(c, "")})
+    locais.sort(key=lambda x: (x["uf"], x["cidade"], x["instituicao"]))
+
+    cidades = sorted({l["cidade"] for l in locais})
     ufs = sorted({l["uf"] for l in locais} - {""})
-    centros = sorted({l.get("facility", "").strip() for l in br if l.get("facility")})
-    sem_uf = [l["cidade"] for l in locais if not l["uf"]]
+    centros = sorted({l["instituicao"] for l in locais if l["instituicao"]})
+    sem_uf = sorted({l["cidade"] for l in locais if not l["uf"]})
 
     return {
         "nct": ident.get("nctId", ""),
@@ -296,7 +324,10 @@ def achatar(s: dict) -> dict:
         "cidades_br": cidades,
         "ufs_br": ufs,
         "cidades_sem_uf": sem_uf,  # alimenta o aviso de CIDADE_UF incompleto
-        "n_centros_br": len(br),
+        # Centros recrutadores já resolvidos, não linhas cruas do registro:
+        # `len(br)` contava também os locais encerrados e as várias grafias
+        # da mesma casa.
+        "n_centros_br": len(locais),
     }
 
 

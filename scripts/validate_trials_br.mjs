@@ -3,11 +3,22 @@
  * validate_trials_br.mjs — Trial Matcher (THERA_TRIALS_BR) integrity guard
  *
  * The Trial Matcher lists oncology trials OPEN IN BRAZIL. For each card:
+ *   FAIL  - card has no concrete NCT id (see below)
  *   FAIL  - nct_url / contato_url point to a DIFFERENT NCT than `nct`
  *   FAIL  - the NCT does not exist on ClinicalTrials.gov (404)
  *   WARN  - CT.gov overallStatus is no longer recruiting (card says it is)
  *   WARN  - Brazil is not among CT.gov locations (card claims BR-open)
- *   NOTE  - card has no concrete NCT id (e.g. observational/unregistered)
+ *
+ * Card sem NCT era só NOTE, que não bloqueia nada — e foi assim que o LUCERNA
+ * (`nct: 'NCT a confirmar'`) e o Beyond CRC (`nct: ''`) ficaram publicados
+ * meses depois de encerrarem. Sem NCT não há como o validador checar se o
+ * estudo ainda recruta, então o card envelhece sem ninguém perceber: o
+ * paciente é mandado a um estudo fechado. Agora é FAIL e trava o CI.
+ *
+ * Regra do revisor clínico (2026-08-04): nenhum estudo sem NCT presente e
+ * verificado fica no Trial Matcher sem autorização explícita dele. Para
+ * publicar uma exceção, liste o id do card em EXCECOES_SEM_NCT abaixo, com a
+ * data e o motivo — a lista é o registro dessa autorização.
  *
  * (Drug/intervention matching is NOT checked here: card drug names are in
  *  Portuguese — "Datopotamabe" vs CT.gov "Datopotamab" — so token overlap is
@@ -42,6 +53,16 @@ async function jget(u, t = 3) { for (let i = 0; i < t; i++) { try { const r = aw
 // tabela herdou os centros dele), e havia dois pares de cards duplicados. Nada
 // disso quebra — o estudo só aparece duas vezes, ou aponta para o registro
 // errado. Verificação local, sem rede, roda antes de qualquer fetch.
+// Cards autorizados pelo revisor a ficar sem NCT. Vazio de propósito: cada
+// entrada precisa da data e do motivo, e só o revisor clínico acrescenta.
+// Formato: { id: 'meu-card', desde: '2026-08-04', motivo: '...' }
+const EXCECOES_SEM_NCT = [];
+
+function checarSemNct(trials) {
+  const liberados = new Set(EXCECOES_SEM_NCT.map(e => e.id));
+  return trials.filter(t => !/NCT\d{8}/.test(t.nct || '') && !liberados.has(t.id));
+}
+
 function checarNctRepetido(trials) {
   const porNct = new Map();
   for (const t of trials) {
@@ -54,6 +75,16 @@ function checarNctRepetido(trials) {
 }
 
 (async () => {
+  const semNct = checarSemNct(trials);
+  if (semNct.length) {
+    console.error('\n--- FAIL: card sem NCT concreto ---');
+    for (const t of semNct) console.error(`  ${t.nome || t.id || '?'} | nct: "${t.nct || ''}"`);
+    console.error('\nSem NCT não dá para verificar se o estudo ainda recruta, e o');
+    console.error('card envelhece sem ninguém notar. Ou o card sai, ou o revisor');
+    console.error('clínico autoriza a exceção em EXCECOES_SEM_NCT (com data e motivo).');
+    process.exit(1);
+  }
+
   const repetidos = checarNctRepetido(trials);
   if (repetidos.length) {
     console.error('\n--- FAIL: NCT usado por mais de um card ---');
@@ -89,7 +120,8 @@ function checarNctRepetido(trials) {
 
   const fails = results.filter(r => r.flags.some(f => f.lvl === 'FAIL'));
   const warns = results.filter(r => r.flags.some(f => f.lvl === 'WARN') && !r.flags.some(f => f.lvl === 'FAIL'));
-  if (notes.length) { console.error(`\n--- NOTE: ${notes.length} card(s) sem NCT concreto (não-registrado/observacional) ---`); notes.forEach(n => console.error(`  ${n.nome} | "${n.nct}"`)); }
+  // Só chega aqui quem está em EXCECOES_SEM_NCT — o resto já saiu por FAIL.
+  if (notes.length) { console.error(`\n--- NOTE: ${notes.length} card(s) sem NCT autorizados pelo revisor ---`); notes.forEach(n => console.error(`  ${n.nome} | "${n.nct}"`)); }
   console.error(`\nRESULT  OK=${results.length - fails.length - warns.length}  WARN=${warns.length}  FAIL=${fails.length}  (de ${results.length} c/ NCT; +${notes.length} sem NCT)`);
   if (warns.length) { console.error('\n--- WARN (revisar — recrutamento/Brasil/intervenção) ---'); warns.forEach(r => r.flags.forEach(f => console.error(`  ${r.nome} | ${r.nct} | ${f.m}`))); }
   if (fails.length) { console.error('\n--- FAIL (link inválido/inconsistente) ---'); fails.forEach(r => r.flags.filter(f => f.lvl === 'FAIL').forEach(f => console.error(`  ${r.nome} | ${r.nct} | ${f.m}`))); }

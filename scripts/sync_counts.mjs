@@ -34,11 +34,27 @@ const brasil = ensaios.length;
 // "áreas tumorais" = neoplasias de fato representadas, não o tamanho da
 // taxonomia: a META pode declarar uma neoplasia que ainda não tem estudo.
 const areas = new Set(ensaios.map((e) => e.neoplasia).filter(Boolean)).size;
-// Soma dos centros de todos os cards. Um mesmo hospital que participe de dois
-// estudos conta duas vezes — o número anunciado é de participações, não de
-// instituições distintas, e é assim que o rótulo "Centros recrutadores" deve
-// ser lido.
-const centros = ensaios.reduce((n, e) => n + (e.centros?.length ?? 0), 0);
+// Instituições DISTINTAS, não a soma dos cards. Somar dava 1042 para ~170
+// centros reais: São Paulo aparece em 128 estudos e entrava 128 vezes. O
+// rótulo é "Centros recrutadores", então o número tem de ser de instituições.
+//
+// Cada entrada é 'Instituição — Cidade / UF' ou só 'Cidade / UF' (registro que
+// não nomeia o centro). A chave inclui a cidade: "Oncoclínicas" em São Paulo e
+// no Rio são duas casas. Os anônimos ficam de fora da contagem — não dá para
+// saber se dois "Research Site" em Curitiba são o mesmo centro, e contá-los
+// separadamente reintroduziria a inflação que este cálculo existe para evitar.
+const RE_CENTRO = /^(?:(.*?)\s*—\s*)?(.*?)\s*\/\s*([A-Z]{2})$/;
+const instituicoes = new Set();
+const cidades = new Set();
+for (const e of ensaios) {
+  for (const c of e.centros ?? []) {
+    const m = RE_CENTRO.exec(c.trim());
+    if (!m) continue;
+    cidades.add(`${m[2]}/${m[3]}`);
+    if (m[1]) instituicoes.add(`${m[1]}@${m[2]}`);
+  }
+}
+const centros = instituicoes.size;
 
 const VALORES = { brasil, areas, database, categorias, centros };
 
@@ -110,8 +126,9 @@ for (const rel of ARQUIVOS) {
   }
 }
 
-console.log(`\nvalores de referência: ${brasil} ensaios BR · ${centros} centros · ` +
-            `${areas} áreas tumorais · ${database} estudos no database · ${categorias} categorias`);
+console.log(`\nvalores de referência: ${brasil} ensaios BR · ${centros} centros ` +
+            `em ${cidades.size} cidades · ${areas} áreas tumorais · ` +
+            `${database} estudos no database · ${categorias} categorias`);
 
 if (!defasados) {
   console.log('contagens no texto: em dia');
