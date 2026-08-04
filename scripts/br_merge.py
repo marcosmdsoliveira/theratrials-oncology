@@ -70,8 +70,18 @@ def fase(fases: list[str]) -> str:
 def card_js(c: dict) -> str:
     f = c["_factual"]
     nct = f["nct"]
-    centros = [f"{cid} / {uf}" for cid, uf in zip(f["cidades"], f["estados"])] \
-        or f["cidades"] or f["centros"][:4]
+
+    # Usar `locais`, onde cada entrada já traz o par {cidade, uf} do próprio
+    # registro. NÃO reconstruir com zip(cidades, estados): as duas listas são
+    # deduplicadas e ordenadas separadamente, então o índice de uma não
+    # corresponde ao da outra — isso produzia "Salvador / RJ" e descartava
+    # centros quando as listas tinham tamanhos diferentes.
+    locais = f.get("locais") or []
+    if locais:
+        centros = [f"{l['cidade']} / {l['uf']}" if l.get("uf") else l["cidade"]
+                   for l in locais]
+    else:
+        centros = f.get("cidades") or f.get("centros", [])[:4]
     url = f"https://clinicaltrials.gov/study/{nct}"
     campos = [
         ("id", js_str(slug(c["nome"], nct))),
