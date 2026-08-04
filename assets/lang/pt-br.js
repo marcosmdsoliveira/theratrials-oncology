@@ -2362,7 +2362,7 @@ window._i18nRegister('pt-br', {
     pmExplorerName: "TheraTrials Explorer",
     pmExplorerDesc: "Pipeline global de radioligantes · dados do ClinicalTrials.gov · atualização mensal",
     pmEnsaiosBRName: "Ensaios clínicos ativos (BR)",
-    pmEnsaiosBRDesc: "Recrutamento aberto no Brasil · 130 estudos · 22 áreas tumorais",
+    pmEnsaiosBRDesc: "Recrutamento aberto no Brasil · 138 estudos · 22 áreas tumorais",
     pmTumorBoardsName: "Tumor boards",
     pmTumorBoardsDesc: "Visão por tumor · próstata, pulmão, mama, NET, HCC",
     pmModalidadesName: "Modalidades",
@@ -2423,7 +2423,7 @@ window._i18nRegister('pt-br', {
     eaDisclaimer: "Aviso:",
     eaDisclaimerText: "seção informativa. A elegibilidade final depende sempre da avaliação do centro responsável pelo estudo.",
     eaRecruiting: "Recrutando",
-    eaFooterCount: "130 ensaios clínicos ativos · 22 áreas tumorais · Brasil",
+    eaFooterCount: "138 ensaios clínicos ativos · 22 áreas tumorais · Brasil",
     eaFooterLink: "Filtrar por neoplasia, modalidade, biomarcador",
 
     /* Radiofármacos block */
@@ -2450,7 +2450,7 @@ window._i18nRegister('pt-br', {
 
     /* CTA final */
     ctaTitle: "Pronto para conectar evidência e prática clínica?",
-    ctaDesc: "483 ensaios clínicos analisados em 40 categorias · pipeline global de radioligantes via ClinicalTrials.gov · 130 ensaios clínicos ativos no Brasil · 7 dossiês de radiofármaco · 12 ferramentas clínicas · AJCC 8ª ed., CTCAE v6.0, BCLC 2026 · hyperlinks diretos para PubMed e ClinicalTrials.gov.",
+    ctaDesc: "483 ensaios clínicos analisados em 40 categorias · pipeline global de radioligantes via ClinicalTrials.gov · 138 ensaios clínicos ativos no Brasil · 7 dossiês de radiofármaco · 12 ferramentas clínicas · AJCC 8ª ed., CTCAE v6.0, BCLC 2026 · hyperlinks diretos para PubMed e ClinicalTrials.gov.",
     ctaBtnDatabase: "Acessar o banco",
     ctaBtnExplorer: "Explorer",
     ctaBtnTumorBoards: "Tumor boards",

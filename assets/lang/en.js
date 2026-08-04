@@ -2362,7 +2362,7 @@ window._i18nRegister('en', {
     pmExplorerName: "TheraTrials Explorer",
     pmExplorerDesc: "Global radioligand pipeline · ClinicalTrials.gov data · monthly updates",
     pmEnsaiosBRName: "Active Clinical Trials (BR)",
-    pmEnsaiosBRDesc: "Open recruitment in Brazil · 130 studies · 22 tumor types",
+    pmEnsaiosBRDesc: "Open recruitment in Brazil · 138 studies · 22 tumor types",
     pmTumorBoardsName: "Tumor Boards",
     pmTumorBoardsDesc: "Tumor-centric view · prostate, lung, breast, NET, HCC",
     pmModalidadesName: "Modalities",
@@ -2423,7 +2423,7 @@ window._i18nRegister('en', {
     eaDisclaimer: "Disclaimer:",
     eaDisclaimerText: "informational section. Final eligibility always depends on evaluation by the responsible study center.",
     eaRecruiting: "Recruiting",
-    eaFooterCount: "130 active clinical trials · 22 tumor types · Brazil",
+    eaFooterCount: "138 active clinical trials · 22 tumor types · Brazil",
     eaFooterLink: "Filter by tumor type, modality, biomarker",
 
     /* Radiofármacos block */
@@ -2450,7 +2450,7 @@ window._i18nRegister('en', {
 
     /* CTA final */
     ctaTitle: "Ready to connect evidence and clinical practice?",
-    ctaDesc: "483 curated clinical trials in 40 categories · global radioligand pipeline via ClinicalTrials.gov · 130 active clinical trials in Brazil · 7 radiopharmaceutical dossiers · 12 clinical tools · AJCC 8th ed., CTCAE v6.0, BCLC 2026 · direct hyperlinks to PubMed and ClinicalTrials.gov.",
+    ctaDesc: "483 curated clinical trials in 40 categories · global radioligand pipeline via ClinicalTrials.gov · 138 active clinical trials in Brazil · 7 radiopharmaceutical dossiers · 12 clinical tools · AJCC 8th ed., CTCAE v6.0, BCLC 2026 · direct hyperlinks to PubMed and ClinicalTrials.gov.",
     ctaBtnDatabase: "Access the database",
     ctaBtnExplorer: "Explorer",
     ctaBtnTumorBoards: "Tumor Boards",
