@@ -151,9 +151,27 @@ SCHEMA = {
             "description": "Critérios de INCLUSÃO que mais decidem elegibilidade na "
                            "prática, resumidos em português. Não copie o texto inteiro.",
         },
+        # Sem `minItems` o array vazio satisfazia o schema, e 34 dos 102 cards
+        # do pipeline saíram sem nenhuma exclusão mesmo com o texto oficial
+        # inteiro no prompt. A inclusão, que sempre teve `minItems: 3`, nunca
+        # ficou vazia — a assimetria era a causa. O `minItems: 1` aqui é só o
+        # primeiro filtro; quem realmente garante é `conferir_exclusao()`, que
+        # compara com o texto de origem em vez de confiar na saída do modelo.
         "criterios_exclusao": {
-            "type": "array", "items": {"type": "string"}, "maxItems": 6,
-            "description": "Exclusões que mais eliminam candidatos.",
+            "type": "array", "items": {"type": "string"}, "minItems": 1, "maxItems": 6,
+            "description": "Critérios de EXCLUSÃO que mais eliminam candidatos na "
+                           "prática, resumidos em português: comorbidade que barra, "
+                           "tratamento prévio que impede, metástase de SNC, doença "
+                           "autoimune, alteração laboratorial. Estão sob 'Exclusion "
+                           "Criteria' no texto oficial. Não copie o texto inteiro. "
+                           "Se o registro realmente não trouxer exclusões, use "
+                           "`exclusao_ausente: true` — nunca devolva lista vazia.",
+        },
+        "exclusao_ausente": {
+            "type": "boolean",
+            "description": "true APENAS se o texto de elegibilidade não tiver seção "
+                           "de exclusão alguma. Marcar isto com a seção presente é "
+                           "falha grave. Se marcar, explique em `notas_revisor`.",
         },
         "confianca": {
             "type": "string", "enum": ["alta", "media", "baixa"],
@@ -171,7 +189,7 @@ SCHEMA = {
         "neoplasia_label", "subtipo", "linha_terapeutica", "cenario_clinico",
         "modalidade", "biomarcadores", "testes_fornecidos", "intervencao",
         "comparador", "racional", "criterios_principais", "criterios_exclusao",
-        "confianca", "notas_revisor",
+        "exclusao_ausente", "confianca", "notas_revisor",
     ],
     "additionalProperties": False,
 }
@@ -189,7 +207,8 @@ REGRAS INVIOLÁVEIS
 1. Use APENAS o que está no registro fornecido. Não complete com conhecimento \
    prévio sobre o fármaco, a classe ou estudos parecidos.
 2. Se o registro não informa algo, deixe o campo vazio e diga em `notas_revisor`. \
-   Campo vazio é correto; campo inventado é falha grave.
+   Campo vazio é correto; campo inventado é falha grave. Isto NÃO vale para \
+   `criterios_exclusao`: ver regra 8.
 3. Não afirme eficácia, superioridade ou prognóstico. O estudo está em andamento \
    — não há resultado.
 4. `neoplasia`, `linha_terapeutica` e `modalidade` só aceitam os valores das listas \
@@ -203,7 +222,96 @@ REGRAS INVIOLÁVEIS
    orgânica. Resuma; não transcreva o texto do protocolo.
 7. Se ficar em dúvida sobre a classificação, use `confianca: "baixa"` e diga o \
    porquê. Preferimos um card marcado para revisão a um card errado com aparência \
-   de certo."""
+   de certo.
+
+8. `criterios_exclusao` é obrigatório na prática. O texto de elegibilidade que \
+   você recebe traz, quase sempre, uma seção "Exclusion Criteria" ou "Key \
+   Exclusion Criteria" — ela vem completa no prompt, com orçamento próprio de \
+   caracteres, e nunca é cortada antes da inclusão. Extraia dela as exclusões \
+   que mais eliminam candidatos: comorbidade que barra, tratamento prévio que \
+   impede, metástase de SNC, doença autoimune, alteração laboratorial. \
+   Devolver lista vazia com a seção presente é falha grave — tão grave quanto \
+   inventar. Só marque `exclusao_ausente: true` se a seção realmente não \
+   existir no texto, e nunca alegue que o texto veio truncado: se algo foi \
+   cortado, o prompt diz explicitamente onde, com a marca "[… cortada por \
+   tamanho …]"."""
+
+
+# Orçamento de caracteres para cada metade do texto de elegibilidade.
+# Um `[:6000]` cru corta o fim, e o fim é justamente onde ficam as exclusões:
+# no ADELA o texto tem 12.909 caracteres e a seção de exclusão começa no 5.176,
+# então o corte decepava a maior parte dela. Reservar orçamento para as duas
+# metades garante que a exclusão sempre chegue ao modelo.
+ORCAMENTO_INCLUSAO = 4000
+ORCAMENTO_EXCLUSAO = 4000
+# O cabeçalho de exclusão não vem num formato só. Casos reais do registro:
+#     Exclusion Criteria:
+#     Key Exclusion Criteria
+#     Phase 1b Exclusion Criteria:          (qualificador antes)
+#     Exclusion Criteria Related to NSCLC:  (qualificador depois)
+#     Other Exclusions                      (sem a palavra "criteria")
+# Um padrão que exigisse a linha exatamente igual a "Exclusion Criteria" perdia
+# os quatro últimos — e aí a conferência acusava, errado, que o card tinha
+# inventado exclusões inexistentes. Casa linha curta e isolada, tipo título.
+RE_EXCLUSAO = re.compile(
+    r"^[ \t]*[*\-–•]?[ \t]*"           # marcador de lista, opcional
+    r"[\w /()\-]{0,40}?"               # qualificador antes ("Key", "Phase 1b", "Other")
+    r"exclusions?(?:[ \t]+criteria)?"
+    r"[\w ,/()\-]{0,60}:?[ \t]*$",
+    re.I | re.M,
+)
+
+
+def recortar_elegibilidade(texto: str) -> str:
+    """Divide inclusão/exclusão e corta cada metade dentro do seu orçamento."""
+    if not texto:
+        return "(não informados)"
+    m = RE_EXCLUSAO.search(texto)
+    if not m:
+        # Sem cabeçalho de exclusão: pode ser registro que não separa as seções.
+        # Manda o texto inteiro dentro do orçamento somado e avisa o modelo.
+        corte = texto[: ORCAMENTO_INCLUSAO + ORCAMENTO_EXCLUSAO]
+        aviso = "" if len(texto) <= len(corte) else \
+            "\n[NOTA: texto acima cortado por tamanho.]"
+        return corte + aviso
+
+    inc, exc = texto[: m.start()], texto[m.start():]
+    partes = []
+    if len(inc) > ORCAMENTO_INCLUSAO:
+        partes.append(inc[:ORCAMENTO_INCLUSAO] + "\n[… inclusão cortada por tamanho …]")
+    else:
+        partes.append(inc)
+    if len(exc) > ORCAMENTO_EXCLUSAO:
+        partes.append(exc[:ORCAMENTO_EXCLUSAO] + "\n[… exclusão cortada por tamanho …]")
+    else:
+        partes.append(exc)
+    return "".join(partes)
+
+
+def conferir_exclusao(card: dict, elegibilidade: str) -> str:
+    """
+    Verifica a exclusão contra o TEXTO DE ORIGEM, não contra a saída do modelo.
+
+    O modelo devolvia `criterios_exclusao: []` e, em 8 dos 34 casos, justificava
+    na nota que "o texto de elegibilidade veio truncado no registro consultado".
+    Nenhum dos 34 estava truncado — a seção de exclusão começava, na maioria,
+    antes do caractere 900, e o corte era em 6000. A justificativa era invenção.
+
+    Por isso a conferência aqui não lê `notas_revisor` nem `exclusao_ausente`:
+    procura o cabeçalho no texto oficial e compara. Devolve '' quando está OK.
+    """
+    tem_secao = bool(RE_EXCLUSAO.search(elegibilidade or ""))
+    n = len(card.get("criterios_exclusao") or [])
+    ausente = bool(card.get("exclusao_ausente"))
+
+    if tem_secao and n == 0:
+        return ("registro TEM seção de exclusão e o card veio sem nenhuma"
+                + (" (e marcou exclusao_ausente, o que é falso)" if ausente else ""))
+    if not tem_secao and n == 0 and not ausente:
+        return "card sem exclusão e sem marcar exclusao_ausente"
+    if not tem_secao and n > 0:
+        return "card trouxe exclusões que não existem no texto oficial"
+    return ""
 
 
 def prompt(e: dict) -> str:
@@ -230,7 +338,7 @@ def prompt(e: dict) -> str:
     for i in e["intervencoes"]:
         linhas.append(f"  · [{i['tipo']}] {i['nome']}: {i['descricao'][:300]}")
     linhas += ["", "CRITÉRIOS DE ELEGIBILIDADE (texto oficial):",
-               e["elegibilidade"][:6000] or "(não informados)"]
+               recortar_elegibilidade(e["elegibilidade"])]
     return "\n".join(linhas)
 
 
@@ -367,7 +475,7 @@ def main() -> int:
         d = json.loads(DISCOVERY.read_text(encoding="utf-8"))
         por_nct = {e["nct"]: e for e in d["novos"]}
 
-        cards, descartados, orfaos = [], [], []
+        cards, descartados, orfaos, sem_exclusao = [], [], [], []
         obrigatorios = set(SCHEMA["required"])
         for c in cards_in:
             nct = c.get("nct") or c.get("_nct", "")
@@ -384,14 +492,26 @@ def main() -> int:
                 descartados.append({"nct": nct, "nome": c.get("nome", ""),
                                     "motivo": c.get("motivo_descarte", "")})
                 continue
+            # Conferência contra o registro, antes de virar card. Rejeita aqui
+            # em vez de deixar passar: card sem exclusão chegava ao PR com
+            # aparência de completo e ninguém notava que faltava metade.
+            erro = conferir_exclusao(c, por_nct[nct].get("elegibilidade", ""))
+            if erro:
+                print(f"  {nct} ({c.get('nome','?')}): {erro}", file=sys.stderr)
+                sem_exclusao.append(nct)
+                continue
             cards.append(anexar_factual(c, por_nct[nct]))
 
+        if sem_exclusao:
+            print(f"\n⚠ {len(sem_exclusao)} card(s) rejeitados por exclusão ausente/"
+                  f"inventada. Recure esses NCTs — o texto oficial tem a seção.",
+                  file=sys.stderr)
         if descartados:
             registrar_descartes(descartados)
 
         SAIDA.write_text(json.dumps(
-            {"batch": "local", "cards": cards,
-             "descartados": descartados, "falhas": orfaos},
+            {"batch": "local", "cards": cards, "descartados": descartados,
+             "falhas": orfaos, "sem_exclusao": sem_exclusao},
             ensure_ascii=False, indent=1), encoding="utf-8")
         baixa = sum(1 for c in cards if c.get("confianca") == "baixa")
         print(f"curados {len(cards)} | descartados {len(descartados)} | rejeitados {len(orfaos)}")
