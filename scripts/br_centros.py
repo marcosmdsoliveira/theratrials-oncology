@@ -97,6 +97,14 @@ def main() -> int:
         cards.append({"nct": nct.group(0), "pos": m.start(),
                       "nome": nome[-1] if nome else "?"})
 
+    # Delimita cada card pelo início do próximo, em vez de uma janela fixa.
+    # Com 2500 caracteres, cards de critérios longos deixavam `centros:` fora
+    # do alcance — a auditoria lia 0 centros e a reescrita virava no-op. Em
+    # cards curtos a janela vazava para o card seguinte, e um campo ausente
+    # fazia a substituição acertar o vizinho.
+    for i, c in enumerate(cards):
+        c["fim"] = cards[i + 1]["pos"] if i + 1 < len(cards) else len(texto)
+
     print(f"cards com NCT: {len(cards)}")
     oficiais = locais_ctgov([c["nct"] for c in cards])
 
@@ -113,7 +121,7 @@ def main() -> int:
         if not oficial:
             sem_brasil.append(c)
             continue
-        bloco = texto[c["pos"]: c["pos"] + 2500]
+        bloco = texto[c["pos"]:c["fim"]]
         atual = re.search(r"centros\s*:\s*\[(.*?)\]", bloco, re.S)
         n_atual = len(re.findall(r"'[^']+'", atual.group(1))) if atual else 0
         if args.forcar or len(oficial) > n_atual:
@@ -141,7 +149,7 @@ def main() -> int:
 
     # Reescreve de trás para frente para não invalidar as posições.
     for f in sorted(faltando, key=lambda x: x["pos"], reverse=True):
-        ini, fim = f["pos"], f["pos"] + 2500
+        ini, fim = f["pos"], f["fim"]
         bloco = texto[ini:fim]
         cidades = [l["cidade"] for l in f["locais"]]
         ufs = sorted({l["uf"] for l in f["locais"]} - {""})
@@ -149,8 +157,12 @@ def main() -> int:
                    for l in f["locais"]]
         novo = bloco
         for chave, valor in (("centros", centros), ("cidades", cidades), ("estados", ufs)):
-            novo = re.sub(rf"({chave}\s*:\s*)\[.*?\]", 
-                          lambda mm: mm.group(1) + js_arr(valor), novo, count=1, flags=re.S)
+            novo, n = re.subn(rf"({chave}\s*:\s*)\[.*?\]",
+                              lambda mm: mm.group(1) + js_arr(valor), novo,
+                              count=1, flags=re.S)
+            if not n:
+                print(f"   ⚠ {f['nct']} {f['nome'][:28]}: campo '{chave}' não "
+                      f"encontrado no card — nada reescrito", file=sys.stderr)
         texto = texto[:ini] + novo + texto[fim:]
 
     TRIALS_JS.write_text(texto, encoding="utf-8")
