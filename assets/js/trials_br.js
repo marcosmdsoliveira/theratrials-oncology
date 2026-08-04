@@ -6322,6 +6322,7 @@ window.THERA_TRIALS_BR = [
       'Doença mensurável por TC ou RM conforme RECIST v1.1',
     ],
     criterios_exclusao: [],
+    nota_criterios: 'O ClinicalTrials.gov publica apenas os critérios de inclusão deste estudo: o texto de elegibilidade termina em \'Other protocol-defined Inclusion/Exclusion criteria apply\', sem listar as exclusões. Outros estudos do mesmo programa, como o IZABRIGHT-Lung01, as publicam. Confirme com o centro antes de encaminhar.',
     centros: [
       'Oncocentro – Hospital São Carlos — Fortaleza / CE',
       'Brasília / DF',
