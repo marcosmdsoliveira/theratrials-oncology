@@ -735,7 +735,7 @@
           source: 'brasil',
           title: t.nome || t.titulo || 'Ensaio',
           indication: t.cenario_clinico || t.subtipo || '',
-          phase: 'Fase ' + (t.fase || '?'),
+          phase: rotuloFase(t.fase) || 'Fase ?',
           biomarkers: (t.biomarcadores || []).join(', '),
           molecular: '',
           drug: t.intervencao || '',
@@ -861,6 +861,14 @@
       '><div class="lbl">' + escHtml(lbl) + '</div><div class="val">' + escHtml(v) + '</div></div>';
   }
 
+  // 'Fase' só faz sentido diante de um algarismo romano. Prefixar sempre
+  // produzia 'Fase Observacional' e, com a chegada dos ensaios de
+  // radioterapia sem fase de desenvolvimento, 'Fase Sem fase'.
+  function rotuloFase(f) {
+    if (!f) return '';
+    return /^(I|II|III|IV|Ib\/II|II\/III)$/.test(f) ? 'Fase ' + f : f;
+  }
+
   // ── Centros: agrupamento por unidade da federação ──────────────
   // Os centros vêm como strings 'Cidade / UF'. Entradas sem a sigla são
   // omitidas: o registro de origem não informou o estado e o nome da
@@ -937,7 +945,7 @@
     var name = raw.nome || raw.titulo || 'Ensaio';
     var nct = raw.nct || '';
     var titulo = (raw.titulo && raw.titulo !== name) ? raw.titulo : (raw.cenario_clinico || '');
-    var faseTag = raw.fase ? 'Fase ' + raw.fase : '';
+    var faseTag = rotuloFase(raw.fase);
     var neo = raw.neoplasia_label || '';
     var color = BR_NEO_COLOR[raw.neoplasia] || '#94a3b8';
     var bios = (raw.biomarcadores || []).slice(0, 3);
@@ -1013,7 +1021,7 @@
     var body = '';
     if (s.titulo && s.titulo !== s.nome) body += '<p class="tm-d-titulo"><strong>' + escHtml(s.titulo) + '</strong></p>';
     body += dPills([
-      ['Fase', s.fase ? 'Fase ' + s.fase : ''],
+      ['Fase', rotuloFase(s.fase)],
       ['Neoplasia', s.neoplasia_label],
       ['Linha', s.linha_terapeutica],
       ['Biomarcador', (s.biomarcadores || []).join(', ')]

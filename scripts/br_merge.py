@@ -33,8 +33,13 @@ TRIALS_JS = SITE / "assets" / "js" / "trials_br.js"
 CURATED = Path(__file__).resolve().parent / "_br_curated.json"
 DISCOVERY = Path(__file__).resolve().parent / "_br_discovery.json"
 
+# 'NA' no ClinicalTrials.gov quer dizer "fase não aplicável" — é como o
+# registro classifica ensaios de radioterapia, cirurgia e dispositivo, que não
+# têm fase de desenvolvimento de fármaco. NÃO quer dizer observacional: o
+# LAPIDARY, o PROMART e o HYPHEN são intervencionais e randomizados. Estudo
+# observacional de verdade vem sem o campo `phases`, tratado à parte.
 FASE_MAP = {"PHASE1": "I", "PHASE2": "II", "PHASE3": "III", "PHASE4": "IV",
-            "EARLY_PHASE1": "I", "NA": "Observacional"}
+            "EARLY_PHASE1": "I", "NA": "Sem fase"}
 STATUS_MAP = {"RECRUITING": "Recrutando", "NOT_YET_RECRUITING": "Ainda não recrutando",
               "SUSPENDED": "Recrutamento suspenso", "ACTIVE_NOT_RECRUITING": "Encerrado",
               "COMPLETED": "Encerrado", "TERMINATED": "Encerrado", "WITHDRAWN": "Encerrado"}
@@ -64,6 +69,8 @@ def fase(fases: list[str]) -> str:
         return "Observacional"
     if len(fases) > 1 and "PHASE1" in fases and "PHASE2" in fases:
         return "Ib/II"
+    if len(fases) > 1 and "PHASE2" in fases and "PHASE3" in fases:
+        return "II/III"
     return FASE_MAP.get(fases[0], "Observacional")
 
 
