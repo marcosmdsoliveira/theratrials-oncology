@@ -38,5 +38,10 @@
   "nct": "NCT06687369",
   "nome": "BENITO",
   "motivo": "Card removido em 2026-08-04 por decisão do autor: nenhum centro no Brasil consta no ClinicalTrials.gov, e o Trial Matcher só lista ensaios com recrutamento aberto aqui."
+ },
+ {
+  "nct": "NCT07084610",
+  "nome": "Biomarcadores metabólicos na neoadjuvância do NSCLC",
+  "motivo": "Estudo de biomarcador preditivo, não de tratamento. O objetivo é correlacionar marcadores glicolíticos do PET/CT (volume metabólico, SUVmax), imuno-histoquímica (GLUT-1, Ki-67, PD-L1) e alterações moleculares com a resposta patológica. O tratamento entregue — nivolumabe 3 mg/kg com dupla de platina por 2 ciclos, seguido de cirurgia — é declarado pelo próprio registro como padrão de cuidado institucional, então entrar no estudo não dá acesso a nenhuma terapia indisponível fora dele. Mesmo critério do VAC-Biopsy."
  }
 ]
