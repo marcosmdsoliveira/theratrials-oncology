@@ -34,8 +34,13 @@ const brasil = ensaios.length;
 // "áreas tumorais" = neoplasias de fato representadas, não o tamanho da
 // taxonomia: a META pode declarar uma neoplasia que ainda não tem estudo.
 const areas = new Set(ensaios.map((e) => e.neoplasia).filter(Boolean)).size;
+// Soma dos centros de todos os cards. Um mesmo hospital que participe de dois
+// estudos conta duas vezes — o número anunciado é de participações, não de
+// instituições distintas, e é assim que o rótulo "Centros recrutadores" deve
+// ser lido.
+const centros = ensaios.reduce((n, e) => n + (e.centros?.length ?? 0), 0);
 
-const VALORES = { brasil, areas, database, categorias };
+const VALORES = { brasil, areas, database, categorias, centros };
 
 // ── Regras ─────────────────────────────────────────────────────────────────
 // O lookahead garante que só o número é substituído; a frase fica intacta e a
@@ -52,6 +57,7 @@ const REGRAS = [
   { re: /\d+(?="[^>]*>0<\/span>\s*<span class="counter-label" data-i18n="home\.statStudies")/g,  valor: 'database' },
   { re: /\d+(?="[^>]*>0<\/span>\s*<span class="counter-label" data-i18n="home\.statCategories")/g, valor: 'categorias' },
   { re: /\d+(?="[^>]*>0<\/span>\s*<span class="counter-label" data-i18n="home\.statBRTrials")/g, valor: 'brasil' },
+  { re: /\d+(?="[^>]*>0<\/span>\s*<span class="counter-label" data-i18n="home\.statCenters")/g, valor: 'centros' },
 
   { re: /\d+(?= ensaios clínicos ativos)/g,      valor: 'brasil' },
   { re: /\d+(?= active clinical trials)/g,       valor: 'brasil' },
@@ -104,8 +110,8 @@ for (const rel of ARQUIVOS) {
   }
 }
 
-console.log(`\nvalores de referência: ${brasil} ensaios BR · ${areas} áreas tumorais · ` +
-            `${database} estudos no database · ${categorias} categorias`);
+console.log(`\nvalores de referência: ${brasil} ensaios BR · ${centros} centros · ` +
+            `${areas} áreas tumorais · ${database} estudos no database · ${categorias} categorias`);
 
 if (!defasados) {
   console.log('contagens no texto: em dia');

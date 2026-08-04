@@ -2349,10 +2349,10 @@ window._i18nRegister('pt-br', {
     tagline3: "Melhores resultados.",
 
     /* Stats counter */
-    statStudies: "Estudos analisados",
+    statStudies: "Ensaios publicados",
     statCategories: "Categorias",
     statBRTrials: "Ensaios ativos BR",
-    statRadiopharma: "Radiofármacos",
+    statCenters: "Centros recrutadores",
     statTools: "Ferramentas clínicas",
     statGuidelines: "Guidelines internacionais",
 

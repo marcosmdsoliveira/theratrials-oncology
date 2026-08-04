@@ -2349,10 +2349,10 @@ window._i18nRegister('en', {
     tagline3: "Better outcomes.",
 
     /* Stats counter */
-    statStudies: "Curated Studies",
+    statStudies: "Published trials",
     statCategories: "Categories",
     statBRTrials: "Active BR Trials",
-    statRadiopharma: "Radiopharmaceuticals",
+    statCenters: "Recruiting centers",
     statTools: "Clinical Tools",
     statGuidelines: "Int'l Guidelines",
 
