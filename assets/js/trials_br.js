@@ -237,45 +237,6 @@ window.THERA_TRIALS_BR = [
 
   // ============== GÁSTRICO / GEJ ==============
 
-  {
-    id: 'lucerna',
-    nome: 'LUCERNA',
-    titulo: 'AZD0901 + pembrolizumabe + QT em câncer gástrico/GEJ HER2- CLDN18.2+ PD-L1+ 1L',
-    nct: 'NCT a confirmar',
-    fase: 'III',
-    status: 'Recrutando',
-    neoplasia: 'gastrico',
-    neoplasia_label: 'Gástrico / GEJ',
-    subtipo: 'Adenocarcinoma gástrico ou GEJ HER2-, CLDN18.2+',
-    linha_terapeutica: '1ª linha',
-    cenario_clinico: 'Irressecável localmente avançado ou metastático',
-    modalidade: ['terapia-alvo', 'imunoterapia', 'quimioterapia', 'combinação'],
-        biomarcadores: ['CLDN18.2', 'HER2', 'PD-L1', 'CPS'],
-    testes_fornecidos: 'CLDN18.2, HER2 e PD-L1 testados centralmente pelo estudo',
-    intervencao: 'AZD0901 (anti-CLDN18.2, AstraZeneca) + pembrolizumabe + QT à base de platina',
-    comparador: 'Placebo + pembrolizumabe + QT à base de platina',
-    racional: 'Validação da tripleta CLDN18.2 + IO + QT em pacientes com expressão concomitante CLDN18.2 e PD-L1. AZD0901 é um anticorpo anti-CLDN18.2 da AstraZeneca, distinto do zolbetuximabe (Astellas).',
-    criterios_principais: [
-      'Adenocarcinoma gástrico ou GEJ',
-      'HER2 negativo',
-      'CLDN18.2 positivo (≥75% das células com expressão moderada/forte) por teste central',
-      'PD-L1 positivo (CPS ≥1)',
-      'Doença irressecável localmente avançada ou metastática, naive',
-    ],
-    criterios_exclusao: [
-      'HER2+',
-      'CLDN18.2 negativo',
-      'Mets SNC sintomática',
-    ],
-    centros: ['Belo Horizonte / MG'],
-    estados: ['MG'],
-    cidades: ['Belo Horizonte'],
-    patrocinador: 'AstraZeneca / Merck',
-    fonte_url: '',
-    contato_url: '',
-    data_atualizacao: '2026-05-01',
-  },
-
   // ============== MAMA ==============
   {
     id: 'rediscover-2',
