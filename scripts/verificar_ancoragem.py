@@ -25,6 +25,16 @@ def norm_num(s):
     """1.500 e 1,500 são o mesmo número; 0,5 e 0.5 também."""
     return s.replace(".", "").replace(",", "").lstrip("0") or "0"
 
+# O registro escreve número por extenso onde a curadoria usa algarismo:
+# "AJCC eighth edition" -> "AJCC 8ª edição", "first-line" -> "1ª linha".
+# Sem isso o verificador acusa invenção onde só houve tradução.
+POR_EXTENSO = {
+ "1": ["first", "one"], "2": ["second", "two"], "3": ["third", "three"],
+ "4": ["fourth", "four"], "5": ["fifth", "five"], "6": ["sixth", "six"],
+ "7": ["seventh", "seven"], "8": ["eighth", "eight"], "9": ["ninth", "nine"],
+ "10": ["tenth", "ten"], "12": ["twelve"], "18": ["eighteen"],
+}
+
 # Siglas/escala que precisam existir no texto de origem se eu as citei.
 SIGLAS = re.compile(
     r"\b(EGFR|ALK|ROS1|BRAF|RET|MET|NTRK|HER2|HER3|KRAS|PIK3CA|AKT1|PTEN|ESR1|BRCA1?|BRCA2|"
@@ -41,6 +51,17 @@ SIGLAS = re.compile(
 # normal, não invenção. Sem esse mapa a verificação acusava 29 falsos positivos.
 EXPANSOES = {
  "ecog": ["eastern cooperative oncology group"],
+ "karnofsky": ["kps", "karnofsky"],
+ "lansky": ["lansky"],
+ "msi-h": ["microsatellite instability", "msi"],
+ "dmmr": ["mismatch repair deficiency", "mismatch repair deficient", "dmmr"],
+ "pmmr": ["proficient mismatch repair", "pmmr"],
+ "cldn18.2": ["claudin18.2", "claudin 18.2", "cldn18.2"],
+ "kit": ["kit"],
+ "pdgfra": ["platelet-derived growth factor receptor", "pdgfr"],
+ "ajcc": ["american joint committee on cancer"],
+ "who": ["world health organization", "who"],
+ "recist": ["recist"],
  "nyha": ["new york heart association"],
  "asco": ["american society of clinical oncology"],
  "cap":  ["college of american pathologists"],
@@ -96,7 +117,14 @@ falhas, ok_total, por_card = [], 0, {}
 for nct, dados in cur.items():
     src = fonte.get(nct, {}).get("elegibilidade", "")
     src_d = dea(src)
-    src_nums = {norm_num(x) for x in re.findall(r"\d[\d.,]*", src)}
+    src_nums = set()
+    for x in re.findall(r"\d[\d.,]*", src):
+        src_nums.add(norm_num(x))
+        # "sub-study 1,2,3" é um token só para a regex, mas contém três
+        # números — sem separar, o "3" da curadoria não era encontrado.
+        for parte in re.split(r"[.,]", x):
+            if parte:
+                src_nums.add(norm_num(parte))
     ruins = []
     n_anc = 0
     for chave in ("inc", "exc"):
@@ -104,8 +132,12 @@ for nct, dados in cur.items():
             # âncoras numéricas
             for num in re.findall(r"\d[\d.,]*", crit):
                 n_anc += 1
-                if norm_num(num) not in src_nums:
-                    ruins.append((chave, num, crit[:70]))
+                n = norm_num(num)
+                if n in src_nums:
+                    continue
+                if any(w in src_d for w in POR_EXTENSO.get(n, [])):
+                    continue
+                ruins.append((chave, num, crit[:70]))
             # âncoras de sigla
             for sig in SIGLAS.findall(crit):
                 n_anc += 1
