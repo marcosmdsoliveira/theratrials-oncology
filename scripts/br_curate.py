@@ -262,7 +262,7 @@ def anexar_factual(curado: dict, base: dict) -> dict:
         "fase": base.get("fases", []),
         "status_ctgov": base.get("status_ctgov", ""),
         "centros": base.get("centros_br", []),
-        "locais": base.get("locais_br", []),   # pares {cidade, uf} preservados
+        "locais": base.get("locais_br", []),   # {instituicao, cidade, uf} preservados
         "cidades": base.get("cidades_br", []),
         "estados": base.get("ufs_br", []),
         "patrocinador": base.get("patrocinador", ""),

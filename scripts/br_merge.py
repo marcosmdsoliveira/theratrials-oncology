@@ -78,15 +78,22 @@ def card_js(c: dict) -> str:
     f = c["_factual"]
     nct = f["nct"]
 
-    # Usar `locais`, onde cada entrada já traz o par {cidade, uf} do próprio
-    # registro. NÃO reconstruir com zip(cidades, estados): as duas listas são
-    # deduplicadas e ordenadas separadamente, então o índice de uma não
-    # corresponde ao da outra — isso produzia "Salvador / RJ" e descartava
+    # Usar `locais`, onde cada entrada já traz {instituicao, cidade, uf} do
+    # próprio registro. NÃO reconstruir com zip(cidades, estados): as duas
+    # listas são deduplicadas e ordenadas separadamente, então o índice de uma
+    # não corresponde ao da outra — isso produzia "Salvador / RJ" e descartava
     # centros quando as listas tinham tamanhos diferentes.
+    #
+    # Formato: 'Instituição — Cidade / UF', ou só 'Cidade / UF' quando o
+    # registro não nomeia o centro. O front-end agrupa por UF a partir do
+    # sufixo, então ele tem de existir nos dois casos.
     locais = f.get("locais") or []
     if locais:
-        centros = [f"{l['cidade']} / {l['uf']}" if l.get("uf") else l["cidade"]
-                   for l in locais]
+        centros = []
+        for l in locais:
+            onde = f"{l['cidade']} / {l['uf']}" if l.get("uf") else l["cidade"]
+            inst = l.get("instituicao")
+            centros.append(f"{inst} — {onde}" if inst else onde)
     else:
         centros = f.get("cidades") or f.get("centros", [])[:4]
     url = f"https://clinicaltrials.gov/study/{nct}"
