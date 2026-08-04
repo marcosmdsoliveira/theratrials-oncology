@@ -893,7 +893,7 @@
       '<div class="ea-tags">' + tags + '</div>' +
       '<div class="ea-card-meta">' + metaItem(m1[0], m1[1]) + metaItem(m2[0], m2[1]) + metaItem(m3[0], m3[1], true) + '</div>' +
       '<div class="ea-card-footer">' +
-        '<span class="city"><i data-lucide="' + footerIcon + '" style="width:12px;height:12px"></i><span>' + escHtml(footerText) + '</span></span>' +
+        '<span class="city" data-no-gloss><i data-lucide="' + footerIcon + '" style="width:12px;height:12px"></i><span>' + escHtml(footerText) + '</span></span>' +
         '<span class="more">' + t('tm.viewDetails', 'Ver detalhes') + ' <i data-lucide="arrow-right" style="width:12px;height:12px"></i></span>' +
       '</div>' +
     '</article>';
@@ -953,8 +953,12 @@
     body += dSection('check-circle-2', 'Critérios principais de inclusão', dList(s.criterios_principais));
     body += dSection('x-circle', 'Critérios de exclusão relevantes', dList(s.criterios_exclusao));
     if (s.centros && s.centros.length) {
+      // data-no-gloss: aqui as siglas são unidades da federação, não termos
+      // clínicos. Sem isso o glossário anota "Curitiba / PR" como "resposta
+      // parcial" e "Boa Vista / RR" como "risco relativo" — as duas únicas
+      // UFs que colidem com o vocabulário do glossário.
       body += dSection('map-pin', 'Centros participantes no Brasil',
-        '<div class="tm-d-pills">' + s.centros.map(function(c){ return '<span class="tm-d-pill"><span class="val">' + escHtml(c) + '</span></span>'; }).join('') + '</div>');
+        '<div class="tm-d-pills" data-no-gloss>' + s.centros.map(function(c){ return '<span class="tm-d-pill"><span class="val">' + escHtml(c) + '</span></span>'; }).join('') + '</div>');
     }
 
     var actions = '<div class="tm-d-actions">';
