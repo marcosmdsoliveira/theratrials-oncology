@@ -11013,6 +11013,13 @@ window.THERA_TRIALS_BR_META = {
     { id: 'melanoma',       label: 'Melanoma',                color: '#f97316' },
     { id: 'mieloma',        label: 'Mieloma Múltiplo',        color: '#e879f9' },
     { id: 'linfoma',        label: 'Linfoma',                 color: '#818cf8' },
+    // As leucemias ficam separadas por entidade, e não num balde único: a LLC
+    // é indolente e se trata com inibidor de BTK ou de BCL2, enquanto as
+    // agudas exigem quimioterapia intensiva e transplante. Juntá-las faria o
+    // hematologista filtrar 20 estudos para achar os 4 que interessam.
+    { id: 'llc',            label: 'LLC · Leucemia linfocítica crônica', color: '#7dd3fc' },
+    { id: 'lma',            label: 'LMA · Leucemia mieloide aguda',      color: '#fda4af' },
+    { id: 'lla',            label: 'LLA · Leucemia linfoblástica aguda', color: '#c4b5fd' },
     { id: 'urotelial',      label: 'Bexiga / Urotelial',      color: '#2dd4bf' },
     { id: 'pancreas',       label: 'Pâncreas',                color: '#a3e635' },
     { id: 'endometrio',     label: 'Endométrio',              color: '#fb7185' },
