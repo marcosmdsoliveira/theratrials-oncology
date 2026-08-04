@@ -91,7 +91,15 @@ CANONICOS: list[tuple[str | None, str, str]] = [
     ("sao paulo", r"sirio.?libanes|senhoras hospital sirio", "Hospital Sírio-Libanês"),
     ("sao paulo", r"onco.?star", "Onco Star (Rede D'Or)"),
     ("sao paulo", r"\bd.?or\b|\bidor\b|oncologia rede d", "Instituto D'Or de Pesquisa e Ensino (IDOR)"),
-    ("sao paulo", r"clinicas da faculdade de medicina|clinicas da fmusp|faculdade de medicina da usp", "Hospital das Clínicas da FMUSP"),
+    # O HC-FMUSP aparece com oito grafias diferentes no CT.gov — inclusive
+    # traduzido para o inglês e nomeado pelo serviço em vez do hospital. Sem
+    # todas aqui, a mesma casa entrava oito vezes na contagem de centros.
+    # A USP crua ("University of Sao Paulo") fica DE FORA de propósito: o ICESP
+    # também é USP, e o NCT05996367 usa exatamente essa grafia sendo do ICESP.
+    ("sao paulo", r"clinicas da faculdade de medicina|clinicas d[ae] fmusp|clinicas fmusp|"
+                  r"\bhcfmusp\b|faculdade de medicina da usp|clinicas de sao paulo|"
+                  r"clinicas da universidade de sao paulo|clinical hospital of medicine school",
+     "Hospital das Clínicas da FMUSP"),
     ("sao paulo", r"santa marcelina", "Hospital Santa Marcelina"),
     ("sao paulo", r"(9|nove) de julho", "Hospital 9 de Julho"),
     ("sao paulo", r"oncoclinicas|centro paulista de oncologia", "Oncoclínicas São Paulo"),
@@ -143,6 +151,11 @@ CANONICOS: list[tuple[str | None, str, str]] = [
     ("salvador", r"\bd.?or\b|\bidor\b", "Instituto D'Or de Pesquisa e Ensino (IDOR)"),
 
     # ---- demais capitais e polos
+    # Hemocentro e Hospital de Clínicas são unidades distintas da UNICAMP, mas
+    # a fusão aqui é por marca + cidade: para quem encaminha um paciente, o
+    # destino é a UNICAMP. Cinco grafias viravam cinco centros.
+    ("campinas", r"\bunicamp\b|universidade estadual de campinas|universidade de campinas",
+     "UNICAMP – Universidade Estadual de Campinas"),
     ("natal", r"liga norte", "Liga Norte-Riograndense Contra o Câncer"),
     ("barretos", r"pio xii|hospital de amor|hospital de cancer de barretos", "Hospital de Amor (Fundação Pio XII)"),
     ("sao jose do rio preto", r"faculdade regional de medicina|famerp|hospital de base|\bhb onco\b",

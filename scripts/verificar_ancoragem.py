@@ -12,10 +12,19 @@ from pathlib import Path
 
 import argparse
 _ap = argparse.ArgumentParser(description=__doc__)
-_ap.add_argument("--dir", required=True, help="pasta com recurar_*.json e curadoria_*.json")
-P = Path(_ap.parse_args().dir)
-fonte = {a["nct"]: a for a in json.loads((P / "recurar_76.json").read_text(encoding="utf-8"))}
-cur = json.loads((P / "curadoria_76.json").read_text(encoding="utf-8"))
+_ap.add_argument("--dir", help="pasta com recurar_76.json e curadoria_76.json (modo antigo)")
+_ap.add_argument("--fonte", help="JSON [{nct, nome, elegibilidade}] com o texto de origem")
+_ap.add_argument("--curadoria", help="JSON {nct: {inc: [], exc: []}} com o que foi escrito")
+_args = _ap.parse_args()
+if _args.dir:
+    P = Path(_args.dir)
+    _f, _c = P / "recurar_76.json", P / "curadoria_76.json"
+elif _args.fonte and _args.curadoria:
+    _f, _c = Path(_args.fonte), Path(_args.curadoria)
+else:
+    _ap.error("use --dir OU --fonte com --curadoria")
+fonte = {a["nct"]: a for a in json.loads(_f.read_text(encoding="utf-8"))}
+cur = json.loads(_c.read_text(encoding="utf-8"))
 
 def dea(s):
     s = unicodedata.normalize("NFD", s.lower())
@@ -101,7 +110,16 @@ EXPANSOES = {
  "vhl":  ["von hippel"],
  "dlco": ["dlco", "diffusing capacity"],
  "icans":["immune effector cell-associated neurotoxicity"],
- "poems":["polyneuropathy, organomegaly, endocrinopathy"],
+ # Sem vírgula também: o AZD0305 escreve "Polyneuropathy Organomegaly
+ # Endocrinopathy M-protein and Skin Syndrome", sem nenhuma pontuação.
+ "poems":["polyneuropathy, organomegaly, endocrinopathy", "polyneuropathy organomegaly"],
+ # O registro quase nunca abrevia o vírus; escreve "hepatitis C antibody".
+ "hcv":  ["hepatitis c"],
+ "hbv":  ["hepatitis b"],
+ "hiv":  ["human immunodeficiency", "hiv"],
+ # "Heart rate-corrected QT interval based on Fridericia's formula" = QTcF.
+ "qtcf": ["fridericia", "qtcf"],
+ "qtc":  ["corrected qt", "qtc"],
  "177lu":["177lu", "lutetium"],
  "psma": ["psma", "prostate-specific membrane"],
  "ctdna":["ctdna", "circulating tumor dna"],
@@ -127,8 +145,10 @@ for nct, dados in cur.items():
                 src_nums.add(norm_num(parte))
     ruins = []
     n_anc = 0
-    for chave in ("inc", "exc"):
-        for crit in dados.get(chave, []):
+    # Verifica toda lista de texto que o chamador entregar — não só inc/exc.
+    # Doses e esquemas vivem em `intervencao`, e ali também cabe invenção.
+    for chave in dados:
+        for crit in dados.get(chave) or []:
             # âncoras numéricas
             for num in re.findall(r"\d[\d.,]*", crit):
                 n_anc += 1
