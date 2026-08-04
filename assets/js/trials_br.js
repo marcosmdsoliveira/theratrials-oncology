@@ -3055,38 +3055,6 @@ window.THERA_TRIALS_BR = [
 
   // --- CABEÇA E PESCOÇO ---
   {
-    id: 'brava-penile',
-    nome: 'BRAVA-Penile',
-    titulo: 'Cemiplimabe manutenção vs melhor cuidado de suporte após QT 1L baseada em platina em câncer de pênis avançado/recorrente',
-    nct: 'NCT07101822',
-    fase: 'II',
-    status: 'Ainda não recrutando',
-    neoplasia: 'penis',
-    neoplasia_label: 'Pênis',
-    subtipo: 'CCE de pênis avançado ou recorrente',
-    linha_terapeutica: 'Manutenção',
-    cenario_clinico: 'Avançado/recorrente pós-QT 1L baseada em platina',
-    modalidade: ['imunoterapia'],
-    biomarcadores: [],
-    testes_fornecidos: '',
-    intervencao: 'Cemiplimabe (manutenção)',
-    comparador: 'Melhor cuidado de suporte (BSC)',
-    racional: 'Estudo fase II randomizado avaliando cemiplimabe como terapia de manutenção comparado ao melhor cuidado de suporte em pacientes com câncer de pênis avançado ou recorrente após quimioterapia de primeira linha baseada em platina.',
-    criterios_principais: [
-      'CCE de pênis EC III ou IV ou doença recidivada',
-      'QT de 1ª linha baseada em platina (4-6 ciclos)',
-      'Doença mensurável',
-    ],
-    criterios_exclusao: [],
-    centros: ['São Paulo / SP'],
-    estados: ['SP'],
-    cidades: ['São Paulo'],
-    patrocinador: 'Regeneron / Hospital Albert Einstein',
-    fonte_url: 'https://clinicaltrials.gov/study/NCT07101822',
-    contato_url: 'https://clinicaltrials.gov/study/NCT07101822',
-    data_atualizacao: '2026-05-19',
-  },
-  {
     id: 'evolve-hnscc',
     nome: 'eVOLVE-HNSCC',
     titulo: 'Volrustomig como observação pós quimiorradioterapia em CEC de cabeça e pescoço localmente avançado',
@@ -8509,11 +8477,11 @@ window.THERA_TRIALS_BR = [
   {
     // ⚠ RASCUNHO — confiança alta. Nuvalent, fase 3, 450 participantes, 8 centros no Brasil em 3
     //   estados. Único card do PR em ALK-positivo, e um dos poucos de todo o lote de pulmão com as
-    //   duas listas de elegibilidade completas no registro. O título oficial declara o neladalquibe
+    //   duas listas de elegibilidade completas no registro. O título oficial declara o neladalkib
     //   como inibidor seletivo de ALK, o que sustenta a descrição do racional.
     id: 'alkazar',
     nome: 'ALKAZAR',
-    titulo: 'Neladalquibe vs alectinibe em 1ª linha de NSCLC avançado ALK-positivo sem inibidor prévio',
+    titulo: 'Neladalkib vs alectinibe em 1ª linha de NSCLC avançado ALK-positivo sem inibidor prévio',
     nct: 'NCT06765109',
     fase: 'III',
     status: 'Recrutando',
@@ -8525,9 +8493,9 @@ window.THERA_TRIALS_BR = [
     modalidade: ['terapia-alvo'],
     biomarcadores: ['ALK'],
     testes_fornecidos: 'Exige tecido tumoral pré-tratamento; o rearranjo de ALK pode ser documentado em tecido ou em sangue',
-    intervencao: 'Neladalquibe (NVL-655) 150 mg via oral 1x/dia',
+    intervencao: 'Neladalkib (NVL-655) 150 mg via oral 1x/dia',
     comparador: 'Alectinibe 600 mg via oral 2x/dia',
-    racional: 'O registro descreve o neladalquibe como inibidor seletivo de ALK, comparado de forma direta ao alectinibe, que é padrão de 1ª linha no ALK-positivo. O desfecho principal é sobrevida livre de progressão.',
+    racional: 'O registro descreve o neladalkib como inibidor seletivo de ALK, comparado de forma direta ao alectinibe, que é padrão de 1ª linha no ALK-positivo. O desfecho principal é sobrevida livre de progressão.',
     criterios_principais: [
       'NSCLC localmente avançado sem indicação de tratamento multimodal, ou metastático, confirmado histológica ou citologicamente',
       'Rearranjo de ALK documentado em tecido ou em sangue',
@@ -8538,7 +8506,7 @@ window.THERA_TRIALS_BR = [
     ],
     criterios_exclusao: [
       'Alteração de driver oncogênico conhecida diferente de ALK',
-      'Alergia ou hipersensibilidade conhecida a excipientes do neladalquibe ou do alectinibe',
+      'Alergia ou hipersensibilidade conhecida a excipientes do neladalkib ou do alectinibe',
       'Radioterapia em curso ou recente, conforme as janelas do protocolo',
       'Cirurgia de grande porte nas 4 semanas anteriores à randomização',
       'Infecção não controlada com necessidade de terapia sistêmica; tuberculose ativa; hepatite B ou C ativa',
