@@ -13449,6 +13449,888 @@ window.THERA_TRIALS_BR = [
     data_atualizacao: '2026-06-25',
   },
 
+
+  // ============== NOVOS ESTUDOS (2026-08-04) — RASCUNHO, revisar antes de publicar ==============
+
+  {
+    // ⚠ RASCUNHO — confiança alta. O acrônimo IDeate-Prostate02 está no título oficial, não no
+    //   campo de acrônimo. O registro afirma que as duas listas são parciais e não traz doses. Como
+    //   é um subestudo guarda-chuva com quatro braços de desenho diferente, vale confirmar com o
+    //   centro quais estão abertos nos nove sítios brasileiros. O registro também não nomeia o alvo
+    //   do ifinatamabe deruxtecana. A exigência de pré-medicação antiemética com esquema de dois ou
+    //   três fármacos antes de cada dose consta como medicação obrigatória.
+    id: 'ideate-prostate02',
+    nome: 'IDeate-Prostate02',
+    titulo: 'Ifinatamabe deruxtecana isolado ou combinado a opevesostate ou a inibidor do receptor androgênico vs docetaxel no câncer de próstata resistente à castração metastático',
+    nct: 'NCT06863272',
+    fase: 'Ib/II',
+    status: 'Recrutando',
+    neoplasia: 'prostata',
+    neoplasia_label: 'Próstata',
+    subtipo: 'Adenocarcinoma de próstata sem histologia de pequenas células, resistente à castração e metastático',
+    linha_terapeutica: 'Avançado / metastático',
+    cenario_clinico: 'Progressão após 1 ou 2 inibidores da via do receptor androgênico, sem quimioterapia com taxano prévia para a doença resistente à castração',
+    modalidade: ['ADC', 'combinação', 'hormonioterapia'],
+    biomarcadores: [],
+    testes_fornecidos: '',
+    intervencao: 'Ifinatamabe deruxtecana (I-DXd) intravenoso a cada 3 semanas, isolado; ou combinado a opevesostate oral; ou combinado a inibidor da via do receptor androgênico — acetato de abiraterona ou enzalutamida —, ambos após escalonamento de dose do I-DXd',
+    comparador: 'Docetaxel intravenoso a cada 3 semanas, por no máximo 10 ciclos de 21 dias',
+    racional: 'Subestudo guarda-chuva do protocolo mestre MK-2400-U01 que avalia eficácia e segurança do ifinatamabe deruxtecana, isolado ou combinado a outros tratamentos, no câncer de próstata resistente à castração metastático. Os objetivos declarados são a segurança e a tolerabilidade, a definição de uma dose segura para uso em combinação, e o comportamento do PSA durante o tratamento.',
+    criterios_principais: [
+      'Adenocarcinoma de próstata confirmado por histologia ou citologia, sem histologia de pequenas células',
+      'Progressão do câncer em vigência de terapia de privação androgênica, ou após orquiectomia bilateral, nos 6 meses anteriores à triagem',
+      'Evidência atual de doença metastática à distância',
+      'Tratamento prévio com 1 ou 2 inibidores da via do receptor androgênico, com progressão durante ou após',
+      'Tratamento prévio com inibidor de PARP quando indicado pelo esquema aprovado localmente, ou inelegibilidade a ele a critério do investigador',
+      'Quem usa terapia de reabsorção óssea, como bisfosfonato ou denosumabe, precisa estar em dose estável há pelo menos 4 semanas antes da alocação',
+      'ECOG 0 ou 1 avaliado nos 10 dias anteriores à alocação',
+    ],
+    criterios_exclusao: [
+      'Quimioterapia prévia com taxano para a doença resistente à castração metastática',
+      'Qualquer história de doença pulmonar intersticial ou pneumonite, independentemente de uso de corticoide, exceto pneumonite actínica que não exigiu corticoide; doença intersticial atual; ou suspeita clínica ou radiológica que não possa ser descartada — também exclui comprometimento pulmonar grave por doença intercorrente',
+      'Doença cardiovascular não controlada ou significativa; disfunção hipofisária prévia; diabetes melito mal controlado; ou insuficiência adrenal prévia ou atual, como a doença de Addison',
+      'Corticoide crônico acima do equivalente a 10 mg diários de prednisona — permitidos corticoide inalatório em dose baixa para asma ou DPOC, tópico para condição cutânea leve, e injeção intra-articular',
+      'Metástase ativa conhecida no sistema nervoso central ou meningite carcinomatosa; doença autoimune ativa que tenha exigido tratamento sistêmico nos últimos 2 anos; ou transplante alogênico de tecido ou órgão sólido',
+      'Radioterapia nas 2 semanas anteriores ao início do tratamento, ou toxicidade actínica em uso de corticoide; ou outra neoplasia conhecida em progressão ou tratada nos últimos 3 anos',
+    ],
+    centros: [
+      'Liga Norte-Riograndense Contra o Câncer — Natal / RN',
+      'Hospital Moinhos de Vento — Porto Alegre / RS',
+      'Santa Casa de Misericórdia de Porto Alegre — Porto Alegre / RS',
+      'Hospital Universitário São Francisco de Assis — Bragança Paulista / SP',
+      'Hospital das Clínicas da FMRP-USP — Ribeirão Preto / SP',
+      'Hospital de Base / FAMERP — São José do Rio Preto / SP',
+      'Hospital Alemão Oswaldo Cruz — São Paulo / SP',
+      'IBCC Oncologia — São Paulo / SP',
+      'IPITEC — São Paulo / SP',
+    ],
+    estados: ['RN', 'RS', 'SP'],
+    cidades: [
+      'Bragança Paulista',
+      'Natal',
+      'Porto Alegre',
+      'Ribeirão Preto',
+      'São José do Rio Preto',
+      'São Paulo',
+    ],
+    patrocinador: 'Merck Sharp & Dohme LLC',
+    fonte_url: 'https://clinicaltrials.gov/study/NCT06863272',
+    contato_url: 'https://clinicaltrials.gov/study/NCT06863272',
+    data_atualizacao: '2026-07-31',
+  },
+
+  {
+    // ⚠ RASCUNHO — confiança alta. A exclusão por alergia à penicilina é incomum e se explica pelo
+    //   produto ser uma preparação de Streptococcus pyogenes. O registro encerra a lista dizendo
+    //   para contatar o patrocinador para mais critérios, e não traz performance status, função
+    //   orgânica nem a dose recomendada de fase 2 em números. São 8 centros, nenhum no Norte ou
+    //   Nordeste.
+    id: 'advanced-2',
+    nome: 'ADVANCED-2',
+    titulo: 'TARA-002 intravesical no câncer de bexiga não músculo-invasivo de alto grau com carcinoma in situ',
+    nct: 'NCT05951179',
+    fase: 'II',
+    status: 'Recrutando',
+    neoplasia: 'urotelial',
+    neoplasia_label: 'Bexiga / Urotelial',
+    subtipo: 'Carcinoma in situ de alto grau não músculo-invasivo, com ou sem Ta/T1, em doença ativa',
+    linha_terapeutica: 'Conforme protocolo',
+    cenario_clinico: 'Duas coortes: virgem de BCG ou sem BCG intravesical há pelo menos 24 meses (coorte A), e não responsivo ao BCG (coorte B)',
+    modalidade: ['imunoterapia'],
+    biomarcadores: [],
+    testes_fornecidos: 'A confirmação histológica do carcinoma in situ de alto grau é central, assim como a da histologia variante',
+    intervencao: 'TARA-002 intravesical — preparação biológica liofilizada com células de Streptococcus pyogenes do grupo A, tipo 3, cepa Su — em 6 instilações semanais no primeiro período; 6 doses adicionais na reindução ou 3 doses de manutenção para quem teve resposta completa; e mais 3 doses semanais de manutenção nos meses 6, 9, 12, 15, 18 e 24, com seguimento até o mês 60',
+    comparador: '— (braço único)',
+    racional: 'O estudo avalia segurança e eficácia da instilação intravesical de TARA-002 em adultos com carcinoma in situ de alto grau não músculo-invasivo, na dose recomendada de fase 2 definida no estudo de escalonamento anterior. Os participantes são separados em duas coortes conforme a exposição prévia ao BCG.',
+    criterios_principais: [
+      'Idade a partir de 18 anos na assinatura do consentimento',
+      'Confirmação histológica central de carcinoma in situ não músculo-invasivo de alto grau, com ou sem Ta/T1, com doença ativa — presente na última avaliação tumoral, feita nos 3 meses anteriores ao consentimento',
+      'Coorte A: virgem de BCG, ou exposto ao BCG mas sem receber BCG intravesical por pelo menos 24 meses antes do diagnóstico mais recente de carcinoma in situ',
+      'Coorte B: doença não responsiva ao BCG',
+    ],
+    criterios_exclusao: [
+      'Alergia à penicilina — quem tem história duvidosa faz teste de alergia por exame de sangue em laboratório central',
+      'Histologia variante confirmada centralmente',
+      'Acometimento concomitante da próstata ou do trato urinário alto, a critério do investigador',
+      'Doença nodal ou metastática, presente ou passada',
+      'Qualquer história de câncer de bexiga em estádio T2 ou maior, em qualquer momento',
+    ],
+    centros: [
+      'Kyushu University Hospital — Nova Lima / MG',
+      'Office of Lucas Nougeria MA — Nova Lima / MG',
+      'Centro de Urologia Avancada — Porto Alegre / RS',
+      'Nucleo de Pesquisa Clinica do Rio Grande so Sul — Porto Alegre / RS',
+      'Santa Casa de Misericórdia de Porto Alegre — Porto Alegre / RS',
+      'UNICAMP – Universidade Estadual de Campinas — Campinas / SP',
+      'CEPHO – Centro de Estudos e Pesquisas em Hematologia e Oncologia — Santo André / SP',
+      'Instituto D\'Or de Pesquisa e Ensino (IDOR) — São Paulo / SP',
+    ],
+    estados: ['MG', 'RS', 'SP'],
+    cidades: [
+      'Campinas',
+      'Nova Lima',
+      'Porto Alegre',
+      'Santo André',
+      'São Paulo',
+    ],
+    patrocinador: 'Protara Therapeutics',
+    fonte_url: 'https://clinicaltrials.gov/study/NCT05951179',
+    contato_url: 'https://clinicaltrials.gov/study/NCT05951179',
+    data_atualizacao: '2026-06-30',
+  },
+
+  {
+    // ⚠ RASCUNHO — confiança alta. O acrônimo IDeate-Prostate01 está no título oficial. É o irmão
+    //   de fase 3 do IDeate-Prostate02 e tem quase os mesmos centros brasileiros — vale confirmar
+    //   qual dos dois o serviço está recrutando. O registro afirma que as duas listas são parciais
+    //   e não traz performance status nem limiares de função orgânica. Duas exclusões que costumam
+    //   passar batido: a cintilografia em supercaptação e a descontinuação prévia de qualquer
+    //   conjugado com derivado de exatecana por toxicidade.
+    id: 'ideate-prostate01',
+    nome: 'IDeate-Prostate01',
+    titulo: 'Ifinatamabe deruxtecana vs docetaxel no câncer de próstata resistente à castração metastático após inibidor do receptor androgênico',
+    nct: 'NCT06925737',
+    fase: 'III',
+    status: 'Recrutando',
+    neoplasia: 'prostata',
+    neoplasia_label: 'Próstata',
+    subtipo: 'Adenocarcinoma de próstata sem histologia de pequenas células, resistente à castração e metastático',
+    linha_terapeutica: 'Avançado / metastático',
+    cenario_clinico: 'Progressão após 1 ou 2 inibidores da via do receptor androgênico usados por pelo menos 8 semanas, sem taxano prévio para a doença resistente à castração',
+    modalidade: ['ADC'],
+    biomarcadores: [],
+    testes_fornecidos: 'Exige-se tecido tumoral de biópsia por agulha grossa ou excisional, de tecido mole não irradiado, colhido após a progressão à última terapia',
+    intervencao: 'Ifinatamabe deruxtecana (I-DXd, MK-2400) 12 mg/kg por via intravenosa a cada 3 semanas, até progressão ou toxicidade inaceitável',
+    comparador: 'Docetaxel 75 mg/m² por via intravenosa a cada 3 semanas com prednisona 10 mg/dia, ou conforme a bula aprovada',
+    racional: 'O estudo compara o ifinatamabe deruxtecana com a quimioterapia padrão no câncer de próstata resistente à castração metastático. O objetivo declarado é verificar se quem recebe o conjugado vive mais tempo no total e mais tempo sem que o câncer cresça ou se dissemine, em comparação com quem recebe quimioterapia.',
+    criterios_principais: [
+      'Adenocarcinoma de próstata confirmado por histologia ou citologia, sem histologia de pequenas células',
+      'Progressão do câncer em vigência de terapia de privação androgênica, ou após orquiectomia bilateral, nos 6 meses anteriores à triagem',
+      'Doença metastática à distância documentada por lesão óssea em cintilografia e/ou doença em partes moles por tomografia ou ressonância',
+      'Tratamento prévio com 1 ou 2 inibidores da via do receptor androgênico, com progressão durante ou após pelo menos 8 semanas de uso',
+      'Tecido tumoral de biópsia por agulha grossa ou excisional, de tecido mole não irradiado, obtido após a progressão à terapia mais recente',
+      'Recuperação dos eventos adversos das terapias antineoplásicas anteriores',
+    ],
+    criterios_exclusao: [
+      'Quimioterapia prévia com taxano para a doença resistente à castração metastática',
+      'Descontinuação prévia de conjugado anticorpo-fármaco com derivado de exatecana, como o trastuzumabe deruxtecana, por toxicidade relacionada ao tratamento',
+      'Qualquer história de doença pulmonar intersticial ou pneumonite que tenha exigido corticoide, exceto pneumonite actínica sem corticoide; doença intersticial atual; ou suspeita clínica ou radiológica que não possa ser descartada',
+      'Comprometimento pulmonar grave por doença intercorrente, ou doença cardiovascular não controlada ou significativa',
+      'Cintilografia óssea em padrão de supercaptação (superscan)',
+      'Incapacidade de engolir comprimidos ou cápsulas',
+    ],
+    centros: [
+      'Hospital Mário Penna — Belo Horizonte / MG',
+      'Hospital Universitário Evangélico Mackenzie — Curitiba / PR',
+      'Santa Casa de Misericórdia de Porto Alegre — Porto Alegre / RS',
+      'Hospital de Base / FAMERP — São José do Rio Preto / SP',
+      'IBCC Oncologia — São Paulo / SP',
+      'IPITEC — São Paulo / SP',
+    ],
+    estados: ['MG', 'PR', 'RS', 'SP'],
+    cidades: [
+      'Belo Horizonte',
+      'Curitiba',
+      'Porto Alegre',
+      'São José do Rio Preto',
+      'São Paulo',
+    ],
+    patrocinador: 'Merck Sharp & Dohme LLC',
+    fonte_url: 'https://clinicaltrials.gov/study/NCT06925737',
+    contato_url: 'https://clinicaltrials.gov/study/NCT06925737',
+    data_atualizacao: '2026-07-17',
+  },
+
+  {
+    // ⚠ RASCUNHO — confiança media. O registro é enxuto: os braços aparecem quase todos sem
+    //   descrição, não há doses, performance status nem limiares de função orgânica, e o texto
+    //   avisa que outros critérios de protocolo se aplicam. Não diz o que é o BMS-986365. Dois
+    //   filtros práticos que costumam surpreender: a exigência de dor abaixo de 4 no BPI-SF, que
+    //   exclui o paciente sintomático, e a exclusão de qualquer metástase hepática ou cerebral.
+    id: 'recharge',
+    nome: 'rechARge',
+    titulo: 'BMS-986365 vs escolha do investigador entre docetaxel e um segundo inibidor do receptor androgênico no câncer de próstata resistente à castração metastático',
+    nct: 'NCT06764485',
+    fase: 'III',
+    status: 'Recrutando',
+    neoplasia: 'prostata',
+    neoplasia_label: 'Próstata',
+    subtipo: 'Adenocarcinoma de próstata sem componente de pequenas células ou neuroendócrino, resistente à castração e metastático',
+    linha_terapeutica: 'Avançado / metastático',
+    cenario_clinico: 'Doença assintomática ou pouco sintomática, com dor abaixo de 4 no BPI-SF, após um inibidor da via do receptor androgênico',
+    modalidade: ['terapia-alvo', 'hormonioterapia'],
+    biomarcadores: [],
+    testes_fornecidos: '',
+    intervencao: 'BMS-986365, em duas doses na parte 1 e na dose selecionada na parte 2',
+    comparador: 'Escolha do investigador: enzalutamida, ou acetato de abiraterona com prednisona ou prednisolona, ou docetaxel',
+    racional: 'Estudo de fase 3 em duas partes, randomizado, aberto e adaptativo, que compara eficácia e segurança do BMS-986365 com as do tratamento escolhido pelo investigador — docetaxel ou um segundo inibidor da via do receptor androgênico — em pacientes com câncer de próstata resistente à castração metastático. A parte 1 avalia duas doses e a parte 2 segue com a dose selecionada.',
+    criterios_principais: [
+      'Adenocarcinoma de próstata confirmado por histologia ou citologia, sem componente de pequenas células ou neuroendócrino',
+      'Evidência atual de doença metastática documentada por lesão óssea em cintilografia com radionuclídeo e/ou por lesão em partes moles na tomografia ou ressonância',
+      'Doença assintomática ou pouco sintomática, com pontuação abaixo de 4 no Brief Pain Inventory - Short Form',
+      'Tratamento prévio com inibidor da via do receptor androgênico — abiraterona, enzalutamida, apalutamida ou darolutamida',
+    ],
+    criterios_exclusao: [
+      'Função cardíaca comprometida ou doença cardíaca clinicamente significativa',
+      'Qualquer metástase cerebral',
+      'Qualquer metástase hepática',
+      'Cintilografia óssea com tecnécio-99m em padrão de supercaptação (superscan)',
+    ],
+    centros: [
+      'Vitória / ES',
+      'Cetus Oncologia — Belo Horizonte / MG',
+      'Liga Norte-Riograndense Contra o Câncer — Natal / RN',
+      'Hospital Moinhos de Vento — Porto Alegre / RS',
+      'A.C.Camargo Cancer Center — São Paulo / SP',
+      'Hospital Sírio-Libanês — São Paulo / SP',
+    ],
+    estados: [
+      'ES',
+      'MG',
+      'RN',
+      'RS',
+      'SP',
+    ],
+    cidades: [
+      'Belo Horizonte',
+      'Natal',
+      'Porto Alegre',
+      'São Paulo',
+      'Vitória',
+    ],
+    patrocinador: 'Celgene',
+    fonte_url: 'https://clinicaltrials.gov/study/NCT06764485',
+    contato_url: 'https://clinicaltrials.gov/study/NCT06764485',
+    data_atualizacao: '2026-07-22',
+  },
+
+  {
+    // ⚠ RASCUNHO — confiança alta. É o estudo mais restritivo do lote no que exige de tratamento
+    //   prévio: dois taxanos, radioligante de PSMA e, se houver BRCA, inibidor de PARP — com
+    //   escapes bem definidos por indisponibilidade ou inadequação clínica, que na prática
+    //   brasileira devem ser o caminho usual. Vale notar que só entra doença metastática restrita a
+    //   osso e linfonodo; metástase visceral exclui. O registro não traz as doses do pasritamigue.
+    id: 'klk2-compas',
+    nome: 'KLK2-comPAS',
+    titulo: 'Pasritamigue, redirecionador de células T contra a calicreína 2, com melhor cuidado de suporte vs placebo com suporte no câncer de próstata resistente à castração metastático já muito tratado',
+    nct: 'NCT07164443',
+    fase: 'III',
+    status: 'Recrutando',
+    neoplasia: 'prostata',
+    neoplasia_label: 'Próstata',
+    subtipo: 'Adenocarcinoma de próstata resistente à castração, metastático apenas para osso e/ou linfonodo',
+    linha_terapeutica: '3ª+ linha',
+    cenario_clinico: 'Paciente que já esgotou as terapias que prolongam a vida às quais tinha acesso e para quem a melhor opção seguinte, na avaliação do médico, é um ensaio clínico',
+    modalidade: ['bispecífico', 'imunoterapia'],
+    biomarcadores: [],
+    testes_fornecidos: '',
+    intervencao: 'Pasritamigue (JNJ-78278343) intravenoso, com doses escalonadas no D1 e D8 do ciclo 1 e dose-alvo no D15; a partir do ciclo 2, dose-alvo a cada 6 semanas. Ciclos de 6 semanas, exceto o primeiro, de 8. Todos podem receber melhor cuidado de suporte',
+    comparador: 'Placebo intravenoso no mesmo esquema, com melhor cuidado de suporte',
+    racional: 'O pasritamigue é um agente que redireciona células T contra a calicreína humana 2. O estudo compara a sobrevida global de quem recebe pasritamigue somado ao melhor cuidado de suporte com a de quem recebe placebo e suporte, no câncer de próstata resistente à castração metastático. O melhor cuidado de suporte inclui radioterapia externa paliativa, corticoide em dose baixa, analgesia, agentes protetores ósseos e procedimentos paliativos, a critério do médico.',
+    criterios_principais: [
+      'Adenocarcinoma de próstata confirmado por histologia, resistente à castração, com metástase apenas óssea, apenas linfonodal ou ambas, sem evidência clara de outros sítios em tomografia ou ressonância de tórax, abdome e pelve e em cintilografia óssea com tecnécio-99m',
+      'PSA ≥ 2 ng/mL na triagem, e a próxima melhor opção de tratamento sendo um ensaio clínico na avaliação do investigador',
+      'Progressão a pelo menos 1 inibidor da via do receptor androgênico, com baixa probabilidade de benefício de outro',
+      'Pelo menos 2 esquemas prévios com taxano — com 1 só, entra quem não tem cabazitaxel disponível ou é considerado inadequado para um segundo esquema por risco de toxicidade ou intolerância prévia; um esquema conta como pelo menos 2 ciclos no mesmo período de 2 meses, e reação infusional de grau 3 ou maior dispensa esse mínimo',
+      'Pelo menos 1 dose prévia de radioligante de lutécio dirigido a PSMA, salvo se indisponível, inacessível, não indicado clinicamente ou considerado inadequado ao paciente',
+      'Inibidor de PARP prévio quando houver mutação germinativa ou somática de BRCA conhecida e o tratamento estiver disponível',
+      'Orquiectomia ou castração medicamentosa com análogo de GnRH antes da primeira dose, mantida durante toda a fase de tratamento, e ECOG 0 a 2',
+      'TFG estimada ≥ 30 mL/min, ALT e AST até 5 vezes o limite superior da normalidade, bilirrubina total até 3 vezes esse limite, neutrófilos ≥ 1,0 × 10⁹/L, hemoglobina ≥ 8,0 g/dL e plaquetas ≥ 75 × 10⁹/L',
+    ],
+    criterios_exclusao: [
+      'Tratamento prévio com qualquer terapia dirigida a CD3',
+      'Tromboembolismo venoso no mês anterior à primeira dose — trombose venosa profunda não complicada, de grau até 2, não exclui',
+      'Doença autoimune ativa nos últimos 12 meses que exija imunossupressor sistêmico, como corticoide crônico, metotrexato ou tacrolimo',
+      'Febre de 38 °C ou mais, ou infecção ativa em tratamento sistêmico, nos 7 dias anteriores à randomização — é preciso estar afebril no momento da dose, salvo aprovação do monitor médico',
+      'Comprometimento pulmonar clinicamente significativo, em especial a necessidade de oxigênio suplementar acima de 2 L/min por cateter nasal para manter oxigenação adequada',
+      'Nos 6 meses anteriores à primeira dose: infarto, angina grave ou instável, arritmia ventricular clinicamente significativa, insuficiência cardíaca classe II a IV da NYHA, ataque isquêmico transitório ou AVC; ou segunda neoplasia prévia ou concomitante que possa interferir nos desfechos',
+    ],
+    centros: [
+      'Liga Norte-Riograndense Contra o Câncer — Natal / RN',
+      'Hospital Moinhos de Vento — Porto Alegre / RS',
+      'CEPEN – Centro de Pesquisa e Ensino em Oncologia de SC — Florianópolis / SC',
+      'Instituto Joinvilense de Hematologia e Oncologia — Joinville / SC',
+      'A.C.Camargo Cancer Center — São Paulo / SP',
+    ],
+    estados: ['RN', 'RS', 'SC', 'SP'],
+    cidades: [
+      'Florianópolis',
+      'Joinville',
+      'Natal',
+      'Porto Alegre',
+      'São Paulo',
+    ],
+    patrocinador: 'Janssen Research & Development, LLC',
+    fonte_url: 'https://clinicaltrials.gov/study/NCT07164443',
+    contato_url: 'https://clinicaltrials.gov/study/NCT07164443',
+    data_atualizacao: '2026-07-31',
+  },
+
+  {
+    // ⚠ RASCUNHO — confiança alta. É o par exato do KLK2-comPAS mas na ponta oposta da linha de
+    //   tratamento: aqui exige-se justamente não ter recebido quimioterapia, enquanto o comPAS
+    //   exige dois taxanos prévios. Os dois têm centros em São Paulo e Natal — vale confirmar qual
+    //   está aberto para o perfil do paciente. Note que a exclusão por BRCA sem inibidor de PARP
+    //   prévio é redigida ao contrário do habitual: ela barra quem tem a mutação e ainda não usou o
+    //   inibidor, empurrando o paciente para o tratamento aprovado antes. O registro não traz doses
+    //   nem limiares laboratoriais.
+    id: 'klk2-pasenger',
+    nome: 'KLK2-PASenger',
+    titulo: 'Pasritamigue + docetaxel vs docetaxel no câncer de próstata resistente à castração metastático virgem de quimioterapia',
+    nct: 'NCT07225946',
+    fase: 'III',
+    status: 'Recrutando',
+    neoplasia: 'prostata',
+    neoplasia_label: 'Próstata',
+    subtipo: 'Adenocarcinoma de próstata resistente à castração e metastático, sem quimioterapia citotóxica prévia',
+    linha_terapeutica: 'Avançado / metastático',
+    cenario_clinico: 'Progressão a 1 ou 2 inibidores da via do receptor androgênico, já descontinuados, sem nunca ter recebido quimioterapia para o câncer de próstata',
+    modalidade: ['bispecífico', 'combinação', 'quimioterapia'],
+    biomarcadores: [],
+    testes_fornecidos: '',
+    intervencao: 'Pasritamigue (JNJ-78278343) associado a docetaxel, até o fim do tratamento ou até progressão radiológica confirmada por revisão central independente cega',
+    comparador: 'Docetaxel com prednisona ou prednisolona como medicação de base',
+    racional: 'O pasritamigue é um agente que engaja células T contra a calicreína humana 2. O estudo verifica se acrescentá-lo ao docetaxel prolonga a sobrevida livre de progressão radiológica, em comparação com o docetaxel isolado, no câncer de próstata resistente à castração metastático.',
+    criterios_principais: [
+      'Adenocarcinoma de próstata confirmado por histologia',
+      'Doença metastática na triagem por tomografia ou ressonância e por cintilografia óssea com tecnécio-99m, a critério do investigador',
+      'Terapia de privação androgênica em curso com análogo de GnRH mantida durante todo o tratamento, ou orquiectomia bilateral prévia, com testosterona sérica ≤ 50 ng/dL na triagem',
+      'Progressão por PSA, por tomografia ou ressonância, ou por cintilografia óssea, a pelo menos 1 e no máximo 2 inibidores da via do receptor androgênico, em qualquer estádio da doença, com o inibidor já descontinuado antes da randomização',
+      'ECOG 0 ou 1',
+    ],
+    criterios_exclusao: [
+      'Qualquer quimioterapia citotóxica prévia para o câncer de próstata, em qualquer cenário',
+      'Tratamento prévio dirigido à calicreína humana 2',
+      'Mutação de BRCA1 ou BRCA2 conhecida, germinativa ou somática, em quem não recebeu inibidor de PARP — salvo se indisponível ou contraindicado',
+      'História conhecida de metástase cerebral ou leptomeníngea pelo câncer de próstata',
+      'Segunda neoplasia prévia ou concomitante',
+    ],
+    centros: [
+      'Liga Norte-Riograndense Contra o Câncer — Natal / RN',
+      'Hospital Ana Nery Santa Cruz do Sul — Santa Cruz do Sul / RS',
+      'NAIC – Instituto do Câncer — Bauru / SP',
+      'CEPHO – Centro de Estudos e Pesquisas em Hematologia e Oncologia — Santo André / SP',
+      'ESHO Empresa De Servicos Hospitalares S A — São Paulo / SP',
+    ],
+    estados: ['RN', 'RS', 'SP'],
+    cidades: [
+      'Bauru',
+      'Natal',
+      'Santa Cruz do Sul',
+      'Santo André',
+      'São Paulo',
+    ],
+    patrocinador: 'Janssen Research & Development, LLC',
+    fonte_url: 'https://clinicaltrials.gov/study/NCT07225946',
+    contato_url: 'https://clinicaltrials.gov/study/NCT07225946',
+    data_atualizacao: '2026-07-30',
+  },
+
+  {
+    // ⚠ RASCUNHO — confiança media. O registro diz que a seleção é por biomarcador mas **não
+    //   informa qual** — só exige tecido adequado para determiná-lo. Por isso o campo de
+    //   biomarcadores ficou vazio; a exclusão de qualquer inibidor prévio da via PI3K/AKT/mTOR
+    //   sugere a via, mas não está afirmado. Confirmar com o centro antes de encaminhar, porque
+    //   isso decide a elegibilidade. Outro filtro pesado na prática brasileira: exige glicemia de
+    //   jejum abaixo de 100 mg/dL e HbA1c abaixo de 5,7%, e exclui qualquer diabetes — muitos
+    //   pacientes de próstata em bloqueio androgênico não passam.
+    id: 'inavopc',
+    nome: 'InavoPC',
+    titulo: 'Inavolisibe + enzalutamida vs escolha do médico entre outro inibidor do receptor androgênico e docetaxel no câncer de próstata resistente à castração metastático selecionado por biomarcador',
+    nct: 'NCT07287150',
+    fase: 'II',
+    status: 'Recrutando',
+    neoplasia: 'prostata',
+    neoplasia_label: 'Próstata',
+    subtipo: 'Adenocarcinoma de próstata sem componente de pequenas células ou neuroendócrino, resistente à castração e metastático, selecionado por biomarcador',
+    linha_terapeutica: 'Avançado / metastático',
+    cenario_clinico: 'Progressão após exatamente um inibidor de segunda geração da via do receptor androgênico, sem quimioterapia prévia para a doença resistente à castração',
+    modalidade: ['terapia-alvo', 'combinação', 'hormonioterapia'],
+    biomarcadores: [],
+    testes_fornecidos: 'Exige-se amostra de tecido tumoral adequada em qualidade e quantidade para determinar o status do biomarcador',
+    intervencao: 'Inavolisibe oral associado a enzalutamida oral',
+    comparador: 'Escolha do médico: troca do inibidor da via do receptor androgênico — enzalutamida ou abiraterona — ou docetaxel intravenoso',
+    racional: 'O estudo avalia eficácia e segurança da combinação de inavolisibe com enzalutamida, comparada ao que o médico escolher entre trocar o inibidor da via do receptor androgênico e usar docetaxel, em pacientes selecionados por biomarcador com câncer de próstata resistente à castração metastático que receberam um inibidor de segunda geração prévio.',
+    criterios_principais: [
+      'Adenocarcinoma de próstata confirmado por histologia ou citologia, sem componente de pequenas células ou neuroendócrino',
+      'Doença resistente à castração metastática em progressão, definida por: progressão de PSA com pelo menos duas elevações em três dosagens consecutivas separadas por no mínimo 7 dias e valor inicial de pelo menos 1 ng/mL, com a última dosagem qualificadora nos 14 dias anteriores à inclusão; ou progressão em partes moles pelo RECIST 1.1; ou progressão óssea pelos critérios do PCWG3, com duas ou mais lesões novas na cintilografia de corpo inteiro',
+      'Exatamente um inibidor de segunda geração da via do receptor androgênico prévio — abiraterona, apalutamida, enzalutamida ou darolutamida — para doença sensível à castração ou resistente a ela',
+      'Amostra de tecido tumoral disponível e adequada para determinar o status do biomarcador',
+      'ECOG 0 ou 1',
+      'Glicemia de jejum abaixo de 100 mg/dL e hemoglobina glicada abaixo de 5,7%',
+    ],
+    criterios_exclusao: [
+      'Diabetes melito tipo 1 ou tipo 2',
+      'Presença de metástase hepática',
+      'Tratamento prévio com qualquer inibidor de PI3K, AKT ou mTOR, ou com qualquer agente que iniba essa via',
+      'Quimioterapia citotóxica ou hormonioterapia nova — como degradador do receptor androgênico ou inibidor de CYP11 — para a doença resistente à castração metastática. São permitidos: docetaxel prévio na doença sensível à castração sem progressão durante ou em até 6 meses do fim; docetaxel adjuvante ou neoadjuvante sem progressão durante ou em até 12 meses do fim; sipuleucel-T com última dose há mais de 28 dias; inibidor de PARP com última dose há mais de 14 dias; e um radioligante ou radiofármaco prévio, como radioligante de PSMA ou rádio-223, com última dose há mais de 8 semanas',
+      'Outra terapia antineoplásica concomitante além da privação androgênica; ou inibidor forte de CYP2C8, indutor forte ou moderado de CYP2C8, ou indutor forte de CYP3A4 na semana anterior ou em 5 meias-vidas, o que for maior',
+      'Transfusão de hemoderivado nos 28 dias anteriores à inclusão, ou feita com o único propósito de tornar o candidato elegível',
+    ],
+    centros: [
+      'Santa Casa de Misericórdia de Porto Alegre — Porto Alegre / RS',
+      'CEPHO – Centro de Estudos e Pesquisas em Hematologia e Oncologia — Santo André / SP',
+      'Hospital de Base / FAMERP — São José do Rio Preto / SP',
+      'ICESP – Instituto do Câncer do Estado de São Paulo — São Paulo / SP',
+    ],
+    estados: ['RS', 'SP'],
+    cidades: ['Porto Alegre', 'Santo André', 'São José do Rio Preto', 'São Paulo'],
+    patrocinador: 'Hoffmann-La Roche',
+    fonte_url: 'https://clinicaltrials.gov/study/NCT07287150',
+    contato_url: 'https://clinicaltrials.gov/study/NCT07287150',
+    data_atualizacao: '2026-07-06',
+  },
+
+  {
+    // ⚠ RASCUNHO — confiança media. É o terceiro estudo do programa IZABRIGHT que entra no Trial
+    //   Matcher, ao lado dos de mama e pulmão — o nome do estudo está só no título oficial, não no
+    //   campo de acrônimo. O registro é enxuto: os cinco braços aparecem sem descrição, não há
+    //   doses e não se diz qual esquema de platina cabe a cada braço nem o que separa a fase 2 da
+    //   fase 3. As exclusões de conjugado anti-EGFR ou anti-HER3 e de inibidor de topoisomerase 1
+    //   sugerem a natureza do iza-bren, mas o registro não a descreve. O texto avisa que outros
+    //   critérios de protocolo se aplicam.
+    id: 'izabright-bladder01',
+    nome: 'IZABRIGHT-Bladder01',
+    titulo: 'Izalontamabe brengitecana vs quimioterapia com platina no carcinoma urotelial metastático após imunoterapia',
+    nct: 'NCT07106762',
+    fase: 'II/III',
+    status: 'Recrutando',
+    neoplasia: 'urotelial',
+    neoplasia_label: 'Bexiga / Urotelial',
+    subtipo: 'Carcinoma urotelial avançado ou metastático já exposto a anti-PD-1 ou anti-PD-L1',
+    linha_terapeutica: '2ª linha',
+    cenario_clinico: 'Progressão durante ou após tratamento com anti-PD-(L)1, em paciente ainda elegível a quimioterapia com platina',
+    modalidade: ['ADC', 'quimioterapia'],
+    biomarcadores: [],
+    testes_fornecidos: '',
+    intervencao: 'Izalontamabe brengitecana (iza-bren)',
+    comparador: 'Quimioterapia à base de platina — cisplatina ou carboplatina com gencitabina',
+    racional: 'O estudo compara o izalontamabe brengitecana com quimioterapia à base de platina no carcinoma urotelial metastático que progrediu durante ou após tratamento baseado em imunoterapia. É de fase 2/3, randomizado e aberto.',
+    criterios_principais: [
+      'Carcinoma urotelial avançado confirmado por histologia',
+      'Elegibilidade para receber quimioterapia à base de platina',
+      'Exposição prévia a anti-PD-1 ou anti-PD-L1 no cenário localmente avançado ou metastático, seja em combinação com outra terapia sistêmica, seja em sequência a ela',
+      'Quem só foi tratado no cenário perioperatório precisa ter recidivado em até 12 meses da última dose',
+      'Pelo menos 1 lesão mensurável pelo RECIST 1.1',
+      'ECOG 0 ou 1',
+    ],
+    criterios_exclusao: [
+      'Quimioterapia à base de platina nos últimos 12 meses',
+      'Mais de 2 esquemas prévios, em qualquer cenário',
+      'Conjugado anticorpo-fármaco prévio dirigido a EGFR ou a HER3',
+      'Terapia prévia com inibidor de topoisomerase 1',
+      'Metástase cerebral ativa e não tratada',
+    ],
+    centros: ['Salvador / BA', 'Rio de Janeiro / RJ', 'Porto Alegre / RS', 'São Paulo / SP'],
+    estados: ['BA', 'RJ', 'RS', 'SP'],
+    cidades: ['Porto Alegre', 'Rio de Janeiro', 'Salvador', 'São Paulo'],
+    patrocinador: 'Bristol-Myers Squibb',
+    fonte_url: 'https://clinicaltrials.gov/study/NCT07106762',
+    contato_url: 'https://clinicaltrials.gov/study/NCT07106762',
+    data_atualizacao: '2026-07-29',
+  },
+
+  {
+    // ⚠ RASCUNHO — confiança alta. Registro raro no lote por descrever mecanismo e doses de todos
+    //   os fármacos, inclusive dos comparadores. Uma exigência prática decisiva: só entra quem é
+    //   elegível a pelo menos um dos esquemas padrão pelas regras locais, e o braço comparador
+    //   inclui enfortumabe vedotina com pembrolizumabe. Toxicidades de tratamento prévio precisam
+    //   estar em grau 1 ou menor, com exceção de alopecia e de grau 2 estável e inalterado há pelo
+    //   menos 3 meses. Também exclui outra neoplasia primária sem 2 anos livres de doença.
+    id: 'tu-04',
+    nome: 'TU-04',
+    titulo: 'Datopotamabe deruxtecana com rilvegostomigue como adjuvância vs tratamento padrão no carcinoma urotelial músculo-invasivo de alto risco',
+    nct: 'NCT07720284',
+    fase: 'III',
+    status: 'Recrutando',
+    neoplasia: 'urotelial',
+    neoplasia_label: 'Bexiga / Urotelial',
+    subtipo: 'Carcinoma urotelial músculo-invasivo de bexiga ou trato urinário alto, de alto risco de recidiva após ressecção radical R0',
+    linha_terapeutica: 'Perioperatório',
+    cenario_clinico: 'Adjuvância de 28 a 120 dias após ressecção radical com margens livres e sem doença residual ou metastática',
+    modalidade: ['ADC', 'imunoterapia', 'combinação'],
+    biomarcadores: [],
+    testes_fornecidos: 'Exige-se amostra tumoral cirúrgica de arquivo disponível antes da randomização para teste central',
+    intervencao: 'Braço 1: datopotamabe deruxtecana 6 mg/kg IV a cada 3 semanas por 9 ciclos, extensível a até 17 ciclos ou 1 ano conforme tolerabilidade, com rilvegostomigue 750 mg IV a cada 3 semanas por até 17 ciclos ou 1 ano. Braço 2: datopotamabe deruxtecana em monoterapia, no mesmo esquema',
+    comparador: 'Tratamento padrão à escolha: nivolumabe 240 mg IV a cada 2 semanas ou 480 mg a cada 4 semanas por até 1 ano; ou durvalumabe 1500 mg IV a cada 4 semanas por 8 ciclos; ou enfortumabe vedotina 1,25 mg/kg nos dias 1 e 8 a cada 3 semanas por até 6 ciclos com pembrolizumabe 200 mg IV a cada 3 semanas por até 14 ciclos ou 400 mg a cada 6 semanas por até 7 ciclos',
+    racional: 'O datopotamabe deruxtecana é um conjugado de anticorpo anti-TROP2 com um inibidor de topoisomerase I, e o rilvegostomigue é um anticorpo biespecífico que liga TIGIT e PD-1, bloqueando os dois ligantes imunossupressores. O estudo avalia eficácia e segurança dessa dupla, e do conjugado isolado, como adjuvância em pacientes com doença residual de alto risco após ressecção radical, comparando ao tratamento padrão.',
+    criterios_principais: [
+      'Idade acima de 18 anos na assinatura do consentimento',
+      'Carcinoma urotelial músculo-invasivo de bexiga ou do trato urinário alto confirmado por histologia',
+      'Ressecção radical R0 concluída de 28 a 120 dias antes da randomização, com margens negativas e sem doença residual ou metastática',
+      'Alto risco de recidiva pela patologia: sem terapia neoadjuvante, estádio pT3-pT4a N0 ou qualquer pT com pN+; ou, com neoadjuvância concluída, ypT2-ypT4a ou qualquer ypT com ypN+',
+      'Sem evidência de doença na triagem, e expectativa de vida acima de 12 semanas',
+      'ECOG 0 ou 1, sem piora nas 2 semanas anteriores à randomização',
+      'Amostra tumoral cirúrgica de arquivo disponível antes da randomização para teste central',
+      'Função orgânica e medular adequadas nos 28 dias anteriores à randomização',
+    ],
+    criterios_exclusao: [
+      'Exposição prévia a terapia dirigida a TROP2, a outro conjugado com deruxtecana, a vacina antineoplásica terapêutica, a anti-TIGIT, ou a qualquer terapia que atue sobre receptores ou mecanismos imunorreguladores',
+      'Qualquer terapia sistêmica ou radioterapia adjuvante após a cirurgia para o carcinoma urotelial; cistectomia parcial no tumor primário de bexiga ou nefrectomia parcial; ou tumor com componente neuroendócrino de alto grau predominante ou puro',
+      'História de doença pulmonar intersticial ou pneumonite não infecciosa, inclusive actínica, que tenha exigido corticoide; doença intersticial atual ou suspeita não descartável por imagem na triagem; ou comprometimento pulmonar grave',
+      'Doença corneana clinicamente significativa; QTcF médio de repouso acima de 470 ms em ambos os sexos, medido em ECG de 12 derivações em triplicata; ou cardiopatia não controlada ou significativa',
+      'Doença autoimune ou inflamatória, ativa ou documentada no passado, que tenha exigido tratamento sistêmico nos últimos 5 anos; ou imunossupressor nos 14 dias anteriores à randomização',
+      'Hepatite B ou C ativa ou não controlada; HIV sem bom controle; ou outra infecção ativa ou não controlada, incluindo tuberculose em tratamento sistêmico não resolvida até a randomização',
+    ],
+    centros: ['Salvador / BA', 'Curitiba / PR', 'Barretos / SP', 'São Paulo / SP'],
+    estados: ['BA', 'PR', 'SP'],
+    cidades: ['Barretos', 'Curitiba', 'Salvador', 'São Paulo'],
+    patrocinador: 'AstraZeneca',
+    fonte_url: 'https://clinicaltrials.gov/study/NCT07720284',
+    contato_url: 'https://clinicaltrials.gov/study/NCT07720284',
+    data_atualizacao: '2026-07-22',
+  },
+
+  {
+    // ⚠ RASCUNHO — confiança alta. É um estudo de fase IIIb de braço único, feito para reproduzir o
+    //   NIAGARA em condições de prática clínica — não há randomização nem comparador. O registro
+    //   não traz doses, número de ciclos, limiares de função orgânica nem exigência de função
+    //   renal, o que é notável num estudo cujos dois esquemas dependem de cisplatina. Vale conferir
+    //   com o centro qual coorte está aberta. O BCG prévio explicitamente não exclui.
+    id: 'niagara-2',
+    nome: 'NIAGARA-2',
+    titulo: 'Durvalumabe perioperatório com ddMVAC ou gencitabina e cisplatina neoadjuvantes no câncer de bexiga músculo-invasivo',
+    nct: 'NCT06960577',
+    fase: 'III',
+    status: 'Recrutando',
+    neoplasia: 'urotelial',
+    neoplasia_label: 'Bexiga / Urotelial',
+    subtipo: 'Câncer de bexiga músculo-invasivo de histologia transicional ou mista, estádio T2-T4aN0/1M0 ou T1N1M0',
+    linha_terapeutica: 'Perioperatório',
+    cenario_clinico: 'Neoadjuvância antes de cistectomia radical já programada, sem quimioterapia ou imunoterapia sistêmica prévia',
+    modalidade: ['imunoterapia', 'quimioterapia', 'combinação'],
+    biomarcadores: [],
+    testes_fornecidos: '',
+    intervencao: 'Durvalumabe, anticorpo anti-PD-L1, no perioperatório, combinado à quimioterapia neoadjuvante com platina escolhida pelo investigador: ddMVAC (metotrexato, vimblastina, doxorrubicina e cisplatina) ou gencitabina com cisplatina',
+    comparador: '— (braço único, com duas coortes definidas pela quimioterapia escolhida)',
+    racional: 'O estudo amplia os dados do NIAGARA de fase III investigando o durvalumabe perioperatório combinado à quimioterapia neoadjuvante à base de cisplatina escolhida pelo investigador, num contexto de prática clínica. As duas coortes se diferenciam apenas pelo esquema de quimioterapia — ddMVAC ou gencitabina com cisplatina.',
+    criterios_principais: [
+      'Câncer de bexiga em estádio clínico T2-T4a N0/N1 M0, ou T1 N1 M0, com histologia transicional ou mista',
+      'Cistectomia radical já programada',
+      'Nenhuma quimioterapia ou imunoterapia sistêmica prévia para o câncer de bexiga músculo-invasivo',
+      'ECOG 0 ou 1',
+      'Expectativa de vida de pelo menos 12 semanas na primeira dose',
+    ],
+    criterios_exclusao: [
+      'Evidência de doença linfonodal N2 ou N3, ou de doença metastática M1',
+      'Tumor inoperável, com fixação à parede pélvica ao exame clínico',
+      'Exposição prévia a terapia imunomediada, incluindo anticorpos anti-CTLA-4, anti-PD-1, anti-PD-L1 e anti-PD-L2 — o BCG não exclui',
+      'Imunossupressor em uso atual ou nos 14 dias anteriores à primeira dose de durvalumabe',
+      'Qualquer medicação concomitante contraindicada à quimioterapia escolhida, seja ddMVAC ou gencitabina com cisplatina',
+      'Doença intercorrente não controlada',
+    ],
+    centros: ['Porto Alegre / RS', 'Barretos / SP', 'Santo André / SP', 'São Paulo / SP'],
+    estados: ['RS', 'SP'],
+    cidades: ['Barretos', 'Porto Alegre', 'Santo André', 'São Paulo'],
+    patrocinador: 'AstraZeneca',
+    fonte_url: 'https://clinicaltrials.gov/study/NCT06960577',
+    contato_url: 'https://clinicaltrials.gov/study/NCT06960577',
+    data_atualizacao: '2026-08-04',
+  },
+
+  {
+    // ⚠ RASCUNHO — confiança alta. O registro afirma que as duas listas são parciais e não traz
+    //   performance status nem limiares de função orgânica — o que chama atenção num estudo em que
+    //   a oximetria de repouso é critério de exclusão. Os quatro centros brasileiros ficam fora do
+    //   eixo Rio-São Paulo, o que é incomum no lote. É o segundo estudo de belzutifano do Trial
+    //   Matcher, ao lado do LITESPARK-033.
+    id: 'litespark-034',
+    nome: 'LITESPARK-034',
+    titulo: 'Belzutifano + zanzalintinibe vs belzutifano + placebo no carcinoma de células renais avançado após anti-PD-1/L1 e inibidor de VEGF',
+    nct: 'NCT07489495',
+    fase: 'III',
+    status: 'Recrutando',
+    neoplasia: 'rim',
+    neoplasia_label: 'Rim · ccRCC',
+    subtipo: 'Carcinoma de células renais irressecável e avançado com componente de células claras, com ou sem características sarcomatoides — estádio IV pelo AJCC 8ª edição',
+    linha_terapeutica: '3ª+ linha',
+    cenario_clinico: 'Progressão durante ou após anti-PD-1/L1 e inibidor de tirosina-quinase de VEGF, em sequência ou em combinação',
+    modalidade: ['terapia-alvo', 'combinação', 'anti-angiogênico'],
+    biomarcadores: [],
+    testes_fornecidos: '',
+    intervencao: 'Belzutifano 120 mg com zanzalintinibe 60 mg, ambos orais, uma vez ao dia, por cerca de 24 meses',
+    comparador: 'Belzutifano 120 mg com placebo correspondente ao zanzalintinibe, uma vez ao dia, por cerca de 24 meses',
+    racional: 'O belzutifano é uma terapia-alvo já usada como tratamento padrão para parte dos pacientes com carcinoma de células renais. O estudo investiga se acrescentar o zanzalintinibe, outra terapia-alvo, beneficia mais pessoas do que o belzutifano isolado — o objetivo é comparar a sobrevida global e o tempo sem piora da doença entre os dois braços.',
+    criterios_principais: [
+      'Carcinoma de células renais irressecável e avançado confirmado por histologia, com componente de células claras, com ou sem características sarcomatoides — estádio IV pelo American Joint Committee on Cancer, 8ª edição',
+      'Doença mensurável pelo RECIST 1.1',
+      'No máximo 3 esquemas sistêmicos prévios para o carcinoma renal, com apenas 1 terapia anti-PD-1 ou anti-PD-L1 entre eles',
+      'Progressão durante ou após terapia anti-PD-1/L1 e inibidor de tirosina-quinase de VEGF, recebidos em sequência ou em combinação',
+    ],
+    criterios_exclusao: [
+      'Oximetria de pulso abaixo de 92% em repouso, necessidade de oxigênio suplementar intermitente, ou uso crônico de oxigênio suplementar; ou pneumonite ou doença pulmonar intersticial em curso',
+      'Doença cardiovascular clinicamente significativa nos 12 meses anteriores à primeira dose, ou fração de ejeção do ventrículo esquerdo ≤ 50% ou abaixo do limite normal do laboratório local, por ventriculografia radioisotópica ou ecocardiograma',
+      'Trombose venosa profunda nos 3 meses anteriores à randomização, salvo se estável, assintomática e em anticoagulação terapêutica há pelo menos 4 semanas',
+      'Cirurgia de grande porte nas 8 semanas anteriores à randomização, recuperação incompleta dela ou complicações cirúrgicas em curso',
+      'HIV, hepatite B ou hepatite C',
+      'Outra neoplasia conhecida em progressão ou que tenha exigido tratamento ativo nos últimos 3 anos, ou transplante prévio de órgão sólido',
+    ],
+    centros: [
+      'CEDOES – Diagnóstico e Pesquisa — Vitória / ES',
+      'ICTR – Instituto do Câncer e Transplante de Curitiba — Curitiba / PR',
+      'Liga Norte-Riograndense Contra o Câncer — Natal / RN',
+      'Hospital de Base / FAMERP — São José do Rio Preto / SP',
+    ],
+    estados: ['ES', 'PR', 'RN', 'SP'],
+    cidades: ['Curitiba', 'Natal', 'São José do Rio Preto', 'Vitória'],
+    patrocinador: 'Merck Sharp & Dohme LLC',
+    fonte_url: 'https://clinicaltrials.gov/study/NCT07489495',
+    contato_url: 'https://clinicaltrials.gov/study/NCT07489495',
+    data_atualizacao: '2026-07-27',
+  },
+
+  {
+    // ⚠ RASCUNHO — confiança alta. As duas coortes servem a pacientes bem diferentes: a A compara
+    //   vacina somada ao BCG contra BCG isolado, e a B é para quem não pode ou não quer terapia
+    //   intravesical, recebendo só a vacina. Vale confirmar com o centro qual está aberta. Regra
+    //   que muda o encaminhamento: na coorte A o HIV é critério de exclusão, enquanto na coorte B
+    //   ele é aceito se bem controlado — provavelmente pelo BCG ser um bacilo vivo atenuado. O
+    //   registro afirma que as listas são parciais e não traz performance status nem função
+    //   orgânica.
+    id: 'interpath-011',
+    nome: 'INTerpath-011',
+    titulo: 'Intismerana autógena, vacina individualizada, com BCG ou isolada vs BCG no câncer de bexiga não músculo-invasivo de alto risco',
+    nct: 'NCT06833073',
+    fase: 'II',
+    status: 'Recrutando',
+    neoplasia: 'urotelial',
+    neoplasia_label: 'Bexiga / Urotelial',
+    subtipo: 'Carcinoma urotelial de bexiga não músculo-invasivo de alto risco — Ta de alto grau, T1 e/ou carcinoma in situ',
+    linha_terapeutica: 'Conforme protocolo',
+    cenario_clinico: 'Após ressecção transuretral feita nas 12 semanas anteriores, em paciente virgem de BCG (coorte A) ou inelegível a terapia intravesical (coorte B)',
+    modalidade: ['vacina', 'imunoterapia', 'combinação'],
+    biomarcadores: [],
+    testes_fornecidos: 'A histologia de alto risco precisa ser confirmada por revisão central independente cega',
+    intervencao: 'Intismerana autógena (V940) 1 mg por injeção intramuscular a cada 3 semanas, em 9 doses, associada ao BCG na coorte A ou isolada na coorte B',
+    comparador: 'BCG TICE 50 mg intravesical, semanal por 6 semanas e depois semanal nas semanas 13 a 15, 25 a 27, 49 a 51 e 73 a 75 (apenas na coorte A)',
+    racional: 'O tratamento padrão do câncer de bexiga não músculo-invasivo de alto risco é a ressecção transuretral seguida de BCG, mas o BCG não funciona para todos. A intismerana autógena é desenhada para ajudar o sistema imune de cada pessoa a atacar o seu próprio câncer. O estudo avalia se acrescentá-la ao BCG prolonga a vida e o tempo sem crescimento, disseminação ou recidiva, em comparação com o BCG isolado.',
+    criterios_principais: [
+      'Ressecção transuretral de tumor de bexiga realizada nas 12 semanas anteriores à randomização, com histologia de alto risco não músculo-invasiva confirmada por revisão central independente cega',
+      'Coorte A: carcinoma urotelial de bexiga não músculo-invasivo de alto risco — Ta de alto grau, T1 e/ou carcinoma in situ',
+      'Coorte A: virgem de BCG, isto é, nunca ter recebido BCG, ou tê-lo recebido mais de 2 anos antes da recidiva de alto risco, com resposta completa documentada durante esses 2 anos',
+      'Coorte B: carcinoma in situ com ou sem doença papilífera não músculo-invasiva, em quem é inelegível a qualquer terapia intravesical ou a recusa',
+      'Coorte B: virgem de BCG pela mesma definição, ou exposto ao BCG sem ter recebido a dose mínima prevista no protocolo e com recidiva de alto risco em até 2 anos da última dose',
+      'Coorte B: HIV é aceito desde que bem controlado com antirretroviral',
+    ],
+    criterios_exclusao: [
+      'História ou doença concomitante localmente avançada (T2, T3 ou T4) ou metastática; ou carcinoma urotelial extravesical não músculo-invasivo concomitante — uretra, ureter ou pelve renal — ou com recidiva nos últimos 2 anos, com algumas exceções',
+      'Tratamento prévio com vacina antineoplásica, ou qualquer terapia antineoplásica sistêmica, inclusive experimental, nas 4 semanas anteriores à randomização',
+      'Imunodeficiência, corticoterapia sistêmica crônica, ou doença autoimune ativa que tenha exigido tratamento sistêmico nos últimos 2 anos',
+      'Contraindicação a contraste intravenoso e a gadolínio, ou impossibilidade de fazer urotomografia ou urorressonância',
+      'Infarto do miocárdio nos 6 meses anteriores à randomização, ou outra neoplasia conhecida em progressão ou tratada nos últimos 3 anos',
+      'Coorte A: tuberculose ativa ou história conhecida de HIV. Coorte B: HIV com história de sarcoma de Kaposi ou de doença de Castleman multicêntrica',
+    ],
+    centros: [
+      'ICTR – Instituto do Câncer e Transplante de Curitiba — Curitiba / PR',
+      'Hospital de Clínicas de Passo Fundo — Passo Fundo / RS',
+      'Hospital de Amor (Fundação Pio XII) — Barretos / SP',
+      'Hospital de Base / FAMERP — São José do Rio Preto / SP',
+    ],
+    estados: ['PR', 'RS', 'SP'],
+    cidades: ['Barretos', 'Curitiba', 'Passo Fundo', 'São José do Rio Preto'],
+    patrocinador: 'Merck Sharp & Dohme LLC',
+    fonte_url: 'https://clinicaltrials.gov/study/NCT06833073',
+    contato_url: 'https://clinicaltrials.gov/study/NCT06833073',
+    data_atualizacao: '2026-07-02',
+  },
+
+  {
+    // ⚠ RASCUNHO — confiança media. O registro não diz o que são o AZD0516 nem o AZD9574 — a
+    //   exclusão de modalidade prévia dirigida a STEAP2 aponta o alvo do primeiro, mas isso não
+    //   está afirmado. Não há doses nem descrição dos módulos. Duas exclusões redigidas de forma
+    //   ampla e sem ressalva, que valem confirmar com o centro: 'história de neoplasia', sem
+    //   exceção para tumor de pele ou carcinoma in situ, e 'doença intercorrente não controlada nos
+    //   últimos 12 meses'.
+    id: 'seacliff',
+    nome: 'SEACLIFF',
+    titulo: 'AZD0516 isolado ou combinado ao AZD9574 no câncer de próstata metastático resistente à castração',
+    nct: 'NCT07181161',
+    fase: 'Ib/II',
+    status: 'Recrutando',
+    neoplasia: 'prostata',
+    neoplasia_label: 'Próstata',
+    subtipo: 'Adenocarcinoma de próstata metastático resistente à castração — características neuroendócrinas focais de alto grau são permitidas',
+    linha_terapeutica: 'Avançado / metastático',
+    cenario_clinico: 'Progressão documentada da doença resistente à castração por PSA, por imagem em partes moles ou por novas lesões ósseas',
+    modalidade: ['terapia-alvo', 'combinação'],
+    biomarcadores: [],
+    testes_fornecidos: 'É obrigatório fornecer amostra tumoral em parafina, de arquivo ou nova, na avaliação basal',
+    intervencao: 'AZD0516 por infusão intravenosa, isolado (braço 1) ou combinado ao AZD9574 por via oral (braço 2)',
+    comparador: '— (braço único)',
+    racional: 'Estudo modular de fase I/IIa, aberto e multicêntrico, que avalia segurança, tolerabilidade, farmacocinética e eficácia preliminar do AZD0516 em monoterapia e combinado a outros agentes antineoplásicos no câncer de próstata metastático.',
+    criterios_principais: [
+      'Adenocarcinoma de próstata metastático confirmado por histologia ou citologia, com evidência atual documentada de doença metastática — características neuroendócrinas focais de alto grau são permitidas',
+      'PSA mensurável ≥ 1 ng/mL',
+      'Castração cirúrgica ou medicamentosa com testosterona sérica ≤ 50 ng/dL nos 28 dias anteriores à alocação; quem não fez orquiectomia bilateral precisa ter iniciado privação androgênica com modulador de GnRH pelo menos 2 semanas antes do consentimento e mantê-la durante o estudo',
+      'Progressão documentada da doença resistente à castração na triagem por pelo menos um critério: 3 elevações consecutivas de PSA separadas por pelo menos 1 semana, com valor de triagem ≥ 1 ng/mL; progressão radiológica em partes moles pelo RECIST 1.1; ou 2 ou mais lesões ósseas novas na cintilografia pelo PCWG3',
+      'ECOG 0 ou 1 e expectativa de vida de pelo menos 12 semanas',
+      'Função orgânica e medular adequadas sem transfusão nem suporte com fator de crescimento nos 21 dias anteriores à primeira dose',
+      'Amostra tumoral em parafina, de arquivo ou nova, obrigatória na avaliação basal',
+    ],
+    criterios_exclusao: [
+      'Tratamento prévio com modalidade dirigida a STEAP2, com quimioterápico inibidor de topoisomerase ou de enzimas metabólicas',
+      'Compressão medular pelo câncer; metástase cerebral, salvo se assintomática, tratada, estável e sem corticoide contínuo acima de 10 mg de prednisona por dia há pelo menos 4 semanas; ou história de carcinomatose leptomeníngea',
+      'Toxicidade de grau 2 ou maior não resolvida de terapia anterior, excluídos vitiligo, alopecia e endocrinopatia controlada com reposição hormonal',
+      'Doença cardiovascular: história de arritmia, hipertensão não controlada, hipotensão sintomática, história de problema de perfusão cerebral, insuficiência cardíaca sintomática, cardiomiopatia prévia ou atual, ou valvopatia grave',
+      'Doença pulmonar intersticial ou pneumonite não infecciosa prévia; comprometimento pulmonar grave; ou doença intercorrente não controlada nos últimos 12 meses',
+      'Síndrome mielodisplásica ou leucemia mieloide aguda, ou achados que as sugiram; predisposição conhecida a sangramento; história de neoplasia; ou infecção ativa, incluindo tuberculose, hepatite B, hepatite C ou HIV',
+    ],
+    centros: ['Porto Alegre / RS', 'Barretos / SP', 'São Paulo / SP'],
+    estados: ['RS', 'SP'],
+    cidades: ['Barretos', 'Porto Alegre', 'São Paulo'],
+    patrocinador: 'AstraZeneca',
+    fonte_url: 'https://clinicaltrials.gov/study/NCT07181161',
+    contato_url: 'https://clinicaltrials.gov/study/NCT07181161',
+    data_atualizacao: '2026-07-15',
+  },
+
+  {
+    // ⚠ RASCUNHO — confiança alta. Janela estreita de recrutamento: a privação androgênica precisa
+    //   ter começado há no máximo 90 dias e o PSA não pode ter caído abaixo de 0,2 ng/mL — na
+    //   prática, é preciso identificar o paciente logo no início do tratamento. O registro avisa
+    //   que outros critérios podem se aplicar e não traz performance status detalhado além do ECOG,
+    //   função orgânica nem o mecanismo da luxdegalutamida. Só 2 centros, em Fortaleza e São Paulo.
+    id: 'jsb462-mhspc',
+    nome: 'JSB462 mHSPC',
+    titulo: 'Luxdegalutamida (JSB462) em duas doses com abiraterona vs inibidor do receptor androgênico no câncer de próstata metastático sensível à castração de alto volume',
+    nct: 'NCT06991556',
+    fase: 'II',
+    status: 'Recrutando',
+    neoplasia: 'prostata',
+    neoplasia_label: 'Próstata',
+    subtipo: 'Adenocarcinoma de próstata metastático sensível à castração de alto volume — histologia mista com componente neuroendócrino não entra',
+    linha_terapeutica: '1ª linha',
+    cenario_clinico: 'Doença metastática de alto volume, com privação androgênica iniciada há no máximo 90 dias e PSA ainda acima de 0,2 ng/mL',
+    modalidade: ['terapia-alvo', 'hormonioterapia', 'combinação'],
+    biomarcadores: [],
+    testes_fornecidos: '',
+    intervencao: 'Luxdegalutamida (JSB462) oral, 100 mg/dia (braço 1) ou 300 mg/dia (braço 2), com abiraterona 1000 mg/dia, de forma contínua até progressão pelo RECIST 1.1 modificado pelo PCWG3 ou toxicidade inaceitável',
+    comparador: 'Abiraterona 1000 mg/dia ou enzalutamida 160 mg/dia, por via oral, de forma contínua',
+    racional: 'O estudo avalia eficácia e segurança da luxdegalutamida em duas doses combinada à abiraterona, comparada a um inibidor da via do receptor androgênico isolado — abiraterona ou enzalutamida —, no câncer de próstata metastático sensível à castração. O objetivo declarado é também selecionar a dose recomendada da combinação para a fase III, com base no conjunto dos dados de eficácia, segurança, tolerabilidade e farmacocinética.',
+    criterios_principais: [
+      'Adenocarcinoma de próstata confirmado por histologia — histologia mista com componente neuroendócrino não é elegível',
+      'Doença metastática sensível à castração de alto volume: pelo menos 1 lesão visceral não nodal e/ou pelo menos 4 lesões ósseas, com ao menos uma fora da coluna vertebral e da pelve, em tomografia, ressonância ou cintilografia avaliadas localmente nos 28 dias anteriores à randomização',
+      'Testosterona sérica ou plasmática em nível de castração, abaixo de 50 ng/dL',
+      'Privação androgênica em curso por no máximo 90 dias antes da randomização — por orquiectomia prévia e/ou análogo ou antagonista de GnRH — desde que o PSA ainda não tenha chegado a menos de 0,2 ng/mL',
+      'ECOG ≤ 2',
+    ],
+    criterios_exclusao: [
+      'Exposição prévia a inibidor de segunda geração da via do receptor androgênico — enzalutamida, darolutamida, apalutamida ou abiraterona — para doença avançada ou metastática',
+      'Exposição prévia a esses inibidores, a taxano de até 6 ciclos ou a radioligante no contexto neoadjuvante ou adjuvante de doença localizada só é aceita se a última dose foi há mais de 12 meses da randomização',
+      'Inibidor de primeira geração, como a bicalutamida, no início da privação androgênica só é aceito se usado por no máximo 14 dias e com a última dose pelo menos 7 dias antes da randomização',
+      'Recidiva apenas bioquímica, ou ausência de doença metastática comprovada por tomografia, ressonância ou cintilografia',
+    ],
+    centros: ['Fortaleza / CE', 'São Paulo / SP'],
+    estados: ['CE', 'SP'],
+    cidades: ['Fortaleza', 'São Paulo'],
+    patrocinador: 'Novartis Pharmaceuticals',
+    fonte_url: 'https://clinicaltrials.gov/study/NCT06991556',
+    contato_url: 'https://clinicaltrials.gov/study/NCT06991556',
+    data_atualizacao: '2026-06-10',
+  },
+
+  {
+    // ⚠ RASCUNHO — confiança media. O registro não diz o que é o tulmimetostate; a exclusão de
+    //   qualquer inibidor prévio de PRC2, 'incluindo inibidores de EZH2', aponta a classe, mas não
+    //   está afirmado — confirmar com o centro. As regras sobre inibidor prévio do receptor
+    //   androgênico são as mais intrincadas do lote e mudam entre fase I e fase II; vale ler o
+    //   critério inteiro antes de encaminhar. Centro único, em Porto Alegre. O registro avisa que
+    //   outros critérios podem se aplicar.
+    id: 'tulmistar-02',
+    nome: 'TulmiSTAR-02',
+    titulo: 'Tulmimetostate com darolutamida ou abiraterona, e depois tulmimetostate + darolutamida vs darolutamida, no câncer de próstata metastático sensível à castração',
+    nct: 'NCT07190300',
+    fase: 'Ib/II',
+    status: 'Recrutando',
+    neoplasia: 'prostata',
+    neoplasia_label: 'Próstata',
+    subtipo: 'Câncer de próstata metastático sensível à castração, de novo ou recorrente, sem características neuroendócrinas ou de pequenas células',
+    linha_terapeutica: '1ª linha',
+    cenario_clinico: 'Privação androgênica iniciada entre 1 e 12 meses antes da entrada, com doença óssea, visceral ou ambas',
+    modalidade: ['terapia-alvo', 'hormonioterapia', 'combinação'],
+    biomarcadores: [],
+    testes_fornecidos: '',
+    intervencao: 'Fase I: tulmimetostate (DZR123) oral diário em doses escalonadas, com darolutamida 600 mg duas vezes ao dia (grupo A) ou com abiraterona 1000 mg/dia (grupo B). Fase II: tulmimetostate em duas doses, cada uma com darolutamida 600 mg duas vezes ao dia',
+    comparador: 'Darolutamida 600 mg por via oral duas vezes ao dia, isolada (braço 3 da fase II)',
+    racional: 'O estudo avalia segurança, tolerabilidade e eficácia de duas combinações de tulmimetostate no câncer de próstata metastático sensível à castração, de novo ou recorrente. A fase I escalona a dose com darolutamida ou com abiraterona; a fase II compara duas doses do fármaco somadas à darolutamida com a darolutamida isolada.',
+    criterios_principais: [
+      'Homem adulto a partir de 18 anos com doença metastática sensível à castração, de novo ou recorrente, sem características neuroendócrinas ou de pequenas células — lesões ósseas, em partes moles ou viscerais, ou ambas',
+      'Testosterona em nível de castração, ≤ 50 ng/dL',
+      'Privação androgênica iniciada há pelo menos 1 mês, isto é, 28 dias, e no máximo 12 meses antes da entrada, com disposição de mantê-la durante o tratamento',
+      'ECOG 0 a 2, e função medular e orgânica adequadas',
+      'Taxano prévio para a doença metastática sensível à castração é permitido desde que não tenha havido progressão nele — na fase II, limitado a 25% dos participantes',
+      'Inibidor da via do receptor androgênico prévio é permitido: em recidiva bioquímica ou tratamento curativo, por qualquer duração, desde que suspenso e sem metástase à imagem convencional na época; na doença metastática, por qualquer duração na fase I e por até 4 meses na fase II, sendo obrigatório suspendê-lo até o D1 do ciclo 1',
+      'Na fase II, quem está em uso de darolutamida não entra; quem está em outro inibidor pode trocar se ainda não progrediu para doença resistente à castração e tem resposta bioquímica subótima ou intolerância, a critério do investigador',
+      'Radioterapia dirigida à próstata ou cirurgia prévias são permitidas — a radioterapia precisa estar concluída antes da entrada e a cirurgia, feita há pelo menos 2 semanas',
+    ],
+    criterios_exclusao: [
+      'Tratamento prévio com qualquer inibidor do complexo repressor Polycomb 2 (PRC2), incluindo inibidores de EZH2, de EZH2/1 ou de EED; ou exposição prévia a radioligante',
+      'Doença resistente à castração, recidiva apenas bioquímica ou doença só por PSA, ou câncer de próstata assintomático sem metástase conhecida, sem necessidade de tratamento e com PSA normal há pelo menos 1 ano',
+      'PSA ≤ 0,5 ng/mL em quem não recebeu inibidor da via do receptor androgênico para a doença metastática, ou PSA ≤ 0,2 ng/mL em quem recebeu ou está recebendo',
+      'Metástase no sistema nervoso central, salvo se já tratada com cirurgia, radioterapia ou radiocirurgia, com o paciente neurologicamente estável e assintomático, sem corticoide para manter a integridade neurológica e com imagem cerebral basal e de seguimento',
+      'Uso concomitante de antiandrogênico de primeira geração, como a bicalutamida — o uso prévio no início da privação androgênica é aceito se durou no máximo 14 dias e a última dose foi há pelo menos 7 dias; cetoconazol sistêmico como tratamento antineoplásico também exclui',
+      'Agente experimental nos 28 dias anteriores ou em 5 meias-vidas, o que for maior; produto fitoterápico que possa reduzir o PSA nas 4 semanas anteriores; ou medicação proibida, como indutor forte de CYP3A4 ou inibidor forte ou moderado de CYP3A4, que não possa ser suspensa a tempo',
+    ],
+    centros: ['Porto Alegre / RS'],
+    estados: ['RS'],
+    cidades: ['Porto Alegre'],
+    patrocinador: 'Novartis Pharmaceuticals',
+    fonte_url: 'https://clinicaltrials.gov/study/NCT07190300',
+    contato_url: 'https://clinicaltrials.gov/study/NCT07190300',
+    data_atualizacao: '2026-06-23',
+  },
+
+  {
+    // ⚠ RASCUNHO — confiança media. É coorte prospectiva de vida real com patrocínio de
+    //   investigador, não ensaio randomizado, embora o registro a marque como fase 2 — entrou pelo
+    //   mesmo critério que você aplicou à radioterapia em dose única do ICESP. Classifiquei em
+    //   'Rim' porque o carcinoma renal de células claras é a manifestação que motiva o belzutifano,
+    //   mas a síndrome atravessa vários sítios: sistema nervoso central, pâncreas, retina,
+    //   suprarrenal e ouvido interno — quem procurar por esses não vai encontrá-la pelo filtro.
+    //   Aceita a partir de 14 anos. Centro único em São Paulo. Um critério de exclusão é subjetivo
+    //   e vale confirmar: 'baixa adesão prevista ou interrupção planejada do belzutifano'.
+    id: 'believe-vhl',
+    nome: 'BELIEVE-VHL',
+    titulo: 'Belzutifano na síndrome de von Hippel-Lindau: coorte prospectiva de efetividade, farmacogenética e farmacoeconomia',
+    nct: 'NCT07167329',
+    fase: 'II',
+    status: 'Recrutando',
+    neoplasia: 'rim',
+    neoplasia_label: 'Rim · von Hippel-Lindau',
+    subtipo: 'Síndrome de von Hippel-Lindau com tumores associados — carcinoma renal de células claras, hemangioblastoma do sistema nervoso central, tumor neuroendócrino pancreático, proliferação angiomatosa retiniana, feocromocitoma ou paraganglioma, e tumor do saco endolinfático',
+    linha_terapeutica: 'Conforme protocolo',
+    cenario_clinico: 'Portador de síndrome de von Hippel-Lindau com lesão ou neoplasia que exija tratamento com belzutifano',
+    modalidade: ['terapia-alvo'],
+    biomarcadores: ['VHL'],
+    testes_fornecidos: 'Exige-se confirmação clínica ou genética da síndrome de von Hippel-Lindau',
+    intervencao: 'Belzutifano oral, inibidor de HIF-2α',
+    comparador: '— (braço único)',
+    racional: 'Estudo prospectivo de vida real que avalia os efeitos terapêuticos, os benefícios e os efeitos adversos do belzutifano na síndrome de von Hippel-Lindau, além do tempo até a resposta e até a progressão da doença. Também são avaliados aspectos de farmacogenética e de farmacoeconomia.',
+    criterios_principais: [
+      'Idade a partir de 14 anos',
+      'Confirmação clínica ou genética da síndrome de von Hippel-Lindau',
+      'Tumores associados à síndrome mensuráveis ou em progressão, definidos pelo RECIST 1.1 ou por critérios de imagem específicos da doença',
+      'ECOG 0 a 2',
+      'Função medular, hepática e renal adequadas pelos valores de referência laboratoriais',
+      'Capacidade de engolir medicação oral',
+    ],
+    criterios_exclusao: [
+      'Ausência de diagnóstico confirmado da síndrome de von Hippel-Lindau, ou idade abaixo de 14 anos',
+      'Neoplasia ativa fora do espectro tumoral da síndrome nos últimos 3 anos, exceto carcinoma basocelular ou espinocelular de pele adequadamente tratado, carcinoma in situ de colo do útero, ou outra neoplasia considerada curada há mais de 2 anos',
+      'Hipersensibilidade conhecida ao belzutifano ou a qualquer excipiente; ou uso de medicação concomitante que interaja com ele e altere significativamente sua biodisponibilidade',
+      'Doença cardiovascular grave ou não controlada — angina instável, infarto nos últimos 6 meses, insuficiência cardíaca em tratamento ou hipertensão não controlada; distúrbio hemorrágico significativo, incluindo diátese hemorrágica, trombocitopenia ou coagulopatia',
+      'Doença infecciosa ativa, incluindo HIV, hepatite B ou hepatite C; ou estado de imunossupressão, seja pela doença de base, seja por terapia em curso',
+      'Radioterapia nas 4 semanas anteriores; cirurgia de grande porte, inclusive para tumores da síndrome, nas 4 semanas anteriores, ou necessidade imediata de intervenção cirúrgica; ou má absorção por cirurgia gastrointestinal prévia ou doença gastrointestinal ativa',
+    ],
+    centros: ['A.C.Camargo Cancer Center — São Paulo / SP'],
+    estados: ['SP'],
+    cidades: ['São Paulo'],
+    patrocinador: 'José Claudio Casali da Rocha',
+    fonte_url: 'https://clinicaltrials.gov/study/NCT07167329',
+    contato_url: 'https://clinicaltrials.gov/study/NCT07167329',
+    data_atualizacao: '2025-09-11',
+  },
+
 ];
 
 /* ============================================================

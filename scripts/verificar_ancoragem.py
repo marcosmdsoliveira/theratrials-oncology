@@ -79,8 +79,14 @@ EXPANSOES = {
  "ihq":  ["ihc", "immunohistochemistry"],
  "ish":  ["in situ hybridization"],
  "adc":  ["antibody drug conjugate", "antibody-drug conjugate"],
- "pd-1": ["programmed cell death 1", "programmed cell death protein 1", "pd)-1", "pd-1/l1"],
- "pd-l1":["programmed cell death ligand 1", "programmed death ligand 1", "pd-1/l1", "pd-l1"],
+ # "anti-PD-(L)1" é como o registro diz "anti-PD-1 e anti-PD-L1" de uma vez.
+ "pd-1": ["programmed cell death 1", "programmed cell death protein 1", "pd)-1", "pd-1/l1",
+          "pd-(l)1", "pd(l)1"],
+ "pd-l1":["programmed cell death ligand 1", "programmed death ligand 1", "pd-1/l1", "pd-l1",
+          "pd-(l)1", "pd(l)1"],
+ # O registro escreve "breast cancer gene 1/2 (BRCA 1/2)", cobrindo os dois.
+ "brca1":["brca 1/2", "brca1/2", "breast cancer gene 1"],
+ "brca2":["brca 1/2", "brca1/2", "breast cancer gene 2", "breast cancer gene 1/2"],
  "pd-l2":["programmed cell death ligand 2", "programmed cell death-ligand 2"],
  "cps":  ["combined positive score"],
  "tps":  ["tumor proportion score"],
@@ -131,6 +137,20 @@ EXPANSOES = {
  "gnrh": ["gnrh", "gonadotropin"],
 }
 
+def _sig_norm(s):
+    """Tira a pontuação e o espaço que separam sigla no registro.
+
+    O CT.gov escreve a mesma sigla de muitos jeitos: "anti-PD 1" (espaço),
+    "anti-PD-(L)1" (parêntese para dizer PD-1 e PD-L1 de uma vez) e "BRCA 1/2".
+    Comparar caractere a caractere acusava invenção onde só houve notação
+    diferente. A comparação já era por substring, então tirar espaço e
+    parêntese não afrouxa nada que a substring não afrouxasse antes.
+    """
+    for c in "-/() ":
+        s = s.replace(c, "")
+    return s
+
+
 falhas, ok_total, por_card = [], 0, {}
 for nct, dados in cur.items():
     src = fonte.get(nct, {}).get("elegibilidade", "")
@@ -162,12 +182,12 @@ for nct, dados in cur.items():
             for sig in SIGLAS.findall(crit):
                 n_anc += 1
                 chave_s = dea(sig)
-                s = chave_s.replace("-", "").replace("/", "")
-                corpo = src_d.replace("-", "").replace("/", "")
+                s = _sig_norm(chave_s)
+                corpo = _sig_norm(src_d)
                 achou = s in corpo
                 if not achou:
                     for exp in EXPANSOES.get(chave_s, []):
-                        if dea(exp).replace("-", "").replace("/", "") in corpo:
+                        if _sig_norm(dea(exp)) in corpo:
                             achou = True; break
                 if not achou:
                     ruins.append((chave, sig, crit[:70]))
