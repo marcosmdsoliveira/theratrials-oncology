@@ -5944,7 +5944,7 @@ window.THERA_TRIALS_BR = [
   },
 
   {
-    // ⚠ RASCUNHO — confiança media. MSD, fase 3, 851 participantes, 7 centros no Brasil em 4 estados. O texto de elegibilidade recebido termina nos eventos adversos prévios, sem a seção 
+    // ⚠ RASCUNHO — confiança alta. MSD, fase 3, 851 participantes, 7 centros em 4 estados. Critérios de exclusão transcritos do ClinicalTrials.gov pelo autor em 2026-08-04. Regra de doença intersticial: exclui história que exigiu corticoide, doença atual e suspeita — e, na randomização da manutenção, também quem apresentou pneumonite durante a indução.
     id: 'mk-2870-023',
     nome: 'MK-2870-023',
     titulo: 'Pembrolizumabe com ou sem sacituzumabe tirumotecana de manutenção em NSCLC escamoso metastático de 1ª linha',
@@ -5971,7 +5971,27 @@ window.THERA_TRIALS_BR = [
       'Eventos adversos de terapias prévias recuperados a grau 1 ou menos',
       'HIV permitido se bem controlado em antirretroviral; HBsAg positivo permitido com 4 semanas de antiviral e carga viral indetectável; história de hepatite C permitida com carga viral indetectável na triagem',
     ],
-    criterios_exclusao: [],
+    criterios_exclusao: [
+      'SCLC ou componente de pequenas células em tumor misto',
+      'Doença grave da superfície ocular ou das glândulas de Meibômio, blefarite, ou doença corneana que prejudique a cicatrização',
+      'Doença inflamatória intestinal ativa em imunossupressor, ou história de doença inflamatória intestinal',
+      'Doença cardiovascular ou cerebrovascular significativa e não controlada nos 6 meses anteriores: NYHA III/IV, angina instável, infarto, arritmia sintomática, QTcF acima de 480 ms',
+      'Quimioterapia, terapia-alvo ou biológica prévia para NSCLC metastático — tratamento de doença não metastática é permitido se concluído ao menos 12 meses antes do diagnóstico metastático',
+      'Anti-PD-1, anti-PD-L1, anti-PD-L2 prévio, ou agente dirigido a outro receptor estimulador ou coinibidor de célula T — anti-PD-(L)1 para doença não metastática é permitido se concluído há 12 meses ou mais',
+      'Conjugado anticorpo-fármaco prévio dirigido a TROP2, ou ADC contendo inibidor de topoisomerase I',
+      'Radioterapia pulmonar acima de 30 Gy nos 6 meses anteriores',
+      'Radioterapia nas 2 semanas anteriores, ou toxicidade da radiação que exija corticoide',
+      'História de pneumonite ou doença pulmonar intersticial não infecciosa que exigiu corticoide; doença atual, ou suspeita que não possa ser excluída. Na randomização da manutenção, ter apresentado pneumonite ou doença intersticial durante a indução também exclui',
+      'Indutor ou inibidor forte de CYP3A4 que não possa ser suspenso — washout de 2 semanas antes do sacituzumabe tirumotecana',
+      'Metástase conhecida em sistema nervoso central ou meningite carcinomatosa',
+      'Doença autoimune ativa tratada sistemicamente nos últimos 2 anos — reposição hormonal ou fisiológica é permitida',
+      'Outra neoplasia em progressão ou tratada ativamente nos últimos 3 anos',
+      'Vacina viva ou viva atenuada nos 30 dias anteriores',
+      'Infecção ativa em tratamento sistêmico; HIV recém-diagnosticado, ou com história de sarcoma de Kaposi ou doença de Castleman multicêntrica',
+      'Transplante alogênico de tecido ou órgão sólido',
+      'Recuperação inadequada de cirurgia de grande porte, ou complicação cirúrgica em andamento',
+      'Hipersensibilidade grave (grau 3 ou maior) à intervenção, aos excipientes ou a outra terapia biológica',
+    ],
     centros: [
       'Porto Alegre / RS',
       'Recife / PE',
@@ -6749,7 +6769,7 @@ window.THERA_TRIALS_BR = [
   // ============== NOVOS ESTUDOS (2026-08-04) — RASCUNHO, revisar antes de publicar ==============
 
   {
-    // ⚠ RASCUNHO — confiança media. Daiichi Sankyo, fase 3, 540 participantes, 11 centros no Brasil em 3 estados. Único card de pequenas células deste lote. O registro declara o alvo do 
+    // ⚠ RASCUNHO — confiança alta. Daiichi Sankyo, fase 3, 540 participantes, 11 centros em 3 estados. Critérios de exclusão transcritos do ClinicalTrials.gov pelo autor em 2026-08-04. É o mais restritivo quanto à doença intersticial entre os cards com ADC deste PR: exclui QUALQUER história, independentemente de ter exigido corticoide, e lista os achados de imagem que caracterizam suspeita.
     id: 'ideate-lung02',
     nome: 'IDeate-Lung02',
     titulo: 'Ifinatamabe deruxtecana vs escolha do médico em carcinoma de pequenas células recidivado',
@@ -6777,7 +6797,16 @@ window.THERA_TRIALS_BR = [
       'Sem evidência de doença cerebral ou leptomeníngea por história e exame físico, sem corticoide ou anticonvulsivante e com estado neurológico estável por ao menos 2 semanas',
     ],
     criterios_exclusao: [
-      'Tratamento prévio com orlotamabe, enoblituzumabe ou outro agente dirigido a B7-H3',
+      'Tratamento prévio com orlotamabe, enoblituzumabe ou outro agente dirigido a B7-H3, incluindo o próprio ifinatamabe deruxtecana',
+      'Descontinuação prévia de conjugado anticorpo-fármaco com derivado de exatecano (por exemplo trastuzumabe deruxtecana) por toxicidade relacionada ao tratamento',
+      'Uso prévio de qualquer um dos comparadores do estudo, ou de qualquer inibidor de topoisomerase I',
+      'Qualquer história de doença pulmonar intersticial ou pneumonite, independentemente de ter exigido corticoide; doença atual, suspeita ou não descartada por imagem. Pneumonite por radiação que não exigiu corticoide pode ser aceita',
+      'Achados de imagem compatíveis com doença intersticial suspeita: fibrose pulmonar, fibrose com enfisema, anormalidades intersticiais, vidro fosco extenso, reticulações, bronquiectasias de tração e faveolamento',
+      'Comprometimento pulmonar clinicamente grave por doença intercorrente: doença pulmonar de base, envolvimento pulmonar por doença autoimune, do tecido conjuntivo ou inflamatória, pneumonectomia prévia, ou necessidade de oxigênio suplementar',
+      'AVC, ataque isquêmico transitório ou outro evento tromboembólico arterial nos 6 meses anteriores',
+      'Doença cardiovascular significativa ou não controlada',
+      'Doença corneana clinicamente significativa',
+      'Washout insuficiente antes da randomização, conforme definido pelo protocolo',
     ],
     centros: [
       'Barretos / SP',
@@ -6965,7 +6994,7 @@ window.THERA_TRIALS_BR = [
   },
 
   {
-    // ⚠ RASCUNHO — confiança media. MSD, fase 3, 780 participantes, 7 centros no Brasil em 3 estados. O texto de elegibilidade não veio no registro consultado — os critérios acima deriva
+    // ⚠ RASCUNHO — confiança alta. MSD, fase 3, 780 participantes, 7 centros em 3 estados. Critérios de exclusão transcritos do ClinicalTrials.gov pelo autor em 2026-08-04. Regra de doença intersticial: exclui história, doença atual e suspeita não excluída na avaliação inicial.
     id: 'trofuse-019',
     nome: 'TroFuse-019',
     titulo: 'Pembrolizumabe adjuvante com ou sem sacituzumabe tirumotecana em NSCLC ressecável sem resposta patológica completa',
@@ -6988,7 +7017,25 @@ window.THERA_TRIALS_BR = [
       'Neoadjuvância com pembrolizumabe e dupla de platina seguida de cirurgia',
       'Ausência de resposta patológica completa na cirurgia',
     ],
-    criterios_exclusao: [],
+    criterios_exclusao: [
+      'NSCLC de sulco superior, carcinoma neuroendócrino de grandes células, tumor sarcomatoide, ou SCLC / componente de pequenas células em tumor misto',
+      'Neuropatia periférica grau 2 ou maior',
+      'Doença ocular relevante: olho seco grave, doença grave das glândulas de Meibômio, blefarite grave, ou doença corneana que impeça ou retarde a cicatrização',
+      'Doença inflamatória intestinal ativa em imunossupressor, ou história de doença inflamatória intestinal',
+      'Doença cardiovascular ou cerebrovascular significativa e não controlada nos 6 meses anteriores: ICC NYHA III/IV, angina instável, infarto, arritmia sintomática não controlada, QTcF acima de 480 ms',
+      'Tratamento neoadjuvante prévio para o diagnóstico atual de NSCLC',
+      'Terapia antineoplásica sistêmica, agente ou dispositivo investigacional nas 4 semanas anteriores',
+      'Radioterapia nas 2 semanas anteriores, ou toxicidade da radiação que exija corticoide',
+      'História de doença pulmonar intersticial ou pneumonite não infecciosa; doença atual, ou suspeita que não possa ser excluída na avaliação inicial',
+      'Imunodeficiência, corticoide sistêmico crônico acima de 10 mg/dia de equivalente de prednisona, ou outro imunossupressor nos 7 dias anteriores',
+      'Doença autoimune ativa tratada sistemicamente nos últimos 2 anos',
+      'Outra neoplasia em progressão ou tratada ativamente nos últimos 5 anos',
+      'Vacina viva ou viva atenuada nos 30 dias anteriores — vacina inativada é permitida',
+      'Infecção ativa em terapia sistêmica; HIV com história de sarcoma de Kaposi ou doença de Castleman multicêntrica; hepatite B e C ativas concomitantes',
+      'Transplante alogênico de tecido ou órgão sólido',
+      'Recuperação inadequada de cirurgia de grande porte, ou complicação cirúrgica em andamento',
+      'Hipersensibilidade grave (grau 3 ou maior) à intervenção, aos excipientes ou a outra terapia biológica',
+    ],
     centros: [
       'Barretos / SP',
       'Natal / RN',
@@ -7101,7 +7148,7 @@ window.THERA_TRIALS_BR = [
   // ============== NOVOS ESTUDOS (2026-08-04) — RASCUNHO, revisar antes de publicar ==============
 
   {
-    // ⚠ RASCUNHO — confiança media. AstraZeneca, fase III, 744 participantes, 14 centros no Brasil em 5 estados. O texto de elegibilidade recebido corta no critério de linhas prévias, se
+    // ⚠ RASCUNHO — confiança alta. AstraZeneca, fase III, 744 participantes, 14 centros em 5 estados. Critérios de exclusão transcritos do ClinicalTrials.gov pelo autor em 2026-08-04. Regra pulmonar mais ampla que só doença intersticial: inclui pneumonite por radiação, doença induzida por fármaco, suspeita radiológica e comprometimento funcional grave. A modalidade ADC do Dato-DXd se apoia no TROPION-Lung10, que exige teste de TROP2.
     id: 'tropion-lung15',
     nome: 'TROPION-Lung15',
     titulo: 'Dato-DXd com ou sem osimertinibe vs dupla de platina em NSCLC EGFR-mutado após progressão ao osimertinibe',
@@ -7125,7 +7172,19 @@ window.THERA_TRIALS_BR = [
       'Progressão radiológica extracraniana documentada ao osimertinibe em monoterapia como linha mais recente',
       'No máximo 2 linhas prévias de inibidor de tirosina-quinase de EGFR',
     ],
-    criterios_exclusao: [],
+    criterios_exclusao: [
+      'Quimioterapia, inibidor de VEGF, imunoterapia ou qualquer terapia antineoplásica no cenário metastático; quimioterapia com platina no cenário não metastático nos 12 meses anteriores à randomização',
+      'História de doença pulmonar intersticial ou pneumonite não infecciosa, incluindo pneumonite por radiação que exigiu corticoide e doença intersticial induzida por fármaco; doença atual ou suspeita não excluída por imagem',
+      'Comprometimento grave da função pulmonar por doença pulmonar intercorrente',
+      'Doença sistêmica grave ou não controlada: sangramento ativo, infecção ativa, doença intersticial ou pneumonite ativa, ou doença cardíaca',
+      'Retenção significativa de líquido em terceiro espaço — ascite ou derrame pleural — não manejável por drenagens repetidas',
+      'Compressão medular instável ou metástase cerebral instável',
+      'Metástase cerebral sintomática, incluindo envolvimento leptomeníngeo',
+      'Doença corneana clinicamente significativa',
+      'Outra neoplasia primária, exceto tratada com intenção curativa e sem doença ativa conhecida nos 2 anos anteriores',
+      'Infecção não controlada que exija antibiótico, antiviral ou antifúngico sistêmico; infecção suspeita ou não excluível; antibiótico sistêmico nos 14 dias anteriores',
+      'HIV conhecido sem controle adequado',
+    ],
     centros: [
       'Barretos / SP',
       'Betim / MG',
@@ -8127,7 +8186,7 @@ window.THERA_TRIALS_BR = [
   },
 
   {
-    // ⚠ RASCUNHO — confiança media. Bristol-Myers Squibb, fase 3, 530 participantes, 7 centros no Brasil em 4 estados. Quinto e último card de pequenas células do PR. O registro descreve
+    // ⚠ RASCUNHO — confiança media. Bristol-Myers Squibb, fase 3, 530 participantes, 7 centros em 4 estados. O autor conferiu o registro em 2026-08-04 e confirmou que ele traz apenas três categorias amplas de exclusão, em linguagem genérica — o card reproduz essa imprecisão em vez de especificá-la por conta própria. Confiança segue media por limitação do registro, não da curadoria. Convém conferir com o centro antes de encaminhar paciente.
     id: 'tigos',
     nome: 'TIGOS',
     titulo: 'BMS-986489 (anti-fucosil-GM1 + nivolumabe em dose fixa) com carboplatina e etoposídeo vs atezolizumabe com carboplatina e etoposídeo em 1ª linha de pequenas células em doença extensa',
