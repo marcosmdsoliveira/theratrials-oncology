@@ -46,6 +46,13 @@ const VALORES = { brasil, areas, database, categorias };
 // PSMA-RADS — reescrever aquele 5 para 40 corromperia conteúdo clínico sem
 // quebrar nada. Ao acrescentar regra, rode --check antes e leia os trechos.
 const REGRAS = [
+  // Contadores animados da home: o número vive num atributo, não na frase.
+  // A âncora é o data-i18n do rótulo irmão, que vem logo depois no HTML —
+  // por isso o lookahead atravessa o resto da tag e a abertura do <span>.
+  { re: /\d+(?="[^>]*>0<\/span>\s*<span class="counter-label" data-i18n="home\.statStudies")/g,  valor: 'database' },
+  { re: /\d+(?="[^>]*>0<\/span>\s*<span class="counter-label" data-i18n="home\.statCategories")/g, valor: 'categorias' },
+  { re: /\d+(?="[^>]*>0<\/span>\s*<span class="counter-label" data-i18n="home\.statBRTrials")/g, valor: 'brasil' },
+
   { re: /\d+(?= ensaios clínicos ativos)/g,      valor: 'brasil' },
   { re: /\d+(?= active clinical trials)/g,       valor: 'brasil' },
   { re: /\d+(?= estudos · \d+ áreas tumorais)/g, valor: 'brasil' },
