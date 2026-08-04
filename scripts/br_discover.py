@@ -83,6 +83,67 @@ TERANOSTICO = re.compile(
     re.I,
 )
 
+# O campo `city` do CT.gov é texto livre preenchido pelo patrocinador, e vem
+# sujo de três formas distintas:
+#   1. bairro no lugar da cidade      — "Asa Sul", "Barra da Tijuca", "Bela Vista"
+#   2. erro de digitação              — "Porto Algre", "Rio de Janerio", "SJRP"
+#   3. estado ou país no lugar da cidade — "Bahia", "Paraná", "Brazil"
+# Sem normalizar, cada variação vira uma "cidade" diferente e o card lista o
+# mesmo centro várias vezes, ou o perde por não achar a UF.
+ALIAS_CIDADE = {
+    # bairros → município
+    "asa sul": "Brasília", "lago sul": "Brasília",
+    "barra da tijuca": "Rio de Janeiro", "curicica": "Rio de Janeiro",
+    "bela vista": "São Paulo", "cerqueira cesar": "São Paulo",
+    "jardim paulista": "São Paulo", "santa cecilia": "São Paulo",
+    # erros de digitação encontrados no registro
+    "porto alegre - rs": "Porto Alegre", "porto alegrers": "Porto Alegre",
+    "porto alegree": "Porto Alegre", "porto alegrev": "Porto Alegre",
+    "porto algre": "Porto Alegre",
+    "rio de janerio": "Rio de Janeiro",
+    "sjrp": "São José do Rio Preto", "san jose rio preto": "São José do Rio Preto",
+    "sao jose rio preto": "São José do Rio Preto",
+    "sao jose rio preto ": "São José do Rio Preto",
+    "ssanta cruz do sul": "Santa Cruz do Sul",
+    "natal/rn": "Natal",
+    "curitibapr": "Curitiba", "portalegre": "Porto Alegre",
+    "riberao preto": "Ribeirão Preto", "cachoeira de itapemirim": "Cachoeiro de Itapemirim",
+    "fortaleza ceara": "Fortaleza", "recife pernambuco": "Recife",
+    "sao jose rio": "São José do Rio Preto",
+    # bairros de São Paulo
+    "liberdade": "São Paulo", "vila mariana": "São Paulo", "vila olimpia": "São Paulo",
+}
+
+# Valores que não são município — o centro entra na lista, mas sem cidade/UF.
+NAO_CIDADE = {
+    "brazil", "brasil", "bahia", "goias", "parana", "minas gerai", "minas gerais",
+    "sao paulo state", "rio grande do sul", "ceara", "santa catarina", "sp",
+    "rj", "mg", "rs", "pr", "sc", "ba", "pe", "ce",
+}
+
+
+def _chave(cidade: str) -> str:
+    """Minúsculas, sem acento e sem espaço duplicado — para casar aliases."""
+    import unicodedata
+    s = unicodedata.normalize("NFD", cidade.strip().lower())
+    s = "".join(c for c in s if unicodedata.category(c) != "Mn")
+    return " ".join(s.split())
+
+
+def normalizar_cidade(bruto: str) -> str:
+    """Devolve o município canônico, ou '' se o valor não for uma cidade."""
+    k = _chave(bruto)
+    if not k or k in NAO_CIDADE:
+        return ""
+    if k in ALIAS_CIDADE:
+        return ALIAS_CIDADE[k]
+    # casa contra o mapa oficial ignorando acento/caixa
+    for oficial in CIDADE_UF:
+        if _chave(oficial) == k:
+            return oficial
+    return bruto.strip()
+
+
 # Cidade -> UF. Herdado do curate_trials_v2.py e ampliado.
 CIDADE_UF = {
     "São Paulo": "SP", "Sao Paulo": "SP", "Barretos": "SP", "Campinas": "SP",
@@ -103,6 +164,19 @@ CIDADE_UF = {
     "Campo Grande": "MS", "Cuiabá": "MT", "Cuiaba": "MT", "Vitória": "ES",
     "Vitoria": "ES", "Cachoeiro de Itapemirim": "ES", "Palmas": "TO",
     "Porto Velho": "RO", "Rio Branco": "AC", "Macapá": "AP", "Boa Vista": "RR",
+    # acrescentadas em 2026-08 a partir do aviso de cidades sem UF
+    "Araçatuba": "SP", "Bauru": "SP", "Botucatu": "SP", "Bragança Paulista": "SP",
+    "Jales": "SP", "São Caetano do Sul": "SP", "São Carlos": "SP",
+    "São José dos Campos": "SP",
+    "Alfenas": "MG", "Betim": "MG", "Divinópolis": "MG", "Ipatinga": "MG",
+    "Nova Lima": "MG",
+    "Bento Gonçalves": "RS", "Lajeado": "RS", "Passo Fundo": "RS",
+    "Rio Grande": "RS", "Santa Cruz do Sul": "RS", "Santa Maria": "RS",
+    "Petrópolis": "RJ", "Volta Redonda": "RJ", "São José do Vale do Rio Preto": "RJ",
+    "Chapecó": "SC", "Timbó": "SC",
+    "Mossoró": "RN", "Bequimão": "MA", "Vitória da Conquista": "BA",
+    "Barueri": "SP", "Canoas": "RS", "Piracicaba": "SP", "Pouso Alegre": "MG",
+    "Santos": "SP", "Três Lagoas": "MS", "Uberaba": "MG",
 }
 
 
@@ -167,9 +241,28 @@ def achatar(s: dict) -> dict:
     locs = p.get("contactsLocationsModule", {}).get("locations", [])
 
     br = [l for l in locs if l.get("country") == "Brazil"]
-    cidades = sorted({l.get("city", "").strip() for l in br if l.get("city")})
-    ufs = sorted({CIDADE_UF.get(c, "") for c in cidades} - {""})
+
+    # O par cidade→UF precisa andar junto. Guardar duas listas paralelas e
+    # reassociá-las depois por posição produz "Salvador / RJ" — as listas são
+    # deduplicadas e ordenadas de forma independente, então o índice i de uma
+    # não corresponde ao da outra.
+    locais = []
+    vistos = set()
+    for l in br:
+        cidade = normalizar_cidade(l.get("city") or "")
+        if not cidade or cidade in vistos:
+            continue
+        vistos.add(cidade)
+        # `state` do CT.gov vem por extenso e inconsistente; o mapa local é
+        # mais confiável. Sem correspondência, fica vazio e o card mostra só
+        # a cidade — melhor do que uma UF errada.
+        locais.append({"cidade": cidade, "uf": CIDADE_UF.get(cidade, "")})
+    locais.sort(key=lambda x: x["cidade"])
+
+    cidades = [l["cidade"] for l in locais]
+    ufs = sorted({l["uf"] for l in locais} - {""})
     centros = sorted({l.get("facility", "").strip() for l in br if l.get("facility")})
+    sem_uf = [l["cidade"] for l in locais if not l["uf"]]
 
     return {
         "nct": ident.get("nctId", ""),
@@ -199,8 +292,10 @@ def achatar(s: dict) -> dict:
             for i in arms.get("interventions", [])
         ],
         "centros_br": centros,
+        "locais_br": locais,      # [{cidade, uf}] — o par preservado
         "cidades_br": cidades,
         "ufs_br": ufs,
+        "cidades_sem_uf": sem_uf,  # alimenta o aviso de CIDADE_UF incompleto
         "n_centros_br": len(br),
     }
 
@@ -216,6 +311,21 @@ def eh_teranostico(e: dict) -> bool:
 def eh_oncologico(e: dict) -> bool:
     """Alguma das condições declaradas no registro é oncológica?"""
     return any(ONCOLOGICO.search(c) for c in e.get("condicoes", []))
+
+
+# O Trial Matcher lista ensaios de TRATAMENTO antineoplásico — o que o médico
+# pode oferecer ao paciente. A busca por condição também traz estudos de suporte
+# e reabilitação (dança, exercício, meditação em VR, wearables, luvas cirúrgicas):
+# pesquisa legítima, mas de outra natureza.
+# `InterventionType` é um campo estruturado do registro, então o corte é objetivo
+# — não depende de interpretar título.
+TIPOS_TRATAMENTO = {
+    "DRUG", "BIOLOGICAL", "RADIATION", "PROCEDURE", "GENETIC", "COMBINATION_PRODUCT",
+}
+
+
+def eh_tratamento(e: dict) -> bool:
+    return any(i.get("tipo") in TIPOS_TRATAMENTO for i in e.get("intervencoes", []))
 
 
 def publicados() -> dict[str, dict]:
@@ -256,11 +366,16 @@ STATUS_MAP = {
 
 
 def classificar(achatados: list[dict], ja: dict[str, dict]) -> dict:
-    novos, mudou_status, inalterados, teranosticos, nao_onco = [], [], [], [], []
+    novos, mudou_status, inalterados = [], [], []
+    teranosticos, nao_onco, suporte = [], [], []
     for e in achatados:
         if not eh_oncologico(e):
             nao_onco.append({"nct": e["nct"], "condicoes": e["condicoes"],
                              "titulo": e["titulo_breve"][:70]})
+            continue
+        if not eh_tratamento(e):
+            suporte.append({"nct": e["nct"], "titulo": e["titulo_breve"][:70],
+                            "tipos": sorted({i["tipo"] for i in e["intervencoes"]})})
             continue
         if eh_teranostico(e):
             teranosticos.append(e)
@@ -287,7 +402,7 @@ def classificar(achatados: list[dict], ja: dict[str, dict]) -> dict:
     return {
         "novos": novos, "mudou_status": mudou_status,
         "inalterados": inalterados, "teranosticos": teranosticos,
-        "sumiram": sumiram, "nao_oncologicos": nao_onco,
+        "sumiram": sumiram, "nao_oncologicos": nao_onco, "suporte": suporte,
     }
 
 
@@ -318,12 +433,24 @@ def main() -> int:
     print(f"  teranósticos (-> data.js) .. {len(d['teranosticos'])}")
     print(f"  publicados que sumiram ..... {len(d['sumiram'])}")
     print(f"  descartados: não-oncológico  {len(d['nao_oncologicos'])}")
+    print(f"  descartados: não é tratamento {len(d['suporte'])}")
     print("=" * 62)
 
     if d["nao_oncologicos"]:
-        print("\nDESCARTADOS (condição declarada não é oncológica):")
-        for x in d["nao_oncologicos"][:10]:
+        print("\nDESCARTADOS — condição não é oncológica:")
+        for x in d["nao_oncologicos"][:8]:
             print(f"   {x['nct']}  {', '.join(x['condicoes'])[:52]}")
+    faltando = sorted({c for e in d["novos"] for c in e.get("cidades_sem_uf", [])})
+    if faltando:
+        print(f"\n⚠ CIDADES SEM UF no mapa CIDADE_UF ({len(faltando)}) — "
+              f"os cards sairão só com a cidade:")
+        for c in faltando[:20]:
+            print(f"   {c}")
+
+    if d["suporte"]:
+        print("\nDESCARTADOS — suporte/reabilitação, não tratamento antineoplásico:")
+        for x in d["suporte"][:8]:
+            print(f"   {x['nct']}  [{','.join(x['tipos'])[:22]:24s}] {x['titulo'][:42]}")
 
     if d["mudou_status"]:
         print("\nMUDANÇA DE STATUS:")

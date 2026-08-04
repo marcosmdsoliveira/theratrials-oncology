@@ -335,6 +335,11 @@
 }
 .tm-d-pill .lbl { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--stone); font-weight: 600; }
 .tm-d-pill .val { font-size: 0.82rem; color: var(--off-white); font-weight: 500; }
+/* Centros agrupados por UF: grade de estados em vez de uma fila de pills
+   repetindo a sigla em cada cidade. */
+.tm-d-pills.tm-d-uf { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); align-items: stretch; }
+.tm-d-uf .tm-d-pill .lbl { color: var(--amber); font-size: 0.66rem; letter-spacing: 0.08em; }
+.tm-d-uf .tm-d-pill .val { font-weight: 400; line-height: 1.5; }
 .tm-d-list { margin: 0; padding-left: 1.1rem; }
 .tm-d-list li { font-size: 0.84rem; color: var(--off-white, #F5F6F7); line-height: 1.55; margin-bottom: 0.35rem; }
 .tm-d-list.exclusion li::marker { color: #ef4444; }
@@ -600,7 +605,8 @@
     'cabeca_pescoco': 'Cabeça e Pescoço',
     'ovario': 'Ovário', 'endometrio': 'Endométrio', 'cervix': 'Cérvix',
     'linfoma': 'Linfoma', 'mieloma': 'Mieloma Múltiplo',
-    'pediatrico': 'Neuroblastoma', 'penis': 'Outros'
+    'pediatrico': 'Neuroblastoma', 'penis': 'Outros',
+    'solidos': 'Tumores sólidos'
   };
 
   // ── Populate tumor filter (grupos de tumor presentes nos ensaios BR) ──
@@ -730,7 +736,7 @@
           source: 'brasil',
           title: t.nome || t.titulo || 'Ensaio',
           indication: t.cenario_clinico || t.subtipo || '',
-          phase: 'Fase ' + (t.fase || '?'),
+          phase: rotuloFase(t.fase) || 'Fase ?',
           biomarkers: (t.biomarcadores || []).join(', '),
           molecular: '',
           drug: t.intervencao || '',
@@ -856,6 +862,83 @@
       '><div class="lbl">' + escHtml(lbl) + '</div><div class="val">' + escHtml(v) + '</div></div>';
   }
 
+  // 'Fase' só faz sentido diante de um algarismo romano. Prefixar sempre
+  // produzia 'Fase Observacional' e, com a chegada dos ensaios de
+  // radioterapia sem fase de desenvolvimento, 'Fase Sem fase'.
+  function rotuloFase(f) {
+    if (!f) return '';
+    return /^(I|II|III|IIIb|IV|Ib\/II|II\/III)$/.test(f) ? 'Fase ' + f : f;
+  }
+
+  // ── Centros: agrupamento por unidade da federação ──────────────
+  // Os centros vêm como strings 'Cidade / UF'. Entradas sem a sigla são
+  // omitidas: o registro de origem não informou o estado e o nome da
+  // cidade não permite deduzi-lo com segurança ('Valência' tanto pode ser
+  // Valença/BA quanto Valença/RJ). São dois casos em 722 centros.
+  function agruparPorUF(centros) {
+    var mapa = {}, ordem = [];
+    (centros || []).forEach(function(c) {
+      var m = /^(.*?)\s*\/\s*([A-Z]{2})$/.exec((c || '').trim());
+      if (!m) return;
+      var uf = m[2];
+      if (!mapa[uf]) { mapa[uf] = []; ordem.push(uf); }
+      mapa[uf].push(m[1]);
+    });
+    // Ordem alfabética por UF: no modal a tarefa é procurar o próprio
+    // estado numa lista que chega a 17 entradas.
+    ordem.sort();
+    return ordem.map(function(uf) { return { uf: uf, cidades: mapa[uf].sort() }; });
+  }
+
+  function totalCentros(grupos) {
+    return grupos.reduce(function(a, g) { return a + g.cidades.length; }, 0);
+  }
+
+  // Sudeste primeiro, em ordem fixa — é onde está a maior parte dos
+  // pacientes e dos encaminhamentos. Os demais vêm por número de centros,
+  // para que o truncamento do rodapé descarte o que menos pesa.
+  //
+  // O Sudeste ocupa no máximo 3 das 4 posições visíveis: sem esse teto os
+  // estudos grandes terminavam todos em 'SP · RJ · MG · ES' e o rodapé
+  // deixava de distinguir um card do outro. A 4ª posição revela um estado
+  // de fora — mas se não houver nenhum, a UF do Sudeste que sobrou volta
+  // para lá em vez de virar '+1'.
+  var PRIORIDADE_UF = { SP: 1, RJ: 2, MG: 3, ES: 4 };
+  var TETO_SUDESTE = 3;
+  function ordenarUFs(grupos) {
+    var sudeste = [], outros = [];
+    grupos.forEach(function(g) { (PRIORIDADE_UF[g.uf] ? sudeste : outros).push(g); });
+    sudeste.sort(function(a, b) { return PRIORIDADE_UF[a.uf] - PRIORIDADE_UF[b.uf]; });
+    outros.sort(function(a, b) { return b.cidades.length - a.cidades.length || (a.uf < b.uf ? -1 : 1); });
+    return sudeste.slice(0, TETO_SUDESTE)
+      .concat(outros.slice(0, 1), sudeste.slice(TETO_SUDESTE), outros.slice(1))
+      .map(function(g) { return g.uf; });
+  }
+
+  // Resumo do rodapé do card fechado.
+  function resumoLocais(centros) {
+    var grupos = agruparPorUF(centros);
+    var n = totalCentros(grupos);
+    if (!n) return { texto: 'Centros no Brasil', titulo: '' };
+
+    var completo = grupos.map(function(g) {
+      return g.uf + ': ' + g.cidades.join(', ');
+    }).join('\n');
+
+    if (n === 1) return { texto: grupos[0].cidades[0] + ' / ' + grupos[0].uf, titulo: '' };
+
+    var ufs = ordenarUFs(grupos);
+    var contagem = n + ' centros';
+
+    var MOSTRAR = 4;
+    var visiveis = ufs.slice(0, MOSTRAR).join(' · ');
+    var resto = ufs.length - MOSTRAR;
+    return {
+      texto: contagem + ' · ' + visiveis + (resto > 0 ? ' +' + resto : ''),
+      titulo: completo
+    };
+  }
+
   function renderCard(r, idx) {
     var raw = r.raw || {};
 
@@ -863,7 +946,7 @@
     var name = raw.nome || raw.titulo || 'Ensaio';
     var nct = raw.nct || '';
     var titulo = (raw.titulo && raw.titulo !== name) ? raw.titulo : (raw.cenario_clinico || '');
-    var faseTag = raw.fase ? 'Fase ' + raw.fase : '';
+    var faseTag = rotuloFase(raw.fase);
     var neo = raw.neoplasia_label || '';
     var color = BR_NEO_COLOR[raw.neoplasia] || '#94a3b8';
     var bios = (raw.biomarcadores || []).slice(0, 3);
@@ -871,7 +954,7 @@
     var m2 = ['Cenário', raw.cenario_clinico];
     var m3 = ['Intervenção', raw.intervencao];
     var footerIcon = 'map-pin';
-    var footerText = (raw.centros || []).slice(0, 3).join(' · ') || 'Centros no Brasil';
+    var locais = resumoLocais(raw.centros);
 
     var statusTxt = shortStatusEA(raw.status);
     var statusCls = statusClassEA(raw.status);
@@ -893,7 +976,8 @@
       '<div class="ea-tags">' + tags + '</div>' +
       '<div class="ea-card-meta">' + metaItem(m1[0], m1[1]) + metaItem(m2[0], m2[1]) + metaItem(m3[0], m3[1], true) + '</div>' +
       '<div class="ea-card-footer">' +
-        '<span class="city"><i data-lucide="' + footerIcon + '" style="width:12px;height:12px"></i><span>' + escHtml(footerText) + '</span></span>' +
+        '<span class="city" data-no-gloss' + (locais.titulo ? ' title="' + escHtml(locais.titulo) + '"' : '') +
+          '><i data-lucide="' + footerIcon + '" style="width:12px;height:12px"></i><span>' + escHtml(locais.texto) + '</span></span>' +
         '<span class="more">' + t('tm.viewDetails', 'Ver detalhes') + ' <i data-lucide="arrow-right" style="width:12px;height:12px"></i></span>' +
       '</div>' +
     '</article>';
@@ -938,7 +1022,7 @@
     var body = '';
     if (s.titulo && s.titulo !== s.nome) body += '<p class="tm-d-titulo"><strong>' + escHtml(s.titulo) + '</strong></p>';
     body += dPills([
-      ['Fase', s.fase ? 'Fase ' + s.fase : ''],
+      ['Fase', rotuloFase(s.fase)],
       ['Neoplasia', s.neoplasia_label],
       ['Linha', s.linha_terapeutica],
       ['Biomarcador', (s.biomarcadores || []).join(', ')]
@@ -953,8 +1037,22 @@
     body += dSection('check-circle-2', 'Critérios principais de inclusão', dList(s.criterios_principais));
     body += dSection('x-circle', 'Critérios de exclusão relevantes', dList(s.criterios_exclusao));
     if (s.centros && s.centros.length) {
-      body += dSection('map-pin', 'Centros participantes no Brasil',
-        '<div class="tm-d-pills">' + s.centros.map(function(c){ return '<span class="tm-d-pill"><span class="val">' + escHtml(c) + '</span></span>'; }).join('') + '</div>');
+      // data-no-gloss: aqui as siglas são unidades da federação, não termos
+      // clínicos. Sem isso o glossário anota "Curitiba / PR" como "resposta
+      // parcial" e "Boa Vista / RR" como "risco relativo" — as duas únicas
+      // UFs que colidem com o vocabulário do glossário.
+      var grupos = agruparPorUF(s.centros);
+      var nCentros = totalCentros(grupos);
+      if (nCentros) {
+        var titulo = 'Centros participantes no Brasil — ' + nCentros +
+          (nCentros === 1 ? ' centro' : ' centros') +
+          (grupos.length > 1 ? ' em ' + grupos.length + ' estados' : '');
+        body += dSection('map-pin', titulo,
+          '<div class="tm-d-pills tm-d-uf" data-no-gloss>' + grupos.map(function(g) {
+            return '<span class="tm-d-pill"><span class="lbl">' + escHtml(g.uf) + '</span>' +
+              '<span class="val">' + escHtml(g.cidades.join(' · ')) + '</span></span>';
+          }).join('') + '</div>');
+      }
     }
 
     var actions = '<div class="tm-d-actions">';

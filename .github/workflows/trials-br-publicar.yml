@@ -77,6 +77,13 @@ jobs:
         if: steps.b.outputs.vazio != 'true'
         run: python3 scripts/br_merge.py | tee _merge.txt
 
+      # Estudos abrem centros novos ao longo do recrutamento, e o card não
+      # acompanha sozinho. Sem este passo, a lista de locais envelhece: em
+      # 2026-08 faltavam 560 centros nos cards já publicados.
+      - name: Atualizar centros contra o CT.gov
+        if: steps.b.outputs.vazio != 'true'
+        run: python3 scripts/br_centros.py --aplicar | tee _centros.txt
+
       - name: Validar links dos cards novos
         if: steps.b.outputs.vazio != 'true'
         run: node scripts/validate_trials_br.mjs
@@ -112,6 +119,7 @@ jobs:
             echo
             echo '### Colheita'; echo '```'; cat _colheita.txt; echo '```'
             echo '### Merge';    echo '```'; cat _merge.txt;    echo '```'
+            echo '### Centros (CT.gov)'; echo '```'; tail -20 _centros.txt; echo '```'
             echo
             echo "### Como revisar"
             echo "1. Abra o diff de \`assets/js/trials_br.js\`."

@@ -214,6 +214,24 @@
   // (^|não-alfanum) (TERMO) seguido de não-alfanum — sem lookbehind (compat. ampla).
   var RE = new RegExp('(^|[^A-Za-z0-9])(' + TERMS.map(escRe).join('|') + ')(?![A-Za-z0-9])', 'g');
 
+  // Duas siglas do glossário são também unidades da federação: PR (Paraná, mas
+  // "resposta parcial" aqui) e RR (Roraima, mas "risco relativo"). Nos centros
+  // recrutadores elas aparecem sempre como "Cidade / UF", então a barra
+  // imediatamente antes é o sinal de que ali é localidade, não termo clínico.
+  //
+  // Isto é defesa em profundidade: os containers de centro já têm
+  // `data-no-gloss`, mas essa marcação depende de cada ponto de renderização
+  // lembrar de aplicá-la. A guarda abaixo protege qualquer tela que venha a
+  // exibir localidade sem o atributo.
+  var UF_AMBIGUA = { PR: 1, RR: 1 };
+  function ehLocalidade(texto, inicioDoTermo) {
+    var antes = texto.slice(Math.max(0, inicioDoTermo - 3), inicioDoTermo);
+    return /\/\s*$/.test(antes);
+  }
+  function pularComoUF(termo, texto, inicioDoTermo) {
+    return UF_AMBIGUA[termo] === 1 && ehLocalidade(texto, inicioDoTermo);
+  }
+
   function escHtml(s) {
     return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
   }
@@ -244,7 +262,8 @@
   TheraTrials.annotateAbbr = function (text) {
     if (text == null || text === '') return '';
     var safe = escHtml(String(text));
-    return safe.replace(RE, function (m, pre, term) {
+    return safe.replace(RE, function (m, pre, term, offset) {
+      if (pularComoUF(term, safe, offset + pre.length)) return m;
       return pre + '<abbr class="gloss-term" tabindex="0" data-term="' + term + '">' + term + '</abbr>';
     });
   };
@@ -277,6 +296,7 @@
     while ((m = RE.exec(s))) {
       var term = m[2];
       var termStart = m.index + m[1].length;
+      if (pularComoUF(term, s, termStart)) continue;
       if (!frag) frag = document.createDocumentFragment();
       if (termStart > last) frag.appendChild(document.createTextNode(s.slice(last, termStart)));
       var ab = document.createElement('abbr');

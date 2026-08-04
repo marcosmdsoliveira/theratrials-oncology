@@ -1,0 +1,47 @@
+[
+ {
+  "nct": "NCT07644455",
+  "nome": "VAC-Biopsy",
+  "motivo": "Estudo de acurácia diagnóstica, não de tratamento antineoplásico. Avalia se a biópsia percutânea a vácuo prediz resposta patológica pós-quimioterapia neoadjuvante."
+ },
+ {
+  "nct": "NCT04680442",
+  "nome": "SCHOLAR-2",
+  "motivo": "Cardio-oncologia: a pergunta é sobre segurança cardíaca de manter trastuzumabe com FEVE reduzida, não sobre eficácia antitumoral. Decisão do autor em 2026-08-03 — estudos de manejo de toxicidade não cabem no Trial Matcher."
+ },
+ {
+  "nct": "NCT07372144",
+  "nome": "IARA",
+  "motivo": "Suporte/qualidade de vida, não tratamento antineoplásico. Avalia suplementação de creatina para prevenir declínio cognitivo associado à quimioterapia. Mesma regra aplicada ao SCHOLAR-2: estudos de manejo de toxicidade ou de sequelas não cabem no Trial Matcher."
+ },
+ {
+  "nct": "NCT05890677",
+  "nome": "LYMPH",
+  "motivo": "Reabilitação de sequela, não tratamento antineoplásico. Compara microcirurgia linfática com terapia física descongestiva no linfedema crônico pós-câncer de mama. O desfecho é qualidade de vida, e a população já concluiu o tratamento oncológico."
+ },
+ {
+  "nct": "NCT06787807",
+  "nome": "Proteômica bariátrica",
+  "motivo": "Não é estudo oncológico: é análise proteômica em pacientes de cirurgia bariátrica. As 17 neoplasias listadas nas condições referem-se ao risco de câncer associado à obesidade, não à população estudada — o critério de exclusão diz literalmente 'pacientes com história prévia de câncer'. Falso positivo da busca por condição."
+ },
+ {
+  "nct": "NCT06711185",
+  "nome": "DAPA-MYOCANCER",
+  "motivo": "Cardio-oncologia / prevenção de toxicidade, não tratamento antineoplásico. Testa dapagliflozina versus placebo sobre o remodelamento miocárdico induzido por antraciclina; a quimioterapia é padrão nos dois braços e não é objeto do estudo. Mesmo critério aplicado ao SCHOLAR-2."
+ },
+ {
+  "nct": "NCT06638931",
+  "nome": "ANTARES",
+  "motivo": "Estudo basket agnóstico ao sítio tumoral, com 41 condições registradas (carcinoma secretório e metaplásico de mama, colangiocarcinoma, pênis, ovário, sarcomas, tumor de sítio primário desconhecido e outros). O card do Trial Matcher aceita uma única neoplasia, então publicá-lo sob 'mama' o esconderia de todos os demais tumores e o ofereceria a pacientes de mama que não se qualificam — só as histologias raras entram."
+ },
+ {
+  "nct": "NCT05660395",
+  "nome": "LOTIS-10",
+  "motivo": "Card removido em 2026-08-04 por decisão do autor: o estudo foi encerrado (TERMINATED no ClinicalTrials.gov) e o card ainda dizia Recrutando."
+ },
+ {
+  "nct": "NCT06687369",
+  "nome": "BENITO",
+  "motivo": "Card removido em 2026-08-04 por decisão do autor: nenhum centro no Brasil consta no ClinicalTrials.gov, e o Trial Matcher só lista ensaios com recrutamento aberto aqui."
+ }
+]

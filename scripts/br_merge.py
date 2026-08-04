@@ -33,8 +33,13 @@ TRIALS_JS = SITE / "assets" / "js" / "trials_br.js"
 CURATED = Path(__file__).resolve().parent / "_br_curated.json"
 DISCOVERY = Path(__file__).resolve().parent / "_br_discovery.json"
 
+# 'NA' no ClinicalTrials.gov quer dizer "fase não aplicável" — é como o
+# registro classifica ensaios de radioterapia, cirurgia e dispositivo, que não
+# têm fase de desenvolvimento de fármaco. NÃO quer dizer observacional: o
+# LAPIDARY, o PROMART e o HYPHEN são intervencionais e randomizados. Estudo
+# observacional de verdade vem sem o campo `phases`, tratado à parte.
 FASE_MAP = {"PHASE1": "I", "PHASE2": "II", "PHASE3": "III", "PHASE4": "IV",
-            "EARLY_PHASE1": "I", "NA": "Observacional"}
+            "EARLY_PHASE1": "I", "NA": "Sem fase"}
 STATUS_MAP = {"RECRUITING": "Recrutando", "NOT_YET_RECRUITING": "Ainda não recrutando",
               "SUSPENDED": "Recrutamento suspenso", "ACTIVE_NOT_RECRUITING": "Encerrado",
               "COMPLETED": "Encerrado", "TERMINATED": "Encerrado", "WITHDRAWN": "Encerrado"}
@@ -64,14 +69,26 @@ def fase(fases: list[str]) -> str:
         return "Observacional"
     if len(fases) > 1 and "PHASE1" in fases and "PHASE2" in fases:
         return "Ib/II"
+    if len(fases) > 1 and "PHASE2" in fases and "PHASE3" in fases:
+        return "II/III"
     return FASE_MAP.get(fases[0], "Observacional")
 
 
 def card_js(c: dict) -> str:
     f = c["_factual"]
     nct = f["nct"]
-    centros = [f"{cid} / {uf}" for cid, uf in zip(f["cidades"], f["estados"])] \
-        or f["cidades"] or f["centros"][:4]
+
+    # Usar `locais`, onde cada entrada já traz o par {cidade, uf} do próprio
+    # registro. NÃO reconstruir com zip(cidades, estados): as duas listas são
+    # deduplicadas e ordenadas separadamente, então o índice de uma não
+    # corresponde ao da outra — isso produzia "Salvador / RJ" e descartava
+    # centros quando as listas tinham tamanhos diferentes.
+    locais = f.get("locais") or []
+    if locais:
+        centros = [f"{l['cidade']} / {l['uf']}" if l.get("uf") else l["cidade"]
+                   for l in locais]
+    else:
+        centros = f.get("cidades") or f.get("centros", [])[:4]
     url = f"https://clinicaltrials.gov/study/{nct}"
     campos = [
         ("id", js_str(slug(c["nome"], nct))),
