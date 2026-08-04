@@ -80,8 +80,9 @@ EXPANSOES = {
  "ish":  ["in situ hybridization"],
  "adc":  ["antibody drug conjugate", "antibody-drug conjugate"],
  # "anti-PD-(L)1" é como o registro diz "anti-PD-1 e anti-PD-L1" de uma vez.
+ # O registro alterna "programmed CELL death 1" e "programmed death 1".
  "pd-1": ["programmed cell death 1", "programmed cell death protein 1", "pd)-1", "pd-1/l1",
-          "pd-(l)1", "pd(l)1"],
+          "pd-(l)1", "pd(l)1", "programmed death 1"],
  "pd-l1":["programmed cell death ligand 1", "programmed death ligand 1", "pd-1/l1", "pd-l1",
           "pd-(l)1", "pd(l)1"],
  # O registro escreve "breast cancer gene 1/2 (BRCA 1/2)", cobrindo os dois.
@@ -105,7 +106,7 @@ EXPANSOES = {
  "gpc3": ["glypican-3"],
  "cd137":["4-1bb", "t-cell costimulatory receptor 4-1bb"],
  "ctla-4":["cytotoxic t-lymphocyte", "cytotoxic t lymphocyte"],
- "dpoc": ["copd", "chronic obstructive pulmonary disease"],
+ "dpoc": ["copd", "chronic obstructive pulmonary"],
  "tarv": ["antiretroviral therapy", "art"],
  "parp": ["poly (adp-ribose) polymerase", "poly adp-ribose polymerase"],
  "imwg": ["international myeloma working group"],
