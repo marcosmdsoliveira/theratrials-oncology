@@ -46,6 +46,10 @@ SCRIPTS = Path(__file__).resolve().parent
 DISCOVERY = SCRIPTS / "_br_discovery.json"
 SAIDA = SCRIPTS / "_br_curated.json"
 PROMPTS = SCRIPTS / "_br_prompts.json"
+# Registro permanente dos estudos já avaliados e recusados. Sem isto, todo mês
+# o pipeline volta a oferecer os mesmos — descartado não entra no trials_br.js,
+# então o diff continua vendo o estudo como "novo" indefinidamente.
+DESCARTADOS = SCRIPTS / "br_descartados.json"
 
 MODELO = "claude-opus-5"
 # Um card curado tem ~26 campos e roda perto de 4.800 caracteres; 4000 tokens
@@ -267,9 +271,30 @@ def anexar_factual(curado: dict, base: dict) -> dict:
     return curado
 
 
+def ja_descartados() -> dict[str, str]:
+    if not DESCARTADOS.exists():
+        return {}
+    return {d["nct"]: d.get("motivo", "") for d in
+            json.loads(DESCARTADOS.read_text(encoding="utf-8"))}
+
+
+def registrar_descartes(novos: list[dict]) -> None:
+    """Acumula no registro permanente, sem duplicar."""
+    atuais = json.loads(DESCARTADOS.read_text(encoding="utf-8")) \
+        if DESCARTADOS.exists() else []
+    vistos = {d["nct"] for d in atuais}
+    atuais += [d for d in novos if d["nct"] not in vistos]
+    DESCARTADOS.write_text(json.dumps(atuais, ensure_ascii=False, indent=1),
+                           encoding="utf-8")
+
+
 def selecionar(args) -> list[dict]:
     d = json.loads(DISCOVERY.read_text(encoding="utf-8"))
-    novos = d["novos"]
+    recusados = ja_descartados()
+    novos = [e for e in d["novos"] if e["nct"] not in recusados]
+    if recusados:
+        print(f"[curate] {len(d['novos']) - len(novos)} estudos pulados "
+              f"(já descartados antes)", file=sys.stderr)
     if args.neoplasia:
         alvo = args.neoplasia.lower()
         novos = [e for e in novos
@@ -341,9 +366,13 @@ def main() -> int:
                 orfaos.append(nct)
                 continue
             if c.get("descartar"):
-                descartados.append({"nct": nct, "motivo": c.get("motivo_descarte", "")})
+                descartados.append({"nct": nct, "nome": c.get("nome", ""),
+                                    "motivo": c.get("motivo_descarte", "")})
                 continue
             cards.append(anexar_factual(c, por_nct[nct]))
+
+        if descartados:
+            registrar_descartes(descartados)
 
         SAIDA.write_text(json.dumps(
             {"batch": "local", "cards": cards,
