@@ -6579,13 +6579,13 @@ window.THERA_TRIALS_BR = [
   {
     // ⚠ RASCUNHO — confiança media. Pfizer, fase 3, 714 participantes, 26 centros no Brasil em 12
     //   estados — o maior número de centros entre os cards de pulmão. Diferente dos outros estudos
-    //   deste lote, o registro declara o mecanismo do sigvotatugue vedotina de forma explícita, e
+    //   deste lote, o registro declara o mecanismo do sigvotatug vedotina de forma explícita, e
     //   por isso ele aparece no racional. O texto de elegibilidade recebido corta no critério de
     //   resolução de efeitos de terapia prévia, sem a seção de exclusão completa. Confiança média
     //   por isso.
     id: 'be6a-lung-02',
     nome: 'Be6A Lung-02',
-    titulo: 'Sigvotatugue vedotina + pembrolizumabe vs pembrolizumabe isolado em 1ª linha de NSCLC com PD-L1 TPS ≥ 50%',
+    titulo: 'Sigvotatug vedotina + pembrolizumabe vs pembrolizumabe isolado em 1ª linha de NSCLC com PD-L1 TPS ≥ 50%',
     nct: 'NCT06758401',
     fase: 'III',
     status: 'Recrutando',
@@ -6603,9 +6603,9 @@ window.THERA_TRIALS_BR = [
       'ROS1',
     ],
     testes_fornecidos: 'PD-L1 TPS por teste local',
-    intervencao: 'Sigvotatugue vedotina intravenosa a cada 2 semanas + pembrolizumabe intravenoso a cada 6 semanas; o pembrolizumabe por até cerca de 2 anos e o conjugado enquanto houver resposta',
+    intervencao: 'Sigvotatug vedotina intravenosa a cada 2 semanas + pembrolizumabe intravenoso a cada 6 semanas; o pembrolizumabe por até cerca de 2 anos e o conjugado enquanto houver resposta',
     comparador: 'Pembrolizumabe intravenoso a cada 6 semanas em monoterapia, por até cerca de 2 anos',
-    racional: 'Sigvotatugue vedotina é descrito no registro como conjugado anticorpo-fármaco com carga MMAE dirigido à integrina beta-6. O estudo testa se acrescentá-lo ao pembrolizumabe supera o anti-PD-1 isolado justamente na população de PD-L1 alto, que hoje é tratada com monoterapia.',
+    racional: 'Sigvotatug vedotina é descrito no registro como conjugado anticorpo-fármaco com carga MMAE dirigido à integrina beta-6. O estudo testa se acrescentá-lo ao pembrolizumabe supera o anti-PD-1 isolado justamente na população de PD-L1 alto, que hoje é tratada com monoterapia.',
     criterios_principais: [
       'NSCLC estádio IIIB ou IIIC confirmado patologicamente, sem indicação de ressecção cirúrgica ou quimiorradioterapia definitiva, ou estádio IV (AJCC 8ª edição)',
       'PD-L1 em 50% ou mais das células tumorais (TPS ≥ 50%) por teste local',
@@ -7050,14 +7050,14 @@ window.THERA_TRIALS_BR = [
   {
     // ⚠ RASCUNHO — confiança media. Bristol-Myers Squibb, fase 2, 160 participantes, 4 centros no
     //   Brasil em 3 estados. Estudo sem acrônimo no registro; o nome do card foi construído a
-    //   partir dos dois fármacos. Classes validadas pelo autor em 2026-08-04: imzokitugue
+    //   partir dos dois fármacos. Classes validadas pelo autor em 2026-08-04: imzokitug
     //   (BMS-986340) é anticorpo monoclonal anti-CCR8 com depleção de células T reguladoras, e
     //   pumitamig é biespecífico anti-PD-L1/VEGF-A. O registro segue sem detalhar dose ou esquema
     //   dos quatro braços. O pumitamig também aparece no ROSETTA Lung-201, do mesmo patrocinador.
     //   Confiança média.
-    id: 'imzokitugue-pumitamig',
-    nome: 'Imzokitugue + pumitamig para NSCLC avançado de 1ª linha',
-    titulo: 'Acréscimo do imzokitugue ao esquema de pumitamig com dupla de platina, em quatro braços',
+    id: 'imzokitug-pumitamig',
+    nome: 'Imzokitug + pumitamig para NSCLC avançado de 1ª linha',
+    titulo: 'Acréscimo do imzokitug ao esquema de pumitamig com dupla de platina, em quatro braços',
     nct: 'NCT07680764',
     fase: 'II',
     status: 'Recrutando',
@@ -7075,9 +7075,9 @@ window.THERA_TRIALS_BR = [
     ],
     biomarcadores: [],
     testes_fornecidos: 'Exige tecido tumoral fresco ou de arquivo obtido nos 5 meses anteriores à inclusão',
-    intervencao: 'Imzokitugue + pumitamig + quimioterapia com dupla de platina',
+    intervencao: 'Imzokitug + pumitamig + quimioterapia com dupla de platina',
     comparador: 'Pumitamig + quimioterapia com dupla de platina',
-    racional: 'Imzokitugue (BMS-986340) é anticorpo monoclonal anti-CCR8 que promove depleção de células T reguladoras no microambiente tumoral; pumitamig (BNT327) é biespecífico anti-PD-L1/VEGF-A. O estudo avalia o acréscimo do imzokitug a um esquema que já combina pumitamig e dupla de platina, na 1ª linha da doença avançada sem alteração genômica acionável. O desenho tem quatro braços, todos rotulados como experimentais no registro.',
+    racional: 'Imzokitug (BMS-986340) é anticorpo monoclonal anti-CCR8 que promove depleção de células T reguladoras no microambiente tumoral; pumitamig (BNT327) é biespecífico anti-PD-L1/VEGF-A. O estudo avalia o acréscimo do imzokitug a um esquema que já combina pumitamig e dupla de platina, na 1ª linha da doença avançada sem alteração genômica acionável. O desenho tem quatro braços, todos rotulados como experimentais no registro.',
     criterios_principais: [
       'NSCLC escamoso ou não-escamoso estádio IV confirmado histologicamente, ou doença recorrente irressecável (AJCC 9ª edição)',
       'Sem terapia sistêmica antineoplásica prévia como tratamento primário da doença avançada ou metastática',
@@ -7539,14 +7539,14 @@ window.THERA_TRIALS_BR = [
   {
     // ⚠ RASCUNHO — confiança media. Boehringer Ingelheim, fase III, 670 participantes, 4 centros no
     //   Brasil em 2 estados. Segundo card de pequenas células, ao lado do IDeate-Lung02, mas em
-    //   cenário oposto: aqui é 1ª linha, lá é recidiva. O registro descreve o obrixtamibe apenas
+    //   cenário oposto: aqui é 1ª linha, lá é recidiva. O registro descreve o obrixtamig apenas
     //   como 'molécula do tipo anticorpo'. Classe validada pelo autor em 2026-08-04: engajador de
     //   células T IgG-like anti-DLL3/CD3 (BI 764532), de formato próprio — deliberadamente não
     //   rotulado como BiTE, ao contrário do tarlatamabe. O texto de elegibilidade corta no critério
     //   de metástase cerebral, sem a seção de exclusão. Confiança média por isso.
     id: 'dareon-lung-1',
     nome: 'DAREON-Lung-1',
-    titulo: 'Obrixtamibe somado a atezolizumabe, carboplatina e etoposídeo em 1ª linha de pequenas células em doença extensa',
+    titulo: 'Obrixtamig somado a atezolizumabe, carboplatina e etoposídeo em 1ª linha de pequenas células em doença extensa',
     nct: 'NCT07472517',
     fase: 'III',
     status: 'Recrutando',
@@ -7563,9 +7563,9 @@ window.THERA_TRIALS_BR = [
     ],
     biomarcadores: ['DLL3'],
     testes_fornecidos: 'Análise central do status de DLL3 pelo teste VENTANA DLL3 (SP347) RxDx em tecido de arquivo em parafina, com resultado obrigatório antes da randomização',
-    intervencao: 'Obrixtamibe intravenoso somado a atezolizumabe, carboplatina e etoposídeo',
+    intervencao: 'Obrixtamig intravenoso somado a atezolizumabe, carboplatina e etoposídeo',
     comparador: 'Atezolizumabe, carboplatina e etoposídeo — o padrão de 1ª linha',
-    racional: 'Testa o acréscimo do obrixtamibe ao esquema padrão de 1ª linha da doença extensa. Obrixtamibe (BI 764532) é engajador de células T IgG-like anti-DLL3/CD3 — compartilha os alvos do tarlatamabe, mas tem formato molecular próprio. O estudo avalia em paralelo um dispositivo em desenvolvimento para medir DLL3. Participantes do braço com obrixtamibe pernoitam no centro após as duas primeiras administrações.',
+    racional: 'Testa o acréscimo do obrixtamig ao esquema padrão de 1ª linha da doença extensa. Obrixtamig (BI 764532) é engajador de células T IgG-like anti-DLL3/CD3 — compartilha os alvos do tarlatamabe, mas tem formato molecular próprio. O estudo avalia em paralelo um dispositivo em desenvolvimento para medir DLL3. Participantes do braço com obrixtamig pernoitam no centro após as duas primeiras administrações.',
     criterios_principais: [
       'Carcinoma de pequenas células em doença extensa confirmado histologicamente',
       'Sem tratamento sistêmico antineoplásico prévio para doença extensa; tratamento em doença limitada é aceito se concluído há mais de 6 meses do diagnóstico da doença extensa',
@@ -8025,7 +8025,7 @@ window.THERA_TRIALS_BR = [
     //   Brasil (São José do Vale do Rio Preto/RJ). ACHADO ÚTIL PARA A REVISÃO: este registro
     //   identifica o fármaco como BNT327 no título e como pumitamig nos braços — é o mesmo agente
     //   dos estudos ROSETTA Lung-201 e Lung-202, da Bristol-Myers Squibb, e do estudo com
-    //   imzokitugue. Nenhum dos quatro registros declara a classe, mas confirmam tratar-se do mesmo
+    //   imzokitug. Nenhum dos quatro registros declara a classe, mas confirmam tratar-se do mesmo
     //   composto em codesenvolvimento. Estudo sem acrônimo; o nome do card foi construído a partir
     //   do código do fármaco. O texto de exclusão corta no primeiro item. Confiança média por isso.
     id: 'bnt327-lung-protocolo-mestre',
