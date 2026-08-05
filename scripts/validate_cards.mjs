@@ -31,7 +31,12 @@
  * 3. Os 40 campos do núcleo estão CONGELADOS (§7). Campo que some não dá
  *    erro em lugar nenhum: o modal simplesmente deixa de renderizar a seção.
  *
- * 4. `aprovacao` no formato travado e `linha` curta o bastante para o chip.
+ * 4. `pubmed_url` aponta MESMO para o PubMed. Link de editora abre e leva ao
+ *    artigo, então ninguém percebe — mas fica fora do `validate_pubmed.mjs`,
+ *    que só sabe conferir PMID contra ensaio. Eram 62 assim até 2026-08-05, e
+ *    dois deles tinham DOI INEXISTENTE (404 no doi.org). Ver FONTE_NAO_PUBMED.
+ *
+ * 5. `aprovacao` no formato travado e `linha` curta o bastante para o chip.
  *
  * ARMADILHA DE NÚMERO, aprendida apanhando duas vezes na mesma noite:
  * comparar dígito por dígito exige normalizar os DOIS lados igual.
@@ -77,6 +82,25 @@ const CONHECIDOS = {
       'o `primario` diz "p<0,0001". A manchete subestima a precisão da fonte. ' +
       'Para sair da lista: alinhar os dois com a publicação.',
   },
+};
+
+/* `pubmed_url` que NÃO aponta para o PubMed.
+ *
+ * Até 2026-08-05 havia 62 assim — 45 nejm.org, 8 thelancet.com, 5 ascopubs,
+ * 3 PMC, 1 jnm. O link abria e o leitor chegava ao artigo, então ninguém
+ * percebeu; mas o `validate_pubmed.mjs` só sabe conferir PMID contra ensaio, e
+ * esses 62 nunca passaram por guard nenhum. Dois deles eram DOI INEXISTENTE
+ * (404 no doi.org): DESTINY-Breast06 e NATALEE, com identificador NEJM
+ * plausível e artigo que nunca existiu — o mesmo padrão de link alucinado que
+ * o §9 do PROJECT_MEMORY diz ter sido corrigido em junho de 2026.
+ *
+ * Todos foram resolvidos para PMID e confirmados um a um. Como o número é
+ * zero, isto pode ser FAIL: link de editora não volta a entrar em silêncio.
+ * Para autorizar um, liste o uid aqui com data e motivo — mesmo mecanismo do
+ * EXCECOES_SEM_NCT do validate_trials_br.mjs, que o revisor clínico definiu.
+ * A lista começa VAZIA de propósito. */
+const FONTE_NAO_PUBMED = {
+  // 'uid-do-card': { desde: 'AAAA-MM-DD', motivo: 'por que este não tem PMID' },
 };
 
 /* Siglas que CONTÊM dígito sem que o dígito seja uma medida. Sem isto, o
@@ -188,23 +212,18 @@ for (const s of S) {
   }
 }
 
-// ── 5. NOTE — informes que não bloqueiam ──────────────────────────────────
-const foraPubmed = S.filter((s) => !vazio(s.pubmed_url) && !/pubmed\.ncbi\.nlm\.nih\.gov/.test(String(s.pubmed_url)));
-if (foraPubmed.length) {
-  const dominios = {};
-  for (const s of foraPubmed) {
-    let h = '(inválido)';
-    try { h = new URL(String(s.pubmed_url)).hostname; } catch { /* mantém inválido */ }
-    dominios[h] = (dominios[h] ?? 0) + 1;
-  }
-  notes.push({
-    tipo: 'pubmed_url fora do PubMed',
-    total: foraPubmed.length,
-    detalhe: Object.entries(dominios).sort((a, b) => b[1] - a[1]).map(([h, n]) => `${n} ${h}`).join(' · '),
-    obs: 'o link funciona para o leitor, mas o validate_pubmed.mjs não consegue conferi-lo contra o ensaio',
-    uids: foraPubmed.map((s) => s.uid),
-  });
+// ── 5. pubmed_url tem de ser do PubMed ────────────────────────────────────
+let isentosFonte = 0;
+for (const s of S) {
+  if (vazio(s.pubmed_url)) continue;
+  if (/pubmed\.ncbi\.nlm\.nih\.gov/.test(String(s.pubmed_url))) continue;
+  if (FONTE_NAO_PUBMED[s.uid]) { isentosFonte++; continue; }
+  let host = '(URL inválida)';
+  try { host = new URL(String(s.pubmed_url)).hostname; } catch { /* mantém */ }
+  F(s.uid, `pubmed_url aponta para ${host}, não para o PubMed — fica fora do validate_pubmed.mjs. Resolva o PMID ou autorize em FONTE_NAO_PUBMED`);
 }
+
+// ── 6. NOTE — informes que não bloqueiam ──────────────────────────────────
 const comTake = S.filter((s) => !vazio(s.takehome));
 notes.push({
   tipo: 'takehome',
@@ -225,6 +244,10 @@ for (const n of notes) console.error(`\n--- NOTE: ${n.tipo} (${n.total}) ---\n  
 if (isentos) {
   console.error(`\n--- NOTE: ${isentos} card(s) isentos da §7.1 por CONHECIDOS ---`);
   for (const [uid, e] of Object.entries(CONHECIDOS)) console.error(`  ${uid} (desde ${e.desde}) — ${e.motivo}`);
+}
+if (isentosFonte) {
+  console.error(`\n--- NOTE: ${isentosFonte} card(s) autorizados a citar fonte fora do PubMed ---`);
+  for (const [uid, e] of Object.entries(FONTE_NAO_PUBMED)) console.error(`  ${uid} (desde ${e.desde}) — ${e.motivo}`);
 }
 if (warns.length) {
   console.error(`\n--- WARN (revisar) ---`);

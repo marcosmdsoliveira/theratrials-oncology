@@ -114,3 +114,17 @@ test('não confunde sigla com número nem se importa com o espaço do IC', () =>
 // ── formato ───────────────────────────────────────────────────────────────
 avisa('aprovacao fora do formato travado', (d) => { d.studies[13].aprovacao = 'aprovado em algum lugar'; }, /formato travado/);
 avisa('linha longa demais para o chip', (d) => { d.studies[15].linha = 'x'.repeat(95); }, /caracteres/);
+
+/* Link de editora abre e leva ao artigo, então passa despercebido — mas fica
+ * fora do validate_pubmed.mjs. Foi assim que 62 se acumularam, dois deles com
+ * DOI que dava 404. */
+bloqueia(
+  'pubmed_url apontando para editora em vez do PubMed',
+  (d) => { d.studies[17].pubmed_url = 'https://www.nejm.org/doi/full/10.1056/NEJMoa1606774'; },
+  /não para o PubMed/
+);
+bloqueia(
+  'pubmed_url com URL inválida',
+  (d) => { d.studies[19].pubmed_url = 'nao-e-uma-url'; },
+  /URL inválida/
+);
