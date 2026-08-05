@@ -15,6 +15,8 @@ on:
     paths:
       - 'assets/js/data.js'
       - 'assets/js/trials_br.js'
+      - 'scripts/validate_cards.mjs'
+      - 'scripts/validate_cards.test.mjs'
       - 'scripts/validate_pubmed.mjs'
       - 'scripts/validate_nct.mjs'
       - 'scripts/validate_trials_br.mjs'
@@ -51,10 +53,21 @@ jobs:
         with:
           node-version: '20'
 
-      # Barato e offline: roda antes dos validadores de link, que gastam
+      # Baratos e offline: rodam antes dos validadores de link, que gastam
       # minutos batendo em NCBI e CT.gov.
       - name: Conferir as contagens escritas no texto do site
         run: node scripts/sync_counts.mjs --check
+
+      # Confere o que o card DIZ, não os links: condensação fiel em
+      # `resultado_chave`, contagens internas do data.js, schema núcleo
+      # congelado. Menos de um segundo, sem rede.
+      - name: Validate card content (THERA_DATA)
+        if: always()
+        run: node scripts/validate_cards.mjs --json cards-report.json
+
+      - name: Testar o próprio guard de cards
+        if: always()
+        run: node --test scripts/validate_cards.test.mjs
 
       - name: Validate pubmed_url integrity
         if: always()
@@ -74,6 +87,7 @@ jobs:
         with:
           name: data-validation-reports
           path: |
+            cards-report.json
             pubmed-report.json
             nct-report.json
             trials-br-report.json
