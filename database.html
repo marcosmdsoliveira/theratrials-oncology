@@ -920,11 +920,10 @@
             <div class="field full highlight"><div class="field-label" x-text="(window.TheraTrials && TheraTrials.isRadioStudy(selectedStudy)) ? 'Radiofármaco / Intervenção' : 'Intervenção'"></div><div class="field-text" style="font-weight: 500" x-text="selectedStudy.radiofarmaco || '—'"></div></div>
             <div class="field"><div class="field-label" data-i18n="db.fieldRegimen">Esquema</div><div class="field-text" x-html="TheraTrials.annotateAbbr(selectedStudy.esquema || '—')"></div></div>
             <div class="field" x-show="!window.TheraTrials || TheraTrials.isRadioStudy(selectedStudy) || TheraTrials.fieldMeaningful(selectedStudy.cumul)"><div class="field-label" x-text="(window.TheraTrials && TheraTrials.isRadioStudy(selectedStudy)) ? 'Atividade cumulativa típica' : 'Dose cumulativa típica'"></div><div class="field-text mono" x-text="selectedStudy.cumul || '—'"></div></div>
-            <!-- A caixa some quando não há preparo a descrever. Antes ela aparecia em todo
-                 estudo radiofarmacêutico, tivesse conteúdo ou não, e 18 cards a exibiam com um
-                 travessão — sobretudo meningioma e PPGL. Mesmo critério da caixa de aprovação
-                 regulatória, removida em 2026-08-05. -->
-            <div class="field full" x-show="!window.TheraTrials || TheraTrials.fieldMeaningful(selectedStudy.preparo)"><div class="field-label" x-text="(window.TheraTrials && TheraTrials.isRadioStudy(selectedStudy)) ? 'Preparo e pré-medicação' : 'Pré-medicação / profilaxia'"></div><div class="field-text" x-html="TheraTrials.annotateAbbr(selectedStudy.preparo || '—')"></div></div>
+            <!-- O `preparo` saiu daqui em 2026-08-05 e virou bloco próprio depois da
+                 Toxicidade: ele interrompia a sequência radiofármaco → esquema → dose →
+                 comparador, e desde a auditoria daquele dia a maior parte do campo é
+                 orientação de classe ("Prática de classe: …"), não dado do ensaio. -->
             <div class="field full"><div class="field-label" data-i18n="db.fieldComparator">Comparador</div><div class="field-text" x-html="TheraTrials.annotateAbbr(selectedStudy.comparador || '—')"></div></div>
           </div>
         </div>
@@ -950,6 +949,23 @@
           <div class="section-block-grid">
             <div class="field"><div class="field-label" data-i18n="db.fieldG3Events">Eventos ≥G3</div><div class="field-text" x-html="TheraTrials.annotateAbbr(selectedStudy.tox_g3 || '—')"></div></div>
             <div class="field"><div class="field-label" data-i18n="db.fieldSpecificEvents">Eventos de interesse específico</div><div class="field-text" x-html="TheraTrials.annotateAbbr(selectedStudy.tox_interesse || '—')"></div></div>
+          </div>
+        </div>
+
+        <!-- Preparo logo depois da toxicidade, de propósito: a pré-medicação existe para
+             mitigar o que o bloco acima lista, e a leitura encadeia. O bloco inteiro some
+             quando não há preparo a descrever — antes a caixa aparecia em todo estudo
+             radiofarmacêutico, tivesse conteúdo ou não, e 18 cards a exibiam com um
+             travessão. Mesmo critério da caixa de aprovação regulatória, que saiu em
+             2026-08-05. -->
+        <div class="section-block" x-show="!window.TheraTrials || TheraTrials.fieldMeaningful(selectedStudy.preparo)">
+          <!-- Título único, com a chave `db.fieldPreparation` que já existia em pt-br.js e
+               en.js e NUNCA tinha sido usada: o rótulo antigo era um ternário fixo em
+               português, então quem lia em inglês via "Preparo e pré-medicação". A
+               distinção radio/não-radio saiu junto — quem lê o bloco vê pelo conteúdo. -->
+          <div class="section-block-title" style="color: #7DD3FC"><i data-lucide="clipboard-list" style="width:13px;height:13px"></i> <span data-i18n="db.fieldPreparation">Preparo e pré-medicação</span></div>
+          <div class="section-block-grid">
+            <div class="field full"><div class="field-text" x-html="TheraTrials.annotateAbbr(selectedStudy.preparo || '—')"></div></div>
           </div>
         </div>
 
