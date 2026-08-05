@@ -51,9 +51,17 @@ def _dea(s: str) -> str:
 PLACEHOLDER = re.compile(
     r"^\s*("
     r"research site|clinical (trial|research) site|investigational site|"
-    r"local institution\b.*|site\s*[0-9]+|"
+    r"local institution\b.*|"
+    # O código do sítio vem em três formatos e nenhum é nome de casa:
+    # "Site 2405", "Site # 2405" e "Site BR55007". Só o primeiro era pego, e
+    # os outros dois entravam na contagem de centros como se fossem hospitais
+    # distintos — 22 centros fantasmas de uma vez.
+    r"site\s*[#nº]?\s*[a-z]{0,3}\s*[0-9]+|"
     r"[a-z]{2,14} (investigational|investigative|clinical) site|"
     r"msd brasil|"
+    # Setor de um hospital que já está contado pelo nome próprio na mesma
+    # cidade. "Radiation Oncology Department" em Barretos é o Hospital de Amor.
+    r"(radiation oncology|medical oncology|hematology) department|"
     r"centro de pesquisa clinica - area administrativa"
     r")\s*$",
     re.I,
@@ -156,6 +164,35 @@ CANONICOS: list[tuple[str | None, str, str]] = [
     # destino é a UNICAMP. Cinco grafias viravam cinco centros.
     ("campinas", r"\bunicamp\b|universidade estadual de campinas|universidade de campinas",
      "UNICAMP – Universidade Estadual de Campinas"),
+    # Casas que o CT.gov grafa de 2 a 4 maneiras, cada uma virando um centro
+    # distinto na contagem. Levantadas em 2026-08-05 auditando os 259 cards.
+    ("sao jose do rio preto",
+     r"famerp|hospital de base|faculdade regional de medicina|\bhb onco\b|"
+     r"faculdade de medicina de sao jose do rio preto|"
+     r"fund faculdade regional med|^f\.? ?f\.? ?r\.? ?m\.?",
+     "Hospital de Base / FAMERP"),
+    ("cascavel", r"uopeccan|uniao oeste paranaense", "Hospital UOPECCAN de Cascavel"),
+    ("cascavel", r"\bceonc\b|oncologia de cascavel", "CEONC – Centro de Oncologia de Cascavel"),
+    ("belo horizonte", r"clinicas da ufmg|hospital das clinicas.*ufmg", "Hospital das Clínicas da UFMG"),
+    ("belo horizonte", r"mario pen[an]", "Hospital Mário Penna"),
+    ("ribeirao preto", r"clinicas da fmrp|clinicas da faculdade de medicina de rp|\bhcrp\b|fmrp.?usp",
+     "Hospital das Clínicas da FMRP-USP"),
+    ("passo fundo", r"clinicas de passo fundo", "Hospital de Clínicas de Passo Fundo"),
+    ("santa cruz do sul", r"ana nery", "Hospital Ana Nery de Santa Cruz do Sul"),
+    ("ipatinga", r"sao francisco xavier", "Fundação São Francisco Xavier"),
+    ("botucatu", r"upeclin|faculdade de medicina de botucatu|unesp", "UNESP Botucatu (UPECLIN)"),
+    ("niteroi", r"oncomed", "Oncomed Niterói"),
+    ("sao carlos", r"advanze", "Advanze Pesquisa"),
+    ("taubate", r"cancer brasil|\bicb\b", "Instituto do Câncer Brasil – Taubaté"),
+    ("lajeado", r"bruno born|beneficencia e caridade de lajeado", "Hospital Bruno Born"),
+    ("jales", r"hospital d[oe] amor|pio xii", "Hospital de Amor (Fundação Pio XII)"),
+    ("sao paulo", r"\bcepho\b|estudos e pesquisas? de hematologia",
+     "CEPHO – Centro de Estudos e Pesquisas em Hematologia e Oncologia"),
+    # Duas grafias da UNICAMP que o CT.gov registrou na cidade errada (São Paulo
+    # em vez de Campinas). A cidade fica como o registro traz — é decisão
+    # clínica corrigi-la —, mas as duas são a mesma casa e contavam duas vezes.
+    ("sao paulo", r"\bunicamp\b|universidade estadual de campinas",
+     "UNICAMP – Universidade Estadual de Campinas"),
     ("natal", r"liga norte", "Liga Norte-Riograndense Contra o Câncer"),
     ("barretos", r"pio xii|hospital de amor|hospital de cancer de barretos", "Hospital de Amor (Fundação Pio XII)"),
     ("sao jose do rio preto", r"faculdade regional de medicina|famerp|hospital de base|\bhb onco\b",
@@ -257,6 +294,29 @@ LIXO = [
 ]
 
 
+# ── 3. instituição atribuída a uma cidade onde ela não existe ─────────────
+# O CT.gov às vezes casa o nome do sítio com a cidade errada. A CIDADE é o que
+# leva o paciente ao lugar certo e vem do registro, então ela permanece; o que
+# cai é a atribuição de instituição, que é falsa e ainda contava um centro a
+# mais. Cada par foi conferido um a um em 2026-08-05.
+#     (cidade normalizada onde a atribuição está errada, padrão no nome)
+FORA_DE_LUGAR: list[tuple[str, str]] = [
+    ("nova lima", r"kyushu"),                              # hospital no Japão
+    ("sao paulo", r"\bunicamp\b|estadual de campinas"),    # Campinas
+    ("rio de janeiro", r"erasto gaertner"),                # Curitiba
+    ("sao paulo", r"amaral carvalho"),                     # Jaú
+    ("sao jose do vale do rio preto", r"famerp|hospital de base"),  # SJ do Rio Preto/SP
+    ("sao paulo", r"santa casa de misericordia de porto alegre"),   # Porto Alegre
+    ("barueri", r"icesp|cancer do estado de sao paulo"),   # São Paulo
+    ("petropolis", r"caxias do sul"),                      # Caxias do Sul/RS
+    # A rede Hospital de Amor tem unidades em Barretos, Jales, Porto Velho e
+    # Nova Andradina — não na capital paulista nem em Jaú, que é do Amaral
+    # Carvalho. Essas duas cidades ficam de fora; as demais são legítimas.
+    ("sao paulo", r"hospital d[oe] amor|pio xii"),
+    ("jau", r"hospital d[oe] amor|pio xii"),
+]
+
+
 def _limpar(nome: str) -> str:
     s = nome.strip()
     for pat, rep in LIXO:
@@ -276,7 +336,8 @@ def resolver(facility: str, cidade: str) -> tuple[str | None, str]:
     Devolve (nome_canonico, motivo).
 
     nome_canonico é None quando o registro não nomeia o centro; `motivo` diz
-    por quê ('placeholder', 'endereco', 'vazio') ou 'ok' / 'canonico'.
+    por quê ('placeholder', 'endereco', 'fora_de_lugar', 'vazio') ou
+    'ok' / 'canonico'.
     """
     bruto = (facility or "").strip()
     if not bruto:
@@ -288,6 +349,11 @@ def resolver(facility: str, cidade: str) -> tuple[str | None, str]:
         return None, "placeholder"
     if ENDERECO.match(alvo):
         return None, "endereco"
+
+    cid_dea = _dea(cidade or "")
+    for cidade_errada, padrao in FORA_DE_LUGAR:
+        if cidade_errada == cid_dea and re.search(padrao, alvo):
+            return None, "fora_de_lugar"
 
     cid = _dea(cidade or "")
     for cidade_regra, padrao, canonico in CANONICOS:
