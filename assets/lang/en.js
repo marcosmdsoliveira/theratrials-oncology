@@ -2450,7 +2450,7 @@ window._i18nRegister('en', {
 
     /* CTA final */
     ctaTitle: "Ready to connect evidence and clinical practice?",
-    ctaDesc: "483 curated clinical trials in 40 categories · global radioligand pipeline via ClinicalTrials.gov · 259 active clinical trials in Brazil · 7 radiopharmaceutical dossiers · 12 clinical tools · AJCC 8th ed., CTCAE v6.0, BCLC 2026 · direct hyperlinks to PubMed and ClinicalTrials.gov.",
+    ctaDesc: "485 curated clinical trials in 40 categories · global radioligand pipeline via ClinicalTrials.gov · 259 active clinical trials in Brazil · 7 radiopharmaceutical dossiers · 12 clinical tools · AJCC 8th ed., CTCAE v6.0, BCLC 2026 · direct hyperlinks to PubMed and ClinicalTrials.gov.",
     ctaBtnDatabase: "Access the database",
     ctaBtnExplorer: "Explorer",
     ctaBtnTumorBoards: "Tumor Boards",
