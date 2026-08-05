@@ -51,9 +51,17 @@ def _dea(s: str) -> str:
 PLACEHOLDER = re.compile(
     r"^\s*("
     r"research site|clinical (trial|research) site|investigational site|"
-    r"local institution\b.*|site\s*[0-9]+|"
+    r"local institution\b.*|"
+    # O código do sítio vem em três formatos e nenhum é nome de casa:
+    # "Site 2405", "Site # 2405" e "Site BR55007". Só o primeiro era pego, e
+    # os outros dois entravam na contagem de centros como se fossem hospitais
+    # distintos — 22 centros fantasmas de uma vez.
+    r"site\s*[#nº]?\s*[a-z]{0,3}\s*[0-9]+|"
     r"[a-z]{2,14} (investigational|investigative|clinical) site|"
     r"msd brasil|"
+    # Setor de um hospital que já está contado pelo nome próprio na mesma
+    # cidade. "Radiation Oncology Department" em Barretos é o Hospital de Amor.
+    r"(radiation oncology|medical oncology|hematology) department|"
     r"centro de pesquisa clinica - area administrativa"
     r")\s*$",
     re.I,
@@ -155,6 +163,35 @@ CANONICOS: list[tuple[str | None, str, str]] = [
     # a fusão aqui é por marca + cidade: para quem encaminha um paciente, o
     # destino é a UNICAMP. Cinco grafias viravam cinco centros.
     ("campinas", r"\bunicamp\b|universidade estadual de campinas|universidade de campinas",
+     "UNICAMP – Universidade Estadual de Campinas"),
+    # Casas que o CT.gov grafa de 2 a 4 maneiras, cada uma virando um centro
+    # distinto na contagem. Levantadas em 2026-08-05 auditando os 259 cards.
+    ("sao jose do rio preto",
+     r"famerp|hospital de base|faculdade regional de medicina|\bhb onco\b|"
+     r"faculdade de medicina de sao jose do rio preto|"
+     r"fund faculdade regional med|^f\.? ?f\.? ?r\.? ?m\.?",
+     "Hospital de Base / FAMERP"),
+    ("cascavel", r"uopeccan|uniao oeste paranaense", "Hospital UOPECCAN de Cascavel"),
+    ("cascavel", r"\bceonc\b|oncologia de cascavel", "CEONC – Centro de Oncologia de Cascavel"),
+    ("belo horizonte", r"clinicas da ufmg|hospital das clinicas.*ufmg", "Hospital das Clínicas da UFMG"),
+    ("belo horizonte", r"mario pen[an]", "Hospital Mário Penna"),
+    ("ribeirao preto", r"clinicas da fmrp|clinicas da faculdade de medicina de rp|\bhcrp\b|fmrp.?usp",
+     "Hospital das Clínicas da FMRP-USP"),
+    ("passo fundo", r"clinicas de passo fundo", "Hospital de Clínicas de Passo Fundo"),
+    ("santa cruz do sul", r"ana nery", "Hospital Ana Nery de Santa Cruz do Sul"),
+    ("ipatinga", r"sao francisco xavier", "Fundação São Francisco Xavier"),
+    ("botucatu", r"upeclin|faculdade de medicina de botucatu|unesp", "UNESP Botucatu (UPECLIN)"),
+    ("niteroi", r"oncomed", "Oncomed Niterói"),
+    ("sao carlos", r"advanze", "Advanze Pesquisa"),
+    ("taubate", r"cancer brasil|\bicb\b", "Instituto do Câncer Brasil – Taubaté"),
+    ("lajeado", r"bruno born|beneficencia e caridade de lajeado", "Hospital Bruno Born"),
+    ("jales", r"hospital d[oe] amor|pio xii", "Hospital de Amor (Fundação Pio XII)"),
+    ("sao paulo", r"\bcepho\b|estudos e pesquisas? de hematologia",
+     "CEPHO – Centro de Estudos e Pesquisas em Hematologia e Oncologia"),
+    # Duas grafias da UNICAMP que o CT.gov registrou na cidade errada (São Paulo
+    # em vez de Campinas). A cidade fica como o registro traz — é decisão
+    # clínica corrigi-la —, mas as duas são a mesma casa e contavam duas vezes.
+    ("sao paulo", r"\bunicamp\b|universidade estadual de campinas",
      "UNICAMP – Universidade Estadual de Campinas"),
     ("natal", r"liga norte", "Liga Norte-Riograndense Contra o Câncer"),
     ("barretos", r"pio xii|hospital de amor|hospital de cancer de barretos", "Hospital de Amor (Fundação Pio XII)"),
