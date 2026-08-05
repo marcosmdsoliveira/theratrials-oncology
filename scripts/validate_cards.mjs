@@ -252,12 +252,20 @@ if (comTag.length) {
   });
 }
 
+/* O marcador ⚠️ significava "rascunho não revisado pelo revisor clínico" e
+ * saiu dos 464 takehome em 2026-08-05, com a aprovação dele — pendência aberta
+ * desde junho de 2026. Se voltar a aparecer, é curadoria nova entrando sem
+ * revisão, e o NOTE avisa. */
 const comTake = S.filter((s) => !vazio(s.takehome));
+const comMarcador = comTake.filter((s) => String(s.takehome).includes('⚠️'));
 notes.push({
   tipo: 'takehome',
   total: comTake.length,
-  detalhe: `${comTake.filter((s) => String(s.takehome).includes('⚠️')).length} com ⚠️ (rascunho não revisado) · ${comTake.filter((s) => !String(s.takehome).includes('⚠️')).length} aprovados`,
-  obs: 'o ⚠️ sai só após aprovação do revisor clínico (§7.1)',
+  detalhe: comMarcador.length
+    ? `${comMarcador.length} ainda com o marcador ⚠️ de rascunho não revisado`
+    : `nenhum com o marcador ⚠️ — todos revisados`,
+  obs: 'o ⚠️ marca rascunho não revisado; sai só com aprovação do revisor clínico (§7.1)',
+  uids: comMarcador.map((s) => s.uid),
 });
 notes.push({
   tipo: 'linha',
