@@ -160,3 +160,11 @@ test('"Não-radiofármaco" é resposta válida no campo radiofarmaco', () => {
   const r = rodarCom((d) => { d.studies.find((x) => x.uid === 'net_gep_0').radiofarmaco = 'Não-radiofármaco'; });
   assert.equal(r.code, 0, `o campo radiofarmaco tem de aceitar esse valor\n${r.saida}`);
 });
+
+/* O annotateAbbr escapa HTML de propósito, então tag em campo de texto chega
+ * ao leitor à mostra. Eram 95 campos em 36 cards até 2026-08-05. */
+bloqueia(
+  'tag HTML em campo de texto',
+  (d) => { d.studies[21].impacto_reg = 'Estudo <strong>negativo</strong> — não mudou a prática.'; },
+  /tag HTML/
+);

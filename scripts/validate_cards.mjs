@@ -262,29 +262,21 @@ for (const s of S) {
   }
 }
 
-// ── 7. NOTE — informes que não bloqueiam ──────────────────────────────────
-/* Tag HTML em campo de texto APARECE LITERAL na tela. O `annotateAbbr`
- * (glossario.js) escapa o HTML de propósito — "seguro para texto livre vindo
- * do database" — então `<strong>POSITIVO</strong>` chega ao leitor com as tags
- * à mostra. A ênfase nesses campos se faz com MAIÚSCULAS, como no NETTER-2.
- * Levantado em 2026-08-05: 95 campos pré-existentes, aguardando decisão do
- * revisor clínico. Vira FAIL quando a limpeza for feita. */
-const RE_TAG = /<\/?(strong|b|em|i|br|p|ul|li|span|div)\b[^>]*>/i;
-const comTag = [];
+/* ── 7. tag HTML em campo de texto APARECE LITERAL na tela ────────────────
+ * O `annotateAbbr` (glossario.js:260) escapa o HTML de propósito — "seguro
+ * para texto livre vindo do database". Então `<strong>POSITIVO</strong>` chega
+ * ao leitor com as tags à mostra. Eram 95 campos em 36 cards até 2026-08-05,
+ * todos limpos naquela data; como o número é zero, isto pode ser FAIL.
+ * A ênfase nesses campos se faz com MAIÚSCULAS, como no NETTER-2. */
+const RE_TAG = /<\/?[a-z][a-z0-9]*\b[^>]*>/i;
 for (const s of S) {
   for (const [campo, v] of Object.entries(s)) {
-    if (typeof v === 'string' && RE_TAG.test(v)) comTag.push(`${s.uid}·${campo}`);
+    if (typeof v !== 'string' || !RE_TAG.test(v)) continue;
+    F(s.uid, `${campo} tem tag HTML, que o annotateAbbr escapa e o leitor vê literal: ${v.match(RE_TAG)[0]} — use MAIÚSCULAS para ênfase`);
   }
 }
-if (comTag.length) {
-  notes.push({
-    tipo: 'tag HTML em campo de texto (aparece literal na tela)',
-    total: comTag.length,
-    detalhe: `${new Set(comTag.map((x) => x.split('·')[0])).size} card(s) afetado(s)`,
-    obs: 'annotateAbbr escapa HTML de propósito; a ênfase se faz com MAIÚSCULAS. Ver glossario.js:260',
-    campos: comTag,
-  });
-}
+
+// ── 8. NOTE — informes que não bloqueiam ──────────────────────────────────
 
 /* O marcador ⚠️ significava "rascunho não revisado pelo revisor clínico" e
  * saiu dos 464 takehome em 2026-08-05, com a aprovação dele — pendência aberta
