@@ -294,6 +294,29 @@ LIXO = [
 ]
 
 
+# ── 3. instituição atribuída a uma cidade onde ela não existe ─────────────
+# O CT.gov às vezes casa o nome do sítio com a cidade errada. A CIDADE é o que
+# leva o paciente ao lugar certo e vem do registro, então ela permanece; o que
+# cai é a atribuição de instituição, que é falsa e ainda contava um centro a
+# mais. Cada par foi conferido um a um em 2026-08-05.
+#     (cidade normalizada onde a atribuição está errada, padrão no nome)
+FORA_DE_LUGAR: list[tuple[str, str]] = [
+    ("nova lima", r"kyushu"),                              # hospital no Japão
+    ("sao paulo", r"\bunicamp\b|estadual de campinas"),    # Campinas
+    ("rio de janeiro", r"erasto gaertner"),                # Curitiba
+    ("sao paulo", r"amaral carvalho"),                     # Jaú
+    ("sao jose do vale do rio preto", r"famerp|hospital de base"),  # SJ do Rio Preto/SP
+    ("sao paulo", r"santa casa de misericordia de porto alegre"),   # Porto Alegre
+    ("barueri", r"icesp|cancer do estado de sao paulo"),   # São Paulo
+    ("petropolis", r"caxias do sul"),                      # Caxias do Sul/RS
+    # A rede Hospital de Amor tem unidades em Barretos, Jales, Porto Velho e
+    # Nova Andradina — não na capital paulista nem em Jaú, que é do Amaral
+    # Carvalho. Essas duas cidades ficam de fora; as demais são legítimas.
+    ("sao paulo", r"hospital d[oe] amor|pio xii"),
+    ("jau", r"hospital d[oe] amor|pio xii"),
+]
+
+
 def _limpar(nome: str) -> str:
     s = nome.strip()
     for pat, rep in LIXO:
@@ -313,7 +336,8 @@ def resolver(facility: str, cidade: str) -> tuple[str | None, str]:
     Devolve (nome_canonico, motivo).
 
     nome_canonico é None quando o registro não nomeia o centro; `motivo` diz
-    por quê ('placeholder', 'endereco', 'vazio') ou 'ok' / 'canonico'.
+    por quê ('placeholder', 'endereco', 'fora_de_lugar', 'vazio') ou
+    'ok' / 'canonico'.
     """
     bruto = (facility or "").strip()
     if not bruto:
@@ -325,6 +349,11 @@ def resolver(facility: str, cidade: str) -> tuple[str | None, str]:
         return None, "placeholder"
     if ENDERECO.match(alvo):
         return None, "endereco"
+
+    cid_dea = _dea(cidade or "")
+    for cidade_errada, padrao in FORA_DE_LUGAR:
+        if cidade_errada == cid_dea and re.search(padrao, alvo):
+            return None, "fora_de_lugar"
 
     cid = _dea(cidade or "")
     for cidade_regra, padrao, canonico in CANONICOS:
