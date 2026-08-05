@@ -37,6 +37,11 @@
  *    dois deles tinham DOI INEXISTENTE (404 no doi.org). Ver FONTE_NAO_PUBMED.
  *
  * 5. `aprovacao` no formato travado e `linha` curta o bastante para o chip.
+ *    Nota: desde 2026-08-05 a caixa "Aprovação regulatória" NÃO é mais
+ *    renderizada no modal do database — repetia em forma pobre o que o campo
+ *    `impacto_reg` já diz em prosa. O campo continua no `data.js` e é
+ *    exportado para `app-data/`, que o app iOS consome, então o formato segue
+ *    valendo. Se um dia o campo sair do schema, esta checagem sai junto.
  *
  * ARMADILHA DE NÚMERO, aprendida apanhando duas vezes na mesma noite:
  * comparar dígito por dígito exige normalizar os DOIS lados igual.
@@ -224,6 +229,29 @@ for (const s of S) {
 }
 
 // ── 6. NOTE — informes que não bloqueiam ──────────────────────────────────
+/* Tag HTML em campo de texto APARECE LITERAL na tela. O `annotateAbbr`
+ * (glossario.js) escapa o HTML de propósito — "seguro para texto livre vindo
+ * do database" — então `<strong>POSITIVO</strong>` chega ao leitor com as tags
+ * à mostra. A ênfase nesses campos se faz com MAIÚSCULAS, como no NETTER-2.
+ * Levantado em 2026-08-05: 95 campos pré-existentes, aguardando decisão do
+ * revisor clínico. Vira FAIL quando a limpeza for feita. */
+const RE_TAG = /<\/?(strong|b|em|i|br|p|ul|li|span|div)\b[^>]*>/i;
+const comTag = [];
+for (const s of S) {
+  for (const [campo, v] of Object.entries(s)) {
+    if (typeof v === 'string' && RE_TAG.test(v)) comTag.push(`${s.uid}·${campo}`);
+  }
+}
+if (comTag.length) {
+  notes.push({
+    tipo: 'tag HTML em campo de texto (aparece literal na tela)',
+    total: comTag.length,
+    detalhe: `${new Set(comTag.map((x) => x.split('·')[0])).size} card(s) afetado(s)`,
+    obs: 'annotateAbbr escapa HTML de propósito; a ênfase se faz com MAIÚSCULAS. Ver glossario.js:260',
+    campos: comTag,
+  });
+}
+
 const comTake = S.filter((s) => !vazio(s.takehome));
 notes.push({
   tipo: 'takehome',
