@@ -920,7 +920,11 @@
             <div class="field full highlight"><div class="field-label" x-text="(window.TheraTrials && TheraTrials.isRadioStudy(selectedStudy)) ? 'Radiofármaco / Intervenção' : 'Intervenção'"></div><div class="field-text" style="font-weight: 500" x-text="selectedStudy.radiofarmaco || '—'"></div></div>
             <div class="field"><div class="field-label" data-i18n="db.fieldRegimen">Esquema</div><div class="field-text" x-html="TheraTrials.annotateAbbr(selectedStudy.esquema || '—')"></div></div>
             <div class="field" x-show="!window.TheraTrials || TheraTrials.isRadioStudy(selectedStudy) || TheraTrials.fieldMeaningful(selectedStudy.cumul)"><div class="field-label" x-text="(window.TheraTrials && TheraTrials.isRadioStudy(selectedStudy)) ? 'Atividade cumulativa típica' : 'Dose cumulativa típica'"></div><div class="field-text mono" x-text="selectedStudy.cumul || '—'"></div></div>
-            <div class="field full" x-show="!window.TheraTrials || TheraTrials.isRadioStudy(selectedStudy) || TheraTrials.fieldMeaningful(selectedStudy.preparo)"><div class="field-label" x-text="(window.TheraTrials && TheraTrials.isRadioStudy(selectedStudy)) ? 'Preparo e pré-medicação' : 'Pré-medicação / profilaxia'"></div><div class="field-text" x-html="TheraTrials.annotateAbbr(selectedStudy.preparo || '—')"></div></div>
+            <!-- A caixa some quando não há preparo a descrever. Antes ela aparecia em todo
+                 estudo radiofarmacêutico, tivesse conteúdo ou não, e 18 cards a exibiam com um
+                 travessão — sobretudo meningioma e PPGL. Mesmo critério da caixa de aprovação
+                 regulatória, removida em 2026-08-05. -->
+            <div class="field full" x-show="!window.TheraTrials || TheraTrials.fieldMeaningful(selectedStudy.preparo)"><div class="field-label" x-text="(window.TheraTrials && TheraTrials.isRadioStudy(selectedStudy)) ? 'Preparo e pré-medicação' : 'Pré-medicação / profilaxia'"></div><div class="field-text" x-html="TheraTrials.annotateAbbr(selectedStudy.preparo || '—')"></div></div>
             <div class="field full"><div class="field-label" data-i18n="db.fieldComparator">Comparador</div><div class="field-text" x-html="TheraTrials.annotateAbbr(selectedStudy.comparador || '—')"></div></div>
           </div>
         </div>
