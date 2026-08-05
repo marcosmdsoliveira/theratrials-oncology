@@ -60,24 +60,31 @@ MAX_TOKENS = 4000
 PRECO = {"in": 5.00 * 0.5, "out": 25.00 * 0.5}
 
 # ── Taxonomia canônica ────────────────────────────────────────────────────────
-# Copiada de THERA_TRIALS_BR_META em assets/js/trials_br.js. O modelo precisa
-# escolher DENTRO destas listas — valor fora da lista quebra os filtros do
-# Trial Matcher silenciosamente (o card aparece, mas nenhum filtro o encontra).
-NEOPLASIAS = [
-    "pulmao", "cabeca_pescoco", "colorretal", "gastrico", "esofago", "mama",
-    "pediatrico", "prostata", "melanoma", "mieloma", "linfoma", "urotelial",
-    "pancreas", "endometrio", "cervix", "hcc", "rim", "ovario", "vias_biliares",
-    "penis",
-]
-MODALIDADES = [
-    "terapia-alvo", "imunoterapia", "ADC", "bispecífico", "CAR-T", "quimioterapia",
-    "combinação", "vacina", "anti-angiogênico", "cirurgia_rt", "hormonioterapia",
-]
-LINHAS = [
-    "1ª linha", "2ª linha", "3ª+ linha", "Recidivado / refratário",
-    "Avançado / metastático", "Perioperatório", "Perioperatório / consolidação",
-    "Manutenção", "2ª linha pós-CDK4/6", "Conforme protocolo",
-]
+# O modelo precisa escolher DENTRO destas listas — valor fora da lista quebra os
+# filtros do Trial Matcher silenciosamente (o card aparece, mas nenhum filtro o
+# encontra). A fonte é THERA_TRIALS_BR_META, e é lida daqui em vez de copiada:
+# quando era cópia manual, ficou seis valores atrás da META sem ninguém notar
+# (llc, lma, lla, gist, solidos, net). Categoria que existe na META mas falta
+# aqui some do vocabulário do modelo, que então força o estudo numa categoria
+# errada ou o descarta.
+TRIALS_JS = SCRIPTS.parent / "assets" / "js" / "trials_br.js"
+
+
+def meta_ids(bloco: str) -> list[str]:
+    """Devolve os `id` de um bloco de THERA_TRIALS_BR_META, na ordem do arquivo."""
+    texto = TRIALS_JS.read_text(encoding="utf-8")
+    m = re.search(rf"^  {bloco}: \[$(.*?)^  \],$", texto, re.S | re.M)
+    if not m:
+        raise SystemExit(f"bloco '{bloco}' não encontrado em {TRIALS_JS.name}")
+    ids = re.findall(r"^\s*\{ id: '([^']+)'", m.group(1), re.M)
+    if not ids:
+        raise SystemExit(f"bloco '{bloco}' sem nenhum id em {TRIALS_JS.name}")
+    return ids
+
+
+NEOPLASIAS = meta_ids("neoplasias")
+MODALIDADES = meta_ids("modalidades")
+LINHAS = meta_ids("linhas")
 
 SCHEMA = {
     "type": "object",
@@ -85,9 +92,11 @@ SCHEMA = {
         "descartar": {
             "type": "boolean",
             "description": "true se o estudo não couber em nenhuma neoplasia da lista "
-                           "(ex.: cesta de tumores raros sem foco, doença hematológica "
-                           "fora do escopo) ou se o registro não trouxer informação "
-                           "suficiente para uma curadoria honesta.",
+                           "(ex.: doença hematológica sem categoria própria — SMD, "
+                           "mielofibrose, LMC, HPN) ou se o registro não trouxer "
+                           "informação suficiente para uma curadoria honesta. Cesta de "
+                           "vários sítios ou recrutamento por alteração molecular NÃO "
+                           "é motivo de descarte: existe `solidos` para isso.",
         },
         "motivo_descarte": {"type": "string"},
         "nome": {
@@ -249,17 +258,39 @@ ORCAMENTO_EXCLUSAO = 4000
 #     Key Exclusion Criteria
 #     Phase 1b Exclusion Criteria:          (qualificador antes)
 #     Exclusion Criteria Related to NSCLC:  (qualificador depois)
+#     Exclusion Criteria: Screening Phase   (qualificador depois dos dois-pontos)
+#     2. Key Exclusion Criteria:            (item numerado)
 #     Other Exclusions                      (sem a palavra "criteria")
+#     Participants who meet any of the following criteria will be disqualified
+#       from entering the study:            (sem a palavra "exclusion")
 # Um padrão que exigisse a linha exatamente igual a "Exclusion Criteria" perdia
-# os quatro últimos — e aí a conferência acusava, errado, que o card tinha
+# todos os demais — e aí a conferência acusava, errado, que o card tinha
 # inventado exclusões inexistentes. Casa linha curta e isolada, tipo título.
 RE_EXCLUSAO = re.compile(
-    r"^[ \t]*[*\-–•]?[ \t]*"           # marcador de lista, opcional
-    r"[\w /()\-]{0,40}?"               # qualificador antes ("Key", "Phase 1b", "Other")
+    r"^[ \t]*(?:[*\-–•]|\d+[.)])?[ \t]*"       # marcador de lista, símbolo ou número
+    r"(?:"
+    r"[\w ./()\-]{0,40}?"                      # qualificador antes ("Key", "Phase 1b")
     r"exclusions?(?:[ \t]+criteria)?"
-    r"[\w ,/()\-]{0,60}:?[ \t]*$",
+    r"[\w ,:/()\-]{0,60}"                      # qualificador depois, com ou sem ':'
+    r"|"
+    r".{0,140}?(?:disqualified from entering|will be excluded from)"
+    r"[\w ,/()\-]{0,60}"
+    r")"
+    r":?[ \t]*$",
     re.I | re.M,
 )
+
+# Nem todo registro traz cabeçalho: o SOUNDTRACK-D2 lista as exclusões logo
+# depois das inclusões e só as identifica na frase de rodapé. Isto NÃO serve
+# para dividir o texto — o rodapé fica no fim da seção, não no começo —, serve
+# apenas para conferir que ela existe.
+RE_EXCLUSAO_RODAPE = re.compile(r"other exclusion criteria", re.I)
+
+
+def tem_secao_exclusao(texto: str) -> bool:
+    """True se o registro traz exclusões, seja por cabeçalho ou só pelo rodapé."""
+    t = texto or ""
+    return bool(RE_EXCLUSAO.search(t) or RE_EXCLUSAO_RODAPE.search(t))
 
 
 def recortar_elegibilidade(texto: str) -> str:
@@ -300,7 +331,7 @@ def conferir_exclusao(card: dict, elegibilidade: str) -> str:
     Por isso a conferência aqui não lê `notas_revisor` nem `exclusao_ausente`:
     procura o cabeçalho no texto oficial e compara. Devolve '' quando está OK.
     """
-    tem_secao = bool(RE_EXCLUSAO.search(elegibilidade or ""))
+    tem_secao = tem_secao_exclusao(elegibilidade)
     n = len(card.get("criterios_exclusao") or [])
     ausente = bool(card.get("exclusao_ausente"))
 

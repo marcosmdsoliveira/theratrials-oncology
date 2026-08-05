@@ -12,10 +12,19 @@ from pathlib import Path
 
 import argparse
 _ap = argparse.ArgumentParser(description=__doc__)
-_ap.add_argument("--dir", required=True, help="pasta com recurar_*.json e curadoria_*.json")
-P = Path(_ap.parse_args().dir)
-fonte = {a["nct"]: a for a in json.loads((P / "recurar_76.json").read_text(encoding="utf-8"))}
-cur = json.loads((P / "curadoria_76.json").read_text(encoding="utf-8"))
+_ap.add_argument("--dir", help="pasta com recurar_76.json e curadoria_76.json (modo antigo)")
+_ap.add_argument("--fonte", help="JSON [{nct, nome, elegibilidade}] com o texto de origem")
+_ap.add_argument("--curadoria", help="JSON {nct: {inc: [], exc: []}} com o que foi escrito")
+_args = _ap.parse_args()
+if _args.dir:
+    P = Path(_args.dir)
+    _f, _c = P / "recurar_76.json", P / "curadoria_76.json"
+elif _args.fonte and _args.curadoria:
+    _f, _c = Path(_args.fonte), Path(_args.curadoria)
+else:
+    _ap.error("use --dir OU --fonte com --curadoria")
+fonte = {a["nct"]: a for a in json.loads(_f.read_text(encoding="utf-8"))}
+cur = json.loads(_c.read_text(encoding="utf-8"))
 
 def dea(s):
     s = unicodedata.normalize("NFD", s.lower())
@@ -70,8 +79,15 @@ EXPANSOES = {
  "ihq":  ["ihc", "immunohistochemistry"],
  "ish":  ["in situ hybridization"],
  "adc":  ["antibody drug conjugate", "antibody-drug conjugate"],
- "pd-1": ["programmed cell death 1", "programmed cell death protein 1", "pd)-1", "pd-1/l1"],
- "pd-l1":["programmed cell death ligand 1", "programmed death ligand 1", "pd-1/l1", "pd-l1"],
+ # "anti-PD-(L)1" é como o registro diz "anti-PD-1 e anti-PD-L1" de uma vez.
+ # O registro alterna "programmed CELL death 1" e "programmed death 1".
+ "pd-1": ["programmed cell death 1", "programmed cell death protein 1", "pd)-1", "pd-1/l1",
+          "pd-(l)1", "pd(l)1", "programmed death 1"],
+ "pd-l1":["programmed cell death ligand 1", "programmed death ligand 1", "pd-1/l1", "pd-l1",
+          "pd-(l)1", "pd(l)1"],
+ # O registro escreve "breast cancer gene 1/2 (BRCA 1/2)", cobrindo os dois.
+ "brca1":["brca 1/2", "brca1/2", "breast cancer gene 1"],
+ "brca2":["brca 1/2", "brca1/2", "breast cancer gene 2", "breast cancer gene 1/2"],
  "pd-l2":["programmed cell death ligand 2", "programmed cell death-ligand 2"],
  "cps":  ["combined positive score"],
  "tps":  ["tumor proportion score"],
@@ -90,7 +106,7 @@ EXPANSOES = {
  "gpc3": ["glypican-3"],
  "cd137":["4-1bb", "t-cell costimulatory receptor 4-1bb"],
  "ctla-4":["cytotoxic t-lymphocyte", "cytotoxic t lymphocyte"],
- "dpoc": ["copd", "chronic obstructive pulmonary disease"],
+ "dpoc": ["copd", "chronic obstructive pulmonary"],
  "tarv": ["antiretroviral therapy", "art"],
  "parp": ["poly (adp-ribose) polymerase", "poly adp-ribose polymerase"],
  "imwg": ["international myeloma working group"],
@@ -101,7 +117,16 @@ EXPANSOES = {
  "vhl":  ["von hippel"],
  "dlco": ["dlco", "diffusing capacity"],
  "icans":["immune effector cell-associated neurotoxicity"],
- "poems":["polyneuropathy, organomegaly, endocrinopathy"],
+ # Sem vírgula também: o AZD0305 escreve "Polyneuropathy Organomegaly
+ # Endocrinopathy M-protein and Skin Syndrome", sem nenhuma pontuação.
+ "poems":["polyneuropathy, organomegaly, endocrinopathy", "polyneuropathy organomegaly"],
+ # O registro quase nunca abrevia o vírus; escreve "hepatitis C antibody".
+ "hcv":  ["hepatitis c"],
+ "hbv":  ["hepatitis b"],
+ "hiv":  ["human immunodeficiency", "hiv"],
+ # "Heart rate-corrected QT interval based on Fridericia's formula" = QTcF.
+ "qtcf": ["fridericia", "qtcf"],
+ "qtc":  ["corrected qt", "qtc"],
  "177lu":["177lu", "lutetium"],
  "psma": ["psma", "prostate-specific membrane"],
  "ctdna":["ctdna", "circulating tumor dna"],
@@ -112,6 +137,20 @@ EXPANSOES = {
  "lhrh": ["lhrh", "luteinizing hormone-releasing"],
  "gnrh": ["gnrh", "gonadotropin"],
 }
+
+def _sig_norm(s):
+    """Tira a pontuação e o espaço que separam sigla no registro.
+
+    O CT.gov escreve a mesma sigla de muitos jeitos: "anti-PD 1" (espaço),
+    "anti-PD-(L)1" (parêntese para dizer PD-1 e PD-L1 de uma vez) e "BRCA 1/2".
+    Comparar caractere a caractere acusava invenção onde só houve notação
+    diferente. A comparação já era por substring, então tirar espaço e
+    parêntese não afrouxa nada que a substring não afrouxasse antes.
+    """
+    for c in "-/() ":
+        s = s.replace(c, "")
+    return s
+
 
 falhas, ok_total, por_card = [], 0, {}
 for nct, dados in cur.items():
@@ -127,8 +166,10 @@ for nct, dados in cur.items():
                 src_nums.add(norm_num(parte))
     ruins = []
     n_anc = 0
-    for chave in ("inc", "exc"):
-        for crit in dados.get(chave, []):
+    # Verifica toda lista de texto que o chamador entregar — não só inc/exc.
+    # Doses e esquemas vivem em `intervencao`, e ali também cabe invenção.
+    for chave in dados:
+        for crit in dados.get(chave) or []:
             # âncoras numéricas
             for num in re.findall(r"\d[\d.,]*", crit):
                 n_anc += 1
@@ -142,12 +183,12 @@ for nct, dados in cur.items():
             for sig in SIGLAS.findall(crit):
                 n_anc += 1
                 chave_s = dea(sig)
-                s = chave_s.replace("-", "").replace("/", "")
-                corpo = src_d.replace("-", "").replace("/", "")
+                s = _sig_norm(chave_s)
+                corpo = _sig_norm(src_d)
                 achou = s in corpo
                 if not achou:
                     for exp in EXPANSOES.get(chave_s, []):
-                        if dea(exp).replace("-", "").replace("/", "") in corpo:
+                        if _sig_norm(dea(exp)) in corpo:
                             achou = True; break
                 if not achou:
                     ruins.append((chave, sig, crit[:70]))

@@ -43,5 +43,10 @@
   "nct": "NCT07084610",
   "nome": "Biomarcadores metabólicos na neoadjuvância do NSCLC",
   "motivo": "Estudo de biomarcador preditivo, não de tratamento. O objetivo é correlacionar marcadores glicolíticos do PET/CT (volume metabólico, SUVmax), imuno-histoquímica (GLUT-1, Ki-67, PD-L1) e alterações moleculares com a resposta patológica. O tratamento entregue — nivolumabe 3 mg/kg com dupla de platina por 2 ciclos, seguido de cirurgia — é declarado pelo próprio registro como padrão de cuidado institucional, então entrar no estudo não dá acesso a nenhuma terapia indisponível fora dele. Mesmo critério do VAC-Biopsy."
+ },
+ {
+  "nct": "NCT02960022",
+  "nome": "Extensão de enzalutamida",
+  "motivo": "Estudo de extensão aberta (rollover): o único caminho de entrada é já estar recebendo enzalutamida num estudo anterior patrocinado pela Astellas ou Medivation que tenha concluído a análise primária. Nenhum paciente novo pode ser encaminhado, e estudo iniciado por investigador não conta. Manter o card no Trial Matcher faria o médico perder tempo com um ensaio ao qual seu paciente não tem acesso."
  }
 ]
