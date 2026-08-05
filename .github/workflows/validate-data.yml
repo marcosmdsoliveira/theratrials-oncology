@@ -24,6 +24,9 @@ on:
       - 'assets/lang/pt-br.js'
       - 'assets/lang/en.js'
       - 'scripts/sync_counts.mjs'
+  # A lista do pull_request tem de incluir os PRÓPRIOS validadores, não só os
+  # dados. Sem isso, um PR que mexe só no validador não roda o validador — foi
+  # o que aconteceu com o PR #11, que o criou: zero checks.
   pull_request:
     paths:
       - 'assets/js/data.js'
@@ -31,6 +34,13 @@ on:
       - 'index.html'
       - 'assets/lang/pt-br.js'
       - 'assets/lang/en.js'
+      - 'scripts/validate_cards.mjs'
+      - 'scripts/validate_cards.test.mjs'
+      - 'scripts/validate_pubmed.mjs'
+      - 'scripts/validate_nct.mjs'
+      - 'scripts/validate_trials_br.mjs'
+      - 'scripts/sync_counts.mjs'
+      - '.github/workflows/validate-data.yml'
   workflow_dispatch:
 
 permissions:
