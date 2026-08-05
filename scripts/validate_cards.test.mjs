@@ -1,0 +1,116 @@
+#!/usr/bin/env node --test
+/* ============================================================================
+ * validate_cards.test.mjs — o guard tem de reprovar quando deve
+ *
+ * Um validador que nunca reprova nada não prova nada: passa a dar a sensação
+ * de cobertura sem cobrir. Aqui cada regra do validate_cards.mjs é exercitada
+ * por INJEÇÃO DE DEFEITO — quebra-se o data.js de um jeito específico e
+ * confere-se que o guard vê.
+ *
+ * Trabalha sobre uma cópia em diretório temporário, com a estrutura de pastas
+ * que o validador espera (scripts/ e assets/js/ irmãos). O data.js real nunca
+ * é tocado.
+ *
+ *   node --test scripts/
+ * ==========================================================================*/
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { spawnSync } from 'node:child_process';
+import { mkdtempSync, mkdirSync, copyFileSync, writeFileSync, readFileSync, rmSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import path from 'node:path';
+import { createRequire } from 'node:module';
+import { fileURLToPath } from 'node:url';
+
+const require = createRequire(import.meta.url);
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const SITE = path.join(__dirname, '..');
+const DATA = path.join(SITE, 'assets', 'js', 'data.js');
+
+global.window = {};
+require(DATA);
+const ORIGINAL = global.window.THERA_DATA;
+const bruto = readFileSync(DATA, 'utf8');
+const CABECALHO = bruto.slice(0, bruto.indexOf('*/') + 3);
+
+const raiz = mkdtempSync(path.join(tmpdir(), 'validate-cards-'));
+mkdirSync(path.join(raiz, 'scripts'));
+mkdirSync(path.join(raiz, 'assets', 'js'), { recursive: true });
+copyFileSync(path.join(SITE, 'scripts', 'validate_cards.mjs'), path.join(raiz, 'scripts', 'validate_cards.mjs'));
+test.after(() => rmSync(raiz, { recursive: true, force: true }));
+
+/* spawnSync e não execFileSync: o validador escreve TUDO em stderr, como os
+ * outros validadores da casa, e o execFileSync descarta stderr no sucesso. */
+function rodarCom(mutar) {
+  const d = JSON.parse(JSON.stringify(ORIGINAL));
+  if (mutar) mutar(d);
+  writeFileSync(path.join(raiz, 'assets', 'js', 'data.js'), `${CABECALHO}window.THERA_DATA = ${JSON.stringify(d)};\n`);
+  const r = spawnSync('node', [path.join(raiz, 'scripts', 'validate_cards.mjs')], { encoding: 'utf8' });
+  return { code: r.status, saida: (r.stdout ?? '') + (r.stderr ?? '') };
+}
+
+const bloqueia = (nome, mutar, trecho) =>
+  test(`FAIL: ${nome}`, () => {
+    const r = rodarCom(mutar);
+    assert.equal(r.code, 1, `esperava exit 1, veio ${r.code}\n${r.saida}`);
+    if (trecho) assert.match(r.saida, trecho);
+  });
+
+const avisa = (nome, mutar, trecho) =>
+  test(`WARN: ${nome}`, () => {
+    const r = rodarCom(mutar);
+    assert.equal(r.code, 0, `WARN não pode bloquear; veio exit ${r.code}\n${r.saida}`);
+    assert.match(r.saida, /WARN=[1-9]/);
+    if (trecho) assert.match(r.saida, trecho);
+  });
+
+test('o data.js real passa', () => {
+  const r = rodarCom(null);
+  assert.equal(r.code, 0, `o data.js versionado deveria passar\n${r.saida}`);
+  assert.match(r.saida, /FAIL=0/);
+});
+
+// ── integridade estrutural ────────────────────────────────────────────────
+bloqueia('metadata.total_studies dessincronizado', (d) => { d.metadata.total_studies = 999; }, /total_studies/);
+bloqueia('soma de categories\\[\\].count errada', (d) => { d.categories[0].count += 3; }, /count declarado/);
+bloqueia('uid duplicado', (d) => { d.studies[5].uid = d.studies[4].uid; }, /uid duplicado/);
+bloqueia('estudo em categoria não declarada', (d) => { d.studies[7].category_id = 'categoria_fantasma'; }, /não está declarado/);
+bloqueia('category_name divergindo da categoria', (d) => { d.studies[9].category_name = 'Nome Errado'; }, /category_name/);
+
+// ── schema núcleo congelado ───────────────────────────────────────────────
+bloqueia('campo do núcleo removido', (d) => { delete d.studies[11].preparo; }, /núcleo ausente/);
+
+// ── §7.1, os dois níveis ──────────────────────────────────────────────────
+bloqueia(
+  'número do resultado_chave que não existe em NENHUM campo',
+  (d) => {
+    const s = d.studies.find((x) => x.uid === 'net_gep_1');
+    s.resultado_chave = 'mPFS 22,8 vs 8,5 m · HR 0,28 · OS 91,7 m';   // 91,7 não existe no card
+  },
+  /não existe em NENHUM campo/
+);
+avisa(
+  'número do resultado_chave vindo de campo secundário',
+  (d) => {
+    const s = d.studies.find((x) => x.uid === 'net_gep_1');
+    s.resultado_chave = 'mPFS 22,8 vs 8,5 m · HR 0,28 · ORR 43,0%';   // 43,0 está em `secundario`
+  },
+  /fora do primario/
+);
+
+/* O guard não pode confundir sigla com medida: `p53` não contém o número 53,
+ * e `IC 95%` e `IC95%` são o mesmo intervalo. Os dois erros aconteceram de
+ * verdade ao escrever este validador. */
+test('não confunde sigla com número nem se importa com o espaço do IC', () => {
+  const r = rodarCom((d) => {
+    const s = d.studies.find((x) => x.uid === 'net_gep_1');
+    s.primario = 'OS em p53-anormal 52,7% (IC95% 40,8-68,1)';
+    s.resultado_chave = 'OS em p53-anormal 52,7% (IC 95% 40,8-68,1)';
+  });
+  assert.equal(r.code, 0, `espaço no IC e "p53" não podem gerar FAIL\n${r.saida}`);
+  assert.doesNotMatch(r.saida, /net_gep_1 \| resultado_chave/);
+});
+
+// ── formato ───────────────────────────────────────────────────────────────
+avisa('aprovacao fora do formato travado', (d) => { d.studies[13].aprovacao = 'aprovado em algum lugar'; }, /formato travado/);
+avisa('linha longa demais para o chip', (d) => { d.studies[15].linha = 'x'.repeat(95); }, /caracteres/);

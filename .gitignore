@@ -62,9 +62,13 @@ credentials.json
 *.scratch.html
 DEBUG_*
 
-# Relatórios do validador de dados (scripts/validate_pubmed.mjs)
+# Relatórios dos validadores de dados (scripts/validate_*.mjs)
 report.json
 validation-report.json
+cards-report.json
+pubmed-report.json
+nct-report.json
+trials-br-report.json
 
 # Scratch de auditoria (prefixo _)
 _*.json
