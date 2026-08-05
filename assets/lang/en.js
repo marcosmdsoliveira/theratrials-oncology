@@ -2616,6 +2616,7 @@ window._i18nRegister('en', {
     toastCompareMax: "Maximum of 3 studies for comparison",
     toastFavRemoved: "Removed from favorites",
     toastFavAdded: "Added to favorites",
+    btnShare: "Share",
     toastLinkCopied: "Shareable link copied",
     toastNothingToExport: "Nothing to export",
     toastExported: "studies exported",
