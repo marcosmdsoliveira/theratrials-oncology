@@ -228,7 +228,41 @@ for (const s of S) {
   F(s.uid, `pubmed_url aponta para ${host}, não para o PubMed — fica fora do validate_pubmed.mjs. Resolva o PMID ou autorize em FONTE_NAO_PUBMED`);
 }
 
-// ── 6. NOTE — informes que não bloqueiam ──────────────────────────────────
+/* ── 6. o card é lido sozinho, e sem o autor junto ─────────────────────────
+ * Duas coisas que só fazem sentido de dentro da planilha vazavam para a tela
+ * na auditoria de 2026-08-05:
+ *
+ *   • marcação de triagem do autor — "Não-radiofármaco", "N/A para
+ *     radiofármaco", "Verificar protocolo específico do estudo". Classifica o
+ *     card ou é recado para si mesmo; não informa nada a quem lê.
+ *
+ *   • referência relativa — "Mesma pré-medicação intensiva", "Mesma
+ *     preparação anti-dara". Aponta para o card vizinho na ordem do arquivo,
+ *     que o leitor não tem à frente: cada card abre isolado, por busca ou por
+ *     link compartilhado.
+ *
+ * "Não informado" é a saída legítima quando não há o que dizer. */
+const RE_NOTA_INTERNA = /não-?radiof[áa]rmaco|\bN\/A para\b|verificar protocolo/i;
+const RE_RELATIVA = /^mesm[ao]s?\b/i;
+/* Todo campo de prosa que chega à tela, não só os que entram na §7.1: o
+ * defeito apareceu em `preparo` e em `tox_interesse`, e não há razão para
+ * supor que pare aí. Fora os campos que não são prosa. */
+const NAO_PROSA = new Set(['uid', 'nct', 'nct_url', 'pubmed_url', 'category_id', 'category_name',
+  'category_short', 'category_color', 'ano_pub', 'status', 'acron', 'ref', 'aprovacao']);
+const PROSA = NUCLEO.filter((c) => !NAO_PROSA.has(c)).concat('takehome', 'resultado_chave', 'titulo_full');
+for (const s of S) {
+  for (const campo of PROSA) {
+    const v = s[campo];
+    if (typeof v !== 'string' || vazio(v)) continue;
+    /* `radiofarmaco` fica de fora: ali "Não-radiofármaco" é a resposta certa à
+     * pergunta do campo, e não uma marcação de triagem em campo errado. */
+    const nota = campo === 'radiofarmaco' ? null : v.match(RE_NOTA_INTERNA);
+    if (nota) F(s.uid, `${campo} traz marcação interna de triagem, que o leitor vê: "${nota[0]}" — descreva o conteúdo real do campo ou escreva "Não informado"`);
+    if (RE_RELATIVA.test(v.trim())) F(s.uid, `${campo} começa com referência relativa ("${v.trim().slice(0, 24)}…") — o card é lido isolado, sem o vizinho à vista`);
+  }
+}
+
+// ── 7. NOTE — informes que não bloqueiam ──────────────────────────────────
 /* Tag HTML em campo de texto APARECE LITERAL na tela. O `annotateAbbr`
  * (glossario.js) escapa o HTML de propósito — "seguro para texto livre vindo
  * do database" — então `<strong>POSITIVO</strong>` chega ao leitor com as tags

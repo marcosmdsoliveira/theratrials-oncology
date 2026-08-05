@@ -128,3 +128,35 @@ bloqueia(
   (d) => { d.studies[19].pubmed_url = 'nao-e-uma-url'; },
   /URL inválida/
 );
+
+// ── o card é lido sozinho ─────────────────────────────────────────────────
+/* Marcação de triagem do autor e recado para si mesmo chegavam à tela: sete
+ * cards traziam "Não-radiofármaco", "N/A para radiofármaco" ou "Verificar
+ * protocolo específico do estudo" no campo `preparo`. */
+bloqueia(
+  'marcação interna de triagem em campo de prosa',
+  (d) => { d.studies.find((x) => x.uid === 'net_gep_0').preparo = 'Não-radiofármaco; ver protocolo.'; },
+  /marcação interna de triagem/
+);
+bloqueia(
+  'recado do autor para si mesmo no preparo',
+  (d) => { d.studies.find((x) => x.uid === 'net_gep_0').preparo = 'Verificar protocolo específico do estudo.'; },
+  /marcação interna de triagem/
+);
+
+/* "Mesma pré-medicação intensiva" aponta para o card anterior na ordem do
+ * arquivo — que ninguém tem à vista, porque o card abre isolado, por busca ou
+ * por link compartilhado. */
+bloqueia(
+  'campo que abre apontando para o card vizinho',
+  (d) => { d.studies.find((x) => x.uid === 'net_gep_0').tox_interesse = 'Mesmas reações infusionais do estudo anterior.'; },
+  /referência relativa/
+);
+
+/* No campo `radiofarmaco`, "Não-radiofármaco" é a RESPOSTA à pergunta do
+ * campo, não uma marcação em campo errado — 25 cards de contexto legítimos
+ * reprovaram quando a checagem varria esse campo também. */
+test('"Não-radiofármaco" é resposta válida no campo radiofarmaco', () => {
+  const r = rodarCom((d) => { d.studies.find((x) => x.uid === 'net_gep_0').radiofarmaco = 'Não-radiofármaco'; });
+  assert.equal(r.code, 0, `o campo radiofarmaco tem de aceitar esse valor\n${r.saida}`);
+});
