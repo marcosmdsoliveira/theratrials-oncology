@@ -74,17 +74,19 @@ const warnFail = args.includes('--warn-fail');
  * KNOWN_GOOD dos validadores de link. Entrada aqui é uma DÍVIDA registrada,
  * não um perdão: cada uma diz o que fazer para poder sair da lista. */
 const CONHECIDOS = {
-  neuroblastoma_14: {
-    desde: '2026-08-05',
-    motivo:
-      'ANBL1232. O `resultado_chave` diz "(2-4 ciclos vs 8)", que descreve a ' +
-      'desescalada, não o desfecho. Os números não aparecem em nenhum outro ' +
-      'campo. Para sair da lista: acrescentar o esquema de ciclos ao campo ' +
-      '`esquema`, que hoje só diz "Redução de número de ciclos".',
-  },
-  // net_gep_18 (SANET) saiu em 2026-08-09: o `resultado_chave` passou a dizer
-  // p<0,0001 no braço extrapancreático, igual ao `primario` e à publicação
-  // (Xu N et al., Lancet Oncol 2020). Dívida quitada, não perdoada.
+  // A lista está VAZIA desde 2026-08-09, e as duas dívidas foram quitadas
+  // corrigindo o card — não afrouxando a regra:
+  //
+  // net_gep_18 (SANET): o `resultado_chave` passou a dizer p<0,0001 no braço
+  //   extrapancreático, igual ao `primario` e à publicação (Xu N et al.,
+  //   Lancet Oncol 2020).
+  //
+  // neuroblastoma_14 (ANBL1232): o card anunciava como resultado ("OS até 3
+  //   anos ~99%") o que o protocolo declara como META, e descrevia uma
+  //   desescalada "2-4 ciclos vs 8" que não existe no desenho. Reescrito
+  //   contra o NCT02176967 — o ensaio segue ACTIVE_NOT_RECRUITING, com
+  //   conclusão primária estimada set/2026 e nenhum resultado depositado, e o
+  //   `resultado_chave` agora diz exatamente isso.
 };
 
 /* `pubmed_url` que NÃO aponta para o PubMed.
