@@ -36,12 +36,14 @@
  *    que só sabe conferir PMID contra ensaio. Eram 62 assim até 2026-08-05, e
  *    dois deles tinham DOI INEXISTENTE (404 no doi.org). Ver FONTE_NAO_PUBMED.
  *
- * 5. `aprovacao` no formato travado e `linha` curta o bastante para o chip.
- *    Nota: desde 2026-08-05 a caixa "Aprovação regulatória" NÃO é mais
- *    renderizada no modal do database — repetia em forma pobre o que o campo
- *    `impacto_reg` já diz em prosa. O campo continua no `data.js` e é
- *    exportado para `app-data/`, que o app iOS consome, então o formato segue
- *    valendo. Se um dia o campo sair do schema, esta checagem sai junto.
+ * 5. `linha` curta o bastante para o chip.
+ *    O campo `aprovacao` saiu do schema em 2026-08-09, e a checagem de formato
+ *    saiu junto. A caixa "Aprovação regulatória" tinha deixado de ser
+ *    renderizada em 2026-08-05 por repetir em forma pobre o que o
+ *    `impacto_reg` já diz em prosa; verificou-se depois que nem o site nem o
+ *    app iOS liam o campo, e que os 238 cards com ano em `aprovacao` já
+ *    traziam esse mesmo ano no `impacto_reg`, no `limit` ou no `ref` — ou
+ *    seja, remover não perdeu informação nenhuma.
  *
  * ARMADILHA DE NÚMERO, aprendida apanhando duas vezes na mesma noite:
  * comparar dígito por dígito exige normalizar os DOIS lados igual.
@@ -127,7 +129,6 @@ const CORPO = [
   'periodo', 'molecular', 'comparador',
 ];
 
-const APROVACAO_OK = /^(Investigacional|FDA (—|\d{4}[^·]*) · EMA (—|[^·]+) · ANVISA —)$/;
 const LINHA_MAX = 80;   // hoje o maior é 63; a folga é para pegar disparada
 
 const vazio = (v) => v === undefined || v === null || String(v).trim() === '' || String(v).trim() === '—';
@@ -203,10 +204,12 @@ for (const s of S) {
   }
 }
 
-// ── 4. formato de aprovacao e tamanho de linha ────────────────────────────
+// ── 4. tamanho de linha ───────────────────────────────────────────────────
 for (const s of S) {
-  if (!vazio(s.aprovacao) && !APROVACAO_OK.test(String(s.aprovacao))) {
-    W(s.uid, `aprovacao fora do formato travado: "${s.aprovacao}"`);
+  /* `aprovacao` saiu do schema em 2026-08-09; se voltar, é campo ressuscitado
+   * sem quem o renderize, e o guard avisa em vez de deixar apodrecer de novo. */
+  if (s.aprovacao !== undefined) {
+    W(s.uid, 'campo `aprovacao` voltou ao dataset — saiu do schema em 2026-08-09 e nada o renderiza');
   }
   if (!vazio(s.linha) && String(s.linha).length > LINHA_MAX) {
     W(s.uid, `linha com ${String(s.linha).length} caracteres (máx ${LINHA_MAX}) — é chip na grade`);
@@ -244,7 +247,7 @@ const RE_RELATIVA = /^mesm[ao]s?\b/i;
  * defeito apareceu em `preparo` e em `tox_interesse`, e não há razão para
  * supor que pare aí. Fora os campos que não são prosa. */
 const NAO_PROSA = new Set(['uid', 'nct', 'nct_url', 'pubmed_url', 'category_id', 'category_name',
-  'category_short', 'category_color', 'ano_pub', 'status', 'acron', 'ref', 'aprovacao']);
+  'category_short', 'category_color', 'ano_pub', 'status', 'acron', 'ref']);
 const PROSA = NUCLEO.filter((c) => !NAO_PROSA.has(c)).concat('takehome', 'resultado_chave', 'titulo_full');
 for (const s of S) {
   for (const campo of PROSA) {
@@ -258,29 +261,31 @@ for (const s of S) {
   }
 }
 
-// ── 7. NOTE — informes que não bloqueiam ──────────────────────────────────
-/* Tag HTML em campo de texto APARECE LITERAL na tela. O `annotateAbbr`
- * (glossario.js) escapa o HTML de propósito — "seguro para texto livre vindo
- * do database" — então `<strong>POSITIVO</strong>` chega ao leitor com as tags
- * à mostra. A ênfase nesses campos se faz com MAIÚSCULAS, como no NETTER-2.
- * Levantado em 2026-08-05: 95 campos pré-existentes, aguardando decisão do
- * revisor clínico. Vira FAIL quando a limpeza for feita. */
-const RE_TAG = /<\/?(strong|b|em|i|br|p|ul|li|span|div)\b[^>]*>/i;
-const comTag = [];
+/* ── 7. tag HTML fora do conjunto que o renderizador aceita ────────────────
+ * Desde 2026-08-09 o `annotateAbbr` (glossario.js) reabre <strong>, <em> e
+ * <br> depois do escape — sem atributo, conjunto fechado. QUALQUER outra tag
+ * continua escapada e chega ao leitor com os sinais à mostra, então entrar no
+ * dataset é erro: `<p>`, `<span style=…>`, `<a href=…>` viram lixo visível, e
+ * `<script>` ou `<img onerror=…>` seriam tentativa de injeção que o escape
+ * neutraliza mas que não tem por que existir aqui.
+ *
+ * Atributo é barrado inclusive nas três permitidas: `<strong class="x">` não
+ * é reaberto pelo renderizador, então também apareceria literal. */
+const TAGS_OK = new Set(['strong', '/strong', 'em', '/em', 'br', 'br/']);
+const RE_QUALQUER_TAG = /<(\/?[a-z][a-z0-9]*)((?:\s[^>]*)?)\s*(\/?)>/gi;
 for (const s of S) {
   for (const [campo, v] of Object.entries(s)) {
-    if (typeof v === 'string' && RE_TAG.test(v)) comTag.push(`${s.uid}·${campo}`);
+    if (typeof v !== 'string' || !v.includes('<')) continue;
+    for (const m of v.matchAll(RE_QUALQUER_TAG)) {
+      const [inteira, nome, atributos, barraFinal] = m;
+      const chave = (nome + (barraFinal || '')).toLowerCase();
+      if (TAGS_OK.has(chave) && !atributos.trim()) continue;
+      F(s.uid, `${campo} tem tag que o renderizador não aceita e o leitor vê literal: ${inteira} — só <strong>, <em> e <br>, sem atributo`);
+    }
   }
 }
-if (comTag.length) {
-  notes.push({
-    tipo: 'tag HTML em campo de texto (aparece literal na tela)',
-    total: comTag.length,
-    detalhe: `${new Set(comTag.map((x) => x.split('·')[0])).size} card(s) afetado(s)`,
-    obs: 'annotateAbbr escapa HTML de propósito; a ênfase se faz com MAIÚSCULAS. Ver glossario.js:260',
-    campos: comTag,
-  });
-}
+
+// ── 8. NOTE — informes que não bloqueiam ──────────────────────────────────
 
 /* O marcador ⚠️ significava "rascunho não revisado pelo revisor clínico" e
  * saiu dos 464 takehome em 2026-08-05, com a aprovação dele — pendência aberta
