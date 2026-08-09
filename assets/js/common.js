@@ -741,7 +741,7 @@
     ccrcc: {
       name: 'Carcinoma renal (ccRCC e não-clear)',
       tagline: '1L IO+TKI/IO+IO · adjuvante · 2L+ HIF-2α · não-clear · teranóstico Lu-PSMA exploratório',
-      icon: 'kidney',
+      icon: 'bean',
       color: '#38BDF8',
       categorias: ['lupsma_ccrcc', 'rcc_avancado', 'rcc_adjuvante_naocc']
     },

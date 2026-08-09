@@ -50,7 +50,11 @@
 .tm-page { padding: 2rem 1.25rem 4rem; max-width: 1100px; margin: 0 auto; }
 
 /* ── Hero ── */
-.tm-hero { text-align: center; margin-bottom: 2.5rem; }
+/* padding-bottom: 0 anula o `section { padding: 5rem 0 }` global do
+   theratrials.css — sem isso o hero somava 80px de padding aos 2.5rem de
+   margin, abrindo um vao de 120px antes dos filtros. Os demais heroes do
+   site (.db-hero, .gl-hero, etc.) ja sobrescrevem esse padding. */
+.tm-hero { text-align: center; margin-bottom: 2.5rem; padding-bottom: 0; }
 .tm-hero-badge {
   display: inline-flex; align-items: center; gap: 0.4rem;
   font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; font-weight: 600;
