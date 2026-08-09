@@ -113,7 +113,7 @@ window._i18nRegister('en', {
     pillService: "Service",
     of: "of",
     documents: "documents",
-    footerLeft: "© 2026 TheraTrials Oncology · 483 studies analyzed · v1.2",
+    footerLeft: "© 2026 TheraTrials Oncology · 503 studies analyzed · v1.2",
     footerRight: "For educational use. Does not replace official guidelines."
   },
 
@@ -268,7 +268,7 @@ window._i18nRegister('en', {
     feat3Title: "Deadlines",
     feat3Desc: "Abstract submission and registration deadlines",
     back: "Back to home",
-    footerLeft: "© 2026 TheraTrials Oncology · 483 studies analyzed · v1.2",
+    footerLeft: "© 2026 TheraTrials Oncology · 503 studies analyzed · v1.2",
     footerRight: "For educational use. Does not replace official guidelines."
   },
 
@@ -293,7 +293,7 @@ window._i18nRegister('en', {
     cadence: "<strong>Monthly cadence</strong> — the newsletter is generated automatically on the 2nd of each month, after the ClinicalTrials.gov data pipeline update.",
     archiveTitle: "Past issues",
     archiveEmpty: "The first issue will be published soon. Subscribe above to receive it as soon as it's available.",
-    footerLeft: "© 2026 TheraTrials Oncology · 483 studies analyzed · v1.3",
+    footerLeft: "© 2026 TheraTrials Oncology · 503 studies analyzed · v1.3",
     footerRight: "For educational use. Does not replace official guidelines."
   },
 
@@ -497,7 +497,7 @@ window._i18nRegister('en', {
     s10c2D: "ALSYMPCA, PEACE-3, COMRADE — bone only, high specificity.",
     s10c3L: "Database",
     s10c3N: "All studies",
-    s10c3D: "483 clinical trials in 40 therapeutic categories, with hierarchical filters.",
+    s10c3D: "503 clinical trials in 40 therapeutic categories, with hierarchical filters.",
     s10c4L: "Tool",
     s10c4N: "Dose calculator",
     s10c4D: "Activity calculation and cycle schedule for Lu-PSMA.",
@@ -1726,7 +1726,7 @@ window._i18nRegister('en', {
     missaoP2: "The focus is <strong>modern oncology</strong>: targeted therapies, immunotherapy, biomarkers, molecular imaging and theranostics. Each study is more than a reference — it is a synthesis that fits into clinical routine without losing rigor.",
     // Methodology
     metodH: "Methodology",
-    metodP1: "Each of the <strong>483 selected studies</strong> goes through a standardized extraction and synthesis process:",
+    metodP1: "Each of the <strong>503 selected studies</strong> goes through a standardized extraction and synthesis process:",
     metodLi1: "<strong>Identification</strong>: name, full acronym, NCT, sponsor, phase, design, centers, recruitment period.",
     metodLi2: "<strong>Population</strong>: clinical indication, inclusion and exclusion criteria, stratifiers, baseline characteristics, planned / randomized / analyzed n.",
     metodLi3: "<strong>Molecular and imaging criteria</strong>: PSMA-PET (with SUV thresholds, VISION criteria), Krenning score, biomarkers (PSA, CgA, ctDNA, HRR, KRAS).",
@@ -1829,7 +1829,7 @@ window._i18nRegister('en', {
     contatoLi5: "Additional visualizations (interactive forest plots, comparative timelines).",
     contatoP3: "For feedback or suggestions: <a href=\"mailto:marcosmdsoliveira@gmail.com\">marcosmdsoliveira@gmail.com</a>.",
     // Footer
-    ft1: "© 2026 TheraTrials Oncology · v1.0 · 483 studies analyzed",
+    ft1: "© 2026 TheraTrials Oncology · v1.0 · 503 studies analyzed",
     ft2: "elegance · clarity · impact"
   },
 
@@ -2279,7 +2279,7 @@ window._i18nRegister('en', {
   /* ── Guideline Detail (guideline-detail.html) ── */
   gd: {
     /* Footer */
-    ft1: "© 2026 TheraTrials Oncology · 483 studies analyzed · v1.2",
+    ft1: "© 2026 TheraTrials Oncology · 503 studies analyzed · v1.2",
     ft2: "For educational use. Does not replace official guidelines."
   },
 
@@ -2358,7 +2358,7 @@ window._i18nRegister('en', {
 
     /* Platform map cards */
     pmDatabaseName: "Database",
-    pmDatabaseDesc: "Over 483 trials · 40 categories · favorites · citations",
+    pmDatabaseDesc: "Over 503 trials · 40 categories · favorites · citations",
     pmExplorerName: "TheraTrials Explorer",
     pmExplorerDesc: "Global radioligand pipeline · ClinicalTrials.gov data · monthly updates",
     pmEnsaiosBRName: "Active Clinical Trials (BR)",
@@ -2389,7 +2389,7 @@ window._i18nRegister('en', {
 
     /* Database block */
     dbBadge: "Database",
-    dbTitle: "Over 483 clinical trials · 40 categories",
+    dbTitle: "Over 503 clinical trials · 40 categories",
     dbDesc: "Search by tumor type, modality or individual study, with weekly updates. Coverage: theranostics (prostate, NET, HCC/mCRC, ccRCC, neuroblastoma/PPGL), lung (NSCLC drivers, IO 1L, perioperative, SCLC), breast (HER2+, HR+/HER2-, TNBC, BRCA-mut, molecular imaging) and uro-oncology (ccRCC IO+TKI, adjuvant and non-clear cell RCC, advanced urothelial and perioperative/NMIBC). Each entry opens a record with over 30 fields.",
     dbCta: "Open Database",
     dbFeat1Name: "Hierarchical filters",
@@ -2476,7 +2476,7 @@ window._i18nRegister('en', {
 
   /* ── Database page (database.html) ── */
   db: {
-    heroEyebrow: "Evidence database · 483 curated studies",
+    heroEyebrow: "Evidence database · 503 curated studies",
     heroTitle: "Find, compare, and cite <span class=\"text-amber\">with clarity</span>",
     heroSubtitle: "Filter by tumor, modality, phase, or therapy line. Click any study to view 31 detailed fields, save as a favorite, add notes, or copy a formatted citation.",
     searchPlaceholder: "Search study, NCT, radiopharmaceutical, disease...",
@@ -2623,7 +2623,7 @@ window._i18nRegister('en', {
     toastCopied: "Copied",
 
     /* Footer */
-    footerLine1: "© 2026 TheraTrials Oncology · 483 studies analyzed · v1.0",
+    footerLine1: "© 2026 TheraTrials Oncology · 503 studies analyzed · v1.0",
     footerLine2: "For educational use. Does not replace official guidelines."
   },
 

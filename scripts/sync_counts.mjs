@@ -85,9 +85,39 @@ const REGRAS = [
   { re: /\d+(?= curated clinical trials)/g,      valor: 'database' },
   { re: /(?<=ensaios clínicos analisados em )\d+(?= categorias)/g, valor: 'categorias' },
   { re: /(?<=curated clinical trials in )\d+(?= categories)/g,     valor: 'categorias' },
+
+  // Rodapés, metatags e chamadas do database. São 37 ocorrências em 10
+  // arquivos, e ficaram em 483 depois da curadoria de agosto porque nenhuma
+  // regra daqui casava com estas frases.
+  //
+  // "estudos analisados" NÃO é seguro em qualquer arquivo: newsletters/2026-05
+  // registra "421 estudos analisados", que é o retrato de maio e não pode ser
+  // reescrito. A proteção é a lista ARQUIVOS abaixo — newsletters/ fica fora.
+  // Pelo mesmo motivo assets/js/data.js e assets/data/explorer.js nunca entram:
+  // lá "483" é n de randomizados, página de revista e valor de série.
+  { re: /\d+(?= estudos analisados)/g,   valor: 'database' },
+  { re: /\d+(?= studies analyzed)/g,     valor: 'database' },
+  { re: /\d+(?= estudos selecionados)/g, valor: 'database' },
+  { re: /\d+(?= selected studies)/g,     valor: 'database' },
+  { re: /\d+(?= curated studies)/g,      valor: 'database' },
+
+  // "Mais de N ensaios · M categorias" e a variante com "ensaios clínicos".
+  // Os dois lados do separador são sincronizados.
+  { re: /(?<=Mais de )\d+(?= ensaios(?: clínicos)? · )/g,  valor: 'database' },
+  { re: /(?<=Over )\d+(?= (?:clinical )?trials · )/g,      valor: 'database' },
+  { re: /(?<= ensaios(?: clínicos)? · )\d+(?= categorias)/g, valor: 'categorias' },
+  { re: /(?<= (?:clinical )?trials · )\d+(?= categories)/g,  valor: 'categorias' },
+
+  { re: /\d+(?= ensaios clínicos em \d+ categorias terapêuticas)/g, valor: 'database' },
+  { re: /\d+(?= clinical trials in \d+ therapeutic categories)/g,   valor: 'database' },
+  { re: /(?<=ensaios clínicos em )\d+(?= categorias terapêuticas)/g, valor: 'categorias' },
+  { re: /(?<=clinical trials in )\d+(?= therapeutic categories)/g,   valor: 'categorias' },
 ];
 
+// newsletters/ está deliberadamente fora: cada edição é um retrato datado.
 const ARQUIVOS = ['index.html', 'trial-matcher.html', 'about.html',
+                  'database.html', 'guidelines.html', 'guideline-detail.html',
+                  'eventos.html', 'newsletter.html', 'lu-psma.html',
                   'assets/lang/pt-br.js', 'assets/lang/en.js'];
 
 let defasados = 0;
