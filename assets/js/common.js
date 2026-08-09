@@ -476,7 +476,7 @@
     { id: 'prostata', name: 'Próstata', short: 'Próstata',
       match: (s) => hasTumor(s, 'prostata') || ['lupsma_prostata', 'ra223_prostata', 'novos_psma', 'prostata_contexto', 'rt_prostata_local'].includes(s.category_id) || (s.category_id === 'rt_sbrt_oligo' && /(prostat|mCRPC|mHSPC|STOMP|ORIOLE|STAMPEDE)/i.test((s.indicacao||'') + ' ' + (s.estudo||''))) },
     { id: 'pulmao', name: 'Pulmão (NSCLC + SCLC)', short: 'Pulmão',
-      match: (s) => hasTumor(s, 'nsclc_egfr', 'nsclc_alk', 'nsclc_kras', 'nsclc_outros_drivers', 'nsclc_imuno', 'nsclc_periop', 'sclc') || ['nsclc_imuno', 'nsclc_alvo', 'nsclc_periop', 'sclc', 'lung_radio_dev'].includes(s.category_id) || (['rt_sbrt_oligo', 'rt_consolidacao'].includes(s.category_id) && /(NSCLC|SCLC|pulmão|lung|PACIFIC|LAURA|KEYNOTE-799|SINDAS|ADRIATIC|STARS|ROSEL)/i.test((s.indicacao||'') + ' ' + (s.estudo||''))) },
+      match: (s) => hasTumor(s, 'nsclc', 'nsclc_egfr', 'nsclc_alk', 'nsclc_kras', 'nsclc_outros_drivers', 'nsclc_imuno', 'nsclc_periop', 'sclc') || ['nsclc_imuno', 'nsclc_alvo', 'nsclc_periop', 'sclc', 'lung_radio_dev'].includes(s.category_id) || (['rt_sbrt_oligo', 'rt_consolidacao'].includes(s.category_id) && /(NSCLC|SCLC|pulmão|lung|PACIFIC|LAURA|KEYNOTE-799|SINDAS|ADRIATIC|STARS|ROSEL)/i.test((s.indicacao||'') + ' ' + (s.estudo||''))) },
     { id: 'mama', name: 'Mama (HER2+, HR+, TNBC)', short: 'Mama',
       match: (s) => hasTumor(s, 'mama_her2pos', 'mama_hrpos', 'mama_tnbc') || ['breast_her2', 'breast_hrpos', 'breast_tnbc_brca', 'breast_radio_dev'].includes(s.category_id) || (s.category_id === 'rt_sbrt_oligo' && /(mama|breast|NRG-BR)/i.test((s.indicacao||'') + ' ' + (s.estudo||''))) },
     { id: 'net', name: 'Tumores neuroendócrinos (GEP + brônquicos)', short: 'Neuroendócrinos',
@@ -501,8 +501,9 @@
       match: (s) => hasTumor(s, 'esofago_escc', 'esofago_eac', 'gastrico') || s.category_id === 'esofago_egj' },
     { id: 'pancreas', name: 'Pâncreas (adenocarcinoma)', short: 'Pâncreas',
       match: (s) => hasTumor(s, 'pancreas_ductal') || s.category_id === 'pancreas' },
-    { id: 'teranostico_emergente', name: 'Teranóstico emergente (CAIX, FAPI, α-PRRT)', short: 'Teranóstico emergente',
-      match: (s) => s.category_id === 'teranostico_emergente' },
+    // 'teranostico_emergente' saiu daqui em 2026-08-09: é modalidade, não tipo tumoral.
+    // Continua como categoria e como sub-filtro dentro da modalidade Teranóstico.
+    // Os dois cards da categoria ganharam `tumors[]` e aparecem no órgão certo.
     { id: 'hnscc', name: 'Cabeça e Pescoço (HNSCC)', short: 'Cabeça e pescoço',
       match: (s) => hasTumor(s, 'hnscc') || s.category_id === 'hnscc' },
     { id: 'melanoma', name: 'Melanoma (cutâneo + uveal)', short: 'Melanoma',
@@ -542,6 +543,7 @@
         { id: 'neuroblastoma', name: 'Neuroblastoma · pediátrico', short: 'NB' },
         { id: 'lung_radio_dev', name: 'Pulmão · radio-exp (DLL3, FAPI)', short: 'Lung-radio' },
         { id: 'breast_radio_dev', name: 'Mama · 89Zr-trastu, FES, FAPI', short: 'Mama-radio' },
+        { id: 'teranostico_emergente', name: 'Pipeline emergente (FAPI pan-tumor, 64Cu/67Cu-PSMA)', short: 'Pipeline exp' },
       ]},
     { id: 'imunoterapia', name: 'Imunoterapia (ICIs · vacinas · BiTE)', short: 'Imuno',
       match: (s) => {
