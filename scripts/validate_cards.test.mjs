@@ -192,3 +192,12 @@ test('as tres tags de formatacao sao aceitas sem atributo', () => {
   });
   assert.equal(r.code, 0, `<strong>, <em> e <br> tem de passar\n${r.saida}`);
 });
+
+/* O escHtml escapa o `&` antes de tudo, entao `&lt;` vira `&amp;lt;` e o
+ * leitor ve a entidade crua. Regra nascida de erro real: "&lt; 12 meses"
+ * chegou a ser publicado no incl do ANBL1232 em 2026-08-09. */
+bloqueia(
+  'entidade HTML escrita a mao no dado',
+  (d) => { d.studies[21].incl = 'Idade &lt; 12 meses ao diagnostico.'; },
+  /entidade HTML/
+);
