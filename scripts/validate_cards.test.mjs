@@ -112,7 +112,9 @@ test('não confunde sigla com número nem se importa com o espaço do IC', () =>
 });
 
 // ── formato ───────────────────────────────────────────────────────────────
-avisa('aprovacao fora do formato travado', (d) => { d.studies[13].aprovacao = 'aprovado em algum lugar'; }, /formato travado/);
+/* O `aprovacao` saiu do schema em 2026-08-09 — nada o renderizava, nem no site
+ * nem no app. Se voltar, é campo ressuscitado sem leitor, e o guard avisa. */
+avisa('campo aprovacao ressuscitado', (d) => { d.studies[13].aprovacao = 'FDA 2024 · EMA — · ANVISA —'; }, /voltou ao dataset/);
 avisa('linha longa demais para o chip', (d) => { d.studies[15].linha = 'x'.repeat(95); }, /caracteres/);
 
 /* Link de editora abre e leva ao artigo, então passa despercebido — mas fica
@@ -159,4 +161,34 @@ bloqueia(
 test('"Não-radiofármaco" é resposta válida no campo radiofarmaco', () => {
   const r = rodarCom((d) => { d.studies.find((x) => x.uid === 'net_gep_0').radiofarmaco = 'Não-radiofármaco'; });
   assert.equal(r.code, 0, `o campo radiofarmaco tem de aceitar esse valor\n${r.saida}`);
+});
+
+/* ── tags de formatação ────────────────────────────────────────────────────
+ * Desde 2026-08-09 o annotateAbbr reabre <strong>, <em> e <br> — sem
+ * atributo. O que estiver fora desse conjunto continua escapado e chega ao
+ * leitor com os sinais à mostra, então o guard barra na entrada. */
+
+bloqueia(
+  'tag que o renderizador nao reabre (aparece literal na tela)',
+  (d) => { d.studies[21].impacto_reg = 'Estudo <p>negativo</p> — nao mudou a pratica.'; },
+  /tag que o renderizador não aceita/
+);
+
+bloqueia(
+  'tag permitida mas COM atributo — o reabridor so aceita sem atributo',
+  (d) => { d.studies[21].impacto_reg = 'Estudo <strong class="x">negativo</strong>.'; },
+  /tag que o renderizador não aceita/
+);
+
+bloqueia(
+  'tentativa de injecao em campo de texto',
+  (d) => { d.studies[21].impacto_reg = 'Estudo negativo <img src=x onerror="alert(1)">.'; },
+  /tag que o renderizador não aceita/
+);
+
+test('as tres tags de formatacao sao aceitas sem atributo', () => {
+  const r = rodarCom((d) => {
+    d.studies[21].impacto_reg = 'Estudo <strong>NEGATIVO</strong>.<br>Analise <em>post hoc</em> favoravel.';
+  });
+  assert.equal(r.code, 0, `<strong>, <em> e <br> tem de passar\n${r.saida}`);
 });

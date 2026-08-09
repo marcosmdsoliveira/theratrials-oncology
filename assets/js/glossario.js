@@ -257,15 +257,45 @@
     });
   };
 
+  /* Formatação que o autor dos cards pode usar no texto: só estas três, sem
+   * atributo nenhum. Aplicada DEPOIS do escape e DEPOIS da anotação de siglas,
+   * sobre a string já pronta — então o que volta a ser HTML é exatamente este
+   * conjunto fechado, e nada que venha do texto pode ampliá-lo.
+   *
+   * Existia até 2026-08-09 um escape total, justificado como "seguro para
+   * texto livre vindo do database". Só que o database não é entrada de
+   * usuário: é o texto que o revisor clínico escreve. O escape total fazia
+   * `<strong>NÃO ATINGIU</strong>` chegar ao leitor com as tags à mostra — 267
+   * delas em 36 cards. Reabrir três tags sem atributo preserva a ênfase sem
+   * reabrir superfície de injeção: `<script>`, `<img onerror>`, `<a href>` e
+   * qualquer coisa com atributo continuam escapados e aparecem literais, e o
+   * validate_cards barra a entrada deles no dataset.
+   *
+   * Limite conhecido: como a troca é por ocorrência e não por par, um
+   * `</strong>` órfão é reaberto mesmo que a abertura tenha sido barrada por
+   * atributo — `<strong onmouseover=…>x</strong>` vira `&lt;strong …&gt;x` com
+   * um `</strong>` solto. Nada executa e nenhum atributo é honrado; o efeito
+   * máximo é fechar um negrito anterior cedo demais. Não vale a máquina de
+   * estados para casar pares: o validate_cards reprova tag com atributo na
+   * entrada, então esse texto não chega ao renderizador vindo do dataset. */
+  var RE_FORMATACAO = /&lt;(\/?)(strong|em)&gt;|&lt;br\s*\/?&gt;/gi;
+
+  function reabrirFormatacao(html) {
+    return html.replace(RE_FORMATACAO, function (m, barra, tag) {
+      return tag ? '<' + (barra || '') + tag.toLowerCase() + '>' : '<br>';
+    });
+  }
+
   // Envolve siglas conhecidas em <abbr class="gloss-term">. Faz escape do HTML
-  // ANTES de injetar — seguro para texto livre vindo do database.
+  // ANTES de injetar; só depois reabre as três tags de formatação acima.
   TheraTrials.annotateAbbr = function (text) {
     if (text == null || text === '') return '';
     var safe = escHtml(String(text));
-    return safe.replace(RE, function (m, pre, term, offset) {
+    var anotado = safe.replace(RE, function (m, pre, term, offset) {
       if (pularComoUF(term, safe, offset + pre.length)) return m;
       return pre + '<abbr class="gloss-term" tabindex="0" data-term="' + term + '">' + term + '</abbr>';
     });
+    return reabrirFormatacao(anotado);
   };
 
   // ---------- Anotação direta no DOM (conteúdo estático / gerado por innerHTML) ----------
