@@ -287,6 +287,23 @@ for (const s of S) {
   }
 }
 
+/* ── 7b. entidade HTML escrita à mão no dado ───────────────────────────────
+ * O `escHtml` do annotateAbbr escapa o `&` antes de tudo, então `&lt;` vira
+ * `&amp;lt;` e o leitor vê a entidade CRUA na tela. Quem escreve o card deve
+ * pôr o caractere direto — `<`, `>`, `&` — que o renderizador escapa sozinho.
+ *
+ * Regra nascida de erro meu: em 2026-08-09 escrevi `&lt; 12 meses` no `incl`
+ * do ANBL1232 achando que protegia o sinal de menor, e publiquei "&lt; 12
+ * meses" no ar. Os dois casos eram os únicos do dataset inteiro. */
+const RE_ENTIDADE = /&(?:lt|gt|amp|nbsp|quot|#\d+);/i;
+for (const s of S) {
+  for (const [campo, v] of Object.entries(s)) {
+    if (typeof v !== 'string') continue;
+    const e = v.match(RE_ENTIDADE);
+    if (e) F(s.uid, `${campo} tem entidade HTML "${e[0]}", que o leitor vê crua — escreva o caractere direto, o escape é do renderizador`);
+  }
+}
+
 // ── 8. NOTE — informes que não bloqueiam ──────────────────────────────────
 
 /* O marcador ⚠️ significava "rascunho não revisado pelo revisor clínico" e
