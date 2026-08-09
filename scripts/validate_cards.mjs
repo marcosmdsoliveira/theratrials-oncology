@@ -80,13 +80,9 @@ const CONHECIDOS = {
       'campo. Para sair da lista: acrescentar o esquema de ciclos ao campo ' +
       '`esquema`, que hoje só diz "Redução de número de ciclos".',
   },
-  net_gep_18: {
-    desde: '2026-08-05',
-    motivo:
-      'SANET. O `resultado_chave` diz "p<0,001" para o braço extrapancreático; ' +
-      'o `primario` diz "p<0,0001". A manchete subestima a precisão da fonte. ' +
-      'Para sair da lista: alinhar os dois com a publicação.',
-  },
+  // net_gep_18 (SANET) saiu em 2026-08-09: o `resultado_chave` passou a dizer
+  // p<0,0001 no braço extrapancreático, igual ao `primario` e à publicação
+  // (Xu N et al., Lancet Oncol 2020). Dívida quitada, não perdoada.
 };
 
 /* `pubmed_url` que NÃO aponta para o PubMed.
