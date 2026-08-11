@@ -785,7 +785,7 @@
               <div class="card-nct" x-text="s.nct"></div>
               <div class="card-chips" x-show="s.linha" x-cloak><span class="chip-linha" x-text="s.linha"></span></div>
               <div class="card-result" x-show="s.resultado_chave" x-html="TheraTrials.annotateAbbr(s.resultado_chave)" x-cloak></div>
-              <p class="card-indication line-clamp-2" x-text="s.indicacao"></p>
+              <p class="card-indication line-clamp-2" x-html="TheraTrials.annotateAbbr(s.indicacao)"></p>
               <div class="card-primary">
                 <div class="card-primary-label" data-i18n="db.primaryEndpoint">Desfecho primário</div>
                 <p class="card-primary-text line-clamp-3" x-html="TheraTrials.annotateAbbr(TheraTrials.cleanText(s.primario))"></p>
@@ -864,7 +864,7 @@
           <span class="sep">·</span>
           <span x-text="selectedStudy.sponsor"></span>
           <span class="sep">·</span>
-          <span x-text="selectedStudy.periodo"></span>
+          <span x-html="TheraTrials.annotateAbbr(selectedStudy.periodo)"></span>
         </div>
         <div class="modal-actions">
           <a x-show="selectedStudy.nct_url" :href="selectedStudy.nct_url" target="_blank" rel="noopener" class="btn btn-secondary btn-sm">
@@ -891,7 +891,7 @@
 
         <div class="takehome-callout" x-show="selectedStudy.takehome" x-cloak>
           <i data-lucide="lightbulb" style="width:16px;height:16px"></i>
-          <div class="th-text" x-text="selectedStudy.takehome"></div>
+          <div class="th-text" x-html="TheraTrials.annotateAbbr(selectedStudy.takehome)"></div>
         </div>
 
         <div class="section-block">
