@@ -287,6 +287,37 @@ for (const s of S) {
   }
 }
 
+/* ── 7a. campo cujo template usa x-text não pode carregar tag ──────────────
+ * A regra 7 libera <strong>, <em> e <br> porque o `annotateAbbr` os reabre.
+ * Isso só vale onde o template chama `annotateAbbr` — nos pontos que ainda
+ * usam `x-text` do Alpine, a tag chega ao DOM como texto e o leitor a vê.
+ *
+ * Regra nascida de erro meu, e a segunda vez que a mesma lacuna me pega: em
+ * 2026-08-09 escrevi `<em>Nature Medicine</em>` no `periodo` e `<strong>` no
+ * `takehome` do BREAKWATER, o validador aprovou, e o site publicou as tags
+ * literais. As três chamadas foram convertidas para `annotateAbbr` em
+ * 2026-08-11; esta lista guarda as que ficaram.
+ *
+ * Ao converter uma chamada no template, tire o campo daqui — a lista é o
+ * espelho do que o template ainda não sabe renderizar. */
+const X_TEXT = {
+  n:            'database.html — modal, campo "N"',
+  radiofarmaco: 'database.html — modal, campo "Radiofármaco / Intervenção"',
+  cumul:        'database.html — modal, campo "Atividade cumulativa típica"',
+  ref:          'database.html — modal, campo "Referência principal"',
+  sponsor:      'database.html — modal, linha de cabeçalho',
+  titulo_full:  'database.html — modal, subtítulo',
+};
+const RE_FORMATACAO_TAG = /<\/?(?:strong|em|br)\s*\/?>/i;
+for (const s of S) {
+  for (const [campo, onde] of Object.entries(X_TEXT)) {
+    const t = s[campo];
+    if (typeof t !== 'string') continue;
+    const m = t.match(RE_FORMATACAO_TAG);
+    if (m) F(s.uid, `${campo} tem ${m[0]}, mas é renderizado com x-text (${onde}) — o leitor veria a tag literal. Tire a tag do dado ou converta a chamada para annotateAbbr`);
+  }
+}
+
 /* ── 7b. entidade HTML escrita à mão no dado ───────────────────────────────
  * O `escHtml` do annotateAbbr escapa o `&` antes de tudo, então `&lt;` vira
  * `&amp;lt;` e o leitor vê a entidade CRUA na tela. Quem escreve o card deve

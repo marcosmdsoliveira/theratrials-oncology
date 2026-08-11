@@ -193,6 +193,21 @@ test('as tres tags de formatacao sao aceitas sem atributo', () => {
   assert.equal(r.code, 0, `<strong>, <em> e <br> tem de passar\n${r.saida}`);
 });
 
+/* A tag so e segura onde o template chama annotateAbbr. Nos campos que ainda
+ * usam x-text do Alpine ela chega ao DOM como texto. Regra nascida de erro
+ * real: <em>Nature Medicine</em> no `periodo` do BREAKWATER passou pela regra
+ * 7 e foi ao ar literal em 2026-08-09. */
+bloqueia(
+  'tag de formatacao em campo renderizado com x-text',
+  (d) => { d.studies[21].ref = 'Publicado no <em>New England Journal of Medicine</em>, 2025.'; },
+  /renderizado com x-text/
+);
+
+test('a mesma tag passa num campo que vai por annotateAbbr', () => {
+  const r = rodarCom((d) => { d.studies[21].secundario = 'OS <em>nao</em> atingida no corte.'; });
+  assert.equal(r.code, 0, `secundario passa por annotateAbbr e aceita <em>\n${r.saida}`);
+});
+
 /* O escHtml escapa o `&` antes de tudo, entao `&lt;` vira `&amp;lt;` e o
  * leitor ve a entidade crua. Regra nascida de erro real: "&lt; 12 meses"
  * chegou a ser publicado no incl do ANBL1232 em 2026-08-09. */
