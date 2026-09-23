@@ -279,7 +279,7 @@ window._i18nRegister('pt-br', {
     formTitle: "Inscreva-se gratuitamente",
     formDesc: "Receba a newsletter mensal com as atualizações mais relevantes. Sem spam — apenas conteúdo científico selecionado.",
     subscribe: "Inscrever-se",
-    formNote: "Seus dados estão seguros. Cancelamento a qualquer momento, com um clique.",
+    formNote: "Usamos seu e-mail <strong>apenas</strong> para enviar a newsletter. Você confirma a inscrição por e-mail e cancela com um clique, quando quiser. Detalhes na <a href='privacidade.html'>Política de Privacidade</a>.",
     successTitle: "Inscrição confirmada!",
     successDesc: "Você receberá a próxima edição no início do mês. Verifique sua caixa de entrada para confirmar o e-mail.",
     feat1Title: "Novos ensaios",
