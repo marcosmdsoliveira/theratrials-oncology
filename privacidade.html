@@ -22,7 +22,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="assets/img/icons/icon-180.png">
 <!-- PWA:END -->
 <title>Política de Privacidade · TheraTrials Oncology</title>
-<meta name="description" content="Política de Privacidade da TheraTrials Oncology — minimização de dados, sem cadastro, sem analytics, conformidade LGPD.">
+<meta name="description" content="Política de Privacidade da TheraTrials Oncology — minimização de dados, sem cadastro, medição de audiência sem cookies, conformidade LGPD.">
 <link rel="canonical" href="https://theratrials.com/privacidade.html">
 <meta name="robots" content="noindex, nofollow">
 <meta property="og:title" content="Política de Privacidade · TheraTrials Oncology">
@@ -107,16 +107,16 @@
     <h1 data-i18n="leg.privTitle">Política de Privacidade</h1>
     <p data-i18n="leg.privIntro">Como a TheraTrials Oncology trata dados pessoais e técnicos — minimização de coleta, transparência e conformidade com a LGPD.</p>
     <div class="legal-meta">
-      <span><strong>Versão:</strong> 1.0</span>
-      <span><strong>Vigência:</strong> 12/mai/2026</span>
-      <span><strong>Última atualização:</strong> 12/mai/2026</span>
+      <span><strong>Versão:</strong> 2.0</span>
+      <span><strong>Vigência:</strong> 22/set/2026</span>
+      <span><strong>Última atualização:</strong> 22/set/2026</span>
     </div>
   </div>
 </section>
 
 <div class="container">
   <div class="draft-notice">
-    <strong>Política de Privacidade vigente.</strong> Reflete a operação real da plataforma — minimização de dados, sem cadastro, sem analytics. Revisão jurídica de conformidade LGPD é recomendada antes de introdução de funcionalidades que coletem novos dados (cadastro, comentários, newsletter, planos pagos).
+    <strong>Alteração material — versão 2.0, 22/set/2026.</strong> Esta versão declara duas atividades de tratamento que não constavam da versão 1.0: <strong>medição de audiência do site</strong> (Umami, sem cookies e sem identificação pessoal) e <strong>newsletter por e-mail</strong> (Buttondown, mediante inscrição voluntária com dupla confirmação). Ambas dizem respeito <strong>apenas ao site theratrials.com</strong>; o aplicativo iOS não possui nenhuma das duas — vide seção 02. Nenhum dado de versões anteriores foi reprocessado sob novas finalidades. Revisão jurídica de conformidade LGPD segue recomendada antes da introdução de cadastro, comentários, planos pagos ou pixels publicitários.
   </div>
 
   <nav class="legal-toc" aria-label="Sumário">
@@ -150,7 +150,16 @@
 
     <section id="dados-coletados">
       <h2><span class="num">02</span>Dados coletados</h2>
-      <p>A TheraTrials Oncology, em sua versão atual, foi <strong>desenhada para minimizar a coleta de dados pessoais</strong>. Em prática:</p>
+      <p>A TheraTrials Oncology é <strong>desenhada para minimizar a coleta de dados pessoais</strong>. O que é tratado, e o que não é, está descrito abaixo sem omissões.</p>
+
+      <h3>Âmbito: site e aplicativo iOS</h3>
+      <p>Esta Política cobre dois produtos com tratamentos <strong>diferentes</strong>:</p>
+      <ul>
+        <li><strong>Site <code>theratrials.com</code></strong> — mede audiência de forma agregada e oferece inscrição voluntária em newsletter. Ambas descritas nesta seção.</li>
+        <li><strong>Aplicativo TheraTrials para iOS</strong> — <strong>não coleta dado algum</strong>. Não possui cadastro, login, formulário, analytics, SDK de terceiros, identificador de publicidade ou rastreamento, e <strong>não apresenta o formulário de inscrição na newsletter</strong> — as edições já publicadas continuam legíveis dentro do aplicativo, mas não há como se inscrever por ele. O acervo acompanha o aplicativo e funciona sem conexão; o único tráfego de rede é o download de arquivos públicos de dados a partir de <code>theratrials.com</code>, sem envio de qualquer informação do usuário. Essa postura está declarada à Apple no <em>nutrition label</em> do aplicativo como <em>Data Not Collected</em> e no arquivo <code>PrivacyInfo.xcprivacy</code>, com <code>NSPrivacyTracking</code> definido como falso.</li>
+      </ul>
+      <p>Quando uma seção adiante não distinguir expressamente os dois, entenda-se que trata do site.</p>
+
       <h3>Dados armazenados localmente (no navegador do usuário)</h3>
       <ul>
         <li><strong>Favoritos:</strong> identificadores (UID) de estudos que o usuário marca como favorito.</li>
@@ -159,12 +168,24 @@
       </ul>
       <p>Todos esses dados ficam <strong>exclusivamente no dispositivo do usuário</strong>, em <code>localStorage</code> do navegador. <strong>Nada é transmitido a servidores da TheraTrials</strong>. O usuário pode apagá-los a qualquer momento limpando o armazenamento do navegador.</p>
 
-      <h3>Dados não coletados deliberadamente</h3>
+      <h3>Medição de audiência do site (Umami)</h3>
+      <p>O site — <strong>não o aplicativo</strong> — utiliza o Umami (<code>umami.is</code>), ferramenta de medição de audiência escolhida justamente por operar <strong>sem cookies</strong> e sem identificação individual de visitantes.</p>
+      <p>São registrados, de forma agregada: página acessada, página de origem (<em>referrer</em>), navegador, sistema operacional, tipo de dispositivo e país. <strong>Não</strong> são registrados nome, e-mail, endereço IP, identificador persistente, nem qualquer dado que permita reconhecer o mesmo visitante em outro site.</p>
+      <p>Para distinguir visitas sem identificar pessoas, a ferramenta deriva um código temporário a partir de IP, <em>user agent</em> e domínio, combinados a um valor aleatório rotacionado periodicamente e depois descartado — o endereço IP não é gravado. Registre-se, por transparência, que o IP é necessariamente transmitido ao servidor da ferramenta no instante da requisição, como ocorre em qualquer requisição HTTP a terceiro, ainda que não seja por ele persistido.</p>
+      <p>A finalidade é exclusivamente editorial e estatística: saber quais conteúdos são efetivamente consultados, para orientar a curadoria. <strong>Não há perfilamento, publicidade, venda de dados nem rastreamento entre sites.</strong> Base legal: legítimo interesse (art. 7º, IX) — seção 04.</p>
+
+      <h3>Newsletter por e-mail (Buttondown)</h3>
+      <p>O site oferece inscrição <strong>voluntária</strong> em newsletter. O único dado solicitado é o <strong>endereço de e-mail</strong>.</p>
+      <p>A inscrição usa <strong>dupla confirmação</strong> (<em>double opt-in</em>): informado o e-mail, o titular recebe uma mensagem e só é inscrito se confirmar. O procedimento documenta consentimento livre, informado e inequívoco, nos termos do art. 5º, XII.</p>
+      <p>O endereço é armazenado na plataforma Buttondown (<code>buttondown.com</code>), operada nos Estados Unidos, e usado <strong>apenas</strong> para enviar a newsletter. Não é vendido, cedido, cruzado com outras bases nem usado para publicidade de terceiros.</p>
+      <p>O cancelamento é feito com um clique, pelo link presente em todas as mensagens, com efeito imediato. Base legal: consentimento (art. 7º, I) — seção 04.</p>
+
+      <h3>Dados não coletados</h3>
       <ul>
-        <li>Não há cadastro ou login.</li>
-        <li>Não há formulários que solicitem dados pessoais (CPF, RG, endereço, CRM, etc.).</li>
-        <li>Não usamos ferramentas de analytics comportamental (Google Analytics, Hotjar, Plausible, etc.).</li>
-        <li>Não há rastreamento entre sites ("<em>cross-site tracking</em>") nem cookies de terceiros.</li>
+        <li>Não há cadastro ou login, em nenhum dos dois produtos.</li>
+        <li>Não são solicitados CPF, RG, endereço, CRM, dados de saúde ou qualquer dado sensível (art. 5º, II). O único dado pessoal coletado no site é o e-mail de quem opta por assinar a newsletter.</li>
+        <li>Não há rastreamento entre sites ("<em>cross-site tracking</em>"), cookies de terceiros, pixels publicitários (Meta, Google Ads, LinkedIn) nem identificadores de publicidade.</li>
+        <li>Não há perfilamento, decisão automatizada, nem enriquecimento de dados a partir de bases externas.</li>
       </ul>
 
       <h3>Dados técnicos eventualmente registrados pelo provedor de hospedagem</h3>
@@ -179,8 +200,10 @@
         <li><strong>Personalização local</strong> — permitir que o usuário marque favoritos, salve filtros e use anotações pessoais, com persistência entre sessões no mesmo dispositivo.</li>
         <li><strong>Segurança e mitigação de abuso</strong> — análise de padrões anômalos de tráfego pelo provedor de hospedagem, prevenção de ataques (DDoS, scraping abusivo).</li>
         <li><strong>Atendimento a contatos voluntários</strong> — quando o usuário escreve por iniciativa própria ao e-mail divulgado, a comunicação resultante (incluindo eventual endereço de e-mail) é tratada para responder à solicitação.</li>
+        <li><strong>Medição de audiência do site</strong> — apurar, de forma agregada e sem identificar pessoas, quais conteúdos são consultados, por qual origem e em que tipo de dispositivo, para orientar decisões editoriais e de acessibilidade. Aplica-se apenas ao site.</li>
+        <li><strong>Envio da newsletter</strong> — remeter as edições ao endereço de e-mail de quem se inscreveu voluntariamente, e somente enquanto durar a inscrição.</li>
       </ul>
-      <p>Eventuais finalidades futuras (autenticação, conteúdo premium, comunicações por e-mail) <strong>serão precedidas de atualização desta Política e de coleta de consentimento específico</strong>, conforme aplicável.</p>
+      <p>Eventuais finalidades futuras (autenticação, conteúdo premium, publicidade paga, pixels de conversão) <strong>serão precedidas de atualização desta Política e, quando a base legal exigir, de coleta de consentimento específico e granular</strong>.</p>
     </section>
 
     <section id="bases-legais">
@@ -188,10 +211,14 @@
       <p>O tratamento de dados pelo controlador da TheraTrials apoia-se nas seguintes bases legais:</p>
       <ul>
         <li><strong>Execução de contrato ou diligências preliminares</strong> (art. 7º, V): dados estritamente técnicos necessários à entrega do conteúdo solicitado pelo navegador.</li>
-        <li><strong>Legítimo interesse</strong> (art. 7º, IX): operacionalização da plataforma educacional, segurança e prevenção de fraude, mitigação de uso abusivo automatizado — sempre com balanceamento de impacto mínimo aos titulares.</li>
+        <li><strong>Legítimo interesse</strong> (art. 7º, IX): operacionalização da plataforma educacional, segurança e prevenção de fraude, mitigação de uso abusivo automatizado e <strong>medição agregada de audiência do site</strong> — sempre com balanceamento de impacto mínimo aos titulares.</li>
         <li><strong>Cumprimento de obrigação legal ou regulatória</strong> (art. 7º, II): retenção de registros conforme exigido por Marco Civil da Internet (Lei nº 12.965/2014), quando aplicável ao provedor de hospedagem.</li>
-        <li><strong>Consentimento</strong> (art. 7º, I): aplicável apenas se e quando funcionalidades futuras (cadastro, newsletter, analytics) forem introduzidas — sempre com solicitação expressa e granular.</li>
+        <li><strong>Consentimento</strong> (art. 7º, I): base da <strong>newsletter</strong>, manifestado por inscrição voluntária com dupla confirmação e revogável a qualquer momento, com um clique, sem ônus ao titular (art. 8º, §5º). Será igualmente exigido, de forma expressa e granular, para quaisquer funcionalidades futuras que dependam dele (cadastro, conteúdo premium, pixels publicitários).</li>
       </ul>
+      <h3>Balanceamento do legítimo interesse na medição de audiência (art. 10)</h3>
+      <p>O legítimo interesse invocado para a medição de audiência do site é <strong>concreto e específico</strong>: sem saber quais conteúdos são consultados, a curadoria não tem como priorizar o que atualizar num acervo mantido por uma só pessoa.</p>
+      <p>O balanceamento considerou: (i) a ferramenta não usa cookies, não grava endereço IP e não identifica o visitante; (ii) os dados são agregados e não permitem singularizar um titular; (iii) não há rastreamento entre sites, perfilamento, publicidade ou compartilhamento comercial; (iv) o tratamento é o mínimo necessário à finalidade declarada. Conclui-se que a expectativa legítima do titular é preservada e o impacto sobre seus direitos é mínimo.</p>
+      <p>Ainda assim, o titular pode <strong>opor-se</strong> ao tratamento (art. 18, §2º) pelos canais da seção 13, ou bloqueá-lo no próprio navegador — a medição depende de um script externo e é neutralizada por qualquer bloqueador de conteúdo, sem prejuízo algum ao uso do site.</p>
     </section>
 
     <section id="cookies">
@@ -203,8 +230,12 @@
         <li><strong>Service Worker / Cache API</strong> — para funcionamento da Progressive Web App (PWA), permitindo navegação offline ao conteúdo já carregado.</li>
       </ul>
       <p>Esses recursos não funcionam como "cookies" no sentido clássico (sem envio a servidor remoto) e podem ser limpos a qualquer momento pelo próprio usuário, nas configurações do navegador.</p>
-      <p>O serviço de fontes web (Google Fonts) e a CDN da biblioteca de ícones (Lucide via unpkg) podem fazer requisições simples para carregar arquivos estáticos. Não são instalados cookies persistentes pela TheraTrials nessas requisições. Detalhes na seção 06.</p>
-      <p>Caso, no futuro, sejam introduzidos cookies não-essenciais (analytics, preferência de tema entre dispositivos, etc.), será exibido <strong>banner de consentimento</strong> com opção de aceitação granular, conforme a LGPD e as boas práticas da ANPD.</p>
+      <p>O serviço de fontes web (Google Fonts) e as CDNs de bibliotecas (Lucide via unpkg, e jsDelivr) podem fazer requisições simples para carregar arquivos estáticos. Não são instalados cookies persistentes pela TheraTrials nessas requisições. Detalhes na seção 06.</p>
+
+      <h3>Por que não há banner de consentimento</h3>
+      <p>A medição de audiência descrita na seção 02 <strong>não utiliza cookies</strong> nem qualquer tecnologia de armazenamento no dispositivo do visitante — não há, portanto, gravação ou leitura de informação em terminal que exigiria consentimento prévio. O tratamento apoia-se em legítimo interesse, com o balanceamento exposto na seção 04, e é informado nesta Política de forma prévia, clara e específica. Por isso não é exibido banner.</p>
+      <p>Registre-se que há divergência doutrinária, sobretudo no direito europeu, quanto à natureza de identificadores derivados de IP ainda que não armazenado. A TheraTrials adota, por precaução, a postura mais transparente disponível: declarar a ferramenta, sua finalidade, o que ela registra, o que não registra, e assegurar o direito de oposição.</p>
+      <p>Caso venham a ser introduzidos <strong>cookies não-essenciais ou pixels publicitários</strong> — por exemplo, pixel da Meta, LinkedIn Insight Tag, Google Ads ou remarketing de qualquer natureza, inclusive em campanhas de divulgação —, será exibido <strong>banner de consentimento prévio</strong>, com aceitação granular, recusa tão simples quanto a aceitação e bloqueio dos scripts até a manifestação do titular, conforme a LGPD e o Guia Orientativo de Cookies da ANPD.</p>
     </section>
 
     <section id="compartilhamento">
@@ -214,8 +245,11 @@
       <ul>
         <li><strong>Provedor de hospedagem / CDN</strong> — entrega dos arquivos estáticos do site ao navegador do usuário. Pode registrar IP e <em>user agent</em> em logs operacionais conforme sua política.</li>
         <li><strong>Google Fonts</strong> — carregamento das famílias tipográficas Outfit, Inter e JetBrains Mono. Conforme política do Google, dados técnicos da requisição podem ser registrados.</li>
-        <li><strong>unpkg.com / cdnjs</strong> — carregamento da biblioteca de ícones Lucide e de pequenas bibliotecas JavaScript de uso público.</li>
+        <li><strong>unpkg.com / jsDelivr</strong> — carregamento da biblioteca de ícones Lucide e de pequenas bibliotecas JavaScript de uso público.</li>
+        <li><strong>Umami</strong> (<code>umami.is</code>, Estados Unidos) — medição de audiência do site, sem cookies e sem identificação individual, nos termos da seção 02. <em>Não é usado no aplicativo iOS.</em></li>
+        <li><strong>Buttondown</strong> (<code>buttondown.com</code>, Estados Unidos) — hospedagem da lista da newsletter e envio das edições, tratando exclusivamente o endereço de e-mail de quem se inscreveu. <em>Não é usado no aplicativo iOS.</em></li>
       </ul>
+      <p>Umami e Buttondown atuam como <strong>operadores</strong> (art. 5º, VII), tratando dados em nome e segundo as instruções do controlador, e apenas para as finalidades declaradas nesta Política. Nenhum deles está autorizado a usar os dados para finalidade própria, publicidade ou revenda.</p>
       <p>Esses operadores tratam dados nos termos das suas próprias políticas de privacidade. A curadoria seleciona prestadores reconhecidos com posturas de privacidade compatíveis com a LGPD e o GDPR.</p>
       <p>Em hipótese de obrigação legal (ordem judicial, requisição de autoridade competente, fiscalização sanitária), os dados eventualmente disponíveis serão fornecidos nos estritos limites da requisição.</p>
     </section>
@@ -238,6 +272,8 @@
       <p><strong>Dados no <code>localStorage</code> do usuário:</strong> retidos enquanto o usuário não limpá-los manualmente; o controlador da TheraTrials não tem acesso a esses dados nem a capacidade de mantê-los ou apagá-los remotamente. Não há prazo definido — fica integralmente ao critério do usuário.</p>
       <p><strong>Logs técnicos do provedor de hospedagem:</strong> retidos pelo provedor conforme sua própria política operacional, normalmente entre 7 e 90 dias para finalidades de segurança, antes da rotação/anonimização. O Marco Civil da Internet (art. 13) prevê retenção mínima de 6 meses para registros de aplicação de internet sob certas condições, podendo ser estendida por requisição judicial.</p>
       <p><strong>E-mails recebidos:</strong> mantidos enquanto necessários ao atendimento da solicitação e por período razoável de arquivo (até 5 anos), salvo solicitação de exclusão pelo titular.</p>
+      <p><strong>Dados de audiência do site:</strong> retidos de forma agregada, sem identificação de titular, pelo prazo de retenção da plataforma de medição. Como não há identificador pessoal associado, não é tecnicamente possível localizar, segregar ou excluir o registro de um visitante específico — razão pela qual o direito assegurado nesse ponto é o de <strong>oposição</strong> ao tratamento futuro (seções 04 e 09), e não o de exclusão retroativa.</p>
+      <p><strong>Endereço de e-mail da newsletter:</strong> retido enquanto durar a inscrição. O cancelamento remove o endereço da lista de envio; a exclusão definitiva do registro na plataforma pode ser solicitada pelos canais da seção 13 e é atendida no prazo da seção 09.</p>
     </section>
 
     <section id="direitos">
@@ -267,7 +303,13 @@
 
     <section id="transferencia">
       <h2><span class="num">11</span>Transferência internacional</h2>
-      <p>Os provedores técnicos descritos na seção 06 (hospedagem/CDN, Google Fonts, unpkg/cdnjs) podem operar servidores fora do território brasileiro, em jurisdições como Estados Unidos e União Europeia. Em consequência, certos dados técnicos (IP, <em>user agent</em>) podem ser processados internacionalmente para entrega do conteúdo.</p>
+      <p>Os provedores técnicos descritos na seção 06 podem operar servidores fora do território brasileiro, em jurisdições como Estados Unidos e União Europeia. Em consequência, certos dados técnicos (IP, <em>user agent</em>) podem ser processados internacionalmente para entrega do conteúdo.</p>
+      <p>Especificamente, há transferência internacional nas seguintes hipóteses:</p>
+      <ul>
+        <li><strong>Umami</strong> (Estados Unidos) — dados agregados de audiência do site, sem identificação pessoal e sem armazenamento de IP.</li>
+        <li><strong>Buttondown</strong> (Estados Unidos) — endereço de e-mail dos inscritos na newsletter. É a única transferência internacional que envolve <strong>dado pessoal diretamente identificável</strong>, e ocorre mediante consentimento do titular, informado nesta Política e no momento da inscrição.</li>
+        <li><strong>Hospedagem/CDN, Google Fonts, unpkg e jsDelivr</strong> — dados técnicos de requisição, necessários à entrega dos arquivos.</li>
+      </ul>
       <p>A TheraTrials seleciona prestadores que oferecem garantias contratuais e técnicas compatíveis com a LGPD e com o GDPR, observadas as hipóteses do art. 33 da LGPD (em especial, países com nível de proteção adequado e cláusulas contratuais padrão).</p>
       <p>Como a coleta de dados pessoais é minimizada (seção 02), o impacto prático de transferência internacional sobre os titulares é igualmente reduzido.</p>
     </section>

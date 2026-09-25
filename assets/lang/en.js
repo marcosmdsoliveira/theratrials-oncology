@@ -279,7 +279,7 @@ window._i18nRegister('en', {
     formTitle: "Subscribe for free",
     formDesc: "Get the monthly newsletter with the most relevant updates. No spam — only curated scientific content.",
     subscribe: "Subscribe",
-    formNote: "Your data is safe. Unsubscribe anytime, with one click.",
+    formNote: "We use your email <strong>only</strong> to send the newsletter. You confirm your subscription by email and can unsubscribe with one click, anytime. Details in our <a href='privacidade.html'>Privacy Policy</a>.",
     successTitle: "Subscription confirmed!",
     successDesc: "You'll receive the next issue at the start of the month. Check your inbox to confirm your email.",
     feat1Title: "New trials",
