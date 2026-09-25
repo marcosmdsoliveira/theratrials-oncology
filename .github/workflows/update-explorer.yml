@@ -36,6 +36,10 @@ jobs:
         with:
           python-version: '3.12'
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
       - name: Run pipeline fetcher
         id: fetch
         run: |
@@ -61,9 +65,20 @@ jobs:
           if git diff --quiet assets/data/explorer.json assets/data/explorer.js && [ "$FORCE" != "true" ]; then
             echo "explorer.json/explorer.js sem mudanças — nada a fazer."
           else
-            git add assets/data/explorer.json assets/data/explorer.js
+            # O aplicativo confere o SHA-256 de cada dataset contra o
+            # app-data/manifest.json antes de aceitar o download. Refrescar o
+            # explorer sem regenerar o manifest faz o site ficar certo e o app
+            # descartar o arquivo EM SILÊNCIO — foi o que ocorreu entre
+            # 9d3fffe (01/set/2026) e a correção deste passo.
+            #
+            # A regeneração fica aqui dentro, e não num passo próprio, porque
+            # o manifest carrega generatedAt: regenerar fora do if produziria
+            # diff — e commit — todo mês, mesmo sem mudança no explorer.
+            node scripts/export_app_data.mjs
+            node scripts/validate_app_data.mjs
+            git add assets/data/explorer.json assets/data/explorer.js app-data/
             DATE=$(date -u +"%Y-%m-%d")
             git commit -m "data(pipeline): refresh CT.gov RLT pipeline ($DATE) · ${{ steps.fetch.outputs.trials }} estudos"
             git push
-            echo "✓ explorer.json/explorer.js bumpados e empurrados"
+            echo "✓ explorer.json/explorer.js e app-data/ bumpados e empurrados"
           fi
