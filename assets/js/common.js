@@ -77,10 +77,40 @@
     return String(t).replace(/\n+/g, ' · ');
   };
 
+  /* O chip do card mostra o tamanho do estudo. Pegar o primeiro número da
+   * string tinha dois defeitos, os dois visíveis na grade:
+   *
+   *   1. Alternância na ordem errada. `\d{1,3}` vinha antes de `\d{2,4}` e o
+   *      regex casa a primeira alternativa que serve: "N=1013" virava n=101 e
+   *      "2020" virava 202. Exigir o separador de milhar na primeira
+   *      alternativa (`(?:\.\d{3})+`) mantém "1.144" inteiro sem cortar "1013".
+   *
+   *   2. Número planejado ganhando do real. "Planejado 750; randomizado 831"
+   *      anunciava n=750 no VISION — tamanho que nunca existiu como população
+   *      e que leva o leitor a duvidar do card. Agora se pula o número
+   *      precedido de marca de planejamento e se usa o seguinte; não havendo
+   *      outro — estudo em andamento, que só tem meta —, o planejado volta a
+   *      ser exibido, por ser o único número disponível.
+   *
+   * "rastreados" entra na lista de pulo junto de "planejado": quem passou pela
+   * triagem não é quem entrou no estudo (PSMAddition: 1.529 rastreados para
+   * 1.144 randomizados).
+   *
+   * Sobra conhecida: card cujo `n` é prosa sem número de população ("Meta-
+   * análise Kurland 2020…") exibe o ano. Já exibia antes desta correção, e o
+   * conserto é no dado, não aqui. */
+  const RE_N_NUM = /\d{1,3}(?:\.\d{3})+|\d{2,4}/g;
+  const RE_N_PLANEJADO = /(planejad\w*|previst\w*|rastread\w*|triad\w*)[^0-9]{0,12}$/i;
+
   TheraTrials.extractN = function(n) {
     if (!n) return '—';
-    const m = String(n).match(/(\d{1,3}(?:\.\d{3})*|\d{2,4})/);
-    return m ? `n=${m[0]}` : '—';
+    const s = String(n);
+    let primeiro = null;
+    for (const m of s.matchAll(RE_N_NUM)) {
+      if (primeiro === null) primeiro = m[0];
+      if (!RE_N_PLANEJADO.test(s.slice(0, m.index))) return `n=${m[0]}`;
+    }
+    return primeiro ? `n=${primeiro}` : '—';
   };
 
   TheraTrials.extractYear = function(estudo) {
