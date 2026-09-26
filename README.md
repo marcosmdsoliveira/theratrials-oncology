@@ -19,13 +19,21 @@ A plataforma foi concebida para o fluxo real de um médico nuclear / oncologista
 
 | Métrica | Valor |
 |---------|-------|
-| Ensaios clínicos analisados | **421** |
-| Categorias terapêuticas | **39** |
-| Ensaios ativos no Brasil | **79** (20 áreas tumorais) |
+| Ensaios clínicos analisados | **503** |
+| Categorias terapêuticas | **40** |
+| Ensaios ativos no Brasil | **259** (27 áreas tumorais) |
 | Guidelines internacionais | **26** (EANM, SNMMI, ATA, IAEA, ACR) |
 | Dossiês de radiofármacos | **7** páginas completas |
 | Ferramentas clínicas | **12** (AJCC, CTCAE, calculadoras, BCLC, iRECIST) |
 | Páginas HTML | **27** |
+
+> Números conferidos em 26/set/2026. Para reconferir sem depender desta tabela:
+>
+> ```bash
+> node -e "global.window=global;require('./assets/js/data.js');require('./assets/js/trials_br.js');
+> const D=global.THERA_DATA;console.log('estudos',D.studies.length,'| categorias',D.categories.length,
+> '| BR',global.THERA_TRIALS_BR.length)"
+> ```
 
 ---
 
