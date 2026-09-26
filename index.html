@@ -139,16 +139,10 @@
     /* Section que contém o platform-map perde o padding-top exagerado em mobile */
     .platform-map-section { padding: 0.5rem 0 0.5rem !important; }
     .stat-grid { grid-template-columns: 1fr !important; }
-    /* Brand do header não pode quebrar a viewport */
-    .site-header .brand { gap: 0.55rem; min-width: 0; }
-    .site-header .brand-text { min-width: 0; }
-    .site-header .brand-name,
-    .site-header .brand-sub { font-size: 0.92rem; line-height: 1.1; }
-    .site-header .brand-logo { width: 32px; height: 32px; }
+    /* Regras da marca do header: agora em theratrials.css, para todas as páginas */
   }
   @media (max-width: 360px) {
     .hero-after .hero-tagline span:not(:last-child)::after { display: none; }
-    .site-header .brand-name { font-size: 0.85rem; }
   }
   /* Tagline reposicionada abaixo do banner, mantém a hierarquia de mensagem */
   .hero-after {

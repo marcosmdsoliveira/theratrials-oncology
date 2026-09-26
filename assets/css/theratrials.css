@@ -204,6 +204,21 @@ section.compact { padding: 3rem 0; }
 .brand-name { font-size: 1.15rem; font-weight: 700; letter-spacing: -0.02em; color: var(--off-white); }
 .brand-sub { font-size: 1.15rem; letter-spacing: -0.02em; color: var(--amber); font-weight: 700; }
 
+/* Smartphone: a marca encolhe para o header caber na tela. Estas regras viviam
+ * só no <style> de index.html; as outras 15 páginas com o header completo
+ * estouravam a viewport (22px no iPhone 375, 77px no 320) — e como o <dialog>
+ * centraliza na viewport de LAYOUT, todo modal abria deslocado e cortado. */
+@media (max-width: 480px) {
+  .site-header .brand { gap: 0.55rem; min-width: 0; }
+  .site-header .brand-text { min-width: 0; }
+  .site-header .brand-name,
+  .site-header .brand-sub { font-size: 0.92rem; line-height: 1.1; }
+  .site-header .brand-logo { width: 32px; height: 32px; }
+}
+@media (max-width: 360px) {
+  .site-header .brand-name { font-size: 0.85rem; }
+}
+
 .nav { display: flex; align-items: center; gap: 0.1rem; }
 .nav a {
   color: var(--stone);
