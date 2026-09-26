@@ -1,0 +1,7 @@
+{
+  "name": "theratrials-equivalencia-ferramentas",
+  "private": true,
+  "type": "module",
+  "description": "Prova de equivalência funcional de ferramentas.html (dev only; não é carregado pelo site)",
+  "devDependencies": { "puppeteer-core": "^23.0.0" }
+}
