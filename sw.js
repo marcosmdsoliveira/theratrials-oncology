@@ -52,6 +52,18 @@ const CORE_ASSETS = [
   './assets/js/trials_br.js?v=239070d97d',
   './assets/js/guidelines-data.js?v=1e1155fa38',
   './assets/js/cross-links.js?v=1363e640e8',
+  // ferramentas.html: o JS deixou de ser inline em 26/set/2026. Sem estas
+  // entradas a página (que está em CORE_PAGES) abriria offline sem modais nem
+  // calculadoras, já que o HTML precacheado não carrega mais o código.
+  './assets/css/ferramentas-toolbox.css',
+  './assets/js/ferramentas/ajcc.js',
+  './assets/js/ferramentas/ctcae.js',
+  './assets/js/ferramentas/dose.js',
+  './assets/js/ferramentas/decaimento.js',
+  './assets/js/ferramentas/renal.js',
+  './assets/js/ferramentas/criterios.js',
+  './assets/js/ferramentas/chc-calculadoras.js',
+  './assets/js/ferramentas/toolbox.js',
   './assets/data/explorer.json',
   './assets/data/explorer.js?v=28798b07cb',
   './assets/js/i18n.js?v=b85353a5fc',

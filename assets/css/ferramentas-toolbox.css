@@ -1,0 +1,190 @@
+/* ============================================================================
+ * ferramentas-toolbox.css — acesso rápido de ferramentas.html
+ *
+ * Barra de busca fixa, filtros por finalidade e painel de resultados. Só
+ * tokens do theratrials.css; os chips repetem a linguagem visual dos filtros
+ * da página Database para a interface continuar sendo uma só.
+ *
+ * Nada aqui toca seções, cards ou modais existentes — tudo é escopado em .ftb*.
+ * ==========================================================================*/
+
+/* Barra: acompanha a rolagem logo abaixo do header (que também é sticky).
+ * --ft-header-h é medido pelo toolbox.js, porque o header muda de altura com
+ * a safe-area do iOS. */
+.ftb {
+  position: sticky;
+  top: calc(var(--ft-header-h, 64px) + 0.5rem);
+  z-index: 40;
+  max-width: 760px;
+  margin: 0 auto 0.85rem;
+}
+.ftb-bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: rgba(20, 22, 27, 0.92);
+  border: 1px solid var(--border-mid);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.ftb-bar:focus-within {
+  border-color: rgba(255, 132, 0, 0.55);
+  box-shadow: 0 0 0 3px var(--amber-soft), 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+.ftb-icon { flex: none; width: 18px; height: 18px; margin-left: 1rem; color: var(--stone); }
+
+/* 16px de fonte: abaixo disso o Safari do iOS dá zoom ao focar o campo. */
+.ftb-input {
+  flex: 1; min-width: 0;
+  background: transparent; border: 0; outline: 0;
+  color: var(--off-white);
+  font-family: var(--font-sans); font-size: 1rem; font-weight: 500;
+  padding: 0.85rem 0.6rem;
+}
+.ftb-input::placeholder { color: var(--stone-2); font-weight: 400; }
+.ftb-input::-webkit-search-cancel-button,
+.ftb-input::-webkit-search-decoration { -webkit-appearance: none; appearance: none; }
+
+.ftb-kbd {
+  flex: none; margin-right: 0.9rem;
+  font-family: var(--font-mono); font-size: 0.7rem; color: var(--stone);
+  border: 1px solid var(--border-soft); border-radius: 4px; padding: 0.05rem 0.4rem;
+}
+.ftb-clear {
+  flex: none; display: grid; place-items: center;
+  width: 30px; height: 30px; margin-right: 0.55rem;
+  background: transparent; border: 1px solid transparent; border-radius: 8px;
+  color: var(--stone); cursor: pointer;
+}
+.ftb-clear:hover { color: var(--off-white); border-color: var(--border-soft); }
+/* display:grid acima venceria o display:none que o navegador dá a [hidden]. */
+.ftb-clear[hidden] { display: none; }
+.ftb-clear svg { width: 16px; height: 16px; }
+.ftb-bar.has-value .ftb-kbd { display: none; }
+
+/* Painel de resultados */
+.ftb-panel {
+  position: absolute; top: calc(100% + 6px); left: 0; right: 0;
+  max-height: min(64vh, 560px);
+  overflow-y: auto; overscroll-behavior: contain;
+  background: var(--graphite-2);
+  border: 1px solid var(--border-mid);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.55);
+  padding: 0.45rem;
+  z-index: 45;
+}
+.ftb-pchips {
+  display: flex; flex-wrap: wrap; gap: 0.4rem;
+  padding: 0.35rem 0.35rem 0.6rem; margin-bottom: 0.3rem;
+  border-bottom: 1px solid var(--border-soft);
+  scrollbar-width: none;
+}
+.ftb-pchips::-webkit-scrollbar { display: none; }
+.ftb-status {
+  display: flex; justify-content: space-between; gap: 1rem;
+  padding: 0.5rem 0.6rem 0.25rem;
+  font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--stone-2);
+}
+.ftb-h {
+  padding: 0.75rem 0.6rem 0.25rem;
+  font-family: var(--font-mono); font-size: 0.64rem; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--stone-2);
+}
+.ftb-opt {
+  display: grid; grid-template-columns: 8px minmax(0, 1fr) auto;
+  column-gap: 0.7rem; row-gap: 0.1rem; align-items: center;
+  padding: 0.55rem 0.6rem; border-radius: var(--radius-md);
+  cursor: pointer;
+}
+.ftb-opt[aria-selected="true"] { background: var(--amber-soft); }
+.ftb-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--c, var(--amber)); }
+.ftb-t {
+  color: var(--off-white); font-weight: 600; font-size: 0.92rem; line-height: 1.3;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.ftb-tag {
+  justify-self: end;
+  font-family: var(--font-mono); font-size: 0.6rem; font-weight: 600;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--stone); border: 1px solid var(--border-soft); border-radius: 4px;
+  padding: 0.05rem 0.35rem; white-space: nowrap;
+}
+.ftb-tag.is-calc { color: var(--amber-glow); border-color: rgba(255, 132, 0, 0.4); }
+.ftb-m {
+  grid-column: 2 / -1;
+  color: var(--stone); font-size: 0.76rem; line-height: 1.35;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.ftb-empty { padding: 1.1rem 0.8rem 1.2rem; color: var(--stone); font-size: 0.88rem; line-height: 1.55; }
+.ftb-empty strong { color: var(--off-white); font-weight: 600; }
+.ftb-hint { padding: 0.6rem 0.6rem 0.2rem; color: var(--stone-2); font-size: 0.74rem; }
+.ftb-hint kbd { font-family: var(--font-mono); border: 1px solid var(--border-soft); border-radius: 4px; padding: 0 0.3rem; }
+
+/* Filtros por finalidade — mesma linguagem do .chip da Database */
+.ftb-chips {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 0.45rem;
+  max-width: 980px; margin: 0 auto 1.6rem;
+}
+.ftb-chip {
+  flex: none;
+  padding: 0.38rem 0.78rem;
+  background: var(--graphite-3); border: 1px solid var(--border-soft);
+  border-radius: var(--radius-sm);
+  color: var(--stone); font-family: var(--font-sans); font-size: 0.78rem;
+  cursor: pointer; transition: all 0.15s ease; white-space: nowrap;
+}
+.ftb-chip:hover { border-color: var(--stone); color: var(--off-white); }
+.ftb-chip[aria-pressed="true"] {
+  background: rgba(255, 132, 0, 0.12); border-color: rgba(255, 132, 0, 0.4); color: var(--amber-glow);
+}
+.ftb-chip:focus-visible, .ftb-clear:focus-visible { outline: 2px solid var(--amber); outline-offset: 2px; }
+
+/* Destaque breve do resultado alvo (ex.: #cockcroft-gault → card do CG) */
+.ftb-flash { animation: ftbFlash 1.8s ease-out; border-radius: var(--radius-md); }
+@keyframes ftbFlash {
+  0%   { box-shadow: 0 0 0 0 rgba(255, 132, 0, 0); }
+  18%  { box-shadow: 0 0 0 3px rgba(255, 132, 0, 0.6); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 132, 0, 0); }
+}
+
+/* Mobile e app: chips numa linha rolável; painel usa a altura que sobra
+ * acima do teclado (dvh encolhe quando o teclado abre). */
+@media (max-width: 640px) {
+  /* Grudada, a barra vira uma segunda linha do header: faixa de ponta a ponta
+   * (anula o padding de 1.5rem do .container) com o mesmo fundo do header —
+   * senão o conteúdo aparece pelas frestas acima e ao lado dela. */
+  .ftb { top: var(--ft-header-h, 64px); margin: 0 -1.5rem 0.85rem; padding: 0.45rem 1.5rem; }
+  .ftb.is-stuck {
+    background: rgba(14, 15, 18, 0.85);
+    -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border-soft);
+  }
+  .ftb.is-stuck .ftb-bar { box-shadow: none; }
+  .ftb-pchips {
+    flex-wrap: nowrap; overflow-x: auto;
+    -webkit-mask-image: linear-gradient(to right, #000 88%, transparent);
+    mask-image: linear-gradient(to right, #000 88%, transparent);
+  }
+  .ftb-kbd { display: none; }
+  .ftb-chips {
+    flex-wrap: nowrap; justify-content: flex-start;
+    overflow-x: auto; -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; padding-bottom: 0.2rem; margin-bottom: 1.2rem;
+    /* há mais chips à direita — o esmaecimento avisa */
+    -webkit-mask-image: linear-gradient(to right, #000 86%, transparent);
+    mask-image: linear-gradient(to right, #000 86%, transparent);
+  }
+  .ftb-chips::-webkit-scrollbar { display: none; }
+  .ftb-panel { max-height: calc(100dvh - var(--ft-header-h, 64px) - 96px); }
+  .ftb-t { white-space: normal; }
+}
+@media (hover: none) { .ftb-kbd { display: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .ftb-flash { animation: none; outline: 2px solid var(--amber); outline-offset: 2px; }
+  .ftb-bar, .ftb-chip { transition: none; }
+}
