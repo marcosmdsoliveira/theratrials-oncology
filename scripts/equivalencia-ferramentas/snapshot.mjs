@@ -10,6 +10,13 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import puppeteer from 'puppeteer-core';
 
+// Registro de service worker neutralizado antes de qualquer script da página:
+// sem Capacitor o pwa-install.js tentaria registrar (o que o app real nunca faz).
+// Promessa que nunca resolve = nenhum SW, nenhum erro, nenhum .then disparado.
+const SEM_SW = () => { if (window.ServiceWorkerContainer)
+  ServiceWorkerContainer.prototype.register = function () { return new Promise(() => {}); }; };
+
+
 // ROOT resolvido: a checagem abaixo compara com path.resolve, e um caminho
 // relativo (como o ../.. do README) faria todo arquivo virar 404.
 const ROOT = path.resolve(process.argv[2]);
@@ -21,6 +28,10 @@ const TYPES = { '.html':'text/html; charset=utf-8', '.js':'text/javascript; char
 
 const server = http.createServer((req, res) => {
   const p = decodeURIComponent(new URL(req.url, 'http://x').pathname);
+  // Nunca servir o service worker: sem window.Capacitor, o pwa-install.js o
+  // registraria (o que NUNCA ocorre dentro do app), e SW se instalando no meio
+  // da bateria faz o Puppeteer perder a sessão do navegador.
+  if (p === '/sw.js') { res.writeHead(404); return res.end(); }
   const f = path.join(ROOT, p === '/' ? 'index.html' : p);
   if (!f.startsWith(path.resolve(ROOT)) || !fs.existsSync(f) || fs.statSync(f).isDirectory()) {
     res.writeHead(404); return res.end('404');
@@ -41,6 +52,7 @@ async function newPage(width = 1280, height = 900) {
   const page = await ctx.newPage();
   await page.setViewport({ width, height });
   await page.setBypassServiceWorker(true);
+  await page.evaluateOnNewDocument(SEM_SW);
   await page.setRequestInterception(true);
   page.on('request', r => {
     const u = r.url();

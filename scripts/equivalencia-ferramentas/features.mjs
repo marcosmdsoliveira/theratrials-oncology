@@ -5,6 +5,13 @@ import fs from 'node:fs';
 import path from 'node:path';
 import puppeteer from 'puppeteer-core';
 
+// Registro de service worker neutralizado antes de qualquer script da página:
+// sem Capacitor o pwa-install.js tentaria registrar (o que o app real nunca faz).
+// Promessa que nunca resolve = nenhum SW, nenhum erro, nenhum .then disparado.
+const SEM_SW = () => { if (window.ServiceWorkerContainer)
+  ServiceWorkerContainer.prototype.register = function () { return new Promise(() => {}); }; };
+
+
 const ROOT = path.resolve(process.argv[2]);
 const [, , , NATIVE_GUARDS, SHOTS] = process.argv;
 fs.mkdirSync(SHOTS, { recursive: true });
@@ -17,6 +24,10 @@ let appMode = false;
 const server = http.createServer((req, res) => {
   const p = decodeURIComponent(new URL(req.url, 'http://x').pathname);
   if (p === '/__native-guards.js') { res.writeHead(200, { 'content-type': TYPES['.js'] }); return res.end(fs.readFileSync(NATIVE_GUARDS)); }
+  // Nunca servir o service worker: sem window.Capacitor, o pwa-install.js o
+  // registraria (o que NUNCA ocorre dentro do app), e SW se instalando no meio
+  // da bateria faz o Puppeteer perder a sessão do navegador.
+  if (p === '/sw.js') { res.writeHead(404); return res.end(); }
   const f = path.join(ROOT, p === '/' ? 'index.html' : p);
   if (!fs.existsSync(f) || fs.statSync(f).isDirectory()) { res.writeHead(404); return res.end(); }
   let body = fs.readFileSync(f);
@@ -38,6 +49,7 @@ async function page(opts = {}) {
   await pg.setViewport(opts.viewport || { width: 1280, height: 900 });
   if (opts.mobile) { await pg.setUserAgent('Mozilla/5.0 (iPhone; CPU iPhone OS 26_0 like Mac OS X) AppleWebKit/605.1.15 Mobile/15E148'); }
   await pg.setBypassServiceWorker(true);
+  await pg.evaluateOnNewDocument(SEM_SW);
   await pg.setRequestInterception(true);
   pg.on('request', r => { const u = r.url();
     if (u.includes('cloud.umami.is') || u.includes('fonts.g')) return r.abort(); r.continue(); });
@@ -223,7 +235,7 @@ console.log('\n== mobile (390×844, toque) ==');
     fonte: getComputedStyle(document.getElementById('ftb-q')).fontSize,
   }));
   ok(!r.ftbEstica, 'barra e chips não esticam a página');
-  ok(r.overflow <= 7, `largura da página: excesso de ${r.overflow}px (tolerância de 7px: botão de idioma do header, comum a todo o site)`);
+  ok(r.overflow <= 0, `largura da página = largura da tela (excesso ${r.overflow}px)`);
   ok(r.chipsWrap === 'nowrap', 'chips numa linha rolável, sem quebrar');
   ok(r.kbd === 'none', 'atalho "/" escondido em tela de toque');
   ok(parseFloat(r.fonte) >= 16, `campo com ${r.fonte} — evita o zoom automático do iOS ao focar`);
@@ -249,7 +261,7 @@ console.log('\n== mobile (390×844, toque) ==');
   const d = await openDialog(pg);
   ok(d && d.title === 'Child-Pugh Score', `toque no resultado abre o modal (${d && d.title})`);
   const dl = await pg.evaluate(() => Math.round(document.getElementById('crit-modal').getBoundingClientRect().left));
-  ok(dl <= 8, `modal abre centralizado na tela (margem esquerda ${dl}px)`);
+  ok(dl === 0, `modal abre centralizado na tela (margem esquerda ${dl}px)`);
   await pg.screenshot({ path: `${SHOTS}/mobile-modal.png` });
   ok(errs.length === 0, `nenhum erro de página${errs.length ? ': ' + errs.join(' | ') : ''}`);
   await ctx.close();
