@@ -16,8 +16,10 @@ Dois modos, mesmo resultado:
   prompts, você cura numa sessão do Claude Code e devolve o JSON. A assinatura
   e a API são faturamentos separados, então este caminho não gera cobrança.
 
-  API (Batch, -50%) — automático, roda sozinho no GitHub Actions uma vez por
-  mês. Exige o secret ANTHROPIC_API_KEY e créditos no console.anthropic.com.
+  API (Batch, -50%) — LEGADO desde 2026-09-27. Era usado só pelos workflows
+  mensais, hoje desativados em .github/workflows-legado/. Exige o secret
+  ANTHROPIC_API_KEY, e MODELO abaixo não é um ID válido: corrija antes de usar.
+  O caminho atual é o modo LOCAL com o agente trial-curator (br_PIPELINE.md).
 
 ⚠️ A saída é RASCUNHO nos dois modos. Vai para um Pull Request, nunca direto
    para produção — todo card precisa de revisão clínica antes de publicar.
@@ -82,9 +84,17 @@ def meta_ids(bloco: str) -> list[str]:
     return ids
 
 
+def meta_biomarcadores() -> list[str]:
+    """META.biomarcadores é lista de strings, não de objetos com `id`."""
+    texto = TRIALS_JS.read_text(encoding="utf-8")
+    m = re.search(r"^  biomarcadores: \[$(.*?)^  \],$", texto, re.S | re.M)
+    return re.findall(r"'([^']+)'", m.group(1)) if m else []
+
+
 NEOPLASIAS = meta_ids("neoplasias")
 MODALIDADES = meta_ids("modalidades")
 LINHAS = meta_ids("linhas")
+BIOMARCADORES = meta_biomarcadores()
 
 SCHEMA = {
     "type": "object",
@@ -130,10 +140,64 @@ SCHEMA = {
             "type": "array", "items": {"type": "string", "enum": MODALIDADES},
             "minItems": 1,
         },
-        "biomarcadores": {
+        # `biomarcadores` (a lista que o filtro usa) NÃO é pedido ao modelo: é
+        # derivado daqui pelo script — os `requerido`, na ordem. Pedir as duas
+        # coisas foi o que produziu 'HER2' na lista de exigidos de estudos
+        # HER2-negativos (16 cards publicados até 2026-09).
+        "biomarcadores_criterios": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "marcador": {
+                        "type": "string",
+                        "description": "Nome canônico. Use, sempre que servir, um destes: "
+                                       + ", ".join(BIOMARCADORES) + ". 'HER2-low' é "
+                                       "marcador próprio, distinto de 'HER2'.",
+                    },
+                    "exigencia": {
+                        "type": "string", "enum": ["requerido", "excluido", "avaliado"],
+                        "description": "requerido = o paciente PRECISA ter (positivo, "
+                                       "mutado, acima do corte). excluido = ter IMPEDE a "
+                                       "entrada (HER2− exigido → HER2 excluido; EGFR "
+                                       "selvagem exigido → EGFR excluido). avaliado = o "
+                                       "teste é exigido, mas qualquer resultado entra.",
+                    },
+                    "estado": {
+                        "type": "string",
+                        "description": "Estado ou corte, se o registro disser: 'IHQ 3+ ou "
+                                       "ISH+', 'TPS ≥ 50%', 'G12C', 'BRCA1/2 germinativo'. "
+                                       "Vazio se não disser.",
+                    },
+                    "coorte": {
+                        "type": "string",
+                        "description": "Só em estudo com coortes de critérios diferentes: a "
+                                       "coorte a que o critério se aplica ('Mama HER2+'). "
+                                       "Vazio se vale para o estudo todo.",
+                    },
+                },
+                "required": ["marcador", "exigencia", "estado", "coorte"],
+                "additionalProperties": False,
+            },
+            "description": "Todo biomarcador que a ELEGIBILIDADE menciona, com a "
+                           "exigência. Lista vazia se nenhum for mencionado. Alvo da droga "
+                           "que não é critério de entrada NÃO entra aqui: vai em `alvos`.",
+        },
+        "alvos": {
             "type": "array", "items": {"type": "string"},
-            "description": "Só os EXIGIDOS para elegibilidade (ex.: 'EGFR', 'PD-L1', "
-                           "'HER2'). Lista vazia se o estudo não exigir biomarcador.",
+            "description": "Alvo molecular da intervenção, se o REGISTRO o disser "
+                           "('anti-TROP-2', 'BCMAxCD3'). Não é critério de elegibilidade e "
+                           "não alimenta o filtro. Lista vazia se o registro não disser.",
+        },
+        "escopo": {
+            "type": "string",
+            "enum": ["antineoplasico", "suporte_ou_sintomatico", "limitrofe"],
+            "description": "antineoplasico = objetivo primário é tratar o tumor ou "
+                           "modificar a doença tumoral. suporte_ou_sintomatico = só "
+                           "cuidado de suporte, manejo de sintoma, caquexia, prevenção, "
+                           "rastreamento, reabilitação ou toxicidade/complicação do "
+                           "tratamento. limitrofe = não dá para decidir pelo registro "
+                           "(ex.: síndrome carcinoide sem desfecho antitumoral claro).",
         },
         "testes_fornecidos": {
             "type": "string",
@@ -196,7 +260,7 @@ SCHEMA = {
     "required": [
         "descartar", "motivo_descarte", "nome", "titulo", "neoplasia",
         "neoplasia_label", "subtipo", "linha_terapeutica", "cenario_clinico",
-        "modalidade", "biomarcadores", "testes_fornecidos", "intervencao",
+        "modalidade", "biomarcadores_criterios", "alvos", "escopo", "testes_fornecidos", "intervencao",
         "comparador", "racional", "criterios_principais", "criterios_exclusao",
         "exclusao_ausente", "confianca", "notas_revisor",
     ],
@@ -232,6 +296,24 @@ REGRAS INVIOLÁVEIS
 7. Se ficar em dúvida sobre a classificação, use `confianca: "baixa"` e diga o \
    porquê. Preferimos um card marcado para revisão a um card errado com aparência \
    de certo.
+9. BIOMARCADORES. Liste em `biomarcadores_criterios` cada biomarcador que a \
+   elegibilidade menciona, com a exigência certa. Negatividade exigida é \
+   `excluido`, nunca `requerido`: estudo HR+/HER2− tem HER2 `excluido`; estudo \
+   que exige EGFR selvagem tem EGFR `excluido`. Teste obrigatório cujo resultado \
+   não seleciona ("PD-L1 avaliável") é `avaliado`. HER2-low é o marcador \
+   'HER2-low', não 'HER2'. Nunca escreva 'HER2-', 'negativo' ou 'wild-type' no \
+   nome do marcador. ALVO não é CRITÉRIO: o alvo de um anti-TROP-2 é TROP-2, mas \
+   se a elegibilidade não exige TROP-2, TROP-2 vai em `alvos`, não em \
+   `biomarcadores_criterios`. Estudo com coortes de critérios diferentes: preencha \
+   `coorte` em cada critério.
+10. ESCOPO. O Trial Matcher principal é para estudos cujo objetivo primário é \
+   tratar o tumor ou modificar diretamente a doença tumoral. Estudo só de \
+   suporte, sintoma, caquexia, prevenção, rastreamento, reabilitação ou \
+   toxicidade/complicação do tratamento é `suporte_ou_sintomatico`. Síndrome \
+   carcinoide só é `antineoplasico` se houver objetivo antitumoral. Na dúvida, \
+   `limitrofe` — um humano decide; não use `descartar` para isso.
+11. `modalidade`: inclua 'combinação' sempre que o braço experimental tiver dois \
+   ou mais agentes ativos.
 
 8. `criterios_exclusao` é obrigatório na prática. O texto de elegibilidade que \
    você recebe traz, quase sempre, uma seção "Exclusion Criteria" ou "Key \
@@ -400,6 +482,7 @@ def anexar_factual(curado: dict, base: dict) -> dict:
         "nct": base.get("nct", ""),
         "fase": base.get("fases", []),
         "status_ctgov": base.get("status_ctgov", ""),
+        "brazil_status": base.get("brazil_status", ""),
         "centros": base.get("centros_br", []),
         "locais": base.get("locais_br", []),   # {instituicao, cidade, uf} preservados
         "cidades": base.get("cidades_br", []),
@@ -408,6 +491,43 @@ def anexar_factual(curado: dict, base: dict) -> dict:
         "data_atualizacao": base.get("ultima_atualizacao", ""),
     }
     return curado
+
+
+def triar(c: dict) -> tuple[str, str]:
+    """Destino da saída do modelo: 'card', 'descarte' ou 'revisao'.
+
+    Escopo editorial (2026-09-27): o Trial Matcher principal é para tratamento
+    antineoplásico. `suporte_ou_sintomatico` é descarte EXPLÍCITO (registrado,
+    com motivo, e listado na saída). `limitrofe` NUNCA é descartado: vai para a
+    lista de revisão e volta na próxima rodada até um humano decidir.
+    """
+    escopo = c.get("escopo", "antineoplasico")
+    if escopo == "limitrofe":
+        return "revisao", "escopo limítrofe: " + (c.get("notas_revisor") or "")[:300]
+    if escopo == "suporte_ou_sintomatico":
+        return "descarte", "fora do escopo (suporte/sintomático): " + (
+            c.get("motivo_descarte") or c.get("notas_revisor") or "")[:300]
+    if c.get("descartar"):
+        return "descarte", c.get("motivo_descarte", "")
+    return "card", ""
+
+
+def derivar_biomarcadores(c: dict) -> list[str]:
+    """`biomarcadores` (o que o filtro usa) = os `requerido`, na ordem, sem repetir."""
+    vistos, out = set(), []
+    for b in c.get("biomarcadores_criterios") or []:
+        m = (b.get("marcador") or "").strip()
+        if b.get("exigencia") == "requerido" and m and m not in vistos:
+            vistos.add(m)
+            out.append(m)
+    return out
+
+
+def conferir_biomarcadores(c: dict) -> str:
+    """Mesmas regras do trial-qa, aplicadas antes de o rascunho virar card."""
+    from br_qa import checar_biomarcadores
+    falhas = checar_biomarcadores(c)
+    return "; ".join(falhas)
 
 
 def ja_descartados() -> dict[str, str]:
@@ -447,6 +567,13 @@ def selecionar(args) -> list[dict]:
             print(f"[curate] {adiados} estudos adiados (ainda não recrutando; "
                   f"--incluir-nao-abertos para trazê-los)", file=sys.stderr)
         novos = abertos
+    if args.nct:
+        pedidos = {n.strip().upper() for n in args.nct.split(",") if n.strip()}
+        novos = [e for e in novos if e["nct"] in pedidos]
+        faltam = pedidos - {e["nct"] for e in novos}
+        if faltam:
+            print(f"[curate] fora da seleção (não estão em _br_discovery.json "
+                  f"ou foram filtrados): {', '.join(sorted(faltam))}", file=sys.stderr)
     if args.neoplasia:
         alvo = args.neoplasia.lower()
         novos = [e for e in novos
@@ -479,6 +606,7 @@ def main() -> int:
     ap.add_argument("--colher", metavar="BATCH_ID")
     ap.add_argument("--neoplasia", help="filtra o lote por condição (ex.: breast)")
     ap.add_argument("--limite", type=int, default=0)
+    ap.add_argument("--nct", help="lista de NCTs separada por vírgula (amostra/teste)")
     ap.add_argument("--incluir-nao-abertos", action="store_true",
                     help="traz também os NOT_YET_RECRUITING (fora por padrão)")
     args = ap.parse_args()
@@ -506,7 +634,7 @@ def main() -> int:
         d = json.loads(DISCOVERY.read_text(encoding="utf-8"))
         por_nct = {e["nct"]: e for e in d["novos"]}
 
-        cards, descartados, orfaos, sem_exclusao = [], [], [], []
+        cards, descartados, orfaos, sem_exclusao, revisao = [], [], [], [], []
         obrigatorios = set(SCHEMA["required"])
         for c in cards_in:
             nct = c.get("nct") or c.get("_nct", "")
@@ -519,9 +647,18 @@ def main() -> int:
                       file=sys.stderr)
                 orfaos.append(nct)
                 continue
-            if c.get("descartar"):
-                descartados.append({"nct": nct, "nome": c.get("nome", ""),
-                                    "motivo": c.get("motivo_descarte", "")})
+            destino, motivo = triar(c)
+            if destino == "descarte":
+                descartados.append({"nct": nct, "nome": c.get("nome", ""), "motivo": motivo})
+                continue
+            if destino == "revisao":
+                revisao.append({"nct": nct, "nome": c.get("nome", ""), "motivo": motivo})
+                continue
+            c["biomarcadores"] = derivar_biomarcadores(c)
+            erro_bio = conferir_biomarcadores(c)
+            if erro_bio:
+                print(f"  {nct} ({c.get('nome','?')}): biomarcadores — {erro_bio}", file=sys.stderr)
+                sem_exclusao.append(nct)
                 continue
             # Conferência contra o registro, antes de virar card. Rejeita aqui
             # em vez de deixar passar: card sem exclusão chegava ao PR com
@@ -542,10 +679,15 @@ def main() -> int:
 
         SAIDA.write_text(json.dumps(
             {"batch": "local", "cards": cards, "descartados": descartados,
-             "falhas": orfaos, "sem_exclusao": sem_exclusao},
+             "revisao": revisao, "falhas": orfaos, "sem_exclusao": sem_exclusao},
             ensure_ascii=False, indent=1), encoding="utf-8")
         baixa = sum(1 for c in cards if c.get("confianca") == "baixa")
-        print(f"curados {len(cards)} | descartados {len(descartados)} | rejeitados {len(orfaos)}")
+        print(f"curados {len(cards)} | descartados {len(descartados)} | "
+              f"revisão humana {len(revisao)} | rejeitados {len(orfaos) + len(sem_exclusao)}")
+        for d in descartados:
+            print(f"  descartado  {d['nct']}  {d['motivo'][:110]}")
+        for r in revisao:
+            print(f"  revisão     {r['nct']}  {r['motivo'][:110]}")
         print(f"  confiança baixa (revisar primeiro): {baixa}")
         print(f"gravado: {SAIDA.name}")
         return 0 if not orfaos else 1
@@ -590,22 +732,17 @@ def main() -> int:
             texto = next(b.text for b in r.result.message.content if b.type == "text")
             curado = json.loads(texto)
             base = por_nct.get(r.custom_id, {})
-            if curado.get("descartar"):
-                descartados.append({"nct": r.custom_id,
-                                    "motivo": curado.get("motivo_descarte", "")})
+            destino, motivo = triar(curado)
+            if destino != "card":
+                # Legado: o colher não separa revisão; limítrofe entra como
+                # descarte NÃO registrado (não vai para br_descartados.json).
+                descartados.append({"nct": r.custom_id, "motivo": motivo})
                 continue
-            # Campos factuais vêm da descoberta; o modelo não os toca.
-            curado["_factual"] = {
-                "nct": base.get("nct", ""),
-                "fase": base.get("fases", []),
-                "status_ctgov": base.get("status_ctgov", ""),
-                "centros": base.get("centros_br", []),
-                "cidades": base.get("cidades_br", []),
-                "estados": base.get("ufs_br", []),
-                "patrocinador": base.get("patrocinador", ""),
-                "data_atualizacao": base.get("ultima_atualizacao", ""),
-            }
-            cards.append(curado)
+            curado["biomarcadores"] = derivar_biomarcadores(curado)
+            # Campos factuais vêm da descoberta; o modelo não os toca. Mesma
+            # função do modo local: a cópia que havia aqui esquecia `locais`,
+            # e o br_merge caía no fallback que perde instituição e UF.
+            cards.append(anexar_factual(curado, base))
 
         SAIDA.write_text(json.dumps(
             {"batch": args.colher, "cards": cards,

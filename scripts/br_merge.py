@@ -45,6 +45,17 @@ STATUS_MAP = {"RECRUITING": "Recrutando", "NOT_YET_RECRUITING": "Ainda não recr
               "COMPLETED": "Encerrado", "TERMINATED": "Encerrado", "WITHDRAWN": "Encerrado"}
 
 
+def status_card(ctgov: str) -> str:
+    """Status do card por tabela explícita. Status desconhecido é erro.
+
+    O fallback antigo era "Recrutando": ENROLLING_BY_INVITATION, UNKNOWN ou
+    qualquer valor novo do CT.gov virava card "Recrutando" em silêncio.
+    """
+    if ctgov not in STATUS_MAP:
+        raise ValueError(f"status do CT.gov sem tradução para o card: {ctgov!r}")
+    return STATUS_MAP[ctgov]
+
+
 def js_str(v: str) -> str:
     """Literal de string JS em aspas simples, como o resto do arquivo."""
     return "'" + str(v).replace("\\", "\\\\").replace("'", "\\'").replace("\n", " ") + "'"
@@ -57,6 +68,40 @@ def js_arr(vs: list[str], indent: int) -> str:
         return "[" + ", ".join(js_str(v) for v in vs) + "]"
     pad = " " * (indent + 2)
     return "[\n" + "".join(f"{pad}{js_str(v)},\n" for v in vs) + " " * indent + "]"
+
+
+def biomarcadores_exigidos(c: dict) -> list[str]:
+    """Os `requerido` de biomarcadores_criterios; senão, o campo legado."""
+    crit = c.get("biomarcadores_criterios")
+    if crit is None:
+        return c.get("biomarcadores") or []
+    out: list[str] = []
+    for b in crit:
+        m = (b.get("marcador") or "").strip()
+        if b.get("exigencia") == "requerido" and m and m not in out:
+            out.append(m)
+    return out
+
+
+def exigir_brazil_status(f: dict) -> str:
+    bs = f.get("brazil_status") or ""
+    if bs != "RECRUITING":
+        raise ValueError(f"{f.get('nct')}: card novo exige brazil_status RECRUITING, veio {bs!r}")
+    return bs
+
+
+def js_criterios(crit: list[dict]) -> str:
+    if not crit:
+        return "[]"
+    linhas = []
+    for b in crit:
+        partes = [f"marcador: {js_str(b['marcador'])}", f"exigencia: {js_str(b['exigencia'])}"]
+        if (b.get("estado") or "").strip():
+            partes.append(f"estado: {js_str(b['estado'])}")
+        if (b.get("coorte") or "").strip():
+            partes.append(f"coorte: {js_str(b['coorte'])}")
+        linhas.append("      { " + ", ".join(partes) + " },\n")
+    return "[\n" + "".join(linhas) + "    ]"
 
 
 def slug(nome: str, nct: str) -> str:
@@ -103,14 +148,21 @@ def card_js(c: dict) -> str:
         ("titulo", js_str(c["titulo"])),
         ("nct", js_str(nct)),
         ("fase", js_str(fase(f["fase"]))),
-        ("status", js_str(STATUS_MAP.get(f["status_ctgov"], "Recrutando"))),
+        ("status", js_str(status_card(f["status_ctgov"]))),
+        # Só chega aqui estudo recomendado (brazil_status RECRUITING). Sem o
+        # campo, o card não sai: é ele que conta no "recrutando no Brasil".
+        ("brazil_status", js_str(exigir_brazil_status(f))),
         ("neoplasia", js_str(c["neoplasia"])),
         ("neoplasia_label", js_str(c["neoplasia_label"])),
         ("subtipo", js_str(c["subtipo"])),
         ("linha_terapeutica", js_str(c["linha_terapeutica"])),
         ("cenario_clinico", js_str(c["cenario_clinico"])),
         ("modalidade", js_arr(c["modalidade"], 4)),
-        ("biomarcadores", js_arr(c["biomarcadores"], 4)),
+        # Exigidos (o que o filtro usa) derivados dos critérios quando existem.
+        ("biomarcadores", js_arr(biomarcadores_exigidos(c), 4)),
+        *([("biomarcadores_criterios", js_criterios(c["biomarcadores_criterios"]))]
+          if c.get("biomarcadores_criterios") else []),
+        *([("alvos", js_arr(c["alvos"], 4))] if c.get("alvos") else []),
         ("testes_fornecidos", js_str(c["testes_fornecidos"])),
         ("intervencao", js_str(c["intervencao"])),
         ("comparador", js_str(c["comparador"])),

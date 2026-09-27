@@ -1,0 +1,116 @@
+name: Trial Matcher — auditoria e relatório de diferenças
+
+# Roda o br_ciclo.py: audita os NCTs publicados (ainda recrutam NO BRASIL?),
+# descobre estudos novos, monta um banco proposto numa cópia, passa o QA e
+# gera o relatório de diferenças.
+#
+# SÓ LEITURA. Não commita, não faz push, não abre PR, não remove estudo, não
+# usa IA e não precisa de secret. O resultado sai como artifact e no resumo
+# do run; aplicar o banco proposto é decisão humana. Ver scripts/br_PIPELINE.md.
+#
+# Único pipeline autorizado a olhar o trials_br.js: os workflows mensais
+# antigos estão desativados em .github/workflows-legado/.
+#
+# Histórico sem commit: cada run baixa o artifact `trials-br-estado` da run
+# anterior, audita com --gravar-estado e sobe o estado novo. Assim o relatório
+# diz o que mudou desde a última semana. Se a corrente quebrar (artifact
+# expira em 90 dias), a run seguinte recomeça como primeira rodada.
+
+on:
+  # Semanal basta: status de recrutamento muda em dias, não em horas, e a API
+  # do CT.gov é gratuita mas pede moderação. Segunda de manhã para o relatório
+  # estar pronto no começo da semana. Só passa a valer quando este arquivo
+  # estiver no main. O GitHub suspende cron de repositório sem atividade há
+  # 60 dias, e avisa por e-mail.
+  schedule:
+    - cron: '17 9 * * 1'   # segunda, 09:17 UTC (≈ 06:17 BRT); minuto quebrado evita o pico da hora cheia
+  workflow_dispatch:
+    inputs:
+      centros:
+        description: 'Propor também a reescrita dos centros (true/false)'
+        required: false
+        default: 'false'
+
+permissions:
+  contents: read
+  actions: read     # só para baixar o artifact de estado da run anterior
+
+# Uma run por vez: duas runs simultâneas disputariam o artifact de estado.
+concurrency:
+  group: trials-br
+  cancel-in-progress: false
+
+jobs:
+  auditar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Restaurar o histórico da run anterior
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          for ID in $(gh run list --workflow trials-br-auditoria.yml --limit 10 \
+                        --json databaseId,status -q '.[] | select(.status=="completed") | .databaseId'); do
+            if gh run download "$ID" -n trials-br-estado -D scripts/ 2>/dev/null; then
+              echo "histórico restaurado da run $ID"; exit 0
+            fi
+          done
+          echo "::notice title=Sem histórico::Nenhuma run anterior com estado — esta será a primeira rodada."
+
+      # QA bloqueado sai com código 1. O passo não derruba o job antes do
+      # upload: o relatório de um QA bloqueado é justamente o que se quer ler.
+      - name: Ciclo (auditoria, descoberta, proposto, QA, relatório)
+        id: ciclo
+        continue-on-error: true
+        run: |
+          ARGS=""
+          [ "${{ github.event.inputs.centros }}" = "true" ] && ARGS="--centros"
+          python3 scripts/br_ciclo.py --gravar-estado $ARGS
+
+      - name: Publicar o relatório no resumo do run
+        if: always()
+        run: |
+          [ -f scripts/_br_relatorio.md ] && cat scripts/_br_relatorio.md >> "$GITHUB_STEP_SUMMARY" \
+            || echo "relatório não foi gerado — veja o log do passo anterior" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Guardar relatório e banco proposto
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: trials-br-relatorio-${{ github.run_id }}
+          retention-days: 90
+          path: |
+            scripts/_br_relatorio.md
+            scripts/_br_relatorio.json
+            scripts/_br_proposto/trials_br.js
+            scripts/_br_discovery.json
+          if-no-files-found: warn
+
+      # Em nome fixo para a run seguinte achar. Nunca vai para o git.
+      - name: Guardar o estado para a próxima run
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: trials-br-estado
+          retention-days: 90
+          path: |
+            scripts/br_estado.json
+            scripts/br_eventos.jsonl
+          if-no-files-found: ignore
+
+      - name: Falhar se o QA bloqueou
+        if: steps.ciclo.outcome == 'failure'
+        run: |
+          echo "::error title=QA bloqueou o banco proposto::Veja a seção 7 do relatório."
+          exit 1

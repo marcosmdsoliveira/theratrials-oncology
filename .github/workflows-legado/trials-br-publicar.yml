@@ -1,3 +1,19 @@
+# ╔══════════════════════════════════════════════════════════════════════════╗
+# ║ LEGADO — DESATIVADO em 2026-09-27                                        ║
+# ║                                                                          ║
+# ║ Fora de .github/workflows/, o GitHub não executa este arquivo. Guardado  ║
+# ║ só como referência. Substituído por .github/workflows/                   ║
+# ║ trials-br-auditoria.yml + scripts/br_ciclo.py (ver scripts/br_PIPELINE.md)║
+# ║                                                                          ║
+# ║ Motivos: (1) commitava e fazia push direto em main (batch_pendente.txt)  ║
+# ║ e abria PR que reescrevia trials_br.js — um segundo caminho de escrita   ║
+# ║ no mesmo banco; (2) status só pelo status global do CT.gov, sem olhar    ║
+# ║ os centros brasileiros; (3) falhava desde 2026-09-03 (issue #30, secret  ║
+# ║ ANTHROPIC_API_KEY ausente; o modelo configurado, claude-opus-5, também   ║
+# ║ não é um ID válido). Para reativar, mova de volta — mas antes resolva os ║
+# ║ três pontos e desligue o outro pipeline.                                 ║
+# ╚══════════════════════════════════════════════════════════════════════════╝
+
 name: Trial Matcher — colher curadoria e abrir PR
 
 # Etapa 2 de 2. Lê o batch enfileirado ontem, monta os cards e abre um Pull

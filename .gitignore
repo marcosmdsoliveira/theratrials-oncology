@@ -76,3 +76,6 @@ _*.mjs.tmp
 
 # Backups numerados (data.js.bak_pre_batchN, etc.)
 *.bak_*
+
+# Saídas do ciclo do Trial Matcher (br_ciclo.py): relatório e banco proposto
+scripts/_br_*
