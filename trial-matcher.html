@@ -154,6 +154,8 @@
   font-size: 0.68rem; padding: 0.15rem 0.5rem; border-radius: 5px;
   font-weight: 500;
 }
+.tm-hero-stat { margin: 0.9rem 0 0; font-size: 0.92rem; color: var(--stone); }
+.tm-hero-stat strong { color: #34d399; font-weight: 600; }
 .tm-card-status.recrutando { background: rgba(34,197,94,0.1); color: #22c55e; }
 .tm-card-status.publicado { background: rgba(96,165,250,0.1); color: #60a5fa; }
 .tm-card-status.ativo { background: rgba(251,191,36,0.1); color: #fbbf24; }
@@ -464,9 +466,10 @@
 
   <!-- Hero -->
   <section class="tm-hero">
-    <div class="tm-hero-badge"><i data-lucide="circle-dot"></i> <span data-i18n="tm.badge">Recrutamento ativo &middot; Brasil</span></div>
+    <div class="tm-hero-badge"><i data-lucide="circle-dot"></i> <span data-i18n="tm.badge">Ensaios cl&iacute;nicos no Brasil</span></div>
     <h1 data-i18n-html="tm.title">Trial <span class="accent">Matcher</span></h1>
-    <p data-i18n-html="tm.subtitle">Banco selecionado de ensaios cl&iacute;nicos <strong>n&atilde;o teran&oacute;sticos</strong> em oncologia com recrutamento aberto no Brasil &mdash; imunoterapia, terapia-alvo, ADCs, quimioterapia, hormonioterapia, cirurgia e radioterapia. Filtre por neoplasia, modalidade, fase, biomarcador, linha terap&ecirc;utica e localidade. Para m&eacute;dicos, pesquisadores e pacientes encaminhados por especialistas.</p>
+    <p data-i18n-html="tm.subtitle">Banco selecionado de ensaios cl&iacute;nicos <strong>n&atilde;o teran&oacute;sticos</strong> em oncologia com centros no Brasil &mdash; imunoterapia, terapia-alvo, ADCs, quimioterapia, hormonioterapia, cirurgia e radioterapia. Por padr&atilde;o, mostra s&oacute; os que est&atilde;o recrutando no Brasil; os demais status ficam no filtro. Filtre por neoplasia, modalidade, fase, biomarcador, linha terap&ecirc;utica e localidade. Para m&eacute;dicos, pesquisadores e pacientes encaminhados por especialistas.</p>
+    <p class="tm-hero-stat" id="tm-hero-stat" aria-live="polite"></p>
     <div class="tm-disclaimer">
       <i data-lucide="info"></i>
       <div data-i18n-html="tm.disclaimer">
@@ -478,6 +481,20 @@
   <!-- Filters -->
   <section class="tm-filters">
     <div class="tm-filters-grid">
+      <div class="tm-field">
+        <label data-i18n="tm.fStatus">Status no Brasil</label>
+        <!-- Filtra por `brazil_status` (auditoria contra o ClinicalTrials.gov).
+             Padrão: só RECRUITING = ≥1 centro brasileiro recrutando confirmado.
+             Opção sem nenhum estudo é removida. -->
+        <select id="f-status">
+          <option value="RECRUITING" data-i18n="tm.fStatusRec" selected>Recrutando no Brasil</option>
+          <option value="NOT_YET_RECRUITING" data-i18n="tm.fStatusNotYet">Ainda não recrutando no Brasil</option>
+          <option value="CLOSED_IN_BRAZIL" data-i18n="tm.fStatusClosedBR">Recrutamento encerrado no Brasil</option>
+          <option value="STUDY_CLOSED" data-i18n="tm.fStatusClosed">Encerrado</option>
+          <option value="REVIEW_REQUIRED" data-i18n="tm.fStatusReview">Em revisão (Brasil não confirmado)</option>
+          <option value="" data-i18n="tm.fStatusAll">Todos os status</option>
+        </select>
+      </div>
       <div class="tm-field">
         <label data-i18n="tm.fTumor">Tumor / Neoplasia</label>
         <select id="f-tumor">
@@ -676,8 +693,45 @@
     bioSel.appendChild(opt);
   });
 
+  // ── brazil_status de cada card ──
+  // É o resultado da auditoria contra o ClinicalTrials.gov e o que decide o
+  // que conta como "recrutando no Brasil". Card anterior à auditoria (sem o
+  // campo) cai no `status`, como antes.
+  var STATUS_PARA_BR = {
+    'Recrutando': 'RECRUITING',
+    'Ainda não recrutando': 'NOT_YET_RECRUITING',
+    'Recrutamento encerrado no Brasil': 'CLOSED_IN_BRAZIL',
+    'Encerrado': 'STUDY_CLOSED'
+  };
+  function brStatus(t) {
+    return t.brazil_status || STATUS_PARA_BR[t.status || 'Recrutando'] || 'REVIEW_REQUIRED';
+  }
+
+  // ── Status: remove opções sem nenhum estudo, e resume os números no hero ──
+  // Os números saem dos próprios dados carregados (bundle ou JSON remoto no
+  // app), não de texto fixo: ficam certos sem depender do sync_counts.
+  var STATUS_PADRAO = 'RECRUITING';
+  var porStatus = {};
+  (window.THERA_TRIALS_BR || []).forEach(function(t) {
+    var st = brStatus(t);
+    porStatus[st] = (porStatus[st] || 0) + 1;
+  });
+  Array.prototype.slice.call(document.getElementById('f-status').options).forEach(function(o) {
+    if (o.value && !porStatus[o.value] && o.value !== STATUS_PADRAO) o.remove();
+  });
+  function renderHeroStat() {
+    var el = document.getElementById('tm-hero-stat');
+    var total = (window.THERA_TRIALS_BR || []).length;
+    if (!el || !total) return;
+    el.innerHTML = t('tm.heroStat', '<strong>{rec} ensaios recrutando no Brasil</strong> · {total} estudos mapeados')
+      .replace('{rec}', String(porStatus[STATUS_PADRAO] || 0)).replace('{total}', String(total));
+  }
+  renderHeroStat();
+  window.addEventListener('langchange', renderHeroStat);
+
   // ── Clear ──
   window.clearFilters = function() {
+    document.getElementById('f-status').value = STATUS_PADRAO;
     document.getElementById('f-tumor').value = '';
     document.getElementById('f-biomarker').value = '';
     document.getElementById('f-line').value = '';
@@ -697,6 +751,7 @@
     var phase = document.getElementById('f-phase').value;
     var free = document.getElementById('f-free').value.trim().toLowerCase();
     var uf = document.getElementById('f-uf').value;
+    var status = document.getElementById('f-status').value;
 
     var results = [];
 
@@ -705,6 +760,9 @@
       window.THERA_TRIALS_BR.forEach(function(t) {
         var score = 0;
         var tumorGroup = (BR_TUMOR_MAP[t.neoplasia] || t.neoplasia_label || '').toLowerCase();
+
+        // Status no Brasil (igualdade exata; card sem status conta como Recrutando)
+        if (status && brStatus(t) !== status) return;
 
         // Tumor
         if (tumor && tumorGroup.indexOf(tumor) === -1) return;
@@ -868,9 +926,25 @@
   var BR_NEO_COLOR = {};
   ((window.THERA_TRIALS_BR_META && window.THERA_TRIALS_BR_META.neoplasias) || []).forEach(function(n){ BR_NEO_COLOR[n.id] = n.color; });
 
+  // Status do trials_br.js por igualdade exata. `indexOf('recrut')` também
+  // casava com 'Ainda não recrutando' e 'Recrutamento suspenso', que saíam
+  // com a pílula verde de recrutando — o mesmo erro do "RECRUITING" como
+  // substring de ACTIVE_NOT_RECRUITING no lado do CT.gov.
+  var STATUS_BR_CLASSE = {
+    'recrutando': 'recrutando',
+    'ainda não recrutando': 'andamento',
+    'recrutamento suspenso': 'andamento',
+    'recrutamento encerrado no brasil': '',
+    'encerrado': ''
+  };
+  // Rótulo curto da pílula = `label` da META ('Encerrado no Brasil').
+  var STATUS_BR_ROTULO = {};
+  ((window.THERA_TRIALS_BR_META && window.THERA_TRIALS_BR_META.status) || []).forEach(function(s) {
+    STATUS_BR_ROTULO[(s.id || '').toLowerCase()] = s.label || s.id;
+  });
   function statusClassEA(st) {
     var s = (st || '').toLowerCase();
-    if (s.indexOf('recrut') > -1) return 'recrutando';
+    if (Object.prototype.hasOwnProperty.call(STATUS_BR_CLASSE, s)) return STATUS_BR_CLASSE[s];
     if (s.indexOf('andamento') > -1 || s.indexOf('ativo') > -1 || s.indexOf('active') > -1) return 'andamento';
     if (s.indexOf('public') > -1) return 'publicado';
     if (s.indexOf('apresent') > -1) return 'apresentado';
@@ -879,7 +953,7 @@
   }
   function shortStatusEA(st) {
     var s = (st || '').toLowerCase();
-    if (s.indexOf('recrut') > -1) return st;
+    if (Object.prototype.hasOwnProperty.call(STATUS_BR_CLASSE, s)) return STATUS_BR_ROTULO[s] || st;
     if (s.indexOf('andamento') > -1) return 'Em andamento';
     if (s.indexOf('public') > -1) return 'Publicado';
     if (s.indexOf('apresent') > -1) return 'Apresentado';
@@ -1018,8 +1092,9 @@
     var footerIcon = 'map-pin';
     var locais = resumoLocais(raw.centros);
 
-    var statusTxt = shortStatusEA(raw.status);
-    var statusCls = statusClassEA(raw.status);
+    var emRevisao = brStatus(raw) === 'REVIEW_REQUIRED';
+    var statusTxt = emRevisao ? t('tm.stReview', 'Em revisão') : shortStatusEA(raw.status);
+    var statusCls = emRevisao ? 'andamento' : statusClassEA(raw.status);
 
     var tags = '';
     if (faseTag) tags += '<span class="ea-tag fase">' + escHtml(faseTag.length > 18 ? faseTag.slice(0, 16) + '…' : faseTag) + '</span>';
@@ -1078,7 +1153,9 @@
     var head = '<div class="tm-modal-head">' +
       '<div><h2>' + escHtml(s.nome || s.titulo || 'Ensaio') + '</h2>' +
       (s.nct ? '<span class="tm-d-nct">' + escHtml(s.nct) + '</span>' : '') +
-      (s.status ? '<span class="tm-card-status recrutando" style="margin-left:.5rem">' + escHtml(s.status) + '</span>' : '') +
+      (brStatus(s) === 'REVIEW_REQUIRED'
+        ? '<span class="tm-card-status ativo" style="margin-left:.5rem">' + escHtml(t('tm.stReviewLong', 'Em revisão — recrutamento no Brasil não confirmado')) + '</span>'
+        : (s.status ? '<span class="tm-card-status ' + ({ recrutando: 'recrutando', andamento: 'ativo' }[statusClassEA(s.status)] || '') + '" style="margin-left:.5rem">' + escHtml(s.status) + '</span>' : '')) +
       '</div></div>';
 
     var body = '';
@@ -1089,6 +1166,26 @@
       ['Linha', s.linha_terapeutica],
       ['Biomarcador', (s.biomarcadores || []).join(', ')]
     ]);
+    // biomarcadores_criterios: o que o estudo exige, o que exclui e o que só testa.
+    // Sem este bloco, um HER2 excluído não aparecia em lugar nenhum da ficha.
+    var crit = s.biomarcadores_criterios || [];
+    if (crit.length) {
+      var porEx = { requerido: [], excluido: [], avaliado: [] };
+      crit.forEach(function(c) {
+        if (porEx[c.exigencia]) porEx[c.exigencia].push((c.coorte ? '[' + c.coorte + '] ' : '') + c.marcador + (c.estado ? ' — ' + c.estado : ''));
+      });
+      body += dSection('dna', 'Biomarcadores na elegibilidade',
+        '<div class="tm-d-grid">' +
+          dRow('Exigidos', porEx.requerido.join('; ')) +
+          dRow('Excluem a entrada', porEx.excluido.join('; ')) +
+          dRow('Testados, sem seleção', porEx.avaliado.join('; ')) +
+        '</div>');
+    }
+    // Alvo molecular da droga: informativo, não é critério e não entra no filtro.
+    if (s.alvos && s.alvos.length) {
+      body += dSection('crosshair', 'Alvo da intervenção',
+        '<div class="tm-d-grid">' + dRow('Alvo molecular (não é critério de entrada)', s.alvos.join(', ')) + '</div>');
+    }
     body += dSection('lightbulb', 'Racional', s.racional ? '<p class="tm-d-text">' + escHtml(s.racional) + '</p>' : '');
     body += dSection('users', 'População e cenário clínico',
       (dRow('Subtipo', s.subtipo) + dRow('Cenário clínico', s.cenario_clinico)) ?
@@ -1215,7 +1312,7 @@
   function initView() {
     checkDataLoaded();
     document.getElementById('tm-results').style.display = '';
-    // Estado inicial: mostra todos os ensaios abertos no Brasil automaticamente
+    // Estado inicial: mostra os ensaios recrutando no Brasil (filtro de status padrão)
     if (window.THERA_TRIALS_BR && window.THERA_TRIALS_BR.length > 0) runMatcher();
   }
   if (document.readyState === 'complete') {

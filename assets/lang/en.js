@@ -59,7 +59,7 @@ window._i18nRegister('en', {
   ea: {
     eyebrow: "Active recruitment · Brazil",
     title: "Clinical trials <span class=\"accent\">recruiting</span> now",
-    subtitle: "Curated database of <strong>non-theranostic</strong> oncology clinical trials with open recruitment in Brazil — immunotherapy, targeted therapy, ADCs, chemotherapy, hormone therapy, surgery and radiotherapy. Filter by neoplasm, modality, phase, biomarker, treatment line and location. For physicians, researchers and patients referred by specialists.",
+    subtitle: "Curated database of <strong>non-theranostic</strong> oncology clinical trials with sites in Brazil — immunotherapy, targeted therapy, ADCs, chemotherapy, hormone therapy, surgery and radiotherapy. By default, only trials recruiting in Brazil are shown; other statuses are in the filter. Filter by neoplasm, modality, phase, biomarker, treatment line and location. For physicians, researchers and patients referred by specialists.",
     disclaimer: "<strong>Notice:</strong> this section is informational. Information is consolidated from public registries (ClinicalTrials.gov, REBEC, ANVISA) and official sponsor sources. <strong>Final eligibility always depends on assessment by the trial's responsible site</strong>. Dates, status and criteria may change — always confirm with the original source and the local team before any referral.",
     clearFilters: "Clear filters",
     fLocal: "Location (state)",
@@ -73,7 +73,7 @@ window._i18nRegister('en', {
     of: "of",
     studies: "studies",
     seeDb: "See prior evidence in the Database",
-    footerLeft: "© 2026 TheraTrials Oncology · Active clinical trials (BR) · informational curation",
+    footerLeft: "© 2026 TheraTrials Oncology · Clinical trials in Brazil · informational curation",
     footerRight: "Does not replace assessment by the responsible site",
     cmTitle: "Get in touch",
     cmIntro: "Leave your details and message and we'll reply through the channel provided. You can also use WhatsApp for a faster contact.",
@@ -124,7 +124,7 @@ window._i18nRegister('en', {
     platform: "Platform",
     legal: "Legal",
     database: "Database",
-    ensaiosBR: "Active clinical trials (BR)",
+    ensaiosBR: "Clinical trials in Brazil",
     tumorBoards: "Tumor boards",
     modalidades: "Modalities",
     radiofarmacos: "Radiopharmaceuticals",
@@ -222,7 +222,7 @@ window._i18nRegister('en', {
     fSponsor: "Sponsor",
     fGeo: "Geography",
     onlyBrazil: "Only with a site in Brazil",
-    brBanner: "Filtering by Brazilian participation in the global tracker. For the <strong>detailed curation of trials open in Brazil</strong> (with sites, contacts and criteria in Portuguese), use <a href=\"ensaios-clinicos.html\" style=\"color:var(--amber); text-decoration:underline;\">Active clinical trials (BR)</a>.",
+    brBanner: "Filtering by Brazilian participation in the global tracker. For the <strong>detailed curation of trials open in Brazil</strong> (with sites, contacts and criteria in Portuguese), use <a href=\"ensaios-clinicos.html\" style=\"color:var(--amber); text-decoration:underline;\">Clinical trials in Brazil</a>.",
     searchPh: "Search by NCT, drug, sponsor, condition, intervention…",
     of: "of",
     loading: "Loading radiopharmaceutical studies…",
@@ -252,7 +252,7 @@ window._i18nRegister('en', {
     eyebrow: "Global pipeline · therapeutic radiopharmaceuticals",
     subtitle: "Active pipeline of therapeutic radioligands in oncology. Filter by isotope, ligand/target, phase, neoplasm, sponsor and country. Source: <strong>ClinicalTrials.gov v2</strong>, with automatic monthly updates. Inspired by AuntMinnie's <em>Radiopharmaceutical Therapy Tracker</em> and extended to include country, target N and sponsor.",
     srcSeedTail: "studies · the GitHub Action will expand to the full pipeline on the 1st of next month",
-    brBanner: "Filtering by Brazilian participation in the global pipeline. For the <strong>detailed curation of trials open in Brazil</strong> (with sites, contacts and criteria in Portuguese), use <a href=\"ensaios-clinicos.html\" style=\"color:var(--amber); text-decoration:underline;\">Active clinical trials (BR)</a>.",
+    brBanner: "Filtering by Brazilian participation in the global pipeline. For the <strong>detailed curation of trials open in Brazil</strong> (with sites, contacts and criteria in Portuguese), use <a href=\"ensaios-clinicos.html\" style=\"color:var(--amber); text-decoration:underline;\">Clinical trials in Brazil</a>.",
     footerLeft: "© 2026 TheraTrials Oncology · Radiopharmaceutical Therapy Tracker"
   },
 
@@ -2285,10 +2285,20 @@ window._i18nRegister('en', {
 
   /* ── Trial Matcher ── */
   tm: {
-    badge: "Active recruitment · Brazil",
+    badge: "Clinical trials in Brazil",
     title: "Trial <span class=\"accent\">Matcher</span>",
-    subtitle: "Curated database of <strong>non-theranostic</strong> oncology clinical trials with open recruitment in Brazil — immunotherapy, targeted therapy, ADCs, chemotherapy, hormone therapy, surgery and radiotherapy. Filter by neoplasm, modality, phase, biomarker, treatment line and location. For physicians, researchers and patients referred by specialists.",
+    subtitle: "Curated database of <strong>non-theranostic</strong> oncology clinical trials with sites in Brazil — immunotherapy, targeted therapy, ADCs, chemotherapy, hormone therapy, surgery and radiotherapy. By default, only trials recruiting in Brazil are shown; other statuses are in the filter. Filter by neoplasm, modality, phase, biomarker, treatment line and location. For physicians, researchers and patients referred by specialists.",
     disclaimer: "<strong>Notice:</strong> this tool is informational. Information is consolidated from public registries (ClinicalTrials.gov, REBEC, ANVISA) and official sponsor sources. <strong>Final eligibility always depends on assessment by the site responsible for the study</strong>. Dates, status and criteria may change — always confirm with the original source and the local team before any referral.",
+    heroStat: "<strong>{rec} trials recruiting in Brazil</strong> · {total} studies mapped",
+    fStatus: "Status in Brazil",
+    fStatusRec: "Recruiting in Brazil",
+    fStatusNotYet: "Not yet recruiting in Brazil",
+    fStatusClosedBR: "Recruitment closed in Brazil",
+    fStatusClosed: "Closed",
+    fStatusReview: "Under review (Brazil not confirmed)",
+    fStatusAll: "All statuses",
+    stReview: "Under review",
+    stReviewLong: "Under review — recruitment in Brazil not confirmed",
     fTumor: "Tumor / Neoplasm",
     fTumorAll: "All tumors",
     fUf: "Location (state)",
@@ -2351,7 +2361,7 @@ window._i18nRegister('en', {
     /* Stats counter */
     statStudies: "Published trials",
     statCategories: "Categories",
-    statBRTrials: "Active BR Trials",
+    statBRTrials: "Recruiting in Brazil",
     statCenters: "Recruiting centers",
     statTools: "Clinical Tools",
     statGuidelines: "Int'l Guidelines",
@@ -2361,8 +2371,8 @@ window._i18nRegister('en', {
     pmDatabaseDesc: "Over 503 trials · 40 categories · favorites · citations",
     pmExplorerName: "TheraTrials Explorer",
     pmExplorerDesc: "Global radioligand pipeline · ClinicalTrials.gov data · monthly updates",
-    pmEnsaiosBRName: "Active Clinical Trials (BR)",
-    pmEnsaiosBRDesc: "Open recruitment in Brazil · 259 studies · 27 tumor types",
+    pmEnsaiosBRName: "Clinical trials in Brazil",
+    pmEnsaiosBRDesc: "205 trials recruiting in Brazil · 259 studies mapped · 26 tumor types",
     pmTumorBoardsName: "Tumor Boards",
     pmTumorBoardsDesc: "Tumor-centric view · prostate, lung, breast, NET, HCC",
     pmModalidadesName: "Modalities",
@@ -2423,7 +2433,7 @@ window._i18nRegister('en', {
     eaDisclaimer: "Disclaimer:",
     eaDisclaimerText: "informational section. Final eligibility always depends on evaluation by the responsible study center.",
     eaRecruiting: "Recruiting",
-    eaFooterCount: "259 active clinical trials · 27 tumor types · Brazil",
+    eaFooterCount: "<strong style=\"color:var(--off-white)\">205 trials recruiting in Brazil</strong> · 259 studies mapped · 26 tumor types",
     eaFooterLink: "Filter by tumor type, modality, biomarker",
 
     /* Radiofármacos block */
@@ -2450,7 +2460,7 @@ window._i18nRegister('en', {
 
     /* CTA final */
     ctaTitle: "Ready to connect evidence and clinical practice?",
-    ctaDesc: "503 curated clinical trials in 40 categories · global radioligand pipeline via ClinicalTrials.gov · 259 active clinical trials in Brazil · 7 radiopharmaceutical dossiers · 12 clinical tools · AJCC 8th ed., CTCAE v6.0, BCLC 2026 · direct hyperlinks to PubMed and ClinicalTrials.gov.",
+    ctaDesc: "503 curated clinical trials in 40 categories · global radioligand pipeline via ClinicalTrials.gov · 205 trials recruiting in Brazil · 7 radiopharmaceutical dossiers · 12 clinical tools · AJCC 8th ed., CTCAE v6.0, BCLC 2026 · direct hyperlinks to PubMed and ClinicalTrials.gov.",
     ctaBtnDatabase: "Access the database",
     ctaBtnExplorer: "Explorer",
     ctaBtnTumorBoards: "Tumor Boards",
@@ -2470,7 +2480,7 @@ window._i18nRegister('en', {
     footerCopyright: "Copyright",
     footerDisclaimer: "© 2026 TheraTrials Oncology · educational use · does not replace official guidelines or primary literature",
     footerVersion: "v1.1 · Updated May 2026",
-    footerEnsaiosBR: "Active Clinical Trials (BR)",
+    footerEnsaiosBR: "Clinical trials in Brazil",
     footerEventos: "Scientific Events"
   },
 

@@ -98,9 +98,9 @@
       ]
     },
     {
-      "name": "Estudos ativos no Brasil",
-      "short_name": "Estudos ativos",
-      "description": "Recrutamento aberto no Brasil",
+      "name": "Ensaios no Brasil",
+      "short_name": "Ensaios BR",
+      "description": "Ensaios clínicos recrutando no Brasil",
       "url": "./ensaios-clinicos.html",
       "icons": [
         { "src": "assets/img/icons/icon-192.png", "sizes": "192x192" }

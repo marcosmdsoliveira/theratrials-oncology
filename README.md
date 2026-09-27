@@ -21,7 +21,7 @@ A plataforma foi concebida para o fluxo real de um médico nuclear / oncologista
 |---------|-------|
 | Ensaios clínicos analisados | **421** |
 | Categorias terapêuticas | **39** |
-| Ensaios ativos no Brasil | **79** (20 áreas tumorais) |
+| Ensaios no Brasil (Trial Matcher) | recrutando no Brasil e mapeados — números na home, gerados por `scripts/sync_counts.mjs` |
 | Guidelines internacionais | **26** (EANM, SNMMI, ATA, IAEA, ACR) |
 | Dossiês de radiofármacos | **7** páginas completas |
 | Ferramentas clínicas | **12** (AJCC, CTCAE, calculadoras, BCLC, iRECIST) |
@@ -36,7 +36,7 @@ site/
 ├── index.html                     # Home · mapa da plataforma
 ├── database.html                  # 421 estudos · 39 categorias · favoritos · citações
 ├── explorer.html                  # TheraTrials Explorer · pipeline global RLT (ClinicalTrials.gov)
-├── ensaios-clinicos.html          # 79 ensaios ativos no Brasil · recrutamento aberto
+├── ensaios-clinicos.html          # redireciona para o Trial Matcher
 ├── tumor-boards.html              # Visão por tumor · próstata, pulmão, mama, NET, HCC
 ├── modalidades.html               # Visão por modalidade terapêutica
 ├── ferramentas.html               # AJCC TNM · CTCAE v6.0 · PSMA · PET/CT · iRECIST · BCLC · calculadoras
@@ -69,7 +69,7 @@ site/
 │   │   └── radiofarmaco.css       # Estilo dos dossiês de radiofármaco (506 linhas)
 │   ├── js/
 │   │   ├── data.js                # 421 estudos · schema 40 campos (minificado)
-│   │   ├── trials_br.js           # 79 ensaios ativos no Brasil
+│   │   ├── trials_br.js           # ensaios com centro no Brasil (status por estudo)
 │   │   ├── guidelines-data.js     # 26 guidelines · análise expandida
 │   │   ├── cross-links.js         # Cross-linking bidirecional radiofármacos ↔ guidelines
 │   │   ├── common.js              # Filtros · favoritos · export · tema
@@ -82,7 +82,7 @@ site/
 │   └── img/                       # 66 imagens · logos, ícones PWA, splash screens, diagramas
 ├── scripts/                       # 18 scripts Python · curação, pipeline ClinicalTrials.gov
 │   ├── fetch_trials.py            # Fetch ClinicalTrials.gov API
-│   ├── fetch_brazil_trials.py     # Fetch ensaios ativos no Brasil
+│   ├── fetch_brazil_trials.py     # legado — substituído por br_ciclo.py (ver scripts/br_PIPELINE.md)
 │   ├── curate_trials.py           # Pipeline de curação de estudos
 │   ├── fix_accents.py             # Correção automática de acentuação PT-BR
 │   ├── add_crosslinks.py          # Inserção de cross-links nos radiofármacos
@@ -110,9 +110,9 @@ site/
 - Filtros por isótopo, alvo molecular, fase, status, sponsor, presença no Brasil
 - Export CSV
 
-### Ensaios clínicos ativos no Brasil
-- 79 estudos com recrutamento aberto
-- 20 áreas tumorais
+### Ensaios clínicos no Brasil (Trial Matcher)
+- Mostra por padrão só os estudos recrutando no Brasil; os demais status ficam no filtro
+- Status auditado contra o ClinicalTrials.gov por centro brasileiro (`scripts/br_PIPELINE.md`)
 - Geolocalização por centro de pesquisa
 
 ### Guidelines (26 documentos)

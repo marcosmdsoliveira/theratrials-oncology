@@ -59,7 +59,7 @@ window._i18nRegister('pt-br', {
   ea: {
     eyebrow: "Recrutamento ativo · Brasil",
     title: "Ensaios clínicos <span class=\"accent\">recrutando</span> agora",
-    subtitle: "Banco selecionado de ensaios clínicos <strong>não teranósticos</strong> em oncologia com recrutamento aberto no Brasil — imunoterapia, terapia-alvo, ADCs, quimioterapia, hormonioterapia, cirurgia e radioterapia. Filtre por neoplasia, modalidade, fase, biomarcador, linha terapêutica e localidade. Para médicos, pesquisadores e pacientes encaminhados por especialistas.",
+    subtitle: "Banco selecionado de ensaios clínicos <strong>não teranósticos</strong> em oncologia com centros no Brasil — imunoterapia, terapia-alvo, ADCs, quimioterapia, hormonioterapia, cirurgia e radioterapia. Por padrão, mostra só os que estão recrutando no Brasil; os demais status ficam no filtro. Filtre por neoplasia, modalidade, fase, biomarcador, linha terapêutica e localidade. Para médicos, pesquisadores e pacientes encaminhados por especialistas.",
     disclaimer: "<strong>Aviso:</strong> esta seção é informativa. As informações são consolidadas a partir de registros públicos (ClinicalTrials.gov, REBEC, ANVISA) e fontes oficiais dos patrocinadores. <strong>A elegibilidade final depende sempre da avaliação do centro responsável pelo estudo</strong>. Datas, status e critérios podem mudar — sempre confirmar com a fonte original e a equipe local antes de qualquer encaminhamento.",
     clearFilters: "Limpar filtros",
     fLocal: "Localidade (UF)",
@@ -73,7 +73,7 @@ window._i18nRegister('pt-br', {
     of: "de",
     studies: "estudos",
     seeDb: "Ver evidência prévia no Database",
-    footerLeft: "© 2026 TheraTrials Oncology · Ensaios clínicos ativos (BR) · curadoria informativa",
+    footerLeft: "© 2026 TheraTrials Oncology · Ensaios clínicos no Brasil · curadoria informativa",
     footerRight: "Não substitui avaliação do centro responsável",
     cmTitle: "Entrar em contato",
     cmIntro: "Deixe seus dados e mensagem que retornaremos pelo canal informado. Você também pode usar o WhatsApp para um contato mais rápido.",
@@ -124,7 +124,7 @@ window._i18nRegister('pt-br', {
     platform: "Plataforma",
     legal: "Legal",
     database: "Database",
-    ensaiosBR: "Ensaios clínicos ativos (BR)",
+    ensaiosBR: "Ensaios clínicos no Brasil",
     tumorBoards: "Tumor boards",
     modalidades: "Modalidades",
     radiofarmacos: "Radiofármacos",
@@ -222,7 +222,7 @@ window._i18nRegister('pt-br', {
     fSponsor: "Sponsor",
     fGeo: "Geografia",
     onlyBrazil: "Apenas com centro no Brasil",
-    brBanner: "Filtrando por participação brasileira no tracker global. Para a <strong>curadoria detalhada de estudos abertos no Brasil</strong> (com centros, contatos e critérios em português), use <a href=\"ensaios-clinicos.html\" style=\"color:var(--amber); text-decoration:underline;\">Ensaios clínicos ativos (BR)</a>.",
+    brBanner: "Filtrando por participação brasileira no tracker global. Para a <strong>curadoria detalhada de estudos abertos no Brasil</strong> (com centros, contatos e critérios em português), use <a href=\"ensaios-clinicos.html\" style=\"color:var(--amber); text-decoration:underline;\">Ensaios clínicos no Brasil</a>.",
     searchPh: "Buscar por NCT, droga, sponsor, condição, intervenção…",
     of: "de",
     loading: "Carregando estudos de radiofármacos…",
@@ -252,7 +252,7 @@ window._i18nRegister('pt-br', {
     eyebrow: "Pipeline global · radiofármacos terapêuticos",
     subtitle: "Pipeline ativo de radioligantes terapêuticos em oncologia. Filtre por isótopo, ligante/alvo, fase, neoplasia, sponsor e país. Fonte: <strong>ClinicalTrials.gov v2</strong>, com atualização automática mensal. Inspirado no <em>Radiopharmaceutical Therapy Tracker</em> da AuntMinnie e estendido para incluir país, N alvo e sponsor.",
     srcSeedTail: "estudos · GitHub Action irá expandir para o pipeline completo no próximo dia 1",
-    brBanner: "Filtrando por participação brasileira no pipeline global. Para a <strong>curadoria detalhada de estudos abertos no Brasil</strong> (com centros, contatos e critérios em português), use <a href=\"ensaios-clinicos.html\" style=\"color:var(--amber); text-decoration:underline;\">Ensaios clínicos ativos (BR)</a>.",
+    brBanner: "Filtrando por participação brasileira no pipeline global. Para a <strong>curadoria detalhada de estudos abertos no Brasil</strong> (com centros, contatos e critérios em português), use <a href=\"ensaios-clinicos.html\" style=\"color:var(--amber); text-decoration:underline;\">Ensaios clínicos no Brasil</a>.",
     footerLeft: "© 2026 TheraTrials Oncology · Radiopharmaceutical Therapy Tracker"
   },
 
@@ -2285,10 +2285,20 @@ window._i18nRegister('pt-br', {
 
   /* ── Trial Matcher ── */
   tm: {
-    badge: "Recrutamento ativo · Brasil",
+    badge: "Ensaios clínicos no Brasil",
     title: "Trial <span class=\"accent\">Matcher</span>",
-    subtitle: "Banco selecionado de ensaios clínicos <strong>não teranósticos</strong> em oncologia com recrutamento aberto no Brasil — imunoterapia, terapia-alvo, ADCs, quimioterapia, hormonioterapia, cirurgia e radioterapia. Filtre por neoplasia, modalidade, fase, biomarcador, linha terapêutica e localidade. Para médicos, pesquisadores e pacientes encaminhados por especialistas.",
+    subtitle: "Banco selecionado de ensaios clínicos <strong>não teranósticos</strong> em oncologia com centros no Brasil — imunoterapia, terapia-alvo, ADCs, quimioterapia, hormonioterapia, cirurgia e radioterapia. Por padrão, mostra só os que estão recrutando no Brasil; os demais status ficam no filtro. Filtre por neoplasia, modalidade, fase, biomarcador, linha terapêutica e localidade. Para médicos, pesquisadores e pacientes encaminhados por especialistas.",
     disclaimer: "<strong>Aviso:</strong> esta ferramenta é informativa. As informações são consolidadas a partir de registros públicos (ClinicalTrials.gov, REBEC, ANVISA) e fontes oficiais dos patrocinadores. <strong>A elegibilidade final depende sempre da avaliação do centro responsável pelo estudo</strong>. Datas, status e critérios podem mudar — sempre confirmar com a fonte original e a equipe local antes de qualquer encaminhamento.",
+    heroStat: "<strong>{rec} ensaios recrutando no Brasil</strong> · {total} estudos mapeados",
+    fStatus: "Status no Brasil",
+    fStatusRec: "Recrutando no Brasil",
+    fStatusNotYet: "Ainda não recrutando no Brasil",
+    fStatusClosedBR: "Recrutamento encerrado no Brasil",
+    fStatusClosed: "Encerrado",
+    fStatusReview: "Em revisão (Brasil não confirmado)",
+    fStatusAll: "Todos os status",
+    stReview: "Em revisão",
+    stReviewLong: "Em revisão — recrutamento no Brasil não confirmado",
     fTumor: "Tumor / Neoplasia",
     fTumorAll: "Todos os tumores",
     fUf: "Localidade (UF)",
@@ -2351,7 +2361,7 @@ window._i18nRegister('pt-br', {
     /* Stats counter */
     statStudies: "Ensaios publicados",
     statCategories: "Categorias",
-    statBRTrials: "Ensaios ativos BR",
+    statBRTrials: "Recrutando no Brasil",
     statCenters: "Centros recrutadores",
     statTools: "Ferramentas clínicas",
     statGuidelines: "Guidelines internacionais",
@@ -2361,8 +2371,8 @@ window._i18nRegister('pt-br', {
     pmDatabaseDesc: "Mais de 503 ensaios · 40 categorias · favoritos · citações",
     pmExplorerName: "TheraTrials Explorer",
     pmExplorerDesc: "Pipeline global de radioligantes · dados do ClinicalTrials.gov · atualização mensal",
-    pmEnsaiosBRName: "Ensaios clínicos ativos (BR)",
-    pmEnsaiosBRDesc: "Recrutamento aberto no Brasil · 259 estudos · 27 áreas tumorais",
+    pmEnsaiosBRName: "Ensaios clínicos no Brasil",
+    pmEnsaiosBRDesc: "205 ensaios recrutando no Brasil · 259 estudos mapeados · 26 áreas tumorais",
     pmTumorBoardsName: "Tumor boards",
     pmTumorBoardsDesc: "Visão por tumor · próstata, pulmão, mama, NET, HCC",
     pmModalidadesName: "Modalidades",
@@ -2423,7 +2433,7 @@ window._i18nRegister('pt-br', {
     eaDisclaimer: "Aviso:",
     eaDisclaimerText: "seção informativa. A elegibilidade final depende sempre da avaliação do centro responsável pelo estudo.",
     eaRecruiting: "Recrutando",
-    eaFooterCount: "259 ensaios clínicos ativos · 27 áreas tumorais · Brasil",
+    eaFooterCount: "<strong style=\"color:var(--off-white)\">205 ensaios recrutando no Brasil</strong> · 259 estudos mapeados · 26 áreas tumorais",
     eaFooterLink: "Filtrar por neoplasia, modalidade, biomarcador",
 
     /* Radiofármacos block */
@@ -2450,7 +2460,7 @@ window._i18nRegister('pt-br', {
 
     /* CTA final */
     ctaTitle: "Pronto para conectar evidência e prática clínica?",
-    ctaDesc: "503 ensaios clínicos analisados em 40 categorias · pipeline global de radioligantes via ClinicalTrials.gov · 259 ensaios clínicos ativos no Brasil · 7 dossiês de radiofármaco · 12 ferramentas clínicas · AJCC 8ª ed., CTCAE v6.0, BCLC 2026 · hyperlinks diretos para PubMed e ClinicalTrials.gov.",
+    ctaDesc: "503 ensaios clínicos analisados em 40 categorias · pipeline global de radioligantes via ClinicalTrials.gov · 205 ensaios recrutando no Brasil · 7 dossiês de radiofármaco · 12 ferramentas clínicas · AJCC 8ª ed., CTCAE v6.0, BCLC 2026 · hyperlinks diretos para PubMed e ClinicalTrials.gov.",
     ctaBtnDatabase: "Acessar o banco",
     ctaBtnExplorer: "Explorer",
     ctaBtnTumorBoards: "Tumor boards",
@@ -2470,7 +2480,7 @@ window._i18nRegister('pt-br', {
     footerCopyright: "Direitos autorais",
     footerDisclaimer: "© 2026 TheraTrials Oncology · uso educacional · não substitui diretrizes oficiais ou leitura primária",
     footerVersion: "v1.1 · Atualizado mai 2026",
-    footerEnsaiosBR: "Ensaios clínicos ativos (BR)",
+    footerEnsaiosBR: "Ensaios clínicos no Brasil",
     footerEventos: "Eventos Científicos"
   },
 

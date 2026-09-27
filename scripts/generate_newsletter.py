@@ -178,7 +178,7 @@ def generate_content(now: datetime) -> tuple[str, str, dict]:
     sections_md.append(f"| Métrica | Atual | Novos este mês |")
     sections_md.append(f"|---------|-------|---------------|")
     sections_md.append(f"| Explorer (pipeline RLT global) | **{explorer_stats['total']}** estudos | +{delta_explorer} |")
-    sections_md.append(f"| Ensaios ativos no Brasil | **{len(br_ncts)}** estudos | +{delta_br} |")
+    sections_md.append(f"| Estudos mapeados no Brasil (Trial Matcher) | **{len(br_ncts)}** estudos | +{delta_br} |")
     sections_md.append(f"| Tracker (radiofármacos) | **{tracker_stats['total']}** itens | +{delta_tracker} |")
     sections_md.append("")
 
@@ -199,8 +199,8 @@ def generate_content(now: datetime) -> tuple[str, str, dict]:
     # Brazil trials
     if delta_br > 0:
         sections_md.append("## Ensaios com recrutamento no Brasil\n")
-        sections_md.append(f"**{delta_br} novos ensaios** com recrutamento aberto foram identificados em centros brasileiros.\n")
-        sections_md.append(f"Total atual: {len(br_ncts)} estudos em recrutamento ativo.\n")
+        sections_md.append(f"**{delta_br} novos estudos** com centro no Brasil entraram no Trial Matcher.\n")
+        sections_md.append(f"Total atual: {len(br_ncts)} estudos mapeados; o status de recrutamento de cada um está no Trial Matcher.\n")
 
     # Tracker
     if delta_tracker > 0:
@@ -224,7 +224,7 @@ def generate_content(now: datetime) -> tuple[str, str, dict]:
     sections_md.append("## Acesse a plataforma\n")
     sections_md.append("- [Database](https://marcosmdsoliveira.github.io/theratrials-oncology/database.html) — 421 estudos analisados")
     sections_md.append("- [Explorer](https://marcosmdsoliveira.github.io/theratrials-oncology/explorer.html) — Pipeline RLT global")
-    sections_md.append("- [Ensaios BR](https://marcosmdsoliveira.github.io/theratrials-oncology/ensaios-clinicos.html) — Recrutamento aberto no Brasil")
+    sections_md.append("- [Ensaios BR](https://marcosmdsoliveira.github.io/theratrials-oncology/ensaios-clinicos.html) — Ensaios clínicos no Brasil")
     sections_md.append("- [Guidelines](https://marcosmdsoliveira.github.io/theratrials-oncology/guidelines.html) — 26 guidelines internacionais")
     sections_md.append("")
     sections_md.append("---\n")
@@ -269,7 +269,7 @@ def generate_archive_html(title: str, month: str, year: int, now: datetime,
       </div>
       <div class="nl-stat-card">
         <div class="nl-stat-number">{len(br_ncts)}</div>
-        <div class="nl-stat-label">Ensaios ativos no Brasil</div>
+        <div class="nl-stat-label">Estudos mapeados no Brasil</div>
         <div class="nl-stat-delta">+{delta_br} este mês</div>
       </div>
       <div class="nl-stat-card">

@@ -30,10 +30,25 @@ const categorias = global.window.THERA_DATA.categories.length;
 global.window = {};
 require(join(RAIZ, 'assets/js/trials_br.js'));
 const ensaios = global.window.THERA_TRIALS_BR;
+// Dois números, e o site nunca pode confundir um com o outro (2026-09):
+//   brasil            = estudos MAPEADOS (todos os cards, qualquer status)
+//   brasil_recrutando = brazil_status === 'RECRUITING': ≥1 centro brasileiro
+//                       RECRUITING confirmado no ClinicalTrials.gov. É o número
+//                       de destaque. Card em REVIEW_REQUIRED fica FORA, mesmo
+//                       com o rótulo 'Recrutando' (ROSETTA RCC-201, 2026-09).
+// Card sem brazil_status (anterior à auditoria) usa o `status` como antes.
+// Até 2026-09 o site chamava os 259 mapeados de "ensaios clínicos ativos",
+// e 54 deles não tinham recrutamento confirmado no Brasil.
 const brasil = ensaios.length;
-// "áreas tumorais" = neoplasias de fato representadas, não o tamanho da
-// taxonomia: a META pode declarar uma neoplasia que ainda não tem estudo.
-const areas = new Set(ensaios.map((e) => e.neoplasia).filter(Boolean)).size;
+const recrutandoBR = (e) => (e.brazil_status
+  ? e.brazil_status === 'RECRUITING'
+  : (e.status || 'Recrutando') === 'Recrutando');
+const recrutando = ensaios.filter(recrutandoBR);
+const brasil_recrutando = recrutando.length;
+// "áreas tumorais" e "centros recrutadores" contam só quem recruta: um centro
+// de estudo encerrado não é centro recrutador. Neoplasias de fato
+// representadas, não o tamanho da taxonomia.
+const areas = new Set(recrutando.map((e) => e.neoplasia).filter(Boolean)).size;
 // Instituições DISTINTAS, não a soma dos cards. Somar dava 1042 para ~170
 // centros reais: São Paulo aparece em 128 estudos e entrava 128 vezes. O
 // rótulo é "Centros recrutadores", então o número tem de ser de instituições.
@@ -46,7 +61,7 @@ const areas = new Set(ensaios.map((e) => e.neoplasia).filter(Boolean)).size;
 const RE_CENTRO = /^(?:(.*?)\s*—\s*)?(.*?)\s*\/\s*([A-Z]{2})$/;
 const instituicoes = new Set();
 const cidades = new Set();
-for (const e of ensaios) {
+for (const e of recrutando) {
   for (const c of e.centros ?? []) {
     const m = RE_CENTRO.exec(c.trim());
     if (!m) continue;
@@ -56,7 +71,7 @@ for (const e of ensaios) {
 }
 const centros = instituicoes.size;
 
-const VALORES = { brasil, areas, database, categorias, centros };
+const VALORES = { brasil, brasil_recrutando, areas, database, categorias, centros };
 
 // ── Regras ─────────────────────────────────────────────────────────────────
 // O lookahead garante que só o número é substituído; a frase fica intacta e a
@@ -72,13 +87,13 @@ const REGRAS = [
   // por isso o lookahead atravessa o resto da tag e a abertura do <span>.
   { re: /\d+(?="[^>]*>0<\/span>\s*<span class="counter-label" data-i18n="home\.statStudies")/g,  valor: 'database' },
   { re: /\d+(?="[^>]*>0<\/span>\s*<span class="counter-label" data-i18n="home\.statCategories")/g, valor: 'categorias' },
-  { re: /\d+(?="[^>]*>0<\/span>\s*<span class="counter-label" data-i18n="home\.statBRTrials")/g, valor: 'brasil' },
+  { re: /\d+(?="[^>]*>0<\/span>\s*<span class="counter-label" data-i18n="home\.statBRTrials")/g, valor: 'brasil_recrutando' },
   { re: /\d+(?="[^>]*>0<\/span>\s*<span class="counter-label" data-i18n="home\.statCenters")/g, valor: 'centros' },
 
-  { re: /\d+(?= ensaios clínicos ativos)/g,      valor: 'brasil' },
-  { re: /\d+(?= active clinical trials)/g,       valor: 'brasil' },
-  { re: /\d+(?= estudos · \d+ áreas tumorais)/g, valor: 'brasil' },
-  { re: /\d+(?= studies · \d+ tumor types)/g,    valor: 'brasil' },
+  { re: /\d+(?= ensaios recrutando no Brasil)/g, valor: 'brasil_recrutando' },
+  { re: /\d+(?= trials recruiting in Brazil)/g,  valor: 'brasil_recrutando' },
+  { re: /\d+(?= estudos mapeados)/g,             valor: 'brasil' },
+  { re: /\d+(?= studies mapped)/g,               valor: 'brasil' },
   { re: /\d+(?= áreas tumorais)/g,               valor: 'areas' },
   { re: /\d+(?= tumor types)/g,                  valor: 'areas' },
   { re: /\d+(?= ensaios clínicos analisados)/g,  valor: 'database' },
@@ -122,6 +137,42 @@ const ARQUIVOS = ['index.html', 'trial-matcher.html', 'about.html',
 
 let defasados = 0;
 let corrigidos = 0;
+let violacoes = 0;
+
+// ── Travas que nenhuma reescrita resolve ────────────────────────────────────
+// 1. Frase proibida: o site não pode chamar os estudos mapeados de "ativos".
+const PROIBIDAS = [/ensaios clínicos ativos/i, /active clinical trials/i, /ensaios ativos BR/i];
+for (const rel of ARQUIVOS) {
+  let texto;
+  try { texto = readFileSync(join(RAIZ, rel), 'utf-8'); } catch { continue; }
+  for (const re of PROIBIDAS) {
+    const m = re.exec(texto);
+    if (m) {
+      violacoes++;
+      const linha = texto.slice(0, m.index).split('\n').length;
+      console.log(`  ${rel}:${linha}  frase proibida "${m[0]}" — use "recrutando no Brasil" ou "estudos mapeados"`);
+    }
+  }
+}
+// 2. Vitrine da home: cada card fixo tem de existir, ter o NCT do card e estar
+//    'Recrutando'. Em 2026-09 ela anunciava como "Recrutando" um estudo
+//    encerrado, um card inexistente e 4 NCTs de outros estudos.
+{
+  const porId = new Map(ensaios.map((e) => [e.id, e]));
+  const home = readFileSync(join(RAIZ, 'index.html'), 'utf-8');
+  const RE_SPOT = /<a href="trial-matcher\.html#([\w-]+)" class="ea-spot-card"[\s\S]*?<span class="nct">([^<]*)<\/span>/g;
+  let n = 0;
+  for (const [, id, nct] of home.matchAll(RE_SPOT)) {
+    n++;
+    const c = porId.get(id);
+    const erro = !c ? 'card não existe no trials_br.js'
+      : c.nct !== nct ? `NCT ${nct} ≠ ${c.nct} do card`
+      : !recrutandoBR(c) ? `brazil_status '${c.brazil_status || c.status}' — a vitrine diz Recrutando`
+      : '';
+    if (erro) { violacoes++; console.log(`  index.html vitrine #${id}: ${erro}`); }
+  }
+  if (!n) { violacoes++; console.log('  index.html: vitrine não encontrada (o padrão mudou?)'); }
+}
 
 for (const rel of ARQUIVOS) {
   const caminho = join(RAIZ, rel);
@@ -156,9 +207,14 @@ for (const rel of ARQUIVOS) {
   }
 }
 
-console.log(`\nvalores de referência: ${brasil} ensaios BR · ${centros} centros ` +
+console.log(`\nvalores de referência: ${brasil_recrutando} recrutando no Brasil de ${brasil} mapeados · ${centros} centros ` +
             `em ${cidades.size} cidades · ${areas} áreas tumorais · ` +
             `${database} estudos no database · ${categorias} categorias`);
+
+if (violacoes) {
+  console.error(`\nFALHA: ${violacoes} problema(s) que a reescrita automática não resolve (acima).`);
+  process.exit(1);
+}
 
 if (!defasados) {
   console.log('contagens no texto: em dia');
