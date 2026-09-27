@@ -6,8 +6,9 @@
  *   FAIL  - card has no concrete NCT id (see below)
  *   FAIL  - nct_url / contato_url point to a DIFFERENT NCT than `nct`
  *   FAIL  - the NCT does not exist on ClinicalTrials.gov (404)
- *   WARN  - CT.gov overallStatus is no longer recruiting (card says it is)
+ *   WARN  - CT.gov overallStatus is not exactly RECRUITING
  *   WARN  - Brazil is not among CT.gov locations (card claims BR-open)
+ *   WARN  - recruiting globally, but no Brazilian site is RECRUITING
  *
  * Card sem NCT era só NOTE, que não bloqueia nada — e foi assim que o LUCERNA
  * (`nct: 'NCT a confirmar'`) e o Beyond CRC (`nct: ''`) ficaram publicados
@@ -110,9 +111,16 @@ function checarNctRepetido(trials) {
       const p = j.protocolSection || {};
       const st = (p.statusModule && p.statusModule.overallStatus) || '';
       const locs = (p.contactsLocationsModule && p.contactsLocationsModule.locations || []);
-      const brazil = locs.some(l => /brazil|brasil/i.test(l.country || ''));
-      if (st && !/RECRUITING/i.test(st)) flags.push({ lvl: 'WARN', m: `status CT.gov = ${st} (card: Recrutando)` });
-      if (!brazil) flags.push({ lvl: 'WARN', m: 'Brasil não consta nos locais do CT.gov' });
+      const br = locs.filter(l => /brazil|brasil/i.test(l.country || ''));
+      // Igualdade exata: /RECRUITING/ também casa com ACTIVE_NOT_RECRUITING e
+      // NOT_YET_RECRUITING, e assim 26 estudos encerrados passaram sem aviso
+      // até 2026-09. Mesma regra do scripts/br_ctgov.py.
+      // Card que já diz 'Encerrado' está coerente com o registro fechado.
+      if (st && st !== 'RECRUITING' && tr.status !== 'Encerrado') flags.push({ lvl: 'WARN', m: `status CT.gov = ${st} (card: ${tr.status || '?'})` });
+      if (!br.length) flags.push({ lvl: 'WARN', m: 'Brasil não consta nos locais do CT.gov' });
+      // Recrutar no mundo não basta: o Trial Matcher promete centro aberto no Brasil.
+      else if (st === 'RECRUITING' && tr.status === 'Recrutando' && !br.some(l => (l.status || '') === 'RECRUITING'))
+        flags.push({ lvl: 'WARN', m: `recruta no mundo, mas nenhum centro no Brasil está RECRUITING (${[...new Set(br.map(l => l.status || 'vazio'))].join('/')})` });
     }
     results.push({ id: tr.id, nome: tr.nome, nct, flags });
     if (++i % 20 === 0) console.error(`  ${i}/${trials.length}`);

@@ -39,6 +39,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from br_discover import CIDADE_UF, normalizar_cidade  # noqa: E402
+from br_ctgov import centro_recrutando  # noqa: E402
 from br_instituicoes import resolver  # noqa: E402
 
 SITE = Path(__file__).resolve().parent.parent
@@ -53,8 +54,8 @@ def locais_ctgov(ncts: list[str]) -> dict[str, list[dict]]:
         lote = ncts[i:i + 40]
         params = {
             "filter.ids": "|".join(lote),
-            "fields": ("NCTId|LocationCity|LocationState|LocationCountry"
-                       "|LocationFacility|LocationStatus"),
+            "fields": ("NCTId|OverallStatus|LocationCity|LocationState"
+                       "|LocationCountry|LocationFacility|LocationStatus"),
             "pageSize": "200",
         }
         req = urllib.request.Request(
@@ -67,15 +68,16 @@ def locais_ctgov(ncts: list[str]) -> dict[str, list[dict]]:
             p = s.get("protocolSection", {})
             nct = p.get("identificationModule", {}).get("nctId", "")
             locs = p.get("contactsLocationsModule", {}).get("locations", [])
+            global_ = p.get("statusModule", {}).get("overallStatus", "")
             nomeados: set[tuple[str, str]] = set()
             anonimas: set[str] = set()
             for l in locs:
                 if l.get("country") != "Brazil":
                     continue
-                # Centro que o próprio registro marca como já encerrado não é
-                # centro recrutador. Sem `status` o CT.gov herda o do estudo.
-                st = l.get("status") or ""
-                if st and "RECRUITING" not in st.upper():
+                # Só centro com status RECRUITING explícito conta. O teste
+                # antigo (`"RECRUITING" in status`) aceitava ACTIVE_NOT_RECRUITING
+                # e NOT_YET_RECRUITING. Ver br_ctgov.py.
+                if not centro_recrutando(l, global_):
                     continue
                 cidade = normalizar_cidade(l.get("city") or "")
                 if not cidade:
@@ -208,8 +210,8 @@ def main() -> int:
     print(f"\n  centros a acrescentar no total: {total}")
 
     if sem_brasil:
-        print(f"\n⚠ SEM CENTRO NO BRASIL no CT.gov ({len(sem_brasil)}) — "
-              f"card preservado, revisar manualmente:")
+        print(f"\n⚠ NENHUM CENTRO RECRUTANDO NO BRASIL no CT.gov ({len(sem_brasil)}) — "
+              f"card preservado; o br_auditar.py diz se fechou ou nunca abriu:")
         for c in sem_brasil:
             print(f"   {c['nct']}  {c['nome'][:44]}")
 

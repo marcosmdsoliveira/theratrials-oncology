@@ -30,6 +30,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+from br_ctgov import centro_recrutando  # noqa: E402
 from br_instituicoes import resolver  # noqa: E402
 
 API = "https://clinicaltrials.gov/api/v2/studies"
@@ -75,6 +76,8 @@ CAMPOS = [
     "InterventionDescription", "InterventionType",
     "LocationFacility", "LocationCity", "LocationState", "LocationCountry",
     "LocationStatus", "LastUpdatePostDate", "StudyFirstPostDate", "EnrollmentCount",
+    # Usado pelo br_ciclo.py para separar tratamento de prevenção/suporte.
+    "DesignPrimaryPurpose",
 ]
 
 # Teranósticos ficam no database principal (data.js), não no Trial Matcher.
@@ -265,10 +268,12 @@ def achatar(s: dict) -> dict:
     # cidades. Ver br_instituicoes.py para a resolução dos nomes.
     nomeados: set[tuple[str, str]] = set()
     anonimas: set[str] = set()
+    global_ = status.get("overallStatus", "")
     for l in br:
-        st = l.get("status") or ""
-        if st and "RECRUITING" not in st.upper():
-            continue          # centro já encerrado não é centro recrutador
+        # Igualdade exata, pela regra comum: `"RECRUITING" in status` deixava
+        # passar ACTIVE_NOT_RECRUITING e NOT_YET_RECRUITING. Ver br_ctgov.py.
+        if not centro_recrutando(l, global_):
+            continue
         cidade = normalizar_cidade(l.get("city") or "")
         if not cidade:
             continue

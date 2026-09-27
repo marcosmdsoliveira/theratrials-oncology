@@ -279,7 +279,7 @@ function passes(e){
   if(tumor && e.tumor!==tumor) return false;
   if(spons && e.patrocinador!==spons) return false;
   if(centro && e.centro!==centro) return false;
-  if(onlyRec && !/recrut/i.test(e.status)) return false;
+  if(onlyRec && e.status!=='Recrutando') return false;
   if(onlyTest && !e.testeFornecido) return false;
   if(selUF.size && !e.ufs.some(u=>selUF.has(u))) return false;
   if(bio){var hay=((e.biomarcadores||[]).join(' ')+' '+e.drogas+' '+e.cenario).toLowerCase();if(hay.indexOf(bio)===-1) return false}
@@ -305,7 +305,7 @@ function cardHTML(e){
       '<span class="tc-center" style="background:'+cor+'1e;color:'+cor+'"><i data-lucide="building-2" style="width:12px;height:12px"></i> '+esc(c.curto)+'</span>'+
       '<span class="tc-phase">'+esc(e.fase)+'</span>'+
       '<span class="tag">'+esc(TUMORES[e.tumor])+'</span>'+
-      (/recrut/i.test(e.status)?'<span class="badge b-rec"><i data-lucide="dot" style="width:11px;height:11px"></i> Recrutando</span>':'')+
+      (e.status==='Recrutando'?'<span class="badge b-rec"><i data-lucide="dot" style="width:11px;height:11px"></i> Recrutando</span>':'')+
       (e.testeFornecido?'<span class="badge b-test"><i data-lucide="flask-conical" style="width:11px;height:11px"></i> Teste grátis</span>':'')+
     '</div>'+
     '<div class="tc-title">'+esc(e.nome)+'</div>'+
@@ -337,7 +337,7 @@ function renderEnsaio(id){
    '<div class="dhead">'+
      '<span class="tc-center" style="background:'+cor+'1e;color:'+cor+';cursor:pointer" onclick="go(\'centro\',\''+c.id+'\')"><i data-lucide="building-2" style="width:12px;height:12px"></i> '+esc(c.curto)+'</span>'+
      '<span class="tc-phase">'+esc(e.fase)+'</span><span class="tag">'+esc(TUMORES[e.tumor])+'</span>'+
-     (/recrut/i.test(e.status)?'<span class="badge b-rec"><i data-lucide="dot" style="width:11px;height:11px"></i> Recrutando</span>':'')+
+     (e.status==='Recrutando'?'<span class="badge b-rec"><i data-lucide="dot" style="width:11px;height:11px"></i> Recrutando</span>':'')+
      (e.testeFornecido?'<span class="badge b-test"><i data-lucide="flask-conical" style="width:11px;height:11px"></i> Teste de biomarcador fornecido</span>':'')+
      (e.destaque?'<span class="badge b-spons"><i data-lucide="megaphone" style="width:11px;height:11px"></i> Patrocinado</span>':'')+
    '</div>'+
