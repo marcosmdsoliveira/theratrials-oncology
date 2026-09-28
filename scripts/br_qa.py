@@ -19,12 +19,16 @@ Travas (FAIL: o proposto não pode ser aplicado):
       · HER2 exigido num card cujo texto diz HER2-negativo
       · `biomarcadores_criterios` malformado, contraditório ou diferente de
         `biomarcadores` (que tem de ser exatamente os `requerido`)
+  - radioligante (ver `checar_radioligante`): card com modalidade
+    'radioligante' sem nenhum alvo em `alvos` e sem `alvos_justificativa`
   - validador existente falhou na cópia
 
 Avisos (WARN: aplicável, mas uma pessoa precisa olhar):
   - card existente mudou fora dos campos factuais (status, centros, cidades,
     estados, data_atualizacao) — é mudança editorial
   - card novo com biomarcador fora da lista de filtros da META
+  - radioligante com alvo fora de ALVOS_RLT (a classe cresce: não bloqueia)
+  - card novo com radiofármaco na intervenção e sem modalidade 'radioligante'
   - contagens do texto do site ficariam defasadas (sync_counts --check)
 
 Uso:
@@ -89,6 +93,40 @@ def _re_negado(b: str) -> re.Pattern:
         rf"(?<![\w-]){m}[\s:-]{{0,3}}{_NEG_SING}"
         rf"|(?<![\w-]){m}(?:\s*(?:,|/|\be\b|\band\b)\s*{_MARCADOR})*\s+(?:V600\s+)?{_NEG_PLUR}",
         re.I)
+
+
+# Alvos moleculares conhecidos de radioligantes. Alvo fora daqui só gera aviso:
+# a classe cresce mais rápido do que esta lista.
+ALVOS_RLT = {"PSMA", "SSTR", "SSTR2", "FAP", "GRPR", "CXCR4", "NTSR1", "CA-IX",
+             "DLL3", "GPC3", "MC1R", "CD20", "CD37", "CD38", "CD45", "CD66", "HER2",
+             "B7-H3", "Nectin-4", "KLK2", "IGF-1R", "NET", "NIS"}
+
+
+def checar_radioligante(t: dict) -> list[str]:
+    """Radioligante tem de dizer o alvo, ou por que não tem (rádio-223)."""
+    if "radioligante" not in (t.get("modalidade") or []):
+        return []
+    alvos = t.get("alvos")
+    if alvos is not None and not isinstance(alvos, list):
+        return ["`alvos` não é lista"]
+    if not alvos and not (t.get("alvos_justificativa") or "").strip():
+        return ["modalidade 'radioligante' sem alvo em `alvos` e sem `alvos_justificativa`"]
+    return []
+
+
+def avisos_radioligante(t: dict, novo: bool) -> list[str]:
+    avisos = []
+    alvos = t.get("alvos") or []
+    if "radioligante" in (t.get("modalidade") or []):
+        if alvos and not any(a in ALVOS_RLT for a in alvos):
+            avisos.append(f"radioligante com alvo fora de ALVOS_RLT: {alvos} — conferir")
+    elif novo:
+        from br_discover import TERANOSTICO
+        m = TERANOSTICO.search(t.get("intervencao") or "")
+        if m:
+            avisos.append(f"intervenção cita radiofármaco ('{m.group(0)}') e a modalidade "
+                          "não tem 'radioligante' — conferir")
+    return avisos
 
 
 def checar_biomarcadores(t: dict) -> list[str]:
@@ -245,6 +283,8 @@ def comparar(atual: list[dict], meta_atual: dict,
             if m not in ids["modalidades"]:
                 falhas.append(f"{rot}: modalidade fora da META: {m!r}")
         falhas += [f"{rot}: {f}" for f in checar_biomarcadores(t)]
+        falhas += [f"{rot}: {f}" for f in checar_radioligante(t)]
+        avisos += [f"{rot}: {a}" for a in avisos_radioligante(t, t.get("id") not in por_id)]
         # brazil_status (o que conta como "recrutando" no site) e `status`
         # (o rótulo) não podem se contradizer. REVIEW_REQUIRED não mexe no
         # rótulo — é o caso do ROSETTA RCC-201 —, então qualquer status vale.

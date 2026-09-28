@@ -59,7 +59,7 @@ window._i18nRegister('pt-br', {
   ea: {
     eyebrow: "Ensaios clínicos no Brasil",
     title: "Ensaios clínicos <span class=\"accent\">recrutando</span> agora",
-    subtitle: "Banco selecionado de ensaios clínicos <strong>não teranósticos</strong> em oncologia com centros no Brasil. Reúne estudos de imunoterapia, terapia-alvo, ADCs, quimioterapia, hormonioterapia, cirurgia e radioterapia. O status de recrutamento no Brasil é verificado periodicamente a partir dos registros públicos. Filtre por neoplasia, modalidade, fase, biomarcador, linha terapêutica e localização.",
+    subtitle: "Banco selecionado de ensaios clínicos em oncologia com centros no Brasil. Reúne estudos de terapias sistêmicas — imunoterapia, terapia-alvo, ADCs, quimioterapia e hormonioterapia —, radioligantes, cirurgia e radioterapia. O status de recrutamento no Brasil é verificado periodicamente a partir dos registros públicos. Filtre por neoplasia, modalidade, fase, biomarcador, linha terapêutica e localização.",
     disclaimer: "<strong>Aviso:</strong> esta seção é informativa. As informações são consolidadas a partir de registros públicos (ClinicalTrials.gov, REBEC, ANVISA) e fontes oficiais dos patrocinadores. <strong>A elegibilidade final depende sempre da avaliação do centro responsável pelo estudo</strong>. Datas, status e critérios podem mudar — sempre confirmar com a fonte original e a equipe local antes de qualquer encaminhamento.",
     clearFilters: "Limpar filtros",
     fLocal: "Localidade (UF)",
@@ -2287,7 +2287,7 @@ window._i18nRegister('pt-br', {
   tm: {
     badge: "Ensaios clínicos no Brasil",
     title: "Trial <span class=\"accent\">Matcher</span>",
-    subtitle: "Banco selecionado de ensaios clínicos <strong>não teranósticos</strong> em oncologia com centros no Brasil. Reúne estudos de imunoterapia, terapia-alvo, ADCs, quimioterapia, hormonioterapia, cirurgia e radioterapia. O status de recrutamento no Brasil é verificado periodicamente a partir dos registros públicos. Filtre por neoplasia, modalidade, fase, biomarcador, linha terapêutica e localização.",
+    subtitle: "Banco selecionado de ensaios clínicos em oncologia com centros no Brasil. Reúne estudos de terapias sistêmicas — imunoterapia, terapia-alvo, ADCs, quimioterapia e hormonioterapia —, radioligantes, cirurgia e radioterapia. O status de recrutamento no Brasil é verificado periodicamente a partir dos registros públicos. Filtre por neoplasia, modalidade, fase, biomarcador, linha terapêutica e localização.",
     disclaimer: "<strong>Aviso:</strong> esta ferramenta é informativa. Os dados são consolidados a partir de registros públicos e fontes oficiais dos patrocinadores e são verificados periodicamente. <strong>A elegibilidade final depende da avaliação do centro responsável pelo estudo.</strong> Datas, status e critérios podem mudar — confirme sempre com a equipe local antes do encaminhamento.",
     heroStat: "<strong>{rec} ensaios recrutando no Brasil</strong> · {total} estudos mapeados",
     fStatus: "Status no Brasil",
@@ -2372,7 +2372,7 @@ window._i18nRegister('pt-br', {
     pmExplorerName: "TheraTrials Explorer",
     pmExplorerDesc: "Pipeline global de radioligantes · dados do ClinicalTrials.gov · atualização mensal",
     pmEnsaiosBRName: "Ensaios clínicos no Brasil",
-    pmEnsaiosBRDesc: "205 ensaios recrutando no Brasil · 259 estudos mapeados · 26 áreas tumorais",
+    pmEnsaiosBRDesc: "208 ensaios recrutando no Brasil · 262 estudos mapeados · 26 áreas tumorais",
     pmTumorBoardsName: "Tumor boards",
     pmTumorBoardsDesc: "Visão por tumor · próstata, pulmão, mama, NET, HCC",
     pmModalidadesName: "Modalidades",
@@ -2428,12 +2428,12 @@ window._i18nRegister('pt-br', {
     /* Ensaios BR block */
     eaBadge: "Ensaios clínicos no Brasil",
     eaTitle: "Trial Matcher",
-    eaDesc: "Ensaios clínicos em oncologia com centros no Brasil, com <strong style=\"color:#6EE7B7\">status de recrutamento verificado periodicamente</strong> a partir dos registros públicos. Encontre estudos por neoplasia, biomarcador, linha terapêutica, modalidade e localização.",
+    eaDesc: "Ensaios clínicos em oncologia com centros no Brasil — terapias sistêmicas, radioligantes e outras modalidades —, com <strong style=\"color:#6EE7B7\">status de recrutamento verificado periodicamente</strong> a partir dos registros públicos. Encontre estudos por neoplasia, biomarcador, linha terapêutica, modalidade e localização.",
     eaCta: "Abrir lista completa",
     eaDisclaimer: "Aviso:",
     eaDisclaimerText: "seção informativa. A elegibilidade final depende sempre da avaliação do centro responsável pelo estudo.",
     eaRecruiting: "Recrutando",
-    eaFooterCount: "<strong style=\"color:var(--off-white)\">205 ensaios recrutando no Brasil</strong> · 259 estudos mapeados · 26 áreas tumorais",
+    eaFooterCount: "<strong style=\"color:var(--off-white)\">208 ensaios recrutando no Brasil</strong> · 262 estudos mapeados · 26 áreas tumorais",
     eaFooterLink: "Filtrar por neoplasia, modalidade, biomarcador",
 
     /* Radiofármacos block */
@@ -2460,7 +2460,7 @@ window._i18nRegister('pt-br', {
 
     /* CTA final */
     ctaTitle: "Pronto para conectar evidência e prática clínica?",
-    ctaDesc: "503 ensaios clínicos analisados em 40 categorias · pipeline global de radioligantes via ClinicalTrials.gov · 205 ensaios recrutando no Brasil · 7 dossiês de radiofármaco · 12 ferramentas clínicas · AJCC 8ª ed., CTCAE v6.0, BCLC 2026 · hyperlinks diretos para PubMed e ClinicalTrials.gov.",
+    ctaDesc: "503 ensaios clínicos analisados em 40 categorias · pipeline global de radioligantes via ClinicalTrials.gov · 208 ensaios recrutando no Brasil · 7 dossiês de radiofármaco · 12 ferramentas clínicas · AJCC 8ª ed., CTCAE v6.0, BCLC 2026 · hyperlinks diretos para PubMed e ClinicalTrials.gov.",
     ctaBtnDatabase: "Acessar o banco",
     ctaBtnExplorer: "Explorer",
     ctaBtnTumorBoards: "Tumor boards",

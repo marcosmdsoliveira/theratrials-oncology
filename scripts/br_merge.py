@@ -163,6 +163,9 @@ def card_js(c: dict) -> str:
         *([("biomarcadores_criterios", js_criterios(c["biomarcadores_criterios"]))]
           if c.get("biomarcadores_criterios") else []),
         *([("alvos", js_arr(c["alvos"], 4))] if c.get("alvos") else []),
+        # Radioligante sem alvo molecular (rádio-223): o QA exige o porquê.
+        *([("alvos_justificativa", js_str(c["alvos_justificativa"]))]
+          if (c.get("alvos_justificativa") or "").strip() else []),
         ("testes_fornecidos", js_str(c["testes_fornecidos"])),
         ("intervencao", js_str(c["intervencao"])),
         ("comparador", js_str(c["comparador"])),

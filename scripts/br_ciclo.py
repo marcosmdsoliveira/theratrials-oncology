@@ -97,8 +97,11 @@ def descobrir(publicados: set[str]) -> dict:
     recusados = br_curate.ja_descartados()
     faixas: dict[str, list] = {
         "recomendado": [], "rt_cirurgia": [], "aguardando_brasil": [],
-        "revisar": [], "teranostico": [],
+        "revisar": [],
     }
+    # Teranósticos seguem a triagem normal desde 2026-09; esta lista só os
+    # registra, com a faixa em que caíram, para auditoria no relatório.
+    teranosticos = []
     descartes = Counter()
     achatados_recomendados = []
 
@@ -127,17 +130,19 @@ def descobrir(publicados: set[str]) -> dict:
             "centros_br_recrutando": rb["centros_br_recrutando"],
             "patrocinador": e["patrocinador"], "condicoes": e["condicoes"][:3],
             "tipos_intervencao": sorted(t for t in tipos if t), "proposito": proposito,
+            "teranostico": bd.eh_teranostico(e),
         }
+        e["teranostico"] = item["teranostico"]   # vai ao curador via _br_discovery.json
+        if item["teranostico"]:
+            teranosticos.append(item)
 
-        if bd.eh_teranostico(e):
-            item["motivo"] = "teranóstico — pertence ao database (data.js), não ao Trial Matcher"
-            faixas["teranostico"].append(item)
-        elif (rb["brazil_status"] == ct.BR_NOT_YET_RECRUITING
+        if (rb["brazil_status"] == ct.BR_NOT_YET_RECRUITING
               or rb["overall_status"] == "NOT_YET_RECRUITING"):
             item["motivo"] = "ainda não abriu no Brasil — volta sozinho quando abrir"
             faixas["aguardando_brasil"].append(item)
         elif rb["brazil_status"] in (ct.CLOSED_IN_BRAZIL, ct.STUDY_CLOSED):
             descartes[f"sem recrutamento no Brasil ({rb['brazil_status']})"] += 1
+            item["motivo"] = f"fora: sem recrutamento no Brasil ({rb['brazil_status']})"
             continue
         elif rb["brazil_status"] != ct.BR_RECRUITING:
             item["motivo"] = f"{rb['brazil_status']}: {rb['motivo']}"
@@ -168,7 +173,7 @@ def descobrir(publicados: set[str]) -> dict:
     for v in faixas.values():
         v.sort(key=peso)
     return {"total_ctgov": len(brutos), "faixas": faixas, "descartes": dict(descartes),
-            "_achatados": achatados_recomendados}
+            "teranosticos": teranosticos, "_achatados": achatados_recomendados}
 
 
 def gravar_discovery(desc: dict, publicados: set[str]) -> None:
@@ -321,7 +326,8 @@ def relatorio(aud: dict, desc: dict | None, aplicadas: dict, qa: dict,
         f = desc["faixas"]
         md += [f"- descoberta: **{len(f['recomendado'])}** recomendados para curadoria, "
                f"{sum(len(v) for v in f.values())} candidatos novos no total "
-               f"({desc['total_ctgov']} estudos na busca)"]
+               f"({desc['total_ctgov']} estudos na busca); "
+               f"{len(desc.get('teranosticos', []))} marcados como teranósticos"]
     md += [f"- QA do banco proposto: **{'OK' if qa['ok'] else 'BLOQUEADO'}**", ""]
 
     md += ["## 1. Estudos cujo status mudou", ""]
@@ -369,8 +375,7 @@ def relatorio(aud: dict, desc: dict | None, aplicadas: dict, qa: dict,
         f = desc["faixas"]
         nomes = {"rt_cirurgia": "Só radioterapia/procedimento",
                  "aguardando_brasil": "Ainda não abertos no Brasil",
-                 "revisar": "Precisam de olhar humano antes da curadoria",
-                 "teranostico": "Teranósticos (vão para o database, não para o Trial Matcher)"}
+                 "revisar": "Precisam de olhar humano antes da curadoria"}
         md += ["## 4. Novos estudos candidatos", "",
                "Oncologia, intervencional, com centro no Brasil, fora do Trial Matcher. "
                "Descartados antes da triagem: "
@@ -381,6 +386,18 @@ def relatorio(aud: dict, desc: dict | None, aplicadas: dict, qa: dict,
                          "/".join(p.replace("PHASE", "F") for p in x["fases"]) or "—",
                          x["motivo"]] for x in f[k]],
                        ["NCT", "acrônimo", "título", "fase", "motivo"])
+        ter = desc.get("teranosticos", [])
+        faixa_de = {id(x): k for k, v in f.items() for x in v}
+        md += [f"### Teranósticos marcados ({len(ter)}) — seguem a triagem normal", "",
+               "Marcados pelo título ou pelas intervenções (radioisótopo, ligante "
+               "radiomarcado, radioligante/radioconjugado); tratamento prévio citado "
+               "no resumo não conta. A marca não inclui nem exclui: só sinaliza para "
+               "a curadoria, que usa a modalidade `radioligante`.", ""]
+        md += _tab([[link(x["nct"]), x["acronimo"] or "—", x["titulo"][:80],
+                     "/".join(p.replace("PHASE", "F") for p in x["fases"]) or "—",
+                     x["brazil_status"], faixa_de.get(id(x), "descartado"),
+                     x.get("motivo", "")] for x in ter],
+                   ["NCT", "acrônimo", "título", "fase", "Brasil", "faixa", "motivo"])
         md += ["## 5. Recomendados para inclusão", "",
                f"{len(f['recomendado'])} estudos: tratamento sistêmico, `RECRUITING` global, "
                "≥1 centro brasileiro `RECRUITING`, propósito TREATMENT, nunca recusados. "
@@ -388,9 +405,10 @@ def relatorio(aud: dict, desc: dict | None, aplicadas: dict, qa: dict,
                "Estão em `_br_discovery.json` para a curadoria.", ""]
         md += _tab([[link(x["nct"]), x["acronimo"] or "—", x["titulo"][:90],
                      "/".join(p.replace("PHASE", "F") for p in x["fases"]) or "—",
-                     x["centros_br_recrutando"], x["patrocinador"][:30]]
+                     x["centros_br_recrutando"], x["patrocinador"][:30],
+                     "sim" if x.get("teranostico") else ""]
                     for x in f["recomendado"]],
-                   ["NCT", "acrônimo", "título", "fase", "centros BR", "patrocinador"])
+                   ["NCT", "acrônimo", "título", "fase", "centros BR", "patrocinador", "RLT"])
 
     md += ["## 6. Revisão manual", ""]
     md += _tab([[link(x["nct"]), x["nome"], "; ".join(x["revisao"])] for x in revisao],

@@ -110,6 +110,35 @@ Síndrome carcinoide entra só com objetivo antitumoral.
   - `limitrofe` vai para a lista `revisao`, nunca para descarte, e volta na
     rodada seguinte até alguém decidir.
 
+### Teranósticos (radioligantes), desde 2026-09
+
+Entram no Trial Matcher como qualquer outro tratamento antineoplásico. Cada
+fonte tem um papel:
+- **Database (`data.js`):** evidência;
+- **Trial Matcher:** recrutamento no Brasil;
+- **Explorer:** radar global. Nunca é fonte de card, porque deduz o isótopo
+  pelo título e já errou (AAA817 e RYZ101 aparecem como ¹⁷⁷Lu; são ²²⁵Ac).
+
+- **Descoberta:** `eh_teranostico()` só **marca** (`teranostico: true`). O
+  estudo segue a triagem normal, e o relatório lista os marcados com a faixa
+  em que caíram. A marca vem do título e das intervenções (nome, descrição e
+  `otherNames`), nunca do resumo. No título, trechos de tratamento prévio
+  ("after 177Lu-PSMA") são removidos antes. PSMA ou SSTR sozinhos não marcam:
+  anti-PSMA biespecífico e seleção por PET não são RLT.
+- **META:** a modalidade `radioligante` (label "Radioligante (RLT / PRRT)")
+  entrou por `br_migracao_rlt_2026_09.py`, via `--permitir-meta`.
+- **Curador** (regra 12):
+  - o radiofármaco vai em `intervencao`;
+  - o alvo vai em `alvos`;
+  - PET PSMA/SSTR só é `requerido` se a positividade for exigida;
+  - tratamento prévio com radioligante vai em `criterios_principais`;
+  - sem alvo no registro (rádio-223), `alvos_justificativa` diz por quê.
+- **QA:** radioligante sem `alvos` e sem `alvos_justificativa` é FAIL. Alvo
+  fora de `ALVOS_RLT` e card novo com radiofármaco na intervenção mas sem a
+  modalidade são WARN.
+- **Trial Matcher:** o filtro "Radioligante" compara `modalidade` por
+  igualdade exata, e a opção só aparece se houver card.
+
 ## Aplicar uma atualização (fluxo seguro)
 
 ```bash

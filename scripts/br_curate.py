@@ -40,6 +40,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import re
 import sys
 from pathlib import Path
@@ -69,7 +70,11 @@ PRECO = {"in": 5.00 * 0.5, "out": 25.00 * 0.5}
 # (llc, lma, lla, gist, solidos, net). Categoria que existe na META mas falta
 # aqui some do vocabulário do modelo, que então força o estudo numa categoria
 # errada ou o descarta.
-TRIALS_JS = SCRIPTS.parent / "assets" / "js" / "trials_br.js"
+# BR_META_JS aponta para uma cópia quando a META muda antes de publicar: o
+# vocabulário do curador tem de ser o da META nova (ex.: 'radioligante', 2026-09),
+# e o banco publicado só recebe a META depois do QA.
+TRIALS_JS = (Path(os.environ["BR_META_JS"]).resolve() if os.environ.get("BR_META_JS")
+             else SCRIPTS.parent / "assets" / "js" / "trials_br.js")
 
 
 def meta_ids(bloco: str) -> list[str]:
@@ -186,8 +191,15 @@ SCHEMA = {
         "alvos": {
             "type": "array", "items": {"type": "string"},
             "description": "Alvo molecular da intervenção, se o REGISTRO o disser "
-                           "('anti-TROP-2', 'BCMAxCD3'). Não é critério de elegibilidade e "
-                           "não alimenta o filtro. Lista vazia se o registro não disser.",
+                           "('anti-TROP-2', 'BCMAxCD3'; em radioligante, 'PSMA', 'SSTR'). "
+                           "Não é critério de elegibilidade e não alimenta o filtro. Lista "
+                           "vazia se o registro não disser.",
+        },
+        "alvos_justificativa": {
+            "type": "string",
+            "description": "Só em radioligante SEM alvo molecular no registro (ex.: "
+                           "rádio-223, que se deposita no osso): por que `alvos` está "
+                           "vazio. Vazio em todos os outros casos.",
         },
         "escopo": {
             "type": "string",
@@ -260,7 +272,8 @@ SCHEMA = {
     "required": [
         "descartar", "motivo_descarte", "nome", "titulo", "neoplasia",
         "neoplasia_label", "subtipo", "linha_terapeutica", "cenario_clinico",
-        "modalidade", "biomarcadores_criterios", "alvos", "escopo", "testes_fornecidos", "intervencao",
+        "modalidade", "biomarcadores_criterios", "alvos", "alvos_justificativa", "escopo",
+        "testes_fornecidos", "intervencao",
         "comparador", "racional", "criterios_principais", "criterios_exclusao",
         "exclusao_ausente", "confianca", "notas_revisor",
     ],
@@ -314,6 +327,17 @@ REGRAS INVIOLÁVEIS
    `limitrofe` — um humano decide; não use `descartar` para isso.
 11. `modalidade`: inclua 'combinação' sempre que o braço experimental tiver dois \
    ou mais agentes ativos.
+12. RADIOLIGANTE. Terapia com radiofármaco (¹⁷⁷Lu, ²²⁵Ac, ²¹²Pb, ¹⁶¹Tb, ²²³Ra, \
+   ⁶⁴/⁶⁷Cu, ¹³¹I-MIBG…) tem `modalidade` com 'radioligante'. Radiofármaco, isótopo \
+   e ligante vão no texto de `intervencao`, como o registro os nomeia. O alvo \
+   molecular (PSMA, SSTR) vai em `alvos`; sem alvo no registro (rádio-223), \
+   `alvos` fica vazio e `alvos_justificativa` diz por quê. PET PSMA ou SSTR só \
+   entra em `biomarcadores_criterios` como `requerido` se a elegibilidade exigir \
+   positividade no exame; se o PET só for feito, é `avaliado`; se não for citado, \
+   não entra. Tratamento prévio com radioligante é critério clínico: vai em \
+   `criterios_principais` e `cenario_clinico`, nunca em `alvos` nem em \
+   biomarcador. Isótopo ou mecanismo que o registro não diz não se completa — \
+   nem por conhecimento prévio, nem por outras bases do TheraTrials.
 
 8. `criterios_exclusao` é obrigatório na prática. O texto de elegibilidade que \
    você recebe traz, quase sempre, uma seção "Exclusion Criteria" ou "Key \
@@ -441,6 +465,8 @@ def prompt(e: dict) -> str:
         f"Idade: {e['idade_min']} a {e['idade_max']}  |  Sexo: {e['sexo']}",
         f"Centros no Brasil ({e['n_centros_br']}): "
         f"{', '.join(e['cidades_br'])} [{', '.join(e['ufs_br'])}]",
+        *(["Marcação do discovery: radiofármaco no título ou nas intervenções "
+           "(ver regra 12 — confirme no texto abaixo)."] if e.get("teranostico") else []),
         "",
         "RESUMO OFICIAL:", e["resumo"] or "(sem resumo)", "",
         "BRAÇOS:",
@@ -449,7 +475,10 @@ def prompt(e: dict) -> str:
         linhas.append(f"  · [{b['tipo']}] {b['rotulo']}: {b['descricao'][:400]}")
     linhas += ["", "INTERVENÇÕES:"]
     for i in e["intervencoes"]:
-        linhas.append(f"  · [{i['tipo']}] {i['nome']}: {i['descricao'][:300]}")
+        outros = i.get("outros_nomes") or []
+        linhas.append(f"  · [{i['tipo']}] {i['nome']}"
+                      + (f" (outros nomes no registro: {'; '.join(outros)})" if outros else "")
+                      + f": {i['descricao'][:300]}")
     linhas += ["", "CRITÉRIOS DE ELEGIBILIDADE (texto oficial):",
                recortar_elegibilidade(e["elegibilidade"])]
     return "\n".join(linhas)
@@ -525,8 +554,8 @@ def derivar_biomarcadores(c: dict) -> list[str]:
 
 def conferir_biomarcadores(c: dict) -> str:
     """Mesmas regras do trial-qa, aplicadas antes de o rascunho virar card."""
-    from br_qa import checar_biomarcadores
-    falhas = checar_biomarcadores(c)
+    from br_qa import checar_biomarcadores, checar_radioligante
+    falhas = checar_biomarcadores(c) + checar_radioligante(c)
     return "; ".join(falhas)
 
 

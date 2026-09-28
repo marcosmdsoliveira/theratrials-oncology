@@ -43,12 +43,24 @@ antes de publicar.
    molecular da droga vai em `alvos`, e só entra em `biomarcadores_criterios`
    se a elegibilidade o exigir. Em estudo com coortes de critérios diferentes,
    preencha `coorte` em cada critério.
-6. Em qualquer dúvida de classificação, marque `confianca: "baixa"` e diga em
+6. **Radioligante** (regra 12 do `sistema`): terapia com radiofármaco
+   (¹⁷⁷Lu, ²²⁵Ac, ²¹²Pb, ¹⁶¹Tb, ²²³Ra, ⁶⁴/⁶⁷Cu, ¹³¹I-MIBG…) tem `modalidade`
+   com `radioligante`. Radiofármaco, isótopo e ligante vão no texto de
+   `intervencao`, como o registro os nomeia. O alvo molecular (PSMA, SSTR) vai
+   em `alvos`. Sem alvo no registro (rádio-223), `alvos` fica vazio e
+   `alvos_justificativa` explica. PET PSMA ou SSTR só é `requerido` se a
+   elegibilidade exigir positividade no exame. Tratamento prévio com
+   radioligante vai em `criterios_principais`/`cenario_clinico`, nunca em
+   `alvos` nem em biomarcador. O prompt avisa quando o discovery marcou o
+   estudo como teranóstico. Isso é pista, não prova: confirme no texto.
+   **Nunca** tire isótopo ou mecanismo do Explorer, do Database ou de
+   conhecimento prévio: só do registro.
+7. Em qualquer dúvida de classificação, marque `confianca: "baixa"` e diga em
    `notas_revisor` o que exatamente não foi possível determinar.
-7. Grave `scripts/_br_cards_local.json` como `{"cards": [...]}`.
-8. Rode `python3 scripts/br_curate.py --importar scripts/_br_cards_local.json`.
+8. Grave `scripts/_br_cards_local.json` como `{"cards": [...]}`.
+9. Rode `python3 scripts/br_curate.py --importar scripts/_br_cards_local.json`.
    Ele confere os campos obrigatórios, compara a seção de exclusão com o texto
-   de origem e aplica as regras de biomarcador do trial-qa. Se rejeitar algum
+   de origem e aplica as regras de biomarcador e de radioligante do trial-qa. Se rejeitar algum
    NCT, cure esse NCT de novo. Não force.
 
 ## O que nunca fazer

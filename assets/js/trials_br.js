@@ -16754,6 +16754,178 @@ window.THERA_TRIALS_BR = [
     data_atualizacao: '2026-07-22',
   },
 
+
+  // ============== NOVOS ESTUDOS (2026-09-28) — RASCUNHO, revisar antes de publicar ==============
+
+  {
+    // ⚠ RASCUNHO — confiança media. Seção de exclusão veio cortada por tamanho no item 8
+    //   (necessidade imediata de ADT); conferir itens seguintes no registro. SBRT é comum aos dois
+    //   braços: 'cirurgia_rt' e 'combinação' refletem o braço experimental (SBRT + AAA617), mas a
+    //   comparação randomizada é AAA617 vs observação — revisor decide se mantém. O registro
+    //   confirma AAA617 = (177Lu) vipivotide tetraxetan, descrito como solução radiofarmacêutica.
+    //   Alvo PSMA: o registro seleciona por PET PSMA e lista 'PSMA-targeted radioligand therapy'
+    //   entre os tratamentos prévios proibidos, mas não declara textualmente o alvo do vipivotide
+    //   tetraxetan (o nome do ligante não contém 'PSMA'); conferir. Linha terapêutica: doença
+    //   oligometastática hormônio-sensível sem tratamento sistêmico para metástase; 'Avançado /
+    //   metastático' escolhido por falta de categoria melhor. Faixa etária registrada 18–100 anos.
+    id: 'psma-dc',
+    nome: 'PSMA-DC',
+    titulo: 'SBRT seguida de lutetium (177Lu) vipivotide tetraxetan (AAA617) versus SBRT e observação no câncer de próstata oligometastático PSMA-positivo com recidiva após tratamento definitivo',
+    nct: 'NCT05939414',
+    fase: 'III',
+    status: 'Recrutando',
+    brazil_status: 'RECRUITING',
+    neoplasia: 'prostata',
+    neoplasia_label: 'Próstata · oligometastático',
+    subtipo: 'Adenocarcinoma de próstata oligometastático (1–5 lesões PSMA-positivas), não castrado, com recidiva bioquímica após tratamento definitivo',
+    linha_terapeutica: 'Avançado / metastático',
+    cenario_clinico: 'Oligometástases (1–5 lesões, ≥1 M1) detectadas só no PET PSMA após prostatectomia ou radioterapia, com testosterona não castrada e sem ADT em curso, com objetivo de adiar a castração',
+    modalidade: ['radioligante', 'cirurgia_rt', 'combinação'],
+    biomarcadores: ['PSMA'],
+    biomarcadores_criterios: [
+      { marcador: 'PSMA', exigencia: 'requerido', estado: '1–5 lesões metastáticas PSMA-positivas no PET/CT de triagem (gallium (68Ga) gozetotide ou piflufolastat (18F)), leitura central (BIRC); ≥1 lesão M1' },
+    ],
+    alvos: ['PSMA'],
+    testes_fornecidos: 'PET/CT PSMA de triagem com gallium (68Ga) gozetotide (kit PSMA-11) ou piflufolastat (18F) fornecidos pelo estudo, com leitura central (BIRC).',
+    intervencao: 'SBRT em todas as lesões metastáticas seguida de lutetium (177Lu) vipivotide tetraxetan (AAA617) 7,4 GBq (200 mCi) ±10% a cada 6 semanas, 4 ciclos planejados',
+    comparador: 'SBRT em todas as lesões metastáticas seguida de observação (watchful waiting)',
+    racional: 'O estudo avalia se acrescentar o radioligante AAA617 à SBRT das lesões oligometastáticas detectadas no PET PSMA retarda a castração ou a recidiva em doença hormônio-sensível após tratamento definitivo. O objetivo declarado é controlar a doença recorrente preservando qualidade de vida ao adiar a ADT.',
+    criterios_principais: [
+      'Homens ≥18 anos com adenocarcinoma de próstata confirmado histologicamente',
+      'Recidiva bioquímica após prostatectomia radical (PSA >0,2 ng/mL em ascensão) ou radioterapia/braquiterapia (nadir + 2 ng/mL)',
+      '1 a 5 lesões metastáticas PSMA-positivas no PET/CT de triagem, com ≥1 metástase à distância (M1); fígado e cérebro não contam como sítios elegíveis',
+      'Imagem convencional (cintilografia óssea e TC/RM) negativa para doença M1',
+      'Todas as lesões passíveis de SBRT',
+      'Testosterona não castrada (>100 ng/dL)',
+    ],
+    criterios_exclusao: [
+      'Doença oligometastática de novo (sem tratamento definitivo prévio do primário)',
+      'ADT ou ARPI para doença metastática; ADT/ARPI neo/adjuvante ou para recidiva só se suspensos há ≥12 meses (ADT) ou ≥3 meses (ARPI isolado); CRPC excluído',
+      'Radiofármaco prévio (ex.: estrôncio-89, radioligante dirigido a PSMA), imunoterapia (ex.: sipuleucel-T) ou quimioterapia fora do cenário neo/adjuvante concluído há >12 meses',
+      'Radioterapia externa ou braquiterapia nos 28 dias antes da randomização',
+      'Outra neoplasia que altere a expectativa de vida ou interfira na avaliação (exceto tratada e livre de doença há >3 anos, pele não melanoma e bexiga superficial)',
+      'Arritmia clinicamente significativa, BAV de 2º/3º grau sem marca-passo ou QT longo familiar; necessidade imediata de ADT ou outra terapia sistêmica',
+    ],
+    centros: ['São Paulo / SP'],
+    estados: ['SP'],
+    cidades: ['São Paulo'],
+    patrocinador: 'Novartis Pharmaceuticals',
+    fonte_url: 'https://clinicaltrials.gov/study/NCT05939414',
+    contato_url: 'https://clinicaltrials.gov/study/NCT05939414',
+    data_atualizacao: '2026-09-22',
+  },
+
+  {
+    // ⚠ RASCUNHO — confiança alta. A ADT é mantida em todos os pacientes como tratamento de base do
+    //   mCRPC, não como agente experimental; por isso 'hormonioterapia' não foi incluída — revisor
+    //   decide. Registro exige Hb ≥12 g/dL, corte mais alto que o usual. Registro cita testosterona
+    //   '<50 ng/mL' (provável erro de unidade no registro; conferir). O critério de progressão por
+    //   PSA exige elevações com intervalo ≥1 semana. Sem limite superior de idade.
+    id: 'docetaxel-177lu-psma-i-t-fase-i',
+    nome: 'Docetaxel + 177Lu-PSMA-I&T (fase I)',
+    titulo: 'Escalonamento de dose de docetaxel combinado a 177Lu-PSMA-I&T em primeira linha do câncer de próstata metastático resistente à castração',
+    nct: 'NCT07316686',
+    fase: 'I',
+    status: 'Recrutando',
+    brazil_status: 'RECRUITING',
+    neoplasia: 'prostata',
+    neoplasia_label: 'Próstata · mCRPC',
+    subtipo: 'Adenocarcinoma de próstata metastático resistente à castração, sem componente de pequenas células/neuroendócrino',
+    linha_terapeutica: '1ª linha',
+    cenario_clinico: 'mCRPC sem quimioterapia nem radiofármaco prévios no cenário resistente à castração, com alta captação no PET PSMA e sem discordância FDG/PSMA',
+    modalidade: ['radioligante', 'quimioterapia', 'combinação'],
+    biomarcadores: ['PSMA'],
+    biomarcadores_criterios: [
+      { marcador: 'PSMA', exigencia: 'requerido', estado: '68Ga-PSMA-PET/CT com doença metastática captante: SUVmax ≥20 em ≥1 sítio e SUVmax >10 em todos os demais sítios mensuráveis' },
+    ],
+    alvos: ['PSMA'],
+    testes_fornecidos: '',
+    intervencao: 'Docetaxel IV a cada 3 semanas em doses escalonadas (50, 60 ou 75 mg/m², até 10 ciclos) + 177Lu-PSMA-I&T 7,4 GBq IV a cada 6 semanas (até 4 ciclos), com manutenção da ADT; desenho 3+3',
+    comparador: '— (braço único)',
+    racional: 'Estudo fase I unicêntrico que busca a dose recomendada de fase II de docetaxel quando associado a dose fixa de 177Lu-PSMA-I&T em mCRPC virgem de quimioterapia. Desfechos principais são segurança e tolerabilidade; resposta de PSA, rPFS e resposta PERCIST são exploratórios.',
+    criterios_principais: [
+      'Homens ≥18 anos com adenocarcinoma de próstata (componente intraductal ou cribriforme permitido)',
+      'Doença metastática em imagem convencional (cintilografia óssea e/ou TC/RM)',
+      'Resistência à castração com testosterona castrada sob ADT ou orquiectomia, e progressão por PSA (≥2,0 ng/mL, duas elevações), radiológica ou clínica',
+      '68Ga-PSMA-PET/CT com SUVmax ≥20 em ≥1 sítio e >10 em todos os sítios mensuráveis',
+      'ECOG 0–1',
+      'Função orgânica adequada (neutrófilos ≥1.500/µL, Hb ≥12 g/dL, plaquetas ≥100.000/µL, creatinina ≤1,5× LSN, bilirrubina ≤ LSN, AST/ALT ≤2,5× LSN)',
+    ],
+    criterios_exclusao: [
+      'Componente de pequenas células ou neuroendócrino',
+      'Quimioterapia ou radiofármaco prévios no cenário resistente à castração',
+      'Discordância FDG/PSMA: lesões hipermetabólicas no 18F-FDG-PET com captação PSMA ausente ou baixa (SUVmax <10) em >50% das lesões mensuráveis',
+      'Metástase cerebral visível no 68Ga-PSMA-PET/CT',
+      'Outra neoplasia ativa ou diagnosticada nos últimos 5 anos (exceções tratadas: carcinoma in situ, pele não melanoma, tumor papilar de bexiga)',
+      'Incontinência urinária grave',
+    ],
+    centros: ['ICESP – Instituto do Câncer do Estado de São Paulo — São Paulo / SP'],
+    estados: ['SP'],
+    cidades: ['São Paulo'],
+    patrocinador: 'Instituto do Cancer do Estado de São Paulo',
+    fonte_url: 'https://clinicaltrials.gov/study/NCT07316686',
+    contato_url: 'https://clinicaltrials.gov/study/NCT07316686',
+    data_atualizacao: '2026-08-25',
+  },
+
+  {
+    // ⚠ RASCUNHO — confiança media. Isótopo e ligante vêm do campo 'outros nomes' do registro:
+    //   AAA817 = [225Ac]Ac-PSMA-617. Alvo PSMA: o registro não traz uma frase do tipo 'AAA817 é
+    //   dirigido a PSMA'; 'PSMA' foi posto em `alvos` porque o próprio nome do ligante no registro
+    //   é PSMA-617 e a população é selecionada por PET PSMA após '[177Lu]Lu-PSMA targeted therapy'
+    //   — mesmo critério usado para 177Lu-PSMA-I&T. Revisor confirma. Doses A/B, Rp3D (atividade) e
+    //   número de ciclos não informados. Opções do tratamento padrão do comparador não
+    //   especificadas. Linha '3ª+ linha' assume ARPI, taxano e 177Lu-PSMA em linhas sucessivas; o
+    //   registro não diz em que cenário (hormônio-sensível ou resistente) ARPI e taxano foram
+    //   usados. Exclui qualquer composto experimental prévio baseado em 225Ac. TFGe mínima não
+    //   informada ('as requested by the sponsor').
+    id: 'psmaction',
+    nome: 'PSMAcTION',
+    titulo: '[225Ac]Ac-PSMA-617 (AAA817) versus tratamento padrão à escolha do investigador no câncer de próstata metastático resistente à castração PSMA-positivo com progressão após terapia com [177Lu]Lu-PSMA',
+    nct: 'NCT06780670',
+    fase: 'II/III',
+    status: 'Recrutando',
+    brazil_status: 'RECRUITING',
+    neoplasia: 'prostata',
+    neoplasia_label: 'Próstata · mCRPC',
+    subtipo: 'Adenocarcinoma de próstata metastático resistente à castração, PSMA-positivo',
+    linha_terapeutica: '3ª+ linha',
+    cenario_clinico: 'mCRPC já tratado com ARPI e quimioterapia com taxano, com progressão durante ou após terapia dirigida a PSMA com [177Lu]Lu-PSMA',
+    modalidade: ['radioligante'],
+    biomarcadores: ['PSMA'],
+    biomarcadores_criterios: [
+      { marcador: 'PSMA', exigencia: 'requerido', estado: 'Doença PSMA-positiva no PET/CT com agente de imagem PSMA aprovado, conforme protocolo' },
+    ],
+    alvos: ['PSMA'],
+    testes_fornecidos: '',
+    intervencao: 'AAA817 ([225Ac]Ac-PSMA-617, como o registro o nomeia) — fase II: dose A ou dose B; fase III: dose recomendada de fase III; ciclos de 8 semanas. O registro não informa atividade administrada nem número de ciclos',
+    comparador: 'Tratamento padrão à escolha do investigador (fase III)',
+    racional: 'Estudo fase II/III que compara o radioligante [225Ac]Ac-PSMA-617 (AAA817) ao tratamento padrão escolhido pelo investigador em mCRPC PSMA-positivo que já progrediu após terapia dirigida a PSMA com [177Lu]Lu-PSMA, cenário com poucas opções definidas. A fase II explora duas doses para definir a dose da fase III.',
+    criterios_principais: [
+      'Adultos ≥18 anos com adenocarcinoma de próstata confirmado por histologia e/ou citologia',
+      'Doença PSMA-positiva no PET/CT com agente PSMA aprovado',
+      'Testosterona em nível de castração (<50 ng/dL ou <1,7 nmol/L)',
+      'Tratamento prévio com ARPI e quimioterapia com taxano, e progressão durante ou após terapia com [177Lu]Lu-PSMA',
+      '≥1 lesão metastática em TC, RM ou cintilografia óssea até 28 dias antes da randomização',
+      'ECOG 0–2; TFGe conforme definido pelo patrocinador',
+    ],
+    criterios_exclusao: [
+      'Qualquer composto experimental baseado em 225Ac antes da randomização, ou agente experimental nos 28 dias anteriores',
+      'Metástase de SNC neurologicamente instável, sintomática ou em uso de corticoide para controle neurológico',
+      'Lesão renal aguda concomitante ou doença renal crônica',
+      'Xerostomia basal grau ≥2 (CTCAE v5)',
+      'Hipertensão não controlada, IAM, angina ou revascularização miocárdica nos últimos 6 meses, ou cardiopatia clinicamente significativa ativa',
+      'Doença linfoproliferativa ou outra neoplasia nos últimos 2 anos (exceto carcinoma basocelular ou ceratose actínica tratados e pólipos colônicos não invasivos ressecados)',
+    ],
+    centros: ['São Paulo / SP'],
+    estados: ['SP'],
+    cidades: ['São Paulo'],
+    patrocinador: 'Novartis Pharmaceuticals',
+    fonte_url: 'https://clinicaltrials.gov/study/NCT06780670',
+    contato_url: 'https://clinicaltrials.gov/study/NCT06780670',
+    data_atualizacao: '2026-09-22',
+  },
+
 ];
 
 /* ============================================================
@@ -16821,6 +16993,7 @@ window.THERA_TRIALS_BR_META = {
     { id: 'anti-angiogênico', label: 'Anti-angiogênico' },
     { id: 'cirurgia_rt',      label: 'Cirurgia / radioterapia' },
     { id: 'hormonioterapia',  label: 'Hormonioterapia' },
+    { id: 'radioligante',     label: 'Radioligante (RLT / PRRT)' },
   ],
   fases: [
     { id: 'I',     label: 'Fase I' },

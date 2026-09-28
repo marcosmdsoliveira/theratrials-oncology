@@ -74,18 +74,37 @@ CAMPOS = [
     "Condition", "EligibilityCriteria", "MinimumAge", "MaximumAge", "Sex",
     "ArmGroupLabel", "ArmGroupDescription", "ArmGroupType", "InterventionName",
     "InterventionDescription", "InterventionType",
+    # O radiofármaco às vezes só aparece aqui: no PSMAcTION a intervenção se
+    # chama "AAA817" e é o otherName que diz "[225Ac]Ac-PSMA-617".
+    "InterventionOtherName",
     "LocationFacility", "LocationCity", "LocationState", "LocationCountry",
     "LocationStatus", "LastUpdatePostDate", "StudyFirstPostDate", "EnrollmentCount",
     # Usado pelo br_ciclo.py para separar tratamento de prevenção/suporte.
     "DesignPrimaryPurpose",
 ]
 
-# Teranósticos ficam no database principal (data.js), não no Trial Matcher.
-# Mesma lista do curate_trials.py original.
+# Teranósticos: desde 2026-09 entram no Trial Matcher pela triagem normal. A
+# marca `teranostico` só sinaliza (relatório, curadoria), não exclui nada.
+# Isótopo, ligante radiomarcado ou termo de classe — nunca PSMA/SSTR sozinhos:
+# anti-PSMA biespecífico ou seleção por PET PSMA não fazem de um estudo RLT.
 TERANOSTICO = re.compile(
-    r"psma-617|lu-?177|177-?lu|225-?ac|ac-?225|actinium|radium-?223|ra-?223"
-    r"|radioligand|lutetium|lutécio|dotatate|dotatoc|mibg|y-?90|yttrium|ítrio"
-    r"|pluvicto|aaa817|azedra|xofigo|iodine-?131 therapy|holmium",
+    r"\[?(?:177|225|212|161|223|6[47]|90|131)\]?-?(?:lu|ac|pb|tb|ra|cu|y|i)\b"
+    r"|\b(?:lu|ac|pb|tb|ra|cu|y|i)-?(?:177|225|212|161|223|6[47]|90|131)\b"
+    r"|lutetium|lutécio|actinium|actínio|lead-?212|terbium|térbio|radium|rádio-?223"
+    r"|copper-?6[47]|yttrium|ítrio|holmium"
+    r"|psma-?617|psma-?i&t|vipivotide|pluvicto|aaa8?17|aaa617|azd2265|ryz101"
+    r"|dotatate|dotatoc|edotreotide|mibg|iobenguane|azedra|xofigo"
+    r"|radioligand|radioconjugate|radiopharmaceutical|radionuclide therap"
+    r"|\bprrt\b|\brlt\b",
+    re.I,
+)
+
+# "after/following/prior 177Lu-PSMA" no título descreve a população, não a
+# intervenção (PSMAcTION: "…progressed on or after [177Lu]Lu-PSMA…"). Esses
+# trechos saem do título antes da marcação.
+TRATAMENTO_PREVIO = re.compile(
+    r"\b(?:after|following|post|prior|previous(?:ly)?|pretreated|progress(?:ed|ion)"
+    r"(?: on)?(?: or after)?|refractory to|failure of|treated with)\b[^.;:]{0,60}",
     re.I,
 )
 
@@ -347,7 +366,8 @@ def achatar(s: dict) -> dict:
         ],
         "intervencoes": [
             {"tipo": i.get("type", ""), "nome": i.get("name", ""),
-             "descricao": i.get("description", "")}
+             "descricao": i.get("description", ""),
+             "outros_nomes": i.get("otherNames", [])}
             for i in arms.get("interventions", [])
         ],
         "centros_br": centros,
@@ -363,11 +383,18 @@ def achatar(s: dict) -> dict:
 
 
 def eh_teranostico(e: dict) -> bool:
-    blob = " ".join([
-        e["titulo_breve"], e["titulo_oficial"], e["resumo"],
-        " ".join(i["nome"] for i in e["intervencoes"]),
-    ])
-    return bool(TERANOSTICO.search(blob))
+    """Radioligante na intervenção ou no título — nunca pelo resumo.
+
+    O resumo cita tratamento prévio ("after 177Lu-PSMA") em estudos que não
+    são RLT; por isso fica de fora. Nas intervenções vale nome e descrição
+    (AAA817 só diz que é ²²⁵Ac na descrição). No título, os trechos de
+    tratamento prévio são removidos antes.
+    """
+    interv = " ".join(" ".join([i["nome"], i.get("descricao") or "",
+                                *(i.get("outros_nomes") or [])])
+                      for i in e["intervencoes"] if i.get("tipo") != "OTHER")
+    titulos = TRATAMENTO_PREVIO.sub(" ", e["titulo_breve"] + " " + e["titulo_oficial"])
+    return bool(TERANOSTICO.search(interv) or TERANOSTICO.search(titulos))
 
 
 def eh_oncologico(e: dict) -> bool:
@@ -439,9 +466,10 @@ def classificar(achatados: list[dict], ja: dict[str, dict]) -> dict:
             suporte.append({"nct": e["nct"], "titulo": e["titulo_breve"][:70],
                             "tipos": sorted({i["tipo"] for i in e["intervencoes"]})})
             continue
-        if eh_teranostico(e):
-            teranosticos.append(e)
-            continue
+        # Teranóstico segue o fluxo normal; a lista só registra quem foi marcado.
+        e["teranostico"] = eh_teranostico(e)
+        if e["teranostico"]:
+            teranosticos.append(e["nct"])
         if e["nct"] not in ja:
             novos.append(e)
             continue
@@ -492,7 +520,7 @@ def main() -> int:
     print(f"  NOVOS (curar) .............. {len(d['novos'])}")
     print(f"  status mudou ............... {len(d['mudou_status'])}")
     print(f"  inalterados ................ {len(d['inalterados'])}")
-    print(f"  teranósticos (-> data.js) .. {len(d['teranosticos'])}")
+    print(f"  teranósticos (marcados) .... {len(d['teranosticos'])}")
     print(f"  publicados que sumiram ..... {len(d['sumiram'])}")
     print(f"  descartados: não-oncológico  {len(d['nao_oncologicos'])}")
     print(f"  descartados: não é tratamento {len(d['suporte'])}")
