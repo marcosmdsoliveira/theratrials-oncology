@@ -1,0 +1,74 @@
+{
+ "schema": "theratrials-db-decisoes/1",
+ "sobre": "Decisões humanas do pipeline do Database, por identificador estável. tipo: ignore | approve | defer (exige ate: AAAA-MM-DD) | classificacao (exige uid, pmid, campo: tipo_analise|populacao|relacao, valor; vale só enquanto o card citar o mesmo PMID). id: chave do sinal (ex.: correcao:uid:...) ou id do item do baseline (uid:pmid). Campos obrigatórios: id, tipo, decidido_em, motivo. Lido por db_registro.ler_decisoes; nunca escrito por script.",
+ "decisoes": [
+  {
+   "id": "inconsistencia_pmid_nct:hepatobiliar_38:databank_divergente",
+   "tipo": "classificacao",
+   "uid": "hepatobiliar_38",
+   "pmid": "31421157",
+   "campo": "integridade",
+   "valor": "SOURCE_METADATA_ERROR",
+   "evidencia": {
+    "nct_declarado_pelo_artigo": "NCT00000112",
+    "registro_declarado": "NCT00000112: 'Prevalence of Carbohydrate Intolerance in Lean and Obese Children' (sem relação com o estudo)",
+    "nct_do_card": [
+     "NCT01126645"
+    ],
+    "concordam": [
+     "nome do estudo 'SORAMIC' no título/abstract",
+     "CT.gov NCT01126645: nome do estudo presente"
+    ],
+    "artigo": "Impact of combined selective internal radiation therapy and sorafenib on survival in advanced hepatocellular carcinoma."
+   },
+   "decidido_em": "2026-09-28",
+   "motivo": "O DataBank do PubMed atribui ao artigo um NCT de outro estudo; o nome do estudo está no registro do card e no artigo. O card está correto; o erro é do metadado do PubMed.",
+   "decidido_por": "usuário (aprovação explícita da Fase 1.6, 2026-09-28)"
+  },
+  {
+   "id": "integrity_hold:rt_sbrt_oligo_5",
+   "tipo": "approve",
+   "decidido_em": "2026-09-28",
+   "motivo": "A Expression of Concern (JNCI, 10.1093/jnci/djac065) trata de autoria, contribuições e declarações de conflito; não questiona dados. A errata posterior removeu dois coautores. Questão de autoria/conflitos considerada resolvida para fins de automação clínica; a ocorrência permanece no histórico do card.",
+   "decidido_por": "usuário (2026-09-28)"
+  },
+  {
+   "id": "classificacao:endometrio_6:39847999",
+   "tipo": "classificacao",
+   "uid": "endometrio_6",
+   "pmid": "39847999",
+   "campo": "tipo_analise",
+   "valor": "long-term update",
+   "decidido_em": "2026-09-28",
+   "motivo": "O card representa a atualização KEYNOTE-158 (Gynecol Oncol 2025;193:130-135; n=94 MSI-H/dMMR, ORR 50%, CR 16%, DOR 4 anos 66%). A publicação primária anterior, PMID 34990208 (J Clin Oncol 2022;40:752-761), permanece na história bibliográfica. Vale quando o card publicado passar a citar o PMID 39847999.",
+   "decidido_por": "usuário (2026-09-28)"
+  },
+  {
+   "id": "quarentena:ppgl_8",
+   "tipo": "classificacao",
+   "uid": "ppgl_8",
+   "pmid": "*",
+   "campo": "integridade",
+   "valor": "EDITORIAL_QUARANTINE",
+   "decidido_em": "2026-09-28",
+   "evidencia": {
+    "pmid_do_card": "24752622 (Hadoux 2014, publicação do ppgl_7)",
+    "referencias_citadas": "Niemeijer 2014 = meta-análise de CVD sem MGMT; 'Tella SH… Int J Mol Sci 2020;21(4):1273' resolve para artigo de meningioma (PMID 32070062); 'Endocr Rev 2022' sem volume/página",
+    "busca_estruturada": "apenas 2 relatos de caso"
+   },
+   "motivo": "Conteúdo clínico sem fonte primária verificável. Quarentena editorial; não reduzir ao Hadoux 2014, que pertence ao ppgl_7. uid, links e histórico preservados. Vale para o card, qualquer que seja o PMID (a neutralização esvazia o pubmed_url).",
+   "decidido_por": "usuário (2026-09-28)"
+  },
+  {
+   "id": "publicacao_primaria:endometrio_6",
+   "tipo": "classificacao",
+   "uid": "endometrio_6",
+   "pmid": "39847999",
+   "campo": "publicacao_primaria",
+   "valor": "34990208",
+   "decidido_em": "2026-09-28",
+   "motivo": "Publicação primária anterior do KEYNOTE-158 em endométrio MSI-H/dMMR: O'Malley DM et al., J Clin Oncol 2022;40:752-761. Permanece na história bibliográfica do card, que passa a representar a atualização de 2025 (PMID 39847999).",
+   "decidido_por": "usuário (2026-09-28)"
+  }
+ ]
+}

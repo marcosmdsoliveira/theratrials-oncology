@@ -1,0 +1,83 @@
+{
+ "schema": "theratrials-db-conflitos-fonte/1",
+ "sobre": "Valores incompatíveis entre partes da MESMA fonte primária (abstract, texto, tabelas). Cada ocorrência traz trecho e contexto (população, denominador, endpoint, timepoint, método). Avaliado por db_confianca.avaliar_conflito_na_fonte: EXPLICADA registra o contexto; WITHIN_SOURCE_CONFLICT bloqueia só os campos listados. Vale enquanto o card citar o mesmo PMID.",
+ "achados": [
+  {
+   "id": "conflito:rt_sbrt_oligo_5:os_tki",
+   "uid": "rt_sbrt_oligo_5",
+   "pmid": "35094066",
+   "campos": [
+    "secundario"
+   ],
+   "medida": "OS mediana, braço só-TKI (meses)",
+   "registrado_em": "2026-09-28",
+   "registrado_por": "microauditoria do texto completo (PMC10248839)",
+   "ocorrencias": [
+    {
+     "secao": "Abstract (Results)",
+     "trecho": "the median OS was 17.4 months vs 25.5 months (P < .001) for TKI only vs TKI with RT",
+     "valor": 17.4,
+     "populacao": "TKI only",
+     "denominador": 65,
+     "endpoint": "median OS",
+     "timepoint": "análise interina (seguimento mediano 23,6 m)",
+     "metodo": "não especificado"
+    },
+    {
+     "secao": "Results (texto)",
+     "trecho": "The respective median OS times were 17.6 months (95% CI = 15.4 to 19.8 months) vs 25.5 months",
+     "valor": 17.6,
+     "populacao": "TKI only",
+     "denominador": 65,
+     "endpoint": "median OS",
+     "timepoint": "análise interina (seguimento mediano 23,6 m)",
+     "metodo": "não especificado"
+    }
+   ]
+  },
+  {
+   "id": "conflito:rt_sbrt_oligo_5:pneumonite_g34",
+   "uid": "rt_sbrt_oligo_5",
+   "pmid": "35094066",
+   "campos": [
+    "tox_g3",
+    "tox_interesse"
+   ],
+   "medida": "pneumonite grau 3-4, braço TKI + RT (%)",
+   "registrado_em": "2026-09-28",
+   "registrado_por": "microauditoria do texto completo (PMC10248839)",
+   "ocorrencias": [
+    {
+     "secao": "Abstract (Results)",
+     "trecho": "a 6% rate of symptomatic grade 3-4 pneumonitis in the TKI with RT arm",
+     "valor": 6,
+     "populacao": "TKI + RT",
+     "denominador": 68,
+     "endpoint": "pneumonite SINTOMÁTICA grau 3-4",
+     "timepoint": "análise interina",
+     "metodo": "eventos relacionados ao tratamento"
+    },
+    {
+     "secao": "Table 3",
+     "trecho": "Pneumonitis (symptomatic) … TKI + RT: grade 3 3 (4.4), grade 4 1 (1.5) → 4/68",
+     "valor": 5.9,
+     "populacao": "TKI + RT",
+     "denominador": 68,
+     "endpoint": "pneumonite SINTOMÁTICA grau 3-4",
+     "timepoint": "análise interina",
+     "metodo": "eventos relacionados ao tratamento"
+    },
+    {
+     "secao": "Results (texto)",
+     "trecho": "5 of 68 (7.4%) experienced grade 3-4 pneumonitis",
+     "valor": 7.4,
+     "populacao": "TKI + RT",
+     "denominador": 68,
+     "endpoint": "pneumonite grau 3-4, SINTOMÁTICA + ASSINTOMÁTICA (Table 3: 4 sintomáticas + 1 assintomática grau 3)",
+     "timepoint": "análise interina",
+     "metodo": "eventos relacionados ao tratamento"
+    }
+   ]
+  }
+ ]
+}
