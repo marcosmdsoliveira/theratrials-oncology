@@ -55,10 +55,25 @@ antes de publicar.
    estudo como teranóstico. Isso é pista, não prova: confirme no texto.
    **Nunca** tire isótopo ou mecanismo do Explorer, do Database ou de
    conhecimento prévio: só do registro.
-7. Em qualquer dúvida de classificação, marque `confianca: "baixa"` e diga em
+7. **Linha terapêutica** (regra 13 do `sistema`): `linha_terapeutica` é a
+   linha sistêmica **dentro do estado clínico em que o estudo recruta**.
+   - Terapias de estados anteriores não contam: neo/adjuvante e perioperatório
+     não contam para doença avançada; no mCRPC, o tratamento do mHSPC não conta.
+   - Exceção: o próprio protocolo trata explicitamente a recidiva precoce ou a
+     terapia anterior como definidora da linha.
+   - Faixa de linhas, ou linha indeterminável com segurança: categoria
+     genérica, `Avançado / metastático` em tumor sólido e `Recidivado /
+     refratário` em hematologia.
+   - Nunca infira uma linha mais específica pelo número total de terapias
+     prévias do paciente.
+   - Exemplos: AcTFirst (ARPI no mHSPC, nada no mCRPC) → `1ª linha`; ICESP
+     (registro diz "First-Line Treatment for mCRPC") → `1ª linha`; PSMAcTION
+     (ARPI, taxano e 177Lu-PSMA sem dizer em que estado) → `Avançado /
+     metastático`.
+8. Em qualquer dúvida de classificação, marque `confianca: "baixa"` e diga em
    `notas_revisor` o que exatamente não foi possível determinar.
-8. Grave `scripts/_br_cards_local.json` como `{"cards": [...]}`.
-9. Rode `python3 scripts/br_curate.py --importar scripts/_br_cards_local.json`.
+9. Grave `scripts/_br_cards_local.json` como `{"cards": [...]}`.
+10. Rode `python3 scripts/br_curate.py --importar scripts/_br_cards_local.json`.
    Ele confere os campos obrigatórios, compara a seção de exclusão com o texto
    de origem e aplica as regras de biomarcador e de radioligante do trial-qa. Se rejeitar algum
    NCT, cure esse NCT de novo. Não force.

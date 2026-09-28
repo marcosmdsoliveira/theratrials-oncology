@@ -4346,7 +4346,7 @@ window.THERA_TRIALS_BR = [
     neoplasia: 'ovario',
     neoplasia_label: 'Ovário',
     subtipo: 'Ovário de alto grau seroso/endometrioide, resistente a platina',
-    linha_terapeutica: '2ª linha',
+    linha_terapeutica: 'Avançado / metastático',
     cenario_clinico: 'Resistente a platina, 1-3 linhas prévias',
     modalidade: ['ADC'],
     biomarcadores: [],
@@ -8508,7 +8508,7 @@ window.THERA_TRIALS_BR = [
     neoplasia: 'pulmao',
     neoplasia_label: 'Pulmão · NSCLC',
     subtipo: 'NSCLC não-escamoso localmente avançado ou metastático com mutação sensibilizante de EGFR, após progressão ao osimertinibe',
-    linha_terapeutica: '2ª linha',
+    linha_terapeutica: 'Avançado / metastático',
     cenario_clinico: 'Progressão radiológica extracraniana ao osimertinibe em monoterapia como linha mais recente, no cenário adjuvante, localmente avançado ou metastático, com no máximo 2 linhas prévias de inibidor de tirosina-quinase de EGFR',
     modalidade: ['ADC', 'terapia-alvo', 'quimioterapia', 'combinação'],
     biomarcadores: ['EGFR'],
@@ -8865,7 +8865,7 @@ window.THERA_TRIALS_BR = [
     neoplasia: 'pulmao',
     neoplasia_label: 'Pulmão · NSCLC',
     subtipo: 'NSCLC não-escamoso avançado ou metastático com mutação KRAS G12C',
-    linha_terapeutica: '2ª linha',
+    linha_terapeutica: 'Avançado / metastático',
     cenario_clinico: 'Progressão documentada após 1 a 2 linhas prévias de anti-PD-1 ou anti-PD-L1 e de quimioterapia com platina',
     modalidade: ['terapia-alvo', 'ADC', 'combinação'],
     biomarcadores: ['KRAS G12C'],
@@ -10985,7 +10985,7 @@ window.THERA_TRIALS_BR = [
     neoplasia: 'esofago',
     neoplasia_label: 'Esôfago',
     subtipo: 'Carcinoma espinocelular de esôfago irressecável, localmente avançado ou metastático',
-    linha_terapeutica: '2ª linha',
+    linha_terapeutica: 'Avançado / metastático',
     cenario_clinico: 'Progressão após 1 ou 2 linhas sistêmicas prévias',
     modalidade: ['ADC'],
     biomarcadores: [],
@@ -14448,7 +14448,7 @@ window.THERA_TRIALS_BR = [
     neoplasia: 'rim',
     neoplasia_label: 'Rim · ccRCC',
     subtipo: 'Carcinoma de células renais irressecável e avançado com componente de células claras, com ou sem características sarcomatoides — estádio IV pelo AJCC 8ª edição',
-    linha_terapeutica: '3ª+ linha',
+    linha_terapeutica: 'Avançado / metastático',
     cenario_clinico: 'Progressão durante ou após anti-PD-1/L1 e inibidor de tirosina-quinase de VEGF, em sequência ou em combinação',
     modalidade: ['terapia-alvo', 'combinação', 'anti-angiogênico'],
     biomarcadores: [],
@@ -16800,11 +16800,13 @@ window.THERA_TRIALS_BR = [
     ],
     criterios_exclusao: [
       'Doença oligometastática de novo (sem tratamento definitivo prévio do primário)',
-      'ADT ou ARPI para doença metastática; ADT/ARPI neo/adjuvante ou para recidiva só se suspensos há ≥12 meses (ADT) ou ≥3 meses (ARPI isolado); CRPC excluído',
-      'Radiofármaco prévio (ex.: estrôncio-89, radioligante dirigido a PSMA), imunoterapia (ex.: sipuleucel-T) ou quimioterapia fora do cenário neo/adjuvante concluído há >12 meses',
-      'Radioterapia externa ou braquiterapia nos 28 dias antes da randomização',
+      'ADT ou ARPI para doença metastática, e CRPC; ADT/ARPI neo/adjuvante ou na recidiva só se suspensos há ≥12 meses (ADT) ou ≥3 meses (ARPI isolado ou antiandrogênio de 1ª geração); estrógenos ou inibidores da 5-α-redutase usados para o câncer de próstata (para HPB, só se suspensos há ≥3 meses)',
+      'Radiofármaco prévio (ex.: estrôncio-89, radioligante dirigido a PSMA), imunoterapia (ex.: sipuleucel-T), quimioterapia fora do cenário neo/adjuvante concluído há >12 meses, ou outro agente sistêmico ou experimental para doença metastática',
+      'Radioterapia externa ou braquiterapia nos 28 dias antes da randomização; quimioterapia, imunoterapia, radioligante, hormonioterapia, inibidor de PARP, terapia biológica ou experimental concomitantes',
+      'Obstrução do trato de saída vesical ou incontinência urinária não controláveis com o cuidado padrão',
       'Outra neoplasia que altere a expectativa de vida ou interfira na avaliação (exceto tratada e livre de doença há >3 anos, pele não melanoma e bexiga superficial)',
-      'Arritmia clinicamente significativa, BAV de 2º/3º grau sem marca-passo ou QT longo familiar; necessidade imediata de ADT ou outra terapia sistêmica',
+      'Arritmia clinicamente significativa, BAV de 2º/3º grau sem marca-passo, QT longo familiar ou história familiar de torsades de pointes',
+      'Necessidade imediata de ADT ou outra terapia sistêmica, ou falta de disposição para adiar a castração até a progressão à distância confirmada por revisão central',
     ],
     centros: ['São Paulo / SP'],
     estados: ['SP'],
@@ -16889,7 +16891,7 @@ window.THERA_TRIALS_BR = [
     neoplasia: 'prostata',
     neoplasia_label: 'Próstata · mCRPC',
     subtipo: 'Adenocarcinoma de próstata metastático resistente à castração, PSMA-positivo',
-    linha_terapeutica: '3ª+ linha',
+    linha_terapeutica: 'Avançado / metastático',
     cenario_clinico: 'mCRPC já tratado com ARPI e quimioterapia com taxano, com progressão durante ou após terapia dirigida a PSMA com [177Lu]Lu-PSMA',
     modalidade: ['radioligante'],
     biomarcadores: ['PSMA'],
@@ -16923,6 +16925,70 @@ window.THERA_TRIALS_BR = [
     patrocinador: 'Novartis Pharmaceuticals',
     fonte_url: 'https://clinicaltrials.gov/study/NCT06780670',
     contato_url: 'https://clinicaltrials.gov/study/NCT06780670',
+    data_atualizacao: '2026-09-22',
+  },
+
+
+  // ============== NOVOS ESTUDOS (2026-09-28) — RASCUNHO, revisar antes de publicar ==============
+
+  {
+    // ⚠ RASCUNHO — confiança media. Escopo 'antineoplasico' por decisão humana registrada
+    //   (br_aprovados.json, 2026-09-28): o campo primaryPurpose do registro diz DIAGNOSTIC, mas
+    //   braços, desfecho primário (rPFS) e intervenções são terapêuticos. Isótopo/ligante e alvo
+    //   vêm do registro: AAA817 = [225Ac]Ac-PSMA-617, e a descrição da intervenção diz que ele se
+    //   liga ao PSMA e é uma terapia com radioligante. 'combinação' e 'hormonioterapia' valem para
+    //   o braço AAA817 + ARPI; há também um braço experimental de AAA817 isolado. Linha
+    //   terapêutica: '2ª linha' conta o ARPI do mHSPC como 1ª linha; como a exclusão proíbe
+    //   qualquer terapia sistêmica prévia para mCRPC, o estudo é também 1ª linha no cenário mCRPC —
+    //   o card NCT07316686 (docetaxel + 177Lu-PSMA-I&T) usou '1ª linha' com a convenção do mCRPC;
+    //   revisor uniformiza. Possível inconsistência no registro: a inclusão admite HRR mutado com
+    //   exposição prévia a PARPi, e a exclusão proíbe PARPi administrado para mCRPC — presume-se
+    //   PARPi em cenário anterior; conferir. HRR não entrou em biomarcadores_criterios por não ser
+    //   critério de seleção nem teste obrigatório. A seção de exclusão do registro é resumida
+    //   ('Key') e remete a outros critérios do protocolo. Não há informação de função orgânica nem
+    //   de metástase de SNC no texto.
+    id: 'actfirst',
+    nome: 'AcTFirst',
+    titulo: '[225Ac]Ac-PSMA-617 (AAA817), com ou sem ARPI, versus tratamento padrão à escolha do investigador no mCRPC PSMA-positivo após progressão a ARPI, sem taxano no cenário resistente à castração',
+    nct: 'NCT06855277',
+    fase: 'III',
+    status: 'Recrutando',
+    brazil_status: 'RECRUITING',
+    neoplasia: 'prostata',
+    neoplasia_label: 'Próstata · mCRPC PSMA-positivo',
+    subtipo: 'Adenocarcinoma de próstata metastático resistente à castração, PSMA-positivo; histologia mista neuroendócrina excluída',
+    linha_terapeutica: '1ª linha',
+    cenario_clinico: 'mCRPC com progressão documentada em uso de ARPI (dado no mHSPC ou antes) como último tratamento, sem taxano no cenário mCRPC (taxano no mHSPC permitido) e sem radiofármaco prévio',
+    modalidade: ['radioligante', 'hormonioterapia', 'combinação'],
+    biomarcadores: ['PSMA'],
+    biomarcadores_criterios: [
+      { marcador: 'PSMA', exigencia: 'requerido', estado: 'Doença PSMA-positiva no PET com agente de imagem PSMA aprovado conforme protocolo' },
+    ],
+    alvos: ['PSMA'],
+    testes_fornecidos: '',
+    intervencao: '[225Ac]Ac-PSMA-617 (AAA817) 10 MBq ±10% IV, até 6 ciclos, com ou sem ARPI (enzalutamida ou abiraterona) à escolha do investigador — dois braços experimentais: AAA817 + ARPI e AAA817 isolado',
+    comparador: 'Tratamento padrão à escolha do investigador: troca de ARPI (enzalutamida ou abiraterona), quimioterapia com taxano (docetaxel ou cabazitaxel) ou [177Lu]Lu-PSMA-617 (AAA617)',
+    racional: 'Fase III randomizada que avalia o radioligante alfa-emissor [225Ac]Ac-PSMA-617, que segundo o registro se liga ao PSMA na superfície das células tumorais e emite radiação, com ou sem ARPI, contra o tratamento padrão no mCRPC PSMA-positivo após progressão a ARPI. O desfecho primário declarado é a sobrevida livre de progressão radiográfica (rPFS).',
+    criterios_principais: [
+      'Adultos ≥18 anos com adenocarcinoma de próstata confirmado por histologia e/ou citologia; histologia mista neuroendócrina não é elegível',
+      'Doença PSMA-positiva no PET com agente de imagem PSMA aprovado conforme protocolo',
+      'mCRPC com progressão documentada em uso de ARPI no mHSPC ou antes, como último tratamento, sem progressão a mais de um ARPI',
+      'Sem quimioterapia com taxano no cenário mCRPC; taxano no mHSPC permitido se o paciente for candidato a quimioterapia, troca de ARPI ou AAA617 como próxima linha',
+      'ECOG 0–2',
+      'Mutação deletéria germinativa ou somática em genes de HRR (teste local) só é elegível se houver exposição prévia a inibidor de PARP',
+    ],
+    criterios_exclusao: [
+      'Qualquer radiofármaco prévio, aprovado ou experimental (ex.: [177Lu]Lu-PSMA, [177Lu]-DOTA, rádio-223)',
+      'Radioterapia externa, incluindo hemicorpo, nas 6 semanas antes da randomização (2 semanas se radioterapia de metástases localizadas)',
+      'Inibidor de PARP ou qualquer outra terapia sistêmica antineoplásica administrada para mCRPC',
+      'Qualquer outra terapia sistêmica aprovada ou experimental (quimioterapia, imunoterapia, biológicos, anticorpos monoclonais) nos 28 dias ou 5 meias-vidas (o que for menor) antes da randomização',
+    ],
+    centros: ['São Paulo / SP'],
+    estados: ['SP'],
+    cidades: ['São Paulo'],
+    patrocinador: 'Novartis Pharmaceuticals',
+    fonte_url: 'https://clinicaltrials.gov/study/NCT06855277',
+    contato_url: 'https://clinicaltrials.gov/study/NCT06855277',
     data_atualizacao: '2026-09-22',
   },
 

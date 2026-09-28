@@ -338,6 +338,24 @@ REGRAS INVIOLÁVEIS
    `criterios_principais` e `cenario_clinico`, nunca em `alvos` nem em \
    biomarcador. Isótopo ou mecanismo que o registro não diz não se completa — \
    nem por conhecimento prévio, nem por outras bases do TheraTrials.
+13. LINHA TERAPÊUTICA. `linha_terapeutica` é a linha sistêmica DENTRO do estado \
+   clínico em que o estudo recruta. Terapias de estados anteriores não contam: \
+   neo/adjuvante e perioperatório não contam para a doença avançada/metastática; \
+   no mCRPC, o tratamento do mHSPC não conta. Exceção: quando o próprio protocolo \
+   trata explicitamente a recidiva precoce ou a terapia anterior como definidora \
+   da linha (ex.: "recidiva em até 12 meses após o perioperatório conta como \
+   linha"; título "First-Line Treatment for mCRPC"). Se o registro aceitar uma \
+   faixa de linhas ou não permitir determinar a linha com segurança, use a \
+   categoria genérica: 'Avançado / metastático' em tumor sólido, 'Recidivado / \
+   refratário' em hematologia. Não infira uma linha mais específica pelo número \
+   total de terapias prévias do paciente. Exemplos: \
+   · AcTFirst — mCRPC com progressão ao ARPI dado no mHSPC ou antes, sem terapia \
+     sistêmica no mCRPC → '1ª linha'. \
+   · Docetaxel + 177Lu-PSMA-I&T (ICESP) — o registro chama o estudo de \
+     "First-Line Treatment for mCRPC" e exclui quimioterapia e radiofármaco no \
+     mCRPC → '1ª linha' (a linha vem do protocolo). \
+   · PSMAcTION — mCRPC após ARPI, taxano e [177Lu]Lu-PSMA, sem dizer em que \
+     estado ARPI e taxano foram dados → 'Avançado / metastático', não '3ª+ linha'.
 
 8. `criterios_exclusao` é obrigatório na prática. O texto de elegibilidade que \
    você recebe traz, quase sempre, uma seção "Exclusion Criteria" ou "Key \

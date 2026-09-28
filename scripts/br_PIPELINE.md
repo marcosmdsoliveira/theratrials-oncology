@@ -139,6 +139,33 @@ fonte tem um papel:
 - **Trial Matcher:** o filtro "Radioligante" compara `modalidade` por
   igualdade exata, e a opção só aparece se houver card.
 
+### Linha terapêutica: regra canônica, desde 2026-09
+
+`linha_terapeutica` é a linha sistêmica **dentro do estado clínico em que o
+estudo recruta**. É a convenção que já predominava no banco. Por exemplo, 18
+cards "1ª linha" de mama, endométrio, gástrico e pulmão aceitam adjuvante
+prévio sem contá-lo.
+- Terapias de estados anteriores não contam: neo/adjuvante e perioperatório
+  não contam para a doença avançada/metastática; no mCRPC, o tratamento do
+  mHSPC não conta.
+- Exceção: o próprio protocolo trata explicitamente a recidiva precoce ou a
+  terapia anterior como definidora da linha. Exemplos: IZABRIGHT (recidiva em
+  até 12 meses após o perioperatório), HERTHENA-Breast04 (iCDK4/6 adjuvante)
+  e o título "First-Line Treatment for mCRPC" do ICESP.
+- Faixa de linhas, ou linha indeterminável com segurança: categoria genérica.
+  Em tumor sólido, `Avançado / metastático`; em hematologia, `Recidivado /
+  refratário`. Nunca se infere uma linha mais específica pelo número total de
+  terapias prévias.
+- Exemplos:
+  - AcTFirst (ARPI no mHSPC, nada no mCRPC) → `1ª linha`;
+  - ICESP (o registro diz "First-Line") → `1ª linha`;
+  - PSMAcTION (ARPI, taxano e 177Lu-PSMA sem dizer em que estado) →
+    `Avançado / metastático`;
+  - PSMA-DC (oligometastático hormônio-sensível) fica em `Avançado /
+    metastático` por decisão editorial: "linha" é pouco claro nesse cenário.
+
+Está no prompt do curador (regra 13) e no agente `trial-curator`.
+
 ### Override humano: `scripts/br_aprovados.json`, desde 2026-09
 
 Serve para decisões humanas que contrariam um campo do registro. É o oposto

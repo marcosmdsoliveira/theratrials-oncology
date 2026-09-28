@@ -2372,7 +2372,7 @@ window._i18nRegister('pt-br', {
     pmExplorerName: "TheraTrials Explorer",
     pmExplorerDesc: "Pipeline global de radioligantes · dados do ClinicalTrials.gov · atualização mensal",
     pmEnsaiosBRName: "Ensaios clínicos no Brasil",
-    pmEnsaiosBRDesc: "208 ensaios recrutando no Brasil · 262 estudos mapeados · 26 áreas tumorais",
+    pmEnsaiosBRDesc: "209 ensaios recrutando no Brasil · 263 estudos mapeados · 26 áreas tumorais",
     pmTumorBoardsName: "Tumor boards",
     pmTumorBoardsDesc: "Visão por tumor · próstata, pulmão, mama, NET, HCC",
     pmModalidadesName: "Modalidades",
@@ -2433,7 +2433,7 @@ window._i18nRegister('pt-br', {
     eaDisclaimer: "Aviso:",
     eaDisclaimerText: "seção informativa. A elegibilidade final depende sempre da avaliação do centro responsável pelo estudo.",
     eaRecruiting: "Recrutando",
-    eaFooterCount: "<strong style=\"color:var(--off-white)\">208 ensaios recrutando no Brasil</strong> · 262 estudos mapeados · 26 áreas tumorais",
+    eaFooterCount: "<strong style=\"color:var(--off-white)\">209 ensaios recrutando no Brasil</strong> · 263 estudos mapeados · 26 áreas tumorais",
     eaFooterLink: "Filtrar por neoplasia, modalidade, biomarcador",
 
     /* Radiofármacos block */
@@ -2460,7 +2460,7 @@ window._i18nRegister('pt-br', {
 
     /* CTA final */
     ctaTitle: "Pronto para conectar evidência e prática clínica?",
-    ctaDesc: "503 ensaios clínicos analisados em 40 categorias · pipeline global de radioligantes via ClinicalTrials.gov · 208 ensaios recrutando no Brasil · 7 dossiês de radiofármaco · 12 ferramentas clínicas · AJCC 8ª ed., CTCAE v6.0, BCLC 2026 · hyperlinks diretos para PubMed e ClinicalTrials.gov.",
+    ctaDesc: "503 ensaios clínicos analisados em 40 categorias · pipeline global de radioligantes via ClinicalTrials.gov · 209 ensaios recrutando no Brasil · 7 dossiês de radiofármaco · 12 ferramentas clínicas · AJCC 8ª ed., CTCAE v6.0, BCLC 2026 · hyperlinks diretos para PubMed e ClinicalTrials.gov.",
     ctaBtnDatabase: "Acessar o banco",
     ctaBtnExplorer: "Explorer",
     ctaBtnTumorBoards: "Tumor boards",

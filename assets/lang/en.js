@@ -2372,7 +2372,7 @@ window._i18nRegister('en', {
     pmExplorerName: "TheraTrials Explorer",
     pmExplorerDesc: "Global radioligand pipeline · ClinicalTrials.gov data · monthly updates",
     pmEnsaiosBRName: "Clinical trials in Brazil",
-    pmEnsaiosBRDesc: "208 trials recruiting in Brazil · 262 studies mapped · 26 tumor types",
+    pmEnsaiosBRDesc: "209 trials recruiting in Brazil · 263 studies mapped · 26 tumor types",
     pmTumorBoardsName: "Tumor Boards",
     pmTumorBoardsDesc: "Tumor-centric view · prostate, lung, breast, NET, HCC",
     pmModalidadesName: "Modalities",
@@ -2433,7 +2433,7 @@ window._i18nRegister('en', {
     eaDisclaimer: "Disclaimer:",
     eaDisclaimerText: "informational section. Final eligibility always depends on evaluation by the responsible study center.",
     eaRecruiting: "Recruiting",
-    eaFooterCount: "<strong style=\"color:var(--off-white)\">208 trials recruiting in Brazil</strong> · 262 studies mapped · 26 tumor types",
+    eaFooterCount: "<strong style=\"color:var(--off-white)\">209 trials recruiting in Brazil</strong> · 263 studies mapped · 26 tumor types",
     eaFooterLink: "Filter by tumor type, modality, biomarker",
 
     /* Radiofármacos block */
@@ -2460,7 +2460,7 @@ window._i18nRegister('en', {
 
     /* CTA final */
     ctaTitle: "Ready to connect evidence and clinical practice?",
-    ctaDesc: "503 curated clinical trials in 40 categories · global radioligand pipeline via ClinicalTrials.gov · 208 trials recruiting in Brazil · 7 radiopharmaceutical dossiers · 12 clinical tools · AJCC 8th ed., CTCAE v6.0, BCLC 2026 · direct hyperlinks to PubMed and ClinicalTrials.gov.",
+    ctaDesc: "503 curated clinical trials in 40 categories · global radioligand pipeline via ClinicalTrials.gov · 209 trials recruiting in Brazil · 7 radiopharmaceutical dossiers · 12 clinical tools · AJCC 8th ed., CTCAE v6.0, BCLC 2026 · direct hyperlinks to PubMed and ClinicalTrials.gov.",
     ctaBtnDatabase: "Access the database",
     ctaBtnExplorer: "Explorer",
     ctaBtnTumorBoards: "Tumor Boards",
