@@ -139,6 +139,31 @@ fonte tem um papel:
 - **Trial Matcher:** o filtro "Radioligante" compara `modalidade` por
   igualdade exata, e a opção só aparece se houver card.
 
+### Override humano: `scripts/br_aprovados.json`, desde 2026-09
+
+Serve para decisões humanas que contrariam um campo do registro. É o oposto
+do `br_descartados.json`. Existe **um único tipo**, `primary_purpose`: o
+estudo cai em "revisar" só porque o registro declara um propósito diferente
+de TREATMENT, e uma pessoa confere que ele é terapêutico. O primeiro caso é o
+AcTFirst (NCT06855277): fase III com desfecho primário rPFS, registrado como
+DIAGNOSTIC.
+
+Cada entrada exige `nct`, `tipo`, `valor_registro`, `decisao` (TREATMENT),
+`motivo` e `aprovado_em` (AAAA-MM-DD). Entrada inválida é ignorada e aparece
+no relatório. A exceção vale:
+- só para o NCT listado;
+- só enquanto o registro trouxer exatamente o `valor_registro` anotado (se o
+  patrocinador corrigir o campo, o override perde o efeito sozinho);
+- só no ponto da triagem que olha o propósito.
+
+As checagens de status no Brasil e de extensão vêm antes. As de escopo e de
+tipo de intervenção vêm depois, e curadoria, merge e QA não leem este
+arquivo. O relatório tem a seção "Overrides humanos aplicados" e lista também
+os registrados sem efeito e as entradas recusadas.
+
+Testes: `python3 scripts/test_br_aprovados.py`. Rodam offline, com o registro
+do AcTFirst em `scripts/fixtures/`.
+
 ## Aplicar uma atualização (fluxo seguro)
 
 ```bash

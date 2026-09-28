@@ -58,6 +58,11 @@ PROPOSTO = SCRIPTS / "_br_proposto" / "trials_br.js"
 RELATORIO_MD = SCRIPTS / "_br_relatorio.md"
 RELATORIO_JSON = SCRIPTS / "_br_relatorio.json"
 DISCOVERY = SCRIPTS / "_br_discovery.json"
+# Decisões humanas que contrariam o registro. Só 'primary_purpose', só o NCT
+# listado e só enquanto o registro trouxer o valor anotado. Ver ler_aprovados().
+APROVADOS = SCRIPTS / "br_aprovados.json"
+TIPOS_OVERRIDE = {"primary_purpose"}
+CAMPOS_OVERRIDE = ("nct", "tipo", "valor_registro", "decisao", "motivo", "aprovado_em")
 CURATED = SCRIPTS / "_br_curated.json"
 
 # Intervenções de tratamento sistêmico — a prioridade do Trial Matcher.
@@ -88,6 +93,43 @@ EXTENSAO = re.compile(r"\bextension\b|roll-?over|continued access|continuation s
 
 # ── 2. descoberta ─────────────────────────────────────────────────────────────
 
+def ler_aprovados(caminho: Path | None = None) -> tuple[dict[str, dict], list[str]]:
+    """Overrides humanos válidos, por NCT, e avisos sobre as entradas recusadas.
+
+    Entrada inválida não quebra o ciclo nem vale: é ignorada e aparece no
+    relatório. Válida = todos os CAMPOS_OVERRIDE preenchidos, `tipo` em
+    TIPOS_OVERRIDE, `decisao` TREATMENT, NCT no formato, data AAAA-MM-DD e um
+    único override por NCT.
+    """
+    caminho = caminho or APROVADOS
+    if not caminho.exists():
+        return {}, []
+    try:
+        d = json.loads(caminho.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as e:
+        return {}, [f"{caminho.name} ilegível ({e}) — nenhum override aplicado"]
+    validos, avisos = {}, []
+    for i, a in enumerate(d.get("aprovados", [])):
+        rot = f"{caminho.name}[{i}] {a.get('nct', '?')}"
+        falta = [c for c in CAMPOS_OVERRIDE if not str(a.get(c, "")).strip()]
+        if falta:
+            avisos.append(f"{rot}: ignorado — faltam {', '.join(falta)}")
+        elif a["tipo"] not in TIPOS_OVERRIDE:
+            avisos.append(f"{rot}: ignorado — tipo {a['tipo']!r} não é aceito "
+                          f"(só {', '.join(sorted(TIPOS_OVERRIDE))})")
+        elif a["decisao"] != "TREATMENT":
+            avisos.append(f"{rot}: ignorado — decisao {a['decisao']!r} (só TREATMENT)")
+        elif not re.fullmatch(r"NCT\d{8}", a["nct"]):
+            avisos.append(f"{rot}: ignorado — NCT malformado")
+        elif not re.fullmatch(r"\d{4}-\d{2}-\d{2}", a["aprovado_em"]):
+            avisos.append(f"{rot}: ignorado — aprovado_em fora de AAAA-MM-DD")
+        elif a["nct"] in validos:
+            avisos.append(f"{rot}: ignorado — segundo override para o mesmo NCT")
+        else:
+            validos[a["nct"]] = a
+    return validos, avisos
+
+
 def descobrir(publicados: set[str]) -> dict:
     """Busca no CT.gov e classifica em faixas. Determinístico, sem IA."""
     import br_curate
@@ -95,6 +137,8 @@ def descobrir(publicados: set[str]) -> dict:
 
     brutos = bd.buscar()
     recusados = br_curate.ja_descartados()
+    aprovados, avisos_aprovados = ler_aprovados()
+    overrides, vistos = [], {}
     faixas: dict[str, list] = {
         "recomendado": [], "rt_cirurgia": [], "aguardando_brasil": [],
         "revisar": [],
@@ -136,6 +180,16 @@ def descobrir(publicados: set[str]) -> dict:
         if item["teranostico"]:
             teranosticos.append(item)
 
+        # Override humano: só troca o propósito declarado, e só se o registro
+        # ainda disser exatamente o que a pessoa conferiu. As checagens de
+        # status no Brasil e extensão vêm ANTES e não são contornadas; escopo e
+        # tipo de intervenção vêm DEPOIS e continuam valendo.
+        ov = aprovados.get(e["nct"])
+        proposito_aprovado = bool(ov and proposito and proposito != "TREATMENT"
+                                  and ov["valor_registro"] == proposito)
+        if ov:
+            vistos[e["nct"]] = item
+
         if (rb["brazil_status"] == ct.BR_NOT_YET_RECRUITING
               or rb["overall_status"] == "NOT_YET_RECRUITING"):
             item["motivo"] = "ainda não abriu no Brasil — volta sozinho quando abrir"
@@ -150,30 +204,57 @@ def descobrir(publicados: set[str]) -> dict:
         elif EXTENSAO.search(e["titulo_breve"] + " " + e["titulo_oficial"]):
             item["motivo"] = "extensão/roll-over — só para quem já está em estudo-mãe"
             faixas["revisar"].append(item)
-        elif proposito and proposito != "TREATMENT":
+        elif proposito and proposito != "TREATMENT" and not proposito_aprovado:
             item["motivo"] = f"propósito declarado: {proposito}"
+            if ov:
+                item["motivo"] += (f" (override em {APROVADOS.name} não vale: anotado "
+                                   f"{ov['valor_registro']!r}, registro diz {proposito!r})")
             faixas["revisar"].append(item)
-        elif (termo := ESCOPO_NAO_ANTITUMORAL.search(
-                " ".join([e["titulo_breve"], e["titulo_oficial"], *e["condicoes"]]))):
-            item["motivo"] = (f"escopo: possível suporte/sintomático ('{termo.group(0)}') "
-                              "— objetivo antitumoral a confirmar")
-            faixas["revisar"].append(item)
-        elif not tipos & SISTEMICO:
-            item["motivo"] = "só radioterapia/procedimento"
-            faixas["rt_cirurgia"].append(item)
         else:
-            item["motivo"] = "tratamento sistêmico, recrutando no Brasil"
-            faixas["recomendado"].append(item)
-            e["brazil_status"] = rb["brazil_status"]   # vai para o card via _factual
-            achatados_recomendados.append(e)
+            if proposito_aprovado:
+                item["override"] = {k: ov[k] for k in CAMPOS_OVERRIDE}
+                e["override_proposito"] = item["override"]   # o curador vê a decisão
+                overrides.append(item)
+            if (termo := ESCOPO_NAO_ANTITUMORAL.search(
+                    " ".join([e["titulo_breve"], e["titulo_oficial"], *e["condicoes"]]))):
+                item["motivo"] = (f"escopo: possível suporte/sintomático ('{termo.group(0)}') "
+                                  "— objetivo antitumoral a confirmar")
+                faixas["revisar"].append(item)
+            elif not tipos & SISTEMICO:
+                item["motivo"] = "só radioterapia/procedimento"
+                faixas["rt_cirurgia"].append(item)
+            else:
+                item["motivo"] = "tratamento sistêmico, recrutando no Brasil"
+                faixas["recomendado"].append(item)
+                e["brazil_status"] = rb["brazil_status"]   # vai para o card via _factual
+                achatados_recomendados.append(e)
+            if proposito_aprovado:
+                item["motivo"] += (f" · override humano: propósito {proposito} → TREATMENT "
+                                   f"({APROVADOS.name}, {ov['aprovado_em']})")
 
     # Fase III primeiro, depois mais centros brasileiros: é a ordem em que a
     # curadoria rende mais para quem procura estudo para o paciente.
     peso = lambda x: (-("PHASE3" in x["fases"]), -x["centros_br_recrutando"])  # noqa: E731
     for v in faixas.values():
         v.sort(key=peso)
+    # Override registrado que não teve efeito nesta rodada — auditável também.
+    aplicados = {x["nct"] for x in overrides}
+    nao_aplicados = []
+    for nct, ov in aprovados.items():
+        if nct in aplicados:
+            continue
+        if nct in publicados:
+            por_que = "já publicado no Trial Matcher — override sem efeito"
+        elif nct in vistos:
+            por_que = vistos[nct].get("motivo", "não passou da triagem")
+        else:
+            por_que = "não veio na busca desta rodada"
+        nao_aplicados.append({"nct": nct, "tipo": ov["tipo"], "motivo": por_que})
     return {"total_ctgov": len(brutos), "faixas": faixas, "descartes": dict(descartes),
-            "teranosticos": teranosticos, "_achatados": achatados_recomendados}
+            "teranosticos": teranosticos,
+            "overrides": {"aplicados": overrides, "nao_aplicados": nao_aplicados,
+                          "avisos": avisos_aprovados},
+            "_achatados": achatados_recomendados}
 
 
 def gravar_discovery(desc: dict, publicados: set[str]) -> None:
@@ -293,6 +374,26 @@ def propor(auditoria: dict, com_centros: bool, com_curadoria: bool,
 
 # ── 5. relatório ──────────────────────────────────────────────────────────────
 
+def secao_overrides(desc: dict) -> list[str]:
+    """Seção do relatório com toda exceção humana: aplicada, sem efeito ou recusada."""
+    ov = desc.get("overrides") or {}
+    ap, nao, av = ov.get("aplicados", []), ov.get("nao_aplicados", []), ov.get("avisos", [])
+    link = lambda n: f"[{n}](https://clinicaltrials.gov/study/{n})"  # noqa: E731
+    md = [f"### Overrides humanos aplicados ({len(ap)}) — `{APROVADOS.name}`", "",
+          "Exceção registrada por uma pessoa contra um campo do registro. Só troca o "
+          "propósito declarado; status no Brasil, escopo, curadoria e QA continuam valendo.", ""]
+    md += _tab([[link(x["nct"]), x["acronimo"] or "—", x["override"]["tipo"],
+                 f"{x['override']['valor_registro']} → {x['override']['decisao']}",
+                 x["override"]["aprovado_em"], x["override"]["motivo"][:140]] for x in ap],
+               ["NCT", "acrônimo", "tipo", "registro → decisão", "aprovado em", "motivo"])
+    if nao:
+        md += ["Registrados, sem efeito nesta rodada:", ""]
+        md += [f"- {link(x['nct'])} ({x['tipo']}): {x['motivo']}" for x in nao] + [""]
+    if av:
+        md += ["Entradas recusadas no arquivo:", ""] + [f"- {a}" for a in av] + [""]
+    return md
+
+
 def _tab(linhas: list[list[str]], cab: list[str]) -> list[str]:
     if not linhas:
         return ["_nenhum_", ""]
@@ -327,7 +428,9 @@ def relatorio(aud: dict, desc: dict | None, aplicadas: dict, qa: dict,
         md += [f"- descoberta: **{len(f['recomendado'])}** recomendados para curadoria, "
                f"{sum(len(v) for v in f.values())} candidatos novos no total "
                f"({desc['total_ctgov']} estudos na busca); "
-               f"{len(desc.get('teranosticos', []))} marcados como teranósticos"]
+               f"{len(desc.get('teranosticos', []))} marcados como teranósticos; "
+               f"**{len((desc.get('overrides') or {}).get('aplicados', []))}** override(s) "
+               f"humano(s) aplicado(s)"]
     md += [f"- QA do banco proposto: **{'OK' if qa['ok'] else 'BLOQUEADO'}**", ""]
 
     md += ["## 1. Estudos cujo status mudou", ""]
@@ -398,6 +501,7 @@ def relatorio(aud: dict, desc: dict | None, aplicadas: dict, qa: dict,
                      x["brazil_status"], faixa_de.get(id(x), "descartado"),
                      x.get("motivo", "")] for x in ter],
                    ["NCT", "acrônimo", "título", "fase", "Brasil", "faixa", "motivo"])
+        md += secao_overrides(desc)
         md += ["## 5. Recomendados para inclusão", "",
                f"{len(f['recomendado'])} estudos: tratamento sistêmico, `RECRUITING` global, "
                "≥1 centro brasileiro `RECRUITING`, propósito TREATMENT, nunca recusados. "

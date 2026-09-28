@@ -467,6 +467,10 @@ def prompt(e: dict) -> str:
         f"{', '.join(e['cidades_br'])} [{', '.join(e['ufs_br'])}]",
         *(["Marcação do discovery: radiofármaco no título ou nas intervenções "
            "(ver regra 12 — confirme no texto abaixo)."] if e.get("teranostico") else []),
+        *([f"Decisão humana registrada (br_aprovados.json, {e['override_proposito']['aprovado_em']}): "
+           f"o registro declara propósito {e['override_proposito']['valor_registro']}, mas o "
+           "estudo foi conferido como TERAPÊUTICO — "
+           f"{e['override_proposito']['motivo']}"] if e.get("override_proposito") else []),
         "",
         "RESUMO OFICIAL:", e["resumo"] or "(sem resumo)", "",
         "BRAÇOS:",

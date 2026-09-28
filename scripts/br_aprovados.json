@@ -1,0 +1,18 @@
+{
+ "schema": "theratrials-br-aprovados/1",
+ "sobre": "Decisões humanas que contrariam um campo do registro do ClinicalTrials.gov. Único tipo aceito: 'primary_purpose' — o estudo caiu em revisão só porque o registro declara um propósito diferente de TREATMENT e uma pessoa conferiu que ele é terapêutico. A exceção vale só para o NCT listado e só enquanto o registro trouxer exatamente o valor em `valor_registro`; não contorna status no Brasil, escopo, tipo de intervenção, curadoria, schema nem QA. Lido por br_ciclo.py (ler_aprovados); ver br_PIPELINE.md.",
+ "aprovados": [
+  {
+   "nct": "NCT06855277",
+   "acronimo": "AcTFirst",
+   "tipo": "primary_purpose",
+   "campo_registro": "designModule.designInfo.primaryPurpose",
+   "valor_registro": "DIAGNOSTIC",
+   "decisao": "TREATMENT",
+   "motivo": "Fase III randomizada de tratamento: o objetivo declarado é a superioridade do [225Ac]Ac-PSMA-617 (AAA817) ± ARPI sobre o tratamento padrão em rPFS; desfecho primário rPFS, secundários OS/ORR/PSA; dois braços experimentais com AAA817 e comparador ativo; nenhum agente de imagem entre as intervenções — o PET PSMA é só da triagem. O DIAGNOSTIC é erro de preenchimento do patrocinador.",
+   "evidencia": "Registro conferido em 2026-09-28: officialTitle, briefSummary, detailedDescription, armGroups, primaryOutcomes, interventions.",
+   "aprovado_em": "2026-09-28",
+   "aprovado_por": "revisão humana (autor do TheraTrials)"
+  }
+ ]
+}
