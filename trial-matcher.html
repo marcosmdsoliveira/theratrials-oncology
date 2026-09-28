@@ -719,6 +719,14 @@
   Array.prototype.slice.call(document.getElementById('f-status').options).forEach(function(o) {
     if (o.value && !porStatus[o.value] && o.value !== STATUS_PADRAO) o.remove();
   });
+  // Sem nenhum card radioligante no banco, a opção sairia sempre vazia.
+  // Volta sozinha quando o primeiro card com modalidade 'radioligante' existir.
+  if (!(window.THERA_TRIALS_BR || []).some(function(t) {
+    return (t.modalidade || []).indexOf('radioligante') !== -1;
+  })) {
+    var optRLT = document.querySelector('#f-modality option[value="radioligante"]');
+    if (optRLT) optRLT.remove();
+  }
   function renderHeroStat() {
     var el = document.getElementById('tm-hero-stat');
     var total = (window.THERA_TRIALS_BR || []).length;
@@ -797,7 +805,10 @@
           var mods = (t.modalidade || []).join(' ').toLowerCase();
           var interv = (t.intervencao || '').toLowerCase();
           if (modality === 'radioligante') {
-            if (mods.indexOf('radio') === -1 && interv.indexOf('lu') === -1 && interv.indexOf('psma') === -1 && interv.indexOf('dotatate') === -1) return;
+            // Só a modalidade canônica do card. A regra antiga casava substring
+            // de texto livre: 'lu' pegava durvalumabe/nivolumabe e 'radio'
+            // pegaria radioterapia — 40 cards, nenhum radioligante.
+            if ((t.modalidade || []).indexOf('radioligante') === -1) return;
           } else if (modality === 'biespecifico') {
             if (mods.indexOf('bispec') === -1 && interv.indexOf('bispec') === -1) return;
           } else {
