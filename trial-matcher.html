@@ -1311,6 +1311,10 @@
   // Wait for data scripts to execute
   function initView() {
     checkDataLoaded();
+    // A métrica do topo é montada durante o parse, antes de o i18n.js trazer o
+    // en.js (carregado sob demanda, sem avisar a página). O `load` só dispara
+    // depois desse script injetado, então aqui ela sai no idioma certo.
+    renderHeroStat();
     document.getElementById('tm-results').style.display = '';
     // Estado inicial: mostra os ensaios recrutando no Brasil (filtro de status padrão)
     if (window.THERA_TRIALS_BR && window.THERA_TRIALS_BR.length > 0) runMatcher();
