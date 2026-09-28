@@ -57,9 +57,9 @@ window._i18nRegister('en', {
 
   /* ── Clinical trials (ensaios-clinicos.html) ── */
   ea: {
-    eyebrow: "Active recruitment · Brazil",
+    eyebrow: "Clinical trials in Brazil",
     title: "Clinical trials <span class=\"accent\">recruiting</span> now",
-    subtitle: "Curated database of <strong>non-theranostic</strong> oncology clinical trials with sites in Brazil — immunotherapy, targeted therapy, ADCs, chemotherapy, hormone therapy, surgery and radiotherapy. By default, only trials recruiting in Brazil are shown; other statuses are in the filter. Filter by neoplasm, modality, phase, biomarker, treatment line and location. For physicians, researchers and patients referred by specialists.",
+    subtitle: "Curated database of <strong>non-theranostic</strong> oncology clinical trials with sites in Brazil, covering immunotherapy, targeted therapy, ADCs, chemotherapy, hormone therapy, surgery and radiotherapy. Recruitment status in Brazil is checked periodically against public registries. Filter by neoplasm, modality, phase, biomarker, treatment line and location.",
     disclaimer: "<strong>Notice:</strong> this section is informational. Information is consolidated from public registries (ClinicalTrials.gov, REBEC, ANVISA) and official sponsor sources. <strong>Final eligibility always depends on assessment by the trial's responsible site</strong>. Dates, status and criteria may change — always confirm with the original source and the local team before any referral.",
     clearFilters: "Clear filters",
     fLocal: "Location (state)",
@@ -2287,8 +2287,8 @@ window._i18nRegister('en', {
   tm: {
     badge: "Clinical trials in Brazil",
     title: "Trial <span class=\"accent\">Matcher</span>",
-    subtitle: "Curated database of <strong>non-theranostic</strong> oncology clinical trials with sites in Brazil — immunotherapy, targeted therapy, ADCs, chemotherapy, hormone therapy, surgery and radiotherapy. By default, only trials recruiting in Brazil are shown; other statuses are in the filter. Filter by neoplasm, modality, phase, biomarker, treatment line and location. For physicians, researchers and patients referred by specialists.",
-    disclaimer: "<strong>Notice:</strong> this tool is informational. Information is consolidated from public registries (ClinicalTrials.gov, REBEC, ANVISA) and official sponsor sources. <strong>Final eligibility always depends on assessment by the site responsible for the study</strong>. Dates, status and criteria may change — always confirm with the original source and the local team before any referral.",
+    subtitle: "Curated database of <strong>non-theranostic</strong> oncology clinical trials with sites in Brazil, covering immunotherapy, targeted therapy, ADCs, chemotherapy, hormone therapy, surgery and radiotherapy. Recruitment status in Brazil is checked periodically against public registries. Filter by neoplasm, modality, phase, biomarker, treatment line and location.",
+    disclaimer: "<strong>Notice:</strong> this tool is informational. Data are consolidated from public registries and official sponsor sources and are checked periodically. <strong>Final eligibility depends on assessment by the site responsible for the study.</strong> Dates, status and criteria may change — always confirm with the local team before referral.",
     heroStat: "<strong>{rec} trials recruiting in Brazil</strong> · {total} studies mapped",
     fStatus: "Status in Brazil",
     fStatusRec: "Recruiting in Brazil",
@@ -2426,9 +2426,9 @@ window._i18nRegister('en', {
     expFeat4Desc: "Download the filtered table for use in spreadsheets and presentations.",
 
     /* Ensaios BR block */
-    eaBadge: "Active recruitment · Brazil",
-    eaTitle: "Open recruitment",
-    eaDesc: "Oncology clinical trials currently recruiting in Brazil. Belo Horizonte as the initial site — expanding. For physicians, researchers and patients referred by specialists.",
+    eaBadge: "Clinical trials in Brazil",
+    eaTitle: "Trial Matcher",
+    eaDesc: "Oncology clinical trials with sites in Brazil, with <strong style=\"color:#6EE7B7\">recruitment status checked periodically</strong> against public registries. Find studies by neoplasm, biomarker, treatment line, modality and location.",
     eaCta: "Open full list",
     eaDisclaimer: "Disclaimer:",
     eaDisclaimerText: "informational section. Final eligibility always depends on evaluation by the responsible study center.",

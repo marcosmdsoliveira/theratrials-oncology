@@ -57,9 +57,9 @@ window._i18nRegister('pt-br', {
 
   /* ── Ensaios clínicos (ensaios-clinicos.html) ── */
   ea: {
-    eyebrow: "Recrutamento ativo · Brasil",
+    eyebrow: "Ensaios clínicos no Brasil",
     title: "Ensaios clínicos <span class=\"accent\">recrutando</span> agora",
-    subtitle: "Banco selecionado de ensaios clínicos <strong>não teranósticos</strong> em oncologia com centros no Brasil — imunoterapia, terapia-alvo, ADCs, quimioterapia, hormonioterapia, cirurgia e radioterapia. Por padrão, mostra só os que estão recrutando no Brasil; os demais status ficam no filtro. Filtre por neoplasia, modalidade, fase, biomarcador, linha terapêutica e localidade. Para médicos, pesquisadores e pacientes encaminhados por especialistas.",
+    subtitle: "Banco selecionado de ensaios clínicos <strong>não teranósticos</strong> em oncologia com centros no Brasil. Reúne estudos de imunoterapia, terapia-alvo, ADCs, quimioterapia, hormonioterapia, cirurgia e radioterapia. O status de recrutamento no Brasil é verificado periodicamente a partir dos registros públicos. Filtre por neoplasia, modalidade, fase, biomarcador, linha terapêutica e localização.",
     disclaimer: "<strong>Aviso:</strong> esta seção é informativa. As informações são consolidadas a partir de registros públicos (ClinicalTrials.gov, REBEC, ANVISA) e fontes oficiais dos patrocinadores. <strong>A elegibilidade final depende sempre da avaliação do centro responsável pelo estudo</strong>. Datas, status e critérios podem mudar — sempre confirmar com a fonte original e a equipe local antes de qualquer encaminhamento.",
     clearFilters: "Limpar filtros",
     fLocal: "Localidade (UF)",
@@ -2287,8 +2287,8 @@ window._i18nRegister('pt-br', {
   tm: {
     badge: "Ensaios clínicos no Brasil",
     title: "Trial <span class=\"accent\">Matcher</span>",
-    subtitle: "Banco selecionado de ensaios clínicos <strong>não teranósticos</strong> em oncologia com centros no Brasil — imunoterapia, terapia-alvo, ADCs, quimioterapia, hormonioterapia, cirurgia e radioterapia. Por padrão, mostra só os que estão recrutando no Brasil; os demais status ficam no filtro. Filtre por neoplasia, modalidade, fase, biomarcador, linha terapêutica e localidade. Para médicos, pesquisadores e pacientes encaminhados por especialistas.",
-    disclaimer: "<strong>Aviso:</strong> esta ferramenta é informativa. As informações são consolidadas a partir de registros públicos (ClinicalTrials.gov, REBEC, ANVISA) e fontes oficiais dos patrocinadores. <strong>A elegibilidade final depende sempre da avaliação do centro responsável pelo estudo</strong>. Datas, status e critérios podem mudar — sempre confirmar com a fonte original e a equipe local antes de qualquer encaminhamento.",
+    subtitle: "Banco selecionado de ensaios clínicos <strong>não teranósticos</strong> em oncologia com centros no Brasil. Reúne estudos de imunoterapia, terapia-alvo, ADCs, quimioterapia, hormonioterapia, cirurgia e radioterapia. O status de recrutamento no Brasil é verificado periodicamente a partir dos registros públicos. Filtre por neoplasia, modalidade, fase, biomarcador, linha terapêutica e localização.",
+    disclaimer: "<strong>Aviso:</strong> esta ferramenta é informativa. Os dados são consolidados a partir de registros públicos e fontes oficiais dos patrocinadores e são verificados periodicamente. <strong>A elegibilidade final depende da avaliação do centro responsável pelo estudo.</strong> Datas, status e critérios podem mudar — confirme sempre com a equipe local antes do encaminhamento.",
     heroStat: "<strong>{rec} ensaios recrutando no Brasil</strong> · {total} estudos mapeados",
     fStatus: "Status no Brasil",
     fStatusRec: "Recrutando no Brasil",
@@ -2426,9 +2426,9 @@ window._i18nRegister('pt-br', {
     expFeat4Desc: "Baixe a tabela filtrada para uso em planilhas e apresentações.",
 
     /* Ensaios BR block */
-    eaBadge: "Recrutamento ativo · Brasil",
-    eaTitle: "Recrutamento aberto",
-    eaDesc: "Ensaios clínicos em oncologia recrutando agora no Brasil. Belo Horizonte como localidade inicial — em expansão. Para médicos, pesquisadores e pacientes encaminhados por especialistas.",
+    eaBadge: "Ensaios clínicos no Brasil",
+    eaTitle: "Trial Matcher",
+    eaDesc: "Ensaios clínicos em oncologia com centros no Brasil, com <strong style=\"color:#6EE7B7\">status de recrutamento verificado periodicamente</strong> a partir dos registros públicos. Encontre estudos por neoplasia, biomarcador, linha terapêutica, modalidade e localização.",
     eaCta: "Abrir lista completa",
     eaDisclaimer: "Aviso:",
     eaDisclaimerText: "seção informativa. A elegibilidade final depende sempre da avaliação do centro responsável pelo estudo.",
