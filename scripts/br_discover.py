@@ -213,9 +213,34 @@ def http_json(url: str, tentativas: int = 4) -> dict:
     raise RuntimeError("inalcançável")
 
 
-def buscar() -> list[dict]:
-    """Todos os intervencionais oncológicos com centro no Brasil, recrutando."""
-    estudos, token, pagina = [], None, 0
+class PaginacaoIncompleta(RuntimeError):
+    """O total coletado não bate com o totalCount da API."""
+
+
+def buscar(tentativas: int = 2) -> list[dict]:
+    """Todos os intervencionais oncológicos com centro no Brasil, recrutando.
+
+    Confere o coletado contra o totalCount que a API informa na 1ª página.
+    Paginação cortada não dá erro HTTP — só devolve menos. Divergência repete
+    a varredura inteira uma vez (o token não é reaproveitável com segurança);
+    persistindo, aborta: melhor falhar que relatar candidatos a menos.
+    """
+    for n in range(tentativas):
+        estudos, total = _varrer()
+        unicos = {(s.get("protocolSection", {}).get("identificationModule", {})
+                   .get("nctId")) for s in estudos}
+        if total is not None and len(estudos) == total and len(unicos) == total:
+            return estudos
+        msg = (f"coletados {len(estudos)} ({len(unicos)} únicos), "
+               f"a API informou totalCount={total}")
+        if n < tentativas - 1:
+            print(f"[discover] {msg} — repetindo a varredura", file=sys.stderr)
+            time.sleep(5)
+    raise PaginacaoIncompleta(msg)
+
+
+def _varrer() -> tuple[list[dict], int | None]:
+    estudos, token, pagina, total = [], None, 0, None
     while True:
         params = {
             "query.cond": CONDICAO,
@@ -232,14 +257,15 @@ def buscar() -> list[dict]:
         lote = d.get("studies", [])
         estudos.extend(lote)
         pagina += 1
-        total = d.get("totalCount")
+        if pagina == 1:
+            total = d.get("totalCount")  # só vem na 1ª página
         print(f"[discover] página {pagina}: +{len(lote)} (acumulado {len(estudos)}"
-              f"{f'/{total}' if total else ''})", file=sys.stderr)
+              f"{f'/{total}' if total is not None else ''})", file=sys.stderr)
         token = d.get("nextPageToken")
         if not token:
             break
         time.sleep(0.5)
-    return estudos
+    return estudos, total
 
 
 def achatar(s: dict) -> dict:

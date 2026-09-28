@@ -79,3 +79,6 @@ _*.mjs.tmp
 
 # Saídas do ciclo do Trial Matcher (br_ciclo.py): relatório e banco proposto
 scripts/_br_*
+# Histórico da auditoria: passa entre runs do Actions como artifact, nunca pelo git
+scripts/br_estado.json
+scripts/br_eventos.jsonl

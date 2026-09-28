@@ -80,7 +80,7 @@ def auditar(trials: list[dict], anterior: dict) -> dict:
                  "status_card": t.get("status", ""), "revisao": [], "alertas": []}
         if p is None:
             linha["brazil_status"] = ct.REVIEW_REQUIRED
-            linha["revisao"].append("NCT não voltou da API (removido ou fora do ar?)")
+            linha["revisao"].append("NCT ausente do registro (404 na consulta individual) — retirado ou renumerado?")
             estudos.append(linha)
             continue
 

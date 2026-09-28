@@ -29,6 +29,11 @@ Uso:
     python3 scripts/br_ciclo.py --centros          # propõe também os centros
     python3 scripts/br_ciclo.py --com-curadoria    # inclui _br_curated.json
     python3 scripts/br_ciclo.py --gravar-estado    # atualiza br_estado.json
+
+Saída: 0 = QA OK · 3 = QA bloqueou (relatório gerado, motivo na seção 7) ·
+qualquer outro código = falha técnica (API, rede, resposta parcial): não há
+relatório confiável e o estado anterior não é tocado. O workflow distingue os
+dois casos por este código.
 """
 from __future__ import annotations
 
@@ -45,6 +50,10 @@ import br_auditar  # noqa: E402
 import br_ctgov as ct  # noqa: E402
 
 SCRIPTS = Path(__file__).resolve().parent
+# Código de saída de QA bloqueado. Diferente de 1, que é o de exceção não
+# tratada do Python — assim o workflow separa QA de falha técnica.
+QA_BLOQUEADO = 3
+
 PROPOSTO = SCRIPTS / "_br_proposto" / "trials_br.js"
 RELATORIO_MD = SCRIPTS / "_br_relatorio.md"
 RELATORIO_JSON = SCRIPTS / "_br_relatorio.json"
@@ -466,7 +475,7 @@ def main() -> int:
     print(f"QA: {'OK' if qa['ok'] else 'BLOQUEADO'}")
     print(f"relatório: {RELATORIO_MD.relative_to(ct.SITE)}")
     print(f"proposto:  {PROPOSTO.relative_to(ct.SITE)}")
-    return 0 if qa["ok"] else 1
+    return 0 if qa["ok"] else QA_BLOQUEADO
 
 
 if __name__ == "__main__":

@@ -68,24 +68,45 @@ jobs:
           done
           echo "::notice title=Sem histórico::Nenhuma run anterior com estado — esta será a primeira rodada."
 
-      # QA bloqueado sai com código 1. O passo não derruba o job antes do
-      # upload: o relatório de um QA bloqueado é justamente o que se quer ler.
+      # Códigos do br_ciclo.py: 0 = QA OK · 3 = QA bloqueou (há relatório) ·
+      # outro = falha técnica (API fora, timeout, resposta parcial: não há
+      # relatório confiável). O passo não derruba o job antes dos uploads; a
+      # decisão fica nos dois últimos passos, que leem `rc`. Se o passo for
+      # morto (timeout do job), `rc` fica vazio e conta como falha técnica.
       - name: Ciclo (auditoria, descoberta, proposto, QA, relatório)
         id: ciclo
         continue-on-error: true
         run: |
           ARGS=""
           [ "${{ github.event.inputs.centros }}" = "true" ] && ARGS="--centros"
+          set +e
           python3 scripts/br_ciclo.py --gravar-estado $ARGS
+          RC=$?
+          echo "rc=$RC" >> "$GITHUB_OUTPUT"
+          exit $RC
 
       - name: Publicar o relatório no resumo do run
         if: always()
+        env:
+          RC: ${{ steps.ciclo.outputs.rc }}
         run: |
-          [ -f scripts/_br_relatorio.md ] && cat scripts/_br_relatorio.md >> "$GITHUB_STEP_SUMMARY" \
-            || echo "relatório não foi gerado — veja o log do passo anterior" >> "$GITHUB_STEP_SUMMARY"
+          if [ "$RC" = "0" ] || [ "$RC" = "3" ]; then
+            cat scripts/_br_relatorio.md >> "$GITHUB_STEP_SUMMARY"
+          else
+            {
+              echo "# ⛔ Falha técnica — veja o log"
+              echo
+              echo "O ciclo parou antes de concluir (código \`${RC:-sem código}\`): API do"
+              echo "ClinicalTrials.gov fora do ar, timeout ou resposta parcial. **Nenhum"
+              echo "relatório foi gerado** e o histórico da run anterior foi mantido."
+              echo "O erro está no log do passo \"Ciclo\"."
+            } >> "$GITHUB_STEP_SUMMARY"
+          fi
 
+      # Só com o ciclo concluído (QA OK ou bloqueado). Em falha técnica, o
+      # que houver em disco é parcial e não sobe, para não parecer resultado.
       - name: Guardar relatório e banco proposto
-        if: always()
+        if: always() && (steps.ciclo.outputs.rc == '0' || steps.ciclo.outputs.rc == '3')
         uses: actions/upload-artifact@v4
         with:
           name: trials-br-relatorio-${{ github.run_id }}
@@ -95,9 +116,11 @@ jobs:
             scripts/_br_relatorio.json
             scripts/_br_proposto/trials_br.js
             scripts/_br_discovery.json
-          if-no-files-found: warn
+          if-no-files-found: error
 
-      # Em nome fixo para a run seguinte achar. Nunca vai para o git.
+      # Em nome fixo para a run seguinte achar. Nunca vai para o git. Em falha
+      # técnica o ciclo não grava estado, então sobe de novo o que foi
+      # restaurado — a corrente não quebra.
       - name: Guardar o estado para a próxima run
         if: always()
         uses: actions/upload-artifact@v4
@@ -110,7 +133,13 @@ jobs:
           if-no-files-found: ignore
 
       - name: Falhar se o QA bloqueou
-        if: steps.ciclo.outcome == 'failure'
+        if: steps.ciclo.outputs.rc == '3'
         run: |
           echo "::error title=QA bloqueou o banco proposto::Veja a seção 7 do relatório."
+          exit 1
+
+      - name: Falhar em falha técnica
+        if: always() && steps.ciclo.outputs.rc != '0' && steps.ciclo.outputs.rc != '3'
+        run: |
+          echo "::error title=Falha técnica — veja o log::O ciclo não concluiu (código '${{ steps.ciclo.outputs.rc }}'). Nenhum relatório foi gerado; o histórico anterior foi mantido."
           exit 1

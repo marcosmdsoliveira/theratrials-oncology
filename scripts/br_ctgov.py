@@ -21,6 +21,7 @@ import json
 import subprocess
 import sys
 import time
+import urllib.error
 import urllib.parse
 import urllib.request
 from pathlib import Path
@@ -93,6 +94,9 @@ def http_json(url: str, tentativas: int = 4) -> dict:
                                         timeout=60) as r:
                 return json.loads(r.read().decode("utf-8"))
         except Exception as e:  # noqa: BLE001 — repetir em qualquer falha de rede
+            # 4xx (menos 429) não melhora com nova tentativa: 404 é resposta.
+            if isinstance(e, urllib.error.HTTPError) and 400 <= e.code < 500 and e.code != 429:
+                raise
             if n == tentativas - 1:
                 raise
             espera = 2 ** n
@@ -101,22 +105,73 @@ def http_json(url: str, tentativas: int = 4) -> dict:
     raise RuntimeError("inalcançável")
 
 
+class RespostaParcial(RuntimeError):
+    """A API respondeu 200, mas sem parte do que foi pedido. Falha técnica:
+    seguir adiante transformaria estudos em REVIEW_REQUIRED por engano."""
+
+
+def _lote(parte: list[str], lote: int) -> dict[str, dict]:
+    q = urllib.parse.urlencode({
+        "filter.ids": "|".join(parte),
+        "fields": CAMPOS_AUDITORIA,
+        "pageSize": str(lote * 2),
+    })
+    out = {}
+    for s in http_json(f"{API}?{q}").get("studies", []):
+        p = s.get("protocolSection", {})
+        nct = p.get("identificationModule", {}).get("nctId", "")
+        if nct in parte:
+            out[nct] = p
+    return out
+
+
+def _um(nct: str) -> dict | None:
+    """Consulta individual. None só se a API disser 404 — ausência confirmada."""
+    try:
+        d = http_json(f"{API}/{nct}?{urllib.parse.urlencode({'fields': CAMPOS_AUDITORIA})}")
+    except urllib.error.HTTPError as e:
+        if e.code == 404:
+            return None
+        raise
+    if not d.get("protocolSection"):
+        raise RespostaParcial(f"{nct}: consulta individual respondeu 200 sem o registro")
+    return d["protocolSection"]
+
+
 def buscar_por_ids(ncts: list[str], lote: int = 50) -> dict[str, dict]:
-    """protocolSection de cada NCT. NCT que não voltar não entra no dicionário."""
+    """protocolSection de cada NCT.
+
+    No lote, a API omite em silêncio o NCT que não acha — e omite igual quando
+    responde pela metade. Então: lote incompleto é repetido uma vez; se ainda
+    faltar mais de um NCT, é resposta parcial e o ciclo aborta. Um único
+    ausente é consultado sozinho: 404 confirma que saiu do registro (fica fora
+    do dicionário e o auditor manda para revisão); qualquer outra coisa aborta.
+    """
     out: dict[str, dict] = {}
     for i in range(0, len(ncts), lote):
         parte = ncts[i:i + lote]
-        q = urllib.parse.urlencode({
-            "filter.ids": "|".join(parte),
-            "fields": CAMPOS_AUDITORIA,
-            "pageSize": str(lote * 2),
-        })
-        d = http_json(f"{API}?{q}")
-        for s in d.get("studies", []):
-            p = s.get("protocolSection", {})
-            nct = p.get("identificationModule", {}).get("nctId", "")
-            if nct:
-                out[nct] = p
+        achados = _lote(parte, lote)
+        faltam = [n for n in parte if n not in achados]
+        if faltam:
+            print(f"[ctgov] lote {i // lote + 1}: {len(faltam)} de {len(parte)} não voltaram "
+                  f"— nova tentativa", file=sys.stderr)
+            time.sleep(3)
+            achados.update(_lote(faltam, lote))
+            faltam = [n for n in parte if n not in achados]
+        if len(faltam) > 1:
+            raise RespostaParcial(
+                f"lote {i // lote + 1}: {len(faltam)} de {len(parte)} NCTs não voltaram da API "
+                f"mesmo após nova tentativa ({', '.join(faltam[:5])}{'…' if len(faltam) > 5 else ''})")
+        for nct in faltam:
+            p = _um(nct)
+            if p is None:
+                print(f"[ctgov] {nct}: 404 na consulta individual — ausente do registro",
+                      file=sys.stderr)
+            elif p.get("identificationModule", {}).get("nctId") == nct:
+                achados[nct] = p
+            else:
+                raise RespostaParcial(f"{nct}: consulta individual devolveu registro inesperado")
+        out.update(achados)
         print(f"[ctgov] {min(i + lote, len(ncts))}/{len(ncts)}", file=sys.stderr)
         time.sleep(0.4)
     return out

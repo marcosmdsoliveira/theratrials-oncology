@@ -175,8 +175,20 @@ compara também com a rodada anterior.
 - Status só é proposto quando há tradução exata no vocabulário atual.
   `REVIEW_REQUIRED` vai para revisão manual; `CLOSED_IN_BRAZIL` fica como
   decisão pendente.
+- Resposta parcial da API é falha técnica, não revisão. Quando um lote da
+  auditoria volta incompleto, ele é repetido uma vez. Se ainda faltar mais
+  de um NCT, o ciclo aborta. Um único ausente é consultado sozinho, e só o
+  404 confirma que ele saiu do registro, indo para revisão manual. A
+  descoberta confere o total coletado com o `totalCount` da API: repete a
+  varredura uma vez e, se ainda divergir, aborta. Um estudo omitido pela API
+  viraria `REVIEW_REQUIRED` e sumiria do filtro padrão, e o relatório diria
+  "QA OK".
+- Códigos de saída do `br_ciclo.py`: 0 = QA OK; 3 = QA bloqueou (com
+  relatório); qualquer outro = falha técnica (sem relatório, e o estado da
+  run anterior não é tocado).
 - O workflow `trials-br-auditoria.yml` roda toda segunda às 09:17 UTC, tem
-  permissão só de leitura e não usa secret.
+  permissão só de leitura e não usa secret. Separa "Falha técnica — veja o
+  log" de "QA bloqueou" pelo código de saída.
 - Pipeline único: os workflows mensais antigos (`trials-br-descobrir` e
   `trials-br-publicar`) ficaram em `.github/workflows-legado/`, onde o GitHub
   não os executa. O modo Batch do `br_curate.py` é legado.
