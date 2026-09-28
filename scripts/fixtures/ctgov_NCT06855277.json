@@ -1,0 +1,1894 @@
+{
+ "protocolSection": {
+  "identificationModule": {
+   "nctId": "NCT06855277",
+   "orgStudyIdInfo": {
+    "id": "CAAA817B12301"
+   },
+   "secondaryIdInfos": [
+    {
+     "id": "2024-512340-32",
+     "type": "REGISTRY",
+     "domain": "EU CTIS"
+    }
+   ],
+   "organization": {
+    "fullName": "Novartis",
+    "class": "INDUSTRY"
+   },
+   "briefTitle": "Study Comparing AAA817+ARPI Versus Standard of Care in Adult Participants With PSMA-positive mCRPC",
+   "officialTitle": "A Phase III, Open-label, Multi-center, Randomized Study Comparing AAA817+ARPI Versus Standard of Care in Adult Participants With PSMA-positive Metastatic Castration Resistant Prostate Cancer",
+   "acronym": "AcTFirst"
+  },
+  "statusModule": {
+   "statusVerifiedDate": "2026-09",
+   "overallStatus": "RECRUITING",
+   "startDateStruct": {
+    "date": "2025-07-01",
+    "type": "ACTUAL"
+   },
+   "primaryCompletionDateStruct": {
+    "date": "2028-09-29",
+    "type": "ESTIMATED"
+   },
+   "completionDateStruct": {
+    "date": "2032-11-04",
+    "type": "ESTIMATED"
+   },
+   "studyFirstSubmitDate": "2025-02-18",
+   "studyFirstSubmitQcDate": "2025-02-26",
+   "studyFirstPostDateStruct": {
+    "date": "2025-03-03",
+    "type": "ACTUAL"
+   },
+   "lastUpdateSubmitDate": "2026-09-19",
+   "lastUpdatePostDateStruct": {
+    "date": "2026-09-22",
+    "type": "ACTUAL"
+   }
+  },
+  "sponsorCollaboratorsModule": {
+   "responsibleParty": {
+    "type": "SPONSOR"
+   },
+   "leadSponsor": {
+    "name": "Novartis Pharmaceuticals",
+    "class": "INDUSTRY"
+   }
+  },
+  "descriptionModule": {
+   "briefSummary": "The purpose of this study is to determine whether \\[225Ac\\]Ac-PSMA-617 (AAA817), given for up to 6 cycles at a dose of 10 Megabecquerel (MBq) +/- 10%, plus androgen receptor pathway inhibitor (ARPI), improves the radiographic progression free survival (rPFS) compared to investigator's choice of standard of care (SOC) (ARPI change or taxane-based chemotherapy or \\[177Lu\\]Lu-PSMA-617 (AAA617)) in adult participants with PSMA-positive metastatic castration resistant prostate cancer (mCRPC) treated with another ARPI as last treatment and who have not been exposed to a taxane-containing chemotherapy in the mCRPC setting nor have received any prior PSMA-targeting radioligand therapy.",
+   "detailedDescription": "This is a phase III, open label, multicenter randomized study. The study aims at evaluating the superiority of 225Ac-PSMA-617 combined with androgen receptor pathway inhibitor (ARPI) over a change of ARPI or chemotherapy or \\[177Lu\\]Lu-PSMA-617 (AAA617) in prolonging progression free survival (rPFS).\n\nScreening period: At screening, the participants will be assessed for eligibility and will undergo a positron emission tomography (PET)/computed tomography (CT) scan to evaluate PSMA positivity. Only participants with PSMA positive cancer and confirmed eligibility criteria will be randomized.\n\nParticipants randomized to the investigational arms will receive up to 6 doses of AAA817 10 Mbq +/- 10% given intravenously with or without an ARPI (oral enzalutamide or oral abiraterone) per investigator's choice. Treatment with ARPI should continue as per protocol end of treatment criteria.\n\nParticipants randomized to SoC will be treated with an ARPI change (oral enzalutamide or oral abiraterone) or taxane-based chemotherapy (docetaxel or cabazitaxel) or \\[177Lu\\]Lu-PSMA-617 (AAA617)' per investigator's choice. Treatment with ARPI should continue as per protocol end of treatment criteria. Treatment duration with taxane-based chemotherapy or AAA617will depend on the chosen regimen per the investigator's discretion following local guidelines as per standard of care and product labels and adhere to the protocol end of treatment criteria.\n\nSupportive care will be allowed in both arms at the discretion of the investigator and includes available care for the eligible participant according to best institutional practice for mCRPC treatment, including androgen deprivation therapy (ADT).\n\nSafety will be assessed routinely during the study. Crossover is not allowed among study arms.\n\nThe study will be conducted in the USA among other countries globally."
+  },
+  "conditionsModule": {
+   "conditions": [
+    "Prostate Cancer"
+   ],
+   "keywords": [
+    "Positive Metastatic Castration Resistant Prostate Cancer",
+    "PSMA",
+    "PSMA-positive",
+    "AAA817",
+    "[225AC] AC-PSMA-617",
+    "Radioligand Therapy",
+    "RLT",
+    "Androgen receptor pathway inhibitor",
+    "ARPI",
+    "Taxane",
+    "Metastatic castration resistant prostate cancer",
+    "mCRPC",
+    "AcTFirst",
+    "[177Lu]Lu- PSMA-617",
+    "AAA617"
+   ]
+  },
+  "designModule": {
+   "studyType": "INTERVENTIONAL",
+   "phases": [
+    "PHASE3"
+   ],
+   "designInfo": {
+    "allocation": "RANDOMIZED",
+    "interventionModel": "PARALLEL",
+    "primaryPurpose": "DIAGNOSTIC",
+    "maskingInfo": {
+     "masking": "NONE"
+    }
+   },
+   "enrollmentInfo": {
+    "count": 940,
+    "type": "ESTIMATED"
+   }
+  },
+  "armsInterventionsModule": {
+   "armGroups": [
+    {
+     "label": "Investigational Arm: AAA817+ARPI (enzalutamide or abiraterone)",
+     "type": "EXPERIMENTAL",
+     "description": "Participants will receive AAA817 infusion directly into a vein with ARPIs.",
+     "interventionNames": [
+      "Drug: AAA817",
+      "Drug: ARPI"
+     ]
+    },
+    {
+     "label": "Investigational Arm: AAA817",
+     "type": "EXPERIMENTAL",
+     "description": "Participants will receive AAA817 infusion directly into a vein.",
+     "interventionNames": [
+      "Drug: AAA817"
+     ]
+    },
+    {
+     "label": "Control arm: Investigator's choice of SoC (ARPI or chemotherapy or AAA617)",
+     "type": "ACTIVE_COMPARATOR",
+     "description": "Participants will receive standard treatment as decided by the trial doctor either as a taxane-based chemotherapy infusion directly into a vein or ARPI change either as capsules or tablets or AAA617 monotherapy infusion directly into a vein.",
+     "interventionNames": [
+      "Drug: ARPI",
+      "Drug: Standard of Care"
+     ]
+    }
+   ],
+   "interventions": [
+    {
+     "type": "DRUG",
+     "name": "AAA817",
+     "description": "AAA817 is being studied for treating PSMA positive mCRPC. Inside the body, it attaches itself to PSMA on the cell surface of the prostate cancer cells and emits radiation to kill them. This treatment is also called a radioligand therapy.",
+     "armGroupLabels": [
+      "Investigational Arm: AAA817",
+      "Investigational Arm: AAA817+ARPI (enzalutamide or abiraterone)"
+     ],
+     "otherNames": [
+      "[225Ac]Ac-PSMA-617"
+     ]
+    },
+    {
+     "type": "DRUG",
+     "name": "ARPI",
+     "description": "Androgen receptor pathway inhibitor (ARPI): An ARPI is approved for the treatment of prostate cancer. It works by blocking signals from male hormones, such as testosterone, that helps cancer cells grow. By blocking these signals, an ARPI slows down or stops the growth of prostate cancer cells. In this trial, participants will be given either enzalutamide or abiraterone.",
+     "armGroupLabels": [
+      "Control arm: Investigator's choice of SoC (ARPI or chemotherapy or AAA617)",
+      "Investigational Arm: AAA817+ARPI (enzalutamide or abiraterone)"
+     ],
+     "otherNames": [
+      "Enzalutamide or Abiraterone"
+     ]
+    },
+    {
+     "type": "DRUG",
+     "name": "Standard of Care",
+     "description": "Standard treatment includes approved treatment for mCRPC. In this trial, the trial doctor will decide which available treatment participants will receive. The trial doctor will select either an ARPI of enzalutamide or abiraterone, or a taxane based chemotherapy of docetaxel or cabazitaxel or \\[177Lu\\]Lu-PSMA-617 (AAA617).",
+     "armGroupLabels": [
+      "Control arm: Investigator's choice of SoC (ARPI or chemotherapy or AAA617)"
+     ],
+     "otherNames": [
+      "ARPI enzalutamide",
+      "ARPI abiraterone",
+      "Taxane based chemotherapy of docetaxel",
+      "Taxane based chemotherapy of cabazitaxel",
+      "[177Lu]Lu-PSMA-617 (AAA617)"
+     ]
+    }
+   ]
+  },
+  "outcomesModule": {
+   "primaryOutcomes": [
+    {
+     "measure": "Radiographic Progression Free Survival (rPFS)",
+     "description": "Time to radiographic disease progression or death due to any cause.",
+     "timeFrame": "From the date of randomization to the date of the first documented radiographic disease progression using conventional imaging, or death due to any cause, whichever occurs first, assessed up to approximately 40.0 months."
+    }
+   ],
+   "secondaryOutcomes": [
+    {
+     "measure": "Overall Survival (OS) (Key Secondary Endpoint)",
+     "description": "Time to death due to any cause.",
+     "timeFrame": "From the date of randomization to the date of death due to any cause, assessed up to approximately 40 months."
+    },
+    {
+     "measure": "Radiographic Progression Free Survival by by Prostate Cancer Working Group 3 (PCWG3)-modified RECIST v1.1 (Key Secondary)",
+     "description": "Time to radiographic disease progression, using by blinded independent central review (BICR) using conventional imaging and Prostate Cancer Working Group 3 (PCWG3)-modified RECIST v1.1 criteria or death due to any cause.",
+     "timeFrame": "From date of randomization to the date of the first documented radiographic disease progression or death due to any cause, whichever occurs first, assessed up to approximately 40.0 months."
+    },
+    {
+     "measure": "Overall Survival in participants with PSMA-positive mCRPC treated with another ARPI. (Key Secondary)",
+     "description": "Time to death due to any cause.",
+     "timeFrame": "From the date of randomization to the date of death due to any cause."
+    },
+    {
+     "measure": "rPFS in participants treated with AAA817",
+     "description": "rPFS time to the date of first documented radiographic disease progression or death due to any cause, whichever occurs first.",
+     "timeFrame": "From the date of randomization to the date of the first documented radiographic disease progression, or death due to any cause, whichever occurs first, assessed up to approximately 40.0 months."
+    },
+    {
+     "measure": "Progression Free Survival (PFS)",
+     "description": "Time to first documented progression or death due to any cause.",
+     "timeFrame": "From date of randomization to the first documented progression by investigator's assessment or death due to any cause, whichever occurs first, assessed up to approximately 40.0 months."
+    },
+    {
+     "measure": "Progression Free Survival (PFS2)",
+     "description": "Time to first documented progression on next line of antineoplastic therapy or death from any cause.",
+     "timeFrame": "From date of randomization until date of second progression or date of death from any cause, whichever comes first, assessed up to approximately 40.0 months."
+    },
+    {
+     "measure": "Overall Response Rate (ORR)",
+     "description": "The proportion of participants with best overall response (BOR) of confirmed complete response (CR) or partial response (PR) in soft tissue.",
+     "timeFrame": "From the date of randomization to the date of the first documented radiographic disease progression, or death due to any cause, whichever occurs first, assessed up to approximately 40.0 months."
+    },
+    {
+     "measure": "Disease Control Rate (DCR)",
+     "description": "The proportion of participants with BOR of confirmed CR, PR, stable disease (SD) or non-CR/non-progressive disease (PD) in soft tissue.",
+     "timeFrame": "From the date of randomization to the date of the first documented radiographic disease progression or death due to any cause, whichever occurs first, assessed up to approximately 40.0 months."
+    },
+    {
+     "measure": "Duration of Response (DoR)",
+     "description": "Time between the date of first documented response and the date of first documented radiographic progression or death due to any cause.",
+     "timeFrame": "From the date of first documented response (CR or PR) for confirmed responders and the date of first documented radiographic progression in soft tissue or death due to any cause, whichever occurs first, assessed up to approximately 40.0 months."
+    },
+    {
+     "measure": "Time to first radiographic soft tissue progression (TTSTP)",
+     "description": "Time to radiographic soft tissue progression.",
+     "timeFrame": "From the date of randomization to the date of radiographic soft tissue progression or death due to any cause, whichever occurs first, assessed up to approximately 40.0 months."
+    },
+    {
+     "measure": "Time to first symptomatic skeletal event (TTSSE)",
+     "description": "Time to date of first new symptomatic skeletal event of death due to any cause.",
+     "timeFrame": "From the date of randomization to the date of the first documented radiographic disease progression, or death due to any cause, whichever occurs first, assessed up to approximately 40.0 months."
+    },
+    {
+     "measure": "Prostate specific antigen response (PSA50 and PSA90)",
+     "description": "The percentage of participants who achieved ≥ 50% and ≥ 90% decrease from baseline, respectively.",
+     "timeFrame": "From the date of randomization to the date of safety follow up, assessed up to approximately 40.0 months."
+    },
+    {
+     "measure": "Time-concentration profiles and PK parameters of AAA817",
+     "description": "Time-concentration profiles and PK parameters of AAA817 (e.g. AUC, Cmax).",
+     "timeFrame": "From Cycle 1 Day 1 up to approximately cycle 5 days 11 (each cycle is 8 weeks)."
+    },
+    {
+     "measure": "Change from baseline on FACT-P Prostate Cancer Subscale (PCS)",
+     "description": "Change from baseline on FACT-P Prostate Cancer Subscale (PCS). FACT-P assesses symptoms/problems related to prostate carcinoma and its treatment.",
+     "timeFrame": "From randomization to the first occurrence of worsening on the score or death due to any cause, whichever occurs first, assessed up to approximately 40.0 months."
+    },
+    {
+     "measure": "Time to worsening on the Worst Pain",
+     "description": "Time to worsening on the Worst Pain is defined as the time from randomization to the first occurrence of worsening on the Worst Pain item (BPI-SF) or death due to any cause, whichever occurs first.",
+     "timeFrame": "From randomization to the first occurrence of worsening from baseline, or death due to any cause, whichever occurs first, assessed up to approximately 40.0 months."
+    }
+   ]
+  },
+  "eligibilityModule": {
+   "eligibilityCriteria": "Key Inclusion Criteria:\n\n* Signed informed consent must be obtained prior to participation in the study.\n* Participants must be adults ≥ 18 years of age.\n* Participants must have an ECOG performance status of 0 to 2.\n* Participants must have histological, and/or cytological confirmation of adenocarcinoma of the prostate. Participants with mixed histology (neuroendocrine) are not eligible.\n* Participants who have received taxane-based chemotherapy in mHSPC setting are eligible if they are deemed appropriate for chemotherapy, ARPI change or AAA617 as the next line of therapy in the opinion of the Investigator. Note: Participants who have received taxane-based chemotherapy for mCRPC are excluded.\n* Participants must not have received taxane-based chemotherapy in mCRPC setting (allowed in mHSPC setting).\n* Participants must have PSMA-PET positive disease using a PSMA imaging agent that is approved as per protocol.\n* Participant must have been diagnosed with mCRPC with documented progressive disease while on treatment with ARPI in mHSPC or earlier setting as their last treatment (and did not progress on more than one ARPI).\n\n  * Participants with deleterious or suspected deleterious germline or somatic homologous recombination repair (HRR) gene-mutated metastatic castration-resistant prostate cancer, as per local testing, may be enrolled if they had prior exposure to PARPi.\n\nKey Exclusion Criteria:\n\n* Previous anti-cancer treatment with any approved or investigational radiopharmaceuticals (for example, \\[177Lu\\]Lu-PSMA, \\[177Lu\\]-DOTA, or Radium- 223.)\n* Previous treatment with any external beam radiotherapy including hemi-body radiation within 6 weeks of randomization (within 2 weeks for radiotherapy of localized metastases).\n\n  * Any prior PARP inhibitor or other systemic anticancer therapy administered for metastatic castration-resistant prostate cancer (mCRPC). Any other approved or investigational systemic therapy (including chemotherapy, immunotherapy, biologics, or monoclonal antibodies) is prohibited within 28 days or 5 half-lives (whichever is shorter) before randomization.\n\nNote: Prior ARPI administered in the mHSPC setting or earlier may continue until C1D1.\n\nOther protocol-defined inclusion/exclusion criteria may apply.",
+   "healthyVolunteers": false,
+   "sex": "MALE",
+   "minimumAge": "18 Years",
+   "maximumAge": "100 Years",
+   "stdAges": [
+    "ADULT",
+    "OLDER_ADULT"
+   ]
+  },
+  "contactsLocationsModule": {
+   "centralContacts": [
+    {
+     "name": "Novartis Pharmaceuticals",
+     "role": "CONTACT",
+     "phone": "1-888-669-6682",
+     "email": "novartis.email@novartis.com"
+    },
+    {
+     "name": "Novartis Pharmaceuticals",
+     "role": "CONTACT",
+     "phone": "+41613241111"
+    }
+   ],
+   "overallOfficials": [
+    {
+     "name": "Novartis Pharmaceuticals",
+     "affiliation": "Novartis Pharmaceuticals",
+     "role": "STUDY_DIRECTOR"
+    }
+   ],
+   "locations": [
+    {
+     "facility": "Urology Centers Of Alabama Pc",
+     "status": "RECRUITING",
+     "city": "Homewood",
+     "state": "Alabama",
+     "zip": "35209",
+     "country": "United States",
+     "contacts": [
+      {
+       "name": "Meredith Sharpton",
+       "role": "CONTACT",
+       "email": "msharpton@urologyal.com"
+      },
+      {
+       "name": "Bryant Poole",
+       "role": "PRINCIPAL_INVESTIGATOR"
+      }
+     ],
+     "geoPoint": {
+      "lat": 33.47177,
+      "lon": -86.80082
+     }
+    },
+    {
+     "facility": "Univ Cali Irvine ALS Neuromuscular",
+     "status": "RECRUITING",
+     "city": "Orange",
+     "state": "California",
+     "zip": "92868",
+     "country": "United States",
+     "contacts": [
+      {
+       "name": "Amanda Macaraeg",
+       "role": "CONTACT",
+       "phone": "714-456-2332",
+       "email": "macaraeg@hs.uci.edu"
+      },
+      {
+       "name": "Arash Rezazadeh Kalebasty",
+       "role": "PRINCIPAL_INVESTIGATOR"
+      }
+     ],
+     "geoPoint": {
+      "lat": 33.78779,
+      "lon": -117.85311
+     }
+    },
+    {
+     "facility": "Stanford University Medical Center",
+     "status": "RECRUITING",
+     "city": "Palo Alto",
+     "state": "California",
+     "zip": "94304",
+     "country": "United States",
+     "contacts": [
+      {
+       "name": "Tiffany Chen",
+       "role": "CONTACT",
+       "email": "tiff1221@stanford.edu"
+      },
+      {
+       "name": "Hong Song",
+       "role": "PRINCIPAL_INVESTIGATOR"
+      }
+     ],
+     "geoPoint": {
+      "lat": 37.44188,
+      "lon": -122.14302
+     }
+    },
+    {
+     "facility": "Sansum Clinic",
+     "status": "RECRUITING",
+     "city": "Santa Barbara",
+     "state": "California",
+     "zip": "93105",
+     "country": "United States",
+     "contacts": [
+      {
+       "name": "Megan Martinez",
+       "role": "CONTACT",
+       "phone": "805-563-5800",
+       "email": "megan.martinez@sutterhealth.or"
+      },
+      {
+       "name": "Mukul Gupta",
+       "role": "PRINCIPAL_INVESTIGATOR"
+      }
+     ],
+     "geoPoint": {
+      "lat": 34.42083,
+      "lon": -119.69819
+     }
+    },
+    {
+     "facility": "Rocky Mountain Cancer Centers",
+     "status": "RECRUITING",
+     "city": "Denver",
+     "state": "Colorado",
+     "zip": "80218",
+     "country": "United States",
+     "contacts": [
+      {
+       "name": "Bethany Glatthar",
+       "role": "CONTACT",
+       "phone": "303-839-6530",
+       "email": "Bethany.Glatthar@usoncology.com"
+      },
+      {
+       "name": "Allen Cohn",
+       "role": "PRINCIPAL_INVESTIGATOR"
+      }
+     ],
+     "geoPoint": {
+      "lat": 39.73915,
+      "lon": -104.9847
+     }
+    },
+    {
+     "facility": "Florida Cancer Specialists",
+     "status": "RECRUITING",
+     "city": "Fort Myers",
+     "state": "Florida",
+     "zip": "33901",
+     "country": "United States",
+     "contacts": [
+      {
+       "name": "Julie Kara",
+       "role": "CONTACT",
+       "email": "jkara@flcancer.com"
+      },
+      {
+       "name": "Bradford Perez",
+       "role": "PRINCIPAL_INVESTIGATOR"
+      }
+     ],
+     "geoPoint": {
+      "lat": 26.62168,
+      "lon": -81.84059
+     }
+    },
+    {
+     "facility": "Baptist Health South",
+     "status": "RECRUITING",
+     "city": "Miami",
+     "state": "Florida",
+     "zip": "33173",
+     "country": "United States",
+     "contacts": [
+      {
+       "name": "Leslie Castaneda",
+       "role": "CONTACT",
+       "email": "leslie.castaneda@baptisthealth.net"
+      },
+      {
+       "name": "Rohan Garje",
+       "role": "PRINCIPAL_INVESTIGATOR"
+      }
+     ],
+     "geoPoint": {
+      "lat": 25.77427,
+      "lon": -80.19366
+     }
+    },
+    {
+     "facility": "AdventHealth",
+     "status": "RECRUITING",
+     "city": "Orlando",
+     "state": "Florida",
+     "zip": "32804",
+     "country": "United States",
+     "contacts": [
+      {
+       "name": "Joseph Guzzo",
+       "role": "CONTACT",
+       "phone": "407-303-3235",
+       "email": "joseph.guzzo@adventhealth.com"
+      },
+      {
+       "name": "Ravi Shridhar",
+       "role": "PRINCIPAL_INVESTIGATOR"
+      }
+     ],
+     "geoPoint": {
+      "lat": 28.53834,
+      "lon": -81.37924
+     }
+    },
+    {
+     "facility": "University Cancer and Blood Center LLC",
+     "status": "RECRUITING",
+     "city": "Athens",
+     "state": "Georgia",
+     "zip": "30607",
+     "country": "United States",
+     "contacts": [
+      {
+       "name": "Mary Egan",
+       "role": "CONTACT",
+       "phone": "706-353-2990",
+       "email": "mary.egan@universitycancer.com"
+      },
+      {
+       "name": "Gordon Schoenfeld",
+       "role": "PRINCIPAL_INVESTIGATOR"
+      }
+     ],
+     "geoPoint": {
+      "lat": 33.96095,
+      "lon": -83.37794
+     }
+    },
+    {
+     "facility": "Northwestern University",
+     "status": "RECRUITING",
+     "city": "Chicago",
+     "state": "Illinois",
+     "zip": "60611",
+     "country": "United States",
+     "contacts": [
+      {
+       "name": "Rachel Hanna Springsdorf",
+       "role": "CONTACT",
+       "phone": "+1 312 695 1382",
+       "email": "rachelspringsdorf@northwestern.edu"
+      },
+      {
+       "name": "Maha Hussain",
+       "role": "PRINCIPAL_INVESTIGATOR"
+      }
+     ],
+     "geoPoint": {
+      "lat": 41.85003,
+      "lon": -87.65005
+     }
+    },
+    {
+     "facility": "University of Illinois Cancer Center at Chicago",
+     "status": "RECRUITING",
+     "city": "Chicago",
+     "state": "Illinois",
+     "zip": "60612",
+     "country": "United States",
+     "contacts": [
+      {
+       "name": "Ethan Gu",
+       "role": "CONTACT",
+       "phone": "312-413-2746",
+       "email": "egu3@uic.edu"
+      },
+      {
+       "name": "Natalie Reizine",
+       "role": "PRINCIPAL_INVESTIGATOR"
+      }
+     ],
+     "geoPoint": {
+      "lat": 41.85003,
+      "lon": -87.65005
+     }
+    },
+    {
+     "facility": "Univ Of Iowa Hospitals And Clinics",
+     "status": "RECRUITING",
+     "city": "Iowa City",
+     "state": "Iowa",
+     "zip": "52242",
+     "country": "United States",
+     "contacts": [
+      {
+       "name": "Kellie Bodeker",
+       "role": "CONTACT",
+       "email": "kellie-bodeker@uiowa.edu"
+      },
+      {
+       "name": "Kristin Plichta",
+       "role": "PRINCIPAL_INVESTIGATOR"
+      }
+     ],
+     "geoPoint": {
+      "lat": 41.66113,
+      "lon": -91.53017
+     }
+    },
+    {
+     "facility": "University of Kansas Hospital",
+     "status": "RECRUITING",
+     "city": "Kansas City",
+     "state": "Kansas",
+     "zip": "66160",
+     "country": "United States",
+     "contacts": [
+      {
+       "name": "Collin Bruey",
+       "role": "CONTACT",
+       "email": "cbruey@kumc.edu"
+      },
+      {
+       "name": "Xinglei Shen",
+       "role": "PRINCIPAL_INVESTIGATOR"
+      }
+     ],
+     "geoPoint": {
+      "lat": 39.11417,
+      "lon": -94.62746
+     }
+    },
+    {
+     "facility": "East Jefferson Hospital",
+     "status": "RECRUITING",
+     "city": "Metairie",
+     "state": "Louisiana",
+     "zip": "70006",
+     "country": "United States",
+     "contacts": [
+      {
+       "name": "Alexandra Lieberman",
+       "role": "CONTACT",
+       "email": "alexandra.lieberman@lcmchealth.org"
+      },
+      {
+       "name": "Alton Oliver Sartor",
+       "role": "PRINCIPAL_INVESTIGATOR"
+      }
+     ],
+     "geoPoint": {
+      "lat": 29.98409,
+      "lon": -90.15285
+     }
+    },
+    {
+     "facility": "Beth Israel Deaconess Med Center",
+     "status": "RECRUITING",
+     "city": "Boston",
+     "state": "Massachusetts",
+     "zip": "02215",
+     "country": "United States",
+     "contacts": [
+      {
+       "name": "Katerina von Helms",
+       "role": "CONTACT",
+       "phone": "617-667-7000",
+       "email": "kvonhelm@bidmc.harvard.edu"
+      },
+      {
+       "name": "Glenn Bubley",
+       "role": "PRINCIPAL_INVESTIGATOR"
+      }
+     ],
+     "geoPoint": {
+      "lat": 42.35843,
+      "lon": -71.05977
+     }
+    },
+    {
+     "facility": "Dana Farber Cancer Institute",
+     "status": "RECRUITING",
+     "city": "Boston",
+     "state": "Massachusetts",
+     "zip": "02215",
+     "country": "United States",
+     "contacts": [
+      {
+       "name": "Amanda Lilienfeld",
+       "role": "CONTACT",
+       "email": "amanda_lilienfeld@dfci.harvard.edu"
+      },
+      {
+       "name": "Xiao Wei",
+       "role": "PRINCIPAL_INVESTIGATOR"
+      }
+     ],
+     "geoPoint": {
+      "lat": 42.35843,
+      "lon": -71.05977
+     }
+    },
+    {
+     "facility": "Karmanos Cancer Institute",
+     "status": "RECRUITING",
+     "city": "Detroit",
+     "state": "Michigan",
+     "zip": "48201",
+     "country": "United States",
+     "contacts": [
+      {
+       "name": "Kimberlee Dobson",
+       "role": "CONTACT",
+       "phone": "313-576-9454",
+       "email": "dobsonk@karmanos.org"
+      },
+      {
+       "name": "Nitin Vaishampayan",
+       "role": "PRINCIPAL_INVESTIGATOR"
+      }
+     ],
+     "geoPoint": {
+      "lat": 42.33143,
+      "lon": -83.04575
+     }
+    },
+    {
+     "facility": "Wash U School of Medicine",
+     "status": "RECRUITING",
+     "city": "St Louis",
+     "state": "Missouri",
+     "zip": "63110",
+     "country": "United States",
+     "contacts": [
+      {
+       "name": "Collin Welch",
+       "role": "CONTACT",
+       "email": "c.welch@wustl.edu"
+      },
+      {
+       "name": "Jeff Michalski",
+       "role": "PRINCIPAL_INVESTIGATOR"
+      }
+     ],
+     "geoPoint": {
+      "lat": 38.62727,
+      "lon": -90.19789
+     }
+    },
+    {
+     "facility": "Nebraska Cancer Specialists",
+     "status": "RECRUITING",
+     "city": "Omaha",
+     "state": "Nebraska",
+     "zip": "68154",
+     "country": "United States",
+     "contacts": [
+      {
+       "name": "Marlene Bridwell",
+       "role": "CONTACT",
+       "email": "mbridwell@nebraskacancer.com"
+      },
+      {
+       "name": "Samuel Mehr",
+       "role": "PRINCIPAL_INVESTIGATOR"
+      }
+     ],
+     "geoPoint": {
+      "lat": 41.25626,
+      "lon": -95.94043
+     }
+    },
+    {
+     "facility": "Astera Cancer Center",
+     "status": "RECRUITING",
+     "city": "East Brunswick",
+     "state": "New Jersey",
+     "zip": "08816",
+     "country": "United States",
+     "contacts": [
+      {
+       "name": "Allison Cabinian",
+       "role": "CONTACT",
+       "email": "allison.cabinian@asterahealthcare.org"
+      },
+      {
+       "name": "Phillip D Reid",
+       "role": "PRINCIPAL_INVESTIGATOR"
+      }
+     ],
+     "geoPoint": {
+      "lat": 40.42788,
+      "lon": -74.41598
+     }
+    },
+    {
+     "facility": "New Jersey Urology LLC",
+     "status": "RECRUITING",
+     "city": "Voorhees Township",
+     "state": "New Jersey",
+     "zip": "08043",
+     "country": "United States",
+     "contacts": [
+      {
+       "name": "Gabriela Mercado",
+       "role": "CONTACT",
+       "phone": "856-673-1613",
+       "email": "gmercado3@nj-urology.com"
+      },
+      {
+       "name": "Gordon Brown",
+       "role": "PRINCIPAL_INVESTIGATOR"
+      }
+     ],
+     "geoPoint": {
+      "lat": 40.4795,
+      "lon": -74.49062
+     }
+    },
+    {
+     "facility": "New Mexico Oncology Hematology",
+     "status": "RECRUITING",
+     "city": "Albuquerque",
+     "state": "New Mexico",
+     "zip": "87109",
+     "country": "United States",
+     "contacts": [
+      {
+       "name": "Kimberly Demos",
+       "role": "CONTACT",
+       "phone": "+1 505 822 3869#3867",
+       "email": "kimberlyd@nmohc.com"
+      },
+      {
+       "name": "Gregg Franklin",
+       "role": "PRINCIPAL_INVESTIGATOR"
+      }
+     ],
+     "geoPoint": {
+      "lat": 35.08449,
+      "lon": -106.65114
+     }
+    },
+    {
+     "facility": "Bassett Medical Center",
+     "status": "RECRUITING",
+     "city": "Cooperstown",
+     "state": "New York",
+     "zip": "13326",
+     "country": "United States",
+     "contacts": [
+      {
+       "name": "Peggy Cross",
+       "role": "CONTACT",
+       "email": "peggy.cross@bassett.org"
+      },
+      {
+       "name": "Timothy Korytko",
+       "role": "PRINCIPAL_INVESTIGATOR"
+      }
+     ],
+     "geoPoint": {
+      "lat": 42.70048,
+      "lon": -74.92426
+     }
+    },
+    {
+     "facility": "Weill Cornell Medicine NY-Presb",
+     "status": "RECRUITING",
+     "city": "New York",
+     "state": "New York",
+     "zip": "10021",
+     "country": "United States",
+     "contacts": [
+      {
+       "name": "Sarah Yuan",
+       "role": "CONTACT",
+       "phone": "646-962-2535",
+       "email": "say7008@med.cornell.edu"
+      },
+      {
+       "name": "Scott Tagawa",
+       "role": "PRINCIPAL_INVESTIGATOR"
+      }
+     ],
+     "geoPoint": {
+      "lat": 40.71427,
+      "lon": -74.00597
+     }
+    },
+    {
+     "facility": "University of Rochester Medical Ctr",
+     "status": "RECRUITING",
+     "city": "Rochester",
+     "state": "New York",
+     "zip": "14642",
+     "country": "United States",
+     "contacts": [
+      {
+       "name": "Therese Smudzin",
+       "role": "CONTACT",
+       "email": "Therese_Smudzin@urmc.rochester.edu"
+      },
+      {
+       "name": "Haoming Carl Qiu",
+       "role": "PRINCIPAL_INVESTIGATOR"
+      }
+     ],
+     "geoPoint": {
+      "lat": 43.15478,
+      "lon": -77.61556
+     }
+    },
+    {
+     "facility": "Associated Med Professionals of NY",
+     "status": "RECRUITING",
+     "city": "Syracuse",
+     "state": "New York",
+     "zip": "13210",
+     "country": "United States",
+     "contacts": [
+      {
+       "name": "Nathan Forrest",
+       "role": "CONTACT",
+       "email": "nathan.forrest@ampofny.com"
+      },
+      {
+       "name": "Steven Finkelstein",
+       "role": "PRINCIPAL_INVESTIGATOR"
+      }
+     ],
+     "geoPoint": {
+      "lat": 43.04812,
+      "lon": -76.14742
+     }
+    },
+    {
+     "facility": "Montefiore Medical Center",
+     "status": "RECRUITING",
+     "city": "The Bronx",
+     "state": "New York",
+     "zip": "10461",
+     "country": "United States",
+     "contacts": [
+      {
+       "name": "Tahrima Chowdhury",
+       "role": "CONTACT",
+       "phone": "718-920-2680",
+       "email": "tahchowdhu@montefiore.org"
+      },
+      {
+       "name": "Benjamin A Gartrell",
+       "role": "PRINCIPAL_INVESTIGATOR"
+      }
+     ],
+     "geoPoint": {
+      "lat": 40.84985,
+      "lon": -73.86641
+     }
+    },
+    {
+     "facility": "Urology Group - Solaris Network",
+     "status": "RECRUITING",
+     "city": "Cincinnati",
+     "state": "Ohio",
+     "zip": "45212",
+     "country": "United States",
+     "contacts": [
+      {
+       "name": "William Corbett",
+       "role": "CONTACT",
+       "email": "wcorbett@urologygroup.com"
+      },
+      {
+       "name": "Marc Pliskin",
+       "role": "PRINCIPAL_INVESTIGATOR"
+      }
+     ],
+     "geoPoint": {
+      "lat": 39.12711,
+      "lon": -84.51439
+     }
+    },
+    {
+     "facility": "Central Ohio Urology Group",
+     "status": "RECRUITING",
+     "city": "Gahanna",
+     "state": "Ohio",
+     "zip": "43230",
+     "country": "United States",
+     "contacts": [
+      {
+       "name": "Tosha Heineman",
+       "role": "CONTACT",
+       "email": "tosha.heineman@centralohiourology.com"
+      },
+      {
+       "name": "Benjamin Martin",
+       "role": "PRINCIPAL_INVESTIGATOR"
+      }
+     ],
+     "geoPoint": {
+      "lat": 40.01923,
+      "lon": -82.87934
+     }
+    },
+    {
+     "facility": "MUSC Hollings Cancer Center",
+     "status": "RECRUITING",
+     "city": "Charleston",
+     "state": "South Carolina",
+     "zip": "29425",
+     "country": "United States",
+     "contacts": [
+      {
+       "name": "Alex Jones",
+       "role": "CONTACT",
+       "email": "joalex@musc.edu"
+      },
+      {
+       "name": "Kevin Becker",
+       "role": "PRINCIPAL_INVESTIGATOR"
+      }
+     ],
+     "geoPoint": {
+      "lat": 32.77632,
+      "lon": -79.93275
+     }
+    },
+    {
+     "facility": "Carolina Urologic Research Center",
+     "status": "RECRUITING",
+     "city": "Myrtle Beach",
+     "state": "South Carolina",
+     "zip": "29572",
+     "country": "United States",
+     "contacts": [
+      {
+       "name": "Rebecca Floyd",
+       "role": "CONTACT",
+       "phone": "843-839-1679",
+       "email": "rebecca.floyd@startresearch.com"
+      },
+      {
+       "name": "Neal D Shore",
+       "role": "PRINCIPAL_INVESTIGATOR"
+      }
+     ],
+     "geoPoint": {
+      "lat": 33.68906,
+      "lon": -78.88669
+     }
+    },
+    {
+     "facility": "Tennessee Oncology PLLC",
+     "status": "RECRUITING",
+     "city": "Chattanooga",
+     "state": "Tennessee",
+     "zip": "37404",
+     "country": "United States",
+     "contacts": [
+      {
+       "name": "Mercedes Bruce",
+       "role": "CONTACT",
+       "email": "mbruce@tnonc.com"
+      },
+      {
+       "name": "Katy Beckermann",
+       "role": "PRINCIPAL_INVESTIGATOR"
+      }
+     ],
+     "geoPoint": {
+      "lat": 35.04563,
+      "lon": -85.30968
+     }
+    },
+    {
+     "facility": "Urology Austin",
+     "status": "RECRUITING",
+     "city": "Lakeway",
+     "state": "Texas",
+     "zip": "78738",
+     "country": "United States",
+     "contacts": [
+      {
+       "name": "Christine Chau",
+       "role": "CONTACT",
+       "email": "christine.chau@urologyaustin.com"
+      },
+      {
+       "name": "Brian Mazzarella",
+       "role": "PRINCIPAL_INVESTIGATOR"
+      }
+     ],
+     "geoPoint": {
+      "lat": 30.36377,
+      "lon": -97.97959
+     }
+    },
+    {
+     "facility": "Urology San Antonio",
+     "status": "RECRUITING",
+     "city": "San Antonio",
+     "state": "Texas",
+     "zip": "78229",
+     "country": "United States",
+     "contacts": [
+      {
+       "name": "Sandra Davila",
+       "role": "CONTACT",
+       "email": "sandra.davila@usa-clinicaltrials.com"
+      },
+      {
+       "name": "Daniel Saltzstein",
+       "role": "PRINCIPAL_INVESTIGATOR"
+      }
+     ],
+     "geoPoint": {
+      "lat": 29.42412,
+      "lon": -98.49363
+     }
+    },
+    {
+     "facility": "Woodlands Cancer Institute American Oncology Partners",
+     "status": "RECRUITING",
+     "city": "The Woodlands",
+     "state": "Texas",
+     "zip": "77384",
+     "country": "United States",
+     "contacts": [
+      {
+       "name": "Brittany Rogers",
+       "role": "CONTACT",
+       "email": "brittany.rogers@aoncology.com"
+      },
+      {
+       "name": "Jason Berilgen",
+       "role": "PRINCIPAL_INVESTIGATOR"
+      }
+     ],
+     "geoPoint": {
+      "lat": 30.15799,
+      "lon": -95.48938
+     }
+    },
+    {
+     "facility": "Swedish Medical Center",
+     "status": "RECRUITING",
+     "city": "Seattle",
+     "state": "Washington",
+     "zip": "98122-4379",
+     "country": "United States",
+     "contacts": [
+      {
+       "name": "Brianna McNealley",
+       "role": "CONTACT",
+       "phone": "855-922-6237",
+       "email": "brianna.mcnealley@swedish.org"
+      },
+      {
+       "name": "Song Zhao",
+       "role": "PRINCIPAL_INVESTIGATOR"
+      }
+     ],
+     "geoPoint": {
+      "lat": 47.60621,
+      "lon": -122.33207
+     }
+    },
+    {
+     "facility": "Northwest Medical Specialties",
+     "status": "RECRUITING",
+     "city": "Tacoma",
+     "state": "Washington",
+     "zip": "98405",
+     "country": "United States",
+     "contacts": [
+      {
+       "name": "Patricia Walsh",
+       "role": "CONTACT",
+       "email": "pwalsh@nwmsonline.com"
+      },
+      {
+       "name": "Li Zhang",
+       "role": "PRINCIPAL_INVESTIGATOR"
+      }
+     ],
+     "geoPoint": {
+      "lat": 47.25288,
+      "lon": -122.44429
+     }
+    },
+    {
+     "facility": "Medical College of Wisconsin",
+     "status": "RECRUITING",
+     "city": "Milwaukee",
+     "state": "Wisconsin",
+     "zip": "53226",
+     "country": "United States",
+     "contacts": [
+      {
+       "name": "Mariah Ziegler",
+       "role": "CONTACT",
+       "phone": "414-805-5249",
+       "email": "mziegler@mcw.edu"
+      },
+      {
+       "name": "Deepak Kilari",
+       "role": "PRINCIPAL_INVESTIGATOR"
+      }
+     ],
+     "geoPoint": {
+      "lat": 43.0389,
+      "lon": -87.90647
+     }
+    },
+    {
+     "facility": "Novartis Investigative Site",
+     "status": "RECRUITING",
+     "city": "Darlinghurst",
+     "state": "New South Wales",
+     "zip": "2010",
+     "country": "Australia",
+     "geoPoint": {
+      "lat": -33.87939,
+      "lon": 151.21925
+     }
+    },
+    {
+     "facility": "Novartis Investigative Site",
+     "status": "RECRUITING",
+     "city": "Adelaide",
+     "state": "South Australia",
+     "zip": "5000",
+     "country": "Australia",
+     "geoPoint": {
+      "lat": -34.92866,
+      "lon": 138.59863
+     }
+    },
+    {
+     "facility": "Novartis Investigative Site",
+     "status": "RECRUITING",
+     "city": "Malvern",
+     "state": "Victoria",
+     "zip": "3144",
+     "country": "Australia",
+     "geoPoint": {
+      "lat": -37.86259,
+      "lon": 145.02811
+     }
+    },
+    {
+     "facility": "Novartis Investigative Site",
+     "status": "RECRUITING",
+     "city": "Murdoch",
+     "state": "Western Australia",
+     "zip": "6150",
+     "country": "Australia",
+     "geoPoint": {
+      "lat": -32.06987,
+      "lon": 115.83757
+     }
+    },
+    {
+     "facility": "Novartis Investigative Site",
+     "status": "RECRUITING",
+     "city": "Adelaide",
+     "zip": "5000",
+     "country": "Australia",
+     "geoPoint": {
+      "lat": -34.92866,
+      "lon": 138.59863
+     }
+    },
+    {
+     "facility": "Novartis Investigative Site",
+     "status": "RECRUITING",
+     "city": "São Paulo",
+     "state": "São Paulo",
+     "zip": "01308-050",
+     "country": "Brazil",
+     "geoPoint": {
+      "lat": -23.5475,
+      "lon": -46.63611
+     }
+    },
+    {
+     "facility": "Novartis Investigative Site",
+     "status": "RECRUITING",
+     "city": "São Paulo",
+     "state": "São Paulo",
+     "zip": "05652-000",
+     "country": "Brazil",
+     "geoPoint": {
+      "lat": -23.5475,
+      "lon": -46.63611
+     }
+    },
+    {
+     "facility": "Novartis Investigative Site",
+     "status": "RECRUITING",
+     "city": "Fuzhou",
+     "state": "Fujian",
+     "zip": "350025",
+     "country": "China",
+     "geoPoint": {
+      "lat": 26.06139,
+      "lon": 119.30611
+     }
+    },
+    {
+     "facility": "Novartis Investigative Site",
+     "status": "RECRUITING",
+     "city": "Guangzhou",
+     "state": "Guangdong",
+     "zip": "510120",
+     "country": "China",
+     "geoPoint": {
+      "lat": 23.11667,
+      "lon": 113.25
+     }
+    },
+    {
+     "facility": "Novartis Investigative Site",
+     "status": "RECRUITING",
+     "city": "Guangzhou",
+     "state": "Guangdong",
+     "zip": "510632",
+     "country": "China",
+     "geoPoint": {
+      "lat": 23.11667,
+      "lon": 113.25
+     }
+    },
+    {
+     "facility": "Novartis Investigative Site",
+     "status": "RECRUITING",
+     "city": "Wuhan",
+     "state": "Hubei",
+     "zip": "430022",
+     "country": "China",
+     "geoPoint": {
+      "lat": 30.58333,
+      "lon": 114.26667
+     }
+    },
+    {
+     "facility": "Novartis Investigative Site",
+     "status": "RECRUITING",
+     "city": "Wuhan",
+     "state": "Hubei",
+     "zip": "430030",
+     "country": "China",
+     "geoPoint": {
+      "lat": 30.58333,
+      "lon": 114.26667
+     }
+    },
+    {
+     "facility": "Novartis Investigative Site",
+     "status": "RECRUITING",
+     "city": "Nanjing",
+     "state": "Jiangsu",
+     "zip": "210006",
+     "country": "China",
+     "geoPoint": {
+      "lat": 32.06167,
+      "lon": 118.77778
+     }
+    },
+    {
+     "facility": "Novartis Investigative Site",
+     "status": "RECRUITING",
+     "city": "Nanjing",
+     "state": "Jiangsu",
+     "zip": "210029",
+     "country": "China",
+     "geoPoint": {
+      "lat": 32.06167,
+      "lon": 118.77778
+     }
+    },
+    {
+     "facility": "Novartis Investigative Site",
+     "status": "RECRUITING",
+     "city": "Shenyang",
+     "state": "Liaoning",
+     "zip": "110011",
+     "country": "China",
+     "geoPoint": {
+      "lat": 41.79222,
+      "lon": 123.43278
+     }
+    },
+    {
+     "facility": "Novartis Investigative Site",
+     "status": "RECRUITING",
+     "city": "Chengdu",
+     "state": "Sichuan",
+     "zip": "610041",
+     "country": "China",
+     "geoPoint": {
+      "lat": 30.66667,
+      "lon": 104.06667
+     }
+    },
+    {
+     "facility": "Novartis Investigative Site",
+     "status": "RECRUITING",
+     "city": "Hangzhou",
+     "state": "Zhejiang",
+     "zip": "310007",
+     "country": "China",
+     "geoPoint": {
+      "lat": 30.29365,
+      "lon": 120.16142
+     }
+    },
+    {
+     "facility": "Novartis Investigative Site",
+     "status": "RECRUITING",
+     "city": "Hangzhou",
+     "state": "Zhejiang",
+     "zip": "310022",
+     "country": "China",
+     "geoPoint": {
+      "lat": 30.29365,
+      "lon": 120.16142
+     }
+    },
+    {
+     "facility": "Novartis Investigative Site",
+     "status": "RECRUITING",
+     "city": "Beijing",
+     "zip": "100034",
+     "country": "China",
+     "geoPoint": {
+      "lat": 39.9075,
+      "lon": 116.39723
+     }
+    },
+    {
+     "facility": "Novartis Investigative Site",
+     "status": "RECRUITING",
+     "city": "Beijing",
+     "zip": "100036",
+     "country": "China",
+     "geoPoint": {
+      "lat": 39.9075,
+      "lon": 116.39723
+     }
+    },
+    {
+     "facility": "Novartis Investigative Site",
+     "status": "RECRUITING",
+     "city": "Guangzhou",
+     "zip": "510060",
+     "country": "China",
+     "geoPoint": {
+      "lat": 23.11667,
+      "lon": 113.25
+     }
+    },
+    {
+     "facility": "Novartis Investigative Site",
+     "status": "RECRUITING",
+     "city": "Shanghai",
+     "zip": "200025",
+     "country": "China",
+     "geoPoint": {
+      "lat": 31.22222,
+      "lon": 121.45806
+     }
+    },
+    {
+     "facility": "Novartis Investigative Site",
+     "status": "RECRUITING",
+     "city": "Shanghai",
+     "zip": "200032",
+     "country": "China",
+     "geoPoint": {
+      "lat": 31.22222,
+      "lon": 121.45806
+     }
+    },
+    {
+     "facility": "Novartis Investigative Site",
+     "status": "RECRUITING",
+     "city": "Shanghai",
+     "zip": "200127",
+     "country": "China",
+     "geoPoint": {
+      "lat": 31.22222,
+      "lon": 121.45806
+     }
+    },
+    {
+     "facility": "Novartis Investigative Site",
+     "status": "RECRUITING",
+     "city": "Tianjin",
+     "zip": "300300",
+     "country": "China",
+     "geoPoint": {
+      "lat": 39.14222,
+      "lon": 117.17667
+     }
+    },
+    {
+     "facility": "Novartis Investigative Site",
+     "status": "RECRUITING",
+     "city": "Tianjin",
+     "zip": "300480",
+     "country": "China",
+     "geoPoint": {
+      "lat": 39.14222,
+      "lon": 117.17667
+     }
+    },
+    {
+     "facility": "Novartis Investigative Site",
+     "status": "RECRUITING",
+     "city": "Hong Kong",
+     "zip": "999077",
+     "country": "Hong Kong",
+     "geoPoint": {
+      "lat": 22.27832,
+      "lon": 114.17469
+     }
+    },
+    {
+     "facility": "Novartis Investigative Site",
+     "status": "RECRUITING",
+     "city": "Gurgaon",
+     "state": "Haryana",
+     "zip": "122002",
+     "country": "India",
+     "geoPoint": {
+      "lat": 28.4601,
+      "lon": 77.02635
+     }
+    },
+    {
+     "facility": "Novartis Investigative Site",
+     "status": "RECRUITING",
+     "city": "Bengaluru",
+     "state": "Karnataka",
+     "zip": "560066",
+     "country": "India",
+     "geoPoint": {
+      "lat": 12.97194,
+      "lon": 77.59369
+     }
+    },
+    {
+     "facility": "Novartis Investigative Site",
+     "status": "RECRUITING",
+     "city": "Mumbai",
+     "state": "Maharashtra",
+     "zip": "400012",
+     "country": "India",
+     "geoPoint": {
+      "lat": 19.07283,
+      "lon": 72.88261
+     }
+    },
+    {
+     "facility": "Novartis Investigative Site",
+     "status": "RECRUITING",
+     "city": "Nagoya",
+     "state": "Aichi-ken",
+     "zip": "4668560",
+     "country": "Japan",
+     "geoPoint": {
+      "lat": 35.18147,
+      "lon": 136.90641
+     }
+    },
+    {
+     "facility": "Novartis Investigative Site",
+     "status": "RECRUITING",
+     "city": "Sapporo",
+     "state": "Hokkaido",
+     "zip": "0608648",
+     "country": "Japan",
+     "geoPoint": {
+      "lat": 43.06667,
+      "lon": 141.35
+     }
+    },
+    {
+     "facility": "Novartis Investigative Site",
+     "status": "RECRUITING",
+     "city": "Kobe",
+     "state": "Hyōgo",
+     "zip": "6500017",
+     "country": "Japan",
+     "geoPoint": {
+      "lat": 34.6913,
+      "lon": 135.183
+     }
+    },
+    {
+     "facility": "Novartis Investigative Site",
+     "status": "RECRUITING",
+     "city": "Kobe",
+     "state": "Hyōgo",
+     "zip": "6500047",
+     "country": "Japan",
+     "geoPoint": {
+      "lat": 34.6913,
+      "lon": 135.183
+     }
+    },
+    {
+     "facility": "Novartis Investigative Site",
+     "status": "RECRUITING",
+     "city": "Kamakura",
+     "state": "Kanagawa",
+     "zip": "2478533",
+     "country": "Japan",
+     "geoPoint": {
+      "lat": 35.31085,
+      "lon": 139.54698
+     }
+    },
+    {
+     "facility": "Novartis Investigative Site",
+     "status": "RECRUITING",
+     "city": "Yokohama",
+     "state": "Kanagawa",
+     "zip": "2360004",
+     "country": "Japan",
+     "geoPoint": {
+      "lat": 35.43333,
+      "lon": 139.65
+     }
+    },
+    {
+     "facility": "Novartis Investigative Site",
+     "status": "RECRUITING",
+     "city": "Chuo Ku",
+     "state": "Tokyo",
+     "zip": "1040045",
+     "country": "Japan"
+    },
+    {
+     "facility": "Novartis Investigative Site",
+     "status": "RECRUITING",
+     "city": "Chiba",
+     "zip": "2608717",
+     "country": "Japan",
+     "geoPoint": {
+      "lat": 35.6,
+      "lon": 140.11667
+     }
+    },
+    {
+     "facility": "Novartis Investigative Site",
+     "status": "RECRUITING",
+     "city": "Fukuoka",
+     "zip": "8110213",
+     "country": "Japan",
+     "geoPoint": {
+      "lat": 33.6,
+      "lon": 130.41667
+     }
+    },
+    {
+     "facility": "Novartis Investigative Site",
+     "status": "RECRUITING",
+     "city": "Fukuoka",
+     "zip": "8120033",
+     "country": "Japan",
+     "geoPoint": {
+      "lat": 33.6,
+      "lon": 130.41667
+     }
+    },
+    {
+     "facility": "Novartis Investigative Site",
+     "status": "RECRUITING",
+     "city": "Fukuoka",
+     "zip": "8128582",
+     "country": "Japan",
+     "geoPoint": {
+      "lat": 33.6,
+      "lon": 130.41667
+     }
+    },
+    {
+     "facility": "Novartis Investigative Site",
+     "status": "RECRUITING",
+     "city": "Fukushima",
+     "zip": "9601295",
+     "country": "Japan",
+     "geoPoint": {
+      "lat": 37.75,
+      "lon": 140.46667
+     }
+    },
+    {
+     "facility": "Novartis Investigative Site",
+     "status": "RECRUITING",
+     "city": "Hiroshima",
+     "zip": "7348551",
+     "country": "Japan",
+     "geoPoint": {
+      "lat": 34.4,
+      "lon": 132.45
+     }
+    },
+    {
+     "facility": "Novartis Investigative Site",
+     "status": "RECRUITING",
+     "city": "Kyoto",
+     "zip": "6068507",
+     "country": "Japan",
+     "geoPoint": {
+      "lat": 35.02107,
+      "lon": 135.75385
+     }
+    },
+    {
+     "facility": "Novartis Investigative Site",
+     "status": "RECRUITING",
+     "city": "Mexico City",
+     "zip": "03330",
+     "country": "Mexico",
+     "geoPoint": {
+      "lat": 19.42847,
+      "lon": -99.12766
+     }
+    },
+    {
+     "facility": "Novartis Investigative Site",
+     "status": "RECRUITING",
+     "city": "Singapore",
+     "zip": "119074",
+     "country": "Singapore",
+     "geoPoint": {
+      "lat": 1.28967,
+      "lon": 103.85007
+     }
+    },
+    {
+     "facility": "Novartis Investigative Site",
+     "status": "RECRUITING",
+     "city": "Singapore",
+     "zip": "168583",
+     "country": "Singapore",
+     "geoPoint": {
+      "lat": 1.28967,
+      "lon": 103.85007
+     }
+    },
+    {
+     "facility": "Novartis Investigative Site",
+     "status": "RECRUITING",
+     "city": "Singapore",
+     "zip": "169608",
+     "country": "Singapore",
+     "geoPoint": {
+      "lat": 1.28967,
+      "lon": 103.85007
+     }
+    },
+    {
+     "facility": "Novartis Investigative Site",
+     "status": "RECRUITING",
+     "city": "Seoul",
+     "zip": "01812",
+     "country": "South Korea",
+     "geoPoint": {
+      "lat": 37.566,
+      "lon": 126.9784
+     }
+    },
+    {
+     "facility": "Novartis Investigative Site",
+     "status": "RECRUITING",
+     "city": "Seoul",
+     "zip": "03080",
+     "country": "South Korea",
+     "geoPoint": {
+      "lat": 37.566,
+      "lon": 126.9784
+     }
+    },
+    {
+     "facility": "Novartis Investigative Site",
+     "status": "RECRUITING",
+     "city": "Seoul",
+     "zip": "03722",
+     "country": "South Korea",
+     "geoPoint": {
+      "lat": 37.566,
+      "lon": 126.9784
+     }
+    },
+    {
+     "facility": "Novartis Investigative Site",
+     "status": "RECRUITING",
+     "city": "Seoul",
+     "zip": "05505",
+     "country": "South Korea",
+     "geoPoint": {
+      "lat": 37.566,
+      "lon": 126.9784
+     }
+    },
+    {
+     "facility": "Novartis Investigative Site",
+     "status": "RECRUITING",
+     "city": "Seoul",
+     "zip": "06351",
+     "country": "South Korea",
+     "geoPoint": {
+      "lat": 37.566,
+      "lon": 126.9784
+     }
+    },
+    {
+     "facility": "Novartis Investigative Site",
+     "status": "RECRUITING",
+     "city": "Seoul",
+     "zip": "06591",
+     "country": "South Korea",
+     "geoPoint": {
+      "lat": 37.566,
+      "lon": 126.9784
+     }
+    },
+    {
+     "facility": "Novartis Investigative Site",
+     "status": "RECRUITING",
+     "city": "Kaohsiung City",
+     "zip": "833",
+     "country": "Taiwan",
+     "geoPoint": {
+      "lat": 22.61626,
+      "lon": 120.31333
+     }
+    },
+    {
+     "facility": "Novartis Investigative Site",
+     "status": "RECRUITING",
+     "city": "Taichung",
+     "zip": "407219",
+     "country": "Taiwan",
+     "geoPoint": {
+      "lat": 24.1469,
+      "lon": 120.6839
+     }
+    },
+    {
+     "facility": "Novartis Investigative Site",
+     "status": "RECRUITING",
+     "city": "Taipei",
+     "zip": "10002",
+     "country": "Taiwan",
+     "geoPoint": {
+      "lat": 25.05306,
+      "lon": 121.52639
+     }
+    },
+    {
+     "facility": "Novartis Investigative Site",
+     "status": "RECRUITING",
+     "city": "Taoyuan",
+     "zip": "33305",
+     "country": "Taiwan",
+     "geoPoint": {
+      "lat": 24.99368,
+      "lon": 121.29696
+     }
+    },
+    {
+     "facility": "Novartis Investigative Site",
+     "status": "RECRUITING",
+     "city": "Oxford",
+     "state": "Oxfordshire",
+     "zip": "OX4 6LB",
+     "country": "United Kingdom",
+     "geoPoint": {
+      "lat": 51.75222,
+      "lon": -1.25596
+     }
+    },
+    {
+     "facility": "Novartis Investigative Site",
+     "status": "RECRUITING",
+     "city": "Sutton",
+     "state": "Surrey",
+     "zip": "SM2 5PT",
+     "country": "United Kingdom",
+     "geoPoint": {
+      "lat": 51.35,
+      "lon": -0.2
+     }
+    },
+    {
+     "facility": "Novartis Investigative Site",
+     "status": "RECRUITING",
+     "city": "Windsor",
+     "state": "Surrey",
+     "zip": "SL4 3HD",
+     "country": "United Kingdom",
+     "geoPoint": {
+      "lat": 51.48333,
+      "lon": -0.6
+     }
+    },
+    {
+     "facility": "Novartis Investigative Site",
+     "status": "RECRUITING",
+     "city": "London",
+     "zip": "EC1A 7BE",
+     "country": "United Kingdom",
+     "geoPoint": {
+      "lat": 51.50853,
+      "lon": -0.12574
+     }
+    }
+   ]
+  }
+ }
+}
