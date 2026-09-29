@@ -29,6 +29,7 @@ on:
       - 'scripts/db_candidatos_integridade.json'
       - 'scripts/db_integridade.py'
       - 'scripts/test_db_integridade.py'
+      - '.github/workflows/validate-data.yml'
   # A lista do pull_request tem de incluir os PRÓPRIOS validadores, não só os
   # dados. Sem isso, um PR que mexe só no validador não roda o validador — foi
   # o que aconteceu com o PR #11, que o criou: zero checks.

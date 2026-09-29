@@ -968,10 +968,17 @@
      "at": "2026-09-28",
      "event": "detected",
      "by": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido"
+    },
+    {
+     "at": "2026-09-29",
+     "event": "dedupe_key_migrated",
+     "by": "db_integridade (dedupe_key única)",
+     "note": "linfoma_dlbcl_4|safety_misattribution|tox_g3 → linfoma_dlbcl_4|safety_misattribution|tox_g3|grade3_causality_attribution"
     }
    ],
    "id": "INT-linfoma_dlbcl_4-002",
-   "dedupe_key": "linfoma_dlbcl_4|safety_misattribution|tox_g3"
+   "dedupe_key": "linfoma_dlbcl_4|safety_misattribution|tox_g3|grade3_causality_attribution",
+   "dedupe_discriminator": "grade3_causality_attribution"
   },
   {
    "uid": "linfoma_dlbcl_4",
@@ -1002,10 +1009,17 @@
      "at": "2026-09-28",
      "event": "detected",
      "by": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido"
+    },
+    {
+     "at": "2026-09-29",
+     "event": "dedupe_key_migrated",
+     "by": "db_integridade (dedupe_key única)",
+     "note": "linfoma_dlbcl_4|safety_misattribution|tox_g3 → linfoma_dlbcl_4|safety_misattribution|tox_g3|fatal_event_omitted"
     }
    ],
    "id": "INT-linfoma_dlbcl_4-003",
-   "dedupe_key": "linfoma_dlbcl_4|safety_misattribution|tox_g3"
+   "dedupe_key": "linfoma_dlbcl_4|safety_misattribution|tox_g3|fatal_event_omitted",
+   "dedupe_discriminator": "fatal_event_omitted"
   },
   {
    "uid": "lupsma_prostata_0",

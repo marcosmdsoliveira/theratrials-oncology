@@ -11,12 +11,16 @@ Saídas brutas de varreduras futuras vão para scripts/_db_* (ignorados) e só e
 Invariantes (validar()):
   • id único e estável ("INT-<uid>-<nnn>"); nunca reutilizado;
   • status ∈ open | confirmed | dismissed | resolved | deferred;
-  • confirmed/resolved/dismissed exigem last_reviewed_at; resolved exige resolution; dismissed exige human_decision;
+  • confirmed/resolved/dismissed exigem last_reviewed_at; dismissed exige human_decision;
+  • resolved exige resolution.commit = SHA-1 completo (40 hex); não se consulta a rede;
+  • dedupe_key = uid|issue_type|campos ordenados[|dedupe_discriminator] e é ÚNICA no backlog;
   • history só cresce (cada mudança de status deixa um evento).
+dedupe_discriminator: opcional; só quando dois problemas distintos caem no mesmo uid|issue_type|campos.
+Nomeia a diferença conceitual (slug estável, ex. "fatal_event_omitted"), nunca um contador.
 Regras de mesclagem (mesclar()):
   • nunca apaga item; nunca rebaixa confirmed/resolved/dismissed;
-  • candidato novo com a mesma dedupe_key e descrição parecida NÃO cria item novo: acrescenta evidência e
-    evento ao item existente (mesmo id); mesma chave com descrição distinta vira item novo com related_ids.
+  • candidato com a mesma dedupe_key NÃO cria item novo: se a descrição é parecida, acrescenta evidência e
+    evento ao item existente (mesmo id); se é distinta, recusa — o problema novo precisa de dedupe_discriminator.
 """
 from __future__ import annotations
 
@@ -63,8 +67,23 @@ def norm_txt(t: str) -> str:
     return re.sub(r"\s+", " ", re.sub(r"[^\w\s%.,<>≥≤=]", " ", t)).strip()
 
 
-def dedupe_key(item: dict) -> str:
+SHA_COMMIT = re.compile(r"^[0-9a-f]{40}$")
+DISCRIMINADOR = re.compile(r"^[a-z][a-z0-9_]{3,}$")              # slug; contadores ("item_2") recusados abaixo
+DISCRIMINADOR_GENERICO = re.compile(r"^(item|issue|problema|caso|outro|novo|dup|duplicado)?_?\d*$")
+
+
+def bucket(item: dict) -> str:
     return f"{item['uid']}|{item['issue_type']}|{','.join(sorted(item.get('affected_fields') or []))}"
+
+
+def dedupe_key(item: dict) -> str:
+    d = item.get("dedupe_discriminator")
+    return f"{bucket(item)}|{d}" if d else bucket(item)
+
+
+def commit_valido(resolucao) -> bool:
+    return isinstance(resolucao, dict) and isinstance(resolucao.get("commit"), str) and bool(
+        SHA_COMMIT.match(resolucao["commit"]))
 
 
 def similar(a: str, b: str) -> float:
@@ -114,8 +133,13 @@ def validar(doc: dict) -> list[str]:
             erros.append(f"{c}: issue_type {x.get('issue_type')!r}")
         if x.get("detection_method") not in DETECCAO:
             erros.append(f"{c}: detection_method {x.get('detection_method')!r}")
-        if x.get("status") == "resolved" and not x.get("resolution"):
-            erros.append(f"{c}: resolved sem resolution (commit/data)")
+        if x.get("status") == "resolved" and not commit_valido(x.get("resolution")):
+            erros.append(f"{c}: resolved sem resolution.commit válido (SHA completo de 40 hex)")
+        if "dedupe_discriminator" in x:
+            d = x["dedupe_discriminator"]
+            if not (isinstance(d, str) and DISCRIMINADOR.match(d)
+                    and not DISCRIMINADOR_GENERICO.match(d)):
+                erros.append(f"{c}: dedupe_discriminator {d!r} não é um slug conceitual estável")
         if x.get("status") == "dismissed" and not x.get("human_decision"):
             erros.append(f"{c}: dismissed sem decisão humana")
         if x.get("status") in FINAIS and not x.get("last_reviewed_at"):
@@ -124,6 +148,9 @@ def validar(doc: dict) -> list[str]:
             erros.append(f"{c}: dedupe_key desatualizada")
         if not x.get("history"):
             erros.append(f"{c}: history vazio")
+    for k, n in collections.Counter(x.get("dedupe_key") for x in doc["itens"]).items():
+        if n > 1:
+            erros.append(f"dedupe_key duplicada ({n}x): {k}")
     return erros
 
 
@@ -146,16 +173,22 @@ def invariantes_de_transicao(antes: dict, depois: dict) -> list[str]:
 
 
 def mesclar(doc: dict, candidato: dict, hoje: str, origem: str) -> tuple[str, str]:
-    """Incorpora um candidato de varredura. Retorna (id, 'novo'|'existente')."""
+    """Incorpora um candidato de varredura. Retorna (id, 'novo'|'existente').
+
+    A dedupe_key é única: um candidato com a chave de um item existente é o mesmo problema (redetecção)
+    ou, se a descrição for distinta, é recusado até ganhar um dedupe_discriminator próprio."""
     chave = dedupe_key(candidato)
-    mesmos = [x for x in doc["itens"] if x["dedupe_key"] == chave]
-    alvo = max(mesmos, key=lambda x: similar(x["description"], candidato["description"]), default=None)
-    if alvo is not None and similar(alvo["description"], candidato["description"]) >= 0.6:
+    alvo = next((x for x in doc["itens"] if x["dedupe_key"] == chave), None)
+    if alvo is not None:
+        if similar(alvo["description"], candidato["description"]) < 0.6:
+            raise ValueError(f"{chave}: já existe {alvo['id']} com outro problema; dê ao candidato um "
+                             "dedupe_discriminator que nomeie a diferença")
         novas = [e for e in candidato.get("evidence", []) if e not in alvo["evidence"]]
         alvo["evidence"] += novas
         alvo["history"].append({"at": hoje, "event": "redetected", "by": origem,
                                 "note": f"{len(novas)} evidência(s) nova(s)"})
         return alvo["id"], "existente"
+    mesmos = [x for x in doc["itens"] if bucket(x) == bucket(candidato)]
     item = dict(candidato)
     item["id"] = proximo_id(doc, candidato["uid"])
     item["dedupe_key"] = chave
@@ -177,8 +210,8 @@ def mudar_status(doc: dict, item_id: str, novo: str, hoje: str, por: str, nota: 
         raise ValueError(novo)
     if x["status"] in FINAIS and novo in ("open", "deferred") and not decisao:
         raise ValueError(f"{item_id}: {x['status']} só volta a {novo} por decisão humana")
-    if novo == "resolved" and not (resolucao or x.get("resolution")):
-        raise ValueError(f"{item_id}: resolved exige resolution")
+    if novo == "resolved" and not commit_valido(resolucao or x.get("resolution")):
+        raise ValueError(f"{item_id}: resolved exige resolution.commit (SHA completo de 40 hex)")
     x["history"].append({"at": hoje, "event": f"status:{x['status']}→{novo}", "by": por, "note": nota})
     x["status"] = novo
     x["last_reviewed_at"] = hoje
