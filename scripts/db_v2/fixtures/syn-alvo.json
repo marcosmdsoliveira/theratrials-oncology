@@ -1,0 +1,459 @@
+{
+ "schema": "theratrials-db-v2/1.0",
+ "uid": "syn-alvo",
+ "record_type": "trial",
+ "curation": {
+  "level": "curated"
+ },
+ "relationships": {
+  "parent_uid": null,
+  "child_uids": [],
+  "links": []
+ },
+ "modules": [
+  {
+   "module": "targeted_therapy",
+   "role": "tested",
+   "arm_ids": [
+    "exp"
+   ],
+   "fields": {
+    "target": {
+     "state": "present",
+     "origin": "reported",
+     "v": "KRAS G12C",
+     "prov": "p1"
+    },
+    "agent_class": {
+     "state": "present",
+     "origin": "reported",
+     "v": "small_molecule_other",
+     "prov": "p1"
+    },
+    "required_alteration": {
+     "state": "present",
+     "origin": "reported",
+     "v": "b1",
+     "prov": "p1"
+    },
+    "detection": {
+     "state": "present",
+     "origin": "reported",
+     "v": {
+      "method": "NGS",
+      "sample": "tissue"
+     },
+     "prov": "p1"
+    },
+    "prior_targeted_therapy": {
+     "state": "present",
+     "origin": "reported",
+     "v": {
+      "requirement": "excluded"
+     },
+     "prov": "p1"
+    }
+   },
+   "classification": {
+    "basis": "curated"
+   }
+  }
+ ],
+ "identity": {
+  "short_name": {
+   "state": "present",
+   "origin": "editorial",
+   "v": "SYN-ALVO"
+  },
+  "display_title": {
+   "state": "present",
+   "origin": "editorial",
+   "v": "syn-alvo — título sintético"
+  },
+  "category_id": {
+   "state": "present",
+   "origin": "editorial",
+   "v": "sintetica"
+  },
+  "evidence_stage": {
+   "state": "present",
+   "origin": "reported",
+   "v": "published_primary",
+   "prov": "p1"
+  },
+  "registrations": {
+   "state": "present",
+   "origin": "reported",
+   "v": [
+    {
+     "registry": "NCT",
+     "id": "NCT92821094"
+    }
+   ],
+   "prov": "p2"
+  },
+  "phase": {
+   "state": "present",
+   "origin": "reported",
+   "v": "3",
+   "prov": "p2"
+  },
+  "represented_publication": {
+   "state": "present",
+   "origin": "reported",
+   "v": {
+    "pmid": "00000001",
+    "year": 2025
+   },
+   "prov": "p1"
+  },
+  "tumors": {
+   "state": "present",
+   "origin": "reported",
+   "v": [
+    "tumor_sintetico"
+   ],
+   "prov": "p1"
+  }
+ },
+ "population": {
+  "disease": {
+   "state": "present",
+   "origin": "reported",
+   "v": "doença sintética avançada",
+   "prov": "p1"
+  },
+  "setting": {
+   "state": "present",
+   "origin": "reported",
+   "v": "advanced_first_line",
+   "prov": "p1"
+  },
+  "biomarker_selection": {
+   "state": "present",
+   "origin": "reported",
+   "v": [
+    {
+     "id": "b1",
+     "biomarker": "KRAS G12C",
+     "family": "KRAS",
+     "rule": "required"
+    }
+   ],
+   "prov": "p1"
+  },
+  "prior_therapy": {
+   "state": "present",
+   "origin": "reported",
+   "v": [
+    {
+     "requirement": "excluded",
+     "therapy": "terapia sistêmica prévia"
+    }
+   ],
+   "prov": "p1"
+  }
+ },
+ "design": {
+  "structure": {
+   "state": "present",
+   "origin": "reported",
+   "v": "single_cohort",
+   "prov": "p1"
+  },
+  "allocation": {
+   "state": "present",
+   "origin": "reported",
+   "v": "randomized",
+   "prov": "p2"
+  },
+  "masking": {
+   "state": "present",
+   "origin": "reported",
+   "v": "open",
+   "prov": "p2"
+  },
+  "control": {
+   "state": "present",
+   "origin": "reported",
+   "v": {
+    "type": "active"
+   },
+   "prov": "p1"
+  },
+  "arms": {
+   "state": "present",
+   "origin": "reported",
+   "v": [
+    {
+     "arm_id": "exp",
+     "label": "Experimental",
+     "role": "experimental",
+     "n": {
+      "op": "=",
+      "value": 200
+     },
+     "interventions": [
+      {
+       "agent": "AGENTE-X",
+       "role": "investigational"
+      }
+     ]
+    },
+    {
+     "arm_id": "ctl",
+     "label": "Controle",
+     "role": "control",
+     "n": {
+      "op": "=",
+      "value": 200
+     },
+     "interventions": [
+      {
+       "agent": "PADRAO-Y",
+       "role": "control"
+      }
+     ]
+    }
+   ],
+   "prov": "p1"
+  },
+  "comparisons": {
+   "state": "present",
+   "origin": "reported",
+   "v": [
+    {
+     "comparison_id": "c1",
+     "exp_arms": [
+      "exp"
+     ],
+     "ctl_arms": [
+      "ctl"
+     ],
+     "hypothesis": "superiority"
+    }
+   ],
+   "prov": "p1"
+  },
+  "sample_size": {
+   "state": "present",
+   "origin": "reported",
+   "v": {
+    "randomized": 400
+   },
+   "prov": "p1"
+  }
+ },
+ "endpoints": {
+  "state": "present",
+  "origin": "reported",
+  "v": [
+   {
+    "endpoint_id": "e1",
+    "code": "PFS",
+    "hierarchy": {
+     "level": "primary"
+    },
+    "comparison_id": "c1",
+    "population": {
+     "label": "ITT"
+    },
+    "measure": {
+     "summary": "median"
+    },
+    "timepoint": {
+     "type": "median"
+    },
+    "assessment": "BICR",
+    "analysis_set": {
+     "name": "ITT"
+    },
+    "arms_values": [
+     {
+      "arm_id": "exp",
+      "value": {
+       "op": "=",
+       "value": 10.0
+      }
+     },
+     {
+      "arm_id": "ctl",
+      "value": {
+       "op": "=",
+       "value": 6.0
+      }
+     }
+    ],
+    "effect": {
+     "measure": "HR",
+     "value": {
+      "op": "=",
+      "value": 0.7
+     },
+     "ci": {
+      "level": 95,
+      "low": 0.55,
+      "high": 0.88
+     },
+     "p": "0.002",
+     "sided": 2,
+     "significance": "met"
+    },
+    "maturity": {
+     "analysis_ref": "a_e1"
+    },
+    "state": "present",
+    "origin": "reported",
+    "prov": "p1"
+   }
+  ],
+  "prov": "p1"
+ },
+ "safety": {
+  "grade3plus_any": {
+   "state": "present",
+   "origin": "reported",
+   "v": [
+    {
+     "arm_id": "exp",
+     "value": {
+      "op": "=",
+      "value": 40
+     }
+    },
+    {
+     "arm_id": "ctl",
+     "value": {
+      "op": "=",
+      "value": 40
+     }
+    }
+   ],
+   "prov": "p1"
+  },
+  "discontinuation_ae": {
+   "state": "present",
+   "origin": "reported",
+   "v": [
+    {
+     "arm_id": "exp",
+     "value": {
+      "op": "=",
+      "value": 8
+     }
+    },
+    {
+     "arm_id": "ctl",
+     "value": {
+      "op": "=",
+      "value": 8
+     }
+    }
+   ],
+   "prov": "p1"
+  },
+  "treatment_related_deaths": {
+   "state": "present",
+   "origin": "reported",
+   "v": [
+    {
+     "arm_id": "exp",
+     "n": 1
+    },
+    {
+     "arm_id": "ctl",
+     "n": 1
+    }
+   ],
+   "prov": "p1"
+  },
+  "key_toxicities": {
+   "state": "present",
+   "origin": "reported",
+   "v": [
+    {
+     "term": "fadiga",
+     "scope": "any",
+     "arm_id": "exp",
+     "value": {
+      "op": "=",
+      "value": 30
+     }
+    }
+   ],
+   "prov": "p1"
+  }
+ },
+ "interpretation": {
+  "key_result": {
+   "state": "present",
+   "origin": "editorial",
+   "v": "PFS mediana 10,0 vs 6,0 m"
+  },
+  "takehome": {
+   "state": "present",
+   "origin": "editorial",
+   "v": "mensagem sintética"
+  },
+  "limitations": {
+   "state": "present",
+   "origin": "editorial",
+   "v": [
+    "estudo aberto"
+   ]
+  }
+ },
+ "analyses": [
+  {
+   "analysis_id": "a_e1",
+   "analysis_type": "primary",
+   "data_cutoff": "2025-01-01",
+   "publication_role": "primary_publication",
+   "prov": "p1",
+   "signature": {
+    "trial_key": "NCT92821094",
+    "cohort": null,
+    "population": "ITT",
+    "comparison": "c1",
+    "endpoint": "PFS",
+    "summary_measure": "median",
+    "timepoint": "median",
+    "assessment_method": "BICR",
+    "analysis_set": "ITT"
+   }
+  }
+ ],
+ "review": {
+  "editorial_status": "active",
+  "integrity": {
+   "status": "none"
+  }
+ },
+ "provenance": {
+  "p1": {
+   "source": {
+    "type": "publication",
+    "pmid": "00000001"
+   },
+   "locator": {
+    "section": "Results"
+   },
+   "extraction": "explicit",
+   "evidence_confidence": "high"
+  },
+  "p2": {
+   "source": {
+    "type": "registry",
+    "nct": "NCT92821094"
+   },
+   "extraction": "explicit",
+   "evidence_confidence": "high"
+  }
+ },
+ "legacy": {
+  "v1": {
+   "uid": "syn-alvo"
+  },
+  "position": 4
+ }
+}

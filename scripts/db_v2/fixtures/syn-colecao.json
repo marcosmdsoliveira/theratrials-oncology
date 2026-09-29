@@ -1,0 +1,104 @@
+{
+ "schema": "theratrials-db-v2/1.0",
+ "uid": "syn-colecao",
+ "record_type": "evidence_collection",
+ "curation": {
+  "level": "curated"
+ },
+ "relationships": {
+  "parent_uid": null,
+  "child_uids": [
+   "syn-colecao-serie-a",
+   "syn-colecao-serie-b"
+  ],
+  "links": []
+ },
+ "modules": [],
+ "identity": {
+  "short_name": {
+   "state": "present",
+   "origin": "editorial",
+   "v": "SYN-COLECAO"
+  },
+  "display_title": {
+   "state": "present",
+   "origin": "editorial",
+   "v": "syn-colecao — título sintético"
+  },
+  "category_id": {
+   "state": "present",
+   "origin": "editorial",
+   "v": "sintetica"
+  },
+  "evidence_stage": {
+   "state": "present",
+   "origin": "reported",
+   "v": "published_primary",
+   "prov": "p1"
+  }
+ },
+ "population": {},
+ "design": {},
+ "safety": {},
+ "interpretation": {
+  "key_result": {
+   "state": "present",
+   "origin": "editorial",
+   "v": "PFS mediana 10,0 vs 6,0 m"
+  },
+  "takehome": {
+   "state": "present",
+   "origin": "editorial",
+   "v": "mensagem sintética"
+  },
+  "limitations": {
+   "state": "present",
+   "origin": "editorial",
+   "v": [
+    "estudo aberto"
+   ]
+  }
+ },
+ "analyses": [],
+ "review": {
+  "editorial_status": "active",
+  "integrity": {
+   "status": "none"
+  }
+ },
+ "provenance": {
+  "p1": {
+   "source": {
+    "type": "publication",
+    "pmid": "00000001"
+   },
+   "locator": {
+    "section": "Results"
+   },
+   "extraction": "explicit",
+   "evidence_confidence": "high"
+  },
+  "p2": {
+   "source": {
+    "type": "registry",
+    "nct": "NCT91894433"
+   },
+   "extraction": "explicit",
+   "evidence_confidence": "high"
+  }
+ },
+ "legacy": {
+  "v1": {
+   "uid": "syn-colecao",
+   "acron": "texto agregado legado"
+  },
+  "position": 19
+ },
+ "collection": {
+  "scope": {
+   "state": "present",
+   "origin": "editorial",
+   "v": "agregado legado de várias séries publicadas do mesmo agente"
+  }
+ }
+}

@@ -1,0 +1,3462 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://theratrials.com/schema/db-v2/1.0/record.json",
+ "title": "TheraTrials Database v2 — registro canônico de um card",
+ "type": "object",
+ "properties": {
+  "schema": {
+   "const": "theratrials-db-v2/1.0"
+  },
+  "uid": {
+   "type": "string",
+   "minLength": 1
+  },
+  "record_type": {
+   "enum": [
+    "trial",
+    "trial_cohort",
+    "publication",
+    "pooled_analysis",
+    "meta_analysis",
+    "cohort_study",
+    "case_series",
+    "diagnostic_study",
+    "guideline",
+    "molecular_classification",
+    "translational",
+    "evidence_collection"
+   ]
+  },
+  "curation": {
+   "type": "object",
+   "properties": {
+    "level": {
+     "enum": [
+      "shadow",
+      "modeled",
+      "curated"
+     ]
+    },
+    "lifted_at": {
+     "type": "string"
+    },
+    "source_sha256": {
+     "type": "string"
+    },
+    "curated_at": {
+     "type": "string"
+    },
+    "curated_by": {
+     "type": "string"
+    },
+    "record_type_basis": {
+     "type": "object"
+    },
+    "uncertainty": {
+     "type": "array",
+     "items": {
+      "type": "object"
+     }
+    },
+    "suggestions": {
+     "type": "array",
+     "items": {
+      "type": "object"
+     }
+    },
+    "legacy_projection": {
+     "type": "object",
+     "additionalProperties": {
+      "type": "string"
+     }
+    }
+   },
+   "required": [
+    "level"
+   ],
+   "additionalProperties": false
+  },
+  "external_relationships": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "properties": {
+     "registry": {
+      "enum": [
+       "clinicaltrials_gov",
+       "isrctn",
+       "eudract",
+       "ctis",
+       "anzctr",
+       "jrct",
+       "chictr",
+       "other"
+      ]
+     },
+     "registry_id": {
+      "type": "string",
+      "minLength": 3
+     },
+     "relationship": {
+      "enum": [
+       "same_trial",
+       "related",
+       "predecessor",
+       "successor",
+       "confirmatory",
+       "parent_trial",
+       "extension"
+      ]
+     },
+     "url": {
+      "type": "string"
+     },
+     "label": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "registry",
+     "registry_id",
+     "relationship"
+    ],
+    "additionalProperties": false
+   }
+  },
+  "relationships": {
+   "type": "object",
+   "properties": {
+    "parent_uid": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "child_uids": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    },
+    "links": {
+     "type": "array",
+     "items": {
+      "type": "object",
+      "properties": {
+       "type": {
+        "enum": [
+         "same_trial",
+         "follow_up_of",
+         "secondary_analysis_of",
+         "supersedes",
+         "member_of",
+         "related"
+        ]
+       },
+       "target_uid": {
+        "type": "string"
+       }
+      },
+      "required": [
+       "type",
+       "target_uid"
+      ],
+      "additionalProperties": false
+     }
+    }
+   },
+   "additionalProperties": false
+  },
+  "modules": {
+   "type": "array",
+   "items": {
+    "$ref": "#/$defs/module_entry"
+   }
+  },
+  "endpoints": {
+   "allOf": [
+    {
+     "$ref": "#/$defs/envelope"
+    }
+   ],
+   "properties": {
+    "v": {
+     "type": "array",
+     "items": {
+      "$ref": "#/$defs/endpoint"
+     }
+    }
+   }
+  },
+  "subgroups": {
+   "allOf": [
+    {
+     "$ref": "#/$defs/envelope"
+    }
+   ],
+   "properties": {
+    "v": {
+     "type": "array",
+     "items": {
+      "type": "object",
+      "properties": {
+       "id": {
+        "type": "string"
+       },
+       "dimension": {
+        "type": "string"
+       },
+       "family": {
+        "enum": [
+         "PD-L1",
+         "MSI/MMR",
+         "TMB",
+         "BRCA",
+         "HRR",
+         "HRD",
+         "HER2",
+         "ER",
+         "PR",
+         "AR",
+         "ESR1",
+         "PIK3CA",
+         "EGFR",
+         "ALK",
+         "ROS1",
+         "RET",
+         "KRAS",
+         "BRAF",
+         "MET",
+         "NTRK",
+         "FGFR",
+         "IDH",
+         "FLT3",
+         "NPM1",
+         "KMT2A",
+         "MYCN",
+         "TROP2",
+         "FRα",
+         "DLL3",
+         "BCMA",
+         "CD19",
+         "CD20",
+         "GPRC5D",
+         "Claudin18.2",
+         "PSMA",
+         "SSTR",
+         "FAP",
+         "MIBG",
+         "ctDNA",
+         "other",
+         "clinical"
+        ]
+       },
+       "biomarker_ref": {
+        "type": "string"
+       },
+       "cohort_id": {
+        "type": "string"
+       },
+       "level": {
+        "type": "string"
+       },
+       "levels": {
+        "type": "array",
+        "items": {
+         "type": "string"
+        }
+       },
+       "endpoint_ref": {
+        "type": "string"
+       },
+       "endpoint_refs": {
+        "type": "array",
+        "items": {
+         "type": "string"
+        }
+       },
+       "comparison_id": {
+        "type": "string"
+       },
+       "effect": {
+        "type": "object"
+       },
+       "arms_values": {
+        "type": "array"
+       },
+       "prespecified": {
+        "type": "boolean"
+       },
+       "prov": {
+        "type": "string"
+       },
+       "finding": {
+        "type": "string",
+        "minLength": 1
+       },
+       "interaction_p": {
+        "type": "string"
+       },
+       "note": {
+        "type": "string"
+       }
+      },
+      "required": [
+       "dimension"
+      ],
+      "additionalProperties": false,
+      "anyOf": [
+       {
+        "required": [
+         "effect"
+        ]
+       },
+       {
+        "required": [
+         "arms_values"
+        ]
+       },
+       {
+        "required": [
+         "finding"
+        ]
+       }
+      ]
+     }
+    }
+   }
+  },
+  "analyses": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "properties": {
+     "analysis_id": {
+      "type": "string"
+     },
+     "signature": {
+      "type": "object"
+     },
+     "analysis_type": {
+      "type": "string"
+     },
+     "data_cutoff": {
+      "type": "string"
+     },
+     "publication_role": {
+      "enum": [
+       "primary_publication",
+       "update",
+       "final",
+       "long_term",
+       "secondary_analysis",
+       "key_secondary_primary_analysis",
+       "subgroup",
+       "qol_pro",
+       "safety",
+       "translational",
+       "pooled",
+       "correction",
+       "congress"
+      ]
+     },
+     "prov": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "analysis_id",
+     "signature"
+    ],
+    "additionalProperties": false
+   }
+  },
+  "review": {
+   "type": "object",
+   "properties": {
+    "editorial_status": {
+     "enum": [
+      "active",
+      "in_review",
+      "withheld"
+     ]
+    },
+    "integrity": {
+     "type": "object",
+     "properties": {
+      "status": {
+       "enum": [
+        "none",
+        "hold",
+        "quarantine",
+        "withheld"
+       ]
+      },
+      "reason": {
+       "type": "string"
+      },
+      "decision_ref": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "status"
+     ],
+     "additionalProperties": false
+    },
+    "last_reviewed": {
+     "type": "string"
+    },
+    "corrections": {
+     "type": "array",
+     "items": {
+      "type": "object"
+     }
+    }
+   },
+   "required": [
+    "editorial_status",
+    "integrity"
+   ],
+   "additionalProperties": false
+  },
+  "provenance": {
+   "type": "object",
+   "additionalProperties": {
+    "$ref": "#/$defs/provenance"
+   }
+  },
+  "legacy": {
+   "type": "object",
+   "properties": {
+    "v1": {
+     "type": "object"
+    },
+    "position": {
+     "type": "integer"
+    }
+   },
+   "required": [
+    "v1",
+    "position"
+   ],
+   "additionalProperties": false
+  },
+  "identity": {
+   "type": "object",
+   "properties": {
+    "short_name": {
+     "$ref": "#/$defs/envelope"
+    },
+    "display_title": {
+     "$ref": "#/$defs/envelope"
+    },
+    "acronym": {
+     "$ref": "#/$defs/envelope"
+    },
+    "aliases": {
+     "$ref": "#/$defs/envelope"
+    },
+    "registrations": {
+     "$ref": "#/$defs/envelope"
+    },
+    "phase": {
+     "$ref": "#/$defs/envelope"
+    },
+    "sponsor": {
+     "$ref": "#/$defs/envelope"
+    },
+    "centers": {
+     "$ref": "#/$defs/envelope"
+    },
+    "enrollment_period": {
+     "$ref": "#/$defs/envelope"
+    },
+    "represented_publication": {
+     "$ref": "#/$defs/envelope"
+    },
+    "publications": {
+     "$ref": "#/$defs/envelope"
+    },
+    "category_id": {
+     "$ref": "#/$defs/envelope"
+    },
+    "tumors": {
+     "$ref": "#/$defs/envelope"
+    },
+    "evidence_stage": {
+     "$ref": "#/$defs/envelope"
+    },
+    "registry_status": {
+     "$ref": "#/$defs/envelope"
+    }
+   },
+   "additionalProperties": false
+  },
+  "population": {
+   "type": "object",
+   "properties": {
+    "disease": {
+     "$ref": "#/$defs/envelope"
+    },
+    "histology": {
+     "$ref": "#/$defs/envelope"
+    },
+    "setting": {
+     "$ref": "#/$defs/envelope"
+    },
+    "line": {
+     "$ref": "#/$defs/envelope"
+    },
+    "disease_extent": {
+     "$ref": "#/$defs/envelope"
+    },
+    "risk_classification": {
+     "$ref": "#/$defs/envelope"
+    },
+    "biomarker_selection": {
+     "allOf": [
+      {
+       "$ref": "#/$defs/envelope"
+      }
+     ],
+     "properties": {
+      "v": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "id": {
+          "type": "string"
+         },
+         "biomarker": {
+          "type": "string"
+         },
+         "family": {
+          "enum": [
+           "PD-L1",
+           "MSI/MMR",
+           "TMB",
+           "BRCA",
+           "HRR",
+           "HRD",
+           "HER2",
+           "ER",
+           "PR",
+           "AR",
+           "ESR1",
+           "PIK3CA",
+           "EGFR",
+           "ALK",
+           "ROS1",
+           "RET",
+           "KRAS",
+           "BRAF",
+           "MET",
+           "NTRK",
+           "FGFR",
+           "IDH",
+           "FLT3",
+           "NPM1",
+           "KMT2A",
+           "MYCN",
+           "TROP2",
+           "FRα",
+           "DLL3",
+           "BCMA",
+           "CD19",
+           "CD20",
+           "GPRC5D",
+           "Claudin18.2",
+           "PSMA",
+           "SSTR",
+           "FAP",
+           "MIBG",
+           "ctDNA",
+           "other"
+          ]
+         },
+         "rule": {
+          "enum": [
+           "required",
+           "enriched",
+           "stratified",
+           "defines_arm",
+           "excluded",
+           "analyzed",
+           "none"
+          ]
+         },
+         "timing": {
+          "enum": [
+           "baseline",
+           "emergent",
+           "at_progression"
+          ]
+         },
+         "assay": {
+          "type": "string"
+         },
+         "cutoff": {
+          "type": "string"
+         },
+         "sample": {
+          "type": "string"
+         },
+         "note": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "id",
+         "family",
+         "rule"
+        ],
+        "additionalProperties": false
+       }
+      }
+     }
+    },
+    "prior_therapy": {
+     "$ref": "#/$defs/envelope"
+    },
+    "fitness": {
+     "$ref": "#/$defs/envelope"
+    },
+    "key_inclusion": {
+     "$ref": "#/$defs/envelope"
+    },
+    "key_exclusion": {
+     "$ref": "#/$defs/envelope"
+    },
+    "performance_status": {
+     "$ref": "#/$defs/envelope"
+    },
+    "baseline": {
+     "$ref": "#/$defs/envelope"
+    }
+   },
+   "additionalProperties": false
+  },
+  "design": {
+   "type": "object",
+   "properties": {
+    "structure": {
+     "$ref": "#/$defs/envelope"
+    },
+    "ratio": {
+     "$ref": "#/$defs/envelope"
+    },
+    "cohorts": {
+     "allOf": [
+      {
+       "$ref": "#/$defs/envelope"
+      }
+     ],
+     "properties": {
+      "v": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "cohort_id": {
+          "type": "string"
+         },
+         "kind": {
+          "enum": [
+           "enrollment",
+           "analysis_population",
+           "part"
+          ]
+         },
+         "label": {
+          "type": "string"
+         },
+         "source_cohorts": {
+          "type": "array",
+          "items": {
+           "type": "string"
+          }
+         },
+         "biomarker_ref": {
+          "type": "string"
+         },
+         "setting": {
+          "type": "string"
+         },
+         "n": {
+          "type": "integer"
+         },
+         "status": {
+          "enum": [
+           "active",
+           "completed",
+           "closed_early"
+          ]
+         },
+         "parent_cohort": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "cohort_id",
+         "kind"
+        ],
+        "additionalProperties": false
+       }
+      }
+     }
+    },
+    "question_type": {
+     "$ref": "#/$defs/envelope"
+    },
+    "allocation": {
+     "$ref": "#/$defs/envelope"
+    },
+    "masking": {
+     "$ref": "#/$defs/envelope"
+    },
+    "control": {
+     "$ref": "#/$defs/envelope"
+    },
+    "arms": {
+     "allOf": [
+      {
+       "$ref": "#/$defs/envelope"
+      }
+     ],
+     "properties": {
+      "v": {
+       "type": "array",
+       "items": {
+        "$ref": "#/$defs/arm"
+       }
+      }
+     }
+    },
+    "comparisons": {
+     "allOf": [
+      {
+       "$ref": "#/$defs/envelope"
+      }
+     ],
+     "properties": {
+      "v": {
+       "type": "array",
+       "items": {
+        "$ref": "#/$defs/comparison"
+       }
+      }
+     }
+    },
+    "multiplicity": {
+     "allOf": [
+      {
+       "$ref": "#/$defs/envelope"
+      }
+     ],
+     "properties": {
+      "v": {
+       "type": "object",
+       "properties": {
+        "families": {
+         "type": "array",
+         "items": {
+          "type": "object",
+          "properties": {
+           "family_id": {
+            "type": "string"
+           },
+           "overall_alpha": {
+            "type": "number"
+           },
+           "alpha_sided": {
+            "enum": [
+             1,
+             2
+            ]
+           },
+           "rollover": {
+            "type": "boolean"
+           },
+           "note": {
+            "type": "string"
+           },
+           "procedure": {
+            "enum": [
+             "none",
+             "fixed_sequence",
+             "graphical",
+             "bonferroni",
+             "holm",
+             "hochberg",
+             "fallback",
+             "alpha_split"
+            ]
+           },
+           "members": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+             "type": "object",
+             "properties": {
+              "endpoint_id": {
+               "type": "string"
+              },
+              "alpha": {
+               "type": "number"
+              },
+              "order": {
+               "type": "integer"
+              }
+             },
+             "required": [
+              "endpoint_id"
+             ],
+             "additionalProperties": false
+            }
+           }
+          },
+          "required": [
+           "family_id",
+           "procedure",
+           "members"
+          ],
+          "additionalProperties": false
+         }
+        }
+       },
+       "required": [
+        "families"
+       ],
+       "additionalProperties": false
+      }
+     }
+    },
+    "factors": {
+     "$ref": "#/$defs/envelope"
+    },
+    "sample_size": {
+     "$ref": "#/$defs/envelope"
+    },
+    "stratification": {
+     "$ref": "#/$defs/envelope"
+    },
+    "crossover": {
+     "$ref": "#/$defs/envelope"
+    },
+    "stopped_early": {
+     "$ref": "#/$defs/envelope"
+    },
+    "statistical_plan": {
+     "$ref": "#/$defs/envelope"
+    },
+    "observational": {
+     "$ref": "#/$defs/envelope"
+    },
+    "meta_analysis": {
+     "$ref": "#/$defs/envelope"
+    }
+   },
+   "additionalProperties": false
+  },
+  "safety": {
+   "type": "object",
+   "properties": {
+    "population": {
+     "$ref": "#/$defs/envelope"
+    },
+    "grade3plus_any": {
+     "allOf": [
+      {
+       "$ref": "#/$defs/envelope"
+      }
+     ],
+     "properties": {
+      "v": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "arm_id": {
+          "type": "string"
+         },
+         "arm_group": {
+          "type": "object",
+          "properties": {
+           "factor": {
+            "type": "string"
+           },
+           "level": {
+            "type": "string"
+           }
+          },
+          "required": [
+           "factor",
+           "level"
+          ],
+          "additionalProperties": false
+         },
+         "term": {
+          "type": "string"
+         },
+         "scope": {
+          "enum": [
+           "any",
+           "g1",
+           "g2",
+           "g1_2",
+           "g2plus",
+           "g3",
+           "g3_4",
+           "g3plus",
+           "g4",
+           "g4plus",
+           "g5",
+           "serious",
+           "unspecified"
+          ]
+         },
+         "analysis_ref": {
+          "type": "string"
+         },
+         "conflict_ref": {
+          "type": "string"
+         },
+         "value": {
+          "$ref": "#/$defs/qualified"
+         },
+         "label": {
+          "type": "string"
+         },
+         "organ": {
+          "type": "string"
+         },
+         "reported_term": {
+          "type": "string"
+         },
+         "term_mapping": {
+          "enum": [
+           "exact",
+           "broader",
+           "narrower",
+           "related"
+          ]
+         },
+         "attribution_method": {
+          "enum": [
+           "investigator",
+           "adjudicated",
+           "sponsor",
+           "unspecified"
+          ]
+         },
+         "subtype": {
+          "type": "string"
+         },
+         "timing": {
+          "enum": [
+           "acute",
+           "late",
+           "any"
+          ]
+         },
+         "denominator": {
+          "type": "integer"
+         },
+         "comparison_id": {
+          "type": "string"
+         },
+         "conflict": {
+          "enum": [
+           "none",
+           "explained",
+           "within_source_conflict",
+           "cross_source_conflict"
+          ]
+         },
+         "value_candidates": {
+          "type": "array"
+         },
+         "prov": {
+          "type": "string"
+         },
+         "n": {
+          "type": "integer"
+         },
+         "n_events": {
+          "type": "integer"
+         },
+         "type": {
+          "enum": [
+           "reduction",
+           "interruption"
+          ]
+         },
+         "attribution": {
+          "enum": [
+           "any",
+           "treatment_related",
+           "unspecified"
+          ]
+         },
+         "attribution_agent": {
+          "type": "string"
+         },
+         "aesi_of": {
+          "type": "array",
+          "items": {
+           "enum": [
+            "radionuclide_therapy",
+            "adc",
+            "immunotherapy",
+            "targeted_therapy",
+            "ddr_hrd",
+            "endocrine",
+            "t_cell_engager",
+            "cellular",
+            "radiotherapy",
+            "surgery",
+            "locoregional",
+            "chemotherapy",
+            "diagnostic"
+           ]
+          }
+         },
+         "adjudicated": {
+          "type": "boolean"
+         },
+         "treatment_phase": {
+          "type": "string"
+         },
+         "grading_system": {
+          "type": "string"
+         },
+         "causes": {
+          "type": "array",
+          "items": {
+           "type": "string"
+          }
+         },
+         "irreversible": {
+          "type": "boolean"
+         },
+         "state": {
+          "enum": [
+           "not_reported",
+           "unknown",
+           "not_yet_available"
+          ]
+         },
+         "expected": {
+          "type": "string"
+         },
+         "checked_sources": {
+          "type": "array",
+          "items": {
+           "type": "string"
+          }
+         },
+         "note": {
+          "type": "string"
+         }
+        },
+        "additionalProperties": false
+       }
+      }
+     }
+    },
+    "serious_ae": {
+     "allOf": [
+      {
+       "$ref": "#/$defs/envelope"
+      }
+     ],
+     "properties": {
+      "v": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "arm_id": {
+          "type": "string"
+         },
+         "arm_group": {
+          "type": "object",
+          "properties": {
+           "factor": {
+            "type": "string"
+           },
+           "level": {
+            "type": "string"
+           }
+          },
+          "required": [
+           "factor",
+           "level"
+          ],
+          "additionalProperties": false
+         },
+         "term": {
+          "type": "string"
+         },
+         "scope": {
+          "enum": [
+           "any",
+           "g1",
+           "g2",
+           "g1_2",
+           "g2plus",
+           "g3",
+           "g3_4",
+           "g3plus",
+           "g4",
+           "g4plus",
+           "g5",
+           "serious",
+           "unspecified"
+          ]
+         },
+         "analysis_ref": {
+          "type": "string"
+         },
+         "conflict_ref": {
+          "type": "string"
+         },
+         "value": {
+          "$ref": "#/$defs/qualified"
+         },
+         "label": {
+          "type": "string"
+         },
+         "organ": {
+          "type": "string"
+         },
+         "reported_term": {
+          "type": "string"
+         },
+         "term_mapping": {
+          "enum": [
+           "exact",
+           "broader",
+           "narrower",
+           "related"
+          ]
+         },
+         "attribution_method": {
+          "enum": [
+           "investigator",
+           "adjudicated",
+           "sponsor",
+           "unspecified"
+          ]
+         },
+         "subtype": {
+          "type": "string"
+         },
+         "timing": {
+          "enum": [
+           "acute",
+           "late",
+           "any"
+          ]
+         },
+         "denominator": {
+          "type": "integer"
+         },
+         "comparison_id": {
+          "type": "string"
+         },
+         "conflict": {
+          "enum": [
+           "none",
+           "explained",
+           "within_source_conflict",
+           "cross_source_conflict"
+          ]
+         },
+         "value_candidates": {
+          "type": "array"
+         },
+         "prov": {
+          "type": "string"
+         },
+         "n": {
+          "type": "integer"
+         },
+         "n_events": {
+          "type": "integer"
+         },
+         "type": {
+          "enum": [
+           "reduction",
+           "interruption"
+          ]
+         },
+         "attribution": {
+          "enum": [
+           "any",
+           "treatment_related",
+           "unspecified"
+          ]
+         },
+         "attribution_agent": {
+          "type": "string"
+         },
+         "aesi_of": {
+          "type": "array",
+          "items": {
+           "enum": [
+            "radionuclide_therapy",
+            "adc",
+            "immunotherapy",
+            "targeted_therapy",
+            "ddr_hrd",
+            "endocrine",
+            "t_cell_engager",
+            "cellular",
+            "radiotherapy",
+            "surgery",
+            "locoregional",
+            "chemotherapy",
+            "diagnostic"
+           ]
+          }
+         },
+         "adjudicated": {
+          "type": "boolean"
+         },
+         "treatment_phase": {
+          "type": "string"
+         },
+         "grading_system": {
+          "type": "string"
+         },
+         "causes": {
+          "type": "array",
+          "items": {
+           "type": "string"
+          }
+         },
+         "irreversible": {
+          "type": "boolean"
+         },
+         "state": {
+          "enum": [
+           "not_reported",
+           "unknown",
+           "not_yet_available"
+          ]
+         },
+         "expected": {
+          "type": "string"
+         },
+         "checked_sources": {
+          "type": "array",
+          "items": {
+           "type": "string"
+          }
+         },
+         "note": {
+          "type": "string"
+         }
+        },
+        "additionalProperties": false
+       }
+      }
+     }
+    },
+    "discontinuation_ae": {
+     "allOf": [
+      {
+       "$ref": "#/$defs/envelope"
+      }
+     ],
+     "properties": {
+      "v": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "arm_id": {
+          "type": "string"
+         },
+         "arm_group": {
+          "type": "object",
+          "properties": {
+           "factor": {
+            "type": "string"
+           },
+           "level": {
+            "type": "string"
+           }
+          },
+          "required": [
+           "factor",
+           "level"
+          ],
+          "additionalProperties": false
+         },
+         "term": {
+          "type": "string"
+         },
+         "scope": {
+          "enum": [
+           "any",
+           "g1",
+           "g2",
+           "g1_2",
+           "g2plus",
+           "g3",
+           "g3_4",
+           "g3plus",
+           "g4",
+           "g4plus",
+           "g5",
+           "serious",
+           "unspecified"
+          ]
+         },
+         "analysis_ref": {
+          "type": "string"
+         },
+         "conflict_ref": {
+          "type": "string"
+         },
+         "value": {
+          "$ref": "#/$defs/qualified"
+         },
+         "label": {
+          "type": "string"
+         },
+         "organ": {
+          "type": "string"
+         },
+         "reported_term": {
+          "type": "string"
+         },
+         "term_mapping": {
+          "enum": [
+           "exact",
+           "broader",
+           "narrower",
+           "related"
+          ]
+         },
+         "attribution_method": {
+          "enum": [
+           "investigator",
+           "adjudicated",
+           "sponsor",
+           "unspecified"
+          ]
+         },
+         "subtype": {
+          "type": "string"
+         },
+         "timing": {
+          "enum": [
+           "acute",
+           "late",
+           "any"
+          ]
+         },
+         "denominator": {
+          "type": "integer"
+         },
+         "comparison_id": {
+          "type": "string"
+         },
+         "conflict": {
+          "enum": [
+           "none",
+           "explained",
+           "within_source_conflict",
+           "cross_source_conflict"
+          ]
+         },
+         "value_candidates": {
+          "type": "array"
+         },
+         "prov": {
+          "type": "string"
+         },
+         "n": {
+          "type": "integer"
+         },
+         "n_events": {
+          "type": "integer"
+         },
+         "type": {
+          "enum": [
+           "reduction",
+           "interruption"
+          ]
+         },
+         "attribution": {
+          "enum": [
+           "any",
+           "treatment_related",
+           "unspecified"
+          ]
+         },
+         "attribution_agent": {
+          "type": "string"
+         },
+         "aesi_of": {
+          "type": "array",
+          "items": {
+           "enum": [
+            "radionuclide_therapy",
+            "adc",
+            "immunotherapy",
+            "targeted_therapy",
+            "ddr_hrd",
+            "endocrine",
+            "t_cell_engager",
+            "cellular",
+            "radiotherapy",
+            "surgery",
+            "locoregional",
+            "chemotherapy",
+            "diagnostic"
+           ]
+          }
+         },
+         "adjudicated": {
+          "type": "boolean"
+         },
+         "treatment_phase": {
+          "type": "string"
+         },
+         "grading_system": {
+          "type": "string"
+         },
+         "causes": {
+          "type": "array",
+          "items": {
+           "type": "string"
+          }
+         },
+         "irreversible": {
+          "type": "boolean"
+         },
+         "state": {
+          "enum": [
+           "not_reported",
+           "unknown",
+           "not_yet_available"
+          ]
+         },
+         "expected": {
+          "type": "string"
+         },
+         "checked_sources": {
+          "type": "array",
+          "items": {
+           "type": "string"
+          }
+         },
+         "note": {
+          "type": "string"
+         }
+        },
+        "additionalProperties": false
+       }
+      }
+     }
+    },
+    "dose_modification": {
+     "allOf": [
+      {
+       "$ref": "#/$defs/envelope"
+      }
+     ],
+     "properties": {
+      "v": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "arm_id": {
+          "type": "string"
+         },
+         "arm_group": {
+          "type": "object",
+          "properties": {
+           "factor": {
+            "type": "string"
+           },
+           "level": {
+            "type": "string"
+           }
+          },
+          "required": [
+           "factor",
+           "level"
+          ],
+          "additionalProperties": false
+         },
+         "term": {
+          "type": "string"
+         },
+         "scope": {
+          "enum": [
+           "any",
+           "g1",
+           "g2",
+           "g1_2",
+           "g2plus",
+           "g3",
+           "g3_4",
+           "g3plus",
+           "g4",
+           "g4plus",
+           "g5",
+           "serious",
+           "unspecified"
+          ]
+         },
+         "analysis_ref": {
+          "type": "string"
+         },
+         "conflict_ref": {
+          "type": "string"
+         },
+         "value": {
+          "$ref": "#/$defs/qualified"
+         },
+         "label": {
+          "type": "string"
+         },
+         "organ": {
+          "type": "string"
+         },
+         "reported_term": {
+          "type": "string"
+         },
+         "term_mapping": {
+          "enum": [
+           "exact",
+           "broader",
+           "narrower",
+           "related"
+          ]
+         },
+         "attribution_method": {
+          "enum": [
+           "investigator",
+           "adjudicated",
+           "sponsor",
+           "unspecified"
+          ]
+         },
+         "subtype": {
+          "type": "string"
+         },
+         "timing": {
+          "enum": [
+           "acute",
+           "late",
+           "any"
+          ]
+         },
+         "denominator": {
+          "type": "integer"
+         },
+         "comparison_id": {
+          "type": "string"
+         },
+         "conflict": {
+          "enum": [
+           "none",
+           "explained",
+           "within_source_conflict",
+           "cross_source_conflict"
+          ]
+         },
+         "value_candidates": {
+          "type": "array"
+         },
+         "prov": {
+          "type": "string"
+         },
+         "n": {
+          "type": "integer"
+         },
+         "n_events": {
+          "type": "integer"
+         },
+         "type": {
+          "enum": [
+           "reduction",
+           "interruption"
+          ]
+         },
+         "attribution": {
+          "enum": [
+           "any",
+           "treatment_related",
+           "unspecified"
+          ]
+         },
+         "attribution_agent": {
+          "type": "string"
+         },
+         "aesi_of": {
+          "type": "array",
+          "items": {
+           "enum": [
+            "radionuclide_therapy",
+            "adc",
+            "immunotherapy",
+            "targeted_therapy",
+            "ddr_hrd",
+            "endocrine",
+            "t_cell_engager",
+            "cellular",
+            "radiotherapy",
+            "surgery",
+            "locoregional",
+            "chemotherapy",
+            "diagnostic"
+           ]
+          }
+         },
+         "adjudicated": {
+          "type": "boolean"
+         },
+         "treatment_phase": {
+          "type": "string"
+         },
+         "grading_system": {
+          "type": "string"
+         },
+         "causes": {
+          "type": "array",
+          "items": {
+           "type": "string"
+          }
+         },
+         "irreversible": {
+          "type": "boolean"
+         },
+         "state": {
+          "enum": [
+           "not_reported",
+           "unknown",
+           "not_yet_available"
+          ]
+         },
+         "expected": {
+          "type": "string"
+         },
+         "checked_sources": {
+          "type": "array",
+          "items": {
+           "type": "string"
+          }
+         },
+         "note": {
+          "type": "string"
+         }
+        },
+        "additionalProperties": false
+       }
+      }
+     }
+    },
+    "treatment_related_deaths": {
+     "allOf": [
+      {
+       "$ref": "#/$defs/envelope"
+      }
+     ],
+     "properties": {
+      "v": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "arm_id": {
+          "type": "string"
+         },
+         "arm_group": {
+          "type": "object",
+          "properties": {
+           "factor": {
+            "type": "string"
+           },
+           "level": {
+            "type": "string"
+           }
+          },
+          "required": [
+           "factor",
+           "level"
+          ],
+          "additionalProperties": false
+         },
+         "term": {
+          "type": "string"
+         },
+         "scope": {
+          "enum": [
+           "any",
+           "g1",
+           "g2",
+           "g1_2",
+           "g2plus",
+           "g3",
+           "g3_4",
+           "g3plus",
+           "g4",
+           "g4plus",
+           "g5",
+           "serious",
+           "unspecified"
+          ]
+         },
+         "analysis_ref": {
+          "type": "string"
+         },
+         "conflict_ref": {
+          "type": "string"
+         },
+         "value": {
+          "$ref": "#/$defs/qualified"
+         },
+         "label": {
+          "type": "string"
+         },
+         "organ": {
+          "type": "string"
+         },
+         "reported_term": {
+          "type": "string"
+         },
+         "term_mapping": {
+          "enum": [
+           "exact",
+           "broader",
+           "narrower",
+           "related"
+          ]
+         },
+         "attribution_method": {
+          "enum": [
+           "investigator",
+           "adjudicated",
+           "sponsor",
+           "unspecified"
+          ]
+         },
+         "subtype": {
+          "type": "string"
+         },
+         "timing": {
+          "enum": [
+           "acute",
+           "late",
+           "any"
+          ]
+         },
+         "denominator": {
+          "type": "integer"
+         },
+         "comparison_id": {
+          "type": "string"
+         },
+         "conflict": {
+          "enum": [
+           "none",
+           "explained",
+           "within_source_conflict",
+           "cross_source_conflict"
+          ]
+         },
+         "value_candidates": {
+          "type": "array"
+         },
+         "prov": {
+          "type": "string"
+         },
+         "n": {
+          "type": "integer"
+         },
+         "n_events": {
+          "type": "integer"
+         },
+         "type": {
+          "enum": [
+           "reduction",
+           "interruption"
+          ]
+         },
+         "attribution": {
+          "enum": [
+           "any",
+           "treatment_related",
+           "unspecified"
+          ]
+         },
+         "attribution_agent": {
+          "type": "string"
+         },
+         "aesi_of": {
+          "type": "array",
+          "items": {
+           "enum": [
+            "radionuclide_therapy",
+            "adc",
+            "immunotherapy",
+            "targeted_therapy",
+            "ddr_hrd",
+            "endocrine",
+            "t_cell_engager",
+            "cellular",
+            "radiotherapy",
+            "surgery",
+            "locoregional",
+            "chemotherapy",
+            "diagnostic"
+           ]
+          }
+         },
+         "adjudicated": {
+          "type": "boolean"
+         },
+         "treatment_phase": {
+          "type": "string"
+         },
+         "grading_system": {
+          "type": "string"
+         },
+         "causes": {
+          "type": "array",
+          "items": {
+           "type": "string"
+          }
+         },
+         "irreversible": {
+          "type": "boolean"
+         },
+         "state": {
+          "enum": [
+           "not_reported",
+           "unknown",
+           "not_yet_available"
+          ]
+         },
+         "expected": {
+          "type": "string"
+         },
+         "checked_sources": {
+          "type": "array",
+          "items": {
+           "type": "string"
+          }
+         },
+         "note": {
+          "type": "string"
+         }
+        },
+        "additionalProperties": false
+       }
+      }
+     }
+    },
+    "key_toxicities": {
+     "allOf": [
+      {
+       "$ref": "#/$defs/envelope"
+      }
+     ],
+     "properties": {
+      "v": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "arm_id": {
+          "type": "string"
+         },
+         "arm_group": {
+          "type": "object",
+          "properties": {
+           "factor": {
+            "type": "string"
+           },
+           "level": {
+            "type": "string"
+           }
+          },
+          "required": [
+           "factor",
+           "level"
+          ],
+          "additionalProperties": false
+         },
+         "term": {
+          "type": "string"
+         },
+         "scope": {
+          "enum": [
+           "any",
+           "g1",
+           "g2",
+           "g1_2",
+           "g2plus",
+           "g3",
+           "g3_4",
+           "g3plus",
+           "g4",
+           "g4plus",
+           "g5",
+           "serious",
+           "unspecified"
+          ]
+         },
+         "analysis_ref": {
+          "type": "string"
+         },
+         "conflict_ref": {
+          "type": "string"
+         },
+         "value": {
+          "$ref": "#/$defs/qualified"
+         },
+         "label": {
+          "type": "string"
+         },
+         "organ": {
+          "type": "string"
+         },
+         "reported_term": {
+          "type": "string"
+         },
+         "term_mapping": {
+          "enum": [
+           "exact",
+           "broader",
+           "narrower",
+           "related"
+          ]
+         },
+         "attribution_method": {
+          "enum": [
+           "investigator",
+           "adjudicated",
+           "sponsor",
+           "unspecified"
+          ]
+         },
+         "subtype": {
+          "type": "string"
+         },
+         "timing": {
+          "enum": [
+           "acute",
+           "late",
+           "any"
+          ]
+         },
+         "denominator": {
+          "type": "integer"
+         },
+         "comparison_id": {
+          "type": "string"
+         },
+         "conflict": {
+          "enum": [
+           "none",
+           "explained",
+           "within_source_conflict",
+           "cross_source_conflict"
+          ]
+         },
+         "value_candidates": {
+          "type": "array"
+         },
+         "prov": {
+          "type": "string"
+         },
+         "n": {
+          "type": "integer"
+         },
+         "n_events": {
+          "type": "integer"
+         },
+         "type": {
+          "enum": [
+           "reduction",
+           "interruption"
+          ]
+         },
+         "attribution": {
+          "enum": [
+           "any",
+           "treatment_related",
+           "unspecified"
+          ]
+         },
+         "attribution_agent": {
+          "type": "string"
+         },
+         "aesi_of": {
+          "type": "array",
+          "items": {
+           "enum": [
+            "radionuclide_therapy",
+            "adc",
+            "immunotherapy",
+            "targeted_therapy",
+            "ddr_hrd",
+            "endocrine",
+            "t_cell_engager",
+            "cellular",
+            "radiotherapy",
+            "surgery",
+            "locoregional",
+            "chemotherapy",
+            "diagnostic"
+           ]
+          }
+         },
+         "adjudicated": {
+          "type": "boolean"
+         },
+         "treatment_phase": {
+          "type": "string"
+         },
+         "grading_system": {
+          "type": "string"
+         },
+         "causes": {
+          "type": "array",
+          "items": {
+           "type": "string"
+          }
+         },
+         "irreversible": {
+          "type": "boolean"
+         },
+         "state": {
+          "enum": [
+           "not_reported",
+           "unknown",
+           "not_yet_available"
+          ]
+         },
+         "expected": {
+          "type": "string"
+         },
+         "checked_sources": {
+          "type": "array",
+          "items": {
+           "type": "string"
+          }
+         },
+         "note": {
+          "type": "string"
+         }
+        },
+        "additionalProperties": false
+       }
+      }
+     }
+    },
+    "late_effects": {
+     "allOf": [
+      {
+       "$ref": "#/$defs/envelope"
+      }
+     ],
+     "properties": {
+      "v": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "arm_id": {
+          "type": "string"
+         },
+         "arm_group": {
+          "type": "object",
+          "properties": {
+           "factor": {
+            "type": "string"
+           },
+           "level": {
+            "type": "string"
+           }
+          },
+          "required": [
+           "factor",
+           "level"
+          ],
+          "additionalProperties": false
+         },
+         "term": {
+          "type": "string"
+         },
+         "scope": {
+          "enum": [
+           "any",
+           "g1",
+           "g2",
+           "g1_2",
+           "g2plus",
+           "g3",
+           "g3_4",
+           "g3plus",
+           "g4",
+           "g4plus",
+           "g5",
+           "serious",
+           "unspecified"
+          ]
+         },
+         "analysis_ref": {
+          "type": "string"
+         },
+         "conflict_ref": {
+          "type": "string"
+         },
+         "value": {
+          "$ref": "#/$defs/qualified"
+         },
+         "label": {
+          "type": "string"
+         },
+         "organ": {
+          "type": "string"
+         },
+         "reported_term": {
+          "type": "string"
+         },
+         "term_mapping": {
+          "enum": [
+           "exact",
+           "broader",
+           "narrower",
+           "related"
+          ]
+         },
+         "attribution_method": {
+          "enum": [
+           "investigator",
+           "adjudicated",
+           "sponsor",
+           "unspecified"
+          ]
+         },
+         "subtype": {
+          "type": "string"
+         },
+         "timing": {
+          "enum": [
+           "acute",
+           "late",
+           "any"
+          ]
+         },
+         "denominator": {
+          "type": "integer"
+         },
+         "comparison_id": {
+          "type": "string"
+         },
+         "conflict": {
+          "enum": [
+           "none",
+           "explained",
+           "within_source_conflict",
+           "cross_source_conflict"
+          ]
+         },
+         "value_candidates": {
+          "type": "array"
+         },
+         "prov": {
+          "type": "string"
+         },
+         "n": {
+          "type": "integer"
+         },
+         "n_events": {
+          "type": "integer"
+         },
+         "type": {
+          "enum": [
+           "reduction",
+           "interruption"
+          ]
+         },
+         "attribution": {
+          "enum": [
+           "any",
+           "treatment_related",
+           "unspecified"
+          ]
+         },
+         "attribution_agent": {
+          "type": "string"
+         },
+         "aesi_of": {
+          "type": "array",
+          "items": {
+           "enum": [
+            "radionuclide_therapy",
+            "adc",
+            "immunotherapy",
+            "targeted_therapy",
+            "ddr_hrd",
+            "endocrine",
+            "t_cell_engager",
+            "cellular",
+            "radiotherapy",
+            "surgery",
+            "locoregional",
+            "chemotherapy",
+            "diagnostic"
+           ]
+          }
+         },
+         "adjudicated": {
+          "type": "boolean"
+         },
+         "treatment_phase": {
+          "type": "string"
+         },
+         "grading_system": {
+          "type": "string"
+         },
+         "causes": {
+          "type": "array",
+          "items": {
+           "type": "string"
+          }
+         },
+         "irreversible": {
+          "type": "boolean"
+         },
+         "state": {
+          "enum": [
+           "not_reported",
+           "unknown",
+           "not_yet_available"
+          ]
+         },
+         "expected": {
+          "type": "string"
+         },
+         "checked_sources": {
+          "type": "array",
+          "items": {
+           "type": "string"
+          }
+         },
+         "note": {
+          "type": "string"
+         }
+        },
+        "additionalProperties": false
+       }
+      }
+     }
+    }
+   },
+   "additionalProperties": false
+  },
+  "interpretation": {
+   "type": "object",
+   "properties": {
+    "key_result": {
+     "$ref": "#/$defs/envelope"
+    },
+    "takehome": {
+     "$ref": "#/$defs/envelope"
+    },
+    "outcome": {
+     "$ref": "#/$defs/envelope"
+    },
+    "limitations": {
+     "$ref": "#/$defs/envelope"
+    },
+    "clinical_impact": {
+     "$ref": "#/$defs/envelope"
+    },
+    "regulatory": {
+     "$ref": "#/$defs/envelope"
+    },
+    "guideline_impact": {
+     "$ref": "#/$defs/envelope"
+    }
+   },
+   "additionalProperties": false
+  },
+  "guideline": {
+   "type": "object",
+   "properties": {
+    "issuing_bodies": {
+     "$ref": "#/$defs/envelope"
+    },
+    "version": {
+     "$ref": "#/$defs/envelope"
+    },
+    "status": {
+     "$ref": "#/$defs/envelope"
+    },
+    "recommendations": {
+     "$ref": "#/$defs/envelope"
+    },
+    "methodology": {
+     "$ref": "#/$defs/envelope"
+    },
+    "date": {
+     "$ref": "#/$defs/envelope"
+    }
+   },
+   "additionalProperties": false
+  },
+  "collection": {
+   "type": "object",
+   "properties": {
+    "summary": {
+     "$ref": "#/$defs/envelope"
+    },
+    "scope": {
+     "$ref": "#/$defs/envelope"
+    }
+   },
+   "additionalProperties": false
+  }
+ },
+ "required": [
+  "schema",
+  "uid",
+  "record_type",
+  "curation",
+  "relationships",
+  "modules",
+  "review",
+  "provenance",
+  "legacy"
+ ],
+ "additionalProperties": false,
+ "$defs": {
+  "envelope": {
+   "type": "object",
+   "properties": {
+    "state": {
+     "enum": [
+      "present",
+      "not_reported",
+      "not_applicable",
+      "unknown",
+      "not_yet_available",
+      "withheld_due_to_integrity"
+     ]
+    },
+    "origin": {
+     "enum": [
+      "reported",
+      "derived",
+      "editorial",
+      "legacy"
+     ]
+    },
+    "v": {},
+    "prov": {
+     "type": "string"
+    },
+    "conflict": {
+     "enum": [
+      "none",
+      "explained",
+      "within_source_conflict",
+      "cross_source_conflict"
+     ]
+    },
+    "value_candidates": {
+     "type": "array",
+     "items": {
+      "type": "object",
+      "properties": {
+       "value": {},
+       "locator": {
+        "type": "object"
+       },
+       "prov": {
+        "type": "string"
+       }
+      },
+      "required": [
+       "value",
+       "locator"
+      ]
+     }
+    },
+    "resolution": {
+     "type": "string"
+    },
+    "conflict_ref": {
+     "type": "string"
+    },
+    "derivation": {
+     "$ref": "#/$defs/derivation"
+    },
+    "checked_sources": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    },
+    "expected": {
+     "type": "string"
+    },
+    "decision_ref": {
+     "type": "string"
+    },
+    "legacy_ref": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    },
+    "note": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "state"
+   ],
+   "additionalProperties": false
+  },
+  "qualified": {
+   "type": "object",
+   "properties": {
+    "op": {
+     "enum": [
+      "=",
+      "≈",
+      "<",
+      "≤",
+      ">",
+      "≥",
+      "range",
+      "not_reached",
+      "not_evaluable",
+      "direction_only"
+     ]
+    },
+    "value": {
+     "type": "number"
+    },
+    "low": {
+     "type": "number"
+    },
+    "high": {
+     "type": "number"
+    },
+    "unit": {
+     "type": "string"
+    },
+    "direction": {
+     "enum": [
+      "favors_exp",
+      "favors_ctl",
+      "no_difference"
+     ]
+    }
+   },
+   "required": [
+    "op"
+   ],
+   "additionalProperties": false
+  },
+  "ci": {
+   "type": "object",
+   "properties": {
+    "level": {
+     "type": "number"
+    },
+    "low": {
+     "type": "number"
+    },
+    "high": {
+     "type": [
+      "number",
+      "null"
+     ]
+    },
+    "high_not_reached": {
+     "type": "boolean"
+    }
+   },
+   "required": [
+    "level",
+    "low",
+    "high"
+   ],
+   "additionalProperties": false
+  },
+  "endpoint": {
+   "type": "object",
+   "properties": {
+    "endpoint_id": {
+     "type": "string"
+    },
+    "code": {
+     "enum": [
+      "PFS",
+      "rPFS",
+      "PFS2",
+      "OS",
+      "DFS",
+      "iDFS",
+      "EFS",
+      "RFS",
+      "MFS",
+      "DSS",
+      "FFS",
+      "TFST",
+      "ORR",
+      "CR",
+      "CRh",
+      "pCR",
+      "MPR",
+      "DoR",
+      "DCR",
+      "TTP",
+      "CBR",
+      "PSA50",
+      "TTPP",
+      "SSE",
+      "MRD",
+      "LC",
+      "TTUP",
+      "QoL",
+      "SENS",
+      "SPEC",
+      "PPV",
+      "NPV",
+      "DR",
+      "SAFETY",
+      "other"
+     ]
+    },
+    "definition": {
+     "type": "string"
+    },
+    "definition_candidates": {
+     "type": "array",
+     "items": {
+      "type": "object",
+      "properties": {
+       "definition": {
+        "type": "string"
+       },
+       "prov": {
+        "type": "string"
+       }
+      },
+      "required": [
+       "definition",
+       "prov"
+      ]
+     }
+    },
+    "decision_ref": {
+     "type": "string"
+    },
+    "expected": {
+     "type": "string"
+    },
+    "note": {
+     "type": "string"
+    },
+    "response_criteria": {
+     "type": "string"
+    },
+    "hierarchy": {
+     "type": "object",
+     "properties": {
+      "level": {
+       "enum": [
+        "primary",
+        "key_secondary",
+        "secondary",
+        "exploratory",
+        "post_hoc",
+        "safety",
+        "unspecified"
+       ]
+      },
+      "primary_type": {
+       "enum": [
+        "sole",
+        "co_primary",
+        "dual_primary",
+        "multiple_unspecified"
+       ]
+      },
+      "scope": {
+       "type": "object",
+       "properties": {
+        "cohort_id": {
+         "type": "string"
+        },
+        "part_id": {
+         "type": "string"
+        }
+       },
+       "additionalProperties": false
+      },
+      "testing": {
+       "type": "object",
+       "properties": {
+        "family_id": {
+         "type": "string"
+        },
+        "order": {
+         "type": "integer"
+        }
+       },
+       "additionalProperties": false
+      },
+      "history": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "level": {
+          "enum": [
+           "primary",
+           "key_secondary",
+           "secondary",
+           "exploratory",
+           "post_hoc",
+           "safety",
+           "unspecified"
+          ]
+         },
+         "changed_at": {
+          "type": "string"
+         },
+         "reason": {
+          "type": "string"
+         },
+         "source": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "level",
+         "reason"
+        ]
+       }
+      }
+     },
+     "required": [
+      "level"
+     ],
+     "additionalProperties": false
+    },
+    "comparison_id": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "population": {
+     "type": "object",
+     "properties": {
+      "label": {
+       "type": "string"
+      },
+      "biomarker_ref": {
+       "type": "string"
+      },
+      "cohort_id": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "label"
+     ],
+     "additionalProperties": false
+    },
+    "measure": {
+     "type": "object",
+     "properties": {
+      "summary": {
+       "enum": [
+        "median",
+        "rate",
+        "mean",
+        "proportion",
+        "hr_only",
+        "accuracy",
+        "count"
+       ]
+      },
+      "analysis_role": {
+       "enum": [
+        "protocol_primary_analysis",
+        "supportive",
+        "sensitivity"
+       ]
+      }
+     },
+     "required": [
+      "summary"
+     ],
+     "additionalProperties": false
+    },
+    "timepoint": {
+     "type": "object",
+     "properties": {
+      "type": {
+       "enum": [
+        "median",
+        "landmark",
+        "cumulative",
+        "at_event",
+        "best"
+       ]
+      },
+      "months": {
+       "type": "number"
+      },
+      "window": {
+       "type": "object",
+       "properties": {
+        "low": {
+         "type": "number"
+        },
+        "high": {
+         "type": "number"
+        }
+       },
+       "required": [
+        "low",
+        "high"
+       ],
+       "additionalProperties": false
+      }
+     },
+     "required": [
+      "type"
+     ],
+     "additionalProperties": false
+    },
+    "assessment": {
+     "type": "string"
+    },
+    "analysis_set": {
+     "type": "object",
+     "properties": {
+      "name": {
+       "type": "string"
+      },
+      "n": {
+       "type": "integer"
+      }
+     },
+     "required": [
+      "name"
+     ],
+     "additionalProperties": false
+    },
+    "analysis_method": {
+     "type": "string"
+    },
+    "arms_values": {
+     "type": "array",
+     "items": {
+      "type": "object",
+      "properties": {
+       "arm_id": {
+        "type": "string"
+       },
+       "arm_group": {
+        "type": "object",
+        "properties": {
+         "factor": {
+          "type": "string"
+         },
+         "level": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "factor",
+         "level"
+        ]
+       },
+       "value": {
+        "$ref": "#/$defs/qualified"
+       },
+       "ci": {
+        "$ref": "#/$defs/ci"
+       },
+       "n": {
+        "type": "integer"
+       },
+       "events": {
+        "type": "integer"
+       },
+       "flags": {
+        "type": "array",
+        "items": {
+         "enum": [
+          "pct_inconsistent_with_n",
+          "ci_implausible",
+          "rounding"
+         ]
+        }
+       }
+      },
+      "required": [
+       "value"
+      ],
+      "additionalProperties": false
+     }
+    },
+    "estimate": {
+     "type": "object",
+     "properties": {
+      "value": {
+       "$ref": "#/$defs/qualified"
+      },
+      "ci": {
+       "$ref": "#/$defs/ci"
+      },
+      "n": {
+       "type": "integer"
+      }
+     },
+     "required": [
+      "value"
+     ],
+     "additionalProperties": false
+    },
+    "unit_of_analysis": {
+     "enum": [
+      "patient",
+      "region",
+      "lesion"
+     ]
+    },
+    "effect": {
+     "type": "object",
+     "properties": {
+      "measure": {
+       "enum": [
+        "HR",
+        "OR",
+        "RR",
+        "risk_difference",
+        "rate_difference",
+        "none"
+       ]
+      },
+      "value": {
+       "$ref": "#/$defs/qualified"
+      },
+      "ci": {
+       "$ref": "#/$defs/ci"
+      },
+      "p": {
+       "type": "string"
+      },
+      "sided": {
+       "enum": [
+        1,
+        2
+       ]
+      },
+      "significance": {
+       "enum": [
+        "met",
+        "not_met",
+        "boundary_not_crossed",
+        "stopped_for_futility",
+        "descriptive",
+        "not_tested"
+       ]
+      },
+      "favors": {
+       "enum": [
+        "exp",
+        "ctl",
+        "none"
+       ]
+      }
+     },
+     "required": [
+      "measure"
+     ],
+     "additionalProperties": false
+    },
+    "maturity": {
+     "type": "object",
+     "properties": {
+      "analysis_ref": {
+       "type": "string"
+      },
+      "analysis_type": {
+       "type": "string"
+      },
+      "data_cutoff": {
+       "type": "string"
+      },
+      "follow_up_median_months": {
+       "type": "number"
+      },
+      "events": {
+       "type": "integer"
+      },
+      "information_fraction": {
+       "type": "number"
+      },
+      "boundary_p": {
+       "type": "number"
+      }
+     },
+     "additionalProperties": false
+    },
+    "state": {
+     "enum": [
+      "present",
+      "not_reported",
+      "not_applicable",
+      "unknown",
+      "not_yet_available",
+      "withheld_due_to_integrity"
+     ]
+    },
+    "origin": {
+     "enum": [
+      "reported",
+      "derived",
+      "editorial",
+      "legacy"
+     ]
+    },
+    "prov": {
+     "type": "string"
+    },
+    "conflict": {
+     "enum": [
+      "none",
+      "explained",
+      "within_source_conflict",
+      "cross_source_conflict"
+     ]
+    },
+    "value_candidates": {
+     "type": "array"
+    },
+    "conflict_ref": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "endpoint_id",
+    "code",
+    "hierarchy",
+    "population",
+    "state"
+   ],
+   "additionalProperties": false
+  },
+  "intervention": {
+   "type": "object",
+   "properties": {
+    "intervention_id": {
+     "type": "string"
+    },
+    "agent": {
+     "type": "string"
+    },
+    "agent_class": {
+     "type": "string"
+    },
+    "module": {
+     "enum": [
+      "radionuclide_therapy",
+      "adc",
+      "immunotherapy",
+      "targeted_therapy",
+      "ddr_hrd",
+      "endocrine",
+      "t_cell_engager",
+      "cellular",
+      "radiotherapy",
+      "surgery",
+      "locoregional",
+      "chemotherapy",
+      "diagnostic"
+     ]
+    },
+    "role": {
+     "enum": [
+      "investigational",
+      "backbone",
+      "control",
+      "supportive"
+     ]
+    },
+    "phase": {
+     "enum": [
+      "preparation",
+      "upfront_local",
+      "neoadjuvant",
+      "adjuvant",
+      "induction",
+      "bridging",
+      "conditioning",
+      "consolidation",
+      "maintenance",
+      "continuous",
+      "single_administration"
+     ]
+    },
+    "dose": {
+     "type": "object"
+    },
+    "route": {
+     "type": "string"
+    },
+    "schedule": {
+     "type": "string"
+    },
+    "duration": {
+     "type": "string"
+    },
+    "attributes": {
+     "type": "object"
+    },
+    "supportive_care": {
+     "type": "array",
+     "items": {
+      "type": "object"
+     }
+    }
+   },
+   "required": [
+    "agent",
+    "role"
+   ],
+   "additionalProperties": false
+  },
+  "arm": {
+   "type": "object",
+   "properties": {
+    "arm_id": {
+     "type": "string",
+     "pattern": "^[a-z0-9_]+$"
+    },
+    "label": {
+     "type": "string"
+    },
+    "role": {
+     "enum": [
+      "experimental",
+      "control",
+      "contribution_of_components",
+      "exploratory",
+      "single",
+      "exposure_group"
+     ]
+    },
+    "status": {
+     "enum": [
+      "active",
+      "closed_early"
+     ]
+    },
+    "closed_at": {
+     "type": "string"
+    },
+    "n": {
+     "$ref": "#/$defs/qualified"
+    },
+    "n_analyzed": {
+     "$ref": "#/$defs/qualified"
+    },
+    "assignment": {
+     "enum": [
+      "randomized",
+      "biomarker_assigned",
+      "nonrandomized"
+     ]
+    },
+    "factor_levels": {
+     "type": "object"
+    },
+    "interventions": {
+     "type": "array",
+     "items": {
+      "$ref": "#/$defs/intervention"
+     }
+    },
+    "choice": {
+     "type": "object"
+    },
+    "proceeded_to_planned_therapy": {
+     "type": "array",
+     "items": {
+      "type": "object",
+      "properties": {
+       "step": {
+        "enum": [
+         "surgery",
+         "infusion",
+         "asct",
+         "rt",
+         "other"
+        ]
+       },
+       "pct": {
+        "type": "number"
+       },
+       "n": {
+        "type": "integer"
+       },
+       "of": {
+        "type": "integer"
+       },
+       "state": {
+        "enum": [
+         "present",
+         "not_reported",
+         "not_applicable",
+         "unknown",
+         "not_yet_available",
+         "withheld_due_to_integrity"
+        ]
+       },
+       "origin": {
+        "enum": [
+         "reported",
+         "derived",
+         "editorial",
+         "legacy"
+        ]
+       },
+       "prov": {
+        "type": "string"
+       },
+       "derivation": {
+        "$ref": "#/$defs/derivation"
+       },
+       "checked_sources": {
+        "type": "array",
+        "items": {
+         "type": "string"
+        }
+       },
+       "note": {
+        "type": "string"
+       }
+      },
+      "required": [
+       "step"
+      ],
+      "additionalProperties": false
+     }
+    },
+    "cohort_id": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "arm_id",
+    "role"
+   ],
+   "additionalProperties": false
+  },
+  "comparison": {
+   "type": "object",
+   "properties": {
+    "comparison_id": {
+     "type": "string"
+    },
+    "exp_arms": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     },
+     "minItems": 1
+    },
+    "ctl_arms": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    },
+    "hypothesis": {
+     "enum": [
+      "superiority",
+      "non_inferiority",
+      "equivalence",
+      "descriptive"
+     ]
+    },
+    "ni_margin": {
+     "type": "object",
+     "properties": {
+      "measure": {
+       "type": "string"
+      },
+      "value": {
+       "type": "number"
+      }
+     },
+     "required": [
+      "measure",
+      "value"
+     ]
+    },
+    "alpha": {
+     "type": "number"
+    },
+    "alpha_sided": {
+     "enum": [
+      1,
+      2
+     ]
+    },
+    "cohort_id": {
+     "type": "string"
+    },
+    "ctl_type": {
+     "enum": [
+      "randomized",
+      "contemporaneous_nonrandomized",
+      "historical",
+      "external"
+     ]
+    }
+   },
+   "required": [
+    "comparison_id",
+    "exp_arms",
+    "hypothesis"
+   ],
+   "additionalProperties": false
+  },
+  "module_entry": {
+   "type": "object",
+   "properties": {
+    "module": {
+     "enum": [
+      "radionuclide_therapy",
+      "adc",
+      "immunotherapy",
+      "targeted_therapy",
+      "ddr_hrd",
+      "endocrine",
+      "t_cell_engager",
+      "cellular",
+      "radiotherapy",
+      "surgery",
+      "locoregional",
+      "chemotherapy",
+      "diagnostic"
+     ]
+    },
+    "role": {
+     "enum": [
+      "tested",
+      "backbone",
+      "control",
+      "context",
+      "undetermined"
+     ]
+    },
+    "arm_ids": {
+     "oneOf": [
+      {
+       "const": "all"
+      },
+      {
+       "type": "array",
+       "items": {
+        "type": "string"
+       }
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "fields": {
+     "type": "object",
+     "additionalProperties": {
+      "$ref": "#/$defs/envelope"
+     }
+    },
+    "classification": {
+     "type": "object",
+     "properties": {
+      "basis": {
+       "enum": [
+        "inferred",
+        "curated"
+       ]
+      },
+      "confidence": {
+       "enum": [
+        "high",
+        "medium",
+        "low"
+       ]
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "string"
+       }
+      }
+     },
+     "required": [
+      "basis"
+     ]
+    }
+   },
+   "required": [
+    "module",
+    "role",
+    "arm_ids"
+   ],
+   "additionalProperties": false
+  },
+  "provenance": {
+   "type": "object",
+   "properties": {
+    "source": {
+     "type": "object",
+     "properties": {
+      "type": {
+       "enum": [
+        "publication",
+        "registry",
+        "registry_results",
+        "regulatory",
+        "guideline",
+        "congress_abstract",
+        "human_decision",
+        "v1_legacy"
+       ]
+      },
+      "pmid": {
+       "type": "string"
+      },
+      "doi": {
+       "type": "string"
+      },
+      "pmcid": {
+       "type": "string"
+      },
+      "nct": {
+       "type": "string"
+      },
+      "url": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "type"
+     ]
+    },
+    "locator": {
+     "type": "object",
+     "properties": {
+      "section": {
+       "type": "string"
+      },
+      "table": {
+       "type": "string"
+      },
+      "figure": {
+       "type": "string"
+      },
+      "snippet": {
+       "type": "string"
+      }
+     }
+    },
+    "extraction": {
+     "enum": [
+      "explicit",
+      "derived",
+      "human_confirmed",
+      "lifted_v1"
+     ]
+    },
+    "evidence_confidence": {
+     "enum": [
+      "high",
+      "moderate",
+      "low"
+     ]
+    },
+    "reviewed_at": {
+     "type": "string"
+    },
+    "reviewed_by": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "source",
+    "extraction",
+    "evidence_confidence"
+   ],
+   "additionalProperties": false
+  },
+  "derivation": {
+   "type": "object",
+   "properties": {
+    "formula": {
+     "type": "string"
+    },
+    "parameters": {
+     "type": "object"
+    },
+    "assumptions": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     },
+     "minItems": 1
+    },
+    "source_fields": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     },
+     "minItems": 1
+    },
+    "version": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "formula",
+    "assumptions",
+    "source_fields",
+    "version"
+   ],
+   "additionalProperties": false
+  }
+ }
+}

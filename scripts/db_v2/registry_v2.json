@@ -1,0 +1,3406 @@
+{
+ "schema": "theratrials-db-v2-registry/1.0",
+ "status": "fundação — nenhum card migrado",
+ "record_types": [
+  "trial",
+  "trial_cohort",
+  "publication",
+  "pooled_analysis",
+  "meta_analysis",
+  "cohort_study",
+  "case_series",
+  "diagnostic_study",
+  "guideline",
+  "molecular_classification",
+  "translational",
+  "evidence_collection"
+ ],
+ "states": [
+  "present",
+  "not_reported",
+  "not_applicable",
+  "unknown",
+  "not_yet_available",
+  "withheld_due_to_integrity"
+ ],
+ "enums": {
+  "identity.evidence_stage": [
+   "registered",
+   "ongoing",
+   "presented",
+   "published_interim",
+   "published_primary",
+   "published_final",
+   "published_long_term"
+  ],
+  "identity.phase": [
+   "1",
+   "1/2",
+   "2",
+   "2/3",
+   "3",
+   "4",
+   "expanded_access",
+   "not_applicable"
+  ],
+  "population.setting": [
+   "neoadjuvant",
+   "perioperative",
+   "adjuvant",
+   "definitive",
+   "consolidation",
+   "maintenance",
+   "advanced_first_line",
+   "advanced_later_line",
+   "advanced_any_line",
+   "salvage",
+   "on_treatment_switch",
+   "newly_diagnosed",
+   "relapsed_refractory",
+   "transplant",
+   "staging",
+   "restaging",
+   "selection",
+   "screening",
+   "mixed"
+  ],
+  "design.structure": [
+   "single_cohort",
+   "multi_cohort",
+   "multi_cohort_basket",
+   "umbrella",
+   "platform",
+   "factorial",
+   "observational"
+  ],
+  "design.allocation": [
+   "randomized",
+   "nonrandomized",
+   "single_arm",
+   "observational"
+  ],
+  "design.masking": [
+   "open",
+   "single_blind",
+   "double_blind"
+  ],
+  "design.question_type": [
+   "drug_comparison",
+   "add_on",
+   "strategy",
+   "de_escalation",
+   "sequencing",
+   "dose_optimization"
+  ],
+  "safety.population": [
+   "safety_set",
+   "cohort",
+   "all_cohorts",
+   "pooled"
+  ],
+  "interpretation.outcome": [
+   "positive",
+   "negative",
+   "mixed",
+   "descriptive",
+   "pending"
+  ]
+ },
+ "endpoint_codes": [
+  "PFS",
+  "rPFS",
+  "PFS2",
+  "OS",
+  "DFS",
+  "iDFS",
+  "EFS",
+  "RFS",
+  "MFS",
+  "DSS",
+  "FFS",
+  "TFST",
+  "ORR",
+  "CR",
+  "CRh",
+  "pCR",
+  "MPR",
+  "DoR",
+  "DCR",
+  "TTP",
+  "CBR",
+  "PSA50",
+  "TTPP",
+  "SSE",
+  "MRD",
+  "LC",
+  "TTUP",
+  "QoL",
+  "SENS",
+  "SPEC",
+  "PPV",
+  "NPV",
+  "DR",
+  "SAFETY",
+  "other"
+ ],
+ "endpoint_synonyms": {
+  "DSS": [
+   "disease-specific survival",
+   "cancer-specific survival",
+   "sobrevida específica por doença",
+   "sobrevida específica por câncer",
+   "sobrevida câncer-específica",
+   "sobrevida doença-específica"
+  ],
+  "FFS": [
+   "freedom from failure",
+   "failure-free survival",
+   "sobrevida livre de falha"
+  ],
+  "PFS2": [
+   "second progression-free survival",
+   "time to second progression",
+   "sobrevida livre de segunda progressão"
+  ],
+  "TFST": [
+   "time to first subsequent therapy",
+   "tempo até a primeira terapia subsequente"
+  ],
+  "MFS": [
+   "metastasis-free survival",
+   "sobrevida livre de metástase"
+  ],
+  "RFS": [
+   "recurrence-free survival",
+   "relapse-free survival",
+   "sobrevida livre de recorrência",
+   "sobrevida livre de recidiva"
+  ],
+  "EFS": [
+   "event-free survival",
+   "sobrevida livre de eventos"
+  ],
+  "DFS": [
+   "disease-free survival",
+   "sobrevida livre de doença"
+  ],
+  "LC": [
+   "local control",
+   "controle local"
+  ],
+  "TTUP": [
+   "time to untreatable progression",
+   "tempo até progressão intratável"
+  ],
+  "MPR": [
+   "major pathological response",
+   "resposta patológica maior"
+  ],
+  "TTPP": [
+   "time to psa progression",
+   "tempo até progressão de psa"
+  ],
+  "SSE": [
+   "time to first symptomatic skeletal event",
+   "symptomatic skeletal event",
+   "tempo até 1º evento esquelético sintomático",
+   "tempo até primeiro evento esquelético sintomático"
+  ]
+ },
+ "origins": [
+  "reported",
+  "derived",
+  "editorial",
+  "legacy"
+ ],
+ "curation_levels": [
+  "shadow",
+  "modeled",
+  "curated"
+ ],
+ "modules": [
+  "radionuclide_therapy",
+  "adc",
+  "immunotherapy",
+  "targeted_therapy",
+  "ddr_hrd",
+  "endocrine",
+  "t_cell_engager",
+  "cellular",
+  "radiotherapy",
+  "surgery",
+  "locoregional",
+  "chemotherapy",
+  "diagnostic"
+ ],
+ "module_roles": [
+  "tested",
+  "backbone",
+  "control",
+  "context"
+ ],
+ "arm_roles": [
+  "experimental",
+  "control",
+  "contribution_of_components",
+  "exploratory",
+  "single",
+  "exposure_group"
+ ],
+ "intervention_roles": [
+  "investigational",
+  "backbone",
+  "control",
+  "supportive"
+ ],
+ "intervention_phases": [
+  "preparation",
+  "upfront_local",
+  "neoadjuvant",
+  "adjuvant",
+  "induction",
+  "bridging",
+  "conditioning",
+  "consolidation",
+  "maintenance",
+  "continuous",
+  "single_administration"
+ ],
+ "biomarker_families": [
+  "PD-L1",
+  "MSI/MMR",
+  "TMB",
+  "BRCA",
+  "HRR",
+  "HRD",
+  "HER2",
+  "ER",
+  "PR",
+  "AR",
+  "ESR1",
+  "PIK3CA",
+  "EGFR",
+  "ALK",
+  "ROS1",
+  "RET",
+  "KRAS",
+  "BRAF",
+  "MET",
+  "NTRK",
+  "FGFR",
+  "IDH",
+  "FLT3",
+  "NPM1",
+  "KMT2A",
+  "MYCN",
+  "TROP2",
+  "FRα",
+  "DLL3",
+  "BCMA",
+  "CD19",
+  "CD20",
+  "GPRC5D",
+  "Claudin18.2",
+  "PSMA",
+  "SSTR",
+  "FAP",
+  "MIBG",
+  "ctDNA",
+  "other"
+ ],
+ "core": [
+  {
+   "path": "identity.short_name",
+   "tier": "ESSENTIAL",
+   "automation": "human",
+   "v1": "estudo"
+  },
+  {
+   "path": "identity.display_title",
+   "tier": "ESSENTIAL",
+   "automation": "human",
+   "v1": "acron",
+   "note": "no v1 'acron' é título de exibição"
+  },
+  {
+   "path": "identity.acronym",
+   "tier": "USEFUL",
+   "automation": "machine"
+  },
+  {
+   "path": "identity.aliases",
+   "tier": "USEFUL",
+   "automation": "machine"
+  },
+  {
+   "path": "identity.registrations",
+   "tier": "ESSENTIAL",
+   "automation": "machine",
+   "v1": "nct, nct_url"
+  },
+  {
+   "path": "identity.phase",
+   "tier": "ESSENTIAL",
+   "automation": "machine",
+   "v1": "fase (parte)"
+  },
+  {
+   "path": "identity.sponsor",
+   "tier": "USEFUL",
+   "automation": "machine",
+   "v1": "sponsor"
+  },
+  {
+   "path": "identity.centers",
+   "tier": "USEFUL",
+   "automation": "machine",
+   "v1": "centros"
+  },
+  {
+   "path": "identity.enrollment_period",
+   "tier": "USEFUL",
+   "automation": "machine",
+   "v1": "periodo"
+  },
+  {
+   "path": "identity.represented_publication",
+   "tier": "ESSENTIAL",
+   "automation": "machine",
+   "v1": "pubmed_url, ano_pub, titulo_full, ref"
+  },
+  {
+   "path": "identity.publications",
+   "tier": "USEFUL",
+   "automation": "machine",
+   "v1": "ref, secondary-cards.js"
+  },
+  {
+   "path": "identity.category_id",
+   "tier": "ESSENTIAL",
+   "automation": "human",
+   "v1": "category_id"
+  },
+  {
+   "path": "identity.tumors",
+   "tier": "ESSENTIAL",
+   "automation": "verifier",
+   "v1": "tumors / category"
+  },
+  {
+   "path": "identity.evidence_stage",
+   "tier": "ESSENTIAL",
+   "automation": "machine",
+   "v1": "status (parte)"
+  },
+  {
+   "path": "identity.registry_status",
+   "tier": "USEFUL",
+   "automation": "machine",
+   "v1": "status (parte)"
+  },
+  {
+   "path": "population.disease",
+   "tier": "ESSENTIAL",
+   "automation": "verifier",
+   "v1": "indicacao"
+  },
+  {
+   "path": "population.histology",
+   "tier": "USEFUL",
+   "automation": "verifier",
+   "v1": "indicacao/incl"
+  },
+  {
+   "path": "population.setting",
+   "tier": "ESSENTIAL",
+   "automation": "verifier",
+   "v1": "linha (parte)"
+  },
+  {
+   "path": "population.line",
+   "tier": "USEFUL",
+   "automation": "verifier",
+   "v1": "linha (parte)"
+  },
+  {
+   "path": "population.disease_extent",
+   "tier": "USEFUL",
+   "automation": "verifier",
+   "v1": "indicacao"
+  },
+  {
+   "path": "population.risk_classification",
+   "tier": "USEFUL",
+   "automation": "verifier",
+   "v1": "incl/estrat/basal"
+  },
+  {
+   "path": "population.biomarker_selection",
+   "tier": "ESSENTIAL",
+   "automation": "verifier",
+   "v1": "molecular, biomarc"
+  },
+  {
+   "path": "population.prior_therapy",
+   "tier": "ESSENTIAL",
+   "automation": "verifier",
+   "v1": "incl/excl/linha"
+  },
+  {
+   "path": "population.fitness",
+   "tier": "USEFUL",
+   "automation": "verifier",
+   "v1": "incl"
+  },
+  {
+   "path": "population.key_inclusion",
+   "tier": "USEFUL",
+   "automation": "verifier",
+   "v1": "incl"
+  },
+  {
+   "path": "population.key_exclusion",
+   "tier": "USEFUL",
+   "automation": "verifier",
+   "v1": "excl"
+  },
+  {
+   "path": "population.performance_status",
+   "tier": "USEFUL",
+   "automation": "verifier",
+   "v1": "incl"
+  },
+  {
+   "path": "population.baseline",
+   "tier": "USEFUL",
+   "automation": "verifier",
+   "v1": "basal"
+  },
+  {
+   "path": "design.structure",
+   "tier": "ESSENTIAL",
+   "automation": "verifier",
+   "v1": "desenho"
+  },
+  {
+   "path": "design.ratio",
+   "tier": "USEFUL",
+   "automation": "verifier",
+   "v1": "desenho"
+  },
+  {
+   "path": "design.cohorts",
+   "tier": "USEFUL",
+   "automation": "verifier",
+   "v1": "desenho/n"
+  },
+  {
+   "path": "design.question_type",
+   "tier": "USEFUL",
+   "automation": "verifier",
+   "v1": "desenho"
+  },
+  {
+   "path": "design.allocation",
+   "tier": "ESSENTIAL",
+   "automation": "machine",
+   "v1": "desenho/fase"
+  },
+  {
+   "path": "design.masking",
+   "tier": "ESSENTIAL",
+   "automation": "machine",
+   "v1": "desenho/fase"
+  },
+  {
+   "path": "design.control",
+   "tier": "ESSENTIAL",
+   "automation": "verifier",
+   "v1": "comparador"
+  },
+  {
+   "path": "design.arms",
+   "tier": "ESSENTIAL",
+   "automation": "verifier",
+   "v1": "radiofarmaco, esquema, comparador, n"
+  },
+  {
+   "path": "design.comparisons",
+   "tier": "ESSENTIAL",
+   "automation": "verifier",
+   "v1": "estatistica"
+  },
+  {
+   "path": "design.multiplicity",
+   "tier": "USEFUL",
+   "automation": "verifier",
+   "v1": "estatistica"
+  },
+  {
+   "path": "design.factors",
+   "tier": "SPECIALIZED",
+   "automation": "verifier",
+   "v1": "desenho"
+  },
+  {
+   "path": "design.sample_size",
+   "tier": "ESSENTIAL",
+   "automation": "verifier",
+   "v1": "n"
+  },
+  {
+   "path": "design.stratification",
+   "tier": "USEFUL",
+   "automation": "verifier",
+   "v1": "estrat"
+  },
+  {
+   "path": "design.crossover",
+   "tier": "USEFUL",
+   "automation": "verifier",
+   "v1": "secundario/limit"
+  },
+  {
+   "path": "design.stopped_early",
+   "tier": "USEFUL",
+   "automation": "verifier",
+   "v1": "limit/status"
+  },
+  {
+   "path": "design.statistical_plan",
+   "tier": "SPECIALIZED",
+   "automation": "verifier",
+   "v1": "estatistica, analises"
+  },
+  {
+   "path": "design.observational",
+   "tier": "ESSENTIAL",
+   "automation": "verifier",
+   "v1": "desenho"
+  },
+  {
+   "path": "design.meta_analysis",
+   "tier": "ESSENTIAL",
+   "automation": "verifier",
+   "v1": "desenho"
+  },
+  {
+   "path": "endpoints",
+   "tier": "ESSENTIAL",
+   "automation": "verifier",
+   "v1": "primario, secundario"
+  },
+  {
+   "path": "subgroups",
+   "tier": "USEFUL",
+   "automation": "verifier",
+   "v1": "subgrupo"
+  },
+  {
+   "path": "safety.population",
+   "tier": "USEFUL",
+   "automation": "verifier"
+  },
+  {
+   "path": "safety.grade3plus_any",
+   "tier": "ESSENTIAL",
+   "automation": "verifier",
+   "v1": "tox_g3"
+  },
+  {
+   "path": "safety.serious_ae",
+   "tier": "USEFUL",
+   "automation": "verifier",
+   "v1": "tox_g3"
+  },
+  {
+   "path": "safety.discontinuation_ae",
+   "tier": "ESSENTIAL",
+   "automation": "verifier",
+   "v1": "tox_g3/tox_interesse"
+  },
+  {
+   "path": "safety.dose_modification",
+   "tier": "USEFUL",
+   "automation": "verifier",
+   "v1": "tox_interesse"
+  },
+  {
+   "path": "safety.treatment_related_deaths",
+   "tier": "ESSENTIAL",
+   "automation": "verifier",
+   "v1": "tox_g3"
+  },
+  {
+   "path": "safety.key_toxicities",
+   "tier": "ESSENTIAL",
+   "automation": "verifier",
+   "v1": "tox_g3, tox_interesse"
+  },
+  {
+   "path": "safety.late_effects",
+   "tier": "SPECIALIZED",
+   "automation": "verifier"
+  },
+  {
+   "path": "interpretation.key_result",
+   "tier": "ESSENTIAL",
+   "automation": "human",
+   "v1": "resultado_chave"
+  },
+  {
+   "path": "interpretation.takehome",
+   "tier": "ESSENTIAL",
+   "automation": "human",
+   "v1": "takehome"
+  },
+  {
+   "path": "interpretation.outcome",
+   "tier": "USEFUL",
+   "automation": "human",
+   "v1": "status (parte)"
+  },
+  {
+   "path": "interpretation.limitations",
+   "tier": "ESSENTIAL",
+   "automation": "human",
+   "v1": "limit"
+  },
+  {
+   "path": "interpretation.clinical_impact",
+   "tier": "USEFUL",
+   "automation": "human",
+   "v1": "impacto_reg (parte)"
+  },
+  {
+   "path": "interpretation.regulatory",
+   "tier": "USEFUL",
+   "automation": "verifier",
+   "v1": "impacto_reg (parte)"
+  },
+  {
+   "path": "interpretation.guideline_impact",
+   "tier": "USEFUL",
+   "automation": "verifier",
+   "v1": "impacto_reg (parte)"
+  },
+  {
+   "path": "guideline.issuing_bodies",
+   "tier": "ESSENTIAL",
+   "automation": "human"
+  },
+  {
+   "path": "guideline.version",
+   "tier": "ESSENTIAL",
+   "automation": "human"
+  },
+  {
+   "path": "guideline.status",
+   "tier": "ESSENTIAL",
+   "automation": "human"
+  },
+  {
+   "path": "guideline.recommendations",
+   "tier": "ESSENTIAL",
+   "automation": "human"
+  },
+  {
+   "path": "guideline.methodology",
+   "tier": "USEFUL",
+   "automation": "human",
+   "note": "GRADE, consenso de especialistas…"
+  },
+  {
+   "path": "guideline.date",
+   "tier": "USEFUL",
+   "automation": "human"
+  },
+  {
+   "path": "collection.summary",
+   "tier": "USEFUL",
+   "automation": "human",
+   "note": "síntese agregada que não pode ser atribuída a um único filho"
+  },
+  {
+   "path": "collection.scope",
+   "tier": "ESSENTIAL",
+   "automation": "human",
+   "note": "evidence_collection: o que o registro agregado reúne"
+  }
+ ],
+ "profiles": {
+  "trial": {
+   "required": [
+    "identity.short_name",
+    "identity.display_title",
+    "identity.category_id",
+    "identity.evidence_stage",
+    "identity.registrations",
+    "identity.phase",
+    "identity.represented_publication",
+    "identity.tumors",
+    "population.disease",
+    "population.setting",
+    "population.biomarker_selection",
+    "population.prior_therapy",
+    "design.structure",
+    "design.allocation",
+    "design.masking",
+    "design.control",
+    "design.arms",
+    "design.comparisons",
+    "design.sample_size",
+    "endpoints",
+    "safety.grade3plus_any",
+    "safety.discontinuation_ae",
+    "safety.treatment_related_deaths",
+    "safety.key_toxicities",
+    "interpretation.key_result",
+    "interpretation.takehome",
+    "interpretation.limitations"
+   ],
+   "not_applicable": [
+    "design.observational",
+    "design.meta_analysis",
+    "collection.scope",
+    "guideline.issuing_bodies",
+    "guideline.version",
+    "guideline.status",
+    "guideline.recommendations"
+   ]
+  },
+  "trial_cohort": {
+   "required": [
+    "identity.short_name",
+    "identity.display_title",
+    "identity.category_id",
+    "identity.evidence_stage",
+    "identity.registrations",
+    "identity.phase",
+    "identity.represented_publication",
+    "identity.tumors",
+    "population.disease",
+    "population.setting",
+    "population.biomarker_selection",
+    "population.prior_therapy",
+    "design.structure",
+    "design.allocation",
+    "design.masking",
+    "design.control",
+    "design.arms",
+    "design.comparisons",
+    "design.sample_size",
+    "endpoints",
+    "safety.grade3plus_any",
+    "safety.discontinuation_ae",
+    "safety.treatment_related_deaths",
+    "safety.key_toxicities",
+    "interpretation.key_result",
+    "interpretation.takehome",
+    "interpretation.limitations",
+    "design.cohorts",
+    "safety.population"
+   ],
+   "not_applicable": [
+    "design.observational",
+    "design.meta_analysis",
+    "collection.scope",
+    "guideline.issuing_bodies",
+    "guideline.version",
+    "guideline.status",
+    "guideline.recommendations"
+   ]
+  },
+  "publication": {
+   "required": [
+    "identity.short_name",
+    "identity.display_title",
+    "identity.category_id",
+    "identity.evidence_stage",
+    "identity.represented_publication",
+    "population.disease",
+    "endpoints",
+    "interpretation.takehome"
+   ],
+   "not_applicable": [
+    "collection.scope",
+    "guideline.issuing_bodies",
+    "guideline.version",
+    "guideline.status",
+    "guideline.recommendations"
+   ]
+  },
+  "pooled_analysis": {
+   "required": [
+    "identity.short_name",
+    "identity.display_title",
+    "identity.category_id",
+    "identity.evidence_stage",
+    "identity.represented_publication",
+    "population.disease",
+    "endpoints",
+    "interpretation.takehome",
+    "interpretation.limitations"
+   ],
+   "not_applicable": [
+    "design.observational",
+    "collection.scope",
+    "guideline.issuing_bodies",
+    "guideline.version",
+    "guideline.status",
+    "guideline.recommendations"
+   ]
+  },
+  "meta_analysis": {
+   "required": [
+    "identity.short_name",
+    "identity.display_title",
+    "identity.category_id",
+    "identity.evidence_stage",
+    "identity.represented_publication",
+    "population.disease",
+    "design.meta_analysis",
+    "endpoints",
+    "interpretation.limitations"
+   ],
+   "not_applicable": [
+    "design.arms",
+    "design.observational",
+    "safety.grade3plus_any",
+    "safety.treatment_related_deaths",
+    "collection.scope",
+    "design.allocation",
+    "design.masking",
+    "design.control",
+    "design.comparisons",
+    "design.multiplicity",
+    "design.factors",
+    "design.stratification",
+    "design.crossover",
+    "design.stopped_early",
+    "guideline.issuing_bodies",
+    "guideline.version",
+    "guideline.status",
+    "guideline.recommendations"
+   ]
+  },
+  "cohort_study": {
+   "required": [
+    "identity.short_name",
+    "identity.display_title",
+    "identity.category_id",
+    "identity.evidence_stage",
+    "identity.represented_publication",
+    "population.disease",
+    "design.observational",
+    "endpoints",
+    "interpretation.limitations"
+   ],
+   "not_applicable": [
+    "design.meta_analysis",
+    "collection.scope",
+    "design.allocation",
+    "design.masking",
+    "design.control",
+    "design.multiplicity",
+    "design.factors",
+    "design.stratification",
+    "design.crossover",
+    "design.stopped_early",
+    "guideline.issuing_bodies",
+    "guideline.version",
+    "guideline.status",
+    "guideline.recommendations"
+   ]
+  },
+  "case_series": {
+   "required": [
+    "identity.short_name",
+    "identity.display_title",
+    "identity.category_id",
+    "identity.evidence_stage",
+    "identity.represented_publication",
+    "population.disease",
+    "design.arms",
+    "endpoints",
+    "interpretation.limitations"
+   ],
+   "not_applicable": [
+    "design.meta_analysis",
+    "design.observational",
+    "collection.scope",
+    "design.allocation",
+    "design.masking",
+    "design.control",
+    "design.comparisons",
+    "design.multiplicity",
+    "design.factors",
+    "design.stratification",
+    "design.crossover",
+    "design.stopped_early",
+    "guideline.issuing_bodies",
+    "guideline.version",
+    "guideline.status",
+    "guideline.recommendations"
+   ]
+  },
+  "diagnostic_study": {
+   "required": [
+    "identity.short_name",
+    "identity.display_title",
+    "identity.category_id",
+    "identity.evidence_stage",
+    "identity.represented_publication",
+    "population.disease",
+    "endpoints",
+    "interpretation.limitations"
+   ],
+   "not_applicable": [
+    "design.arms",
+    "design.meta_analysis",
+    "design.observational",
+    "safety.grade3plus_any",
+    "safety.discontinuation_ae",
+    "safety.treatment_related_deaths",
+    "safety.key_toxicities",
+    "collection.scope",
+    "design.allocation",
+    "design.masking",
+    "design.control",
+    "design.comparisons",
+    "design.multiplicity",
+    "design.factors",
+    "design.stratification",
+    "design.crossover",
+    "design.stopped_early",
+    "guideline.issuing_bodies",
+    "guideline.version",
+    "guideline.status",
+    "guideline.recommendations"
+   ]
+  },
+  "guideline": {
+   "required": [
+    "identity.short_name",
+    "identity.display_title",
+    "identity.category_id",
+    "identity.evidence_stage",
+    "guideline.issuing_bodies",
+    "guideline.version",
+    "guideline.status",
+    "guideline.recommendations",
+    "interpretation.takehome"
+   ],
+   "not_applicable": [
+    "design.structure",
+    "design.ratio",
+    "design.cohorts",
+    "design.question_type",
+    "design.allocation",
+    "design.masking",
+    "design.control",
+    "design.arms",
+    "design.comparisons",
+    "design.multiplicity",
+    "design.factors",
+    "design.sample_size",
+    "design.stratification",
+    "design.crossover",
+    "design.stopped_early",
+    "design.statistical_plan",
+    "design.observational",
+    "design.meta_analysis",
+    "endpoints",
+    "subgroups",
+    "safety.population",
+    "safety.grade3plus_any",
+    "safety.serious_ae",
+    "safety.discontinuation_ae",
+    "safety.dose_modification",
+    "safety.treatment_related_deaths",
+    "safety.key_toxicities",
+    "safety.late_effects",
+    "collection.scope"
+   ]
+  },
+  "molecular_classification": {
+   "required": [
+    "identity.short_name",
+    "identity.display_title",
+    "identity.category_id",
+    "identity.evidence_stage",
+    "population.disease",
+    "interpretation.takehome"
+   ],
+   "not_applicable": [
+    "design.structure",
+    "design.ratio",
+    "design.cohorts",
+    "design.question_type",
+    "design.allocation",
+    "design.masking",
+    "design.control",
+    "design.arms",
+    "design.comparisons",
+    "design.multiplicity",
+    "design.factors",
+    "design.sample_size",
+    "design.stratification",
+    "design.crossover",
+    "design.stopped_early",
+    "design.statistical_plan",
+    "design.observational",
+    "design.meta_analysis",
+    "safety.population",
+    "safety.grade3plus_any",
+    "safety.serious_ae",
+    "safety.discontinuation_ae",
+    "safety.dose_modification",
+    "safety.treatment_related_deaths",
+    "safety.key_toxicities",
+    "safety.late_effects",
+    "collection.scope",
+    "guideline.issuing_bodies",
+    "guideline.version",
+    "guideline.status",
+    "guideline.recommendations"
+   ]
+  },
+  "translational": {
+   "required": [
+    "identity.short_name",
+    "identity.display_title",
+    "identity.category_id",
+    "identity.evidence_stage",
+    "identity.represented_publication",
+    "population.disease",
+    "endpoints"
+   ],
+   "not_applicable": [
+    "design.meta_analysis",
+    "collection.scope",
+    "safety.grade3plus_any",
+    "safety.treatment_related_deaths",
+    "design.allocation",
+    "design.masking",
+    "design.control",
+    "design.comparisons",
+    "design.multiplicity",
+    "design.factors",
+    "design.stratification",
+    "design.crossover",
+    "design.stopped_early",
+    "guideline.issuing_bodies",
+    "guideline.version",
+    "guideline.status",
+    "guideline.recommendations"
+   ]
+  },
+  "evidence_collection": {
+   "required": [
+    "identity.short_name",
+    "identity.display_title",
+    "identity.category_id",
+    "identity.evidence_stage",
+    "collection.scope"
+   ],
+   "not_applicable": [
+    "design.structure",
+    "design.ratio",
+    "design.cohorts",
+    "design.question_type",
+    "design.allocation",
+    "design.masking",
+    "design.control",
+    "design.arms",
+    "design.comparisons",
+    "design.multiplicity",
+    "design.factors",
+    "design.sample_size",
+    "design.stratification",
+    "design.crossover",
+    "design.stopped_early",
+    "design.statistical_plan",
+    "design.observational",
+    "design.meta_analysis",
+    "safety.population",
+    "safety.grade3plus_any",
+    "safety.serious_ae",
+    "safety.discontinuation_ae",
+    "safety.dose_modification",
+    "safety.treatment_related_deaths",
+    "safety.key_toxicities",
+    "safety.late_effects",
+    "endpoints",
+    "subgroups",
+    "guideline.issuing_bodies",
+    "guideline.version",
+    "guideline.status",
+    "guideline.recommendations"
+   ]
+  }
+ },
+ "single_arm_not_applicable": [
+  "design.masking",
+  "design.control",
+  "design.stratification",
+  "design.crossover",
+  "design.multiplicity"
+ ],
+ "single_arm_optional": [
+  "design.comparisons"
+ ],
+ "module_fields": {
+  "radionuclide_therapy": {
+   "fields": [
+    {
+     "field": "delivery",
+     "tier": "ESSENTIAL",
+     "requirement": {
+      "tested": "required",
+      "backbone": "optional",
+      "control": "optional",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "always"
+     },
+     "per": "study",
+     "automation": "verifier",
+     "note": "systemic_ligand | systemic_ion | radioimmunoconjugate | intra_arterial_microsphere | metabolic"
+    },
+    {
+     "field": "intent",
+     "tier": "USEFUL",
+     "requirement": {
+      "tested": "optional",
+      "backbone": "optional",
+      "control": "optional",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "always"
+     },
+     "per": "study",
+     "automation": "verifier",
+     "note": "treatment | ablation | adjuvant | consolidation | palliation"
+    },
+    {
+     "field": "target",
+     "tier": "ESSENTIAL",
+     "requirement": {
+      "tested": "required",
+      "backbone": "optional",
+      "control": "optional",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "field_in",
+      "field": "$module.delivery",
+      "in": [
+       "systemic_ligand",
+       "radioimmunoconjugate"
+      ]
+     },
+     "per": "study",
+     "automation": "verifier",
+     "note": "PSMA, SSTR2, FAP…; ativo só para ligante sistêmico"
+    },
+    {
+     "field": "radionuclide",
+     "tier": "ESSENTIAL",
+     "requirement": {
+      "tested": "required",
+      "backbone": "optional",
+      "control": "optional",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "always"
+     },
+     "per": "agent",
+     "automation": "verifier"
+    },
+    {
+     "field": "activity_per_administration",
+     "tier": "ESSENTIAL",
+     "requirement": {
+      "tested": "required",
+      "backbone": "optional",
+      "control": "optional",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "field_in",
+      "field": "$module.delivery",
+      "in": [
+       "systemic_ligand",
+       "systemic_ion",
+       "radioimmunoconjugate",
+       "metabolic"
+      ]
+     },
+     "per": "agent",
+     "automation": "verifier",
+     "note": "TARE usa absorbed_dose"
+    },
+    {
+     "field": "cycles",
+     "tier": "ESSENTIAL",
+     "requirement": {
+      "tested": "required",
+      "backbone": "optional",
+      "control": "optional",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "field_in",
+      "field": "$module.delivery",
+      "in": [
+       "systemic_ligand",
+       "systemic_ion",
+       "radioimmunoconjugate",
+       "metabolic"
+      ]
+     },
+     "per": "agent",
+     "automation": "verifier"
+    },
+    {
+     "field": "absorbed_dose",
+     "tier": "USEFUL",
+     "requirement": {
+      "tested": "optional",
+      "backbone": "optional",
+      "control": "optional",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "always"
+     },
+     "per": "arm",
+     "automation": "verifier",
+     "note": "ESSENTIAL de fato em TARE; ver ativação abaixo"
+    },
+    {
+     "field": "device",
+     "tier": "SPECIALIZED",
+     "requirement": {
+      "tested": "optional",
+      "backbone": "optional",
+      "control": "optional",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "field_in",
+      "field": "$module.delivery",
+      "in": [
+       "intra_arterial_microsphere"
+      ]
+     },
+     "per": "study",
+     "automation": "verifier"
+    },
+    {
+     "field": "imaging_selection",
+     "tier": "ESSENTIAL",
+     "requirement": {
+      "tested": "required",
+      "backbone": "optional",
+      "control": "not_applicable",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "field_in",
+      "field": "$module.delivery",
+      "in": [
+       "systemic_ligand",
+       "radioimmunoconjugate"
+      ]
+     },
+     "per": "study",
+     "automation": "verifier"
+    },
+    {
+     "field": "dosimetry",
+     "tier": "USEFUL",
+     "requirement": {
+      "tested": "optional",
+      "backbone": "optional",
+      "control": "optional",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "always"
+     },
+     "per": "study",
+     "automation": "verifier"
+    },
+    {
+     "field": "organ_protection",
+     "tier": "USEFUL",
+     "requirement": {
+      "tested": "optional",
+      "backbone": "optional",
+      "control": "not_applicable",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "always"
+     },
+     "per": "study",
+     "automation": "verifier"
+    },
+    {
+     "field": "patient_preparation",
+     "tier": "USEFUL",
+     "requirement": {
+      "tested": "optional",
+      "backbone": "optional",
+      "control": "optional",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "always"
+     },
+     "per": "arm",
+     "automation": "verifier"
+    },
+    {
+     "field": "radiation_safety",
+     "tier": "SPECIALIZED",
+     "requirement": {
+      "tested": "optional",
+      "backbone": "optional",
+      "control": "not_applicable",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "always"
+     },
+     "per": "study",
+     "automation": "verifier"
+    }
+   ],
+   "required_overrides": [
+    {
+     "field": "absorbed_dose",
+     "role": "tested",
+     "activation": {
+      "op": "field_in",
+      "field": "$module.delivery",
+      "in": [
+       "intra_arterial_microsphere"
+      ]
+     }
+    }
+   ],
+   "aesi": [
+    {
+     "term": "hematologic",
+     "requirement": {
+      "tested": "required",
+      "backbone": "optional",
+      "control": "not_applicable",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "not",
+      "cond": {
+       "op": "field_in",
+       "field": "$module.delivery",
+       "in": [
+        "intra_arterial_microsphere"
+       ]
+      }
+     }
+    },
+    {
+     "term": "renal",
+     "requirement": {
+      "tested": "required",
+      "backbone": "optional",
+      "control": "not_applicable",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "field_in",
+      "field": "$module.delivery",
+      "in": [
+       "systemic_ligand",
+       "radioimmunoconjugate"
+      ]
+     }
+    },
+    {
+     "term": "xerostomia_salivary",
+     "requirement": {
+      "tested": "required",
+      "backbone": "optional",
+      "control": "not_applicable",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "field_in",
+      "field": "$module.target",
+      "in": [
+       "PSMA"
+      ]
+     }
+    },
+    {
+     "term": "mds_aml",
+     "requirement": {
+      "tested": "optional",
+      "backbone": "optional",
+      "control": "not_applicable",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "always"
+     }
+    },
+    {
+     "term": "liver_reild",
+     "requirement": {
+      "tested": "required",
+      "backbone": "optional",
+      "control": "not_applicable",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "field_in",
+      "field": "$module.delivery",
+      "in": [
+       "intra_arterial_microsphere"
+      ]
+     }
+    }
+   ]
+  },
+  "adc": {
+   "fields": [
+    {
+     "field": "target",
+     "tier": "ESSENTIAL",
+     "requirement": {
+      "tested": "required",
+      "backbone": "required",
+      "control": "optional",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "always"
+     },
+     "per": "agent",
+     "automation": "verifier"
+    },
+    {
+     "field": "payload_class",
+     "tier": "ESSENTIAL",
+     "requirement": {
+      "tested": "required",
+      "backbone": "optional",
+      "control": "optional",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "always"
+     },
+     "per": "agent",
+     "automation": "verifier"
+    },
+    {
+     "field": "payload",
+     "tier": "USEFUL",
+     "requirement": {
+      "tested": "optional",
+      "backbone": "optional",
+      "control": "optional",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "always"
+     },
+     "per": "agent",
+     "automation": "verifier"
+    },
+    {
+     "field": "target_expression",
+     "tier": "ESSENTIAL",
+     "requirement": {
+      "tested": "required",
+      "backbone": "optional",
+      "control": "not_applicable",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "any_of",
+      "conds": [
+       {
+        "op": "biomarker_matches_field",
+        "field": "$module.target"
+       },
+       {
+        "op": "present",
+        "field": "$module.target_expression"
+       }
+      ]
+     },
+     "per": "study",
+     "automation": "verifier",
+     "note": "lista por coorte de expressão"
+    },
+    {
+     "field": "prior_same_target",
+     "tier": "ESSENTIAL",
+     "requirement": {
+      "tested": "required",
+      "backbone": "not_applicable",
+      "control": "not_applicable",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "always"
+     },
+     "per": "study",
+     "automation": "verifier",
+     "note": "VISÃO de population.prior_therapy filtrada pelo alvo"
+    },
+    {
+     "field": "prior_same_payload_class",
+     "tier": "USEFUL",
+     "requirement": {
+      "tested": "optional",
+      "backbone": "not_applicable",
+      "control": "not_applicable",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "always"
+     },
+     "per": "study",
+     "automation": "verifier"
+    }
+   ],
+   "aesi": [
+    {
+     "term": "ild_pneumonitis",
+     "requirement": {
+      "tested": "required",
+      "backbone": "optional",
+      "control": "optional",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "field_in",
+      "field": "$module.payload_class",
+      "in": [
+       "topo1_inhibitor"
+      ]
+     }
+    },
+    {
+     "term": "ocular_surface",
+     "requirement": {
+      "tested": "required",
+      "backbone": "optional",
+      "control": "optional",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "field_in",
+      "field": "$module.payload_class",
+      "in": [
+       "microtubule_inhibitor",
+       "dna_alkylator"
+      ]
+     }
+    },
+    {
+     "term": "peripheral_neuropathy",
+     "requirement": {
+      "tested": "required",
+      "backbone": "optional",
+      "control": "optional",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "field_in",
+      "field": "$module.payload_class",
+      "in": [
+       "microtubule_inhibitor"
+      ]
+     }
+    },
+    {
+     "term": "lvef_decline",
+     "requirement": {
+      "tested": "required",
+      "backbone": "optional",
+      "control": "optional",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "field_in",
+      "field": "$module.target",
+      "in": [
+       "HER2"
+      ]
+     }
+    },
+    {
+     "term": "neutropenia",
+     "requirement": {
+      "tested": "optional",
+      "backbone": "optional",
+      "control": "optional",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "always"
+     }
+    },
+    {
+     "term": "stomatitis",
+     "requirement": {
+      "tested": "optional",
+      "backbone": "optional",
+      "control": "optional",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "always"
+     }
+    }
+   ]
+  },
+  "immunotherapy": {
+   "fields": [
+    {
+     "field": "target",
+     "tier": "ESSENTIAL",
+     "requirement": {
+      "tested": "required",
+      "backbone": "required",
+      "control": "optional",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "always"
+     },
+     "per": "agent",
+     "automation": "verifier"
+    },
+    {
+     "field": "pdl1",
+     "tier": "ESSENTIAL",
+     "requirement": {
+      "tested": "required",
+      "backbone": "optional",
+      "control": "not_applicable",
+      "context": "optional"
+     },
+     "activation": {
+      "op": "biomarker_involved",
+      "families": [
+       "PD-L1"
+      ]
+     },
+     "per": "study",
+     "automation": "verifier",
+     "note": "assay, score, cutoff, papel (seleção|estratificação|análise); ativo só se PD-L1 é critério, estratificação, biomarcador analisado ou resultado por expressão"
+    },
+    {
+     "field": "msi_mmr",
+     "tier": "USEFUL",
+     "requirement": {
+      "tested": "required",
+      "backbone": "optional",
+      "control": "not_applicable",
+      "context": "optional"
+     },
+     "activation": {
+      "op": "biomarker_involved",
+      "families": [
+       "MSI/MMR"
+      ]
+     },
+     "per": "study",
+     "automation": "verifier"
+    },
+    {
+     "field": "tmb",
+     "tier": "SPECIALIZED",
+     "requirement": {
+      "tested": "optional",
+      "backbone": "optional",
+      "control": "not_applicable",
+      "context": "optional"
+     },
+     "activation": {
+      "op": "biomarker_involved",
+      "families": [
+       "TMB"
+      ]
+     },
+     "per": "study",
+     "automation": "verifier"
+    },
+    {
+     "field": "prior_io",
+     "tier": "ESSENTIAL",
+     "requirement": {
+      "tested": "required",
+      "backbone": "not_applicable",
+      "control": "not_applicable",
+      "context": "optional"
+     },
+     "activation": {
+      "op": "always"
+     },
+     "per": "study",
+     "automation": "verifier",
+     "note": "VISÃO de population.prior_therapy"
+    },
+    {
+     "field": "treatment_duration",
+     "tier": "USEFUL",
+     "requirement": {
+      "tested": "optional",
+      "backbone": "optional",
+      "control": "optional",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "always"
+     },
+     "per": "agent",
+     "automation": "verifier"
+    }
+   ],
+   "aesi": [
+    {
+     "term": "immune_related_g3plus",
+     "requirement": {
+      "tested": "required",
+      "backbone": "optional",
+      "control": "optional",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "always"
+     }
+    },
+    {
+     "term": "pneumonitis",
+     "requirement": {
+      "tested": "optional",
+      "backbone": "optional",
+      "control": "optional",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "always"
+     }
+    },
+    {
+     "term": "colitis",
+     "requirement": {
+      "tested": "optional",
+      "backbone": "optional",
+      "control": "optional",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "always"
+     }
+    },
+    {
+     "term": "hepatitis",
+     "requirement": {
+      "tested": "optional",
+      "backbone": "optional",
+      "control": "optional",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "always"
+     }
+    },
+    {
+     "term": "endocrinopathy",
+     "requirement": {
+      "tested": "optional",
+      "backbone": "optional",
+      "control": "optional",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "always"
+     }
+    }
+   ]
+  },
+  "targeted_therapy": {
+   "fields": [
+    {
+     "field": "target",
+     "tier": "ESSENTIAL",
+     "requirement": {
+      "tested": "required",
+      "backbone": "required",
+      "control": "optional",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "always"
+     },
+     "per": "agent",
+     "automation": "verifier"
+    },
+    {
+     "field": "agent_class",
+     "tier": "USEFUL",
+     "requirement": {
+      "tested": "optional",
+      "backbone": "optional",
+      "control": "optional",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "always"
+     },
+     "per": "agent",
+     "automation": "verifier"
+    },
+    {
+     "field": "required_alteration",
+     "tier": "ESSENTIAL",
+     "requirement": {
+      "tested": "required",
+      "backbone": "optional",
+      "control": "not_applicable",
+      "context": "optional"
+     },
+     "activation": {
+      "op": "all_of",
+      "conds": [
+       {
+        "op": "not",
+        "cond": {
+         "op": "agent_class_in",
+         "in": [
+          "ssa",
+          "cdk46i",
+          "antiangiogenic",
+          "mtori",
+          "imid",
+          "proteasome_i",
+          "bcl2i"
+         ]
+        }
+       },
+       {
+        "op": "biomarker_rule_in",
+        "in": [
+         "required",
+         "enriched"
+        ]
+       }
+      ]
+     },
+     "per": "study",
+     "automation": "verifier",
+     "note": "referência a population.biomarker_selection[].id"
+    },
+    {
+     "field": "detection",
+     "tier": "ESSENTIAL",
+     "requirement": {
+      "tested": "required",
+      "backbone": "optional",
+      "control": "not_applicable",
+      "context": "optional"
+     },
+     "activation": {
+      "op": "biomarker_rule_in",
+      "in": [
+       "required",
+       "enriched",
+       "stratified"
+      ]
+     },
+     "per": "study",
+     "automation": "verifier"
+    },
+    {
+     "field": "prior_targeted_therapy",
+     "tier": "ESSENTIAL",
+     "requirement": {
+      "tested": "required",
+      "backbone": "not_applicable",
+      "control": "not_applicable",
+      "context": "optional"
+     },
+     "activation": {
+      "op": "always"
+     },
+     "per": "study",
+     "automation": "verifier",
+     "note": "VISÃO de population.prior_therapy"
+    },
+    {
+     "field": "cns",
+     "tier": "USEFUL",
+     "requirement": {
+      "tested": "optional",
+      "backbone": "not_applicable",
+      "control": "not_applicable",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "always"
+     },
+     "per": "study",
+     "automation": "verifier"
+    },
+    {
+     "field": "resistance_mechanisms",
+     "tier": "SPECIALIZED",
+     "requirement": {
+      "tested": "optional",
+      "backbone": "not_applicable",
+      "control": "not_applicable",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "always"
+     },
+     "per": "study",
+     "automation": "verifier"
+    }
+   ],
+   "aesi": [
+    {
+     "term": "mds_aml",
+     "requirement": {
+      "tested": "required",
+      "backbone": "optional",
+      "control": "not_applicable",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "agent_class_in",
+      "in": [
+       "parpi"
+      ]
+     }
+    },
+    {
+     "term": "anemia",
+     "requirement": {
+      "tested": "required",
+      "backbone": "optional",
+      "control": "not_applicable",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "agent_class_in",
+      "in": [
+       "parpi"
+      ]
+     }
+    },
+    {
+     "term": "vte",
+     "requirement": {
+      "tested": "optional",
+      "backbone": "optional",
+      "control": "not_applicable",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "always"
+     }
+    },
+    {
+     "term": "hyperglycemia",
+     "requirement": {
+      "tested": "required",
+      "backbone": "optional",
+      "control": "not_applicable",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "agent_class_in",
+      "in": [
+       "pi3k_i",
+       "akt_i"
+      ]
+     }
+    },
+    {
+     "term": "qtc",
+     "requirement": {
+      "tested": "optional",
+      "backbone": "optional",
+      "control": "not_applicable",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "always"
+     }
+    },
+    {
+     "term": "rash_paronychia",
+     "requirement": {
+      "tested": "required",
+      "backbone": "optional",
+      "control": "not_applicable",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "agent_class_in",
+      "in": [
+       "egfr_mab",
+       "bispecific_antibody"
+      ]
+     }
+    },
+    {
+     "term": "infusion_reaction",
+     "requirement": {
+      "tested": "required",
+      "backbone": "optional",
+      "control": "not_applicable",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "agent_class_in",
+      "in": [
+       "bispecific_antibody"
+      ]
+     }
+    }
+   ]
+  },
+  "ddr_hrd": {
+   "warn_if_absent": true,
+   "biomarker_context": true,
+   "activation_module": {
+    "op": "any_of",
+    "conds": [
+     {
+      "op": "biomarker_involved",
+      "families": [
+       "BRCA",
+       "HRR",
+       "HRD"
+      ]
+     },
+     {
+      "op": "subgroup_dimension_in",
+      "in": [
+       "BRCA",
+       "HRR",
+       "HRD"
+      ]
+     }
+    ]
+   },
+   "fields": [
+    {
+     "field": "genes",
+     "tier": "ESSENTIAL",
+     "requirement": {
+      "tested": "required",
+      "backbone": "required",
+      "control": "not_applicable",
+      "context": "required"
+     },
+     "activation": {
+      "op": "always"
+     },
+     "per": "study",
+     "automation": "verifier"
+    },
+    {
+     "field": "hrd_test",
+     "tier": "USEFUL",
+     "requirement": {
+      "tested": "optional",
+      "backbone": "optional",
+      "control": "not_applicable",
+      "context": "optional"
+     },
+     "activation": {
+      "op": "biomarker_involved",
+      "families": [
+       "HRD"
+      ]
+     },
+     "per": "study",
+     "automation": "verifier"
+    },
+    {
+     "field": "origin",
+     "tier": "ESSENTIAL",
+     "requirement": {
+      "tested": "required",
+      "backbone": "optional",
+      "control": "not_applicable",
+      "context": "optional"
+     },
+     "activation": {
+      "op": "always"
+     },
+     "per": "study",
+     "automation": "verifier",
+     "note": "{tested_in, distinguishes_origin, allowed}"
+    },
+    {
+     "field": "platinum_sensitivity",
+     "tier": "USEFUL",
+     "requirement": {
+      "tested": "optional",
+      "backbone": "optional",
+      "control": "not_applicable",
+      "context": "optional"
+     },
+     "activation": {
+      "op": "setting_in",
+      "in": [
+       "maintenance"
+      ]
+     },
+     "per": "study",
+     "automation": "verifier"
+    },
+    {
+     "field": "stratified_results",
+     "tier": "ESSENTIAL",
+     "requirement": {
+      "tested": "required",
+      "backbone": "optional",
+      "control": "not_applicable",
+      "context": "optional"
+     },
+     "activation": {
+      "op": "subgroup_dimension_in",
+      "in": [
+       "BRCA",
+       "HRR",
+       "HRD"
+      ]
+     },
+     "per": "study",
+     "automation": "verifier",
+     "note": "referências a endpoints[] com population=biomarcador"
+    }
+   ],
+   "aesi": []
+  },
+  "endocrine": {
+   "fields": [
+    {
+     "field": "hormone_context",
+     "tier": "ESSENTIAL",
+     "requirement": {
+      "tested": "required",
+      "backbone": "required",
+      "control": "optional",
+      "context": "required"
+     },
+     "activation": {
+      "op": "always"
+     },
+     "per": "study",
+     "automation": "verifier"
+    },
+    {
+     "field": "receptor_status",
+     "tier": "USEFUL",
+     "requirement": {
+      "tested": "optional",
+      "backbone": "optional",
+      "control": "not_applicable",
+      "context": "optional"
+     },
+     "activation": {
+      "op": "field_in",
+      "field": "$module.hormone_context",
+      "in": [
+       "breast_hr_pos"
+      ]
+     },
+     "per": "study",
+     "automation": "verifier"
+    },
+    {
+     "field": "menopausal_status",
+     "tier": "USEFUL",
+     "requirement": {
+      "tested": "optional",
+      "backbone": "optional",
+      "control": "not_applicable",
+      "context": "optional"
+     },
+     "activation": {
+      "op": "field_in",
+      "field": "$module.hormone_context",
+      "in": [
+       "breast_hr_pos"
+      ]
+     },
+     "per": "study",
+     "automation": "verifier"
+    },
+    {
+     "field": "endocrine_resistance",
+     "tier": "ESSENTIAL",
+     "requirement": {
+      "tested": "required",
+      "backbone": "optional",
+      "control": "not_applicable",
+      "context": "optional"
+     },
+     "activation": {
+      "op": "field_in",
+      "field": "$module.hormone_context",
+      "in": [
+       "breast_hr_pos"
+      ]
+     },
+     "per": "study",
+     "automation": "verifier"
+    },
+    {
+     "field": "castration_status",
+     "tier": "ESSENTIAL",
+     "requirement": {
+      "tested": "required",
+      "backbone": "required",
+      "control": "not_applicable",
+      "context": "required"
+     },
+     "activation": {
+      "op": "field_in",
+      "field": "$module.hormone_context",
+      "in": [
+       "prostate_hspc",
+       "prostate_crpc",
+       "prostate_nmcrpc"
+      ]
+     },
+     "per": "study",
+     "automation": "verifier"
+    },
+    {
+     "field": "prior_endocrine",
+     "tier": "ESSENTIAL",
+     "requirement": {
+      "tested": "required",
+      "backbone": "not_applicable",
+      "control": "not_applicable",
+      "context": "optional"
+     },
+     "activation": {
+      "op": "always"
+     },
+     "per": "study",
+     "automation": "verifier",
+     "note": "VISÃO de population.prior_therapy"
+    },
+    {
+     "field": "prior_cdk46",
+     "tier": "ESSENTIAL",
+     "requirement": {
+      "tested": "required",
+      "backbone": "not_applicable",
+      "control": "not_applicable",
+      "context": "optional"
+     },
+     "activation": {
+      "op": "field_in",
+      "field": "$module.hormone_context",
+      "in": [
+       "breast_hr_pos"
+      ]
+     },
+     "per": "study",
+     "automation": "verifier"
+    },
+    {
+     "field": "adt_backbone",
+     "tier": "USEFUL",
+     "requirement": {
+      "tested": "optional",
+      "backbone": "optional",
+      "control": "optional",
+      "context": "optional"
+     },
+     "activation": {
+      "op": "field_in",
+      "field": "$module.hormone_context",
+      "in": [
+       "prostate_hspc",
+       "prostate_crpc",
+       "prostate_nmcrpc"
+      ]
+     },
+     "per": "study",
+     "automation": "verifier"
+    },
+    {
+     "field": "disease_volume_risk",
+     "tier": "USEFUL",
+     "requirement": {
+      "tested": "optional",
+      "backbone": "optional",
+      "control": "not_applicable",
+      "context": "optional"
+     },
+     "activation": {
+      "op": "field_in",
+      "field": "$module.hormone_context",
+      "in": [
+       "prostate_hspc"
+      ]
+     },
+     "per": "study",
+     "automation": "verifier"
+    },
+    {
+     "field": "esr1",
+     "tier": "USEFUL",
+     "requirement": {
+      "tested": "optional",
+      "backbone": "optional",
+      "control": "not_applicable",
+      "context": "optional"
+     },
+     "activation": {
+      "op": "biomarker_involved",
+      "families": [
+       "ESR1"
+      ]
+     },
+     "per": "study",
+     "automation": "verifier"
+    }
+   ],
+   "aesi": []
+  },
+  "t_cell_engager": {
+   "fields": [
+    {
+     "field": "targets",
+     "tier": "ESSENTIAL",
+     "requirement": {
+      "tested": "required",
+      "backbone": "required",
+      "control": "optional",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "always"
+     },
+     "per": "agent",
+     "automation": "verifier",
+     "note": "{tumor_target, effector: CD3}"
+    },
+    {
+     "field": "format",
+     "tier": "USEFUL",
+     "requirement": {
+      "tested": "optional",
+      "backbone": "optional",
+      "control": "optional",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "always"
+     },
+     "per": "agent",
+     "automation": "verifier"
+    },
+    {
+     "field": "step_up_dosing",
+     "tier": "USEFUL",
+     "requirement": {
+      "tested": "optional",
+      "backbone": "optional",
+      "control": "optional",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "always"
+     },
+     "per": "agent",
+     "automation": "verifier"
+    },
+    {
+     "field": "hospitalization",
+     "tier": "USEFUL",
+     "requirement": {
+      "tested": "optional",
+      "backbone": "optional",
+      "control": "not_applicable",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "always"
+     },
+     "per": "study",
+     "automation": "verifier"
+    },
+    {
+     "field": "dosing_deescalation",
+     "tier": "SPECIALIZED",
+     "requirement": {
+      "tested": "optional",
+      "backbone": "optional",
+      "control": "not_applicable",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "always"
+     },
+     "per": "study",
+     "automation": "verifier"
+    }
+   ],
+   "aesi": [
+    {
+     "term": "crs",
+     "requirement": {
+      "tested": "required",
+      "backbone": "optional",
+      "control": "not_applicable",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "always"
+     }
+    },
+    {
+     "term": "icans",
+     "requirement": {
+      "tested": "required",
+      "backbone": "optional",
+      "control": "not_applicable",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "always"
+     }
+    },
+    {
+     "term": "infections",
+     "requirement": {
+      "tested": "required",
+      "backbone": "optional",
+      "control": "not_applicable",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "always"
+     }
+    },
+    {
+     "term": "cytopenias",
+     "requirement": {
+      "tested": "optional",
+      "backbone": "optional",
+      "control": "not_applicable",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "always"
+     }
+    },
+    {
+     "term": "hypogammaglobulinemia",
+     "requirement": {
+      "tested": "optional",
+      "backbone": "optional",
+      "control": "not_applicable",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "biomarker_involved",
+      "families": [
+       "BCMA",
+       "GPRC5D"
+      ]
+     }
+    }
+   ]
+  },
+  "cellular": {
+   "fields": [
+    {
+     "field": "product_type",
+     "tier": "ESSENTIAL",
+     "requirement": {
+      "tested": "required",
+      "backbone": "required",
+      "control": "required",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "always"
+     },
+     "per": "arm",
+     "automation": "verifier",
+     "note": "car_t | tcr_t | til | allogeneic_hct"
+    },
+    {
+     "field": "target",
+     "tier": "ESSENTIAL",
+     "requirement": {
+      "tested": "required",
+      "backbone": "required",
+      "control": "optional",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "field_in",
+      "field": "$module.product_type",
+      "in": [
+       "car_t",
+       "tcr_t"
+      ]
+     },
+     "per": "agent",
+     "automation": "verifier"
+    },
+    {
+     "field": "cell_dose",
+     "tier": "USEFUL",
+     "requirement": {
+      "tested": "optional",
+      "backbone": "optional",
+      "control": "optional",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "always"
+     },
+     "per": "agent",
+     "automation": "verifier"
+    },
+    {
+     "field": "bridging",
+     "tier": "USEFUL",
+     "requirement": {
+      "tested": "optional",
+      "backbone": "optional",
+      "control": "optional",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "field_in",
+      "field": "$module.product_type",
+      "in": [
+       "car_t",
+       "tcr_t",
+       "til"
+      ]
+     },
+     "per": "study",
+     "automation": "verifier"
+    },
+    {
+     "field": "lymphodepletion_or_conditioning",
+     "tier": "USEFUL",
+     "requirement": {
+      "tested": "optional",
+      "backbone": "optional",
+      "control": "optional",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "always"
+     },
+     "per": "study",
+     "automation": "verifier"
+    },
+    {
+     "field": "pre_infusion_events",
+     "tier": "USEFUL",
+     "requirement": {
+      "tested": "optional",
+      "backbone": "optional",
+      "control": "optional",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "always"
+     },
+     "per": "study",
+     "automation": "verifier"
+    },
+    {
+     "field": "vein_to_vein",
+     "tier": "SPECIALIZED",
+     "requirement": {
+      "tested": "optional",
+      "backbone": "not_applicable",
+      "control": "not_applicable",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "always"
+     },
+     "per": "study",
+     "automation": "verifier"
+    }
+   ],
+   "aesi": [
+    {
+     "term": "crs",
+     "requirement": {
+      "tested": "required",
+      "backbone": "optional",
+      "control": "optional",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "field_in",
+      "field": "$module.product_type",
+      "in": [
+       "car_t",
+       "tcr_t",
+       "til"
+      ]
+     }
+    },
+    {
+     "term": "icans",
+     "requirement": {
+      "tested": "required",
+      "backbone": "optional",
+      "control": "optional",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "field_in",
+      "field": "$module.product_type",
+      "in": [
+       "car_t",
+       "tcr_t"
+      ]
+     }
+    },
+    {
+     "term": "prolonged_cytopenias",
+     "requirement": {
+      "tested": "required",
+      "backbone": "optional",
+      "control": "optional",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "always"
+     }
+    },
+    {
+     "term": "infections",
+     "requirement": {
+      "tested": "optional",
+      "backbone": "optional",
+      "control": "optional",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "always"
+     }
+    },
+    {
+     "term": "delayed_neurotoxicity",
+     "requirement": {
+      "tested": "optional",
+      "backbone": "optional",
+      "control": "not_applicable",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "field_in",
+      "field": "$module.product_type",
+      "in": [
+       "car_t"
+      ]
+     }
+    },
+    {
+     "term": "secondary_malignancy",
+     "requirement": {
+      "tested": "optional",
+      "backbone": "optional",
+      "control": "not_applicable",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "always"
+     }
+    }
+   ]
+  },
+  "radiotherapy": {
+   "fields": [
+    {
+     "field": "components",
+     "tier": "ESSENTIAL",
+     "requirement": {
+      "tested": "required",
+      "backbone": "required",
+      "control": "required",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "always"
+     },
+     "per": "arm",
+     "automation": "verifier",
+     "note": "[{arm_id, technique, target, total_gy|range, fractions}]"
+    },
+    {
+     "field": "technique",
+     "tier": "ESSENTIAL",
+     "requirement": {
+      "tested": "required",
+      "backbone": "optional",
+      "control": "optional",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "always"
+     },
+     "per": "study",
+     "automation": "verifier"
+    },
+    {
+     "field": "bed_eqd2",
+     "tier": "SPECIALIZED",
+     "requirement": {
+      "tested": "optional",
+      "backbone": "optional",
+      "control": "optional",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "always"
+     },
+     "per": "study",
+     "automation": "verifier",
+     "note": "só se REPORTADO; derivado não vai para o card"
+    },
+    {
+     "field": "concurrent_systemic",
+     "tier": "USEFUL",
+     "requirement": {
+      "tested": "optional",
+      "backbone": "optional",
+      "control": "optional",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "always"
+     },
+     "per": "study",
+     "automation": "verifier"
+    },
+    {
+     "field": "target_definition_imaging",
+     "tier": "USEFUL",
+     "requirement": {
+      "tested": "optional",
+      "backbone": "optional",
+      "control": "not_applicable",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "always"
+     },
+     "per": "study",
+     "automation": "verifier"
+    },
+    {
+     "field": "igrt_motion",
+     "tier": "SPECIALIZED",
+     "requirement": {
+      "tested": "optional",
+      "backbone": "not_applicable",
+      "control": "not_applicable",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "always"
+     },
+     "per": "study",
+     "automation": "verifier"
+    }
+   ],
+   "aesi": [
+    {
+     "term": "pneumonitis",
+     "requirement": {
+      "tested": "required",
+      "backbone": "optional",
+      "control": "optional",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "rt_site_in",
+      "in": [
+       "thorax"
+      ]
+     }
+    },
+    {
+     "term": "esophagitis",
+     "requirement": {
+      "tested": "optional",
+      "backbone": "optional",
+      "control": "optional",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "rt_site_in",
+      "in": [
+       "thorax"
+      ]
+     }
+    },
+    {
+     "term": "gi_gu_late",
+     "requirement": {
+      "tested": "required",
+      "backbone": "optional",
+      "control": "optional",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "rt_site_in",
+      "in": [
+       "pelvis"
+      ]
+     }
+    },
+    {
+     "term": "radionecrosis",
+     "requirement": {
+      "tested": "optional",
+      "backbone": "optional",
+      "control": "optional",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "rt_site_in",
+      "in": [
+       "cns"
+      ]
+     }
+    }
+   ]
+  },
+  "surgery": {
+   "fields": [
+    {
+     "field": "procedure",
+     "tier": "ESSENTIAL",
+     "requirement": {
+      "tested": "required",
+      "backbone": "required",
+      "control": "required",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "always"
+     },
+     "per": "arm",
+     "automation": "verifier"
+    },
+    {
+     "field": "r0_rate",
+     "tier": "USEFUL",
+     "requirement": {
+      "tested": "optional",
+      "backbone": "optional",
+      "control": "optional",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "always"
+     },
+     "per": "arm",
+     "automation": "verifier"
+    },
+    {
+     "field": "complications",
+     "tier": "USEFUL",
+     "requirement": {
+      "tested": "optional",
+      "backbone": "optional",
+      "control": "optional",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "always"
+     },
+     "per": "arm",
+     "automation": "verifier"
+    },
+    {
+     "field": "perioperative_mortality",
+     "tier": "USEFUL",
+     "requirement": {
+      "tested": "optional",
+      "backbone": "optional",
+      "control": "optional",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "always"
+     },
+     "per": "arm",
+     "automation": "verifier"
+    }
+   ],
+   "aesi": []
+  },
+  "locoregional": {
+   "fields": [
+    {
+     "field": "procedure",
+     "tier": "ESSENTIAL",
+     "requirement": {
+      "tested": "required",
+      "backbone": "required",
+      "control": "required",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "always"
+     },
+     "per": "arm",
+     "automation": "verifier",
+     "note": "TACE_c | TACE_DEB | HAIC | ablation | HIPEC | intravesical | other (TARE fica em radionuclide_therapy)"
+    },
+    {
+     "field": "schedule",
+     "tier": "USEFUL",
+     "requirement": {
+      "tested": "optional",
+      "backbone": "optional",
+      "control": "optional",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "always"
+     },
+     "per": "arm",
+     "automation": "verifier"
+    }
+   ],
+   "aesi": []
+  },
+  "chemotherapy": {
+   "fields": [
+    {
+     "field": "regimen_label",
+     "tier": "USEFUL",
+     "requirement": {
+      "tested": "optional",
+      "backbone": "optional",
+      "control": "optional",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "always"
+     },
+     "per": "arm",
+     "automation": "verifier"
+    },
+    {
+     "field": "agent_class",
+     "tier": "USEFUL",
+     "requirement": {
+      "tested": "optional",
+      "backbone": "optional",
+      "control": "optional",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "always"
+     },
+     "per": "agent",
+     "automation": "verifier",
+     "note": "inclui hypomethylating"
+    },
+    {
+     "field": "cycles",
+     "tier": "USEFUL",
+     "requirement": {
+      "tested": "optional",
+      "backbone": "optional",
+      "control": "optional",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "always"
+     },
+     "per": "arm",
+     "automation": "verifier"
+    },
+    {
+     "field": "high_dose",
+     "tier": "ESSENTIAL",
+     "requirement": {
+      "tested": "required",
+      "backbone": "required",
+      "control": "required",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "agent_class_in",
+      "in": [
+       "high_dose_with_autologous_rescue"
+      ]
+     },
+     "per": "study",
+     "automation": "verifier"
+    }
+   ],
+   "aesi": [
+    {
+     "term": "sos_vod",
+     "requirement": {
+      "tested": "required",
+      "backbone": "optional",
+      "control": "optional",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "agent_class_in",
+      "in": [
+       "high_dose_with_autologous_rescue"
+      ]
+     }
+    },
+    {
+     "term": "febrile_neutropenia",
+     "requirement": {
+      "tested": "optional",
+      "backbone": "optional",
+      "control": "optional",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "always"
+     }
+    }
+   ]
+  },
+  "diagnostic": {
+   "fields": [
+    {
+     "field": "index_test",
+     "tier": "ESSENTIAL",
+     "requirement": {
+      "tested": "required",
+      "backbone": "not_applicable",
+      "control": "not_applicable",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "always"
+     },
+     "per": "study",
+     "automation": "verifier"
+    },
+    {
+     "field": "reference_standard",
+     "tier": "ESSENTIAL",
+     "requirement": {
+      "tested": "required",
+      "backbone": "not_applicable",
+      "control": "not_applicable",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "always"
+     },
+     "per": "study",
+     "automation": "verifier"
+    },
+    {
+     "field": "unit_of_analysis",
+     "tier": "ESSENTIAL",
+     "requirement": {
+      "tested": "required",
+      "backbone": "not_applicable",
+      "control": "not_applicable",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "always"
+     },
+     "per": "study",
+     "automation": "verifier"
+    },
+    {
+     "field": "target",
+     "tier": "USEFUL",
+     "requirement": {
+      "tested": "optional",
+      "backbone": "not_applicable",
+      "control": "not_applicable",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "always"
+     },
+     "per": "study",
+     "automation": "verifier"
+    },
+    {
+     "field": "interfering_medications",
+     "tier": "USEFUL",
+     "requirement": {
+      "tested": "optional",
+      "backbone": "not_applicable",
+      "control": "not_applicable",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "always"
+     },
+     "per": "study",
+     "automation": "verifier"
+    },
+    {
+     "field": "readers",
+     "tier": "USEFUL",
+     "requirement": {
+      "tested": "optional",
+      "backbone": "not_applicable",
+      "control": "not_applicable",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "always"
+     },
+     "per": "study",
+     "automation": "verifier"
+    },
+    {
+     "field": "acquisition",
+     "tier": "SPECIALIZED",
+     "requirement": {
+      "tested": "optional",
+      "backbone": "not_applicable",
+      "control": "not_applicable",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "always"
+     },
+     "per": "study",
+     "automation": "verifier"
+    },
+    {
+     "field": "management_impact",
+     "tier": "USEFUL",
+     "requirement": {
+      "tested": "optional",
+      "backbone": "not_applicable",
+      "control": "not_applicable",
+      "context": "not_applicable"
+     },
+     "activation": {
+      "op": "always"
+     },
+     "per": "study",
+     "automation": "verifier"
+    }
+   ],
+   "aesi": []
+  }
+ },
+ "endpoint_model": {
+  "endpoint_id": "id único no registro",
+  "code": "PFS | rPFS | OS | DFS | iDFS | EFS | RFS | MFS | ORR | CR | CRh | pCR | DoR | DCR | TTP | CBR | PSA50 | MRD | LC | TTUP | QoL | SENS | SPEC | PPV | NPV | DR | SAFETY | other",
+  "definition": "texto (obrigatório para compostos)",
+  "response_criteria": "RECIST1.1 | mRECIST | iRECIST | PCWG3 | RANO | Lugano | IMWG | ELN2017 | ELN2022 | …",
+  "hierarchy": {
+   "level": "primary | key_secondary | secondary | exploratory | post_hoc | safety",
+   "primary_type": "sole | co_primary (todos precisam ser positivos) | dual_primary (qualquer um; α dividido)",
+   "scope": "{cohort_id?, part_id?} — primário diferente por coorte/parte",
+   "testing": "{family_id, order} — hierarquia sequencial/controle de multiplicidade via design.multiplicity",
+   "history": "[{level, changed_at, reason: amendment|…, source}] — endpoint alterado por emenda"
+  },
+  "comparison_id": "ref design.comparisons (null em braço único/diagnóstico)",
+  "population": "{label, biomarker_ref?, cohort_id?}",
+  "measure": "{summary: median | rate | mean | proportion | hr_only | accuracy, analysis_role: protocol_primary_analysis | supportive | sensitivity}",
+  "timepoint": "{type: median | landmark | cumulative | at_event, months?}",
+  "assessment": "BICR | INV | central_path | …",
+  "analysis_set": "{name: ITT | mITT | PP | safety | efficacy_evaluable, n?}",
+  "analysis_method": "unadjusted | RPSFT | IPCW | stratified_cox | …",
+  "arms_values": "[{arm_id | arm_group, value: QUALIFIED, ci?, n?}]",
+  "estimate": "{value: QUALIFIED, ci?, n?} — desenho sem braço",
+  "unit_of_analysis": "patient | region | lesion",
+  "effect": "{measure: HR | OR | RR | risk_difference | rate_difference | none, value: QUALIFIED, ci?, p?, sided?, significance}",
+  "maturity": "{analysis_ref, analysis_type, data_cutoff, follow_up_median_months, events, information_fraction, boundary_p}"
+ },
+ "multiplicity_model": {
+  "families": "[{family_id, overall_alpha, procedure: fixed_sequence | graphical | bonferroni | holm | hochberg | fallback | alpha_split | none, members: [{endpoint_id, alpha?, order?}]}]",
+  "regras": [
+   "sole: exatamente 1 endpoint level=primary por (escopo, comparison_id)",
+   "co_primary/dual_primary: ≥2 endpoints level=primary no mesmo escopo, todos com o mesmo primary_type",
+   "dual_primary exige família de multiplicidade com α por membro e soma ≤ overall_alpha",
+   "fixed_sequence exige order distinto e contíguo 1..n",
+   "primário por coorte/parte: scope distingue; a regra 'sole' vale por escopo",
+   "emenda: history[] guarda o nível anterior; o nível vigente é hierarchy.level",
+   "um mesmo endpoint com duas medidas (taxa em landmark e mediana): dois endpoint_ids, mesmo code, measure.analysis_role distinto; só o protocol_primary_analysis conta como primário para 'sole'"
+  ]
+ },
+ "analysis_signature": {
+  "identity": [
+   "trial_key",
+   "cohort",
+   "population",
+   "comparison",
+   "endpoint",
+   "summary_measure",
+   "timepoint",
+   "assessment_method",
+   "analysis_set"
+  ],
+  "ordering": [
+   "analysis_type",
+   "data_cutoff"
+  ],
+  "maturity": [
+   "follow_up_median",
+   "sample_size",
+   "events",
+   "information_fraction"
+  ],
+  "publication_role": [
+   "primary_publication",
+   "update",
+   "final",
+   "long_term",
+   "secondary_analysis",
+   "key_secondary_primary_analysis",
+   "subgroup",
+   "qol_pro",
+   "safety",
+   "translational",
+   "pooled",
+   "correction",
+   "congress"
+  ],
+  "conditional": "comparison='none' em braço único/diagnóstico (vem do desenho, não é inferido)",
+  "consistency": "cada endpoint aponta (maturity.analysis_ref) para uma assinatura com o MESMO endpoint, summary_measure, timepoint canônico ('median', 'landmark:6', 'at_event:6-10') e comparison; endpoints/medidas/tempos diferentes exigem assinaturas próprias"
+ },
+ "relationships": {
+  "parent_uid": "registro-pai (ex.: coorte → estudo; publicação filha → evidence_collection)",
+  "child_uids": "filhos; recíproco de parent_uid",
+  "links": "[{type: same_trial | follow_up_of | secondary_analysis_of | supersedes | member_of, target_uid}]",
+  "regras": [
+   "sem auto-referência",
+   "grafo parent/child sem ciclo",
+   "supersedes/follow_up_of/secondary_analysis_of sem ciclo",
+   "parent_uid ↔ child_uids recíprocos quando os dois registros existem",
+   "uid nunca é reutilizado: o card agregado vira evidence_collection com o MESMO uid; filhos recebem uids novos"
+  ]
+ },
+ "external_registries": {
+  "clinicaltrials_gov": {
+   "pattern": "^NCT\\d{8}$",
+   "host": "clinicaltrials.gov"
+  },
+  "isrctn": {
+   "pattern": "^ISRCTN\\d{8}$",
+   "host": "isrctn.com"
+  },
+  "eudract": {
+   "pattern": "^\\d{4}-\\d{6}-\\d{2}$",
+   "host": "clinicaltrialsregister.eu"
+  },
+  "ctis": {
+   "pattern": "^\\d{4}-\\d{6}-\\d{2}-\\d{2}$",
+   "host": "euclinicaltrials.eu"
+  },
+  "anzctr": {
+   "pattern": "^ACTRN\\d{14}$",
+   "host": "anzctr.org.au"
+  },
+  "jrct": {
+   "pattern": "^jRCT[a-z]?\\d{7,10}$",
+   "host": "jrct.niph.go.jp"
+  },
+  "chictr": {
+   "pattern": "^ChiCTR[-A-Za-z0-9]{6,}$",
+   "host": "chictr.org.cn"
+  },
+  "other": {
+   "pattern": null,
+   "host": null
+  }
+ },
+ "external_relations": [
+  "same_trial",
+  "related",
+  "predecessor",
+  "successor",
+  "confirmatory",
+  "parent_trial",
+  "extension"
+ ],
+ "validation_errors": {
+  "E_SCHEMA": "violação do JSON Schema",
+  "E_UID_IMMUTABLE": "uid do HEAD ausente no conjunto novo, ou nome de arquivo ≠ uid",
+  "E_RECORD_TYPE": "record_type inválido",
+  "E_MODULE": "módulo desconhecido ou papel inválido",
+  "E_ARM_REF": "arm_id referenciado não existe em design.arms",
+  "E_COMPARISON_REF": "comparison_id inexistente ou braços da comparação inexistentes",
+  "E_COHORT_REF": "cohort_id/biomarker_ref inexistente",
+  "E_STATE": "estado semântico inválido ou incoerente com o envelope",
+  "E_ORIGIN": "present sem origin, ou origin=legacy fora de shadow/modeled",
+  "E_PROV": "prov ausente ou apontando para proveniência inexistente",
+  "E_DERIVED": "derived sem formula/assumptions/source_fields/version",
+  "E_CONFLICT": "conflito sem ≥2 value_candidates ou sem locator",
+  "E_SIGNATURE": "analysis_signature incompleta ou endpoint apontando para análise inexistente",
+  "E_PRIMARY": "estrutura de primários incoerente (sole/co/dual/multiplicidade)",
+  "E_REL": "relação inválida (auto-referência, ciclo, parent/child não recíproco)",
+  "E_REQUIRED": "campo obrigatório (perfil, papel e ativação) ausente em registro curated",
+  "E_NA_CONTRADICTION": "campo marcado not_applicable mas obrigatório e ativo",
+  "E_HTML": "HTML em texto",
+  "E_LEGACY": "registro sem legacy.v1 ou uid divergente",
+  "E_EXTERNAL": "external_relationships com registro/identificador/URL inválidos",
+  "E_CURATED_IN_SHADOW": "registro curated num diretório de sombra (CI)",
+  "W_EXTERNAL_HAS_CARD": "estudo externo que já tem card: usar relationships.links",
+  "E_VALUE": "valor numérico incoerente (IC invertido, efeito fora do IC)",
+  "E_ENUM": "valor fora do vocabulário fechado",
+  "W_REQUIRED": "lacuna de completude (shadow/modeled) — backlog, nunca inbox",
+  "W_REQUIRED_ACK": "curated: obrigatório declarado unknown com fontes conferidas (a fonte não permite concluir)",
+  "W_MODULE": "incoerência módulo × intervenção em registro não curado",
+  "W_MODULE_MISSING": "módulo de contexto ativo mas ausente (ex.: ddr_hrd com biomarcador DDR)",
+  "W_SAMPLE_SIZE": "soma dos braços maior que o total randomizado",
+  "W_SIGNIFICANCE": "significância declarada sem p nem IC",
+  "W_COMPARISON": "primário de estudo randomizado sem comparison_id (não curado)",
+  "W_NOT_APPLICABLE_FILLED": "campo preenchido embora não se aplique ao perfil/papel",
+  "W_REL_ORPHAN": "parent_uid aponta registro fora do conjunto validado"
+ },
+ "role_semantics": {
+  "tested": "o módulo é a pergunta do estudo naquele(s) braço(s)",
+  "backbone": "presente como base comum (em geral nos dois braços); não é a pergunta",
+  "control": "presente só como comparador",
+  "context": "não há agente administrado desse módulo; só campos de população (ex.: exposição prévia)"
+ }
+}

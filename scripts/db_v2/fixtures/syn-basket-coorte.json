@@ -1,0 +1,418 @@
+{
+ "schema": "theratrials-db-v2/1.0",
+ "uid": "syn-basket-coorte",
+ "record_type": "trial_cohort",
+ "curation": {
+  "level": "curated"
+ },
+ "relationships": {
+  "parent_uid": null,
+  "child_uids": [],
+  "links": []
+ },
+ "modules": [
+  {
+   "module": "immunotherapy",
+   "role": "tested",
+   "arm_ids": [
+    "coorte_x"
+   ],
+   "fields": {
+    "target": {
+     "state": "present",
+     "origin": "reported",
+     "v": "PD-1",
+     "prov": "p1"
+    },
+    "msi_mmr": {
+     "state": "present",
+     "origin": "reported",
+     "v": {
+      "status": "MSI-H/dMMR"
+     },
+     "prov": "p1"
+    },
+    "prior_io": {
+     "state": "present",
+     "origin": "reported",
+     "v": {
+      "requirement": "excluded"
+     },
+     "prov": "p1"
+    }
+   },
+   "classification": {
+    "basis": "curated"
+   }
+  }
+ ],
+ "identity": {
+  "short_name": {
+   "state": "present",
+   "origin": "editorial",
+   "v": "SYN-BASKET-COORTE"
+  },
+  "display_title": {
+   "state": "present",
+   "origin": "editorial",
+   "v": "syn-basket-coorte — título sintético"
+  },
+  "category_id": {
+   "state": "present",
+   "origin": "editorial",
+   "v": "sintetica"
+  },
+  "evidence_stage": {
+   "state": "present",
+   "origin": "reported",
+   "v": "published_primary",
+   "prov": "p1"
+  },
+  "registrations": {
+   "state": "present",
+   "origin": "reported",
+   "v": [
+    {
+     "registry": "NCT",
+     "id": "NCT96031844"
+    }
+   ],
+   "prov": "p2"
+  },
+  "phase": {
+   "state": "present",
+   "origin": "reported",
+   "v": "3",
+   "prov": "p2"
+  },
+  "represented_publication": {
+   "state": "present",
+   "origin": "reported",
+   "v": {
+    "pmid": "00000001",
+    "year": 2025
+   },
+   "prov": "p1"
+  },
+  "tumors": {
+   "state": "present",
+   "origin": "reported",
+   "v": [
+    "tumor_sintetico"
+   ],
+   "prov": "p1"
+  }
+ },
+ "population": {
+  "disease": {
+   "state": "present",
+   "origin": "reported",
+   "v": "doença sintética avançada",
+   "prov": "p1"
+  },
+  "setting": {
+   "state": "present",
+   "origin": "reported",
+   "v": "advanced_first_line",
+   "prov": "p1"
+  },
+  "biomarker_selection": {
+   "state": "present",
+   "origin": "reported",
+   "v": [
+    {
+     "id": "b1",
+     "biomarker": "MSI-H/dMMR",
+     "family": "MSI/MMR",
+     "rule": "required"
+    }
+   ],
+   "prov": "p1"
+  },
+  "prior_therapy": {
+   "state": "present",
+   "origin": "reported",
+   "v": [
+    {
+     "requirement": "excluded",
+     "therapy": "terapia sistêmica prévia"
+    }
+   ],
+   "prov": "p1"
+  }
+ },
+ "design": {
+  "structure": {
+   "state": "present",
+   "origin": "reported",
+   "v": "multi_cohort_basket",
+   "prov": "p1"
+  },
+  "allocation": {
+   "state": "present",
+   "origin": "reported",
+   "v": "single_arm",
+   "prov": "p2"
+  },
+  "arms": {
+   "state": "present",
+   "origin": "reported",
+   "v": [
+    {
+     "arm_id": "coorte_x",
+     "label": "Coorte X",
+     "role": "single",
+     "n": {
+      "op": "=",
+      "value": 40
+     },
+     "interventions": [
+      {
+       "agent": "AGENTE-X",
+       "role": "investigational"
+      }
+     ]
+    }
+   ],
+   "prov": "p1"
+  },
+  "comparisons": {
+   "state": "present",
+   "origin": "reported",
+   "v": [
+    {
+     "comparison_id": "c0",
+     "exp_arms": [
+      "coorte_x"
+     ],
+     "hypothesis": "descriptive"
+    }
+   ],
+   "prov": "p1"
+  },
+  "sample_size": {
+   "state": "present",
+   "origin": "reported",
+   "v": {
+    "randomized": 40
+   },
+   "prov": "p1"
+  },
+  "cohorts": {
+   "state": "present",
+   "origin": "reported",
+   "v": [
+    {
+     "cohort_id": "X",
+     "kind": "analysis_population",
+     "label": "tumor X MSI-H",
+     "source_cohorts": [
+      "D",
+      "K"
+     ],
+     "biomarker_ref": "b1"
+    }
+   ],
+   "prov": "p1"
+  }
+ },
+ "endpoints": {
+  "state": "present",
+  "origin": "reported",
+  "v": [
+   {
+    "endpoint_id": "e1",
+    "code": "ORR",
+    "hierarchy": {
+     "level": "primary",
+     "scope": {
+      "cohort_id": "X"
+     }
+    },
+    "comparison_id": null,
+    "population": {
+     "label": "coorte X",
+     "cohort_id": "X"
+    },
+    "measure": {
+     "summary": "proportion"
+    },
+    "timepoint": {
+     "type": "best"
+    },
+    "response_criteria": "RECIST1.1",
+    "assessment": "BICR",
+    "analysis_set": {
+     "name": "efficacy_evaluable",
+     "n": 40
+    },
+    "estimate": {
+     "value": {
+      "op": "=",
+      "value": 48
+     }
+    },
+    "state": "present",
+    "origin": "reported",
+    "prov": "p1",
+    "maturity": {
+     "analysis_ref": "a_e1"
+    }
+   }
+  ],
+  "prov": "p1"
+ },
+ "safety": {
+  "grade3plus_any": {
+   "state": "present",
+   "origin": "reported",
+   "v": [
+    {
+     "arm_id": "coorte_x",
+     "value": {
+      "op": "=",
+      "value": 15
+     }
+    }
+   ],
+   "prov": "p1"
+  },
+  "discontinuation_ae": {
+   "state": "present",
+   "origin": "reported",
+   "v": [
+    {
+     "arm_id": "coorte_x",
+     "value": {
+      "op": "=",
+      "value": 5
+     }
+    }
+   ],
+   "prov": "p1"
+  },
+  "treatment_related_deaths": {
+   "state": "present",
+   "origin": "reported",
+   "v": [
+    {
+     "arm_id": "coorte_x",
+     "n": 0
+    }
+   ],
+   "prov": "p1"
+  },
+  "key_toxicities": {
+   "state": "present",
+   "origin": "reported",
+   "v": [
+    {
+     "term": "immune_related_g3plus",
+     "scope": "g3plus",
+     "arm_id": "coorte_x",
+     "value": {
+      "op": "=",
+      "value": 10
+     },
+     "aesi_of": [
+      "immunotherapy"
+     ]
+    }
+   ],
+   "prov": "p1"
+  },
+  "population": {
+   "state": "present",
+   "origin": "reported",
+   "v": "pooled",
+   "prov": "p1"
+  }
+ },
+ "interpretation": {
+  "key_result": {
+   "state": "present",
+   "origin": "editorial",
+   "v": "PFS mediana 10,0 vs 6,0 m"
+  },
+  "takehome": {
+   "state": "present",
+   "origin": "editorial",
+   "v": "mensagem sintética"
+  },
+  "limitations": {
+   "state": "present",
+   "origin": "editorial",
+   "v": [
+    "estudo aberto"
+   ]
+  }
+ },
+ "analyses": [
+  {
+   "analysis_id": "a_e1",
+   "analysis_type": "primary",
+   "data_cutoff": "2025-01-01",
+   "publication_role": "primary_publication",
+   "prov": "p1",
+   "signature": {
+    "trial_key": "NCT96031844",
+    "cohort": "X",
+    "population": "coorte X",
+    "comparison": "none",
+    "endpoint": "ORR",
+    "summary_measure": "proportion",
+    "timepoint": "best",
+    "assessment_method": "BICR",
+    "analysis_set": "efficacy_evaluable"
+   }
+  }
+ ],
+ "review": {
+  "editorial_status": "active",
+  "integrity": {
+   "status": "none"
+  }
+ },
+ "provenance": {
+  "p1": {
+   "source": {
+    "type": "publication",
+    "pmid": "00000001"
+   },
+   "locator": {
+    "section": "Results"
+   },
+   "extraction": "explicit",
+   "evidence_confidence": "high"
+  },
+  "p2": {
+   "source": {
+    "type": "registry",
+    "nct": "NCT96031844"
+   },
+   "extraction": "explicit",
+   "evidence_confidence": "high"
+  }
+ },
+ "legacy": {
+  "v1": {
+   "uid": "syn-basket-coorte"
+  },
+  "position": 11
+ },
+ "external_relationships": [
+  {
+   "registry": "clinicaltrials_gov",
+   "registry_id": "NCT88888888",
+   "relationship": "parent_trial",
+   "url": "https://clinicaltrials.gov/study/NCT88888888",
+   "label": "estudo basket sintético"
+  },
+  {
+   "registry": "other",
+   "registry_id": "SYN-REG-0001",
+   "relationship": "related",
+   "label": "registro local sintético"
+  }
+ ]
+}

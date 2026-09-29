@@ -1,0 +1,271 @@
+{
+ "schema": "theratrials-db-v2/1.0",
+ "uid": "syn-diag",
+ "record_type": "diagnostic_study",
+ "curation": {
+  "level": "curated"
+ },
+ "relationships": {
+  "parent_uid": null,
+  "child_uids": [],
+  "links": []
+ },
+ "modules": [
+  {
+   "module": "diagnostic",
+   "role": "tested",
+   "arm_ids": "all",
+   "fields": {
+    "index_test": {
+     "state": "present",
+     "origin": "reported",
+     "v": "PET sintético",
+     "prov": "p1"
+    },
+    "reference_standard": {
+     "state": "present",
+     "origin": "reported",
+     "v": "histologia",
+     "prov": "p1"
+    },
+    "unit_of_analysis": {
+     "state": "present",
+     "origin": "reported",
+     "v": [
+      "patient",
+      "lesion"
+     ],
+     "prov": "p1"
+    }
+   },
+   "classification": {
+    "basis": "curated"
+   }
+  }
+ ],
+ "identity": {
+  "short_name": {
+   "state": "present",
+   "origin": "editorial",
+   "v": "SYN-DIAG"
+  },
+  "display_title": {
+   "state": "present",
+   "origin": "editorial",
+   "v": "syn-diag — título sintético"
+  },
+  "category_id": {
+   "state": "present",
+   "origin": "editorial",
+   "v": "sintetica"
+  },
+  "evidence_stage": {
+   "state": "present",
+   "origin": "reported",
+   "v": "published_primary",
+   "prov": "p1"
+  },
+  "registrations": {
+   "state": "present",
+   "origin": "reported",
+   "v": [
+    {
+     "registry": "NCT",
+     "id": "NCT95265691"
+    }
+   ],
+   "prov": "p2"
+  },
+  "phase": {
+   "state": "present",
+   "origin": "reported",
+   "v": "3",
+   "prov": "p2"
+  },
+  "represented_publication": {
+   "state": "present",
+   "origin": "reported",
+   "v": {
+    "pmid": "00000001",
+    "year": 2025
+   },
+   "prov": "p1"
+  },
+  "tumors": {
+   "state": "present",
+   "origin": "reported",
+   "v": [
+    "tumor_sintetico"
+   ],
+   "prov": "p1"
+  }
+ },
+ "population": {
+  "disease": {
+   "state": "present",
+   "origin": "reported",
+   "v": "doença sintética avançada",
+   "prov": "p1"
+  },
+  "setting": {
+   "state": "present",
+   "origin": "reported",
+   "v": "advanced_first_line",
+   "prov": "p1"
+  },
+  "biomarker_selection": {
+   "state": "present",
+   "origin": "reported",
+   "v": [
+    {
+     "id": "b0",
+     "biomarker": "nenhum",
+     "family": "other",
+     "rule": "none"
+    }
+   ],
+   "prov": "p1"
+  },
+  "prior_therapy": {
+   "state": "present",
+   "origin": "reported",
+   "v": [
+    {
+     "requirement": "excluded",
+     "therapy": "terapia sistêmica prévia"
+    }
+   ],
+   "prov": "p1"
+  }
+ },
+ "design": {
+  "structure": {
+   "state": "present",
+   "origin": "reported",
+   "v": "single_cohort",
+   "prov": "p1"
+  },
+  "arms": {
+   "state": "not_applicable"
+  },
+  "sample_size": {
+   "state": "present",
+   "origin": "reported",
+   "v": {
+    "randomized": 120
+   },
+   "prov": "p1"
+  }
+ },
+ "endpoints": {
+  "state": "present",
+  "origin": "reported",
+  "v": [
+   {
+    "endpoint_id": "e1",
+    "code": "SENS",
+    "hierarchy": {
+     "level": "primary"
+    },
+    "comparison_id": null,
+    "population": {
+     "label": "pacientes avaliáveis"
+    },
+    "measure": {
+     "summary": "accuracy"
+    },
+    "timepoint": {
+     "type": "at_event"
+    },
+    "unit_of_analysis": "patient",
+    "estimate": {
+     "value": {
+      "op": "=",
+      "value": 78
+     },
+     "ci": {
+      "level": 95,
+      "low": 70,
+      "high": 85
+     },
+     "n": 120
+    },
+    "state": "present",
+    "origin": "reported",
+    "prov": "p1",
+    "maturity": {
+     "analysis_ref": "a_e1"
+    }
+   }
+  ],
+  "prov": "p1"
+ },
+ "safety": {},
+ "interpretation": {
+  "takehome": {
+   "state": "present",
+   "origin": "editorial",
+   "v": "mensagem sintética"
+  },
+  "limitations": {
+   "state": "present",
+   "origin": "editorial",
+   "v": [
+    "estudo aberto"
+   ]
+  }
+ },
+ "analyses": [
+  {
+   "analysis_id": "a_e1",
+   "analysis_type": "primary",
+   "data_cutoff": "2025-01-01",
+   "publication_role": "primary_publication",
+   "prov": "p1",
+   "signature": {
+    "trial_key": "NCT95265691",
+    "cohort": null,
+    "population": "pacientes avaliáveis",
+    "comparison": "none",
+    "endpoint": "SENS",
+    "summary_measure": "accuracy",
+    "timepoint": "at_event",
+    "assessment_method": null,
+    "analysis_set": null
+   }
+  }
+ ],
+ "review": {
+  "editorial_status": "active",
+  "integrity": {
+   "status": "none"
+  }
+ },
+ "provenance": {
+  "p1": {
+   "source": {
+    "type": "publication",
+    "pmid": "00000001"
+   },
+   "locator": {
+    "section": "Results"
+   },
+   "extraction": "explicit",
+   "evidence_confidence": "high"
+  },
+  "p2": {
+   "source": {
+    "type": "registry",
+    "nct": "NCT95265691"
+   },
+   "extraction": "explicit",
+   "evidence_confidence": "high"
+  }
+ },
+ "legacy": {
+  "v1": {
+   "uid": "syn-diag"
+  },
+  "position": 10
+ }
+}
