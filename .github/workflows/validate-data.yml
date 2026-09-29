@@ -24,6 +24,8 @@ on:
       - 'assets/lang/pt-br.js'
       - 'assets/lang/en.js'
       - 'scripts/sync_counts.mjs'
+      - 'scripts/db_v2/**'
+      - 'scripts/db_decisoes.json'
   # A lista do pull_request tem de incluir os PRÓPRIOS validadores, não só os
   # dados. Sem isso, um PR que mexe só no validador não roda o validador — foi
   # o que aconteceu com o PR #11, que o criou: zero checks.
@@ -40,6 +42,8 @@ on:
       - 'scripts/validate_nct.mjs'
       - 'scripts/validate_trials_br.mjs'
       - 'scripts/sync_counts.mjs'
+      - 'scripts/db_v2/**'
+      - 'scripts/db_decisoes.json'
       - '.github/workflows/validate-data.yml'
   workflow_dispatch:
 
@@ -57,6 +61,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          # 2 commits: o Database v2 confere que nenhum uid do commit anterior sumiu
+          fetch-depth: 2
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -78,6 +85,20 @@ jobs:
       - name: Testar o próprio guard de cards
         if: always()
         run: node --test scripts/validate_cards.test.mjs
+
+      # Database v2 em modo SOMBRA: testes, lift do data.js num diretório temporário,
+      # validate_v2 e export_legacy --check (a sombra tem de reproduzir o data.js byte a
+      # byte). Offline, sem secrets, nunca escreve no data.js. Falha só em erro estrutural;
+      # lacunas de completude vão para o resumo e para o artifact.
+      - name: Setup Python
+        if: always()
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Database v2 (sombra)
+        if: always()
+        run: python3 scripts/db_v2/ci_v2.py --report v2-report.json --base-ref HEAD^
 
       - name: Validate pubmed_url integrity
         if: always()
@@ -101,4 +122,5 @@ jobs:
             pubmed-report.json
             nct-report.json
             trials-br-report.json
+            v2-report.json
           if-no-files-found: ignore
