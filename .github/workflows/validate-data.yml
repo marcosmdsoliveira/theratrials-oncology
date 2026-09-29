@@ -26,6 +26,9 @@ on:
       - 'scripts/sync_counts.mjs'
       - 'scripts/db_v2/**'
       - 'scripts/db_decisoes.json'
+      - 'scripts/db_candidatos_integridade.json'
+      - 'scripts/db_integridade.py'
+      - 'scripts/test_db_integridade.py'
   # A lista do pull_request tem de incluir os PRÓPRIOS validadores, não só os
   # dados. Sem isso, um PR que mexe só no validador não roda o validador — foi
   # o que aconteceu com o PR #11, que o criou: zero checks.
@@ -44,6 +47,9 @@ on:
       - 'scripts/sync_counts.mjs'
       - 'scripts/db_v2/**'
       - 'scripts/db_decisoes.json'
+      - 'scripts/db_candidatos_integridade.json'
+      - 'scripts/db_integridade.py'
+      - 'scripts/test_db_integridade.py'
       - '.github/workflows/validate-data.yml'
   workflow_dispatch:
 
@@ -99,6 +105,24 @@ jobs:
       - name: Database v2 (sombra)
         if: always()
         run: python3 scripts/db_v2/ci_v2.py --report v2-report.json --base-ref HEAD^
+
+      # Backlog canônico de integridade (db_candidatos_integridade.json), separado do v2:
+      # invariantes do arquivo, os testes do backlog e a transição contra o commit anterior
+      # (nada apagado, nada final rebaixado, history só cresce). Offline, só lê.
+      - name: Validar backlog de integridade
+        if: always()
+        working-directory: scripts
+        run: |
+          python3 db_integridade.py --validar
+          python3 -m unittest -v test_db_integridade
+          if git cat-file -e HEAD^:scripts/db_candidatos_integridade.json 2>/dev/null; then
+            git show HEAD^:scripts/db_candidatos_integridade.json > "$RUNNER_TEMP/backlog_anterior.json"
+            python3 -c 'import json, os, sys, db_integridade as I
+          antes = json.load(open(os.path.join(os.environ["RUNNER_TEMP"], "backlog_anterior.json")))
+          erros = I.invariantes_de_transicao(antes, I.carregar())
+          [print("ERRO", e) for e in erros]
+          sys.exit(1 if erros else 0)'
+          fi
 
       - name: Validate pubmed_url integrity
         if: always()
