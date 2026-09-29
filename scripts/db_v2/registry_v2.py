@@ -23,7 +23,7 @@ import json
 import pathlib
 
 AQUI = pathlib.Path(__file__).resolve().parent
-VERSAO = "1.0"
+VERSAO = "1.1"
 
 E, U, S = "ESSENTIAL", "USEFUL", "SPECIALIZED"
 
@@ -126,8 +126,12 @@ CORE = [
     C("identity.sponsor", U, "machine", "sponsor"),
     C("identity.centers", U, "machine", "centros"),
     C("identity.enrollment_period", U, "machine", "periodo"),
-    C("identity.represented_publication", E, "machine", "pubmed_url, ano_pub, titulo_full, ref"),
-    C("identity.publications", U, "machine", "ref, secondary-cards.js"),
+    C("identity.represented_publication", E, "machine", "pubmed_url, ano_pub, titulo_full, ref, citation",
+      "{publication_id, pmid, year}: aponta um publication_id de identity.publications; é a publicação que "
+      "sustenta os dados exibidos e a única fonte da citação principal (evidence_collection não tem)"),
+    C("identity.publications", U, "machine", "citation, ref, secondary-cards.js",
+      "lista de $defs/publication (primária, updates, finais, secundárias, congresso); autoria só de metadados "
+      "bibliográficos, nunca de sponsor"),
     C("identity.category_id", E, "human", "category_id"),
     C("identity.tumors", E, "verifier", "tumors / category"),
     C("identity.evidence_stage", E, "machine", "status (parte)"),
@@ -570,7 +574,7 @@ ANALYSIS_SIGNATURE = {
     "maturity": ["follow_up_median", "sample_size", "events", "information_fraction"],
     "publication_role": ["primary_publication", "update", "final", "long_term", "secondary_analysis",
                          "key_secondary_primary_analysis", "subgroup",
-                         "qol_pro", "safety", "translational", "pooled", "correction", "congress"],
+                         "qol_pro", "safety", "translational", "pooled", "correction", "congress", "congress_abstract"],
     "conditional": "comparison='none' em braço único/diagnóstico (vem do desenho, não é inferido)",
     "consistency": "cada endpoint aponta (maturity.analysis_ref) para uma assinatura com o MESMO endpoint, summary_measure, "
                    "timepoint canônico ('median', 'landmark:6', 'at_event:6-10') e comparison; endpoints/medidas/tempos "
@@ -588,6 +592,9 @@ RELATIONSHIPS = {
 
 VALIDATION_ERRORS = {
     "E_SCHEMA": "violação do JSON Schema",
+    "E_PUBLICATION": "publication fora do $def (first_author ≠ authors[0], metadata_source proibida, pages e article_number juntos…)",
+    "E_PUBLICATION_REF": "represented_publication aponta publication_id inexistente em identity.publications",
+    "E_CITATION": "citation do card v1 ≠ projeção da publicação representada, ou citation em evidence_collection",
     "E_UID_IMMUTABLE": "uid do HEAD ausente no conjunto novo, ou nome de arquivo ≠ uid",
     "E_RECORD_TYPE": "record_type inválido",
     "E_MODULE": "módulo desconhecido ou papel inválido",
@@ -783,6 +790,30 @@ def json_schema() -> dict:
         },
         "required": ["module", "role", "arm_ids"], "additionalProperties": False,
     }
+    publication = {
+        "type": "object",
+        "properties": {
+            "publication_id": {"type": "string", "pattern": r"^(pmid:\d+|doi:.+|ed:[a-z0-9_\-]+)$"},
+            "role": {"enum": ANALYSIS_SIGNATURE["publication_role"] + ["undetermined"]},
+            "pmid": {"type": "string", "pattern": r"^\d+$"}, "doi": {"type": "string"}, "pmcid": {"type": "string"},
+            "authors": {"type": "array", "items": {"type": "object", "properties": {
+                "family": {"type": "string", "minLength": 1}, "given_initials": {"type": "string"},
+                "suffix": {"type": "string"}}, "required": ["family", "given_initials"], "additionalProperties": False}},
+            "authors_total": {"type": "integer", "minimum": 0},
+            "collective_name": {"type": ["string", "null"]},
+            "first_author": {"type": ["string", "null"]},
+            "title": {"type": "string", "minLength": 1}, "journal": {"type": ["string", "null"]},
+            "journal_abbrev": {"type": ["string", "null"]}, "year": {"type": "integer", "minimum": 1900},
+            "volume": {"type": ["string", "null"]}, "issue": {"type": ["string", "null"]},
+            "pages": {"type": ["string", "null"]}, "article_number": {"type": ["string", "null"]},
+            "publication_type": {"enum": ["journal_article", "guideline", "meta_analysis", "systematic_review", "review",
+                                          "congress_abstract", "erratum", "other"]},
+            "metadata_source": {"enum": ["pubmed_esummary", "crossref", "editorial"]},
+            "retrieved_at": {"type": ["string", "null"]},
+        },
+        "required": ["publication_id", "role", "title", "year", "publication_type", "metadata_source"],
+        "additionalProperties": False,
+    }
     provenance = {
         "type": "object",
         "properties": {
@@ -937,7 +968,7 @@ def json_schema() -> dict:
         "additionalProperties": False,
         "$defs": {"envelope": envelope, "qualified": qualified, "ci": ci, "endpoint": endpoint,
                   "intervention": intervention, "arm": arm, "comparison": comparison,
-                  "module_entry": module_entry, "provenance": provenance,
+                  "module_entry": module_entry, "provenance": provenance, "publication": publication,
                   "derivation": {"type": "object", "properties": {
                       "formula": {"type": "string"}, "parameters": {"type": "object"},
                       "assumptions": {"type": "array", "items": {"type": "string"}, "minItems": 1},

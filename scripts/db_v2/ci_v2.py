@@ -29,6 +29,7 @@ import unittest
 AQUI = pathlib.Path(__file__).resolve().parent
 sys.path.insert(0, str(AQUI))
 
+import bibliografia as B  # noqa: E402
 import export_legacy as X  # noqa: E402
 import lift_v1 as LF  # noqa: E402
 import v2lib as L  # noqa: E402
@@ -59,7 +60,7 @@ def sha(p: pathlib.Path) -> str:
 
 def rodar_testes() -> tuple[bool, str]:
     buf = io.StringIO()
-    suite = unittest.defaultTestLoader.loadTestsFromName("test_db_v2")
+    suite = unittest.defaultTestLoader.loadTestsFromNames(["test_db_v2", "test_bibliografia"])
     res = unittest.TextTestRunner(stream=buf, verbosity=0).run(suite)
     return res.wasSuccessful(), f"{res.testsRun} testes, {len(res.failures)} falhas, {len(res.errors)} erros"
 
@@ -115,6 +116,13 @@ def main(argv=None) -> int:
         if not cmp_["bytes_identicos"]:
             falhas.append("export_legacy: a sombra não reproduz o data.js byte a byte")
 
+    # camada bibliográfica (informativo): cobertura do snapshot e cards com citation estruturada
+    estudos = L.ler_data_js(L.DATA_JS.read_text(encoding="utf-8"))[1]["studies"]
+    snap = B.carregar_snapshot() if B.SNAPSHOT.exists() else {}
+    pmids = {B.pmid_do_card(c) for c in estudos} - {None}
+    relatorio["etapas"]["bibliografia"] = {"cards_com_citation": sum(1 for c in estudos if c.get("citation")),
+                                           "pmids": len(pmids), "pmids_fora_do_snapshot": sorted(pmids - set(snap))}
+
     sha_depois = sha(L.DATA_JS)
     if sha_depois != sha_antes:
         falhas.append("o data.js publicado mudou durante o CI do v2")
@@ -132,6 +140,8 @@ def main(argv=None) -> int:
         f"| lift | {lift['cards']} registros-sombra; {lift['incertezas']} incertezas; {lift['sugestoes']} sugestões |",
         f"| validate_v2 | {v['erros']} erro(s); {v['codigos'].get('W_REQUIRED', 0)} lacunas de completude (não bloqueiam) |",
         f"| export_legacy | byte a byte: {'sim' if relatorio['etapas']['export_legacy']['bytes_identicos'] else 'NÃO'} |",
+        f"| bibliografia | {relatorio['etapas']['bibliografia']['cards_com_citation']} cards com citation; "
+        f"{len(relatorio['etapas']['bibliografia']['pmids_fora_do_snapshot'])} PMID(s) fora do snapshot (não bloqueia) |",
     ]
     if falhas:
         linhas += ["", "### Falhas", *[f"- {f}" for f in falhas]]

@@ -1,11 +1,11 @@
 {
  "$schema": "https://json-schema.org/draft/2020-12/schema",
- "$id": "https://theratrials.com/schema/db-v2/1.0/record.json",
+ "$id": "https://theratrials.com/schema/db-v2/1.1/record.json",
  "title": "TheraTrials Database v2 — registro canônico de um card",
  "type": "object",
  "properties": {
   "schema": {
-   "const": "theratrials-db-v2/1.0"
+   "const": "theratrials-db-v2/1.1"
   },
   "uid": {
    "type": "string",
@@ -357,7 +357,8 @@
        "translational",
        "pooled",
        "correction",
-       "congress"
+       "congress",
+       "congress_abstract"
       ]
      },
      "prov": {
@@ -3420,6 +3421,161 @@
     "source",
     "extraction",
     "evidence_confidence"
+   ],
+   "additionalProperties": false
+  },
+  "publication": {
+   "type": "object",
+   "properties": {
+    "publication_id": {
+     "type": "string",
+     "pattern": "^(pmid:\\d+|doi:.+|ed:[a-z0-9_\\-]+)$"
+    },
+    "role": {
+     "enum": [
+      "primary_publication",
+      "update",
+      "final",
+      "long_term",
+      "secondary_analysis",
+      "key_secondary_primary_analysis",
+      "subgroup",
+      "qol_pro",
+      "safety",
+      "translational",
+      "pooled",
+      "correction",
+      "congress",
+      "congress_abstract",
+      "undetermined"
+     ]
+    },
+    "pmid": {
+     "type": "string",
+     "pattern": "^\\d+$"
+    },
+    "doi": {
+     "type": "string"
+    },
+    "pmcid": {
+     "type": "string"
+    },
+    "authors": {
+     "type": "array",
+     "items": {
+      "type": "object",
+      "properties": {
+       "family": {
+        "type": "string",
+        "minLength": 1
+       },
+       "given_initials": {
+        "type": "string"
+       },
+       "suffix": {
+        "type": "string"
+       }
+      },
+      "required": [
+       "family",
+       "given_initials"
+      ],
+      "additionalProperties": false
+     }
+    },
+    "authors_total": {
+     "type": "integer",
+     "minimum": 0
+    },
+    "collective_name": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "first_author": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "title": {
+     "type": "string",
+     "minLength": 1
+    },
+    "journal": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "journal_abbrev": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "year": {
+     "type": "integer",
+     "minimum": 1900
+    },
+    "volume": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "issue": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "pages": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "article_number": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "publication_type": {
+     "enum": [
+      "journal_article",
+      "guideline",
+      "meta_analysis",
+      "systematic_review",
+      "review",
+      "congress_abstract",
+      "erratum",
+      "other"
+     ]
+    },
+    "metadata_source": {
+     "enum": [
+      "pubmed_esummary",
+      "crossref",
+      "editorial"
+     ]
+    },
+    "retrieved_at": {
+     "type": [
+      "string",
+      "null"
+     ]
+    }
+   },
+   "required": [
+    "publication_id",
+    "role",
+    "title",
+    "year",
+    "publication_type",
+    "metadata_source"
    ],
    "additionalProperties": false
   },

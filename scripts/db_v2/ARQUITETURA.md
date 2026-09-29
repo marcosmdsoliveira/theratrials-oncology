@@ -1,6 +1,6 @@
 # Database v2 — arquitetura clínica e de dados (PROPOSTA)
 
-Status: **arquitetura APROVADA (28/set/2026); fundação técnica implementada (registro 1.0). Nenhum card migrado.** Nenhum card migrado; `data.js`, `app-data/`,
+Status: **arquitetura APROVADA (28/set/2026); fundação técnica implementada (registro 1.1, com camada bibliográfica — seção 20). Nenhum card migrado.** `data.js`, `app-data/`,
 `secondary-cards.js` e frontend intocados. Registro de campos: `registry_v2.json` e JSON Schema `schema_record_v2.json` (ambos gerados por
 `registry_v2.py`). Resultado do teste com cards reais: seção 9 (os artefatos brutos do teste ficaram fora do repositório).
 
@@ -715,7 +715,7 @@ Regras para não aumentar a carga:
 | Arquivo | Papel |
 |---|---|
 | `registry_v2.py` | fonte única: record_types, perfis, core, módulos (requisito por papel + ativação), AESI, modelo de endpoints/multiplicidade, assinatura, relações; gera os dois JSON abaixo |
-| `registry_v2.json` | registro de campos (1.0) |
+| `registry_v2.json` | registro de campos (1.1) |
 | `schema_record_v2.json` | JSON Schema draft 2020-12 do registro canônico |
 | `v2lib.py` | leitura/serialização do data.js, validador de JSON Schema sem dependência, avaliação de ativação |
 | `lift_v1.py` | 503 cards → `scripts/_db_v2_shadow/` (ignorado), conservador |
@@ -807,3 +807,41 @@ supersedes | member_of, target_uid}]}`. O validador proíbe auto-referência, ci
 - Nunca exercitados com dado real: record_types não-ensaio (guideline, diagnostic_study, meta_analysis,
   cohort_study, evidence_collection…), módulos `diagnostic` e `locoregional`, `design.factors`,
   `design.observational`, PD-L1, endócrino de mama, TARE/absorbed_dose e 32 campos de módulo.
+
+## 20. Camada bibliográfica (registro 1.1, 29/set/2026)
+
+Motivo: a citação do card era montada a partir do PI em `sponsor` (último token, sem título, periódico, volume ou
+páginas). A auditoria do corpus mostrou autor errado em 232 dos 451 cards com PMID. Regra editorial aprovada:
+**a citação principal é a `represented_publication`**, a publicação que sustenta os dados exibidos.
+
+| Peça | Papel |
+|---|---|
+| `bibliografia.py` | normaliza metadados PubMed (nomes, sufixo, autor coletivo, article number, tipo), `$defs/publication`, projeção `citation_v1`, guardas de elegibilidade |
+| `bibliografia/pubmed_snapshot.json` | snapshot OFFLINE e versionado dos PMIDs usados; gerado só à mão por `snapshot_pubmed.py` (único script com rede); `--check` confere cobertura sem rede |
+| `gerar_citacoes.py` | projeta `citation` no card v1 (logo depois de `ref`); grava só em cópia; `--aplicar` promove uma cópia validada conferindo SHAs |
+| `test_bibliografia.py` | testes da camada (roda no `ci_v2`) |
+| `assets/js/citation.js` + `scripts/citation.test.mjs` | renderer Vancouver/AMA/ABNT/texto simples e seus testes |
+
+Contrato 1.1 (compatível com 1.0: tudo é opcional):
+- `identity.publications` = lista de `$defs/publication`; `identity.represented_publication` = `{publication_id, pmid, year}`
+  e o `publication_id` tem de existir em `publications`;
+- `first_author` = `authors[0]` (ou `collective_name` sem autores pessoais); `metadata_source` ∈ pubmed_esummary |
+  crossref | editorial — **`sponsor` nunca é fonte de autoria**;
+- papéis de publicação ganham `congress_abstract`; o papel vem de decisão humana (`classificacao/tipo_analise`), senão
+  `undetermined`;
+- card v1 com `citation` tem de bater com a projeção da publicação representada **e** com o snapshot do PMID do card
+  (`E_CITATION`); `evidence_collection` não tem citação principal.
+
+Quem recebe `citation`: card com PMID no snapshot, fora de quarentena, fora de evidence_collection, sem item
+bibliográfico open/confirmed no backlog (tipos identifier_mismatch, cross_source_conflict, publication_relationship,
+bibliographic_mismatch, aggregation em pubmed_url/ref/ano_pub/titulo_full), com o ano do PMID corroborado pelo card e
+sem `ref` que aponte outro artigo. Conflito vai para o backlog; nada é sobrescrito.
+
+Renderer: `citation` estruturada → senão `ref` literal (sem autor extraído, sem anexar PMID não validado) → sem
+publicação, referência do registro (NCT) → quarentena, "Referência em revisão editorial.". O ABNT usa o título
+abreviado do periódico que o PubMed fornece (`journal_abbrev`), sem abreviação por heurística.
+
+**App iOS:** o código do app vai empacotado no build. O app atual continua com o gerador antigo (autor a partir do
+PI) até o próximo build; o campo `citation` no `app-data/data.json` é ignorado com segurança por ele. O `sponsor` não
+é alterado para contornar isso.
+

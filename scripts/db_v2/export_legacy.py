@@ -22,6 +22,7 @@ import json
 import pathlib
 import sys
 
+import bibliografia as B
 import v2lib as L
 
 AVISO_WITHHELD = "Em revisão editorial — conteúdo temporariamente retirado até verificação das fontes primárias."
@@ -326,6 +327,18 @@ def proj_status(rec):
     return STATUS.get(L.valor(L.envelope(rec, "identity.evidence_stage")))
 
 
+def proj_citation(rec):
+    """`citation` do v1 = projeção da publicação representada; nunca em evidence_collection; sem ela, None
+    (mantém o legado — e o legado sem `citation` faz o frontend cair no `ref` literal, sem autor inferido)."""
+    if rec.get("record_type") == "evidence_collection":
+        return None
+    rp = L.valor(L.envelope(rec, "identity.represented_publication"))
+    pubs = L.valor(L.envelope(rec, "identity.publications")) or []
+    alvo = next((p for p in pubs if isinstance(p, dict) and isinstance(rp, dict)
+                 and p.get("publication_id") == rp.get("publication_id")), None)
+    return B.citation_v1(alvo) if alvo else None
+
+
 def _campo(caminho):
     return lambda rec: _envs_texto(L.envelope(rec, caminho))
 
@@ -336,7 +349,7 @@ PROJETORES = {
     "indicacao": _campo("population.disease"), "resultado_chave": _campo("interpretation.key_result"),
     "takehome": _campo("interpretation.takehome"), "limit": _campo("interpretation.limitations"),
     "impacto_reg": _campo("interpretation.clinical_impact"), "estudo": _campo("identity.short_name"),
-    "acron": _campo("identity.display_title"),
+    "acron": _campo("identity.display_title"), "citation": proj_citation,
 }
 
 

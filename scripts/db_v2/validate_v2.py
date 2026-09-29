@@ -20,6 +20,7 @@ import pathlib
 import subprocess
 import sys
 
+import bibliografia as B
 import v2lib as L
 
 R = L.REGISTRY
@@ -496,6 +497,58 @@ def checar_obrigatoriedade(rep, uid, rec):
                     rep.add(uid, "E_REQUIRED", f"safety.key_toxicities[{t['term']}]", "AESI unknown sem checked_sources")
 
 
+_SNAPSHOT: dict | None = None
+
+
+def _snapshot() -> dict:
+    global _SNAPSHOT
+    if _SNAPSHOT is None:
+        _SNAPSHOT = B.carregar_snapshot() if B.SNAPSHOT.exists() else {}
+    return _SNAPSHOT
+
+
+def checar_bibliografia(rep, uid, rec):
+    """publications no $def; represented_publication → publication_id existente; `citation` do v1 = projeção da
+    publicação representada = projeção do snapshot PubMed do PMID do card; evidence_collection sem citação principal."""
+    env = L.envelope(rec, "identity.publications") or {}
+    pubs = L.valor(env) if env.get("state") == "present" else []
+    ids = set()
+    for i, p in enumerate(pubs or []):
+        if not isinstance(p, dict) or "publication_id" not in p:
+            continue                                   # lista livre legada (pré-$def): não é citação estruturada
+        c = f"identity.publications[{i}]"
+        for e in L.validar_schema(p, L.SCHEMA["$defs"]["publication"], L.SCHEMA):
+            rep.add(uid, "E_PUBLICATION", c, e)
+        for e in B.validar_publicacao(p):
+            rep.add(uid, "E_PUBLICATION", c, e)
+        ids.add(p["publication_id"])
+    rp = L.valor(L.envelope(rec, "identity.represented_publication"))
+    rp_id = rp.get("publication_id") if isinstance(rp, dict) else None
+    if rp_id and rp_id not in ids:
+        rep.add(uid, "E_PUBLICATION_REF", "identity.represented_publication", f"{rp_id} não está em identity.publications")
+    cit = ((rec.get("legacy") or {}).get("v1") or {}).get("citation")
+    if cit is None:
+        return
+    if rec.get("record_type") == "evidence_collection":
+        rep.add(uid, "E_CITATION", "legacy.v1.citation", "evidence_collection não tem citação principal única")
+        return
+    alvo = next((p for p in pubs or [] if isinstance(p, dict) and p.get("publication_id") == rp_id), None)
+    if alvo is None:
+        rep.add(uid, "E_CITATION", "legacy.v1.citation", "citation sem publicação representada estruturada")
+    elif B.citation_v1(alvo) != cit:
+        rep.add(uid, "E_CITATION", "legacy.v1.citation", "citation ≠ projeção da publicação representada")
+    pmid = B.pmid_do_card(rec["legacy"]["v1"])
+    if cit.get("pmid") != pmid:
+        rep.add(uid, "E_CITATION", "legacy.v1.citation", f"citation.pmid {cit.get('pmid')} ≠ PMID do card {pmid}")
+    elif pmid in _snapshot():
+        esperado = B.citation_v1(B.publicacao_de_snapshot(_snapshot()[pmid], role=cit.get("role", "undetermined")))
+        if esperado != cit:
+            dif = sorted(k for k in set(esperado) | set(cit) if esperado.get(k) != cit.get(k))
+            rep.add(uid, "E_CITATION", "legacy.v1.citation", f"citation diverge do snapshot PubMed em {dif}")
+    else:
+        rep.add(uid, "E_CITATION", "legacy.v1.citation", f"PMID {pmid} fora do snapshot bibliográfico")
+
+
 def checar_relacoes(rep, recs: dict):
     pai = {}
     arestas = collections.defaultdict(lambda: collections.defaultdict(set))
@@ -587,6 +640,7 @@ def validar(recs: dict, arquivos: dict | None = None, head: set | None = None,
             checar_referencias(rep, uid, rec)
             checar_primarios(rep, uid, rec)
             checar_obrigatoriedade(rep, uid, rec)
+            checar_bibliografia(rep, uid, rec)
         except (KeyError, TypeError) as ex:
             rep.add(uid, "E_SCHEMA", "?", f"estrutura inesperada: {ex!r}")
         for caminho, t in L.textos({k: v for k, v in rec.items() if k != "legacy"}):

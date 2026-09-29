@@ -23,6 +23,7 @@ import re
 import shutil
 import sys
 
+import bibliografia as B
 import v2lib as L
 
 VAZIO = {"", "—", "-", "–"}
@@ -32,7 +33,7 @@ MAPA = {
     "identity.short_name": ["estudo"], "identity.display_title": ["acron"],
     "identity.registrations": ["nct", "nct_url"], "identity.phase": ["fase"],
     "identity.sponsor": ["sponsor"], "identity.centers": ["centros"], "identity.enrollment_period": ["periodo"],
-    "identity.represented_publication": ["pubmed_url", "ano_pub", "titulo_full", "ref"],
+    "identity.represented_publication": ["pubmed_url", "ano_pub", "titulo_full", "ref", "citation"],
     "identity.category_id": ["category_id"], "identity.tumors": ["tumors"],
     "identity.evidence_stage": ["status"],
     "population.disease": ["indicacao"], "population.setting": ["linha"],
@@ -184,8 +185,12 @@ def _present_legacy(v, campos_v1) -> dict:
     return {"state": "present", "origin": "legacy", "v": v, "prov": "v1", "legacy_ref": campos_v1}
 
 
-def lift(card: dict, pos: int, decisoes: dict, fonte_sha: str | None = None) -> dict:
+def lift(card: dict, pos: int, decisoes: dict, fonte_sha: str | None = None,
+         colecoes: frozenset = frozenset()) -> dict:
     rt = record_type(card)
+    if card["uid"] in colecoes:
+        rt = {"value": "evidence_collection", "basis": "curated", "confidence": "high",
+              "evidence": ["decisão humana em db_decisoes.json (classificacao/record_type)"]}
     fortes, sugest = modulos(card)
     unc, sug = [], list(sugest)
     rec = {"schema": L.SCHEMA_ID, "uid": card["uid"], "record_type": rt["value"],
@@ -243,6 +248,13 @@ def lift(card: dict, pos: int, decisoes: dict, fonte_sha: str | None = None) -> 
             rec.setdefault(grupo, {})[path.split(".", 1)[1]] = env
         else:
             rec[path] = env
+    # camada bibliográfica: o card v1 traz a publicação representada já normalizada em `citation`
+    if isinstance(card.get("citation"), dict):
+        pub = B.publicacao_de_citation(card["citation"])
+        rec["identity"]["publications"] = _present_legacy([pub], ["citation"])
+        rec["identity"]["represented_publication"] = _present_legacy(
+            {"publication_id": pub["publication_id"], "pmid": pub.get("pmid"), "year": pub.get("year")},
+            MAPA["identity.represented_publication"])
     status = str(card.get("status", ""))
     quarentena = decisoes.get(card["uid"])
     rec["review"] = {"editorial_status": "withheld" if status.startswith("Em revisão") else "active",
@@ -269,6 +281,7 @@ def main(argv=None):
     decs = json.loads(pathlib.Path(a.decisoes).read_text(encoding="utf-8")).get("decisoes", [])
     quarentena = {d["uid"]: d["id"] for d in decs
                   if d.get("tipo") == "classificacao" and d.get("valor") == "EDITORIAL_QUARANTINE"}
+    colecoes = frozenset(B.colecoes_das_decisoes(decs))
     if saida.resolve() in (L.DATA_JS.resolve().parent, L.SITE.resolve(), L.SCRIPTS.resolve()):
         raise SystemExit("recusado: --out tem de ser um diretório dedicado")
     if saida.exists():
@@ -284,7 +297,7 @@ def main(argv=None):
     from collections import Counter
     c_rt, c_mod, c_nmod, c_pres, c_unc, c_sug = Counter(), Counter(), Counter(), Counter(), 0, 0
     for pos, card in enumerate(estudos):
-        rec = lift(card, pos, quarentena, fonte_sha)
+        rec = lift(card, pos, quarentena, fonte_sha, colecoes)
         (saida / f"{card['uid']}.json").write_text(json.dumps(rec, ensure_ascii=False, indent=1), encoding="utf-8")
         c_rt[(rec["record_type"], rec["curation"]["record_type_basis"]["confidence"])] += 1
         c_mod.update(m["module"] for m in rec["modules"])

@@ -1,5 +1,5 @@
 {
- "schema": "theratrials-db-v2-registry/1.0",
+ "schema": "theratrials-db-v2-registry/1.1",
  "status": "fundação — nenhum card migrado",
  "record_types": [
   "trial",
@@ -366,13 +366,15 @@
    "path": "identity.represented_publication",
    "tier": "ESSENTIAL",
    "automation": "machine",
-   "v1": "pubmed_url, ano_pub, titulo_full, ref"
+   "v1": "pubmed_url, ano_pub, titulo_full, ref, citation",
+   "note": "{publication_id, pmid, year}: aponta um publication_id de identity.publications; é a publicação que sustenta os dados exibidos e a única fonte da citação principal (evidence_collection não tem)"
   },
   {
    "path": "identity.publications",
    "tier": "USEFUL",
    "automation": "machine",
-   "v1": "ref, secondary-cards.js"
+   "v1": "citation, ref, secondary-cards.js",
+   "note": "lista de $defs/publication (primária, updates, finais, secundárias, congresso); autoria só de metadados bibliográficos, nunca de sponsor"
   },
   {
    "path": "identity.category_id",
@@ -3302,7 +3304,8 @@
    "translational",
    "pooled",
    "correction",
-   "congress"
+   "congress",
+   "congress_abstract"
   ],
   "conditional": "comparison='none' em braço único/diagnóstico (vem do desenho, não é inferido)",
   "consistency": "cada endpoint aponta (maturity.analysis_ref) para uma assinatura com o MESMO endpoint, summary_measure, timepoint canônico ('median', 'landmark:6', 'at_event:6-10') e comparison; endpoints/medidas/tempos diferentes exigem assinaturas próprias"
@@ -3364,6 +3367,9 @@
  ],
  "validation_errors": {
   "E_SCHEMA": "violação do JSON Schema",
+  "E_PUBLICATION": "publication fora do $def (first_author ≠ authors[0], metadata_source proibida, pages e article_number juntos…)",
+  "E_PUBLICATION_REF": "represented_publication aponta publication_id inexistente em identity.publications",
+  "E_CITATION": "citation do card v1 ≠ projeção da publicação representada, ou citation em evidence_collection",
   "E_UID_IMMUTABLE": "uid do HEAD ausente no conjunto novo, ou nome de arquivo ≠ uid",
   "E_RECORD_TYPE": "record_type inválido",
   "E_MODULE": "módulo desconhecido ou papel inválido",
