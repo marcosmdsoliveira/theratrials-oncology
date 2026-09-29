@@ -3004,6 +3004,137 @@
    "dedupe_key": "rcc_adjuvante_naocc_9|source_internal_inconsistency|secundario"
   },
   {
+   "uid": "rcc_adjuvante_naocc_9",
+   "card": "ASPEN (2016)",
+   "issue_type": "arm_or_comparator",
+   "description": "Papel dos braços incoerente no card: o campo exibido como 'Intervenção' (radiofarmaco) traz 'Sunitinibe vs Everolimus', sugerindo o sunitinibe como braço experimental, enquanto o comparador (corrigido em 2749ac4) identifica o sunitinibe como referência e o everolimus como braço experimental.",
+   "affected_fields": [
+    "radiofarmaco",
+    "comparador"
+   ],
+   "evidence": [
+    {
+     "kind": "card_state",
+     "field": "radiofarmaco",
+     "value": "Sunitinibe vs Everolimus",
+     "rendered_label": "Intervenção (database.html, campo radiofarmaco)"
+    },
+    {
+     "kind": "card_state",
+     "field": "comparador",
+     "value": "Sunitinibe 50 mg/d VO, 4 semanas com / 2 sem tratamento (grupo de referência do HR; a hipótese testada era a superioridade do everolimus)"
+    },
+    {
+     "kind": "primary_source_snippet",
+     "identifier": "PMID 26794930 · PMC6863151",
+     "locator": "Methods (Statistical analysis)",
+     "snippet": "the alternative hypothesis was that everolimus would cause a 60% improvement in median progression-free survival … In all multivariable analyses, the reference group was sunitinib"
+    }
+   ],
+   "priority": "high",
+   "detection_method": "production_review",
+   "related_ids": [
+    "INT-rcc_adjuvante_naocc_9-008"
+   ],
+   "related_decisions": [],
+   "origin": "revisão em produção pós-deploy 3b8cf3d (Playwright, modal do card)",
+   "id": "INT-rcc_adjuvante_naocc_9-011",
+   "dedupe_key": "rcc_adjuvante_naocc_9|arm_or_comparator|comparador,radiofarmaco",
+   "status": "open",
+   "human_decision": null,
+   "resolution": null,
+   "first_detected_at": "2026-09-29",
+   "last_reviewed_at": null,
+   "history": [
+    {
+     "at": "2026-09-29",
+     "event": "detected",
+     "by": "revisão em produção pós-deploy 3b8cf3d (Playwright, modal do card)"
+    }
+   ]
+  },
+  {
+   "uid": "rcc_adjuvante_naocc_9",
+   "card": "ASPEN (2016)",
+   "issue_type": "bibliographic_mismatch",
+   "description": "Citação gerada no modal (Vancouver/AMA/ABNT) começa com 'Duke et al.', mas a publicação representada é de Armstrong AJ et al. O problema está na autoria gerada pela lógica de citação do frontend (database.html, formatCitation/_extractPI), que usa o último token após 'PI:' no campo sponsor ('PI: Andrew Armstrong (Duke)' → 'Duke'). O sponsor não é tratado como campo incorreto: é o input que dispara o bug. ref e metadado PubMed corretos. Causa a confirmar antes de qualquer correção.",
+   "affected_fields": [
+    "citation_author"
+   ],
+   "evidence": [
+    {
+     "kind": "rendered_output",
+     "component": "database.html · Citação (Vancouver)",
+     "value": "Duke et al. ASPEN — Everolimus vs Sunitinib em RCC não-células-claras avançado 1L. 2016. Disponível em: https://pubmed.ncbi.nlm.nih.gov/26794930/ [NCT01108445]."
+    },
+    {
+     "kind": "card_state",
+     "field": "sponsor",
+     "value": "Investigador-iniciado / Pfizer / Novartis | PI: Andrew Armstrong (Duke)"
+    },
+    {
+     "kind": "card_state",
+     "field": "ref",
+     "value": "Armstrong AJ et al. Lancet Oncol 2016;17:378-388.",
+     "note": "correto"
+    },
+    {
+     "kind": "registry_metadata",
+     "identifier": "PMID 26794930 · doi:10.1016/S1470-2045(15)00515-X",
+     "source": "PubMed",
+     "value": "1º autor Armstrong AJ; Lancet Oncol 2016;17(3):378-388",
+     "note": "correto"
+    },
+    {
+     "kind": "code",
+     "locator": "database.html _extractPI",
+     "value": "m[1].trim().split(/\\s+/).pop() — último token do trecho após 'PI:'"
+    },
+    {
+     "kind": "scope_signal",
+     "note": "varredura com o mesmo parser: 284 de 401 cards com PI têm autor da citação ≠ 1º autor do ref; 179 deles com parênteses no PI. Não verificado caso a caso; possível problema sistêmico do gerador, a triar como item próprio."
+    }
+   ],
+   "priority": "medium",
+   "detection_method": "production_review",
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "revisão em produção pós-deploy 3b8cf3d (Playwright, modal do card)",
+   "root_cause_candidates": [
+    "ref",
+    "metadado PubMed",
+    "parser/gerador de citação",
+    "frontend",
+    "sponsor"
+   ],
+   "root_cause_status": "a confirmar — ref e PubMed conferidos corretos; suspeita principal: parser _extractPI",
+   "id": "INT-rcc_adjuvante_naocc_9-012",
+   "dedupe_key": "rcc_adjuvante_naocc_9|bibliographic_mismatch|citation_author",
+   "status": "open",
+   "human_decision": null,
+   "resolution": null,
+   "first_detected_at": "2026-09-29",
+   "last_reviewed_at": null,
+   "history": [
+    {
+     "at": "2026-09-29",
+     "event": "detected",
+     "by": "revisão em produção pós-deploy 3b8cf3d (Playwright, modal do card)"
+    },
+    {
+     "at": "2026-09-29",
+     "event": "reclassified",
+     "by": "editor",
+     "note": "affected_fields sponsor+frontend → citation_author; sponsor passa a source_dependency; componente afetado = gerador de citação"
+    }
+   ],
+   "affected_component": "citation generator — database.html: formatCitation / _extractPI (autoria gerada da citação)",
+   "source_dependency": [
+    "sponsor"
+   ],
+   "related_systemic_review": "citation_generator_systemic_review"
+  },
+  {
    "uid": "rt_prostata_local_1",
    "card": "HYPO-RT-PC (2019)",
    "issue_type": "statistical_interpretation",

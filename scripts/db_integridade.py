@@ -36,7 +36,8 @@ SCHEMA = "theratrials-db-integridade/2"
 STATUS = ["open", "confirmed", "dismissed", "resolved", "deferred"]
 FINAIS = {"confirmed", "dismissed", "resolved"}          # nunca rebaixados por máquina
 PRIORIDADE = ["high", "medium", "low"]
-DETECCAO = ["primary_source_check", "card_internal_contradiction", "reviewer_prior_knowledge", "pipeline_signal"]
+DETECCAO = ["primary_source_check", "card_internal_contradiction", "reviewer_prior_knowledge", "pipeline_signal",
+            "production_review"]
 ISSUE_TYPES = [
     "statistical_interpretation",   # significância/hipótese/NI lidas errado
     "arm_or_comparator",            # braço experimental/controle trocado ou descrito errado
