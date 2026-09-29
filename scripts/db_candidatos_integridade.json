@@ -2388,11 +2388,23 @@
    ],
    "priority": "high",
    "detection_method": "primary_source_check",
-   "status": "confirmed",
+   "status": "resolved",
    "first_detected_at": "2026-09-28",
    "last_reviewed_at": "2026-09-29",
-   "human_decision": null,
-   "resolution": null,
+   "human_decision": {
+    "by": "editor",
+    "at": "2026-09-29",
+    "decision": "aprovar a correção proposta"
+   },
+   "resolution": {
+    "commit": "2749ac4ea4849523145667fdcf50d2a71cabacf6",
+    "date": "2026-09-29",
+    "fields": [
+     "primario",
+     "resultado_chave"
+    ],
+    "migration": "scripts/db_migracao_integridade_2026_09b.py"
+   },
    "related_ids": [
     "INT-rcc_adjuvante_naocc_9-008",
     "INT-rcc_adjuvante_naocc_9-002"
@@ -2410,6 +2422,12 @@
      "event": "status:open→confirmed",
      "by": "micro-rodada de integridade (fonte primária)",
      "note": "confirmado contra a fonte primária; proposta de correção em cópia aguardando aprovação"
+    },
+    {
+     "at": "2026-09-29",
+     "event": "status:confirmed→resolved",
+     "by": "editor",
+     "note": "corrigido no data.js pela migração db_migracao_integridade_2026_09b"
     }
    ],
    "id": "INT-rcc_adjuvante_naocc_9-001",
@@ -2436,11 +2454,22 @@
    ],
    "priority": "medium",
    "detection_method": "primary_source_check",
-   "status": "confirmed",
+   "status": "resolved",
    "first_detected_at": "2026-09-28",
    "last_reviewed_at": "2026-09-29",
-   "human_decision": null,
-   "resolution": null,
+   "human_decision": {
+    "by": "editor",
+    "at": "2026-09-29",
+    "decision": "aprovar a correção proposta"
+   },
+   "resolution": {
+    "commit": "2749ac4ea4849523145667fdcf50d2a71cabacf6",
+    "date": "2026-09-29",
+    "fields": [
+     "estatistica"
+    ],
+    "migration": "scripts/db_migracao_integridade_2026_09b.py"
+   },
    "related_ids": [
     "INT-rcc_adjuvante_naocc_9-001"
    ],
@@ -2457,6 +2486,12 @@
      "event": "status:open→confirmed",
      "by": "micro-rodada de integridade (fonte primária)",
      "note": "confirmado contra a fonte primária; proposta de correção em cópia aguardando aprovação"
+    },
+    {
+     "at": "2026-09-29",
+     "event": "status:confirmed→resolved",
+     "by": "editor",
+     "note": "corrigido no data.js pela migração db_migracao_integridade_2026_09b"
     }
    ],
    "id": "INT-rcc_adjuvante_naocc_9-002",
@@ -2483,11 +2518,22 @@
    ],
    "priority": "medium",
    "detection_method": "primary_source_check",
-   "status": "confirmed",
+   "status": "resolved",
    "first_detected_at": "2026-09-28",
    "last_reviewed_at": "2026-09-29",
-   "human_decision": null,
-   "resolution": null,
+   "human_decision": {
+    "by": "editor",
+    "at": "2026-09-29",
+    "decision": "aprovar a correção proposta"
+   },
+   "resolution": {
+    "commit": "2749ac4ea4849523145667fdcf50d2a71cabacf6",
+    "date": "2026-09-29",
+    "fields": [
+     "tox_g3"
+    ],
+    "migration": "scripts/db_migracao_integridade_2026_09b.py"
+   },
    "related_ids": [
     "INT-rcc_adjuvante_naocc_9-004"
    ],
@@ -2504,6 +2550,12 @@
      "event": "status:open→confirmed",
      "by": "micro-rodada de integridade (fonte primária)",
      "note": "confirmado contra a fonte primária; proposta de correção em cópia aguardando aprovação"
+    },
+    {
+     "at": "2026-09-29",
+     "event": "status:confirmed→resolved",
+     "by": "editor",
+     "note": "corrigido no data.js pela migração db_migracao_integridade_2026_09b"
     }
    ],
    "id": "INT-rcc_adjuvante_naocc_9-003",
@@ -2530,11 +2582,22 @@
    ],
    "priority": "medium",
    "detection_method": "primary_source_check",
-   "status": "confirmed",
+   "status": "resolved",
    "first_detected_at": "2026-09-28",
    "last_reviewed_at": "2026-09-29",
-   "human_decision": null,
-   "resolution": null,
+   "human_decision": {
+    "by": "editor",
+    "at": "2026-09-29",
+    "decision": "aprovar a correção proposta"
+   },
+   "resolution": {
+    "commit": "2749ac4ea4849523145667fdcf50d2a71cabacf6",
+    "date": "2026-09-29",
+    "fields": [
+     "tox_interesse"
+    ],
+    "migration": "scripts/db_migracao_integridade_2026_09b.py"
+   },
    "related_ids": [
     "INT-rcc_adjuvante_naocc_9-003"
    ],
@@ -2551,6 +2614,12 @@
      "event": "status:open→confirmed",
      "by": "micro-rodada de integridade (fonte primária)",
      "note": "confirmado contra a fonte primária; proposta de correção em cópia aguardando aprovação"
+    },
+    {
+     "at": "2026-09-29",
+     "event": "status:confirmed→resolved",
+     "by": "editor",
+     "note": "corrigido no data.js pela migração db_migracao_integridade_2026_09b"
     }
    ],
    "id": "INT-rcc_adjuvante_naocc_9-004",
@@ -2578,11 +2647,23 @@
    ],
    "priority": "medium",
    "detection_method": "primary_source_check",
-   "status": "confirmed",
+   "status": "resolved",
    "first_detected_at": "2026-09-28",
    "last_reviewed_at": "2026-09-29",
-   "human_decision": null,
-   "resolution": null,
+   "human_decision": {
+    "by": "editor",
+    "at": "2026-09-29",
+    "decision": "aprovar a correção proposta"
+   },
+   "resolution": {
+    "commit": "2749ac4ea4849523145667fdcf50d2a71cabacf6",
+    "date": "2026-09-29",
+    "fields": [
+     "incl",
+     "excl"
+    ],
+    "migration": "scripts/db_migracao_integridade_2026_09b.py"
+   },
    "related_ids": [],
    "related_decisions": [],
    "origin": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido",
@@ -2597,6 +2678,12 @@
      "event": "status:open→confirmed",
      "by": "micro-rodada de integridade (fonte primária)",
      "note": "confirmado contra a fonte primária; proposta de correção em cópia aguardando aprovação"
+    },
+    {
+     "at": "2026-09-29",
+     "event": "status:confirmed→resolved",
+     "by": "editor",
+     "note": "corrigido no data.js pela migração db_migracao_integridade_2026_09b"
     }
    ],
    "id": "INT-rcc_adjuvante_naocc_9-005",
@@ -2623,11 +2710,22 @@
    ],
    "priority": "low",
    "detection_method": "primary_source_check",
-   "status": "confirmed",
+   "status": "resolved",
    "first_detected_at": "2026-09-28",
    "last_reviewed_at": "2026-09-29",
-   "human_decision": null,
-   "resolution": null,
+   "human_decision": {
+    "by": "editor",
+    "at": "2026-09-29",
+    "decision": "aprovar a correção proposta com ressalva no basal (só números da publicação)"
+   },
+   "resolution": {
+    "commit": "2749ac4ea4849523145667fdcf50d2a71cabacf6",
+    "date": "2026-09-29",
+    "fields": [
+     "basal"
+    ],
+    "migration": "scripts/db_migracao_integridade_2026_09b.py"
+   },
    "related_ids": [],
    "related_decisions": [],
    "origin": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido",
@@ -2642,6 +2740,12 @@
      "event": "status:open→confirmed",
      "by": "micro-rodada de integridade (fonte primária)",
      "note": "confirmado contra a fonte primária; proposta de correção em cópia aguardando aprovação"
+    },
+    {
+     "at": "2026-09-29",
+     "event": "status:confirmed→resolved",
+     "by": "editor",
+     "note": "basal reescrito só com contagens da publicação (/108); idade, ECOG, cromófobo por diferença e risco intermediário removidos, sem substituição por inferência ou pelo registro"
     }
    ],
    "id": "INT-rcc_adjuvante_naocc_9-006",
@@ -2669,11 +2773,23 @@
    ],
    "priority": "medium",
    "detection_method": "primary_source_check",
-   "status": "confirmed",
+   "status": "resolved",
    "first_detected_at": "2026-09-28",
    "last_reviewed_at": "2026-09-29",
-   "human_decision": null,
-   "resolution": null,
+   "human_decision": {
+    "by": "editor",
+    "at": "2026-09-29",
+    "decision": "aprovar a correção proposta"
+   },
+   "resolution": {
+    "commit": "2749ac4ea4849523145667fdcf50d2a71cabacf6",
+    "date": "2026-09-29",
+    "fields": [
+     "secundario",
+     "subgrupo"
+    ],
+    "migration": "scripts/db_migracao_integridade_2026_09b.py"
+   },
    "related_ids": [],
    "related_decisions": [],
    "origin": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido",
@@ -2688,6 +2804,12 @@
      "event": "status:open→confirmed",
      "by": "micro-rodada de integridade (fonte primária)",
      "note": "confirmado contra a fonte primária; proposta de correção em cópia aguardando aprovação"
+    },
+    {
+     "at": "2026-09-29",
+     "event": "status:confirmed→resolved",
+     "by": "editor",
+     "note": "corrigido no data.js pela migração db_migracao_integridade_2026_09b"
     }
    ],
    "id": "INT-rcc_adjuvante_naocc_9-007",
@@ -2714,11 +2836,22 @@
    ],
    "priority": "high",
    "detection_method": "primary_source_check",
-   "status": "confirmed",
+   "status": "resolved",
    "first_detected_at": "2026-09-28",
    "last_reviewed_at": "2026-09-29",
-   "human_decision": null,
-   "resolution": null,
+   "human_decision": {
+    "by": "editor",
+    "at": "2026-09-29",
+    "decision": "aprovar a correção proposta"
+   },
+   "resolution": {
+    "commit": "2749ac4ea4849523145667fdcf50d2a71cabacf6",
+    "date": "2026-09-29",
+    "fields": [
+     "comparador"
+    ],
+    "migration": "scripts/db_migracao_integridade_2026_09b.py"
+   },
    "related_ids": [
     "INT-rcc_adjuvante_naocc_9-001"
    ],
@@ -2735,6 +2868,12 @@
      "event": "status:open→confirmed",
      "by": "micro-rodada de integridade (fonte primária)",
      "note": "confirmado contra a fonte primária; proposta de correção em cópia aguardando aprovação"
+    },
+    {
+     "at": "2026-09-29",
+     "event": "status:confirmed→resolved",
+     "by": "editor",
+     "note": "corrigido no data.js pela migração db_migracao_integridade_2026_09b"
     }
    ],
    "id": "INT-rcc_adjuvante_naocc_9-008",
@@ -2761,11 +2900,22 @@
    ],
    "priority": "medium",
    "detection_method": "primary_source_check",
-   "status": "confirmed",
+   "status": "resolved",
    "first_detected_at": "2026-09-28",
    "last_reviewed_at": "2026-09-29",
-   "human_decision": null,
-   "resolution": null,
+   "human_decision": {
+    "by": "editor",
+    "at": "2026-09-29",
+    "decision": "aprovar a correção proposta"
+   },
+   "resolution": {
+    "commit": "2749ac4ea4849523145667fdcf50d2a71cabacf6",
+    "date": "2026-09-29",
+    "fields": [
+     "secundario"
+    ],
+    "migration": "scripts/db_migracao_integridade_2026_09b.py"
+   },
    "related_ids": [],
    "related_decisions": [],
    "origin": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido",
@@ -2780,6 +2930,12 @@
      "event": "status:open→confirmed",
      "by": "micro-rodada de integridade (fonte primária)",
      "note": "confirmado contra a fonte primária; proposta de correção em cópia aguardando aprovação"
+    },
+    {
+     "at": "2026-09-29",
+     "event": "status:confirmed→resolved",
+     "by": "editor",
+     "note": "corrigido no data.js pela migração db_migracao_integridade_2026_09b"
     }
    ],
    "id": "INT-rcc_adjuvante_naocc_9-009",
@@ -2806,11 +2962,22 @@
    ],
    "priority": "low",
    "detection_method": "primary_source_check",
-   "status": "confirmed",
+   "status": "resolved",
    "first_detected_at": "2026-09-28",
    "last_reviewed_at": "2026-09-29",
-   "human_decision": null,
-   "resolution": null,
+   "human_decision": {
+    "by": "editor",
+    "at": "2026-09-29",
+    "decision": "aprovar a correção proposta"
+   },
+   "resolution": {
+    "commit": "2749ac4ea4849523145667fdcf50d2a71cabacf6",
+    "date": "2026-09-29",
+    "fields": [
+     "secundario"
+    ],
+    "migration": "scripts/db_migracao_integridade_2026_09b.py"
+   },
    "related_ids": [],
    "related_decisions": [],
    "origin": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido",
@@ -2825,6 +2992,12 @@
      "event": "status:open→confirmed",
      "by": "micro-rodada de integridade (fonte primária)",
      "note": "confirmado contra a fonte primária; proposta de correção em cópia aguardando aprovação"
+    },
+    {
+     "at": "2026-09-29",
+     "event": "status:confirmed→resolved",
+     "by": "editor",
+     "note": "a inconsistência é da própria publicação e não se corrige; o card agora a sinaliza explicitamente no secundario (5/57 = 9% vs 2 RC + 4 RP)"
     }
    ],
    "id": "INT-rcc_adjuvante_naocc_9-010",
@@ -3342,11 +3515,22 @@
    ],
    "priority": "high",
    "detection_method": "primary_source_check",
-   "status": "confirmed",
+   "status": "resolved",
    "first_detected_at": "2026-09-28",
    "last_reviewed_at": "2026-09-29",
-   "human_decision": null,
-   "resolution": null,
+   "human_decision": {
+    "by": "editor",
+    "at": "2026-09-29",
+    "decision": "aprovar a correção proposta"
+   },
+   "resolution": {
+    "commit": "2749ac4ea4849523145667fdcf50d2a71cabacf6",
+    "date": "2026-09-29",
+    "fields": [
+     "tox_interesse"
+    ],
+    "migration": "scripts/db_migracao_integridade_2026_09b.py"
+   },
    "related_ids": [],
    "related_decisions": [],
    "origin": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido",
@@ -3361,6 +3545,12 @@
      "event": "status:open→confirmed",
      "by": "micro-rodada de integridade (fonte primária)",
      "note": "confirmado contra a fonte primária; proposta de correção em cópia aguardando aprovação"
+    },
+    {
+     "at": "2026-09-29",
+     "event": "status:confirmed→resolved",
+     "by": "editor",
+     "note": "corrigido no data.js pela migração db_migracao_integridade_2026_09b"
     }
    ],
    "id": "INT-tropion-lung01-dato-dxd-vs-docetaxel-nsclc-002",
