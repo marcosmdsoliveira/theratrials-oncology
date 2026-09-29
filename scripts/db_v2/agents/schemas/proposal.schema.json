@@ -1,0 +1,618 @@
+{
+ "$id": "theratrials-db-curator-proposal/1",
+ "type": "object",
+ "properties": {
+  "schema": {
+   "const": "theratrials-db-curator-proposal/1"
+  },
+  "uid": {
+   "type": "string"
+  },
+  "packet_sha256": {
+   "type": "string"
+  },
+  "card_classification": {
+   "type": "object",
+   "properties": {
+    "proposal_type": {
+     "enum": [
+      "INTEGRITY_FIX",
+      "SAME_ANALYSIS_UPDATE",
+      "LONG_TERM_FOLLOWUP",
+      "SECONDARY_ANALYSIS",
+      "SUBGROUP",
+      "NEW_COHORT",
+      "NEW_PUBLICATION_RELATIONSHIP",
+      "BIBLIOGRAPHIC_FIX",
+      "EDITORIAL_ONLY",
+      "WATCH",
+      "NO_ACTION"
+     ]
+    },
+    "priority": {
+     "enum": [
+      "P0",
+      "P1",
+      "P2",
+      "P3",
+      null
+     ]
+    },
+    "summary": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "proposal_type",
+    "summary"
+   ]
+  },
+  "represented_publication": {
+   "type": "object",
+   "properties": {
+    "publication_id": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "relation_to_primary": {
+     "enum": [
+      "SAME_ANALYSIS",
+      "SAME_ANALYSIS_UPDATE",
+      "LONG_TERM_FOLLOWUP",
+      "SECONDARY_ANALYSIS",
+      "SUBGROUP",
+      "NEW_COHORT",
+      "DIFFERENT_STUDY",
+      "UNDETERMINED"
+     ]
+    },
+    "primary_publication_id": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "basis_evidence": {
+     "type": "array",
+     "items": {
+      "type": "object",
+      "properties": {
+       "source_id": {
+        "type": "string"
+       },
+       "source_type": {
+        "enum": [
+         "pubmed_metadata",
+         "pubmed_abstract",
+         "pmc_fulltext",
+         "europepmc_fulltext",
+         "ctgov_record",
+         "ctgov_results",
+         "crossref_metadata",
+         "registered_primary_source",
+         "human_decision"
+        ]
+       },
+       "publication_id": {
+        "type": [
+         "string",
+         "null"
+        ]
+       },
+       "pmid": {
+        "type": [
+         "string",
+         "null"
+        ]
+       },
+       "doi": {
+        "type": [
+         "string",
+         "null"
+        ]
+       },
+       "nct": {
+        "type": [
+         "string",
+         "null"
+        ]
+       },
+       "locator": {
+        "type": "string"
+       },
+       "snippet": {
+        "type": "string",
+        "minLength": 8
+       },
+       "retrieved_at": {
+        "type": [
+         "string",
+         "null"
+        ]
+       }
+      },
+      "required": [
+       "source_id",
+       "source_type",
+       "locator",
+       "snippet"
+      ]
+     }
+    }
+   },
+   "required": [
+    "publication_id",
+    "relation_to_primary"
+   ]
+  },
+  "analysis_signatures": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "properties": {
+     "signature_id": {
+      "type": "string"
+     },
+     "trial_key": {
+      "type": [
+       "string",
+       "null"
+      ]
+     },
+     "registry_ids": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "cohort": {
+      "type": [
+       "string",
+       "null"
+      ]
+     },
+     "population": {
+      "type": [
+       "string",
+       "null"
+      ]
+     },
+     "disease_state": {
+      "type": [
+       "string",
+       "null"
+      ]
+     },
+     "treatment_line": {
+      "type": [
+       "string",
+       "null"
+      ]
+     },
+     "arms": {
+      "type": "array",
+      "items": {
+       "type": "object",
+       "properties": {
+        "arm_id": {
+         "type": "string"
+        },
+        "label": {
+         "type": "string"
+        },
+        "role": {
+         "enum": [
+          "experimental",
+          "control",
+          "single_arm",
+          "other"
+         ]
+        },
+        "n": {
+         "type": [
+          "integer",
+          "null"
+         ]
+        }
+       },
+       "required": [
+        "label",
+        "role"
+       ]
+      }
+     },
+     "analysis_set": {
+      "type": [
+       "string",
+       "null"
+      ]
+     },
+     "endpoint": {
+      "type": [
+       "string",
+       "null"
+      ]
+     },
+     "endpoint_hierarchy": {
+      "enum": [
+       "primary",
+       "co_primary",
+       "key_secondary",
+       "secondary",
+       "exploratory",
+       "safety",
+       "undetermined"
+      ]
+     },
+     "summary_measure": {
+      "type": [
+       "string",
+       "null"
+      ]
+     },
+     "comparison": {
+      "type": [
+       "string",
+       "null"
+      ]
+     },
+     "timepoint": {
+      "type": [
+       "string",
+       "null"
+      ]
+     },
+     "assessment_method": {
+      "type": [
+       "string",
+       "null"
+      ]
+     },
+     "sample_size": {
+      "type": [
+       "integer",
+       "null"
+      ]
+     },
+     "data_cutoff": {
+      "type": [
+       "string",
+       "null"
+      ]
+     },
+     "follow_up_median_months": {
+      "type": [
+       "number",
+       "null"
+      ]
+     },
+     "analysis_type": {
+      "enum": [
+       "interim",
+       "primary",
+       "updated",
+       "final",
+       "long_term",
+       "post_hoc",
+       "undetermined"
+      ]
+     },
+     "publication_role": {
+      "enum": [
+       "primary_publication",
+       "update",
+       "final",
+       "long_term",
+       "secondary_analysis",
+       "subgroup",
+       "qol_pro",
+       "safety",
+       "translational",
+       "pooled",
+       "correction",
+       "congress_abstract",
+       "undetermined"
+      ]
+     },
+     "publication_id": {
+      "type": [
+       "string",
+       "null"
+      ]
+     }
+    },
+    "required": [
+     "signature_id",
+     "trial_key",
+     "endpoint",
+     "endpoint_hierarchy",
+     "analysis_type",
+     "publication_role"
+    ]
+   }
+  },
+  "proposals": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "properties": {
+     "proposal_id": {
+      "type": "string"
+     },
+     "field": {
+      "type": "string"
+     },
+     "current_value": {},
+     "proposed_value": {},
+     "change_kind": {
+      "enum": [
+       "replace",
+       "append",
+       "remove",
+       "none"
+      ]
+     },
+     "proposal_type": {
+      "enum": [
+       "INTEGRITY_FIX",
+       "SAME_ANALYSIS_UPDATE",
+       "LONG_TERM_FOLLOWUP",
+       "SECONDARY_ANALYSIS",
+       "SUBGROUP",
+       "NEW_COHORT",
+       "NEW_PUBLICATION_RELATIONSHIP",
+       "BIBLIOGRAPHIC_FIX",
+       "EDITORIAL_ONLY",
+       "WATCH",
+       "NO_ACTION"
+      ]
+     },
+     "priority": {
+      "enum": [
+       "P0",
+       "P1",
+       "P2",
+       "P3"
+      ]
+     },
+     "defect": {
+      "enum": [
+       "identifier_mismatch",
+       "represented_publication_wrong",
+       "arm_role_inverted",
+       "arm_attribution",
+       "endpoint_wrong",
+       "denominator_wrong",
+       "safety_misattribution",
+       "significance_or_direction",
+       "numeric_contradiction",
+       "human_decision_or_quarantine_violation",
+       "unsupported_claim",
+       "imprecision",
+       "newer_data_same_analysis",
+       "enrichment",
+       "stale_status",
+       "bibliographic_format",
+       "editorial",
+       "within_source_conflict",
+       "cross_source_conflict"
+      ]
+     },
+     "origin": {
+      "enum": [
+       "curator",
+       "deterministic"
+      ]
+     },
+     "value_origin": {
+      "enum": [
+       "reported",
+       "derived",
+       "editorial"
+      ]
+     },
+     "evidence": {
+      "type": "array",
+      "items": {
+       "type": "object",
+       "properties": {
+        "source_id": {
+         "type": "string"
+        },
+        "source_type": {
+         "enum": [
+          "pubmed_metadata",
+          "pubmed_abstract",
+          "pmc_fulltext",
+          "europepmc_fulltext",
+          "ctgov_record",
+          "ctgov_results",
+          "crossref_metadata",
+          "registered_primary_source",
+          "human_decision"
+         ]
+        },
+        "publication_id": {
+         "type": [
+          "string",
+          "null"
+         ]
+        },
+        "pmid": {
+         "type": [
+          "string",
+          "null"
+         ]
+        },
+        "doi": {
+         "type": [
+          "string",
+          "null"
+         ]
+        },
+        "nct": {
+         "type": [
+          "string",
+          "null"
+         ]
+        },
+        "locator": {
+         "type": "string"
+        },
+        "snippet": {
+         "type": "string",
+         "minLength": 8
+        },
+        "retrieved_at": {
+         "type": [
+          "string",
+          "null"
+         ]
+        }
+       },
+       "required": [
+        "source_id",
+        "source_type",
+        "locator",
+        "snippet"
+       ]
+      }
+     },
+     "absence_checked_in": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "derivation": {
+      "type": "object",
+      "properties": {
+       "operands": {
+        "type": "array",
+        "minItems": 1,
+        "items": {
+         "type": "object",
+         "properties": {
+          "name": {
+           "type": "string"
+          },
+          "value": {
+           "type": "number"
+          },
+          "evidence_index": {
+           "type": "integer"
+          }
+         },
+         "required": [
+          "name",
+          "value",
+          "evidence_index"
+         ]
+        }
+       },
+       "rule": {
+        "type": "string",
+        "minLength": 3
+       },
+       "result": {
+        "type": "number"
+       }
+      },
+      "required": [
+       "operands",
+       "rule",
+       "result"
+      ]
+     },
+     "analysis_signature_ref": {
+      "type": [
+       "string",
+       "null"
+      ]
+     },
+     "conflict": {
+      "type": "object",
+      "properties": {
+       "description": {
+        "type": "string"
+       },
+       "candidates": {
+        "type": "array",
+        "minItems": 2,
+        "items": {
+         "type": "object",
+         "properties": {
+          "value": {},
+          "evidence_index": {
+           "type": "integer"
+          }
+         },
+         "required": [
+          "value",
+          "evidence_index"
+         ]
+        }
+       }
+      },
+      "required": [
+       "description",
+       "candidates"
+      ]
+     },
+     "reason": {
+      "type": "string"
+     },
+     "confidence": {
+      "type": "object"
+     },
+     "editorial_impact": {
+      "enum": [
+       "high",
+       "moderate",
+       "low",
+       "none"
+      ]
+     }
+    },
+    "required": [
+     "proposal_id",
+     "field",
+     "current_value",
+     "proposed_value",
+     "change_kind",
+     "proposal_type",
+     "defect",
+     "value_origin",
+     "evidence",
+     "reason"
+    ]
+   }
+  },
+  "no_action_fields": {
+   "type": "array",
+   "items": {
+    "type": "string"
+   }
+  },
+  "watch": {
+   "type": "array",
+   "items": {
+    "type": "string"
+   }
+  },
+  "notes_for_human": {
+   "type": "string"
+  }
+ },
+ "required": [
+  "schema",
+  "uid",
+  "packet_sha256",
+  "card_classification",
+  "represented_publication",
+  "analysis_signatures",
+  "proposals"
+ ]
+}

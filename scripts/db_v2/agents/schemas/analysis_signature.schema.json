@@ -1,0 +1,184 @@
+{
+ "$id": "theratrials-db-analysis-signature/1",
+ "type": "object",
+ "properties": {
+  "signature_id": {
+   "type": "string"
+  },
+  "trial_key": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "registry_ids": {
+   "type": "array",
+   "items": {
+    "type": "string"
+   }
+  },
+  "cohort": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "population": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "disease_state": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "treatment_line": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "arms": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "properties": {
+     "arm_id": {
+      "type": "string"
+     },
+     "label": {
+      "type": "string"
+     },
+     "role": {
+      "enum": [
+       "experimental",
+       "control",
+       "single_arm",
+       "other"
+      ]
+     },
+     "n": {
+      "type": [
+       "integer",
+       "null"
+      ]
+     }
+    },
+    "required": [
+     "label",
+     "role"
+    ]
+   }
+  },
+  "analysis_set": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "endpoint": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "endpoint_hierarchy": {
+   "enum": [
+    "primary",
+    "co_primary",
+    "key_secondary",
+    "secondary",
+    "exploratory",
+    "safety",
+    "undetermined"
+   ]
+  },
+  "summary_measure": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "comparison": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "timepoint": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "assessment_method": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "sample_size": {
+   "type": [
+    "integer",
+    "null"
+   ]
+  },
+  "data_cutoff": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "follow_up_median_months": {
+   "type": [
+    "number",
+    "null"
+   ]
+  },
+  "analysis_type": {
+   "enum": [
+    "interim",
+    "primary",
+    "updated",
+    "final",
+    "long_term",
+    "post_hoc",
+    "undetermined"
+   ]
+  },
+  "publication_role": {
+   "enum": [
+    "primary_publication",
+    "update",
+    "final",
+    "long_term",
+    "secondary_analysis",
+    "subgroup",
+    "qol_pro",
+    "safety",
+    "translational",
+    "pooled",
+    "correction",
+    "congress_abstract",
+    "undetermined"
+   ]
+  },
+  "publication_id": {
+   "type": [
+    "string",
+    "null"
+   ]
+  }
+ },
+ "required": [
+  "signature_id",
+  "trial_key",
+  "endpoint",
+  "endpoint_hierarchy",
+  "analysis_type",
+  "publication_role"
+ ]
+}

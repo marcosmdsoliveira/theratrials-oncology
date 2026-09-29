@@ -1,0 +1,125 @@
+{
+ "schema": "theratrials-db-agents-golden/1",
+ "sobre": "Golden set do curator/verifier: os 10 cards auditados à mão no piloto v2.1. São DADOS de entrada e saída esperada, nunca regras de código. input_card_ref: versão do card usada como entrada (commit git; 'HEAD' = atual). Para ASPEN e TROPION a entrada é o card ANTES da correção aprovada (2749ac4), e a saída esperada é a correção que os humanos aprovaram. strength: confirmed (corrigido/confirmado por humano) > pilot_verified (piloto v2.1 com trecho literal conferido) > candidate (item aberto do backlog; acertar conta, errar conta menos). Nenhuma expectativa vem de memória: cada uma cita o item de backlog, o B-pendente do piloto ou a decisão humana que a sustenta.",
+ "casos": {
+  "rcc_adjuvante_naocc_9": {
+   "estudo": "ASPEN", "input_card_ref": "1599b1d",
+   "identity": {"pmid": "26794930", "nct": ["NCT01108445"]},
+   "represented_relation": ["SAME_ANALYSIS"],
+   "arm_roles": {"experimental": ["everolimus"], "control": ["sunitinib"]},
+   "withheld": false,
+   "expected": [
+    {"fields": ["comparador"], "types": ["INTEGRITY_FIX"], "include_any": [["sunitin"]], "strength": "confirmed", "basis": "INT-rcc_adjuvante_naocc_9-008"},
+    {"fields": ["estatistica"], "types": ["INTEGRITY_FIX"], "include_any": [["0,20", "0.20"], ["0,625", "0.625"]], "strength": "confirmed", "basis": "INT-rcc_adjuvante_naocc_9-002"},
+    {"fields": ["primario", "resultado_chave"], "types": ["INTEGRITY_FIX"], "include_any": [["0,16", "0.16"], ["0,20", "0.20"]], "exclude": ["NS"], "strength": "confirmed", "basis": "INT-rcc_adjuvante_naocc_9-001"},
+    {"fields": ["tox_g3"], "types": ["INTEGRITY_FIX"], "include_any": [["78"], ["60"]], "strength": "confirmed", "basis": "INT-rcc_adjuvante_naocc_9-003"},
+    {"fields": ["tox_interesse"], "types": ["INTEGRITY_FIX"], "include_any": [["14"], ["23"]], "strength": "confirmed", "basis": "INT-rcc_adjuvante_naocc_9-004"},
+    {"fields": ["incl", "excl"], "types": ["INTEGRITY_FIX"], "include_any": [["60"]], "strength": "confirmed", "basis": "INT-rcc_adjuvante_naocc_9-005"},
+    {"fields": ["basal"], "types": ["INTEGRITY_FIX"], "include_any": [["70"]], "strength": "confirmed", "basis": "INT-rcc_adjuvante_naocc_9-006"},
+    {"fields": ["secundario", "subgrupo"], "types": ["INTEGRITY_FIX"], "include_any": [["crom", "chromoph"]], "strength": "confirmed", "basis": "INT-rcc_adjuvante_naocc_9-007"}
+   ],
+   "alpha": {"value": "0.20", "sided": "two", "field": "estatistica"}
+  },
+  "tropion-lung01-dato-dxd-vs-docetaxel-nsclc": {
+   "estudo": "TROPION-Lung01", "input_card_ref": "1599b1d",
+   "identity": {"pmid": "39250535", "nct": ["NCT04656652"]},
+   "represented_relation": ["SAME_ANALYSIS"],
+   "arm_roles": {"experimental": ["dato"], "control": ["docetaxel"]},
+   "withheld": false,
+   "expected": [
+    {"fields": ["tox_interesse"], "types": ["INTEGRITY_FIX"], "include_any": [["8,8", "8.8"], ["4,1", "4.1"], ["2,4", "2.4"]], "strength": "confirmed", "basis": "INT-tropion-lung01-dato-dxd-vs-docetaxel-nsclc-002", "arm_attribution": {"8.8": "experimental", "4.1": "control"}}
+   ]
+  },
+  "endometrio_6": {
+   "estudo": "KEYNOTE-158 (endométrio)", "input_card_ref": "HEAD",
+   "identity": {"pmid": "39847999", "nct": ["NCT02628067"]},
+   "represented_relation": ["LONG_TERM_FOLLOWUP"], "primary_publication": "34990208",
+   "withheld": false,
+   "expected": [
+    {"fields": ["resultado_chave"], "types": ["LONG_TERM_FOLLOWUP", "SAME_ANALYSIS_UPDATE", "EDITORIAL_ONLY"], "include_any": [], "strength": "pilot_verified", "basis": "B-pendente piloto: PFS/OS medianas da atualização 2025"},
+    {"fields": ["impacto_reg"], "types": ["INTEGRITY_FIX"], "include_any": [], "strength": "candidate", "basis": "INT-endometrio_6-001"},
+    {"fields": ["esquema"], "types": ["INTEGRITY_FIX", "EDITORIAL_ONLY"], "include_any": [], "strength": "candidate", "basis": "INT-endometrio_6-002", "expect_verdict": "CONFLICT"},
+    {"fields": ["periodo"], "types": ["INTEGRITY_FIX"], "include_any": [], "strength": "candidate", "basis": "INT-endometrio_6-004"}
+   ]
+  },
+  "linfoma_dlbcl_1": {
+   "estudo": "ZUMA-7", "input_card_ref": "HEAD",
+   "identity": {"pmid": "34891224", "nct": ["NCT03391466"]},
+   "represented_relation": ["SAME_ANALYSIS", "LONG_TERM_FOLLOWUP", "SAME_ANALYSIS_UPDATE"],
+   "arm_roles": {"experimental": ["axi"], "control": ["standard", "soc", "padrão"]},
+   "withheld": false,
+   "expected": [
+    {"fields": ["primario", "resultado_chave"], "types": ["INTEGRITY_FIX"], "include_any": [], "strength": "pilot_verified", "basis": "INT-linfoma_dlbcl_1-007 (conflito de OS publicação × CT.gov)", "expect_verdict": "CONFLICT", "must_not_resolve": true},
+    {"fields": ["tox_g3"], "types": ["INTEGRITY_FIX"], "include_any": [], "strength": "candidate", "basis": "INT-linfoma_dlbcl_1-001/002"},
+    {"fields": ["secundario"], "types": ["INTEGRITY_FIX"], "include_any": [], "strength": "pilot_verified", "basis": "B-pendente piloto + INT-linfoma_dlbcl_1-005 (crossover sem fonte)"},
+    {"fields": ["resultado_chave", "primario"], "types": ["INTEGRITY_FIX", "EDITORIAL_ONLY"], "include_any": [], "strength": "pilot_verified", "basis": "B-pendente + INT-linfoma_dlbcl_1-004 (mEFS ≠ EFS mediana)"},
+    {"fields": ["estrat"], "types": ["INTEGRITY_FIX"], "include_any": [], "strength": "candidate", "basis": "INT-linfoma_dlbcl_1-006"}
+   ]
+  },
+  "linfoma_dlbcl_4": {
+   "estudo": "EPCORE NHL-1", "input_card_ref": "HEAD",
+   "identity": {"pmid": "36548927", "nct": ["NCT03625037"]},
+   "represented_relation": ["SAME_ANALYSIS"],
+   "withheld": false,
+   "expected": [
+    {"fields": ["tox_g3"], "types": ["INTEGRITY_FIX"], "include_any": [["61,1", "61.1"], ["26,8", "26.8"]], "strength": "pilot_verified", "basis": "INT-linfoma_dlbcl_4-002 + B-pendente"},
+    {"fields": ["tox_g3", "tox_interesse"], "types": ["INTEGRITY_FIX"], "include_any": [["5", "fatal", "óbito"]], "strength": "pilot_verified", "basis": "INT-linfoma_dlbcl_4-003 (ICANS grave fatal)"},
+    {"fields": ["primario", "resultado_chave"], "types": ["INTEGRITY_FIX"], "include_any": [["12,0", "12.0"]], "strength": "pilot_verified", "basis": "INT-linfoma_dlbcl_4-001 + B-pendente (mDOR 12,0 m)"}
+   ]
+  },
+  "lupsma_prostata_12": {
+   "estudo": "LUNAR", "input_card_ref": "HEAD",
+   "identity": {"pmid": "41223345", "nct": ["NCT05496959"]},
+   "represented_relation": ["SAME_ANALYSIS"],
+   "withheld": false,
+   "expected": [
+    {"fields": ["centros", "sponsor", "limit"], "types": ["INTEGRITY_FIX"], "include_any": [["unic", "single", "único"]], "strength": "pilot_verified", "basis": "INT-lupsma_prostata_12-001 + B-pendente"},
+    {"fields": ["tox_g3", "tox_interesse"], "types": ["INTEGRITY_FIX"], "include_any": [["6,7", "6.7", "3/45"]], "strength": "pilot_verified", "basis": "INT-lupsma_prostata_12-008 + B-pendente"},
+    {"fields": ["indicacao", "acron"], "types": ["INTEGRITY_FIX"], "include_any": [["oligorr", "oligorecurr"]], "strength": "pilot_verified", "basis": "INT-lupsma_prostata_12-010 + B-pendente"},
+    {"fields": ["estatistica"], "types": ["INTEGRITY_FIX"], "include_any": [["0,52", "0.52"]], "strength": "candidate", "basis": "INT-lupsma_prostata_12-004"},
+    {"fields": ["esquema"], "types": ["INTEGRITY_FIX"], "include_any": [], "strength": "candidate", "basis": "INT-lupsma_prostata_12-005/011 (intervalo divergente dentro da fonte)", "expect_verdict": "CONFLICT", "must_not_resolve": true}
+   ]
+  },
+  "neuroblastoma_3": {
+   "estudo": "ANBL1531", "input_card_ref": "HEAD",
+   "identity": {"pmid": null, "nct": ["NCT03126916"]},
+   "represented_relation": ["UNDETERMINED", "SAME_ANALYSIS"],
+   "withheld": false,
+   "human_decision_protected": [{"fields": ["esquema", "cumul"], "decision": "P0 2026-09-28: dose de 15 mCi/kg mantida (fonte ANBL09P1)", "expected_packet_decision": "DEFER"}],
+   "expected": [
+    {"fields": ["desenho", "limit", "takehome"], "types": ["INTEGRITY_FIX"], "include_any": [], "strength": "pilot_verified", "basis": "INT-neuroblastoma_3-001 + B-pendente (lorlatinibe não randomizado)"},
+    {"fields": ["sponsor"], "types": ["INTEGRITY_FIX", "EDITORIAL_ONLY"], "include_any": [["DuBois"]], "strength": "candidate", "basis": "INT-neuroblastoma_3-004"}
+   ]
+  },
+  "ppgl_8": {
+   "estudo": "MGMT em PPGL (quarentena)", "input_card_ref": "HEAD",
+   "identity": {"pmid": null, "nct": []},
+   "represented_relation": [],
+   "withheld": true,
+   "expected": []
+  },
+  "rt_sbrt_oligo_5": {
+   "estudo": "SINDAS", "input_card_ref": "HEAD",
+   "identity": {"pmid": "35094066", "nct": ["NCT02893332"]},
+   "represented_relation": ["SAME_ANALYSIS"],
+   "withheld": false,
+   "expected": [
+    {"fields": ["primario", "secundario"], "types": ["INTEGRITY_FIX"], "include_any": [], "strength": "pilot_verified", "basis": "INT-rt_sbrt_oligo_5-004 (inconsistência interna da própria publicação)", "expect_verdict": "CONFLICT", "must_not_resolve": true},
+    {"fields": ["desenho"], "types": ["INTEGRITY_FIX"], "include_any": [], "strength": "pilot_verified", "basis": "INT-rt_sbrt_oligo_5-002 (mascaramento publicação × registro)", "expect_verdict": "CONFLICT", "must_not_resolve": true},
+    {"fields": ["n", "analises", "limit"], "types": ["INTEGRITY_FIX"], "include_any": [["136"], ["133"]], "strength": "pilot_verified", "basis": "INT-rt_sbrt_oligo_5-006 + B-pendente"}
+   ]
+  },
+  "prostata_contexto_20": {
+   "estudo": "MAGNITUDE", "input_card_ref": "HEAD",
+   "identity": {"pmid": "36952634", "nct": ["NCT03748641"]},
+   "represented_relation": ["SAME_ANALYSIS"],
+   "withheld": false,
+   "expected": [
+    {"fields": ["ano_pub"], "types": ["BIBLIOGRAPHIC_FIX"], "include_any": [["2023"]], "strength": "pilot_verified", "basis": "INT-prostata_contexto_20-005 + B-pendente"},
+    {"fields": ["preparo", "esquema"], "types": ["INTEGRITY_FIX"], "include_any": [], "strength": "candidate", "basis": "INT-prostata_contexto_20-001 (prednisona 5 mg 2x/dia)"},
+    {"fields": ["estatistica"], "types": ["INTEGRITY_FIX"], "include_any": [["87"]], "strength": "candidate", "basis": "INT-prostata_contexto_20-003"},
+    {"fields": ["secundario"], "types": ["INTEGRITY_FIX", "NEW_PUBLICATION_RELATIONSHIP", "LONG_TERM_FOLLOWUP"], "include_any": [], "strength": "candidate", "basis": "INT-prostata_contexto_20-007 (OS final de outra publicação)"}
+   ]
+  }
+ }
+}

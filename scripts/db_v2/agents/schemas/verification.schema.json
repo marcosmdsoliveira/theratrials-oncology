@@ -1,0 +1,182 @@
+{
+ "$id": "theratrials-db-verifier-result/1",
+ "type": "object",
+ "properties": {
+  "schema": {
+   "const": "theratrials-db-verifier-result/1"
+  },
+  "uid": {
+   "type": "string"
+  },
+  "proposal_sha256": {
+   "type": "string"
+  },
+  "relationship": {
+   "type": "object",
+   "properties": {
+    "verdict": {
+     "enum": [
+      "PASS",
+      "FAIL",
+      "UNSUPPORTED",
+      "CONFLICT"
+     ]
+    },
+    "reason": {
+     "type": "string"
+    },
+    "evidence": {
+     "type": "array",
+     "items": {
+      "type": "object",
+      "properties": {
+       "source_id": {
+        "type": "string"
+       },
+       "source_type": {
+        "enum": [
+         "pubmed_metadata",
+         "pubmed_abstract",
+         "pmc_fulltext",
+         "europepmc_fulltext",
+         "ctgov_record",
+         "ctgov_results",
+         "crossref_metadata",
+         "registered_primary_source",
+         "human_decision"
+        ]
+       },
+       "publication_id": {
+        "type": [
+         "string",
+         "null"
+        ]
+       },
+       "pmid": {
+        "type": [
+         "string",
+         "null"
+        ]
+       },
+       "doi": {
+        "type": [
+         "string",
+         "null"
+        ]
+       },
+       "nct": {
+        "type": [
+         "string",
+         "null"
+        ]
+       },
+       "locator": {
+        "type": "string"
+       },
+       "snippet": {
+        "type": "string",
+        "minLength": 8
+       },
+       "retrieved_at": {
+        "type": [
+         "string",
+         "null"
+        ]
+       }
+      },
+      "required": [
+       "source_id",
+       "source_type",
+       "locator",
+       "snippet"
+      ]
+     }
+    }
+   },
+   "required": [
+    "verdict",
+    "reason"
+   ]
+  },
+  "results": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "properties": {
+     "proposal_id": {
+      "type": "string"
+     },
+     "field": {
+      "type": "string"
+     },
+     "verdict": {
+      "enum": [
+       "PASS",
+       "FAIL",
+       "UNSUPPORTED",
+       "CONFLICT"
+      ]
+     },
+     "current_value_status": {
+      "enum": [
+       "CONTRADICTED",
+       "SUPPORTED",
+       "NOT_ADDRESSED",
+       "UNSUPPORTED"
+      ]
+     },
+     "support": {
+      "enum": [
+       "explicit",
+       "partial",
+       "inferred",
+       "none"
+      ]
+     },
+     "source_used": {
+      "type": [
+       "string",
+       "null"
+      ]
+     },
+     "snippet": {
+      "type": [
+       "string",
+       "null"
+      ]
+     },
+     "locator": {
+      "type": [
+       "string",
+       "null"
+      ]
+     },
+     "analysis_signature_ref": {
+      "type": [
+       "string",
+       "null"
+      ]
+     },
+     "reason": {
+      "type": "string",
+      "minLength": 5
+     }
+    },
+    "required": [
+     "proposal_id",
+     "field",
+     "verdict",
+     "current_value_status",
+     "support",
+     "reason"
+    ]
+   }
+  }
+ },
+ "required": [
+  "schema",
+  "uid",
+  "proposal_sha256",
+  "results"
+ ]
+}

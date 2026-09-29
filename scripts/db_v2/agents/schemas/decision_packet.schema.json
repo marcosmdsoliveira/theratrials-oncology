@@ -1,0 +1,147 @@
+{
+ "$id": "theratrials-db-decision-packet/1",
+ "type": "object",
+ "properties": {
+  "schema": {
+   "const": "theratrials-db-decision-packet/1"
+  },
+  "uid": {
+   "type": "string"
+  },
+  "card": {
+   "type": "string"
+  },
+  "priority": {
+   "enum": [
+    "P0",
+    "P1",
+    "P2",
+    "P3",
+    null
+   ]
+  },
+  "proposal_type": {
+   "enum": [
+    "INTEGRITY_FIX",
+    "SAME_ANALYSIS_UPDATE",
+    "LONG_TERM_FOLLOWUP",
+    "SECONDARY_ANALYSIS",
+    "SUBGROUP",
+    "NEW_COHORT",
+    "NEW_PUBLICATION_RELATIONSHIP",
+    "BIBLIOGRAPHIC_FIX",
+    "EDITORIAL_ONLY",
+    "WATCH",
+    "NO_ACTION"
+   ]
+  },
+  "summary": {
+   "type": "string"
+  },
+  "fields": {
+   "type": "array",
+   "items": {
+    "type": "object"
+   }
+  },
+  "conflicts": {
+   "type": "array"
+  },
+  "sources": {
+   "type": "array"
+  },
+  "clinical_impact": {
+   "enum": [
+    "high",
+    "moderate",
+    "low",
+    "none"
+   ]
+  },
+  "verifier_summary": {
+   "type": "object"
+  },
+  "domain_confidence": {
+   "type": "object",
+   "properties": {
+    "identity": {
+     "enum": [
+      "machine_verified",
+      "conflict",
+      "unverified"
+     ]
+    },
+    "bibliographic_metadata": {
+     "enum": [
+      "machine_verified",
+      "blocked_by_backlog",
+      "unverified",
+      "not_applicable"
+     ]
+    },
+    "publication_relationship": {
+     "enum": [
+      "verified",
+      "human_decision",
+      "undetermined",
+      "conflict"
+     ]
+    },
+    "clinical_extraction": {
+     "enum": [
+      "verifier_pass",
+      "verifier_partial",
+      "verifier_fail",
+      "not_applicable",
+      "withheld"
+     ]
+    },
+    "published_write": {
+     "enum": [
+      "human_required"
+     ]
+    }
+   },
+   "required": [
+    "identity",
+    "bibliographic_metadata",
+    "publication_relationship",
+    "clinical_extraction",
+    "published_write"
+   ]
+  },
+  "suggested_decision": {
+   "enum": [
+    "APPROVE",
+    "REJECT",
+    "DEFER",
+    "NONE"
+   ]
+  },
+  "suggested_reason": {
+   "type": "string"
+  },
+  "human_required": {
+   "type": "boolean"
+  },
+  "counts_toward_weekly_budget": {
+   "type": "boolean"
+  },
+  "final_decision": {
+   "type": "null"
+  }
+ },
+ "required": [
+  "schema",
+  "uid",
+  "priority",
+  "proposal_type",
+  "fields",
+  "verifier_summary",
+  "domain_confidence",
+  "suggested_decision",
+  "human_required",
+  "counts_toward_weekly_budget",
+  "final_decision"
+ ]
+}
