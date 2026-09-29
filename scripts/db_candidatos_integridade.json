@@ -176,6 +176,54 @@
    "dedupe_key": "cervix_3|population_misrepresentation|acron,incl,indicacao,linha"
   },
   {
+   "uid": "colorretal_11",
+   "card": "CodeBreaK 300",
+   "issue_type": "cross_source_conflict",
+   "affected_fields": [
+    "ref"
+   ],
+   "description": "O ref abre com a lista de autores e o título do KRYSTAL-1 (adagrasibe, N Engl J Med 2023;388:44-54), outro ensaio; o PMID do card é o CodeBreaK 300 (Fakih MG, N Engl J Med 2023;389:2125-2139).",
+   "evidence": [
+    {
+     "kind": "registry_metadata",
+     "source": "PubMed esummary",
+     "identifier": "PMID 37870968",
+     "value": "Fakih MG · N Engl J Med 2023;389(23):2125-2139 · \"Sotorasib plus Panitumumab in Refractory Colorectal Cancer…\""
+    },
+    {
+     "kind": "card_state",
+     "field": "ref",
+     "value": "Yaeger R, Weiss J, … Adagrasib with or without Cetuximab … N Engl J Med 2023;388(1):44-54 (KRYSTAL-1 colorretal). Sotorasib: Fakih MG …"
+    }
+   ],
+   "priority": "medium",
+   "detection_method": "pipeline_signal",
+   "origin": "auditoria sistêmica do gerador de citações (PubMed esummary × ref × pubmed_url)",
+   "related_ids": [],
+   "related_decisions": [],
+   "systemic_review": "citation_generator_systemic_review",
+   "id": "INT-colorretal_11-001",
+   "dedupe_key": "colorretal_11|cross_source_conflict|ref",
+   "status": "confirmed",
+   "human_decision": null,
+   "resolution": null,
+   "first_detected_at": "2026-09-29",
+   "last_reviewed_at": "2026-09-29",
+   "history": [
+    {
+     "at": "2026-09-29",
+     "event": "detected",
+     "by": "auditoria sistêmica do gerador de citações (PubMed esummary × ref × pubmed_url)"
+    },
+    {
+     "at": "2026-09-29",
+     "event": "status:open→confirmed",
+     "by": "editor",
+     "note": "confirmado na auditoria do gerador de citações (aprovada em 2026-09-29)"
+    }
+   ]
+  },
+  {
    "uid": "dellphi-304-tarlatamab-vs-qt-2l-sclc",
    "card": "DeLLphi-304 (2025)",
    "issue_type": "safety_misattribution",
@@ -382,6 +430,60 @@
    "dedupe_key": "endometrio_6|numeric_mismatch|periodo"
   },
   {
+   "uid": "endometrio_9",
+   "card": "Dostarlimabe GARNET (2021)",
+   "issue_type": "publication_relationship",
+   "affected_fields": [
+    "ano_pub",
+    "pubmed_url",
+    "ref"
+   ],
+   "description": "A citação estruturada ficou bloqueada porque o ano do PMID (2020) não é corroborado pelo card: ano_pub = 2022 e o ref não cita 2020 nem identifica o artigo do PMID. Não está confirmado qual publicação sustenta os dados exibidos. Evidência insuficiente para afirmar erro.",
+   "evidence": [
+    {
+     "kind": "registry_metadata",
+     "source": "PubMed snapshot (pubmed_snapshot.json)",
+     "identifier": "PMID 33001143",
+     "value": "Oaknin A · JAMA Oncol 2020;6:1766-1772"
+    },
+    {
+     "kind": "card_state",
+     "field": "ano_pub",
+     "value": 2022
+    },
+    {
+     "kind": "card_state",
+     "field": "ref",
+     "value": "Oaknin A et al. Clin Cancer Res 2023;29(22):4564-4574 (coorte endométrio)."
+    },
+    {
+     "kind": "pipeline_signal",
+     "value": "bibliografia.elegibilidade → ano_nao_corroborado"
+    }
+   ],
+   "priority": "low",
+   "detection_method": "pipeline_signal",
+   "origin": "camada bibliográfica — guarda ano_nao_corroborado (bibliografia.elegibilidade)",
+   "related_ids": [],
+   "related_decisions": [],
+   "systemic_review": "citation_generator_systemic_review",
+   "id": "INT-endometrio_9-001",
+   "dedupe_key": "endometrio_9|publication_relationship|ano_pub,pubmed_url,ref",
+   "status": "open",
+   "human_decision": null,
+   "resolution": null,
+   "first_detected_at": "2026-09-29",
+   "last_reviewed_at": null,
+   "history": [
+    {
+     "at": "2026-09-29",
+     "event": "detected",
+     "by": "camada bibliográfica — guarda ano_nao_corroborado (bibliografia.elegibilidade)"
+    }
+   ],
+   "evidence_status": "insufficient"
+  },
+  {
    "uid": "fes-pet-fluoroestradiol-receptor-estrogenio",
    "card": "18F-FES PET / Cerianna — imagem do receptor de estrogênio (validação 2020–2023)",
    "issue_type": "bibliographic_mismatch",
@@ -418,6 +520,57 @@
    "dedupe_key": "fes-pet-fluoroestradiol-receptor-estrogenio|bibliographic_mismatch|ano_pub,indicacao,ref"
   },
   {
+   "uid": "fes-pet-fluoroestradiol-receptor-estrogenio",
+   "card": "18F-FES PET",
+   "issue_type": "publication_relationship",
+   "affected_fields": [
+    "pubmed_url",
+    "ref"
+   ],
+   "description": "Card agregado (meta-análise 2020, coorte 2022, AUC SNMMI 2023, aprovação FDA); o PMID aponta só o AUC SNMMI (Ulaner GA, J Nucl Med 2023). Candidato a evidence_collection, sem citação principal única.",
+   "evidence": [
+    {
+     "kind": "registry_metadata",
+     "source": "PubMed esummary",
+     "identifier": "PMID 36863779",
+     "value": "Ulaner GA · J Nucl Med 2023;64(3):351-354 · \"Summary: Appropriate Use Criteria…\""
+    },
+    {
+     "kind": "card_state",
+     "field": "ref",
+     "value": "Kurland BF et al. (meta-análise 2020); van Geel JJL et al. (2022, n=200); AUC SNMMI — J Nucl Med 2023;64(3):351; …"
+    }
+   ],
+   "priority": "medium",
+   "detection_method": "pipeline_signal",
+   "origin": "auditoria sistêmica do gerador de citações (PubMed esummary × ref × pubmed_url)",
+   "related_ids": [
+    "INT-fes-pet-fluoroestradiol-receptor-estrogenio-001"
+   ],
+   "related_decisions": [],
+   "systemic_review": "citation_generator_systemic_review",
+   "id": "INT-fes-pet-fluoroestradiol-receptor-estrogenio-002",
+   "dedupe_key": "fes-pet-fluoroestradiol-receptor-estrogenio|publication_relationship|pubmed_url,ref",
+   "status": "confirmed",
+   "human_decision": null,
+   "resolution": null,
+   "first_detected_at": "2026-09-29",
+   "last_reviewed_at": "2026-09-29",
+   "history": [
+    {
+     "at": "2026-09-29",
+     "event": "detected",
+     "by": "auditoria sistêmica do gerador de citações (PubMed esummary × ref × pubmed_url)"
+    },
+    {
+     "at": "2026-09-29",
+     "event": "status:open→confirmed",
+     "by": "editor",
+     "note": "confirmado na auditoria do gerador de citações (aprovada em 2026-09-29)"
+    }
+   ]
+  },
+  {
    "uid": "hepatobiliar_12",
    "card": "HIMALAYA (2022)",
    "issue_type": "safety_misattribution",
@@ -451,6 +604,55 @@
    ],
    "id": "INT-hepatobiliar_12-001",
    "dedupe_key": "hepatobiliar_12|safety_misattribution|comparador,tox_g3"
+  },
+  {
+   "uid": "hepatobiliar_19",
+   "card": "CheckMate 9DW",
+   "issue_type": "bibliographic_mismatch",
+   "affected_fields": [
+    "ref"
+   ],
+   "description": "O ref atribui o artigo a outro primeiro autor; pelo PubMed, o mesmo artigo (mesmo periódico/volume/páginas ou mesmo título/DOI) tem Yau T como primeiro autor.",
+   "evidence": [
+    {
+     "kind": "registry_metadata",
+     "source": "PubMed esummary",
+     "identifier": "PMID 40349714",
+     "value": "Yau T · Lancet 2025;405(10492):1851-1864 (mesmo título do ref)"
+    },
+    {
+     "kind": "card_state",
+     "field": "ref",
+     "value": "Decaens T, Galle PR, Greten TF, Sangro B, Kim JH, Yau T, … Nivolumab Plus Ipilimumab Versus Lenvatinib or Sorafenib … (CheckMate 9DW)"
+    }
+   ],
+   "priority": "medium",
+   "detection_method": "pipeline_signal",
+   "origin": "auditoria sistêmica do gerador de citações (PubMed esummary × ref × pubmed_url)",
+   "related_ids": [],
+   "related_decisions": [],
+   "systemic_review": "citation_generator_systemic_review",
+   "dedupe_discriminator": "ref_first_author",
+   "id": "INT-hepatobiliar_19-001",
+   "dedupe_key": "hepatobiliar_19|bibliographic_mismatch|ref|ref_first_author",
+   "status": "confirmed",
+   "human_decision": null,
+   "resolution": null,
+   "first_detected_at": "2026-09-29",
+   "last_reviewed_at": "2026-09-29",
+   "history": [
+    {
+     "at": "2026-09-29",
+     "event": "detected",
+     "by": "auditoria sistêmica do gerador de citações (PubMed esummary × ref × pubmed_url)"
+    },
+    {
+     "at": "2026-09-29",
+     "event": "status:open→confirmed",
+     "by": "editor",
+     "note": "confirmado na auditoria do gerador de citações (aprovada em 2026-09-29)"
+    }
+   ]
   },
   {
    "uid": "hepatobiliar_2",
@@ -489,6 +691,109 @@
    "dedupe_key": "hepatobiliar_2|unsupported_claim|analises,fase,impacto_reg"
   },
   {
+   "uid": "hepatobiliar_26",
+   "card": "EMERALD-1",
+   "issue_type": "publication_relationship",
+   "affected_fields": [
+    "pubmed_url",
+    "ref"
+   ],
+   "description": "O ref traz autoria e título diferentes do artigo do PMID (Sangro B, Lancet 2025;405:216-232), ambos sobre o EMERALD-1; publicação representada indefinida.",
+   "evidence": [
+    {
+     "kind": "registry_metadata",
+     "source": "PubMed esummary",
+     "identifier": "PMID 39798579",
+     "value": "Sangro B · Lancet 2025;405(10474):216-232"
+    },
+    {
+     "kind": "card_state",
+     "field": "ref",
+     "value": "Lencioni R, Kudo M, … Transarterial chemoembolisation, durvalumab, plus bevacizumab versus placebo plus transarterial chemoembol…"
+    }
+   ],
+   "priority": "medium",
+   "detection_method": "pipeline_signal",
+   "origin": "auditoria sistêmica do gerador de citações (PubMed esummary × ref × pubmed_url)",
+   "related_ids": [],
+   "related_decisions": [],
+   "systemic_review": "citation_generator_systemic_review",
+   "id": "INT-hepatobiliar_26-001",
+   "dedupe_key": "hepatobiliar_26|publication_relationship|pubmed_url,ref",
+   "status": "confirmed",
+   "human_decision": null,
+   "resolution": null,
+   "first_detected_at": "2026-09-29",
+   "last_reviewed_at": "2026-09-29",
+   "history": [
+    {
+     "at": "2026-09-29",
+     "event": "detected",
+     "by": "auditoria sistêmica do gerador de citações (PubMed esummary × ref × pubmed_url)"
+    },
+    {
+     "at": "2026-09-29",
+     "event": "status:open→confirmed",
+     "by": "editor",
+     "note": "confirmado na auditoria do gerador de citações (aprovada em 2026-09-29)"
+    }
+   ]
+  },
+  {
+   "uid": "hepatobiliar_31",
+   "card": "SWOG 1815 (2023)",
+   "issue_type": "publication_relationship",
+   "affected_fields": [
+    "ano_pub",
+    "pubmed_url",
+    "ref"
+   ],
+   "description": "A citação estruturada ficou bloqueada porque o ano do PMID (2025) não é corroborado pelo card: ano_pub = 2023 e o ref não cita 2025 nem identifica o artigo do PMID. Não está confirmado qual publicação sustenta os dados exibidos. Evidência insuficiente para afirmar erro.",
+   "evidence": [
+    {
+     "kind": "registry_metadata",
+     "source": "PubMed snapshot (pubmed_snapshot.json)",
+     "identifier": "PMID 39671534",
+     "value": "Shroff RT · J Clin Oncol 2025;43:536-544"
+    },
+    {
+     "kind": "card_state",
+     "field": "ano_pub",
+     "value": 2023
+    },
+    {
+     "kind": "card_state",
+     "field": "ref",
+     "value": "Shroff RT, Guthrie KA, Scott AJ, … (lista de autores, sem ano de publicação corroborando 2025)"
+    },
+    {
+     "kind": "pipeline_signal",
+     "value": "bibliografia.elegibilidade → ano_nao_corroborado"
+    }
+   ],
+   "priority": "low",
+   "detection_method": "pipeline_signal",
+   "origin": "camada bibliográfica — guarda ano_nao_corroborado (bibliografia.elegibilidade)",
+   "related_ids": [],
+   "related_decisions": [],
+   "systemic_review": "citation_generator_systemic_review",
+   "id": "INT-hepatobiliar_31-001",
+   "dedupe_key": "hepatobiliar_31|publication_relationship|ano_pub,pubmed_url,ref",
+   "status": "open",
+   "human_decision": null,
+   "resolution": null,
+   "first_detected_at": "2026-09-29",
+   "last_reviewed_at": null,
+   "history": [
+    {
+     "at": "2026-09-29",
+     "event": "detected",
+     "by": "camada bibliográfica — guarda ano_nao_corroborado (bibliografia.elegibilidade)"
+    }
+   ],
+   "evidence_status": "insufficient"
+  },
+  {
    "uid": "hepatobiliar_35",
    "card": "DESTINY-PanTumor02 BTC (2024)",
    "issue_type": "bibliographic_mismatch",
@@ -522,6 +827,55 @@
    ],
    "id": "INT-hepatobiliar_35-001",
    "dedupe_key": "hepatobiliar_35|bibliographic_mismatch|primario,ref"
+  },
+  {
+   "uid": "hepatobiliar_40",
+   "card": "LEAP-012",
+   "issue_type": "publication_relationship",
+   "affected_fields": [
+    "pubmed_url",
+    "ref"
+   ],
+   "description": "O ref cita Llovet JM (Lancet 2024;404:1517-1532) e o PMID é Kudo M (Lancet 2025;405:203-215), ambos sobre o LEAP-012; publicação representada indefinida.",
+   "evidence": [
+    {
+     "kind": "registry_metadata",
+     "source": "PubMed esummary",
+     "identifier": "PMID 39798578",
+     "value": "Kudo M · Lancet 2025;405(10474):203-215"
+    },
+    {
+     "kind": "card_state",
+     "field": "ref",
+     "value": "Llovet JM, et al. Lancet. 2024;404(10470):1517-1532."
+    }
+   ],
+   "priority": "medium",
+   "detection_method": "pipeline_signal",
+   "origin": "auditoria sistêmica do gerador de citações (PubMed esummary × ref × pubmed_url)",
+   "related_ids": [],
+   "related_decisions": [],
+   "systemic_review": "citation_generator_systemic_review",
+   "id": "INT-hepatobiliar_40-001",
+   "dedupe_key": "hepatobiliar_40|publication_relationship|pubmed_url,ref",
+   "status": "confirmed",
+   "human_decision": null,
+   "resolution": null,
+   "first_detected_at": "2026-09-29",
+   "last_reviewed_at": "2026-09-29",
+   "history": [
+    {
+     "at": "2026-09-29",
+     "event": "detected",
+     "by": "auditoria sistêmica do gerador de citações (PubMed esummary × ref × pubmed_url)"
+    },
+    {
+     "at": "2026-09-29",
+     "event": "status:open→confirmed",
+     "by": "editor",
+     "note": "confirmado na auditoria do gerador de citações (aprovada em 2026-09-29)"
+    }
+   ]
   },
   {
    "uid": "hnscc_5",
@@ -1542,6 +1896,201 @@
    "dedupe_key": "lupsma_prostata_12|source_internal_inconsistency|basal"
   },
   {
+   "uid": "lupsma_prostata_2",
+   "card": "PSMAfore",
+   "issue_type": "cross_source_conflict",
+   "affected_fields": [
+    "pubmed_url",
+    "ref"
+   ],
+   "description": "O ref cita 'Sartor O, Lancet 2024;404:325-336', mas o PMID do card é o artigo do PSMAfore de Morris MJ (Lancet 2024;404:1227-1239); volume/páginas do ref não correspondem ao PMID.",
+   "evidence": [
+    {
+     "kind": "registry_metadata",
+     "source": "PubMed esummary",
+     "identifier": "PMID 39293462",
+     "value": "Morris MJ · Lancet 2024;404(10459):1227-1239 · \"(PSMAfore): a phase 3, randomised, controlled trial\""
+    },
+    {
+     "kind": "card_state",
+     "field": "ref",
+     "value": "Sartor O, et al. Lancet 2024;404:325-336; ESMO 2025 final OS analysis"
+    }
+   ],
+   "priority": "medium",
+   "detection_method": "pipeline_signal",
+   "origin": "auditoria sistêmica do gerador de citações (PubMed esummary × ref × pubmed_url)",
+   "related_ids": [],
+   "related_decisions": [],
+   "systemic_review": "citation_generator_systemic_review",
+   "id": "INT-lupsma_prostata_2-001",
+   "dedupe_key": "lupsma_prostata_2|cross_source_conflict|pubmed_url,ref",
+   "status": "confirmed",
+   "human_decision": null,
+   "resolution": null,
+   "first_detected_at": "2026-09-29",
+   "last_reviewed_at": "2026-09-29",
+   "history": [
+    {
+     "at": "2026-09-29",
+     "event": "detected",
+     "by": "auditoria sistêmica do gerador de citações (PubMed esummary × ref × pubmed_url)"
+    },
+    {
+     "at": "2026-09-29",
+     "event": "status:open→confirmed",
+     "by": "editor",
+     "note": "confirmado na auditoria do gerador de citações (aprovada em 2026-09-29)"
+    }
+   ]
+  },
+  {
+   "uid": "lupsma_prostata_3",
+   "card": "SPLASH",
+   "issue_type": "identifier_mismatch",
+   "affected_fields": [
+    "pubmed_url"
+   ],
+   "description": "O PMID do card (39839782) é a coorte lead-in do SPLASH (Hansen AR, Front Oncol 2024;14:1483953: dosimetria/segurança), não a publicação do resultado randomizado que o card descreve; o ref cita 'Sartor O, Lancet Oncol 2025' sem volume/páginas.",
+   "evidence": [
+    {
+     "kind": "registry_metadata",
+     "source": "PubMed esummary",
+     "identifier": "PMID 39839782",
+     "value": "Hansen AR · Front Oncol 2024;14:1483953 · \"Initial clinical experience … from the lead-in cohort of the SPLASH trial\""
+    },
+    {
+     "kind": "card_state",
+     "field": "ref",
+     "value": "Sartor O, et al. Lancet Oncol 2025; ESMO 2024 LBA (apresentação)"
+    }
+   ],
+   "priority": "high",
+   "detection_method": "pipeline_signal",
+   "origin": "auditoria sistêmica do gerador de citações (PubMed esummary × ref × pubmed_url)",
+   "related_ids": [],
+   "related_decisions": [],
+   "systemic_review": "citation_generator_systemic_review",
+   "id": "INT-lupsma_prostata_3-001",
+   "dedupe_key": "lupsma_prostata_3|identifier_mismatch|pubmed_url",
+   "status": "confirmed",
+   "human_decision": null,
+   "resolution": null,
+   "first_detected_at": "2026-09-29",
+   "last_reviewed_at": "2026-09-29",
+   "history": [
+    {
+     "at": "2026-09-29",
+     "event": "detected",
+     "by": "auditoria sistêmica do gerador de citações (PubMed esummary × ref × pubmed_url)"
+    },
+    {
+     "at": "2026-09-29",
+     "event": "status:open→confirmed",
+     "by": "editor",
+     "note": "confirmado na auditoria do gerador de citações (aprovada em 2026-09-29)"
+    }
+   ]
+  },
+  {
+   "uid": "melanoma_adjuvante_7",
+   "card": "IMMUNED",
+   "issue_type": "publication_relationship",
+   "affected_fields": [
+    "pubmed_url",
+    "ref"
+   ],
+   "description": "O ref aponta os resultados finais (Livingstone E, Lancet 2022) e o PMID a análise primária (Zimmer L, Lancet 2020); não está definido qual publicação sustenta os dados do card.",
+   "evidence": [
+    {
+     "kind": "registry_metadata",
+     "source": "PubMed esummary",
+     "identifier": "PMID 32416781",
+     "value": "Zimmer L · Lancet 2020;395(10236):1558-1568 (análise primária)"
+    },
+    {
+     "kind": "card_state",
+     "field": "ref",
+     "value": "Livingstone E et al. Lancet 2022;400:1117-1129 (resultados finais)."
+    }
+   ],
+   "priority": "medium",
+   "detection_method": "pipeline_signal",
+   "origin": "auditoria sistêmica do gerador de citações (PubMed esummary × ref × pubmed_url)",
+   "related_ids": [],
+   "related_decisions": [],
+   "systemic_review": "citation_generator_systemic_review",
+   "id": "INT-melanoma_adjuvante_7-001",
+   "dedupe_key": "melanoma_adjuvante_7|publication_relationship|pubmed_url,ref",
+   "status": "confirmed",
+   "human_decision": null,
+   "resolution": null,
+   "first_detected_at": "2026-09-29",
+   "last_reviewed_at": "2026-09-29",
+   "history": [
+    {
+     "at": "2026-09-29",
+     "event": "detected",
+     "by": "auditoria sistêmica do gerador de citações (PubMed esummary × ref × pubmed_url)"
+    },
+    {
+     "at": "2026-09-29",
+     "event": "status:open→confirmed",
+     "by": "editor",
+     "note": "confirmado na auditoria do gerador de citações (aprovada em 2026-09-29)"
+    }
+   ]
+  },
+  {
+   "uid": "melanoma_avancado_5",
+   "card": "C-144-01 / Lifileucel",
+   "issue_type": "publication_relationship",
+   "affected_fields": [
+    "pubmed_url",
+    "ref"
+   ],
+   "description": "O ref cita Chesney J (J Immunother Cancer 2022) e o PMID é Sarnaik AA (J Clin Oncol 2021); não está definido qual das duas publicações sustenta os dados do card.",
+   "evidence": [
+    {
+     "kind": "registry_metadata",
+     "source": "PubMed esummary",
+     "identifier": "PMID 33979178",
+     "value": "Sarnaik AA · J Clin Oncol 2021;39(24):2656-2666"
+    },
+    {
+     "kind": "card_state",
+     "field": "ref",
+     "value": "Chesney J et al. J Immunother Cancer 2022;10(12):e005755."
+    }
+   ],
+   "priority": "medium",
+   "detection_method": "pipeline_signal",
+   "origin": "auditoria sistêmica do gerador de citações (PubMed esummary × ref × pubmed_url)",
+   "related_ids": [],
+   "related_decisions": [],
+   "systemic_review": "citation_generator_systemic_review",
+   "id": "INT-melanoma_avancado_5-001",
+   "dedupe_key": "melanoma_avancado_5|publication_relationship|pubmed_url,ref",
+   "status": "confirmed",
+   "human_decision": null,
+   "resolution": null,
+   "first_detected_at": "2026-09-29",
+   "last_reviewed_at": "2026-09-29",
+   "history": [
+    {
+     "at": "2026-09-29",
+     "event": "detected",
+     "by": "auditoria sistêmica do gerador de citações (PubMed esummary × ref × pubmed_url)"
+    },
+    {
+     "at": "2026-09-29",
+     "event": "status:open→confirmed",
+     "by": "editor",
+     "note": "confirmado na auditoria do gerador de citações (aprovada em 2026-09-29)"
+    }
+   ]
+  },
+  {
    "uid": "mieloma_4",
    "card": "CARTITUDE-4 (2023)",
    "issue_type": "unsupported_claim",
@@ -1575,6 +2124,153 @@
    ],
    "id": "INT-mieloma_4-001",
    "dedupe_key": "mieloma_4|unsupported_claim|impacto_reg,takehome"
+  },
+  {
+   "uid": "mieloma_4",
+   "card": "CARTITUDE-4",
+   "issue_type": "bibliographic_mismatch",
+   "affected_fields": [
+    "ref"
+   ],
+   "description": "O ref atribui o artigo a outro primeiro autor; pelo PubMed, o mesmo artigo (mesmo periódico/volume/páginas ou mesmo título/DOI) tem San-Miguel J como primeiro autor.",
+   "evidence": [
+    {
+     "kind": "registry_metadata",
+     "source": "PubMed esummary",
+     "identifier": "PMID 37272512",
+     "value": "San-Miguel J · N Engl J Med 2023;389(4):335-347"
+    },
+    {
+     "kind": "card_state",
+     "field": "ref",
+     "value": "Dhakal B et al. NEJM 2023;389:335-347."
+    }
+   ],
+   "priority": "medium",
+   "detection_method": "pipeline_signal",
+   "origin": "auditoria sistêmica do gerador de citações (PubMed esummary × ref × pubmed_url)",
+   "related_ids": [],
+   "related_decisions": [],
+   "systemic_review": "citation_generator_systemic_review",
+   "dedupe_discriminator": "ref_first_author",
+   "id": "INT-mieloma_4-002",
+   "dedupe_key": "mieloma_4|bibliographic_mismatch|ref|ref_first_author",
+   "status": "confirmed",
+   "human_decision": null,
+   "resolution": null,
+   "first_detected_at": "2026-09-29",
+   "last_reviewed_at": "2026-09-29",
+   "history": [
+    {
+     "at": "2026-09-29",
+     "event": "detected",
+     "by": "auditoria sistêmica do gerador de citações (PubMed esummary × ref × pubmed_url)"
+    },
+    {
+     "at": "2026-09-29",
+     "event": "status:open→confirmed",
+     "by": "editor",
+     "note": "confirmado na auditoria do gerador de citações (aprovada em 2026-09-29)"
+    }
+   ]
+  },
+  {
+   "uid": "mieloma_8",
+   "card": "DREAMM-7",
+   "issue_type": "bibliographic_mismatch",
+   "affected_fields": [
+    "ref"
+   ],
+   "description": "O ref atribui o artigo a outro primeiro autor; pelo PubMed, o mesmo artigo (mesmo periódico/volume/páginas ou mesmo título/DOI) tem Hungria V como primeiro autor.",
+   "evidence": [
+    {
+     "kind": "registry_metadata",
+     "source": "PubMed esummary",
+     "identifier": "PMID 38828933",
+     "value": "Hungria V · N Engl J Med 2024;391(5):393-407"
+    },
+    {
+     "kind": "card_state",
+     "field": "ref",
+     "value": "Mateos MV et al. NEJM 2024;391:393-407 (DREAMM-7)."
+    }
+   ],
+   "priority": "medium",
+   "detection_method": "pipeline_signal",
+   "origin": "auditoria sistêmica do gerador de citações (PubMed esummary × ref × pubmed_url)",
+   "related_ids": [],
+   "related_decisions": [],
+   "systemic_review": "citation_generator_systemic_review",
+   "dedupe_discriminator": "ref_first_author",
+   "id": "INT-mieloma_8-001",
+   "dedupe_key": "mieloma_8|bibliographic_mismatch|ref|ref_first_author",
+   "status": "confirmed",
+   "human_decision": null,
+   "resolution": null,
+   "first_detected_at": "2026-09-29",
+   "last_reviewed_at": "2026-09-29",
+   "history": [
+    {
+     "at": "2026-09-29",
+     "event": "detected",
+     "by": "auditoria sistêmica do gerador de citações (PubMed esummary × ref × pubmed_url)"
+    },
+    {
+     "at": "2026-09-29",
+     "event": "status:open→confirmed",
+     "by": "editor",
+     "note": "confirmado na auditoria do gerador de citações (aprovada em 2026-09-29)"
+    }
+   ]
+  },
+  {
+   "uid": "mieloma_9",
+   "card": "DREAMM-8",
+   "issue_type": "bibliographic_mismatch",
+   "affected_fields": [
+    "ref"
+   ],
+   "description": "O ref atribui o artigo a outro primeiro autor; pelo PubMed, o mesmo artigo (mesmo periódico/volume/páginas ou mesmo título/DOI) tem Dimopoulos MA como primeiro autor.",
+   "evidence": [
+    {
+     "kind": "registry_metadata",
+     "source": "PubMed esummary",
+     "identifier": "PMID 38828951",
+     "value": "Dimopoulos MA · N Engl J Med 2024;391(5):408-421"
+    },
+    {
+     "kind": "card_state",
+     "field": "ref",
+     "value": "Trudel S et al. NEJM 2024;391:408-421 (DREAMM-8)."
+    }
+   ],
+   "priority": "medium",
+   "detection_method": "pipeline_signal",
+   "origin": "auditoria sistêmica do gerador de citações (PubMed esummary × ref × pubmed_url)",
+   "related_ids": [],
+   "related_decisions": [],
+   "systemic_review": "citation_generator_systemic_review",
+   "dedupe_discriminator": "ref_first_author",
+   "id": "INT-mieloma_9-001",
+   "dedupe_key": "mieloma_9|bibliographic_mismatch|ref|ref_first_author",
+   "status": "confirmed",
+   "human_decision": null,
+   "resolution": null,
+   "first_detected_at": "2026-09-29",
+   "last_reviewed_at": "2026-09-29",
+   "history": [
+    {
+     "at": "2026-09-29",
+     "event": "detected",
+     "by": "auditoria sistêmica do gerador de citações (PubMed esummary × ref × pubmed_url)"
+    },
+    {
+     "at": "2026-09-29",
+     "event": "status:open→confirmed",
+     "by": "editor",
+     "note": "confirmado na auditoria do gerador de citações (aprovada em 2026-09-29)"
+    }
+   ]
   },
   {
    "uid": "monaleesa-3-ribociclib-fulvestrant",
@@ -1717,6 +2413,109 @@
    ],
    "id": "INT-net_gep_20-001",
    "dedupe_key": "net_gep_20|aggregation|acron,ref,resultado_chave,takehome"
+  },
+  {
+   "uid": "net_gep_3",
+   "card": "COMPETE",
+   "issue_type": "bibliographic_mismatch",
+   "affected_fields": [
+    "ref"
+   ],
+   "description": "O ref atribui o artigo a outro primeiro autor; pelo PubMed, o mesmo artigo (mesmo periódico/volume/páginas ou mesmo título/DOI) tem Walter T como primeiro autor.",
+   "evidence": [
+    {
+     "kind": "registry_metadata",
+     "source": "PubMed esummary",
+     "identifier": "PMID 42392118",
+     "value": "Walter T · Lancet 2026;408(10551):234-247 · doi 10.1016/S0140-6736(26)00604-5"
+    },
+    {
+     "kind": "card_state",
+     "field": "ref",
+     "value": "Pavel M, et al. Lancet 2026 … doi:10.1016/S0140-6736(26)00604-5 (PMID 42392118)"
+    }
+   ],
+   "priority": "medium",
+   "detection_method": "pipeline_signal",
+   "origin": "auditoria sistêmica do gerador de citações (PubMed esummary × ref × pubmed_url)",
+   "related_ids": [],
+   "related_decisions": [],
+   "systemic_review": "citation_generator_systemic_review",
+   "dedupe_discriminator": "ref_first_author",
+   "id": "INT-net_gep_3-001",
+   "dedupe_key": "net_gep_3|bibliographic_mismatch|ref|ref_first_author",
+   "status": "confirmed",
+   "human_decision": null,
+   "resolution": null,
+   "first_detected_at": "2026-09-29",
+   "last_reviewed_at": "2026-09-29",
+   "history": [
+    {
+     "at": "2026-09-29",
+     "event": "detected",
+     "by": "auditoria sistêmica do gerador de citações (PubMed esummary × ref × pubmed_url)"
+    },
+    {
+     "at": "2026-09-29",
+     "event": "status:open→confirmed",
+     "by": "editor",
+     "note": "confirmado na auditoria do gerador de citações (aprovada em 2026-09-29)"
+    }
+   ]
+  },
+  {
+   "uid": "net_gep_4",
+   "card": "OCCLURANDOM (ESMO GI 2024)",
+   "issue_type": "publication_relationship",
+   "affected_fields": [
+    "ano_pub",
+    "pubmed_url",
+    "ref"
+   ],
+   "description": "A citação estruturada ficou bloqueada porque o ano do PMID (2026) não é corroborado pelo card: ano_pub = 2022 e o ref não cita 2026 nem identifica o artigo do PMID. Não está confirmado qual publicação sustenta os dados exibidos. Evidência insuficiente para afirmar erro.",
+   "evidence": [
+    {
+     "kind": "registry_metadata",
+     "source": "PubMed snapshot (pubmed_snapshot.json)",
+     "identifier": "PMID 42225102",
+     "value": "Baudin E · Lancet Oncol 2026;27:699-710"
+    },
+    {
+     "kind": "card_state",
+     "field": "ano_pub",
+     "value": 2022
+    },
+    {
+     "kind": "card_state",
+     "field": "ref",
+     "value": "Baudin E, et al. ESMO GI 2024; J Clin Oncol 2024;42(suppl)"
+    },
+    {
+     "kind": "pipeline_signal",
+     "value": "bibliografia.elegibilidade → ano_nao_corroborado"
+    }
+   ],
+   "priority": "low",
+   "detection_method": "pipeline_signal",
+   "origin": "camada bibliográfica — guarda ano_nao_corroborado (bibliografia.elegibilidade)",
+   "related_ids": [],
+   "related_decisions": [],
+   "systemic_review": "citation_generator_systemic_review",
+   "id": "INT-net_gep_4-001",
+   "dedupe_key": "net_gep_4|publication_relationship|ano_pub,pubmed_url,ref",
+   "status": "open",
+   "human_decision": null,
+   "resolution": null,
+   "first_detected_at": "2026-09-29",
+   "last_reviewed_at": null,
+   "history": [
+    {
+     "at": "2026-09-29",
+     "event": "detected",
+     "by": "camada bibliográfica — guarda ano_nao_corroborado (bibliografia.elegibilidade)"
+    }
+   ],
+   "evidence_status": "insufficient"
   },
   {
    "uid": "neuroblastoma_10",
@@ -2000,6 +2799,55 @@
    "dedupe_key": "novos_psma_0|aggregation|nct,primario,pubmed_url"
   },
   {
+   "uid": "novos_psma_3",
+   "card": "VIOLET",
+   "issue_type": "cross_source_conflict",
+   "affected_fields": [
+    "pubmed_url",
+    "ref"
+   ],
+   "description": "O ref cita 'Hofman MS, Lancet Oncol 2025;26:e423-e433' (paginação 'e' de outro artigo), mas o PMID é o first-in-human do VIOLET de Buteau JP (Lancet Oncol 2025;26:1009-1017).",
+   "evidence": [
+    {
+     "kind": "registry_metadata",
+     "source": "PubMed esummary",
+     "identifier": "PMID 40617237",
+     "value": "Buteau JP · Lancet Oncol 2025;26(8):1009-1017 · \"(VIOLET): a single-centre, single-arm, phase 1/2 study\""
+    },
+    {
+     "kind": "card_state",
+     "field": "ref",
+     "value": "Hofman MS, et al. Lancet Oncol 2025;26:e423-e433"
+    }
+   ],
+   "priority": "medium",
+   "detection_method": "pipeline_signal",
+   "origin": "auditoria sistêmica do gerador de citações (PubMed esummary × ref × pubmed_url)",
+   "related_ids": [],
+   "related_decisions": [],
+   "systemic_review": "citation_generator_systemic_review",
+   "id": "INT-novos_psma_3-001",
+   "dedupe_key": "novos_psma_3|cross_source_conflict|pubmed_url,ref",
+   "status": "confirmed",
+   "human_decision": null,
+   "resolution": null,
+   "first_detected_at": "2026-09-29",
+   "last_reviewed_at": "2026-09-29",
+   "history": [
+    {
+     "at": "2026-09-29",
+     "event": "detected",
+     "by": "auditoria sistêmica do gerador de citações (PubMed esummary × ref × pubmed_url)"
+    },
+    {
+     "at": "2026-09-29",
+     "event": "status:open→confirmed",
+     "by": "editor",
+     "note": "confirmado na auditoria do gerador de citações (aprovada em 2026-09-29)"
+    }
+   ]
+  },
+  {
    "uid": "ovario_1",
    "card": "PAOLA-1 / ENGOT-ov25 (2019/2023)",
    "issue_type": "statistical_interpretation",
@@ -2034,6 +2882,104 @@
    ],
    "id": "INT-ovario_1-001",
    "dedupe_key": "ovario_1|statistical_interpretation|ref,resultado_chave,secundario"
+  },
+  {
+   "uid": "ovario_8",
+   "card": "DUO-O (2023/2024)",
+   "issue_type": "publication_relationship",
+   "affected_fields": [
+    "ano_pub",
+    "pubmed_url",
+    "ref"
+   ],
+   "description": "A citação estruturada ficou bloqueada porque o ano do PMID (2026) não é corroborado pelo card: ano_pub = 2024 e o ref não cita 2026 nem identifica o artigo do PMID. Não está confirmado qual publicação sustenta os dados exibidos. Evidência insuficiente para afirmar erro.",
+   "evidence": [
+    {
+     "kind": "registry_metadata",
+     "source": "PubMed snapshot (pubmed_snapshot.json)",
+     "identifier": "PMID 41380962",
+     "value": "Harter P · Ann Oncol 2026;37:503-520"
+    },
+    {
+     "kind": "card_state",
+     "field": "ano_pub",
+     "value": 2024
+    },
+    {
+     "kind": "card_state",
+     "field": "ref",
+     "value": "Harter P et al. ASCO 2023 / ESMO 2023 LBA / Lancet 2024."
+    },
+    {
+     "kind": "pipeline_signal",
+     "value": "bibliografia.elegibilidade → ano_nao_corroborado"
+    }
+   ],
+   "priority": "low",
+   "detection_method": "pipeline_signal",
+   "origin": "camada bibliográfica — guarda ano_nao_corroborado (bibliografia.elegibilidade)",
+   "related_ids": [],
+   "related_decisions": [],
+   "systemic_review": "citation_generator_systemic_review",
+   "id": "INT-ovario_8-001",
+   "dedupe_key": "ovario_8|publication_relationship|ano_pub,pubmed_url,ref",
+   "status": "open",
+   "human_decision": null,
+   "resolution": null,
+   "first_detected_at": "2026-09-29",
+   "last_reviewed_at": null,
+   "history": [
+    {
+     "at": "2026-09-29",
+     "event": "detected",
+     "by": "camada bibliográfica — guarda ano_nao_corroborado (bibliografia.elegibilidade)"
+    }
+   ],
+   "evidence_status": "insufficient"
+  },
+  {
+   "uid": "ppgl_0",
+   "card": "PRRT em PHEO/PGL",
+   "issue_type": "bibliographic_mismatch",
+   "affected_fields": [
+    "ref"
+   ],
+   "description": "PROVÁVEL, a confirmar: o ref atribui o artigo do J Clin Oncol 2025 a Pryma DA; o PMID do mesmo periódico/ano tem Lin FI como primeiro autor. O ref não traz volume/páginas.",
+   "evidence": [
+    {
+     "kind": "registry_metadata",
+     "source": "PubMed esummary",
+     "identifier": "PMID 40829092",
+     "value": "Lin FI · J Clin Oncol 2025;43(28):3102-3112 · \"Phase II Study of (177)Lu-DOTATATE for … Pheochromocytomas and Paragangliomas\""
+    },
+    {
+     "kind": "card_state",
+     "field": "ref",
+     "value": "Pryma DA, et al. JCO 2025; J Nucl Med 2026; Vyakaranam AR et al. 2019"
+    }
+   ],
+   "priority": "low",
+   "detection_method": "pipeline_signal",
+   "origin": "auditoria sistêmica do gerador de citações (PubMed esummary × ref × pubmed_url)",
+   "related_ids": [],
+   "related_decisions": [],
+   "systemic_review": "citation_generator_systemic_review",
+   "dedupe_discriminator": "ref_first_author",
+   "id": "INT-ppgl_0-001",
+   "dedupe_key": "ppgl_0|bibliographic_mismatch|ref|ref_first_author",
+   "status": "open",
+   "human_decision": null,
+   "resolution": null,
+   "first_detected_at": "2026-09-29",
+   "last_reviewed_at": null,
+   "history": [
+    {
+     "at": "2026-09-29",
+     "event": "detected",
+     "by": "auditoria sistêmica do gerador de citações (PubMed esummary × ref × pubmed_url)"
+    }
+   ],
+   "evidence_status": "insufficient"
   },
   {
    "uid": "prostata_contexto_17",
@@ -2343,6 +3289,50 @@
    ],
    "id": "INT-prostata_contexto_20-007",
    "dedupe_key": "prostata_contexto_20|bibliographic_mismatch|secundario"
+  },
+  {
+   "uid": "ra223_prostata_2",
+   "card": "PEACE-3",
+   "issue_type": "bibliographic_mismatch",
+   "affected_fields": [
+    "ref"
+   ],
+   "description": "PROVÁVEL, a confirmar: o ref atribui o artigo do Ann Oncol 2025 a Gillessen S; o PMID do mesmo periódico/ano (PEACE-3) tem Tombal B como primeiro autor. O ref não traz volume/páginas, então não dá para afirmar que é o mesmo artigo.",
+   "evidence": [
+    {
+     "kind": "registry_metadata",
+     "source": "PubMed esummary",
+     "identifier": "PMID 40450503",
+     "value": "Tombal B · Ann Oncol 2025;36(9):1058-1067 · \"…results of the EORTC 1333/PEACE-3…\""
+    },
+    {
+     "kind": "card_state",
+     "field": "ref",
+     "value": "Gillessen S, et al. Ann Oncol 2025; JCO 2026 (final OS); Annals Oncol article PIIS0923-7534(25)00203-0"
+    }
+   ],
+   "priority": "low",
+   "detection_method": "pipeline_signal",
+   "origin": "auditoria sistêmica do gerador de citações (PubMed esummary × ref × pubmed_url)",
+   "related_ids": [],
+   "related_decisions": [],
+   "systemic_review": "citation_generator_systemic_review",
+   "dedupe_discriminator": "ref_first_author",
+   "id": "INT-ra223_prostata_2-001",
+   "dedupe_key": "ra223_prostata_2|bibliographic_mismatch|ref|ref_first_author",
+   "status": "open",
+   "human_decision": null,
+   "resolution": null,
+   "first_detected_at": "2026-09-29",
+   "last_reviewed_at": null,
+   "history": [
+    {
+     "at": "2026-09-29",
+     "event": "detected",
+     "by": "auditoria sistêmica do gerador de citações (PubMed esummary × ref × pubmed_url)"
+    }
+   ],
+   "evidence_status": "insufficient"
   },
   {
    "uid": "ra223_prostata_4",
@@ -3149,6 +4139,55 @@
    "related_systemic_review": "citation_generator_systemic_review"
   },
   {
+   "uid": "rt_consolidacao_4",
+   "card": "ADRIATIC",
+   "issue_type": "bibliographic_mismatch",
+   "affected_fields": [
+    "ref"
+   ],
+   "description": "O ref atribui o artigo a outro primeiro autor; pelo PubMed, o mesmo artigo (mesmo periódico/volume/páginas ou mesmo título/DOI) tem Cheng Y como primeiro autor.",
+   "evidence": [
+    {
+     "kind": "registry_metadata",
+     "source": "PubMed esummary",
+     "identifier": "PMID 39268857",
+     "value": "Cheng Y · N Engl J Med 2024;391(14):1313-1327"
+    },
+    {
+     "kind": "card_state",
+     "field": "ref",
+     "value": "Spigel DR, et al. NEJM 2024;391:1313-1327."
+    }
+   ],
+   "priority": "medium",
+   "detection_method": "pipeline_signal",
+   "origin": "auditoria sistêmica do gerador de citações (PubMed esummary × ref × pubmed_url)",
+   "related_ids": [],
+   "related_decisions": [],
+   "systemic_review": "citation_generator_systemic_review",
+   "dedupe_discriminator": "ref_first_author",
+   "id": "INT-rt_consolidacao_4-001",
+   "dedupe_key": "rt_consolidacao_4|bibliographic_mismatch|ref|ref_first_author",
+   "status": "confirmed",
+   "human_decision": null,
+   "resolution": null,
+   "first_detected_at": "2026-09-29",
+   "last_reviewed_at": "2026-09-29",
+   "history": [
+    {
+     "at": "2026-09-29",
+     "event": "detected",
+     "by": "auditoria sistêmica do gerador de citações (PubMed esummary × ref × pubmed_url)"
+    },
+    {
+     "at": "2026-09-29",
+     "event": "status:open→confirmed",
+     "by": "editor",
+     "note": "confirmado na auditoria do gerador de citações (aprovada em 2026-09-29)"
+    }
+   ]
+  },
+  {
    "uid": "rt_prostata_local_1",
    "card": "HYPO-RT-PC (2019)",
    "issue_type": "statistical_interpretation",
@@ -3251,6 +4290,54 @@
    ],
    "id": "INT-rt_prostata_local_1-003",
    "dedupe_key": "rt_prostata_local_1|numeric_mismatch|cumul"
+  },
+  {
+   "uid": "rt_prostata_local_3",
+   "card": "CHHiP",
+   "issue_type": "identifier_mismatch",
+   "affected_fields": [
+    "pubmed_url"
+   ],
+   "description": "O PMID do card (27339116) é o artigo final do HYPRO (Incrocci L, Lancet Oncol 2016;17:1061-1069), outro ensaio; o ref cita o CHHiP (Dearnaley D, Lancet Oncol 2016;17:1047-1060).",
+   "evidence": [
+    {
+     "kind": "registry_metadata",
+     "source": "PubMed esummary",
+     "identifier": "PMID 27339116",
+     "value": "Incrocci L · Lancet Oncol 2016;17(8):1061-1069 · \"…localised prostate cancer (HYPRO): final efficacy results…\""
+    },
+    {
+     "kind": "card_state",
+     "field": "ref",
+     "value": "Dearnaley D, et al. Lancet Oncol 2016;17:1047-1060."
+    }
+   ],
+   "priority": "high",
+   "detection_method": "pipeline_signal",
+   "origin": "auditoria sistêmica do gerador de citações (PubMed esummary × ref × pubmed_url)",
+   "related_ids": [],
+   "related_decisions": [],
+   "systemic_review": "citation_generator_systemic_review",
+   "id": "INT-rt_prostata_local_3-001",
+   "dedupe_key": "rt_prostata_local_3|identifier_mismatch|pubmed_url",
+   "status": "confirmed",
+   "human_decision": null,
+   "resolution": null,
+   "first_detected_at": "2026-09-29",
+   "last_reviewed_at": "2026-09-29",
+   "history": [
+    {
+     "at": "2026-09-29",
+     "event": "detected",
+     "by": "auditoria sistêmica do gerador de citações (PubMed esummary × ref × pubmed_url)"
+    },
+    {
+     "at": "2026-09-29",
+     "event": "status:open→confirmed",
+     "by": "editor",
+     "note": "confirmado na auditoria do gerador de citações (aprovada em 2026-09-29)"
+    }
+   ]
   },
   {
    "uid": "rt_sbrt_oligo_5",
@@ -3700,6 +4787,55 @@
    ],
    "id": "INT-tropion-lung01-dato-dxd-vs-docetaxel-nsclc-002",
    "dedupe_key": "tropion-lung01-dato-dxd-vs-docetaxel-nsclc|safety_misattribution|tox_interesse"
+  },
+  {
+   "uid": "urotelial_periop_nmibc_7",
+   "card": "QUILT-3.032",
+   "issue_type": "publication_relationship",
+   "affected_fields": [
+    "pubmed_url",
+    "ref"
+   ],
+   "description": "O ref cita NEJM Evid 2023 (Chamie K) e o PMID é J Urol 2026 (Chang SS), sobre a coorte papilar; ano_pub = 2023. Pode ser outra coorte do mesmo ensaio; publicação representada indefinida.",
+   "evidence": [
+    {
+     "kind": "registry_metadata",
+     "source": "PubMed esummary",
+     "identifier": "PMID 40956664",
+     "value": "Chang SS · J Urol 2026;215(1):44-56 (coorte papilar)"
+    },
+    {
+     "kind": "card_state",
+     "field": "ref",
+     "value": "Chamie K et al. NEJM Evid 2023;2:EVIDoa2200167."
+    }
+   ],
+   "priority": "medium",
+   "detection_method": "pipeline_signal",
+   "origin": "auditoria sistêmica do gerador de citações (PubMed esummary × ref × pubmed_url)",
+   "related_ids": [],
+   "related_decisions": [],
+   "systemic_review": "citation_generator_systemic_review",
+   "id": "INT-urotelial_periop_nmibc_7-001",
+   "dedupe_key": "urotelial_periop_nmibc_7|publication_relationship|pubmed_url,ref",
+   "status": "confirmed",
+   "human_decision": null,
+   "resolution": null,
+   "first_detected_at": "2026-09-29",
+   "last_reviewed_at": "2026-09-29",
+   "history": [
+    {
+     "at": "2026-09-29",
+     "event": "detected",
+     "by": "auditoria sistêmica do gerador de citações (PubMed esummary × ref × pubmed_url)"
+    },
+    {
+     "at": "2026-09-29",
+     "event": "status:open→confirmed",
+     "by": "editor",
+     "note": "confirmado na auditoria do gerador de citações (aprovada em 2026-09-29)"
+    }
+   ]
   }
  ]
 }

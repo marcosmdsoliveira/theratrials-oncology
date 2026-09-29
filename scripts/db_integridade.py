@@ -58,6 +58,7 @@ ISSUE_TYPES = [
     "aggregation",                  # card que agrega várias fontes
     "source_internal_inconsistency",  # erro/incoerência dentro da PRÓPRIA fonte (não do card)
     "cross_source_conflict",        # publicação × registro × outra publicação
+    "publication_relationship",     # não está claro qual publicação o card representa (primária × update × final × coorte)
     "markup_or_format",
 ]
 
