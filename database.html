@@ -1200,6 +1200,7 @@
 <script src="assets/js/data.js?v=12"></script>
 <script src="assets/js/secondary-cards.js?v=2"></script>
 <script src="assets/js/common.js?v=11"></script>
+<script src="assets/js/citation.js?v=1"></script>
 <script src="assets/js/glossario.js?v=5"></script>
 <script src="assets/js/i18n.js"></script>
 <script>
@@ -1537,44 +1538,11 @@ function databaseApp() {
       }, 600);
     },
 
-    // Extrai sobrenome do PI a partir do campo sponsor (ex.: "MSD | PI: Reck" → "RECK")
-    _extractPI(sponsor) {
-      const m = (sponsor || '').match(/PI:\s*([^|,;]+)/i);
-      if (!m) return '';
-      const name = m[1].trim().split(/\s+/).pop();  // último token
-      return name.replace(/[^A-Za-zÀ-ú]/g, '');
-    },
-
+    // Citação do card: vem de `citation` (publicação representada, metadados PubMed) via assets/js/citation.js.
+    // Sem `citation`, o `ref` vai literal; sem publicação, a referência do registro. O PI do `sponsor` não é autor.
     formatCitation(s, fmt) {
       if (!s) return '';
-      const ref = s.ref || '';
-      const estudo = TheraTrials.studyTitle(s.estudo);
-      const acron = s.acron || estudo;
-      const ano = s.ano_pub || '';
-      const nctMatch = (s.nct || '').match(/NCT\d{8,}/);
-      const nctId = nctMatch ? nctMatch[0] : '';
-      const pi = this._extractPI(s.sponsor);
-      const url = s.pubmed_url || s.nct_url || ref || '';
-
-      if (fmt === 'plain') {
-        return estudo + ' (' + ano + '). ' + acron + '.\nReferência: ' + ref + (nctId ? '\nClinicalTrials.gov: ' + nctId : '');
-      }
-      if (fmt === 'vancouver') {
-        // Estilo Vancouver: Autor et al. Título do estudo. Acrônimo. Ano. Disponível em: URL.
-        const author = pi ? pi + ' et al.' : 'Investigadores do estudo.';
-        return author + ' ' + acron + '. ' + ano + '.' + (url ? ' Disponível em: ' + url : '') + (nctId ? ' [' + nctId + '].' : '');
-      }
-      if (fmt === 'ama') {
-        // AMA: Autor, et al. Título. Acrônimo. Year. Accessed on URL.
-        const author = pi ? pi + ' et al.' : 'Investigadores.';
-        return author + ' ' + acron + '. ' + ano + '. ' + (url ? 'Disponível em: ' + url + '.' : '') + (nctId ? ' Identificador ClinicalTrials.gov: ' + nctId + '.' : '');
-      }
-      if (fmt === 'abnt') {
-        // ABNT NBR 6023:2018 — referência completa
-        const author = pi ? pi.toUpperCase() + ', ' + (pi.charAt(0)) + '. et al.' : 'INVESTIGADORES DO ESTUDO.';
-        return author + ' ' + acron + '. ' + ano + '. Disponível em: ' + url + '.' + (nctId ? ' Identificador: ' + nctId + '.' : '') + ' Acesso em: ' + new Date().toLocaleDateString('pt-BR') + '.';
-      }
-      return ref;
+      return (window.TheraTrials && TheraTrials.citation) ? TheraTrials.citation.format(s, fmt) : (s.ref || '');
     },
 
     // ============== FEEDBACK / SUGESTÕES ==============

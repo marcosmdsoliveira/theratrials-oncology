@@ -48,6 +48,7 @@ const CORE_ASSETS = [
   './assets/js/data.js',
   './assets/js/secondary-cards.js',
   './assets/js/common.js',
+  './assets/js/citation.js',
   './assets/js/trials_br.js',
   './assets/js/guidelines-data.js',
   './assets/js/cross-links.js',
