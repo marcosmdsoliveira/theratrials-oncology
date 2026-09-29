@@ -2,6 +2,7 @@
 
     python3 scripts/db_v2/agents/run_agents.py curator <uid> [<uid> ...] [--paralelo 4]
     python3 scripts/db_v2/agents/run_agents.py verifier <uid> [<uid> ...] [--paralelo 4]
+    python3 scripts/db_v2/agents/run_agents.py verifier_b <uid> ...   # 2ª verificação independente dos itens P0
 
 Cada execução roda o Claude Code em modo não interativo A PARTIR DO REPOSITÓRIO, com `--agent database-<papel>`, para
 que a definição versionada (inclusive `tools: Read, Grep, Glob`) seja a que vale. A execução é auditada pelo
@@ -25,11 +26,12 @@ import sys
 AQUI = pathlib.Path(__file__).resolve().parent
 SITE = AQUI.parents[2]
 try:
-    from . import curator as C, sources as S, verifier as V
+    from . import curator as C, decision_packet as D, sources as S, verifier as V
 except ImportError:
     import curator as C
     import sources as S
     import verifier as V
+    import decision_packet as D
 
 PERMITIDAS = {"Read", "Grep", "Glob"}
 PROIBIDAS_CLI = "Bash,Edit,Write,MultiEdit,NotebookEdit,WebFetch,WebSearch,Agent,Task,Skill,TodoWrite"
@@ -56,8 +58,12 @@ def _prompt(papel: str, uid: str) -> tuple[str, list[pathlib.Path]]:
     schemas = AQUI / "schemas"
     if papel == "curator":
         return (C.tarefa(uid) + "\nLeia só o pacote e o schema acima. Responda APENAS com o JSON.", [pacote, schemas])
-    V.entrada(uid)
-    tarefa = S.STATE / "tasks" / f"{uid}.verifier_input.json"
+    if papel == "verifier_b":                       # segunda verificação independente, só dos itens P0
+        V.entrada(uid, so_ids=D.candidatos_p0(uid), sufixo="_b")
+        tarefa = S.STATE / "tasks" / f"{uid}.verifier_input_b.json"
+    else:
+        V.entrada(uid)
+        tarefa = S.STATE / "tasks" / f"{uid}.verifier_input.json"
     sha = json.loads(tarefa.read_text())["proposal_sha256"]
     return (f"Entrada: {tarefa}\nSchema de saída: {schemas / 'verification.schema.json'}\nuid: {uid} · "
             f"proposal_sha256: {sha}\nAvalie TODOS os itens e a relação. Leia só a entrada, o pacote do card e o "
@@ -72,11 +78,12 @@ def executar(papel: str, uid: str) -> dict:
     prompt, permitidos = _prompt(papel, uid)
     RUNS.mkdir(parents=True, exist_ok=True)
     RAW.mkdir(parents=True, exist_ok=True)
-    cmd = [binario(), "-p", prompt, "--agent", f"database-{papel}", "--output-format", "stream-json", "--verbose",
+    agente = "database-verifier" if papel == "verifier_b" else f"database-{papel}"   # mesma definição, contexto novo
+    cmd = [binario(), "-p", prompt, "--agent", agente, "--output-format", "stream-json", "--verbose",
            "--disallowedTools", PROIBIDAS_CLI]
     proc = subprocess.run(cmd, cwd=SITE, capture_output=True, text=True, timeout=1800)
     (RUNS / f"{uid}.{papel}.jsonl").write_text(proc.stdout, encoding="utf-8")
-    audit = {"uid": uid, "papel": papel, "agent": f"database-{papel}", "cwd": str(SITE), "tools_init": None,
+    audit = {"uid": uid, "papel": papel, "agent": agente, "cwd": str(SITE), "tools_init": None,
              "tools_usadas": [], "caminhos": [], "violacoes": [], "resultado": None, "custo_usd": None}
     final = None
     for linha in proc.stdout.splitlines():
@@ -122,7 +129,12 @@ def main(argv=None) -> int:
         par = int(a[i + 1])
         del a[i:i + 2]
     papel, uids = a[0], a[1:]
-    assert papel in ("curator", "verifier"), papel
+    assert papel in ("curator", "verifier", "verifier_b"), papel
+    if papel == "verifier_b":                        # só cards com item P0; os demais não têm o que reverificar
+        sem = [u for u in uids if not D.candidatos_p0(u)]
+        for u in sem:
+            print(f"SKIP verifier_b {u[:44]:44s} sem item P0")
+        uids = [u for u in uids if u not in sem]
     falhas = 0
     with cf.ThreadPoolExecutor(max_workers=par) as ex:
         futs = {ex.submit(executar, papel, u): u for u in uids}

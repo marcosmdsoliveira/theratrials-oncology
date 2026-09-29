@@ -2,6 +2,7 @@
 
     python3 scripts/db_v2/agents/verifier.py entrada <uid>             # grava state/tasks/<uid>.verifier_input.json
     python3 scripts/db_v2/agents/verifier.py ingerir <uid> <arquivo>   # valida e grava state/verifier/<uid>.json
+    python3 scripts/db_v2/agents/verifier.py ingerir_b <uid> <arquivo> # 2ª execução (itens P0): grava o consenso
 
 Independência: o verifier recebe só os campos estruturados de cada item (agent_types.VERIFIER_VISIBLE) — nunca
 `reason`, `confidence`, `editorial_impact`, resumo, notas ou a pré-checagem do curator. As checagens determinísticas
@@ -47,8 +48,9 @@ def sha_proposta(prop: dict) -> str:
     return hashlib.sha256(json.dumps(limpa, ensure_ascii=False, sort_keys=True).encode()).hexdigest()
 
 
-def entrada(uid: str) -> dict:
-    """O que o verifier vê: itens estruturados + assinaturas + alegação de relação. Nada do raciocínio do curator."""
+def entrada(uid: str, so_ids: list[str] | None = None, sufixo: str = "") -> dict:
+    """O que o verifier vê: itens estruturados + assinaturas + alegação de relação. Nada do raciocínio do curator.
+    so_ids/sufixo: entrada da SEGUNDA execução (só itens P0), num arquivo próprio que não cita a primeira."""
     prop = proposta(uid)
     rp = prop.get("represented_publication") or {}
     vis = {
@@ -59,11 +61,37 @@ def entrada(uid: str) -> dict:
                                                                 "primary_publication_id", "basis_evidence")},
         "analysis_signatures": prop.get("analysis_signatures") or [],
         "items": [{k: it.get(k) for k in T.VERIFIER_VISIBLE if k in it} for it in prop.get("proposals") or []
-                  if it.get("origin") != "deterministic"],     # itens determinísticos não vão ao LLM
-    }
+                  if it.get("origin") != "deterministic" and (so_ids is None or it["proposal_id"] in so_ids)],
+    }                                                           # itens determinísticos não vão ao LLM
     TAREFAS.mkdir(parents=True, exist_ok=True)
-    (TAREFAS / f"{uid}.verifier_input.json").write_text(json.dumps(vis, ensure_ascii=False, indent=1), encoding="utf-8")
+    (TAREFAS / f"{uid}.verifier_input{sufixo}.json").write_text(json.dumps(vis, ensure_ascii=False, indent=1),
+                                                                 encoding="utf-8")
     return vis
+
+
+def consenso(va: str, vb: str | None) -> str:
+    if vb is None:
+        return "SINGLE_RUN"
+    return f"UNANIMOUS_{va}" if va == vb else "DISAGREEMENT"
+
+
+def ingerir_segundo(uid: str, texto: str, ids: list[str]) -> dict:
+    """Funde a SEGUNDA execução (independente) só para os itens P0 e grava o consenso ao lado da primeira.
+    A primeira fusão não é alterada: a divergência é registrada, nunca resolvida por máquina."""
+    prop = proposta(uid)
+    atual = json.loads((VERIF / f"{uid}.json").read_text(encoding="utf-8"))
+    llm = C.extrair_json(texto) if texto else None
+    b = fundir(prop, llm, deterministico(uid), C.fontes_do_pacote(C.pacote(uid)))
+    ra = {r["proposal_id"]: r for r in atual["results"]}
+    rb = {r["proposal_id"]: r for r in b["results"] if r["proposal_id"] in ids}
+    resumo = lambda r: {k: (r.get(k) if k != "reason" else (r.get("semantic") or {}).get("reason"))  # noqa: E731
+                        for k in ("verdict", "current_value_status", "support", "reason")}
+    atual["consensus"] = {pid: {"state": consenso(ra[pid]["verdict"], (rb.get(pid) or {}).get("verdict")),
+                                "run_a": resumo(ra[pid]), "run_b": resumo(rb[pid]) if pid in rb else None}
+                          for pid in ids if pid in ra}
+    atual["_ingestao"]["avisos_run_b"] = b["_ingestao"]["avisos"]
+    (VERIF / f"{uid}.json").write_text(json.dumps(atual, ensure_ascii=False, indent=1), encoding="utf-8")
+    return atual
 
 
 def deterministico(uid: str) -> dict[str, list[dict]]:
@@ -136,6 +164,11 @@ def main(argv=None) -> int:
         o = ingerir(a[1], pathlib.Path(a[2]).read_text(encoding="utf-8"))
         print(json.dumps({"uid": a[1], "vereditos": [r["verdict"] for r in o["results"]],
                           "avisos": o["_ingestao"]["avisos"]}, ensure_ascii=False))
+    elif a[:1] == ["ingerir_b"]:                 # 2ª execução: ids = itens da entrada _b
+        ids = [it["proposal_id"] for it in json.loads((TAREFAS / f"{a[1]}.verifier_input_b.json").read_text())["items"]]
+        o = ingerir_segundo(a[1], pathlib.Path(a[2]).read_text(encoding="utf-8"), ids)
+        print(json.dumps({"uid": a[1], "consenso": {k: v["state"] for k, v in o["consensus"].items()}},
+                         ensure_ascii=False))
     else:
         print(__doc__)
         return 2

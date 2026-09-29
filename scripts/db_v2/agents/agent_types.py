@@ -186,6 +186,10 @@ VERIFICATION_SCHEMA = {
     "required": ["schema", "uid", "proposal_sha256", "results"],
 }
 
+# consenso do verifier duplo (só itens P0): dois contextos independentes, mesmo pacote, mesmas ferramentas
+CONSENSUS_STATES = ["UNANIMOUS_PASS", "UNANIMOUS_FAIL", "UNANIMOUS_UNSUPPORTED", "UNANIMOUS_CONFLICT", "DISAGREEMENT",
+                    "SINGLE_RUN"]          # SINGLE_RUN = segunda execução ainda não feita: também bloqueia aprovação
+
 DECISION_PACKET_SCHEMA = {
     "$id": f"theratrials-db-decision-packet/{VERSAO}",
     "type": "object",
@@ -199,12 +203,15 @@ DECISION_PACKET_SCHEMA = {
         "verifier_summary": {"type": "object"},
         "domain_confidence": {"type": "object", "properties": {k: _enum(v) for k, v in DOMAINS.items()},
                               "required": list(DOMAINS)},
-        "suggested_decision": _enum(["APPROVE", "REJECT", "DEFER", "NONE"]), "suggested_reason": STR,
+        "suggested_decision": _enum(["APPROVE", "REJECT", "DEFER", "WATCH", "NONE"]), "suggested_reason": STR,
         "human_required": {"type": "boolean"}, "counts_toward_weekly_budget": {"type": "boolean"},
+        "verifier_consensus": {"type": "object", "additionalProperties": _enum(CONSENSUS_STATES)},
+        "auto_approval_blocked": {"type": "boolean"},
         "final_decision": {"type": "null"},          # nunca preenchido por máquina
     },
     "required": ["schema", "uid", "priority", "proposal_type", "fields", "verifier_summary", "domain_confidence",
-                 "suggested_decision", "human_required", "counts_toward_weekly_budget", "final_decision"],
+                 "suggested_decision", "human_required", "counts_toward_weekly_budget", "verifier_consensus",
+                 "auto_approval_blocked", "final_decision"],
 }
 
 

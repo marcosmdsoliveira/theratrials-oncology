@@ -115,6 +115,7 @@
     "APPROVE",
     "REJECT",
     "DEFER",
+    "WATCH",
     "NONE"
    ]
   },
@@ -125,6 +126,22 @@
    "type": "boolean"
   },
   "counts_toward_weekly_budget": {
+   "type": "boolean"
+  },
+  "verifier_consensus": {
+   "type": "object",
+   "additionalProperties": {
+    "enum": [
+     "UNANIMOUS_PASS",
+     "UNANIMOUS_FAIL",
+     "UNANIMOUS_UNSUPPORTED",
+     "UNANIMOUS_CONFLICT",
+     "DISAGREEMENT",
+     "SINGLE_RUN"
+    ]
+   }
+  },
+  "auto_approval_blocked": {
    "type": "boolean"
   },
   "final_decision": {
@@ -142,6 +159,8 @@
   "suggested_decision",
   "human_required",
   "counts_toward_weekly_budget",
+  "verifier_consensus",
+  "auto_approval_blocked",
   "final_decision"
  ]
 }

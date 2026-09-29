@@ -209,6 +209,25 @@ class Verificador(unittest.TestCase):
         self.assertEqual(p["proposals"][0]["proposed_value"], "PFS 8,3 vs 5,6 m")   # proposta intacta
 
 
+class Consenso(unittest.TestCase):
+    def test_estados(self):
+        self.assertEqual([V.consenso(a, b) for a, b in [("PASS", "PASS"), ("FAIL", "FAIL"),
+                                                          ("UNSUPPORTED", "UNSUPPORTED"), ("CONFLICT", "CONFLICT"),
+                                                          ("PASS", "CONFLICT"), ("PASS", None)]],
+                         ["UNANIMOUS_PASS", "UNANIMOUS_FAIL", "UNANIMOUS_UNSUPPORTED", "UNANIMOUS_CONFLICT",
+                          "DISAGREEMENT", "SINGLE_RUN"])
+        self.assertEqual(set(T.CONSENSUS_STATES) - {"SINGLE_RUN"},
+                         {"UNANIMOUS_PASS", "UNANIMOUS_FAIL", "UNANIMOUS_UNSUPPORTED", "UNANIMOUS_CONFLICT",
+                          "DISAGREEMENT"})
+
+    def test_segunda_execucao_nao_ve_a_primeira(self):
+        t = (AG / "run_agents.py").read_text()
+        self.assertIn('verifier_input_b.json', t)
+        self.assertNotIn("state/verifier", t)
+        vis = set(T.VERIFIER_VISIBLE)
+        self.assertFalse(vis & {"verdict", "run_a", "consensus", "semantic"})
+
+
 class OrigemImposta(unittest.TestCase):
     def test_curator_nao_pode_se_declarar_deterministico_para_escapar_do_verifier(self):
         tmp = pathlib.Path(tempfile.mkdtemp())
@@ -254,7 +273,11 @@ class PacoteDeDecisao(unittest.TestCase):
     def tearDown(self):
         S.STATE, C.CURADOR, V.VERIF, D.PACOTES, D.FILA = self._orig
 
-    def montar(self, vereditos, withheld=False, protegidos=(), prioridade="P0", cvs="CONTRADICTED", extra=None):
+    def montar(self, vereditos, withheld=False, protegidos=(), prioridade="P0", cvs="CONTRADICTED", extra=None,
+               segundo=None):
+        """segundo: lista de vereditos da 2ª execução (None = ainda não houve; "same" = igual à primeira)."""
+        if segundo == "same":
+            segundo = list(vereditos)
         pk = {"card": {"estudo": "E"}, "identity": {"status": "machine_verified"},
               "bibliographic": {"eligibility": "ok", "has_structured_citation": True},
               "publication_relationship": {"status": "undetermined"}, "withheld": withheld,
@@ -268,23 +291,58 @@ class PacoteDeDecisao(unittest.TestCase):
         (V.VERIF / "u.json").write_text(json.dumps({"results": [
             {"proposal_id": f"p{i}", "verdict": v, "current_value_status": cvs, "deterministic": {"verdict": v},
              "semantic": {"reason": "r"}}
-            for i, v in enumerate(vereditos)], "relationship": {"verdict": "PASS"}}))
+            for i, v in enumerate(vereditos)], "relationship": {"verdict": "PASS"},
+            **({"consensus": {f"p{i}": {"state": V.consenso(va, vb),
+                                        "run_a": {"verdict": va, "current_value_status": cvs},
+                                        "run_b": {"verdict": vb, "current_value_status": "UNSUPPORTED"}}
+                              for i, (va, vb) in enumerate(zip(vereditos, segundo))}} if segundo else {})}))
         return D.montar("u")
 
     def test_um_pacote_por_card_com_decisao_final_nula(self):
-        p = self.montar(["PASS", "PASS"])
+        p = self.montar(["PASS", "PASS"], segundo="same")
         self.assertEqual((p["suggested_decision"], len(p["fields"]), p["final_decision"]), ("APPROVE", 2, None))
         self.assertEqual(p["domain_confidence"]["published_write"], "human_required")
 
     def test_sugestoes(self):
         self.assertEqual(self.montar(["UNSUPPORTED", "UNSUPPORTED"])["suggested_decision"], "REJECT")
-        p = self.montar(["PASS", "FAIL"], cvs="SUPPORTED")  # FAIL sai da fila e fica registrado
+        p = self.montar(["PASS", "FAIL"], cvs="SUPPORTED", segundo="same")  # FAIL sai da fila e fica registrado
         self.assertEqual((p["suggested_decision"], len(p["dropped_fail"])), ("APPROVE", 1))
         self.assertEqual(self.montar(["PASS", "CONFLICT"])["suggested_decision"], "DEFER")
         self.assertEqual(self.montar(["PASS"], protegidos=["primario"])["suggested_decision"], "DEFER")
         p = self.montar([], withheld=True)
         self.assertEqual((p["suggested_decision"], p["human_required"],
                           p["domain_confidence"]["clinical_extraction"]), ("NONE", False, "withheld"))
+
+    def test_p0_com_dois_verifiers_concordantes(self):
+        p = self.montar(["PASS"], segundo="same")
+        f = p["fields"][0]
+        self.assertEqual((f["verifier_consensus"], f["final_priority"], f["human_review_required"]),
+                         ("UNANIMOUS_PASS", "P0", False))
+        self.assertEqual((p["suggested_decision"], p["auto_approval_blocked"]), ("APPROVE", False))
+        self.assertEqual(p["domain_confidence"]["published_write"], "human_required")
+
+    def test_p0_com_verifiers_divergentes_vira_disagreement_defer_sem_rebaixar(self):
+        for a, b in [("PASS", "FAIL"), ("PASS", "UNSUPPORTED"), ("CONFLICT", "PASS")]:
+            p = self.montar([a], segundo=[b])
+            f = p["fields"][0]
+            self.assertEqual(f["verifier_consensus"], "DISAGREEMENT", (a, b))
+            self.assertEqual(f["final_priority"], "P0", (a, b))           # prioridade clínica preservada
+            self.assertTrue(f["human_review_required"])
+            self.assertEqual((f["run_a"]["verdict"], f["run_b"]["verdict"]), (a, b))   # lado a lado
+            self.assertEqual((p["suggested_decision"], p["auto_approval_blocked"]), ("DEFER", True), (a, b))
+            self.assertTrue(p["counts_toward_weekly_budget"])
+
+    def test_p0_sem_segunda_execucao_nao_e_aprovado(self):
+        p = self.montar(["PASS"])
+        self.assertEqual((p["fields"][0]["verifier_consensus"], p["suggested_decision"], p["auto_approval_blocked"]),
+                         ("SINGLE_RUN", "DEFER", True))
+
+    def test_nenhuma_discordancia_reduz_prioridade(self):
+        # 2ª execução unânime no veredito, mas com valor atual "UNSUPPORTED" (que sozinho daria P1): fica P0
+        p = self.montar(["PASS"], segundo="same")
+        self.assertEqual((p["fields"][0]["priority_run_b"], p["fields"][0]["final_priority"]), ("P1", "P0"))
+        for a, b in [("PASS", "FAIL"), ("PASS", "UNSUPPORTED"), ("CONFLICT", "PASS")]:
+            self.assertEqual(self.montar([a], segundo=[b])["priority"], "P0")
 
     def test_backlog_sem_item_sobrevivente_e_encaminhado_e_so_watch_nao_vira_reject(self):
         pk_extra = {"backlog": [{"id": "INT-u-001", "status": "open", "affected_fields": ["primario"],
@@ -403,7 +461,9 @@ class Prioridade(unittest.TestCase):
 
     def test_conflito_so_e_p0_em_resultado_ou_na_propria_fonte(self):
         self.assertEqual(prio(veredito="CONFLICT", field="esquema", defect="cross_source_conflict"), "P1")
-        self.assertEqual(prio(veredito="CONFLICT", field="esquema", defect="within_source_conflict"), "P0")
+        self.assertEqual(prio(veredito="CONFLICT", field="esquema", defect="within_source_conflict"), "P1")
+        self.assertEqual(prio(veredito="CONFLICT", field="secundario", defect="within_source_conflict"), "P0")
+        self.assertEqual(prio(veredito="CONFLICT", field="estatistica", defect="cross_source_conflict"), "P1")
         self.assertEqual(prio(veredito="CONFLICT", field="tox_g3", defect="cross_source_conflict"), "P0")
 
     def test_defeito_de_integridade_so_e_p0_no_campo_em_que_importa(self):
@@ -412,6 +472,27 @@ class Prioridade(unittest.TestCase):
         self.assertEqual(prio(field="periodo", defect="numeric_contradiction"), "P3")
         self.assertEqual(prio(field="excl", defect="safety_misattribution"), "P1")
         self.assertEqual(prio(field="titulo_full", defect="identifier_mismatch"), "P0")
+
+    def test_parametro_de_desenho_contraditorio_e_p1(self):
+        self.assertEqual(prio(field="estatistica", defect="numeric_contradiction",
+                              current_value="poder 86% para HR 0,75", proposed_value="poder 80% para HR 0,72"), "P1")
+        self.assertEqual(prio(field="tox_interesse", defect="numeric_contradiction",
+                              current_value="reverte em 4-6 sem", proposed_value="resolução mediana 12 semanas"), "P1")
+
+    def test_resultado_clinico_material_no_braco_errado_e_p0(self):
+        self.assertEqual(prio(field="primario", defect="arm_attribution"), "P0")
+        self.assertEqual(prio(field="primario", defect="numeric_contradiction",
+                              current_value="HR 0,49", proposed_value="HR 0,41"), "P0")
+
+    def test_arredondamento_editorial_nao_e_p0(self):
+        self.assertEqual(prio(field="primario", defect="numeric_contradiction",
+                              current_value="ORR 57%; EA 2%", proposed_value="ORR 57,7%; EA 2,6%"), "P1")
+        self.assertFalse(PR.so_arredondamento("12,0 m", "12,9 m"))
+        self.assertTrue(PR.so_arredondamento("57,7%", "58%"))
+        # número trocado escondido por outro igual em outro lugar do texto NÃO é arredondamento
+        self.assertFalse(PR.so_arredondamento("anemia 6,2% vs 5%; fadiga 5%", "anemia 6% vs 7%; fadiga 1 vs 5%"))
+        self.assertEqual(prio(field="tox_g3", defect="numeric_contradiction",
+                              current_value="anemia 6,2% vs 5%", proposed_value="anemia 6% vs 7%"), "P0")
 
     def test_atualizacao_fora_de_campo_de_resultado_nao_e_p1(self):
         self.assertEqual(prio(field="centros", proposal_type="SAME_ANALYSIS_UPDATE", defect="enrichment",
@@ -514,7 +595,8 @@ class Suficiencia(unittest.TestCase):
 class ExecucaoRestrita(unittest.TestCase):
     def test_runner_usa_a_definicao_do_agente_e_proibe_shell(self):
         t = (AG / "run_agents.py").read_text()
-        self.assertIn('"--agent", f"database-{papel}"', t)
+        self.assertIn('"--agent", agente', t)
+        self.assertIn('"database-verifier" if papel == "verifier_b" else f"database-{papel}"', t)
         for proibida in ("Bash", "Edit", "Write", "WebFetch", "WebSearch", "Agent", "Task"):
             self.assertIn(proibida, RA.PROIBIDAS_CLI)
         self.assertEqual(RA.PERMITIDAS, {"Read", "Grep", "Glob"})
@@ -543,6 +625,16 @@ class ExecucaoRestrita(unittest.TestCase):
                     RA.executar("verifier", "u")
             sp.run = falso(["Read", "Grep", "Glob"], ["Read", "Grep"])
             self.assertEqual(RA.executar("verifier", "u")["violacoes"], [])
+            # a 2ª verificação usa a MESMA definição e as mesmas restrições; Bash nela também reprova
+            cmds = []
+            ok = falso(["Read", "Grep", "Glob"], ["Read"])
+            sp.run = lambda cmd, **k: (cmds.append(cmd), ok(cmd, **k))[1]
+            self.assertEqual(RA.executar("verifier_b", "u")["agent"], "database-verifier")
+            self.assertIn("--disallowedTools", cmds[0])
+            self.assertIn("Bash", cmds[0][cmds[0].index("--disallowedTools") + 1])
+            sp.run = falso(["Read", "Grep", "Glob"], ["Bash"])
+            with self.assertRaises(RA.ExecucaoInvalida):
+                RA.executar("verifier_b", "u")
         finally:
             sp.run = origem
             RA.RUNS, RA.RAW, RA._prompt, RA.binario = orig

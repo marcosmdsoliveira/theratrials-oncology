@@ -9,6 +9,7 @@ Regras da sugestão (nesta ordem):
   quarentena                              → NONE (sem pacote clínico; a quarentena é decisão humana própria)
   sem proposta                            → NONE
   só itens encaminhados, sem valor novo   → WATCH (nada a aprovar ou rejeitar)
+  item P0 sem consenso de 2 verifiers      → DEFER + auto_approval_blocked (DISAGREEMENT ou SINGLE_RUN)
   item em campo protegido por decisão humana → DEFER
   algum CONFLICT                          → DEFER (adjudicação de fontes é humana; o sistema não escolhe)
   todos PASS                              → APPROVE
@@ -65,6 +66,23 @@ def montar(uid: str) -> dict:
         if r["verdict"] == "CONFLICT" or it.get("conflict"):
             conflitos.append({"field": it["field"], "description": (it.get("conflict") or {}).get("description")
                               or (r.get("semantic") or {}).get("reason")})
+    # verifier duplo: todo item P0 do curator precisa de duas verificações independentes concordantes. Divergência
+    # (ou segunda execução ausente) é incerteza de VERIFICAÇÃO: a prioridade clínica fica (nunca desce), o item exige
+    # revisão humana e o card não pode ser aprovado automaticamente.
+    cons = (ver or {}).get("consensus") or {}
+    por_id = {it["proposal_id"]: it for it in itens}
+    for c in campos:
+        if c["final_priority"] != "P0" or c["origin"] != "curator":
+            continue
+        k = cons.get(c["proposal_id"])
+        c["verifier_consensus"] = k["state"] if k else "SINGLE_RUN"
+        c["run_a"], c["run_b"] = (k or {}).get("run_a") or {"verdict": c["verdict"]}, (k or {}).get("run_b")
+        if c["run_b"]:
+            pb, _ = PR.classificar(por_id[c["proposal_id"]], c["run_b"]["verdict"],
+                                   c["run_b"].get("current_value_status"), pk)
+            c["priority_run_b"] = pb                     # só informativo: a final é a mais grave das duas
+            c["final_priority"] = min([c["final_priority"], pb or "P0"], key=lambda x: ORDEM_P[x])
+        c["human_review_required"] = c["verifier_consensus"] in ("DISAGREEMENT", "SINGLE_RUN")
     campos_todos = campos
     campos = [c for c in campos if c["final_priority"]]             # FAIL sai da fila (log de qualidade)
     # backstop "silêncio não é resultado": item aberto/confirmado do backlog sem NENHUM item sobrevivente nos seus
@@ -101,12 +119,18 @@ def montar(uid: str) -> dict:
                                 "verifier_fail" if not contagem["PASS"] else "verifier_partial"),
         "published_write": "human_required",
     }
+    bloqueio = any(c.get("human_review_required") for c in campos)
     if pk["withheld"]:
         sug, motivo = "NONE", "card em quarentena (withheld_due_to_integrity): nenhuma proposta clínica"
     elif not campos:
         sug, motivo = "NONE", "curator não propôs mudança"
     elif all(c["proposed"] is None and not c.get("conflict") and c["verdict"] != "CONFLICT" for c in campos):
         sug, motivo = "WATCH", "nenhuma alteração proposta: só itens encaminhados para acompanhamento (backlog/regra)"
+    elif bloqueio:
+        sug, motivo = "DEFER", ("verificação P0 sem consenso: " + ", ".join(
+            f"{c['field']} ({c['verifier_consensus']}: {(c.get('run_a') or {}).get('verdict')} × "
+            f"{(c.get('run_b') or {}).get('verdict')})" for c in campos if c.get("human_review_required"))
+            + "; revisão humana obrigatória, sem aprovação automática")
     elif any(c["human_decision_protected"] for c in campos):
         sug, motivo = "DEFER", "proposta toca campo definido por decisão humana registrada; exige nova decisão"
     elif contagem["CONFLICT"]:
@@ -131,9 +155,16 @@ def montar(uid: str) -> dict:
         "verifier_summary": {v: contagem.get(v, 0) for v in T.VERDICTS},
         "domain_confidence": dominio, "suggested_decision": sug, "suggested_reason": motivo,
         "human_required": humano, "counts_toward_weekly_budget": no_orcamento,
+        "verifier_consensus": {c["proposal_id"]: c["verifier_consensus"] for c in campos if "verifier_consensus" in c},
+        "auto_approval_blocked": bloqueio,
         "final_decision": None,
         "deterministic_findings": pk["deterministic_findings"],
     }
+
+
+def candidatos_p0(uid: str) -> list[str]:
+    """Itens do curator com prioridade final P0 após a primeira verificação: vão à segunda execução."""
+    return [c["proposal_id"] for c in montar(uid)["fields"] if c["final_priority"] == "P0" and c["origin"] == "curator"]
 
 
 def todos(uids: list[str]) -> list[dict]:
