@@ -1,0 +1,3370 @@
+{
+ "schema": "theratrials-db-integridade/2",
+ "sobre": "Backlog CANÔNICO de candidatos de integridade do Database (memória editorial versionada). Não é relatório de execução: varreduras gravam em scripts/_db_* e só entram aqui por db_integridade.mesclar(). Itens nunca são apagados; resolvidos ficam como 'resolved' com commit.",
+ "status_vocab": [
+  "open",
+  "confirmed",
+  "dismissed",
+  "resolved",
+  "deferred"
+ ],
+ "issue_types": [
+  "statistical_interpretation",
+  "arm_or_comparator",
+  "design_misrepresentation",
+  "population_misrepresentation",
+  "eligibility_mismatch",
+  "endpoint_hierarchy",
+  "numeric_mismatch",
+  "safety_misattribution",
+  "unsupported_claim",
+  "bibliographic_mismatch",
+  "identifier_mismatch",
+  "category_misclassification",
+  "aggregation",
+  "source_internal_inconsistency",
+  "cross_source_conflict",
+  "markup_or_format"
+ ],
+ "priority_rule": {
+  "high": "muda a leitura do resultado primário, a identidade dos braços, a população ou uma toxicidade grave/fatal; ou identificador/agregação errados",
+  "medium": "número divergente em secundário, segurança, elegibilidade ou desenho; afirmação sem lastro que afeta a leitura clínica",
+  "low": "metadado bibliográfico, categoria, período, rótulo, formatação ou problema da própria fonte sem efeito no card"
+ },
+ "ids_retirados": [],
+ "itens": [
+  {
+   "uid": "ascent-04-keynote-d19-sg-pembro-1l-tnbc",
+   "card": "ASCENT-04 / KEYNOTE-D19 (2025)",
+   "issue_type": "bibliographic_mismatch",
+   "description": "ano_pub 2025 × NEJM 2026",
+   "affected_fields": [
+    "ano_pub"
+   ],
+   "evidence": [
+    {
+     "kind": "card_internal",
+     "note": "contradição entre campos do próprio card v1"
+    }
+   ],
+   "priority": "low",
+   "detection_method": "card_internal_contradiction",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "teste de schema v2 (35 cards) — leitura do card",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "teste de schema v2 (35 cards) — leitura do card"
+    }
+   ],
+   "id": "INT-ascent-04-keynote-d19-sg-pembro-1l-tnbc-001",
+   "dedupe_key": "ascent-04-keynote-d19-sg-pembro-1l-tnbc|bibliographic_mismatch|ano_pub"
+  },
+  {
+   "uid": "cervix_0",
+   "card": "KEYNOTE-A18 (2023/2024)",
+   "issue_type": "population_misrepresentation",
+   "description": "população IB2-IVA sem condição de linfonodo; CIRCCa citado como referência de QRT isolada",
+   "affected_fields": [
+    "indicacao",
+    "incl",
+    "limit"
+   ],
+   "evidence": [
+    {
+     "kind": "reviewer_prior_knowledge",
+     "note": "conhecimento prévio do revisor — NÃO é evidência; exige conferência na fonte"
+    }
+   ],
+   "priority": "medium",
+   "detection_method": "reviewer_prior_knowledge",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "teste de schema v2 (35 cards) — conhecimento prévio do revisor",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "teste de schema v2 (35 cards) — conhecimento prévio do revisor"
+    }
+   ],
+   "id": "INT-cervix_0-001",
+   "dedupe_key": "cervix_0|population_misrepresentation|incl,indicacao,limit"
+  },
+  {
+   "uid": "cervix_3",
+   "card": "InnovaTV-301 (2024)",
+   "issue_type": "safety_misattribution",
+   "description": "toxicidade ocular atribuída a 'MMAE — neuropatia óptica' (é doença de superfície ocular)",
+   "affected_fields": [
+    "excl",
+    "tox_interesse"
+   ],
+   "evidence": [
+    {
+     "kind": "reviewer_prior_knowledge",
+     "note": "conhecimento prévio do revisor — NÃO é evidência; exige conferência na fonte"
+    }
+   ],
+   "priority": "medium",
+   "detection_method": "reviewer_prior_knowledge",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "teste de schema v2 (35 cards) — conhecimento prévio do revisor",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "teste de schema v2 (35 cards) — conhecimento prévio do revisor"
+    }
+   ],
+   "id": "INT-cervix_3-001",
+   "dedupe_key": "cervix_3|safety_misattribution|excl,tox_interesse"
+  },
+  {
+   "uid": "cervix_3",
+   "card": "InnovaTV-301 (2024)",
+   "issue_type": "population_misrepresentation",
+   "description": "linha prévia conflita entre indicação, inclusão, título e linha",
+   "affected_fields": [
+    "indicacao",
+    "incl",
+    "linha",
+    "acron"
+   ],
+   "evidence": [
+    {
+     "kind": "card_internal",
+     "note": "contradição entre campos do próprio card v1"
+    }
+   ],
+   "priority": "medium",
+   "detection_method": "card_internal_contradiction",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "teste de schema v2 (35 cards) — leitura do card",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "teste de schema v2 (35 cards) — leitura do card"
+    }
+   ],
+   "id": "INT-cervix_3-002",
+   "dedupe_key": "cervix_3|population_misrepresentation|acron,incl,indicacao,linha"
+  },
+  {
+   "uid": "dellphi-304-tarlatamab-vs-qt-2l-sclc",
+   "card": "DeLLphi-304 (2025)",
+   "issue_type": "safety_misattribution",
+   "description": "ICANS ~47% parece somar ICANS a qualquer evento neurológico; HR de PFS escrito '~0,71-0,72'",
+   "affected_fields": [
+    "tox_g3",
+    "primario"
+   ],
+   "evidence": [
+    {
+     "kind": "reviewer_prior_knowledge",
+     "note": "conhecimento prévio do revisor — NÃO é evidência; exige conferência na fonte"
+    }
+   ],
+   "priority": "medium",
+   "detection_method": "reviewer_prior_knowledge",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "teste de schema v2 (35 cards) — conhecimento prévio do revisor",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "teste de schema v2 (35 cards) — conhecimento prévio do revisor"
+    }
+   ],
+   "id": "INT-dellphi-304-tarlatamab-vs-qt-2l-sclc-001",
+   "dedupe_key": "dellphi-304-tarlatamab-vs-qt-2l-sclc|safety_misattribution|primario,tox_g3"
+  },
+  {
+   "uid": "destiny-breast06-t-dxd-em-her2-low-ultralow-p-s-et",
+   "card": "DESTINY-Breast06 (2024)",
+   "issue_type": "category_misclassification",
+   "description": "categoria 'Mama · HER2+' para HER2-low/ultralow; regulatório parado em 'submissão FDA 2024'",
+   "affected_fields": [
+    "category_id",
+    "impacto_reg"
+   ],
+   "evidence": [
+    {
+     "kind": "card_internal",
+     "note": "contradição entre campos do próprio card v1"
+    }
+   ],
+   "priority": "medium",
+   "detection_method": "card_internal_contradiction",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "teste de schema v2 (35 cards) — leitura do card",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "teste de schema v2 (35 cards) — leitura do card"
+    }
+   ],
+   "id": "INT-destiny-breast06-t-dxd-em-her2-low-ultralow-p-s-et-001",
+   "dedupe_key": "destiny-breast06-t-dxd-em-her2-low-ultralow-p-s-et|category_misclassification|category_id,impacto_reg"
+  },
+  {
+   "uid": "endometrio_6",
+   "card": "KEYNOTE-158 endométrio (2020/2022)",
+   "issue_type": "unsupported_claim",
+   "description": "'FDA Mar/2022 tumor-agnóstico' parece fundir aprovação agnóstica MSI-H com a específica de endométrio",
+   "affected_fields": [
+    "impacto_reg"
+   ],
+   "evidence": [
+    {
+     "kind": "reviewer_prior_knowledge",
+     "note": "conhecimento prévio do revisor — NÃO é evidência; exige conferência na fonte"
+    }
+   ],
+   "priority": "medium",
+   "detection_method": "reviewer_prior_knowledge",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "teste de schema v2 (35 cards) — conhecimento prévio do revisor",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "teste de schema v2 (35 cards) — conhecimento prévio do revisor"
+    }
+   ],
+   "id": "INT-endometrio_6-001",
+   "dedupe_key": "endometrio_6|unsupported_claim|impacto_reg"
+  },
+  {
+   "uid": "endometrio_6",
+   "card": "KEYNOTE-158 endométrio (2020/2022)",
+   "issue_type": "source_internal_inconsistency",
+   "description": "O resumo da atualização de 2025 diz 'for ≥35 cycles'; o texto completo de 2022 e o registro dizem até 35 ciclos/administrações. Provável troca de símbolo no resumo (PubMed). Modelado como cross_source_conflict em treatment_duration.",
+   "affected_fields": [
+    "esquema"
+   ],
+   "evidence": [
+    {
+     "kind": "primary_source_snippet",
+     "snippet": "Resumo 2025: 'pembrolizumab 200 mg Q3W for ≥35 cycles' · JCO 2022: 'for 35 cycles (approximately 2 years)' · CT.gov: 'for up to 35 administrations'"
+    }
+   ],
+   "priority": "low",
+   "detection_method": "primary_source_check",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido"
+    }
+   ],
+   "id": "INT-endometrio_6-002",
+   "dedupe_key": "endometrio_6|source_internal_inconsistency|esquema"
+  },
+  {
+   "uid": "endometrio_6",
+   "card": "KEYNOTE-158 endométrio (2020/2022)",
+   "issue_type": "bibliographic_mismatch",
+   "description": "short_name v1 'KEYNOTE-158 endométrio (2020/2022)' não corresponde à publicação representada (atualização 2025, corte jan/2022).",
+   "affected_fields": [
+    "estudo"
+   ],
+   "evidence": [
+    {
+     "kind": "primary_source_snippet",
+     "snippet": "db_decisoes: card representa PMID 39847999 (Gynecol Oncol 2025)"
+    }
+   ],
+   "priority": "low",
+   "detection_method": "primary_source_check",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido"
+    }
+   ],
+   "id": "INT-endometrio_6-003",
+   "dedupe_key": "endometrio_6|bibliographic_mismatch|estudo"
+  },
+  {
+   "uid": "endometrio_6",
+   "card": "KEYNOTE-158 endométrio (2020/2022)",
+   "issue_type": "numeric_mismatch",
+   "description": "periodo v1 '2016 - 2021': o texto de 2022 dá inclusão de 01/02/2016 a 23/09/2020 (n=90); o resumo de 2025 não informa período; o fim em 2021 não tem lastro nas fontes em cache. 'PI: Aurelien Marabelle' também não aparece como PI nas fontes (é autor).",
+   "affected_fields": [
+    "periodo"
+   ],
+   "evidence": [
+    {
+     "kind": "primary_source_snippet",
+     "snippet": "JCO 2022: 'enrolled ... between February 1, 2016, and September 23, 2020'"
+    }
+   ],
+   "priority": "low",
+   "detection_method": "primary_source_check",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido"
+    }
+   ],
+   "id": "INT-endometrio_6-004",
+   "dedupe_key": "endometrio_6|numeric_mismatch|periodo"
+  },
+  {
+   "uid": "fes-pet-fluoroestradiol-receptor-estrogenio",
+   "card": "18F-FES PET / Cerianna — imagem do receptor de estrogênio (validação 2020–2023)",
+   "issue_type": "bibliographic_mismatch",
+   "description": "PMID de 2023 × ano_pub 2020; nota de auditoria dentro de ref; população 'ER+' contradiz cálculo de especificidade",
+   "affected_fields": [
+    "ano_pub",
+    "ref",
+    "indicacao"
+   ],
+   "evidence": [
+    {
+     "kind": "card_internal",
+     "note": "contradição entre campos do próprio card v1"
+    }
+   ],
+   "priority": "medium",
+   "detection_method": "card_internal_contradiction",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "teste de schema v2 (35 cards) — leitura do card",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "teste de schema v2 (35 cards) — leitura do card"
+    }
+   ],
+   "id": "INT-fes-pet-fluoroestradiol-receptor-estrogenio-001",
+   "dedupe_key": "fes-pet-fluoroestradiol-receptor-estrogenio|bibliographic_mismatch|ano_pub,indicacao,ref"
+  },
+  {
+   "uid": "hepatobiliar_12",
+   "card": "HIMALAYA (2022)",
+   "issue_type": "safety_misattribution",
+   "description": "comparador lista braço experimental (durvalumabe mono); toxicidade com números do IMbrave150",
+   "affected_fields": [
+    "comparador",
+    "tox_g3"
+   ],
+   "evidence": [
+    {
+     "kind": "card_internal",
+     "note": "contradição entre campos do próprio card v1"
+    }
+   ],
+   "priority": "high",
+   "detection_method": "card_internal_contradiction",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "teste de schema v2 (35 cards) — leitura do card",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "teste de schema v2 (35 cards) — leitura do card"
+    }
+   ],
+   "id": "INT-hepatobiliar_12-001",
+   "dedupe_key": "hepatobiliar_12|safety_misattribution|comparador,tox_g3"
+  },
+  {
+   "uid": "hepatobiliar_2",
+   "card": "DOSISPHERE-01 (2021)",
+   "issue_type": "unsupported_claim",
+   "description": "declara ITT com 4 excluídos; chama fase 2 n=60 de 'PIVOTAL' e 'mudou a prática mundial' sem fonte",
+   "affected_fields": [
+    "analises",
+    "impacto_reg",
+    "fase"
+   ],
+   "evidence": [
+    {
+     "kind": "card_internal",
+     "note": "contradição entre campos do próprio card v1"
+    }
+   ],
+   "priority": "medium",
+   "detection_method": "card_internal_contradiction",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "teste de schema v2 (35 cards) — leitura do card",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "teste de schema v2 (35 cards) — leitura do card"
+    }
+   ],
+   "id": "INT-hepatobiliar_2-001",
+   "dedupe_key": "hepatobiliar_2|unsupported_claim|analises,fase,impacto_reg"
+  },
+  {
+   "uid": "hepatobiliar_35",
+   "card": "DESTINY-PanTumor02 BTC (2024)",
+   "issue_type": "bibliographic_mismatch",
+   "description": "'Nat Med 2024' sem PMID × artigo JCO 2024 vinculado; 'significativamente alta' em braço único; HTML em texto",
+   "affected_fields": [
+    "ref",
+    "primario"
+   ],
+   "evidence": [
+    {
+     "kind": "card_internal",
+     "note": "contradição entre campos do próprio card v1"
+    }
+   ],
+   "priority": "medium",
+   "detection_method": "card_internal_contradiction",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "teste de schema v2 (35 cards) — leitura do card",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "teste de schema v2 (35 cards) — leitura do card"
+    }
+   ],
+   "id": "INT-hepatobiliar_35-001",
+   "dedupe_key": "hepatobiliar_35|bibliographic_mismatch|primario,ref"
+  },
+  {
+   "uid": "hnscc_5",
+   "card": "NIVOPOSTOP / GORTEC 2018-01 (2024)",
+   "issue_type": "design_misrepresentation",
+   "description": "título (nivolumabe com QRT) × desenho (pós-RT vs vigilância); status 'Apresentado' com PMID; ESMO 2024 e ASCO 2025 citados",
+   "affected_fields": [
+    "acron",
+    "desenho",
+    "status",
+    "ref"
+   ],
+   "evidence": [
+    {
+     "kind": "card_internal",
+     "note": "contradição entre campos do próprio card v1"
+    }
+   ],
+   "priority": "high",
+   "detection_method": "card_internal_contradiction",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "teste de schema v2 (35 cards) — leitura do card",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "teste de schema v2 (35 cards) — leitura do card"
+    }
+   ],
+   "id": "INT-hnscc_5-001",
+   "dedupe_key": "hnscc_5|design_misrepresentation|acron,desenho,ref,status"
+  },
+  {
+   "uid": "keynote-522-pembro-neoadjuvante-tnbc",
+   "card": "KEYNOTE-522 (2020/2024)",
+   "issue_type": "bibliographic_mismatch",
+   "description": "ano_pub 2020 × referência 2022; pCR (2020) e EFS/OS (2024) sob uma referência",
+   "affected_fields": [
+    "ano_pub",
+    "ref"
+   ],
+   "evidence": [
+    {
+     "kind": "card_internal",
+     "note": "contradição entre campos do próprio card v1"
+    }
+   ],
+   "priority": "low",
+   "detection_method": "card_internal_contradiction",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "teste de schema v2 (35 cards) — leitura do card",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "teste de schema v2 (35 cards) — leitura do card"
+    }
+   ],
+   "id": "INT-keynote-522-pembro-neoadjuvante-tnbc-001",
+   "dedupe_key": "keynote-522-pembro-neoadjuvante-tnbc|bibliographic_mismatch|ano_pub,ref"
+  },
+  {
+   "uid": "linfoma_dlbcl_1",
+   "card": "ZUMA-7 (2022/2024)",
+   "issue_type": "safety_misattribution",
+   "description": "tox_g3 chama de 'TRAEs ≥G3' os 91%; a fonte fala de eventos adversos de grau ≥3 de qualquer atribuição.",
+   "affected_fields": [
+    "tox_g3"
+   ],
+   "evidence": [
+    {
+     "kind": "primary_source_snippet",
+     "snippet": "Adverse events of grade 3 or higher occurred in 91% of the patients who received axi-cel and in 83% of those who received standard care. (PMID 34891224, resumo)"
+    }
+   ],
+   "priority": "medium",
+   "detection_method": "primary_source_check",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido"
+    }
+   ],
+   "id": "INT-linfoma_dlbcl_1-001",
+   "dedupe_key": "linfoma_dlbcl_1|safety_misattribution|tox_g3"
+  },
+  {
+   "uid": "linfoma_dlbcl_1",
+   "card": "ZUMA-7 (2022/2024)",
+   "issue_type": "unsupported_claim",
+   "description": "tox_g3 traz 'ICANS … G3+ 21%'; a publicação usa 'neurologic events', categoria que não equivale declaradamente a ICANS. 'ICANS qualquer 60%' e 'CRS qualquer 92%' não são verificáveis nas fontes abertas.",
+   "affected_fields": [
+    "tox_g3"
+   ],
+   "evidence": [
+    {
+     "kind": "primary_source_snippet",
+     "snippet": "grade 3 or higher neurologic events in 21% (PMID 34891224, resumo)"
+    }
+   ],
+   "priority": "medium",
+   "detection_method": "primary_source_check",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido"
+    }
+   ],
+   "id": "INT-linfoma_dlbcl_1-002",
+   "dedupe_key": "linfoma_dlbcl_1|unsupported_claim|tox_g3"
+  },
+  {
+   "uid": "linfoma_dlbcl_1",
+   "card": "ZUMA-7 (2022/2024)",
+   "issue_type": "bibliographic_mismatch",
+   "description": "primario atribui a OS de 4 anos a 'Locke ASH 2023'; a fonte é a publicação Westin NEJM 2023 (PMID 37272527), já citada em analises/ref do próprio card.",
+   "affected_fields": [
+    "primario"
+   ],
+   "evidence": [
+    {
+     "kind": "primary_source_snippet",
+     "snippet": "the estimated 4-year overall survival was 54.6% and 46.0%, respectively (hazard ratio for death, 0.73; … P = 0.03 by stratified two-sided log-rank test) (PMID 37272527)"
+    }
+   ],
+   "priority": "low",
+   "detection_method": "primary_source_check",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido"
+    }
+   ],
+   "id": "INT-linfoma_dlbcl_1-003",
+   "dedupe_key": "linfoma_dlbcl_1|bibliographic_mismatch|primario"
+  },
+  {
+   "uid": "linfoma_dlbcl_1",
+   "card": "ZUMA-7 (2022/2024)",
+   "issue_type": "endpoint_hierarchy",
+   "description": "primario/resultado_chave usam 'mEFS' para EFS mediana, mas o estudo tem um desfecho distinto chamado mEFS (EFS modificada, mediana 10,3 m no braço axi-cel), o que gera ambiguidade.",
+   "affected_fields": [
+    "primario",
+    "resultado_chave"
+   ],
+   "evidence": [
+    {
+     "kind": "primary_source_snippet",
+     "snippet": "Modified Event Free Survival (mEFS) Per Blinded Central Assessment … 10.3 (CT.gov resultsSection.outcomeMeasures[4])"
+    }
+   ],
+   "priority": "medium",
+   "detection_method": "primary_source_check",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido"
+    }
+   ],
+   "id": "INT-linfoma_dlbcl_1-004",
+   "dedupe_key": "linfoma_dlbcl_1|endpoint_hierarchy|primario,resultado_chave"
+  },
+  {
+   "uid": "linfoma_dlbcl_1",
+   "card": "ZUMA-7 (2022/2024)",
+   "issue_type": "unsupported_claim",
+   "description": "secundario afirma 'Crossover ao Step 2 (SoC pode receber CAR-T comercial em recidiva)'; nenhuma fonte aberta descreve crossover. O registro só prevê retratamento com axi-cel no braço experimental. Precisa conferir no texto completo antes de manter.",
+   "affected_fields": [
+    "secundario"
+   ],
+   "evidence": [
+    {
+     "kind": "primary_source_snippet",
+     "snippet": "Participants who will achieve a partial response or complete response and subsequently experience disease progression may have an option to receive a second course of conditioning chemotherapy and axicabtagene ciloleucel. (CT.gov armGroups[0])"
+    }
+   ],
+   "priority": "medium",
+   "detection_method": "primary_source_check",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido"
+    }
+   ],
+   "id": "INT-linfoma_dlbcl_1-005",
+   "dedupe_key": "linfoma_dlbcl_1|unsupported_claim|secundario"
+  },
+  {
+   "uid": "linfoma_dlbcl_1",
+   "card": "ZUMA-7 (2022/2024)",
+   "issue_type": "design_misrepresentation",
+   "description": "estrat 'Resposta a 1L; idade' é impreciso: o fator de estratificação é o IPI ajustado por idade na 2ª linha, não a idade.",
+   "affected_fields": [
+    "estrat"
+   ],
+   "evidence": [
+    {
+     "kind": "primary_source_snippet",
+     "snippet": "stratified by response to first-line therapy and second-line age-adjusted International Prognostic Index (IPI) (CT.gov outcomeMeasures[0].analyses)"
+    }
+   ],
+   "priority": "low",
+   "detection_method": "primary_source_check",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido"
+    }
+   ],
+   "id": "INT-linfoma_dlbcl_1-006",
+   "dedupe_key": "linfoma_dlbcl_1|design_misrepresentation|estrat"
+  },
+  {
+   "uid": "linfoma_dlbcl_1",
+   "card": "ZUMA-7 (2022/2024)",
+   "issue_type": "cross_source_conflict",
+   "description": "CONFLITO ENTRE FONTES na análise primária de OS: o CT.gov declara o mesmo corte (25/jan/2023, 177 óbitos), mas traz mediana do controle 35,1 m (NEJM: 31,1 m), HR 0,730 com IC 0,530–1,007 (NEJM: 0,54–0,98) e p 0,027 rotulado como unilateral, acima da própria fronteira unilateral de 0,0249. O NEJM relata P=0,03 bilateral e significância. Pode ser um corte posterior ('Up to 74.9 months') rotulado como primário, ou erro de postagem no registro.",
+   "affected_fields": [
+    "primario",
+    "resultado_chave"
+   ],
+   "evidence": [
+    {
+     "kind": "primary_source_snippet",
+     "snippet": "CT.gov: '35.1' … '0.027' … '0.730' … '0.530' … '1.007' … 'efficacy boundary at 1-sided significance level of 0.0249' | NEJM 2023: 'was 31.1 months in the standard-care group … hazard ratio for death, 0.73; 95% confidence interval [CI], 0.54 to 0.98; P = 0.03 by stratified two-sided log-rank test'"
+    }
+   ],
+   "priority": "medium",
+   "detection_method": "primary_source_check",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido"
+    }
+   ],
+   "id": "INT-linfoma_dlbcl_1-007",
+   "dedupe_key": "linfoma_dlbcl_1|cross_source_conflict|primario,resultado_chave"
+  },
+  {
+   "uid": "linfoma_dlbcl_1",
+   "card": "ZUMA-7 (2022/2024)",
+   "issue_type": "bibliographic_mismatch",
+   "description": "estudo 'ZUMA-7 (2022/2024)': as publicações nas fontes são de 2022 (EFS) e 2023 (OS); não há fonte de 2024 que sustente o ano no rótulo.",
+   "affected_fields": [
+    "estudo"
+   ],
+   "evidence": [
+    {
+     "kind": "primary_source_snippet",
+     "snippet": "N Engl J Med. 2023 Jul 13;389(2):148-157 (PMID 37272527)"
+    }
+   ],
+   "priority": "low",
+   "detection_method": "primary_source_check",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido"
+    }
+   ],
+   "id": "INT-linfoma_dlbcl_1-008",
+   "dedupe_key": "linfoma_dlbcl_1|bibliographic_mismatch|estudo"
+  },
+  {
+   "uid": "linfoma_dlbcl_2",
+   "card": "TRANSFORM (2022)",
+   "issue_type": "unsupported_claim",
+   "description": "comparação entre estudos sem lastro ('liso-cel preferido em idosos'); título diz análise interina e status 'Publicado'",
+   "affected_fields": [
+    "tox_interesse",
+    "status"
+   ],
+   "evidence": [
+    {
+     "kind": "card_internal",
+     "note": "contradição entre campos do próprio card v1"
+    }
+   ],
+   "priority": "medium",
+   "detection_method": "card_internal_contradiction",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "teste de schema v2 (35 cards) — leitura do card",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "teste de schema v2 (35 cards) — leitura do card"
+    }
+   ],
+   "id": "INT-linfoma_dlbcl_2-001",
+   "dedupe_key": "linfoma_dlbcl_2|unsupported_claim|status,tox_interesse"
+  },
+  {
+   "uid": "linfoma_dlbcl_4",
+   "card": "EPCORE NHL-1 (2023)",
+   "issue_type": "numeric_mismatch",
+   "description": "primario/resultado_chave dizem 'mDOR NR aos 9 m'; a publicação dá mDOR de 12,0 meses (IC95% 6,6 a não atingido) na coorte; 'não atingida' vale só entre respondedores completos.",
+   "affected_fields": [
+    "primario",
+    "resultado_chave"
+   ],
+   "evidence": [
+    {
+     "kind": "primary_source_snippet",
+     "snippet": "The median DOR (mDOR) per Kaplan-Meier estimates was 12.0 months in patients with LBCL (95% CI, 6.6 to not reached; Fig 1 B). mDOR among complete responders was not reached. [PMC10115554, Results — Efficacy]"
+    }
+   ],
+   "priority": "medium",
+   "detection_method": "primary_source_check",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido"
+    }
+   ],
+   "id": "INT-linfoma_dlbcl_4-001",
+   "dedupe_key": "linfoma_dlbcl_4|numeric_mismatch|primario,resultado_chave"
+  },
+  {
+   "uid": "linfoma_dlbcl_4",
+   "card": "EPCORE NHL-1 (2023)",
+   "issue_type": "safety_misattribution",
+   "description": "tox_g3 'TRAEs ≥G3: 60%' mistura atribuição: EA grau ≥3 por qualquer causa = 61,1%; relacionados ao tratamento = 26,8%.",
+   "affected_fields": [
+    "tox_g3"
+   ],
+   "evidence": [
+    {
+     "kind": "primary_source_snippet",
+     "snippet": "Grade 3 and higher AEs were observed in 61.1% of patients; treatment-related grade 3 and higher AEs were observed in 26.8% of patients. [PMC10115554, Results — Safety]"
+    }
+   ],
+   "priority": "medium",
+   "detection_method": "primary_source_check",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido"
+    }
+   ],
+   "id": "INT-linfoma_dlbcl_4-002",
+   "dedupe_key": "linfoma_dlbcl_4|safety_misattribution|tox_g3"
+  },
+  {
+   "uid": "linfoma_dlbcl_4",
+   "card": "EPCORE NHL-1 (2023)",
+   "issue_type": "safety_misattribution",
+   "description": "tox_g3 'ICANS … G3+ <1%' omite que o único ICANS grave foi fatal (grau 5) e foi o único óbito considerado relacionado ao tratamento.",
+   "affected_fields": [
+    "tox_g3"
+   ],
+   "evidence": [
+    {
+     "kind": "primary_source_snippet",
+     "snippet": "ICANS events occurred in 10 (6.4%) patients, including seven patients with grade 1, two patients with grade 2, and one fatal event. … except for the one fatal ICANS event [PMC10115554, Results — Safety]"
+    }
+   ],
+   "priority": "high",
+   "detection_method": "primary_source_check",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido"
+    }
+   ],
+   "id": "INT-linfoma_dlbcl_4-003",
+   "dedupe_key": "linfoma_dlbcl_4|safety_misattribution|tox_g3"
+  },
+  {
+   "uid": "lupsma_prostata_0",
+   "card": "VISION (2021)",
+   "issue_type": "design_misrepresentation",
+   "description": "ITT 831 declarado para todos os desfechos; conjunto de análise de rPFS pode ser subconjunto",
+   "affected_fields": [
+    "analises",
+    "primario"
+   ],
+   "evidence": [
+    {
+     "kind": "reviewer_prior_knowledge",
+     "note": "conhecimento prévio do revisor — NÃO é evidência; exige conferência na fonte"
+    }
+   ],
+   "priority": "medium",
+   "detection_method": "reviewer_prior_knowledge",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "teste de schema v2 (35 cards) — conhecimento prévio do revisor",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "teste de schema v2 (35 cards) — conhecimento prévio do revisor"
+    }
+   ],
+   "id": "INT-lupsma_prostata_0-001",
+   "dedupe_key": "lupsma_prostata_0|design_misrepresentation|analises,primario"
+  },
+  {
+   "uid": "lupsma_prostata_12",
+   "card": "LUNAR (ASCO 2025)",
+   "issue_type": "design_misrepresentation",
+   "description": "centros 'Multicêntrico EUA/UK' e sponsor 'Acadêmico (multicêntrico)': o estudo é unicêntrico (UCLA); o registro lista só UCLA.",
+   "affected_fields": [
+    "centros",
+    "sponsor"
+   ],
+   "evidence": [
+    {
+     "kind": "primary_source_snippet",
+     "snippet": "The LUNAR trial was a single-center, randomized, open-label, controlled phase II trial conducted at the University of California, Los Angeles. [PMC12711279, Abstract/Methods]"
+    }
+   ],
+   "priority": "medium",
+   "detection_method": "primary_source_check",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido"
+    }
+   ],
+   "id": "INT-lupsma_prostata_12-001",
+   "dedupe_key": "lupsma_prostata_12|design_misrepresentation|centros,sponsor"
+  },
+  {
+   "uid": "lupsma_prostata_12",
+   "card": "LUNAR (ASCO 2025)",
+   "issue_type": "eligibility_mismatch",
+   "description": "incl/molecular exigem 'SUVmax ≥2× hepático'; a publicação diz que a contagem de lesões foi visual, sem limiar estrito de SUV. Não há critério de SUV no texto nem no registro.",
+   "affected_fields": [
+    "incl",
+    "molecular"
+   ],
+   "evidence": [
+    {
+     "kind": "primary_source_snippet",
+     "snippet": "For lesion count, images were interpreted by visual analysis, without a strict standardized uptake value (SUV) threshold. [PMC12711279, Methods — Assessments]"
+    }
+   ],
+   "priority": "high",
+   "detection_method": "primary_source_check",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido"
+    }
+   ],
+   "id": "INT-lupsma_prostata_12-002",
+   "dedupe_key": "lupsma_prostata_12|eligibility_mismatch|incl,molecular"
+  },
+  {
+   "uid": "lupsma_prostata_12",
+   "card": "LUNAR (ASCO 2025)",
+   "issue_type": "design_misrepresentation",
+   "description": "estrat 'Número de lesões; uso prévio de salvage RT': a estratificação foi por estádio no PSMA PET (iN1/M1a v M1b v M1c) e número de lesões (1 v 2-3 v 4-5); RT de resgate prévia não é fator.",
+   "affected_fields": [
+    "estrat"
+   ],
+   "evidence": [
+    {
+     "kind": "primary_source_snippet",
+     "snippet": "Patients were stratified according to the initial staging based on distribution of disease on the PSMA PET/CT (pelvic nodal or extrapelvic nodal [iN1/M1a] … bony [M1b] … visceral [M1c]) and number of lesions [PMC12711279, Methods — Random Assignment]"
+    }
+   ],
+   "priority": "low",
+   "detection_method": "primary_source_check",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido"
+    }
+   ],
+   "id": "INT-lupsma_prostata_12-003",
+   "dedupe_key": "lupsma_prostata_12|design_misrepresentation|estrat"
+  },
+  {
+   "uid": "lupsma_prostata_12",
+   "card": "LUNAR (ASCO 2025)",
+   "issue_type": "numeric_mismatch",
+   "description": "estatistica 'Poder ~80% para PFS HR 0,5; α 0,05': a fonte usa HR 0,52 e α 0,1.",
+   "affected_fields": [
+    "estatistica"
+   ],
+   "evidence": [
+    {
+     "kind": "primary_source_snippet",
+     "snippet": "which corresponds to a hazard ratio (HR) for PFS of 0.52 … would provide 80% power to detect the expected difference in PFS survival at a 0.1 alpha level [PMC12711279, Methods — Statistical Analysis]"
+    }
+   ],
+   "priority": "medium",
+   "detection_method": "primary_source_check",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido"
+    }
+   ],
+   "id": "INT-lupsma_prostata_12-004",
+   "dedupe_key": "lupsma_prostata_12|numeric_mismatch|estatistica"
+  },
+  {
+   "uid": "lupsma_prostata_12",
+   "card": "LUNAR (ASCO 2025)",
+   "issue_type": "numeric_mismatch",
+   "description": "esquema 'q6-8sem' não corresponde a nenhum valor da fonte: Métodos 8 semanas (±1), Resultados mediana 8,0 semanas, registro dias -112 e -56; o resumo da própria publicação diz '2 weeks apart' (ver candidato de fonte abaixo).",
+   "affected_fields": [
+    "esquema"
+   ],
+   "evidence": [
+    {
+     "kind": "primary_source_snippet",
+     "snippet": "with a time interval of 8 weeks (±1 week) between the two cycles [PMC12711279, Methods — Procedures]"
+    }
+   ],
+   "priority": "medium",
+   "detection_method": "primary_source_check",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [
+    "INT-lupsma_prostata_12-011"
+   ],
+   "related_decisions": [],
+   "origin": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido"
+    }
+   ],
+   "id": "INT-lupsma_prostata_12-005",
+   "dedupe_key": "lupsma_prostata_12|numeric_mismatch|esquema"
+  },
+  {
+   "uid": "lupsma_prostata_12",
+   "card": "LUNAR (ASCO 2025)",
+   "issue_type": "numeric_mismatch",
+   "description": "periodo '2022 - 2024 (recrutamento)': a randomização ocorreu de 02/09/2022 a 09/11/2023.",
+   "affected_fields": [
+    "periodo"
+   ],
+   "evidence": [
+    {
+     "kind": "primary_source_snippet",
+     "snippet": "From September 2, 2022, to November 9, 2023, 100 patients were screened and provided informed consent. [PMC12711279, Results]"
+    }
+   ],
+   "priority": "low",
+   "detection_method": "primary_source_check",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido"
+    }
+   ],
+   "id": "INT-lupsma_prostata_12-006",
+   "dedupe_key": "lupsma_prostata_12|numeric_mismatch|periodo"
+  },
+  {
+   "uid": "lupsma_prostata_12",
+   "card": "LUNAR (ASCO 2025)",
+   "issue_type": "eligibility_mismatch",
+   "description": "excl 'ADT em curso': o critério é ADT nos 6 meses anteriores à inclusão (e metastático de novo também é excluído).",
+   "affected_fields": [
+    "excl"
+   ],
+   "evidence": [
+    {
+     "kind": "primary_source_snippet",
+     "snippet": "(2) receipt of ADT within 6 months of trial enrollment, and (3) de novo metastatic disease. [PMC12711279, Methods]"
+    }
+   ],
+   "priority": "medium",
+   "detection_method": "primary_source_check",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido"
+    }
+   ],
+   "id": "INT-lupsma_prostata_12-007",
+   "dedupe_key": "lupsma_prostata_12|eligibility_mismatch|excl"
+  },
+  {
+   "uid": "lupsma_prostata_12",
+   "card": "LUNAR (ASCO 2025)",
+   "issue_type": "safety_misattribution",
+   "description": "tox_interesse 'sem eventos hematológicos graves': houve linfopenia grau 3 em 3/45 (6,7%) no braço 177Lu (e 2/42 no braço SBRT).",
+   "affected_fields": [
+    "tox_interesse"
+   ],
+   "evidence": [
+    {
+     "kind": "primary_source_snippet",
+     "snippet": "The only grade 3 adverse events observed were lymphopenia events, which affected two patients (4.8%) in the SBRT group and three patients (6.7%) in the 177 Lu + SBRT group [PMC12711279, Results]"
+    }
+   ],
+   "priority": "medium",
+   "detection_method": "primary_source_check",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido"
+    }
+   ],
+   "id": "INT-lupsma_prostata_12-008",
+   "dedupe_key": "lupsma_prostata_12|safety_misattribution|tox_interesse"
+  },
+  {
+   "uid": "lupsma_prostata_12",
+   "card": "LUNAR (ASCO 2025)",
+   "issue_type": "bibliographic_mismatch",
+   "description": "estudo/ref citam 'ASCO 2025' e 'ESMO 2025 (LBA90)'; nenhuma das fontes em cache menciona apresentação em congresso (JCO 2025 e NCT05496959). Não verificável aqui.",
+   "affected_fields": [
+    "estudo",
+    "ref"
+   ],
+   "evidence": [
+    {
+     "kind": "primary_source_snippet",
+     "snippet": "J Clin Oncol. 2025 Dec 20;43(36):3812-3821. doi: 10.1200/JCO-25-01553. [NCT05496959, referencesModule]"
+    }
+   ],
+   "priority": "low",
+   "detection_method": "primary_source_check",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido"
+    }
+   ],
+   "id": "INT-lupsma_prostata_12-009",
+   "dedupe_key": "lupsma_prostata_12|bibliographic_mismatch|estudo,ref"
+  },
+  {
+   "uid": "lupsma_prostata_12",
+   "card": "LUNAR (ASCO 2025)",
+   "issue_type": "population_misrepresentation",
+   "description": "indicacao/acron 'mHSPC oligometastático': a população é oligorrecorrente após tratamento definitivo (orHSPC); metastático de novo foi excluído.",
+   "affected_fields": [
+    "indicacao",
+    "acron"
+   ],
+   "evidence": [
+    {
+     "kind": "primary_source_snippet",
+     "snippet": "The exclusion criteria included … (3) de novo metastatic disease. [PMC12711279, Methods]"
+    }
+   ],
+   "priority": "high",
+   "detection_method": "primary_source_check",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido"
+    }
+   ],
+   "id": "INT-lupsma_prostata_12-010",
+   "dedupe_key": "lupsma_prostata_12|population_misrepresentation|acron,indicacao"
+  },
+  {
+   "uid": "lupsma_prostata_12",
+   "card": "LUNAR (ASCO 2025)",
+   "issue_type": "source_internal_inconsistency",
+   "description": "FONTE: o resumo diz que os 2 ciclos foram '2 weeks apart'; Métodos (8 semanas ±1), Resultados (mediana 8,0 semanas) e registro (dias -112 e -56) indicam 8 semanas.",
+   "affected_fields": [
+    "esquema"
+   ],
+   "evidence": [
+    {
+     "kind": "primary_source_snippet",
+     "snippet": "two cycles of 177 Lu-PNT2002 (6.8 GBq/cycle, 2 weeks apart) [Abstract] × with a time interval of 8 weeks (±1 week) between the two cycles [Methods — Procedures]"
+    }
+   ],
+   "priority": "low",
+   "detection_method": "primary_source_check",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [
+    "INT-lupsma_prostata_12-005"
+   ],
+   "related_decisions": [],
+   "origin": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido"
+    }
+   ],
+   "id": "INT-lupsma_prostata_12-011",
+   "dedupe_key": "lupsma_prostata_12|source_internal_inconsistency|esquema"
+  },
+  {
+   "uid": "lupsma_prostata_12",
+   "card": "LUNAR (ASCO 2025)",
+   "issue_type": "source_internal_inconsistency",
+   "description": "FONTE: percentuais da Tabela 2 incoerentes com n/42 e n/45 em várias linhas (boca seca 2 (5.6) e 3 (6.8); fadiga 26 (76.5) e 27 (64.3); náusea 5 (14.3); constipação 2 (5.7); dor abdominal 1 (2.9)), sugerindo denominadores não declarados.",
+   "affected_fields": [
+    "tox_g3",
+    "tox_interesse"
+   ],
+   "evidence": [
+    {
+     "kind": "primary_source_snippet",
+     "snippet": "Fatigue … Grade 1 … 26 (76.5) … 27 (64.3) … Dry mouth … Grade 1 … 2 (5.6) … 3 (6.8) [PMC12711279, Table 2]"
+    }
+   ],
+   "priority": "low",
+   "detection_method": "primary_source_check",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido"
+    }
+   ],
+   "id": "INT-lupsma_prostata_12-012",
+   "dedupe_key": "lupsma_prostata_12|source_internal_inconsistency|tox_g3,tox_interesse"
+  },
+  {
+   "uid": "lupsma_prostata_12",
+   "card": "LUNAR (ASCO 2025)",
+   "issue_type": "cross_source_conflict",
+   "description": "FONTE × REGISTRO: o registro define o primário a partir da CONCLUSÃO da SBRT e sem 'terapia hormonal de resgate'; a publicação conta da randomização e inclui terapia hormonal de resgate. Também: CRPC com testosterona <50 ng/dL (publicação) × <150 ng/dL (registro); inscrição 93 (registro) × 92 randomizados (publicação).",
+   "affected_fields": [
+    "primario"
+   ],
+   "evidence": [
+    {
+     "kind": "primary_source_snippet",
+     "snippet": "Time from the date of stereotactic body radiotherapy (SBRT) completion to the date of disease progression or death [NCT05496959] × defined as the time from random assignment until PSMA PET/CT-based progression, salvage hormonal therapy, or death [PMC12711279, Methods — Outcomes]"
+    }
+   ],
+   "priority": "low",
+   "detection_method": "primary_source_check",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido"
+    }
+   ],
+   "id": "INT-lupsma_prostata_12-013",
+   "dedupe_key": "lupsma_prostata_12|cross_source_conflict|primario"
+  },
+  {
+   "uid": "lupsma_prostata_12",
+   "card": "LUNAR (ASCO 2025)",
+   "issue_type": "source_internal_inconsistency",
+   "description": "FONTE: Tabela 1 traz 'No. of recurrence' 1/2-3/≥4 = 16/20/6 e 24/18/3, incoerente com 'Lesion count by PSMA' (17/18/7 e 20/18/7) na mesma tabela.",
+   "affected_fields": [
+    "basal"
+   ],
+   "evidence": [
+    {
+     "kind": "primary_source_snippet",
+     "snippet": "No. of recurrence, No. (%) … 1 … 16 (38.1) … 24 (53.3) … Lesion count by PSMA, No. (%) … 1 … 17 (40.5) … 20 (44.4) [PMC12711279, Table 1]"
+    }
+   ],
+   "priority": "low",
+   "detection_method": "primary_source_check",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido"
+    }
+   ],
+   "id": "INT-lupsma_prostata_12-014",
+   "dedupe_key": "lupsma_prostata_12|source_internal_inconsistency|basal"
+  },
+  {
+   "uid": "mieloma_4",
+   "card": "CARTITUDE-4 (2023)",
+   "issue_type": "unsupported_claim",
+   "description": "afirmação causal sem lastro ('graças a bridging otimizado')",
+   "affected_fields": [
+    "takehome",
+    "impacto_reg"
+   ],
+   "evidence": [
+    {
+     "kind": "card_internal",
+     "note": "contradição entre campos do próprio card v1"
+    }
+   ],
+   "priority": "low",
+   "detection_method": "card_internal_contradiction",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "teste de schema v2 (35 cards) — leitura do card",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "teste de schema v2 (35 cards) — leitura do card"
+    }
+   ],
+   "id": "INT-mieloma_4-001",
+   "dedupe_key": "mieloma_4|unsupported_claim|impacto_reg,takehome"
+  },
+  {
+   "uid": "monaleesa-3-ribociclib-fulvestrant",
+   "card": "MONALEESA-3 (2018/2022)",
+   "issue_type": "endpoint_hierarchy",
+   "description": "endpoint primário (PFS) ausente do card; primario traz OS",
+   "affected_fields": [
+    "primario"
+   ],
+   "evidence": [
+    {
+     "kind": "card_internal",
+     "note": "contradição entre campos do próprio card v1"
+    }
+   ],
+   "priority": "high",
+   "detection_method": "card_internal_contradiction",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "teste de schema v2 (35 cards) — leitura do card",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "teste de schema v2 (35 cards) — leitura do card"
+    }
+   ],
+   "id": "INT-monaleesa-3-ribociclib-fulvestrant-001",
+   "dedupe_key": "monaleesa-3-ribociclib-fulvestrant|endpoint_hierarchy|primario"
+  },
+  {
+   "uid": "monaleesa-3-ribociclib-fulvestrant",
+   "card": "MONALEESA-3 (2018/2022)",
+   "issue_type": "bibliographic_mismatch",
+   "description": "OS mistura p do protocolo com medianas de seguimento estendido; ano_pub 2018 × referência 2020",
+   "affected_fields": [
+    "secundario",
+    "ano_pub",
+    "ref"
+   ],
+   "evidence": [
+    {
+     "kind": "card_internal",
+     "note": "contradição entre campos do próprio card v1"
+    }
+   ],
+   "priority": "medium",
+   "detection_method": "card_internal_contradiction",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "teste de schema v2 (35 cards) — leitura do card",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "teste de schema v2 (35 cards) — leitura do card"
+    }
+   ],
+   "id": "INT-monaleesa-3-ribociclib-fulvestrant-002",
+   "dedupe_key": "monaleesa-3-ribociclib-fulvestrant|bibliographic_mismatch|ano_pub,ref,secundario"
+  },
+  {
+   "uid": "monaleesa-3-ribociclib-fulvestrant",
+   "card": "MONALEESA-3 (2018/2022)",
+   "issue_type": "design_misrepresentation",
+   "description": "avaliação do primário rotulada BICR (seria investigador)",
+   "affected_fields": [
+    "primario",
+    "estatistica"
+   ],
+   "evidence": [
+    {
+     "kind": "reviewer_prior_knowledge",
+     "note": "conhecimento prévio do revisor — NÃO é evidência; exige conferência na fonte"
+    }
+   ],
+   "priority": "medium",
+   "detection_method": "reviewer_prior_knowledge",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "teste de schema v2 (35 cards) — conhecimento prévio do revisor",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "teste de schema v2 (35 cards) — conhecimento prévio do revisor"
+    }
+   ],
+   "id": "INT-monaleesa-3-ribociclib-fulvestrant-003",
+   "dedupe_key": "monaleesa-3-ribociclib-fulvestrant|design_misrepresentation|estatistica,primario"
+  },
+  {
+   "uid": "net_gep_20",
+   "card": "ENETS / ESMO Guidelines GEP-NET (2020-2024)",
+   "issue_type": "aggregation",
+   "description": "junta duas diretrizes (ESMO 2020 e ENETS 2023); sem resultado_chave e takehome",
+   "affected_fields": [
+    "acron",
+    "ref",
+    "resultado_chave",
+    "takehome"
+   ],
+   "evidence": [
+    {
+     "kind": "card_internal",
+     "note": "contradição entre campos do próprio card v1"
+    }
+   ],
+   "priority": "medium",
+   "detection_method": "card_internal_contradiction",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "teste de schema v2 (35 cards) — leitura do card",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "teste de schema v2 (35 cards) — leitura do card"
+    }
+   ],
+   "id": "INT-net_gep_20-001",
+   "dedupe_key": "net_gep_20|aggregation|acron,ref,resultado_chave,takehome"
+  },
+  {
+   "uid": "neuroblastoma_10",
+   "card": "HR-NBL1/SIOPEN (Ladenstein, 2017)",
+   "issue_type": "safety_misattribution",
+   "description": "SOS/VOD rotulada como toxicidade pulmonar; 'MYCN obrigatório' contradiz a inclusão; HTML em desenho",
+   "affected_fields": [
+    "tox_g3",
+    "incl",
+    "desenho"
+   ],
+   "evidence": [
+    {
+     "kind": "card_internal",
+     "note": "contradição entre campos do próprio card v1"
+    }
+   ],
+   "priority": "medium",
+   "detection_method": "card_internal_contradiction",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "teste de schema v2 (35 cards) — leitura do card",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "teste de schema v2 (35 cards) — leitura do card"
+    }
+   ],
+   "id": "INT-neuroblastoma_10-001",
+   "dedupe_key": "neuroblastoma_10|safety_misattribution|desenho,incl,tox_g3"
+  },
+  {
+   "uid": "neuroblastoma_3",
+   "card": "ANBL1531 (COG)",
+   "issue_type": "design_misrepresentation",
+   "description": "desenho v1 diz que o lorlatinibe é randomizado contra a indução padrão; no registro, o braço E é ATRIBUÍDO a tumores com mutação ativadora de ALK (VAF ≥5%) e comparado a uma coorte contemporânea sem mutação de ALK documentada (e, exploratoriamente, a controle histórico do ANBL0532).",
+   "affected_fields": [
+    "desenho"
+   ],
+   "evidence": [
+    {
+     "kind": "primary_source_snippet",
+     "snippet": "'Patients are randomized or assigned to 1 of 5 arms' · 'results in superior EFS compared to a contemporaneously treated cohort of patients with tumors without documented ALK activating mutations'"
+    }
+   ],
+   "priority": "high",
+   "detection_method": "primary_source_check",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido"
+    }
+   ],
+   "id": "INT-neuroblastoma_3-001",
+   "dedupe_key": "neuroblastoma_3|design_misrepresentation|desenho"
+  },
+  {
+   "uid": "neuroblastoma_3",
+   "card": "ANBL1531 (COG)",
+   "issue_type": "unsupported_claim",
+   "description": "esquema/cumul v1: '15 mCi/kg ... seguido de Bu/Mel + TCTH'. A atividade não está no registro; Bu/Mel existe só no braço C (fechado em 17/12/2020) — a pergunta primária do MIBG (B vs A) é antes de TCTH autólogo em tandem (tiotepa/ciclofosfamida → melfalano/etoposídeo/carboplatina). [ATENÇÃO: conflita com decisão humana P0 que manteve a dose com fonte no piloto ANBL09P1; exige nova decisão, não correção automática]",
+   "affected_fields": [
+    "esquema",
+    "cumul"
+   ],
+   "evidence": [
+    {
+     "kind": "primary_source_snippet",
+     "snippet": "'prior to tandem autologous stem cell transplantation (ASCT)' · 'ARM C (CLOSED TO ACCRUAL AS OF DECEMBER 17, 2020)' · braço C: 'busulfan IV ... and melphalan hydrochloride IV'"
+    }
+   ],
+   "priority": "medium",
+   "detection_method": "primary_source_check",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [
+    "P0 2026-09-28: ANBL1531 — dose de 15 mCi/kg mantida como 'selecionada' (fonte ANBL09P1, PMC9150928)"
+   ],
+   "origin": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido"
+    }
+   ],
+   "id": "INT-neuroblastoma_3-002",
+   "dedupe_key": "neuroblastoma_3|unsupported_claim|cumul,esquema"
+  },
+  {
+   "uid": "neuroblastoma_3",
+   "card": "ANBL1531 (COG)",
+   "issue_type": "eligibility_mismatch",
+   "description": "excl v1 'MIBG-negativo + ALK negativo (não elegíveis para braços experimentais)' não é critério de exclusão do registro; pacientes MIBG não ávidos são incluídos (objetivo exploratório V).",
+   "affected_fields": [
+    "excl"
+   ],
+   "evidence": [
+    {
+     "kind": "primary_source_snippet",
+     "snippet": "'To prospectively evaluate EFS for patients with MIBG non-avid high-risk NBL compared to patients with MIBG-avid high-risk NBL who are randomized to treatment without 131I-MIBG.'"
+    }
+   ],
+   "priority": "medium",
+   "detection_method": "primary_source_check",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido"
+    }
+   ],
+   "id": "INT-neuroblastoma_3-003",
+   "dedupe_key": "neuroblastoma_3|eligibility_mismatch|excl"
+  },
+  {
+   "uid": "neuroblastoma_3",
+   "card": "ANBL1531 (COG)",
+   "issue_type": "unsupported_claim",
+   "description": "sponsor v1 'PI: Brian Weiss / Suzanne Shusterman'; o registro nomeia Steven G DuBois como principal investigator.",
+   "affected_fields": [
+    "sponsor"
+   ],
+   "evidence": [
+    {
+     "kind": "primary_source_snippet",
+     "snippet": "CT.gov overallOfficials: 'Steven G DuBois' — 'PRINCIPAL_INVESTIGATOR'"
+    }
+   ],
+   "priority": "low",
+   "detection_method": "primary_source_check",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido"
+    }
+   ],
+   "id": "INT-neuroblastoma_3-004",
+   "dedupe_key": "neuroblastoma_3|unsupported_claim|sponsor"
+  },
+  {
+   "uid": "neuroblastoma_3",
+   "card": "ANBL1531 (COG)",
+   "issue_type": "unsupported_claim",
+   "description": "tox_g3 v1 'perfil esperado: SOS hepática, mielotoxicidade' e 'estudo registracional' (impacto_reg/takehome) em card de desenho sem resultados; nenhum dos dois está no registro.",
+   "affected_fields": [
+    "tox_g3",
+    "impacto_reg",
+    "takehome"
+   ],
+   "evidence": [
+    {
+     "kind": "primary_source_snippet",
+     "snippet": "CT.gov: overallStatus 'RECRUITING', hasResults false; sem menção a registro regulatório"
+    }
+   ],
+   "priority": "medium",
+   "detection_method": "primary_source_check",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido"
+    }
+   ],
+   "id": "INT-neuroblastoma_3-005",
+   "dedupe_key": "neuroblastoma_3|unsupported_claim|impacto_reg,takehome,tox_g3"
+  },
+  {
+   "uid": "neuroblastoma_3",
+   "card": "ANBL1531 (COG)",
+   "issue_type": "source_internal_inconsistency",
+   "description": "No registro, melfalano aparece vinculado só ao braço C e vincristina não aparece no braço E, embora a descrição detalhada use melfalano no TCTH#2 dos braços A/B/D/E e a mesma indução (com vincristina) no E.",
+   "affected_fields": [
+    "esquema"
+   ],
+   "evidence": [
+    {
+     "kind": "primary_source_snippet",
+     "snippet": "interventions 'Melphalan Hydrochloride' armGroupLabels ['Arm C ...'] · 'HSCT#2: Patients receive melphalan hydrochloride IV over 30 minutes on days -7 to -5'"
+    }
+   ],
+   "priority": "low",
+   "detection_method": "primary_source_check",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido"
+    }
+   ],
+   "id": "INT-neuroblastoma_3-006",
+   "dedupe_key": "neuroblastoma_3|source_internal_inconsistency|esquema"
+  },
+  {
+   "uid": "novos_psma_0",
+   "card": "225Ac-PSMA-617 Heidelberg (2016-2020)",
+   "issue_type": "aggregation",
+   "description": "números são faixas de quatro séries; PMID representado de 2016; NCT possivelmente de outro estudo",
+   "affected_fields": [
+    "nct",
+    "primario",
+    "pubmed_url"
+   ],
+   "evidence": [
+    {
+     "kind": "card_internal",
+     "note": "contradição entre campos do próprio card v1"
+    }
+   ],
+   "priority": "high",
+   "detection_method": "card_internal_contradiction",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "teste de schema v2 (35 cards) — leitura do card",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "teste de schema v2 (35 cards) — leitura do card"
+    }
+   ],
+   "id": "INT-novos_psma_0-001",
+   "dedupe_key": "novos_psma_0|aggregation|nct,primario,pubmed_url"
+  },
+  {
+   "uid": "ovario_1",
+   "card": "PAOLA-1 / ENGOT-ov25 (2019/2023)",
+   "issue_type": "statistical_interpretation",
+   "description": "artigo de OS citado como NEJM 2023 e Ann Oncol 2023; OS exploratória em HRD+ chamada 'POSITIVO'; p<0,001 junto da OS HRD+ no resultado_chave",
+   "affected_fields": [
+    "secundario",
+    "resultado_chave",
+    "ref"
+   ],
+   "evidence": [
+    {
+     "kind": "card_internal",
+     "note": "contradição entre campos do próprio card v1"
+    }
+   ],
+   "priority": "high",
+   "detection_method": "card_internal_contradiction",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "teste de schema v2 (35 cards) — leitura do card",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "teste de schema v2 (35 cards) — leitura do card"
+    }
+   ],
+   "id": "INT-ovario_1-001",
+   "dedupe_key": "ovario_1|statistical_interpretation|ref,resultado_chave,secundario"
+  },
+  {
+   "uid": "prostata_contexto_17",
+   "card": "PROfound (2020)",
+   "issue_type": "statistical_interpretation",
+   "description": "OS rotulada ajustada por crossover com números que parecem da análise não ajustada",
+   "affected_fields": [
+    "secundario"
+   ],
+   "evidence": [
+    {
+     "kind": "card_internal",
+     "note": "contradição entre campos do próprio card v1"
+    }
+   ],
+   "priority": "high",
+   "detection_method": "card_internal_contradiction",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "teste de schema v2 (35 cards) — leitura do card",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "teste de schema v2 (35 cards) — leitura do card"
+    }
+   ],
+   "id": "INT-prostata_contexto_17-001",
+   "dedupe_key": "prostata_contexto_17|statistical_interpretation|secundario"
+  },
+  {
+   "uid": "prostata_contexto_17",
+   "card": "PROfound (2020)",
+   "issue_type": "eligibility_mismatch",
+   "description": "'QT prévia' como exclusão contradiz estratificação por docetaxel prévio; rPFS A+B marcado como primário",
+   "affected_fields": [
+    "excl",
+    "estrat",
+    "primario"
+   ],
+   "evidence": [
+    {
+     "kind": "card_internal",
+     "note": "contradição entre campos do próprio card v1"
+    }
+   ],
+   "priority": "medium",
+   "detection_method": "card_internal_contradiction",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "teste de schema v2 (35 cards) — leitura do card",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "teste de schema v2 (35 cards) — leitura do card"
+    }
+   ],
+   "id": "INT-prostata_contexto_17-002",
+   "dedupe_key": "prostata_contexto_17|eligibility_mismatch|estrat,excl,primario"
+  },
+  {
+   "uid": "prostata_contexto_20",
+   "card": "MAGNITUDE (2022/2024)",
+   "issue_type": "numeric_mismatch",
+   "description": "campo 'preparo' diz 'prednisona 5 mg/dia contínua'; a fonte descreve prednisona 5 mg DUAS vezes ao dia (10 mg/dia total)",
+   "affected_fields": [
+    "preparo"
+   ],
+   "evidence": [
+    {
+     "kind": "primary_source_snippet",
+     "snippet": "PMC10431499 Methods: 'AA 1,000 mg once daily plus prednisone 5 mg twice daily' ; NCT03748641: 'prednisone 5 mg tablet orally twice daily (BID) (total dose 10 mg)'"
+    }
+   ],
+   "priority": "medium",
+   "detection_method": "primary_source_check",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido"
+    }
+   ],
+   "id": "INT-prostata_contexto_20-001",
+   "dedupe_key": "prostata_contexto_20|numeric_mismatch|preparo"
+  },
+  {
+   "uid": "prostata_contexto_20",
+   "card": "MAGNITUDE (2022/2024)",
+   "issue_type": "eligibility_mismatch",
+   "description": "'incl' ('sem QT prévia') e 'excl' ('QT prévia') excluem toda quimioterapia prévia; a fonte só exclui terapia sistêmica (incl. docetaxel) no cenário mCRPC e PERMITE terapias sistêmicas em mCSPC/nmCRPC; também omite a exclusão de iPARP prévio e a permissão de até 4 meses de AAP",
+   "affected_fields": [
+    "incl",
+    "excl"
+   ],
+   "evidence": [
+    {
+     "kind": "primary_source_snippet",
+     "snippet": "PMC10431499 Methods: 'Systemic therapy (eg, apalutamide, enzalutamide, darolutamide, and docetaxel) for mCRPC was exclusionary; systemic therapies for metastatic castration-sensitive prostate cancer (mCSPC) or nonmetastatic castration-resistant prostate cancer (nmCRPC) were allowed.'"
+    }
+   ],
+   "priority": "medium",
+   "detection_method": "primary_source_check",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido"
+    }
+   ],
+   "id": "INT-prostata_contexto_20-002",
+   "dedupe_key": "prostata_contexto_20|eligibility_mismatch|excl,incl"
+  },
+  {
+   "uid": "prostata_contexto_20",
+   "card": "MAGNITUDE (2022/2024)",
+   "issue_type": "numeric_mismatch",
+   "description": "'estatistica' diz 'Poder ≥85% para rPFS HRR+; α 0,025'; a fonte descreve 87% de poder (HR 0,65, ~220 eventos), α bilateral 0,05 com controle FWER por abordagem gráfica, e 93% de poder no subgrupo BRCA1/2 (testado primeiro)",
+   "affected_fields": [
+    "estatistica"
+   ],
+   "evidence": [
+    {
+     "kind": "primary_source_snippet",
+     "snippet": "PMC10431499 Statistical Analysis: 'graphical testing approach to control the family-wise type I error rate at a two-sided level of 0.05' ; 'Approximately 220 radiographic progression events were required to provide 87% power in detecting a hazard ratio (HR) of 0.65 at a two-tailed significance level of .05'"
+    }
+   ],
+   "priority": "medium",
+   "detection_method": "primary_source_check",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido"
+    }
+   ],
+   "id": "INT-prostata_contexto_20-003",
+   "dedupe_key": "prostata_contexto_20|numeric_mismatch|estatistica"
+  },
+  {
+   "uid": "prostata_contexto_20",
+   "card": "MAGNITUDE (2022/2024)",
+   "issue_type": "numeric_mismatch",
+   "description": "'periodo' = 'Mar/2019 - Mai/2021'; a fonte dá HRR+ mai/2019–mar/2021 e HRR− mar/2019–mar/2020 (o fim 'Mai/2021' não aparece; parece troca de mês)",
+   "affected_fields": [
+    "periodo"
+   ],
+   "evidence": [
+    {
+     "kind": "primary_source_snippet",
+     "snippet": "PMC10431499 Results: 'Between May 2019 and March 2021, 423 patients were enrolled' ; 'In the HRR− cohort, between March 2019 and March 2020'"
+    }
+   ],
+   "priority": "low",
+   "detection_method": "primary_source_check",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido"
+    }
+   ],
+   "id": "INT-prostata_contexto_20-004",
+   "dedupe_key": "prostata_contexto_20|numeric_mismatch|periodo"
+  },
+  {
+   "uid": "prostata_contexto_20",
+   "card": "MAGNITUDE (2022/2024)",
+   "issue_type": "bibliographic_mismatch",
+   "description": "'ano_pub' = 2022, mas pubmed_url aponta PMID 36952634 (J Clin Oncol 2023;41(18):3339-3351, Epub mar/2023). 2022 corresponde ao resumo ASCO GU (citado em 'ref' como JCO 2022;40:LBA12), não à publicação representada",
+   "affected_fields": [
+    "ano_pub"
+   ],
+   "evidence": [
+    {
+     "kind": "primary_source_snippet",
+     "snippet": "PMID_36952634_abstract: 'J Clin Oncol. 2023 Jun 20;41(18):3339-3351. doi: 10.1200/JCO.22.01649. Epub 2023 Mar 23.'"
+    }
+   ],
+   "priority": "low",
+   "detection_method": "primary_source_check",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido"
+    }
+   ],
+   "id": "INT-prostata_contexto_20-005",
+   "dedupe_key": "prostata_contexto_20|bibliographic_mismatch|ano_pub"
+  },
+  {
+   "uid": "prostata_contexto_20",
+   "card": "MAGNITUDE (2022/2024)",
+   "issue_type": "unsupported_claim",
+   "description": "'tox_interesse' afirma 'Anemia mais frequente que com olaparib (perfil diferente)' — comparação cruzada entre ensaios sem lastro na fonte (o artigo compara PROpel só quanto a desenho/eficácia)",
+   "affected_fields": [
+    "tox_interesse"
+   ],
+   "evidence": [
+    {
+     "kind": "primary_source_snippet",
+     "snippet": "PMC10431499 Discussion: 'Differences, including study design, gene testing strategies, prior exposure to novel hormonal agents, and patient population, limit the comparability between PROpel and MAGNITUDE'"
+    }
+   ],
+   "priority": "low",
+   "detection_method": "primary_source_check",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido"
+    }
+   ],
+   "id": "INT-prostata_contexto_20-006",
+   "dedupe_key": "prostata_contexto_20|unsupported_claim|tox_interesse"
+  },
+  {
+   "uid": "prostata_contexto_20",
+   "card": "MAGNITUDE (2022/2024)",
+   "issue_type": "bibliographic_mismatch",
+   "description": "'secundario' traz OS BRCA1/2 HR 0,55 e OS HRR+ HR 0,79 (análise final, Ann Oncol 2024 citada em 'ref'); a publicação representada (JCO 2023) só tem OS imatura (46,3% dos eventos; HR multivariado 0,77). Os números de OS do card vêm de fonte que não é a publicação representada nem está no cache",
+   "affected_fields": [
+    "secundario"
+   ],
+   "evidence": [
+    {
+     "kind": "primary_source_snippet",
+     "snippet": "PMC10431499 Results: 'OS data are immature at this first interim analysis, with 46.3% of the required events for final analysis' ; '(0.77; 95% CI, 0.53 to 1.12'"
+    }
+   ],
+   "priority": "medium",
+   "detection_method": "primary_source_check",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido"
+    }
+   ],
+   "id": "INT-prostata_contexto_20-007",
+   "dedupe_key": "prostata_contexto_20|bibliographic_mismatch|secundario"
+  },
+  {
+   "uid": "ra223_prostata_4",
+   "card": "COMRADE (ASCO 2025)",
+   "issue_type": "numeric_mismatch",
+   "description": "120 randomizados × 59+59=118; resumo de congresso marcado 'Publicado'; 'benefício independe de HRR' com análise em curso",
+   "affected_fields": [
+    "n",
+    "status",
+    "subgrupo"
+   ],
+   "evidence": [
+    {
+     "kind": "card_internal",
+     "note": "contradição entre campos do próprio card v1"
+    }
+   ],
+   "priority": "medium",
+   "detection_method": "card_internal_contradiction",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "teste de schema v2 (35 cards) — leitura do card",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "teste de schema v2 (35 cards) — leitura do card"
+    }
+   ],
+   "id": "INT-ra223_prostata_4-001",
+   "dedupe_key": "ra223_prostata_4|numeric_mismatch|n,status,subgrupo"
+  },
+  {
+   "uid": "rcc_adjuvante_naocc_9",
+   "card": "ASPEN (2016)",
+   "issue_type": "statistical_interpretation",
+   "description": "primario/resultado_chave chamam a PFS de 'NS, mas tendência' (p=0,16); a publicação declara que o resultado atingiu o nível de significância pré-especificado (α bilateral 0,20).",
+   "affected_fields": [
+    "primario",
+    "resultado_chave"
+   ],
+   "evidence": [
+    {
+     "kind": "primary_source_snippet",
+     "snippet": "HR 1⋅41 [80% CI 1⋅03–1⋅92]; p=0⋅16; figure 2; table 2), meeting the prespecified level of statistical significance for the study (two-sided type I error rate of 0⋅20) [PMID 26794930, Results]"
+    },
+    {
+     "kind": "primary_source_snippet",
+     "identifier": "PMID 26794930 · PMC6863151",
+     "note": "reauditado na micro-rodada de integridade; trechos literais em scripts/_db_proveniencia_integridade.jsonl (36/36 conferidos)"
+    }
+   ],
+   "priority": "high",
+   "detection_method": "primary_source_check",
+   "status": "confirmed",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-29",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [
+    "INT-rcc_adjuvante_naocc_9-008",
+    "INT-rcc_adjuvante_naocc_9-002"
+   ],
+   "related_decisions": [],
+   "origin": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido"
+    },
+    {
+     "at": "2026-09-29",
+     "event": "status:open→confirmed",
+     "by": "micro-rodada de integridade (fonte primária)",
+     "note": "confirmado contra a fonte primária; proposta de correção em cópia aguardando aprovação"
+    }
+   ],
+   "id": "INT-rcc_adjuvante_naocc_9-001",
+   "dedupe_key": "rcc_adjuvante_naocc_9|statistical_interpretation|primario,resultado_chave"
+  },
+  {
+   "uid": "rcc_adjuvante_naocc_9",
+   "card": "ASPEN (2016)",
+   "issue_type": "numeric_mismatch",
+   "description": "estatistica 'Poder 80% para HR 0,67' diverge da fonte: 83% de poder para HR 0,625 (superioridade do everolimus), 90 eventos, α bilateral 0,20.",
+   "affected_fields": [
+    "estatistica"
+   ],
+   "evidence": [
+    {
+     "kind": "primary_source_snippet",
+     "snippet": "(HR 0⋅625). Using a two-sided type I error rate of 0⋅20, we estimated that 90 progression-free survival events would allow us to detect this difference in progression with 83% power [Methods — Statistical analysis]"
+    },
+    {
+     "kind": "primary_source_snippet",
+     "identifier": "PMID 26794930 · PMC6863151",
+     "note": "reauditado na micro-rodada de integridade; trechos literais em scripts/_db_proveniencia_integridade.jsonl (36/36 conferidos)"
+    }
+   ],
+   "priority": "medium",
+   "detection_method": "primary_source_check",
+   "status": "confirmed",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-29",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [
+    "INT-rcc_adjuvante_naocc_9-001"
+   ],
+   "related_decisions": [],
+   "origin": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido"
+    },
+    {
+     "at": "2026-09-29",
+     "event": "status:open→confirmed",
+     "by": "micro-rodada de integridade (fonte primária)",
+     "note": "confirmado contra a fonte primária; proposta de correção em cópia aguardando aprovação"
+    }
+   ],
+   "id": "INT-rcc_adjuvante_naocc_9-002",
+   "dedupe_key": "rcc_adjuvante_naocc_9|numeric_mismatch|estatistica"
+  },
+  {
+   "uid": "rcc_adjuvante_naocc_9",
+   "card": "ASPEN (2016)",
+   "issue_type": "numeric_mismatch",
+   "description": "tox_g3 'TRAEs ≥G3: sunitinibe 63%, everolimus 47%' diverge da fonte (78% vs 60%).",
+   "affected_fields": [
+    "tox_g3"
+   ],
+   "evidence": [
+    {
+     "kind": "primary_source_snippet",
+     "snippet": "Overall, 40 (78%) patients receiving sunitinib had grade 3 or worse treatment-related adverse event compared with 34 (60%) patients receiving everolimus [Results]"
+    },
+    {
+     "kind": "primary_source_snippet",
+     "identifier": "PMID 26794930 · PMC6863151",
+     "note": "reauditado na micro-rodada de integridade; trechos literais em scripts/_db_proveniencia_integridade.jsonl (36/36 conferidos)"
+    }
+   ],
+   "priority": "medium",
+   "detection_method": "primary_source_check",
+   "status": "confirmed",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-29",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [
+    "INT-rcc_adjuvante_naocc_9-004"
+   ],
+   "related_decisions": [],
+   "origin": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido"
+    },
+    {
+     "at": "2026-09-29",
+     "event": "status:open→confirmed",
+     "by": "micro-rodada de integridade (fonte primária)",
+     "note": "confirmado contra a fonte primária; proposta de correção em cópia aguardando aprovação"
+    }
+   ],
+   "id": "INT-rcc_adjuvante_naocc_9-003",
+   "dedupe_key": "rcc_adjuvante_naocc_9|numeric_mismatch|tox_g3"
+  },
+  {
+   "uid": "rcc_adjuvante_naocc_9",
+   "card": "ASPEN (2016)",
+   "issue_type": "numeric_mismatch",
+   "description": "tox_interesse 'Descontinuação por TRAE: suni 22%, everol 25%' diverge da fonte (14% vs 23%); 'Pneumonite everolimus 7% qualquer grau' não tem lastro no texto (o texto dá pneumonite G3–4 em 9%).",
+   "affected_fields": [
+    "tox_interesse"
+   ],
+   "evidence": [
+    {
+     "kind": "primary_source_snippet",
+     "snippet": "seven (14%) patients discontinued treatment because of toxic effects. Nine (16%) of 57 patients who received everolimus needed dose reductions, and 13 (23%) participants discontinued treatment because of toxic effects … pneumonitis (none vs five [9%]) [Results; Summary — Findings]"
+    },
+    {
+     "kind": "primary_source_snippet",
+     "identifier": "PMID 26794930 · PMC6863151",
+     "note": "reauditado na micro-rodada de integridade; trechos literais em scripts/_db_proveniencia_integridade.jsonl (36/36 conferidos)"
+    }
+   ],
+   "priority": "medium",
+   "detection_method": "primary_source_check",
+   "status": "confirmed",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-29",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [
+    "INT-rcc_adjuvante_naocc_9-003"
+   ],
+   "related_decisions": [],
+   "origin": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido"
+    },
+    {
+     "at": "2026-09-29",
+     "event": "status:open→confirmed",
+     "by": "micro-rodada de integridade (fonte primária)",
+     "note": "confirmado contra a fonte primária; proposta de correção em cópia aguardando aprovação"
+    }
+   ],
+   "id": "INT-rcc_adjuvante_naocc_9-004",
+   "dedupe_key": "rcc_adjuvante_naocc_9|numeric_mismatch|tox_interesse"
+  },
+  {
+   "uid": "rcc_adjuvante_naocc_9",
+   "card": "ASPEN (2016)",
+   "issue_type": "eligibility_mismatch",
+   "description": "incl 'ECOG 0-2' e excl 'Sarcomatoid puro' não batem com a fonte: o critério é KPS ≥60; sarcomatoide era permitido (se não-células-claras predominante); as exclusões de histologia são ducto coletor e medular.",
+   "affected_fields": [
+    "incl",
+    "excl"
+   ],
+   "evidence": [
+    {
+     "kind": "primary_source_snippet",
+     "snippet": "baseline Karnofsky performance status of 60 or higher … Translocation carcinomas (if known) and sarcomatoid histologies were allowed irrespective of the histological mixture … collecting duct or medullary histology [Methods]"
+    },
+    {
+     "kind": "primary_source_snippet",
+     "identifier": "PMID 26794930 · PMC6863151",
+     "note": "reauditado na micro-rodada de integridade; trechos literais em scripts/_db_proveniencia_integridade.jsonl (36/36 conferidos)"
+    }
+   ],
+   "priority": "medium",
+   "detection_method": "primary_source_check",
+   "status": "confirmed",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-29",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido"
+    },
+    {
+     "at": "2026-09-29",
+     "event": "status:open→confirmed",
+     "by": "micro-rodada de integridade (fonte primária)",
+     "note": "confirmado contra a fonte primária; proposta de correção em cópia aguardando aprovação"
+    }
+   ],
+   "id": "INT-rcc_adjuvante_naocc_9-005",
+   "dedupe_key": "rcc_adjuvante_naocc_9|eligibility_mismatch|excl,incl"
+  },
+  {
+   "uid": "rcc_adjuvante_naocc_9",
+   "card": "ASPEN (2016)",
+   "issue_type": "numeric_mismatch",
+   "description": "basal: 'papilar 70%' (a fonte dá 70 pacientes = 65% de 108) e 'MSKCC poor 22%' (15/108 = 14%); 'ECOG 0-1 ~85%' sem lastro no texto (estudo usou KPS). Tabela 1 não está no cache; conferir.",
+   "affected_fields": [
+    "basal"
+   ],
+   "evidence": [
+    {
+     "kind": "primary_source_snippet",
+     "snippet": "only one (7%) of the 15 patients who were rated as having poor risk … nine (13%) of 70 patients with papillary renal cell carcinoma [Results]"
+    },
+    {
+     "kind": "primary_source_snippet",
+     "identifier": "PMID 26794930 · PMC6863151",
+     "note": "reauditado na micro-rodada de integridade; trechos literais em scripts/_db_proveniencia_integridade.jsonl (36/36 conferidos)"
+    }
+   ],
+   "priority": "low",
+   "detection_method": "primary_source_check",
+   "status": "confirmed",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-29",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido"
+    },
+    {
+     "at": "2026-09-29",
+     "event": "status:open→confirmed",
+     "by": "micro-rodada de integridade (fonte primária)",
+     "note": "confirmado contra a fonte primária; proposta de correção em cópia aguardando aprovação"
+    }
+   ],
+   "id": "INT-rcc_adjuvante_naocc_9-006",
+   "dedupe_key": "rcc_adjuvante_naocc_9|numeric_mismatch|basal"
+  },
+  {
+   "uid": "rcc_adjuvante_naocc_9",
+   "card": "ASPEN (2016)",
+   "issue_type": "unsupported_claim",
+   "description": "secundario/subgrupo dizem 'chromophobe: sem diferença'; a fonte diz que o everolimus teve PFS mediana mais longa no cromófobo (interação não testada).",
+   "affected_fields": [
+    "secundario",
+    "subgrupo"
+   ],
+   "evidence": [
+    {
+     "kind": "primary_source_snippet",
+     "snippet": "one subtype (chromophobe) in which everolimus was associated with a longer median progression-free survival than that of sunitinib [Discussion]"
+    },
+    {
+     "kind": "primary_source_snippet",
+     "identifier": "PMID 26794930 · PMC6863151",
+     "note": "reauditado na micro-rodada de integridade; trechos literais em scripts/_db_proveniencia_integridade.jsonl (36/36 conferidos)"
+    }
+   ],
+   "priority": "medium",
+   "detection_method": "primary_source_check",
+   "status": "confirmed",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-29",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido"
+    },
+    {
+     "at": "2026-09-29",
+     "event": "status:open→confirmed",
+     "by": "micro-rodada de integridade (fonte primária)",
+     "note": "confirmado contra a fonte primária; proposta de correção em cópia aguardando aprovação"
+    }
+   ],
+   "id": "INT-rcc_adjuvante_naocc_9-007",
+   "dedupe_key": "rcc_adjuvante_naocc_9|unsupported_claim|secundario,subgrupo"
+  },
+  {
+   "uid": "rcc_adjuvante_naocc_9",
+   "card": "ASPEN (2016)",
+   "issue_type": "arm_or_comparator",
+   "description": "comparador 'Everolimus (vs sunitinibe)': pelo plano estatístico, a hipótese testada era a superioridade do everolimus e o grupo de referência do HR era o sunitinibe (o v2 modela everolimus = experimental, sunitinibe = controle). Decisão editorial de papel dos braços.",
+   "affected_fields": [
+    "comparador"
+   ],
+   "evidence": [
+    {
+     "kind": "primary_source_snippet",
+     "snippet": "the alternative hypothesis was that everolimus would cause a 60% improvement … In all multivariable analyses, the reference group was sunitinib [Methods — Statistical analysis]"
+    },
+    {
+     "kind": "primary_source_snippet",
+     "identifier": "PMID 26794930 · PMC6863151",
+     "note": "reauditado na micro-rodada de integridade; trechos literais em scripts/_db_proveniencia_integridade.jsonl (36/36 conferidos)"
+    }
+   ],
+   "priority": "high",
+   "detection_method": "primary_source_check",
+   "status": "confirmed",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-29",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [
+    "INT-rcc_adjuvante_naocc_9-001"
+   ],
+   "related_decisions": [],
+   "origin": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido"
+    },
+    {
+     "at": "2026-09-29",
+     "event": "status:open→confirmed",
+     "by": "micro-rodada de integridade (fonte primária)",
+     "note": "confirmado contra a fonte primária; proposta de correção em cópia aguardando aprovação"
+    }
+   ],
+   "id": "INT-rcc_adjuvante_naocc_9-008",
+   "dedupe_key": "rcc_adjuvante_naocc_9|arm_or_comparator|comparador"
+  },
+  {
+   "uid": "rcc_adjuvante_naocc_9",
+   "card": "ASPEN (2016)",
+   "issue_type": "unsupported_claim",
+   "description": "secundario 'OS HR 1,12; NS no longo prazo': não há análise de longo prazo; a OS é do mesmo fechamento (dez/2014), com metade dos pacientes vivos.",
+   "affected_fields": [
+    "secundario"
+   ],
+   "evidence": [
+    {
+     "kind": "primary_source_snippet",
+     "snippet": "However, half of the participants were alive at the time of datalock [Results]"
+    },
+    {
+     "kind": "primary_source_snippet",
+     "identifier": "PMID 26794930 · PMC6863151",
+     "note": "reauditado na micro-rodada de integridade; trechos literais em scripts/_db_proveniencia_integridade.jsonl (36/36 conferidos)"
+    }
+   ],
+   "priority": "medium",
+   "detection_method": "primary_source_check",
+   "status": "confirmed",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-29",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido"
+    },
+    {
+     "at": "2026-09-29",
+     "event": "status:open→confirmed",
+     "by": "micro-rodada de integridade (fonte primária)",
+     "note": "confirmado contra a fonte primária; proposta de correção em cópia aguardando aprovação"
+    }
+   ],
+   "id": "INT-rcc_adjuvante_naocc_9-009",
+   "dedupe_key": "rcc_adjuvante_naocc_9|unsupported_claim|secundario"
+  },
+  {
+   "uid": "rcc_adjuvante_naocc_9",
+   "card": "ASPEN (2016)",
+   "issue_type": "source_internal_inconsistency",
+   "description": "Inconsistência interna na publicação: ORR everolimus = 5 respondedores (9%), mas o mesmo trecho lista 2 RC + 4 RP (=6). Registrado como within_source_conflict no endpoint e3.",
+   "affected_fields": [
+    "secundario"
+   ],
+   "evidence": [
+    {
+     "kind": "primary_source_snippet",
+     "snippet": "and in five (9% [1–16]) of 57 evaluable patients who were treated with everolimus (two patients had a complete response and four patients had a partial response; table 2) [Results]"
+    },
+    {
+     "kind": "primary_source_snippet",
+     "identifier": "PMID 26794930 · PMC6863151",
+     "note": "reauditado na micro-rodada de integridade; trechos literais em scripts/_db_proveniencia_integridade.jsonl (36/36 conferidos)"
+    }
+   ],
+   "priority": "low",
+   "detection_method": "primary_source_check",
+   "status": "confirmed",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-29",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido"
+    },
+    {
+     "at": "2026-09-29",
+     "event": "status:open→confirmed",
+     "by": "micro-rodada de integridade (fonte primária)",
+     "note": "confirmado contra a fonte primária; proposta de correção em cópia aguardando aprovação"
+    }
+   ],
+   "id": "INT-rcc_adjuvante_naocc_9-010",
+   "dedupe_key": "rcc_adjuvante_naocc_9|source_internal_inconsistency|secundario"
+  },
+  {
+   "uid": "rt_prostata_local_1",
+   "card": "HYPO-RT-PC (2019)",
+   "issue_type": "statistical_interpretation",
+   "description": "margem de NI HR 1,20 contradita pelo limite superior 1,325 declarado não inferior; IC 90% × α unilateral 0,025",
+   "affected_fields": [
+    "estatistica",
+    "primario"
+   ],
+   "evidence": [
+    {
+     "kind": "card_internal",
+     "note": "contradição entre campos do próprio card v1"
+    }
+   ],
+   "priority": "high",
+   "detection_method": "card_internal_contradiction",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "teste de schema v2 (35 cards) — leitura do card",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "teste de schema v2 (35 cards) — leitura do card"
+    }
+   ],
+   "id": "INT-rt_prostata_local_1-001",
+   "dedupe_key": "rt_prostata_local_1|statistical_interpretation|estatistica,primario"
+  },
+  {
+   "uid": "rt_prostata_local_1",
+   "card": "HYPO-RT-PC (2019)",
+   "issue_type": "unsupported_claim",
+   "description": "'ADT em 74%'/estratificação por ADT — o estudo não permitia ADT",
+   "affected_fields": [
+    "basal",
+    "estrat"
+   ],
+   "evidence": [
+    {
+     "kind": "reviewer_prior_knowledge",
+     "note": "conhecimento prévio do revisor — NÃO é evidência; exige conferência na fonte"
+    }
+   ],
+   "priority": "high",
+   "detection_method": "reviewer_prior_knowledge",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "teste de schema v2 (35 cards) — conhecimento prévio do revisor",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "teste de schema v2 (35 cards) — conhecimento prévio do revisor"
+    }
+   ],
+   "id": "INT-rt_prostata_local_1-002",
+   "dedupe_key": "rt_prostata_local_1|unsupported_claim|basal,estrat"
+  },
+  {
+   "uid": "rt_prostata_local_1",
+   "card": "HYPO-RT-PC (2019)",
+   "issue_type": "numeric_mismatch",
+   "description": "BED2 em cumul inconsistente entre braços (α/β=2 reproduz 173 mas não 155)",
+   "affected_fields": [
+    "cumul"
+   ],
+   "evidence": [
+    {
+     "kind": "card_internal",
+     "note": "contradição entre campos do próprio card v1"
+    }
+   ],
+   "priority": "low",
+   "detection_method": "card_internal_contradiction",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "teste de schema v2 (35 cards) — leitura do card",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "teste de schema v2 (35 cards) — leitura do card"
+    }
+   ],
+   "id": "INT-rt_prostata_local_1-003",
+   "dedupe_key": "rt_prostata_local_1|numeric_mismatch|cumul"
+  },
+  {
+   "uid": "rt_sbrt_oligo_5",
+   "card": "SINDAS (2023)",
+   "issue_type": "design_misrepresentation",
+   "description": "O card v1 chama a intervenção de SBRT (acron, radiofarmaco 'SBRT com LINAC', indicacao, takehome), mas a publicação descreve RT de 25-40 Gy em 5 frações, em geral NÃO ablativa, e nunca usa 'SBRT' (só o registro usa).",
+   "affected_fields": [
+    "acron",
+    "radiofarmaco",
+    "indicacao",
+    "takehome"
+   ],
+   "evidence": [
+    {
+     "kind": "primary_source_snippet",
+     "snippet": "'This trial did not implement high-dose ablative RT in the majority of patients' · 'The most common RT doses were 30 Gy (121 of 226 fields [53.5%]) and 25 Gy (70 of 226 fields [31.0%])' (PMID 35094066)"
+    }
+   ],
+   "priority": "medium",
+   "detection_method": "primary_source_check",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [
+    "INT-rt_sbrt_oligo_5-003"
+   ],
+   "related_decisions": [],
+   "origin": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido"
+    }
+   ],
+   "id": "INT-rt_sbrt_oligo_5-001",
+   "dedupe_key": "rt_sbrt_oligo_5|design_misrepresentation|acron,indicacao,radiofarmaco,takehome"
+  },
+  {
+   "uid": "rt_sbrt_oligo_5",
+   "card": "SINDAS (2023)",
+   "issue_type": "cross_source_conflict",
+   "description": "Mascaramento: o registro declara TRIPLE (participante, cuidador, investigador); a publicação diz que a randomização não foi mascarada (RT vs sem RT). Modelado como cross_source_conflict com v=open.",
+   "affected_fields": [
+    "desenho"
+   ],
+   "evidence": [
+    {
+     "kind": "primary_source_snippet",
+     "snippet": "CT.gov maskingInfo.masking 'TRIPLE' · publicação: 'the randomization was not masked'"
+    }
+   ],
+   "priority": "low",
+   "detection_method": "primary_source_check",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido"
+    }
+   ],
+   "id": "INT-rt_sbrt_oligo_5-002",
+   "dedupe_key": "rt_sbrt_oligo_5|cross_source_conflict|desenho"
+  },
+  {
+   "uid": "rt_sbrt_oligo_5",
+   "card": "SINDAS (2023)",
+   "issue_type": "cross_source_conflict",
+   "description": "Sequência RT × TKI: o registro descreve TKI com run-in de 1 semana e SBRT concomitante ('consolidative'); a publicação descreve RT upfront antes do TKI.",
+   "affected_fields": [
+    "esquema",
+    "desenho"
+   ],
+   "evidence": [
+    {
+     "kind": "primary_source_snippet",
+     "snippet": "CT.gov: 'will be administered ... during a 1-week run-in period after which SBRT will be delivered to the all oligometastatic lesions concurrently with the TKI' · publicação: 'upfront RT prior to TKI'"
+    }
+   ],
+   "priority": "low",
+   "detection_method": "primary_source_check",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [
+    "INT-rt_sbrt_oligo_5-001"
+   ],
+   "related_decisions": [],
+   "origin": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido"
+    }
+   ],
+   "id": "INT-rt_sbrt_oligo_5-003",
+   "dedupe_key": "rt_sbrt_oligo_5|cross_source_conflict|desenho,esquema"
+  },
+  {
+   "uid": "rt_sbrt_oligo_5",
+   "card": "SINDAS (2023)",
+   "issue_type": "source_internal_inconsistency",
+   "description": "Números da própria publicação pouco plausíveis: (a) IC 95% da PFS em 6 meses muito estreito para n=65/68 (95,2%, 93,6-96,9; 99,1%, 98,7-99,5); (b) HR 0,22 com IC 0,17-0,46 assimétrico em escala log; (c) Tabela 2 multivariável dá HR 1,39 (TKI só vs TKI+RT) para PFS, isto é ~0,72 para RT, incompatível em magnitude com o HR univariado 0,22. Modelado como reportado, sem correção; merece conferência humana antes de exibir o HR.",
+   "affected_fields": [
+    "primario",
+    "secundario"
+   ],
+   "evidence": [
+    {
+     "kind": "primary_source_snippet",
+     "snippet": "'The respective 6-month PFS was 95.2% (95% CI = 93.6% to 96.9%) vs 99.1% (95% CI = 98.7% to 99.5%; P > .05)' · 'hazard ratio [HR] = 0.22, 95% CI 0.17 to 0.46' · Table 2 'Randomization arm (TKI only vs TKI + RT)1.39 (1.07 to 1.95).005'"
+    }
+   ],
+   "priority": "medium",
+   "detection_method": "primary_source_check",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido"
+    }
+   ],
+   "id": "INT-rt_sbrt_oligo_5-004",
+   "dedupe_key": "rt_sbrt_oligo_5|source_internal_inconsistency|primario,secundario"
+  },
+  {
+   "uid": "rt_sbrt_oligo_5",
+   "card": "SINDAS (2023)",
+   "issue_type": "unsupported_claim",
+   "description": "impacto_reg ('Primeiro fase III a demonstrar benefício de OS...'; 'Referência CSCO e ESMO') não tem lastro nas fontes em cache; OS é desfecho secundário e o primário do protocolo não foi atingido. Não curado nem projetado.",
+   "affected_fields": [
+    "impacto_reg"
+   ],
+   "evidence": [
+    {
+     "kind": "primary_source_snippet",
+     "snippet": "Publicação: 'secondary endpoints were OS ... and safety'; '6-month PFS ... P > .05'"
+    }
+   ],
+   "priority": "medium",
+   "detection_method": "primary_source_check",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido"
+    }
+   ],
+   "id": "INT-rt_sbrt_oligo_5-005",
+   "dedupe_key": "rt_sbrt_oligo_5|unsupported_claim|impacto_reg"
+  },
+  {
+   "uid": "rt_sbrt_oligo_5",
+   "card": "SINDAS (2023)",
+   "issue_type": "numeric_mismatch",
+   "description": "O card exibe n=133 e 'ITT', mas 136 foram randomizados e 3 foram excluídos após a randomização (a análise dita ITT não é ITT estrita).",
+   "affected_fields": [
+    "n",
+    "analises"
+   ],
+   "evidence": [
+    {
+     "kind": "primary_source_snippet",
+     "snippet": "'136 participants met criteria and were randomly assigned; 3 patients chose to receive alternate therapies, leaving 133 patients'"
+    }
+   ],
+   "priority": "low",
+   "detection_method": "primary_source_check",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido"
+    }
+   ],
+   "id": "INT-rt_sbrt_oligo_5-006",
+   "dedupe_key": "rt_sbrt_oligo_5|numeric_mismatch|analises,n"
+  },
+  {
+   "uid": "tireoide_avancado_14",
+   "card": "Nixon MSKCC Lobectomy (2012)",
+   "issue_type": "eligibility_mismatch",
+   "description": "'<4 cm vs ≥4 cm' contradiz inclusão T1-T2",
+   "affected_fields": [
+    "subgrupo",
+    "incl"
+   ],
+   "evidence": [
+    {
+     "kind": "card_internal",
+     "note": "contradição entre campos do próprio card v1"
+    }
+   ],
+   "priority": "low",
+   "detection_method": "card_internal_contradiction",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "teste de schema v2 (35 cards) — leitura do card",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "teste de schema v2 (35 cards) — leitura do card"
+    }
+   ],
+   "id": "INT-tireoide_avancado_14-001",
+   "dedupe_key": "tireoide_avancado_14|eligibility_mismatch|incl,subgrupo"
+  },
+  {
+   "uid": "tireoide_avancado_14",
+   "card": "Nixon MSKCC Lobectomy (2012)",
+   "issue_type": "category_misclassification",
+   "description": "categoria 'tireoide avançado' para PTC T1-T2N0 de baixo risco",
+   "affected_fields": [
+    "category_id"
+   ],
+   "evidence": [
+    {
+     "kind": "card_internal",
+     "note": "contradição entre campos do próprio card v1"
+    }
+   ],
+   "priority": "low",
+   "detection_method": "card_internal_contradiction",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "teste de schema v2 (35 cards) — leitura do card",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "teste de schema v2 (35 cards) — leitura do card"
+    }
+   ],
+   "id": "INT-tireoide_avancado_14-002",
+   "dedupe_key": "tireoide_avancado_14|category_misclassification|category_id"
+  },
+  {
+   "uid": "tireoide_avancado_16",
+   "card": "ESTIMABL (2012)",
+   "issue_type": "endpoint_hierarchy",
+   "description": "definição do primário em biomarc; tox_g3 com toxicidade de qualquer grau; subgrupo 'variantes agressivas' contradiz exclusão",
+   "affected_fields": [
+    "biomarc",
+    "tox_g3",
+    "subgrupo"
+   ],
+   "evidence": [
+    {
+     "kind": "card_internal",
+     "note": "contradição entre campos do próprio card v1"
+    }
+   ],
+   "priority": "medium",
+   "detection_method": "card_internal_contradiction",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "teste de schema v2 (35 cards) — leitura do card",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "teste de schema v2 (35 cards) — leitura do card"
+    }
+   ],
+   "id": "INT-tireoide_avancado_16-001",
+   "dedupe_key": "tireoide_avancado_16|endpoint_hierarchy|biomarc,subgrupo,tox_g3"
+  },
+  {
+   "uid": "tireoide_avancado_16",
+   "card": "ESTIMABL (2012)",
+   "issue_type": "category_misclassification",
+   "description": "categoria 'tireoide avançado' para baixo risco",
+   "affected_fields": [
+    "category_id"
+   ],
+   "evidence": [
+    {
+     "kind": "card_internal",
+     "note": "contradição entre campos do próprio card v1"
+    }
+   ],
+   "priority": "low",
+   "detection_method": "card_internal_contradiction",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "teste de schema v2 (35 cards) — leitura do card",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "teste de schema v2 (35 cards) — leitura do card"
+    }
+   ],
+   "id": "INT-tireoide_avancado_16-002",
+   "dedupe_key": "tireoide_avancado_16|category_misclassification|category_id"
+  },
+  {
+   "uid": "tropion-lung01-dato-dxd-vs-docetaxel-nsclc",
+   "card": "TROPION-Lung01 (2025)",
+   "issue_type": "category_misclassification",
+   "description": "categoria 'NSCLC alvo' com maioria sem driver",
+   "affected_fields": [
+    "category_id"
+   ],
+   "evidence": [
+    {
+     "kind": "card_internal",
+     "note": "contradição entre campos do próprio card v1"
+    }
+   ],
+   "priority": "low",
+   "detection_method": "card_internal_contradiction",
+   "status": "open",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-28",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "teste de schema v2 (35 cards) — leitura do card",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "teste de schema v2 (35 cards) — leitura do card"
+    }
+   ],
+   "id": "INT-tropion-lung01-dato-dxd-vs-docetaxel-nsclc-001",
+   "dedupe_key": "tropion-lung01-dato-dxd-vs-docetaxel-nsclc|category_misclassification|category_id"
+  },
+  {
+   "uid": "tropion-lung01-dato-dxd-vs-docetaxel-nsclc",
+   "card": "TROPION-Lung01 (2025)",
+   "issue_type": "safety_misattribution",
+   "description": "tox_interesse 'DPI adjudicada (~4%, com casos fatais G5)' atribui ao Dato-DXd a taxa do docetaxel: DPI adjudicada relacionada ao fármaco foi 8,8% (Dato-DXd) vs 4,1% (docetaxel), com 7 óbitos (2,4%) no braço Dato-DXd. 'Estomatite/mucosite (~7%)' corresponde ao grau ≥3 (6,7%); qualquer grau foi 47,5% (55,2% no termo agrupado).",
+   "affected_fields": [
+    "tox_interesse"
+   ],
+   "evidence": [
+    {
+     "kind": "primary_source_snippet",
+     "snippet": "Adjudicated drug-related ILD occurred in 26 (8.8%) and 12 (4.1%) patients in the Dato-DXd and docetaxel groups, respectively … Twenty patients (6.7%) receiving Dato-DXd experienced grade ≥3 stomatitis [Results — Safety]"
+    },
+    {
+     "kind": "primary_source_snippet",
+     "identifier": "PMID 39250535 · PMC11771353",
+     "note": "reauditado na micro-rodada de integridade; trechos literais em scripts/_db_proveniencia_integridade.jsonl (36/36 conferidos)"
+    }
+   ],
+   "priority": "high",
+   "detection_method": "primary_source_check",
+   "status": "confirmed",
+   "first_detected_at": "2026-09-28",
+   "last_reviewed_at": "2026-09-29",
+   "human_decision": null,
+   "resolution": null,
+   "related_ids": [],
+   "related_decisions": [],
+   "origin": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido",
+   "history": [
+    {
+     "at": "2026-09-28",
+     "event": "detected",
+     "by": "piloto v2.1 — curadoria com fonte primária e trecho literal conferido"
+    },
+    {
+     "at": "2026-09-29",
+     "event": "status:open→confirmed",
+     "by": "micro-rodada de integridade (fonte primária)",
+     "note": "confirmado contra a fonte primária; proposta de correção em cópia aguardando aprovação"
+    }
+   ],
+   "id": "INT-tropion-lung01-dato-dxd-vs-docetaxel-nsclc-002",
+   "dedupe_key": "tropion-lung01-dato-dxd-vs-docetaxel-nsclc|safety_misattribution|tox_interesse"
+  }
+ ]
+}
