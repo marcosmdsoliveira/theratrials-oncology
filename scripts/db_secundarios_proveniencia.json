@@ -281,12 +281,7 @@
   "vision-renal-multiorgan-dosimetry-2024": {
    "pmid": "38050121",
    "doi": "10.2967/jnumed.123.265448",
-   "not_applied": {
-    "deep.limitacoes": "UNSUPPORTED",
-    "deep.achados[3]": "CONFLICT",
-    "deep.achados(conjunto)": "CONFLICT",
-    "analysis": "CONFLICT"
-   },
+   "not_applied": {},
    "evidence": [
     {
      "claim": "Coorte separada de 30",
@@ -409,14 +404,7 @@
      "snippet": "Results were analyzed descriptively"
     }
    ],
-   "production_status": "pending_human_review",
-   "verified_pass_not_applied": [
-    "deep.objetivo",
-    "deep.metodo",
-    "deep.interpretacao",
-    "clinicalTakeaway",
-    "relationshipToParent"
-   ],
+   "production_status": "applied",
    "rewrite_round_2026_09_30": {
     "decisao_humana": "REWRITE aprovado em bloco; clinicalTakeaway do VISION biomarcadores aprovado; mielossupressão G≥3 do VISION dosimetria renal em DEFER",
     "verificacao_independente": [
@@ -430,20 +418,70 @@
      }
     ]
    },
-   "pending_after_rewrite": {
+   "rewrite_round_2026_09_30_b": {
+    "decisao_humana": "omitir o número de mielossupressão G≥3 (texto e Tabela 3 divergem); manter só qualquer grau 11/30 (36,7%); retirar 'estimativas lacrimais muito variáveis'",
+    "verificacao_independente": [
+     {
+      "rodada": "3",
+      "change_id": "deep.achados[3]",
+      "proposed": "Toxicidade renal em 5/30 (16,7%), nenhuma de grau ≥3; mielossupressão (qualquer grau) em 11/30 (36,7%); boca seca 16,7%.",
+      "verdict": "PASS",
+      "reason": "Toxicidade renal em 5/30 (16,7%) sem grau ≥3, mielossupressão de qualquer grau em 11/30 (36,7%) e boca seca em 5/30 (16,7%) conferem com o texto e com a Tabela 3. O resumo diz 'grade higher than 3', formulação mais fraca que não contradiz o grau ≥3 afirmado no corpo, na conclusão e na tabela. A contagem omitida de mielossupressão grau ≥3 não gera afirmação falsa.",
+      "locator": "¶0088; ¶0092; ¶0095; ¶0096; ¶0117",
+      "snippet": "Renal toxicity was reported in 5 of 30 patients (16.7%) ... No patients experienced renal TEAEs of grade 3 or higher. TEAEs were most frequent in the bone marrow suppression grouping, occurring in 11 of 30 patients (36.7%) ... dry mouth in 5 of 30 patients (16.7%)"
+     },
+     {
+      "rodada": "3",
+      "change_id": "analysis.seguranca",
+      "proposed": "Toxicidade renal em 5/30 (16,7%), sem grau ≥3; mielossupressão (qualquer grau) em 11/30 (36,7%); náusea/vômito 36,7%; boca seca 16,7%; variação mínima do QTcF.",
+      "verdict": "PASS",
+      "reason": "Todos os valores estão na fonte, inclusive náusea/vômito 11/30 (36,7%). A variação mínima do QTcF está escrita na ¶0106, que se refere às primeiras 24 h de tratamento; o card não traz esse recorte de tempo, mas a omissão não é enganosa. A Tabela 3 também registra 0 casos de prolongamento do QT.",
+      "locator": "¶0088; ¶0093; ¶0106; ¶0099",
+      "snippet": "Least-square mean changes in the corrected Fridericia QT interval from baseline were minimal, ranging from +2.1 to −5.2 ms during the first 24 h of treatment"
+     },
+     {
+      "rodada": "3",
+      "change_id": "deep.limitacoes",
+      "proposed": "Coorte não randomizada (30; só 10 completaram 6 ciclos); dosimetria de ponto único nos ciclos 2–6; o limite de 23 Gy vem da radioterapia externa; análise descritiva.",
+      "verdict": "PASS",
+      "reason": "Coorte separada não randomizada de 30, com 10 pacientes completando os 6 ciclos; o ponto único nos ciclos 2–6 é chamado de limitação pelos próprios autores; o limite de 23 Gy tem base em EBRT; 'analyzed descriptively' está escrito. Há uma nuance: a comparação entre dose prevista e observada usou teste T² de Hotelling (¶0014), mas isso não contradiz a descrição dos resultados como descritivos.",
+      "locator": "¶0007; ¶0017; ¶0115; ¶0005; ¶0011",
+      "snippet": "From a purely dosimetric point of view, this represents a limitation of the study. | This limit is based on external beam radiation therapy (EBRT) | Results were analyzed descriptively and separately from those of the pivotal VISION study."
+     }
+    ]
+   },
+   "not_applied_before_rewrite": {
     "deep.limitacoes": "UNSUPPORTED",
-    "deep.achados[3]": "DEFER",
-    "analysis": "DEFER"
-   }
+    "deep.achados[3]": "CONFLICT",
+    "deep.achados(conjunto)": "CONFLICT",
+    "analysis": "CONFLICT"
+   },
+   "applied": [
+    "deep.objetivo",
+    "deep.metodo",
+    "deep.interpretacao",
+    "clinicalTakeaway",
+    "relationshipToParent",
+    "deep.limitacoes",
+    "deep.achados",
+    "analysis"
+   ],
+   "internal_conflicts": [
+    {
+     "item": "mielossupressão G≥3",
+     "detalhe": "Tabela 3: 6/30 (20,0%); soma do texto: 5/30 (16,7%) = 2 G4 + 1 G3 (leucopenia/trombocitopenia) + 2 G3 (anemia). Número omitido do card por decisão humana; mantido só qualquer grau 11/30 (36,7%).",
+     "locators": [
+      "¶0088",
+      "¶0092"
+     ],
+     "decisao": "omitir"
+    }
+   ]
   },
   "vision-baseline-psma-pet-biomarkers-2024": {
    "pmid": "39162634",
    "doi": "10.1148/radiol.233460",
-   "not_applied": {
-    "deep.objetivo": "CONFLICT",
-    "deep.achados[0]": "FAIL",
-    "deep.achados(conjunto)": "FAIL"
-   },
+   "not_applied": {},
    "evidence": [
     {
      "claim": "Exploratória, exigida pela FDA",
@@ -632,15 +670,7 @@
      "snippet": "with no identifiable optimum among participants receiving 177Lu-PSMA-617"
     }
    ],
-   "production_status": "pending_human_review",
-   "verified_pass_not_applied": [
-    "deep.metodo",
-    "deep.interpretacao",
-    "deep.limitacoes",
-    "relationshipToParent",
-    "analysis",
-    "clinicalTakeaway (reescrito: só frases literais da fonte)"
-   ],
+   "production_status": "applied",
    "rewrite_round_2026_09_30": {
     "decisao_humana": "REWRITE aprovado em bloco; clinicalTakeaway do VISION biomarcadores aprovado; mielossupressão G≥3 do VISION dosimetria renal em DEFER",
     "verificacao_independente": [
@@ -670,10 +700,64 @@
      }
     ]
    },
-   "pending_after_rewrite": {
-    "deep.achados[0]": "UNSUPPORTED",
-    "clinicalTakeaway": "CONFLICT"
-   }
+   "rewrite_round_2026_09_30_b": {
+    "decisao_humana": "retirar 'por unidade' dos HR 0,86/0,88 do braço 177Lu; takeaway mantém a interpretação dos autores e explicita que no quartil mais baixo os IC95% de rPFS e OS cruzam 1; sem afirmar benefício inequívoco em todos os níveis",
+    "verificacao_independente": [
+     {
+      "rodada": "3",
+      "change_id": "deep.achados[0]",
+      "proposed": "SUVmean tumoral de corpo inteiro (mediana 7,6) foi o parâmetro mais associado aos desfechos no braço 177Lu (rPFS HR 0,86; OS HR 0,88). Na amostra geral (n=576), +1 unidade associou-se a 12% menos risco de evento de rPFS e 10% menos risco de óbito.",
+      "verdict": "CONFLICT",
+      "reason": "Mediana 7,6, HR 0,86 (rPFS) e 0,88 (OS) no braço 177Lu como preditor mais forte, e -12%/-10% por unidade estão escritos. Mas o n=576 atribuído à estimativa de OS por unidade diverge dentro da própria fonte: ¶0036 diz 'overall study sample (n = 576)' para OS; já ¶0018 diz que o conjunto de análise de OS incluía todos os randomizados, e a Fig 5C/D usa 548+278=826. O n=576 corresponde ao conjunto de rPFS (382+194). Atribuir n=576 às duas estimativas repete essa inconsistência da fonte.",
+      "locator": "¶0029; ¶0036; ¶0018; ¶0035",
+      "snippet": "A 1-unit increase in whole-body tumor SUVmean was associated with a 10% decrease in the risk of death, and a 1000-g increase in tumor load was associated with a 4% increase in the risk of death in the overall study sample (n = 576). | The OS analysis set included all randomized participants (8). | overall survival ... for (C) 177Lu-PSMA-617 plus standard of care (SOC) (n = 548) and (D) SOC only (n = 278)"
+     },
+     {
+      "rodada": "3",
+      "change_id": "clinicalTakeaway",
+      "proposed": "Análise secundária exploratória do VISION (826 participantes incluídos). Segundo os autores, o SUVmean tumoral de corpo inteiro no 68Ga-PSMA-11 PET/CT basal foi o melhor preditor de eficácia do 177Lu-PSMA-617. O aumento de 1 unidade no SUVmean associou-se a redução de 12% e 10% no risco de evento de rPFS e de óbito, respectivamente. Os ganhos de rPFS e OS com 177Lu-PSMA-617 + SOC foram maiores com SUVmean mais alto. Os autores relatam evidência de potencial benefício clínico independentemente do SUVmean, mas no quartil mais baixo os IC95% dos HR de rPFS e OS cruzaram 1. Não foi identificado ponto ótimo de SUVmean entre os tratados com 177Lu-PSMA-617.",
+      "verdict": "PASS",
+      "reason": "Todos os elementos estão escritos: análise secundária exploratória com 826 incluídos; SUVmean como melhor preditor (atribuído aos autores); -12%/-10% por unidade, sem população declarada, como no resumo; ganhos maiores com SUVmean mais alto; 'potencial benefício clínico independentemente do SUVmean'; no quartil mais baixo, IC95% cruzando 1 tanto para rPFS (0,75; 0,45–1,26) quanto para OS (0,87; 0,60–1,27), com os três quartis superiores excluindo 1 nos dois desfechos; nenhum ponto de corte ótimo no braço 177Lu.",
+      "locator": "¶0004; ¶0033; ¶0039; ¶0034; ¶0041; ¶0050",
+      "snippet": "In the lowest SUVmean quartile (<6.0) ... (HR, 0.75 [95% CI: 0.45, 1.26]) | In the lowest SUVmean quartile (<5.7) ... (HR, 0.87 [95% CI: 0.60, 1.27]) | Nevertheless, there was evidence for potential clinical benefit with the addition of 177Lu-PSMA-617 to the standard of care, regardless of SUVmean, in the VISION trial."
+     },
+     {
+      "rodada": "4",
+      "change_id": "deep.achados[0]",
+      "proposed": "SUVmean tumoral de corpo inteiro (mediana 7,6) foi o parâmetro mais associado aos desfechos no braço 177Lu (rPFS HR 0,86; OS HR 0,88). Na amostra geral do estudo, +1 unidade associou-se a 12% menos risco de evento de rPFS e 10% menos risco de óbito.",
+      "verdict": "PASS",
+      "reason": "Todos os elementos constam da fonte com atribuição correta: mediana 7,6 é da amostra geral n=826 (no braço 177Lu é 7,5; o parêntese qualifica o parâmetro, não o braço, então não há erro de atribuição); HR 0,86 (rPFS) e 0,88 (OS) são explicitamente 'in the 177Lu-PSMA-617 plus SOC arm', no modelo multivariável ajustado por tratamento em que SUVmean foi o preditor mais forte; os 12%/10% por +1 unidade são explicitamente 'in the overall study sample (n = 576)', o que corresponde a 'amostra geral do estudo'. 'Mais associado aos desfechos' é tradução fiel e conservadora de 'strongest/best predictor'. Observação sem impacto no veredito: a fonte não reconcilia 12%/10% com os HR 0,86/0,88 do braço (populações diferentes), e o valor não os funde.",
+      "locator": "pmc_PMC11366674_fulltext.txt ¶0028, ¶0029, ¶0036; pmid_39162634_abstract.txt ¶0002",
+      "snippet": "¶0028: \"7.6 (IQR, 5.8–9.9) in the overall study sample (n = 826)\" | ¶0029: \"Whole-body SUVmean and tumor load were associated with rPFS (HR, 0.86 [95% CI: 0.82, 0.90; P < .001] ...) in the 177Lu-PSMA-617 plus SOC arm, with SUVmean as the strongest predictor in the final treatment-adjusted multivariable model ... A 1-unit increase in whole-body tumor SUVmean was associated with a 12% decrease in the risk of an rPFS event (radiographic progression or death) ... in the overall study sample (n = 576).\" | ¶0036: \"Whole-body tumor SUVmean and tumor load were associated with OS in the 177Lu-PSMA-617 plus SOC arm (HR, 0.88 [95% CI: 0.84, 0.91; P < .001] ...) ... A 1-unit increase in whole-body tumor SUVmean was associated with a 10% decrease in the risk of death ... in the overall study sample (n = 576).\""
+     }
+    ]
+   },
+   "not_applied_before_rewrite": {
+    "deep.objetivo": "CONFLICT",
+    "deep.achados[0]": "FAIL",
+    "deep.achados(conjunto)": "FAIL"
+   },
+   "applied": [
+    "deep.metodo",
+    "deep.interpretacao",
+    "deep.limitacoes",
+    "relationshipToParent",
+    "analysis",
+    "clinicalTakeaway",
+    "deep.objetivo",
+    "deep.achados"
+   ],
+   "internal_conflicts": [
+    {
+     "item": "n da amostra geral para o efeito por unidade de SUVmean em OS",
+     "detalhe": "¶0036 atribui a 'overall study sample (n = 576)', mas ¶0018 diz que o conjunto de OS incluiu todos os randomizados (826); 576 corresponde ao conjunto de rPFS. O card omite o n.",
+     "locators": [
+      "¶0018",
+      "¶0029",
+      "¶0036"
+     ]
+    }
+   ]
   },
   "vision-psa-decline-clinical-outcomes-2024": {
    "pmid": "39242323",
@@ -2805,9 +2889,11 @@
   "splash-lead-in-dosimetry-safety-efficacy-2024",
   "therap-overall-survival-2024",
   "therap-psma-fdg-pet-biomarkers-2022",
+  "vision-baseline-psma-pet-biomarkers-2024",
   "vision-hrqol-2023",
   "vision-multivariable-outcome-models-2024",
   "vision-psa-decline-clinical-outcomes-2024",
+  "vision-renal-multiorgan-dosimetry-2024",
   "vision-safety-2024"
  ]
 }
