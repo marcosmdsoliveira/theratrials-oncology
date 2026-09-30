@@ -25,6 +25,7 @@ on:
       - 'assets/lang/en.js'
       - 'scripts/sync_counts.mjs'
       - 'scripts/db_v2/**'
+      - '.claude/agents/database-*.md'
       - 'scripts/db_decisoes.json'
       - 'scripts/db_candidatos_integridade.json'
       - 'scripts/db_integridade.py'
@@ -49,6 +50,7 @@ on:
       - 'scripts/validate_trials_br.mjs'
       - 'scripts/sync_counts.mjs'
       - 'scripts/db_v2/**'
+      - '.claude/agents/database-*.md'
       - 'scripts/db_decisoes.json'
       - 'scripts/db_candidatos_integridade.json'
       - 'scripts/db_integridade.py'
@@ -110,6 +112,13 @@ jobs:
       - name: Database v2 (sombra)
         if: always()
         run: python3 scripts/db_v2/ci_v2.py --report v2-report.json --base-ref HEAD^
+
+      # Agentes database-curator/verifier (assistente de revisão humana): schemas, prioridade, consenso do
+      # verifier duplo, execução restrita a Read/Grep/Glob e ausência de caminho de apply. Offline.
+      - name: Agentes do Database (curator/verifier)
+        if: always()
+        working-directory: scripts/db_v2/agents
+        run: python3 -m unittest discover -s tests -v
 
       # Backlog canônico de integridade (db_candidatos_integridade.json), separado do v2:
       # invariantes do arquivo, os testes do backlog e a transição contra o commit anterior
