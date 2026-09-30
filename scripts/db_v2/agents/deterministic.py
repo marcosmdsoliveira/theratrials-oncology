@@ -19,7 +19,8 @@ try:
 except ImportError:
     import sources as S
 
-TERMOS_MASCARAMENTO = re.compile(r"abert|open|cego|blind|mascar|mask|placebo", re.I)
+# afirmação EXPLÍCITA de mascaramento no card ("placebo" sozinho não conta)
+TERMOS_MASCARAMENTO = re.compile(r"\babert[oa]\b|open[- ]label|\bcego\b|duplo[- ]cego|blind|mascar|\bmask", re.I)
 
 
 def _par(pasta, fonte: dict, padrao: str):
@@ -98,5 +99,6 @@ def itens(pacote: dict, proposta: dict, pasta) -> list[dict]:
         novo(field="resultado_chave", current_value=card.get("resultado_chave"), proposed_value=None,
              change_kind="none", proposal_type="SAME_ANALYSIS_UPDATE", defect="newer_data_same_analysis",
              reason="primario/secundario mudam com dado da mesma análise; o resumo resultado_chave precisa ser revisto",
-             _det_priority="P1", _det_reason="campo-resumo dependente não revisado")
+             _det_priority="P1", _det_reason="campo-resumo dependente não revisado",
+             _depends_on=[it["proposal_id"] for it in atualiza])   # só vale se alguma delas passar no verifier
     return out

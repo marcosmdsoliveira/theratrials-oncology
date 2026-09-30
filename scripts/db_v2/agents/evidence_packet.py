@@ -73,6 +73,16 @@ def _decisoes(uid: str, ref: str = "HEAD") -> list[dict]:
     return [x for x in d.get("decisoes", []) if x.get("uid") == uid or uid in str(x.get("id", ""))]
 
 
+def sinal_mascaramento(t: str):
+    """(aberto, cego) declarados EXPLICITAMENTE num parágrafo de desenho. "placebo" sozinho não é cegamento;
+    "unblinded after/at…" é quebra posterior do cegamento, não desenho aberto."""
+    t_ = re.sub(r"\b(was |were |been )?unblind(ed|ing)\s+(after|at|following|once|when|upon|for)\b.*?(\.|$)",
+                " ", t, flags=re.I)
+    aberto = re.search(r"open[- ]label|was not masked|were not masked|not blinded|no masking|non[- ]blinded", t_, re.I)
+    blind = re.search(r"(double|triple|quadruple|single)[- ]blind(ed)?|\bmasked\b", t_, re.I)
+    return aberto, blind
+
+
 def construir(uid: str, card_ref: str = "HEAD", rede: bool = False, cego: bool = False) -> dict:
     """card_ref ≠ HEAD: replay histórico — card, backlog e decisões como estavam naquele commit.
     cego: sem backlog nem decisões humanas (mede descoberta sem candidatos); grava em packets/<uid>__cego/."""
@@ -201,8 +211,7 @@ def construir(uid: str, card_ref: str = "HEAD", rede: bool = False, cego: bool =
                 if not re.search(r"method|design|abstract|mask|blind|randomi|procedure|trial", secao) or \
                         re.search(r"discussion|introduction|limitation|reference", secao) or re.search(r"extension", t, re.I):
                     continue                              # só o desenho DESTE estudo, em Métodos/Resumo
-                aberto = re.search(r"open[- ]label|was not masked|were not masked|not blinded|unblinded|no masking", t, re.I)
-                blind = re.search(r"double[- ]blind|triple[- ]blind|placebo[- ]controlled", t, re.I)
+                aberto, blind = sinal_mascaramento(t)
                 if aberto and blind:
                     continue                              # parágrafo ambíguo: não é evidência de conflito
                 if (mask != "NONE" and aberto) or (mask == "NONE" and blind):

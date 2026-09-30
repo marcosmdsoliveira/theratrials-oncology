@@ -87,8 +87,28 @@ def so_arredondamento(atual, proposto) -> bool:
     return difere
 
 
+def _principal_preservado(atual, proposto) -> bool:
+    """O valor principal do campo (os dois primeiros números do valor atual: a comparação-manchete) segue igual no
+    proposto → o erro está num subvalor/detalhe, não no componente material."""
+    import re
+    a = [v for v, _ in _nums(atual) if not re.fullmatch(r"(19|20)\d\d", str(int(v))) or v != int(v)][:2]
+    b = {v for v, _ in _nums(proposto)}
+    return len(a) == 2 and all(x in b for x in a)
+
+
 def classificar(item: dict, veredito: str, cvs: str | None, pacote: dict) -> tuple[str | None, str]:
-    """(prioridade final | None = fora da fila, motivo)."""
+    """(prioridade final | None = fora da fila, motivo). Piso: valor ATUAL contradito em campo clínico → no mínimo
+    P1, qualquer que seja o veredito da proposta (decisão humana registrada e campo human-only têm precedência)."""
+    prio, motivo = _classificar(item, veredito, cvs, pacote)
+    campo = item.get("field", "")
+    if (cvs == "CONTRADICTED" and campo in SF.CAMPOS_CLINICOS and item.get("origin") != "deterministic"
+            and campo not in set(pacote.get("human_decision_protected_fields") or [])
+            and ORDEM[prio] > ORDEM["P1"]):
+        return "P1", f"valor atual contradito pela fonte em campo clínico (piso P1); antes: {motivo}"
+    return prio, motivo
+
+
+def _classificar(item: dict, veredito: str, cvs: str | None, pacote: dict) -> tuple[str | None, str]:
     campo = item.get("field", "")
     defeito = item.get("defect")
     tipo = item.get("proposal_type")
@@ -125,6 +145,9 @@ def classificar(item: dict, veredito: str, cvs: str | None, pacote: dict) -> tup
             if defeito == "numeric_contradiction" and so_arredondamento(item.get("current_value"),
                                                                         item.get("proposed_value")):
                 return ("P1" if clinico else "P3"), "diferença só de arredondamento: não é P0"
+            if defeito == "numeric_contradiction" and _principal_preservado(item.get("current_value"),
+                                                                            item.get("proposed_value")):
+                return ("P1" if clinico else "P3"), "valor principal preservado; contradição em subvalor/detalhe: P1"
             if _p0_elegivel(defeito, campo):
                 return "P0", f"valor publicado contradito pela fonte ({defeito})"
             return ("P1" if clinico else "P3"), f"erro verificado ({defeito}) fora do valor clínico principal: P1 por padrão"

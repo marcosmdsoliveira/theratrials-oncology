@@ -83,6 +83,11 @@ def montar(uid: str) -> dict:
             c["priority_run_b"] = pb                     # só informativo: a final é a mais grave das duas
             c["final_priority"] = min([c["final_priority"], pb or "P0"], key=lambda x: ORDEM_P[x])
         c["human_review_required"] = c["verifier_consensus"] in ("DISAGREEMENT", "SINGLE_RUN")
+    # campo-resumo dependente: só fica se alguma atualização que o motivou passou no verifier
+    for c in campos:
+        dep = (por_id.get(c["proposal_id"]) or {}).get("_depends_on")
+        if dep and not any((vered.get(d) or {}).get("verdict") == "PASS" for d in dep):
+            c["final_priority"], c["priority_reason"] = None, "atualização que motivou a revisão não passou no verifier"
     campos_todos = campos
     campos = [c for c in campos if c["final_priority"]]             # FAIL sai da fila (log de qualidade)
     # backstop "silêncio não é resultado": item aberto/confirmado do backlog sem NENHUM item sobrevivente nos seus
@@ -100,6 +105,12 @@ def montar(uid: str) -> dict:
                                "verifier_reason": (b.get("description") or "")[:200], "deterministic": None,
                                "human_decision_protected": af[0] in protegidos, "evidence": []})
                 vivos |= set(af)
+    # backlog aberto de prioridade high: nenhum item nos seus campos fica abaixo de P1
+    altos = {f for b in pk.get("backlog") or [] if b.get("status") in ("open", "confirmed")
+             and b.get("priority") == "high" for f in b.get("affected_fields") or []}
+    for c in campos:
+        if c["field"] in altos and ORDEM_P[c["final_priority"]] > ORDEM_P["P1"]:
+            c["final_priority"], c["priority_reason"] = "P1", f"backlog aberto high no campo (piso P1); antes: {c['priority_reason']}"
     contagem = collections.Counter(c["verdict"] for c in campos)
     prioridade = PR.do_card([c["final_priority"] for c in campos])
     tipo = ((prop or {}).get("card_classification") or {}).get("proposal_type") or "NO_ACTION"

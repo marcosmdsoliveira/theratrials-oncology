@@ -23,6 +23,7 @@ import corpus as CO  # noqa: E402
 import curator as C  # noqa: E402
 import decision_packet as D  # noqa: E402
 import deterministic as DT  # noqa: E402
+import evidence_packet as EP  # noqa: E402
 import priority as PR  # noqa: E402
 import run_agents as RA  # noqa: E402
 import sufficiency as SF  # noqa: E402
@@ -353,6 +354,24 @@ class PacoteDeDecisao(unittest.TestCase):
                          [("backstop", "primario", "P2")])
         self.assertEqual((p["suggested_decision"], p["counts_toward_weekly_budget"]), ("WATCH", False))
 
+    def test_backlog_high_aberto_nunca_abaixo_de_p1(self):
+        extra = {"backlog": [{"id": "INT-u-001", "status": "open", "priority": "high", "affected_fields": ["primario"],
+                              "description": "d"}]}
+        p = self.montar(["UNSUPPORTED"], cvs="NOT_ADDRESSED", extra=extra)
+        self.assertEqual(p["fields"][0]["final_priority"], "P1")
+        self.assertTrue(p["counts_toward_weekly_budget"])
+
+    def test_resumo_dependente_cai_se_a_atualizacao_nao_passou(self):
+        p = self.montar(["UNSUPPORTED"], cvs="NOT_ADDRESSED")
+        prop = json.loads((C.CURADOR / "u.json").read_text())
+        prop["proposals"].append({**item(proposal_id="D1", field="resultado_chave", proposed_value=None,
+                                        proposal_type="SAME_ANALYSIS_UPDATE", defect="newer_data_same_analysis"),
+                                  "origin": "deterministic", "_det_priority": "P1", "_depends_on": ["p0"]})
+        (C.CURADOR / "u.json").write_text(json.dumps(prop))
+        p = D.montar("u")
+        self.assertNotIn("D1", [f["proposal_id"] for f in p["fields"]])
+        self.assertIn("D1", [f["proposal_id"] for f in p["dropped_fail"]])
+
     def test_p3_deterministico_nao_consome_orcamento(self):
         self.assertFalse(self.montar(["PASS"], prioridade="P3")["counts_toward_weekly_budget"])
         self.assertTrue(self.montar(["PASS"], prioridade="P0")["counts_toward_weekly_budget"])
@@ -440,7 +459,9 @@ class Prioridade(unittest.TestCase):
 
     def test_curator_nao_promove_a_p0(self):
         self.assertEqual(prio(field="primario", proposal_type="INTEGRITY_FIX", defect="enrichment",
-                              priority="P0"), "P2")
+                              priority="P0", cvs="SUPPORTED"), "P2")
+        self.assertNotEqual(prio(field="primario", proposal_type="INTEGRITY_FIX", defect="enrichment",
+                                 priority="P0"), "P0")
 
     def test_decisao_humana_e_campo_human_only_tem_precedencia(self):
         pk = {"deterministic_findings": [], "human_decision_protected_fields": ["esquema"]}
@@ -449,7 +470,7 @@ class Prioridade(unittest.TestCase):
 
     def test_fail_sai_da_fila_unsupported_vira_watch_conflict_clinico_e_p0(self):
         self.assertIsNone(prio(veredito="FAIL", cvs="SUPPORTED"))
-        self.assertEqual(prio(veredito="UNSUPPORTED"), "P2")
+        self.assertEqual(prio(veredito="UNSUPPORTED", cvs="NOT_ADDRESSED"), "P2")
         self.assertEqual(prio(veredito="CONFLICT", field="primario"), "P0")
         self.assertEqual(prio(veredito="CONFLICT", field="ref"), "P2")
 
@@ -493,6 +514,21 @@ class Prioridade(unittest.TestCase):
         self.assertFalse(PR.so_arredondamento("anemia 6,2% vs 5%; fadiga 5%", "anemia 6% vs 7%; fadiga 1 vs 5%"))
         self.assertEqual(prio(field="tox_g3", defect="numeric_contradiction",
                               current_value="anemia 6,2% vs 5%", proposed_value="anemia 6% vs 7%"), "P0")
+
+    def test_valor_atual_contradito_em_campo_clinico_e_no_minimo_p1(self):
+        for v in ("UNSUPPORTED", "FAIL"):
+            self.assertEqual(prio(veredito=v, cvs="CONTRADICTED", field="basal"), "P1", v)
+        self.assertEqual(prio(field="basal", defect="enrichment", cvs="CONTRADICTED"), "P1")
+        self.assertEqual(prio(veredito="UNSUPPORTED", cvs="NOT_ADDRESSED", field="basal"), "P2")
+        pk = {"deterministic_findings": [], "human_decision_protected_fields": ["basal"]}
+        self.assertEqual(prio(pk, veredito="UNSUPPORTED", cvs="CONTRADICTED", field="basal"), "P2")
+
+    def test_contradicao_em_subvalor_com_principal_preservado_e_p1(self):
+        self.assertEqual(prio(field="tox_g3", defect="numeric_contradiction",
+                              current_value="EA G3+ 56% vs 33%; anemia G3 ~10%",
+                              proposed_value="EA G3+ 56% vs 33%; anemia 22% vs 16%"), "P1")
+        self.assertEqual(prio(field="primario", defect="numeric_contradiction",
+                              current_value="rPFS HR 0,47; p=0,0013", proposed_value="rPFS HR 0,50; p=0,0042"), "P0")
 
     def test_atualizacao_fora_de_campo_de_resultado_nao_e_p1(self):
         self.assertEqual(prio(field="centros", proposal_type="SAME_ANALYSIS_UPDATE", defect="enrichment",
@@ -543,6 +579,14 @@ class Deterministicos(unittest.TestCase):
         self.assertEqual(len(it["conflict"]["candidates"]), 2)
         fontes = {f["source_id"]: f for f in pk["sources"]}
         self.assertEqual(K.pior(a["verdict"] for a in K.conferir_item(it, fontes, d)), "CONFLICT")
+
+    def test_mascaramento_exige_declaracao_explicita(self):
+        self.assertEqual([bool(x) for x in EP.sinal_mascaramento(
+            "This double-blind trial was unblinded after a planned interim analysis.")], [False, True])
+        self.assertEqual([bool(x) for x in EP.sinal_mascaramento("A placebo-controlled phase 3 trial.")], [False, False])
+        self.assertTrue(EP.sinal_mascaramento("This open-label, phase 3 trial.")[0])
+        self.assertIsNone(DT.TERMOS_MASCARAMENTO.search("Fase 3, randomizado, controlado por placebo"))
+        self.assertTrue(DT.TERMOS_MASCARAMENTO.search("Fase 3, duplo-cego"))
 
     def test_conflito_dentro_da_fonte_declarado_pelo_curator_vira_conflict(self):
         it = item(proposed_value=None, defect="within_source_conflict",
