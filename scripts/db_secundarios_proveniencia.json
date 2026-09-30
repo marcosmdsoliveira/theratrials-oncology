@@ -6,10 +6,7 @@
   "vision-hrqol-2023": {
    "pmid": "37269841",
    "doi": "10.1016/S1470-2045(23)00158-4",
-   "not_applied": {
-    "deep.achados[0]": "FAIL",
-    "deep.achados(conjunto)": "FAIL"
-   },
+   "not_applied": {},
    "evidence": [
     {
      "claim": "SSE ou óbito 11,5 vs 6,8 m; HR 0,50",
@@ -120,15 +117,33 @@
      "snippet": "the median safety follow-up time was 14·78 months (range, 0·6–31·5) in the 177Lu-PSMA-617 group and 10·64 months"
     }
    ],
-   "production_status": "pending_human_review",
-   "verified_pass_not_applied": [
+   "production_status": "applied",
+   "rewrite_round_2026_09_30": {
+    "decisao_humana": "REWRITE aprovado em bloco; clinicalTakeaway do VISION biomarcadores aprovado; mielossupressão G≥3 do VISION dosimetria renal em DEFER",
+    "verificacao_independente": [
+     {
+      "change_id": "deep.achados[0]",
+      "proposed": "Tempo até 1º SSE ou óbito: mediana 11,5 vs 6,8 meses; HR 0,50 (IC95% 0,40–0,62). Em análise post hoc que não contou o óbito como evento, o tempo até o 1º SSE também foi retardado com 177Lu-PSMA-617.",
+      "verdict": "PASS",
+      "reason": "Mediana 11,5 vs 6,8 meses e HR 0,50 (0,40–0,62) conferem; análise post hoc sem óbito como evento mostrou retardo do 1º SSE (feita dentro dos subgrupos por uso de agente ósseo, cobrindo toda a população; sem números no texto principal).",
+      "locator": "pmid_37269841_abstract ¶0004; pmc_PMC10641914_fulltext ¶0035, ¶0117-0118",
+      "snippet": "Time to first SSE was also delayed in the 177Lu-PSMA-617 group compared with the control group in a post hoc analysis of time to first SSE that did not include death as an event, in the concurrent use of bone-targeted agent subgroups (appendix p 11)."
+     }
+    ]
+   },
+   "not_applied_before_rewrite": {
+    "deep.achados[0]": "FAIL",
+    "deep.achados(conjunto)": "FAIL"
+   },
+   "applied": [
     "deep.objetivo",
     "deep.metodo",
     "deep.interpretacao",
     "deep.limitacoes",
     "clinicalTakeaway",
     "relationshipToParent",
-    "analysis"
+    "analysis",
+    "deep.achados"
    ]
   },
   "vision-safety-2024": {
@@ -401,7 +416,25 @@
     "deep.interpretacao",
     "clinicalTakeaway",
     "relationshipToParent"
-   ]
+   ],
+   "rewrite_round_2026_09_30": {
+    "decisao_humana": "REWRITE aprovado em bloco; clinicalTakeaway do VISION biomarcadores aprovado; mielossupressão G≥3 do VISION dosimetria renal em DEFER",
+    "verificacao_independente": [
+     {
+      "change_id": "deep.limitacoes",
+      "proposed": "Coorte não randomizada (30; só 10 completaram 6 ciclos); dosimetria de ponto único nos ciclos 2–6; o limite de 23 Gy vem da radioterapia externa; estimativas lacrimais muito variáveis; análise descritiva.",
+      "verdict": "UNSUPPORTED",
+      "reason": "Coorte não randomizada de 30, 10 completaram 6 ciclos, ponto único nos ciclos 2–6 (limitação admitida), 23 Gy derivado da RT externa e análise descritiva conferem. Porém a fonte atribui a alta variabilidade das estimativas lacrimais a estudos anteriores (dados já publicados), não às estimativas deste subestudo (média 2,1 Gy/GBq, DP 0,47); apresentar 'estimativas lacrimais muito variáveis' como limitação deste estudo não está escrito.",
+      "locator": "pmc_PMC10755516_fulltext ¶0002, ¶0005, ¶0011, ¶0017, ¶0023, ¶0112, ¶0115",
+      "snippet": "Data for lacrimal glands have previously been reported with a wide range of values and high variability (10,17,42,43,45). This variability may be due to small volumes of the lacrimal glands and the planar-only analysis."
+     }
+    ]
+   },
+   "pending_after_rewrite": {
+    "deep.limitacoes": "UNSUPPORTED",
+    "deep.achados[3]": "DEFER",
+    "analysis": "DEFER"
+   }
   },
   "vision-baseline-psma-pet-biomarkers-2024": {
    "pmid": "39162634",
@@ -607,16 +640,45 @@
     "relationshipToParent",
     "analysis",
     "clinicalTakeaway (reescrito: só frases literais da fonte)"
-   ]
+   ],
+   "rewrite_round_2026_09_30": {
+    "decisao_humana": "REWRITE aprovado em bloco; clinicalTakeaway do VISION biomarcadores aprovado; mielossupressão G≥3 do VISION dosimetria renal em DEFER",
+    "verificacao_independente": [
+     {
+      "change_id": "deep.objetivo",
+      "proposed": "Explorar, no VISION, a associação entre parâmetros quantitativos do 68Ga-PSMA-11 PET/CT basal (SUVmean, SUVmax, volume tumoral PSMA+, carga tumoral; corpo inteiro e regiões anatômicas) e rPFS, OS, ORR e resposta de PSA.",
+      "verdict": "PASS",
+      "reason": "Objetivo, parâmetros (SUVmean, SUVmax, volume PSMA+, carga tumoral), 5 regiões anatômicas + corpo inteiro e desfechos (rPFS, OS, ORR, PSA) conferem.",
+      "locator": "pmid_39162634_abstract.txt ¶0002",
+      "snippet": "To explore the association between quantitative baseline gallium 68 [68Ga]Ga-PSMA-11 (68Ga-PSMA-11) PET/CT parameters and treatment response and outcomes in the VISION trial ... extracted from five anatomic regions and the whole body"
+     },
+     {
+      "change_id": "deep.achados[0]",
+      "proposed": "SUVmean tumoral de corpo inteiro (mediana 7,6) foi o parâmetro mais associado aos desfechos no braço 177Lu: rPFS HR 0,86 e OS HR 0,88 por unidade. Na amostra geral (n=576), +1 unidade associou-se a 12% menos risco de evento de rPFS e 10% menos risco de óbito.",
+      "verdict": "UNSUPPORTED",
+      "reason": "Mediana 7,6, HR 0,86 (rPFS) e 0,88 (OS) no braço 177Lu e 12%/10% na amostra geral n=576 estão na fonte, mas o qualificador 'por unidade' para os HR 0,86/0,88 não está escrito; a fonte só expressa o efeito por 1 unidade como 12%/10% na amostra geral (e HR 0,86 por unidade implicaria 14%, não 12%), de modo que a justaposição cria leitura não sustentada.",
+      "locator": "pmc_PMC11366674_fulltext.txt ¶0029, ¶0036",
+      "snippet": "Whole-body SUVmean and tumor load were associated with rPFS (HR, 0.86 [95% CI: 0.82, 0.90; P < .001] ...) in the 177Lu-PSMA-617 plus SOC arm ... A 1-unit increase in whole-body tumor SUVmean was associated with a 12% decrease in the risk of an rPFS event ... in the overall study sample (n = 576)."
+     },
+     {
+      "change_id": "clinicalTakeaway",
+      "proposed": "Análise secundária exploratória do VISION (826 participantes incluídos). Segundo os autores, o SUVmean tumoral de corpo inteiro no 68Ga-PSMA-11 PET/CT basal foi o melhor preditor de eficácia do 177Lu-PSMA-617. O aumento de 1 unidade no SUVmean associou-se a redução de 12% e 10% no risco de evento de rPFS e de óbito, respectivamente. Os ganhos de rPFS e OS com 177Lu-PSMA-617 + SOC foram maiores com SUVmean mais alto, com evidência de benefício em todos os níveis de SUVmean e sem ponto ótimo identificado entre os tratados com 177Lu-PSMA-617.",
+      "verdict": "CONFLICT",
+      "reason": "826 incluídos, 'best predictor', 12%/10% e ausência de ponto ótimo conferem; porém a afirmação não atribuída de 'evidência de benefício em todos os níveis de SUVmean' diverge dentro da fonte: resumo/conclusão afirmam benefício em todos os quartis, mas os resultados mostram HR significativo só nos três quartis superiores (IC do quartil inferior inclui 1) e a Discussão rebaixa para 'potential clinical benefit'.",
+      "locator": "pmid_39162634_abstract.txt ¶0002 vs pmc_PMC11366674_fulltext.txt ¶0033, ¶0034, ¶0050",
+      "snippet": "with evidence for benefit at all SUVmean levels | indicating statistically significant differences in the three upper quartiles for both rPFS and OS but not the lowest quartile | there was evidence for potential clinical benefit with the addition of 177Lu-PSMA-617 to the standard of care, regardless of SUVmean"
+     }
+    ]
+   },
+   "pending_after_rewrite": {
+    "deep.achados[0]": "UNSUPPORTED",
+    "clinicalTakeaway": "CONFLICT"
+   }
   },
   "vision-psa-decline-clinical-outcomes-2024": {
    "pmid": "39242323",
    "doi": "10.1016/j.eururo.2024.08.021",
-   "not_applied": {
-    "deep.interpretacao": "UNSUPPORTED",
-    "deep.limitacoes": "UNSUPPORTED",
-    "clinicalTakeaway": "UNSUPPORTED"
-   },
+   "not_applied": {},
    "evidence": [
     {
      "claim": "Controle excluído",
@@ -745,24 +807,56 @@
      "snippet": "PSA decline therefore appears to have a prognostic value"
     }
    ],
-   "production_status": "pending_human_review",
-   "verified_pass_not_applied": [
+   "production_status": "applied",
+   "rewrite_round_2026_09_30": {
+    "decisao_humana": "REWRITE aprovado em bloco; clinicalTakeaway do VISION biomarcadores aprovado; mielossupressão G≥3 do VISION dosimetria renal em DEFER",
+    "verificacao_independente": [
+     {
+      "change_id": "deep.interpretacao",
+      "proposed": "A magnitude do declínio de PSA durante o 177Lu-PSMA-617 associou-se a melhores desfechos e parece ter valor prognóstico; a análise incluiu só o braço 177Lu-PSMA-617. Um aumento precoce de PSA não significa necessariamente falha: parte dos pacientes tem declínio posterior. Associação descritiva entre duas variáveis pós-basais, sem inferência causal.",
+      "verdict": "PASS",
+      "reason": "Associação da magnitude do declínio com desfechos, valor prognóstico ('appears'), só braço 177Lu, aumento precoce seguido de declínio em parte dos pacientes, associações descritivas sem causalidade e duas variáveis pós-basais: tudo escrito.",
+      "locator": "pmc_PMC12888041_fulltext ¶0019, ¶0031, ¶0032, ¶0037",
+      "snippet": "Limitations include the use of two post-baseline variables in association analyses (PSA change and select efficacy endpoints). All associations are descriptive and causality cannot be inferred."
+     },
+     {
+      "change_id": "deep.limitacoes",
+      "proposed": "Post hoc, sem teste inferencial formal; uso de duas variáveis pós-basais nas análises de associação (variação de PSA e desfechos de eficácia); declínio de PSA não confirmado; ~7% excluídos por falta de PSA, sem imputação; seleção stepwise pode enviesar; sem estratificação por terapia concomitante (ARPI em 53%).",
+      "verdict": "PASS",
+      "reason": "Post hoc sem teste inferencial formal (¶0018) e todas as limitações listadas em ¶0037 (duas variáveis pós-basais, ~7% excluídos sem imputação, stepwise, PSA não confirmado, sem estratificação por terapia concomitante, ARPI em 53%).",
+      "locator": "pmc_PMC12888041_fulltext ¶0018, ¶0037",
+      "snippet": "An additional limitation is the exclusion of approximately 7% of patients due to missing PSA measurements at baseline or post-baseline without imputation method utilised. Stepwise selection in the multivariate Cox model could have introduced bias."
+     },
+     {
+      "change_id": "clinicalTakeaway",
+      "proposed": "Análise post hoc do braço 177Lu-PSMA-617 do VISION (n=551): quanto maior o declínio de PSA até a semana 12, maiores a rPFS e a OS (mediana de OS 9,8 meses com aumento vs não atingida com declínio ≥90%). O declínio parece ter valor prognóstico, e é uma associação sem causalidade; o braço SoC foi excluído. Aumento precoce de PSA não indica, por si só, falha: 15% com aumento na semana 6 declinaram na semana 12.",
+      "verdict": "PASS",
+      "reason": "n=551; OS 9,8 meses (aumento) vs não atingida (≥90%); valor prognóstico aparente; associação sem causalidade; braço SoC excluído; 15% (16/109) com aumento na semana 6 declinaram na semana 12.",
+      "locator": "pmc_PMC12888041_fulltext ¶0019, ¶0020, ¶0025, ¶0031, ¶0037",
+      "snippet": "15% (16/109) of patients with a PSA increase at week 6 had a decline at week 12"
+     }
+    ]
+   },
+   "not_applied_before_rewrite": {
+    "deep.interpretacao": "UNSUPPORTED",
+    "deep.limitacoes": "UNSUPPORTED",
+    "clinicalTakeaway": "UNSUPPORTED"
+   },
+   "applied": [
     "deep.objetivo",
     "deep.metodo",
     "deep.achados",
     "relationshipToParent",
-    "analysis"
+    "analysis",
+    "deep.interpretacao",
+    "deep.limitacoes",
+    "clinicalTakeaway"
    ]
   },
   "vision-multivariable-outcome-models-2024": {
    "pmid": "39430616",
    "doi": "10.1016/j.eclinm.2024.102862",
-   "not_applied": {
-    "deep.interpretacao": "UNSUPPORTED",
-    "deep.achados[3]": "UNSUPPORTED",
-    "deep.achados(conjunto)": "UNSUPPORTED",
-    "clinicalTakeaway": "UNSUPPORTED"
-   },
+   "not_applied": {},
    "evidence": [
     {
      "claim": "n=551",
@@ -879,13 +973,51 @@
      "snippet": "it was not possible to take into account individual variations in radiosensitivity"
     }
    ],
-   "production_status": "pending_human_review",
-   "verified_pass_not_applied": [
+   "production_status": "applied",
+   "rewrite_round_2026_09_30": {
+    "decisao_humana": "REWRITE aprovado em bloco; clinicalTakeaway do VISION biomarcadores aprovado; mielossupressão G≥3 do VISION dosimetria renal em DEFER",
+    "verificacao_independente": [
+     {
+      "change_id": "deep.interpretacao",
+      "proposed": "Os nomogramas estimam o prognóstico de pacientes tratados com 177Lu-PSMA-617 (C-index 0,68–0,73) e podem ajudar a informar expectativas e estratificar ensaios. Foram construídos só no braço 177Lu e não estimam desfechos com SoC isolado; nos modelos de parâmetro único, nenhum parâmetro se associou significativamente a benefício de OS ou rPFS com 177Lu vs controle. Análise post hoc, sem validação externa.",
+      "verdict": "PASS",
+      "reason": "C-index 0,68–0,73; uso para expectativas e seleção em ensaios; modelos só no braço 177Lu sem objetivo de prever SoC; nenhum parâmetro único associado a benefício de OS/rPFS vs controle; post hoc com validação interna por bootstrap e sem coorte de validação.",
+      "locator": "pmc_PMC11490806_fulltext ¶0072, ¶0075, ¶0085, ¶0091",
+      "snippet": "A fourth limitation is that we did not aim to develop nomograms to predict outcomes in patients receiving SoC alone, but only in those receiving 177Lu-PSMA-617 plus SoC."
+     },
+     {
+      "change_id": "deep.achados[3]",
+      "proposed": "Nos modelos de parâmetro único, menos parâmetros se associaram a desfechos diferenciais com 177Lu vs controle: SUVmax ou SUVmean mais altos associaram-se a maior PSA50 com 177Lu vs controle, e nenhum parâmetro se associou significativamente a benefício de OS ou rPFS.",
+      "verdict": "PASS",
+      "reason": "Tradução fiel do texto de resultados de parâmetro único.",
+      "locator": "pmc_PMC11490806_fulltext ¶0075",
+      "snippet": "Higher SUVmax or SUVmean were associated with higher PSA50 response rates in the 177Lu-PSMA-617 plus SoC arm versus the control arm, but no parameters were statistically significantly associated with improved OS or rPFS in the 177Lu-PSMA-617 plus SoC arm versus the control arm."
+     },
+     {
+      "change_id": "clinicalTakeaway",
+      "proposed": "Nomogramas post hoc do braço 177Lu-PSMA-617 do VISION (n=551) estimam o prognóstico (C-index 0,73 para OS; 0,68 para rPFS; AUC 0,72 para PSA50), usando SUVmax, LDH, FA, linfócitos e outros fatores. São prognósticos, não preditivos de benefício vs SoC, e só têm validação interna.",
+      "verdict": "PASS",
+      "reason": "n=551, C-index 0,73/0,68, AUC 0,72, variáveis e validação interna conferem. 'Não preditivos de benefício vs SoC' é sustentado por modelos construídos só no braço 177Lu e sem objetivo de estimar SoC (nota: autores sugerem uso para seleção de tratamento, mas não de benefício relativo).",
+      "locator": "pmid_39430616_abstract ¶0004; pmc_PMC11490806_fulltext ¶0072, ¶0091",
+      "snippet": "Models including multiple pretreatment parameters were constructed with 177Lu-PSMA-617 arm data only (n = 551)."
+     }
+    ]
+   },
+   "not_applied_before_rewrite": {
+    "deep.interpretacao": "UNSUPPORTED",
+    "deep.achados[3]": "UNSUPPORTED",
+    "deep.achados(conjunto)": "UNSUPPORTED",
+    "clinicalTakeaway": "UNSUPPORTED"
+   },
+   "applied": [
     "deep.objetivo",
     "deep.metodo",
     "deep.limitacoes",
     "relationshipToParent",
-    "analysis"
+    "analysis",
+    "deep.interpretacao",
+    "deep.achados",
+    "clinicalTakeaway"
    ]
   },
   "therap-psma-fdg-pet-biomarkers-2022": {
@@ -957,9 +1089,7 @@
   "therap-overall-survival-2024": {
    "pmid": "38043558",
    "doi": "10.1016/S1470-2045(23)00529-6",
-   "not_applied": {
-    "deep.interpretacao": "UNSUPPORTED"
-   },
+   "not_applied": {},
    "evidence": [
     {
      "claim": "RMST e p",
@@ -1010,23 +1140,38 @@
      "snippet": "200 were eligible and randomly assigned to treatment with [177Lu]Lu-PSMA-617 (n=99) or cabazitaxel (n=101)"
     }
    ],
-   "production_status": "pending_human_review",
-   "verified_pass_not_applied": [
+   "production_status": "applied",
+   "rewrite_round_2026_09_30": {
+    "decisao_humana": "REWRITE aprovado em bloco; clinicalTakeaway do VISION biomarcadores aprovado; mielossupressão G≥3 do VISION dosimetria renal em DEFER",
+    "verificacao_independente": [
+     {
+      "change_id": "deep.interpretacao",
+      "proposed": "Não houve evidência de diferença de OS entre os braços; os autores consideram que os resultados apoiam o 177Lu-PSMA-617 como alternativa ao cabazitaxel em doença PSMA-positiva após docetaxel. OS é desfecho secundário. A OS mais curta nos excluídos pelo PET é descritiva (não randomizada).",
+      "verdict": "PASS",
+      "reason": "Sem evidência de diferença de OS; apoio como alternativa ao cabazitaxel em doença PSMA-positiva pós-docetaxel; OS desfecho secundário; excluídos pelo PET não foram randomizados (RMST 11,0 m, apenas descrito) — tudo na fonte.",
+      "locator": "pmid_38043558_abstract.txt ¶0001, ¶0004, ¶0005",
+      "snippet": "These results support the use of [177Lu]Lu-PSMA-617 as an alternative to cabazitaxel ... We did not find evidence that overall survival differed between the randomised groups. Median overall survival was shorter for men who were excluded"
+     }
+    ]
+   },
+   "not_applied_before_rewrite": {
+    "deep.interpretacao": "UNSUPPORTED"
+   },
+   "applied": [
     "deep.objetivo",
     "deep.metodo",
     "deep.limitacoes",
     "deep.achados",
     "clinicalTakeaway",
     "relationshipToParent",
-    "analysis"
+    "analysis",
+    "deep.interpretacao"
    ]
   },
   "psmafore-final-os-safety-2025": {
    "pmid": "40680993",
    "doi": "10.1016/j.annonc.2025.07.003",
-   "not_applied": {
-    "clinicalTakeaway": "UNSUPPORTED"
-   },
+   "not_applied": {},
    "evidence": [
     {
      "claim": "crossover 60,3%/75,4%",
@@ -1113,23 +1258,38 @@
      "snippet": "results were likely confounded by the high rate of crossover"
     }
    ],
-   "production_status": "pending_human_review",
-   "verified_pass_not_applied": [
+   "production_status": "applied",
+   "rewrite_round_2026_09_30": {
+    "decisao_humana": "REWRITE aprovado em bloco; clinicalTakeaway do VISION biomarcadores aprovado; mielossupressão G≥3 do VISION dosimetria renal em DEFER",
+    "verificacao_independente": [
+     {
+      "change_id": "clinicalTakeaway",
+      "proposed": "Na análise final do PSMAfore, a OS não diferiu na ITT (24,5 vs 23,1 m; HR 0,91; P=0,20), com 60,3% de crossover no braço controle. O HR 0,59 ajustado por IPCW é análise suplementar; sua suposição não é verificável, embora os autores relatem apoio à sua adequação. Segurança sem novos sinais.",
+      "verdict": "PASS",
+      "reason": "OS ITT 24,48 vs 23,13 m, HR 0,91, P=0,20; crossover 60,3%; IPCW HR 0,59 como análise suplementar; suposição não verificável mas com apoio à adequação segundo os autores; sem novos sinais de segurança — tudo na fonte (texto completo).",
+      "locator": "pmc_PMC12399216_fulltext.txt ¶0003, ¶0013, ¶0035",
+      "snippet": "IPCW assumes there are no unmeasured confounders. Although this assumption cannot be verified, evaluation of measured covariates selected based on clinical relevance, along with findings from other studies in similar disease areas,32 provides support for the appropriateness of this assumption."
+     }
+    ]
+   },
+   "not_applied_before_rewrite": {
+    "clinicalTakeaway": "UNSUPPORTED"
+   },
+   "applied": [
     "deep.objetivo",
     "deep.metodo",
     "deep.interpretacao",
     "deep.limitacoes",
     "deep.achados",
     "relationshipToParent",
-    "analysis"
+    "analysis",
+    "clinicalTakeaway"
    ]
   },
   "psmafore-hrqol-pain-skeletal-events-2025": {
    "pmid": "40441170",
    "doi": "10.1016/S1470-2045(25)00189-5",
-   "not_applied": {
-    "deep.limitacoes": "UNSUPPORTED"
-   },
+   "not_applied": {},
    "evidence": [
     {
      "claim": "FACT-P, EQ-5D-5L, BPI-SF",
@@ -1186,24 +1346,38 @@
      "snippet": "randomly assigned to [177Lu]Lu-PSMA-617 (n=234) or ARPI change (n=234)"
     }
    ],
-   "production_status": "pending_human_review",
-   "verified_pass_not_applied": [
+   "production_status": "applied",
+   "rewrite_round_2026_09_30": {
+    "decisao_humana": "REWRITE aprovado em bloco; clinicalTakeaway do VISION biomarcadores aprovado; mielossupressão G≥3 do VISION dosimetria renal em DEFER",
+    "verificacao_independente": [
+     {
+      "change_id": "deep.limitacoes",
+      "proposed": "Ensaio aberto; desfechos secundários avaliados no corte da 3ª análise interina de OS. O resumo não detalha limitações.",
+      "verdict": "PASS",
+      "reason": "Ensaio aberto e análises do corte da 3ª análise interina de OS constam da fonte; o resumo de fato não tem seção de limitações.",
+      "locator": "pmid_40441170_abstract.txt ¶0003",
+      "snippet": "PSMAfore, an open-label, randomised, phase 3 trial ... present analyses are from the third interim analysis of overall survival."
+     }
+    ]
+   },
+   "not_applied_before_rewrite": {
+    "deep.limitacoes": "UNSUPPORTED"
+   },
+   "applied": [
     "deep.objetivo",
     "deep.metodo",
     "deep.interpretacao",
     "deep.achados",
     "clinicalTakeaway",
     "relationshipToParent",
-    "analysis"
+    "analysis",
+    "deep.limitacoes"
    ]
   },
   "enzap-os-hrqol-2025": {
    "pmid": "39956124",
    "doi": "10.1016/S1470-2045(25)00009-9",
-   "not_applied": {
-    "deep.interpretacao": "UNSUPPORTED",
-    "deep.limitacoes": "UNSUPPORTED"
-   },
+   "not_applied": {},
    "evidence": [
     {
      "claim": "OS por braço",
@@ -1278,23 +1452,47 @@
      "snippet": "Our findings warrant phase 3 evaluation"
     }
    ],
-   "production_status": "pending_human_review",
-   "verified_pass_not_applied": [
+   "production_status": "applied",
+   "rewrite_round_2026_09_30": {
+    "decisao_humana": "REWRITE aprovado em bloco; clinicalTakeaway do VISION biomarcadores aprovado; mielossupressão G≥3 do VISION dosimetria renal em DEFER",
+    "verificacao_independente": [
+     {
+      "change_id": "deep.interpretacao",
+      "proposed": "A adição de 177Lu-PSMA-617 à enzalutamida associou-se a maior OS e a melhora de alguns aspectos de HRQoL, à custa de mais xerostomia. São desfechos secundários de um ensaio fase II; os autores consideram que os achados justificam avaliação em fase III.",
+      "verdict": "PASS",
+      "reason": "Associação com maior OS e alguns aspectos de HRQoL, xerostomia mais frequente com a combinação (74% vs 57%), desfechos secundários de fase II e recomendação de avaliação em fase III constam da fonte.",
+      "locator": "pmid_39956124_abstract.txt ¶0004, ¶0005",
+      "snippet": "was associated with improved survival and some aspects of HRQOL ... Our findings warrant phase 3 evaluation of adaptive-dosed [177Lu] Lu-PSMA-617"
+     },
+     {
+      "change_id": "deep.limitacoes",
+      "proposed": "Fase II aberto, com OS e HRQoL como desfechos secundários (n=162), em 15 centros na Austrália.",
+      "verdict": "PASS",
+      "reason": "Fase II aberto, OS e HRQoL como desfechos secundários, n=162 (79+83), 15 hospitais na Austrália — tudo na fonte.",
+      "locator": "pmid_39956124_abstract.txt ¶0003, ¶0004",
+      "snippet": "ENZA-p was a multicentre, open-label, randomised, phase 2 trial done at 15 hospitals in Australia. ... Overall survival ... and HRQOL were key secondary endpoints."
+     }
+    ]
+   },
+   "not_applied_before_rewrite": {
+    "deep.interpretacao": "UNSUPPORTED",
+    "deep.limitacoes": "UNSUPPORTED"
+   },
+   "applied": [
     "deep.objetivo",
     "deep.metodo",
     "deep.achados",
     "clinicalTakeaway",
     "relationshipToParent",
-    "analysis"
+    "analysis",
+    "deep.interpretacao",
+    "deep.limitacoes"
    ]
   },
   "enzap-baseline-psma-pet-biomarker-2025": {
    "pmid": "40752515",
    "doi": "10.1016/S1470-2045(25)00339-0",
-   "not_applied": {
-    "deep.interpretacao": "UNSUPPORTED",
-    "clinicalTakeaway": "UNSUPPORTED"
-   },
+   "not_applied": {},
    "evidence": [
     {
      "claim": "n e tratamento recebido",
@@ -1369,22 +1567,47 @@
      "snippet": "This prespecified substudy of ENZA-p"
     }
    ],
-   "production_status": "pending_human_review",
-   "verified_pass_not_applied": [
+   "production_status": "applied",
+   "rewrite_round_2026_09_30": {
+    "decisao_humana": "REWRITE aprovado em bloco; clinicalTakeaway do VISION biomarcadores aprovado; mielossupressão G≥3 do VISION dosimetria renal em DEFER",
+    "verificacao_independente": [
+     {
+      "change_id": "deep.interpretacao",
+      "proposed": "Os autores concluem que o PSMA-TTV basal é prognóstico para OS e preditivo de benefício de OS com a adição de 177Lu-PSMA-617; o sinal preditivo vem de teste de interação em subestudo de fase II, com o efeito prognóstico concentrado no braço enzalutamida. O SUVmean não mostrou associação com OS.",
+      "verdict": "PASS",
+      "reason": "Conclusão dos autores (prognóstico e preditivo) fiel; subestudo de fase II com interação p=0,0078; efeito prognóstico no braço enzalutamida (HR 0,23, p<0,0001) vs combinação (HR 0,66, p=0,18); SUVmean sem associação com OS (p=0,59 e 0,56).",
+      "locator": "pmid_40752515_abstract.txt ¶0001, ¶0004, ¶0005",
+      "snippet": "The test for interaction between PSMA-TTV and treatment group for overall survival was p=0·0078. / Baseline PSMA-TTV is prognostic for overall survival and predictive for a beneficial effect on overall survival with the addition of [177Lu]Lu-PSMA-617"
+     },
+     {
+      "change_id": "clinicalTakeaway",
+      "proposed": "Em subestudo pré-especificado do ENZA-p, PSMA-TTV basal acima da mediana associou-se a menor OS com enzalutamida isolada (20 vs 39 m; HR 0,23), com efeito atenuado na combinação (interação p=0,0078); SUVmean não se associou a OS.",
+      "verdict": "PASS",
+      "reason": "Subestudo pré-especificado; OS 39 vs 20 m (HR 0,23) no braço enzalutamida; HR 0,66 (p=0,18) na combinação; interação p=0,0078; SUVmean sem associação — todos na fonte.",
+      "locator": "pmid_40752515_abstract.txt ¶0002, ¶0004",
+      "snippet": "Median overall survival for PSMA-TTV below or above the median in the enzalutamide group was 39 months (95% CI 31-not estimable) versus 20 months (13-24; HR 0·23 [95% CI 0·13-0·42], log-rank p<0·0001)."
+     }
+    ]
+   },
+   "not_applied_before_rewrite": {
+    "deep.interpretacao": "UNSUPPORTED",
+    "clinicalTakeaway": "UNSUPPORTED"
+   },
+   "applied": [
     "deep.objetivo",
     "deep.metodo",
     "deep.limitacoes",
     "deep.achados",
     "relationshipToParent",
-    "analysis"
+    "analysis",
+    "deep.interpretacao",
+    "clinicalTakeaway"
    ]
   },
   "splash-lead-in-dosimetry-safety-efficacy-2024": {
    "pmid": "39839782",
    "doi": "10.3389/fonc.2024.1483953",
-   "not_applied": {
-    "clinicalTakeaway": "UNSUPPORTED"
-   },
+   "not_applied": {},
    "evidence": [
     {
      "claim": "Treatment-related grade ≥3 TEAE 7,4% (2/27)",
@@ -1447,27 +1670,38 @@
      "snippet": "The trial commenced with a safety and dosimetry lead-in portion, prior to proceeding into the larger randomized portion"
     }
    ],
-   "production_status": "pending_human_review",
-   "verified_pass_not_applied": [
+   "production_status": "applied",
+   "rewrite_round_2026_09_30": {
+    "decisao_humana": "REWRITE aprovado em bloco; clinicalTakeaway do VISION biomarcadores aprovado; mielossupressão G≥3 do VISION dosimetria renal em DEFER",
+    "verificacao_independente": [
+     {
+      "change_id": "clinicalTakeaway",
+      "proposed": "Na coorte lead-in de braço único do SPLASH (n=27), 177Lu-PNT2002 6,8 GBq × 4 ciclos teve dose renal cumulativa média estimada de 19,9 Gy, abaixo do limiar de 23 Gy, mas 6 participantes tiveram dose renal cumulativa prevista acima desse limiar; toxicidade majoritariamente grau 1–2 (grau ≥3 relacionado em 7,4%); PSA50 42,3% e rPFS mediana 11,5 m são dados preliminares, sem comparador.",
+      "verdict": "PASS",
+      "reason": "n=27, 6,8 GBq x4, dose renal cumulativa média estimada 19,9 Gy < 23 Gy, 6 participantes previstos acima de 23 Gy, maioria grau 1-2, grau >=3 relacionado 2/27 (7,4%), PSA50 42,3%, rPFS 11,5 m, desenho de braço único e eficácia preliminar: tudo na fonte.",
+      "locator": "pmc_PMC11745944_fulltext.txt ¶0123, ¶0087, ¶0091, ¶0112, ¶0115, ¶0126; pmid_39839782_abstract.txt ¶0005",
+      "snippet": "estimated mean cumulative absorbed renal dose of 19.9 Gy, which does not exceed the 23 Gy ... six participants had predicted cumulative renal doses exceeding the 23 Gy threshold | TEAEs of grade 3 or higher | 7 (25.9) | 2 (7.4) | relatively small number of participants and single-arm design"
+     }
+    ]
+   },
+   "not_applied_before_rewrite": {
+    "clinicalTakeaway": "UNSUPPORTED"
+   },
+   "applied": [
     "deep.objetivo",
     "deep.metodo",
     "deep.interpretacao",
     "deep.limitacoes",
     "deep.achados",
     "relationshipToParent",
-    "analysis"
+    "analysis",
+    "clinicalTakeaway"
    ]
   },
   "lupsma-2018-dosimetry-2019": {
    "pmid": "30291192",
    "doi": "10.2967/jnumed.118.219352",
-   "not_applied": {
-    "deep.metodo": "UNSUPPORTED",
-    "deep.limitacoes": "UNSUPPORTED",
-    "clinicalTakeaway": "UNSUPPORTED",
-    "relationshipToParent": "UNSUPPORTED",
-    "analysis": "UNSUPPORTED"
-   },
+   "not_applied": {},
    "evidence": [
     {
      "claim": "<10 Gy: 1/11 PSA50",
@@ -1506,20 +1740,74 @@
      "snippet": "After therapy, patients underwent quantitative SPECT/CT at 4, 24, and 96 h."
     }
    ],
-   "production_status": "pending_human_review",
-   "verified_pass_not_applied": [
+   "production_status": "applied",
+   "rewrite_round_2026_09_30": {
+    "decisao_humana": "REWRITE aprovado em bloco; clinicalTakeaway do VISION biomarcadores aprovado; mielossupressão G≥3 do VISION dosimetria renal em DEFER",
+    "verificacao_independente": [
+     {
+      "change_id": "deep.metodo",
+      "proposed": "Análise dosimétrica nos 30 pacientes de um ensaio clínico prospectivo (ACTRN12615000912583); SPECT/CT quantitativo a 4, 24 e 96 h após a terapia, dosimetria em nível de voxel; definida uma dose tumoral de corpo inteiro; análises de correlação com PSA em 12 semanas.",
+      "verdict": "PASS",
+      "reason": "30 pacientes em ensaio clínico prospectivo ACTRN12615000912583; SPECT/CT 4, 24, 96 h; voxel; dose tumoral de corpo inteiro; correlação com PSA em 12 semanas: tudo no resumo.",
+      "locator": "pmid_30291192_abstract ¶0002",
+      "snippet": "Thirty patients with prostate cancer receiving 177Lu-PSMA-617 within a prospective clinical trial (ACTRN12615000912583) were studied. ... After therapy, patients underwent quantitative SPECT/CT at 4, 24, and 96 h."
+     },
+     {
+      "change_id": "deep.limitacoes",
+      "proposed": "Amostra pequena (n=30); análise correlacional; resumo não detalha limitações, ciclo avaliado nem se a análise era pré-especificada; unidade 'Gy/MBq' do resumo não pôde ser conferida (texto completo indisponível).",
+      "verdict": "PASS",
+      "reason": "n=30 e natureza correlacional conferem; as demais são declarações de ausência de informação no resumo (ciclo, pré-especificação, limitações não descritos), consistentes com a fonte disponível.",
+      "locator": "pmid_30291192_abstract ¶0002",
+      "snippet": "Correlations between PSMA PET/CT parameters, dosimetry, and biochemical and therapeutic response were analyzed"
+     },
+     {
+      "change_id": "clinicalTakeaway",
+      "proposed": "Em 30 pacientes do LuPSMA trial, maior dose tumoral de corpo inteiro associou-se a resposta de PSA (14,1 vs 9,6 Gy); apenas 1 de 11 pacientes com <10 Gy teve PSA50. Associação correlacional, sem validação prospectiva de dosagem guiada por dosimetria.",
+      "verdict": "PASS",
+      "reason": "14,1 vs 9,6 Gy (P<0,01), 1 de 11 com <10 Gy teve PSA50 e correlação com resposta em 12 semanas conferem. 'Sem validação prospectiva de dosagem guiada' é consistente com o desenho correlacional; autores falam apenas em 'rationale' para dosagem individualizada.",
+      "locator": "pmid_30291192_abstract ¶0002",
+      "snippet": "A median dose of 14.1 Gy was observed in patients achieving a PSA decline of at least 50%, versus 9.6 Gy for those achieving a PSA decline of less than 50% (P < 0.01). Of 11 patients receiving a tumor dose of less than 10 Gy, only one achieved a PSA response of at least 50%."
+     },
+     {
+      "change_id": "relationshipToParent",
+      "proposed": "Análise dosimétrica correlacional dos 30 pacientes do ensaio prospectivo LuPSMA (ACTRN12615000912583)",
+      "verdict": "PASS",
+      "reason": "Análise dosimétrica correlacional de 30 pacientes em ensaio prospectivo ACTRN12615000912583.",
+      "locator": "pmid_30291192_abstract ¶0002",
+      "snippet": "receiving 177Lu-PSMA-617 within a prospective clinical trial (ACTRN12615000912583)"
+     },
+     {
+      "change_id": "analysis.desenho_relacao",
+      "proposed": "Análise dosimétrica correlacional nos pacientes do ensaio prospectivo LuPSMA; pré-especificação não informada.",
+      "verdict": "PASS",
+      "reason": "Correlacional em ensaio prospectivo; pré-especificação não informada no resumo.",
+      "locator": "pmid_30291192_abstract ¶0002",
+      "snippet": "Correlations between PSMA PET/CT parameters, dosimetry, and biochemical and therapeutic response were analyzed to identify relationships"
+     }
+    ]
+   },
+   "not_applied_before_rewrite": {
+    "deep.metodo": "UNSUPPORTED",
+    "deep.limitacoes": "UNSUPPORTED",
+    "clinicalTakeaway": "UNSUPPORTED",
+    "relationshipToParent": "UNSUPPORTED",
+    "analysis": "UNSUPPORTED"
+   },
+   "applied": [
     "deep.objetivo",
     "deep.interpretacao",
-    "deep.achados"
+    "deep.achados",
+    "deep.metodo",
+    "deep.limitacoes",
+    "clinicalTakeaway",
+    "relationshipToParent",
+    "analysis"
    ]
   },
   "lupsma-2018-long-term-retreatment-2020": {
    "pmid": "31732676",
    "doi": "10.2967/jnumed.119.236414",
-   "not_applied": {
-    "deep.limitacoes": "UNSUPPORTED",
-    "analysis": "FAIL"
-   },
+   "not_applied": {},
    "evidence": [
     {
      "claim": "Toxicidades",
@@ -1564,13 +1852,40 @@
      "snippet": "We also describe, as a novel finding, outcomes of men who subsequently progressed"
     }
    ],
-   "production_status": "pending_human_review",
-   "verified_pass_not_applied": [
+   "production_status": "applied",
+   "rewrite_round_2026_09_30": {
+    "decisao_humana": "REWRITE aprovado em bloco; clinicalTakeaway do VISION biomarcadores aprovado; mielossupressão G≥3 do VISION dosimetria renal em DEFER",
+    "verificacao_independente": [
+     {
+      "change_id": "deep.limitacoes",
+      "proposed": "Centro único e braço único; retratamento em pequeno subgrupo selecionado (n=15) e comparação não randomizada com outras terapias; limitações não enumeradas no resumo (texto completo não disponível nas fontes).",
+      "verdict": "PASS",
+      "reason": "Centro único e n=15 no retratamento estão escritos; braço único e comparação não randomizada decorrem do desenho descrito (todos os 50 receberam 177Lu-PSMA; retratamento vs 'other systemic therapies' em progressão, sem randomização); a ressalva de que o resumo não enumera limitações é verdadeira.",
+      "locator": "pmid_31732676_abstract.txt ¶0001-¶0002",
+      "snippet": "Expanded 50-Patient Single-Center Phase II Prospective Trial ... At progression after prior response, further 177Lu-PSMA was administered to 15 (30%) patients ... rechallenge 177Lu-PSMA demonstrated higher response rates than other systemic therapies."
+     },
+     {
+      "change_id": "analysis.estatistica",
+      "proposed": "Proporções e medianas com IC95%; variação dos escores de dor (BPI) com IC95% e valor de P (P = 0,001 e P = 0,013); OS significativamente maior nos pacientes com declínio de PSA ≥50%.",
+      "verdict": "PASS",
+      "reason": "Proporções e medianas com IC95%, variação do BPI com IC95% e P=0,001/P=0,013 e OS significativamente maior com declínio de PSA >=50% estão no resumo.",
+      "locator": "pmid_31732676_abstract.txt ¶0002",
+      "snippet": "a decrease of -1.2 (95% CI, -0.5 to -1.9; P = 0.001) and -1.0 (95% CI, -0.2 to -0.18; P = 0.013) ... with a significantly longer survival of 18.4 mo (95% CI, 13.8-23.8 mo) in patients achieving a PSA decline of at least 50%"
+     }
+    ]
+   },
+   "not_applied_before_rewrite": {
+    "deep.limitacoes": "UNSUPPORTED",
+    "analysis": "FAIL"
+   },
+   "applied": [
     "deep.objetivo",
     "deep.metodo",
     "deep.interpretacao",
     "deep.achados",
-    "clinicalTakeaway"
+    "clinicalTakeaway",
+    "deep.limitacoes",
+    "analysis"
    ]
   },
   "netter1-hrqol-2018": {
@@ -1629,9 +1944,7 @@
   "netter1-final-os-long-term-safety-2021": {
    "pmid": "34793718",
    "doi": "10.1016/S1470-2045(21)00572-6",
-   "not_applied": {
-    "deep.interpretacao": "UNSUPPORTED"
-   },
+   "not_applied": {},
    "evidence": [
     {
      "claim": "n=231 randomizados 1:1",
@@ -1682,14 +1995,31 @@
      "snippet": "enrolled patients from 41 sites in eight countries"
     }
    ],
-   "production_status": "pending_human_review",
-   "verified_pass_not_applied": [
+   "production_status": "applied",
+   "rewrite_round_2026_09_30": {
+    "decisao_humana": "REWRITE aprovado em bloco; clinicalTakeaway do VISION biomarcadores aprovado; mielossupressão G≥3 do VISION dosimetria renal em DEFER",
+    "verificacao_independente": [
+     {
+      "change_id": "deep.interpretacao",
+      "proposed": "O 177Lu-DOTATATE não melhorou significativamente a OS versus octreotida em alta dose; os autores consideram que a diferença de 11,7 m nas medianas pode ser clinicamente relevante. Sem novos sinais de segurança no seguimento prolongado.",
+      "verdict": "PASS",
+      "reason": "OS sem melhora significativa, diferença de 11,7 m 'might be considered clinically relevant' e ausência de novos sinais de segurança estão literalmente na Interpretation.",
+      "locator": "pmid_34793718_abstract.txt ¶0005",
+      "snippet": "177Lu-Dotatate treatment did not significantly improve median overall survival versus high-dose long-acting octreotide. Despite final overall survival not reaching statistical significance, the 11·7 month difference in median overall survival ... might be considered clinically relevant. No new safety signals were reported during long-term follow-up."
+     }
+    ]
+   },
+   "not_applied_before_rewrite": {
+    "deep.interpretacao": "UNSUPPORTED"
+   },
+   "applied": [
     "deep.objetivo",
     "deep.metodo",
     "deep.limitacoes",
     "deep.achados",
     "clinicalTakeaway",
-    "analysis"
+    "analysis",
+    "deep.interpretacao"
    ]
   },
   "netter1-dosimetry-substudy-2025": {
@@ -1881,10 +2211,7 @@
   "alsympca-quality-of-life-2016": {
    "pmid": "26912557",
    "doi": "10.1093/annonc/mdw065",
-   "not_applied": {
-    "deep.interpretacao": "UNSUPPORTED",
-    "clinicalTakeaway": "UNSUPPORTED"
-   },
+   "not_applied": {},
    "evidence": [
     {
      "claim": "Testes de hipótese post hoc",
@@ -1971,14 +2298,41 @@
      "snippet": "having an increase in FACT-P total score of ≥10 from baseline"
     }
    ],
-   "production_status": "pending_human_review",
-   "verified_pass_not_applied": [
+   "production_status": "applied",
+   "rewrite_round_2026_09_30": {
+    "decisao_humana": "REWRITE aprovado em bloco; clinicalTakeaway do VISION biomarcadores aprovado; mielossupressão G≥3 do VISION dosimetria renal em DEFER",
+    "verificacao_independente": [
+     {
+      "change_id": "deep.interpretacao",
+      "proposed": "Em análises post hoc, o rádio-223 associou-se a maior proporção de melhora e menor proporção de piora de QoL e a declínio mais lento dos escores; segundo os autores, os escores médios mais altos com rádio-223 refletem um declínio mais lento da QoL ao longo do tempo.",
+      "verdict": "PASS",
+      "reason": "Análises de hipótese post hoc; maior % de melhora, menor % de piora; autores atribuem escores médios mais altos a declínio mais lento da QoL.",
+      "locator": "pmc_PMC4843190_fulltext ¶0013, ¶0023, ¶0026",
+      "snippet": "indicate that higher QOL observed with radium-223 patients was a direct consequence of a slower rate of decline in QOL with radium-223 versus placebo."
+     },
+     {
+      "change_id": "clinicalTakeaway",
+      "proposed": "Em análises post hoc de QoL coletada prospectivamente, mais pacientes com rádio-223 tiveram melhora significativa (EQ-5D 29,2% vs 18,5%) e a QoL declinou mais devagar; com correção de Bonferroni, só a análise de respondedores do FACT-P deixaria de ser significativa (P = 0,020).",
+      "verdict": "PASS",
+      "reason": "QoL coletada prospectivamente, análises post hoc; EQ-5D 29,2% vs 18,5%; declínio mais lento; Bonferroni (α=0,008) altera só a conclusão da análise de respondedores do FACT-P (P=0,020).",
+      "locator": "pmid_26912557_abstract ¶0004; pmc_PMC4843190_fulltext ¶0029",
+      "snippet": "a conservative approach using the Bonferroni correction (α = 0.008) when evaluating the three main analyses applied to utility and FACT-P total scores would change only the conclusion regarding FACT-P responder analysis, to non-significant (P = 0.020) after applying the correction."
+     }
+    ]
+   },
+   "not_applied_before_rewrite": {
+    "deep.interpretacao": "UNSUPPORTED",
+    "clinicalTakeaway": "UNSUPPORTED"
+   },
+   "applied": [
     "deep.objetivo",
     "deep.metodo",
     "deep.limitacoes",
     "deep.achados",
     "relationshipToParent",
-    "analysis"
+    "analysis",
+    "deep.interpretacao",
+    "clinicalTakeaway"
    ]
   },
   "alsympca-chemotherapy-after-radium-2016": {
@@ -2110,10 +2464,7 @@
   "alsympca-alp-ldh-psa-2017": {
    "pmid": "28453701",
    "doi": "10.1093/annonc/mdx044",
-   "not_applied": {
-    "clinicalTakeaway": "FAIL",
-    "analysis": "UNSUPPORTED"
-   },
+   "not_applied": {},
    "evidence": [
     {
      "claim": "Post hoc, fora do plano original",
@@ -2200,22 +2551,47 @@
      "snippet": "OS by confirmed tALP or LDH decline at week 12 (decline confirmed ≥3 weeks from week 12) was evaluated"
     }
    ],
-   "production_status": "pending_human_review",
-   "verified_pass_not_applied": [
+   "production_status": "applied",
+   "rewrite_round_2026_09_30": {
+    "decisao_humana": "REWRITE aprovado em bloco; clinicalTakeaway do VISION biomarcadores aprovado; mielossupressão G≥3 do VISION dosimetria renal em DEFER",
+    "verificacao_independente": [
+     {
+      "change_id": "clinicalTakeaway",
+      "proposed": "Análise post hoc: na semana 12, a tALP caiu em 87% dos pacientes com rádio-223 vs 23% com placebo (variação média: queda de 32,2% vs aumento de 37,2%), e o declínio associou-se a maior SG entre os tratados, mas tALP, LDH e PSA não atingiram critérios de surrogacia (PTE de tALP 0,34); os autores alertam contra usar a alta de PSA para decidir interromper o tratamento.",
+      "verdict": "PASS",
+      "reason": "Post hoc (Discussão), tALP 87% vs 23%, -32,2% vs +37,2%, associação do declínio confirmado com SG, ausência de surrogacia para tALP/LDH/PSA, PTE 0,34 e alerta sobre usar alta de PSA para decidir continuar o rádio-223 estão na fonte.",
+      "locator": "pmid_28453701_abstract.txt ¶0004-¶0005; pmc_PMC5406754_fulltext.txt ¶0053, ¶0055",
+      "snippet": "In this post hoc analysis ... Using biomarker changes, particularly rising PSA levels, to make decisions about continuing radium-223 presents a substantial risk that a large fraction of patients who may benefit will be denied effective treatment."
+     },
+     {
+      "change_id": "analysis.conclusao_autores",
+      "proposed": "tALP/LDH correlacionam-se com SG mas não são surrogates; podem ser úteis para monitorar; alta de PSA não deve guiar suspensão do rádio-223.",
+      "verdict": "PASS",
+      "reason": "Correlação de tALP/LDH com SG sem surrogacia, utilidade para monitoramento e alerta contra decisões baseadas em alta de PSA estão na conclusão/discussão.",
+      "locator": "pmid_28453701_abstract.txt ¶0005; pmc_PMC5406754_fulltext.txt ¶0055",
+      "snippet": "tALP or LDH declines at 12 weeks correlated with longer OS, but did not meet statistical surrogacy requirements. Dynamic changes in tALP and LDH during radium-223 treatments may be useful to monitor, but do not serve as surrogates for survival."
+     }
+    ]
+   },
+   "not_applied_before_rewrite": {
+    "clinicalTakeaway": "FAIL",
+    "analysis": "UNSUPPORTED"
+   },
+   "applied": [
     "deep.objetivo",
     "deep.metodo",
     "deep.interpretacao",
     "deep.limitacoes",
     "deep.achados",
-    "relationshipToParent"
+    "relationshipToParent",
+    "clinicalTakeaway",
+    "analysis"
    ]
   },
   "alsympca-hospitalisation-2017": {
    "pmid": "27930924",
    "doi": "10.1016/j.ejca.2016.10.020",
-   "not_applied": {
-    "deep.interpretacao": "UNSUPPORTED"
-   },
+   "not_applied": {},
    "evidence": [
     {
      "claim": "Coleta prospectiva de HCRU",
@@ -2266,24 +2642,38 @@
      "snippet": "Our data suggest that this reduced hospital days along with the survival benefit and reduction in time to SSEs with radium-223 treatment may contribute to improvements in health-related quality-of-life"
     }
    ],
-   "production_status": "pending_human_review",
-   "verified_pass_not_applied": [
+   "production_status": "applied",
+   "rewrite_round_2026_09_30": {
+    "decisao_humana": "REWRITE aprovado em bloco; clinicalTakeaway do VISION biomarcadores aprovado; mielossupressão G≥3 do VISION dosimetria renal em DEFER",
+    "verificacao_independente": [
+     {
+      "change_id": "deep.interpretacao",
+      "proposed": "Menos pacientes com rádio-223 foram hospitalizados e houve menos dias de internação, mas o número médio de hospitalizações por paciente não diferiu. Os autores sugerem que isso pode contribuir para melhor qualidade de vida relacionada à saúde.",
+      "verdict": "PASS",
+      "reason": "Menos pacientes hospitalizados (37,0% vs 45,5%), menos dias (4,44 vs 6,68), média de eventos similar (P=0,226) e sugestão dos autores sobre QVRS estão na fonte.",
+      "locator": "pmid_27930924_abstract.txt ¶0002",
+      "snippet": "However, mean number of hospitalisation events per patient was similar (radium-223 0.69 versus placebo 0.79, P = 0.226) ... Our data suggest that this reduced hospital days along with the survival benefit and reduction in time to SSEs with radium-223 treatment may contribute to improvements in health-related quality-of-life"
+     }
+    ]
+   },
+   "not_applied_before_rewrite": {
+    "deep.interpretacao": "UNSUPPORTED"
+   },
+   "applied": [
     "deep.objetivo",
     "deep.metodo",
     "deep.limitacoes",
     "deep.achados",
     "clinicalTakeaway",
     "relationshipToParent",
-    "analysis"
+    "analysis",
+    "deep.interpretacao"
    ]
   },
   "alsympca-three-year-safety-2018": {
    "pmid": "28705540",
    "doi": "10.1016/j.eururo.2017.06.021",
-   "not_applied": {
-    "deep.interpretacao": "UNSUPPORTED",
-    "clinicalTakeaway": "UNSUPPORTED"
-   },
+   "not_applied": {},
    "evidence": [
     {
      "claim": "n 600/301; 405/167",
@@ -2358,23 +2748,66 @@
      "snippet": "radium-223 remained well tolerated, with low myelosuppression incidence and no new safety concerns"
     }
    ],
-   "production_status": "pending_human_review",
-   "verified_pass_not_applied": [
+   "production_status": "applied",
+   "rewrite_round_2026_09_30": {
+    "decisao_humana": "REWRITE aprovado em bloco; clinicalTakeaway do VISION biomarcadores aprovado; mielossupressão G≥3 do VISION dosimetria renal em DEFER",
+    "verificacao_independente": [
+     {
+      "change_id": "deep.interpretacao",
+      "proposed": "Na análise final, o rádio-223 manteve-se bem tolerado, com mielossupressão pouco frequente (exceto trombocitopenia G3/4 numericamente maior) e sem novos sinais em até 3 anos. Os autores citam o seguimento curto (3 anos) como limitação.",
+      "verdict": "PASS",
+      "reason": "Todas as afirmações constam da fonte: bem tolerado, mielossupressão baixa, trombocitopenia G3/4 7% vs 2%, sem novas preocupações até 3 anos; limitação de seguimento curto (3 anos) citada pelos autores.",
+      "locator": "pmid_28705540_abstract.txt ¶0006-¶0007",
+      "snippet": "Grade 3/4 hematologic TEAEs ... thrombocytopenia (7% vs 2%). ... Limitations include short (3-yr) follow-up. / radium-223 remained well tolerated, with low myelosuppression incidence and no new safety concerns."
+     },
+     {
+      "change_id": "clinicalTakeaway",
+      "proposed": "Análise final de segurança do ALSYMPCA: em até 3 anos, sem LMA, SMD ou novo câncer ósseo primário e com mielossupressão pouco frequente (trombocitopenia G3/4 7% vs 2%); apenas 12% dos pacientes com rádio-223 completaram o seguimento, e os autores citam o seguimento curto (3 anos) como limitação.",
+      "verdict": "PASS",
+      "reason": "Sem LMA/SMD/novo câncer ósseo primário, trombocitopenia G3/4 7% vs 2%, 48/405 (12%) completaram seguimento e limitação de seguimento curto estão todos na fonte.",
+      "locator": "pmid_28705540_abstract.txt ¶0004, ¶0006",
+      "snippet": "Forty-eight of 405 (12%) radium-223 ... completed follow-up / Long-term follow-up showed no AML, MDS, or new primary bone cancer / Limitations include short (3-yr) follow-up."
+     }
+    ]
+   },
+   "not_applied_before_rewrite": {
+    "deep.interpretacao": "UNSUPPORTED",
+    "clinicalTakeaway": "UNSUPPORTED"
+   },
+   "applied": [
     "deep.objetivo",
     "deep.metodo",
     "deep.limitacoes",
     "deep.achados",
     "relationshipToParent",
-    "analysis"
+    "analysis",
+    "deep.interpretacao",
+    "clinicalTakeaway"
    ]
   }
  },
  "aplicado_em_producao": [
+  "alsympca-alp-ldh-psa-2017",
   "alsympca-chemotherapy-after-radium-2016",
   "alsympca-docetaxel-subgroup-2014",
+  "alsympca-hospitalisation-2017",
+  "alsympca-quality-of-life-2016",
+  "alsympca-three-year-safety-2018",
+  "enzap-baseline-psma-pet-biomarker-2025",
+  "enzap-os-hrqol-2025",
+  "lupsma-2018-dosimetry-2019",
+  "lupsma-2018-long-term-retreatment-2020",
   "netter1-dosimetry-substudy-2025",
+  "netter1-final-os-long-term-safety-2021",
   "netter1-hrqol-2018",
+  "psmafore-final-os-safety-2025",
+  "psmafore-hrqol-pain-skeletal-events-2025",
+  "splash-lead-in-dosimetry-safety-efficacy-2024",
+  "therap-overall-survival-2024",
   "therap-psma-fdg-pet-biomarkers-2022",
+  "vision-hrqol-2023",
+  "vision-multivariable-outcome-models-2024",
+  "vision-psa-decline-clinical-outcomes-2024",
   "vision-safety-2024"
  ]
 }
