@@ -6,7 +6,7 @@
    Cada card confirmado em fonte Nível 1-2 (PubMed E-utilities + Crossref).
    Campo `deep` (objetivo/método/achados/interpretação/limitações) extraído dos
    abstracts oficiais — nenhum número inventado; linguagem cautelosa.
-   Atualizado: 2026-09-30 (22 cards enriquecidos e verificados; proveniência em scripts/db_secundarios_proveniencia.json).
+   Atualizado: 2026-09-30 (24 cards enriquecidos e verificados; proveniência em scripts/db_secundarios_proveniencia.json).
 ============================================================================= */
 window.THERA_SECONDARY = [
   {
@@ -126,7 +126,7 @@ window.THERA_SECONDARY = [
     "parentUid": "lupsma_prostata_0",
     "parentTrialName": "VISION",
     "parentTrialPublication": "Sartor O, et al. N Engl J Med 2021;385:1091-1103 (NCT03511664)",
-    "relationshipToParent": "Subestudo de dosimetria do ensaio fase III VISION",
+    "relationshipToParent": "Subestudo de dosimetria do VISION, com coorte separada e não randomizada",
     "publicationStatus": "Peer-reviewed full article",
     "analysisType": "Subestudo de dosimetria (segurança renal/multiorgânica)",
     "evidenceMaturity": "Subestudo revisado por pares",
@@ -142,17 +142,36 @@ window.THERA_SECONDARY = [
       "Segurança renal",
       "Segurança multiorgânica"
     ],
-    "clinicalTakeaway": "Subestudo de dosimetria que quantificou doses absorvidas em rins e outros órgãos, consistente com a segurança do regime utilizado no VISION.",
+    "clinicalTakeaway": "Subestudo não randomizado do VISION (n=30): dose renal de 0,43 Gy/GBq por ciclo e cumulativa observada de 15±6 Gy em 6 ciclos (n=10), abaixo do limite de 23 Gy derivado da radioterapia externa. Sem toxicidade renal G≥3. Glândulas lacrimais e salivares recebem as maiores doses. A dosimetria do ciclo 1 estimou bem a dose cumulativa.",
     "deep": {
-      "objetivo": "Quantificar as doses absorvidas em rins e outros órgãos no regime do VISION.",
-      "metodo": "Coorte de dosimetria separada, não-randomizada (n=30); 177Lu-PSMA-617 7,4 GBq/ciclo até 6 ciclos.",
+      "objetivo": "Quantificar as doses absorvidas de 177Lu-PSMA-617 nos rins e em outros órgãos de risco (glândulas lacrimais e salivares, medula) no regime do VISION e testar se a dosimetria do ciclo 1 prediz a dose cumulativa em 6 ciclos.",
+      "metodo": "Coorte separada, não randomizada, de 30 pacientes em 4 centros alemães (7,4 GBq a cada 6 semanas, até 6 ciclos). SPECT/CT e planar em 2, 24, 48 e 168 h no ciclo 1 (n=29) e ponto único em 48 h nos ciclos 2–6; medula por amostras de sangue; OLINDA/EXM. Dose prevista (extrapolação do ciclo 1, n=29) vs observada (n=10 com 6 ciclos). Análise descritiva.",
       "achados": [
-        "Dose renal média: 0,43±0,16 Gy/GBq (ciclo 1) e 0,44±0,21 Gy/GBq (ciclos 2–6).",
-        "Dose renal cumulativa observada em 6 ciclos: 15±6 Gy (prevista 19±7 Gy).",
-        "Sem TEAE renal de grau >3."
+        "Dose por ciclo nos rins: 0,43±0,16 Gy/GBq (ciclo 1) e 0,44±0,21 Gy/GBq (ciclos 2–6); as maiores doses foram nas glândulas lacrimais (2,10±0,47) e salivares (0,63±0,36); medula 0,035±0,020 Gy/GBq.",
+        "Dose renal cumulativa em 6 ciclos: observada 15±6 Gy (n=10) vs prevista 19±7,3 Gy (n=29), abaixo do limite histórico de 23 Gy da radioterapia externa.",
+        "Cumulativa observada vs prevista: lacrimais 77 vs 92 Gy; salivares 30 vs 28 Gy; medula 1,30 vs 1,5 Gy; sem diferença significativa (P = 0,19–0,54). A previsão tendeu a superestimar.",
+        "Toxicidade renal em 5/30 (16,7%), nenhuma de grau ≥3; mielossupressão (qualquer grau) em 11/30 (36,7%); boca seca 16,7%.",
+        "Dose renal cumulativa maior nos pacientes com toxicidade renal (24,42 vs 17,55 Gy; descritivo)."
       ],
-      "interpretacao": "Dose renal cumulativa abaixo do limite estabelecido; baixa radiotoxicidade renal — não foi preocupação de segurança no regime do VISION.",
-      "limitacoes": "Coorte pequena, não-randomizada; limitações não detalhadas no abstract."
+      "interpretacao": "No regime do VISION, a dose renal cumulativa ficou abaixo do limite de referência e não houve toxicidade renal de grau ≥3 nesta coorte pequena. A dosimetria do ciclo 1 estimou razoavelmente a dose cumulativa. As glândulas lacrimais e salivares recebem as maiores doses por GBq.",
+      "limitacoes": "Coorte não randomizada (30; só 10 completaram 6 ciclos); dosimetria de ponto único nos ciclos 2–6; o limite de 23 Gy vem da radioterapia externa; análise descritiva."
+    },
+    "analysis": {
+      "populacao": "30 pacientes com mCRPC PSMA+ numa coorte separada, não randomizada (4 centros, Alemanha); dosimetria do ciclo 1 em 29; 10 com os 6 ciclos.",
+      "desenho_relacao": "Subestudo prospectivo de dosimetria do VISION, com coorte separada e análise descritiva independente do estudo principal.",
+      "endpoints": "Dose absorvida por atividade (Gy/GBq) por ciclo; dose cumulativa prevista e observada em 6 ciclos (44,4 GBq); segurança, QTc, farmacocinética e radiometabólitos urinários.",
+      "estatistica": "Descritiva; previsto vs observado por Hotelling T² com Bonferroni (P = 0,19–0,54).",
+      "cutoff_followup": "Exposição mediana de 5,52 meses; mediana de 4 ciclos; atividade total média 28,7±10,5 GBq. Data de cutoff não informada.",
+      "subgrupos": "Dose renal cumulativa de 24,42±7,41 Gy com toxicidade renal vs 17,55±7,80 Gy sem (descritivo).",
+      "seguranca": "Toxicidade renal em 5/30 (16,7%), sem grau ≥3; mielossupressão (qualquer grau) em 11/30 (36,7%); náusea/vômito 36,7%; boca seca 16,7%; variação mínima do QTcF.",
+      "conclusao_autores": "Dose renal cumulativa abaixo do limite estabelecido, boa segurança global e baixa radiotoxicidade renal; a dose cumulativa pode ser prevista a partir do ciclo 1."
+    },
+    "auditStatus": {
+      "classification": "TOO_SHALLOW",
+      "verification": "PASS",
+      "appliedChanges": 8,
+      "pendingChanges": 0,
+      "auditedAt": "2026-09-30"
     }
   },
   {
@@ -162,7 +181,7 @@ window.THERA_SECONDARY = [
     "parentUid": "lupsma_prostata_0",
     "parentTrialName": "VISION",
     "parentTrialPublication": "Sartor O, et al. N Engl J Med 2021;385:1091-1103 (NCT03511664)",
-    "relationshipToParent": "Análise exploratória de biomarcadores de imagem do ensaio fase III VISION",
+    "relationshipToParent": "Análise secundária exploratória (exigida pela FDA) de biomarcadores do PET PSMA basal no VISION",
     "publicationStatus": "Peer-reviewed full article",
     "analysisType": "Análise de biomarcador de imagem (PSMA PET quantitativo)",
     "evidenceMaturity": "Análise exploratória revisada por pares",
@@ -179,16 +198,36 @@ window.THERA_SECONDARY = [
       "SUVmean",
       "Imagem quantitativa"
     ],
-    "clinicalTakeaway": "Análise exploratória sugerindo que parâmetros quantitativos do PSMA PET basal, sobretudo o SUVmean tumoral de corpo inteiro, podem se associar ao benefício do 177Lu-PSMA-617. Necessita confirmação prospectiva.",
+    "clinicalTakeaway": "Análise secundária exploratória do VISION (826 participantes incluídos). Segundo os autores, o SUVmean tumoral de corpo inteiro no 68Ga-PSMA-11 PET/CT basal foi o melhor preditor de eficácia do 177Lu-PSMA-617. O aumento de 1 unidade no SUVmean associou-se a redução de 12% e 10% no risco de evento de rPFS e de óbito, respectivamente. Os ganhos de rPFS e OS com 177Lu-PSMA-617 + SOC foram maiores com SUVmean mais alto. Os autores relatam evidência de potencial benefício clínico independentemente do SUVmean, mas no quartil mais baixo os IC95% dos HR de rPFS e OS cruzaram 1. Não foi identificado ponto ótimo de SUVmean entre os tratados com 177Lu-PSMA-617.",
     "deep": {
-      "objetivo": "Explorar a associação entre parâmetros quantitativos do 68Ga-PSMA-11 PET basal e a resposta ao 177Lu-PSMA-617.",
-      "metodo": "Análise secundária do VISION (n=826); parâmetros de PET basais extraídos.",
+      "objetivo": "Explorar, no VISION, a associação entre parâmetros quantitativos do 68Ga-PSMA-11 PET/CT basal (SUVmean, SUVmax, volume tumoral PSMA+, carga tumoral; corpo inteiro e regiões anatômicas) e rPFS, OS, ORR e resposta de PSA.",
+      "metodo": "Análise secundária exploratória, exigida pela FDA, em 826/831 randomizados com PET quantificável (548 177Lu-PSMA-617 + SoC; 278 SoC). Cox e regressão logística univariáveis e multivariáveis (seleção stepwise), com tratamento como única outra covariável e sem ajuste clínico; análise por quartis de SUVmean; busca de ponto de corte ótimo. Não inferencial; p nominais, sem ajuste de multiplicidade.",
       "achados": [
-        "SUVmean tumoral de corpo inteiro foi o melhor preditor: aumento de 1 unidade associado a 12% menor risco de progressão (rPFS, p<0,001) e 10% menor risco de óbito (p<0,001).",
-        "Maior volume/carga tumoral associou-se a piores desfechos (HR ~1,44–1,53)."
+        "SUVmean tumoral de corpo inteiro (mediana 7,6) foi o parâmetro mais associado aos desfechos no braço 177Lu (rPFS HR 0,86; OS HR 0,88). Na amostra geral do estudo, +1 unidade associou-se a 12% menos risco de evento de rPFS e 10% menos risco de óbito.",
+        "SUVmean também se associou a ORR (OR 1,39) e a resposta de PSA (OR 1,23) no braço 177Lu.",
+        "Quartil mais alto de SUVmean: rPFS 13,8 vs 3,9 meses (HR 0,34) e OS 21,4 vs 15,0 meses (HR 0,47) vs SoC. Quartil mais baixo: rPFS 5,8 vs 4,0 meses (HR 0,75; IC95% 0,45–1,26) e OS 14,5 vs 11,3 meses (HR 0,87; 0,60–1,27), com ICs que cruzam 1.",
+        "Nenhum ponto de corte ótimo de SUVmean foi identificado dentro do braço 177Lu.",
+        "Maior carga tumoral (rPFS HR 1,02; OS HR 1,04 por 1000 g) e maior volume tumoral PSMA+ regional (rPFS HR 1,48–1,53; OS HR 1,38–2,12) associaram-se a piores desfechos."
       ],
-      "interpretacao": "A melhora de rPFS e OS foi maior em pacientes com maior SUVmean tumoral, com evidência de benefício em todos os níveis de SUVmean. Análise exploratória/de imagem.",
-      "limitacoes": "Análise exploratória; limitações não detalhadas no abstract."
+      "interpretacao": "Na população do VISION, selecionada por leitura visual, SUVmean mais alto associou-se a maior magnitude de benefício, mas o SUVmean não definiu um limiar de exclusão. No quartil mais baixo a diferença foi numericamente favorável e não significativa (IC incluindo 1). SUVmean alto também pode ter valor prognóstico no braço SoC. Análise exploratória, que gera hipótese e não serve para selecionar pacientes.",
+      "limitacoes": "VISION sem poder para subgrupos de PET quantitativo; p nominais sem ajuste de multiplicidade; modelos sem covariáveis clínicas; variação de equipamentos e reconstrução entre centros; resultados restritos ao 68Ga-PSMA-11; pacientes inelegíveis pela leitura visual não foram avaliados."
+    },
+    "analysis": {
+      "populacao": "826/831 randomizados com PET basal quantificável (548 vs 278); rPFS e resposta de PSA no subconjunto randomizado a partir de 5/mar/2019 (rPFS: 382 vs 194); OS no conjunto completo.",
+      "desenho_relacao": "Análise secundária exploratória, exigida pela FDA, de biomarcador de imagem basal no VISION; não inferencial.",
+      "endpoints": "rPFS, OS, ORR (RECIST 1.1) e resposta de PSA.",
+      "estatistica": "Cox e logística univariável/multivariável (backward/forward; covariável de tratamento, sem covariáveis clínicas); quartis com Cox estratificado; pontos de corte por estatística de rank maximamente selecionada; p nominais.",
+      "cutoff_followup": null,
+      "subgrupos": "Quartis de SUVmean: maior quartil rPFS HR 0,34 e OS HR 0,47; menor quartil rPFS HR 0,75 (0,45–1,26) e OS HR 0,87 (0,60–1,27); benefício significativo nos 3 quartis superiores; sem ponto de corte ótimo.",
+      "seguranca": null,
+      "conclusao_autores": "SUVmean tumoral de corpo inteiro no PET basal foi o melhor preditor de eficácia do 177Lu-PSMA-617; ganhos maiores com SUVmean mais alto, com evidência de benefício em todos os níveis."
+    },
+    "auditStatus": {
+      "classification": "TOO_SHALLOW",
+      "verification": "PASS",
+      "appliedChanges": 8,
+      "pendingChanges": 0,
+      "auditedAt": "2026-09-30"
     }
   },
   {
