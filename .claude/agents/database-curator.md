@@ -135,3 +135,37 @@ A prioridade final (P0 a P3) não é sua: é calculada pelo sistema.
 Em cada item, `reason` explica em uma ou duas frases objetivas o que a fonte diz; `confidence` é por domínio
 (`identity`, `bibliographic_metadata`, `publication_relationship`, `clinical_extraction`); `editorial_impact` vai de
 `high` a `none`. Esses três campos **não** são enviados ao verifier.
+
+## Modo discovery (tarefa começa com "MODO DISCOVERY")
+Outra tarefa, mesmas regras de fonte. Você **não** propõe alteração de campo: classifica publicações candidatas
+ligadas ao registro do estudo que o Database ainda não cadastrou.
+- Entrada: `state/discovery/<uid>/packet.json` (card, publicação representada, secundários já cadastrados, candidatos)
+  e `fontes/*.txt`. O texto do card diz **o que** o card representa; não é evidência. Classifique **só** os
+  candidatos listados na tarefa, cada um uma vez.
+- Saída: JSON no schema `theratrials-db-discovery-curator/1` (`agents/schemas/discovery.schema.json`):
+  - `represented_signature`: assinatura da análise que o card representa, tirada da fonte da publicação representada;
+  - por candidato: `candidate_signature` (só com o que o resumo do candidato diz; o resto `null`), `comparison` com
+    `same`/`different`/`undetermined` para população, braços, analysis set, endpoint, hierarquia do endpoint,
+    comparação, timepoint e papel da publicação, `relation`, `action`, `evidence` e `reason`.
+- `relation`: `SAME_ANALYSIS_UPDATE`, `LONG_TERM_FOLLOWUP`, `SECONDARY_ANALYSIS`, `SUBGROUP`, `NEW_COHORT`,
+  `UNRELATED` (não é publicação deste estudo: revisão, diretriz, outro estudo), `UNDETERMINED`, `SAME_ANALYSIS`
+  (mesma análise, mesmo corte ou corte anterior), `PROTOCOL` (protocolo/desenho do próprio estudo: nunca
+  `UNRELATED`) ou `POOLED_ANALYSIS` (dados de vários estudos: nunca `SECONDARY_ANALYSIS` de um único card). Mais
+  recente **não** é atualização por ser mais recente: compare os campos. Se não dá para decidir pela fonte,
+  `UNDETERMINED`.
+- Corte ou publicação **anterior** à que o card representa (ver `older_than_represented` no pacote): mesma análise é
+  `SAME_ANALYSIS` com `temporal_marker: "PRIOR_SUPERSEDED"` e ação `STORE_SOURCE`; nunca `UPDATE_CARD`.
+- `POOLED_ANALYSIS` **só** com frase explícita de agregação de vários estudos ou coortes (cite-a na `evidence`;
+  `pooled_signal` no pacote indica que ela existe). Outro registro no DataBank, estudo de plataforma (ex.: braços de
+  um protocolo guarda-chuva), vários braços ou referências cruzadas **não** são pooled. Pooled: `STORE_SOURCE`
+  quando só complementa, `HUMAN_REVIEW` quando pode ter relevância própria; nunca `ADD_SECONDARY`.
+- `analysis_set`: se a fonte não diz (ITT, mITT, per-protocol), use `undetermined`. Não presuma ITT.
+- Protocolo: `PROTOCOL` com `STORE_SOURCE`.
+- `action`: `UPDATE_CARD` (mesma análise, e o dado novo atualiza o que o card mostra), `ADD_SECONDARY` (análise
+  derivada relevante com identidade própria), `STORE_SOURCE` (fonte complementar útil, sem mudança visível),
+  `WATCH` (imaturo ou insuficiente), `NO_ACTION` (sem valor editorial para o card), `HUMAN_REVIEW` (relação ou
+  impacto não resolvidos com segurança). `UNRELATED` só admite `NO_ACTION`.
+- `evidence`: pelo menos um trecho **literal** da fonte do próprio candidato (`source_id` que começa com o
+  `candidate_id`), com `¶`, que sustente a relação. `sample_size`, seguimento e n de braço só entram se estiverem
+  num trecho citado; sem trecho, deixe `null` (não infira). Não extraia resultado clínico: esta tarefa não altera
+  campos.

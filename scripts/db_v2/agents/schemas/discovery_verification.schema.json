@@ -1,0 +1,88 @@
+{
+ "$id": "theratrials-db-discovery-verification/1",
+ "type": "object",
+ "properties": {
+  "schema": {
+   "const": "theratrials-db-discovery-verification/1"
+  },
+  "uid": {
+   "type": "string"
+  },
+  "curator_sha256": {
+   "type": "string"
+  },
+  "candidates": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "properties": {
+     "candidate_id": {
+      "type": "string"
+     },
+     "relation_verdict": {
+      "enum": [
+       "PASS",
+       "FAIL",
+       "UNSUPPORTED",
+       "CONFLICT"
+      ]
+     },
+     "action_verdict": {
+      "enum": [
+       "PASS",
+       "FAIL",
+       "UNSUPPORTED",
+       "CONFLICT"
+      ]
+     },
+     "evidence_verdict": {
+      "enum": [
+       "PASS",
+       "FAIL",
+       "UNSUPPORTED",
+       "CONFLICT"
+      ]
+     },
+     "verdict": {
+      "enum": [
+       "PASS",
+       "FAIL",
+       "UNSUPPORTED",
+       "CONFLICT"
+      ]
+     },
+     "locator": {
+      "type": [
+       "string",
+       "null"
+      ]
+     },
+     "snippet": {
+      "type": [
+       "string",
+       "null"
+      ]
+     },
+     "reason": {
+      "type": "string",
+      "minLength": 5
+     }
+    },
+    "required": [
+     "candidate_id",
+     "relation_verdict",
+     "action_verdict",
+     "evidence_verdict",
+     "verdict",
+     "reason"
+    ]
+   }
+  }
+ },
+ "required": [
+  "schema",
+  "uid",
+  "curator_sha256",
+  "candidates"
+ ]
+}

@@ -76,7 +76,7 @@ SIGNATURE_FIELDS = SIGNATURE_IDENTITY + SIGNATURE_MATURITY
 ENDPOINT_HIERARCHY = ["primary", "co_primary", "key_secondary", "secondary", "exploratory", "safety", "undetermined"]
 ANALYSIS_TYPES = ["interim", "primary", "updated", "final", "long_term", "post_hoc", "undetermined"]
 PUBLICATION_ROLES = ["primary_publication", "update", "final", "long_term", "secondary_analysis", "subgroup",
-                     "qol_pro", "safety", "translational", "pooled", "correction", "congress_abstract",
+                     "qol_pro", "safety", "translational", "pooled", "correction", "congress_abstract", "protocol",
                      "undetermined"]
 RELATIONS = ["SAME_ANALYSIS", "SAME_ANALYSIS_UPDATE", "LONG_TERM_FOLLOWUP", "SECONDARY_ANALYSIS", "SUBGROUP",
              "NEW_COHORT", "DIFFERENT_STUDY", "UNDETERMINED"]
@@ -225,9 +225,57 @@ DECISION_PACKET_SCHEMA = {
 }
 
 
+# ── discovery de publicações novas ligadas a um card (modo sombra) ──
+DISCOVERY_RELATIONS = ["SAME_ANALYSIS_UPDATE", "LONG_TERM_FOLLOWUP", "SECONDARY_ANALYSIS", "SUBGROUP", "NEW_COHORT",
+                       "UNRELATED", "UNDETERMINED", "SAME_ANALYSIS", "PROTOCOL", "POOLED_ANALYSIS"]
+DISCOVERY_TEMPORAL = ["PRIOR_SUPERSEDED"]            # corte/publicação anterior à que o card representa
+DISCOVERY_ACTIONS = ["UPDATE_CARD", "ADD_SECONDARY", "STORE_SOURCE", "WATCH", "NO_ACTION", "HUMAN_REVIEW"]
+DISCOVERY_COMPARED = ["population", "arms", "analysis_set", "endpoint", "endpoint_hierarchy", "comparison",
+                      "timepoint", "publication_role"]
+DISCOVERY_SCHEMA = {
+    "$id": f"theratrials-db-discovery-curator/{VERSAO}",
+    "type": "object",
+    "properties": {
+        "schema": {"const": f"theratrials-db-discovery-curator/{VERSAO}"},
+        "uid": STR, "packet_sha256": STR,
+        "represented_signature": SIGNATURE_SCHEMA,
+        "candidates": {"type": "array", "items": {"type": "object", "properties": {
+            "candidate_id": STR, "relation": _enum(DISCOVERY_RELATIONS), "action": _enum(DISCOVERY_ACTIONS),
+            "temporal_marker": {"enum": DISCOVERY_TEMPORAL + [None]},
+            "candidate_signature": SIGNATURE_SCHEMA,
+            "comparison": {"type": "object", "properties": {k: {"type": "object", "properties": {
+                "status": _enum(["same", "different", "undetermined"]), "note": NSTR}, "required": ["status"]}
+                for k in DISCOVERY_COMPARED}, "required": DISCOVERY_COMPARED},
+            "evidence": {"type": "array", "minItems": 1, "items": EVIDENCE_SCHEMA},
+            "reason": STR},
+            "required": ["candidate_id", "relation", "action", "candidate_signature", "comparison", "evidence",
+                         "reason"]}},
+        "notes_for_human": STR,
+    },
+    "required": ["schema", "uid", "packet_sha256", "represented_signature", "candidates"],
+}
+DISCOVERY_VERIFICATION_SCHEMA = {
+    "$id": f"theratrials-db-discovery-verification/{VERSAO}",
+    "type": "object",
+    "properties": {
+        "schema": {"const": f"theratrials-db-discovery-verification/{VERSAO}"},
+        "uid": STR, "curator_sha256": STR,
+        "candidates": {"type": "array", "items": {"type": "object", "properties": {
+            "candidate_id": STR, "relation_verdict": _enum(VERDICTS), "action_verdict": _enum(VERDICTS),
+            "evidence_verdict": _enum(VERDICTS), "verdict": _enum(VERDICTS),
+            "locator": NSTR, "snippet": NSTR, "reason": {"type": "string", "minLength": 5}},
+            "required": ["candidate_id", "relation_verdict", "action_verdict", "evidence_verdict", "verdict",
+                         "reason"]}},
+    },
+    "required": ["schema", "uid", "curator_sha256", "candidates"],
+}
+
+
 def schemas() -> dict[str, dict]:
     return {"proposal.schema.json": PROPOSAL_SCHEMA, "verification.schema.json": VERIFICATION_SCHEMA,
             "decision_packet.schema.json": DECISION_PACKET_SCHEMA,
+            "discovery.schema.json": DISCOVERY_SCHEMA,
+            "discovery_verification.schema.json": DISCOVERY_VERIFICATION_SCHEMA,
             "analysis_signature.schema.json": {"$id": f"theratrials-db-analysis-signature/{VERSAO}",
                                                **SIGNATURE_SCHEMA}}
 

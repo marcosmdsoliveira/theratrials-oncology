@@ -1,0 +1,697 @@
+{
+ "$id": "theratrials-db-discovery-curator/1",
+ "type": "object",
+ "properties": {
+  "schema": {
+   "const": "theratrials-db-discovery-curator/1"
+  },
+  "uid": {
+   "type": "string"
+  },
+  "packet_sha256": {
+   "type": "string"
+  },
+  "represented_signature": {
+   "type": "object",
+   "properties": {
+    "signature_id": {
+     "type": "string"
+    },
+    "trial_key": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "registry_ids": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    },
+    "cohort": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "population": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "disease_state": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "treatment_line": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "arms": {
+     "type": "array",
+     "items": {
+      "type": "object",
+      "properties": {
+       "arm_id": {
+        "type": "string"
+       },
+       "label": {
+        "type": "string"
+       },
+       "role": {
+        "enum": [
+         "experimental",
+         "control",
+         "single_arm",
+         "other"
+        ]
+       },
+       "n": {
+        "type": [
+         "integer",
+         "null"
+        ]
+       }
+      },
+      "required": [
+       "label",
+       "role"
+      ]
+     }
+    },
+    "analysis_set": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "endpoint": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "endpoint_hierarchy": {
+     "enum": [
+      "primary",
+      "co_primary",
+      "key_secondary",
+      "secondary",
+      "exploratory",
+      "safety",
+      "undetermined"
+     ]
+    },
+    "summary_measure": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "comparison": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "timepoint": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "assessment_method": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "sample_size": {
+     "type": [
+      "integer",
+      "null"
+     ]
+    },
+    "data_cutoff": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "follow_up_median_months": {
+     "type": [
+      "number",
+      "null"
+     ]
+    },
+    "analysis_type": {
+     "enum": [
+      "interim",
+      "primary",
+      "updated",
+      "final",
+      "long_term",
+      "post_hoc",
+      "undetermined"
+     ]
+    },
+    "publication_role": {
+     "enum": [
+      "primary_publication",
+      "update",
+      "final",
+      "long_term",
+      "secondary_analysis",
+      "subgroup",
+      "qol_pro",
+      "safety",
+      "translational",
+      "pooled",
+      "correction",
+      "congress_abstract",
+      "protocol",
+      "undetermined"
+     ]
+    },
+    "publication_id": {
+     "type": [
+      "string",
+      "null"
+     ]
+    }
+   },
+   "required": [
+    "signature_id",
+    "trial_key",
+    "endpoint",
+    "endpoint_hierarchy",
+    "analysis_type",
+    "publication_role"
+   ]
+  },
+  "candidates": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "properties": {
+     "candidate_id": {
+      "type": "string"
+     },
+     "relation": {
+      "enum": [
+       "SAME_ANALYSIS_UPDATE",
+       "LONG_TERM_FOLLOWUP",
+       "SECONDARY_ANALYSIS",
+       "SUBGROUP",
+       "NEW_COHORT",
+       "UNRELATED",
+       "UNDETERMINED",
+       "SAME_ANALYSIS",
+       "PROTOCOL",
+       "POOLED_ANALYSIS"
+      ]
+     },
+     "action": {
+      "enum": [
+       "UPDATE_CARD",
+       "ADD_SECONDARY",
+       "STORE_SOURCE",
+       "WATCH",
+       "NO_ACTION",
+       "HUMAN_REVIEW"
+      ]
+     },
+     "temporal_marker": {
+      "enum": [
+       "PRIOR_SUPERSEDED",
+       null
+      ]
+     },
+     "candidate_signature": {
+      "type": "object",
+      "properties": {
+       "signature_id": {
+        "type": "string"
+       },
+       "trial_key": {
+        "type": [
+         "string",
+         "null"
+        ]
+       },
+       "registry_ids": {
+        "type": "array",
+        "items": {
+         "type": "string"
+        }
+       },
+       "cohort": {
+        "type": [
+         "string",
+         "null"
+        ]
+       },
+       "population": {
+        "type": [
+         "string",
+         "null"
+        ]
+       },
+       "disease_state": {
+        "type": [
+         "string",
+         "null"
+        ]
+       },
+       "treatment_line": {
+        "type": [
+         "string",
+         "null"
+        ]
+       },
+       "arms": {
+        "type": "array",
+        "items": {
+         "type": "object",
+         "properties": {
+          "arm_id": {
+           "type": "string"
+          },
+          "label": {
+           "type": "string"
+          },
+          "role": {
+           "enum": [
+            "experimental",
+            "control",
+            "single_arm",
+            "other"
+           ]
+          },
+          "n": {
+           "type": [
+            "integer",
+            "null"
+           ]
+          }
+         },
+         "required": [
+          "label",
+          "role"
+         ]
+        }
+       },
+       "analysis_set": {
+        "type": [
+         "string",
+         "null"
+        ]
+       },
+       "endpoint": {
+        "type": [
+         "string",
+         "null"
+        ]
+       },
+       "endpoint_hierarchy": {
+        "enum": [
+         "primary",
+         "co_primary",
+         "key_secondary",
+         "secondary",
+         "exploratory",
+         "safety",
+         "undetermined"
+        ]
+       },
+       "summary_measure": {
+        "type": [
+         "string",
+         "null"
+        ]
+       },
+       "comparison": {
+        "type": [
+         "string",
+         "null"
+        ]
+       },
+       "timepoint": {
+        "type": [
+         "string",
+         "null"
+        ]
+       },
+       "assessment_method": {
+        "type": [
+         "string",
+         "null"
+        ]
+       },
+       "sample_size": {
+        "type": [
+         "integer",
+         "null"
+        ]
+       },
+       "data_cutoff": {
+        "type": [
+         "string",
+         "null"
+        ]
+       },
+       "follow_up_median_months": {
+        "type": [
+         "number",
+         "null"
+        ]
+       },
+       "analysis_type": {
+        "enum": [
+         "interim",
+         "primary",
+         "updated",
+         "final",
+         "long_term",
+         "post_hoc",
+         "undetermined"
+        ]
+       },
+       "publication_role": {
+        "enum": [
+         "primary_publication",
+         "update",
+         "final",
+         "long_term",
+         "secondary_analysis",
+         "subgroup",
+         "qol_pro",
+         "safety",
+         "translational",
+         "pooled",
+         "correction",
+         "congress_abstract",
+         "protocol",
+         "undetermined"
+        ]
+       },
+       "publication_id": {
+        "type": [
+         "string",
+         "null"
+        ]
+       }
+      },
+      "required": [
+       "signature_id",
+       "trial_key",
+       "endpoint",
+       "endpoint_hierarchy",
+       "analysis_type",
+       "publication_role"
+      ]
+     },
+     "comparison": {
+      "type": "object",
+      "properties": {
+       "population": {
+        "type": "object",
+        "properties": {
+         "status": {
+          "enum": [
+           "same",
+           "different",
+           "undetermined"
+          ]
+         },
+         "note": {
+          "type": [
+           "string",
+           "null"
+          ]
+         }
+        },
+        "required": [
+         "status"
+        ]
+       },
+       "arms": {
+        "type": "object",
+        "properties": {
+         "status": {
+          "enum": [
+           "same",
+           "different",
+           "undetermined"
+          ]
+         },
+         "note": {
+          "type": [
+           "string",
+           "null"
+          ]
+         }
+        },
+        "required": [
+         "status"
+        ]
+       },
+       "analysis_set": {
+        "type": "object",
+        "properties": {
+         "status": {
+          "enum": [
+           "same",
+           "different",
+           "undetermined"
+          ]
+         },
+         "note": {
+          "type": [
+           "string",
+           "null"
+          ]
+         }
+        },
+        "required": [
+         "status"
+        ]
+       },
+       "endpoint": {
+        "type": "object",
+        "properties": {
+         "status": {
+          "enum": [
+           "same",
+           "different",
+           "undetermined"
+          ]
+         },
+         "note": {
+          "type": [
+           "string",
+           "null"
+          ]
+         }
+        },
+        "required": [
+         "status"
+        ]
+       },
+       "endpoint_hierarchy": {
+        "type": "object",
+        "properties": {
+         "status": {
+          "enum": [
+           "same",
+           "different",
+           "undetermined"
+          ]
+         },
+         "note": {
+          "type": [
+           "string",
+           "null"
+          ]
+         }
+        },
+        "required": [
+         "status"
+        ]
+       },
+       "comparison": {
+        "type": "object",
+        "properties": {
+         "status": {
+          "enum": [
+           "same",
+           "different",
+           "undetermined"
+          ]
+         },
+         "note": {
+          "type": [
+           "string",
+           "null"
+          ]
+         }
+        },
+        "required": [
+         "status"
+        ]
+       },
+       "timepoint": {
+        "type": "object",
+        "properties": {
+         "status": {
+          "enum": [
+           "same",
+           "different",
+           "undetermined"
+          ]
+         },
+         "note": {
+          "type": [
+           "string",
+           "null"
+          ]
+         }
+        },
+        "required": [
+         "status"
+        ]
+       },
+       "publication_role": {
+        "type": "object",
+        "properties": {
+         "status": {
+          "enum": [
+           "same",
+           "different",
+           "undetermined"
+          ]
+         },
+         "note": {
+          "type": [
+           "string",
+           "null"
+          ]
+         }
+        },
+        "required": [
+         "status"
+        ]
+       }
+      },
+      "required": [
+       "population",
+       "arms",
+       "analysis_set",
+       "endpoint",
+       "endpoint_hierarchy",
+       "comparison",
+       "timepoint",
+       "publication_role"
+      ]
+     },
+     "evidence": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+       "type": "object",
+       "properties": {
+        "source_id": {
+         "type": "string"
+        },
+        "source_type": {
+         "enum": [
+          "pubmed_metadata",
+          "pubmed_abstract",
+          "pmc_fulltext",
+          "europepmc_fulltext",
+          "ctgov_record",
+          "ctgov_results",
+          "crossref_metadata",
+          "registered_primary_source",
+          "human_decision"
+         ]
+        },
+        "publication_id": {
+         "type": [
+          "string",
+          "null"
+         ]
+        },
+        "pmid": {
+         "type": [
+          "string",
+          "null"
+         ]
+        },
+        "doi": {
+         "type": [
+          "string",
+          "null"
+         ]
+        },
+        "nct": {
+         "type": [
+          "string",
+          "null"
+         ]
+        },
+        "locator": {
+         "type": "string"
+        },
+        "snippet": {
+         "type": "string",
+         "minLength": 8
+        },
+        "retrieved_at": {
+         "type": [
+          "string",
+          "null"
+         ]
+        }
+       },
+       "required": [
+        "source_id",
+        "source_type",
+        "locator",
+        "snippet"
+       ]
+      }
+     },
+     "reason": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "candidate_id",
+     "relation",
+     "action",
+     "candidate_signature",
+     "comparison",
+     "evidence",
+     "reason"
+    ]
+   }
+  },
+  "notes_for_human": {
+   "type": "string"
+  }
+ },
+ "required": [
+  "schema",
+  "uid",
+  "packet_sha256",
+  "represented_signature",
+  "candidates"
+ ]
+}

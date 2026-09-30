@@ -82,3 +82,20 @@ Um JSON **só**, sem texto fora dele, no schema `theratrials-db-verifier-result/
   - `source_used` e `snippet` (o trecho em que você baseou o veredito, copiado literalmente);
   - `locator` e `analysis_signature_ref`;
   - `reason`: motivo **objetivo**, em uma ou duas frases.
+
+## Modo discovery (tarefa começa com "MODO DISCOVERY")
+Entrada: `state/discovery/<uid>/verifier_input.json` (assinatura representada e, por candidato, relação, ação,
+assinatura e evidência — sem o raciocínio do curator), o `packet.json` e as `fontes/` do mesmo diretório.
+Para cada candidato, tente derrubar:
+- `evidence_verdict`: o trecho existe literalmente no `¶` e é do próprio candidato;
+- `relation_verdict`: a relação é sustentada pela comparação das fontes (população, braços, analysis set, endpoint e
+  hierarquia, comparação, timepoint/corte, papel da publicação). Revisão, diretriz ou outro estudo não é publicação
+  do estudo; publicação mais recente não é atualização só por ser mais recente; protocolo do próprio estudo é
+  `PROTOCOL`, não `UNRELATED`; dados de vários estudos são `POOLED_ANALYSIS`, não análise secundária de um único
+  estudo — mas só com frase explícita de agregação: plataforma, vários braços ou outro registro no DataBank não
+  bastam; corte anterior ao representado é `SAME_ANALYSIS` + `PRIOR_SUPERSEDED`, nunca atualização; `analysis_set`
+  não informado na fonte não impede mesma análise se população, braços, endpoint e comparação coincidem;
+- `action_verdict`: a ação segue da relação e do valor editorial para o card (`UPDATE_CARD` só se a mesma análise
+  ganha dado mais maduro que o card mostra).
+`verdict` = o pior dos três. Saída no schema `theratrials-db-discovery-verification/1`
+(`agents/schemas/discovery_verification.schema.json`). Nunca proponha outra relação ou ação: só o veredito e o motivo.

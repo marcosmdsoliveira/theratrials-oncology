@@ -740,7 +740,9 @@ class ExecucaoRestrita(unittest.TestCase):
     def test_runner_usa_a_definicao_do_agente_e_proibe_shell(self):
         t = (AG / "run_agents.py").read_text()
         self.assertIn('"--agent", agente', t)
-        self.assertIn('"database-verifier" if papel == "verifier_b" else f"database-{papel}"', t)
+        # todo papel roda uma das duas definições versionadas; nenhum papel cria agente novo
+        self.assertIn('{"verifier_b": "database-verifier", "discovery_curator": "database-curator",\n'
+                      '              "discovery_verifier": "database-verifier"}.get(papel, f"database-{papel}")', t)
         for proibida in ("Bash", "Edit", "Write", "WebFetch", "WebSearch", "Agent", "Task"):
             self.assertIn(proibida, RA.PROIBIDAS_CLI)
         self.assertEqual(RA.PERMITIDAS, {"Read", "Grep", "Glob"})
