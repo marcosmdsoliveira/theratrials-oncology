@@ -27,12 +27,14 @@ import sys
 
 AQUI = pathlib.Path(__file__).resolve().parent
 try:
-    from . import agent_types as T, curator as C, priority as PR, signature as G, sources as S, verifier as V
+    from . import agent_types as T, curator as C, priority as PR, signature as G, sources as S, sufficiency as SF, \
+        verifier as V
 except ImportError:
     import agent_types as T
     import curator as C
     import priority as PR
     import signature as G
+    import sufficiency as SF
     import sources as S
     import verifier as V
 
@@ -61,7 +63,7 @@ def montar(uid: str) -> dict:
                        "curator_priority": it.get("_curator_priority"), "verdict": r["verdict"],
                        "verifier_reason": (r.get("semantic") or {}).get("reason"),
                        "deterministic": (r.get("deterministic") or {}).get("verdict"),
-                       "human_decision_protected": it["field"] in protegidos,
+                       "human_decision_protected": it["field"] in protegidos, "conflict": bool(it.get("conflict")),
                        "component": it.get("component"), "component_verified": r.get("component"),
                        "support": r.get("support"), "sufficiency": r.get("sufficiency"),
                        "evidence": [{k: e.get(k) for k in ("source_id", "locator", "snippet")}
@@ -181,6 +183,8 @@ def montar(uid: str) -> dict:
         "human_required": humano, "counts_toward_weekly_budget": no_orcamento,
         "verifier_consensus": {c["proposal_id"]: c["verifier_consensus"] for c in campos if "verifier_consensus" in c},
         "auto_approval_blocked": bloqueio,
+        "human_view": vista_humana(campos, altos),
+        "automation_experimental": True,             # AUTO é só métrica: NÃO dispensa revisão humana
         "automation": ("REVIEW" if any(c["automation_eligibility"] == "REVIEW" for c in campos) else
                        "AUTO" if any(c["automation_eligibility"] == "AUTO" for c in campos) else
                        "WATCH" if campos else None),
@@ -258,12 +262,71 @@ def candidatos_p0(uid: str) -> list[str]:
     return [c["proposal_id"] for c in montar(uid)["fields"] if c["final_priority"] == "P0" and c["origin"] == "curator"]
 
 
+def _sinal_material(c: dict, altos: set) -> list[str]:
+    """Sinais de possível erro material que mantêm o item VISÍVEL qualquer que seja a prioridade."""
+    return [m for cond, m in [
+        (c.get("current_value_status") == "CONTRADICTED", "valor atual contradito pela fonte"),
+        (c["verdict"] == "CONFLICT" or bool(c.get("conflict")), "conflito de fonte"),
+        (c["field"] in altos, "backlog high"),
+        (c.get("defect") == "unsupported_claim" and c["field"] in SF.CAMPOS_CLINICOS,
+         "afirmação clínica sem suporte"),
+    ] if cond]
+
+
+def _sugestao_item(c: dict) -> str:
+    if (c["verdict"] == "CONFLICT" or c.get("verifier_consensus") in ("DISAGREEMENT", "SINGLE_RUN")
+            or c["human_decision_protected"] or c.get("proposed") in (None, "")):
+        return "DEFER"
+    return "APPROVE" if c["verdict"] == "PASS" else "REJECT"
+
+
+def vista_humana(campos: list[dict], altos: set) -> dict:
+    """Assistente de revisão: P0/P1 primeiro; P2/WATCH/P3 recolhidos, salvo sinal de possível erro material."""
+    linhas = []
+    for c in campos:
+        sinais = _sinal_material(c, altos)
+        linhas.append({
+            "priority": c["final_priority"], "field": c["field"], "proposal_id": c["proposal_id"],
+            "current": c["current"], "proposed": c["proposed"],
+            "evidence": [{"source": e.get("source_id"), "locator": e.get("locator"), "snippet": e.get("snippet")}
+                         for e in c.get("evidence") or []],
+            "verdict": c["verdict"], "verifier_consensus": c.get("verifier_consensus"),
+            "verifier_runs": ({"a": (c.get("run_a") or {}).get("verdict"), "b": (c.get("run_b") or {}).get("verdict")}
+                              if c.get("run_b") else None),
+            "suggestion": _sugestao_item(c), "material_signals": sinais,
+            "visible": c["final_priority"] in ("P0", "P1") or bool(sinais),
+            "automation_experimental": c.get("automation_eligibility"),
+        })
+    linhas.sort(key=lambda l: (not l["visible"], ORDEM_P[l["priority"]], l["field"]))
+    return {"highlighted": [l for l in linhas if l["visible"]], "collapsed": [l for l in linhas if not l["visible"]]}
+
+
+def render_md(p: dict) -> str:
+    """Pacote humano legível: destacados primeiro, recolhidos em <details>."""
+    def bloco(l):
+        ev = "\n".join(f"  - `{e['source']}` {e['locator']}: “{e['snippet']}”" for e in l["evidence"]) or "  - (sem trecho)"
+        div = (f" · verifiers A={l['verifier_runs']['a']} B={l['verifier_runs']['b']} ({l['verifier_consensus']})"
+               if l["verifier_runs"] else "")
+        sin = f" · ⚠ {', '.join(l['material_signals'])}" if l["material_signals"] else ""
+        return (f"### {l['priority'] or '—'} · `{l['field']}` · {l['verdict']}{div} · sugestão **{l['suggestion']}**{sin}\n"
+                f"- atual: {l['current']}\n- proposto: {l['proposed']}\n{ev}\n")
+    hv = p["human_view"]
+    out = [f"# {p['card']} (`{p['uid']}`) · prioridade {p['priority']} · sugestão {p['suggested_decision']}",
+           f"{p['suggested_reason']}", "", "_Assistente de revisão: a decisão é sempre humana (final_decision = null)._",
+           "", "## Para revisar"] + [bloco(l) for l in hv["highlighted"]]
+    if hv["collapsed"]:
+        out += ["<details><summary>Recolhidos (P2/WATCH/P3 sem sinal material): "
+                f"{len(hv['collapsed'])}</summary>", ""] + [bloco(l) for l in hv["collapsed"]] + ["</details>"]
+    return "\n".join(out) + "\n"
+
+
 def todos(uids: list[str]) -> list[dict]:
     PACOTES.mkdir(parents=True, exist_ok=True)
     out = []
     for u in uids:
         p = montar(u)
         (PACOTES / f"{u}.json").write_text(json.dumps(p, ensure_ascii=False, indent=1), encoding="utf-8")
+        (PACOTES / f"{u}.md").write_text(render_md(p), encoding="utf-8")
         out.append(p)
     fila = sorted((p for p in out if p["human_required"]), key=lambda p: (ORDEM_P[p["priority"]], p["uid"]))
     FILA.write_text(json.dumps([{k: p[k] for k in ("uid", "card", "priority", "proposal_type", "suggested_decision",

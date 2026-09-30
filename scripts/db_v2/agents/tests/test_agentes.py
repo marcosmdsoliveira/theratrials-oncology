@@ -407,6 +407,31 @@ class PacoteDeDecisao(unittest.TestCase):
         self.assertNotEqual(self._auto(value_origin="derived")["automation_eligibility"], "AUTO")
         self.assertNotEqual(self._auto(component="subvalue")["automation_eligibility"], "AUTO")
 
+    def test_auto_e_so_metrica_e_nao_dispensa_humano(self):
+        self._auto()
+        p = D.montar("u")
+        self.assertEqual(p["fields"][0]["automation_eligibility"], "AUTO")
+        self.assertTrue(p["automation_experimental"])
+        self.assertTrue(p["human_required"])
+        self.assertIsNone(p["final_decision"])
+
+    def test_vista_humana_destaca_p0_p1_e_sinais_materiais(self):
+        extra = {"backlog": [{"id": "x", "status": "open", "priority": "low", "affected_fields": ["ref"]}]}
+        p = self.montar(["PASS", "UNSUPPORTED", "UNSUPPORTED"], cvs="NOT_ADDRESSED", extra=extra)
+        hv = p["human_view"]
+        self.assertTrue(all(l["visible"] for l in hv["highlighted"]))
+        self.assertEqual(hv["highlighted"][0]["priority"], "P1")               # P0/P1 primeiro
+        l = hv["highlighted"][0]
+        for k in ("field", "current", "proposed", "evidence", "verdict", "verifier_consensus", "suggestion"):
+            self.assertIn(k, l)
+        self.assertTrue(all(not x["visible"] for x in hv["collapsed"]))
+        sinais = D._sinal_material({"current_value_status": "CONTRADICTED", "verdict": "UNSUPPORTED", "field": "basal",
+                                    "defect": "imprecision"}, set())
+        self.assertEqual(sinais, ["valor atual contradito pela fonte"])
+        self.assertEqual(D._sinal_material({"verdict": "PASS", "field": "incl", "defect": "unsupported_claim"},
+                                           {"incl"}), ["backlog high", "afirmação clínica sem suporte"])
+        self.assertIn("## Para revisar", D.render_md(p))
+
     def test_unsupported_sem_erro_atual_e_watch_update_incompativel_e_review(self):
         p = self.montar(["UNSUPPORTED"], cvs="NOT_ADDRESSED")
         self.assertEqual(p["fields"][0]["automation_eligibility"], "WATCH")
