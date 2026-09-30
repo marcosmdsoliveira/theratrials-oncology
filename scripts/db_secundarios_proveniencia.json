@@ -1,0 +1,2380 @@
+{
+ "schema": "theratrials-secondary-provenance/1",
+ "gerado_em": "2026-09-30",
+ "sobre": "Proveniência da auditoria dos cards secundários (secondary-cards.js), com verificação independente por alteração. Em produção só entram cards com PASS integral; os demais ficam com o texto anterior até revisão humana.",
+ "cards": {
+  "vision-hrqol-2023": {
+   "pmid": "37269841",
+   "doi": "10.1016/S1470-2045(23)00158-4",
+   "not_applied": {
+    "deep.achados[0]": "FAIL",
+    "deep.achados(conjunto)": "FAIL"
+   },
+   "evidence": [
+    {
+     "claim": "SSE ou óbito 11,5 vs 6,8 m; HR 0,50",
+     "source_id": "pmid_37269841_abstract",
+     "locator": "¶0004",
+     "snippet": "Median time to first symptomatic skeletal event or death was 11·5 months (95% CI 10·3-13·2) in the [177Lu]Lu-PSMA-617 group and 6·8 months (5·2-8·5) in the control group (hazard ratio [HR] 0·50, 95% CI 0·40-0·62)."
+    },
+    {
+     "claim": "SSE isolado 16% vs 17%",
+     "source_id": "pmc_PMC10641914_fulltext",
+     "locator": "¶0035",
+     "snippet": "SSEs occurred in 60/385 patients (16%) in the 177Lu-PSMA-617 group and 34/196 patients (17%) in the control group"
+    },
+    {
+     "claim": "Desfechos de PRO compostos",
+     "source_id": "pmc_PMC10641914_fulltext",
+     "locator": "¶0024",
+     "snippet": "In prespecified analyses of BPI-SF, FACT-P and EQ-5D, the endpoint was the composite of worsening in score, clinical disease progression (excluding radiographic and PSA progression), or death due to any cause."
+    },
+    {
+     "claim": "HRs pré-especificados",
+     "source_id": "pmid_37269841_abstract",
+     "locator": "¶0004",
+     "snippet": "FACT-P score (HR 0·54, 0·45-0·66) and subdomains, BPI-SF pain intensity score (0·52, 0·42-0·63), and EQ-5D-5L utility score (0·65, 0·54-0·78)"
+    },
+    {
+     "claim": "FACT-P post hoc HR 0,46",
+     "source_id": "pmc_PMC10641914_fulltext",
+     "locator": "¶0054",
+     "snippet": "0·46 (0·35, 0·61; < 0·001)"
+    },
+    {
+     "claim": "BPI-SF post hoc HR 0,45",
+     "source_id": "pmc_PMC10641914_fulltext",
+     "locator": "¶0079",
+     "snippet": "0·45 (0·33, 0·60; < 0·001)"
+    },
+    {
+     "claim": "Definição de piora do EQ-5D",
+     "source_id": "pmc_PMC10641914_fulltext",
+     "locator": "¶0040",
+     "snippet": "worsening was pre-defined as no change or any deterioration in utility score from baseline, leading to rapid apparent worsening"
+    },
+    {
+     "claim": "Subgrupo com agente ósseo HR 0,49",
+     "source_id": "pmc_PMC10641914_fulltext",
+     "locator": "¶0108",
+     "snippet": "HR (95% CI) | 0·49 (0·36, 0·68)"
+    },
+    {
+     "claim": "Subgrupo sem agente ósseo HR 0,50",
+     "source_id": "pmc_PMC10641914_fulltext",
+     "locator": "¶0113",
+     "snippet": "HR (95% CI) | 0·50 (0·37, 0·68)"
+    },
+    {
+     "claim": "p nominais",
+     "source_id": "pmc_PMC10641914_fulltext",
+     "locator": "¶0026",
+     "snippet": "All p values presented herein are therefore nominal, descriptive, and non-inferential."
+    },
+    {
+     "claim": "Fora do controle de erro tipo I",
+     "source_id": "pmc_PMC10641914_fulltext",
+     "locator": "¶0026",
+     "snippet": "HRQoL and pain time-to-worsening endpoints were prespecified as excluded from study-wide type I error control"
+    },
+    {
+     "claim": "Linfócitos 51% vs 19%; plaquetas 9% vs 2%",
+     "source_id": "pmid_37269841_abstract",
+     "locator": "¶0004",
+     "snippet": "lymphocyte concentrations (269 [51%] vs 39 [19%]), and platelet counts (49 [9%] vs five [2%])"
+    },
+    {
+     "claim": "Hemoglobina 15% vs 6%",
+     "source_id": "pmid_37269841_abstract",
+     "locator": "¶0004",
+     "snippet": "decreased haemoglobin (80 [15%] of 529 assessable patients who received [177Lu]Lu-PSMA-617 plus standard of care vs 13 [6%] of 205"
+    },
+    {
+     "claim": "5 (1%) óbitos relacionados",
+     "source_id": "pmid_37269841_abstract",
+     "locator": "¶0004",
+     "snippet": "Treatment-related adverse events leading to death occurred in five (1%) patients"
+    },
+    {
+     "claim": "Seguimento de PRO 4,37 vs 0,76 m",
+     "source_id": "pmc_PMC10641914_fulltext",
+     "locator": "¶0032",
+     "snippet": "The median follow-up time for FACT-P total score was 4·37 months (range, 0·0–22·3) in the 177Lu-PSMA-617 group and 0·76 months (range, 0·0–19·8) in the control group."
+    },
+    {
+     "claim": "PRO só durante o tratamento",
+     "source_id": "pmc_PMC10641914_fulltext",
+     "locator": "¶0045",
+     "snippet": "PRO questionnaires were completed during study treatment, but not after disease progression or discontinuation of study treatment in VISION."
+    },
+    {
+     "claim": "Aberto, sem placebo",
+     "source_id": "pmc_PMC10641914_fulltext",
+     "locator": "¶0046",
+     "snippet": "The lack of double-blinding and placebo control are limitations"
+    },
+    {
+     "claim": "Seguimento de segurança",
+     "source_id": "pmc_PMC10641914_fulltext",
+     "locator": "¶0036",
+     "snippet": "the median safety follow-up time was 14·78 months (range, 0·6–31·5) in the 177Lu-PSMA-617 group and 10·64 months"
+    }
+   ],
+   "production_status": "pending_human_review",
+   "verified_pass_not_applied": [
+    "deep.objetivo",
+    "deep.metodo",
+    "deep.interpretacao",
+    "deep.limitacoes",
+    "clinicalTakeaway",
+    "relationshipToParent",
+    "analysis"
+   ]
+  },
+  "vision-safety-2024": {
+   "pmid": "38185538",
+   "doi": "10.1016/j.eururo.2023.12.004",
+   "applied": [
+    "deep.objetivo",
+    "deep.metodo",
+    "deep.interpretacao",
+    "deep.limitacoes",
+    "deep.achados",
+    "clinicalTakeaway",
+    "relationshipToParent",
+    "analysis"
+   ],
+   "not_applied": {},
+   "evidence": [
+    {
+     "claim": "240 vs 289 pacientes",
+     "source_id": "pmc_PMC11859717_fulltext",
+     "locator": "¶0015",
+     "snippet": "240 (45%) received ≤4 cycles and 289 (55%) received 5–6 cycles"
+    },
+    {
+     "claim": "TEAE 98% vs 99%",
+     "source_id": "pmc_PMC11859717_fulltext",
+     "locator": "¶0033",
+     "snippet": "Any grade TEAE | 234 (98) | 285 (99)"
+    },
+    {
+     "claim": "G≥3 60% vs 46%",
+     "source_id": "pmc_PMC11859717_fulltext",
+     "locator": "¶0034",
+     "snippet": "Grade ≥3 TEAE | 145 (60) | 134 (46)"
+    },
+    {
+     "claim": "Grave 42% vs 32%",
+     "source_id": "pmc_PMC11859717_fulltext",
+     "locator": "¶0035",
+     "snippet": "Serious TEAE | 100 (42) | 92 (32)"
+    },
+    {
+     "claim": "G≥3 por ciclo 17% → 12%",
+     "source_id": "pmc_PMC11859717_fulltext",
+     "locator": "¶0044",
+     "snippet": "Any | 438 (83) | 90 (17) | 349 (69) | 80 (16) | 294 (66) | 70 (16) | 240 (65) | 54 (15) | 170 (57) | 40 (13) | 121 (47) | 31 (12)"
+    },
+    {
+     "claim": "Exposição 7,8 m",
+     "source_id": "pmc_PMC11859717_fulltext",
+     "locator": "¶0014",
+     "snippet": "was 7.8 mo (interquartile range [IQR] 4.4–10.6)"
+    },
+    {
+     "claim": "Exposição controle 2,1 m",
+     "source_id": "pmc_PMC11859717_fulltext",
+     "locator": "¶0014",
+     "snippet": "the median duration of exposure was 2.1 mo (IQR 1.4–4.1)"
+    },
+    {
+     "claim": "1415,7 vs 1137,0/100 PTY",
+     "source_id": "pmc_PMC11859717_fulltext",
+     "locator": "¶0086",
+     "snippet": "Any TEAE | 1415.7 (519) | 91.1 (279) | 1137.0 (170) | 135.1 (78)"
+    },
+    {
+     "claim": "Boca seca 75,1 vs 1,4",
+     "source_id": "pmc_PMC11859717_fulltext",
+     "locator": "¶0089",
+     "snippet": "Dry mouth | 75.1 (205) | 0 | 1.4 (1) | 0"
+    },
+    {
+     "claim": "Toxicidade específica persiste",
+     "source_id": "pmc_PMC11859717_fulltext",
+     "locator": "¶0023",
+     "snippet": "the exposure-adjusted incidence per 100 PTY for any-grade acute myelosuppression events, dry eyes, and dry mouth remained higher in the 177Lu-PSMA-617 arm"
+    },
+    {
+     "claim": "Diarreia e vômitos",
+     "source_id": "pmc_PMC11859717_fulltext",
+     "locator": "¶0023",
+     "snippet": "the incidence of diarrhoea and vomiting remained higher in the 177Lu-PSMA-617 arm"
+    },
+    {
+     "claim": "Eventos menores com 177Lu",
+     "source_id": "pmc_PMC11859717_fulltext",
+     "locator": "¶0023",
+     "snippet": "any-grade musculoskeletal, renal, and liver events and dyspnoea was lower in the 177Lu-PSMA-617 arm"
+    },
+    {
+     "claim": "Redução de dose 5,7%",
+     "source_id": "pmc_PMC11859717_fulltext",
+     "locator": "¶0015",
+     "snippet": "Overall, 30/529 patients (5.7%) had 177Lu-PSMA-617 dose reductions owing to TEAEs"
+    },
+    {
+     "claim": "Renal tardia 2,7%",
+     "source_id": "pmc_PMC11859717_fulltext",
+     "locator": "¶0019",
+     "snippet": "late renal toxicity (onset >6 wk after the start of the cycle) occurred in 7/257 (2.7%"
+    },
+    {
+     "claim": "SPM 11/529 vs 2/205",
+     "source_id": "pmc_PMC11859717_fulltext",
+     "locator": "¶0020",
+     "snippet": "Second primary malignancies (SPMs) were reported for 11/529 patients in the 177Lu-PSMA-617 arm and 2/205 patients in the control arm."
+    },
+    {
+     "claim": "Ajuste por exposição é post hoc",
+     "source_id": "pmc_PMC11859717_fulltext",
+     "locator": "¶0013",
+     "snippet": "Post hoc exposure-adjusted safety analysis"
+    },
+    {
+     "claim": "Viés de sobrevivência",
+     "source_id": "pmc_PMC11859717_fulltext",
+     "locator": "¶0025",
+     "snippet": "survivorship bias"
+    },
+    {
+     "claim": "Não comparativa",
+     "source_id": "pmc_PMC11859717_fulltext",
+     "locator": "¶0024",
+     "snippet": "these analyses were not designed to draw comparative conclusions about the relative safety of 1–4 cycles versus 5–6 cycles"
+    },
+    {
+     "claim": "Primeiro evento precoce",
+     "source_id": "pmc_PMC11859717_fulltext",
+     "locator": "¶0021",
+     "snippet": "the risk of having a first event was greatest early in treatment"
+    }
+   ],
+   "production_status": "applied"
+  },
+  "vision-renal-multiorgan-dosimetry-2024": {
+   "pmid": "38050121",
+   "doi": "10.2967/jnumed.123.265448",
+   "not_applied": {
+    "deep.limitacoes": "UNSUPPORTED",
+    "deep.achados[3]": "CONFLICT",
+    "deep.achados(conjunto)": "CONFLICT",
+    "analysis": "CONFLICT"
+   },
+   "evidence": [
+    {
+     "claim": "Coorte separada de 30",
+     "source_id": "pmc_PMC10755516_fulltext",
+     "locator": "¶0007",
+     "snippet": "A separate nonrandomized cohort of 30 eligible patients was enrolled into the dosimetry substudy at 4 sites in Germany."
+    },
+    {
+     "claim": "10 com 6 ciclos",
+     "source_id": "pmc_PMC10755516_fulltext",
+     "locator": "¶0017",
+     "snippet": "in 10 patients who completed all 6 cycles"
+    },
+    {
+     "claim": "Doses do ciclo 1",
+     "source_id": "pmc_PMC10755516_fulltext",
+     "locator": "¶0019",
+     "snippet": "2.10 ± 0.47 and 0.63 ± 0.36 Gy/GBq, respectively, followed by the kidneys at 0.43 ± 0.16 Gy/GBq and red marrow at 0.035 ± 0.020 Gy/GBq"
+    },
+    {
+     "claim": "Rins ciclos 2–6",
+     "source_id": "pmc_PMC10755516_fulltext",
+     "locator": "¶0052",
+     "snippet": "followed by the kidneys at 0.44 ± 0.21 Gy/GBq"
+    },
+    {
+     "claim": "Renal prevista 19±7,3",
+     "source_id": "pmc_PMC10755516_fulltext",
+     "locator": "¶0054",
+     "snippet": "19.0 ± 7.3 Gy in the kidneys"
+    },
+    {
+     "claim": "Cumulativas observadas",
+     "source_id": "pmc_PMC10755516_fulltext",
+     "locator": "¶0054",
+     "snippet": "77 ± 23 Gy in the lacrimal glands, 30 ± 15 Gy in the salivary glands, 15 ± 6 Gy in the kidneys, and 1.30 ± 0.33 Gy in the red marrow"
+    },
+    {
+     "claim": "Lacrimais/salivares previstas",
+     "source_id": "pmc_PMC10755516_fulltext",
+     "locator": "¶0054",
+     "snippet": "92.0 ± 21.0 Gy in the lacrimal glands, 28.0 ± 16.0 Gy in the salivary glands"
+    },
+    {
+     "claim": "Medula prevista",
+     "source_id": "pmc_PMC10755516_fulltext",
+     "locator": "¶0054",
+     "snippet": "1.5 ± 0.9 Gy in the red marrow"
+    },
+    {
+     "claim": "Sem diferença previsto × observado",
+     "source_id": "pmc_PMC10755516_fulltext",
+     "locator": "¶0086",
+     "snippet": "(P = 0.19–0.54 in cycles 2–6)"
+    },
+    {
+     "claim": "Previsão tende a superestimar",
+     "source_id": "pmc_PMC10755516_fulltext",
+     "locator": "¶0086",
+     "snippet": "Predicted values were generally higher in later treatment cycles compared with the observed values"
+    },
+    {
+     "claim": "Limite de 23 Gy (EBRT)",
+     "source_id": "pmc_PMC10755516_fulltext",
+     "locator": "¶0110",
+     "snippet": "The cumulative dose limit of 23 Gy for the kidneys has been historically derived for EBRT"
+    },
+    {
+     "claim": "Toxicidade renal 16,7%",
+     "source_id": "pmc_PMC10755516_fulltext",
+     "locator": "¶0088",
+     "snippet": "Renal toxicity was reported in 5 of 30 patients (16.7%)"
+    },
+    {
+     "claim": "Sem renal G≥3",
+     "source_id": "pmc_PMC10755516_fulltext",
+     "locator": "¶0088",
+     "snippet": "No patients experienced renal TEAEs of grade 3 or higher."
+    },
+    {
+     "claim": "Mielossupressão",
+     "source_id": "pmc_PMC10755516_fulltext",
+     "locator": "¶0092",
+     "snippet": "Bone marrow suppression | 11 (36.7) | 6 (20.0)"
+    },
+    {
+     "claim": "Boca seca",
+     "source_id": "pmc_PMC10755516_fulltext",
+     "locator": "¶0095",
+     "snippet": "Dry mouth | 5 (16.7) | 0 (0.0)"
+    },
+    {
+     "claim": "Dose renal com vs sem toxicidade",
+     "source_id": "pmc_PMC10755516_fulltext",
+     "locator": "¶0088",
+     "snippet": "24.42 ± 7.41 Gy versus 17.55 ± 7.80 Gy"
+    },
+    {
+     "claim": "Exposição",
+     "source_id": "pmc_PMC10755516_fulltext",
+     "locator": "¶0088",
+     "snippet": "The median duration of 177Lu-PSMA-617 exposure was 5.52 mo"
+    },
+    {
+     "claim": "Limitação ponto único",
+     "source_id": "pmc_PMC10755516_fulltext",
+     "locator": "¶0115",
+     "snippet": "From a purely dosimetric point of view, this represents a limitation of the study."
+    },
+    {
+     "claim": "Variabilidade lacrimal",
+     "source_id": "pmc_PMC10755516_fulltext",
+     "locator": "¶0112",
+     "snippet": "high variability"
+    },
+    {
+     "claim": "Análise descritiva",
+     "source_id": "pmc_PMC10755516_fulltext",
+     "locator": "¶0011",
+     "snippet": "Results were analyzed descriptively"
+    }
+   ],
+   "production_status": "pending_human_review",
+   "verified_pass_not_applied": [
+    "deep.objetivo",
+    "deep.metodo",
+    "deep.interpretacao",
+    "clinicalTakeaway",
+    "relationshipToParent"
+   ]
+  },
+  "vision-baseline-psma-pet-biomarkers-2024": {
+   "pmid": "39162634",
+   "doi": "10.1148/radiol.233460",
+   "not_applied": {
+    "deep.objetivo": "CONFLICT",
+    "deep.achados[0]": "FAIL",
+    "deep.achados(conjunto)": "FAIL"
+   },
+   "evidence": [
+    {
+     "claim": "Exploratória, exigida pela FDA",
+     "source_id": "pmc_PMC11366674_fulltext",
+     "locator": "¶0012",
+     "snippet": "This was a U.S. Food and Drug Administration–required, exploratory, secondary analysis"
+    },
+    {
+     "claim": "n=826",
+     "source_id": "pmc_PMC11366674_fulltext",
+     "locator": "¶0023",
+     "snippet": "826 had baseline 68Ga-PSMA-11 PET scans that met the quality requirements"
+    },
+    {
+     "claim": "548 vs 278",
+     "source_id": "pmc_PMC11366674_fulltext",
+     "locator": "¶0023",
+     "snippet": "548 were included, and of the 280 randomized to receive SOC only, 278 were included"
+    },
+    {
+     "claim": "rPFS 382 vs 194",
+     "source_id": "pmc_PMC11366674_fulltext",
+     "locator": "¶0035",
+     "snippet": "(A) 177Lu-PSMA-617 plus standard of care (SOC) (n = 382) and (B) SOC only (n = 194)"
+    },
+    {
+     "claim": "Subconjunto rPFS/PSA",
+     "source_id": "pmc_PMC11366674_fulltext",
+     "locator": "¶0018",
+     "snippet": "The rPFS and PSA analysis sets included only participants randomized on or after March 5, 2019"
+    },
+    {
+     "claim": "SUVmean mediano 7,6",
+     "source_id": "pmid_39162634_abstract",
+     "locator": "¶0002",
+     "snippet": "The median whole-body tumor SUVmean was 7.6 (IQR, 5.8-9.9)."
+    },
+    {
+     "claim": "rPFS HR 0,86; carga 1,02",
+     "source_id": "pmc_PMC11366674_fulltext",
+     "locator": "¶0029",
+     "snippet": "(HR, 0.86 [95% CI: 0.82, 0.90; P < .001] and 1.02 [95% CI: 1.01, 1.04; P < .001], respectively)"
+    },
+    {
+     "claim": "OS HR 0,88; carga 1,04",
+     "source_id": "pmc_PMC11366674_fulltext",
+     "locator": "¶0036",
+     "snippet": "(HR, 0.88 [95% CI: 0.84, 0.91; P < .001] and 1.04 [95% CI: 1.03, 1.05; P < .001], respectively)"
+    },
+    {
+     "claim": "−12%/−10%",
+     "source_id": "pmid_39162634_abstract",
+     "locator": "¶0002",
+     "snippet": "A 1-unit whole-body tumor SUVmean increase was associated with a 12% and 10% decrease in risk of an rPFS event and death, respectively."
+    },
+    {
+     "claim": "ORR OR 1,39",
+     "source_id": "pmc_PMC11366674_fulltext",
+     "locator": "¶0040",
+     "snippet": "(odds ratio [OR], 1.39 [95% CI: 1.22, 1.58]; P < .001)"
+    },
+    {
+     "claim": "PSA OR 1,23",
+     "source_id": "pmc_PMC11366674_fulltext",
+     "locator": "¶0040",
+     "snippet": "(OR, 1.23 [95% CI: 1.16, 1.31]; P < .001)"
+    },
+    {
+     "claim": "Maior quartil rPFS",
+     "source_id": "pmc_PMC11366674_fulltext",
+     "locator": "¶0033",
+     "snippet": "median rPFS was 13.8 months in the 177Lu-PSMA-617 plus SOC arm and 3.9 months in the SOC only arm (HR, 0.34 [95% CI: 0.20, 0.56])"
+    },
+    {
+     "claim": "Menor quartil rPFS",
+     "source_id": "pmc_PMC11366674_fulltext",
+     "locator": "¶0033",
+     "snippet": "median rPFS was 5.8 months in the 177Lu-PSMA-617 plus SOC arm and 4.0 months in the SOC only arm (HR, 0.75 [95% CI: 0.45, 1.26])"
+    },
+    {
+     "claim": "Maior quartil OS",
+     "source_id": "pmc_PMC11366674_fulltext",
+     "locator": "¶0039",
+     "snippet": "median OS was 21.4 months in the 177Lu-PSMA-617 plus SOC arm and 15.0 months in the SOC only arm (HR, 0.47"
+    },
+    {
+     "claim": "Menor quartil OS",
+     "source_id": "pmc_PMC11366674_fulltext",
+     "locator": "¶0039",
+     "snippet": "median OS was 14.5 months in the 177Lu-PSMA-617 plus SOC arm and 11.3 months in the SOC only arm (HR, 0.87 [95% CI: 0.60, 1.27])"
+    },
+    {
+     "claim": "Não significativo no menor quartil",
+     "source_id": "pmc_PMC11366674_fulltext",
+     "locator": "¶0034",
+     "snippet": "indicating statistically significant differences in the three upper quartiles for both rPFS and OS but not the lowest quartile"
+    },
+    {
+     "claim": "Sem ponto de corte",
+     "source_id": "pmc_PMC11366674_fulltext",
+     "locator": "¶0041",
+     "snippet": "No meaningful optimal cut-point within the 177Lu-PSMA-617 plus SOC arm for rPFS or OS was found"
+    },
+    {
+     "claim": "Volume regional rPFS",
+     "source_id": "pmc_PMC11366674_fulltext",
+     "locator": "¶0032",
+     "snippet": "(HR, 1.53 [95% CI: 1.10, 2.11; P = .011] and 1.48 [95% CI: 1.00, 2.18; P = .048], respectively) were associated with reduced rPFS"
+    },
+    {
+     "claim": "Volume regional OS",
+     "source_id": "pmc_PMC11366674_fulltext",
+     "locator": "¶0038",
+     "snippet": "(HR, 1.38 [95% CI: 1.27, 1.49; P < .001]; 1.65 [95% CI: 1.27, 2.16; P < .001]; 2.12 [95% CI: 1.51, 2.97; P < .001]; 1.70"
+    },
+    {
+     "claim": "Possível valor prognóstico",
+     "source_id": "pmc_PMC11366674_fulltext",
+     "locator": "¶0045",
+     "snippet": "suggesting that high average PSMA expression may be a favorable prognostic factor in mCRPC"
+    },
+    {
+     "claim": "p nominais",
+     "source_id": "pmc_PMC11366674_fulltext",
+     "locator": "¶0017",
+     "snippet": "all P values are nominal"
+    },
+    {
+     "claim": "Sem covariáveis clínicas",
+     "source_id": "pmc_PMC11366674_fulltext",
+     "locator": "¶0020",
+     "snippet": "No clinical or other parameters were included as covariates."
+    },
+    {
+     "claim": "Sem poder",
+     "source_id": "pmc_PMC11366674_fulltext",
+     "locator": "¶0049",
+     "snippet": "not powered for analysis of efficacy in subgroups identified by quantitative PET"
+    },
+    {
+     "claim": "Específico do traçador",
+     "source_id": "pmc_PMC11366674_fulltext",
+     "locator": "¶0049",
+     "snippet": "results obtained with 68Ga-PSMA-11 are not applicable to other radiotracers"
+    },
+    {
+     "claim": "Inelegíveis não testados",
+     "source_id": "pmc_PMC11366674_fulltext",
+     "locator": "¶0048",
+     "snippet": "Whether VISION-ineligible patients, as defined by visual PSMA PET/CT read rules, could benefit from 177Lu-PSMA-617 treatment remains untested"
+    },
+    {
+     "claim": "clinicalTakeaway",
+     "source_id": "pmid:39162634:abstract",
+     "locator": "¶0002",
+     "snippet": "This was an exploratory secondary analysis of the VISION trial"
+    },
+    {
+     "claim": "clinicalTakeaway",
+     "source_id": "pmid:39162634:abstract",
+     "locator": "¶0002",
+     "snippet": "for the 826 participants included"
+    },
+    {
+     "claim": "clinicalTakeaway",
+     "source_id": "pmid:39162634:abstract",
+     "locator": "¶0002",
+     "snippet": "whole-body tumor SUVmean was the best predictor of 177Lu-PSMA-617 efficacy"
+    },
+    {
+     "claim": "clinicalTakeaway",
+     "source_id": "pmid:39162634:abstract",
+     "locator": "¶0002",
+     "snippet": "A 1-unit whole-body tumor SUVmean increase was associated with a 12% and 10% decrease in risk of an rPFS event and death, respectively"
+    },
+    {
+     "claim": "clinicalTakeaway",
+     "source_id": "pmid:39162634:abstract",
+     "locator": "¶0002",
+     "snippet": "were greater among participants with higher whole-body tumor SUVmean, with evidence for benefit at all SUVmean levels"
+    },
+    {
+     "claim": "clinicalTakeaway",
+     "source_id": "pmid:39162634:abstract",
+     "locator": "¶0002",
+     "snippet": "with no identifiable optimum among participants receiving 177Lu-PSMA-617"
+    }
+   ],
+   "production_status": "pending_human_review",
+   "verified_pass_not_applied": [
+    "deep.metodo",
+    "deep.interpretacao",
+    "deep.limitacoes",
+    "relationshipToParent",
+    "analysis",
+    "clinicalTakeaway (reescrito: só frases literais da fonte)"
+   ]
+  },
+  "vision-psa-decline-clinical-outcomes-2024": {
+   "pmid": "39242323",
+   "doi": "10.1016/j.eururo.2024.08.021",
+   "not_applied": {
+    "deep.interpretacao": "UNSUPPORTED",
+    "deep.limitacoes": "UNSUPPORTED",
+    "clinicalTakeaway": "UNSUPPORTED"
+   },
+   "evidence": [
+    {
+     "claim": "Controle excluído",
+     "source_id": "pmc_PMC12888041_fulltext",
+     "locator": "¶0019",
+     "snippet": "the 280 patients randomized to SoC alone were excluded because few had PSA declines of ≥50%"
+    },
+    {
+     "claim": "Distribuição por categoria",
+     "source_id": "pmid_39242323_abstract",
+     "locator": "¶0004",
+     "snippet": "≥0-<50% (96/551 [17%]), ≥50-<90% (152/551 [28%]), and ≥90% (83/551 [15%])"
+    },
+    {
+     "claim": "Aumento 29%",
+     "source_id": "pmid_39242323_abstract",
+     "locator": "¶0004",
+     "snippet": "versus those with increased PSA levels (160/551 [29%])"
+    },
+    {
+     "claim": "Reduções de risco",
+     "source_id": "pmid_39242323_abstract",
+     "locator": "¶0004",
+     "snippet": "had 61%, 72%, and 88% reduced risks of radiographic disease progression or death, and 51%, 70%, and 87% reduced risks of death"
+    },
+    {
+     "claim": "Medianas de rPFS",
+     "source_id": "pmc_PMC12888041_fulltext",
+     "locator": "¶0052",
+     "snippet": "Median, mo. (95% CI) | 5.8 (4.6, 8.2) | 8.7 (6.9, 11.0) | 11.3 (10.2, 12.9) | 20.3 (16.2, NE)"
+    },
+    {
+     "claim": "Medianas de OS",
+     "source_id": "pmc_PMC12888041_fulltext",
+     "locator": "¶0057",
+     "snippet": "Median, mo. (95% CI) | 9.8 (8.5, 11.9) | 14.0 (11.5, 15.3) | 18.3 (16.2, 21.4) | NE (20.9, NE)"
+    },
+    {
+     "claim": "ORR",
+     "source_id": "pmc_PMC12888041_fulltext",
+     "locator": "¶0062",
+     "snippet": "ORR, n/n (%) | 4 (4.9) | 7 (13) | 48 (47) | 29 (52)"
+    },
+    {
+     "claim": "FACT-P 16,0 vs 5,7",
+     "source_id": "pmc_PMC12888041_fulltext",
+     "locator": "¶0029",
+     "snippet": "16.0 months (11.5, 18.4) in the ≥90% subgroup, and 5.7 months (4.4, 7.1) in the increase subgroup"
+    },
+    {
+     "claim": "15% com declínio posterior",
+     "source_id": "pmc_PMC12888041_fulltext",
+     "locator": "¶0020",
+     "snippet": "15% (16/109) of patients with a PSA increase at week 6 had a decline at week 12"
+    },
+    {
+     "claim": "26% doença estável",
+     "source_id": "pmc_PMC12888041_fulltext",
+     "locator": "¶0032",
+     "snippet": "a minority had stable disease (26%)"
+    },
+    {
+     "claim": "Não suspender por aumento precoce",
+     "source_id": "pmc_PMC12888041_fulltext",
+     "locator": "¶0032",
+     "snippet": "PSA increases during cycles 1–2 of 177Lu-PSMA-617 should therefore not necessarily signal for treatment discontinuation."
+    },
+    {
+     "claim": "Cutoff",
+     "source_id": "pmc_PMC12888041_fulltext",
+     "locator": "¶0013",
+     "snippet": "The data cut-off was the same as for the final analyses (27 January 2021)"
+    },
+    {
+     "claim": "Seguimento de OS",
+     "source_id": "pmc_PMC12888041_fulltext",
+     "locator": "¶0059",
+     "snippet": "22.6 (18.7, 25.3) | 20.5 (18.1, 22.1) | 20.3 (19.6, 21.4) | 19.8 (19.0, 21.4)"
+    },
+    {
+     "claim": "Ciclos 5–6",
+     "source_id": "pmc_PMC12888041_fulltext",
+     "locator": "¶0030",
+     "snippet": "17.4 months (95% CI: 14.3, 20.3) and 20.6 months (NE, NE) in the ≥0 to <50% and ≥50 to <90% PSA decline subgroups, versus 11.1 months"
+    },
+    {
+     "claim": "Sem causalidade",
+     "source_id": "pmc_PMC12888041_fulltext",
+     "locator": "¶0037",
+     "snippet": "All associations are descriptive and causality cannot be inferred."
+    },
+    {
+     "claim": "Duas variáveis pós-basais",
+     "source_id": "pmc_PMC12888041_fulltext",
+     "locator": "¶0037",
+     "snippet": "the use of two post-baseline variables in association analyses"
+    },
+    {
+     "claim": "~7% excluídos",
+     "source_id": "pmc_PMC12888041_fulltext",
+     "locator": "¶0037",
+     "snippet": "exclusion of approximately 7% of patients due to missing PSA measurements"
+    },
+    {
+     "claim": "Stepwise",
+     "source_id": "pmc_PMC12888041_fulltext",
+     "locator": "¶0037",
+     "snippet": "Stepwise selection in the multivariate Cox model could have introduced bias."
+    },
+    {
+     "claim": "ARPI concomitante 53%",
+     "source_id": "pmc_PMC12888041_fulltext",
+     "locator": "¶0037",
+     "snippet": "ARPIs in 53% of patients in the 177Lu-PSMA-617 arm"
+    },
+    {
+     "claim": "Sem teste inferencial",
+     "source_id": "pmc_PMC12888041_fulltext",
+     "locator": "¶0018",
+     "snippet": "No formal inferential statistical testing was performed"
+    },
+    {
+     "claim": "Valor prognóstico",
+     "source_id": "pmid_39242323_abstract",
+     "locator": "¶0005",
+     "snippet": "PSA decline therefore appears to have a prognostic value"
+    }
+   ],
+   "production_status": "pending_human_review",
+   "verified_pass_not_applied": [
+    "deep.objetivo",
+    "deep.metodo",
+    "deep.achados",
+    "relationshipToParent",
+    "analysis"
+   ]
+  },
+  "vision-multivariable-outcome-models-2024": {
+   "pmid": "39430616",
+   "doi": "10.1016/j.eclinm.2024.102862",
+   "not_applied": {
+    "deep.interpretacao": "UNSUPPORTED",
+    "deep.achados[3]": "UNSUPPORTED",
+    "deep.achados(conjunto)": "UNSUPPORTED",
+    "clinicalTakeaway": "UNSUPPORTED"
+   },
+   "evidence": [
+    {
+     "claim": "n=551",
+     "source_id": "pmid_39430616_abstract",
+     "locator": "¶0004",
+     "snippet": "Data from all 551 patients in the 177Lu-PSMA-617 arm were analysed in multivariable modelling."
+    },
+    {
+     "claim": "Parâmetro único com 831",
+     "source_id": "pmc_PMC11490806_fulltext",
+     "locator": "¶0070",
+     "snippet": "(n = 831)"
+    },
+    {
+     "claim": "29 parâmetros; 10/7/3",
+     "source_id": "pmc_PMC11490806_fulltext",
+     "locator": "¶0077",
+     "snippet": "of 29 pretreatment parameters assessed, 10 parameters for OS, seven for rPFS, and three for PSA50"
+    },
+    {
+     "claim": "Horseshoe priors",
+     "source_id": "pmc_PMC11490806_fulltext",
+     "locator": "¶0072",
+     "snippet": "Bayesian parameter selection using horseshoe priors"
+    },
+    {
+     "claim": "Nomograma de OS",
+     "source_id": "pmid_39430616_abstract",
+     "locator": "¶0004",
+     "snippet": "The OS nomogram (C-index, 0.73; 95% confidence interval [CI], 0.70-0.76) included whole-body maximum standardised uptake value (SUVmax), time since diagnosis, opioid analgesic use, aspartate aminotransferase, haemoglobin, lymphocyte count, presence of PSMA-positive lesions in lymph nodes, lactate dehydrogenase (LDH), alkaline phosphatase (ALP), and neutrophil count."
+    },
+    {
+     "claim": "rPFS 0,68",
+     "source_id": "pmid_39430616_abstract",
+     "locator": "¶0004",
+     "snippet": "The rPFS nomogram (C-index, 0.68; 0.65-0.72)"
+    },
+    {
+     "claim": "PSA50 0,72",
+     "source_id": "pmid_39430616_abstract",
+     "locator": "¶0004",
+     "snippet": "The PSA50 nomogram (area under ROC curve, 0.72; 95% CI, 0.68-0.77) included SUVmax, lymphocyte count and ALP."
+    },
+    {
+     "claim": "Sem SUVmax OS 0,73",
+     "source_id": "pmc_PMC11490806_fulltext",
+     "locator": "¶0082",
+     "snippet": "the C-indices remained similar for the OS (0.73 [95% CI, 0.70–0.76])"
+    },
+    {
+     "claim": "Sem SUVmax rPFS 0,67",
+     "source_id": "pmc_PMC11490806_fulltext",
+     "locator": "¶0082",
+     "snippet": "rPFS (0.67 [0.63–0.70])"
+    },
+    {
+     "claim": "Sem SUVmax PSA50 0,64",
+     "source_id": "pmc_PMC11490806_fulltext",
+     "locator": "¶0082",
+     "snippet": "the area under the ROC curve for the PSA50 model decreased (0.64 [95% CI 0.59–0.69])"
+    },
+    {
+     "claim": "Sem benefício diferencial",
+     "source_id": "pmc_PMC11490806_fulltext",
+     "locator": "¶0075",
+     "snippet": "no parameters were statistically significantly associated with improved OS or rPFS in the 177Lu-PSMA-617 plus SoC arm versus the control arm"
+    },
+    {
+     "claim": "SUV e PSA50 diferencial",
+     "source_id": "pmc_PMC11490806_fulltext",
+     "locator": "¶0075",
+     "snippet": "Higher SUVmax or SUVmean were associated with higher PSA50 response rates in the 177Lu-PSMA-617 plus SoC arm versus the control arm"
+    },
+    {
+     "claim": "Gafita OS 0,67",
+     "source_id": "pmc_PMC11490806_fulltext",
+     "locator": "¶0083",
+     "snippet": "with a C-index of 0.67"
+    },
+    {
+     "claim": "Gafita rPFS 0,61",
+     "source_id": "pmc_PMC11490806_fulltext",
+     "locator": "¶0083",
+     "snippet": "The rPFS model C-index was 0.61."
+    },
+    {
+     "claim": "Sem coorte de validação",
+     "source_id": "pmc_PMC11490806_fulltext",
+     "locator": "¶0091",
+     "snippet": "it was not possible to generate a validation cohort"
+    },
+    {
+     "claim": "Validação no mundo real",
+     "source_id": "pmc_PMC11490806_fulltext",
+     "locator": "¶0091",
+     "snippet": "will need to be validated in a real-world setting"
+    },
+    {
+     "claim": "Só braço 177Lu",
+     "source_id": "pmc_PMC11490806_fulltext",
+     "locator": "¶0091",
+     "snippet": "we did not aim to develop nomograms to predict outcomes in patients receiving SoC alone"
+    },
+    {
+     "claim": "Generalização",
+     "source_id": "pmc_PMC11490806_fulltext",
+     "locator": "¶0091",
+     "snippet": "the results should not be generalised to patients with PSMA-negative lesions"
+    },
+    {
+     "claim": "Radiossensibilidade",
+     "source_id": "pmc_PMC11490806_fulltext",
+     "locator": "¶0091",
+     "snippet": "it was not possible to take into account individual variations in radiosensitivity"
+    }
+   ],
+   "production_status": "pending_human_review",
+   "verified_pass_not_applied": [
+    "deep.objetivo",
+    "deep.metodo",
+    "deep.limitacoes",
+    "relationshipToParent",
+    "analysis"
+   ]
+  },
+  "therap-psma-fdg-pet-biomarkers-2022": {
+   "pmid": "36261050",
+   "doi": "10.1016/S1470-2045(22)00605-2",
+   "applied": [
+    "deep.objetivo",
+    "deep.metodo",
+    "deep.interpretacao",
+    "deep.limitacoes",
+    "deep.achados",
+    "clinicalTakeaway",
+    "relationshipToParent",
+    "analysis"
+   ],
+   "not_applied": {},
+   "evidence": [
+    {
+     "claim": "OR 12,19 é do subgrupo SUVmean ≥10; interação p ajustado 0,039",
+     "source_id": "pmid_36261050_abstract",
+     "locator": "¶0004",
+     "snippet": "(odds ratio [OR] 12·19 [95% CI 3·42-58·76] vs 2·22 [1·11-4·51]; padj=0·039 for treatment-by-SUVmean interaction)"
+    },
+    {
+     "claim": "endpoint terciário pré-especificado",
+     "source_id": "pmid_36261050_abstract",
+     "locator": "¶0003",
+     "snippet": "The prespecified tertiary study endpoint was association between total tumour quantitative parameters on PSMA-PET, FDG-PET, and baseline characteristics with clinical outcomes."
+    },
+    {
+     "claim": "cortes pré-especificados, ITT, regressão logística",
+     "source_id": "pmid_36261050_abstract",
+     "locator": "¶0003",
+     "snippet": "Both cutoff points were prespecified. The analysis was intention-to-treat, using logistic regression."
+    },
+    {
+     "claim": "respostas por SUVmean",
+     "source_id": "pmid_36261050_abstract",
+     "locator": "¶0004",
+     "snippet": "32 (91% [95% CI 76-98]) of 35 men versus 14 (47% [29-65]) of 30 men in patients with SUVmean of 10 or higher, and 33 (52% [39-64]) of 64 men versus 23 (32% [22-45]) of 71 men in those with SUVmean of less than 10"
+    },
+    {
+     "claim": "MTV FDG",
+     "source_id": "pmid_36261050_abstract",
+     "locator": "¶0004",
+     "snippet": "23 (38% [95% CI 26-52]) of 60 men versus 79 (56% [48-65]) of 140 men (OR 0·44, 95% CI 0·23-0·84; padj=0·035)"
+    },
+    {
+     "claim": "MTV alto em 30% por braço",
+     "source_id": "pmid_36261050_abstract",
+     "locator": "¶0004",
+     "snippet": "High-volume disease on FDG-PET (MTV ≥200 mL) was seen in 30 (30%) of 99 men who were assigned [177Lu]Lu-PSMA-617 and 30 (30%) of 101 men who were assigned cabazitaxel."
+    },
+    {
+     "claim": "cutoff e seguimento",
+     "source_id": "pmid_36261050_abstract",
+     "locator": "¶0004",
+     "snippet": "The median follow-up at data cutoff of July 20, 2020, was 18·4 months (IQR 12·8-21·8)."
+    },
+    {
+     "claim": "limitação de software",
+     "source_id": "pmid_36261050_abstract",
+     "locator": "¶0005",
+     "snippet": "Quantitative PET parameters used, however, require specialised software and are not yet routinely available in most clinics."
+    }
+   ],
+   "production_status": "applied"
+  },
+  "therap-overall-survival-2024": {
+   "pmid": "38043558",
+   "doi": "10.1016/S1470-2045(23)00529-6",
+   "not_applied": {
+    "deep.interpretacao": "UNSUPPORTED"
+   },
+   "evidence": [
+    {
+     "claim": "RMST e p",
+     "source_id": "pmid_38043558_abstract",
+     "locator": "¶0004",
+     "snippet": "RMST 19·1 months [95% CI 16·9 to 21·4] vs 19·6 months [17·4 to 21·8]; difference -0·5 months [95% CI -3·7 to 2·7]; p=0·77"
+    },
+    {
+     "claim": "óbitos",
+     "source_id": "pmid_38043558_abstract",
+     "locator": "¶0004",
+     "snippet": "77 (78%) participants had died in the [177Lu]Lu-PSMA-617 group and 70 (69%) participants had died in the cabazitaxel group"
+    },
+    {
+     "claim": "seguimento",
+     "source_id": "pmid_38043558_abstract",
+     "locator": "¶0004",
+     "snippet": "After a median follow-up of 35·7 months (IQR 31·1 to 39·2)"
+    },
+    {
+     "claim": "crossover",
+     "source_id": "pmid_38043558_abstract",
+     "locator": "¶0004",
+     "snippet": "After completing study treatment, 20 (20%) participants assigned to cabazitaxel and 32 (32%) assigned to [177Lu]Lu-PSMA-617 were subsequently treated with the alternative regimen."
+    },
+    {
+     "claim": "RMST 36 m, ITT",
+     "source_id": "pmid_38043558_abstract",
+     "locator": "¶0003",
+     "snippet": "Overall survival was analysed by intention-to-treat and summarised as restricted mean survival time (RMST) to account for non-proportional hazards, with a 36-month restriction time corresponding to median follow-up."
+    },
+    {
+     "claim": "excluídos",
+     "source_id": "pmid_38043558_abstract",
+     "locator": "¶0004",
+     "snippet": "80 (27%) of 291 men who were registered after initial eligibility screening were excluded after [68Ga]Ga-PSMA-11 and 2-[18F]FDG PET. In the 61 of these men with follow-up available, RMST was 11·0 months (95% CI 9·0 to 13·1)."
+    },
+    {
+     "claim": "segurança",
+     "source_id": "pmid_38043558_abstract",
+     "locator": "¶0004",
+     "snippet": "No additional safety signals were identified with the longer follow-up in this analysis."
+    },
+    {
+     "claim": "randomização",
+     "source_id": "pmid_38043558_abstract",
+     "locator": "¶0004",
+     "snippet": "200 were eligible and randomly assigned to treatment with [177Lu]Lu-PSMA-617 (n=99) or cabazitaxel (n=101)"
+    }
+   ],
+   "production_status": "pending_human_review",
+   "verified_pass_not_applied": [
+    "deep.objetivo",
+    "deep.metodo",
+    "deep.limitacoes",
+    "deep.achados",
+    "clinicalTakeaway",
+    "relationshipToParent",
+    "analysis"
+   ]
+  },
+  "psmafore-final-os-safety-2025": {
+   "pmid": "40680993",
+   "doi": "10.1016/j.annonc.2025.07.003",
+   "not_applied": {
+    "clinicalTakeaway": "UNSUPPORTED"
+   },
+   "evidence": [
+    {
+     "claim": "crossover 60,3%/75,4%",
+     "source_id": "pmc_PMC12399216_fulltext",
+     "locator": "¶0017",
+     "snippet": "141/234 participants (60.3%) randomized to ARPI change had crossed over to receive 177Lu-PSMA-617, representing 75.4% of the 187 who had centrally confirmed radiographic progression"
+    },
+    {
+     "claim": "mediana até crossover",
+     "source_id": "pmc_PMC12399216_fulltext",
+     "locator": "¶0017",
+     "snippet": "The median time from randomization to crossover was 7.66 months"
+    },
+    {
+     "claim": "cutoff",
+     "source_id": "pmc_PMC12399216_fulltext",
+     "locator": "¶0017",
+     "snippet": "The data cut-off for the final OS analysis was 1 January 2025. The median time from randomization to this date was 34.27 months (min-max 26.9–42.2 months)."
+    },
+    {
+     "claim": "OS ITT",
+     "source_id": "pmc_PMC12399216_fulltext",
+     "locator": "¶0020",
+     "snippet": "Median OS was 24.48 months (95% CI 19.55–28.94 months) with 177Lu-PSMA-617 and 23.13 months (19.61–25.53 months) with ARPI change (HR 0.91, 95% CI 0.72–1.14, P = 0.20) based on the ITT principle"
+    },
+    {
+     "claim": "IPCW",
+     "source_id": "pmc_PMC12399216_fulltext",
+     "locator": "¶0020",
+     "snippet": "The crossover-adjusted OS HR for 177Lu-PSMA-617 versus ARPI change was 0.59 (95% CI 0.38–0.91) using the full IPCW model, and across the other prespecified IPCW models constructed as part of sensitivity analyses, HRs ranged from 0.54 to 0.62"
+    },
+    {
+     "claim": "RPSFT",
+     "source_id": "pmc_PMC12399216_fulltext",
+     "locator": "¶0063",
+     "snippet": "0.84 (0.55–1.28)"
+    },
+    {
+     "claim": "óbitos",
+     "source_id": "pmc_PMC12399216_fulltext",
+     "locator": "¶0019",
+     "snippet": "299 deaths were reported in 142/234 participants (60.7%) in the 177Lu-PSMA-617 arm and 157/234 (67.1%) in the ARPI change arm"
+    },
+    {
+     "claim": "poder",
+     "source_id": "pmc_PMC12399216_fulltext",
+     "locator": "¶0013",
+     "snippet": "the final OS analysis was to occur after ~297 deaths, providing 80% power to detect a HR of 0.72 (one-sided α = 0.025)"
+    },
+    {
+     "claim": "segurança",
+     "source_id": "pmid_40680993_abstract",
+     "locator": "¶0004",
+     "snippet": "exposure-adjusted incidences of grade ≥3 and serious treatment-emergent adverse events were 60.8 versus 85.1 and 32.5 versus 49.9 per 100 patient-treatment years, respectively. Dry mouth occurred in 135/227 participants (59.5%; 2/227 grade ≥3) and anaemia in 62/227 (27.3%; 14/227 grade ≥3) in the 177Lu-PSMA-617 arm."
+    },
+    {
+     "claim": "limitações IPCW/RPSFT",
+     "source_id": "pmc_PMC12399216_fulltext",
+     "locator": "¶0035",
+     "snippet": "IPCW assumes there are no unmeasured confounders."
+    },
+    {
+     "claim": "limitação RPSFT",
+     "source_id": "pmc_PMC12399216_fulltext",
+     "locator": "¶0035",
+     "snippet": "the common treatment assumption was, however, likely not met"
+    },
+    {
+     "claim": "poder limitado",
+     "source_id": "pmc_PMC12399216_fulltext",
+     "locator": "¶0036",
+     "snippet": "the statistical power for OS was limited to 80%, which may have been further reduced by crossover"
+    },
+    {
+     "claim": "DDR",
+     "source_id": "pmc_PMC12399216_fulltext",
+     "locator": "¶0036",
+     "snippet": "genomic testing was not required in PSMAfore so the prevalence of these gene alterations in the study population was not known"
+    },
+    {
+     "claim": "conclusão",
+     "source_id": "pmid_40680993_abstract",
+     "locator": "¶0005",
+     "snippet": "results were likely confounded by the high rate of crossover"
+    }
+   ],
+   "production_status": "pending_human_review",
+   "verified_pass_not_applied": [
+    "deep.objetivo",
+    "deep.metodo",
+    "deep.interpretacao",
+    "deep.limitacoes",
+    "deep.achados",
+    "relationshipToParent",
+    "analysis"
+   ]
+  },
+  "psmafore-hrqol-pain-skeletal-events-2025": {
+   "pmid": "40441170",
+   "doi": "10.1016/S1470-2045(25)00189-5",
+   "not_applied": {
+    "deep.limitacoes": "UNSUPPORTED"
+   },
+   "evidence": [
+    {
+     "claim": "FACT-P, EQ-5D-5L, BPI-SF",
+     "source_id": "pmid_40441170_abstract",
+     "locator": "¶0004",
+     "snippet": "median time to worsening in FACT-P total score was 7·46 months (95% CI 6·08-8·54) versus 4·27 months (3·45-4·50; hazard ratio [HR] 0·61 [95% CI 0·50-0·75]), in EQ-5D-5L utility score was 6·28 months (4·70-7·89) versus 3·88 months (3·25-4·44; 0·67 [0·54-0·82]), and in BPI-SF pain intensity was 5·03 months (4·40-6·80) versus 3·65 months (3·09-4·37; 0·72 [0·59-0·88])"
+    },
+    {
+     "claim": "SSE",
+     "source_id": "pmid_40441170_abstract",
+     "locator": "¶0004",
+     "snippet": "median time to first symptomatic skeletal event was not reached (95% CI not estimable [NE]-NE) in the [177Lu]Lu-PSMA-617 group versus 17·97 months (14·26-NE) in the ARPI change group (HR 0·41 [0·26-0·63])"
+    },
+    {
+     "claim": "segurança",
+     "source_id": "pmid_40441170_abstract",
+     "locator": "¶0004",
+     "snippet": "The most common grade 3 or worse treatment-emergent adverse event was anaemia (14 [6%] of 227 patients in the [177Lu]Lu-PSMA-617 group vs 16 [7%] of 232 patients in the ARPI change group)."
+    },
+    {
+     "claim": "óbitos relacionados",
+     "source_id": "pmid_40441170_abstract",
+     "locator": "¶0004",
+     "snippet": "There were no treatment-related deaths in the [177Lu]Lu-PSMA-617 group and one in the ARPI change group (cerebrovascular accident)."
+    },
+    {
+     "claim": "cutoff/seguimento",
+     "source_id": "pmid_40441170_abstract",
+     "locator": "¶0004",
+     "snippet": "Median follow-up time from randomisation to the third interim analysis data cutoff date (Feb 27, 2024) was 24·11 months (IQR 20·24-27·60) in the [177Lu]Lu-PSMA-617 group and 24·13 months (20·24-27·37) in the ARPI change group."
+    },
+    {
+     "claim": "desfechos secundários",
+     "source_id": "pmid_40441170_abstract",
+     "locator": "¶0003",
+     "snippet": "Secondary endpoints included time to worsening in self-reported HRQOL"
+    },
+    {
+     "claim": "aberto; 74 centros, 14 países",
+     "source_id": "pmid_40441170_abstract",
+     "locator": "¶0003",
+     "snippet": "PSMAfore, an open-label, randomised, phase 3 trial, was conducted at 74 investigator sites"
+    },
+    {
+     "claim": "ITT",
+     "source_id": "pmid_40441170_abstract",
+     "locator": "¶0003",
+     "snippet": "All analyses were done using the intention-to-treat principle."
+    },
+    {
+     "claim": "n",
+     "source_id": "pmid_40441170_abstract",
+     "locator": "¶0004",
+     "snippet": "randomly assigned to [177Lu]Lu-PSMA-617 (n=234) or ARPI change (n=234)"
+    }
+   ],
+   "production_status": "pending_human_review",
+   "verified_pass_not_applied": [
+    "deep.objetivo",
+    "deep.metodo",
+    "deep.interpretacao",
+    "deep.achados",
+    "clinicalTakeaway",
+    "relationshipToParent",
+    "analysis"
+   ]
+  },
+  "enzap-os-hrqol-2025": {
+   "pmid": "39956124",
+   "doi": "10.1016/S1470-2045(25)00009-9",
+   "not_applied": {
+    "deep.interpretacao": "UNSUPPORTED",
+    "deep.limitacoes": "UNSUPPORTED"
+   },
+   "evidence": [
+    {
+     "claim": "OS por braço",
+     "source_id": "pmid_39956124_abstract",
+     "locator": "¶0004",
+     "snippet": "Overall survival was longer in the enzalutamide plus [177Lu]Lu-PSMA-617 group than the enzalutamide group (median 34 months [95% CI 30-37] vs 26 months [23-31]; HR 0·55 [95% CI 0·36-0·84], log-rank p=0·0053)"
+    },
+    {
+     "claim": "seguimento e óbitos",
+     "source_id": "pmid_39956124_abstract",
+     "locator": "¶0004",
+     "snippet": "96 deaths was reported after a median follow-up of 34 months (IQR 29-39): 53 (67%) in the enzalutamide group and 43 (52%) in the enzalutamide plus [177Lu]Lu-PSMA-617 group"
+    },
+    {
+     "claim": "DFS",
+     "source_id": "pmid_39956124_abstract",
+     "locator": "¶0004",
+     "snippet": "physical function (median 10·64 months [95% CI 7·66-12·42] vs 3·42 months [3·19-7·89]; HR 0·51 [95% CI 0·36-0·72], log-rank p<0·0001) and overall health and QOL (8·71 months [6·41-11·56] vs 3·32 months [3·09-5·26]; HR 0·47 [95% CI 0·33-0·67], log-rank p=0·0001)"
+    },
+    {
+     "claim": "dor",
+     "source_id": "pmid_39956124_abstract",
+     "locator": "¶0004",
+     "snippet": "Mean scores for pain until progression favoured enzalutamide plus [177Lu]Lu-PSMA-617 over enzalutamide (difference 7·3 [95% CI 1·6-12·9]; p=0·012)."
+    },
+    {
+     "claim": "fadiga",
+     "source_id": "pmid_39956124_abstract",
+     "locator": "¶0004",
+     "snippet": "Mean scores for fatigue until progression favoured enzalutamide plus [177Lu]Lu-PSMA-617 over enzalutamide (difference 5·9 [95% CI 1·1-10·7]; p=0·016)."
+    },
+    {
+     "claim": "xerostomia",
+     "source_id": "pmid_39956124_abstract",
+     "locator": "¶0004",
+     "snippet": "(43 [57%] of 75 vs 58 [74%] of 78; p=0·039)"
+    },
+    {
+     "claim": "EA",
+     "source_id": "pmid_39956124_abstract",
+     "locator": "¶0004",
+     "snippet": "Grade 3-5 adverse events occurred in 35 (44%) of 79 patients in the enzalutamide group and 37 (46%) of 81 patients in the enzalutamide plus [177Lu]Lu-PSMA-617 group. No deaths were attributed to study treatment in either group."
+    },
+    {
+     "claim": "pré-especificado ITT",
+     "source_id": "pmid_39956124_abstract",
+     "locator": "¶0003",
+     "snippet": "Analyses of these secondary endpoints were prespecified and are by intention to treat."
+    },
+    {
+     "claim": "definição DFS",
+     "source_id": "pmid_39956124_abstract",
+     "locator": "¶0003",
+     "snippet": "or a worsening of 10 points or more from baseline in physical function, or in overall health and QOL"
+    },
+    {
+     "claim": "15 hospitais, aberto",
+     "source_id": "pmid_39956124_abstract",
+     "locator": "¶0003",
+     "snippet": "ENZA-p was a multicentre, open-label, randomised, phase 2 trial done at 15 hospitals in Australia."
+    },
+    {
+     "claim": "HRQoL respondida",
+     "source_id": "pmid_39956124_abstract",
+     "locator": "¶0004",
+     "snippet": "HRQOL was rated by 154 (95%) of 162 participants."
+    },
+    {
+     "claim": "fase III",
+     "source_id": "pmid_39956124_abstract",
+     "locator": "¶0005",
+     "snippet": "Our findings warrant phase 3 evaluation"
+    }
+   ],
+   "production_status": "pending_human_review",
+   "verified_pass_not_applied": [
+    "deep.objetivo",
+    "deep.metodo",
+    "deep.achados",
+    "clinicalTakeaway",
+    "relationshipToParent",
+    "analysis"
+   ]
+  },
+  "enzap-baseline-psma-pet-biomarker-2025": {
+   "pmid": "40752515",
+   "doi": "10.1016/S1470-2045(25)00339-0",
+   "not_applied": {
+    "deep.interpretacao": "UNSUPPORTED",
+    "clinicalTakeaway": "UNSUPPORTED"
+   },
+   "evidence": [
+    {
+     "claim": "n e tratamento recebido",
+     "source_id": "pmid_40752515_abstract",
+     "locator": "¶0004",
+     "snippet": "This substudy included the 160 of the 162 randomly assigned patients who received study treatment (79 in the enzalutamide group and 81 in the enzalutamide plus [177Lu]Lu-PSMA-617 group)."
+    },
+    {
+     "claim": "método/limiares",
+     "source_id": "pmid_40752515_abstract",
+     "locator": "¶0003",
+     "snippet": "Thresholds were based on SUVmean highest quartile (Q4 vs Q1-3) and PSMA-TTV median at baseline. We used the Kaplan-Meier method and Cox regression models and analysed patients on a treatment received basis."
+    },
+    {
+     "claim": "endpoint OS",
+     "source_id": "pmid_40752515_abstract",
+     "locator": "¶0003",
+     "snippet": "with the primary endpoint of this substudy being overall survival"
+    },
+    {
+     "claim": "medianas basais",
+     "source_id": "pmid_40752515_abstract",
+     "locator": "¶0004",
+     "snippet": "Baseline median SUVmean was 7·7 (IQR 6·5-9·8) and median PSMA-TTV was 234 mL (76-687)."
+    },
+    {
+     "claim": "TTV enzalutamida",
+     "source_id": "pmid_40752515_abstract",
+     "locator": "¶0004",
+     "snippet": "Median overall survival for PSMA-TTV below or above the median in the enzalutamide group was 39 months (95% CI 31-not estimable) versus 20 months (13-24; HR 0·23 [95% CI 0·13-0·42], log-rank p<0·0001)."
+    },
+    {
+     "claim": "TTV combinação e interação",
+     "source_id": "pmid_40752515_abstract",
+     "locator": "¶0004",
+     "snippet": "versus 28 months (26-34; HR 0·66 [0·36-1·21], log-rank p=0·18). The test for interaction between PSMA-TTV and treatment group for overall survival was p=0·0078."
+    },
+    {
+     "claim": "SUVmean enzalutamida",
+     "source_id": "pmid_40752515_abstract",
+     "locator": "¶0004",
+     "snippet": "HR 0·84 [0·44-1·60], log-rank p=0·59"
+    },
+    {
+     "claim": "SUVmean combinação",
+     "source_id": "pmid_40752515_abstract",
+     "locator": "¶0004",
+     "snippet": "HR 0·80 [0·38-1·68], log-rank p=0·56"
+    },
+    {
+     "claim": "interação SUVmean",
+     "source_id": "pmid_40752515_abstract",
+     "locator": "¶0004",
+     "snippet": "The test for interaction between SUVmean (Q4 vs Q1-3) and treatment group for overall survival was p=0·88."
+    },
+    {
+     "claim": "cutoff",
+     "source_id": "pmid_40752515_abstract",
+     "locator": "¶0004",
+     "snippet": "Median follow-up at the final data cutoff (July 31, 2024) was 34 months (IQR 29-39), with 96 overall survival events"
+    },
+    {
+     "claim": "software semiautomático",
+     "source_id": "pmid_40752515_abstract",
+     "locator": "¶0003",
+     "snippet": "PSMA-PET parameters were quantified with semi-automated software"
+    },
+    {
+     "claim": "pré-especificado",
+     "source_id": "pmid_40752515_abstract",
+     "locator": "¶0002",
+     "snippet": "This prespecified substudy of ENZA-p"
+    }
+   ],
+   "production_status": "pending_human_review",
+   "verified_pass_not_applied": [
+    "deep.objetivo",
+    "deep.metodo",
+    "deep.limitacoes",
+    "deep.achados",
+    "relationshipToParent",
+    "analysis"
+   ]
+  },
+  "splash-lead-in-dosimetry-safety-efficacy-2024": {
+   "pmid": "39839782",
+   "doi": "10.3389/fonc.2024.1483953",
+   "not_applied": {
+    "clinicalTakeaway": "UNSUPPORTED"
+   },
+   "evidence": [
+    {
+     "claim": "Treatment-related grade ≥3 TEAE 7,4% (2/27)",
+     "source_id": "pmc_PMC11745944_fulltext",
+     "locator": "¶0091",
+     "snippet": "TEAEs of grade 3 or higher | 7 (25.9) | 2 (7.4)"
+    },
+    {
+     "claim": "Óbito por CIVD não relacionado",
+     "source_id": "pmc_PMC11745944_fulltext",
+     "locator": "¶0087",
+     "snippet": "a single fatal event (disseminated intravascular coagulation); neither was considered related to [177Lu]Lu-PNT2002."
+    },
+    {
+     "claim": "Dose cumulativa 117/19,9/0,9 Gy",
+     "source_id": "pmc_PMC11745944_fulltext",
+     "locator": "¶0072",
+     "snippet": "the estimated mean cumulative absorbed dose extrapolated from cycle 1 was 117 Gy for tumor lesions, 19.9 Gy for kidneys, and 0.9 Gy for red marrow."
+    },
+    {
+     "claim": "6/27 >23 Gy renal",
+     "source_id": "pmc_PMC11745944_fulltext",
+     "locator": "¶0072",
+     "snippet": "the extrapolated cumulative renal dose exceeded 23 Gy in 22.2% (6/27) of participants."
+    },
+    {
+     "claim": "OS 20,8 m; seguimento 19,9 m",
+     "source_id": "pmc_PMC11745944_fulltext",
+     "locator": "¶0112",
+     "snippet": "Median (95% CI) overall survival was 20.8 (11.3-Not evaluable) months with a median survival follow-up time of 19.9 months"
+    },
+    {
+     "claim": "PSA50 confirmado 34,6%",
+     "source_id": "pmc_PMC11745944_fulltext",
+     "locator": "¶0115",
+     "snippet": "confirmed per PCWG3 criteria for nine (34.6%) participants"
+    },
+    {
+     "claim": "Análise descritiva, alvo 25",
+     "source_id": "pmc_PMC11745944_fulltext",
+     "locator": "¶0014",
+     "snippet": "Target enrollment for the lead-in portion of SPLASH was 25 participants; statistical analyses were descriptive in nature."
+    },
+    {
+     "claim": "Limitações: amostra e braço único",
+     "source_id": "pmc_PMC11745944_fulltext",
+     "locator": "¶0126",
+     "snippet": "Limitations of the lead-in portion of SPLASH include the relatively small number of participants and single-arm design; both limit interpretability of rPFS and OS results."
+    },
+    {
+     "claim": "12 centros",
+     "source_id": "pmc_PMC11745944_fulltext",
+     "locator": "¶0010",
+     "snippet": "Participants were enrolled across 12 sites"
+    },
+    {
+     "claim": "Lead-in anterior à porção randomizada",
+     "source_id": "pmc_PMC11745944_fulltext",
+     "locator": "¶0008",
+     "snippet": "The trial commenced with a safety and dosimetry lead-in portion, prior to proceeding into the larger randomized portion"
+    }
+   ],
+   "production_status": "pending_human_review",
+   "verified_pass_not_applied": [
+    "deep.objetivo",
+    "deep.metodo",
+    "deep.interpretacao",
+    "deep.limitacoes",
+    "deep.achados",
+    "relationshipToParent",
+    "analysis"
+   ]
+  },
+  "lupsma-2018-dosimetry-2019": {
+   "pmid": "30291192",
+   "doi": "10.2967/jnumed.118.219352",
+   "not_applied": {
+    "deep.metodo": "UNSUPPORTED",
+    "deep.limitacoes": "UNSUPPORTED",
+    "clinicalTakeaway": "UNSUPPORTED",
+    "relationshipToParent": "UNSUPPORTED",
+    "analysis": "UNSUPPORTED"
+   },
+   "evidence": [
+    {
+     "claim": "<10 Gy: 1/11 PSA50",
+     "source_id": "pmid_30291192_abstract",
+     "locator": "¶0002",
+     "snippet": "Of 11 patients receiving a tumor dose of less than 10 Gy, only one achieved a PSA response of at least 50%."
+    },
+    {
+     "claim": "14,1 vs 9,6 Gy",
+     "source_id": "pmid_30291192_abstract",
+     "locator": "¶0002",
+     "snippet": "A median dose of 14.1 Gy was observed in patients achieving a PSA decline of at least 50%, versus 9.6 Gy for those achieving a PSA decline of less than 50% (P < 0.01)."
+    },
+    {
+     "claim": "Doses em órgãos, unidade como no resumo",
+     "source_id": "pmid_30291192_abstract",
+     "locator": "¶0002",
+     "snippet": "0.39, 0.44, 0.58, 0.1, 0.06, and 0.11 Gy/MBq, respectively."
+    },
+    {
+     "claim": "Correlações inversas",
+     "source_id": "pmid_30291192_abstract",
+     "locator": "¶0002",
+     "snippet": "There was an inverse correlation between tumor volume and mean dose to the parotids (r = -0.41) and kidneys (r = -0.43)."
+    },
+    {
+     "claim": "Mesmo registro do LuPSMA",
+     "source_id": "pmid_30291192_abstract",
+     "locator": "¶0002",
+     "snippet": "within a prospective clinical trial (ACTRN12615000912583)"
+    },
+    {
+     "claim": "SPECT/CT 4/24/96 h",
+     "source_id": "pmid_30291192_abstract",
+     "locator": "¶0002",
+     "snippet": "After therapy, patients underwent quantitative SPECT/CT at 4, 24, and 96 h."
+    }
+   ],
+   "production_status": "pending_human_review",
+   "verified_pass_not_applied": [
+    "deep.objetivo",
+    "deep.interpretacao",
+    "deep.achados"
+   ]
+  },
+  "lupsma-2018-long-term-retreatment-2020": {
+   "pmid": "31732676",
+   "doi": "10.2967/jnumed.119.236414",
+   "not_applied": {
+    "deep.limitacoes": "UNSUPPORTED",
+    "analysis": "FAIL"
+   },
+   "evidence": [
+    {
+     "claim": "Toxicidades",
+     "source_id": "pmid_31732676_abstract",
+     "locator": "¶0002",
+     "snippet": "self-limiting G1-G2 dry mouth (66%), transient G1-G2 nausea (48%), G3-G4 thrombocytopenia (10%), and G3 anemia (10%)"
+    },
+    {
+     "claim": "Outras terapias 4/21",
+     "source_id": "pmid_31732676_abstract",
+     "locator": "¶0002",
+     "snippet": "Four of 21 patients (19%) receiving other systemic therapies on progression experienced a PSA decline of at least 50%."
+    },
+    {
+     "claim": "Retratamento 11/15",
+     "source_id": "pmid_31732676_abstract",
+     "locator": "¶0002",
+     "snippet": "further 177Lu-PSMA was administered to 15 (30%) patients (median of 2 cycles commencing 359 d from enrollment), with a PSA decline of at least 50% in 11 patients (73%)."
+    },
+    {
+     "claim": "Pré-tratamento",
+     "source_id": "pmid_31732676_abstract",
+     "locator": "¶0002",
+     "snippet": "prior docetaxel (84%), cabazitaxel (48%), and abiraterone or enzalutamide (92%)"
+    },
+    {
+     "claim": "Seguimento e OS",
+     "source_id": "pmid_31732676_abstract",
+     "locator": "¶0002",
+     "snippet": "At a median follow-up of 31.4 mo, median overall survival was 13.3 mo (95% CI, 10.5-18.7 mo)"
+    },
+    {
+     "claim": "7,5 GBq/ciclo",
+     "source_id": "pmid_31732676_abstract",
+     "locator": "¶0002",
+     "snippet": "The mean administered radioactivity was 7.5 GBq/cycle."
+    },
+    {
+     "claim": "Achado novo",
+     "source_id": "pmid_31732676_abstract",
+     "locator": "¶0002",
+     "snippet": "We also describe, as a novel finding, outcomes of men who subsequently progressed"
+    }
+   ],
+   "production_status": "pending_human_review",
+   "verified_pass_not_applied": [
+    "deep.objetivo",
+    "deep.metodo",
+    "deep.interpretacao",
+    "deep.achados",
+    "clinicalTakeaway"
+   ]
+  },
+  "netter1-hrqol-2018": {
+   "pmid": "29878866",
+   "doi": "10.1200/JCO.2018.78.5865",
+   "applied": [
+    "deep.objetivo",
+    "deep.metodo",
+    "deep.interpretacao",
+    "deep.limitacoes",
+    "deep.achados",
+    "clinicalTakeaway",
+    "analysis"
+   ],
+   "not_applied": {},
+   "evidence": [
+    {
+     "claim": "Método TTD",
+     "source_id": "pmid_29878866_abstract",
+     "locator": "¶0002",
+     "snippet": "Time to QoL deterioration (TTD) was defined as the time from random assignment to the first QoL deterioration ≥ 10 points for each patient in the corresponding domain scale."
+    },
+    {
+     "claim": "Até progressão",
+     "source_id": "pmid_29878866_abstract",
+     "locator": "¶0002",
+     "snippet": "Patients completed the questionnaires at baseline and every 12 weeks until tumor progression."
+    },
+    {
+     "claim": "HRs",
+     "source_id": "pmid_29878866_abstract",
+     "locator": "¶0002",
+     "snippet": "role functioning (HR, 0.580)"
+    },
+    {
+     "claim": "HRs",
+     "source_id": "pmid_29878866_abstract",
+     "locator": "¶0002",
+     "snippet": "disease-related worries (HR, 0.572)"
+    },
+    {
+     "claim": "Censura",
+     "source_id": "pmid_29878866_abstract",
+     "locator": "¶0002",
+     "snippet": "Patients with no deterioration were censored at the last QoL assessment date."
+    },
+    {
+     "claim": "Medianas",
+     "source_id": "pmid_29878866_abstract",
+     "locator": "¶0002",
+     "snippet": "28.8 months versus 6.1 months for global health status, and 25.2 months versus 11.5 months for physical functioning"
+    }
+   ],
+   "production_status": "applied"
+  },
+  "netter1-final-os-long-term-safety-2021": {
+   "pmid": "34793718",
+   "doi": "10.1016/S1470-2045(21)00572-6",
+   "not_applied": {
+    "deep.interpretacao": "UNSUPPORTED"
+   },
+   "evidence": [
+    {
+     "claim": "n=231 randomizados 1:1",
+     "source_id": "pmid_34793718_abstract",
+     "locator": "¶0004",
+     "snippet": "231 patients were enrolled and randomly assigned for treatment."
+    },
+    {
+     "claim": "111 = braço 177Lu na segurança",
+     "source_id": "pmid_34793718_abstract",
+     "locator": "¶0004",
+     "snippet": "three (3%) of 111 patients in the 177Lu-Dotatate group"
+    },
+    {
+     "claim": "Gatilho",
+     "source_id": "pmid_34793718_abstract",
+     "locator": "¶0003",
+     "snippet": "Final overall survival analysis was prespecified to occur either after 158 deaths or 5 years after the last patient was randomised, whichever occurred first."
+    },
+    {
+     "claim": "142 óbitos",
+     "source_id": "pmid_34793718_abstract",
+     "locator": "¶0004",
+     "snippet": "(when 142 deaths had occurred)"
+    },
+    {
+     "claim": "SMD óbito",
+     "source_id": "pmid_34793718_abstract",
+     "locator": "¶0004",
+     "snippet": "one of whom died 33 months after randomisation (this person was the only the only reported 177Lu-Dotatate treatment-related death)"
+    },
+    {
+     "claim": "Sem novos SMD/LMA",
+     "source_id": "pmid_34793718_abstract",
+     "locator": "¶0004",
+     "snippet": "No new cases of myelodysplastic syndrome or acute myeloid leukaemia were reported during long-term follow-up."
+    },
+    {
+     "claim": "Regimes",
+     "source_id": "pmid_34793718_abstract",
+     "locator": "¶0003",
+     "snippet": "intravenous 177Lu-Dotatate 7·4 GBq (200 mCi) every 8 weeks (four cycles) plus intramuscular long-acting octreotide 30 mg (177Lu-Dotatate group) or high-dose long-acting octreotide 60 mg every 4 weeks (control group)"
+    },
+    {
+     "claim": "41 centros, 8 países",
+     "source_id": "pmid_34793718_abstract",
+     "locator": "¶0003",
+     "snippet": "enrolled patients from 41 sites in eight countries"
+    }
+   ],
+   "production_status": "pending_human_review",
+   "verified_pass_not_applied": [
+    "deep.objetivo",
+    "deep.metodo",
+    "deep.limitacoes",
+    "deep.achados",
+    "clinicalTakeaway",
+    "analysis"
+   ]
+  },
+  "netter1-dosimetry-substudy-2025": {
+   "pmid": "39947918",
+   "doi": "10.2967/jnumed.124.268903",
+   "applied": [
+    "deep.objetivo",
+    "deep.metodo",
+    "deep.interpretacao",
+    "deep.limitacoes",
+    "deep.achados",
+    "clinicalTakeaway",
+    "relationshipToParent",
+    "analysis"
+   ],
+   "not_applied": {},
+   "evidence": [
+    {
+     "claim": "8/30 randomizados; 20 avaliáveis",
+     "source_id": "pmc_PMC11876735_fulltext",
+     "locator": "¶0015",
+     "snippet": "Eight patients had been randomized to the 177Lu-DOTATATE arm in the NETTER-1 main study (5). Overall, 20 of 30 patients had evaluable dosimetric assessments"
+    },
+    {
+     "claim": "Endpoints",
+     "source_id": "pmc_PMC11876735_fulltext",
+     "locator": "¶0008",
+     "snippet": "The primary objectives were to evaluate whole-body and organ radiation dosimetry of 177Lu-DOTATATE. Tumor dosimetry and response by absorbed dose were exploratory endpoints."
+    },
+    {
+     "claim": "Doses órgãos",
+     "source_id": "pmc_PMC11876735_fulltext",
+     "locator": "¶0059",
+     "snippet": "The estimated mean cumulative absorbed dose to normal organs was highest in the spleen and kidneys at 25.1 Gy (SD, 23.8 Gy) and 19.4 Gy (SD, 8.7 Gy), respectively."
+    },
+    {
+     "claim": "Limiares",
+     "source_id": "pmc_PMC11876735_fulltext",
+     "locator": "¶0080",
+     "snippet": "Both the kidney and bone marrow mean dosimetry estimates (19.4 and 1.0 Gy, respectively) were below the commonly used conservative toxicity thresholds of 23 Gy for kidneys and 2 Gy for bone marrow"
+    },
+    {
+     "claim": "Leucopenia G3",
+     "source_id": "pmc_PMC11876735_fulltext",
+     "locator": "¶0073",
+     "snippet": "Overall, 2 of 20 (10%) patients experienced transient grade 3 leukopenia during treatment"
+    },
+    {
+     "claim": "Linfopenia G4",
+     "source_id": "pmc_PMC11876735_fulltext",
+     "locator": "¶0073",
+     "snippet": "Grade 4 lymphopenia during treatment (acute toxicity) was observed in 4 of 20 (20%) patients"
+    },
+    {
+     "claim": "Sem SMD",
+     "source_id": "pmc_PMC11876735_fulltext",
+     "locator": "¶0073",
+     "snippet": "No patient with a dosimetry assessment developed myelodysplastic syndrome."
+    },
+    {
+     "claim": "73,8% ≥50 Gy",
+     "source_id": "pmc_PMC11876735_fulltext",
+     "locator": "¶0075",
+     "snippet": "73.8% (48/65)"
+    },
+    {
+     "claim": "90% = 47/52",
+     "source_id": "pmc_PMC11876735_fulltext",
+     "locator": "¶0077",
+     "snippet": "47 of 52 lesions (90%) had evidence of tumor shrinkage at some point in the 72-wk period."
+    },
+    {
+     "claim": "Sem correlação",
+     "source_id": "pmc_PMC11876735_fulltext",
+     "locator": "¶0077",
+     "snippet": "No correlation was found between the best tumor size change from baseline (by area) and the cumulative absorbed dose"
+    },
+    {
+     "claim": "Seguimento",
+     "source_id": "pmc_PMC11876735_fulltext",
+     "locator": "¶0015",
+     "snippet": "Median follow-up from the first 177Lu-DOTATATE administration was 62.9 mo (range, 9–89 mo)."
+    },
+    {
+     "claim": "Creatinina G1 prévia",
+     "source_id": "pmc_PMC11876735_fulltext",
+     "locator": "¶0072",
+     "snippet": "both had grade 1 increased serum creatinine at baseline with other potential renal risk factors"
+    },
+    {
+     "claim": "Sem toxicidade renal grave",
+     "source_id": "pmc_PMC11876735_fulltext",
+     "locator": "¶0072",
+     "snippet": "With up to 5 y of follow-up, no severe renal toxicity was observed."
+    },
+    {
+     "claim": "Dosimetria em ciclos diferentes",
+     "source_id": "pmc_PMC11876735_fulltext",
+     "locator": "¶0083",
+     "snippet": "Performing dosimetry measurements at any of the first 3 treatment cycles may have contributed to inaccuracy in estimated cumulative absorbed doses"
+    },
+    {
+     "claim": "Planar",
+     "source_id": "pmc_PMC11876735_fulltext",
+     "locator": "¶0079",
+     "snippet": "planar scintigraphy alone may not be the most accurate method for tumor dosimetry"
+    }
+   ],
+   "production_status": "applied"
+  },
+  "alsympca-docetaxel-subgroup-2014": {
+   "pmid": "25439694",
+   "doi": "10.1016/S1470-2045(14)70474-7",
+   "applied": [
+    "deep.objetivo",
+    "deep.metodo",
+    "deep.interpretacao",
+    "deep.limitacoes",
+    "deep.achados",
+    "clinicalTakeaway",
+    "relationshipToParent",
+    "analysis"
+   ],
+   "not_applied": {},
+   "evidence": [
+    {
+     "claim": "Análise de subgrupo pré-especificada; docetaxel prévio como fator de estratificação",
+     "source_id": "pmid_25439694_abstract",
+     "locator": "¶0003",
+     "snippet": "previous docetaxel use (yes or no) was a trial stratification factor"
+    },
+    {
+     "claim": "Subgrupo sem docetaxel = inaptos ou recusaram",
+     "source_id": "pmid_25439694_abstract",
+     "locator": "¶0003",
+     "snippet": "Patients had either received previous docetaxel treatment or were unsuitable for or declined docetaxel"
+    },
+    {
+     "claim": "n por subgrupo e braço",
+     "source_id": "pmid_25439694_abstract",
+     "locator": "¶0004",
+     "snippet": "526 (57%) of 921 randomly assigned patients had received previous docetaxel treatment (352 in the radium-223 group and 174 in the placebo group) and 395 (43%) had not (262 in the radium-223 group and 133 in the placebo group)"
+    },
+    {
+     "claim": "HR de SG por subgrupo",
+     "source_id": "pmid_25439694_abstract",
+     "locator": "¶0004",
+     "snippet": "previous docetaxel use, hazard ratio [HR] 0·70, 95% CI 0·56-0·88; p=0·002; no previous docetaxel use, HR 0·69, 0·52-0·92; p=0·01"
+    },
+    {
+     "claim": "SSE não significativo sem docetaxel prévio",
+     "source_id": "pmid_25439694_abstract",
+     "locator": "¶0004",
+     "snippet": "risk for time to time to first symptomatic skeletal event was reduced with radium-223 versus placebo in patients with previous docetaxel use, but the difference was not significant in those with no previous docetaxel use"
+    },
+    {
+     "claim": "EA G3–4 62% vs 54%",
+     "source_id": "pmid_25439694_abstract",
+     "locator": "¶0004",
+     "snippet": "322 (62%) of 518 patients previously treated with docetaxel had grade 3-4 adverse events, compared with 205 (54%) of 383 patients without docetaxel"
+    },
+    {
+     "claim": "Trombocitopenia G3–4 9% vs 3%",
+     "source_id": "pmid_25439694_abstract",
+     "locator": "¶0004",
+     "snippet": "(31 [9%] of 347 patients vs five [3%] of 171 patients)"
+    },
+    {
+     "claim": "Trombocitopenia G3–4 3% vs 1%",
+     "source_id": "pmid_25439694_abstract",
+     "locator": "¶0004",
+     "snippet": "(seven [3%] of 253 patients vs one [1%] of 130 patients)"
+    },
+    {
+     "claim": "Anemia/neutropenia semelhantes",
+     "source_id": "pmid_25439694_abstract",
+     "locator": "¶0004",
+     "snippet": "The incidences of grade 3-4 anaemia and neutropenia were similar between the radium-223 and placebo groups within both docetaxel subgroups"
+    },
+    {
+     "claim": "Conclusão dos autores",
+     "source_id": "pmid_25439694_abstract",
+     "locator": "¶0005",
+     "snippet": "Radium-223 is effective and well tolerated in patients with castration-resistant prostate cancer and symptomatic bone metastases, irrespective of previous docetaxel use"
+    }
+   ],
+   "production_status": "applied"
+  },
+  "alsympca-quality-of-life-2016": {
+   "pmid": "26912557",
+   "doi": "10.1093/annonc/mdw065",
+   "not_applied": {
+    "deep.interpretacao": "UNSUPPORTED",
+    "clinicalTakeaway": "UNSUPPORTED"
+   },
+   "evidence": [
+    {
+     "claim": "Testes de hipótese post hoc",
+     "source_id": "pmc_PMC4843190_fulltext",
+     "locator": "¶0013",
+     "snippet": "all hypothesis-testing analyses reported here were post hoc"
+    },
+    {
+     "claim": "População restrita a quem tinha avaliação basal e pós-basal",
+     "source_id": "pmc_PMC4843190_fulltext",
+     "locator": "¶0013",
+     "snippet": "Analyses were carried out on the intent-to-treat population, but limited to patients with a baseline assessment and ≥1 post-baseline assessment (i.e. weeks 16 and/or 24 or both)"
+    },
+    {
+     "claim": "EQ-5D melhora 29,2% vs 18,5%",
+     "source_id": "pmc_PMC4843190_fulltext",
+     "locator": "¶0018",
+     "snippet": "(29.2% versus 18.5%, respectively; P = 0.004), corresponding to an odds ratio (OR) of 1.82 (95% CI 1.21–2.74)"
+    },
+    {
+     "claim": "FACT-P melhora 24,6% vs 16,1%",
+     "source_id": "pmc_PMC4843190_fulltext",
+     "locator": "¶0018",
+     "snippet": "[24.6% versus 16.1%, respectively; P = 0.020; OR = 1.70 (95% CI 1.08–2.65)]"
+    },
+    {
+     "claim": "Piora EQ-5D 36,0% vs 54,0%",
+     "source_id": "pmc_PMC4843190_fulltext",
+     "locator": "¶0021",
+     "snippet": "[36.0% versus 54.0%, respectively; P < 0.001; OR = 0.48 (95% CI 0.34–0.67)]"
+    },
+    {
+     "claim": "Piora FACT-P 44,3% vs 51,6% NS",
+     "source_id": "pmc_PMC4843190_fulltext",
+     "locator": "¶0021",
+     "snippet": "[44.3% versus 51.6%, respectively; P = 0.095; OR = 0.75 (95% CI 0.53–1.05)]"
+    },
+    {
+     "claim": "EQ-5D médio 0,56 vs 0,50",
+     "source_id": "pmc_PMC4843190_fulltext",
+     "locator": "¶0023",
+     "snippet": "(0.56 versus 0.50; P = 0.002)"
+    },
+    {
+     "claim": "FACT-P variação −4,83 vs −8,69",
+     "source_id": "pmc_PMC4843190_fulltext",
+     "locator": "¶0023",
+     "snippet": "(−4.83 versus −8.69; P = 0.004)"
+    },
+    {
+     "claim": "FACT-P 99,08 vs 95,22",
+     "source_id": "pmid_26912557_abstract",
+     "locator": "¶0004",
+     "snippet": "(99.08 versus 95.22, respectively; P = 0.004)"
+    },
+    {
+     "claim": "Interação bisfosfonato EQ-5D p=0,034",
+     "source_id": "pmc_PMC4843190_fulltext",
+     "locator": "¶0025",
+     "snippet": "there was a difference in treatment effect on utility score (P = 0.034)"
+    },
+    {
+     "claim": "Bonferroni torna FACT-P respondedor NS",
+     "source_id": "pmc_PMC4843190_fulltext",
+     "locator": "¶0029",
+     "snippet": "would change only the conclusion regarding FACT-P responder analysis, to non-significant (P = 0.020) after applying the correction"
+    },
+    {
+     "claim": "MCAR sem imputação",
+     "source_id": "pmc_PMC4843190_fulltext",
+     "locator": "¶0016",
+     "snippet": "Missing data were assumed to be missing completely at random for all analyses; no imputation was done to estimate missing observations"
+    },
+    {
+     "claim": "MID EQ-5D 0,1",
+     "source_id": "pmc_PMC4843190_fulltext",
+     "locator": "¶0014",
+     "snippet": "The utility score MID was 0.1"
+    },
+    {
+     "claim": "MID FACT-P ≥10",
+     "source_id": "pmc_PMC4843190_fulltext",
+     "locator": "¶0018",
+     "snippet": "having an increase in FACT-P total score of ≥10 from baseline"
+    }
+   ],
+   "production_status": "pending_human_review",
+   "verified_pass_not_applied": [
+    "deep.objetivo",
+    "deep.metodo",
+    "deep.limitacoes",
+    "deep.achados",
+    "relationshipToParent",
+    "analysis"
+   ]
+  },
+  "alsympca-chemotherapy-after-radium-2016": {
+   "pmid": "27004570",
+   "doi": "10.1002/pros.23180",
+   "applied": [
+    "deep.objetivo",
+    "deep.metodo",
+    "deep.interpretacao",
+    "deep.limitacoes",
+    "deep.achados",
+    "clinicalTakeaway",
+    "relationshipToParent",
+    "analysis"
+   ],
+   "not_applied": {},
+   "evidence": [
+    {
+     "claim": "Análise exploratória de dados prospectivos",
+     "source_id": "pmid_27004570_abstract",
+     "locator": "¶0002",
+     "snippet": "An exploratory analysis of prospectively collected data"
+    },
+    {
+     "claim": "n=206: 142 vs 64",
+     "source_id": "pmc_PMC5071661_fulltext",
+     "locator": "¶0017",
+     "snippet": "The chemotherapy post‐study drug subgroup comprises 206 (22%) patients and includes 142 (23%) patients from the radium‐223 group and 64 (21%) patients from the placebo group"
+    },
+    {
+     "claim": "Docetaxel prévio 61% vs 58%",
+     "source_id": "pmc_PMC5071661_fulltext",
+     "locator": "¶0017",
+     "snippet": "The majority of radium‐223 (87 [61%]) and placebo (37 [58%]) patients in the chemotherapy post‐study drug subgroup had also received docetaxel prior to study treatment"
+    },
+    {
+     "claim": "Docetaxel 70% vs 72%",
+     "source_id": "pmc_PMC5071661_fulltext",
+     "locator": "¶0063",
+     "snippet": "received by 70% (100/142) and 72% (46/64) of radium‐223 and placebo patients"
+    },
+    {
+     "claim": "Mitoxantrona 16% vs 20%",
+     "source_id": "pmc_PMC5071661_fulltext",
+     "locator": "¶0063",
+     "snippet": "mitoxantrone (16% [23/142] radium‐223, 20% [13/64] placebo)"
+    },
+    {
+     "claim": "Início 9,1 vs 7,5 meses",
+     "source_id": "pmc_PMC5071661_fulltext",
+     "locator": "¶0063",
+     "snippet": "There was a longer time from randomization to start of chemotherapy for radium‐223 (9.1 months) compared with placebo patients (7.5 months)"
+    },
+    {
+     "claim": "Duração 1ª QT 4,6 vs 4,2 meses",
+     "source_id": "pmc_PMC5071661_fulltext",
+     "locator": "¶0063",
+     "snippet": "Median duration of first chemotherapy was 4.6 months in the radium‐223 group and 4.2 months in the placebo group"
+    },
+    {
+     "claim": "G3–4 8/10/6% vs 4/2/2%",
+     "source_id": "pmc_PMC5071661_fulltext",
+     "locator": "¶0077",
+     "snippet": "Grades 3 or 4 hemoglobin, neutrophil, and platelet values were recorded in 8%, 10%, and 6% of radium‐223 and 4%, 2%, and 2% of placebo patients, respectively"
+    },
+    {
+     "claim": "Sem diferença estatística G3–4",
+     "source_id": "pmc_PMC5071661_fulltext",
+     "locator": "¶0077",
+     "snippet": "No statistically significant differences were found between treatment groups in frequency of hematologic laboratory values corresponding to grade 3 or 4 AEs"
+    },
+    {
+     "claim": "Queda de plaquetas numericamente maior",
+     "source_id": "pmc_PMC5071661_fulltext",
+     "locator": "¶0077",
+     "snippet": "Maximum percentage decreases from baseline in platelets were numerically greater in the radium‐223 group than in the placebo group, but did not appear to be associated with prior docetaxel treatment"
+    },
+    {
+     "claim": "SG 16,0 vs 15,8",
+     "source_id": "pmc_PMC5071661_fulltext",
+     "locator": "¶0175",
+     "snippet": "Median overall survival from start of chemotherapy was 16.0 months in patients previously treated with radium‐223 and 15.8 months in patients previously treated with placebo"
+    },
+    {
+     "claim": "SG docetaxel 17,5 vs 16,7",
+     "source_id": "pmc_PMC5071661_fulltext",
+     "locator": "¶0179",
+     "snippet": "median overall survival from start of docetaxel was 17.5 and 16.7 months"
+    },
+    {
+     "claim": "Mortes durante QT 29% vs 33%",
+     "source_id": "pmc_PMC5071661_fulltext",
+     "locator": "¶0162",
+     "snippet": "In the radium‐223 group, 29% of patients died while receiving chemotherapy, as did a similar proportion of patients in the placebo group (33%)"
+    },
+    {
+     "claim": "Corte março/2014",
+     "source_id": "pmc_PMC5071661_fulltext",
+     "locator": "¶0016",
+     "snippet": "includes prospectively collected data up to the ALSYMPCA study cutoff date of March 2014"
+    },
+    {
+     "claim": "Comparabilidade não assegurada",
+     "source_id": "pmc_PMC5071661_fulltext",
+     "locator": "¶0182",
+     "snippet": "the comparability of radium‐223 and placebo patients who received subsequent chemotherapy is not assured by the initial randomization of the original study"
+    },
+    {
+     "claim": "Sem poder",
+     "source_id": "pmc_PMC5071661_fulltext",
+     "locator": "¶0016",
+     "snippet": "Analyses were not powered to assess differences between radium‐223 and placebo within the chemotherapy or docetaxel post‐study drug subgroups"
+    },
+    {
+     "claim": "Nadires / doses não coletadas",
+     "source_id": "pmc_PMC5071661_fulltext",
+     "locator": "¶0182",
+     "snippet": "sample collections may not have coincided with the expected nadirs in hemoglobin, neutrophil, and platelet counts"
+    },
+    {
+     "claim": "Conclusão",
+     "source_id": "pmid_27004570_abstract",
+     "locator": "¶0005",
+     "snippet": "Chemotherapy following radium-223, regardless of prior docetaxel, is feasible and appears to be well tolerated"
+    }
+   ],
+   "production_status": "applied"
+  },
+  "alsympca-alp-ldh-psa-2017": {
+   "pmid": "28453701",
+   "doi": "10.1093/annonc/mdx044",
+   "not_applied": {
+    "clinicalTakeaway": "FAIL",
+    "analysis": "UNSUPPORTED"
+   },
+   "evidence": [
+    {
+     "claim": "Post hoc, fora do plano original",
+     "source_id": "pmc_PMC5406754_fulltext",
+     "locator": "¶0055",
+     "snippet": "The exploratory analysis was not included in the original ALSYMPCA study plan"
+    },
+    {
+     "claim": "Declínios 87/23, 51/34, 27/14",
+     "source_id": "pmid_28453701_abstract",
+     "locator": "¶0004",
+     "snippet": "by week 12 declining in 87% of radium-223 and 23% of placebo patients (P < 0.001). LDH declined in 51% and 34% (P = 0.003), whereas PSA declined in 27% and 14% (P = 0.160)"
+    },
+    {
+     "claim": "Denominadores tALP 433/497 vs 49/211",
+     "source_id": "pmc_PMC5406754_fulltext",
+     "locator": "¶0045",
+     "snippet": "tALP decreased from baseline in 87% (433/497) of radium-223 patients versus 23% (49/211) of placebo patients (P < 0.001)"
+    },
+    {
+     "claim": "Variação média −32,2% vs +37,2%",
+     "source_id": "pmid_28453701_abstract",
+     "locator": "¶0004",
+     "snippet": "Mean tALP change from baseline was 32.2% decrease with radium-223 and 37.2% increase with placebo"
+    },
+    {
+     "claim": "HR 0,45 dentro do braço rádio-223, 400 vs 97, 17,8 vs 10,4 m",
+     "source_id": "pmc_PMC5406754_fulltext",
+     "locator": "¶0048",
+     "snippet": "400 patients with a confirmed tALP decline had a median survival of 17.8 months and 55% lower risk of death (HR = 0.45; 95% CI: 0.34–0.61; P < 0.0001) versus 97 patients with no confirmed tALP decline (median survival, 10.4 months)"
+    },
+    {
+     "claim": "LDH HR 0,55",
+     "source_id": "pmc_PMC5406754_fulltext",
+     "locator": "¶0048",
+     "snippet": "(HR = 0.55; 95% CI: 0.42–0.73; P < 0.0001)"
+    },
+    {
+     "claim": "PTE 0,34/0,07/0",
+     "source_id": "pmid_28453701_abstract",
+     "locator": "¶0004",
+     "snippet": "0.34 (95% CI: 0-0.746), 0.07 (95% CI: 0-0.211), and 0 (95% CI: 0-0.082), respectively"
+    },
+    {
+     "claim": "Critério de surrogacia forte",
+     "source_id": "pmc_PMC5406754_fulltext",
+     "locator": "¶0013",
+     "snippet": "with a strong degree of surrogacy suggested if the 95% CI lower bound exceeded 0.5"
+    },
+    {
+     "claim": "PSA aumentou em 73%",
+     "source_id": "pmc_PMC5406754_fulltext",
+     "locator": "¶0048",
+     "snippet": "PSA increased in 358 (73%) patients, often by factors of 10-fold or more"
+    },
+    {
+     "claim": "Queda de tALP desde a semana 4",
+     "source_id": "pmid_28453701_abstract",
+     "locator": "¶0004",
+     "snippet": "tALP declined from baseline within 4 weeks after beginning radium-223"
+    },
+    {
+     "claim": "Não são surrogates",
+     "source_id": "pmid_28453701_abstract",
+     "locator": "¶0005",
+     "snippet": "may be useful to monitor, but do not serve as surrogates for survival"
+    },
+    {
+     "claim": "Alerta sobre PSA",
+     "source_id": "pmc_PMC5406754_fulltext",
+     "locator": "¶0055",
+     "snippet": "Using biomarker changes, particularly rising PSA levels, to make decisions about continuing radium-223 presents a substantial risk that a large fraction of patients who may benefit will be denied effective treatment"
+    },
+    {
+     "claim": "Marcadores isolados",
+     "source_id": "pmc_PMC5406754_fulltext",
+     "locator": "¶0055",
+     "snippet": "We evaluated markers individually, not in combination"
+    },
+    {
+     "claim": "Declínio confirmado ≥3 semanas",
+     "source_id": "pmc_PMC5406754_fulltext",
+     "locator": "¶0012",
+     "snippet": "OS by confirmed tALP or LDH decline at week 12 (decline confirmed ≥3 weeks from week 12) was evaluated"
+    }
+   ],
+   "production_status": "pending_human_review",
+   "verified_pass_not_applied": [
+    "deep.objetivo",
+    "deep.metodo",
+    "deep.interpretacao",
+    "deep.limitacoes",
+    "deep.achados",
+    "relationshipToParent"
+   ]
+  },
+  "alsympca-hospitalisation-2017": {
+   "pmid": "27930924",
+   "doi": "10.1016/j.ejca.2016.10.020",
+   "not_applied": {
+    "deep.interpretacao": "UNSUPPORTED"
+   },
+   "evidence": [
+    {
+     "claim": "Coleta prospectiva de HCRU",
+     "source_id": "pmid_27930924_abstract",
+     "locator": "¶0002",
+     "snippet": "were prospectively collected in ALSYMPCA"
+    },
+    {
+     "claim": "HR de SSE 0,66 é resultado do ensaio principal (contexto)",
+     "source_id": "pmid_27930924_abstract",
+     "locator": "¶0002",
+     "snippet": "In the ALSYMPCA trial, radium-223 significantly improved overall survival (hazard ratio 0.70, 95% confidence interval [CI] 0.58-0.83, P < 0.001) and prolonged time to first SSE (hazard ratio 0.66, 95% CI 0.52-0.83, P = 0.00037)"
+    },
+    {
+     "claim": "≥1 hospitalização 37,0% vs 45,5%",
+     "source_id": "pmid_27930924_abstract",
+     "locator": "¶0002",
+     "snippet": "Significantly fewer radium-223 (218/589; 37.0%) versus placebo patients (133/292; 45.5%) had at least one hospitalisation event (P = 0.016)"
+    },
+    {
+     "claim": "Eventos por paciente 0,69 vs 0,79 NS; seguimento 7,82 vs 6,92",
+     "source_id": "pmid_27930924_abstract",
+     "locator": "¶0002",
+     "snippet": "mean number of hospitalisation events per patient was similar (radium-223 0.69 versus placebo 0.79, P = 0.226), likely due to the significantly longer follow-up time for radium-223 (7.82 months versus 6.92 months for placebo; P < 0.001)"
+    },
+    {
+     "claim": "Dias 4,44 vs 6,68",
+     "source_id": "pmid_27930924_abstract",
+     "locator": "¶0002",
+     "snippet": "There were significantly fewer hospitalisation days per patient for radium-223 (4.44 versus 6.68, respectively, P = 0.004)"
+    },
+    {
+     "claim": "Dias antes/após SSE",
+     "source_id": "pmid_27930924_abstract",
+     "locator": "¶0002",
+     "snippet": "before first SSE (2.35 days versus 3.36 days, respectively) and after SSE (7.74 days versus 9.19 days, respectively)"
+    },
+    {
+     "claim": "Janela de 12 meses",
+     "source_id": "pmid_27930924_abstract",
+     "locator": "¶0002",
+     "snippet": "We assessed health care resource use for the first 12 months post-randomisation"
+    },
+    {
+     "claim": "Conclusão dos autores",
+     "source_id": "pmid_27930924_abstract",
+     "locator": "¶0002",
+     "snippet": "Our data suggest that this reduced hospital days along with the survival benefit and reduction in time to SSEs with radium-223 treatment may contribute to improvements in health-related quality-of-life"
+    }
+   ],
+   "production_status": "pending_human_review",
+   "verified_pass_not_applied": [
+    "deep.objetivo",
+    "deep.metodo",
+    "deep.limitacoes",
+    "deep.achados",
+    "clinicalTakeaway",
+    "relationshipToParent",
+    "analysis"
+   ]
+  },
+  "alsympca-three-year-safety-2018": {
+   "pmid": "28705540",
+   "doi": "10.1016/j.eururo.2017.06.021",
+   "not_applied": {
+    "deep.interpretacao": "UNSUPPORTED",
+    "clinicalTakeaway": "UNSUPPORTED"
+   },
+   "evidence": [
+    {
+     "claim": "n 600/301; 405/167",
+     "source_id": "pmid_28705540_abstract",
+     "locator": "¶0004",
+     "snippet": "included patients receiving ≥1 study-drug injection (600 radium-223 and 301 placebo)"
+    },
+    {
+     "claim": "Seguimento longo prazo 405/167",
+     "source_id": "pmid_28705540_abstract",
+     "locator": "¶0004",
+     "snippet": "Patients (405 radium-223 and 167 placebo) entered long-term safety follow-up"
+    },
+    {
+     "claim": "Completaram 12% vs 7%",
+     "source_id": "pmid_28705540_abstract",
+     "locator": "¶0004",
+     "snippet": "Forty-eight of 405 (12%) radium-223 and 12/167 (7%) placebo patients completed follow-up"
+    },
+    {
+     "claim": "Coleta restrita após 12 semanas",
+     "source_id": "pmid_28705540_abstract",
+     "locator": "¶0005",
+     "snippet": "All adverse events (AEs) were collected until 12 wk after the last injection; subsequently, only treatment-related AEs were collected"
+    },
+    {
+     "claim": "TEAE 94% vs 97%",
+     "source_id": "pmid_28705540_abstract",
+     "locator": "¶0006",
+     "snippet": "564/600 (94%) radium-223 and 292/301 (97%) placebo patients had treatment-emergent AEs (TEAEs)"
+    },
+    {
+     "claim": "G3/4 hematológicos",
+     "source_id": "pmid_28705540_abstract",
+     "locator": "¶0006",
+     "snippet": "anemia (13% vs 13%), neutropenia (2% vs 1%), and thrombocytopenia (7% vs 2%)"
+    },
+    {
+     "claim": "Grau 5 16% vs 23%",
+     "source_id": "pmid_28705540_abstract",
+     "locator": "¶0006",
+     "snippet": "Ninety-eight of 600 (16%) radium-223 and 68/301 (23%) placebo patients experienced grade 5 TEAEs"
+    },
+    {
+     "claim": "Sem LMA/SMD; neoplasias 4 vs 3 não relacionadas",
+     "source_id": "pmid_28705540_abstract",
+     "locator": "¶0006",
+     "snippet": "Long-term follow-up showed no AML, MDS, or new primary bone cancer; secondary non-treatment-related malignancies occurred in four radium-223 and three placebo patients"
+    },
+    {
+     "claim": "Anemia aplásica 16 meses após a última injeção",
+     "source_id": "pmid_28705540_abstract",
+     "locator": "¶0006",
+     "snippet": "One radium-223 patient had aplastic anemia 16 mo after the last injection"
+    },
+    {
+     "claim": "Limitação: seguimento curto",
+     "source_id": "pmid_28705540_abstract",
+     "locator": "¶0006",
+     "snippet": "Limitations include short (3-yr) follow-up"
+    },
+    {
+     "claim": "Descritiva",
+     "source_id": "pmid_28705540_abstract",
+     "locator": "¶0005",
+     "snippet": "Data analysis used descriptive statistics"
+    },
+    {
+     "claim": "Conclusão",
+     "source_id": "pmid_28705540_abstract",
+     "locator": "¶0007",
+     "snippet": "radium-223 remained well tolerated, with low myelosuppression incidence and no new safety concerns"
+    }
+   ],
+   "production_status": "pending_human_review",
+   "verified_pass_not_applied": [
+    "deep.objetivo",
+    "deep.metodo",
+    "deep.limitacoes",
+    "deep.achados",
+    "relationshipToParent",
+    "analysis"
+   ]
+  }
+ },
+ "aplicado_em_producao": [
+  "alsympca-chemotherapy-after-radium-2016",
+  "alsympca-docetaxel-subgroup-2014",
+  "netter1-dosimetry-substudy-2025",
+  "netter1-hrqol-2018",
+  "therap-psma-fdg-pet-biomarkers-2022",
+  "vision-safety-2024"
+ ]
+}

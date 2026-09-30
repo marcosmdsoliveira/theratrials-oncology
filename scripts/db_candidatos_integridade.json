@@ -1376,6 +1376,48 @@
    "dedupe_discriminator": "fatal_event_omitted"
   },
   {
+   "uid": "lupsma-2018-primary",
+   "card": "LuPSMA trial (Hofman 2018) — secundário",
+   "issue_type": "publication_relationship",
+   "affected_fields": [
+    "parentUid",
+    "recordType"
+   ],
+   "description": "Publicação primária do ensaio fase II LuPSMA (Lancet Oncol 2018, PMID 29752180) está registrada como card secundário (recordType primary_trial, parentUid null) e serve de 'pai' a outros 2 secundários; não há card principal adequado no Database.",
+   "evidence": [
+    {
+     "kind": "card_state",
+     "field": "parentUid",
+     "value": "null (lupsma-2018-primary, lupsma-2018-dosimetry-2019, lupsma-2018-long-term-retreatment-2020)"
+    },
+    {
+     "kind": "registry_metadata",
+     "source": "PubMed efetch",
+     "identifier": "PMID 29752180",
+     "value": "publicação primária do ensaio LuPSMA (Hofman 2018)"
+    }
+   ],
+   "priority": "medium",
+   "detection_method": "primary_source_check",
+   "origin": "auditoria dos cards secundários (secondary-cards.js)",
+   "related_decisions": [],
+   "id": "INT-lupsma-2018-primary-001",
+   "dedupe_key": "lupsma-2018-primary|publication_relationship|parentUid,recordType",
+   "status": "open",
+   "human_decision": null,
+   "resolution": null,
+   "first_detected_at": "2026-09-30",
+   "last_reviewed_at": null,
+   "related_ids": [],
+   "history": [
+    {
+     "at": "2026-09-30",
+     "event": "detected",
+     "by": "auditoria dos cards secundários (secondary-cards.js)"
+    }
+   ]
+  },
+  {
    "uid": "lupsma_prostata_0",
    "card": "VISION (2021)",
    "issue_type": "design_misrepresentation",
@@ -1963,6 +2005,12 @@
      "kind": "card_state",
      "field": "ref",
      "value": "Sartor O, et al. Lancet Oncol 2025; ESMO 2024 LBA (apresentação)"
+    },
+    {
+     "kind": "registry_metadata",
+     "source": "PubMed efetch",
+     "identifier": "PMID 39839782",
+     "value": "título: 'Initial clinical experience with [177Lu]Lu-PNT2002 … from the lead-in cohort of the SPLASH trial' (Front Oncol 2024): coorte lead-in braço único (n=27), sem comparação randomizada; o mesmo PMID sustenta o card secundário splash-lead-in-dosimetry-safety-efficacy-2024"
     }
    ],
    "priority": "high",
@@ -1989,6 +2037,12 @@
      "event": "status:open→confirmed",
      "by": "editor",
      "note": "confirmado na auditoria do gerador de citações (aprovada em 2026-09-29)"
+    },
+    {
+     "at": "2026-09-30",
+     "event": "redetected",
+     "by": "auditoria dos cards secundários (secondary-cards.js)",
+     "note": "1 evidência nova: publicação principal inadequada (lead-in, não o fase III)"
     }
    ]
   },
@@ -2516,6 +2570,47 @@
     }
    ],
    "evidence_status": "insufficient"
+  },
+  {
+   "uid": "netter2-subgroup-gep-net-grade-2024",
+   "card": "NETTER-2 — secundário (congress_abstract)",
+   "issue_type": "unsupported_claim",
+   "affected_fields": [
+    "deep",
+    "clinicalTakeaway"
+   ],
+   "description": "Card secundário baseado em resumo de congresso sem PMID: números clínicos em deep/clinicalTakeaway não verificáveis nas fontes permitidas (PubMed/PMC).",
+   "evidence": [
+    {
+     "kind": "card_state",
+     "field": "sourceUrl",
+     "value": "https://www.annalsofoncology.org/article/S0923-7534(24)00358-2/fulltext"
+    },
+    {
+     "kind": "card_state",
+     "field": "pmid",
+     "value": "None"
+    }
+   ],
+   "priority": "low",
+   "detection_method": "pipeline_signal",
+   "origin": "auditoria dos cards secundários (secondary-cards.js)",
+   "related_decisions": [],
+   "id": "INT-netter2-subgroup-gep-net-grade-2024-001",
+   "dedupe_key": "netter2-subgroup-gep-net-grade-2024|unsupported_claim|clinicalTakeaway,deep",
+   "status": "open",
+   "human_decision": null,
+   "resolution": null,
+   "first_detected_at": "2026-09-30",
+   "last_reviewed_at": null,
+   "related_ids": [],
+   "history": [
+    {
+     "at": "2026-09-30",
+     "event": "detected",
+     "by": "auditoria dos cards secundários (secondary-cards.js)"
+    }
+   ]
   },
   {
    "uid": "neuroblastoma_10",
@@ -3289,6 +3384,88 @@
    ],
    "id": "INT-prostata_contexto_20-007",
    "dedupe_key": "prostata_contexto_20|bibliographic_mismatch|secundario"
+  },
+  {
+   "uid": "psma-rlt-protecao-salivar-evidencia-therap",
+   "card": "TheraP — secundário (evidence_review)",
+   "issue_type": "aggregation",
+   "affected_fields": [
+    "deep",
+    "clinicalTakeaway"
+   ],
+   "description": "Card secundário de síntese de múltiplas fontes, sem publicação única correspondente; não auditável por publicação própria.",
+   "evidence": [
+    {
+     "kind": "card_state",
+     "field": "sourceUrl",
+     "value": "None"
+    },
+    {
+     "kind": "card_state",
+     "field": "pmid",
+     "value": "None"
+    }
+   ],
+   "priority": "low",
+   "detection_method": "pipeline_signal",
+   "origin": "auditoria dos cards secundários (secondary-cards.js)",
+   "related_decisions": [],
+   "id": "INT-psma-rlt-protecao-salivar-evidencia-therap-001",
+   "dedupe_key": "psma-rlt-protecao-salivar-evidencia-therap|aggregation|clinicalTakeaway,deep",
+   "status": "open",
+   "human_decision": null,
+   "resolution": null,
+   "first_detected_at": "2026-09-30",
+   "last_reviewed_at": null,
+   "related_ids": [],
+   "history": [
+    {
+     "at": "2026-09-30",
+     "event": "detected",
+     "by": "auditoria dos cards secundários (secondary-cards.js)"
+    }
+   ]
+  },
+  {
+   "uid": "psma-rlt-protecao-salivar-evidencia-vision",
+   "card": "VISION — secundário (evidence_review)",
+   "issue_type": "aggregation",
+   "affected_fields": [
+    "deep",
+    "clinicalTakeaway"
+   ],
+   "description": "Card secundário de síntese de múltiplas fontes, sem publicação única correspondente; não auditável por publicação própria.",
+   "evidence": [
+    {
+     "kind": "card_state",
+     "field": "sourceUrl",
+     "value": "None"
+    },
+    {
+     "kind": "card_state",
+     "field": "pmid",
+     "value": "None"
+    }
+   ],
+   "priority": "low",
+   "detection_method": "pipeline_signal",
+   "origin": "auditoria dos cards secundários (secondary-cards.js)",
+   "related_decisions": [],
+   "id": "INT-psma-rlt-protecao-salivar-evidencia-vision-001",
+   "dedupe_key": "psma-rlt-protecao-salivar-evidencia-vision|aggregation|clinicalTakeaway,deep",
+   "status": "open",
+   "human_decision": null,
+   "resolution": null,
+   "first_detected_at": "2026-09-30",
+   "last_reviewed_at": null,
+   "related_ids": [],
+   "history": [
+    {
+     "at": "2026-09-30",
+     "event": "detected",
+     "by": "auditoria dos cards secundários (secondary-cards.js)"
+    }
+   ]
   },
   {
    "uid": "ra223_prostata_2",
@@ -4554,6 +4731,88 @@
    "dedupe_key": "rt_sbrt_oligo_5|numeric_mismatch|analises,n"
   },
   {
+   "uid": "splash-primary-analysis-esmo-2024",
+   "card": "SPLASH (177Lu-PNT2002) — secundário (press_release)",
+   "issue_type": "unsupported_claim",
+   "affected_fields": [
+    "deep",
+    "clinicalTakeaway"
+   ],
+   "description": "Card secundário baseado em press release (dados não revisados por pares), sem publicação própria verificável; números clínicos não verificáveis.",
+   "evidence": [
+    {
+     "kind": "card_state",
+     "field": "sourceUrl",
+     "value": "https://lantheusholdings.gcs-web.com/news-releases/news-release-details/lantheus-presents-results-primary-analysis-phase-3-pivotal"
+    },
+    {
+     "kind": "card_state",
+     "field": "pmid",
+     "value": "None"
+    }
+   ],
+   "priority": "medium",
+   "detection_method": "pipeline_signal",
+   "origin": "auditoria dos cards secundários (secondary-cards.js)",
+   "related_decisions": [],
+   "id": "INT-splash-primary-analysis-esmo-2024-001",
+   "dedupe_key": "splash-primary-analysis-esmo-2024|unsupported_claim|clinicalTakeaway,deep",
+   "status": "open",
+   "human_decision": null,
+   "resolution": null,
+   "first_detected_at": "2026-09-30",
+   "last_reviewed_at": null,
+   "related_ids": [],
+   "history": [
+    {
+     "at": "2026-09-30",
+     "event": "detected",
+     "by": "auditoria dos cards secundários (secondary-cards.js)"
+    }
+   ]
+  },
+  {
+   "uid": "therap-ctdna-fraction-asco-2024",
+   "card": "TheraP (ANZUP 1603) — secundário (congress_abstract)",
+   "issue_type": "unsupported_claim",
+   "affected_fields": [
+    "deep",
+    "clinicalTakeaway"
+   ],
+   "description": "Card secundário baseado em resumo de congresso sem PMID: números clínicos em deep/clinicalTakeaway não verificáveis nas fontes permitidas (PubMed/PMC).",
+   "evidence": [
+    {
+     "kind": "card_state",
+     "field": "sourceUrl",
+     "value": "https://ascopubs.org/doi/10.1200/JCO.2024.42.16_suppl.5055"
+    },
+    {
+     "kind": "card_state",
+     "field": "pmid",
+     "value": "None"
+    }
+   ],
+   "priority": "low",
+   "detection_method": "pipeline_signal",
+   "origin": "auditoria dos cards secundários (secondary-cards.js)",
+   "related_decisions": [],
+   "id": "INT-therap-ctdna-fraction-asco-2024-001",
+   "dedupe_key": "therap-ctdna-fraction-asco-2024|unsupported_claim|clinicalTakeaway,deep",
+   "status": "open",
+   "human_decision": null,
+   "resolution": null,
+   "first_detected_at": "2026-09-30",
+   "last_reviewed_at": null,
+   "related_ids": [],
+   "history": [
+    {
+     "at": "2026-09-30",
+     "event": "detected",
+     "by": "auditoria dos cards secundários (secondary-cards.js)"
+    }
+   ]
+  },
+  {
    "uid": "tireoide_avancado_14",
    "card": "Nixon MSKCC Lobectomy (2012)",
    "issue_type": "eligibility_mismatch",
@@ -4834,6 +5093,88 @@
      "event": "status:open→confirmed",
      "by": "editor",
      "note": "confirmado na auditoria do gerador de citações (aprovada em 2026-09-29)"
+    }
+   ]
+  },
+  {
+   "uid": "vision-prior-concomitant-treatment-subgroups-2022",
+   "card": "VISION — secundário (congress_abstract)",
+   "issue_type": "unsupported_claim",
+   "affected_fields": [
+    "deep",
+    "clinicalTakeaway"
+   ],
+   "description": "Card secundário baseado em resumo de congresso sem PMID: números clínicos em deep/clinicalTakeaway não verificáveis nas fontes permitidas (PubMed/PMC).",
+   "evidence": [
+    {
+     "kind": "card_state",
+     "field": "sourceUrl",
+     "value": "https://ascopubs.org/doi/10.1200/JCO.2022.40.16_suppl.5001"
+    },
+    {
+     "kind": "card_state",
+     "field": "pmid",
+     "value": "None"
+    }
+   ],
+   "priority": "low",
+   "detection_method": "pipeline_signal",
+   "origin": "auditoria dos cards secundários (secondary-cards.js)",
+   "related_decisions": [],
+   "id": "INT-vision-prior-concomitant-treatment-subgroups-2022-001",
+   "dedupe_key": "vision-prior-concomitant-treatment-subgroups-2022|unsupported_claim|clinicalTakeaway,deep",
+   "status": "open",
+   "human_decision": null,
+   "resolution": null,
+   "first_detected_at": "2026-09-30",
+   "last_reviewed_at": null,
+   "related_ids": [],
+   "history": [
+    {
+     "at": "2026-09-30",
+     "event": "detected",
+     "by": "auditoria dos cards secundários (secondary-cards.js)"
+    }
+   ]
+  },
+  {
+   "uid": "vision-tumor-dosimetry-asco-2023",
+   "card": "VISION — secundário (congress_abstract)",
+   "issue_type": "unsupported_claim",
+   "affected_fields": [
+    "deep",
+    "clinicalTakeaway"
+   ],
+   "description": "Card secundário baseado em resumo de congresso sem PMID: números clínicos em deep/clinicalTakeaway não verificáveis nas fontes permitidas (PubMed/PMC).",
+   "evidence": [
+    {
+     "kind": "card_state",
+     "field": "sourceUrl",
+     "value": "https://ascopubs.org/doi/10.1200/JCO.2023.41.16_suppl.5046"
+    },
+    {
+     "kind": "card_state",
+     "field": "pmid",
+     "value": "None"
+    }
+   ],
+   "priority": "low",
+   "detection_method": "pipeline_signal",
+   "origin": "auditoria dos cards secundários (secondary-cards.js)",
+   "related_decisions": [],
+   "id": "INT-vision-tumor-dosimetry-asco-2023-001",
+   "dedupe_key": "vision-tumor-dosimetry-asco-2023|unsupported_claim|clinicalTakeaway,deep",
+   "status": "open",
+   "human_decision": null,
+   "resolution": null,
+   "first_detected_at": "2026-09-30",
+   "last_reviewed_at": null,
+   "related_ids": [],
+   "history": [
+    {
+     "at": "2026-09-30",
+     "event": "detected",
+     "by": "auditoria dos cards secundários (secondary-cards.js)"
     }
    ]
   }
