@@ -7,7 +7,8 @@
   STATUS_PUBLISHED          status 'Apresentado' com artigo publicado validado                 → P3 freshness
   MASKING_CROSS_SOURCE      mascaramento do registro × da publicação                            → CONFLICT, sem escolha
   BACKLOG_UNADDRESSED       item aberto/confirmado do backlog que o curator não tratou         → encaminhado (P2)
-  SUMMARY_FIELD_REVIEW      update/follow-up no primario/secundario sem revisar resultado_chave → P1, revisão
+  SUMMARY_FIELD_REVIEW      update/follow-up no primario/secundario sem revisar resultado_chave → lembrete (WATCH)
+  PRESENTED_UNSOURCED       'Apresentado' com número de resultado e sem publicação no pacote   → REVIEW
 Nenhuma regra conhece estudo; todas leem só o pacote e a proposta.
 """
 from __future__ import annotations
@@ -98,7 +99,19 @@ def itens(pacote: dict, proposta: dict, pasta) -> list[dict]:
     if atualiza and "resultado_chave" not in propostos and card.get("resultado_chave") not in (None, "", "—"):
         novo(field="resultado_chave", current_value=card.get("resultado_chave"), proposed_value=None,
              change_kind="none", proposal_type="SAME_ANALYSIS_UPDATE", defect="newer_data_same_analysis",
-             reason="primario/secundario mudam com dado da mesma análise; o resumo resultado_chave precisa ser revisto",
-             _det_priority="P1", _det_reason="campo-resumo dependente não revisado",
+             reason="lembrete: primario/secundario mudam; conferir se o resumo resultado_chave acompanha",
+             _det_priority="P2", _det_reason="lembrete de campo-resumo (WATCH), nunca P1 sozinho",
+             _automation="WATCH",
              _depends_on=[it["proposal_id"] for it in atualiza])   # só vale se alguma delas passar no verifier
+    # card 'Apresentado' com número de resultado e nenhuma publicação no pacote: REVIEW, sem tentar corrigir
+    niveis = {f.get("text_level") for f in fontes.values()}
+    if "apresent" in str(card.get("status") or "").lower() and not niveis & {"abstract", "fulltext"}:
+        com_numero = [c for c in ("primario", "resultado_chave", "secundario", "tox_g3")
+                      if re.search(r"\d", str(card.get(c) or ""))]
+        if com_numero:
+            novo(field=com_numero[0], current_value=card.get(com_numero[0]), proposed_value=None, change_kind="none",
+                 proposal_type="WATCH", defect="unsupported_claim",
+                 reason=f"card 'Apresentado' com números de resultado em {', '.join(com_numero)} e nenhuma publicação "
+                        "no pacote: conferência humana da fonte, sem correção automática",
+                 _det_priority="P1", _det_reason="resultado sem fonte no pacote (Apresentado)", _automation="REVIEW")
     return out

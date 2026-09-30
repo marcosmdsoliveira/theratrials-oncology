@@ -133,6 +133,19 @@
        "none"
       ]
      },
+     "component": {
+      "enum": [
+       "primary_value",
+       "subvalue",
+       "arm",
+       "denominator",
+       "population",
+       "analysis_set",
+       "methodology",
+       "context",
+       "other"
+      ]
+     },
      "source_used": {
       "type": [
        "string",
@@ -168,6 +181,7 @@
      "verdict",
      "current_value_status",
      "support",
+     "component",
      "reason"
     ]
    }

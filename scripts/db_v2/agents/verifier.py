@@ -85,7 +85,7 @@ def ingerir_segundo(uid: str, texto: str, ids: list[str]) -> dict:
     ra = {r["proposal_id"]: r for r in atual["results"]}
     rb = {r["proposal_id"]: r for r in b["results"] if r["proposal_id"] in ids}
     resumo = lambda r: {k: (r.get(k) if k != "reason" else (r.get("semantic") or {}).get("reason"))  # noqa: E731
-                        for k in ("verdict", "current_value_status", "support", "reason")}
+                        for k in ("verdict", "current_value_status", "support", "component", "reason")}
     atual["consensus"] = {pid: {"state": consenso(ra[pid]["verdict"], (rb.get(pid) or {}).get("verdict")),
                                 "run_a": resumo(ra[pid]), "run_b": resumo(rb[pid]) if pid in rb else None}
                           for pid in ids if pid in ra}
@@ -134,6 +134,7 @@ def fundir(prop: dict, llm: dict | None, det: dict[str, list[dict]], fontes: dic
         final = K.pior([dv, sv] + ([suf] if suf != "PASS" and sv == "PASS" else []))
         saida.append({"proposal_id": pid, "field": it.get("field"), "verdict": final,
                       "origin": "curator", "current_value_status": (r or {}).get("current_value_status"),
+                      "component": (r or {}).get("component"),
                       "support": (r or {}).get("support"), "sufficiency": suf_motivo or None,
                       "deterministic": {"verdict": dv, "findings": det.get(pid, [])},
                       "semantic": {"verdict": sv, "reason": (r or {}).get("reason", "verifier não avaliou o item"),

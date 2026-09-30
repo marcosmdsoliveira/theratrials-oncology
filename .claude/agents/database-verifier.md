@@ -61,6 +61,9 @@ fonte. Você **não confia no curator**: não recebe o raciocínio dele e não d
   - `inferred`: exige dedução;
   - `none`.
   PASS exige `explicit`. Com `partial` ou `inferred`, o veredito é UNSUPPORTED.
+- **`component`**: classifique VOCÊ, pela fonte, qual parte do valor muda: `primary_value`, `subvalue`, `arm`,
+  `denominator`, `population`, `analysis_set`, `methodology`, `context` ou `other`. O `component` do curator é uma
+  alegação; não o copie sem conferir.
 - O `defect` declarado pelo curator é uma alegação. Confira se o `current_value_status` o confirma e não o aceite só
   porque foi alegado.
 

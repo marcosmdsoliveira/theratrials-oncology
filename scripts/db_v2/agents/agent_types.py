@@ -35,6 +35,13 @@ DEFECTS = ["identifier_mismatch", "represented_publication_wrong", "arm_role_inv
            "unsupported_claim", "imprecision", "newer_data_same_analysis", "enrichment", "stale_status",
            "bibliographic_format", "editorial", "within_source_conflict", "cross_source_conflict"]
 P0_DEFECTS = set(DEFECTS[:10])
+
+# componente afetado pela mudança: o curator declara, o verifier confirma de forma independente
+COMPONENTS = ["primary_value", "subvalue", "arm", "denominator", "population", "analysis_set", "methodology", "context",
+              "other"]
+COMPONENTES_MATERIAIS = {"primary_value", "arm", "denominator"}     # únicos que sustentam P0 por contradição numérica
+AUTOMATION = ["AUTO", "REVIEW", "WATCH"]
+
 CURRENT_VALUE_STATUS = ["CONTRADICTED", "SUPPORTED", "NOT_ADDRESSED", "UNSUPPORTED"]
 SUPPORT_LEVELS = ["explicit", "partial", "inferred", "none"]
 ORIGINS = ["curator", "deterministic"]
@@ -125,7 +132,7 @@ PROPOSAL_ITEM_SCHEMA = {
     "properties": {
         "proposal_id": STR, "field": STR, "current_value": {}, "proposed_value": {},
         "change_kind": _enum(CHANGE_KINDS), "proposal_type": _enum(PROPOSAL_TYPES), "priority": _enum(PRIORITIES),
-        "defect": _enum(DEFECTS), "origin": _enum(ORIGINS),
+        "defect": _enum(DEFECTS), "origin": _enum(ORIGINS), "component": _enum(COMPONENTS),
         "value_origin": _enum(VALUE_ORIGIN), "evidence": {"type": "array", "items": EVIDENCE_SCHEMA},
         "absence_checked_in": {"type": "array", "items": STR},
         "derivation": DERIVATION_SCHEMA, "analysis_signature_ref": NSTR,
@@ -137,7 +144,7 @@ PROPOSAL_ITEM_SCHEMA = {
         "reason": STR, "confidence": {"type": "object"}, "editorial_impact": _enum(EDITORIAL_IMPACT),
     },
     "required": ["proposal_id", "field", "current_value", "proposed_value", "change_kind", "proposal_type",
-                 "defect", "value_origin", "evidence", "reason"],
+                 "defect", "component", "value_origin", "evidence", "reason"],
 }
 
 PROPOSAL_SCHEMA = {
@@ -165,7 +172,8 @@ PROPOSAL_SCHEMA = {
 
 # o que o verifier recebe de cada item (sem reason / confidence / editorial_impact do curator)
 VERIFIER_VISIBLE = ["proposal_id", "field", "current_value", "proposed_value", "change_kind", "value_origin",
-                    "defect", "evidence", "absence_checked_in", "derivation", "analysis_signature_ref", "conflict"]
+                    "defect", "component", "evidence", "absence_checked_in", "derivation", "analysis_signature_ref",
+                    "conflict"]
 
 VERIFICATION_SCHEMA = {
     "$id": f"theratrials-db-verifier-result/{VERSAO}",
@@ -179,9 +187,11 @@ VERIFICATION_SCHEMA = {
         "results": {"type": "array", "items": {"type": "object", "properties": {
             "proposal_id": STR, "field": STR, "verdict": _enum(VERDICTS),
             "current_value_status": _enum(CURRENT_VALUE_STATUS), "support": _enum(SUPPORT_LEVELS),
+            "component": _enum(COMPONENTS),
             "source_used": NSTR, "snippet": NSTR, "locator": NSTR, "analysis_signature_ref": NSTR,
             "reason": {"type": "string", "minLength": 5}},
-            "required": ["proposal_id", "field", "verdict", "current_value_status", "support", "reason"]}},
+            "required": ["proposal_id", "field", "verdict", "current_value_status", "support", "component",
+                         "reason"]}},
     },
     "required": ["schema", "uid", "proposal_sha256", "results"],
 }

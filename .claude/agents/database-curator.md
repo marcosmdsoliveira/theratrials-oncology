@@ -109,6 +109,18 @@ Um JSON **só**, sem texto fora dele, no schema `theratrials-db-curator-proposal
     afirmações de ausência exigem que o detalhe esteja escrito na fonte disponível. Se não estiver, não proponha
     (deixe em `watch`).
 
+18. **`component` é obrigatório em cada item** e diz QUAL parte do valor muda:
+    - `primary_value`: o resultado principal do campo (a comparação-manchete, o desfecho principal, o G≥3 total);
+    - `subvalue`: um subvalor (um EA específico, um subgrupo, um número secundário do mesmo campo);
+    - `arm`: atribuição ao braço; `denominator`: n ou denominador;
+    - `population`: população ou coorte; `analysis_set`: conjunto de análise (ITT, mITT, per-protocol, segurança);
+    - `methodology`: desenho, α, poder, estratificação, parâmetros;
+    - `context`: texto de contexto; `other`.
+    Só `primary_value`, `arm` e `denominator` sustentam prioridade máxima por número contradito.
+19. **Update (`SAME_ANALYSIS_UPDATE`/`LONG_TERM_FOLLOWUP`)** só com assinatura PRÓPRIA do dado novo
+    (`analysis_signature_ref`), compatível com a da análise do card em trial, população, coorte, conjunto de análise,
+    braços/comparação e desfecho. Se algo diverge ou você não sabe, não chame de update.
+
 ## Tipos e prioridades
 | Tipo | Quando usar |
 |---|---|

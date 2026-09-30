@@ -406,6 +406,19 @@
        "deterministic"
       ]
      },
+     "component": {
+      "enum": [
+       "primary_value",
+       "subvalue",
+       "arm",
+       "denominator",
+       "population",
+       "analysis_set",
+       "methodology",
+       "context",
+       "other"
+      ]
+     },
      "value_origin": {
       "enum": [
        "reported",
@@ -584,6 +597,7 @@
      "change_kind",
      "proposal_type",
      "defect",
+     "component",
      "value_origin",
      "evidence",
      "reason"

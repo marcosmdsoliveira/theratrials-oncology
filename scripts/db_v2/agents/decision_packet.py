@@ -27,11 +27,12 @@ import sys
 
 AQUI = pathlib.Path(__file__).resolve().parent
 try:
-    from . import agent_types as T, curator as C, priority as PR, sources as S, verifier as V
+    from . import agent_types as T, curator as C, priority as PR, signature as G, sources as S, verifier as V
 except ImportError:
     import agent_types as T
     import curator as C
     import priority as PR
+    import signature as G
     import sources as S
     import verifier as V
 
@@ -51,7 +52,8 @@ def montar(uid: str) -> dict:
     campos, conflitos, fontes = [], [], set()
     for it in itens:
         r = vered.get(it["proposal_id"], {"verdict": "UNSUPPORTED"})
-        prio, prio_motivo = PR.classificar(it, r["verdict"], r.get("current_value_status"), pk)
+        prio, prio_motivo = PR.classificar({**it, "_component_verified": r.get("component")}, r["verdict"],
+                                           r.get("current_value_status"), pk)
         campos.append({"final_priority": prio, "priority_reason": prio_motivo, "origin": it.get("origin", "curator"),
                        "defect": it.get("defect"), "current_value_status": r.get("current_value_status"),"proposal_id": it["proposal_id"], "field": it["field"], "current": it.get("current_value"),
                        "proposed": it.get("proposed_value"), "change_kind": it.get("change_kind"),
@@ -60,6 +62,8 @@ def montar(uid: str) -> dict:
                        "verifier_reason": (r.get("semantic") or {}).get("reason"),
                        "deterministic": (r.get("deterministic") or {}).get("verdict"),
                        "human_decision_protected": it["field"] in protegidos,
+                       "component": it.get("component"), "component_verified": r.get("component"),
+                       "support": r.get("support"), "sufficiency": r.get("sufficiency"),
                        "evidence": [{k: e.get(k) for k in ("source_id", "locator", "snippet")}
                                     for e in it.get("evidence") or []]})
         fontes |= {e.get("source_id") for e in it.get("evidence") or []}
@@ -72,6 +76,9 @@ def montar(uid: str) -> dict:
     cons = (ver or {}).get("consensus") or {}
     por_id = {it["proposal_id"]: it for it in itens}
     for c in campos:
+        if c["proposal_id"] in cons and not (c["final_priority"] == "P0" and c["origin"] == "curator"):
+            k = cons[c["proposal_id"]]                   # 2ª execução de candidato a AUTO: registra lado a lado
+            c["verifier_consensus"], c["run_a"], c["run_b"] = k["state"], k.get("run_a"), k.get("run_b")
         if c["final_priority"] != "P0" or c["origin"] != "curator":
             continue
         k = cons.get(c["proposal_id"])
@@ -130,6 +137,12 @@ def montar(uid: str) -> dict:
                                 "verifier_fail" if not contagem["PASS"] else "verifier_partial"),
         "published_write": "human_required",
     }
+    # eixo independente da prioridade: o que pode sair da fila humana COM SEGURANÇA
+    dominio_rel = pk["publication_relationship"]["status"]
+    rel_ok = dominio_rel == "human_decision" or ((ver or {}).get("relationship") or {}).get("verdict") == "PASS"
+    for c in campos:
+        c["automation_eligibility"], c["automation_reason"], c["auto_candidate"] = _automacao(
+            c, por_id.get(c["proposal_id"]) or {}, vered.get(c["proposal_id"]) or {}, pk, prop or {}, rel_ok, altos)
     bloqueio = any(c.get("human_review_required") for c in campos)
     if pk["withheld"]:
         sug, motivo = "NONE", "card em quarentena (withheld_due_to_integrity): nenhuma proposta clínica"
@@ -168,9 +181,76 @@ def montar(uid: str) -> dict:
         "human_required": humano, "counts_toward_weekly_budget": no_orcamento,
         "verifier_consensus": {c["proposal_id"]: c["verifier_consensus"] for c in campos if "verifier_consensus" in c},
         "auto_approval_blocked": bloqueio,
+        "automation": ("REVIEW" if any(c["automation_eligibility"] == "REVIEW" for c in campos) else
+                       "AUTO" if any(c["automation_eligibility"] == "AUTO" for c in campos) else
+                       "WATCH" if campos else None),
+        "automation_counts": dict(collections.Counter(c["automation_eligibility"] for c in campos)),
         "final_decision": None,
         "deterministic_findings": pk["deterministic_findings"],
     }
+
+
+# campos em que uma correção verificada pode ser aplicada sem revisão clínica (fatos extraíveis, não interpretativos)
+CAMPOS_AUTO = {"ano_pub", "status", "periodo", "centros", "sponsor", "incl", "excl", "estrat", "basal", "esquema",
+               "molecular", "biomarc", "preparo"}
+CAMPOS_INTERPRETATIVOS = {"takehome", "limit", "impacto_reg", "resultado_chave", "indicacao", "desenho", "subgrupo",
+                          "analises", "estatistica", "comparador"}
+
+
+def _automacao(c: dict, it: dict, r: dict, pk: dict, prop: dict, rel_ok: bool, altos: set):
+    """(AUTO | REVIEW | WATCH | None, motivo, candidato_a_auto). AUTO só com TODAS as condições; na dúvida, humano."""
+    v, campo = c["verdict"], c["field"]
+    if c["final_priority"] is None:
+        return None, "fora da fila", False
+    if it.get("_automation"):
+        return it["_automation"], "regra determinística", False
+    if v == "CONFLICT" or it.get("conflict"):
+        return "REVIEW", "conflito", False
+    if c.get("verifier_consensus") == "DISAGREEMENT":
+        return "REVIEW", "divergência entre verifiers", False
+    if c["final_priority"] == "P0":
+        return "REVIEW", "P0 material", False
+    if c["human_decision_protected"]:
+        return "REVIEW", "decisão humana anterior", False
+    if c["proposal_type"] in G.TIPOS_UPDATE:
+        ok, mot = G.update_compativel(it, prop)
+        c["update_compatibility"] = mot
+        if not ok:
+            return "REVIEW", f"update sem compatibilidade demonstrada: {mot}", False
+    if campo in CAMPOS_INTERPRETATIVOS:
+        return "REVIEW", "campo interpretativo", False
+    if c["origin"] != "curator":
+        return ("REVIEW" if campo in altos else "WATCH"), "item de regra/backlog encaminhado", False
+    if v in ("FAIL", "UNSUPPORTED"):
+        if c.get("current_value_status") == "CONTRADICTED" or campo in altos:
+            return "REVIEW", "valor atual contradito (ou backlog high) sem correção verificada", False
+        return "WATCH", "fonte insuficiente / não verificado, sem erro atual confirmado", False
+    if c["defect"] == "stale_status":
+        return "WATCH", "freshness sem impacto material", False
+    faltas = [m for cond, m in [
+        (pk["identity"]["status"] in ("machine_verified", "human_verified", "human_decision"), "identidade"),
+        (rel_ok, "relação de publicação"),
+        (not it.get("_flags"), "assinatura/flags"),
+        (not c.get("sufficiency") and c.get("support") == "explicit", "suficiência de fonte"),
+        (it.get("_precheck_verdict") == "PASS", "pré-checagem do curator"),
+        (c.get("component") and c.get("component") == c.get("component_verified"), "componente não confirmado"),
+        (c.get("deterministic") == "PASS", "checagem determinística"),
+        (not altos, "backlog high no card"),
+        (campo in CAMPOS_AUTO, "campo fora da automação"),
+        (c.get("value_origin") in ("reported", "editorial") and c.get("proposed") not in (None, ""), "valor/origem"),
+    ] if not cond]
+    fila = "REVIEW" if c["final_priority"] in ("P0", "P1") else "WATCH"
+    if faltas:
+        return fila, "não elegível a AUTO: " + ", ".join(faltas), False
+    if c.get("verifier_consensus") != "UNANIMOUS_PASS":
+        return fila, "candidato a AUTO: exige verifier B = PASS", True
+    return "AUTO", "todas as condições de AUTO atendidas (A e B PASS)", False
+
+
+def candidatos_b(uid: str) -> list[str]:
+    """2ª verificação independente: itens P0 do curator e candidatos a AUTO."""
+    return [c["proposal_id"] for c in montar(uid)["fields"]
+            if c["origin"] == "curator" and (c["final_priority"] == "P0" or c.get("auto_candidate"))]
 
 
 def candidatos_p0(uid: str) -> list[str]:

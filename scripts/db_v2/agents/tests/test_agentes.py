@@ -51,7 +51,7 @@ def ev(snippet, loc="¶0001 [Results > Efficacy]", sid="pmc:PMC1:fulltext", tipo
 def item(**kw):
     base = {"proposal_id": "p1", "field": "primario", "current_value": "x", "proposed_value": "PFS 8,3 vs 5,6 m",
             "change_kind": "replace", "proposal_type": "INTEGRITY_FIX", "defect": "numeric_contradiction",
-            "value_origin": "reported",
+            "component": "primary_value", "value_origin": "reported",
             "evidence": [ev("Median PFS was 8.3 months (80% CI 5.8-11.4) with drug A and 5.6 months")],
             "reason": "r", "confidence": {"clinical_extraction": "high"}, "editorial_impact": "high"}
     base.update(kw)
@@ -229,6 +229,30 @@ class Consenso(unittest.TestCase):
         self.assertFalse(vis & {"verdict", "run_a", "consensus", "semantic"})
 
 
+def assin(sid, pub, **kw):
+    base = {"signature_id": sid, "trial_key": "T", "registry_ids": ["NCT1"], "cohort": None, "population": "mCRPC",
+            "analysis_set": "ITT", "endpoint": "OS", "comparison": "A vs B", "publication_id": pub,
+            "arms": [{"label": "A", "role": "experimental"}, {"label": "B", "role": "control"}]}
+    base.update(kw)
+    return base
+
+
+class UpdateCompativel(unittest.TestCase):
+    PROP = {"represented_publication": {"publication_id": "pmid:1"}}
+
+    def test_update_compativel_e_divergente(self):
+        prop = {**self.PROP, "analysis_signatures": [assin("s1", "pmid:1"), assin("s2", "pmid:2")]}
+        self.assertTrue(G.update_compativel({"analysis_signature_ref": "s2"}, prop)[0])
+        for k, v in [("population", "ITT total"), ("analysis_set", "mITT"), ("endpoint", "PFS"), ("cohort", "B"),
+                     ("population", None)]:
+            prop = {**self.PROP, "analysis_signatures": [assin("s1", "pmid:1"), assin("s2", "pmid:2", **{k: v})]}
+            self.assertFalse(G.update_compativel({"analysis_signature_ref": "s2"}, prop)[0], k)
+
+    def test_update_sem_assinatura_propria_nao_e_compativel(self):
+        prop = {**self.PROP, "analysis_signatures": [assin("s1", "pmid:1")]}
+        self.assertFalse(G.update_compativel({"analysis_signature_ref": "s1"}, prop)[0])
+
+
 class OrigemImposta(unittest.TestCase):
     def test_curator_nao_pode_se_declarar_deterministico_para_escapar_do_verifier(self):
         tmp = pathlib.Path(tempfile.mkdtemp())
@@ -291,6 +315,7 @@ class PacoteDeDecisao(unittest.TestCase):
             "proposal_type": "INTEGRITY_FIX", "summary": "s"}, "proposals": itens}))
         (V.VERIF / "u.json").write_text(json.dumps({"results": [
             {"proposal_id": f"p{i}", "verdict": v, "current_value_status": cvs, "deterministic": {"verdict": v},
+             "component": "primary_value",
              "semantic": {"reason": "r"}}
             for i, v in enumerate(vereditos)], "relationship": {"verdict": "PASS"},
             **({"consensus": {f"p{i}": {"state": V.consenso(va, vb),
@@ -353,6 +378,41 @@ class PacoteDeDecisao(unittest.TestCase):
         self.assertEqual([(f["origin"], f["field"], f["final_priority"]) for f in p["fields"]],
                          [("backstop", "primario", "P2")])
         self.assertEqual((p["suggested_decision"], p["counts_toward_weekly_budget"]), ("WATCH", False))
+
+    def _auto(self, campo="incl", segundo="same", extra=None, **kw):
+        extra = {"identity": {"status": "machine_verified"}, **(extra or {})}
+        p = self.montar(["PASS"], cvs="CONTRADICTED", segundo=segundo, extra=extra)
+        prop = json.loads((C.CURADOR / "u.json").read_text())
+        prop["proposals"][0].update({"field": campo, "defect": "unsupported_claim", "_precheck_verdict": "PASS",
+                                     **kw})
+        (C.CURADOR / "u.json").write_text(json.dumps(prop))
+        ver = json.loads((V.VERIF / "u.json").read_text())
+        ver["results"][0].update({"support": "explicit", "sufficiency": None, "field": campo})
+        if segundo:
+            ver["consensus"] = {"p0": {"state": "UNANIMOUS_PASS" if segundo == "same" else "DISAGREEMENT",
+                                       "run_a": {"verdict": "PASS"}, "run_b": {"verdict": "PASS" if segundo == "same"
+                                                                               else "FAIL"}}}
+        (V.VERIF / "u.json").write_text(json.dumps(ver))
+        return D.montar("u")["fields"][0]
+
+    def test_auto_so_com_todas_as_condicoes(self):
+        self.assertEqual(self._auto()["automation_eligibility"], "AUTO")
+        f = self._auto(segundo=None)                                  # sem verifier B
+        self.assertEqual((f["automation_eligibility"], f["auto_candidate"]), ("REVIEW", True))
+        self.assertEqual(self._auto(segundo="diverge")["automation_eligibility"], "REVIEW")
+        self.assertEqual(self._auto(campo="takehome")["automation_eligibility"], "REVIEW")
+        self.assertEqual(self._auto(extra={"backlog": [{"id": "x", "status": "open", "priority": "high",
+                                                         "affected_fields": ["periodo"]}]})["automation_eligibility"],
+                         "REVIEW")
+        self.assertNotEqual(self._auto(value_origin="derived")["automation_eligibility"], "AUTO")
+        self.assertNotEqual(self._auto(component="subvalue")["automation_eligibility"], "AUTO")
+
+    def test_unsupported_sem_erro_atual_e_watch_update_incompativel_e_review(self):
+        p = self.montar(["UNSUPPORTED"], cvs="NOT_ADDRESSED")
+        self.assertEqual(p["fields"][0]["automation_eligibility"], "WATCH")
+        f = self._auto(campo="secundario", proposal_type="LONG_TERM_FOLLOWUP", defect="newer_data_same_analysis")
+        self.assertEqual(f["automation_eligibility"], "REVIEW")
+        self.assertIn("compatibilidade", f["automation_reason"])
 
     def test_backlog_high_aberto_nunca_abaixo_de_p1(self):
         extra = {"backlog": [{"id": "INT-u-001", "status": "open", "priority": "high", "affected_fields": ["primario"],
@@ -426,8 +486,8 @@ PK = {"deterministic_findings": [], "human_decision_protected_fields": []}
 FRESH = {"deterministic_findings": [{"code": "FRESHNESS_PRESENTED_BUT_PUBLISHED"}], "human_decision_protected_fields": []}
 
 
-def prio(pacote=PK, veredito="PASS", cvs="CONTRADICTED", **kw):
-    return PR.classificar(item(**kw), veredito, cvs, pacote)[0]
+def prio(pacote=PK, veredito="PASS", cvs="CONTRADICTED", comp_v="primary_value", **kw):
+    return PR.classificar({**item(**kw), "_component_verified": comp_v}, veredito, cvs, pacote)[0]
 
 
 class Prioridade(unittest.TestCase):
@@ -530,6 +590,13 @@ class Prioridade(unittest.TestCase):
         self.assertEqual(prio(field="primario", defect="numeric_contradiction",
                               current_value="rPFS HR 0,47; p=0,0013", proposed_value="rPFS HR 0,50; p=0,0042"), "P0")
 
+    def test_p0_numerico_exige_componente_material_declarado_e_confirmado(self):
+        self.assertEqual(prio(field="primario", defect="numeric_contradiction"), "P0")
+        self.assertEqual(prio(field="primario", defect="numeric_contradiction", component="subvalue"), "P1")
+        self.assertEqual(prio(field="primario", defect="numeric_contradiction", comp_v="methodology"), "P1")
+        self.assertEqual(prio(field="primario", defect="numeric_contradiction", comp_v=None), "P1")
+        self.assertEqual(prio(field="tox_g3", defect="numeric_contradiction", component="arm", comp_v="arm"), "P0")
+
     def test_atualizacao_fora_de_campo_de_resultado_nao_e_p1(self):
         self.assertEqual(prio(field="centros", proposal_type="SAME_ANALYSIS_UPDATE", defect="enrichment",
                               cvs="NOT_ADDRESSED"), "P2")
@@ -606,7 +673,15 @@ class Deterministicos(unittest.TestCase):
         prop = {"proposals": [item(field="secundario", proposal_type="LONG_TERM_FOLLOWUP",
                                    defect="newer_data_same_analysis")]}
         campos = {(i["field"], i["_det_priority"]) for i in DT.itens(pk, prop, d)}
-        self.assertEqual(campos, {("periodo", "P2"), ("resultado_chave", "P1")})
+        self.assertEqual(campos, {("periodo", "P2"), ("resultado_chave", "P2")})   # resumo: só lembrete (WATCH)
+        resumo = [i for i in DT.itens(pk, prop, d) if i["field"] == "resultado_chave"][0]
+        self.assertEqual(resumo["_automation"], "WATCH")
+
+    def test_apresentado_com_numero_sem_fonte_vai_a_review_sem_correcao(self):
+        d, pk = pacote_det({"status": "Apresentado (ASCO 2026)", "primario": "iDFS HR 0,70"}, [],
+                           {"nct:NCT1:registry": ("ctgov_record", "registry", [("x", "y")])})
+        it = [i for i in DT.itens(pk, {"proposals": []}, d) if i["field"] == "primario"][0]
+        self.assertEqual((it["proposed_value"], it["_automation"], it["_det_priority"]), (None, "REVIEW", "P1"))
 
 
 class Suficiencia(unittest.TestCase):

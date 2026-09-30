@@ -120,3 +120,35 @@ def validar(s: dict) -> list[str]:
     if "experimental" in papeis and "control" not in papeis and len(papeis) > 1:
         e.append("braços com experimental sem controle declarado")
     return e
+
+
+TIPOS_UPDATE = {"SAME_ANALYSIS_UPDATE", "LONG_TERM_FOLLOWUP"}
+
+
+def update_compativel(item: dict, proposta: dict) -> tuple[bool, str]:
+    """Um update só é aceito como update se a assinatura do dado novo é compatível com a da análise do card em
+    trial, população, coorte, conjunto de análise, braços/comparação e desfecho. Qualquer divergência OU dúvida
+    (campo ausente, assinatura não distinta) → False: vai para REVIEW, nunca como update automático."""
+    sigs = {s.get("signature_id"): s for s in proposta.get("analysis_signatures") or []}
+    nova = sigs.get(item.get("analysis_signature_ref"))
+    rep = (proposta.get("represented_publication") or {}).get("publication_id")
+    base = [s for s in sigs.values() if s is not nova and s.get("publication_id") == rep] or \
+           [s for s in sigs.values() if s is not nova and s.get("publication_role") == "primary_publication"]
+    if not nova or not base:
+        return False, "sem assinatura distinta da análise do card e do dado novo: compatibilidade não demonstrável"
+    b = base[0]
+    if _ids(b) and _ids(nova) and not (_ids(b) & _ids(nova)):
+        return False, "trial diferente"
+    if _norm(b.get("trial_key")) != _norm(nova.get("trial_key")):
+        return False, "trial_key diferente ou ausente"
+    for k in ("population", "analysis_set", "endpoint", "comparison"):
+        if b.get(k) in (None, "") or nova.get(k) in (None, ""):
+            return False, f"{k} ausente: dúvida"
+        if _norm(b[k]) != _norm(nova[k]):
+            return False, f"{k} diverge: '{b[k]}' × '{nova[k]}'"
+    if _norm(b.get("cohort")) != _norm(nova.get("cohort")):
+        return False, "coorte diverge"
+    papeis = lambda s: sorted(a.get("role") for a in s.get("arms") or [])  # noqa: E731
+    if not papeis(b) or papeis(b) != papeis(nova):
+        return False, "braços divergem ou ausentes"
+    return True, "assinaturas compatíveis"

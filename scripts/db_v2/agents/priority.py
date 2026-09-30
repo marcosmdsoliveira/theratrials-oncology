@@ -96,6 +96,13 @@ def _principal_preservado(atual, proposto) -> bool:
     return len(a) == 2 and all(x in b for x in a)
 
 
+def componente_material(item: dict) -> bool:
+    """P0 por contradição numérica exige componente material DECLARADO pelo curator E CONFIRMADO pelo verifier
+    (primary_value, arm, denominator). Ausente ou divergente → não material."""
+    return (item.get("component") in T.COMPONENTES_MATERIAIS
+            and item.get("_component_verified") in T.COMPONENTES_MATERIAIS)
+
+
 def classificar(item: dict, veredito: str, cvs: str | None, pacote: dict) -> tuple[str | None, str]:
     """(prioridade final | None = fora da fila, motivo). Piso: valor ATUAL contradito em campo clínico → no mínimo
     P1, qualquer que seja o veredito da proposta (decisão humana registrada e campo human-only têm precedência)."""
@@ -148,6 +155,9 @@ def _classificar(item: dict, veredito: str, cvs: str | None, pacote: dict) -> tu
             if defeito == "numeric_contradiction" and _principal_preservado(item.get("current_value"),
                                                                             item.get("proposed_value")):
                 return ("P1" if clinico else "P3"), "valor principal preservado; contradição em subvalor/detalhe: P1"
+            if defeito == "numeric_contradiction" and not componente_material(item):
+                return ("P1" if clinico else "P3"), (f"componente {item.get('component')}/"
+                                                     f"{item.get('_component_verified')} não material: P1")
             if _p0_elegivel(defeito, campo):
                 return "P0", f"valor publicado contradito pela fonte ({defeito})"
             return ("P1" if clinico else "P3"), f"erro verificado ({defeito}) fora do valor clínico principal: P1 por padrão"

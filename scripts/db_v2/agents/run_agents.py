@@ -59,7 +59,7 @@ def _prompt(papel: str, uid: str) -> tuple[str, list[pathlib.Path]]:
     if papel == "curator":
         return (C.tarefa(uid) + "\nLeia só o pacote e o schema acima. Responda APENAS com o JSON.", [pacote, schemas])
     if papel == "verifier_b":                       # segunda verificação independente, só dos itens P0
-        V.entrada(uid, so_ids=D.candidatos_p0(uid), sufixo="_b")
+        V.entrada(uid, so_ids=D.candidatos_b(uid), sufixo="_b")
         tarefa = S.STATE / "tasks" / f"{uid}.verifier_input_b.json"
     else:
         V.entrada(uid)
@@ -131,9 +131,9 @@ def main(argv=None) -> int:
     papel, uids = a[0], a[1:]
     assert papel in ("curator", "verifier", "verifier_b"), papel
     if papel == "verifier_b":                        # só cards com item P0; os demais não têm o que reverificar
-        sem = [u for u in uids if not D.candidatos_p0(u)]
+        sem = [u for u in uids if not D.candidatos_b(u)]
         for u in sem:
-            print(f"SKIP verifier_b {u[:44]:44s} sem item P0")
+            print(f"SKIP verifier_b {u[:44]:44s} sem item P0 nem candidato a AUTO")
         uids = [u for u in uids if u not in sem]
     falhas = 0
     with cf.ThreadPoolExecutor(max_workers=par) as ex:
