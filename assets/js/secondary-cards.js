@@ -6,7 +6,7 @@
    Cada card confirmado em fonte Nível 1-2 (PubMed E-utilities + Crossref).
    Campo `deep` (objetivo/método/achados/interpretação/limitações) extraído dos
    abstracts oficiais — nenhum número inventado; linguagem cautelosa.
-   Atualizado: 2026-06-07.
+   Atualizado: 2026-09-30 (6 cards enriquecidos e verificados; proveniência em scripts/db_secundarios_proveniencia.json).
 ============================================================================= */
 window.THERA_SECONDARY = [
   {
@@ -54,7 +54,7 @@ window.THERA_SECONDARY = [
     "parentUid": "lupsma_prostata_0",
     "parentTrialName": "VISION",
     "parentTrialPublication": "Sartor O, et al. N Engl J Med 2021;385:1091-1103 (NCT03511664)",
-    "relationshipToParent": "Análise de segurança do ensaio fase III VISION",
+    "relationshipToParent": "Análises de segurança do VISION: por número de ciclos (pré-especificadas) e ajustada por exposição (post hoc)",
     "publicationStatus": "Peer-reviewed full article",
     "analysisType": "Análise de segurança",
     "evidenceMaturity": "Análise secundária revisada por pares",
@@ -69,16 +69,36 @@ window.THERA_SECONDARY = [
       "Segurança",
       "Eventos adversos"
     ],
-    "clinicalTakeaway": "Avaliação detalhada de eventos adversos no cenário do VISION, consistente com o perfil benefício-risco do 177Lu-PSMA-617 relatado no estudo principal.",
+    "clinicalTakeaway": "No VISION, 5–6 ciclos de 177Lu-PSMA-617 não mostraram acúmulo de toxicidade (TEAE G≥3 por ciclo de 17% no C1 a 12% no C6), mas os subgrupos por ciclos têm viés de sobrevivência. Ajustado pela exposição (7,8 vs 2,1 meses), o excesso global de TEAE vs SoC diminui; a xerostomia e a mielossupressão seguem maiores.",
     "deep": {
-      "objetivo": "Avaliar a segurança de ciclos adicionais (≤4 vs 5–6) e da exposição mais longa ao 177Lu-PSMA-617 no VISION.",
-      "metodo": "Análise de segurança por número de ciclos na população randomizada 2:1 do VISION.",
+      "objetivo": "Avaliar, no VISION, se ciclos adicionais (5–6) de 177Lu-PSMA-617 aumentam a toxicidade e quanto do excesso de eventos adversos vs SoC se deve ao maior tempo de observação no braço experimental.",
+      "metodo": "Conjunto de segurança: 529 tratados com 177Lu-PSMA-617 + SoC (240 com 1–4 ciclos; 289 com 5–6) e 205 com SoC. Incidência de TEAE/TRAE por subgrupo de ciclos (pré-especificado) e por ciclo de início; tempo até o 1º evento (Kaplan-Meier); incidência ajustada por exposição por 100 paciente-anos de tratamento (post hoc). Análise descritiva.",
       "achados": [
-        "Incidência de TEAE de qualquer grau semelhante entre ciclos 1–4 e 5–6.",
-        "Frequência de TEAE semelhante entre todos os ciclos; sem novos sinais de segurança com mais de 4 ciclos."
+        "TEAE de qualquer grau: 98% (1–4 ciclos) vs 99% (5–6 ciclos); G≥3: 60% vs 46%, provavelmente por viés de seleção/sobrevivência.",
+        "Por ciclo de início, TEAE G≥3 não aumentou nos ciclos tardios (17% no ciclo 1; 12% no ciclo 6); os primeiros eventos se concentraram no início do tratamento.",
+        "Exposição mediana 7,8 vs 2,1 meses; ajustada por exposição, a incidência global de TEAE foi semelhante entre braços (1415,7 vs 1137,0 por 100 PTY).",
+        "Após ajuste, boca seca (75,1 vs 1,4/100 PTY), olho seco, mielossupressão, diarreia e vômitos seguiram maiores com 177Lu; eventos musculoesqueléticos, renais, hepáticos e dispneia foram menores.",
+        "Redução de dose por TEAE em 5,7%; toxicidade renal tardia em 2,7% dos que iniciaram o ciclo 6; segunda neoplasia em 11/529 vs 2/205."
       ],
-      "interpretacao": "Exposição mais longa (até 6 ciclos) não se associou a maior risco de toxicidade, apoiando o perfil benefício-risco favorável de até 6 ciclos.",
-      "limitacoes": "Não detalhadas no abstract."
+      "interpretacao": "Os dados não sugerem acúmulo de toxicidade com 5–6 ciclos em pacientes selecionados que seguem respondendo e tolerando o tratamento. Parte do excesso bruto de eventos vs SoC reflete o maior tempo de observação, mas a toxicidade específica (xerostomia, mielossupressão) persiste após o ajuste.",
+      "limitacoes": "Os subgrupos por número de ciclos são definidos após a randomização e sujeitos a viés de sobrevivência; a análise não foi desenhada para comparar 1–4 vs 5–6 ciclos. O ajuste por exposição é post hoc. Eventos novos e recorrentes não foram separados, TEAEs podem refletir progressão e as reduções de dose não foram consideradas."
+    },
+    "analysis": {
+      "populacao": "734/831 tratados: 529 com 177Lu-PSMA-617 + SoC (240 com 1–4 ciclos; 289 com 5–6) e 205 com SoC.",
+      "desenho_relacao": "Análises de segurança do VISION: por número de ciclos e por ciclo (pré-especificadas) e incidência ajustada por exposição (post hoc).",
+      "endpoints": "TEAE/TRAE (qualquer grau, G≥3, graves) por subgrupo e por ciclo; tempo até o 1º evento de classes de interesse; incidência por 100 paciente-anos de tratamento.",
+      "estatistica": "Descritiva; Kaplan-Meier para incidência cumulativa; taxa = n/PTY × 100.",
+      "cutoff_followup": "Exposição/observação de segurança mediana de 7,8 meses (177Lu) vs 2,1 meses (controle). Data de cutoff não informada nesta fonte.",
+      "subgrupos": "1–4 vs 5–6 ciclos: TEAE 98% vs 99%; G≥3 60% vs 46%; TEAE grave 42% vs 32%.",
+      "seguranca": "Após ajuste por exposição, mielossupressão, xerostomia, olho seco, diarreia e vômitos seguiram maiores com 177Lu. Redução de dose por TEAE em 5,7%; toxicidade renal tardia em 7/257 (2,7%); segunda neoplasia em 11/529 vs 2/205.",
+      "conclusao_autores": "Exposição mais longa não se associou a maior risco de toxicidade; os achados apoiam até 6 ciclos em pacientes com benefício clínico e boa tolerância."
+    },
+    "auditStatus": {
+      "classification": "TOO_SHALLOW",
+      "verification": "PASS",
+      "appliedChanges": 8,
+      "pendingChanges": 0,
+      "auditedAt": "2026-09-30"
     }
   },
   {
@@ -302,7 +322,7 @@ window.THERA_SECONDARY = [
     "parentUid": "lupsma_prostata_1",
     "parentTrialName": "TheraP (ANZUP 1603)",
     "parentTrialPublication": "Hofman MS, et al. Lancet 2021;397:797-804 (NCT03392428)",
-    "relationshipToParent": "Análise de biomarcadores do ensaio randomizado fase II TheraP",
+    "relationshipToParent": "Análise de biomarcadores (endpoint terciário pré-especificado) do ensaio randomizado fase II TheraP",
     "publicationStatus": "Peer-reviewed full article",
     "analysisType": "Análise de biomarcador de imagem",
     "evidenceMaturity": "Análise revisada por pares",
@@ -320,18 +340,35 @@ window.THERA_SECONDARY = [
       "SUVmean",
       "Volume metabólico"
     ],
-    "clinicalTakeaway": "Relatou papel preditivo/prognóstico de métricas do PSMA PET e FDG PET, sobretudo o SUVmean no PSMA PET e o volume metabólico no FDG PET.",
+    "clinicalTakeaway": "Em análise pré-especificada do TheraP, SUVmean ≥10 no PSMA-PET associou-se a maior vantagem de resposta de PSA do 177Lu-PSMA-617 sobre o cabazitaxel (91% vs 47%; interação p ajustado 0,039), e MTV ≥200 mL no FDG-PET a menor resposta em ambos os braços. Desfecho de PSA em fase II; exige software quantitativo.",
     "deep": {
-      "objetivo": "Avaliar se métricas do PSMA-PET e do FDG-PET predizem a resposta de PSA ao 177Lu-PSMA-617 versus cabazitaxel no TheraP.",
-      "metodo": "Análise de biomarcadores na população randomizada (177Lu-PSMA-617 n=99; cabazitaxel n=101); resposta de PSA (queda ≥50%) por estratos de SUVmean (PSMA-PET) e de volume tumoral metabólico/MTV (FDG-PET).",
+      "objetivo": "Avaliar parâmetros quantitativos do PSMA-PET (SUVmean) e do FDG-PET (volume tumoral metabólico, MTV) como biomarcadores preditivos e prognósticos de resposta de PSA ao 177Lu-PSMA-617 versus cabazitaxel no TheraP.",
+      "metodo": "Endpoint terciário pré-especificado do TheraP (fase II randomizado, 11 centros na Austrália; mCRPC pós-docetaxel); n=200 (177Lu-PSMA-617 n=99; cabazitaxel n=101). Cortes pré-especificados: SUVmean ≥10 no PSMA-PET (testado como preditivo) e MTV ≥200 mL no FDG-PET (testado como prognóstico). Análise ITT por regressão logística; desfecho: resposta de PSA. Cutoff 20/jul/2020, seguimento mediano 18,4 m.",
       "achados": [
-        "SUVmean ≥10 (PSMA-PET): resposta de PSA 91% (32/35) vs 47% (14/30).",
-        "SUVmean <10: 52% (33/64) vs 32% (23/71).",
-        "Interação tratamento×SUVmean alto: OR 12,19 (IC95% 3,42–58,76); p=0,039.",
-        "FDG-PET MTV ≥200 mL: resposta 38% (23/60) vs 56% (79/140) com MTV <200 mL; OR 0,44 (0,23–0,84); p=0,035."
+        "SUVmean ≥10 em 35% (35/99) do braço 177Lu-PSMA-617 e 30% (30/101) do braço cabazitaxel.",
+        "SUVmean ≥10: resposta de PSA 91% (32/35) com 177Lu-PSMA-617 vs 47% (14/30) com cabazitaxel; OR 12,19 (IC95% 3,42–58,76).",
+        "SUVmean <10: 52% (33/64) vs 32% (23/71); OR 2,22 (1,11–4,51). Interação tratamento×SUVmean: p ajustado=0,039.",
+        "FDG-PET MTV ≥200 mL (30% de cada braço): resposta de PSA 38% (23/60) vs 56% (79/140) com MTV <200 mL, braços combinados; OR 0,44 (0,23–0,84); p ajustado=0,035."
       ],
-      "interpretacao": "O SUVmean no PSMA-PET foi preditivo de maior probabilidade de resposta favorável ao 177Lu-PSMA-617 (vs cabazitaxel); o alto MTV no FDG-PET foi prognóstico de menor resposta independentemente do braço. Necessita confirmação prospectiva.",
-      "limitacoes": "Análise de biomarcadores de ensaio fase II."
+      "interpretacao": "Segundo os autores, o SUVmean no PSMA-PET foi preditivo de maior probabilidade de resposta de PSA ao 177Lu-PSMA-617 do que ao cabazitaxel, e o MTV alto no FDG-PET associou-se a menor resposta independentemente do braço. O desfecho avaliado é resposta de PSA, não sobrevida; os achados vêm de subgrupos de um ensaio fase II.",
+      "limitacoes": "Endpoint terciário em ensaio fase II, com subgrupos pequenos (35 e 30 pacientes com SUVmean ≥10) e IC amplos; desfecho restrito à resposta de PSA. Os autores ressaltam que os parâmetros quantitativos exigem software especializado, ainda não disponível na rotina da maioria das clínicas."
+    },
+    "analysis": {
+      "populacao": "200 homens com mCRPC após docetaxel, aptos a cabazitaxel, randomizados 1:1 (177Lu-PSMA-617 n=99; cabazitaxel n=101).",
+      "desenho_relacao": "Análise de biomarcador de endpoint terciário pré-especificado do ensaio fase II TheraP, com cortes pré-especificados.",
+      "endpoints": "Associação de SUVmean (PSMA-PET) e MTV (FDG-PET) com resposta de PSA.",
+      "estatistica": "ITT; regressão logística; teste de interação tratamento×SUVmean (p ajustado).",
+      "cutoff_followup": "Cutoff 20/jul/2020; seguimento mediano 18,4 m (IQR 12,8–21,8).",
+      "subgrupos": "SUVmean ≥10 vs <10; MTV ≥200 mL vs <200 mL.",
+      "seguranca": null,
+      "conclusao_autores": "SUVmean no PSMA-PET preditivo de resposta favorável ao 177Lu-PSMA-617 vs cabazitaxel; MTV alto no FDG-PET associado a menor resposta independentemente do tratamento."
+    },
+    "auditStatus": {
+      "classification": "INCORRECT",
+      "verification": "PASS",
+      "appliedChanges": 8,
+      "pendingChanges": 0,
+      "auditedAt": "2026-09-30"
     }
   },
   {
@@ -830,17 +867,34 @@ window.THERA_SECONDARY = [
       "Desfechos relatados pelo paciente",
       "NET"
     ],
-    "clinicalTakeaway": "Relatou atraso na deterioração de múltiplas dimensões de qualidade de vida com 177Lu-DOTATATE.",
+    "clinicalTakeaway": "No NETTER-1, 177Lu-DOTATATE retardou a deterioração da qualidade de vida versus octreotida em alta dose (saúde global: 28,8 vs 6,1 m; HR 0,406), com avaliação limitada ao período até a progressão.",
     "deep": {
-      "objetivo": "Avaliar o impacto do 177Lu-DOTATATE no tempo até deterioração da qualidade de vida no NETTER-1.",
-      "metodo": "Fase III; 177Lu-DOTATATE n=117 vs controle n=114.",
+      "objetivo": "Avaliar o impacto do 177Lu-DOTATATE no tempo até deterioração (TTD) da qualidade de vida relacionada à saúde no NETTER-1.",
+      "metodo": "Análise de HRQoL do fase III NETTER-1 (população ITT: 177Lu-DOTATATE n=117 vs octreotida em alta dose n=114). EORTC QLQ-C30 e G.I.NET-21 no basal e a cada 12 semanas até progressão; TTD = tempo da randomização até a primeira piora ≥10 pontos no domínio; sem deterioração, censura na última avaliação.",
       "achados": [
-        "Tempo até deterioração — estado de saúde global: 28,8 vs 6,1 m (HR 0,406).",
-        "Função física: 25,2 vs 11,5 m (HR 0,518).",
-        "Fadiga HR 0,621; dor HR 0,566; diarreia HR 0,473; imagem corporal HR 0,425."
+        "Saúde global: TTD mediano 28,8 vs 6,1 m (HR 0,406).",
+        "Função física: 25,2 vs 11,5 m (HR 0,518); função de papel HR 0,580.",
+        "Fadiga HR 0,621; dor HR 0,566; diarreia HR 0,473; preocupações com a doença HR 0,572; imagem corporal HR 0,425."
       ],
-      "interpretacao": "Benefício significativo de QoL com 177Lu-DOTATATE versus octreotida em alta dose em NETs de intestino médio progressivos.",
-      "limitacoes": "Não detalhadas no abstract."
+      "interpretacao": "O 177Lu-DOTATATE retardou a deterioração de vários domínios de QoL versus octreotida em alta dose, segundo os autores com diferenças clinicamente significativas em saúde global e função física. O desfecho é tempo até deterioração, não melhora absoluta de QoL.",
+      "limitacoes": "Questionários aplicados apenas até a progressão, com censura na última avaliação; IC95% e valores de p não apresentados no resumo; pré-especificação da análise não informada no resumo."
+    },
+    "analysis": {
+      "populacao": "ITT do NETTER-1: 117 (177Lu-DOTATATE) vs 114 (octreotida em alta dose), NET de intestino médio progressivo.",
+      "desenho_relacao": "Análise de HRQoL do ensaio fase III randomizado NETTER-1.",
+      "endpoints": "TTD ≥10 pontos por domínio (QLQ-C30, G.I.NET-21).",
+      "estatistica": "Escala 0–100; HR por domínio; censura na última avaliação; ITT.",
+      "cutoff_followup": "Avaliações a cada 12 semanas até progressão; data de corte não informada.",
+      "subgrupos": null,
+      "seguranca": null,
+      "conclusao_autores": "Benefício significativo de QoL além do ganho de PFS versus octreotida em alta dose."
+    },
+    "auditStatus": {
+      "classification": "TOO_SHALLOW",
+      "verification": "PASS",
+      "appliedChanges": 7,
+      "pendingChanges": 0,
+      "auditedAt": "2026-09-30"
     }
   },
   {
@@ -886,7 +940,7 @@ window.THERA_SECONDARY = [
     "parentUid": "net_gep_0",
     "parentTrialName": "NETTER-1",
     "parentTrialPublication": "Strosberg J, et al. N Engl J Med 2017;376:125-135 (NCT01578239)",
-    "relationshipToParent": "Subestudo de dosimetria do ensaio fase III NETTER-1",
+    "relationshipToParent": "Subestudo prospectivo de dosimetria vinculado ao fase III NETTER-1 (população majoritariamente não randomizada; 8/30 do braço randomizado 177Lu)",
     "publicationStatus": "Peer-reviewed full article",
     "analysisType": "Subestudo de dosimetria",
     "evidenceMaturity": "Subestudo revisado por pares",
@@ -903,17 +957,35 @@ window.THERA_SECONDARY = [
       "Dose absorvida tumoral",
       "PRRT"
     ],
-    "clinicalTakeaway": "Subestudo de dosimetria do NETTER-1 avaliando dose absorvida e a relação potencial com toxicidade e resposta tumoral.",
+    "clinicalTakeaway": "No subestudo de dosimetria do NETTER-1 (20 avaliáveis, maioria não randomizada), as doses cumulativas médias em rins (19,4 Gy) e medula (1,0 Gy) ficaram abaixo dos limiares conservadores, com toxicidade manejável; não houve correlação entre dose tumoral e redução de tamanho.",
     "deep": {
-      "objetivo": "Avaliar a dosimetria do protocolo padrão de 4 ciclos de 177Lu-DOTATATE e a relação com toxicidade.",
-      "metodo": "Subestudo de dosimetria do NETTER-1; n=20; 65 lesões avaliadas.",
+      "objetivo": "Avaliar a dosimetria de corpo inteiro e de órgãos do protocolo padrão de 4 ciclos de 177Lu-DOTATATE e sua relação com toxicidade; dosimetria tumoral e resposta por dose absorvida foram desfechos exploratórios.",
+      "metodo": "Subestudo prospectivo multicêntrico do NETTER-1: 30 inscritos (apenas 8 randomizados no braço 177Lu do estudo principal; demais não randomizados), 20 com dosimetria avaliável. 7,4 GBq × 4 a cada 8 semanas, com ajustes por toxicidade. Dosimetria planar (4–6 pontos até 7 dias) + SPECT/CT a 24/48 h, OLINDA/EXM 1.0; tumor por modelo de esfera (65 lesões em 17 pacientes). Seguimento mediano 62,9 m.",
       "achados": [
-        "Dose renal média 19,4 Gy (DP 8,7); medula óssea 1,0 Gy (DP 0,8); 3 pacientes com rim 28–33 Gy.",
-        "Dose tumoral cumulativa mediana 134 Gy (7–2.218); 90% das lesões reduziram ao longo de 72 semanas.",
-        "Toxicidade hematológica leve-moderada."
+        "Dose cumulativa prevista: rins 19,4 Gy (DP 8,7); medula 1,0 Gy (DP 0,8); baço 25,1 Gy; corpo inteiro 1,6 Gy. Três pacientes com rim 28–33 Gy: 2 com creatinina G1 já presente no basal e 1 sem toxicidade renal.",
+        "Sem toxicidade renal grave em até 5 anos; hematológica aguda majoritariamente G1–2 e sem associação com a dose; leucopenia G3 transitória 10% (2/20) e linfopenia G4 aguda 20% (4/20), com recuperação parcial; nenhum paciente com dosimetria desenvolveu SMD.",
+        "Dose tumoral cumulativa mediana 134 Gy (7–2.218); ≥50 Gy em 73,8% das lesões.",
+        "Sem correlação entre a melhor redução de tamanho e a dose absorvida; 47/52 lesões (90%) com redução em algum momento em 72 semanas (desfecho exploratório)."
       ],
-      "interpretacao": "O regime padrão de 177Lu-DOTATATE foi bem tolerado e manejável, com possibilidade de ajustes personalizados.",
-      "limitacoes": "Limitações dos métodos de imagem e da avaliação de volume tumoral; sem correlação entre redução de tamanho e dose absorvida."
+      "interpretacao": "Doses médias em rins e medula ficaram abaixo dos limiares conservadores habituais, com toxicidade de órgãos manejável, apoiando a tolerabilidade do regime padrão com ajustes guiados pela toxicidade aguda. A relação dose tumoral–resposta não foi demonstrada nesta amostra; o estudo não testa dosimetria individualizada.",
+      "limitacoes": "Amostra pequena, majoritariamente não randomizada e sem comparador; dosimetria planar, menos precisa para tumor; modelo de esfera e captação homogênea assumidos; dosimetria realizada em ciclos diferentes (1º a 3º); regressão tumoral possivelmente subestimada por fibrose e resposta tardia."
+    },
+    "analysis": {
+      "populacao": "30 inscritos (8 randomizados no braço 177Lu do NETTER-1; demais não randomizados); 20 com dosimetria avaliável; 65 lesões/17 pacientes para tumor; 52 lesões/15 pacientes para tamanho.",
+      "desenho_relacao": "Subestudo prospectivo de dosimetria, braço único, vinculado ao NETTER-1; tumor/resposta exploratórios.",
+      "endpoints": "Primários: dosimetria de corpo inteiro e órgãos; exploratórios: dosimetria tumoral e resposta por dose.",
+      "estatistica": "Descritiva; planar + SPECT/CT, OLINDA/EXM 1.0; correlação gráfica dose × melhor variação de tamanho.",
+      "cutoff_followup": "Seguimento mediano 62,9 m (9–89); tamanho tumoral até 72 semanas.",
+      "subgrupos": "Rim 28–33 Gy (n=3): sem toxicidade renal relevante atribuível; medula 3,2 Gy (n=1): linfopenia G3.",
+      "seguranca": "Sem toxicidade renal grave em até 5 anos; leucopenia G3 10%; linfopenia G4 aguda 20%; sem SMD entre os pacientes com dosimetria.",
+      "conclusao_autores": "Regime padrão com ajustes por toxicidade aguda é bem tolerado e manejável."
+    },
+    "auditStatus": {
+      "classification": "TOO_SHALLOW",
+      "verification": "PASS",
+      "appliedChanges": 8,
+      "pendingChanges": 0,
+      "auditedAt": "2026-09-30"
     }
   },
   {
@@ -959,7 +1031,7 @@ window.THERA_SECONDARY = [
     "parentUid": "ra223_prostata_0",
     "parentTrialName": "ALSYMPCA",
     "parentTrialPublication": "Parker C, et al. N Engl J Med 2013;369:213-223 (NCT00699751)",
-    "relationshipToParent": "Análise de subgrupo pré-especificada do ALSYMPCA por docetaxel prévio",
+    "relationshipToParent": "Análise de subgrupo pré-especificada do ALSYMPCA por docetaxel prévio (fator de estratificação)",
     "publicationStatus": "Peer-reviewed full article",
     "analysisType": "Análise de subgrupo pré-especificada",
     "evidenceMaturity": "Análise de subgrupo pré-especificada revisada por pares",
@@ -976,17 +1048,36 @@ window.THERA_SECONDARY = [
       "Segurança",
       "Eficácia"
     ],
-    "clinicalTakeaway": "Subanálise pré-especificada relatando benefício de rádio-223 independentemente do uso prévio de docetaxel, com avaliação específica de segurança.",
+    "clinicalTakeaway": "Análise de subgrupo pré-especificada: o benefício de SG do rádio-223 foi semelhante com (HR 0,70) e sem (HR 0,69) docetaxel prévio; após docetaxel, a trombocitopenia G3–4 foi mais frequente com rádio-223 (9% vs 3%).",
     "deep": {
-      "objetivo": "Avaliar o efeito do uso prévio de docetaxel na eficácia e segurança do rádio-223 no ALSYMPCA.",
-      "metodo": "Análise de subgrupo pré-especificada; com docetaxel prévio n=526 (rádio-223 352, placebo 174); sem docetaxel n=395 (262, 133).",
+      "objetivo": "Avaliar, em análise de subgrupo pré-especificada do ALSYMPCA, se o uso prévio de docetaxel modifica a eficácia e a segurança do rádio-223 versus placebo.",
+      "metodo": "Subgrupos definidos por docetaxel prévio (fator de estratificação da randomização). ITT n=921: com docetaxel prévio n=526 (rádio-223 352, placebo 174); sem docetaxel prévio n=395 (262, 133) — pacientes inaptos ou que recusaram docetaxel. Eficácia em ITT (SG, principais endpoints secundários); segurança na população de segurança.",
       "achados": [
-        "Com docetaxel prévio: OS HR 0,70 (IC95% 0,56–0,88; p=0,002).",
-        "Sem docetaxel prévio: OS HR 0,69 (0,52–0,92; p=0,01).",
-        "Trombocitopenia G3–4 com docetaxel prévio: 9% vs 3%."
+        "SG com docetaxel prévio: HR 0,70 (IC95% 0,56–0,88; p=0,002).",
+        "SG sem docetaxel prévio: HR 0,69 (IC95% 0,52–0,92; p=0,01).",
+        "Tempo até primeiro evento esquelético sintomático: redução de risco no subgrupo com docetaxel prévio; diferença não significativa no subgrupo sem docetaxel prévio.",
+        "EA grau 3–4: 62% (322/518) com docetaxel prévio vs 54% (205/383) sem docetaxel prévio.",
+        "Trombocitopenia G3–4 com docetaxel prévio: 9% (rádio-223) vs 3% (placebo); sem docetaxel prévio: 3% vs 1%. Anemia e neutropenia G3–4 semelhantes entre braços em ambos os subgrupos."
       ],
-      "interpretacao": "Rádio-223 foi eficaz e bem tolerado independentemente do uso prévio de docetaxel.",
-      "limitacoes": "Não detalhadas no abstract."
+      "interpretacao": "O efeito sobre a SG foi de magnitude semelhante nos dois subgrupos, e os autores concluem que o rádio-223 é eficaz e bem tolerado independentemente de docetaxel prévio. Após docetaxel, a trombocitopenia G3–4 foi mais frequente com rádio-223 do que com placebo.",
+      "limitacoes": "O resumo não relata limitações. Os subgrupos não são randomizados entre si (o grupo sem docetaxel reúne pacientes inaptos ou que recusaram docetaxel), e o resumo não informa teste de interação; o achado de eventos esqueléticos no subgrupo sem docetaxel não atingiu significância."
+    },
+    "analysis": {
+      "populacao": "ITT n=921 (com docetaxel prévio 526: 352 rádio-223/174 placebo; sem docetaxel prévio 395: 262/133). Segurança: 518 com e 383 sem docetaxel prévio.",
+      "desenho_relacao": "Análise de subgrupo pré-especificada do ensaio de fase 3 randomizado, duplo-cego ALSYMPCA; docetaxel prévio era fator de estratificação.",
+      "endpoints": "SG (primário do ensaio), principais endpoints secundários de eficácia, segurança.",
+      "estatistica": "Eficácia em ITT; segurança na população de segurança; HR com IC95% por subgrupo. Teste de interação não relatado no resumo.",
+      "cutoff_followup": "Randomização jun/2008–fev/2011; data de corte não informada no resumo.",
+      "subgrupos": "Com vs sem docetaxel prévio: SG HR 0,70 vs 0,69; tempo até 1º evento esquelético sintomático significativo apenas com docetaxel prévio.",
+      "seguranca": "EA G3–4 62% vs 54% (com vs sem docetaxel prévio); trombocitopenia G3–4 9% vs 3% (rádio-223 vs placebo) com docetaxel prévio e 3% vs 1% sem.",
+      "conclusao_autores": "Rádio-223 é eficaz e bem tolerado independentemente do uso prévio de docetaxel."
+    },
+    "auditStatus": {
+      "classification": "TOO_SHALLOW",
+      "verification": "PASS",
+      "appliedChanges": 8,
+      "pendingChanges": 0,
+      "auditedAt": "2026-09-30"
     }
   },
   {
@@ -1032,7 +1123,7 @@ window.THERA_SECONDARY = [
     "parentUid": "ra223_prostata_0",
     "parentTrialName": "ALSYMPCA",
     "parentTrialPublication": "Parker C, et al. N Engl J Med 2013;369:213-223 (NCT00699751)",
-    "relationshipToParent": "Análise post hoc de quimioterapia após rádio-223 no ALSYMPCA",
+    "relationshipToParent": "Análise exploratória de dados prospectivos do ALSYMPCA: subgrupo pós-randomização que recebeu quimioterapia após rádio-223 ou placebo",
     "publicationStatus": "Peer-reviewed full article",
     "analysisType": "Análise post hoc de segurança",
     "evidenceMaturity": "Análise post hoc revisada por pares",
@@ -1048,17 +1139,36 @@ window.THERA_SECONDARY = [
       "Quimioterapia após rádio-223",
       "Segurança"
     ],
-    "clinicalTakeaway": "Análise post hoc avaliando a segurança da quimioterapia subsequente após rádio-223. Deve ser interpretada com cautela.",
+    "clinicalTakeaway": "Análise exploratória, sem poder e com grupos não comparáveis por randomização: em 206 pacientes que receberam QT (sobretudo docetaxel) após rádio-223 ou placebo, toxicidade hematológica G3–4 foi baixa (<10%, numericamente maior após rádio-223) e a SG a partir da QT foi semelhante (16,0 vs 15,8 meses).",
     "deep": {
-      "objetivo": "Avaliar a segurança e a eficácia da quimioterapia subsequente após rádio-223 no ALSYMPCA.",
-      "metodo": "Análise exploratória; 142 (rádio-223) e 64 (placebo) receberam QT subsequente.",
+      "objetivo": "Avaliar a segurança hematológica e a sobrevida com quimioterapia administrada após rádio-223 ou placebo no ALSYMPCA.",
+      "metodo": "Análise exploratória de dados coletados prospectivamente (corte: março/2014). Subgrupo pós-randomização de 206/921 pacientes que receberam QT após o tratamento do estudo: 142 rádio-223 e 64 placebo (61% vs 58% com docetaxel prévio). Estatística descritiva; sem poder para comparar braços.",
       "achados": [
-        "Docetaxel: 70% (rádio-223) vs 72% (placebo).",
-        "Valores hematológicos G3–4 <10% em ambos os grupos.",
-        "OS mediana a partir do início da QT: 16,0 vs 15,8 m."
+        "Docetaxel foi o agente mais usado: 70% (rádio-223) vs 72% (placebo); mitoxantrona 16% vs 20%.",
+        "QT iniciada mais tarde com rádio-223 (9,1 vs 7,5 meses após randomização); duração da 1ª QT 4,6 vs 4,2 meses.",
+        "Valores hematológicos G3–4 até 18 meses: Hb 8% vs 4%, neutrófilos 10% vs 2%, plaquetas 6% vs 2% — baixos, numericamente maiores com rádio-223, sem diferença estatística.",
+        "Queda máxima de plaquetas numericamente maior após rádio-223, sem associação com docetaxel prévio.",
+        "SG mediana a partir do início da QT: 16,0 vs 15,8 meses; a partir do docetaxel: 17,5 vs 16,7 meses."
       ],
-      "interpretacao": "Quimioterapia após rádio-223, independentemente de docetaxel prévio, é factível e parece bem tolerada. Análise exploratória.",
-      "limitacoes": "Análise exploratória; limitações não detalhadas."
+      "interpretacao": "Os autores concluem que a quimioterapia após rádio-223, com ou sem docetaxel prévio, é factível e parece bem tolerada, sem prejuízo aparente de SG. Como os grupos não são comparáveis por randomização, a comparação de SG e toxicidade entre braços é apenas descritiva.",
+      "limitacoes": "Subgrupo definido após a randomização (comparabilidade não assegurada); coletas hematológicas fora dos nadires esperados e medianas que podem ocultar mielossupressão grave transitória; doses/intervalos de QT não coletados; alto abandono e ausência de poder estatístico."
+    },
+    "analysis": {
+      "populacao": "206/921 pacientes que receberam QT após o tratamento do estudo (rádio-223 142; placebo 64).",
+      "desenho_relacao": "Análise exploratória de dados coletados prospectivamente no ALSYMPCA; subgrupo pós-randomização.",
+      "endpoints": "Tipo/tempo/duração da QT; valores hematológicos e graus 3–4 até 18 meses; SG a partir do início da QT.",
+      "estatistica": "Descritiva; Cox; teste exato de Fisher; Wilcoxon; sem poder para comparação entre braços.",
+      "cutoff_followup": "Corte do ALSYMPCA em março/2014; hematologia até 18 meses após início da QT.",
+      "subgrupos": "Subgrupo docetaxel pós-estudo (100 vs 46): SG 17,5 vs 16,7 meses; por docetaxel prévio, sem diferença aparente na queda de plaquetas.",
+      "seguranca": "G3–4 Hb 8% vs 4%, neutrófilos 10% vs 2%, plaquetas 6% vs 2% (NS); mortes durante a QT 29% vs 33%.",
+      "conclusao_autores": "QT após rádio-223 é factível e parece bem tolerada, independentemente de docetaxel prévio; estudos prospectivos são necessários."
+    },
+    "auditStatus": {
+      "classification": "TOO_SHALLOW",
+      "verification": "PASS",
+      "appliedChanges": 8,
+      "pendingChanges": 0,
+      "auditedAt": "2026-09-30"
     }
   },
   {
