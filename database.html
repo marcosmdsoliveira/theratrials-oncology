@@ -352,6 +352,14 @@
   .sec-card-meta { display: flex; flex-wrap: wrap; gap: 0.2rem 0.75rem; font-size: 0.72rem; color: var(--stone); margin-bottom: 0.45rem; }
   .sec-status { font-weight: 600; color: var(--success); }
   .sec-status.sec-status-warn { color: var(--warn); }
+  .sec-card-summary { font-size: 0.82rem; color: var(--off-white); line-height: 1.5; opacity: 0.92; margin: 0.35rem 0 0.55rem; overflow-wrap: anywhere; }
+  .sec-card-journal { font-size: 0.72rem; color: var(--stone-2); line-height: 1.35; overflow-wrap: anywhere; }
+  .sec-card-status { margin-top: 0.3rem; }
+  .sec-editorial { font-size: 0.72rem; font-weight: 600; }
+  .sec-editorial-peer { color: var(--success); }
+  .sec-editorial-synthesis { color: var(--teal-glow); }
+  .sec-editorial-neutral { color: var(--stone); }
+  .sec-editorial-warn { color: var(--warn); padding: 0.05rem 0.45rem; border-radius: 999px; border: 1px solid rgba(251, 191, 36, 0.45); background: rgba(251, 191, 36, 0.08); }
   .sec-card-takeaway { font-size: 0.82rem; color: var(--off-white); line-height: 1.5; opacity: 0.92; }
   .sec-card-links { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.9rem; margin-top: 0.55rem; }
   .sec-link { font-size: 0.75rem; color: var(--teal-glow); text-decoration: none; font-weight: 600; }
@@ -990,18 +998,13 @@
               <div class="sec-card sec-clickable" @click="openSecondary(c)" role="button" tabindex="0" @keydown.enter="openSecondary(c)" :style="`--sec-accent: ${secColor(c.recordType)}`">
                 <div class="sec-card-head">
                   <span class="sec-badge" :class="'sec-' + c.recordType" x-text="secLabel(c.recordType)"></span>
-                  <span class="sec-analysis" x-text="c.analysisType"></span>
                   <span class="sec-year mono" x-text="c.year"></span>
                 </div>
                 <div class="sec-card-title" x-text="c.title"></div>
-                <div class="sec-card-orig" x-text="c.titleOriginal"></div>
-                <div class="sec-card-meta">
-                  <span x-show="c.authors" x-text="c.authors"></span>
-                  <span x-show="c.journal" x-text="c.journal"></span>
-                  <span class="sec-status" :class="{ 'sec-status-warn': c.recordType === 'press_release' || c.recordType === 'congress_abstract' }" x-text="c.publicationStatus"></span>
-                </div>
-                <div class="sec-card-takeaway" x-text="c.clinicalTakeaway"></div>
-                <div class="sec-card-cta"><span data-i18n="db.secViewDetails">Ver detalhes da publicação</span> <span class="sec-arrow">→</span></div>
+                <p class="sec-card-summary" x-show="c.collapsedSummary" x-text="c.collapsedSummary"></p>
+                <div class="sec-card-journal" x-show="c.journal" x-text="c.journal"></div>
+                <div class="sec-card-status" x-show="secEditorial(c).label"><span class="sec-editorial" :class="'sec-editorial-' + secEditorial(c).tone" x-text="secEditorial(c).label"></span></div>
+                <div class="sec-card-cta"><span data-i18n="db.secViewFull">Ver análise completa</span> <span class="sec-arrow">→</span></div>
               </div>
             </template>
           </div>
@@ -1454,6 +1457,16 @@ function databaseApp() {
     secColor(rt) {
       const m = { primary_trial: '#FF8400', trial_update: '#0EA5B7', press_release: '#FBBF24', congress_abstract: '#FBBF24', protocol: '#94A3B8', evidence_review: '#34D399' };
       return m[rt] || '#C084FC';
+    },
+    // Status editorial do card fechado, derivado só de publicationStatus (sem dado novo)
+    secEditorial(c) {
+      const s = String((c && c.publicationStatus) || '');
+      const tr = (k, f) => (window.t ? t(k, f) : f);
+      if (/^peer-reviewed/i.test(s)) return { label: s, tone: 'peer' };
+      if (/congress abstract/i.test(s)) return { label: tr('db.secCongressAbstract', 'Abstract de congresso'), tone: 'warn' };
+      if (/press release|não revisad/i.test(s)) return { label: tr('db.secNotPeerReviewed', 'Não revisado por pares'), tone: 'warn' };
+      if (/síntese de evidência/i.test(s)) return { label: tr('db.secEvidenceSynthesis', 'Síntese de evidência'), tone: 'synthesis' };
+      return { label: s, tone: 'neutral' };
     },
     openSecondary(c) { this.selectedSecondary = c; },
     closeSecondary() { this.selectedSecondary = null; },

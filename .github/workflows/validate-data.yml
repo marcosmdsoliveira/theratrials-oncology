@@ -32,6 +32,8 @@ on:
       - 'scripts/test_db_integridade.py'
       - 'assets/js/citation.js'
       - 'scripts/citation.test.mjs'
+      - 'assets/js/secondary-cards.js'
+      - 'scripts/secondary_cards.test.mjs'
       - '.github/workflows/validate-data.yml'
   # A lista do pull_request tem de incluir os PRÓPRIOS validadores, não só os
   # dados. Sem isso, um PR que mexe só no validador não roda o validador — foi
@@ -57,6 +59,8 @@ on:
       - 'scripts/test_db_integridade.py'
       - 'assets/js/citation.js'
       - 'scripts/citation.test.mjs'
+      - 'assets/js/secondary-cards.js'
+      - 'scripts/secondary_cards.test.mjs'
       - '.github/workflows/validate-data.yml'
   workflow_dispatch:
 
@@ -97,7 +101,7 @@ jobs:
 
       - name: Testar o próprio guard de cards
         if: always()
-        run: node --test scripts/validate_cards.test.mjs scripts/citation.test.mjs
+        run: node --test scripts/validate_cards.test.mjs scripts/citation.test.mjs scripts/secondary_cards.test.mjs
 
       # Database v2 em modo SOMBRA: testes, lift do data.js num diretório temporário,
       # validate_v2 e export_legacy --check (a sombra tem de reproduzir o data.js byte a
