@@ -6,7 +6,7 @@
    Cada card confirmado em fonte Nível 1-2 (PubMed E-utilities + Crossref).
    Campo `deep` (objetivo/método/achados/interpretação/limitações) extraído dos
    abstracts oficiais — nenhum número inventado; linguagem cautelosa.
-   Atualizado: 2026-09-30 (6 cards enriquecidos e verificados; proveniência em scripts/db_secundarios_proveniencia.json).
+   Atualizado: 2026-09-30 (22 cards enriquecidos e verificados; proveniência em scripts/db_secundarios_proveniencia.json).
 ============================================================================= */
 window.THERA_SECONDARY = [
   {
@@ -16,7 +16,7 @@ window.THERA_SECONDARY = [
     "parentUid": "lupsma_prostata_0",
     "parentTrialName": "VISION",
     "parentTrialPublication": "Sartor O, et al. N Engl J Med 2021;385:1091-1103 (NCT03511664)",
-    "relationshipToParent": "Análise secundária do ensaio fase III VISION",
+    "relationshipToParent": "Análise do desfecho secundário-chave (SSE) e dos desfechos secundários de PRO pré-especificados do VISION, com análises post hoc adicionais",
     "publicationStatus": "Peer-reviewed full article",
     "analysisType": "Análise secundária (HRQoL, dor, SSE)",
     "evidenceMaturity": "Análise secundária revisada por pares",
@@ -32,19 +32,37 @@ window.THERA_SECONDARY = [
       "Dor",
       "Eventos esqueléticos sintomáticos"
     ],
-    "clinicalTakeaway": "Relatou atraso na piora de qualidade de vida, dor e eventos esqueléticos sintomáticos com 177Lu-PSMA-617 + standard of care em comparação ao standard of care isolado.",
+    "clinicalTakeaway": "No VISION, 177Lu-PSMA-617 + SoC adiou a piora de HRQoL e dor (HR 0,52–0,65; desfechos compostos, p nominais) e o tempo até SSE ou óbito (HR 0,50) vs SoC. A incidência de SSE isolado foi semelhante (16% vs 17%). Estudo aberto, com PROs só durante o tratamento e maior abandono no controle.",
     "deep": {
-      "objetivo": "Avaliar, no VISION (fase III), o efeito do 177Lu-PSMA-617 + standard of care (SoC) sobre qualidade de vida (HRQoL), dor e eventos esqueléticos sintomáticos (SSE) versus SoC isolado.",
-      "metodo": "Desfechos relatados pelo paciente (FACT-P, EQ-5D-5L, BPI-SF) e tempo até o 1º SSE; randomização 2:1; população analisável para HRQoL n=581.",
+      "objetivo": "Relatar, no VISION (fase III, aberto, randomização 2:1), o desfecho secundário-chave tempo até o 1º evento esquelético sintomático (SSE) ou óbito e os desfechos secundários de HRQoL (FACT-P, EQ-5D-5L) e dor (BPI-SF) com 177Lu-PSMA-617 + SoC vs SoC isolado.",
+      "metodo": "PROs e SSE analisados nos 581 pacientes randomizados a partir de 5/mar/2019 (385 vs 196), após medidas para reduzir o abandono no controle; segurança nos 734 tratados (529 vs 205). Nas análises pré-especificadas, a 'piora' de PRO era composta (piora do escore, progressão clínica ou óbito); análises post hoc consideraram só a piora do escore. Cox estratificado; desfechos de HRQoL/dor fora do controle de erro tipo I (p nominais).",
       "achados": [
-        "Tempo até 1º SSE ou óbito: mediana 11,5 vs 6,8 m; HR 0,50 (IC95% 0,40–0,62).",
-        "Tempo até piora do FACT-P: HR 0,54 (0,45–0,66).",
-        "Tempo até piora da dor (BPI-SF): HR 0,52 (0,42–0,63).",
-        "Tempo até piora da utilidade EQ-5D-5L: HR 0,65 (0,54–0,78).",
-        "Linfopenia G3–4: 51% (269/529) vs 19% (39/205)."
+        "Tempo até 1º SSE ou óbito: mediana 11,5 vs 6,8 meses; HR 0,50 (IC95% 0,40–0,62). Em análise post hoc que não contou o óbito como evento, o tempo até o 1º SSE também foi retardado com 177Lu-PSMA-617.",
+        "Piora do FACT-P total (pré-especificada, composta): HR 0,54 (0,45–0,66); post hoc só escore: HR 0,46 (0,35–0,61).",
+        "Piora da intensidade de dor BPI-SF (composta): HR 0,52 (0,42–0,63); post hoc: HR 0,45 (0,33–0,60).",
+        "Piora da utilidade EQ-5D-5L: HR 0,65 (0,54–0,78); a definição de piora (qualquer queda ou ausência de mudança) produz piora aparente rápida.",
+        "Efeito sobre SSE ou óbito semelhante com e sem agente ósseo-dirigido (HR 0,49 e 0,50; post hoc).",
+        "Toxicidade hematológica G3–4 maior com 177Lu: linfócitos 51% vs 19%, hemoglobina 15% vs 6%, plaquetas 9% vs 2%; 5 (1%) óbitos relacionados ao tratamento vs 0."
       ],
-      "interpretacao": "Retardou a piora de HRQoL, da dor e o tempo até eventos esqueléticos sintomáticos, de forma consistente com o benefício de eficácia do estudo principal. Desfechos secundários/relatados pelo paciente.",
-      "limitacoes": "5 óbitos relacionados ao tratamento no braço experimental vs 0 no controle."
+      "interpretacao": "177Lu-PSMA-617 + SoC retardou a piora de HRQoL e dor e o tempo até SSE ou óbito, em linha com o ganho de rPFS e OS do estudo principal. Os desfechos de PRO eram compostos (incluíam progressão clínica e óbito) e têm p nominais, sem controle de multiplicidade; indicam ausência de prejuízo à qualidade de vida mais do que um benefício isolado e confirmatório de HRQoL.",
+      "limitacoes": "Estudo aberto, sem placebo; PROs coletados só durante o tratamento; abandono maior e seguimento de PRO muito mais curto no controle (mediana FACT-P 0,76 vs 4,37 meses); piora sustentada não avaliada; EQ-5D pouco sensível nessa população; HRQoL fora do controle de erro tipo I."
+    },
+    "analysis": {
+      "populacao": "581 randomizados em ou após 5/mar/2019 (385 177Lu-PSMA-617 + SoC; 196 SoC) para PRO e SSE; segurança em 734 tratados (529 vs 205). mCRPC PSMA+ pós-ARPI e 1–2 taxanos.",
+      "desenho_relacao": "Mesma coorte randomizada do VISION: desfecho secundário-chave (SSE ou óbito) e secundários de PRO pré-especificados, mais análises post hoc não compostas e de subgrupos por agente ósseo-dirigido.",
+      "endpoints": "Tempo até 1º SSE ou óbito; tempo até piora de FACT-P (total e subescalas), BPI-SF e EQ-5D-5L (composto com progressão clínica/óbito nas análises pré-especificadas).",
+      "estatistica": "Cox estratificado pelos fatores de randomização; Kaplan-Meier; HRQoL/dor fora do controle de erro tipo I; todos os p nominais e descritivos.",
+      "cutoff_followup": "Seguimento mediano de PRO (FACT-P) 4,37 vs 0,76 meses; SSE ~17 meses em ambos; segurança 14,78 vs 10,64 meses. Data de cutoff não informada nesta fonte.",
+      "subgrupos": "SSE ou óbito com agente ósseo-dirigido HR 0,49 (0,36–0,68); sem agente HR 0,50 (0,37–0,68) (post hoc).",
+      "seguranca": "G3–4: linfócitos 51% vs 19%, hemoglobina 15% vs 6%, plaquetas 9% vs 2%; 5 (1%) óbitos relacionados ao tratamento vs 0; creatinina G≥3 baixa e semelhante entre braços.",
+      "conclusao_autores": "177Lu-PSMA-617 + SoC retardou a piora de HRQoL e o tempo até eventos esqueléticos vs SoC isolado, apoiando seu uso após ARPI e taxano."
+    },
+    "auditStatus": {
+      "classification": "TOO_SHALLOW",
+      "verification": "PASS",
+      "appliedChanges": 8,
+      "pendingChanges": 0,
+      "auditedAt": "2026-09-30"
     }
   },
   {
@@ -215,7 +233,7 @@ window.THERA_SECONDARY = [
     "parentUid": "lupsma_prostata_0",
     "parentTrialName": "VISION",
     "parentTrialPublication": "Sartor O, et al. N Engl J Med 2021;385:1091-1103 (NCT03511664)",
-    "relationshipToParent": "Análise exploratória de associação biomarcador-desfecho do VISION",
+    "relationshipToParent": "Análise post hoc exploratória do braço 177Lu-PSMA-617 do VISION (declínio de PSA durante o tratamento × desfechos)",
     "publicationStatus": "Peer-reviewed full article",
     "analysisType": "Análise exploratória (associação PSA-desfecho)",
     "evidenceMaturity": "Análise exploratória revisada por pares",
@@ -231,16 +249,36 @@ window.THERA_SECONDARY = [
       "Biomarcador",
       "Desfechos clínicos"
     ],
-    "clinicalTakeaway": "Análise exploratória avaliando a associação entre a magnitude do declínio de PSA e desfechos clínicos no braço tratado com 177Lu-PSMA-617.",
+    "clinicalTakeaway": "Análise post hoc do braço 177Lu-PSMA-617 do VISION (n=551): quanto maior o declínio de PSA até a semana 12, maiores a rPFS e a OS (mediana de OS 9,8 meses com aumento vs não atingida com declínio ≥90%). O declínio parece ter valor prognóstico, e é uma associação sem causalidade; o braço SoC foi excluído. Aumento precoce de PSA não indica, por si só, falha: 15% com aumento na semana 6 declinaram na semana 12.",
     "deep": {
-      "objetivo": "Avaliar a associação entre a magnitude do declínio de PSA e desfechos clínicos no braço tratado com 177Lu-PSMA-617.",
-      "metodo": "Análise post hoc do VISION (n=551 no braço 177Lu-PSMA-617).",
+      "objetivo": "Avaliar, no braço 177Lu-PSMA-617 do VISION, a associação entre a magnitude do declínio de PSA não confirmado e rPFS, OS, ORR e tempo até piora de HRQoL/dor.",
+      "metodo": "Análise post hoc exploratória com os 551 randomizados para 177Lu-PSMA-617 + SoC (controle excluído por poucos declínios ≥50%). Categorias de melhor declínio até a semana 12 (aumento; 0–<50%; 50–<90%; ≥90%), sem confirmação; landmarks de 6 e 12 semanas; Kaplan-Meier e Cox vs aumento de PSA; Cox multivariado com seleção stepwise. Sem teste inferencial formal; cutoff de 27/jan/2021.",
       "achados": [
-        "Declínio de PSA ≥0–<50%: 61% menor risco de progressão/óbito; ≥50–<90%: 72%; ≥90%: 88% (vs PSA em elevação).",
-        "Reduções correspondentes no risco de óbito: 51%, 70% e 87%."
+        "Melhor variação até a semana 12: aumento 29%; declínio 0–<50% 17%; 50–<90% 28%; ≥90% 15%.",
+        "rPFS mediana: 5,8 (aumento) vs 8,7, 11,3 e 20,3 meses; modelo multivariado: risco de rPFS 61%, 72% e 88% menor vs aumento de PSA.",
+        "OS mediana: 9,8 (aumento) vs 14,0, 18,3 meses e não atingida (≥90%); risco de óbito 51%, 70% e 87% menor.",
+        "ORR 4,9% com aumento vs 13%, 47% e 52% com declínio; o tempo até piora de FACT-P também foi maior com declínios maiores (5,7 vs 16,0 meses no grupo ≥90%).",
+        "15% dos pacientes com aumento de PSA na semana 6 tiveram declínio na semana 12; 26% dos com aumento até a semana 12 tiveram doença estável."
       ],
-      "interpretacao": "O declínio de PSA parece ter valor prognóstico durante o tratamento com 177Lu-PSMA-617. Análise post hoc — interpretar com cautela.",
-      "limitacoes": "Declínio de PSA não confirmado; natureza post hoc."
+      "interpretacao": "A magnitude do declínio de PSA durante o 177Lu-PSMA-617 associou-se a melhores desfechos e parece ter valor prognóstico; a análise incluiu só o braço 177Lu-PSMA-617. Um aumento precoce de PSA não significa necessariamente falha: parte dos pacientes tem declínio posterior. Associação descritiva entre duas variáveis pós-basais, sem inferência causal.",
+      "limitacoes": "Post hoc, sem teste inferencial formal; uso de duas variáveis pós-basais nas análises de associação (variação de PSA e desfechos de eficácia); declínio de PSA não confirmado; ~7% excluídos por falta de PSA, sem imputação; seleção stepwise pode enviesar; sem estratificação por terapia concomitante (ARPI em 53%)."
+    },
+    "analysis": {
+      "populacao": "551 randomizados para 177Lu-PSMA-617 + SoC (VISION); 491 avaliáveis para o declínio até a semana 12. Braço controle excluído.",
+      "desenho_relacao": "Análise post hoc exploratória de biomarcador on-treatment (PSA), restrita ao braço 177Lu-PSMA-617.",
+      "endpoints": "rPFS, OS, ORR, PFS, tempo até progressão de PSA, tempo até piora de FACT-P, EQ-5D-5L e BPI-SF, por categoria de declínio de PSA.",
+      "estatistica": "Landmarks de 6 e 12 semanas; Kaplan-Meier; Cox por categoria vs aumento de PSA; Cox multivariado (stepwise); p nominais.",
+      "cutoff_followup": "Cutoff de 27/jan/2021; seguimento mediano de OS de 19,8–22,6 meses por subgrupo.",
+      "subgrupos": "Resultados semelhantes com 1 ou 2 taxanos prévios; nos que receberam 5–6 ciclos, declínio do C5 ao C6 associou-se a rPFS mais longa (17,4 e 20,6 vs 11,1 meses).",
+      "seguranca": null,
+      "conclusao_autores": "A magnitude do declínio de PSA associou-se a melhores desfechos clínicos e relatados; o declínio de PSA parece ter valor prognóstico durante o 177Lu-PSMA-617."
+    },
+    "auditStatus": {
+      "classification": "TOO_SHALLOW",
+      "verification": "PASS",
+      "appliedChanges": 8,
+      "pendingChanges": 0,
+      "auditedAt": "2026-09-30"
     }
   },
   {
@@ -250,7 +288,7 @@ window.THERA_SECONDARY = [
     "parentUid": "lupsma_prostata_0",
     "parentTrialName": "VISION",
     "parentTrialPublication": "Sartor O, et al. N Engl J Med 2021;385:1091-1103 (NCT03511664)",
-    "relationshipToParent": "Modelagem multivariável usando dados do VISION",
+    "relationshipToParent": "Análise post hoc de modelagem prognóstica com dados do VISION (braço 177Lu-PSMA-617)",
     "publicationStatus": "Peer-reviewed full article",
     "analysisType": "Modelagem multivariável",
     "evidenceMaturity": "Análise exploratória revisada por pares",
@@ -266,17 +304,36 @@ window.THERA_SECONDARY = [
       "Modelagem de desfechos",
       "Biomarcador"
     ],
-    "clinicalTakeaway": "Modelagem multivariável baseada em dados do VISION para explorar fatores associados a desfechos com 177Lu-PSMA-617. Necessita confirmação prospectiva.",
+    "clinicalTakeaway": "Nomogramas post hoc do braço 177Lu-PSMA-617 do VISION (n=551) estimam o prognóstico (C-index 0,73 para OS; 0,68 para rPFS; AUC 0,72 para PSA50), usando SUVmax, LDH, FA, linfócitos e outros fatores. São prognósticos, não preditivos de benefício vs SoC, e só têm validação interna.",
     "deep": {
-      "objetivo": "Desenvolver modelos multivariáveis para predizer desfechos com 177Lu-PSMA-617.",
-      "metodo": "Análise post hoc do VISION (n=551 no braço tratado); regressão de Cox/logística multivariável com validação por bootstrap.",
+      "objetivo": "Construir, com dados do braço 177Lu-PSMA-617 do VISION, modelos multivariáveis e nomogramas de OS, rPFS e PSA50 a partir de parâmetros pré-tratamento clínicos, laboratoriais e de PET PSMA.",
+      "metodo": "Análise post hoc. Foram avaliados 29 parâmetros pré-tratamento. Modelos de parâmetro único usaram os dois braços (n=831), testando associação e interação com o tratamento (FDR). Os modelos multivariáveis usaram só o braço 177Lu (n=551): seleção bayesiana com horseshoe priors, Cox (OS, rPFS) e logística (PSA50), com validação interna por bootstrap e sem coorte de validação externa.",
       "achados": [
-        "Nomograma de OS: C-index 0,73 (IC95% 0,70–0,76).",
-        "rPFS: C-index 0,68 (0,65–0,72).",
-        "PSA50: AUC-ROC 0,72 (0,68–0,77)."
+        "Nomograma de OS (10 variáveis: SUVmax, tempo desde o diagnóstico, uso de opioide, AST, hemoglobina, linfócitos, linfonodos PSMA+, LDH, FA e neutrófilos): C-index 0,73 (IC95% 0,70–0,76).",
+        "Nomograma de rPFS (7 variáveis): C-index 0,68 (0,65–0,72). Nomograma de PSA50 (SUVmax, linfócitos, FA): AUC 0,72 (0,68–0,77).",
+        "Sem SUVmax, o desempenho se manteve para OS (0,73) e rPFS (0,67), mas caiu para PSA50 (AUC 0,64).",
+        "Nos modelos de parâmetro único, menos parâmetros se associaram a desfechos diferenciais com 177Lu vs controle: SUVmax ou SUVmean mais altos associaram-se a maior PSA50 com 177Lu vs controle, e nenhum parâmetro se associou significativamente a benefício de OS ou rPFS.",
+        "Aplicados ao VISION, os nomogramas prévios de Gafita et al. tiveram C-index de 0,67 (OS) e 0,61 (rPFS)."
       ],
-      "interpretacao": "A combinação de parâmetros pré-tratamento influencia os desfechos e pode auxiliar a seleção de pacientes e o desenho de ensaios. Análise post hoc; necessita validação prospectiva.",
-      "limitacoes": "Análise post hoc (com o framework prospectivo do VISION como força)."
+      "interpretacao": "Os nomogramas estimam o prognóstico de pacientes tratados com 177Lu-PSMA-617 (C-index 0,68–0,73) e podem ajudar a informar expectativas e estratificar ensaios. Foram construídos só no braço 177Lu e não estimam desfechos com SoC isolado; nos modelos de parâmetro único, nenhum parâmetro se associou significativamente a benefício de OS ou rPFS com 177Lu vs controle. Análise post hoc, sem validação externa.",
+      "limitacoes": "Post hoc; validação apenas interna (bootstrap), sem coorte de validação; necessita validação no mundo real; radiossensibilidade individual não considerada; modelos só para o braço 177Lu (não preditivos de benefício vs SoC); não generalizável a doença PSMA-negativa nem a fases mais precoces."
+    },
+    "analysis": {
+      "populacao": "Modelos multivariáveis: 551 pacientes do braço 177Lu-PSMA-617 + SoC do VISION. Modelos de parâmetro único: 831 (ambos os braços).",
+      "desenho_relacao": "Análise post hoc de modelagem prognóstica com dados do VISION.",
+      "endpoints": "OS, rPFS e PSA50 (queda de PSA ≥50%).",
+      "estatistica": "29 parâmetros pré-tratamento; correlação de Spearman para colinearidade; seleção bayesiana com horseshoe priors (ICr 80%); Cox/logística; C-index e AUC-ROC com IC por bootstrap; DeLong para comparar modelos.",
+      "cutoff_followup": null,
+      "subgrupos": "Nenhum parâmetro se associou a benefício diferencial de OS ou rPFS vs controle; SUVmax e SUVmean associaram-se a maior PSA50 diferencial. Modelos sem SUVmax: OS 0,73; rPFS 0,67; PSA50 0,64.",
+      "seguranca": null,
+      "conclusao_autores": "Primeiros modelos de desfechos com 177Lu-PSMA-617 a partir de dados prospectivos de fase III; a combinação de parâmetros laboratoriais, clínicos e de imagem influencia os desfechos e pode auxiliar a seleção, o manejo e o desenho de ensaios."
+    },
+    "auditStatus": {
+      "classification": "TOO_SHALLOW",
+      "verification": "PASS",
+      "appliedChanges": 8,
+      "pendingChanges": 0,
+      "auditedAt": "2026-09-30"
     }
   },
   {
@@ -394,16 +451,36 @@ window.THERA_SECONDARY = [
       "Seguimento de longo prazo",
       "Desfecho secundário"
     ],
-    "clinicalTakeaway": "Atualização de OS com seguimento maduro, reportada como desfecho secundário; deve ser interpretada como tal, sem inferir superioridade de OS.",
+    "clinicalTakeaway": "Com seguimento mediano de 35,7 m, a OS foi semelhante entre 177Lu-PSMA-617 e cabazitaxel (RMST 19,1 vs 19,6 m; p=0,77), com crossover pós-tratamento de 20–32%. Desfecho secundário de fase II: não demonstra superioridade nem equivalência formal de OS.",
     "deep": {
-      "objetivo": "Comparar a sobrevida global entre 177Lu-PSMA-617 e cabazitaxel no TheraP, após progressão a docetaxel.",
-      "metodo": "Desfecho secundário do TheraP (fase II); n=200 (99 vs 101).",
+      "objetivo": "Relatar a sobrevida global (desfecho secundário) com seguimento maduro no TheraP (177Lu-PSMA-617 vs cabazitaxel após docetaxel), além dos desfechos dos pacientes excluídos pelo PET de triagem.",
+      "metodo": "Desfecho secundário do TheraP (fase II aberto, 11 centros na Austrália); 291 registrados, 200 randomizados após PSMA-PET e FDG-PET (177Lu-PSMA-617 n=99; cabazitaxel n=101). OS por ITT, resumida como tempo médio de sobrevida restrito (RMST, restrição de 36 m) por riscos não proporcionais. Seguimento mediano 35,7 m.",
       "achados": [
-        "RMST (tempo médio de sobrevida restrito): 19,1 m (IC95% 16,9–21,4) vs 19,6 m (17,4–21,8); diferença −0,5 m (−3,7 a 2,7); p=0,77.",
-        "Óbitos: 78% (77/99) vs 69% (70/101)."
+        "RMST: 19,1 m (IC95% 16,9–21,4) com 177Lu-PSMA-617 vs 19,6 m (17,4–21,8) com cabazitaxel; diferença −0,5 m (−3,7 a 2,7); p=0,77.",
+        "Óbitos: 78% (77/99) com 177Lu-PSMA-617 vs 69% (70/101) com cabazitaxel.",
+        "Após o tratamento do estudo, 32% do braço 177Lu-PSMA-617 recebeu cabazitaxel e 20% do braço cabazitaxel recebeu 177Lu-PSMA-617.",
+        "Excluídos após PET (baixa expressão de PSMA ou discordância FDG): 27% (80/291); RMST 11,0 m (9,0–13,1) nos 61 com seguimento.",
+        "Sem novos sinais de segurança com o seguimento mais longo."
       ],
-      "interpretacao": "OS semelhante entre os braços; o resultado apoia o 177Lu-PSMA-617 como alternativa ao cabazitaxel em doença PSMA-positiva. Desfecho secundário — não interpretar como superioridade de OS.",
-      "limitacoes": "Não detalhadas no abstract."
+      "interpretacao": "Não houve evidência de diferença de OS entre os braços; os autores consideram que os resultados apoiam o 177Lu-PSMA-617 como alternativa ao cabazitaxel em doença PSMA-positiva após docetaxel. OS é desfecho secundário. A OS mais curta nos excluídos pelo PET é descritiva (não randomizada).",
+      "limitacoes": "Fase II com OS como desfecho secundário; crossover pós-tratamento (20–32%); comparação dos excluídos é observacional e com seguimento incompleto (61/80)."
+    },
+    "analysis": {
+      "populacao": "200 randomizados (99 vs 101) de 291 registrados; mCRPC progressivo pós-docetaxel, PSMA-positivo sem lesões FDG+/PSMA−.",
+      "desenho_relacao": "Desfecho secundário (OS) do ensaio fase II TheraP, com seguimento maduro; inclui análise descritiva dos excluídos pelo PET.",
+      "endpoints": "OS (secundário).",
+      "estatistica": "ITT; RMST com restrição de 36 m (riscos não proporcionais).",
+      "cutoff_followup": "Seguimento mediano 35,7 m (IQR 31,1–39,2).",
+      "subgrupos": "Excluídos pelo PET: 80/291; RMST 11,0 m nos 61 com seguimento.",
+      "seguranca": "Sem novos sinais de segurança com seguimento mais longo.",
+      "conclusao_autores": "Apoia 177Lu-PSMA-617 como alternativa ao cabazitaxel; sem evidência de diferença de OS entre os grupos."
+    },
+    "auditStatus": {
+      "classification": "TOO_SHALLOW",
+      "verification": "PASS",
+      "appliedChanges": 8,
+      "pendingChanges": 0,
+      "auditedAt": "2026-09-30"
     }
   },
   {
@@ -448,7 +525,7 @@ window.THERA_SECONDARY = [
     "parentUid": "lupsma_prostata_2",
     "parentTrialName": "PSMAfore",
     "parentTrialPublication": "Morris MJ, et al. Lancet 2024;404:1227-1239 (NCT04689828; PMID 39293462)",
-    "relationshipToParent": "Análise final de OS e segurança do ensaio fase III PSMAfore",
+    "relationshipToParent": "Análise final de OS (desfecho secundário-chave) e segurança do ensaio fase III PSMAfore",
     "publicationStatus": "Peer-reviewed full article",
     "analysisType": "Análise final de sobrevida global e segurança",
     "evidenceMaturity": "Análise final revisada por pares",
@@ -464,17 +541,36 @@ window.THERA_SECONDARY = [
       "Segurança",
       "Seguimento de longo prazo"
     ],
-    "clinicalTakeaway": "Atualização final de OS e segurança; deve ser interpretada considerando o crossover do braço controle.",
+    "clinicalTakeaway": "Na análise final do PSMAfore, a OS não diferiu na ITT (24,5 vs 23,1 m; HR 0,91; P=0,20), com 60,3% de crossover no braço controle. O HR 0,59 ajustado por IPCW é análise suplementar; sua suposição não é verificável, embora os autores relatem apoio à sua adequação. Segurança sem novos sinais.",
     "deep": {
-      "objetivo": "Avaliar a OS final e a segurança do 177Lu-PSMA-617 versus troca de ARPI no PSMAfore (mCRPC taxane-naïve).",
-      "metodo": "Fase III, internacional, aberto; n=468 (234 por braço).",
+      "objetivo": "Relatar a análise final de sobrevida global (desfecho secundário-chave) e a segurança atualizada do 177Lu-PSMA-617 versus troca de ARPI no PSMAfore (mCRPC PSMA-positivo, taxane-naive, com progressão a um ARPI prévio).",
+      "metodo": "Fase III internacional, aberto; n=468 (234 por braço). Crossover para 177Lu-PSMA-617 permitido após progressão radiográfica confirmada centralmente. Análise final planejada após ~297 óbitos (poder 80% para HR 0,72; α unilateral 0,025), por ITT; análises suplementares de ajuste do crossover (IPCW e RPSFT). EA ajustados por exposição (por 100 pessoas-ano de tratamento). Cutoff 1/jan/2025; mediana desde a randomização 34,27 m.",
       "achados": [
-        "OS mediana: 24,5 m (IC95% 19,6–28,9) vs 23,1 m (19,6–25,5); HR 0,91 (0,72–1,14); p=0,20 (ITT).",
-        "HR ajustado para crossover: 0,59 (0,38–0,91).",
-        "EA grau ≥3: 60,8 vs 85,1 por 100 pessoas-ano de tratamento."
+        "Crossover: 60,3% (141/234) do braço troca de ARPI recebeu 177Lu-PSMA-617 (75,4% dos com progressão confirmada), após mediana de 7,66 m.",
+        "OS mediana (ITT): 24,48 m (IC95% 19,55–28,94) com 177Lu-PSMA-617 vs 23,13 m (19,61–25,53) com troca de ARPI; HR 0,91 (0,72–1,14); P=0,20. Óbitos: 60,7% vs 67,1% (299 no total).",
+        "HR ajustado para crossover por IPCW (modelo completo): 0,59 (0,38–0,91); demais modelos IPCW 0,54–0,62. RPSFT: 0,84 (0,55–1,28).",
+        "EA grau ≥3: 60,8 vs 85,1 e EA graves: 32,5 vs 49,9 por 100 pessoas-ano de tratamento (177Lu-PSMA-617 vs troca de ARPI).",
+        "No braço 177Lu-PSMA-617: boca seca 59,5% (grau ≥3 em 2/227) e anemia 27,3% (grau ≥3 em 14/227); sem novos sinais de segurança."
       ],
-      "interpretacao": "A OS não mostrou diferença estatisticamente significativa na ITT; a alta taxa de crossover provavelmente confundiu o resultado; perfil de segurança favorável. Interpretar a OS considerando o crossover.",
-      "limitacoes": "Crossover elevado do braço controle."
+      "interpretacao": "A OS não diferiu de forma estatisticamente significativa na análise ITT pré-especificada. Os autores atribuem esse resultado provavelmente ao crossover elevado; o benefício sugerido pelo ajuste IPCW é análise suplementar, dependente de suposições não verificáveis, e não substitui o resultado ITT. Perfil de segurança considerado favorável, sem novos sinais.",
+      "limitacoes": "Crossover elevado e precoce; IPCW supõe ausência de confundidores não medidos e o RPSFT provavelmente não atendeu sua suposição; poder de 80% para OS, possivelmente reduzido pelo crossover; exclusão de pacientes com alterações de DDR elegíveis a outras terapias, sem testagem genômica obrigatória."
+    },
+    "analysis": {
+      "populacao": "468 randomizados (234 vs 234); safety set 227 vs 232.",
+      "desenho_relacao": "Análise final pré-planejada da OS (secundário-chave) e atualização de segurança do ensaio fase III PSMAfore.",
+      "endpoints": "OS (secundário-chave); segurança (secundário).",
+      "estatistica": "ITT (método pré-especificado); poder 80% para HR 0,72; ajustes de crossover suplementares por IPCW e RPSFT; EA ajustados por exposição.",
+      "cutoff_followup": "Cutoff 1/jan/2025; mediana desde a randomização 34,27 m (26,9–42,2).",
+      "subgrupos": "Crossover 141/234 (60,3%); mediana até crossover 7,66 m.",
+      "seguranca": "EA grau ≥3 60,8 vs 85,1 e graves 32,5 vs 49,9 por 100 pessoas-ano de tratamento; boca seca 59,5%, anemia 27,3% com 177Lu-PSMA-617.",
+      "conclusao_autores": "Sem diferença significativa de OS na ITT, provavelmente confundida pelo crossover; segurança favorável sem novos sinais."
+    },
+    "auditStatus": {
+      "classification": "TOO_SHALLOW",
+      "verification": "PASS",
+      "appliedChanges": 8,
+      "pendingChanges": 0,
+      "auditedAt": "2026-09-30"
     }
   },
   {
@@ -484,7 +580,7 @@ window.THERA_SECONDARY = [
     "parentUid": "lupsma_prostata_2",
     "parentTrialName": "PSMAfore",
     "parentTrialPublication": "Morris MJ, et al. Lancet 2024;404:1227-1239 (NCT04689828; PMID 39293462)",
-    "relationshipToParent": "Análise secundária de HRQoL/dor/SSE do PSMAfore",
+    "relationshipToParent": "Análise de desfechos secundários (HRQoL, dor, SSE) do PSMAfore, no corte da 3ª análise interina de OS",
     "publicationStatus": "Peer-reviewed full article",
     "analysisType": "Análise secundária (HRQoL, dor, SSE)",
     "evidenceMaturity": "Análise secundária revisada por pares",
@@ -500,18 +596,36 @@ window.THERA_SECONDARY = [
       "Dor",
       "Eventos esqueléticos sintomáticos"
     ],
-    "clinicalTakeaway": "Análise de qualidade de vida, dor e eventos esqueléticos sintomáticos em pacientes taxane-naïve tratados no PSMAfore.",
+    "clinicalTakeaway": "No PSMAfore, 177Lu-PSMA-617 retardou a piora do FACT-P (7,46 vs 4,27 m; HR 0,61), da dor (HR 0,72) e o primeiro evento esquelético sintomático (HR 0,41) vs troca de ARPI. Desfechos secundários de ensaio aberto, em corte interino.",
     "deep": {
-      "objetivo": "Analisar o tempo até piora de HRQoL, dor e eventos esqueléticos sintomáticos com 177Lu-PSMA-617 versus troca de ARPI no PSMAfore.",
-      "metodo": "Fase III, aberto; n=468 (234 por braço); seguimento mediano ~24 m.",
+      "objetivo": "Analisar em profundidade o tempo até piora de HRQoL e dor e o tempo até o primeiro evento esquelético sintomático (SSE) com 177Lu-PSMA-617 versus troca de ARPI no PSMAfore.",
+      "metodo": "Desfechos secundários do PSMAfore (fase III, aberto, 74 centros em 14 países); mCRPC PSMA-positivo taxane-naive após uma progressão a ARPI; n=468 (234 por braço). Instrumentos: FACT-P, EQ-5D-5L, BPI-SF; análise ITT. Dados do cutoff da 3ª análise interina de OS (27/fev/2024); seguimento mediano ~24,1 m em ambos os braços.",
       "achados": [
-        "Tempo até piora do FACT-P: 7,46 m vs 4,27 m; HR 0,61 (0,50–0,75).",
-        "EQ-5D-5L: 6,28 vs 3,88 m; HR 0,67 (0,54–0,82).",
-        "Dor (BPI-SF): 5,03 vs 3,65 m; HR 0,72 (0,59–0,88).",
-        "Eventos esqueléticos sintomáticos: HR 0,41 (0,26–0,63)."
+        "Tempo até piora do FACT-P total: 7,46 m (IC95% 6,08–8,54) com 177Lu-PSMA-617 vs 4,27 m (3,45–4,50) com troca de ARPI; HR 0,61 (0,50–0,75).",
+        "EQ-5D-5L (utilidade): 6,28 vs 3,88 m; HR 0,67 (0,54–0,82).",
+        "Intensidade de dor (BPI-SF): 5,03 vs 3,65 m; HR 0,72 (0,59–0,88).",
+        "Primeiro SSE: mediana não atingida com 177Lu-PSMA-617 vs 17,97 m com troca de ARPI; HR 0,41 (0,26–0,63).",
+        "Anemia grau ≥3 (EA grau ≥3 mais comum): 6% (14/227) vs 7% (16/232); nenhum óbito relacionado ao tratamento com 177Lu-PSMA-617 e 1 com troca de ARPI (AVC)."
       ],
-      "interpretacao": "O 177Lu-PSMA-617 pode retardar a piora dos desfechos relatados pelo paciente e prevenir eventos esqueléticos versus troca de ARPI.",
-      "limitacoes": "Não detalhadas no abstract."
+      "interpretacao": "Segundo os autores, o 177Lu-PSMA-617 pode retardar a piora dos desfechos relatados pelo paciente e prevenir SSE versus troca de ARPI. São desfechos secundários, sem efeito demonstrado sobre OS nesta publicação.",
+      "limitacoes": "Ensaio aberto; desfechos secundários avaliados no corte da 3ª análise interina de OS. O resumo não detalha limitações."
+    },
+    "analysis": {
+      "populacao": "468 randomizados (234 vs 234); safety set 227 vs 232.",
+      "desenho_relacao": "Análise de desfechos secundários (HRQoL, dor, SSE) do ensaio fase III PSMAfore, no cutoff da 3ª análise interina de OS.",
+      "endpoints": "Tempo até piora de FACT-P, EQ-5D-5L e BPI-SF; tempo até primeiro SSE.",
+      "estatistica": "ITT; HR com IC95%.",
+      "cutoff_followup": "Cutoff 27/fev/2024; seguimento mediano 24,11 vs 24,13 m.",
+      "subgrupos": null,
+      "seguranca": "Anemia grau ≥3 6% vs 7%; 0 vs 1 óbito relacionado ao tratamento.",
+      "conclusao_autores": "177Lu-PSMA-617 pode retardar a piora de desfechos relatados pelo paciente e prevenir SSE vs troca de ARPI."
+    },
+    "auditStatus": {
+      "classification": "TOO_SHALLOW",
+      "verification": "PASS",
+      "appliedChanges": 8,
+      "pendingChanges": 0,
+      "auditedAt": "2026-09-30"
     }
   },
   {
@@ -554,7 +668,7 @@ window.THERA_SECONDARY = [
     "parentUid": "lupsma_prostata_5",
     "parentTrialName": "ENZA-p (ANZUP 1901)",
     "parentTrialPublication": "Emmett L, et al. Lancet Oncol 2024;25:563-571 (NCT04419402; PMID 38621400)",
-    "relationshipToParent": "Desfechos secundários do ENZA-p com seguimento mais longo",
+    "relationshipToParent": "Desfechos secundários-chave pré-especificados (OS, HRQoL) do ENZA-p com seguimento mais longo",
     "publicationStatus": "Peer-reviewed full article",
     "analysisType": "Desfechos secundários / seguimento mais longo",
     "evidenceMaturity": "Desfechos secundários revisados por pares",
@@ -570,18 +684,36 @@ window.THERA_SECONDARY = [
       "HRQoL",
       "Seguimento mais longo"
     ],
-    "clinicalTakeaway": "Atualização dos desfechos secundários de OS e HRQoL com maior tempo de seguimento.",
+    "clinicalTakeaway": "No ENZA-p (fase II), adicionar 177Lu-PSMA-617 à enzalutamida associou-se a maior OS (34 vs 26 m; HR 0,55) e a maior tempo sem deterioração de função física e QoL, com mais xerostomia. Desfechos secundários: os autores pedem confirmação em fase III.",
     "deep": {
-      "objetivo": "Reportar OS e qualidade de vida (desfechos secundários) com seguimento mais longo no ENZA-p.",
-      "metodo": "Fase II randomizado, multicêntrico; n=162 (79 enzalutamida vs 83 combinação).",
+      "objetivo": "Reportar os desfechos secundários-chave de sobrevida global e qualidade de vida relacionada à saúde (HRQoL), com seguimento mais longo, no ENZA-p (enzalutamida ± 177Lu-PSMA-617 em mCRPC de alto risco).",
+      "metodo": "Fase II randomizado, aberto, 15 hospitais na Austrália; mCRPC sem docetaxel/ARPI prévio para mCRPC, PSMA-PET positivo e ≥2 fatores de risco para progressão precoce com enzalutamida. n=162 (enzalutamida n=79; enzalutamida + 177Lu-PSMA-617 adaptativo, 2 ou 4 doses de 7,5 GBq, n=83). OS e HRQoL (EORTC QLQ-C30; sobrevida livre de deterioração com piora ≥10 pontos, morte, progressão clínica ou descontinuação) pré-especificados, por ITT. Seguimento mediano 34 m.",
       "achados": [
-        "OS mediana: 34 m (IC95% 30–37) vs 26 m (23–31); HR 0,55 (0,36–0,84); p=0,0053.",
-        "Sobrevida livre de deterioração — função física: HR 0,51 (p<0,0001); QoL: HR 0,47 (p=0,0001).",
-        "Redução de dor (p=0,012) e melhora de fadiga (p=0,016) favoreceram a combinação.",
-        "EA grau 3–5: 44% vs 46%; sem óbitos relacionados ao tratamento."
+        "OS mediana: 34 m (IC95% 30–37) com enzalutamida + 177Lu-PSMA-617 vs 26 m (23–31) com enzalutamida; HR 0,55 (0,36–0,84); log-rank p=0,0053. Óbitos: 52% (43/83) vs 67% (53/79).",
+        "Sobrevida livre de deterioração — função física: 10,64 vs 3,42 m; HR 0,51 (0,36–0,72); p<0,0001. Saúde global/QoL: 8,71 vs 3,32 m; HR 0,47 (0,33–0,67); p=0,0001.",
+        "Escores médios até a progressão favoreceram a combinação para dor (diferença 7,3; p=0,012) e fadiga (5,9; p=0,016).",
+        "Xerostomia autorrelatada mais frequente com a combinação: 74% (58/78) vs 57% (43/75); p=0,039.",
+        "EA grau 3–5: 46% (37/81) com a combinação vs 44% (35/79) com enzalutamida; nenhum óbito atribuído ao tratamento."
       ],
-      "interpretacao": "A adição de 177Lu-PSMA-617 associou-se a melhor sobrevida e a aspectos de QoL; os autores consideram que justifica avaliação fase III. Desfechos secundários de ensaio fase II.",
-      "limitacoes": "Não detalhadas no abstract."
+      "interpretacao": "A adição de 177Lu-PSMA-617 à enzalutamida associou-se a maior OS e a melhora de alguns aspectos de HRQoL, à custa de mais xerostomia. São desfechos secundários de um ensaio fase II; os autores consideram que os achados justificam avaliação em fase III.",
+      "limitacoes": "Fase II aberto, com OS e HRQoL como desfechos secundários (n=162), em 15 centros na Austrália."
+    },
+    "analysis": {
+      "populacao": "162 randomizados (79 enzalutamida; 83 enzalutamida + 177Lu-PSMA-617); HRQoL respondida por 154/162 (95%).",
+      "desenho_relacao": "Desfechos secundários-chave pré-especificados (OS, HRQoL) do ensaio fase II ENZA-p, com seguimento mais longo.",
+      "endpoints": "OS; sobrevida livre de deterioração (função física; saúde global/QoL); escores de sintomas.",
+      "estatistica": "ITT; log-rank estratificado; HR com IC95%.",
+      "cutoff_followup": "Seguimento mediano 34 m (IQR 29–39); 96 óbitos.",
+      "subgrupos": null,
+      "seguranca": "EA grau 3–5 44% vs 46%; sem óbitos atribuídos ao tratamento; xerostomia 57% vs 74%.",
+      "conclusao_autores": "177Lu-PSMA-617 + enzalutamida associou-se a melhor sobrevida e alguns aspectos de HRQoL; justifica fase III."
+    },
+    "auditStatus": {
+      "classification": "TOO_SHALLOW",
+      "verification": "PASS",
+      "appliedChanges": 8,
+      "pendingChanges": 0,
+      "auditedAt": "2026-09-30"
     }
   },
   {
@@ -591,7 +723,7 @@ window.THERA_SECONDARY = [
     "parentUid": "lupsma_prostata_5",
     "parentTrialName": "ENZA-p (ANZUP 1901)",
     "parentTrialPublication": "Emmett L, et al. Lancet Oncol 2024;25:563-571 (NCT04419402; PMID 38621400)",
-    "relationshipToParent": "Análise de biomarcador PSMA-PET basal do ENZA-p",
+    "relationshipToParent": "Subestudo pré-especificado de biomarcador PSMA-PET basal do ENZA-p",
     "publicationStatus": "Peer-reviewed full article",
     "analysisType": "Análise de biomarcador de imagem",
     "evidenceMaturity": "Análise revisada por pares",
@@ -608,18 +740,36 @@ window.THERA_SECONDARY = [
       "Volume tumoral total",
       "SUVmean"
     ],
-    "clinicalTakeaway": "Análise de biomarcador de imagem avaliando o PSMA-PET basal (volume tumoral total e SUVmean) como marcador prognóstico e potencialmente preditivo no ENZA-p.",
+    "clinicalTakeaway": "Em subestudo pré-especificado do ENZA-p, PSMA-TTV basal acima da mediana associou-se a menor OS com enzalutamida isolada (20 vs 39 m; HR 0,23), com efeito atenuado na combinação (interação p=0,0078); SUVmean não se associou a OS.",
     "deep": {
-      "objetivo": "Avaliar PSMA-TTV (volume tumoral total) e SUVmean basais como biomarcadores prognósticos/preditivos no ENZA-p.",
-      "metodo": "Subestudo pré-especificado do ENZA-p; n=160 tratados (79 vs 81).",
+      "objetivo": "Avaliar o volume tumoral total (PSMA-TTV) e o SUVmean do PSMA-PET basal como biomarcadores prognósticos e preditivos de OS com enzalutamida isolada ou combinada a 177Lu-PSMA-617 no ENZA-p.",
+      "metodo": "Subestudo pré-especificado do ENZA-p (fase II randomizado, 15 hospitais na Austrália); desfecho primário do subestudo: OS. n=160 dos 162 randomizados que receberam tratamento (enzalutamida n=79; combinação n=81), analisados por tratamento recebido. PSMA-TTV e SUVmean quantificados por software semiautomático; limiares: mediana de PSMA-TTV e quartil superior de SUVmean (Q4 vs Q1–3). Kaplan-Meier e Cox. Cutoff final 31/jul/2024; seguimento mediano 34 m; 96 eventos de OS.",
       "achados": [
-        "PSMA-TTV basal mediano 234 mL; SUVmean mediano 7,7.",
-        "Efeito do PSMA-TTV (braço enzalutamida): 39 vs 20 m; HR 0,23 (0,13–0,42); p<0,0001.",
-        "Braço combinação: 35 vs 28 m; HR 0,66 (0,36–1,21); p=0,18.",
-        "Interação tratamento×PSMA-TTV: p=0,0078; SUVmean sem valor prognóstico."
+        "PSMA-TTV basal mediano 234 mL (IQR 76–687); SUVmean mediano 7,7 (6,5–9,8).",
+        "Braço enzalutamida — PSMA-TTV abaixo vs acima da mediana: OS mediana 39 vs 20 m; HR 0,23 (0,13–0,42); p<0,0001.",
+        "Braço enzalutamida + 177Lu-PSMA-617 — abaixo vs acima da mediana: 35 vs 28 m; HR 0,66 (0,36–1,21); p=0,18.",
+        "Interação PSMA-TTV × tratamento para OS: p=0,0078.",
+        "SUVmean Q4 vs Q1–3: HR 0,84 (0,44–1,60; p=0,59) com enzalutamida e 0,80 (0,38–1,68; p=0,56) com a combinação; interação p=0,88."
       ],
-      "interpretacao": "PSMA-TTV basal é prognóstico e preditivo de benefício de OS com a combinação; o SUVmean não foi prognóstico.",
-      "limitacoes": "Não detalhadas no abstract."
+      "interpretacao": "Os autores concluem que o PSMA-TTV basal é prognóstico para OS e preditivo de benefício de OS com a adição de 177Lu-PSMA-617; o sinal preditivo vem de teste de interação em subestudo de fase II, com o efeito prognóstico concentrado no braço enzalutamida. O SUVmean não mostrou associação com OS.",
+      "limitacoes": "Subestudo de fase II (n=160) analisado por tratamento recebido, com limiares derivados da própria coorte (mediana, quartil); exige quantificação por software semiautomático. O resumo não detalha outras limitações."
+    },
+    "analysis": {
+      "populacao": "160/162 randomizados que receberam tratamento (79 enzalutamida; 81 combinação).",
+      "desenho_relacao": "Subestudo pré-especificado de biomarcador de imagem do ensaio fase II ENZA-p.",
+      "endpoints": "OS (primário do subestudo); PSA-PFS.",
+      "estatistica": "Kaplan-Meier, Cox, teste de interação; por tratamento recebido; limiares mediana (TTV) e Q4 (SUVmean).",
+      "cutoff_followup": "Cutoff 31/jul/2024; seguimento mediano 34 m (IQR 29–39); 96 eventos.",
+      "subgrupos": "PSMA-TTV abaixo/acima de 234 mL; SUVmean Q4 vs Q1–3, por braço.",
+      "seguranca": null,
+      "conclusao_autores": "PSMA-TTV basal prognóstico e preditivo de benefício de OS com 177Lu-PSMA-617 + enzalutamida; SUVmean não prognóstico com a combinação."
+    },
+    "auditStatus": {
+      "classification": "TOO_SHALLOW",
+      "verification": "PASS",
+      "appliedChanges": 8,
+      "pendingChanges": 0,
+      "auditedAt": "2026-09-30"
     }
   },
   {
@@ -666,7 +816,7 @@ window.THERA_SECONDARY = [
     "parentUid": "lupsma_prostata_3",
     "parentTrialName": "SPLASH (177Lu-PNT2002)",
     "parentTrialPublication": "Ensaio fase III SPLASH — NCT04647526",
-    "relationshipToParent": "Coorte lead-in do ensaio fase III SPLASH",
+    "relationshipToParent": "Coorte lead-in de braço único (segurança e dosimetria), anterior à porção randomizada do ensaio fase III SPLASH; não é a publicação primária da fase randomizada",
     "publicationStatus": "Peer-reviewed full article",
     "analysisType": "Coorte lead-in (dosimetria, segurança, eficácia preliminar)",
     "evidenceMaturity": "Coorte lead-in revisada por pares",
@@ -683,18 +833,35 @@ window.THERA_SECONDARY = [
       "Eficácia preliminar",
       "177Lu-PNT2002"
     ],
-    "clinicalTakeaway": "Coorte lead-in avaliando dosimetria tecidual, segurança preliminar e eficácia antes da expansão randomizada do SPLASH.",
+    "clinicalTakeaway": "Na coorte lead-in de braço único do SPLASH (n=27), 177Lu-PNT2002 6,8 GBq × 4 ciclos teve dose renal cumulativa média estimada de 19,9 Gy, abaixo do limiar de 23 Gy, mas 6 participantes tiveram dose renal cumulativa prevista acima desse limiar; toxicidade majoritariamente grau 1–2 (grau ≥3 relacionado em 7,4%); PSA50 42,3% e rPFS mediana 11,5 m são dados preliminares, sem comparador.",
     "deep": {
-      "objetivo": "Avaliar dosimetria tecidual, segurança e eficácia preliminar do 177Lu-PNT2002 na coorte lead-in do SPLASH.",
-      "metodo": "Fase lead-in do ensaio fase III SPLASH; n=27.",
+      "objetivo": "Avaliar dosimetria tecidual e segurança e eficácia preliminares do 177Lu-PNT2002 (6,8 GBq a cada 8 semanas, até 4 ciclos) na porção lead-in de braço único do SPLASH, antes da fase randomizada, confirmando que a atividade planejada não excedia tolerâncias de dose pré-especificadas.",
+      "metodo": "Coorte lead-in prospectiva, aberta, braço único, 12 centros na América do Norte; n=27 (mCRPC com progressão após um ARPI, sem quimioterapia para mCRPC, PSMA-PET positivo). Dosimetria planar em 27 e híbrida planar+SPECT/CT em 7; dose cumulativa extrapolada do ciclo 1. Análise descritiva; rPFS e ORR por revisão central independente cega.",
       "achados": [
         "19/27 (70,4%) completaram os 4 ciclos.",
-        "Dose média: glândula lacrimal 1,2 Gy/GBq; rim 0,73 Gy/GBq; tumor 4,3 Gy/GBq.",
-        "Declínio de PSA ≥50%: 42,3% (11/26); ORR confirmada 50% (5/10).",
-        "rPFS mediana 11,5 m (IC95% 9,2–19,1); sem TEAE grau ≥3 relacionado; sem óbitos."
+        "Dose específica média: glândulas lacrimais 1,2 Gy/GBq; rins 0,73 Gy/GBq; lesões tumorais 4,3 Gy/GBq (21 lesões em 7 pacientes). Dose cumulativa estimada (27,2 GBq): tumor 117 Gy, rins 19,9 Gy, medula 0,9 Gy; 6/27 (22,2%) com dose renal extrapolada >23 Gy, sem sinais de segurança adicionais.",
+        "TEAE grau ≥3 em 7/27 (25,9%), relacionados ao tratamento em 2/27 (7,4%: anemia; trombocitopenia e neutropenia em um). Sem EA grave, descontinuação ou óbito relacionados; 1 óbito por CIVD considerado não relacionado.",
+        "PSA50 42,3% (11/26; confirmado em 9, 34,6%); ORR confirmada 50% (5/10 com doença avaliável); rPFS mediana 11,5 m (IC95% 9,2–19,1); OS mediana 20,8 m (IC95% 11,3–não avaliável), seguimento mediano de sobrevida 19,9 m."
       ],
-      "interpretacao": "Dosimetria e segurança favoráveis e eficácia preliminar promissora antes da expansão randomizada do SPLASH. Coorte pequena.",
-      "limitacoes": "Coorte lead-in pequena; limitações não detalhadas no abstract."
+      "interpretacao": "Dados de fase lead-in, descritivos e sem comparador, compatíveis com perfil dosimétrico e de segurança aceitável para o regime de 6,8 GBq × 4 ciclos e que sustentaram a passagem à fase randomizada. Os dados de eficácia são preliminares e não permitem inferência comparativa.",
+      "limitacoes": "Amostra pequena e braço único limitam a interpretação de rPFS e OS; dose cumulativa extrapolada do ciclo 1 (provável superestimação tumoral); dosimetria planar isolada na maioria e SPECT/CT em apenas 7 pacientes, com potencial superestimação de doses em órgãos; limiar renal de 23 Gy derivado de radioterapia externa."
+    },
+    "analysis": {
+      "populacao": "27 participantes com mCRPC PSMA-positivo, progressão após um ARPI, sem quimioterapia para mCRPC; 34 triados; América do Norte.",
+      "desenho_relacao": "Porção lead-in (segurança e dosimetria) de braço único do fase III SPLASH, anterior à porção randomizada; não é a publicação do ensaio randomizado.",
+      "endpoints": "Dosimetria, segurança, rPFS (BICR), OS, ORR, resposta de PSA.",
+      "estatistica": "Descritiva; alvo de 25 participantes; Kaplan-Meier para OS e Kaplan-Meier reverso para seguimento.",
+      "cutoff_followup": "Data de corte não informada; seguimento mediano de imagem 9,2 m e de sobrevida 19,9 m.",
+      "subgrupos": "6/27 com dose renal cumulativa extrapolada >23 Gy, sem sinais de segurança adicionais.",
+      "seguranca": "TEAE grau ≥3 25,9% (relacionados 7,4%); sem EA grave, descontinuação ou óbito relacionados; boca seca 22,2% (G1).",
+      "conclusao_autores": "Perfil favorável de dosimetria e segurança e eficácia preliminar promissora; eficácia em avaliação na porção randomizada."
+    },
+    "auditStatus": {
+      "classification": "INCORRECT",
+      "verification": "PASS",
+      "appliedChanges": 8,
+      "pendingChanges": 0,
+      "auditedAt": "2026-09-30"
     }
   },
   {
@@ -776,7 +943,7 @@ window.THERA_SECONDARY = [
     "parentCardId": "lupsma-2018-primary",
     "parentTrialName": "LuPSMA trial (Hofman 2018)",
     "parentTrialPublication": "Hofman MS, et al. Lancet Oncol 2018;19:825-833 (PMID 29752180)",
-    "relationshipToParent": "Subestudo de dosimetria do ensaio prospectivo fase 2",
+    "relationshipToParent": "Análise dosimétrica correlacional dos 30 pacientes do ensaio prospectivo LuPSMA (ACTRN12615000912583)",
     "publicationStatus": "Peer-reviewed full article",
     "analysisType": "Análise de dosimetria tumoral",
     "evidenceMaturity": "Subestudo revisado por pares",
@@ -792,18 +959,35 @@ window.THERA_SECONDARY = [
       "Dose absorvida tumoral",
       "Resposta de PSA"
     ],
-    "clinicalTakeaway": "Relatou doses tumorais absorvidas elevadas e correlação entre a dose tumoral de corpo inteiro e a resposta de PSA.",
+    "clinicalTakeaway": "Em 30 pacientes do LuPSMA trial, maior dose tumoral de corpo inteiro associou-se a resposta de PSA (14,1 vs 9,6 Gy); apenas 1 de 11 pacientes com <10 Gy teve PSA50. Associação correlacional, sem validação prospectiva de dosagem guiada por dosimetria.",
     "deep": {
-      "objetivo": "Determinar a dosimetria do 177Lu-PSMA-617 e correlações com imagem pré-terapêutica e desfechos.",
-      "metodo": "Ensaio prospectivo; n=30.",
+      "objetivo": "Determinar a dosimetria do 177Lu-PSMA-617 e suas correlações com parâmetros do 68Ga-PSMA-11 PET pré-terapêutico e com a resposta de PSA.",
+      "metodo": "Análise dosimétrica nos 30 pacientes de um ensaio clínico prospectivo (ACTRN12615000912583); SPECT/CT quantitativo a 4, 24 e 96 h após a terapia, dosimetria em nível de voxel; definida uma dose tumoral de corpo inteiro; análises de correlação com PSA em 12 semanas.",
       "achados": [
-        "Dose renal média 0,39 Gy/MBq; glândula submandibular 0,44 Gy/MBq.",
-        "Dose tumoral de corpo inteiro mediana 11,55 Gy.",
-        "Declínio de PSA ≥50% associou-se a maior dose tumoral (mediana 14,1 vs 9,6 Gy; p<0,01).",
-        "Correlação SUVmean tumoral × dose absorvida r=0,62."
+        "Doses médias: rins 0,39; submandibulares 0,44; parótidas 0,58; fígado 0,1; baço 0,06; medula 0,11 (unidade relatada no resumo como Gy/MBq — conferir no texto completo).",
+        "Dose tumoral de corpo inteiro mediana 11,55 Gy; mediana 14,1 Gy nos pacientes com queda de PSA ≥50% vs 9,6 Gy nos demais (p<0,01).",
+        "Entre 11 pacientes com dose tumoral <10 Gy, apenas 1 atingiu queda de PSA ≥50%.",
+        "SUVmean tumoral no PSMA PET correlacionou-se com a dose média (r=0,62); maior volume tumoral associou-se a menor dose em parótidas (r=-0,41) e rins (r=-0,43)."
       ],
-      "interpretacao": "Doses tumorais absorvidas elevadas, com correlação significativa entre a dose tumoral de corpo inteiro e a resposta de PSA.",
-      "limitacoes": "Não detalhadas no abstract."
+      "interpretacao": "Associação (não causal) entre maior dose tumoral estimada e resposta de PSA, em análise correlacional de 30 pacientes; os autores veem racional para dosagem individualizada, hipótese ainda não testada nesta análise.",
+      "limitacoes": "Amostra pequena (n=30); análise correlacional; resumo não detalha limitações, ciclo avaliado nem se a análise era pré-especificada; unidade 'Gy/MBq' do resumo não pôde ser conferida (texto completo indisponível)."
+    },
+    "analysis": {
+      "populacao": "30 pacientes com mCRPC e alta expressão de PSMA tratados no ensaio prospectivo ACTRN12615000912583.",
+      "desenho_relacao": "Análise dosimétrica correlacional nos pacientes do ensaio prospectivo LuPSMA; pré-especificação não informada.",
+      "endpoints": "Doses absorvidas em órgãos e tumor; correlação com resposta de PSA em 12 semanas e com parâmetros do PSMA PET.",
+      "estatistica": "Dosimetria voxel (SPECT/CT 4/24/96 h); correlações (r) e comparação de medianas.",
+      "cutoff_followup": "PSA em 12 semanas; data de corte não informada.",
+      "subgrupos": "<10 Gy (n=11): 1 com PSA50. Correlações inversas volume tumoral × dose em parótidas/rins; massa corporal × dose parotídea.",
+      "seguranca": null,
+      "conclusao_autores": "Doses tumorais elevadas, correlação significativa dose tumoral × resposta de PSA; <10 Gy improvável PSA50; racional para dosagem individualizada."
+    },
+    "auditStatus": {
+      "classification": "TOO_SHALLOW",
+      "verification": "PASS",
+      "appliedChanges": 8,
+      "pendingChanges": 0,
+      "auditedAt": "2026-09-30"
     }
   },
   {
@@ -830,18 +1014,35 @@ window.THERA_SECONDARY = [
       "Retratamento",
       "Rechallenge"
     ],
-    "clinicalTakeaway": "Coorte expandida com seguimento prolongado e dados de retratamento/rechallenge após resposta inicial.",
+    "clinicalTakeaway": "Com 50 pacientes e seguimento mediano de 31,4 m, PSA50 foi 64% e OS mediana 13,3 m; no retratamento de 15 respondedores prévios, 73% tiveram PSA50 — dado descritivo, em subgrupo selecionado e sem comparação randomizada.",
     "deep": {
-      "objetivo": "Reportar desfechos de longo prazo e retratamento na coorte expandida (50 pacientes) do ensaio fase II.",
-      "metodo": "Fase II prospectivo, centro único; n=50; seguimento mediano 31,4 m.",
+      "objetivo": "Relatar desfechos de longo prazo do ensaio fase 2 LuPSMA ampliado para 50 pacientes (30 originais + 20 de extensão) e descrever os desfechos de terapias sistêmicas subsequentes, incluindo retratamento com 177Lu-PSMA.",
+      "metodo": "Fase 2 prospectivo, centro único, braço único; n=50 (75 triados) com mCRPC PSMA-ávido e tratamento prévio extenso (docetaxel 84%, cabazitaxel 48%, abiraterona/enzalutamida 92%; PSADT mediano 2,3 m); até 4 ciclos a cada 6 semanas (média 7,5 GBq/ciclo); seguimento mediano 31,4 m.",
       "achados": [
-        "Declínio de PSA ≥50%: 64% (32/50); ≥80%: 44% (22/50).",
-        "Resposta objetiva RECIST: 56% (15/27).",
-        "OS mediana 13,3 m (IC95% 10,5–18,7); com PSA ≥50%: 18,4 m.",
-        "Retratamento: resposta de PSA ≥50% em 73% (11/15)."
+        "Queda de PSA ≥50%: 64% (32/50; IC95% 50–77); ≥80%: 44% (22/50). Resposta objetiva RECIST 56% (15/27).",
+        "OS mediana 13,3 m (IC95% 10,5–18,7); 18,4 m (IC95% 13,8–23,8) nos pacientes com queda de PSA ≥50% (comparação entre respondedores e não respondedores).",
+        "Toxicidade: boca seca G1–2 66%, náusea G1–2 48%, trombocitopenia G3–4 10%, anemia G3 10%.",
+        "Na progressão após resposta, 15 (30%) receberam retratamento (mediana 2 ciclos): queda de PSA ≥50% em 11 (73%); com outras terapias sistêmicas, 4/21 (19%). Sem EA inesperado no retratamento."
       ],
-      "interpretacao": "A coorte expandida confirma altas taxas de resposta e baixa toxicidade, com melhora de qualidade de vida; o retratamento mostrou taxas de resposta elevadas.",
-      "limitacoes": "Não detalhadas no abstract."
+      "interpretacao": "A coorte expandida é consistente com o relato inicial (altas taxas de resposta de PSA e toxicidade majoritariamente leve). As respostas ao retratamento ocorreram em subgrupo selecionado de respondedores prévios e a comparação com outras terapias não é randomizada; são dados descritivos e geradores de hipótese.",
+      "limitacoes": "Centro único e braço único; retratamento em pequeno subgrupo selecionado (n=15) e comparação não randomizada com outras terapias; limitações não enumeradas no resumo (texto completo não disponível nas fontes)."
+    },
+    "analysis": {
+      "populacao": "50 pacientes com mCRPC PSMA-ávido extensamente pré-tratados (30 do ensaio original + 20 de extensão).",
+      "desenho_relacao": "Atualização de longo prazo do fase 2 LuPSMA com coorte de extensão; análise descritiva de terapias subsequentes/retratamento.",
+      "endpoints": "PSA (PCWG2), toxicidade (CTCAE 4.03), imagem, HRQoL, PFS, OS.",
+      "estatistica": "Proporções e medianas com IC95%; variação dos escores de dor (BPI) com IC95% e valor de P (P = 0,001 e P = 0,013); OS significativamente maior nos pacientes com declínio de PSA ≥50%.",
+      "cutoff_followup": "Seguimento mediano 31,4 m; data de corte não informada.",
+      "subgrupos": "Respondedores PSA50: OS 18,4 m. Retratamento (n=15): PSA50 73%; outras terapias (n=21): 19%.",
+      "seguranca": "Boca seca G1–2 66%, náusea G1–2 48%, trombocitopenia G3–4 10%, anemia G3 10%; nenhum EA inesperado no retratamento.",
+      "conclusao_autores": "Confirma altas taxas de resposta, baixa toxicidade e melhora de QoL; rechallenge com maiores taxas de resposta que outras terapias sistêmicas."
+    },
+    "auditStatus": {
+      "classification": "TOO_SHALLOW",
+      "verification": "PASS",
+      "appliedChanges": 7,
+      "pendingChanges": 0,
+      "auditedAt": "2026-09-30"
     }
   },
   {
@@ -921,16 +1122,34 @@ window.THERA_SECONDARY = [
       "SMD",
       "LMA"
     ],
-    "clinicalTakeaway": "Análise final de OS e segurança de longo prazo; OS numericamente maior, porém sem significância estatística, em contexto de crossover/PRRT subsequente.",
+    "clinicalTakeaway": "Na análise final do NETTER-1, a OS não foi significativamente maior com 177Lu-DOTATATE (48,0 vs 36,3 m; HR 0,84; p=0,30), sem novos sinais de segurança em ~76 m de seguimento; SMD em 2% dos tratados.",
     "deep": {
-      "objetivo": "Reportar a análise final pré-especificada de OS e a segurança de longo prazo do NETTER-1.",
-      "metodo": "Fase III, aberto; n=231 (177Lu-DOTATATE n=111, controle n=120); seguimento mediano ~76 m; 142 óbitos.",
+      "objetivo": "Reportar a análise final pré-especificada de sobrevida global (desfecho secundário-chave) e a segurança de longo prazo do NETTER-1.",
+      "metodo": "Fase III aberto, randomizado 1:1 (41 centros, 8 países); n=231 randomizados; 177Lu-DOTATATE 7,4 GBq a cada 8 semanas × 4 + octreotida LAR 30 mg vs octreotida LAR 60 mg a cada 4 semanas. Análise final de OS pré-especificada após 158 óbitos ou 5 anos da última randomização; ocorreu aos 5 anos, com 142 óbitos; seguimento mediano ~76 m. Segurança de longo prazo coletada apenas no braço 177Lu (n=111).",
       "achados": [
-        "OS mediana: 48,0 m (IC95% 37,4–55,2) vs 36,3 m (25,9–51,7); HR 0,84 (0,60–1,17); p=0,30.",
-        "Síndrome mielodisplásica: 2% (2 pacientes); EA grave grau ≥3: 3 (3%)."
+        "OS mediana: 48,0 m (IC95% 37,4–55,2) vs 36,3 m (25,9–51,7); HR 0,84 (0,60–1,17); p=0,30 — desfecho secundário não atingido.",
+        "EA grave relacionado grau ≥3 no seguimento longo: 3/111 (3%); nenhum novo após o cutoff de segurança.",
+        "Síndrome mielodisplásica em 2/111 (2%), um óbito aos 33 meses (único óbito relacionado ao tratamento); nenhum novo caso de SMD ou LMA no seguimento de longo prazo."
       ],
-      "interpretacao": "O 177Lu-DOTATATE não melhorou significativamente a OS mediana versus octreotida em alta dose; a diferença de 11,7 m pode ser considerada clinicamente relevante. Interpretar no contexto de crossover/PRRT subsequente.",
-      "limitacoes": "Desenho aberto; OS sem significância estatística."
+      "interpretacao": "O 177Lu-DOTATATE não melhorou significativamente a OS versus octreotida em alta dose; os autores consideram que a diferença de 11,7 m nas medianas pode ser clinicamente relevante. Sem novos sinais de segurança no seguimento prolongado.",
+      "limitacoes": "Desenho aberto; análise final disparada por tempo com 142 dos 158 óbitos planejados; OS era desfecho secundário; EAs de interesse no longo prazo coletados apenas no braço 177Lu. O resumo não descreve crossover ou terapias subsequentes."
+    },
+    "analysis": {
+      "populacao": "231 pacientes randomizados 1:1 com NET de intestino médio bem diferenciado SSTR+, progressivo com octreotida LAR; segurança de longo prazo em 111 do braço 177Lu.",
+      "desenho_relacao": "Análise final pré-especificada de OS (secundário-chave) e segurança de longo prazo do fase III NETTER-1.",
+      "endpoints": "OS na ITT; EAs de interesse especial no braço 177Lu.",
+      "estatistica": "Gatilho: 158 óbitos ou 5 anos após a última randomização; HR (IC95%), p bicaudal.",
+      "cutoff_followup": "5 anos após a última randomização (142 óbitos); seguimento mediano 76,3 e 76,5 m.",
+      "subgrupos": null,
+      "seguranca": "EA grave relacionado grau ≥3: 3/111; SMD 2/111 (1 óbito); sem novos SMD/LMA no seguimento longo.",
+      "conclusao_autores": "OS sem melhora significativa; diferença de 11,7 m possivelmente relevante clinicamente; sem novos sinais de segurança."
+    },
+    "auditStatus": {
+      "classification": "INCORRECT",
+      "verification": "PASS",
+      "appliedChanges": 7,
+      "pendingChanges": 0,
+      "auditedAt": "2026-09-30"
     }
   },
   {
@@ -1087,7 +1306,7 @@ window.THERA_SECONDARY = [
     "parentUid": "ra223_prostata_0",
     "parentTrialName": "ALSYMPCA",
     "parentTrialPublication": "Parker C, et al. N Engl J Med 2013;369:213-223 (NCT00699751)",
-    "relationshipToParent": "Análise de QoL reportada pelo paciente do ALSYMPCA",
+    "relationshipToParent": "Análise de QoL reportada pelo paciente do ALSYMPCA (endpoint secundário coletado prospectivamente; testes de hipótese post hoc)",
     "publicationStatus": "Peer-reviewed full article",
     "analysisType": "Análise de qualidade de vida reportada pelo paciente",
     "evidenceMaturity": "Análise secundária revisada por pares",
@@ -1103,17 +1322,36 @@ window.THERA_SECONDARY = [
       "Desfechos relatados pelo paciente",
       "Radium-223"
     ],
-    "clinicalTakeaway": "Relatou que o benefício de sobrevida com rádio-223 foi acompanhado de benefícios em qualidade de vida reportada pelo paciente.",
+    "clinicalTakeaway": "Em análises post hoc de QoL coletada prospectivamente, mais pacientes com rádio-223 tiveram melhora significativa (EQ-5D 29,2% vs 18,5%) e a QoL declinou mais devagar; com correção de Bonferroni, só a análise de respondedores do FACT-P deixaria de ser significativa (P = 0,020).",
     "deep": {
-      "objetivo": "Analisar a qualidade de vida reportada pelo paciente no ALSYMPCA (EQ-5D, FACT-P).",
-      "metodo": "População ITT; rádio-223 n=614, placebo n=307.",
+      "objetivo": "Avaliar o efeito de rádio-223 + SOC vs placebo + SOC sobre a qualidade de vida reportada pelo paciente (EQ-5D e FACT-P) no ALSYMPCA.",
+      "metodo": "QoL coletada prospectivamente (endpoint secundário); testes de hipótese post hoc. ITT n=921 (614 vs 307), restrito a quem tinha avaliação basal e ≥1 pós-basal (semanas 16/24). Respondedor = ganho ≥ MID (EQ-5D 0,1; FACT-P total ≥10). Qui-quadrado para respondedores; ANCOVA de efeitos mistos para escores médios; dados faltantes assumidos MCAR, sem imputação.",
       "achados": [
-        "Melhora significativa do EQ-5D: 29,2% vs 18,5% (p=0,004; OR 1,82).",
-        "Melhora do FACT-P: 24,6% vs 16,1% (p=0,020; OR 1,70).",
-        "EQ-5D médio 0,56 vs 0,50 (p=0,002); FACT-P 99,08 vs 95,22 (p=0,004)."
+        "Melhora significativa EQ-5D: 29,2% vs 18,5% (OR 1,82; IC95% 1,21–2,74; p=0,004).",
+        "Melhora significativa FACT-P total: 24,6% vs 16,1% (OR 1,70; IC95% 1,08–2,65; p=0,020).",
+        "Piora significativa EQ-5D: 36,0% vs 54,0% (p<0,001); FACT-P: 44,3% vs 51,6% (p=0,095, não significativo).",
+        "Escores médios no estudo: EQ-5D 0,56 vs 0,50 (p=0,002); FACT-P 99,08 vs 95,22 (p=0,004); variação vs basal FACT-P −4,83 vs −8,69 — ambos os grupos pioraram, mais lentamente com rádio-223.",
+        "Efeito consistente por docetaxel prévio; por bisfosfonato, interação apenas na variação média do EQ-5D (p=0,034)."
       ],
-      "interpretacao": "A melhora de sobrevida com rádio-223 foi acompanhada de benefícios significativos de QoL, com declínio mais lento ao longo do tempo.",
-      "limitacoes": "Não detalhadas no abstract."
+      "interpretacao": "Em análises post hoc, o rádio-223 associou-se a maior proporção de melhora e menor proporção de piora de QoL e a declínio mais lento dos escores; segundo os autores, os escores médios mais altos com rádio-223 refletem um declínio mais lento da QoL ao longo do tempo.",
+      "limitacoes": "Testes de hipótese post hoc; dados faltantes crescentes ao longo do tempo (suposição MCAR; pattern-mixture sem evidência de viés); com correção de Bonferroni (α=0,008) a análise de respondedores do FACT-P (p=0,020) deixaria de ser significativa."
+    },
+    "analysis": {
+      "populacao": "ITT n=921 (rádio-223 614; placebo 307), limitado a pacientes com avaliação basal e ≥1 pós-basal.",
+      "desenho_relacao": "Análise de QoL do ALSYMPCA: coleta prospectiva (endpoint secundário), comparação descritiva pré-planejada; testes de hipótese post hoc.",
+      "endpoints": "EQ-5D utility e FACT-P total/subescalas: % com melhora e piora significativas (semanas 16/24); escores médios e variação vs basal ao longo do estudo.",
+      "estatistica": "Qui-quadrado; regressão logística para interação por subgrupos; ANCOVA de efeitos mistos; MCAR sem imputação; modelos pattern-mixture como sensibilidade.",
+      "cutoff_followup": "Avaliações na randomização, semanas 16 e 24, descontinuação e seguimento; data de corte não informada.",
+      "subgrupos": "Sem diferença de efeito por docetaxel prévio; interação por bisfosfonato apenas na variação do EQ-5D (p=0,034).",
+      "seguranca": null,
+      "conclusao_autores": "Melhor sobrevida com rádio-223 acompanhada de benefícios significativos de QoL, com maior proporção de melhora e declínio mais lento."
+    },
+    "auditStatus": {
+      "classification": "TOO_SHALLOW",
+      "verification": "PASS",
+      "appliedChanges": 8,
+      "pendingChanges": 0,
+      "auditedAt": "2026-09-30"
     }
   },
   {
@@ -1178,7 +1416,7 @@ window.THERA_SECONDARY = [
     "parentUid": "ra223_prostata_0",
     "parentTrialName": "ALSYMPCA",
     "parentTrialPublication": "Parker C, et al. N Engl J Med 2013;369:213-223 (NCT00699751)",
-    "relationshipToParent": "Análise exploratória de biomarcadores do ALSYMPCA",
+    "relationshipToParent": "Análise exploratória post hoc de biomarcadores (tALP, LDH, PSA) do ALSYMPCA, fora do plano original",
     "publicationStatus": "Peer-reviewed full article",
     "analysisType": "Análise exploratória de biomarcadores",
     "evidenceMaturity": "Análise exploratória revisada por pares",
@@ -1195,17 +1433,36 @@ window.THERA_SECONDARY = [
       "PSA",
       "Biomarcador"
     ],
-    "clinicalTakeaway": "Análise exploratória da dinâmica de ALP, LDH e PSA durante o tratamento com rádio-223. Em análise exploratória; necessita confirmação.",
+    "clinicalTakeaway": "Análise post hoc: na semana 12, a tALP caiu em 87% dos pacientes com rádio-223 vs 23% com placebo (variação média: queda de 32,2% vs aumento de 37,2%), e o declínio associou-se a maior SG entre os tratados, mas tALP, LDH e PSA não atingiram critérios de surrogacia (PTE de tALP 0,34); os autores alertam contra usar a alta de PSA para decidir interromper o tratamento.",
     "deep": {
-      "objetivo": "Avaliar o valor prognóstico/preditivo da dinâmica de ALP, LDH e PSA com rádio-223.",
-      "metodo": "ALSYMPCA; rádio-223 n=614, placebo n=307.",
+      "objetivo": "Avaliar o valor prognóstico de variáveis basais e o valor de surrogacia para SG da dinâmica de tALP, LDH e PSA com rádio-223 no ALSYMPCA.",
+      "metodo": "Análise exploratória post hoc (fora do plano original). ITT 614 vs 307 para fatores basais (Cox multivariado); variação vs basal na semana 12 em quem tinha ambas as dosagens (tALP 497 vs 211). SG por declínio confirmado (≥3 semanas após a semana 12) apenas no braço rádio-223. Surrogacia pelos critérios de Prentice, quantificada por PTE.",
       "achados": [
-        "Declínio de fosfatase alcalina total (tALP) até a semana 12: 87% (rádio-223) vs 23% (placebo) (p<0,001).",
-        "Variação média de tALP: −32,2% vs +37,2%.",
-        "Declínio de tALP associado a 55% menor risco de óbito (HR 0,45; IC95% 0,34–0,61)."
+        "Declínio na semana 12 (rádio-223 vs placebo): tALP 87% vs 23% (p<0,001); LDH 51% vs 34% (p=0,003); PSA 27% vs 14% (p=0,160).",
+        "Variação média de tALP: −32,2% vs +37,2%; queda de tALP desde a semana 4.",
+        "No braço rádio-223, declínio confirmado de tALP (n=400) vs sem declínio (n=97): SG mediana 17,8 vs 10,4 meses; HR 0,45 (IC95% 0,34–0,61). Declínio de LDH: HR 0,55 (0,42–0,73).",
+        "PTE como surrogate de SG: tALP 0,34 (IC95% 0–0,746), LDH 0,07 (0–0,211), PSA 0 (0–0,082) — nenhum atingiu surrogacia.",
+        "PSA aumentou em 73% dos pacientes com rádio-223 na semana 12, sem impacto relevante no risco de óbito."
       ],
-      "interpretacao": "Declínios de tALP correlacionaram-se com maior OS, mas não atingiram os requisitos estatísticos de surrogacia. Análise exploratória.",
-      "limitacoes": "tALP não validado como surrogate; limitações não detalhadas."
+      "interpretacao": "Declínios de tALP e LDH associaram-se a maior SG entre tratados com rádio-223 (associação, não causalidade), mas nenhum marcador explicou o efeito do tratamento o suficiente para servir de substituto. Os autores alertam que usar alta de PSA para interromper rádio-223 pode negar tratamento eficaz.",
+      "limitacoes": "Análise post hoc fora do plano original; comparação por resposta do biomarcador dentro do braço rádio-223 (não randomizada); apenas declínio até a semana 12, marcadores avaliados isoladamente e sem CTC; IC do PTE de tALP amplo."
+    },
+    "analysis": {
+      "populacao": "ITT 614 vs 307; semana 12 com dosagens pareadas (tALP 497 vs 211; LDH 473 vs 206; PSA 493 vs 210).",
+      "desenho_relacao": "Análise exploratória post hoc de biomarcadores do ALSYMPCA, não incluída no plano original.",
+      "endpoints": "Prognóstico basal para SG; variação de tALP/LDH/PSA; SG por declínio confirmado; surrogacia (PTE).",
+      "estatistica": "Cox uni/multivariado; Kaplan–Meier; critérios de Prentice e PTE (surrogacia forte se IC95% inferior >0,5).",
+      "cutoff_followup": "Semana 12 para variação; dinâmica até 24 semanas após a última dose; corte não informado.",
+      "subgrupos": "Declínio de tALP confirmado vs não (braço rádio-223): HR 0,45; LDH: HR 0,55.",
+      "seguranca": null,
+      "conclusao_autores": "tALP/LDH correlacionam-se com SG mas não são surrogates; podem ser úteis para monitorar; alta de PSA não deve guiar suspensão do rádio-223."
+    },
+    "auditStatus": {
+      "classification": "TOO_SHALLOW",
+      "verification": "PASS",
+      "appliedChanges": 8,
+      "pendingChanges": 0,
+      "auditedAt": "2026-09-30"
     }
   },
   {
@@ -1215,7 +1472,7 @@ window.THERA_SECONDARY = [
     "parentUid": "ra223_prostata_0",
     "parentTrialName": "ALSYMPCA",
     "parentTrialPublication": "Parker C, et al. N Engl J Med 2013;369:213-223 (NCT00699751)",
-    "relationshipToParent": "Análise exploratória de hospitalizações do ALSYMPCA",
+    "relationshipToParent": "Análise de uso de recursos de saúde (hospitalizações, dados coletados prospectivamente) do ALSYMPCA",
     "publicationStatus": "Peer-reviewed full article",
     "analysisType": "Análise exploratória de desfecho",
     "evidenceMaturity": "Análise exploratória revisada por pares",
@@ -1231,17 +1488,35 @@ window.THERA_SECONDARY = [
       "Desfechos de suporte",
       "Radium-223"
     ],
-    "clinicalTakeaway": "Análise exploratória do efeito do rádio-223 em hospitalizações em pacientes do ALSYMPCA.",
+    "clinicalTakeaway": "No ALSYMPCA, menos pacientes com rádio-223 foram hospitalizados em 12 meses (37,0% vs 45,5%) e houve menos dias de internação (4,44 vs 6,68), mas o número de hospitalizações por paciente não diferiu (0,69 vs 0,79).",
     "deep": {
-      "objetivo": "Avaliar o uso de recursos de saúde e o impacto em hospitalizações com rádio-223.",
-      "metodo": "ALSYMPCA; rádio-223 n=589, placebo n=292 (primeiros 12 meses).",
+      "objetivo": "Avaliar o efeito do rádio-223 sobre hospitalizações (eventos e dias) nos primeiros 12 meses após a randomização no ALSYMPCA.",
+      "metodo": "Dados de uso de recursos de saúde coletados prospectivamente no ALSYMPCA; janela de 12 meses pós-randomização. Rádio-223 n=589, placebo n=292. O resumo não detalha métodos estatísticos nem se a análise era pré-especificada.",
       "achados": [
-        "Eventos de hospitalização: 37,0% vs 45,5% (p=0,016).",
-        "Dias médios de hospitalização: 4,44 vs 6,68 (p=0,004).",
-        "HR para tempo até SSE: 0,66 (IC95% 0,52–0,83; p=0,00037)."
+        "≥1 hospitalização: 37,0% (218/589) vs 45,5% (133/292) (p=0,016).",
+        "Hospitalizações por paciente: 0,69 vs 0,79 (p=0,226, não significativo) — seguimento mais longo com rádio-223 (7,82 vs 6,92 meses; p<0,001).",
+        "Dias de hospitalização por paciente: 4,44 vs 6,68 (p=0,004).",
+        "Dias antes do 1º evento esquelético sintomático: 2,35 vs 3,36; após: 7,74 vs 9,19 (sem p-valor no resumo)."
       ],
-      "interpretacao": "Menos dias de hospitalização com rádio-223, o que pode contribuir para melhora da qualidade de vida. Análise exploratória.",
-      "limitacoes": "Análise exploratória; limitações não detalhadas."
+      "interpretacao": "Menos pacientes com rádio-223 foram hospitalizados e houve menos dias de internação, mas o número médio de hospitalizações por paciente não diferiu. Os autores sugerem que isso pode contribuir para melhor qualidade de vida relacionada à saúde.",
+      "limitacoes": "O resumo não relata limitações nem detalha método estatístico ou pré-especificação. Tempo de seguimento desigual entre braços dentro da janela de 12 meses; população analisada (589/292) não definida no resumo."
+    },
+    "analysis": {
+      "populacao": "Rádio-223 n=589; placebo n=292.",
+      "desenho_relacao": "Análise de uso de recursos de saúde (coletados prospectivamente) do ALSYMPCA; pré-especificação não informada no resumo.",
+      "endpoints": "≥1 hospitalização; hospitalizações por paciente; dias de hospitalização por paciente (antes/após 1º SSE).",
+      "estatistica": "Não detalhada no resumo (apenas p-valores).",
+      "cutoff_followup": "Primeiros 12 meses pós-randomização; seguimento médio 7,82 vs 6,92 meses.",
+      "subgrupos": "Dias antes do 1º SSE 2,35 vs 3,36; após SSE 7,74 vs 9,19.",
+      "seguranca": null,
+      "conclusao_autores": "Menos dias de hospitalização, com o benefício de sobrevida e o atraso de SSE, podem contribuir para melhor QoL."
+    },
+    "auditStatus": {
+      "classification": "INCORRECT",
+      "verification": "PASS",
+      "appliedChanges": 8,
+      "pendingChanges": 0,
+      "auditedAt": "2026-09-30"
     }
   },
   {
@@ -1251,7 +1526,7 @@ window.THERA_SECONDARY = [
     "parentUid": "ra223_prostata_0",
     "parentTrialName": "ALSYMPCA",
     "parentTrialPublication": "Parker C, et al. N Engl J Med 2013;369:213-223 (NCT00699751)",
-    "relationshipToParent": "Seguimento de segurança de longo prazo do ALSYMPCA",
+    "relationshipToParent": "Atualização final de segurança de longo prazo (até 3 anos) do ALSYMPCA",
     "publicationStatus": "Peer-reviewed full article",
     "analysisType": "Análise de segurança de longo prazo",
     "evidenceMaturity": "Análise de segurança revisada por pares",
@@ -1267,17 +1542,35 @@ window.THERA_SECONDARY = [
       "Mielossupressão",
       "Segunda neoplasia"
     ],
-    "clinicalTakeaway": "Seguimento de segurança de longo prazo do ALSYMPCA, sem novos sinais relevantes de segurança em 3 anos.",
+    "clinicalTakeaway": "Análise final de segurança do ALSYMPCA: em até 3 anos, sem LMA, SMD ou novo câncer ósseo primário e com mielossupressão pouco frequente (trombocitopenia G3/4 7% vs 2%); apenas 12% dos pacientes com rádio-223 completaram o seguimento, e os autores citam o seguimento curto (3 anos) como limitação.",
     "deep": {
-      "objetivo": "Reportar a segurança de longo prazo do rádio-223 até 3 anos após o tratamento.",
-      "metodo": "ALSYMPCA; rádio-223 n=600, placebo n=301 (fase de tratamento); 405/167 no seguimento de longo prazo.",
+      "objetivo": "Relatar a segurança atualizada do ALSYMPCA, incluindo segurança de longo prazo até 3 anos após a primeira injeção de rádio-223.",
+      "metodo": "População de segurança: rádio-223 n=600, placebo n=301. Todos os EA coletados até 12 semanas após a última injeção; depois, apenas EA relacionados ao tratamento, além de LMA, SMD, anemia aplásica e neoplasias secundárias. 405 vs 167 entraram no seguimento de longo prazo; 48 (12%) vs 12 (7%) o completaram. Estatística descritiva.",
       "achados": [
-        "EA hematológicos G3/4 — anemia 13% (ambos); trombocitopenia 7% vs 2%; neutropenia 2% vs 1%.",
-        "No longo prazo: sem LMA, SMD ou novo câncer ósseo primário; 1 caso de anemia aplásica (16 meses).",
-        "Neoplasias secundárias: 4 (rádio-223) vs 3 (placebo)."
+        "TEAE até 12 semanas após a última injeção: 94% vs 97%; grau 5: 16% vs 23%.",
+        "EA hematológicos G3/4: anemia 13% vs 13%; trombocitopenia 7% vs 2%; neutropenia 2% vs 1%.",
+        "Longo prazo: nenhum caso de LMA, SMD ou novo câncer ósseo primário; 1 anemia aplásica no braço rádio-223, 16 meses após a última injeção.",
+        "Neoplasias secundárias não relacionadas ao tratamento: 4 (rádio-223) vs 3 (placebo)."
       ],
-      "interpretacao": "Rádio-223 manteve-se bem tolerado, com baixa mielossupressão e sem novos sinais de segurança em 3 anos.",
-      "limitacoes": "Seguimento curto (3 anos)."
+      "interpretacao": "Na análise final, o rádio-223 manteve-se bem tolerado, com mielossupressão pouco frequente (exceto trombocitopenia G3/4 numericamente maior) e sem novos sinais em até 3 anos. Os autores citam o seguimento curto (3 anos) como limitação.",
+      "limitacoes": "Seguimento curto (3 anos), segundo os autores; apenas 12% (rádio-223) e 7% (placebo) completaram o seguimento de longo prazo; após 12 semanas, somente EA considerados relacionados ao tratamento foram coletados; análise descritiva."
+    },
+    "analysis": {
+      "populacao": "Segurança: 600 rádio-223, 301 placebo; seguimento de longo prazo 405 vs 167 (completaram 48 vs 12).",
+      "desenho_relacao": "Atualização final de segurança de longo prazo do ALSYMPCA.",
+      "endpoints": "TEAE; EA relacionados ao tratamento no seguimento; LMA, SMD, anemia aplásica, neoplasias secundárias.",
+      "estatistica": "Descritiva.",
+      "cutoff_followup": "Até 3 anos após a primeira injeção; visitas a cada 2 meses por 6 meses, depois a cada 4 meses.",
+      "subgrupos": null,
+      "seguranca": "G3/4 anemia 13% vs 13%, trombocitopenia 7% vs 2%, neutropenia 2% vs 1%; grau 5 16% vs 23%; sem LMA/SMD/novo câncer ósseo; 1 anemia aplásica; neoplasias secundárias não relacionadas 4 vs 3.",
+      "conclusao_autores": "Rádio-223 permaneceu bem tolerado, com baixa mielossupressão e sem novas preocupações de segurança."
+    },
+    "auditStatus": {
+      "classification": "TOO_SHALLOW",
+      "verification": "PASS",
+      "appliedChanges": 8,
+      "pendingChanges": 0,
+      "auditedAt": "2026-09-30"
     }
   },
   {
