@@ -1,7 +1,7 @@
 {
   "schema": "theratrials-app-data/1",
   "site": "https://theratrials.com",
-  "generatedAt": "2026-09-30T16:16:59.753Z",
+  "generatedAt": "2026-09-30T17:58:59.713Z",
   "datasets": {
     "data": {
       "url": "https://theratrials.com/app-data/data.json",
@@ -9,8 +9,8 @@
       "global": "THERA_DATA",
       "bytes": 2057413,
       "sha256": "f6b59565002f1ab43f5f821faa6e5085856b4842d42b8e3b0966e41d4e36fd66",
-      "version": "2026-09-30T16:16:59.753Z",
-      "generatedAt": "2026-09-30T16:16:59.753Z"
+      "version": "2026-09-30T17:58:59.713Z",
+      "generatedAt": "2026-09-30T17:58:59.713Z"
     },
     "guidelines-data": {
       "url": "https://theratrials.com/app-data/guidelines-data.json",
@@ -18,8 +18,8 @@
       "global": "GUIDELINES_DATA",
       "bytes": 352932,
       "sha256": "87effa34d958afd7fba4203a7438d3570b2b6517da8a03bc7efb268810140612",
-      "version": "2026-09-30T16:16:59.753Z",
-      "generatedAt": "2026-09-30T16:16:59.753Z"
+      "version": "2026-09-30T17:58:59.713Z",
+      "generatedAt": "2026-09-30T17:58:59.713Z"
     },
     "trials_br": {
       "url": "https://theratrials.com/app-data/trials_br.json",
@@ -30,25 +30,25 @@
       ],
       "bytes": 847435,
       "sha256": "f5bc64f3c38e7008b6842f374e8553efaa9ac500be1d471f16bf377caca9b10c",
-      "version": "2026-09-30T16:16:59.753Z",
-      "generatedAt": "2026-09-30T16:16:59.753Z"
+      "version": "2026-09-30T17:58:59.713Z",
+      "generatedAt": "2026-09-30T17:58:59.713Z"
     },
     "secondary-cards": {
       "url": "https://theratrials.com/app-data/secondary-cards.json",
       "file": "app-data/secondary-cards.json",
       "global": "THERA_SECONDARY",
-      "bytes": 125501,
-      "sha256": "0bfaaafab0455322f0aa9c3db3cc383d23486b1be082bc12dc671bc7ad4ac269",
-      "version": "2026-09-30T16:16:59.753Z",
-      "generatedAt": "2026-09-30T16:16:59.753Z"
+      "bytes": 130490,
+      "sha256": "d11ceed08f0d932047fb46ca8638ee4e30bdb395423dbe9f00407f7224554acb",
+      "version": "2026-09-30T17:58:59.713Z",
+      "generatedAt": "2026-09-30T17:58:59.713Z"
     },
     "explorer": {
       "url": "https://theratrials.com/assets/data/explorer.json",
       "file": "assets/data/explorer.json",
       "bytes": 1632148,
       "sha256": "a49a8b98821a6ca6adc727d3f78a736b4fbb56d7081c1e2440e1313d8d58d04c",
-      "version": "2026-09-30T16:16:59.753Z",
-      "generatedAt": "2026-09-30T16:16:59.753Z",
+      "version": "2026-09-30T17:58:59.713Z",
+      "generatedAt": "2026-09-30T17:58:59.713Z",
       "referenced": true
     }
   }

@@ -144,7 +144,31 @@
     "relationshipToParent",
     "analysis",
     "deep.achados"
-   ]
+   ],
+   "collapsedSummary": {
+    "texto": "177Lu-PSMA-617 + SoC retardou a piora de HRQoL e dor e o tempo até SSE ou óbito. Estudo aberto, com desfechos compostos e p nominais: não é evidência confirmatória de benefício em HRQoL.",
+    "fonte": "somente campos já verificados do próprio card",
+    "verificacao_independente": {
+     "verdict": "PASS",
+     "reason": "Delay in HRQoL/pain worsening and SSE-or-death supported; open-label, composite endpoints, nominal p and non-confirmatory nature retained. 2 sentences.",
+     "evidence": "indicam ausência de prejuízo à qualidade de vida mais do que um benefício isolado e confirmatório de HRQoL"
+    },
+    "aprovacao_humana": "2026-09-30",
+    "historico": [
+     {
+      "rodada": 1,
+      "texto": "Análise secundária do VISION: 177Lu-PSMA-617 + SoC retardou a piora de HRQoL e dor e o tempo até SSE ou óbito, em linha com o ganho de rPFS e OS do estudo principal. Estudo aberto, com desfechos compostos e p nominais; indica ausência de prejuízo à qualidade de vida mais do que um benefício confirmatório de HRQoL.",
+      "verdict": "PASS",
+      "nota": "versão com abertura redundante, substituída por decisão editorial"
+     },
+     {
+      "rodada": 2,
+      "texto": "177Lu-PSMA-617 + SoC retardou a piora de HRQoL e dor e o tempo até SSE ou óbito, em linha com o ganho de rPFS e OS do estudo principal. Estudo aberto, com desfechos compostos e p nominais; indica ausência de prejuízo à qualidade de vida mais do que um benefício confirmatório de HRQoL.",
+      "verdict": "PASS",
+      "nota": "versão de 2–3 frases, substituída por versão curta (1–2 frases, ~160–220 caracteres)"
+     }
+    ]
+   }
   },
   "vision-safety-2024": {
    "pmid": "38185538",
@@ -276,7 +300,31 @@
      "snippet": "the risk of having a first event was greatest early in treatment"
     }
    ],
-   "production_status": "applied"
+   "production_status": "applied",
+   "collapsedSummary": {
+    "texto": "5–6 ciclos de 177Lu-PSMA-617 não mostraram acúmulo de toxicidade. Xerostomia e mielossupressão seguem maiores após ajuste por exposição; subgrupos por ciclos têm viés de sobrevivência.",
+    "fonte": "somente campos já verificados do próprio card",
+    "verificacao_independente": {
+     "verdict": "PASS",
+     "reason": "No cumulative toxicity with 5–6 cycles, persistence of xerostomia/myelosuppression after exposure adjustment and survival-bias caveat all supported.",
+     "evidence": "Os subgrupos por número de ciclos são definidos após a randomização e sujeitos a viés de sobrevivência"
+    },
+    "aprovacao_humana": "2026-09-30",
+    "historico": [
+     {
+      "rodada": 1,
+      "texto": "Análise de segurança do VISION: 5–6 ciclos de 177Lu-PSMA-617 não mostraram acúmulo de toxicidade, e parte do excesso de eventos vs SoC reflete o maior tempo de observação. Xerostomia e mielossupressão seguem maiores após o ajuste por exposição; os subgrupos por número de ciclos têm viés de sobrevivência.",
+      "verdict": "PASS",
+      "nota": "versão com abertura redundante, substituída por decisão editorial"
+     },
+     {
+      "rodada": 2,
+      "texto": "5–6 ciclos de 177Lu-PSMA-617 não mostraram acúmulo de toxicidade, e parte do excesso de eventos vs SoC reflete o maior tempo de observação. Xerostomia e mielossupressão seguem maiores após o ajuste por exposição; os subgrupos por número de ciclos têm viés de sobrevivência.",
+      "verdict": "PASS",
+      "nota": "versão de 2–3 frases, substituída por versão curta (1–2 frases, ~160–220 caracteres)"
+     }
+    ]
+   }
   },
   "vision-renal-multiorgan-dosimetry-2024": {
    "pmid": "38050121",
@@ -476,7 +524,31 @@
      ],
      "decisao": "omitir"
     }
-   ]
+   ],
+   "collapsedSummary": {
+    "texto": "A dose renal cumulativa ficou abaixo do limite de referência, sem toxicidade renal G≥3. Coorte pequena e não randomizada; glândulas lacrimais e salivares recebem as maiores doses.",
+    "fonte": "somente campos já verificados do próprio card",
+    "verificacao_independente": {
+     "verdict": "PASS",
+     "reason": "Renal dose below reference limit, no G>=3 renal toxicity, small non-randomized cohort, highest doses in lacrimal/salivary glands all supported.",
+     "evidence": "Coorte não randomizada (30; só 10 completaram 6 ciclos)"
+    },
+    "aprovacao_humana": "2026-09-30",
+    "historico": [
+     {
+      "rodada": 1,
+      "texto": "Subestudo de dosimetria do VISION: a dose renal cumulativa ficou abaixo do limite de referência, sem toxicidade renal de grau ≥3, e a dosimetria do ciclo 1 estimou razoavelmente a dose cumulativa. Glândulas lacrimais e salivares recebem as maiores doses; coorte pequena e não randomizada, com limite renal derivado da radioterapia externa.",
+      "verdict": "PASS",
+      "nota": "versão com abertura redundante, substituída por decisão editorial"
+     },
+     {
+      "rodada": 2,
+      "texto": "No regime do VISION, a dose renal cumulativa ficou abaixo do limite de referência, sem toxicidade renal de grau ≥3, e a dosimetria do ciclo 1 estimou razoavelmente a dose cumulativa. Glândulas lacrimais e salivares recebem as maiores doses; coorte pequena e não randomizada, com limite renal derivado da radioterapia externa.",
+      "verdict": "PASS",
+      "nota": "versão de 2–3 frases, substituída por versão curta (1–2 frases, ~160–220 caracteres)"
+     }
+    ]
+   }
   },
   "vision-baseline-psma-pet-biomarkers-2024": {
    "pmid": "39162634",
@@ -757,7 +829,44 @@
       "¶0036"
      ]
     }
-   ]
+   ],
+   "collapsedSummary": {
+    "texto": "SUVmean tumoral basal mais elevado associou-se a maiores ganhos de rPFS e OS com 177Lu-PSMA-617. Embora os autores relatem potencial benefício independentemente do SUVmean, no quartil mais baixo os IC95% cruzaram 1; não houve ponto de corte ótimo.",
+    "fonte": "somente campos já verificados do próprio card",
+    "verificacao_independente": {
+     "verdict": "PASS",
+     "reason": "All four claims are supported: larger rPFS/OS gains with higher SUVmean; the 'potential benefit regardless of SUVmean' is explicitly attributed to the authors; lowest-quartile 95% CIs for the rPFS and OS HRs cross 1; no optimal cut-point. The final clause drops 'de SUVmean' and 'within the 177Lu arm', but analysis.subgrupos states 'sem ponto de corte ótimo' unqualified. The semicolon makes it a separate clause, not one limited to the lowest quartile, and in context it plainly concerns SUVmean. There is no contradiction or scope shift that changes the meaning. The exploratory caveat is carried by the badge. Optional tightening: 'não houve ponto de corte ótimo de SUVmean no braço 177Lu'.",
+     "evidence": "clinicalTakeaway: 'Os ganhos de rPFS e OS com 177Lu-PSMA-617 + SOC foram maiores com SUVmean mais alto. Os autores relatam evidência de potencial benefício clínico independentemente do SUVmean, mas no quartil mais baixo os IC95% dos HR de rPFS e OS cruzaram 1. Não foi identificado ponto ótimo de SUVmean entre os tratados com 177Lu-PSMA-617.' deep.achados[2]: lowest quartile rPFS HR 0,75 (0,45-1,26), OS HR 0,87 (0,60-1,27). deep.achados[3]: 'Nenhum ponto de corte ótimo de SUVmean foi identificado dentro do braço 177Lu.' analysis.subgrupos: '...sem ponto de corte ótimo.'"
+    },
+    "aprovacao_humana": "2026-09-30",
+    "historico": [
+     {
+      "rodada": 1,
+      "texto": "Análise exploratória do VISION: SUVmean tumoral basal mais elevado foi associado a maiores ganhos de rPFS e OS com 177Lu-PSMA-617. Os autores relatam potencial benefício clínico independentemente do SUVmean; contudo, no quartil mais baixo, os IC95% dos HR de rPFS e OS cruzaram 1. Não foi identificado ponto ótimo de SUVmean entre os tratados.",
+      "verdict": "PASS",
+      "nota": "versão com abertura redundante, substituída por decisão editorial"
+     },
+     {
+      "rodada": 2,
+      "texto": "SUVmean tumoral basal mais elevado foi associado a maiores ganhos de rPFS e OS com 177Lu-PSMA-617. Os autores relatam potencial benefício clínico independentemente do SUVmean; contudo, no quartil mais baixo, os IC95% dos HR de rPFS e OS cruzaram 1. Não foi identificado ponto ótimo de SUVmean entre os tratados.",
+      "verdict": "PASS",
+      "nota": "versão de 2–3 frases, substituída por versão curta (1–2 frases, ~160–220 caracteres)"
+     },
+     {
+      "rodada": 3,
+      "texto": "SUVmean tumoral basal mais alto associou-se a maior benefício em rPFS e OS com 177Lu-PSMA-617. No quartil mais baixo, os IC95% cruzaram 1; não houve ponto de corte ótimo.",
+      "verdict": "PASS",
+      "nota": "versão curta anterior, substituída por decisão editorial"
+     },
+     {
+      "rodada": 4,
+      "texto": "SUVmean tumoral basal mais elevado associou-se a maiores ganhos de rPFS e OS com 177Lu-PSMA-617. Ainda assim, os autores relatam potencial benefício independentemente do SUVmean, sem identificar ponto de corte ótimo.",
+      "verdict": "FAIL",
+      "reason": "Every claim can be traced to verified_fields, but the summary leaves out the most important clinical caveat. The clinicalTakeaway pairs the authors' claim of 'potencial benefício independentemente do SUVmean' with the finding that in the lowest SUVmean quartile the 95% CIs of the rPFS and OS HRs crossed 1. The summary keeps the authors' claim and drops that finding. A clinician looking at a patient with low SUVmean would read the sentence as saying benefit holds at every SUVmean level. The data only show a numerically favourable, non-significant difference in that quartile, from an analysis that was not powered for these subgroups. 'Os autores relatam' marks this as the authors' view, and the badge says 'Análise exploratória'. Neither tells the reader that the low-SUVmean result was not significant. The phrase 'sem identificar ponto de corte ótimo' pushes further toward 'SUVmean doesn't matter for selection' and has no counterweight. This is the author-view-overstates-data pattern the criteria list, so the verdict is FAIL. A minimal fix is to add something like 'embora no quartil mais baixo os IC95% de rPFS e OS tenham cruzado 1', or to replace the authors' claim with that fact.",
+      "nota": "proposta rejeitada (omitia IC95% cruzando 1 no quartil mais baixo)"
+     }
+    ]
+   }
   },
   "vision-psa-decline-clinical-outcomes-2024": {
    "pmid": "39242323",
@@ -935,7 +1044,31 @@
     "deep.interpretacao",
     "deep.limitacoes",
     "clinicalTakeaway"
-   ]
+   ],
+   "collapsedSummary": {
+    "texto": "Maior declínio de PSA até a semana 12 associou-se a maiores rPFS e OS com 177Lu-PSMA-617. Associação prognóstica, sem causalidade; aumento precoce de PSA não indica, por si só, falha.",
+    "fonte": "somente campos já verificados do próprio card",
+    "verificacao_independente": {
+     "verdict": "PASS",
+     "reason": "Graded association, prognostic-not-causal caveat and early PSA rise not equal to failure all supported.",
+     "evidence": "O declínio parece ter valor prognóstico, e é uma associação sem causalidade"
+    },
+    "aprovacao_humana": "2026-09-30",
+    "historico": [
+     {
+      "rodada": 1,
+      "texto": "Análise post hoc do braço 177Lu-PSMA-617 do VISION: quanto maior o declínio de PSA até a semana 12, maiores a rPFS e a OS, o que sugere valor prognóstico. É associação sem causalidade, sem o braço SoC; aumento precoce de PSA não indica, por si só, falha do tratamento.",
+      "verdict": "PASS",
+      "nota": "versão com abertura redundante, substituída por decisão editorial"
+     },
+     {
+      "rodada": 2,
+      "texto": "Com 177Lu-PSMA-617, quanto maior o declínio de PSA até a semana 12, maiores a rPFS e a OS, o que sugere valor prognóstico. Análise post hoc, sem o braço SoC e sem causalidade; aumento precoce de PSA não indica, por si só, falha do tratamento.",
+      "verdict": "PASS",
+      "nota": "versão de 2–3 frases, substituída por versão curta (1–2 frases, ~160–220 caracteres)"
+     }
+    ]
+   }
   },
   "vision-multivariable-outcome-models-2024": {
    "pmid": "39430616",
@@ -1102,7 +1235,31 @@
     "deep.interpretacao",
     "deep.achados",
     "clinicalTakeaway"
-   ]
+   ],
+   "collapsedSummary": {
+    "texto": "Nomogramas estimam o prognóstico de OS, rPFS e PSA50 com 177Lu-PSMA-617. São prognósticos, não preditivos de benefício vs SoC, e têm só validação interna.",
+    "fonte": "somente campos já verificados do próprio card",
+    "verificacao_independente": {
+     "verdict": "PASS",
+     "reason": "Prognostic nomograms, not predictive vs SoC, internal validation only — all verbatim-supported.",
+     "evidence": "São prognósticos, não preditivos de benefício vs SoC, e só têm validação interna."
+    },
+    "aprovacao_humana": "2026-09-30",
+    "historico": [
+     {
+      "rodada": 1,
+      "texto": "Nomogramas post hoc do braço 177Lu-PSMA-617 do VISION estimam o prognóstico de OS, rPFS e PSA50 a partir de SUVmax, LDH, FA, linfócitos e outros fatores. São prognósticos, não preditivos de benefício vs SoC, e têm só validação interna.",
+      "verdict": "PASS",
+      "nota": "versão com abertura redundante, substituída por decisão editorial"
+     },
+     {
+      "rodada": 2,
+      "texto": "Nomogramas com SUVmax, LDH, FA, linfócitos e outros fatores estimam o prognóstico de OS, rPFS e PSA50 com 177Lu-PSMA-617. São prognósticos, não preditivos de benefício vs SoC: foram construídos só no braço 177Lu, em análise post hoc com validação apenas interna.",
+      "verdict": "PASS",
+      "nota": "versão de 2–3 frases, substituída por versão curta (1–2 frases, ~160–220 caracteres)"
+     }
+    ]
+   }
   },
   "therap-psma-fdg-pet-biomarkers-2022": {
    "pmid": "36261050",
@@ -1168,7 +1325,31 @@
      "snippet": "Quantitative PET parameters used, however, require specialised software and are not yet routinely available in most clinics."
     }
    ],
-   "production_status": "applied"
+   "production_status": "applied",
+   "collapsedSummary": {
+    "texto": "SUVmean alto no PSMA-PET associou-se a maior vantagem de resposta de PSA do 177Lu-PSMA-617 sobre o cabazitaxel. Desfecho de PSA, não de sobrevida, em subgrupos de ensaio fase II.",
+    "fonte": "somente campos já verificados do próprio card",
+    "verificacao_independente": {
+     "verdict": "PASS",
+     "reason": "SUVmean-treatment interaction on PSA response supported; PSA-not-survival endpoint and phase II subgroup caveats kept.",
+     "evidence": "O desfecho avaliado é resposta de PSA, não sobrevida; os achados vêm de subgrupos de um ensaio fase II."
+    },
+    "aprovacao_humana": "2026-09-30",
+    "historico": [
+     {
+      "rodada": 1,
+      "texto": "Análise pré-especificada do TheraP: SUVmean alto no PSMA-PET associou-se a maior vantagem de resposta de PSA do 177Lu-PSMA-617 sobre o cabazitaxel, e MTV alto no FDG-PET a menor resposta em ambos os braços. Desfecho de PSA, não de sobrevida, em subgrupos de ensaio fase II; exige software quantitativo.",
+      "verdict": "PASS",
+      "nota": "versão com abertura redundante, substituída por decisão editorial"
+     },
+     {
+      "rodada": 2,
+      "texto": "SUVmean alto no PSMA-PET associou-se a maior vantagem de resposta de PSA do 177Lu-PSMA-617 sobre o cabazitaxel; MTV alto no FDG-PET, a menor resposta em ambos os braços. Desfecho de PSA, não de sobrevida, em subgrupos de ensaio fase II; exige software quantitativo.",
+      "verdict": "PASS",
+      "nota": "versão de 2–3 frases, substituída por versão curta (1–2 frases, ~160–220 caracteres)"
+     }
+    ]
+   }
   },
   "therap-overall-survival-2024": {
    "pmid": "38043558",
@@ -1250,7 +1431,31 @@
     "relationshipToParent",
     "analysis",
     "deep.interpretacao"
-   ]
+   ],
+   "collapsedSummary": {
+    "texto": "A OS foi semelhante entre 177Lu-PSMA-617 e cabazitaxel. Desfecho secundário de fase II, com crossover pós-tratamento: não demonstra superioridade nem equivalência formal.",
+    "fonte": "somente campos já verificados do próprio card",
+    "verificacao_independente": {
+     "verdict": "PASS",
+     "reason": "Similar OS, secondary endpoint, phase II, crossover, no formal superiority/equivalence — all supported.",
+     "evidence": "Desfecho secundário de fase II: não demonstra superioridade nem equivalência formal de OS."
+    },
+    "aprovacao_humana": "2026-09-30",
+    "historico": [
+     {
+      "rodada": 1,
+      "texto": "Atualização de OS do TheraP: a OS foi semelhante entre 177Lu-PSMA-617 e cabazitaxel, e os autores veem o 177Lu-PSMA-617 como alternativa ao cabazitaxel em doença PSMA-positiva após docetaxel. Desfecho secundário de fase II, com crossover pós-tratamento: não demonstra superioridade nem equivalência formal de OS.",
+      "verdict": "PASS",
+      "nota": "versão com abertura redundante, substituída por decisão editorial"
+     },
+     {
+      "rodada": 2,
+      "texto": "A OS foi semelhante entre 177Lu-PSMA-617 e cabazitaxel, e os autores veem o 177Lu-PSMA-617 como alternativa ao cabazitaxel em doença PSMA-positiva após docetaxel. OS é desfecho secundário de fase II, com crossover pós-tratamento: não demonstra superioridade nem equivalência formal.",
+      "verdict": "PASS",
+      "nota": "versão de 2–3 frases, substituída por versão curta (1–2 frases, ~160–220 caracteres)"
+     }
+    ]
+   }
   },
   "psmafore-final-os-safety-2025": {
    "pmid": "40680993",
@@ -1368,7 +1573,31 @@
     "relationshipToParent",
     "analysis",
     "clinicalTakeaway"
-   ]
+   ],
+   "collapsedSummary": {
+    "texto": "A OS não diferiu na análise ITT, com crossover elevado no controle. O ajuste IPCW é análise suplementar, com suposição não verificável, e não substitui o resultado ITT.",
+    "fonte": "somente campos já verificados do próprio card",
+    "verificacao_independente": {
+     "verdict": "PASS",
+     "reason": "ITT OS not different, high control crossover, IPCW supplementary with unverifiable assumption and not replacing ITT — all supported.",
+     "evidence": "o benefício sugerido pelo ajuste IPCW é análise suplementar, dependente de suposições não verificáveis, e não substitui o resultado ITT"
+    },
+    "aprovacao_humana": "2026-09-30",
+    "historico": [
+     {
+      "rodada": 1,
+      "texto": "Análise final do PSMAfore: a OS não diferiu na ITT, com crossover elevado no braço controle, e a segurança não mostrou novos sinais. O benefício sugerido pelo ajuste IPCW é análise suplementar, com suposição não verificável, e não substitui o resultado ITT.",
+      "verdict": "PASS",
+      "nota": "versão com abertura redundante, substituída por decisão editorial"
+     },
+     {
+      "rodada": 2,
+      "texto": "A OS não diferiu na análise ITT, com crossover elevado no braço controle, e a segurança não mostrou novos sinais. O benefício sugerido pelo ajuste IPCW é análise suplementar, com suposição não verificável, e não substitui o resultado ITT.",
+      "verdict": "PASS",
+      "nota": "versão de 2–3 frases, substituída por versão curta (1–2 frases, ~160–220 caracteres)"
+     }
+    ]
+   }
   },
   "psmafore-hrqol-pain-skeletal-events-2025": {
    "pmid": "40441170",
@@ -1456,7 +1685,31 @@
     "relationshipToParent",
     "analysis",
     "deep.limitacoes"
-   ]
+   ],
+   "collapsedSummary": {
+    "texto": "177Lu-PSMA-617 retardou a piora do FACT-P e da dor e o primeiro evento esquelético sintomático vs troca de ARPI. Desfechos secundários de ensaio aberto, em corte interino.",
+    "fonte": "somente campos já verificados do próprio card",
+    "verificacao_independente": {
+     "verdict": "PASS",
+     "reason": "Delay in FACT-P, pain and first SSE vs ARPI switch supported; secondary endpoints, open-label, interim cutoff retained.",
+     "evidence": "Desfechos secundários de ensaio aberto, em corte interino."
+    },
+    "aprovacao_humana": "2026-09-30",
+    "historico": [
+     {
+      "rodada": 1,
+      "texto": "Desfechos secundários do PSMAfore: 177Lu-PSMA-617 retardou a piora do FACT-P e da dor e o primeiro evento esquelético sintomático vs troca de ARPI. Ensaio aberto, em corte interino, sem efeito demonstrado sobre OS nesta publicação.",
+      "verdict": "PASS",
+      "nota": "versão com abertura redundante, substituída por decisão editorial"
+     },
+     {
+      "rodada": 2,
+      "texto": "177Lu-PSMA-617 retardou a piora do FACT-P e da dor e o primeiro evento esquelético sintomático vs troca de ARPI. Desfechos secundários de ensaio aberto, em corte interino, sem efeito demonstrado sobre OS nesta publicação.",
+      "verdict": "PASS",
+      "nota": "versão de 2–3 frases, substituída por versão curta (1–2 frases, ~160–220 caracteres)"
+     }
+    ]
+   }
   },
   "enzap-os-hrqol-2025": {
    "pmid": "39956124",
@@ -1571,7 +1824,31 @@
     "analysis",
     "deep.interpretacao",
     "deep.limitacoes"
-   ]
+   ],
+   "collapsedSummary": {
+    "texto": "Adicionar 177Lu-PSMA-617 à enzalutamida associou-se a maior OS e a melhora de alguns aspectos de HRQoL, com mais xerostomia. Desfechos secundários de fase II; os autores pedem fase III.",
+    "fonte": "somente campos já verificados do próprio card",
+    "verificacao_independente": {
+     "verdict": "PASS",
+     "reason": "Associated OS gain, improvement in some HRQoL aspects, more xerostomia, secondary endpoints of phase II and call for phase III all supported.",
+     "evidence": "A adição de 177Lu-PSMA-617 à enzalutamida associou-se a maior OS e a melhora de alguns aspectos de HRQoL, à custa de mais xerostomia."
+    },
+    "aprovacao_humana": "2026-09-30",
+    "historico": [
+     {
+      "rodada": 1,
+      "texto": "Desfechos secundários do ENZA-p: adicionar 177Lu-PSMA-617 à enzalutamida associou-se a maior OS e a maior tempo sem deterioração de função física e QoL, com mais xerostomia. Ensaio fase II aberto; os autores pedem confirmação em fase III.",
+      "verdict": "PASS",
+      "nota": "versão com abertura redundante, substituída por decisão editorial"
+     },
+     {
+      "rodada": 2,
+      "texto": "Adicionar 177Lu-PSMA-617 à enzalutamida associou-se a maior OS e a maior tempo sem deterioração de função física e QoL, com mais xerostomia. São desfechos secundários de ensaio fase II aberto; os autores pedem confirmação em fase III.",
+      "verdict": "PASS",
+      "nota": "versão de 2–3 frases, substituída por versão curta (1–2 frases, ~160–220 caracteres)"
+     }
+    ]
+   }
   },
   "enzap-baseline-psma-pet-biomarker-2025": {
    "pmid": "40752515",
@@ -1686,7 +1963,31 @@
     "analysis",
     "deep.interpretacao",
     "clinicalTakeaway"
-   ]
+   ],
+   "collapsedSummary": {
+    "texto": "PSMA-TTV basal acima da mediana associou-se a menor OS com enzalutamida isolada, com efeito atenuado pela adição de 177Lu-PSMA-617. O sinal preditivo vem de teste de interação em fase II.",
+    "fonte": "somente campos já verificados do próprio card",
+    "verificacao_independente": {
+     "verdict": "PASS",
+     "reason": "TTV above median linked to shorter OS on enzalutamide alone, attenuated with combination (interaction p=0.0078), predictive signal framed as phase II interaction test. Minor: 'pela adição' slightly causal and analysis was by treatment received, not ITT; not misleading at this length.",
+     "evidence": "o sinal preditivo vem de teste de interação em subestudo de fase II, com o efeito prognóstico concentrado no braço enzalutamida"
+    },
+    "aprovacao_humana": "2026-09-30",
+    "historico": [
+     {
+      "rodada": 1,
+      "texto": "Subestudo pré-especificado do ENZA-p: PSMA-TTV basal acima da mediana associou-se a menor OS com enzalutamida isolada, com efeito atenuado pela adição de 177Lu-PSMA-617; os autores o consideram prognóstico e preditivo. O sinal preditivo vem de teste de interação em fase II, com limiares derivados da própria coorte; SUVmean não se associou a OS.",
+      "verdict": "PASS",
+      "nota": "versão com abertura redundante, substituída por decisão editorial"
+     },
+     {
+      "rodada": 2,
+      "texto": "PSMA-TTV basal acima da mediana associou-se a menor OS com enzalutamida isolada, com efeito atenuado pela adição de 177Lu-PSMA-617; os autores o consideram prognóstico e preditivo. O sinal preditivo vem de teste de interação em fase II, com limiares derivados da própria coorte; SUVmean não se associou a OS.",
+      "verdict": "PASS",
+      "nota": "versão de 2–3 frases, substituída por versão curta (1–2 frases, ~160–220 caracteres)"
+     }
+    ]
+   }
   },
   "splash-lead-in-dosimetry-safety-efficacy-2024": {
    "pmid": "39839782",
@@ -1780,7 +2081,31 @@
     "relationshipToParent",
     "analysis",
     "clinicalTakeaway"
-   ]
+   ],
+   "collapsedSummary": {
+    "texto": "A dose renal média ficou abaixo do limiar de referência, com dose prevista acima dele em alguns participantes, e toxicidade sobretudo grau 1–2. Braço único: eficácia preliminar, sem comparador.",
+    "fonte": "somente campos já verificados do próprio card",
+    "verificacao_independente": {
+     "verdict": "PASS",
+     "reason": "Mean renal dose below 23 Gy threshold with some predicted above it, mostly G1–2 toxicity, single-arm/no comparator caveat all supported.",
+     "evidence": "6/27 (22,2%) com dose renal extrapolada >23 Gy, sem sinais de segurança adicionais"
+    },
+    "aprovacao_humana": "2026-09-30",
+    "historico": [
+     {
+      "rodada": 1,
+      "texto": "Coorte lead-in do SPLASH: 177Lu-PNT2002 teve dose renal cumulativa média abaixo do limiar de referência, com dose prevista acima dele em alguns participantes, e toxicidade majoritariamente grau 1–2, sustentando a passagem à fase randomizada. Braço único e amostra pequena: os dados de eficácia são preliminares e sem comparador.",
+      "verdict": "PASS",
+      "nota": "versão com abertura redundante, substituída por decisão editorial"
+     },
+     {
+      "rodada": 2,
+      "texto": "Com 177Lu-PNT2002, a dose renal cumulativa média ficou abaixo do limiar de referência, com dose prevista acima dele em alguns participantes, e a toxicidade foi majoritariamente grau 1–2, sustentando a passagem à fase randomizada. Braço único e amostra pequena: os dados de eficácia são preliminares e sem comparador.",
+      "verdict": "PASS",
+      "nota": "versão de 2–3 frases, substituída por versão curta (1–2 frases, ~160–220 caracteres)"
+     }
+    ]
+   }
   },
   "lupsma-2018-dosimetry-2019": {
    "pmid": "30291192",
@@ -1886,7 +2211,31 @@
     "clinicalTakeaway",
     "relationshipToParent",
     "analysis"
-   ]
+   ],
+   "collapsedSummary": {
+    "texto": "Maior dose tumoral de corpo inteiro associou-se a resposta de PSA. Associação correlacional em amostra pequena; a dosagem guiada por dosimetria não foi testada.",
+    "fonte": "somente campos já verificados do próprio card",
+    "verificacao_independente": {
+     "verdict": "PASS",
+     "reason": "Correlational association in small sample; dosimetry-guided dosing untested — supported.",
+     "evidence": "Associação (não causal) entre maior dose tumoral estimada e resposta de PSA, em análise correlacional de 30 pacientes; os autores veem racional para dosagem individualizada, hipótese ainda não testada nesta análise."
+    },
+    "aprovacao_humana": "2026-09-30",
+    "historico": [
+     {
+      "rodada": 1,
+      "texto": "Subestudo de dosimetria do LuPSMA trial: maior dose tumoral de corpo inteiro associou-se a resposta de PSA, e abaixo de 10 Gy só 1 de 11 pacientes teve PSA50. Associação correlacional em amostra pequena; a dosagem guiada por dosimetria não foi testada.",
+      "verdict": "PASS",
+      "nota": "versão com abertura redundante, substituída por decisão editorial"
+     },
+     {
+      "rodada": 2,
+      "texto": "Maior dose tumoral de corpo inteiro associou-se a resposta de PSA, e abaixo de 10 Gy só 1 de 11 pacientes teve PSA50. Associação correlacional em amostra pequena; a dosagem guiada por dosimetria não foi testada.",
+      "verdict": "PASS",
+      "nota": "versão de 2–3 frases, substituída por versão curta (1–2 frases, ~160–220 caracteres)"
+     }
+    ]
+   }
   },
   "lupsma-2018-long-term-retreatment-2020": {
    "pmid": "31732676",
@@ -1970,7 +2319,31 @@
     "clinicalTakeaway",
     "deep.limitacoes",
     "analysis"
-   ]
+   ],
+   "collapsedSummary": {
+    "texto": "A coorte expandida confirmou alta resposta de PSA e toxicidade majoritariamente leve; no retratamento, 73% tiveram PSA50. Dados descritivos, em subgrupo selecionado e sem comparação randomizada.",
+    "fonte": "somente campos já verificados do próprio card",
+    "verificacao_independente": {
+     "verdict": "PASS",
+     "reason": "Expanded cohort results, 73% PSA50 on retreatment, descriptive/selected/non-randomized caveat supported. Minor: 'confirmou' echoes the authors' 'Confirma'; interpretacao says 'consistente com o relato inicial'.",
+     "evidence": "As respostas ao retratamento ocorreram em subgrupo selecionado de respondedores prévios e a comparação com outras terapias não é randomizada"
+    },
+    "aprovacao_humana": "2026-09-30",
+    "historico": [
+     {
+      "rodada": 1,
+      "texto": "Seguimento de longo prazo do LuPSMA trial: a coorte expandida confirmou altas taxas de resposta de PSA e toxicidade majoritariamente leve, e o retratamento de respondedores prévios teve PSA50 em 73%. Dados descritivos, de centro e braço únicos, em subgrupo selecionado e sem comparação randomizada.",
+      "verdict": "PASS",
+      "nota": "versão com abertura redundante, substituída por decisão editorial"
+     },
+     {
+      "rodada": 2,
+      "texto": "A coorte expandida confirmou altas taxas de resposta de PSA e toxicidade majoritariamente leve, e o retratamento de respondedores prévios teve PSA50 em 73%. Dados descritivos, de centro e braço únicos, em subgrupo selecionado e sem comparação randomizada.",
+      "verdict": "PASS",
+      "nota": "versão de 2–3 frases, substituída por versão curta (1–2 frases, ~160–220 caracteres)"
+     }
+    ]
+   }
   },
   "netter1-hrqol-2018": {
    "pmid": "29878866",
@@ -2023,7 +2396,31 @@
      "snippet": "28.8 months versus 6.1 months for global health status, and 25.2 months versus 11.5 months for physical functioning"
     }
    ],
-   "production_status": "applied"
+   "production_status": "applied",
+   "collapsedSummary": {
+    "texto": "177Lu-DOTATATE retardou a deterioração da qualidade de vida versus octreotida em alta dose. Mede tempo até deterioração, não melhora absoluta, e só até a progressão.",
+    "fonte": "somente campos já verificados do próprio card",
+    "verificacao_independente": {
+     "verdict": "PASS",
+     "reason": "Delay in QoL deterioration, time-to-deterioration not absolute improvement, assessment only until progression — supported.",
+     "evidence": "O desfecho é tempo até deterioração, não melhora absoluta de QoL."
+    },
+    "aprovacao_humana": "2026-09-30",
+    "historico": [
+     {
+      "rodada": 1,
+      "texto": "Análise de QoL do NETTER-1: 177Lu-DOTATATE retardou a deterioração de vários domínios de qualidade de vida versus octreotida em alta dose. O desfecho é tempo até deterioração, não melhora absoluta, e a avaliação foi feita só até a progressão.",
+      "verdict": "PASS",
+      "nota": "versão com abertura redundante, substituída por decisão editorial"
+     },
+     {
+      "rodada": 2,
+      "texto": "177Lu-DOTATATE retardou a deterioração de vários domínios de qualidade de vida versus octreotida em alta dose. O desfecho é tempo até deterioração, não melhora absoluta, e a avaliação foi feita só até a progressão.",
+      "verdict": "PASS",
+      "nota": "versão de 2–3 frases, substituída por versão curta (1–2 frases, ~160–220 caracteres)"
+     }
+    ]
+   }
   },
   "netter1-final-os-long-term-safety-2021": {
    "pmid": "34793718",
@@ -2104,7 +2501,31 @@
     "clinicalTakeaway",
     "analysis",
     "deep.interpretacao"
-   ]
+   ],
+   "collapsedSummary": {
+    "texto": "A OS final não foi significativamente maior com 177Lu-DOTATATE, embora os autores considerem a diferença de 11,7 meses possivelmente relevante. Sem novos sinais de segurança.",
+    "fonte": "somente campos já verificados do próprio card",
+    "verificacao_independente": {
+     "verdict": "PASS",
+     "reason": "Non-significant OS stated first; 11.7-month relevance correctly attributed to authors; no new safety signals supported.",
+     "evidence": "os autores consideram que a diferença de 11,7 m nas medianas pode ser clinicamente relevante. Sem novos sinais de segurança no seguimento prolongado."
+    },
+    "aprovacao_humana": "2026-09-30",
+    "historico": [
+     {
+      "rodada": 1,
+      "texto": "Análise final do NETTER-1: a OS não foi significativamente maior com 177Lu-DOTATATE, embora os autores considerem que a diferença de 11,7 meses nas medianas pode ser clinicamente relevante; sem novos sinais de segurança no seguimento prolongado. Desenho aberto, com OS como desfecho secundário.",
+      "verdict": "PASS",
+      "nota": "versão com abertura redundante, substituída por decisão editorial"
+     },
+     {
+      "rodada": 2,
+      "texto": "A OS final não foi significativamente maior com 177Lu-DOTATATE, embora os autores considerem que a diferença de 11,7 meses nas medianas pode ser clinicamente relevante; sem novos sinais de segurança no seguimento prolongado. Desenho aberto, com OS como desfecho secundário.",
+      "verdict": "PASS",
+      "nota": "versão de 2–3 frases, substituída por versão curta (1–2 frases, ~160–220 caracteres)"
+     }
+    ]
+   }
   },
   "netter1-dosimetry-substudy-2025": {
    "pmid": "39947918",
@@ -2212,7 +2633,31 @@
      "snippet": "planar scintigraphy alone may not be the most accurate method for tumor dosimetry"
     }
    ],
-   "production_status": "applied"
+   "production_status": "applied",
+   "collapsedSummary": {
+    "texto": "Doses médias em rins e medula ficaram abaixo dos limiares conservadores, com toxicidade manejável. Amostra pequena; não se demonstrou relação entre dose tumoral e resposta.",
+    "fonte": "somente campos já verificados do próprio card",
+    "verificacao_independente": {
+     "verdict": "PASS",
+     "reason": "Mean kidney/marrow doses below conservative thresholds, manageable toxicity, small sample, dose–response not demonstrated — supported.",
+     "evidence": "A relação dose tumoral–resposta não foi demonstrada nesta amostra"
+    },
+    "aprovacao_humana": "2026-09-30",
+    "historico": [
+     {
+      "rodada": 1,
+      "texto": "Subestudo de dosimetria do NETTER-1: doses médias em rins e medula ficaram abaixo dos limiares conservadores, com toxicidade manejável, apoiando a tolerabilidade do regime padrão. Não se demonstrou relação entre dose tumoral e resposta; amostra pequena, majoritariamente não randomizada, e o estudo não testa dosimetria individualizada.",
+      "verdict": "PASS",
+      "nota": "versão com abertura redundante, substituída por decisão editorial"
+     },
+     {
+      "rodada": 2,
+      "texto": "Doses médias em rins e medula ficaram abaixo dos limiares conservadores, com toxicidade manejável, apoiando a tolerabilidade do regime padrão. Não se demonstrou relação entre dose tumoral e resposta; amostra pequena, majoritariamente não randomizada, e o estudo não testa dosimetria individualizada.",
+      "verdict": "PASS",
+      "nota": "versão de 2–3 frases, substituída por versão curta (1–2 frases, ~160–220 caracteres)"
+     }
+    ]
+   }
   },
   "alsympca-docetaxel-subgroup-2014": {
    "pmid": "25439694",
@@ -2290,7 +2735,31 @@
      "snippet": "Radium-223 is effective and well tolerated in patients with castration-resistant prostate cancer and symptomatic bone metastases, irrespective of previous docetaxel use"
     }
    ],
-   "production_status": "applied"
+   "production_status": "applied",
+   "collapsedSummary": {
+    "texto": "O benefício de SG do rádio-223 foi semelhante com e sem docetaxel prévio; após docetaxel, a trombocitopenia G3–4 foi mais frequente. Subgrupos não randomizados entre si.",
+    "fonte": "somente campos já verificados do próprio card",
+    "verificacao_independente": {
+     "verdict": "PASS",
+     "reason": "Similar OS HRs and higher G3–4 thrombocytopenia after docetaxel supported; non-randomized subgroups caveat kept. Minor: comparator (vs placebo) implicit in 'mais frequente', but both readings are true in the data.",
+     "evidence": "Trombocitopenia G3–4 com docetaxel prévio: 9% (rádio-223) vs 3% (placebo); sem docetaxel prévio: 3% vs 1%."
+    },
+    "aprovacao_humana": "2026-09-30",
+    "historico": [
+     {
+      "rodada": 1,
+      "texto": "Subgrupo pré-especificado do ALSYMPCA: o benefício de SG do rádio-223 foi semelhante com e sem docetaxel prévio, mas após docetaxel a trombocitopenia G3–4 foi mais frequente com rádio-223. Os subgrupos não são randomizados entre si e o resumo não informa teste de interação.",
+      "verdict": "PASS",
+      "nota": "versão com abertura redundante, substituída por decisão editorial"
+     },
+     {
+      "rodada": 2,
+      "texto": "O benefício de SG do rádio-223 foi semelhante com e sem docetaxel prévio, mas após docetaxel a trombocitopenia G3–4 foi mais frequente com rádio-223. Os subgrupos não são randomizados entre si, e não há teste de interação informado.",
+      "verdict": "PASS",
+      "nota": "versão de 2–3 frases, substituída por versão curta (1–2 frases, ~160–220 caracteres)"
+     }
+    ]
+   }
   },
   "alsympca-quality-of-life-2016": {
    "pmid": "26912557",
@@ -2417,7 +2886,31 @@
     "analysis",
     "deep.interpretacao",
     "clinicalTakeaway"
-   ]
+   ],
+   "collapsedSummary": {
+    "texto": "Mais pacientes com rádio-223 tiveram melhora significativa de QoL, e os escores declinaram mais devagar. Análises post hoc; um dos testes perde significância com correção para multiplicidade.",
+    "fonte": "somente campos já verificados do próprio card",
+    "verificacao_independente": {
+     "verdict": "PASS",
+     "reason": "More responders and slower decline supported; post hoc and Bonferroni loss of significance for one test kept.",
+     "evidence": "com correção de Bonferroni (α=0,008) a análise de respondedores do FACT-P (p=0,020) deixaria de ser significativa"
+    },
+    "aprovacao_humana": "2026-09-30",
+    "historico": [
+     {
+      "rodada": 1,
+      "texto": "Análises post hoc de QoL do ALSYMPCA: mais pacientes com rádio-223 tiveram melhora significativa de QoL, e os escores declinaram mais devagar. Testes post hoc; com correção para múltiplos testes, a análise de respondedores do FACT-P deixaria de ser significativa.",
+      "verdict": "PASS",
+      "nota": "versão com abertura redundante, substituída por decisão editorial"
+     },
+     {
+      "rodada": 2,
+      "texto": "Mais pacientes com rádio-223 tiveram melhora significativa de QoL, e os escores declinaram mais devagar. Análises post hoc; com correção para múltiplos testes, a análise de respondedores do FACT-P deixaria de ser significativa.",
+      "verdict": "PASS",
+      "nota": "versão de 2–3 frases, substituída por versão curta (1–2 frases, ~160–220 caracteres)"
+     }
+    ]
+   }
   },
   "alsympca-chemotherapy-after-radium-2016": {
    "pmid": "27004570",
@@ -2543,7 +3036,31 @@
      "snippet": "Chemotherapy following radium-223, regardless of prior docetaxel, is feasible and appears to be well tolerated"
     }
    ],
-   "production_status": "applied"
+   "production_status": "applied",
+   "collapsedSummary": {
+    "texto": "Segundo os autores, a quimioterapia após rádio-223 é factível e parece bem tolerada, com toxicidade hematológica numericamente maior. Grupos não randomizados: comparação apenas descritiva.",
+    "fonte": "somente campos já verificados do próprio card",
+    "verificacao_independente": {
+     "verdict": "PASS",
+     "reason": "Feasibility attributed to authors, numerically higher hematologic toxicity, non-randomized descriptive comparison — supported.",
+     "evidence": "Como os grupos não são comparáveis por randomização, a comparação de SG e toxicidade entre braços é apenas descritiva."
+    },
+    "aprovacao_humana": "2026-09-30",
+    "historico": [
+     {
+      "rodada": 1,
+      "texto": "Análise exploratória do ALSYMPCA: a quimioterapia após rádio-223 pareceu factível e bem tolerada, com SG a partir da quimioterapia semelhante à observada após placebo. Grupos não comparáveis por randomização e sem poder estatístico: a comparação entre braços é apenas descritiva.",
+      "verdict": "PASS",
+      "nota": "versão com abertura redundante, substituída por decisão editorial"
+     },
+     {
+      "rodada": 2,
+      "texto": "Segundo os autores, a quimioterapia após rádio-223 é factível e parece bem tolerada; a toxicidade hematológica G3–4 foi baixa, numericamente maior após rádio-223, e a SG a partir da quimioterapia foi semelhante à observada após placebo. Grupos não comparáveis por randomização e sem poder estatístico: a comparação entre braços é apenas descritiva.",
+      "verdict": "PASS",
+      "nota": "versão de 2–3 frases, substituída por versão curta (1–2 frases, ~160–220 caracteres)"
+     }
+    ]
+   }
   },
   "alsympca-alp-ldh-psa-2017": {
    "pmid": "28453701",
@@ -2670,7 +3187,31 @@
     "relationshipToParent",
     "clinicalTakeaway",
     "analysis"
-   ]
+   ],
+   "collapsedSummary": {
+    "texto": "Declínios de tALP e LDH associaram-se a maior SG entre tratados com rádio-223, mas nenhum marcador serve de substituto. Os autores alertam contra interromper o tratamento por alta de PSA.",
+    "fonte": "somente campos já verificados do próprio card",
+    "verificacao_independente": {
+     "verdict": "PASS",
+     "reason": "tALP/LDH decline associated with OS among radium-treated, no surrogate, authors' PSA warning attributed — supported.",
+     "evidence": "Declínios de tALP e LDH associaram-se a maior SG entre tratados com rádio-223 (associação, não causalidade), mas nenhum marcador explicou o efeito do tratamento o suficiente para servir de substituto."
+    },
+    "aprovacao_humana": "2026-09-30",
+    "historico": [
+     {
+      "rodada": 1,
+      "texto": "Análise post hoc do ALSYMPCA: declínios de tALP e LDH associaram-se a maior SG entre tratados com rádio-223, mas nenhum marcador atingiu critérios de substituto. Os autores alertam que usar alta de PSA para interromper o rádio-223 pode negar tratamento eficaz.",
+      "verdict": "PASS",
+      "nota": "versão com abertura redundante, substituída por decisão editorial"
+     },
+     {
+      "rodada": 2,
+      "texto": "Declínios de tALP e LDH associaram-se a maior SG entre tratados com rádio-223, mas nenhum marcador atingiu critérios de substituto. Análise post hoc; os autores alertam que usar alta de PSA para interromper o rádio-223 pode negar tratamento eficaz.",
+      "verdict": "PASS",
+      "nota": "versão de 2–3 frases, substituída por versão curta (1–2 frases, ~160–220 caracteres)"
+     }
+    ]
+   }
   },
   "alsympca-hospitalisation-2017": {
    "pmid": "27930924",
@@ -2752,7 +3293,37 @@
     "relationshipToParent",
     "analysis",
     "deep.interpretacao"
-   ]
+   ],
+   "collapsedSummary": {
+    "texto": "Menos pacientes com rádio-223 foram hospitalizados, com menos dias de internação; hospitalizações por paciente não diferiram. O seguimento foi desigual entre os braços.",
+    "fonte": "somente campos já verificados do próprio card",
+    "verificacao_independente": {
+     "verdict": "PASS",
+     "reason": "Fewer hospitalized patients, fewer days, no difference in hospitalizations per patient, unequal follow-up — supported.",
+     "evidence": "Hospitalizações por paciente: 0,69 vs 0,79 (p=0,226, não significativo) — seguimento mais longo com rádio-223 (7,82 vs 6,92 meses; p<0,001)."
+    },
+    "aprovacao_humana": "2026-09-30",
+    "historico": [
+     {
+      "rodada": 1,
+      "texto": "Análise de hospitalização do ALSYMPCA: menos pacientes com rádio-223 foram hospitalizados e houve menos dias de internação, mas o número de hospitalizações por paciente não diferiu. O resumo não detalha método estatístico nem pré-especificação.",
+      "verdict": "PASS",
+      "nota": "versão com abertura redundante, substituída por decisão editorial"
+     },
+     {
+      "rodada": 2,
+      "texto": "A publicação-fonte não detalha método estatístico nem pré-especificação (2ª frase)",
+      "verdict": "UNSUPPORTED",
+      "reason": "Achados corretos, mas 'A publicação-fonte não detalha método estatístico nem pré-especificação' amplia o escopo: os verified_fields só afirmam que o RESUMO (abstract) não detalha; nada informam sobre a publicação completa. Secundariamente, omite o seguimento desigual entre braços, relevante para contagens por paciente."
+     },
+     {
+      "rodada": 3,
+      "texto": "Menos pacientes com rádio-223 foram hospitalizados e houve menos dias de internação, mas o número de hospitalizações por paciente não diferiu. O seguimento foi desigual entre os braços, e o resumo do artigo não detalha método estatístico nem pré-especificação.",
+      "verdict": "PASS",
+      "nota": "versão de 2–3 frases, substituída por versão curta (1–2 frases, ~160–220 caracteres)"
+     }
+    ]
+   }
   },
   "alsympca-three-year-safety-2018": {
    "pmid": "28705540",
@@ -2867,7 +3438,31 @@
     "analysis",
     "deep.interpretacao",
     "clinicalTakeaway"
-   ]
+   ],
+   "collapsedSummary": {
+    "texto": "Em até 3 anos, o rádio-223 manteve-se bem tolerado, sem LMA ou SMD, mas com trombocitopenia G3/4 numericamente maior. Poucos completaram o seguimento, que os autores consideram curto.",
+    "fonte": "somente campos já verificados do próprio card",
+    "verificacao_independente": {
+     "verdict": "PASS",
+     "reason": "No AML/MDS, numerically higher G3/4 thrombocytopenia, few completed follow-up, authors call it short — supported.",
+     "evidence": "apenas 12% dos pacientes com rádio-223 completaram o seguimento, e os autores citam o seguimento curto (3 anos) como limitação"
+    },
+    "aprovacao_humana": "2026-09-30",
+    "historico": [
+     {
+      "rodada": 1,
+      "texto": "Análise final de segurança do ALSYMPCA: em até 3 anos, o rádio-223 manteve-se bem tolerado, sem LMA, SMD ou novo câncer ósseo primário e com mielossupressão pouco frequente. Poucos pacientes completaram o seguimento, e os autores citam o seguimento curto como limitação.",
+      "verdict": "PASS",
+      "nota": "versão com abertura redundante, substituída por decisão editorial"
+     },
+     {
+      "rodada": 2,
+      "texto": "Em até 3 anos, o rádio-223 manteve-se bem tolerado, sem LMA, SMD ou novo câncer ósseo primário e com mielossupressão pouco frequente, exceto trombocitopenia G3/4 numericamente maior. Poucos pacientes completaram o seguimento, e os autores citam o seguimento curto como limitação.",
+      "verdict": "PASS",
+      "nota": "versão de 2–3 frases, substituída por versão curta (1–2 frases, ~160–220 caracteres)"
+     }
+    ]
+   }
   }
  },
  "aplicado_em_producao": [
