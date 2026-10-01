@@ -28,8 +28,9 @@ import sys
 AQUI = pathlib.Path(__file__).resolve().parent
 SITE = AQUI.parents[2]
 try:
-    from . import curator as C, decision_packet as D, discovery as DS, sources as S, verifier as V
+    from . import curator as C, decision_packet as D, delta as DL, discovery as DS, sources as S, verifier as V
 except ImportError:
+    import delta as DL
     import discovery as DS
     import curator as C
     import sources as S
@@ -65,6 +66,11 @@ def _prompt(papel: str, uid: str) -> tuple[str, list[pathlib.Path]]:
         pasta = S.STATE / "discovery" / uid
         tarefa = DS.tarefa(uid) if papel == "discovery_curator" else DS.tarefa_verifier(uid)
         return (tarefa + "Leia só o diretório do card acima e o schema. Responda APENAS com o JSON.", [pasta, schemas])
+    if papel in ("delta_curator", "delta_verifier"):              # delta editorial: componente separado
+        pasta = S.STATE / "delta" / uid
+        tarefa = DL.tarefa(uid) if papel == "delta_curator" else DL.tarefa_verifier(uid)
+        return (tarefa + "Leia só o diretório acima, as instruções e o schema. Responda APENAS com o JSON.",
+                [pasta, schemas, DL.INSTRUCOES])
     if papel == "verifier_b":                       # segunda verificação independente, só dos itens P0
         V.entrada(uid, so_ids=D.candidatos_b(uid), sufixo="_b")
         tarefa = S.STATE / "tasks" / f"{uid}.verifier_input_b.json"
@@ -86,7 +92,8 @@ def executar(papel: str, uid: str) -> dict:
     RUNS.mkdir(parents=True, exist_ok=True)
     RAW.mkdir(parents=True, exist_ok=True)
     agente = {"verifier_b": "database-verifier", "discovery_curator": "database-curator",
-              "discovery_verifier": "database-verifier"}.get(papel, f"database-{papel}")   # mesma definição, contexto novo
+              "discovery_verifier": "database-verifier", "delta_curator": "database-curator",
+              "delta_verifier": "database-verifier"}.get(papel, f"database-{papel}")   # mesma definição, contexto novo
     cmd = [binario(), "-p", prompt, "--agent", agente, "--output-format", "stream-json", "--verbose",
            "--disallowedTools", PROIBIDAS_CLI]
     proc = subprocess.run(cmd, cwd=SITE, capture_output=True, text=True, timeout=1800)
@@ -137,7 +144,8 @@ def main(argv=None) -> int:
         par = int(a[i + 1])
         del a[i:i + 2]
     papel, uids = a[0], a[1:]
-    assert papel in ("curator", "verifier", "verifier_b", "discovery_curator", "discovery_verifier"), papel
+    assert papel in ("curator", "verifier", "verifier_b", "discovery_curator", "discovery_verifier",
+                     "delta_curator", "delta_verifier"), papel
     if papel == "verifier_b":                        # só cards com item P0; os demais não têm o que reverificar
         sem = [u for u in uids if not D.candidatos_b(u)]
         for u in sem:

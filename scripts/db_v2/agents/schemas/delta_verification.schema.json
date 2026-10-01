@@ -1,0 +1,61 @@
+{
+ "$id": "theratrials-db-delta-verification/1",
+ "type": "object",
+ "properties": {
+  "schema": {
+   "const": "theratrials-db-delta-verification/1"
+  },
+  "delta_id": {
+   "type": "string"
+  },
+  "curator_sha256": {
+   "type": "string"
+  },
+  "items": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "properties": {
+     "item_id": {
+      "type": "string"
+     },
+     "verdict": {
+      "enum": [
+       "PASS",
+       "FAIL",
+       "UNSUPPORTED",
+       "CONFLICT"
+      ]
+     },
+     "reason": {
+      "type": "string",
+      "minLength": 5
+     },
+     "locator": {
+      "type": [
+       "string",
+       "null"
+      ]
+     },
+     "snippet": {
+      "type": [
+       "string",
+       "null"
+      ]
+     }
+    },
+    "required": [
+     "item_id",
+     "verdict",
+     "reason"
+    ]
+   }
+  }
+ },
+ "required": [
+  "schema",
+  "delta_id",
+  "curator_sha256",
+  "items"
+ ]
+}

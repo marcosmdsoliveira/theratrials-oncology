@@ -1,0 +1,148 @@
+{
+ "$id": "theratrials-db-delta-curator/1",
+ "type": "object",
+ "properties": {
+  "schema": {
+   "const": "theratrials-db-delta-curator/1"
+  },
+  "delta_id": {
+   "type": "string"
+  },
+  "packet_sha256": {
+   "type": "string"
+  },
+  "items": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "properties": {
+     "item_id": {
+      "type": "string"
+     },
+     "field_path": {
+      "enum": [
+       "primario",
+       "secundario",
+       "resultado_chave",
+       "tox_g3",
+       "subgrupo"
+      ]
+     },
+     "decision": {
+      "enum": [
+       "DELTA",
+       "HUMAN_REVIEW"
+      ]
+     },
+     "segment_current": {
+      "type": [
+       "string",
+       "null"
+      ]
+     },
+     "segment_proposed": {
+      "type": [
+       "string",
+       "null"
+      ]
+     },
+     "endpoint": {
+      "type": "string"
+     },
+     "reason": {
+      "type": "string"
+     },
+     "human_review_reason": {
+      "type": [
+       "string",
+       "null"
+      ]
+     },
+     "evidence": {
+      "type": "array",
+      "items": {
+       "type": "object",
+       "properties": {
+        "source_id": {
+         "type": "string"
+        },
+        "source_type": {
+         "enum": [
+          "pubmed_metadata",
+          "pubmed_abstract",
+          "pmc_fulltext",
+          "europepmc_fulltext",
+          "ctgov_record",
+          "ctgov_results",
+          "crossref_metadata",
+          "registered_primary_source",
+          "human_decision"
+         ]
+        },
+        "publication_id": {
+         "type": [
+          "string",
+          "null"
+         ]
+        },
+        "pmid": {
+         "type": [
+          "string",
+          "null"
+         ]
+        },
+        "doi": {
+         "type": [
+          "string",
+          "null"
+         ]
+        },
+        "nct": {
+         "type": [
+          "string",
+          "null"
+         ]
+        },
+        "locator": {
+         "type": "string"
+        },
+        "snippet": {
+         "type": "string",
+         "minLength": 8
+        },
+        "retrieved_at": {
+         "type": [
+          "string",
+          "null"
+         ]
+        }
+       },
+       "required": [
+        "source_id",
+        "source_type",
+        "locator",
+        "snippet"
+       ]
+      }
+     }
+    },
+    "required": [
+     "item_id",
+     "field_path",
+     "decision",
+     "endpoint",
+     "evidence"
+    ]
+   }
+  },
+  "notes_for_human": {
+   "type": "string"
+  }
+ },
+ "required": [
+  "schema",
+  "delta_id",
+  "packet_sha256",
+  "items"
+ ]
+}
