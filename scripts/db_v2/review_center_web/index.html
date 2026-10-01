@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Review Center · TheraTrials</title>
+<link rel="stylesheet" href="/app.css?v=1">
+</head>
+<body>
+<header class="topo">
+  <div class="marca">
+    <strong>TheraTrials · Review Center</strong>
+    <span class="aviso">Decisão ≠ aplicação. Nada aqui altera o Database.</span>
+  </div>
+  <div class="painel" id="painel" aria-live="polite"></div>
+  <div class="progresso"><div class="barra"><div id="barra"></div></div><span id="progresso-txt"></span></div>
+</header>
+
+<section class="filtros" aria-label="Filtros">
+  <label>Status
+    <select id="f-status">
+      <option value="pendentes">Pendentes (inclui stale)</option>
+      <option value="">Todos</option>
+      <option value="APPROVE">APPROVE</option>
+      <option value="REJECT">REJECT</option>
+      <option value="DEFER">DEFER</option>
+      <option value="STALE">STALE</option>
+    </select>
+  </label>
+  <label>Pacote
+    <select id="f-pacote">
+      <option value="">Todos</option>
+      <option value="UPDATE_CARD">UPDATE_CARD</option>
+      <option value="HUMAN_REVIEW">HUMAN_REVIEW</option>
+      <option value="ADD_SECONDARY">ADD_SECONDARY</option>
+    </select>
+  </label>
+  <label>Veredito
+    <select id="f-veredito">
+      <option value="">Todos</option>
+      <option value="PASS">PASS</option>
+      <option value="UNSUPPORTED">UNSUPPORTED</option>
+      <option value="CONFLICT">CONFLICT</option>
+      <option value="FAIL">FAIL</option>
+    </select>
+  </label>
+  <label>Bloco <select id="f-bloco"><option value="">Todos</option></select></label>
+  <label class="busca">Busca <input id="f-busca" type="search" placeholder="estudo, uid, PMID, DOI, título, texto"></label>
+  <span id="contagem-filtro" class="contagem"></span>
+</section>
+
+<main class="corpo">
+  <nav class="lista" id="lista" aria-label="Fila de revisão"></nav>
+  <article class="detalhe" id="detalhe"><p class="vazio">Carregando…</p></article>
+</main>
+<script src="/app.js?v=1"></script>
+</body>
+</html>
