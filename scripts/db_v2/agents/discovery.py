@@ -65,7 +65,7 @@ ACOES_DA_RELACAO = {
     "PROTOCOL": {"STORE_SOURCE", "HUMAN_REVIEW"},                  # protocolo do próprio estudo: vínculo preservado
     "POOLED_ANALYSIS": {"STORE_SOURCE", "HUMAN_REVIEW", "NO_ACTION"},  # vários estudos: nunca secundário automático
 }
-PIPELINE_VERSION = "discovery/2"
+PIPELINE_VERSION = "discovery/3"
 # tipos de publicação sem dado original do estudo (PubMed e Europe PMC, comparados em minúsculas)
 SEM_DADO_ORIGINAL = {"review", "review-article", "systematic review", "systematic-review", "meta-analysis",
                      "practice guideline", "guideline", "consensus development conference",
@@ -80,12 +80,48 @@ REGULATORIO = re.compile(r"\b(FDA|EMA|CHMP|EPAR|MHRA|PMDA|ANVISA|Health Canada|P
                          r"summary|assessment|authori[sz]ation|review)\b|approval summary|regulatory (review|assessment)", re.I)
 PROTOCOLO = re.compile(r"study protocol|trial protocol|protocol (for|of) (a|an|the)\b|:\s*protocol\b|rationale and design|"
                        r"design and rationale|trial in progress|statistical analysis plan", re.I)
-POOLED = re.compile(r"pooled (?!(\w+ )?arms?\b)(\w+ ){0,2}(analysis|analyses|data|population|dataset)|"
-                    r"integrated (safety |efficacy )?analysis|data (were |was )?pooled|pooling (of )?data|"
-                    r"individual (patient|participant)[- ]data|patient[- ]level data|indirect (treatment )?comparison|"
-                    r"matching[- ]adjusted|network meta|(combined|pooled) (analysis|data) (of|from)|"
-                    r"\b(data|datasets|patients|adults|participants|subjects)\b[^.]{0,80}\b(from|in|across)\b[^.]{0,160}"
-                    r"\b(trials|studies|cohorts)\b", re.I)
+POOLED = re.compile(  # agregação EXPLÍCITA de dados de ≥2 estudos (verbo/termo de combinação)
+    r"pooled,? (?!(\w+ )?arms?\b)(\w+[, ]+){0,2}?(analysis|analyses|data|population|dataset|safety)|pooled across|"
+    r"integrated (safety |efficacy )?(analysis|analyses|summary|data|dataset)|integrating data|"
+    r"data (were |was )?(pooled|combined)|pooling (of )?data|"
+    r"combined (data|analysis|dataset|results) (of|from)|(were|was) combined (from|across)|"
+    r"individual[- ](patient|participant|level)[- ]data|patient[- ]level data (from|of)|"
+    r"indirect (treatment )?comparison|matching[- ]adjusted|network meta", re.I)
+POOLED_CONTAGEM = re.compile(  # "samples/patients/data from three trials": vale só se não houver relato separado
+    r"\b(data|datasets|samples|specimens|tumou?rs|patients|participants|subjects|individuals|cases)\b[^.]{0,120}?"
+    r"\b(from|in|across)\s+(the\s+)?(two|three|four|five|six|seven|eight|nine|ten|\d+|multiple|several)\s+"
+    r"([\w/]+[ ,-]+){0,5}?(clinical\s+)?(trials|studies)\b", re.I)          # coortes de UM ensaio não são estudos distintos
+ANTERIOR = re.compile(r"\bpreviously\b|\bwe (have )?(previously )?(reported|showed|shown|evaluated)\b|"
+                     r"\bprior (report|analysis|study|publication)\b|\bearlier (report|analysis)\b", re.I)
+MESMO_ENSAIO = re.compile(r"\bparts? \d|\bparts? (one|two|1|2)\b|\barms? (\d|[a-c])\b|\b(both|all) arms\b", re.I)
+SEPARADO = re.compile(r"\bseparately\b|\bin each of\b|\bfor each (trial|study|cohort)\b|\beach (trial|study) (was|is) "
+                      r"(analy[sz]ed|reported)", re.I)
+POOLED_ATRAVES = re.compile(r"\bacross (the )?(\w+[ ,-]+){0,3}?(phase \w+ )?(clinical )?(trials|studies|program(me)?)\b", re.I)
+PRECLINICO = re.compile(r"\bpre-?clinical\b|\bin vitro\b|\bin vivo\b|\bxenograft|\bmice\b|\bmouse\b|\bmurine\b|"
+                        r"\brats?\b|\bcynomolgus\b|non-?human primate|\bcell lines?\b|\borganoids?\b", re.I)
+CLINICO_NO_TITULO = re.compile(r"clinical (data|results?|outcomes?|activity|efficacy|experience|trial)|\bpatients?\b|"
+                               r"\bphase (1|2|3|i|ii|iii)\b|first[- ]in[- ]human", re.I)
+LEIGO = re.compile(r"plain[- ]language summary|lay (language )?summary|summary for patients|patient[- ]friendly summary", re.I)
+TUMOR_AGNOSTICO = re.compile(r"agn[oó]stic|tumores s[oó]lidos|solid tumou?rs|pan-?tumou?r|tissue-agnostic", re.I)
+TUMORES = {  # grupos de tumor (PT/EN) para saber se um candidato fala da coorte do card de basket
+    "biliar": r"biliar|\bBTC\b|cholangio|colangio|gallbladder|ves[ií]cula|ampul", "hepatocel": r"hepatocell|\bHCC\b|CHC",
+    "cervix": r"cervical|cervix|colo do [uú]tero|c[eé]rvix", "endometrio": r"endometri", "ovario": r"ovari",
+    "pulmao_pc": r"small[- ]cell lung|\bSCLC\b|pequenas c[eé]lulas", "pulmao": r"\bNSCLC\b|non[- ]small|lung|pulm",
+    "mama": r"breast|\bmama", "prostata": r"prostat|pr[oó]stata", "colorretal": r"(?<!non)(?<!non-)(?<!non )colorectal|(?<!n[aã]o-)colorretal|\bCRC\b",
+    "gastroesof": r"gastric|g[aá]stric|esophag|es[oô]fag|gastroesophageal", "pancreas": r"pancrea",
+    "melanoma": r"melanoma", "renal": r"renal cell|kidney|\bRCC\b|renal", "urotelial": r"urothelial|urotelial|bladder|bexiga",
+    "tireoide": r"thyroid|tireoide|tiroide", "sarcoma": r"sarcoma", "snc": r"glioma|glioblastoma|\bbrain\b|\bCNS\b|SNC",
+    "linfoma": r"lymphoma|linfoma", "mieloma": r"myeloma|mieloma", "leucemia": r"leuk|leucemia|\bAML\b|\bLMA\b",
+    "net": r"neuroendocrin|\bNETs?\b|carcinoid", "cabeca_pescoco": r"head and neck|\bHNSCC\b|cabe[cç]a e pesco[cç]o",
+    "mesotelioma": r"mesothelioma|mesotelioma", "anal": r"\banal\b", "neuroblastoma": r"neuroblastoma",
+    "meningioma": r"meningioma", "endocrino_adrenal": r"adrenocortical|pheochromocytoma|paraganglioma|feocromocitoma"}
+
+
+def grupos_tumor(texto: str) -> set[str]:
+    g = {g for g, rx in TUMORES.items() if re.search(rx, texto or "", re.I)}
+    if "pulmao_pc" in g and not re.search(r"\bNSCLC\b|non[- ]small", texto or "", re.I):
+        g.discard("pulmao")                          # "small cell lung" é SCLC, não pulmão genérico
+    return g
 CARD_INTEGRADO = re.compile(r"pooled|agrupad|integrad|combinad|basket|an[aá]lise conjunta", re.I)
 ECONOMICO = re.compile(r"cost[- ]effective|cost[- ]utility|cost[- ]consequence|cost[- ]minimi[sz]ation|economic evaluation|"
                        r"budget impact|pharmacoeconomic|health[- ]economic|markov (model|analysis)|partitioned survival model", re.I)
@@ -228,6 +264,10 @@ def pre_acao(c: dict) -> tuple[str | None, str | None, str | None]:
         return None, None, None
     if "clinical trial protocol" in tipos or PROTOCOLO.search(titulo):
         return "STORE_SOURCE", "protocolo do próprio estudo (vínculo pelo registro): fonte de desenho, sem resultados", "PROTOCOL"
+    if LEIGO.search(titulo) or "patient education handout" in tipos:
+        return "NO_ACTION", "resumo em linguagem leiga: sem dado original do estudo", None
+    if PRECLINICO.search(titulo) and not CLINICO_NO_TITULO.search(titulo):     # título que anuncia dado clínico segue
+        return "NO_ACTION", "pré-clínico/in vitro/animal: sem dado clínico do estudo", None
     if ECONOMICO.search(titulo):
         return "NO_ACTION", "custo-efetividade/modelagem econômica: sem dado original do estudo", None
     if "case reports" in tipos or re.search(r"\bcase (report|series)\b|\ba case of\b", titulo, re.I):
@@ -263,7 +303,16 @@ def sinal_pooled(texto: str, databank: list[str] | None = None, rids: list[str] 
     """Pooled SÓ com frase explícita de agregação de vários estudos/coortes no texto. Outro registro no DataBank,
     estudo de plataforma, vários braços ou referências cruzadas NÃO bastam sozinhos. Comparações de uma plataforma
     (card de plataforma ou texto que a descreve) sem nenhum registro além do(s) do card não são multi-estudo."""
-    m = POOLED.search(texto or "")
+    m = None
+    separado = bool(SEPARADO.search(texto or ""))
+    for frase in re.split(r"(?<=[.;])\s+", texto or ""):         # frase a frase
+        if ANTERIOR.search(frase):                                # trabalho anterior citado não é esta publicação
+            continue
+        if MESMO_ENSAIO.search(frase) and not re.search(r"\b(trials|studies)\b", frase, re.I):
+            continue                                              # partes/braços de um mesmo ensaio
+        m = POOLED.search(frase) or (None if separado else (POOLED_CONTAGEM.search(frase) or POOLED_ATRAVES.search(frase)))
+        if m:
+            break
     if not m:
         return None
     registros_citados = set(REGISTRO.findall(texto or "")) | set(databank or [])
@@ -493,6 +542,11 @@ def conferir(uid: str, cur: dict) -> dict:
     rep_sid = next((f["source_id"] for f in p["sources"] if f.get("role") == "represented"), None)
     card_txt = " ".join(str((p.get("card") or {}).get(k) or "") for k in ("estudo", "acron", "desenho"))
     card_pooled = bool((rep_sid and POOLED.search(texto_fonte(rep_sid))) or CARD_INTEGRADO.search(card_txt))
+    card_full = " ".join(str((p.get("card") or {}).get(k) or "") for k in ("estudo", "acron", "indicacao", "desenho"))
+    escopo = " ".join(str((p.get("card") or {}).get(k) or "") for k in ("estudo", "acron", "indicacao"))
+    estudo_txt = " ".join(str((p.get("card") or {}).get(k) or "") for k in ("estudo", "acron"))
+    coorte_especifica = bool(re.search(r"cohort|coorte", estudo_txt, re.I) and grupos_tumor(estudo_txt))
+    tumores_card = grupos_tumor(card_full) if coorte_especifica or not TUMOR_AGNOSTICO.search(escopo) else set()
     rep = cur.get("represented_signature") or {}
     out = {}
     vistos = set()
@@ -539,6 +593,12 @@ def conferir(uid: str, cur: dict) -> dict:
         c["_pooled_signal"] = sinal
         if rel == "POOLED_ANALYSIS" and not sinal:
             add("POOLED_WITHOUT_TEXT", "UNSUPPORTED", "POOLED_ANALYSIS sem frase explícita de agregação de estudos na fonte")
+        # card de basket/integrado: candidato que só fala de OUTROS tumores não é deste card (coorte não relacionada)
+        if card_pooled and tumores_card and rel not in ("UNRELATED",) and acao != "NO_ACTION":
+            tc = grupos_tumor(f"{pc.get('title') or ''} {texto_fonte(f'{cid}:abstract')}")
+            if len(tc) == 1 and not tc & tumores_card:           # um único OUTRO tumor; multi-tumor = análise-mãe do basket
+                add("BASKET_OTHER_COHORT", "UNSUPPORTED", f"card de basket ({', '.join(sorted(tumores_card))}) × "
+                    f"candidato sobre {', '.join(sorted(tc))}: coorte não relacionada ao card")
         if (sinal or rel == "POOLED_ANALYSIS") and not card_pooled:  # card integrado: subgrupo do mesmo conjunto vale
             if acao == "ADD_SECONDARY":
                 add("POOLED_ADD_SECONDARY", "FAIL", f"pooled ({sinal or 'declarado'}): ADD_SECONDARY bloqueado")

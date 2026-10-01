@@ -430,3 +430,92 @@ class FilaPorCard(unittest.TestCase):
         self.assertEqual(sorted(f["cards"]["b"]["pacotes"]), ["HUMAN_REVIEW"])                  # sem PASS + HUMAN_REVIEW
         self.assertEqual(f["resumo"]["decisoes_humanas"], 3)
         self.assertEqual(f["resumo"]["publicacoes_em_revisao"], 6)
+
+
+class DiscoveryV3(unittest.TestCase):
+    """Regras da versão 3: pooled só com combinação explícita, basket, pré-clínico/resumo leigo, regulatório."""
+    POOLED_SIM = ["Data were combined from PORTEC-1 and PORTEC-2.",
+                  "Individual patient data (IPD) from entrectinib trials were analysed.",
+                  "Tumour samples from three trials were analysed.",
+                  "Deidentified datasets from 8 clinical trials were accessed.",
+                  "We present integrated data of entrectinib from the STARTRK-NG, TAPISTRY, and STARTRK-2 trials.",
+                  "Pooled, retrospective analysis of data from phase 3 trials.",
+                  "Safety was evaluated in patients pooled across all 4 clinical studies.",
+                  "The model was based on 2993 subjects from five clinical trials.",
+                  "Pyrexia in patients treated with dabrafenib plus trametinib across clinical trials.",
+                  "Data from 3 clinical trials (NCT1, NCT2, NCT3) were used; ORR was 30% and 40%, respectively."]
+    POOLED_NAO = ["Data from the PALOMA-2 (NCT01740427) and PALOMA-3 studies were analysed separately.",
+                  "Patients enrolled in the double-blind, placebo-controlled randomised clinical trials received drug A.",
+                  "A joint analysis of PALOMA-2 and PALOMA-3.",
+                  "A pooled treatment arm analysis of the randomised trial.",
+                  "We previously evaluated TFS in a pooled analysis of trials A and B. Here we report trial A.",
+                  "ENCO300 (parts 1 and 2) data were combined, per protocol, for PFS analysis.",
+                  "Solid tumors across seven cohorts of the phase 2 basket trial.",
+                  "PFS was 10 and 12 months in arms A and B, respectively, in this phase 3 trial."]
+
+    def test_pooled_so_com_combinacao_explicita(self):
+        for s in self.POOLED_SIM:
+            self.assertTrue(DS.sinal_pooled(s), s)
+        for s in self.POOLED_NAO:
+            self.assertIsNone(DS.sinal_pooled(s), s)
+
+    def test_plataforma_e_mesmo_estudo_em_dois_registros(self):
+        txt = "Post-hoc analysis of data from five phase 3 trials (STAMPEDE platform protocol, ISRCTN78818544)."
+        self.assertIsNone(DS.sinal_pooled(txt, ["NCT00268476"], ["NCT00268476"], card_plataforma=True))
+
+    def test_grupos_de_tumor(self):
+        self.assertEqual(DS.grupos_tumor("pembrolizumab in small cell lung cancer"), {"pulmao_pc"})
+        self.assertEqual(DS.grupos_tumor("SCLC and non-small cell lung cancer"), {"pulmao_pc", "pulmao"})
+        self.assertNotIn("colorretal", DS.grupos_tumor("noncolorectal and non-colorectal MSI-H cancers"))
+        self.assertIn("biliar", DS.grupos_tumor("KEYNOTE-158 BTC cohort"))
+
+    def test_preclinico_e_resumo_leigo_antes_do_llm(self):
+        for t in ("Antitumor activity of drug X in mouse xenograft models",
+                  "Novel in Vivo and in Vitro PK/PD-Based Human Starting Dose Selection for Drug X",
+                  "Plain language summary of the TRIAL-X results", "A lay summary of trial X"):
+            self.assertEqual(DS.pre_acao({"title": t, "pubtype": ["Journal Article", "Clinical Trial, Phase I"]})[0],
+                             "NO_ACTION", t)
+        # título que anuncia dado clínico segue para o curator
+        self.assertIsNone(DS.pre_acao({"title": "Activity of drug X in brain metastases: preclinical models and "
+                                                "clinical data from patients", "pubtype": ["Journal Article"]})[0])
+
+    def test_regulatorio_continua_elegivel(self):
+        for t in ("FDA Approval Summary: drug X for RET fusion cancers",
+                  "US Food and Drug Administration Approval Summary: drug Y"):
+            self.assertIsNone(DS.pre_acao({"title": t, "pubtype": ["Journal Article", "Review"]})[0], t)
+
+
+class BasketOutraCoorte(Conferir):
+    def preparar(self, card, titulo, texto):
+        pac = json.loads((DS.DISC / "u1" / "packet.json").read_text())
+        p = S.gravar_fonte(DS.DISC / "u1" / "fontes", "pmid:888:abstract", [("Title", titulo), ("Abstract", texto)])
+        pac["sources"].append({"source_id": "pmid:888:abstract", "source_type": "pubmed_abstract",
+                               "text_level": "abstract", "path": f"fontes/{p.name}"})
+        pac["candidates"].append({"candidate_id": "pmid:888", "in_llm": True, "title": titulo})
+        pac["card"] = card
+        (DS.DISC / "u1" / "packet.json").write_text(json.dumps(pac))
+        return texto
+
+    def rodar(self, texto, rel="POOLED_ANALYSIS", acao="STORE_SOURCE"):
+        return DS.conferir("u1", {"represented_signature": sig(), "candidates": [
+            self.cand("pmid:888", rel, acao, texto, comparison=comp(population="different"))]})["pmid:888"]
+
+    def test_pooled_de_outra_coorte_nao_e_registrado_automaticamente(self):
+        card = {"estudo": "KEYNOTE-158 cervical cohort", "desenho": "Coorte cérvix do basket KN-158", "indicacao": "Cérvix"}
+        txt = self.preparar(card, "Pembrolizumab for small cell lung cancer: pooled KEYNOTE-028 and KEYNOTE-158",
+                            "Data were pooled from two trials of patients with small cell lung cancer.")
+        r = self.rodar(txt)
+        self.assertIn("BASKET_OTHER_COHORT", {a["code"] for a in r["achados"]})
+        self.assertEqual(r["verdict"], "UNSUPPORTED")
+
+    def test_analise_mae_multi_tumor_e_coorte_do_card_nao_sao_marcadas(self):
+        card = {"estudo": "KEYNOTE-158 BTC cohort (tumor-agnóstico)", "desenho": "Coorte biliar do basket",
+                "indicacao": "Câncer biliar MSI-H"}
+        txt = self.preparar(card, "Pembrolizumab in MSI-H noncolorectal cancers: updated analysis",
+                            "Data were pooled from cohorts including endometrial and gastric cancer patients across two trials.")
+        self.assertNotIn("BASKET_OTHER_COHORT", {a["code"] for a in self.rodar(txt)["achados"]})
+
+    def test_card_agnostico_nao_aplica_a_regra(self):
+        card = {"estudo": "Larotrectinibe NTRK", "indicacao": "Tumores sólidos com fusão NTRK", "desenho": "pooled de 3 estudos"}
+        txt = self.preparar(card, "Larotrectinib in sarcoma", "Data were pooled from three trials of sarcoma patients.")
+        self.assertNotIn("BASKET_OTHER_COHORT", {a["code"] for a in self.rodar(txt, "SUBGROUP", "ADD_SECONDARY")["achados"]})

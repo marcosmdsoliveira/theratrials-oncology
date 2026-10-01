@@ -748,6 +748,40 @@ class ExecucaoRestrita(unittest.TestCase):
             self.assertIn(proibida, RA.PROIBIDAS_CLI)
         self.assertEqual(RA.PERMITIDAS, {"Read", "Grep", "Glob"})
 
+    def test_timeout_por_chamada_com_um_retry_sem_veredito(self):
+        import subprocess as sp
+        origem = sp.run
+        tmp = pathlib.Path(tempfile.mkdtemp())
+        orig = (RA.RUNS, RA.RAW, RA._prompt, RA.binario)
+        RA.RUNS, RA.RAW = tmp / "runs", tmp / "raw"
+        RA._prompt = lambda papel, uid: ("x", [tmp])
+        RA.binario = lambda: "claude"
+        ok = "\n".join([json.dumps({"type": "system", "subtype": "init", "tools": ["Read", "Grep", "Glob"]}),
+                         json.dumps({"type": "result", "subtype": "success", "result": "{}"})])
+        chamadas = []
+
+        def trava(*a, **k):
+            chamadas.append(k.get("timeout"))
+            raise sp.TimeoutExpired(a[0] if a else "claude", k.get("timeout"))
+        try:
+            self.assertEqual(RA.TIMEOUT_CHAMADA_S, 600)
+            self.assertEqual(RA.RETRIES_TIMEOUT, 1)
+            sp.run = trava                                   # trava sempre: 2 tentativas e erro operacional
+            with self.assertRaises(RA.ExecucaoInvalida) as ctx:
+                RA.executar("verifier", "u")
+            self.assertIn("timeout operacional", str(ctx.exception))
+            self.assertEqual(chamadas, [600, 600])
+            audit = json.loads((tmp / "runs" / "u.verifier.audit.json").read_text())
+            self.assertEqual([x["resultado"] for x in audit["tentativas"]], ["timeout 600s", "timeout 600s"])
+            self.assertFalse((tmp / "raw" / "u.verifier.json").exists())       # nada ingerido: etapa fica pendente
+            seq = iter([trava, lambda *a, **k: sp.CompletedProcess(a, 0, ok, "")])
+            sp.run = lambda *a, **k: next(seq)(*a, **k)      # trava 1x, responde na 2ª
+            au = RA.executar("verifier", "u")
+            self.assertEqual([x["resultado"] for x in au["tentativas"]], ["timeout 600s", "concluida"])
+        finally:
+            sp.run = origem
+            RA.RUNS, RA.RAW, RA._prompt, RA.binario = orig
+
     def test_auditoria_reprova_ferramenta_ausente_ou_proibida_sem_fallback(self):
         import subprocess as sp
         origem = sp.run

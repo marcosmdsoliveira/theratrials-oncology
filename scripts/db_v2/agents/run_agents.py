@@ -38,6 +38,8 @@ except ImportError:
     import decision_packet as D
 
 PERMITIDAS = {"Read", "Grep", "Glob"}
+TIMEOUT_CHAMADA_S = 600          # operacional: uma chamada travada não segura o lote por horas
+RETRIES_TIMEOUT = 1              # no máximo 1 nova tentativa; timeout nunca vira veredito clínico
 PROIBIDAS_CLI = "Bash,Edit,Write,MultiEdit,NotebookEdit,WebFetch,WebSearch,Agent,Task,Skill,TodoWrite"
 RUNS = S.STATE / "runs"
 RAW = S.STATE / "raw"
@@ -96,10 +98,26 @@ def executar(papel: str, uid: str) -> dict:
               "delta_verifier": "database-verifier"}.get(papel, f"database-{papel}")   # mesma definição, contexto novo
     cmd = [binario(), "-p", prompt, "--agent", agente, "--output-format", "stream-json", "--verbose",
            "--disallowedTools", PROIBIDAS_CLI]
-    proc = subprocess.run(cmd, cwd=SITE, capture_output=True, text=True, timeout=1800)
+    tentativas = []
+    for tentativa in range(RETRIES_TIMEOUT + 1):
+        try:
+            proc = subprocess.run(cmd, cwd=SITE, capture_output=True, text=True, timeout=TIMEOUT_CHAMADA_S)
+            tentativas.append({"tentativa": tentativa + 1, "resultado": "concluida"})
+            break
+        except subprocess.TimeoutExpired:                      # o subprocesso é encerrado pelo próprio run()
+            tentativas.append({"tentativa": tentativa + 1, "resultado": f"timeout {TIMEOUT_CHAMADA_S}s"})
+    else:
+        RUNS.mkdir(parents=True, exist_ok=True)
+        (RUNS / f"{uid}.{papel}.audit.json").write_text(json.dumps(
+            {"uid": uid, "papel": papel, "agent": agente, "tentativas": tentativas, "resultado": "timeout",
+             "violacoes": ["timeout operacional: sem resposta; nada ingerido, etapa fica pendente para o resume"]},
+            ensure_ascii=False, indent=1), encoding="utf-8")
+        raise ExecucaoInvalida(f"{uid}/{papel}: timeout operacional após {len(tentativas)} tentativa(s) "
+                               f"de {TIMEOUT_CHAMADA_S}s (não é veredito; etapa pendente)")
     (RUNS / f"{uid}.{papel}.jsonl").write_text(proc.stdout, encoding="utf-8")
     audit = {"uid": uid, "papel": papel, "agent": agente, "cwd": str(SITE), "tools_init": None,
-             "tools_usadas": [], "caminhos": [], "violacoes": [], "resultado": None, "custo_usd": None}
+             "tools_usadas": [], "caminhos": [], "violacoes": [], "resultado": None, "custo_usd": None,
+             "tentativas": tentativas}
     final = None
     for linha in proc.stdout.splitlines():
         try:
