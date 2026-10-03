@@ -35,13 +35,30 @@ depois ADD_SECONDARY.
 
 O veredito exibido para um trecho do delta é o pior entre o do discovery e o do delta.
 
+## Expansão de cobertura (NEW_CARD)
+
+O Review Center também lê `state/novos/`, as saídas do pipeline de novos ensaios (`agents/new_trial_discovery.py`,
+versão congelada `novos/1+4f21de1ff806cb1d`). Os itens aparecem como **Novos ensaios** no filtro de bloco.
+
+- **NEW_CARD**: estudo, registro, tumor, fase, intervenção, comparador, população, endpoint primário, publicação
+  principal (periódico/ano a partir do cache do PubMed), PMID/DOI, resultado principal, maturidade, critério da
+  política, tipo de comparação, justificativa, evidências literais, vereditos e avisos. A pergunta é se o estudo
+  merece um novo card no Database. O card não é criado.
+- **Dúvida de identidade** (`POSSIBLE_DUPLICATE` / `RELATED_TO_EXISTING`): sempre no pacote HUMAN_REVIEW, com alerta
+  vermelho e o card ou candidato relacionado. Nunca aparece como NEW_CARD. Um NEW_CARD que seja alvo de possível
+  duplicata recebe aviso.
+- Saídas do LLM entram só quando são da versão congelada e estão completas. Saídas de versões anteriores do piloto
+  ficam de fora.
+- Ordem padrão: UPDATE_CARD, NEW_CARD, HUMAN_REVIEW, ADD_SECONDARY.
+
 ## Decisões
 
 `APPROVE`, `REJECT` ou `DEFER`, com comentário opcional. O registro vai para `scripts/db_v2/review/`, que fica fora do
 `state/` e é ignorado pelo Git:
 
 - `decisions.json`: decisão atual por `decision_id`. Cada registro guarda uid, publicação, pacote, ação original,
-  `delta_id`, `field_path`, `item_id`, versões do pipeline, decisão, comentário, data, revisão e `fingerprint`.
+  `delta_id`, `field_path`, `item_id`, versões do pipeline, decisão, comentário, data, revisão e `fingerprint`. Nos
+  itens do novos, também `cand_id`, `registry_ids` e `pipeline: {"novos": versão}`.
 - `history.jsonl`: histórico append-only. Cada mudança é uma linha nova, com a decisão anterior.
 
 O `decision_id` é calculado de forma determinística a partir de uid, publicação, pacote, campo e item. O

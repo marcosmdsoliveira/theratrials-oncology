@@ -6,6 +6,8 @@ const ROTULO = { PENDING: "PENDENTE", STALE: "STALE", APPROVE: "APPROVE", REJECT
 const TIPO = {
   delta: "Delta (trecho do card)", delta_hr: "Delta · revisão humana", update_sem_itens: "UPDATE sem trecho proposto",
   add_secondary: "Candidata a card secundário", human_review: "Revisão humana",
+  novo_card: "Novo estudo · proposta de card", novo_revisao: "Novo estudo · revisão humana",
+  novo_identidade: "Identidade · possível duplicata ou relacionado",
 };
 const $ = (id) => document.getElementById(id);
 
@@ -37,7 +39,9 @@ async function carregar(manterId) {
   E.itens = dados.itens; E.meta = dados.meta;
   const sel = $("f-bloco");
   if (sel.options.length === 1) {
-    Object.keys(E.meta.blocos).forEach((b) => { const o = el("option", null, "Bloco " + b); o.value = b; sel.appendChild(o); });
+    Object.keys(E.meta.blocos).forEach((b) => {
+      const o = el("option", null, b === "novos" ? "Novos ensaios" : "Bloco " + b); o.value = b; sel.appendChild(o);
+    });
   }
   aplicarFiltros(manterId || decodeURIComponent(location.hash.slice(1)));
 }
@@ -62,7 +66,7 @@ function painel() {
 
 function texto(it) {
   return [it.uid, it.trial, it.pmid, it.doi, it.title, it.field_path, it.relation, it.reason, it.current, it.proposed,
-    it.human_review_reason, it.verifier_reason].filter(Boolean).join(" ").toLowerCase();
+    it.human_review_reason, it.verifier_reason, it.nct, it.cand_id, it.tumor, it.intervention].filter(Boolean).join(" ").toLowerCase();
 }
 
 function aplicarFiltros(manterId) {
@@ -91,13 +95,14 @@ function lista() {
   nav.replaceChildren(...grupos.map((g) => {
     const sec = el("section", "grupo");
     const h = el("h3", null, (g.trial || g.uid) + " ");
-    h.append(el("small", null, g.uid + " · bloco " + g.bloco));
+    h.append(el("small", null, g.bloco === "novos" ? "novo ensaio · " + g.uid.replace("novos:", "") : g.uid + " · bloco " + g.bloco));
     sec.append(h);
     g.itens.forEach((it) => {
       const b = el("button", "linha");
       b.type = "button"; b.dataset.id = it.decision_id;
       b.addEventListener("click", () => selecionar(it.decision_id, true));
-      const desc = it.field_path ? it.field_path + " · " + (it.current || it.human_review_reason || it.title || "") : (it.title || it.pub);
+      const desc = it.field_path ? it.field_path + " · " + (it.current || it.human_review_reason || it.title || "")
+        : it.tipo === "novo_identidade" ? "⚠ identidade · " + (it.title || it.cand_id) : (it.title || it.pub);
       const chips = el("span", "chips");
       chips.append(chip("v-" + it.verdict, it.verdict || "—"), chip("s-" + it.status, ROTULO[it.status]));
       b.append(chip("c-" + it.pacote, it.pacote.replace("_", " ")), el("span", "txt", desc), chips);
@@ -168,13 +173,48 @@ function publicacao(it) {
   return ids;
 }
 
+function relacionado(r) {
+  if (!r) return "—";
+  return (r.tipo === "card" ? "card " : "candidato ") + r.id + (r.nome ? " · " + r.nome : "");
+}
+function novo(f, it) {
+  if (it.identidade) {                                  // dúvida de identidade nunca parece NEW_CARD simples
+    const a = el("div", "alerta-identidade");
+    a.append(el("strong", null, it.identidade.classe === "RELATED_TO_EXISTING"
+      ? "RELACIONADO A ESTUDO QUE JÁ EXISTE — não é um novo card" : "POSSÍVEL DUPLICATA — identidade não comprovada"),
+      el("div", null, it.identidade.motivo || ""), el("div", null, "Relacionado: " + relacionado(it.identidade.relacionado)));
+    f.append(a);
+    f.append(el("div", "pergunta", it.identidade.classe === "RELATED_TO_EXISTING"
+      ? "Esta publicação pertence ao estudo relacionado (e deve seguir pelo discovery/secundárias)?"
+      : "Esta publicação é do mesmo estudo indicado? Aprovar confirma a dúvida; nada é ligado nem criado."));
+  } else if (it.tipo === "novo_card") {
+    f.append(el("div", "pergunta", "Este estudo merece um novo card no Database? (Aprovar não cria o card.)"));
+  } else {
+    f.append(el("div", "pergunta", "Revisão humana: a política exige decisão editorial antes de qualquer proposta de card."));
+  }
+  if ((it.avisos || []).some((a) => a.startsWith("Há publicação sem NCT"))) {
+    f.append(el("div", "alerta-identidade", "Atenção: existe publicação sem NCT que pode ser do MESMO estudo. Revise a identidade antes de aprovar."));
+  }
+  f.append(meta([["Estudo / acrônimo", it.trial], ["NCT / registro", (it.registry_ids || []).join(", ") || "sem registro"],
+    ["Tumor / categoria", [it.tumor, (it.tumor_groups || []).join(", ")].filter(Boolean).join(" · ")],
+    ["Fase", it.phase], ["Intervenção", it.intervention], ["Comparador", it.comparator], ["População", it.population],
+    ["Endpoint primário", it.primary_endpoint], ["Publicação principal", it.title],
+    ["Periódico / ano", [it.journal, it.date].filter(Boolean).join(" · ")], ["Identificadores", publicacao(it)],
+    ["Maturidade", it.maturity], ["Critério da política", it.policy_basis], ["Tipo de comparação", it.comparison_type],
+    ["Curator / verifier", veredictos(it.discovery_verdicts)], ["Pipeline", JSON.stringify(it.pipeline || {})]]));
+  f.append(bloco("Principal resultado disponível", it.main_result), bloco("Justificativa", it.reason));
+  if (it.editorial_limitation) f.append(bloco("Limitação editorial", it.editorial_limitation));
+  f.append(bloco("Evidências literais", evidencias(it.evidence)), bloco("Verifier", it.verifier_reason),
+    bloco("Avisos", avisos(it.avisos)));
+}
+
 function detalhe(it) {
   const art = $("detalhe");
   if (!it) { art.replaceChildren(el("p", "vazio", "Nenhum item selecionado.")); return; }
   const f = document.createDocumentFragment();
   const cab = el("div", "cabeca");
   cab.append(chip("c-" + it.pacote, it.pacote), chip("s-" + it.status, ROTULO[it.status]), chip("v-" + it.verdict, "veredito: " + (it.verdict || "—")),
-    el("span", "registro", TIPO[it.tipo] + " · bloco " + it.bloco));
+    el("span", "registro", TIPO[it.tipo] + (it.bloco === "novos" ? " · pipeline novos" : " · bloco " + it.bloco)));
   f.append(cab, el("h2", null, it.trial || it.uid), el("p", "sub", it.uid));
   if (it.status === "STALE") f.append(el("div", "stale", "STALE: o conteúdo deste item mudou depois da decisão registrada. Revise de novo."));
 
@@ -182,7 +222,9 @@ function detalhe(it) {
     ["Identificadores", publicacao(it)], ["Relação", [it.relation, it.temporal_marker].filter(Boolean).join(" · ")],
     ["Discovery", veredictos(it.discovery_verdicts)]];
 
-  if (it.tipo === "delta" || it.tipo === "delta_hr") {
+  if (it.bloco === "novos") {
+    novo(f, it);
+  } else if (it.tipo === "delta" || it.tipo === "delta_hr") {
     f.append(meta([...comum, ["Campo", el("span", "mono", it.field_path)], ["Endpoint", it.endpoint],
       ["Delta", veredictos(it.delta_verdicts)], ["safe_delta", it.tipo === "delta_hr" ? "não se aplica (item de revisão humana, sem texto proposto)" : it.safe_delta ? "true — passou em todas as checagens" : "false — não passou em todas as checagens"]]));
     if (it.tipo === "delta") {

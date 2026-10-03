@@ -90,6 +90,44 @@ def montar_state(raiz: pathlib.Path, titulo_add: str = "Dosimetry substudy of TE
     return st, dj
 
 
+def montar_novos(st: pathlib.Path, resultado: str = "DFS HR 0,68"):
+    """Fixture do pipeline novos: NEW_CARD atual, saída de versão antiga, ARROW/NIPU (identidade), RELATED e HR."""
+    nd = st / "novos"
+    v = RC._versao_novos()
+    cand = lambda cid, classe="NEW_STUDY_CANDIDATE", pre=None, uid=None, **kw: {  # noqa: E731
+        "cand_id": cid, "nct": None if cid.startswith("pmid") else cid, "title": kw.pop("title", f"Trial {cid} in cancer"),
+        "acronym": kw.pop("acronym", None), "phases": ["PHASE3"], "status": "COMPLETED", "pmids": kw.pop("pmids", []),
+        "dois": [], "conditions": ["Bladder Cancer"], "tumor_groups": ["urotelial"],
+        "dedup": {"classe": classe, "motivo": f"motivo {classe}", "uid": uid, "dicas": []}, "pre_action": pre,
+        "pre_reason": kw.pop("pre_reason", None), **kw}
+    tri = [cand("NCT07000001", acronym="POTOMAX"), cand("NCT07000002"),
+           cand("pmid41779000", "POSSIBLE_DUPLICATE", "HUMAN_REVIEW", "NCT07000001", pmids=["41779000"],
+                title="131I-LNTH-1095 plus enzalutamide", pre_reason="compatível com o ensaio NCT07000001"),
+           cand("NCT07000003", pre="WATCH", acronym="NIPUX"),
+           cand("pmid38447379", "POSSIBLE_DUPLICATE", "HUMAN_REVIEW", "NCT07000003", pmids=["38447379"],
+                title="UV1 vaccine with ipilimumab and nivolumab", pre_reason="o resumo cita NIPUX"),
+           cand("NCT07000004", "RELATED_TO_EXISTING", "RELATED_TO_EXISTING", "u1", title="China extension of TESTE-1"),
+           cand("NCT07000005"), cand("NCT07000006")]
+    _w(nd / "triagem.json", {"candidatos": tri})
+    ev = [{"source_id": "pmid:1:abstract", "source_type": "pubmed_abstract", "locator": "¶0002", "snippet": "DFS HR 0.68"}]
+
+    def llm(cid, acao, versao, final="PASS"):
+        _w(nd / cid / "packet.json", {"candidate": {"nct": cid, "conditions": ["Bladder Cancer"]}})
+        _w(nd / cid / "curator.json", {"action": acao, "study": f"Estudo {cid}", "main_publication": {"pmid": "1", "doi": "10.1/x"},
+                                       "tumor": "NMIBC", "intervention": "Droga A", "comparator": "BCG", "phase": "fase 3",
+                                       "primary_endpoint": "DFS", "main_result": resultado, "maturity": "published_primary",
+                                       "reason": "acrescenta cobertura", "policy_basis": "fase3_pergunta_nao_representada",
+                                       "comparison_type": "randomizado_vs_padrao", "evidence": ev, "_sha256": "c", "_erros": [],
+                                       "_deterministico": {"verdict": "PASS", "achados": []}})
+        _w(nd / cid / "verifier.json", {"verdict": final, "reason": "confere", "_erros": []})
+        _w(nd / cid / "estado.json", {"compat": {"novos_version": versao}, "etapas": {
+            k: {"ok": True} for k in ("preparar", "curator", "verifier")}})
+    llm("NCT07000001", "NEW_CARD", v)
+    llm("NCT07000002", "NEW_CARD", "novos/0+antiga")          # versão antiga: não entra
+    llm("NCT07000005", "HUMAN_REVIEW", v)
+    llm("NCT07000006", "NO_ACTION", v)                         # NO_ACTION + PASS: não entra
+
+
 class Base(unittest.TestCase):
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory()
@@ -160,6 +198,65 @@ class Leitura(Base):
         d = self.por(item_id="d01_hta")[0]
         self.assertFalse(d["trecho_presente_hoje"])
         self.assertTrue(any("não está mais no data.js" in a for a in d["avisos"]))
+
+
+class Novos(Base):
+    def setUp(self):
+        super().setUp()
+        montar_novos(self.st)
+
+    def novos(self):
+        return {i["cand_id"]: i for i in self.itens() if i["bloco"] == "novos"}
+
+    def test_carrega_new_card_e_exclui_versao_antiga_e_no_action(self):
+        n = self.novos()
+        self.assertEqual(set(n), {"NCT07000001", "pmid41779000", "pmid38447379", "NCT07000004", "NCT07000005"})
+        nc = n["NCT07000001"]
+        self.assertEqual((nc["pacote"], nc["tipo"], nc["registry_ids"], nc["main_result"]),
+                         ("NEW_CARD", "novo_card", ["NCT07000001"], "DFS HR 0,68"))
+        self.assertEqual(nc["pipeline"], {"novos": RC._versao_novos()})
+        self.assertTrue(any("MESMO estudo" in a for a in nc["avisos"]))       # ARROW aponta para ele
+        self.assertEqual((n["NCT07000005"]["pacote"], n["NCT07000005"]["tipo"]), ("HUMAN_REVIEW", "novo_revisao"))
+
+    def test_arrow_e_nipu_sao_identidade_nunca_new_card(self):
+        n = self.novos()
+        for cid, alvo in (("pmid41779000", "NCT07000001"), ("pmid38447379", "NCT07000003")):
+            self.assertEqual((n[cid]["pacote"], n[cid]["tipo"]), ("HUMAN_REVIEW", "novo_identidade"))
+            self.assertEqual(n[cid]["identidade"]["classe"], "POSSIBLE_DUPLICATE")
+            self.assertEqual(n[cid]["identidade"]["relacionado"]["id"], alvo)
+        self.assertEqual(sum(1 for i in n.values() if i["pacote"] == "NEW_CARD"), 1)
+
+    def test_related_mostra_o_card(self):
+        r = self.novos()["NCT07000004"]
+        self.assertEqual((r["pacote"], r["identidade"]["classe"]), ("HUMAN_REVIEW", "RELATED_TO_EXISTING"))
+        self.assertEqual(r["identidade"]["relacionado"], {"tipo": "card", "id": "u1", "nome": "TESTE-1 (2020)"})
+
+    def test_ordem_update_new_card_human_review_add(self):
+        ordem = [i["pacote"] for i in self.itens()]
+        self.assertLess(ordem.index("UPDATE_CARD"), ordem.index("NEW_CARD"))
+        prim_novos = [i["pacote"] for i in self.itens() if i["bloco"] == "novos"]
+        self.assertEqual(prim_novos[0], "NEW_CARD")
+        self.assertEqual(RC.ORDEM, {"UPDATE_CARD": 0, "NEW_CARD": 1, "HUMAN_REVIEW": 2, "ADD_SECONDARY": 3})
+
+    def test_decisoes_new_card_persistencia_stale_e_nada_aplicado(self):
+        antes = (sha_pasta(self.st), sha_arquivo(DATA_JS), sha_arquivo(SECUNDARIOS))
+        it = self.novos()["NCT07000001"]
+        for d in RC.VALIDAS:
+            reg = self.dec.registrar(it, d, "c")
+        salvo = RC.Decisoes(self.dec.caminho, self.st).ler()["decisions"][it["decision_id"]]
+        self.assertEqual((salvo["action"], salvo["cand_id"], salvo["registry_ids"], salvo["decision"], salvo["revision"]),
+                         ("NEW_CARD", "NCT07000001", ["NCT07000001"], "DEFER", 3))
+        self.assertEqual(salvo["pipeline"], {"novos": RC._versao_novos()})
+        self.assertEqual(salvo["publication"]["pmid"], "1")
+        self.assertEqual(antes, (sha_pasta(self.st), sha_arquivo(DATA_JS), sha_arquivo(SECUNDARIOS)))
+        montar_novos(self.st, resultado="DFS HR 0,70")                   # o item mudou → STALE
+        v = RC.visao(self.st, self.dj, self.dec)
+        self.assertEqual([i["status"] for i in v["itens"] if i["decision_id"] == it["decision_id"]], ["STALE"])
+
+    def test_decision_id_estavel(self):
+        self.assertEqual(self.novos()["NCT07000001"]["decision_id"], self.novos()["NCT07000001"]["decision_id"])
+        self.assertEqual(self.novos()["NCT07000001"]["decision_id"],
+                         RC.decision_id("novos:NCT07000001", "cand:NCT07000001", "NEW_CARD"))
 
 
 class Decisoes(Base):
@@ -290,13 +387,27 @@ class Servidor(Base):
         self.assertEqual(sorted(set(__import__("re").findall(r'fetch\("([^"]+)"', js))), ["/api/decision", "/api/items"])
 
 
+@unittest.skipUnless((ESTADO_REAL / "novos" / "triagem.json").exists(), "state local do novos ausente (ex.: CI)")
+class NovosReais(unittest.TestCase):
+    def test_smoke_casos_do_piloto(self):
+        n = {i["cand_id"]: i for i in RC.carregar_itens(ESTADO_REAL, DATA_JS)["itens"] if i["bloco"] == "novos"}
+        for cid in ("NCT03528694", "NCT03836261", "NCT04685135", "pmid37866811"):     # POTOMAC, AMPLIFY, KRYSTAL-12, SAPPHIRE
+            self.assertEqual(n[cid]["pacote"], "NEW_CARD", cid)
+        for cid in ("NCT04625270", "NCT04934722"):                                   # RAMP 201, KEYNOTE-991 China
+            self.assertEqual(n[cid]["pacote"], "HUMAN_REVIEW", cid)
+        self.assertEqual(n["pmid41779000"]["identidade"]["relacionado"]["id"], "NCT03939689")   # ARROW
+        self.assertEqual(n["pmid38447379"]["identidade"]["relacionado"]["id"], "NCT04300244")   # NIPU
+        self.assertFalse(any(i["pacote"] == "NEW_CARD" and i["identidade"] for i in n.values()))
+
+
 @unittest.skipUnless(TEM_REAL, "state local dos blocos 1–4 ausente (ex.: CI)")
 class DadosReais(unittest.TestCase):
     def test_le_os_blocos_reais_sem_alterar_nada(self):
         antes = (sha_pasta(ESTADO_REAL / "discovery"), sha_pasta(ESTADO_REAL / "delta"), sha_arquivo(DATA_JS), sha_arquivo(SECUNDARIOS))
         carga = RC.carregar_itens(ESTADO_REAL, DATA_JS)
-        itens = carga["itens"]
-        filas = {b: json.loads((ESTADO_REAL / "discovery" / f"fila_humana_bloco{b}.json").read_text()) for b in carga["blocos"]}
+        itens = [i for i in carga["itens"] if isinstance(i["bloco"], int)]       # só o discovery (o novos tem teste próprio)
+        filas = {b: json.loads((ESTADO_REAL / "discovery" / f"fila_humana_bloco{b}.json").read_text())
+                 for b in carga["blocos"] if isinstance(b, int)}
         self.assertTrue({1, 2, 3, 4} <= set(carga["blocos"]))
         self.assertEqual(len({i["uid"] for i in itens}), sum(len(f["cards"]) for f in filas.values()))
         self.assertEqual(len({(i["uid"], i["pacote"]) for i in itens}),
@@ -304,7 +415,8 @@ class DadosReais(unittest.TestCase):
         pubs = {(u, RC.pub_id(x), p) for f in filas.values() for u, c in f["cards"].items() for p, l in c["pacotes"].items() for x in l}
         self.assertEqual(pubs, {(i["uid"], i["pub"], i["pacote"]) for i in itens})            # nenhuma publicação perdida
         self.assertEqual(len({i["decision_id"] for i in itens}), len(itens))
-        self.assertEqual([i["decision_id"] for i in itens], [i["decision_id"] for i in RC.carregar_itens(ESTADO_REAL, DATA_JS)["itens"]])
+        self.assertEqual([i["decision_id"] for i in itens], [i["decision_id"] for i in RC.carregar_itens(ESTADO_REAL, DATA_JS)["itens"]
+                                                            if isinstance(i["bloco"], int)])
         for i in itens:
             if i["tipo"] == "delta":
                 self.assertIn(i["field_path"], RC.CAMPOS_VISIVEIS)

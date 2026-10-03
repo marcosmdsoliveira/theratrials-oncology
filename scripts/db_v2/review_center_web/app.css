@@ -55,6 +55,10 @@ button, select, input, textarea { font: inherit; color: inherit; }
 .c-UPDATE_CARD { background: var(--violet-soft); color: var(--violet); }
 .c-HUMAN_REVIEW { background: var(--amber-soft); color: var(--amber); }
 .c-ADD_SECONDARY { background: var(--teal-soft); color: var(--teal); }
+.c-NEW_CARD { background: var(--green-soft); color: var(--green); }
+.alerta-identidade { margin: 10px 0; padding: 12px 14px; border-radius: 8px; background: var(--red-soft); color: var(--red);
+  border: 2px solid var(--red); display: grid; gap: 4px; }
+.alerta-identidade strong { letter-spacing: .02em; }
 .v-PASS, .s-APPROVE { background: var(--green-soft); color: var(--green); }
 .v-FAIL, .s-REJECT { background: var(--red-soft); color: var(--red); }
 .v-UNSUPPORTED, .v-CONFLICT, .s-STALE { background: var(--amber-soft); color: var(--amber); }

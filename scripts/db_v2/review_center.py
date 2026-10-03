@@ -29,6 +29,7 @@ import sys
 import tempfile
 import threading
 import urllib.parse
+import xml.etree.ElementTree as ET
 
 AQUI = pathlib.Path(__file__).resolve().parent
 SITE = AQUI.parent.parent
@@ -41,7 +42,7 @@ HOST = "127.0.0.1"          # fixo: nunca exposto à rede
 PORTA = 8765
 SCHEMA = "theratrials-review-decisions/1"
 VALIDAS = ("APPROVE", "REJECT", "DEFER")
-PACOTES = ("UPDATE_CARD", "HUMAN_REVIEW", "ADD_SECONDARY")
+PACOTES = ("UPDATE_CARD", "NEW_CARD", "HUMAN_REVIEW", "ADD_SECONDARY")
 ORDEM = {p: i for i, p in enumerate(PACOTES)}
 CAMPOS_VISIVEIS = ("primario", "secundario", "resultado_chave", "tox_g3", "subgrupo")
 MAX_COMENTARIO = 4000
@@ -218,12 +219,131 @@ def carregar_itens(state: pathlib.Path = STATE, data_js: pathlib.Path = DATA_JS)
                             "verdict": pior(row.get("final_verdict"), d.get("final_verdict")), "avisos": av,
                         }, decision_id(uid, pub, pacote, fp, iid)))
         por_bloco[b] = len(itens) - n0
+    novos = carregar_novos(state, data_js)
+    if novos:
+        itens += novos
+        por_bloco["novos"] = len(novos)
     for k, it in enumerate(itens):
         it["_seq"] = k                      # ordem da fila e do delta, preservada dentro de cada pacote
     itens.sort(key=_ordem(itens))
     for it in itens:
         del it["_seq"]
     return {"itens": itens, "blocos": por_bloco}
+
+
+# ---------------------------------------------------------------- expansão de cobertura (state/novos), só leitura
+def _versao_novos() -> str | None:
+    try:
+        sys.path.insert(0, str(AQUI / "agents"))
+        import new_trial_discovery as NT                    # noqa: E402  (só para ler a versão congelada)
+        return NT.versao()
+    except Exception:                                        # noqa: BLE001
+        return None
+
+
+def _revista(state: pathlib.Path, pmid) -> tuple[str | None, str | None]:
+    """Periódico/ano a partir do XML do PubMed já em cache (nenhuma rede)."""
+    f = state / "cache" / "pubmed" / f"{pmid}.xml"
+    if not pmid or not f.exists():
+        return None, None
+    try:
+        art = ET.fromstring(f.read_bytes()).find(".//PubmedArticle")
+        j = art.find(".//Journal")
+        rev = (j.findtext("ISOAbbreviation") or j.findtext("Title")) if j is not None else None
+        ano = art.findtext(".//JournalIssue/PubDate/Year") or (art.findtext(".//JournalIssue/PubDate/MedlineDate") or "")[:4]
+        return rev, ano or None
+    except Exception:                                        # noqa: BLE001
+        return None, None
+
+
+def carregar_novos(state: pathlib.Path, data_js: pathlib.Path) -> list[dict]:
+    """NEW_CARD e dúvidas de identidade do pipeline novos. Saída do LLM só da versão congelada e completa; dúvidas de
+    identidade determinísticas (POSSIBLE_DUPLICATE / RELATED_TO_EXISTING) entram como HUMAN_REVIEW, nunca como NEW_CARD."""
+    nd = state / "novos"
+    if not (nd / "triagem.json").exists():
+        return []
+    versao = _versao_novos()
+    tri = _ler(nd / "triagem.json")["candidatos"]
+    por_id = {c["cand_id"]: c for c in tri}
+    vivos = cards_atuais(data_js)
+    duvidas = {}
+    for c in tri:
+        if c["dedup"]["classe"] == "POSSIBLE_DUPLICATE" and c["dedup"].get("uid"):
+            duvidas.setdefault(c["dedup"]["uid"], []).append(c["cand_id"])
+
+    def alvo(uid):
+        if not uid:
+            return None
+        if uid in vivos:
+            return {"tipo": "card", "id": uid, "nome": vivos[uid].get("estudo")}
+        o = por_id.get(uid)
+        return {"tipo": "candidato", "id": uid, "nome": (o or {}).get("acronym") or (o or {}).get("title")}
+
+    itens = []
+    for c in tri:
+        cid = c["cand_id"]
+        pasta = nd / cid
+        cur = ver = pac = None
+        if all((pasta / f).exists() for f in ("curator.json", "verifier.json", "packet.json", "estado.json")):
+            e = _ler(pasta / "estado.json")
+            if versao and (e.get("compat") or {}).get("novos_version") == versao and \
+                    all((e["etapas"].get(k) or {}).get("ok") for k in ("preparar", "curator", "verifier")):
+                cur, ver, pac = _ler(pasta / "curator.json"), _ler(pasta / "verifier.json"), _ler(pasta / "packet.json")
+        dd = c["dedup"]
+        identidade = None
+        if dd["classe"] in ("POSSIBLE_DUPLICATE", "RELATED_TO_EXISTING"):
+            identidade = {"classe": dd["classe"], "motivo": dd.get("motivo"), "relacionado": alvo(dd.get("uid"))}
+        if cur:
+            det = (cur.get("_deterministico") or {}).get("verdict")
+            vv = "FAIL" if (cur.get("_erros") or ver.get("_erros")) else ver.get("verdict")
+            final = pior(det, vv or "UNSUPPORTED")
+            acao = cur.get("action")
+            if acao not in ("NEW_CARD", "HUMAN_REVIEW", "RELATED_TO_EXISTING") and final == "PASS":
+                continue
+            if acao == "RELATED_TO_EXISTING" and not identidade:
+                identidade = {"classe": "RELATED_TO_EXISTING", "motivo": "curator: relacionado a card existente",
+                              "relacionado": alvo(cur.get("related_card_uid"))}
+        elif c.get("pre_action") in ("HUMAN_REVIEW", "RELATED_TO_EXISTING"):
+            det = vv = final = None
+            acao = c["pre_action"]
+        else:
+            continue
+        pacote = "NEW_CARD" if acao == "NEW_CARD" and not identidade else "HUMAN_REVIEW"
+        tipo = "novo_identidade" if identidade else ("novo_card" if pacote == "NEW_CARD" else "novo_revisao")
+        mp = ((cur or {}).get("main_publication") or {})
+        pmid = mp.get("pmid") or (cid[4:] if cid.startswith("pmid") else None)
+        rev, ano = _revista(state, pmid)
+        cand = (pac or {}).get("candidate") or {}
+        av = []
+        for a in ((cur or {}).get("_deterministico") or {}).get("achados") or []:
+            if a.get("verdict") != "PASS":
+                av.append(f"{a.get('code')} ({a.get('verdict')}): {a.get('detail')}")
+        if final and final != "PASS":
+            av.append(f"Veredito final: {final}")
+        for d in dd.get("dicas") or []:
+            av.append(f"Deduplicação: {d}")
+        if cid in duvidas:
+            av.append("Há publicação sem NCT que pode ser do MESMO estudo (identidade não comprovada): "
+                      + ", ".join(duvidas[cid]) + " — revise antes de aprovar")
+        item = {
+            "bloco": "novos", "uid": f"novos:{cid}", "cand_id": cid, "pacote": pacote, "tipo": tipo, "acao_original": acao,
+            "trial": (cur or {}).get("study") or c.get("acronym") or c.get("title"), "pub": f"cand:{cid}",
+            "registry_ids": [c["nct"]] if c.get("nct") else [], "nct": c.get("nct"), "pmid": pmid,
+            "doi": mp.get("doi") or (c.get("dois") or [None])[0], "title": c.get("title"), "journal": rev, "date": ano,
+            "tumor": (cur or {}).get("tumor"), "tumor_groups": c.get("tumor_groups"),
+            "phase": (cur or {}).get("phase") or ", ".join(c.get("phases") or []) or None,
+            "intervention": (cur or {}).get("intervention") or ", ".join(c.get("interventions") or []) or None,
+            "comparator": (cur or {}).get("comparator"), "population": ", ".join(cand.get("conditions") or c.get("conditions") or []) or None,
+            "primary_endpoint": (cur or {}).get("primary_endpoint"), "main_result": (cur or {}).get("main_result"),
+            "maturity": (cur or {}).get("maturity"), "reason": (cur or {}).get("reason") or c.get("pre_reason"),
+            "policy_basis": (cur or {}).get("policy_basis"), "comparison_type": (cur or {}).get("comparison_type"),
+            "editorial_limitation": (cur or {}).get("editorial_limitation"), "evidence": (cur or {}).get("evidence") or [],
+            "discovery_verdicts": {"curator": det, "verifier": vv, "final": final},
+            "verifier_reason": (ver or {}).get("reason"), "identidade": identidade, "avisos": av,
+            "origem": "llm" if cur else "deterministic", "pipeline": {"novos": versao}, "verdict": final,
+        }
+        itens.append(_fechar(item, decision_id(item["uid"], item["pub"], pacote)))
+    return itens
 
 
 GRAVIDADE = {"PASS": 0, "UNSUPPORTED": 1, "CONFLICT": 2, "FAIL": 3}
@@ -250,7 +370,8 @@ def _ordem(itens):
     prioridade = {}
     for it in itens:
         prioridade[it["uid"]] = min(prioridade.get(it["uid"], 9), ORDEM[it["pacote"]])
-    return lambda it: (prioridade[it["uid"]], it["bloco"], it["uid"], ORDEM[it["pacote"]], it["_seq"])
+    bloco = lambda b: (0, b, "") if isinstance(b, int) else (1, 0, str(b))  # noqa: E731  (blocos do discovery, depois "novos")
+    return lambda it: (prioridade[it["uid"]], bloco(it["bloco"]), it["uid"], ORDEM[it["pacote"]], it["_seq"])
 
 
 # ---------------------------------------------------------------- decisões (arquivo separado do state)
@@ -285,7 +406,8 @@ class Decisoes:
                 "publication": {"id": item["pub"], "pmid": item.get("pmid"), "doi": item.get("doi"), "title": item.get("title")},
                 "action": item["pacote"], "original_action": item.get("acao_original"),
                 "delta_id": item.get("delta_id"), "field_path": item.get("field_path"), "item_id": item.get("item_id"),
-                "pipeline": item.get("pipeline"), "decision": decisao, "comment": comentario.strip(),
+                "pipeline": item.get("pipeline"), "cand_id": item.get("cand_id"),
+                "registry_ids": item.get("registry_ids"), "decision": decisao, "comment": comentario.strip(),
                 "reviewed_at": agora, "fingerprint": item["fingerprint"],
                 "revision": (antes or {}).get("revision", 0) + 1,
             }
