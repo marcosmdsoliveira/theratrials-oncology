@@ -743,7 +743,8 @@ class ExecucaoRestrita(unittest.TestCase):
         # todo papel roda uma das duas definições versionadas; nenhum papel cria agente novo
         self.assertIn('{"verifier_b": "database-verifier", "discovery_curator": "database-curator",\n'
                       '              "discovery_verifier": "database-verifier", "delta_curator": "database-curator",\n'
-                      '              "delta_verifier": "database-verifier"}.get(papel, f"database-{papel}")', t)
+                      '              "delta_verifier": "database-verifier", "novos_curator": "database-curator",\n'
+                      '              "novos_verifier": "database-verifier"}.get(papel, f"database-{papel}")', t)
         for proibida in ("Bash", "Edit", "Write", "WebFetch", "WebSearch", "Agent", "Task"):
             self.assertIn(proibida, RA.PROIBIDAS_CLI)
         self.assertEqual(RA.PERMITIDAS, {"Read", "Grep", "Glob"})

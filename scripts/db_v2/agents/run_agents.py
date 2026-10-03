@@ -73,6 +73,15 @@ def _prompt(papel: str, uid: str) -> tuple[str, list[pathlib.Path]]:
         tarefa = DL.tarefa(uid) if papel == "delta_curator" else DL.tarefa_verifier(uid)
         return (tarefa + "Leia só o diretório acima, as instruções e o schema. Responda APENAS com o JSON.",
                 [pasta, schemas, DL.INSTRUCOES])
+    if papel in ("novos_curator", "novos_verifier"):              # expansão de cobertura: componente separado
+        try:
+            from . import new_trial_discovery as NT
+        except ImportError:
+            import new_trial_discovery as NT
+        pasta = S.STATE / "novos" / uid
+        tarefa = NT.tarefa(uid) if papel == "novos_curator" else NT.tarefa_verifier(uid)
+        return (tarefa + "Leia só o diretório acima, as instruções e o schema. Responda APENAS com o JSON.",
+                [pasta, schemas, NT.INSTRUCOES])
     if papel == "verifier_b":                       # segunda verificação independente, só dos itens P0
         V.entrada(uid, so_ids=D.candidatos_b(uid), sufixo="_b")
         tarefa = S.STATE / "tasks" / f"{uid}.verifier_input_b.json"
@@ -95,7 +104,8 @@ def executar(papel: str, uid: str) -> dict:
     RAW.mkdir(parents=True, exist_ok=True)
     agente = {"verifier_b": "database-verifier", "discovery_curator": "database-curator",
               "discovery_verifier": "database-verifier", "delta_curator": "database-curator",
-              "delta_verifier": "database-verifier"}.get(papel, f"database-{papel}")   # mesma definição, contexto novo
+              "delta_verifier": "database-verifier", "novos_curator": "database-curator",
+              "novos_verifier": "database-verifier"}.get(papel, f"database-{papel}")   # mesma definição, contexto novo
     cmd = [binario(), "-p", prompt, "--agent", agente, "--output-format", "stream-json", "--verbose",
            "--disallowedTools", PROIBIDAS_CLI]
     tentativas = []

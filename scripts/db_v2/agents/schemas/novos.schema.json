@@ -1,0 +1,217 @@
+{
+ "$id": "theratrials-db-novos-curator/1",
+ "type": "object",
+ "properties": {
+  "schema": {
+   "const": "theratrials-db-novos-curator/1"
+  },
+  "cand_id": {
+   "type": "string"
+  },
+  "packet_sha256": {
+   "type": "string"
+  },
+  "action": {
+   "enum": [
+    "NEW_CARD",
+    "RELATED_TO_EXISTING",
+    "WATCH",
+    "NO_ACTION",
+    "HUMAN_REVIEW"
+   ]
+  },
+  "study": {
+   "type": "string"
+  },
+  "nct": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "main_publication": {
+   "type": [
+    "object",
+    "null"
+   ],
+   "properties": {
+    "pmid": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "doi": {
+     "type": [
+      "string",
+      "null"
+     ]
+    }
+   }
+  },
+  "tumor": {
+   "type": "string"
+  },
+  "intervention": {
+   "type": "string"
+  },
+  "comparator": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "phase": {
+   "type": "string"
+  },
+  "primary_endpoint": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "reason": {
+   "type": "string"
+  },
+  "main_result": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "maturity": {
+   "enum": [
+    "published_primary",
+    "published_secondary_only",
+    "registry_results_only",
+    "congress_provisional",
+    "ongoing_no_results",
+    "undetermined"
+   ]
+  },
+  "related_card_uid": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "policy_basis": {
+   "enum": [
+    "fase3_pergunta_nao_representada",
+    "fase2_randomizado_relevancia_clara",
+    "fase2_negativo_relevante",
+    "excecao_braco_unico_radioligante",
+    "excecao_braco_unico_tumor_agnostico",
+    "excecao_braco_unico_doenca_rara",
+    "excecao_braco_unico_registracional",
+    "excecao_braco_unico_sem_comparador",
+    "excecao_fase1",
+    "cirurgia_randomizada_relevante",
+    "formulacao_sc_registracional",
+    "extensao_regional_questao_propria",
+    "congresso_fase3_provisorio",
+    "nao_se_aplica"
+   ]
+  },
+  "editorial_limitation": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "comparison_type": {
+   "enum": [
+    "randomizado_vs_padrao",
+    "randomizado_vs_nao_padrao",
+    "randomizado_nao_comparativo",
+    "braco_unico",
+    "nao_se_aplica"
+   ]
+  },
+  "evidence": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "properties": {
+     "source_id": {
+      "type": "string"
+     },
+     "source_type": {
+      "enum": [
+       "pubmed_metadata",
+       "pubmed_abstract",
+       "pmc_fulltext",
+       "europepmc_fulltext",
+       "ctgov_record",
+       "ctgov_results",
+       "crossref_metadata",
+       "registered_primary_source",
+       "human_decision"
+      ]
+     },
+     "publication_id": {
+      "type": [
+       "string",
+       "null"
+      ]
+     },
+     "pmid": {
+      "type": [
+       "string",
+       "null"
+      ]
+     },
+     "doi": {
+      "type": [
+       "string",
+       "null"
+      ]
+     },
+     "nct": {
+      "type": [
+       "string",
+       "null"
+      ]
+     },
+     "locator": {
+      "type": "string"
+     },
+     "snippet": {
+      "type": "string",
+      "minLength": 8
+     },
+     "retrieved_at": {
+      "type": [
+       "string",
+       "null"
+      ]
+     }
+    },
+    "required": [
+     "source_id",
+     "source_type",
+     "locator",
+     "snippet"
+    ]
+   }
+  },
+  "notes_for_human": {
+   "type": "string"
+  }
+ },
+ "required": [
+  "schema",
+  "cand_id",
+  "packet_sha256",
+  "action",
+  "study",
+  "tumor",
+  "intervention",
+  "phase",
+  "reason",
+  "maturity",
+  "policy_basis",
+  "comparison_type",
+  "evidence"
+ ]
+}

@@ -1,0 +1,52 @@
+{
+ "$id": "theratrials-db-novos-verification/1",
+ "type": "object",
+ "properties": {
+  "schema": {
+   "const": "theratrials-db-novos-verification/1"
+  },
+  "cand_id": {
+   "type": "string"
+  },
+  "curator_sha256": {
+   "type": "string"
+  },
+  "evidence_verdict": {
+   "enum": [
+    "PASS",
+    "FAIL",
+    "UNSUPPORTED",
+    "CONFLICT"
+   ]
+  },
+  "action_verdict": {
+   "enum": [
+    "PASS",
+    "FAIL",
+    "UNSUPPORTED",
+    "CONFLICT"
+   ]
+  },
+  "verdict": {
+   "enum": [
+    "PASS",
+    "FAIL",
+    "UNSUPPORTED",
+    "CONFLICT"
+   ]
+  },
+  "reason": {
+   "type": "string",
+   "minLength": 5
+  }
+ },
+ "required": [
+  "schema",
+  "cand_id",
+  "curator_sha256",
+  "evidence_verdict",
+  "action_verdict",
+  "verdict",
+  "reason"
+ ]
+}
