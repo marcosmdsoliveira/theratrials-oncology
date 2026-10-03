@@ -231,6 +231,17 @@ class Novos(Base):
         self.assertEqual((r["pacote"], r["identidade"]["classe"]), ("HUMAN_REVIEW", "RELATED_TO_EXISTING"))
         self.assertEqual(r["identidade"]["relacionado"], {"tipo": "card", "id": "u1", "nome": "TESTE-1 (2020)"})
 
+    def test_publicacao_compartilhada_aponta_um_para_o_outro(self):
+        n = self.novos()                     # NCT07000001 e NCT07000005 citam o mesmo PMID 1 / DOI 10.1/x na fixture
+        a, b = n["NCT07000001"]["publicacao_compartilhada"], n["NCT07000005"]["publicacao_compartilhada"]
+        self.assertEqual(a["chaves"], ["doi:10.1/x", "pmid:1"])
+        self.assertEqual([c["cand_id"] for c in a["candidatos"]], ["NCT07000005"])
+        self.assertEqual([c["cand_id"] for c in b["candidatos"]], ["NCT07000001"])
+        self.assertEqual(a["candidatos"][0]["decision_id"], n["NCT07000005"]["decision_id"])
+        self.assertEqual((n["NCT07000001"]["pacote"], n["NCT07000005"]["pacote"]), ("NEW_CARD", "HUMAN_REVIEW"))  # nada muda
+        for cid in ("pmid41779000", "pmid38447379", "NCT07000004"):           # publicações próprias: sem alerta
+            self.assertNotIn("publicacao_compartilhada", n[cid])
+
     def test_ordem_update_new_card_human_review_add(self):
         ordem = [i["pacote"] for i in self.itens()]
         self.assertLess(ordem.index("UPDATE_CARD"), ordem.index("NEW_CARD"))
@@ -387,6 +398,38 @@ class Servidor(Base):
         self.assertEqual(sorted(set(__import__("re").findall(r'fetch\("([^"]+)"', js))), ["/api/decision", "/api/items"])
 
 
+class Compartilhadas(unittest.TestCase):
+    """Regressão RELEVANCE: dois NCTs irmãos com a mesma publicação primária (PMID 30184451)."""
+
+    def item(self, cid, pmid=None, doi=None, pacote="NEW_CARD"):
+        it = {"cand_id": cid, "uid": f"novos:{cid}", "pub": f"cand:{cid}", "pacote": pacote, "acao_original": pacote,
+              "registry_ids": [cid] if cid.startswith("NCT") else [], "trial": f"RELEVANCE {cid}", "pmid": pmid, "doi": doi,
+              "verdict": "PASS"}
+        return RC._fechar(it, RC.decision_id(it["uid"], it["pub"], pacote))
+
+    def test_relevance_por_pmid_e_doi(self):
+        a = self.item("NCT01476787", "30184451", "10.1056/NEJMoa1805104")
+        b = self.item("NCT01650701", "30184451", "https://doi.org/10.1056/nejmoa1805104")
+        c = self.item("NCT09999999", "11111111", "10.1/outro")
+        so_doi = self.item("pmid22222222", "22222222", "doi:10.1056/NEJMOA1805104", "HUMAN_REVIEW")
+        fps = [x["fingerprint"] for x in (a, b, c, so_doi)]
+        RC.compartilhadas([a, b, c, so_doi])
+        self.assertEqual(a["publicacao_compartilhada"]["chaves"], ["doi:10.1056/nejmoa1805104", "pmid:30184451"])
+        self.assertEqual({x["cand_id"] for x in a["publicacao_compartilhada"]["candidatos"]}, {"NCT01650701", "pmid22222222"})
+        self.assertEqual({x["cand_id"] for x in b["publicacao_compartilhada"]["candidatos"]}, {"NCT01476787", "pmid22222222"})
+        self.assertEqual(so_doi["publicacao_compartilhada"]["chaves"], ["doi:10.1056/nejmoa1805104"])
+        self.assertNotIn("publicacao_compartilhada", c)
+        o = a["publicacao_compartilhada"]["candidatos"][0]
+        self.assertTrue({"cand_id", "decision_id", "registry_ids", "trial", "pmid", "doi", "acao", "verdict", "pacote"} <= set(o))
+        self.assertEqual([x["fingerprint"] for x in (a, b, c, so_doi)], fps)     # fora do fingerprint: nada fica STALE
+        self.assertEqual((a["pacote"], b["pacote"]), ("NEW_CARD", "NEW_CARD"))  # não escolhe nem funde
+
+    def test_mesmo_candidato_nao_conta_duas_vezes(self):
+        a = self.item("NCT01476787", "30184451")
+        RC.compartilhadas([a, self.item("NCT01476787", "30184451")])
+        self.assertNotIn("publicacao_compartilhada", a)
+
+
 @unittest.skipUnless((ESTADO_REAL / "novos" / "triagem.json").exists(), "state local do novos ausente (ex.: CI)")
 class NovosReais(unittest.TestCase):
     def test_smoke_casos_do_piloto(self):
@@ -398,6 +441,10 @@ class NovosReais(unittest.TestCase):
         self.assertEqual(n["pmid41779000"]["identidade"]["relacionado"]["id"], "NCT03939689")   # ARROW
         self.assertEqual(n["pmid38447379"]["identidade"]["relacionado"]["id"], "NCT04300244")   # NIPU
         self.assertFalse(any(i["pacote"] == "NEW_CARD" and i["identidade"] for i in n.values()))
+        for cid, outro in (("NCT01476787", "NCT01650701"), ("NCT01650701", "NCT01476787")):         # RELEVANCE
+            pc = n[cid]["publicacao_compartilhada"]
+            self.assertIn("pmid:30184451", pc["chaves"])
+            self.assertIn(outro, [c["cand_id"] for c in pc["candidatos"]])
 
 
 @unittest.skipUnless(TEM_REAL, "state local dos blocos 1–4 ausente (ex.: CI)")

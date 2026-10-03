@@ -102,7 +102,8 @@ function lista() {
       b.type = "button"; b.dataset.id = it.decision_id;
       b.addEventListener("click", () => selecionar(it.decision_id, true));
       const desc = it.field_path ? it.field_path + " · " + (it.current || it.human_review_reason || it.title || "")
-        : it.tipo === "novo_identidade" ? "⚠ identidade · " + (it.title || it.cand_id) : (it.title || it.pub);
+        : (it.publicacao_compartilhada ? "⚠ publicação compartilhada · " : "") +
+          (it.tipo === "novo_identidade" ? "⚠ identidade · " + (it.title || it.cand_id) : (it.title || it.pub));
       const chips = el("span", "chips");
       chips.append(chip("v-" + it.verdict, it.verdict || "—"), chip("s-" + it.status, ROTULO[it.status]));
       b.append(chip("c-" + it.pacote, it.pacote.replace("_", " ")), el("span", "txt", desc), chips);
@@ -177,7 +178,27 @@ function relacionado(r) {
   if (!r) return "—";
   return (r.tipo === "card" ? "card " : "candidato ") + r.id + (r.nome ? " · " + r.nome : "");
 }
+function compartilhada(pc) {             // só sinaliza: não escolhe, não funde, não bloqueia a decisão
+  const a = el("div", "alerta-identidade alerta-compartilhada");
+  a.append(el("strong", null, "PUBLICAÇÃO COMPARTILHADA ENTRE CANDIDATOS"),
+    el("div", null, "Mesma publicação: " + pc.chaves.map((k) => k.startsWith("pmid:") ? "PMID " + k.slice(5) : "DOI " + k.slice(4)).join(" · ")),
+    el("div", null, "Pode ser o mesmo estudo ou estudos irmãos. Revise os candidatos juntos antes de aprovar; nunca dois cards para o mesmo estudo."));
+  const ul = el("ul");
+  pc.candidatos.forEach((c) => {
+    const li = el("li");
+    const ir = el("a", "mono", c.cand_id);
+    ir.href = "#" + c.decision_id;
+    ir.addEventListener("click", (ev) => { ev.preventDefault(); selecionar(c.decision_id, true); });
+    li.append(ir, el("span", null, " · " + [(c.registry_ids || []).join(", ") || "sem registro", c.trial,
+      c.pmid ? "PMID " + c.pmid : null, c.doi ? "DOI " + c.doi : null,
+      "ação " + (c.acao || "—") + " (" + c.pacote + ")", "veredito " + (c.verdict || "—")].filter(Boolean).join(" · ")));
+    ul.append(li);
+  });
+  a.append(ul);
+  return a;
+}
 function novo(f, it) {
+  if (it.publicacao_compartilhada) f.append(compartilhada(it.publicacao_compartilhada));
   if (it.identidade) {                                  // dúvida de identidade nunca parece NEW_CARD simples
     const a = el("div", "alerta-identidade");
     a.append(el("strong", null, it.identidade.classe === "RELATED_TO_EXISTING"

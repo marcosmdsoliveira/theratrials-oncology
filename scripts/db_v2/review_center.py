@@ -343,6 +343,31 @@ def carregar_novos(state: pathlib.Path, data_js: pathlib.Path) -> list[dict]:
             "origem": "llm" if cur else "deterministic", "pipeline": {"novos": versao}, "verdict": final,
         }
         itens.append(_fechar(item, decision_id(item["uid"], item["pub"], pacote)))
+    return compartilhadas(itens)
+
+
+def _doi(d) -> str | None:
+    d = re.sub(r"^(https?://(dx\.)?doi\.org/|doi:)", "", str(d or "").strip(), flags=re.I).lower()
+    return d or None
+
+
+def compartilhadas(itens: list[dict]) -> list[dict]:
+    """Proteção editorial: marca candidatos ligados ao mesmo PMID ou DOI. Não escolhe, não funde, não muda ação nem
+    pacote e fica fora do fingerprint (decisões já registradas não ficam STALE)."""
+    grupos: dict[str, list[dict]] = {}
+    for it in itens:
+        for chave in ([f"pmid:{it['pmid']}"] if it.get("pmid") else []) + ([f"doi:{_doi(it['doi'])}"] if _doi(it.get("doi")) else []):
+            grupos.setdefault(chave, []).append(it)
+    for it in itens:
+        chaves = sorted(k for k, g in grupos.items() if any(x is it for x in g) and len({x["cand_id"] for x in g}) > 1)
+        if not chaves:
+            continue
+        outros = {x["cand_id"]: x for k in chaves for x in grupos[k] if x["cand_id"] != it["cand_id"]}
+        it["publicacao_compartilhada"] = {
+            "chaves": chaves,
+            "candidatos": [{"cand_id": x["cand_id"], "decision_id": x["decision_id"], "registry_ids": x.get("registry_ids") or [],
+                            "trial": x.get("trial"), "pmid": x.get("pmid"), "doi": x.get("doi"), "pacote": x["pacote"],
+                            "acao": x.get("acao_original"), "verdict": x.get("verdict")} for x in outros.values()]}
     return itens
 
 

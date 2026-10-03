@@ -47,6 +47,10 @@ versão congelada `novos/1+4f21de1ff806cb1d`). Os itens aparecem como **Novos en
 - **Dúvida de identidade** (`POSSIBLE_DUPLICATE` / `RELATED_TO_EXISTING`): sempre no pacote HUMAN_REVIEW, com alerta
   vermelho e o card ou candidato relacionado. Nunca aparece como NEW_CARD. Um NEW_CARD que seja alvo de possível
   duplicata recebe aviso.
+- **Publicação compartilhada**: quando dois ou mais candidatos citam o mesmo PMID ou DOI (por exemplo, NCTs irmãos
+  como os do RELEVANCE, PMID 30184451), cada um mostra o alerta "PUBLICAÇÃO COMPARTILHADA ENTRE CANDIDATOS" com os
+  outros cand_id, registros, acrônimos, PMID/DOI, ação, veredito e link. O alerta não escolhe, não funde, não muda a
+  ação nem bloqueia a decisão, e fica fora do `fingerprint`.
 - Saídas do LLM entram só quando são da versão congelada e estão completas. Saídas de versões anteriores do piloto
   ficam de fora.
 - Ordem padrão: UPDATE_CARD, NEW_CARD, HUMAN_REVIEW, ADD_SECONDARY.
@@ -84,5 +88,5 @@ cria card, não commita, não chama LLM nem API externa e não executa comandos.
 cd scripts/db_v2/agents && python3 -m unittest tests.test_review_center -v
 ```
 
-São 17 testes, que rodam também no CI dentro da suíte dos agentes. Eles usam um state sintético e um arquivo de
+São 27 testes, que rodam também no CI dentro da suíte dos agentes. Eles usam um state sintético e um arquivo de
 decisões temporário. O teste com os blocos reais é pulado quando o state local não existe.
