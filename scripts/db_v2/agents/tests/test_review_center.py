@@ -398,6 +398,92 @@ class Servidor(Base):
         self.assertEqual(sorted(set(__import__("re").findall(r'fetch\("([^"]+)"', js))), ["/api/decision", "/api/items"])
 
 
+def reescrever_data_js(dj: pathlib.Path, mutar):
+    txt = dj.read_text(encoding="utf-8")
+    i = txt.index("window.THERA_DATA = ")
+    obj = json.loads(txt[i + len("window.THERA_DATA = "):].strip().rstrip(";"))
+    mutar(obj)
+    dj.write_text(txt[:i] + "window.THERA_DATA = " + json.dumps(obj) + ";\n", encoding="utf-8")
+
+
+class Bloqueios(Base):
+    """Migração estrutural: card que virou família → OBSOLETE; delta cujo trecho ATUAL sumiu → STALE.
+    Os dois bloqueiam APPROVE e ficam fora do fingerprint."""
+
+    def deltas(self):
+        return {i["item_id"]: i for i in self.itens() if i["tipo"] == "delta"}
+
+    def test_current_inalterado_fica_ativo(self):
+        for it in self.deltas().values():
+            self.assertNotIn("bloqueio", it)
+        self.assertEqual(RC.status(self.deltas()["d01_hta"], None), "PENDING")
+
+    def test_current_alterado_vira_STALE_so_no_item_afetado(self):
+        reescrever_data_js(self.dj, lambda o: o["studies"][0].update(tox_g3="Hipertensão G3+ (25%), hipocalemia (10%)."))
+        d = self.deltas()
+        self.assertEqual(d["d01_hta"]["bloqueio"]["tipo"], "STALE")
+        self.assertNotIn("bloqueio", d["d02_k"])                  # o outro trecho continua idêntico
+        self.assertEqual(RC.status(d["d01_hta"], None), "STALE")
+
+    def test_uid_aposentado_vira_OBSOLETE_com_a_familia(self):
+        reescrever_data_js(self.dj, lambda o: o.update(studies=[], families=[
+            {"family_id": "teste", "family_name": "TESTE", "legacy_uids": ["u1"]}]))
+        u1 = [i for i in self.itens() if i["uid"] == "u1"]
+        self.assertTrue(u1)
+        for it in u1:
+            self.assertEqual(it["bloqueio"]["tipo"], "OBSOLETE")
+            self.assertEqual(it["bloqueio"]["motivo"], "SUPERSEDED BY STRUCTURAL MIGRATION")
+            self.assertEqual(it["bloqueio"]["family"], {"family_id": "teste", "family_name": "TESTE"})
+            self.assertEqual(RC.status(it, None), "OBSOLETE")
+        v = RC.visao(self.st, self.dj, self.dec)
+        self.assertEqual(v["meta"]["contagens"]["OBSOLETE"], len(u1))
+
+    def test_aprovacao_antiga_nao_vale_em_item_bloqueado(self):
+        reescrever_data_js(self.dj, lambda o: o["studies"][0].update(tox_g3="outro texto"))
+        it = self.deltas()["d01_hta"]
+        reg = {"fingerprint": it["fingerprint"], "decision": "APPROVE"}
+        self.assertEqual(RC.status(it, reg), "STALE")
+        self.assertEqual(RC.status(it, {**reg, "decision": "REJECT"}), "REJECT")
+
+    def test_bloqueio_nao_altera_fingerprints(self):
+        antes = {i["decision_id"]: i["fingerprint"] for i in self.itens()}
+        # famílias novas que não aposentam uid de nenhum item: nenhum fingerprint muda
+        reescrever_data_js(self.dj, lambda o: o.update(families=[{"family_id": "f", "family_name": "F", "legacy_uids": ["outro"]}]))
+        self.assertEqual({i["decision_id"]: i["fingerprint"] for i in self.itens()}, antes)
+        # bloquear() só acrescenta a marca: o fingerprint de cada item fica igual
+        itens = self.itens()
+        fps = [i["fingerprint"] for i in itens]
+        RC.bloquear(itens, {"u1": {"family_id": "f", "family_name": "F"}})
+        self.assertEqual([i["fingerprint"] for i in itens], fps)
+
+
+class BloqueiosServidor(Base):
+    req, post = Servidor.req, Servidor.post            # só os helpers HTTP, não os testes do Servidor
+
+    def tearDown(self):
+        self.srv.shutdown(); self.srv.server_close()
+        Base.tearDown(self)
+
+    def setUp(self):
+        Base.setUp(self)
+        reescrever_data_js(self.dj, lambda o: o["studies"][0].update(tox_g3="Hipertensão G3+ (25%), hipocalemia (10%)."))
+        self.srv = RC.criar_servidor(0, self.st, self.dj, self.raiz / "review" / "decisions.json")
+        self.porta = self.srv.server_address[1]
+        threading.Thread(target=self.srv.serve_forever, daemon=True).start()
+
+    def test_servidor_recusa_APPROVE_em_STALE_e_aceita_REJECT(self):
+        itens = json.loads(self.req("GET", "/api/items")[2])["itens"]
+        it = next(i for i in itens if i.get("item_id") == "d01_hta")
+        self.assertEqual(it["status"], "STALE")
+        corpo = {"decision_id": it["decision_id"], "fingerprint": it["fingerprint"], "comment": ""}
+        st, _, msg = self.post({**corpo, "decision": "APPROVE"})
+        self.assertEqual(st, 409)
+        self.assertIn("APPROVE bloqueado", json.loads(msg)["erro"])
+        self.assertEqual(self.post({**corpo, "decision": "REJECT"})[0], 200)
+        hist = (self.raiz / "review" / "history.jsonl").read_text(encoding="utf-8").splitlines()
+        self.assertEqual(len(hist), 1)                            # histórico só cresce; nada é apagado
+
+
 class Compartilhadas(unittest.TestCase):
     """Regressão RELEVANCE: dois NCTs irmãos com a mesma publicação primária (PMID 30184451)."""
 

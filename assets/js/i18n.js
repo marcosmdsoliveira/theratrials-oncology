@@ -162,6 +162,9 @@
     if (currentLang !== 'pt-br') {
       loadTranslations(currentLang, function () {
         applyTranslations();
+        // Textos montados em runtime (Alpine x-text com t()) já renderizaram antes do dicionário chegar:
+        // avisa os componentes para recomputar. Evento próprio para não disparar quem só reage a troca manual.
+        window.dispatchEvent(new CustomEvent('langready', { detail: { lang: currentLang } }));
       });
     } else {
       // Nada a baixar: o conteúdo em pt-BR já está no HTML.

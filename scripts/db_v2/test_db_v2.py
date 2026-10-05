@@ -278,6 +278,24 @@ class Conflito(unittest.TestCase):
         self.assertEqual(X.render(env, "secundario"), "17,4 (Abstract) vs 17,6 (Results)")
 
 
+class UidAposentado(unittest.TestCase):
+    """Card que virou família de estudo: o uid sai de studies[] mas fica em families[].legacy_uids."""
+
+    def _txt(self, families):
+        obj = {"categories": [], "studies": [{"uid": "novo"}], "filters": {}, "metadata": {}, "families": families}
+        return "window.THERA_DATA = " + json.dumps(obj) + ";\n"
+
+    def test_legacy_uid_conta_como_aposentado(self):
+        txt = self._txt([{"family_id": "f", "legacy_uids": ["antigo"]}])
+        self.assertEqual(V.uids_aposentados(txt), {"antigo"})
+        self.assertEqual(V.uids_aposentados(self._txt([])), set())
+
+    def test_uid_aposentado_nao_dispara_E_UID_IMMUTABLE_e_os_demais_sim(self):
+        rep = V.validar({}, head={"antigo", "sumido"}, aposentados={"antigo"})
+        uids = {i["uid"] for i in rep.itens if i["codigo"] == "E_UID_IMMUTABLE"}
+        self.assertEqual(uids, {"sumido"})
+
+
 class Integridade(unittest.TestCase):
     def test_withheld_valido_e_exige_decisao(self):
         self.assertEqual(codigos(rodar([copy.deepcopy(FIX["syn-withheld"])])), set())

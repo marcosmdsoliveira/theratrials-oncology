@@ -609,8 +609,17 @@ def uids_head(ref: str = "HEAD") -> set[str] | None:
         return None
 
 
+def uids_aposentados(txt: str | None = None) -> set[str]:
+    """uids que deixaram de ser card e viraram alias de uma família de estudo (families[].legacy_uids).
+
+    O uid não é reutilizado nem some: o deep link `database.html#<uid>` passa a abrir a família."""
+    txt = txt if txt is not None else L.DATA_JS.read_text(encoding="utf-8")
+    obj = L.ler_data_js(txt)[1]
+    return {u for f in obj.get("families") or [] for u in f.get("legacy_uids") or []}
+
+
 def validar(recs: dict, arquivos: dict | None = None, head: set | None = None,
-            atuais: dict | None = None) -> Relatorio:
+            atuais: dict | None = None, aposentados: set | None = None) -> Relatorio:
     """atuais: {uid: card do data.js atual}; o legado de registro não migrado tem de ser idêntico."""
     rep = Relatorio()
     for uid, card in (atuais or {}).items():
@@ -660,7 +669,7 @@ def validar(recs: dict, arquivos: dict | None = None, head: set | None = None,
                 rep.add(u, "W_EXTERNAL_HAS_CARD", "external_relationships",
                         f"{x['registry_id']} já tem card ({sorted(donos)[0]}): usar relationships.links")
     if head is not None:
-        for u in sorted(head - set(recs)):
+        for u in sorted(head - set(recs) - (aposentados or set())):
             rep.add(u, "E_UID_IMMUTABLE", "uid", "uid do HEAD ausente no conjunto v2")
     return rep
 
@@ -684,7 +693,8 @@ def main(argv=None):
     a = ap.parse_args(argv)
     recs, arqs = carregar(pathlib.Path(a.dir))
     atuais = None if a.sem_head else {c["uid"]: c for c in L.ler_data_js(L.DATA_JS.read_text(encoding="utf-8"))[1]["studies"]}
-    rep = validar(recs, arqs, None if a.sem_head else uids_head(), atuais)
+    rep = validar(recs, arqs, None if a.sem_head else uids_head(), atuais,
+                  None if a.sem_head else uids_aposentados())
     c = collections.Counter(i["codigo"] for i in rep.itens)
     niveis = collections.Counter(r["curation"]["level"] for r in recs.values())
     top = collections.Counter(i["caminho"] for i in rep.itens if i["codigo"] == "W_REQUIRED").most_common(8)

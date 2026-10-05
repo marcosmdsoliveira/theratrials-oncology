@@ -66,17 +66,17 @@
 <link rel="apple-touch-startup-image" media="(device-width: 1133px) and (device-height: 744px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)" href="assets/img/splash/splash-2266x1488.png">
 <!-- PWA:END -->
 <title>Database · TheraTrials Oncology</title>
-<meta name="description" content="Banco interativo de 503 estudos selecionados em oncologia moderna. Filtros por tumor, modalidade, fase e linha.">
+<meta name="description" content="Banco interativo de 507 estudos selecionados em oncologia moderna. Filtros por tumor, modalidade, fase e linha.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://theratrials.com/database.html">
 <meta property="og:title" content="Database · TheraTrials Oncology">
-<meta property="og:description" content="Banco interativo de 503 estudos selecionados em oncologia moderna. Filtre por tumor, modalidade, fase e linha terapêutica.">
+<meta property="og:description" content="Banco interativo de 507 estudos selecionados em oncologia moderna. Filtre por tumor, modalidade, fase e linha terapêutica.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://theratrials.com/database.html">
 <meta property="og:image" content="https://theratrials.com/assets/img/og-cover.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Database · TheraTrials Oncology">
-<meta name="twitter:description" content="Banco interativo de 503 estudos selecionados em oncologia moderna. Filtre por tumor, modalidade, fase e linha terapêutica.">
+<meta name="twitter:description" content="Banco interativo de 507 estudos selecionados em oncologia moderna. Filtre por tumor, modalidade, fase e linha terapêutica.">
 <meta name="twitter:image" content="https://theratrials.com/assets/img/og-cover.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -323,6 +323,31 @@
 
   /* === Campos oncológicos (scaffolding Fase 2) — opcionais, ocultos até popular === */
   .modal-linha { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.05em; color: #c7cdf5; background: rgba(129,140,248,0.18); border: 1px solid rgba(129,140,248,0.45); padding: 0.1rem 0.5rem; border-radius: 999px; text-transform: none; }
+  /* Famílias de estudo (plataformas, baskets…) */
+  .family-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; margin-bottom: 1.25rem; }
+  .family-card { background: linear-gradient(135deg, rgba(14,165,183,0.08), transparent 70%), var(--graphite-2); border: 1px solid rgba(14,165,183,0.35); border-radius: var(--radius-md); padding: 1.1rem 1.25rem; }
+  .family-card-top { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.4rem; }
+  .family-badge { display: inline-block; font-size: 0.66rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--teal); border: 1px solid rgba(14,165,183,0.5); border-radius: 999px; padding: 0.15rem 0.55rem; }
+  .family-count { font-size: 0.72rem; color: var(--stone); }
+  .family-title { font-size: 1.15rem; font-weight: 700; color: var(--off-white); margin: 0.2rem 0; }
+  .family-summary { font-size: 0.82rem; color: var(--stone); line-height: 1.5; margin: 0.3rem 0 0.7rem; }
+  .family-members-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--amber); margin-bottom: 0.3rem; }
+  .family-members { list-style: none; margin: 0 0 0.8rem; padding: 0; display: flex; flex-direction: column; gap: 0.2rem; }
+  .family-members button { background: none; border: 0; color: var(--off-white); font-size: 0.85rem; text-align: left; cursor: pointer; padding: 0.15rem 0; }
+  .family-members button:hover { color: var(--amber-glow); }
+  .family-members small { color: var(--stone); margin-left: 0.35rem; }
+  .card-family { margin: -0.4rem 0 0.6rem; }
+  .chip-family { background: rgba(14,165,183,0.1); border: 1px solid rgba(14,165,183,0.4); color: var(--teal); border-radius: 999px; font-size: 0.68rem; font-weight: 600; padding: 0.12rem 0.55rem; cursor: pointer; }
+  .family-callout { display: flex; gap: 0.55rem; align-items: flex-start; margin-bottom: 1rem; padding: 0.7rem 1rem; background: rgba(14,165,183,0.07); border: 1px solid rgba(14,165,183,0.3); border-left: 3px solid var(--teal); border-radius: var(--radius-sm); font-size: 0.85rem; }
+  .link-btn { background: none; border: 0; padding: 0; color: var(--teal); cursor: pointer; font-size: 0.82rem; text-align: left; display: block; margin-top: 0.25rem; }
+  .link-btn:hover { text-decoration: underline; }
+  .family-note { font-size: 0.82rem; color: var(--stone); margin: 0 0 1rem; }
+  .family-arms-wrap { overflow-x: auto; }
+  .family-arms { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
+  .family-arms th, .family-arms td { text-align: left; padding: 0.45rem 0.5rem; border-bottom: 1px solid var(--border-soft); vertical-align: top; }
+  .family-arms th { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--stone); }
+  .family-arms a { color: var(--teal); }
+  .family-muted { color: var(--stone-2); font-size: 0.76rem; }
   .takehome-callout { display: flex; gap: 0.55rem; align-items: flex-start; margin-bottom: 1.5rem; padding: 0.8rem 1rem; background: rgba(110,231,183,0.07); border: 1px solid rgba(110,231,183,0.25); border-left: 3px solid #6EE7B7; border-radius: var(--radius-sm); }
   .takehome-callout svg { color: #6EE7B7; flex-shrink: 0; margin-top: 2px; }
   .takehome-callout .th-text { color: var(--off-white-2, #cbd0d6); font-size: 0.92rem; line-height: 1.45; }
@@ -524,7 +549,7 @@
   "@context": "https://schema.org",
   "@type": "Dataset",
   "name": "TheraTrials Oncology Database",
-  "description": "Banco interativo de 503 estudos selecionados em oncologia moderna, incluindo teranóstico, terapias-alvo e imunoterapia.",
+  "description": "Banco interativo de 507 estudos selecionados em oncologia moderna, incluindo teranóstico, terapias-alvo e imunoterapia.",
   "url": "https://theratrials.com/database.html",
   "license": "https://theratrials.com/direitos-autorais.html",
   "inLanguage": "pt-BR",
@@ -575,7 +600,7 @@
 <!-- HERO -->
 <section class="db-hero">
   <div class="container">
-    <span class="eyebrow" data-i18n="db.heroEyebrow">Banco de evidências · 503 estudos analisados</span>
+    <span class="eyebrow" data-i18n="db.heroEyebrow">Banco de evidências · 507 estudos analisados</span>
     <h1 data-i18n-html="db.heroTitle">Encontre, compare e cite <span class="text-amber">com clareza</span></h1>
     <p data-i18n="db.heroSubtitle">Filtre por tumor, modalidade, fase ou linha. Clique em qualquer estudo para ver os 31 campos detalhados, salvar como favorito, anotar ou copiar a citação formatada.</p>
     <div class="search-wrap">
@@ -775,6 +800,33 @@
           </table>
         </div>
 
+        <!-- Famílias de estudo (plataformas, baskets…): aparecem quando a busca bate com a família
+             ou quando a lista filtrada traz ≥2 membros dela -->
+        <!-- fam:ini -->
+        <div class="family-grid" x-show="!showCompareView && familiesShown.length" x-cloak>
+          <template x-for="f in familiesShown" :key="f.family_id">
+            <article class="family-card">
+              <div class="family-card-top">
+                <span class="family-badge" x-text="famType(f)"></span>
+                <span class="family-count" x-text="familyMembers(f).length + ' ' + tt('db.famAnalyses', 'análises no Database')"></span>
+              </div>
+              <h3 class="family-title" x-text="f.family_name"></h3>
+              <div class="card-nct" x-text="(f.registry_ids || []).join(' · ')"></div>
+              <p class="family-summary" x-text="f.design_summary"></p>
+              <div class="family-members-label" x-text="tt('db.famComparisons', 'Comparações no Database')"></div>
+              <ul class="family-members">
+                <template x-for="m in familyMembers(f)" :key="m.uid">
+                  <li><button type="button" @click="openStudy(m)"><span>→</span> <span x-text="m.comparison_label || TheraTrials.studyTitle(m.estudo)"></span></button></li>
+                </template>
+              </ul>
+              <button type="button" class="btn btn-secondary btn-sm" @click="openFamily(f)">
+                <i data-lucide="network" style="width:13px;height:13px"></i> <span x-text="tt('db.famOpenProtocol', 'Ver o protocolo e todos os braços')"></span>
+              </button>
+            </article>
+          </template>
+        </div>
+        <!-- fam:fim -->
+
         <!-- Cards grid -->
         <div class="study-grid" x-show="!showCompareView && filteredStudies.length > 0" x-cloak>
           <template x-for="s in sortedStudies" :key="s.uid">
@@ -791,6 +843,11 @@
               </div>
               <h3 class="card-title" x-text="TheraTrials.studyTitle(s.estudo)"></h3>
               <div class="card-nct" x-text="s.nct"></div>
+              <!-- fam:ini -->
+              <div class="card-family" x-show="s.family_id && familyById(s.family_id)" x-cloak>
+                <button type="button" class="chip-family" @click.stop="openFamily(familyById(s.family_id))" x-text="familyById(s.family_id) ? (famTypeShort(familyById(s.family_id)) + ' ' + familyById(s.family_id).family_name) : ''"></button>
+              </div>
+              <!-- fam:fim -->
               <div class="card-chips" x-show="s.linha" x-cloak><span class="chip-linha" x-text="s.linha"></span></div>
               <div class="card-result" x-show="s.resultado_chave" x-html="TheraTrials.annotateAbbr(s.resultado_chave)" x-cloak></div>
               <p class="card-indication line-clamp-2" x-html="TheraTrials.annotateAbbr(s.indicacao)"></p>
@@ -896,6 +953,17 @@
       </div>
 
       <div class="modal-body" x-effect="selectedStudy && $nextTick(() => hideEmptyFields())">
+
+        <!-- fam:ini -->
+        <div class="family-callout" x-show="familyOf(selectedStudy)" x-cloak>
+          <i data-lucide="network" style="width:16px;height:16px"></i>
+          <div>
+            <div><span x-text="tt('db.famPartOf', 'Comparação do protocolo')"></span> <strong x-text="familyOf(selectedStudy) ? familyOf(selectedStudy).family_name : ''"></strong>
+              (<span x-text="familyOf(selectedStudy) ? famType(familyOf(selectedStudy)) : ''"></span>): <span x-text="selectedStudy.comparison_label"></span></div>
+            <button type="button" class="link-btn" @click="openFamily(familyOf(selectedStudy))" x-text="tt('db.famSeeOthers', 'Ver o protocolo e as demais comparações →')"></button>
+          </div>
+        </div>
+        <!-- fam:fim -->
 
         <div class="takehome-callout" x-show="selectedStudy.takehome" x-cloak>
           <i data-lucide="lightbulb" style="width:16px;height:16px"></i>
@@ -1067,6 +1135,96 @@
 </div>
 
 <!-- ===== Modal dedicado: publicação secundária / análise derivada ===== -->
+<!-- fam:ini — Modal de família de estudo: só o protocolo compartilhado; sem resultados clínicos -->
+<div class="modal-backdrop" x-show="selectedFamily" @click.self="closeFamily()" @keydown.window.escape="selectedFamily && closeFamily()" x-transition.opacity x-cloak>
+  <template x-if="selectedFamily">
+    <div class="modal-content">
+      <button class="modal-close" @click="closeFamily()"><i data-lucide="x" style="width:16px;height:16px"></i></button>
+      <div class="modal-header">
+        <div class="modal-cat">
+          <span class="family-badge" x-text="famType(selectedFamily)"></span>
+          <span x-text="selectedFamily.period" style="margin-left: 0.5rem"></span>
+        </div>
+        <h2 class="modal-title" x-text="selectedFamily.family_name"></h2>
+        <p class="modal-fulltitle" x-text="selectedFamily.full_name"></p>
+        <div class="modal-meta">
+          <span class="text-mono" x-text="(selectedFamily.registry_ids || []).join(' · ')"></span>
+          <span class="sep">·</span>
+          <span x-text="selectedFamily.sponsor"></span>
+        </div>
+        <div class="modal-actions">
+          <template x-for="r in (selectedFamily.registry_ids || []).filter(x => /^NCT\d{8}$/.test(x))" :key="r">
+            <a :href="'https://clinicaltrials.gov/study/' + r" target="_blank" rel="noopener" class="btn btn-secondary btn-sm">
+              <i data-lucide="external-link" style="width:14px;height:14px"></i> ClinicalTrials.gov
+            </a>
+          </template>
+        </div>
+      </div>
+      <div class="modal-body">
+        <p class="family-note" x-text="tt('db.famNote', 'Este registro descreve apenas o protocolo. Os resultados ficam no card de cada comparação.')"></p>
+        <p class="family-note" x-show="selectedFamily.note" x-text="selectedFamily.note"></p>
+        <div class="section-block">
+          <div class="section-block-title" x-text="tt('db.famDesign', 'Desenho')"></div>
+          <div class="field-text" x-text="selectedFamily.design_summary"></div>
+        </div>
+        <div class="section-block">
+          <div class="section-block-title" x-text="tt('db.famPopulation', 'População')"></div>
+          <div class="field-text" x-text="selectedFamily.population"></div>
+        </div>
+        <div class="section-block">
+          <div class="section-block-title" x-text="tt('db.famControl', 'Controle e evolução do padrão')"></div>
+          <div class="field-text" x-text="selectedFamily.control_summary"></div>
+        </div>
+        <div class="section-block">
+          <div class="section-block-title" x-text="tt('db.famComparisons', 'Comparações no Database')"></div>
+          <ul class="family-members family-members-modal">
+            <template x-for="m in familyMembers(selectedFamily)" :key="m.uid">
+              <li><button type="button" @click="openMember(m)"><span>→</span> <span x-text="TheraTrials.studyTitle(m.estudo)"></span> <small x-show="m.linha" x-text="m.linha"></small></button></li>
+            </template>
+          </ul>
+        </div>
+        <div class="section-block" x-show="(selectedFamily.arms || []).length">
+          <div class="section-block-title" x-text="tt('db.famArms', 'Braços do protocolo')"></div>
+          <div class="family-arms-wrap">
+            <table class="family-arms">
+              <thead><tr><th x-text="tt('db.famArm', 'Braço')"></th><th x-text="tt('db.famTreatment', 'Tratamento')"></th><th x-text="tt('db.famStatus', 'Status')"></th><th x-text="tt('db.famMainPub', 'Publicação principal')"></th><th x-text="tt('db.famInDb', 'No Database')"></th></tr></thead>
+              <tbody>
+                <template x-for="a in selectedFamily.arms" :key="a.arm">
+                  <tr>
+                    <td class="text-mono" x-text="a.arm"></td>
+                    <td x-text="a.treatment"></td>
+                    <td x-text="a.status"></td>
+                    <td>
+                      <template x-if="a.publication && /^\d{1,9}$/.test(a.publication.pmid)">
+                        <a :href="'https://pubmed.ncbi.nlm.nih.gov/' + a.publication.pmid + '/'" target="_blank" rel="noopener" x-text="a.publication.label"></a>
+                      </template>
+                      <span x-show="!a.publication">—</span>
+                    </td>
+                    <td>
+                      <template x-for="c in familyArmCards(a)" :key="c.uid">
+                        <button type="button" class="link-btn" @click="openMember(c)" x-text="c.comparison_label || TheraTrials.studyTitle(c.estudo)"></button>
+                      </template>
+                      <span class="family-muted" x-show="!familyArmCards(a).length" x-text="a.publication ? tt('db.famNoCard', 'Sem ficha independente') : '—'"></span>
+                    </td>
+                  </tr>
+                </template>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="section-block" x-show="(selectedFamily.related || []).length">
+          <div class="section-block-title" x-text="tt('db.famRelated', 'Programas relacionados')"></div>
+          <template x-for="r in (selectedFamily.related || [])" :key="r.family_id">
+            <button type="button" class="link-btn" @click="openFamily(familyById(r.family_id))" x-text="r.label"></button>
+          </template>
+        </div>
+      </div>
+    </div>
+  </template>
+</div>
+
+<!-- fam:fim -->
+
 <div class="modal-backdrop sec-modal-backdrop" x-show="selectedSecondary" @click.self="closeSecondary()" @keydown.window.escape="selectedSecondary && closeSecondary()" x-transition.opacity x-cloak>
   <template x-if="selectedSecondary">
     <div class="modal-content sec-modal" :style="`border-color: ${secColor(selectedSecondary.recordType)}55`">
@@ -1194,7 +1352,7 @@
 <footer class="site-footer">
   <div class="container">
     <div class="footer-bottom">
-      <span data-i18n="db.footerLine1">© 2026 TheraTrials Oncology · 503 estudos analisados · v1.0</span>
+      <span data-i18n="db.footerLine1">© 2026 TheraTrials Oncology · 507 estudos analisados · v1.0</span>
       <span data-i18n="db.footerLine2">Para uso educacional. Não substitui diretrizes oficiais.</span>
     </div>
   </div>
@@ -1221,6 +1379,7 @@ function databaseApp() {
     sortBy: 'relevance',
     selectedStudy: null,
     selectedSecondary: null,
+    selectedFamily: null,
     compareList: [],
     showCompareView: false,
     showGlossary: false,
@@ -1247,6 +1406,7 @@ function databaseApp() {
       this.$nextTick(() => lucide.createIcons());
       this.$watch('selectedStudy', () => { this.$nextTick(() => lucide.createIcons()); });
       this.$watch('selectedSecondary', () => { this.$nextTick(() => lucide.createIcons()); });
+      this.$watch('selectedFamily', () => { this.$nextTick(() => lucide.createIcons()); });
       this.$watch('filteredStudies', () => { this.$nextTick(() => lucide.createIcons()); });
       this.$watch('compareList', () => { this.$nextTick(() => lucide.createIcons()); });
       this.$watch('expandedModality', () => { this.$nextTick(() => lucide.createIcons()); });
@@ -1267,6 +1427,7 @@ function databaseApp() {
       this.handleHash();
       window.addEventListener('hashchange', () => this.handleHash());
       window.addEventListener('langchange', () => { this.langTick++; this.$nextTick(() => lucide.createIcons()); });
+      window.addEventListener('langready', () => { this.langTick++; });   // dicionário carregado na 1ª visita em EN
     },
 
     get glossaryGroups() {
@@ -1283,7 +1444,10 @@ function databaseApp() {
       const h = (window.location.hash || '').replace('#', '').trim();
       if (h && this.data.studies) {
         const s = this.data.studies.find(x => x.uid === h);
-        if (s) this.openStudy(s);
+        if (s) { this.openStudy(s); return; }
+        // uid antigo que virou família (ex.: prostata_contexto_2 → STAMPEDE) ou o próprio family_id
+        const f = TheraTrials.familyForHash(this.data, h);
+        if (f) this.openFamily(f);
       }
     },
 
@@ -1291,7 +1455,7 @@ function databaseApp() {
       let arr = this.data.studies || [];
       const q = this.searchQuery.toLowerCase().trim();
       if (q) {
-        arr = arr.filter(s => (s.estudo + ' ' + (s.acron||'') + ' ' + (s.indicacao||'') + ' ' + (s.radiofarmaco||'') + ' ' + (s.nct||'') + ' ' + (s.category_name||'')).toLowerCase().includes(q));
+        arr = arr.filter(s => TheraTrials.studySearchText(s).includes(q));
       }
       if (this.showFavoritesOnly) arr = arr.filter(s => this.favorites.includes(s.uid));
       if (this.filterTumors.length) {
@@ -1339,6 +1503,14 @@ function databaseApp() {
         });
       }
       return arr;
+    },
+
+    get anyFilterActive() {
+      return !!(this.filterTumors.length || this.filterModalities.length || this.filterCategory || this.filterPhases.length ||
+        this.filterLines.length || this.filterStatus || this.filterYears.length || this.showFavoritesOnly);
+    },
+    get familiesShown() {
+      return TheraTrials.familiesToShow(this.data, this.filteredStudies, this.searchQuery, this.anyFilterActive);
     },
 
     get sortedStudies() {
@@ -1470,6 +1642,25 @@ function databaseApp() {
     },
     openSecondary(c) { this.selectedSecondary = c; },
     closeSecondary() { this.selectedSecondary = null; },
+
+    // Famílias de estudo: a família descreve o protocolo; cada membro abre o seu card clínico.
+    // Rótulos da interface de famílias pelo mecanismo de idiomas (dados científicos não são traduzidos)
+    tt(k, f) { this.langTick; return window.t ? t(k, f) : f; },
+    famType(f) { return f ? this.tt('db.famType_' + f.design_type, f.design_label || f.design_type) : ''; },
+    famTypeShort(f) { return f ? this.tt('db.famTypeShort_' + f.design_type, (f.design_label || '').split(' · ')[0]) : ''; },
+    familyById(id) { return TheraTrials.familyById(this.data, id); },
+    familyOf(s) { return s && s.family_id ? TheraTrials.familyById(this.data, s.family_id) : null; },
+    familyMembers(f) { return TheraTrials.familyMembers(this.data, f); },
+    familyArmCards(a) { return (a.card_uids || []).map(u => this.data.studies.find(s => s.uid === u)).filter(Boolean); },
+    openFamily(f) {
+      if (!f) return;
+      this.selectedStudy = null;
+      this.selectedFamily = f;
+      const h = (window.location.hash || '').slice(1);
+      if (history.replaceState && h !== f.family_id && (f.legacy_uids || []).indexOf(h) < 0) history.replaceState(null, '', '#' + f.family_id);
+    },
+    closeFamily() { this.selectedFamily = null; if (history.replaceState) history.replaceState(null, '', window.location.pathname); },
+    openMember(s) { this.selectedFamily = null; this.openStudy(s); },
     secondaryCitation(c) {
       if (!c) return '';
       const parts = [];

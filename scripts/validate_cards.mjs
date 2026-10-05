@@ -181,6 +181,63 @@ for (const s of S) {
   if (s.category_color !== c.color) F(s.uid, `category_color "${s.category_color}" ≠ "${c.color}"`);
 }
 
+// ── 1b. famílias de estudo (THERA_DATA.families, opcional) ────────────────
+/* Uma família descreve só o protocolo compartilhado (plataforma, basket…). NÃO é card
+ * clínico: não entra em studies[], não tem resultado_chave e não pode trazer número de
+ * desfecho — esse pertence ao card de cada comparação. Membros de uma mesma família podem
+ * repetir o NCT legitimamente (é o mesmo protocolo). `legacy_uids` guarda o uid de um card
+ * antigo que virou família, para o deep link continuar abrindo. */
+const FAMILY_TYPES = new Set(['platform', 'platform_mams', 'basket', 'umbrella', 'multicohort',
+  'master_protocol', 'integrated_analysis']);
+const FAMILY_RELATIONS = new Set(['comparison', 'cohort', 'substudy', 'integrated_analysis']);
+const CLINICO_NA_FAMILIA = /\bHR\b|hazard|\bIC ?95|\bCI ?95|mediana|\bORR\b|\bp ?[<=]|\d+(?:[.,]\d+)? ?%/i;
+const FAM = Array.isArray(D.families) ? D.families : [];
+if (D.families !== undefined && !Array.isArray(D.families)) F('(families)', '`families` precisa ser uma lista');
+const famPorId = new Map();
+const uidsEstudo = new Set(S.map((s) => s.uid));
+const legados = new Set();
+for (const f of FAM) {
+  const id = f.family_id;
+  if (!id || !/^[a-z0-9][a-z0-9_-]*$/.test(id)) { F('(families)', `family_id inválido: ${JSON.stringify(id)}`); continue; }
+  if (famPorId.has(id)) F(id, 'family_id duplicado');
+  famPorId.set(id, f);
+  if (uidsEstudo.has(id)) F(id, 'family_id colide com o uid de um card');
+  if (!f.family_name) F(id, 'family_name ausente');
+  if (!FAMILY_TYPES.has(f.design_type)) F(id, `design_type "${f.design_type}" fora de ${[...FAMILY_TYPES].join('/')}`);
+  for (const r of f.registry_ids || []) if (!/^(NCT\d{8}|ISRCTN\d{8})$/.test(r)) F(id, `registry_id inválido: ${r}`);
+  for (const u of f.legacy_uids || []) {
+    if (uidsEstudo.has(u)) F(id, `legacy_uid ${u} ainda existe como card: o deep link abriria o card, não a família`);
+    if (legados.has(u)) F(id, `legacy_uid ${u} repetido em outra família`);
+    legados.add(u);
+  }
+  for (const campo of ['family_name', 'full_name', 'period', 'population', 'design_summary', 'control_summary', 'note']) {
+    if (CLINICO_NA_FAMILIA.test(String(f[campo] ?? ''))) F(id, `campo ${campo} traz resultado clínico (HR, %, mediana…): ele pertence ao card da comparação`);
+  }
+  if ('resultado_chave' in f || 'primario' in f) F(id, 'família não tem resultado_chave nem primario');
+  for (const a of f.arms || []) {
+    if (CLINICO_NA_FAMILIA.test(`${a.treatment ?? ''} ${a.status ?? ''}`)) F(id, `braço ${a.arm}: resultado clínico no texto do braço`);
+    if (a.publication && !/^\d{1,9}$/.test(String(a.publication.pmid))) F(id, `braço ${a.arm}: PMID inválido`);
+    for (const u of a.card_uids || []) {
+      const s = S.find((x) => x.uid === u);
+      if (!s) F(id, `braço ${a.arm}: card ${u} não existe`);
+      else if (s.family_id !== id) F(id, `braço ${a.arm}: card ${u} não declara family_id "${id}"`);
+    }
+  }
+}
+for (const f of FAM) for (const r of f.related || []) {
+  if (!famPorId.has(r.family_id)) F(f.family_id, `related aponta para família inexistente: ${r.family_id}`);
+}
+for (const s of S) {
+  if (s.family_id === undefined) continue;
+  const f = famPorId.get(s.family_id);
+  if (!f) { F(s.uid, `family_id "${s.family_id}" não existe em families[]`); continue; }
+  if (!FAMILY_RELATIONS.has(s.family_relation)) F(s.uid, `family_relation "${s.family_relation}" fora de ${[...FAMILY_RELATIONS].join('/')}`);
+  if (vazio(s.comparison_label)) F(s.uid, 'membro de família sem comparison_label');
+  if ((f.arms || []).length && !(f.arms || []).some((a) => (a.card_uids || []).includes(s.uid))) {
+    F(s.uid, `membro de ${f.family_id} não aparece em nenhum braço da família`);
+  }
+}
+
 // ── 2. schema núcleo congelado ────────────────────────────────────────────
 for (const s of S) {
   const faltando = NUCLEO.filter((f) => !(f in s));

@@ -16082,6 +16082,228 @@
 ],
 "retrieved_at": "2026-09-29"
 },
+"31560068": {
+"pmid": "31560068",
+"authors": [
+{
+"name": "Clarke NW",
+"authtype": "Author"
+},
+{
+"name": "Ali A",
+"authtype": "Author"
+},
+{
+"name": "Ingleby FC",
+"authtype": "Author"
+},
+{
+"name": "Hoyle A",
+"authtype": "Author"
+},
+{
+"name": "Amos CL",
+"authtype": "Author"
+},
+{
+"name": "Attard G",
+"authtype": "Author"
+},
+{
+"name": "Brawley CD",
+"authtype": "Author"
+},
+{
+"name": "Calvert J",
+"authtype": "Author"
+},
+{
+"name": "Chowdhury S",
+"authtype": "Author"
+},
+{
+"name": "Cook A",
+"authtype": "Author"
+},
+{
+"name": "Cross W",
+"authtype": "Author"
+},
+{
+"name": "Dearnaley DP",
+"authtype": "Author"
+},
+{
+"name": "Douis H",
+"authtype": "Author"
+},
+{
+"name": "Gilbert D",
+"authtype": "Author"
+},
+{
+"name": "Gillessen S",
+"authtype": "Author"
+},
+{
+"name": "Jones RJ",
+"authtype": "Author"
+},
+{
+"name": "Langley RE",
+"authtype": "Author"
+},
+{
+"name": "MacNair A",
+"authtype": "Author"
+},
+{
+"name": "Malik Z",
+"authtype": "Author"
+},
+{
+"name": "Mason MD",
+"authtype": "Author"
+},
+{
+"name": "Matheson D",
+"authtype": "Author"
+},
+{
+"name": "Millman R",
+"authtype": "Author"
+},
+{
+"name": "Parker CC",
+"authtype": "Author"
+},
+{
+"name": "Ritchie AWS",
+"authtype": "Author"
+},
+{
+"name": "Rush H",
+"authtype": "Author"
+},
+{
+"name": "Russell JM",
+"authtype": "Author"
+},
+{
+"name": "Brown J",
+"authtype": "Author"
+},
+{
+"name": "Beesley S",
+"authtype": "Author"
+},
+{
+"name": "Birtle A",
+"authtype": "Author"
+},
+{
+"name": "Capaldi L",
+"authtype": "Author"
+},
+{
+"name": "Gale J",
+"authtype": "Author"
+},
+{
+"name": "Gibbs S",
+"authtype": "Author"
+},
+{
+"name": "Lydon A",
+"authtype": "Author"
+},
+{
+"name": "Nikapota A",
+"authtype": "Author"
+},
+{
+"name": "Omlin A",
+"authtype": "Author"
+},
+{
+"name": "O'Sullivan JM",
+"authtype": "Author"
+},
+{
+"name": "Parikh O",
+"authtype": "Author"
+},
+{
+"name": "Protheroe A",
+"authtype": "Author"
+},
+{
+"name": "Rudman S",
+"authtype": "Author"
+},
+{
+"name": "Srihari NN",
+"authtype": "Author"
+},
+{
+"name": "Simms M",
+"authtype": "Author"
+},
+{
+"name": "Tanguay JS",
+"authtype": "Author"
+},
+{
+"name": "Tolan S",
+"authtype": "Author"
+},
+{
+"name": "Wagstaff J",
+"authtype": "Author"
+},
+{
+"name": "Wallace J",
+"authtype": "Author"
+},
+{
+"name": "Wylie J",
+"authtype": "Author"
+},
+{
+"name": "Zarkar A",
+"authtype": "Author"
+},
+{
+"name": "Sydes MR",
+"authtype": "Author"
+},
+{
+"name": "Parmar MKB",
+"authtype": "Author"
+},
+{
+"name": "James ND",
+"authtype": "Author"
+}
+],
+"title": "Addition of docetaxel to hormonal therapy in low- and high-burden metastatic hormone sensitive prostate cancer: long-term survival results from the STAMPEDE trial.",
+"source": "Ann Oncol",
+"fulljournalname": "Annals of oncology : official journal of the European Society for Medical Oncology",
+"pubdate": "2019 Dec 1",
+"epubdate": "",
+"volume": "30",
+"issue": "12",
+"pages": "1992-2003",
+"elocationid": "doi: 10.1093/annonc/mdz396",
+"doi": "10.1093/annonc/mdz396",
+"pmcid": "PMC6938598",
+"pubtype": [
+"Journal Article",
+"Randomized Controlled Trial",
+"Research Support, Non-U.S. Gov't"
+],
+"retrieved_at": "2026-10-05"
+},
 "31562796": {
 "pmid": "31562796",
 "authors": [
@@ -27038,6 +27260,223 @@
 ],
 "retrieved_at": "2026-09-29"
 },
+"34953525": {
+"pmid": "34953525",
+"authors": [
+{
+"name": "Attard G",
+"authtype": "Author"
+},
+{
+"name": "Murphy L",
+"authtype": "Author"
+},
+{
+"name": "Clarke NW",
+"authtype": "Author"
+},
+{
+"name": "Cross W",
+"authtype": "Author"
+},
+{
+"name": "Jones RJ",
+"authtype": "Author"
+},
+{
+"name": "Parker CC",
+"authtype": "Author"
+},
+{
+"name": "Gillessen S",
+"authtype": "Author"
+},
+{
+"name": "Cook A",
+"authtype": "Author"
+},
+{
+"name": "Brawley C",
+"authtype": "Author"
+},
+{
+"name": "Amos CL",
+"authtype": "Author"
+},
+{
+"name": "Atako N",
+"authtype": "Author"
+},
+{
+"name": "Pugh C",
+"authtype": "Author"
+},
+{
+"name": "Buckner M",
+"authtype": "Author"
+},
+{
+"name": "Chowdhury S",
+"authtype": "Author"
+},
+{
+"name": "Malik Z",
+"authtype": "Author"
+},
+{
+"name": "Russell JM",
+"authtype": "Author"
+},
+{
+"name": "Gilson C",
+"authtype": "Author"
+},
+{
+"name": "Rush H",
+"authtype": "Author"
+},
+{
+"name": "Bowen J",
+"authtype": "Author"
+},
+{
+"name": "Lydon A",
+"authtype": "Author"
+},
+{
+"name": "Pedley I",
+"authtype": "Author"
+},
+{
+"name": "O'Sullivan JM",
+"authtype": "Author"
+},
+{
+"name": "Birtle A",
+"authtype": "Author"
+},
+{
+"name": "Gale J",
+"authtype": "Author"
+},
+{
+"name": "Srihari N",
+"authtype": "Author"
+},
+{
+"name": "Thomas C",
+"authtype": "Author"
+},
+{
+"name": "Tanguay J",
+"authtype": "Author"
+},
+{
+"name": "Wagstaff J",
+"authtype": "Author"
+},
+{
+"name": "Das P",
+"authtype": "Author"
+},
+{
+"name": "Gray E",
+"authtype": "Author"
+},
+{
+"name": "Alzoueb M",
+"authtype": "Author"
+},
+{
+"name": "Parikh O",
+"authtype": "Author"
+},
+{
+"name": "Robinson A",
+"authtype": "Author"
+},
+{
+"name": "Syndikus I",
+"authtype": "Author"
+},
+{
+"name": "Wylie J",
+"authtype": "Author"
+},
+{
+"name": "Zarkar A",
+"authtype": "Author"
+},
+{
+"name": "Thalmann G",
+"authtype": "Author"
+},
+{
+"name": "de Bono JS",
+"authtype": "Author"
+},
+{
+"name": "Dearnaley DP",
+"authtype": "Author"
+},
+{
+"name": "Mason MD",
+"authtype": "Author"
+},
+{
+"name": "Gilbert D",
+"authtype": "Author"
+},
+{
+"name": "Langley RE",
+"authtype": "Author"
+},
+{
+"name": "Millman R",
+"authtype": "Author"
+},
+{
+"name": "Matheson D",
+"authtype": "Author"
+},
+{
+"name": "Sydes MR",
+"authtype": "Author"
+},
+{
+"name": "Brown LC",
+"authtype": "Author"
+},
+{
+"name": "Parmar MKB",
+"authtype": "Author"
+},
+{
+"name": "James ND",
+"authtype": "Author"
+},
+{
+"name": "Systemic Therapy in Advancing or Metastatic Prostate cancer: Evaluation of Drug Efficacy (STAMPEDE) investigators",
+"authtype": "CollectiveName"
+}
+],
+"title": "Abiraterone acetate and prednisolone with or without enzalutamide for high-risk non-metastatic prostate cancer: a meta-analysis of primary results from two randomised controlled phase 3 trials of the STAMPEDE platform protocol.",
+"source": "Lancet",
+"fulljournalname": "Lancet (London, England)",
+"pubdate": "2022 Jan 29",
+"epubdate": "2021 Dec 23",
+"volume": "399",
+"issue": "10323",
+"pages": "447-460",
+"elocationid": "doi: 10.1016/S0140-6736(21)02437-5",
+"doi": "10.1016/S0140-6736(21)02437-5",
+"pmcid": "PMC8811484",
+"pubtype": [
+"Journal Article",
+"Meta-Analysis"
+],
+"retrieved_at": "2026-10-05"
+},
 "34986285": {
 "pmid": "34986285",
 "authors": [
@@ -35452,6 +35891,252 @@
 "Randomized Controlled Trial"
 ],
 "retrieved_at": "2026-09-29"
+},
+"37142371": {
+"pmid": "37142371",
+"authors": [
+{
+"name": "Attard G",
+"authtype": "Author"
+},
+{
+"name": "Murphy L",
+"authtype": "Author"
+},
+{
+"name": "Clarke NW",
+"authtype": "Author"
+},
+{
+"name": "Sachdeva A",
+"authtype": "Author"
+},
+{
+"name": "Jones C",
+"authtype": "Author"
+},
+{
+"name": "Hoyle A",
+"authtype": "Author"
+},
+{
+"name": "Cross W",
+"authtype": "Author"
+},
+{
+"name": "Jones RJ",
+"authtype": "Author"
+},
+{
+"name": "Parker CC",
+"authtype": "Author"
+},
+{
+"name": "Gillessen S",
+"authtype": "Author"
+},
+{
+"name": "Cook A",
+"authtype": "Author"
+},
+{
+"name": "Brawley C",
+"authtype": "Author"
+},
+{
+"name": "Gilson C",
+"authtype": "Author"
+},
+{
+"name": "Rush H",
+"authtype": "Author"
+},
+{
+"name": "Abdel-Aty H",
+"authtype": "Author"
+},
+{
+"name": "Amos CL",
+"authtype": "Author"
+},
+{
+"name": "Murphy C",
+"authtype": "Author"
+},
+{
+"name": "Chowdhury S",
+"authtype": "Author"
+},
+{
+"name": "Malik Z",
+"authtype": "Author"
+},
+{
+"name": "Russell JM",
+"authtype": "Author"
+},
+{
+"name": "Parkar N",
+"authtype": "Author"
+},
+{
+"name": "Pugh C",
+"authtype": "Author"
+},
+{
+"name": "Diaz-Montana C",
+"authtype": "Author"
+},
+{
+"name": "Pezaro C",
+"authtype": "Author"
+},
+{
+"name": "Grant W",
+"authtype": "Author"
+},
+{
+"name": "Saxby H",
+"authtype": "Author"
+},
+{
+"name": "Pedley I",
+"authtype": "Author"
+},
+{
+"name": "O'Sullivan JM",
+"authtype": "Author"
+},
+{
+"name": "Birtle A",
+"authtype": "Author"
+},
+{
+"name": "Gale J",
+"authtype": "Author"
+},
+{
+"name": "Srihari N",
+"authtype": "Author"
+},
+{
+"name": "Thomas C",
+"authtype": "Author"
+},
+{
+"name": "Tanguay J",
+"authtype": "Author"
+},
+{
+"name": "Wagstaff J",
+"authtype": "Author"
+},
+{
+"name": "Das P",
+"authtype": "Author"
+},
+{
+"name": "Gray E",
+"authtype": "Author"
+},
+{
+"name": "Alzouebi M",
+"authtype": "Author"
+},
+{
+"name": "Parikh O",
+"authtype": "Author"
+},
+{
+"name": "Robinson A",
+"authtype": "Author"
+},
+{
+"name": "Montazeri AH",
+"authtype": "Author"
+},
+{
+"name": "Wylie J",
+"authtype": "Author"
+},
+{
+"name": "Zarkar A",
+"authtype": "Author"
+},
+{
+"name": "Cathomas R",
+"authtype": "Author"
+},
+{
+"name": "Brown MD",
+"authtype": "Author"
+},
+{
+"name": "Jain Y",
+"authtype": "Author"
+},
+{
+"name": "Dearnaley DP",
+"authtype": "Author"
+},
+{
+"name": "Mason MD",
+"authtype": "Author"
+},
+{
+"name": "Gilbert D",
+"authtype": "Author"
+},
+{
+"name": "Langley RE",
+"authtype": "Author"
+},
+{
+"name": "Millman R",
+"authtype": "Author"
+},
+{
+"name": "Matheson D",
+"authtype": "Author"
+},
+{
+"name": "Sydes MR",
+"authtype": "Author"
+},
+{
+"name": "Brown LC",
+"authtype": "Author"
+},
+{
+"name": "Parmar MKB",
+"authtype": "Author"
+},
+{
+"name": "James ND",
+"authtype": "Author"
+},
+{
+"name": "STAMPEDE investigators",
+"authtype": "CollectiveName"
+}
+],
+"title": "Abiraterone acetate plus prednisolone with or without enzalutamide for patients with metastatic prostate cancer starting androgen deprivation therapy: final results from two randomised phase 3 trials of the STAMPEDE platform protocol.",
+"source": "Lancet Oncol",
+"fulljournalname": "The Lancet. Oncology",
+"pubdate": "2023 May",
+"epubdate": "",
+"volume": "24",
+"issue": "5",
+"pages": "443-456",
+"elocationid": "doi: 10.1016/S1470-2045(23)00148-1",
+"doi": "10.1016/S1470-2045(23)00148-1",
+"pmcid": "PMC7616864",
+"pubtype": [
+"Clinical Trial Protocol",
+"Journal Article",
+"Research Support, Non-U.S. Gov't"
+],
+"retrieved_at": "2026-10-05"
 },
 "37142372": {
 "pmid": "37142372",
@@ -50269,6 +50954,245 @@
 "Clinical Trial, Phase II"
 ],
 "retrieved_at": "2026-09-29"
+},
+"40639383": {
+"pmid": "40639383",
+"authors": [
+{
+"name": "Gillessen S",
+"authtype": "Author"
+},
+{
+"name": "Murphy L",
+"authtype": "Author"
+},
+{
+"name": "James ND",
+"authtype": "Author"
+},
+{
+"name": "Sachdeva A",
+"authtype": "Author"
+},
+{
+"name": "El-Taji O",
+"authtype": "Author"
+},
+{
+"name": "Abdel-Aty H",
+"authtype": "Author"
+},
+{
+"name": "Adler AI",
+"authtype": "Author"
+},
+{
+"name": "Amos C",
+"authtype": "Author"
+},
+{
+"name": "Attard G",
+"authtype": "Author"
+},
+{
+"name": "Varughese M",
+"authtype": "Author"
+},
+{
+"name": "Gale J",
+"authtype": "Author"
+},
+{
+"name": "Brown S",
+"authtype": "Author"
+},
+{
+"name": "Srihari N",
+"authtype": "Author"
+},
+{
+"name": "Birtle AJ",
+"authtype": "Author"
+},
+{
+"name": "Brown M",
+"authtype": "Author"
+},
+{
+"name": "Chan K",
+"authtype": "Author"
+},
+{
+"name": "Chowdhury S",
+"authtype": "Author"
+},
+{
+"name": "Cross W",
+"authtype": "Author"
+},
+{
+"name": "Dearnaley DP",
+"authtype": "Author"
+},
+{
+"name": "Din O",
+"authtype": "Author"
+},
+{
+"name": "Dutey-Magni P",
+"authtype": "Author"
+},
+{
+"name": "Gilbert DC",
+"authtype": "Author"
+},
+{
+"name": "Gilson C",
+"authtype": "Author"
+},
+{
+"name": "Gray S",
+"authtype": "Author"
+},
+{
+"name": "Grist E",
+"authtype": "Author"
+},
+{
+"name": "Hofmann U",
+"authtype": "Author"
+},
+{
+"name": "Hudson AM",
+"authtype": "Author"
+},
+{
+"name": "Jain Y",
+"authtype": "Author"
+},
+{
+"name": "Jeyasangar G",
+"authtype": "Author"
+},
+{
+"name": "Jones R",
+"authtype": "Author"
+},
+{
+"name": "Kayani M",
+"authtype": "Author"
+},
+{
+"name": "Langley RE",
+"authtype": "Author"
+},
+{
+"name": "Malik Z",
+"authtype": "Author"
+},
+{
+"name": "Mason MD",
+"authtype": "Author"
+},
+{
+"name": "Matheson D",
+"authtype": "Author"
+},
+{
+"name": "McAlpine C",
+"authtype": "Author"
+},
+{
+"name": "Macnair A",
+"authtype": "Author"
+},
+{
+"name": "Millman R",
+"authtype": "Author"
+},
+{
+"name": "Murphy C",
+"authtype": "Author"
+},
+{
+"name": "Padden-Modi M",
+"authtype": "Author"
+},
+{
+"name": "Parikh O",
+"authtype": "Author"
+},
+{
+"name": "Parker C",
+"authtype": "Author"
+},
+{
+"name": "Rush H",
+"authtype": "Author"
+},
+{
+"name": "Russell M",
+"authtype": "Author"
+},
+{
+"name": "Srinivasan R",
+"authtype": "Author"
+},
+{
+"name": "Sundar S",
+"authtype": "Author"
+},
+{
+"name": "Tanguay JS",
+"authtype": "Author"
+},
+{
+"name": "Turco F",
+"authtype": "Author"
+},
+{
+"name": "Williams P",
+"authtype": "Author"
+},
+{
+"name": "Sydes MR",
+"authtype": "Author"
+},
+{
+"name": "Parmar MKB",
+"authtype": "Author"
+},
+{
+"name": "Brown LC",
+"authtype": "Author"
+},
+{
+"name": "Clarke NW",
+"authtype": "Author"
+},
+{
+"name": "STAMPEDE investigators",
+"authtype": "CollectiveName"
+}
+],
+"title": "Metformin for patients with metastatic prostate cancer starting androgen deprivation therapy: a randomised phase 3 trial of the STAMPEDE platform protocol.",
+"source": "Lancet Oncol",
+"fulljournalname": "The Lancet. Oncology",
+"pubdate": "2025 Aug",
+"epubdate": "2025 Jul 7",
+"volume": "26",
+"issue": "8",
+"pages": "1018-1030",
+"elocationid": "doi: 10.1016/S1470-2045(25)00231-1",
+"doi": "10.1016/S1470-2045(25)00231-1",
+"pmcid": "PMC12303861",
+"pubtype": [
+"Clinical Trial, Phase III",
+"Journal Article",
+"Multicenter Study",
+"Randomized Controlled Trial"
+],
+"retrieved_at": "2026-10-05"
 },
 "40737582": {
 "pmid": "40737582",

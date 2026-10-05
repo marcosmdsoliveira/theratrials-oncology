@@ -81,6 +81,30 @@ def cards_atuais(data_js: pathlib.Path) -> dict:
     return {s["uid"]: {k: s.get(k) for k in CAMPOS_VISIVEIS + ("estudo",)} for s in json.loads(corpo)["studies"]}
 
 
+def familias_aposentadas(data_js: pathlib.Path) -> dict:
+    """uid aposentado → família que o substituiu (families[].legacy_uids do data.js atual)."""
+    if not data_js.exists():
+        return {}
+    txt = data_js.read_text(encoding="utf-8")
+    i = txt.index("window.THERA_DATA")
+    obj = json.loads(txt[txt.index("{", i):].strip().rstrip(";"))
+    return {u: {"family_id": f.get("family_id"), "family_name": f.get("family_name")}
+            for f in obj.get("families") or [] for u in f.get("legacy_uids") or []}
+
+
+def bloquear(itens: list[dict], aposentados: dict) -> list[dict]:
+    """Marca itens que não podem mais ser aprovados, sem tocar no fingerprint (decisões antigas não mudam):
+    OBSOLETE — o card do item virou família de estudo (migração estrutural);
+    STALE    — o trecho ATUAL esperado por um delta não está mais no card de hoje."""
+    for it in itens:
+        f = aposentados.get(it["uid"])
+        if f:
+            it["bloqueio"] = {"tipo": "OBSOLETE", "motivo": "SUPERSEDED BY STRUCTURAL MIGRATION", "family": f}
+        elif it.get("tipo") == "delta" and it.get("trecho_presente_hoje") is False:
+            it["bloqueio"] = {"tipo": "STALE", "motivo": "o trecho ATUAL esperado pelo item não está mais no card de hoje"}
+    return itens
+
+
 def pub_id(x: dict) -> str:
     if x.get("pmid"):
         return f"pmid:{x['pmid']}"
@@ -228,6 +252,7 @@ def carregar_itens(state: pathlib.Path = STATE, data_js: pathlib.Path = DATA_JS)
     itens.sort(key=_ordem(itens))
     for it in itens:
         del it["_seq"]
+    bloquear(itens, familias_aposentadas(data_js))      # depois do _fechar: fora do fingerprint
     return {"itens": itens, "blocos": por_bloco}
 
 
@@ -452,10 +477,13 @@ class Decisoes:
 
 
 def status(item: dict, reg: dict | None) -> str:
+    bloqueio = (item.get("bloqueio") or {}).get("tipo")      # OBSOLETE | STALE
     if not reg:
-        return "PENDING"
+        return bloqueio or "PENDING"
     if reg.get("fingerprint") != item["fingerprint"]:
         return "STALE"
+    if bloqueio and reg.get("decision") == "APPROVE":          # aprovação não vale em item bloqueado
+        return bloqueio
     return reg["decision"]
 
 
@@ -468,7 +496,7 @@ def visao(state: pathlib.Path, data_js: pathlib.Path, dec: Decisoes) -> dict:
         r = regs.get(it["decision_id"])
         it["status"] = status(it, r)
         it["registro"] = {k: r.get(k) for k in ("decision", "comment", "reviewed_at", "revision")} if r else None
-    cont = {s: 0 for s in ("PENDING", "STALE") + VALIDAS}
+    cont = {s: 0 for s in ("PENDING", "STALE", "OBSOLETE") + VALIDAS}
     for it in carga["itens"]:
         cont[it["status"]] += 1
     return {"itens": carga["itens"], "meta": {
@@ -567,6 +595,8 @@ def criar_handler(state: pathlib.Path, data_js: pathlib.Path, dec: Decisoes, por
                 return self._erro(404, "item inexistente")
             if pedido.get("fingerprint") != item["fingerprint"]:
                 return self._erro(409, "o item mudou desde que a página foi carregada: recarregue e revise de novo")
+            if item.get("bloqueio") and pedido.get("decision") == "APPROVE":
+                return self._erro(409, f"item {item['bloqueio']['tipo']}: APPROVE bloqueado ({item['bloqueio']['motivo']})")
             try:
                 reg = dec.registrar(item, pedido.get("decision"), pedido.get("comment") or "")
             except ValueError as e:

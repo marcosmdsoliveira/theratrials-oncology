@@ -113,7 +113,7 @@ window._i18nRegister('pt-br', {
     pillService: "Serviço",
     of: "de",
     documents: "documentos",
-    footerLeft: "© 2026 TheraTrials Oncology · 503 estudos analisados · v1.2",
+    footerLeft: "© 2026 TheraTrials Oncology · 507 estudos analisados · v1.2",
     footerRight: "Para uso educacional. Não substitui diretrizes oficiais."
   },
 
@@ -268,7 +268,7 @@ window._i18nRegister('pt-br', {
     feat3Title: "Deadlines",
     feat3Desc: "Prazos de submissão de abstracts e inscrições",
     back: "Voltar para o início",
-    footerLeft: "© 2026 TheraTrials Oncology · 503 estudos analisados · v1.2",
+    footerLeft: "© 2026 TheraTrials Oncology · 507 estudos analisados · v1.2",
     footerRight: "Para uso educacional. Não substitui diretrizes oficiais."
   },
 
@@ -293,7 +293,7 @@ window._i18nRegister('pt-br', {
     cadence: "<strong>Frequência mensal</strong> — a newsletter é gerada automaticamente no dia 2 de cada mês, após a atualização do pipeline de dados do ClinicalTrials.gov.",
     archiveTitle: "Edições anteriores",
     archiveEmpty: "A primeira edição será publicada em breve. Inscreva-se acima para receber assim que estiver disponível.",
-    footerLeft: "© 2026 TheraTrials Oncology · 503 estudos analisados · v1.3",
+    footerLeft: "© 2026 TheraTrials Oncology · 507 estudos analisados · v1.3",
     footerRight: "Para uso educacional. Não substitui diretrizes oficiais."
   },
 
@@ -497,7 +497,7 @@ window._i18nRegister('pt-br', {
     s10c2D: "ALSYMPCA, PEACE-3, COMRADE — só osso, alta especificidade.",
     s10c3L: "Database",
     s10c3N: "Todos os estudos",
-    s10c3D: "503 ensaios clínicos em 40 categorias terapêuticas, com filtros hierárquicos.",
+    s10c3D: "507 ensaios clínicos em 40 categorias terapêuticas, com filtros hierárquicos.",
     s10c4L: "Ferramenta",
     s10c4N: "Calculadora de dose",
     s10c4D: "Cálculo de atividade e cronograma de ciclos para Lu-PSMA.",
@@ -1726,7 +1726,7 @@ window._i18nRegister('pt-br', {
     missaoP2: "O foco é a <strong>oncologia moderna</strong>: terapias-alvo, imunoterapia, biomarcadores, imagem molecular e teranóstico. Cada estudo é mais que uma referência — é uma síntese que cabe na rotina clínica sem perder rigor.",
     // Metodologia
     metodH: "Metodologia",
-    metodP1: "Cada um dos <strong>503 estudos selecionados</strong> passa por um processo padronizado de extração e síntese:",
+    metodP1: "Cada um dos <strong>507 estudos selecionados</strong> passa por um processo padronizado de extração e síntese:",
     metodLi1: "<strong>Identificação</strong>: nome, acrônimo completo, NCT, sponsor, fase, desenho, centros, período de recrutamento.",
     metodLi2: "<strong>População</strong>: indicação clínica, critérios de inclusão e exclusão, estratificadores, características basais, n planejado / randomizado / analisado.",
     metodLi3: "<strong>Critérios moleculares e imagem</strong>: PSMA-PET (com SUV thresholds, critério VISION), Krenning score, biomarcadores (PSA, CgA, ctDNA, HRR, KRAS).",
@@ -1829,7 +1829,7 @@ window._i18nRegister('pt-br', {
     contatoLi5: "Visualizações adicionais (forest plots interativos, timelines comparativas).",
     contatoP3: "Para feedback ou sugestões: <a href=\"mailto:marcosmdsoliveira@gmail.com\">marcosmdsoliveira@gmail.com</a>.",
     // Footer
-    ft1: "© 2026 TheraTrials Oncology · v1.0 · 503 estudos analisados",
+    ft1: "© 2026 TheraTrials Oncology · v1.0 · 507 estudos analisados",
     ft2: "elegance · clarity · impact"
   },
 
@@ -2279,7 +2279,7 @@ window._i18nRegister('pt-br', {
   /* ── Guideline Detail (guideline-detail.html) ── */
   gd: {
     /* Footer */
-    ft1: "© 2026 TheraTrials Oncology · 503 estudos analisados · v1.2",
+    ft1: "© 2026 TheraTrials Oncology · 507 estudos analisados · v1.2",
     ft2: "Para uso educacional. Não substitui diretrizes oficiais."
   },
 
@@ -2368,7 +2368,7 @@ window._i18nRegister('pt-br', {
 
     /* Platform map cards */
     pmDatabaseName: "Database",
-    pmDatabaseDesc: "Mais de 503 ensaios · 40 categorias · favoritos · citações",
+    pmDatabaseDesc: "Mais de 507 ensaios · 40 categorias · favoritos · citações",
     pmExplorerName: "TheraTrials Explorer",
     pmExplorerDesc: "Pipeline global de radioligantes · dados do ClinicalTrials.gov · atualização mensal",
     pmEnsaiosBRName: "Ensaios clínicos no Brasil",
@@ -2399,7 +2399,7 @@ window._i18nRegister('pt-br', {
 
     /* Database block */
     dbBadge: "Database",
-    dbTitle: "Mais de 503 ensaios clínicos · 40 categorias",
+    dbTitle: "Mais de 507 ensaios clínicos · 40 categorias",
     dbDesc: "Pesquisa por tumor, modalidade ou estudo individual, com atualizações semanais. Cobertura: teranóstico (próstata, NET, HCC/mCRC, ccRCC, neuroblastoma/PPGL), pulmão (NSCLC drivers, IO 1L, perioperatório, SCLC), mama (HER2+, HR+/HER2-, TNBC, BRCA-mut, imagem molecular) e uro-oncologia (ccRCC IO+TKI, RCC adjuvante e não-clear, urotelial avançado e perioperatório/NMIBC). Cada linha leva a uma ficha com mais de 30 campos.",
     dbCta: "Abrir Database",
     dbFeat1Name: "Filtros hierárquicos",
@@ -2460,7 +2460,7 @@ window._i18nRegister('pt-br', {
 
     /* CTA final */
     ctaTitle: "Pronto para conectar evidência e prática clínica?",
-    ctaDesc: "503 ensaios clínicos analisados em 40 categorias · pipeline global de radioligantes via ClinicalTrials.gov · 209 ensaios recrutando no Brasil · 7 dossiês de radiofármaco · 12 ferramentas clínicas · AJCC 8ª ed., CTCAE v6.0, BCLC 2026 · hyperlinks diretos para PubMed e ClinicalTrials.gov.",
+    ctaDesc: "507 ensaios clínicos analisados em 40 categorias · pipeline global de radioligantes via ClinicalTrials.gov · 209 ensaios recrutando no Brasil · 7 dossiês de radiofármaco · 12 ferramentas clínicas · AJCC 8ª ed., CTCAE v6.0, BCLC 2026 · hyperlinks diretos para PubMed e ClinicalTrials.gov.",
     ctaBtnDatabase: "Acessar o banco",
     ctaBtnExplorer: "Explorer",
     ctaBtnTumorBoards: "Tumor boards",
@@ -2486,7 +2486,7 @@ window._i18nRegister('pt-br', {
 
   /* ── Database page (database.html) ── */
   db: {
-    heroEyebrow: "Banco de evidências · 503 estudos analisados",
+    heroEyebrow: "Banco de evidências · 507 estudos analisados",
     heroTitle: "Encontre, compare e cite <span class=\"text-amber\">com clareza</span>",
     heroSubtitle: "Filtre por tumor, modalidade, fase ou linha. Clique em qualquer estudo para ver os 31 campos detalhados, salvar como favorito, anotar ou copiar a citação formatada.",
     searchPlaceholder: "Buscar estudo, NCT, radiofármaco, doença...",
@@ -2570,6 +2570,38 @@ window._i18nRegister('pt-br', {
     secRelatedIntro: "Publicações secundárias, atualizações, subestudos, análises exploratórias, abstracts e protocolos vinculados a este estudo. Cada item foi verificado em fonte primária (PubMed/Crossref).",
     secViewDetails: "Ver detalhes da publicação",
     secViewFull: "Ver análise completa",
+    // Famílias de estudo (plataformas, baskets…)
+    famAnalyses: "análises no Database",
+    famComparisons: "Comparações no Database",
+    famOpenProtocol: "Ver o protocolo e todos os braços",
+    famPartOf: "Comparação do protocolo",
+    famSeeOthers: "Ver o protocolo e as demais comparações →",
+    famNote: "Este registro descreve apenas o protocolo. Os resultados ficam no card de cada comparação.",
+    famDesign: "Desenho",
+    famPopulation: "População",
+    famControl: "Controle e evolução do padrão",
+    famArms: "Braços do protocolo",
+    famRelated: "Programas relacionados",
+    famArm: "Braço",
+    famTreatment: "Tratamento",
+    famStatus: "Status",
+    famMainPub: "Publicação principal",
+    famInDb: "No Database",
+    famNoCard: "Sem ficha independente",
+    famType_platform: "Plataforma",
+    famType_platform_mams: "Plataforma · MAMS",
+    famType_basket: "Basket",
+    famType_umbrella: "Guarda-chuva",
+    famType_multicohort: "Multicoorte",
+    famType_master_protocol: "Protocolo-mestre",
+    famType_integrated_analysis: "Análise integrada",
+    famTypeShort_platform: "Plataforma",
+    famTypeShort_platform_mams: "Plataforma",
+    famTypeShort_basket: "Basket",
+    famTypeShort_umbrella: "Guarda-chuva",
+    famTypeShort_multicohort: "Multicoorte",
+    famTypeShort_master_protocol: "Protocolo-mestre",
+    famTypeShort_integrated_analysis: "Análise integrada",
     secCongressAbstract: "Abstract de congresso",
     secNotPeerReviewed: "Não revisado por pares",
     secEvidenceSynthesis: "Síntese de evidência",
@@ -2637,7 +2669,7 @@ window._i18nRegister('pt-br', {
     toastCopied: "Copiado",
 
     /* Footer */
-    footerLine1: "© 2026 TheraTrials Oncology · 503 estudos analisados · v1.0",
+    footerLine1: "© 2026 TheraTrials Oncology · 507 estudos analisados · v1.0",
     footerLine2: "Para uso educacional. Não substitui diretrizes oficiais."
   },
 

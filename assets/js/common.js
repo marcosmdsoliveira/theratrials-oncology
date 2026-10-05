@@ -72,6 +72,62 @@
     return estudo.split('\n')[0].split('(')[0].trim();
   };
 
+  // Texto em que a busca do Database procura (mesmos campos de sempre).
+  TheraTrials.studySearchText = function(s) {
+    return (s.estudo + ' ' + (s.acron || '') + ' ' + (s.indicacao || '') + ' ' + (s.radiofarmaco || '') + ' ' +
+      (s.nct || '') + ' ' + (s.category_name || '')).toLowerCase();
+  };
+
+  /* ── Famílias de estudo (THERA_DATA.families) ──────────────────────────────
+   * Uma família descreve só o protocolo compartilhado (plataforma, basket, multicoorte…).
+   * Não é card clínico: os resultados ficam nos cards-membro, que apontam para ela por
+   * `family_id`. `legacy_uids` mantém vivo o deep link de um card antigo que virou família.
+   * Frontends antigos ignoram `families` e continuam funcionando. */
+  TheraTrials.FAMILY_TYPES = ['platform', 'platform_mams', 'basket', 'umbrella', 'multicohort',
+    'master_protocol', 'integrated_analysis'];
+
+  TheraTrials.familyList = function(data) {
+    return (data && Array.isArray(data.families)) ? data.families : [];
+  };
+  TheraTrials.familyById = function(data, id) {
+    return TheraTrials.familyList(data).find(function(f) { return f.family_id === id; }) || null;
+  };
+  TheraTrials.familyForHash = function(data, h) {
+    if (!h) return null;
+    return TheraTrials.familyList(data).find(function(f) {
+      return f.family_id === h || (f.legacy_uids || []).indexOf(h) >= 0;
+    }) || null;
+  };
+  // Membros no Database, na ordem dos braços da família (os sem braço vão para o fim).
+  TheraTrials.familyMembers = function(data, fam) {
+    if (!fam || !data || !data.studies) return [];
+    var ordem = [];
+    (fam.arms || []).forEach(function(a) { (a.card_uids || []).forEach(function(u) { if (ordem.indexOf(u) < 0) ordem.push(u); }); });
+    var pos = function(s) { var i = ordem.indexOf(s.uid); return i < 0 ? 1e6 : i; };
+    return data.studies.filter(function(s) { return s.family_id === fam.family_id; })
+      .sort(function(a, b) { return pos(a) - pos(b); });
+  };
+  TheraTrials.familyMatchesQuery = function(fam, q) {
+    q = String(q || '').toLowerCase().trim();
+    if (!q || !fam) return false;
+    var alvo = [fam.family_id, fam.family_name, fam.full_name].concat(fam.registry_ids || [], fam.legacy_uids || [])
+      .join(' ').toLowerCase();
+    return alvo.indexOf(q) >= 0;
+  };
+  /* Famílias a mostrar acima da grade: quando a busca bate com a família, ou quando a lista
+   * filtrada (com algum filtro ativo) traz ≥2 membros dela. */
+  TheraTrials.familiesToShow = function(data, filtrados, q, filtroAtivo) {
+    var uids = {};
+    (filtrados || []).forEach(function(s) { uids[s.uid] = 1; });
+    return TheraTrials.familyList(data).filter(function(f) {
+      var membros = TheraTrials.familyMembers(data, f);
+      if (!membros.length) return false;
+      if (TheraTrials.familyMatchesQuery(f, q)) return true;
+      var visiveis = membros.filter(function(s) { return uids[s.uid]; }).length;
+      return !!filtroAtivo && visiveis >= 2;
+    });
+  };
+
   TheraTrials.cleanText = function(t) {
     if (!t) return '';
     return String(t).replace(/\n+/g, ' · ');

@@ -62,6 +62,9 @@ button, select, input, textarea { font: inherit; color: inherit; }
 .v-PASS, .s-APPROVE { background: var(--green-soft); color: var(--green); }
 .v-FAIL, .s-REJECT { background: var(--red-soft); color: var(--red); }
 .v-UNSUPPORTED, .v-CONFLICT, .s-STALE { background: var(--amber-soft); color: var(--amber); }
+.s-OBSOLETE { background: #e5e7eb; color: #4b5563; text-decoration: line-through; }
+.stale.obsoleto { background: #f3f4f6; border-color: #9ca3af; color: #374151; }
+.btn:disabled { opacity: 0.45; cursor: not-allowed; }
 .s-DEFER { background: var(--violet-soft); color: var(--violet); }
 .s-PENDING, .v-null { background: var(--gray-soft); color: var(--muted); }
 

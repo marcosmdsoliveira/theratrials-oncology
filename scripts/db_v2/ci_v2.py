@@ -96,7 +96,7 @@ def main(argv=None) -> int:
         atuais = {c["uid"]: c for c in L.ler_data_js(L.DATA_JS.read_text(encoding="utf-8"))[1]["studies"]}
         base = V.uids_head(a.base_ref)
         relatorio["base_ref"] = a.base_ref if base is not None else f"{a.base_ref} indisponível (checagem de uid pulada)"
-        rep = V.validar(recs, arqs, base, atuais)
+        rep = V.validar(recs, arqs, base, atuais, V.uids_aposentados())
         for u in curados:
             rep.add(u, "E_CURATED_IN_SHADOW", "curation.level", "a sombra do CI nunca contém registro curated")
         cod = collections.Counter(i["codigo"] for i in rep.itens)

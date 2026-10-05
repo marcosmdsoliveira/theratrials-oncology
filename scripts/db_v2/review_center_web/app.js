@@ -2,7 +2,7 @@
 "use strict";
 
 const E = { itens: [], meta: null, filtrados: [], atual: null };
-const ROTULO = { PENDING: "PENDENTE", STALE: "STALE", APPROVE: "APPROVE", REJECT: "REJECT", DEFER: "DEFER" };
+const ROTULO = { PENDING: "PENDENTE", STALE: "STALE", OBSOLETE: "OBSOLETE", APPROVE: "APPROVE", REJECT: "REJECT", DEFER: "DEFER" };
 const TIPO = {
   delta: "Delta (trecho do card)", delta_hr: "Delta · revisão humana", update_sem_itens: "UPDATE sem trecho proposto",
   add_secondary: "Candidata a card secundário", human_review: "Revisão humana",
@@ -47,7 +47,7 @@ async function carregar(manterId) {
 }
 
 function recontar() {
-  const c = { PENDING: 0, STALE: 0, APPROVE: 0, REJECT: 0, DEFER: 0 };
+  const c = { PENDING: 0, STALE: 0, OBSOLETE: 0, APPROVE: 0, REJECT: 0, DEFER: 0 };
   E.itens.forEach((i) => { c[i.status] += 1; });
   E.meta.contagens = c;
 }
@@ -56,7 +56,7 @@ function recontar() {
 function painel() {
   const c = E.meta.contagens, total = E.meta.total;
   const kpis = [["Total", total], ["Pendentes", c.PENDING + c.STALE], ["Aprovadas", c.APPROVE], ["Rejeitadas", c.REJECT],
-    ["Adiadas", c.DEFER], ["Stale", c.STALE], ["Cards", E.meta.cards], ["Pacotes", E.meta.pacotes]];
+    ["Adiadas", c.DEFER], ["Stale", c.STALE], ["Obsoletos", c.OBSOLETE || 0], ["Cards", E.meta.cards], ["Pacotes", E.meta.pacotes]];
   $("painel").replaceChildren(...kpis.map(([k, v]) => { const d = el("div", "kpi"); d.append(el("b", null, v), el("span", null, k)); return d; }));
   const feitas = c.APPROVE + c.REJECT + c.DEFER;
   $("barra").style.width = (total ? (100 * feitas / total) : 0).toFixed(1) + "%";
@@ -237,7 +237,16 @@ function detalhe(it) {
   cab.append(chip("c-" + it.pacote, it.pacote), chip("s-" + it.status, ROTULO[it.status]), chip("v-" + it.verdict, "veredito: " + (it.verdict || "—")),
     el("span", "registro", TIPO[it.tipo] + (it.bloco === "novos" ? " · pipeline novos" : " · bloco " + it.bloco)));
   f.append(cab, el("h2", null, it.trial || it.uid), el("p", "sub", it.uid));
-  if (it.status === "STALE") f.append(el("div", "stale", "STALE: o conteúdo deste item mudou depois da decisão registrada. Revise de novo."));
+  if (it.bloqueio && it.bloqueio.tipo === "OBSOLETE") {
+    const fam = it.bloqueio.family || {};
+    f.append(el("div", "stale obsoleto", "OBSOLETE · SUPERSEDED BY STRUCTURAL MIGRATION: o card " + it.uid +
+      " virou a família de estudo " + (fam.family_name || fam.family_id || "?") + " (" + (fam.family_id || "?") +
+      "). APPROVE bloqueado; o histórico é mantido."));
+  } else if (it.bloqueio && it.bloqueio.tipo === "STALE") {
+    f.append(el("div", "stale", "STALE: o trecho ATUAL esperado por este item não está mais no card de hoje. APPROVE bloqueado."));
+  } else if (it.status === "STALE") {
+    f.append(el("div", "stale", "STALE: o conteúdo deste item mudou depois da decisão registrada. Revise de novo."));
+  }
 
   const comum = [["Publicação", it.title], ["Periódico / data", [it.journal, it.date].filter(Boolean).join(" · ")],
     ["Identificadores", publicacao(it)], ["Relação", [it.relation, it.temporal_marker].filter(Boolean).join(" · ")],
@@ -302,6 +311,10 @@ function painelDecisao(it) {
     const b = el("button", "btn " + d, rot + " (" + d + ")");
     b.type = "button";
     b.setAttribute("aria-pressed", reg && reg.decision === d && it.status !== "STALE" ? "true" : "false");
+    if (d === "APPROVE" && it.bloqueio) {           // OBSOLETE / STALE: o servidor também recusa
+      b.disabled = true;
+      b.title = "APPROVE bloqueado: item " + it.bloqueio.tipo;
+    }
     b.addEventListener("click", () => decidir(it, d, com.value));
     bts.append(b);
   });

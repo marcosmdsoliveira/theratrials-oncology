@@ -101,7 +101,7 @@ jobs:
 
       - name: Testar o próprio guard de cards
         if: always()
-        run: node --test scripts/validate_cards.test.mjs scripts/citation.test.mjs scripts/secondary_cards.test.mjs
+        run: node --test scripts/validate_cards.test.mjs scripts/citation.test.mjs scripts/secondary_cards.test.mjs scripts/study_families.test.mjs
 
       # Database v2 em modo SOMBRA: testes, lift do data.js num diretório temporário,
       # validate_v2 e export_legacy --check (a sombra tem de reproduzir o data.js byte a
