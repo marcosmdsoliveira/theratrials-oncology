@@ -2595,6 +2595,7 @@ window._i18nRegister('pt-br', {
     famOpenProtocolCohort: "Ver o protocolo e todas as coortes",
     famPartOfCohort: "Coorte do protocolo",
     famPartOf_basket: "Parte do estudo basket",
+    famPartOf_multicohort: "Parte do estudo multicoorte",
     famSeeOthersCohort: "Ver o protocolo e as demais coortes →",
     famNoteCohort: "Este registro descreve apenas o protocolo. Os resultados ficam no card de cada coorte.",
     famSharedIntervention: "Intervenção compartilhada",

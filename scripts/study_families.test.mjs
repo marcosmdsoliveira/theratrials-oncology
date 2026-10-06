@@ -432,3 +432,154 @@ test('contagem do family card: 1 análise / N análises, 1 coorte / N coortes', 
   assert.equal(DICT.en.db.famArmsAnalysis, 'Represented analyses');
   assert.equal(DICT.en.db.famAnalyses, 'analyses in the Database');
 });
+
+// ── famílias multicoorte: KRYSTAL-1 e LIBRETTO-001 ─────────────────────────
+/* Multicoorte = um protocolo, várias coortes por tumor/biomarcador, cada uma com
+ * publicação própria. Mesmo componente dos baskets; badge "Multicoorte". */
+const MULTI = {
+  'krystal-1': { nct: 'NCT03785249', membros: ['krystal-1-adagrasib-em-nsclc-kras-g12c', 'pancreas_8'] },
+  'libretto-001': { nct: 'NCT03157128', membros: ['libretto-001-selpercatinib-em-nsclc-ret-rearranjado', 'tireoide_avancado_3'] },
+};
+const PMID_MULTI = {
+  'krystal-1-adagrasib-em-nsclc-kras-g12c': '35658005', pancreas_8: '37099736',
+  'libretto-001-selpercatinib-em-nsclc-ret-rearranjado': '32846060', tireoide_avancado_3: '32846061',
+};
+const TODOS_MULTI = Object.values(MULTI).flatMap((m) => m.membros);
+// NSCLC KRYSTAL-1 é a coorte de registro; PDAC é recorte de 21 pacientes da coorte "outros tumores sólidos";
+// os dois cards LIBRETTO-001 reúnem várias populações de eficácia → "analysis".
+const RELACAO_MULTI = {
+  'krystal-1-adagrasib-em-nsclc-kras-g12c': 'cohort', pancreas_8: 'analysis',
+  'libretto-001-selpercatinib-em-nsclc-ret-rearranjado': 'analysis', tireoide_avancado_3: 'analysis',
+};
+
+test('princípio: design_type descreve o protocolo; family_relation descreve o card (um não implica o outro)', () => {
+  // mesma arquitetura (multicoorte), relações diferentes entre membros da mesma família
+  const kr = T.familyMembers(D, T.familyById(D, 'krystal-1')).map((s) => s.family_relation);
+  assert.deepEqual(js(kr), ['cohort', 'analysis']);
+  // arquiteturas diferentes (basket × multicoorte), mesmo vocabulário quando os membros são análises
+  assert.equal(T.familyUnitKind(D, T.familyById(D, 'keynote-158')), 'analysis');
+  assert.equal(T.familyUnitKind(D, T.familyById(D, 'libretto-001')), 'analysis');
+  // multicoorte só de coortes protocolares fala em "coortes"; o vocabulário vem dos membros, não do design_type
+  const f = { family_id: 'x', design_type: 'multicohort', cohorts: [{ cohort: 'A', card_uids: ['a'] }, { cohort: 'B', card_uids: ['b'] }] };
+  const dx = (rel) => ({ families: [f], studies: [{ uid: 'a', family_id: 'x', family_relation: 'cohort' }, { uid: 'b', family_id: 'x', family_relation: rel }] });
+  assert.equal(T.familyUnitKind(dx('cohort'), f), 'cohort');
+  assert.equal(T.familyUnitKind(dx('analysis'), f), 'analysis');
+  // o validador não aceita membro sem relação explícita, mesmo em família multicoorte
+});
+reprova('membro de multicoorte sem family_relation explícita', (d) => {
+  delete d.studies.find((s) => s.uid === 'pancreas_8').family_relation;
+}, /family_relation/);
+
+test('2 famílias multicoorte: registro, coortes, member_uids e só coortes como membros', () => {
+  for (const [id, m] of Object.entries(MULTI)) {
+    const f = T.familyById(D, id);
+    assert.ok(f, id);
+    assert.equal(f.design_type, 'multicohort');
+    assert.deepEqual(js(f.registry_ids), [m.nct]);
+    assert.equal(f.arms, undefined);
+    assert.deepEqual(js(f.member_uids), m.membros);
+    assert.deepEqual(js(f.cohorts.flatMap((c) => c.card_uids)), m.membros);
+    assert.equal(T.familyUnitKind(D, f), 'analysis', `${id}: há membro que é análise, não coorte protocolar`);
+    assert.equal(f.legacy_uids, undefined, `${id} não aposenta uid`);
+    for (const c of f.cohorts) assert.match(c.publication.pmid, /^\d+$/);
+  }
+});
+
+test('multicoorte: filhos independentes, uid preservado, título distinto, relação declarada por card', () => {
+  assert.equal(D.studies.length, 507);
+  assert.equal(D.families.length, 7);
+  for (const [id, m] of Object.entries(MULTI)) {
+    const f = T.familyById(D, id);
+    assert.deepEqual(js(T.familyMembers(D, f).map((s) => s.uid)), m.membros);
+    const titulos = m.membros.map((u) => T.studyTitle(card(u).estudo));
+    assert.equal(new Set(titulos).size, titulos.length);
+    for (const u of m.membros) {
+      const s = card(u);
+      assert.equal(s.family_id, id);
+      assert.equal(s.family_relation, RELACAO_MULTI[u], u);
+      assert.ok(T.studyTitle(s.estudo).startsWith(f.family_name + ' · '), u);
+      assert.equal(T.familyForHash(D, u), null, `#${u} abre o card`);
+      assert.equal(s.nct, m.nct);
+    }
+  }
+  assert.equal(T.studyTitle(card('krystal-1-adagrasib-em-nsclc-kras-g12c').estudo), 'KRYSTAL-1 · NSCLC KRAS G12C');
+  assert.equal(T.studyTitle(card('pancreas_8').estudo), 'KRYSTAL-1 · PDAC KRAS G12C');
+});
+
+test('multicoorte: NCT compartilhado dentro da família sai dos avisos; grupos não migrados continuam', () => {
+  const r = validarCom(() => {});
+  assert.doesNotMatch(r.saida, /NCT NCT03785249 também está|NCT NCT03157128 também está/);
+  assert.match(r.saida, /NCT NCT01704716 também está/);     // HR-NBL1/SIOPEN, ainda sem família
+  assert.match(r.saida, /NCT NCT02568267 também está/);     // NTRK/ROS1, ainda sem família
+});
+
+test('multicoorte: busca pelo acrônimo mostra a família; busca por tumor acha o filho', () => {
+  for (const [q, id] of [['KRYSTAL-1', 'krystal-1'], ['LIBRETTO-001', 'libretto-001'], ['NCT03157128', 'libretto-001']]) {
+    assert.ok(T.familiesToShow(D, busca(q), q, false).some((f) => f.family_id === id), q);
+    for (const u of MULTI[id].membros) assert.ok(busca(q).some((s) => s.uid === u), `${q} → ${u}`);
+  }
+  for (const [q, u] of [['adagrasibe', 'pancreas_8'], ['pâncreas', 'pancreas_8'], ['fusão RET', 'libretto-001-selpercatinib-em-nsclc-ret-rearranjado'],
+    ['medular', 'tireoide_avancado_3'], ['KRAS G12C', 'krystal-1-adagrasib-em-nsclc-kras-g12c']]) {
+    assert.ok(busca(q).some((s) => s.uid === u), `${q} → ${u}`);
+  }
+});
+
+test('multicoorte: filtros de tumor e categoria inalterados', () => {
+  const esperado = {
+    'krystal-1-adagrasib-em-nsclc-kras-g12c': ['nsclc_alvo', 'pulmao'], pancreas_8: ['pancreas', 'pancreas'],
+    'libretto-001-selpercatinib-em-nsclc-ret-rearranjado': ['nsclc_alvo', 'pulmao'], tireoide_avancado_3: ['tireoide_avancado', 'tireoide'],
+  };
+  for (const [u, [cat, tumor]] of Object.entries(esperado)) {
+    assert.equal(card(u).category_id, cat, u);
+    assert.deepEqual(js(T.tumorTypes.filter((t) => t.match(card(u))).map((t) => t.id)), [tumor], u);
+  }
+});
+
+test('multicoorte: PMID, citation e ano batem com a publicação representada', () => {
+  for (const [u, pmid] of Object.entries(PMID_MULTI)) {
+    const s = card(u);
+    assert.equal(s.citation.pmid, pmid, u);
+    assert.equal(s.pubmed_url, `https://pubmed.ncbi.nlm.nih.gov/${pmid}/`, u);
+    assert.equal(s.ano_pub, s.citation.year, u);
+    assert.match(s.estudo, new RegExp(`\\(${s.citation.year}\\)$`), u);
+  }
+});
+
+test('multicoorte: correções científicas não regridem (LIBRETTO-531 fora; números transportados fora)', () => {
+  const tir = JSON.stringify(card('tireoide_avancado_3'));
+  assert.doesNotMatch(tir, /LIBRETTO-531|Hadoux|NEJM 2024/, 'LIBRETTO-531 é outro ensaio');
+  assert.doesNotMatch(tir, /n=27|DTC RET-fusion|Categoria 1/);
+  assert.match(tir, /n=19/);
+  const pdac = JSON.stringify(card('pancreas_8'));
+  assert.doesNotMatch(card('pancreas_8').primario, /DOR|DoR/, 'DoR de 5,3 m é da coorte inteira, não do pâncreas');
+  assert.match(pdac, /ECOG 0-1/);
+  assert.doesNotMatch(pdac, /RMC-9805|basket trial/);
+  const kn = JSON.stringify(card('krystal-1-adagrasib-em-nsclc-kras-g12c'));
+  assert.doesNotMatch(kn, /DCR 80%|Náusea 71%|maior que sotorasib|aguarda fase 3/);
+  const ln = JSON.stringify(card('libretto-001-selpercatinib-em-nsclc-ret-rearranjado'));
+  assert.doesNotMatch(ln, /LIBRETTO-431|pós-platina 65%|ALT\/AST 9%/);
+  for (const u of TODOS_MULTI) assert.notEqual(card(u).radiofarmaco.trim(), '—', u);
+});
+
+test('multicoorte: contagem 1/N, badge e rótulos em PT/EN', () => {
+  const corpo = HTML_DB.match(/famCount\(f\) \{([\s\S]*?)\n    \},/)[1];
+  const vm2 = { tt: (k, f) => (k.endsWith('One') ? 'U:' : 'P:') + f, famKind: (f) => T.familyUnitKind(D, f), familyMembers: (f) => T.familyMembers(D, f) };
+  const famCount = new Function('f', corpo).bind(vm2);
+  assert.equal(famCount(T.familyById(D, 'krystal-1')), '2 P:análises no Database');
+  assert.equal(famCount(T.familyById(D, 'libretto-001')), '2 P:análises no Database');
+  const umaCoorte = JSON.parse(JSON.stringify(T.familyById(D, 'krystal-1')));
+  umaCoorte.family_id = 'x'; umaCoorte.cohorts = umaCoorte.cohorts.slice(0, 1);
+  const dx = { studies: [{ ...js(card('krystal-1-adagrasib-em-nsclc-kras-g12c')), family_id: 'x' }], families: [umaCoorte] };
+  const vm3 = { ...vm2, famKind: (f) => T.familyUnitKind(dx, f), familyMembers: (f) => T.familyMembers(dx, f) };
+  assert.equal(new Function('f', corpo).bind(vm3)(umaCoorte), '1 U:coorte no Database');
+  assert.equal(DICT['pt-br'].db.famType_multicohort, 'Multicoorte');
+  assert.equal(DICT.en.db.famType_multicohort, 'Multicohort');
+  assert.equal(DICT['pt-br'].db.famCohortsOne, 'coorte no Database');
+  assert.equal(DICT.en.db.famCohorts, 'cohorts in the Database');
+  assert.equal(DICT['pt-br'].db.famArmsCohort, 'Coortes representadas');
+  assert.equal(DICT.en.db.famArmsCohort, 'Represented cohorts');
+  assert.equal(DICT['pt-br'].db.famArmsAnalysis, 'Análises representadas');
+  assert.equal(DICT['pt-br'].db.famAnalyses, 'análises no Database');
+  assert.equal(DICT['pt-br'].db.famPartOf_multicohort, 'Parte do estudo multicoorte');
+  assert.equal(DICT.en.db.famPartOf_multicohort, 'Part of the multicohort trial');
+});

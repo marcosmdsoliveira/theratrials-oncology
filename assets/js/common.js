@@ -110,7 +110,10 @@
   };
   /* Vocabulário da família na interface: 'arm' (plataforma: braços/comparações), 'cohort' (todos os
    * membros são coortes protocolares) ou 'analysis' (algum membro é análise/recorte de população,
-   * p. ex. tumor-específica dentro de uma coorte agnóstica). Derivado do family_relation dos membros. */
+   * p. ex. tumor-específica dentro de uma coorte agnóstica). Derivado do family_relation dos membros.
+   * Princípio: design_type descreve a arquitetura do PROTOCOLO (basket, multicoorte…); family_relation
+   * descreve o que o CARD representa dentro dele. Um não implica o outro: uma família multicoorte pode
+   * ter membros que são análises (recorte de coorte mista, ou várias populações num mesmo card). */
   TheraTrials.familyUnitKind = function(data, fam) {
     if (!TheraTrials.familyIsCohort(fam)) return 'arm';
     var m = TheraTrials.familyMembers(data, fam);

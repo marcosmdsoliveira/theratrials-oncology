@@ -249,6 +249,8 @@ for (const s of S) {
   if (linhas.length && !linhas.some((a) => (a.card_uids || []).includes(s.uid))) {
     F(s.uid, `membro de ${f.family_id} não aparece em nenhum braço/coorte da família`);
   }
+  // design_type (arquitetura do protocolo) não determina family_relation (o que o card representa):
+  // em família com coortes, o membro declara explicitamente se é coorte protocolar ou análise.
   if ((f.cohorts || []).length && !['cohort', 'analysis'].includes(s.family_relation)) {
     F(s.uid, `membro de família basket/multicoorte precisa de family_relation "cohort" ou "analysis"`);
   }
