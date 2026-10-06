@@ -38435,6 +38435,126 @@
 ],
 "retrieved_at": "2026-09-29"
 },
+"37694347": {
+"pmid": "37694347",
+"authors": [
+{
+"name": "Goto K",
+"authtype": "Author"
+},
+{
+"name": "Goto Y",
+"authtype": "Author"
+},
+{
+"name": "Kubo T",
+"authtype": "Author"
+},
+{
+"name": "Ninomiya K",
+"authtype": "Author"
+},
+{
+"name": "Kim SW",
+"authtype": "Author"
+},
+{
+"name": "Planchard D",
+"authtype": "Author"
+},
+{
+"name": "Ahn MJ",
+"authtype": "Author"
+},
+{
+"name": "Smit EF",
+"authtype": "Author"
+},
+{
+"name": "de Langen AJ",
+"authtype": "Author"
+},
+{
+"name": "Pérol M",
+"authtype": "Author"
+},
+{
+"name": "Pons-Tostivint E",
+"authtype": "Author"
+},
+{
+"name": "Novello S",
+"authtype": "Author"
+},
+{
+"name": "Hayashi H",
+"authtype": "Author"
+},
+{
+"name": "Shimizu J",
+"authtype": "Author"
+},
+{
+"name": "Kim DW",
+"authtype": "Author"
+},
+{
+"name": "Kuo CH",
+"authtype": "Author"
+},
+{
+"name": "Yang JC",
+"authtype": "Author"
+},
+{
+"name": "Pereira K",
+"authtype": "Author"
+},
+{
+"name": "Cheng FC",
+"authtype": "Author"
+},
+{
+"name": "Taguchi A",
+"authtype": "Author"
+},
+{
+"name": "Cheng Y",
+"authtype": "Author"
+},
+{
+"name": "Feng W",
+"authtype": "Author"
+},
+{
+"name": "Tsuchihashi Z",
+"authtype": "Author"
+},
+{
+"name": "Jänne PA",
+"authtype": "Author"
+}
+],
+"title": "Trastuzumab Deruxtecan in Patients With HER2-Mutant Metastatic Non-Small-Cell Lung Cancer: Primary Results From the Randomized, Phase II DESTINY-Lung02 Trial.",
+"source": "J Clin Oncol",
+"fulljournalname": "Journal of clinical oncology : official journal of the American Society of Clinical Oncology",
+"pubdate": "2023 Nov 1",
+"epubdate": "2023 Sep 11",
+"volume": "41",
+"issue": "31",
+"pages": "4852-4863",
+"elocationid": "doi: 10.1200/JCO.23.01361",
+"doi": "10.1200/JCO.23.01361",
+"pmcid": "PMC10617843",
+"pubtype": [
+"Clinical Trial, Phase II",
+"Journal Article",
+"Multicenter Study",
+"Randomized Controlled Trial",
+"Research Support, Non-U.S. Gov't"
+],
+"retrieved_at": "2026-10-06"
+},
 "37708904": {
 "pmid": "37708904",
 "authors": [

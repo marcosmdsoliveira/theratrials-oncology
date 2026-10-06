@@ -323,7 +323,7 @@ test('3 famílias basket com coortes (não braços), registro próprio e member_
 });
 
 test('basket: membros abrem individualmente, com uid preservado e título distinto por coorte', () => {
-  assert.equal(D.studies.length, 507);
+  assert.equal(D.studies.length, D.metadata.total_studies);   // a migração não cria nem apaga card
   for (const [id, b] of Object.entries(BASKET)) {
     const f = T.familyById(D, id);
     assert.deepEqual(js(T.familyMembers(D, f).map((s) => s.uid)), b.membros);
@@ -489,7 +489,7 @@ test('2 famílias multicoorte: registro, coortes, member_uids e só coortes como
 });
 
 test('multicoorte: filhos independentes, uid preservado, título distinto, relação declarada por card', () => {
-  assert.equal(D.studies.length, 507);
+  assert.equal(D.studies.length, D.metadata.total_studies);   // a migração não cria nem apaga card
   for (const id of Object.keys(MULTI)) assert.ok(D.families.some((f) => f.family_id === id), id);
   for (const [id, m] of Object.entries(MULTI)) {
     const f = T.familyById(D, id);
@@ -735,7 +735,7 @@ test('análise integrada: membros são análises; uids preservados; títulos ine
   assert.equal(T.studyTitle(card(ENT_CARD).estudo), 'Entrectinibe · NSCLC ROS1+ — análise integrada');
   assert.equal(T.studyTitle(card('pancreas_9').estudo), 'Entrectinibe · Pâncreas NTRK+ — subgrupo da análise integrada');
   assert.equal(T.studyTitle(card('tireoide_avancado_8').estudo), 'Larotrectinibe · Tireoide NTRK+ — análise integrada');
-  assert.equal(D.studies.length, 507);
+  assert.equal(D.studies.length, D.metadata.total_studies);   // a migração não cria nem apaga card
 });
 
 test('análise integrada: PMID correto por card e números da publicação representada', () => {
