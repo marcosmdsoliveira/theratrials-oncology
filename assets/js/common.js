@@ -101,15 +101,18 @@
   /* Unidades do protocolo: `arms` (plataforma: braços comparados a um controle) ou `cohorts`
    * (basket, multicoorte: populações independentes, sem comparador). Mesmo formato de linha:
    * código, descrição, status, publicação e card_uids. */
-  // Linhas que não são braços: `cohorts` (basket, multicoorte) ou `randomizations` (master protocol: randomizações
-  // incorporadas ao protocolo em componentes e períodos diferentes — não fases sequenciais).
+  // Linhas que não são braços: `cohorts` (basket, multicoorte), `randomizations` (master protocol: randomizações
+  // incorporadas ao protocolo em componentes e períodos diferentes — não fases sequenciais) ou `analyses`
+  // (análise integrada: populações selecionadas de vários estudos, listados em `contributing_studies`).
   TheraTrials.familyIsCohort = function(fam) {
-    return !!fam && ((Array.isArray(fam.cohorts) && fam.cohorts.length > 0) || (Array.isArray(fam.randomizations) && fam.randomizations.length > 0));
+    return !!fam && ((Array.isArray(fam.cohorts) && fam.cohorts.length > 0) || (Array.isArray(fam.randomizations) && fam.randomizations.length > 0) ||
+      (Array.isArray(fam.analyses) && fam.analyses.length > 0));
   };
   TheraTrials.familyUnits = function(fam) {
     if (!fam) return [];
     if (Array.isArray(fam.cohorts) && fam.cohorts.length) return fam.cohorts;
     if (Array.isArray(fam.randomizations) && fam.randomizations.length) return fam.randomizations;
+    if (Array.isArray(fam.analyses) && fam.analyses.length) return fam.analyses;
     return fam.arms || [];
   };
   /* Vocabulário da família na interface: 'arm' (plataforma: braços/comparações), 'cohort' (todos os
@@ -137,7 +140,8 @@
   TheraTrials.familyMatchesQuery = function(fam, q) {
     q = String(q || '').toLowerCase().trim();
     if (!q || !fam) return false;
-    var alvo = [fam.family_id, fam.family_name, fam.full_name].concat(fam.registry_ids || [], fam.legacy_uids || [])
+    var loc = Object.keys(fam.i18n || {}).map(function(l) { return (fam.i18n[l] || {}).family_name || ''; });
+    var alvo = [fam.family_id, fam.family_name, fam.full_name].concat(loc, fam.registry_ids || [], fam.legacy_uids || [])
       .join(' ').toLowerCase();
     return alvo.indexOf(q) >= 0;
   };

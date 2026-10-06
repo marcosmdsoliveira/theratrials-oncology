@@ -18236,6 +18236,175 @@
 ],
 "retrieved_at": "2026-09-29"
 },
+"31838015": {
+"pmid": "31838015",
+"authors": [
+{
+"name": "Drilon A",
+"authtype": "Author"
+},
+{
+"name": "Siena S",
+"authtype": "Author"
+},
+{
+"name": "Dziadziuszko R",
+"authtype": "Author"
+},
+{
+"name": "Barlesi F",
+"authtype": "Author"
+},
+{
+"name": "Krebs MG",
+"authtype": "Author"
+},
+{
+"name": "Shaw AT",
+"authtype": "Author"
+},
+{
+"name": "de Braud F",
+"authtype": "Author"
+},
+{
+"name": "Rolfo C",
+"authtype": "Author"
+},
+{
+"name": "Ahn MJ",
+"authtype": "Author"
+},
+{
+"name": "Wolf J",
+"authtype": "Author"
+},
+{
+"name": "Seto T",
+"authtype": "Author"
+},
+{
+"name": "Cho BC",
+"authtype": "Author"
+},
+{
+"name": "Patel MR",
+"authtype": "Author"
+},
+{
+"name": "Chiu CH",
+"authtype": "Author"
+},
+{
+"name": "John T",
+"authtype": "Author"
+},
+{
+"name": "Goto K",
+"authtype": "Author"
+},
+{
+"name": "Karapetis CS",
+"authtype": "Author"
+},
+{
+"name": "Arkenau HT",
+"authtype": "Author"
+},
+{
+"name": "Kim SW",
+"authtype": "Author"
+},
+{
+"name": "Ohe Y",
+"authtype": "Author"
+},
+{
+"name": "Li YC",
+"authtype": "Author"
+},
+{
+"name": "Chae YK",
+"authtype": "Author"
+},
+{
+"name": "Chung CH",
+"authtype": "Author"
+},
+{
+"name": "Otterson GA",
+"authtype": "Author"
+},
+{
+"name": "Murakami H",
+"authtype": "Author"
+},
+{
+"name": "Lin CC",
+"authtype": "Author"
+},
+{
+"name": "Tan DSW",
+"authtype": "Author"
+},
+{
+"name": "Prenen H",
+"authtype": "Author"
+},
+{
+"name": "Riehl T",
+"authtype": "Author"
+},
+{
+"name": "Chow-Maneval E",
+"authtype": "Author"
+},
+{
+"name": "Simmons B",
+"authtype": "Author"
+},
+{
+"name": "Cui N",
+"authtype": "Author"
+},
+{
+"name": "Johnson A",
+"authtype": "Author"
+},
+{
+"name": "Eng S",
+"authtype": "Author"
+},
+{
+"name": "Wilson TR",
+"authtype": "Author"
+},
+{
+"name": "Doebele RC",
+"authtype": "Author"
+},
+{
+"name": "trial investigators",
+"authtype": "CollectiveName"
+}
+],
+"title": "Entrectinib in ROS1 fusion-positive non-small-cell lung cancer: integrated analysis of three phase 1-2 trials.",
+"source": "Lancet Oncol",
+"fulljournalname": "The Lancet. Oncology",
+"pubdate": "2020 Feb",
+"epubdate": "2019 Dec 11",
+"volume": "21",
+"issue": "2",
+"pages": "261-270",
+"elocationid": "doi: 10.1016/S1470-2045(19)30690-4",
+"doi": "10.1016/S1470-2045(19)30690-4",
+"pmcid": "PMC7811790",
+"pubtype": [
+"Journal Article",
+"Research Support, Non-U.S. Gov't"
+],
+"retrieved_at": "2026-10-06"
+},
 "31851799": {
 "pmid": "31851799",
 "authors": [
@@ -29216,6 +29385,106 @@
 "Research Support, Non-U.S. Gov't"
 ],
 "retrieved_at": "2026-09-29"
+},
+"35333737": {
+"pmid": "35333737",
+"authors": [
+{
+"name": "Waguespack SG",
+"authtype": "Author"
+},
+{
+"name": "Drilon A",
+"authtype": "Author"
+},
+{
+"name": "Lin JJ",
+"authtype": "Author"
+},
+{
+"name": "Brose MS",
+"authtype": "Author"
+},
+{
+"name": "McDermott R",
+"authtype": "Author"
+},
+{
+"name": "Almubarak M",
+"authtype": "Author"
+},
+{
+"name": "Bauman J",
+"authtype": "Author"
+},
+{
+"name": "Casanova M",
+"authtype": "Author"
+},
+{
+"name": "Krishnamurthy A",
+"authtype": "Author"
+},
+{
+"name": "Kummar S",
+"authtype": "Author"
+},
+{
+"name": "Leyvraz S",
+"authtype": "Author"
+},
+{
+"name": "Oh DY",
+"authtype": "Author"
+},
+{
+"name": "Park K",
+"authtype": "Author"
+},
+{
+"name": "Sohal D",
+"authtype": "Author"
+},
+{
+"name": "Sherman E",
+"authtype": "Author"
+},
+{
+"name": "Norenberg R",
+"authtype": "Author"
+},
+{
+"name": "Silvertown JD",
+"authtype": "Author"
+},
+{
+"name": "Brega N",
+"authtype": "Author"
+},
+{
+"name": "Hong DS",
+"authtype": "Author"
+},
+{
+"name": "Cabanillas ME",
+"authtype": "Author"
+}
+],
+"title": "Efficacy and safety of larotrectinib in patients with TRK fusion-positive thyroid carcinoma.",
+"source": "Eur J Endocrinol",
+"fulljournalname": "European journal of endocrinology",
+"pubdate": "2022 Apr 29",
+"epubdate": "2022 Apr 29",
+"volume": "186",
+"issue": "6",
+"pages": "631-643",
+"elocationid": "doi: 10.1530/EJE-21-1259",
+"doi": "10.1530/EJE-21-1259",
+"pmcid": "PMC9066591",
+"pubtype": [
+"Journal Article"
+],
+"retrieved_at": "2026-10-06"
 },
 "35367007": {
 "pmid": "35367007",

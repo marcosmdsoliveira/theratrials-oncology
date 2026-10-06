@@ -810,7 +810,7 @@
                 <span class="family-badge" x-text="famType(f)"></span>
                 <span class="family-count" x-text="famCount(f)"></span>
               </div>
-              <h3 class="family-title" x-text="f.family_name"></h3>
+              <h3 class="family-title" x-text="famText(f, 'family_name')"></h3>
               <div class="card-nct" x-text="(f.registry_ids || []).join(' · ')"></div>
               <p class="family-summary" x-text="f.design_summary"></p>
               <div class="family-members-label" x-text="famK(f, 'famComparisons')"></div>
@@ -845,7 +845,7 @@
               <div class="card-nct" x-text="s.nct"></div>
               <!-- fam:ini -->
               <div class="card-family" x-show="s.family_id && familyById(s.family_id)" x-cloak>
-                <button type="button" class="chip-family" @click.stop="openFamily(familyById(s.family_id))" x-text="familyById(s.family_id) ? (famTypeShort(familyById(s.family_id)) + ' ' + familyById(s.family_id).family_name) : ''"></button>
+                <button type="button" class="chip-family" @click.stop="openFamily(familyById(s.family_id))" x-text="familyById(s.family_id) ? (famTypeShort(familyById(s.family_id)) + ' ' + famText(familyById(s.family_id), 'family_name')) : ''"></button>
               </div>
               <!-- fam:fim -->
               <div class="card-chips" x-show="s.linha" x-cloak><span class="chip-linha" x-text="s.linha"></span></div>
@@ -958,7 +958,7 @@
         <div class="family-callout" x-show="familyOf(selectedStudy)" x-cloak>
           <i data-lucide="network" style="width:16px;height:16px"></i>
           <div>
-            <div><span x-text="famPartOf(familyOf(selectedStudy))"></span> <strong x-text="familyOf(selectedStudy) ? familyOf(selectedStudy).family_name : ''"></strong><template x-if="!famIsCohort(familyOf(selectedStudy))"><span>
+            <div><span x-text="famPartOf(familyOf(selectedStudy))"></span> <strong x-text="familyOf(selectedStudy) ? famText(familyOf(selectedStudy), 'family_name') : ''"></strong><template x-if="!famIsCohort(familyOf(selectedStudy))"><span>
               (<span x-text="familyOf(selectedStudy) ? famType(familyOf(selectedStudy)) : ''"></span>)</span></template>: <span x-text="selectedStudy.comparison_label"></span></div>
             <button type="button" class="link-btn" @click="openFamily(familyOf(selectedStudy))" x-text="famK(familyOf(selectedStudy), 'famSeeOthers')"></button>
           </div>
@@ -1145,7 +1145,7 @@
           <span class="family-badge" x-text="famType(selectedFamily)"></span>
           <span x-text="selectedFamily.period" style="margin-left: 0.5rem"></span>
         </div>
-        <h2 class="modal-title" x-text="selectedFamily.family_name"></h2>
+        <h2 class="modal-title" x-text="famText(selectedFamily, 'family_name')"></h2>
         <p class="modal-fulltitle" x-text="selectedFamily.full_name"></p>
         <div class="modal-meta">
           <span class="text-mono" x-text="(selectedFamily.registry_ids || []).join(' · ')"></span>
@@ -1175,6 +1175,18 @@
           <div class="section-block-title" x-text="tt('db.famControl', 'Controle e evolução do padrão')"></div>
           <div class="field-text" x-text="selectedFamily.control_summary"></div>
         </div>
+        <div class="section-block" x-show="(selectedFamily.contributing_studies || []).length">
+          <div class="section-block-title" x-text="tt('db.famContributing', 'Estudos contribuidores')"></div>
+          <ul class="family-members family-members-modal">
+            <template x-for="c in (selectedFamily.contributing_studies || [])" :key="c.registry_id">
+              <li><span x-text="c.study_name"></span> <small class="text-mono" x-text="c.registry_id"></small> <small x-show="c.role" x-text="c.role"></small></li>
+            </template>
+          </ul>
+        </div>
+        <div class="section-block" x-show="selectedFamily.overlap_note">
+          <div class="section-block-title" x-text="tt('db.famOverlap', 'Sobreposição de pacientes')"></div>
+          <div class="field-text" x-text="famText(selectedFamily, 'overlap_note')"></div>
+        </div>
         <div class="section-block" x-show="selectedFamily.shared_intervention">
           <div class="section-block-title" x-text="tt('db.famSharedIntervention', 'Intervenção compartilhada')"></div>
           <div class="field-text" x-text="selectedFamily.shared_intervention"></div>
@@ -1193,9 +1205,9 @@
             <table class="family-arms">
               <thead><tr><th x-text="famK(selectedFamily, 'famArm')"></th><th x-text="famK(selectedFamily, 'famTreatment')"></th><th x-text="tt('db.famStatus', 'Status')"></th><th x-text="tt('db.famMainPub', 'Publicação principal')"></th><th x-text="tt('db.famInDb', 'No Database')"></th></tr></thead>
               <tbody>
-                <template x-for="a in famUnits(selectedFamily)" :key="a.arm || a.cohort || a.randomization">
+                <template x-for="a in famUnits(selectedFamily)" :key="a.arm || a.cohort || a.randomization || a.analysis">
                   <tr>
-                    <td class="text-mono" x-text="a.arm || a.cohort || a.randomization"></td>
+                    <td class="text-mono" x-text="a.arm || a.cohort || a.randomization || a.analysis"></td>
                     <td x-text="a.treatment || [a.label, a.selection].filter(Boolean).join(' · ')"></td>
                     <td x-text="a.status"></td>
                     <td>
@@ -1362,12 +1374,12 @@
   </div>
 </footer>
 
-<script src="assets/js/data.js?v=71f30138c8"></script>
+<script src="assets/js/data.js?v=a176740a49"></script>
 <script src="assets/js/secondary-cards.js?v=18965990a2"></script>
-<script src="assets/js/common.js?v=6cfd991409"></script>
+<script src="assets/js/common.js?v=68f651f327"></script>
 <script src="assets/js/citation.js?v=e884983a80"></script>
 <script src="assets/js/glossario.js?v=cd226d8143"></script>
-<script src="assets/js/i18n.js?v=08c0114a1a"></script>
+<script src="assets/js/i18n.js?v=89d3a2be08"></script>
 <script>
 function databaseApp() {
   return {
@@ -1654,8 +1666,17 @@ function databaseApp() {
     famTypeShort(f) { return f ? this.tt('db.famTypeShort_' + f.design_type, (f.design_label || '').split(' · ')[0]) : ''; },
     // Basket/multicoorte fala em "coortes"; plataforma, em "braços"/"comparações". Mesmo componente.
     // Fallback local: o service worker pode servir um common.js antigo (cache-first) na 1ª visita pós-deploy.
-    famIsCohort(f) { return TheraTrials.familyIsCohort ? TheraTrials.familyIsCohort(f) : !!(f && ((f.cohorts || []).length || (f.randomizations || []).length)); },
-    famUnits(f) { return TheraTrials.familyUnits ? TheraTrials.familyUnits(f) : (!f ? [] : (f.cohorts || []).length ? f.cohorts : (f.randomizations || []).length ? f.randomizations : (f.arms || [])); },
+    // Texto estrutural da família no idioma ativo: `f.i18n[lang][campo]` quando existe (ex.: nome do
+    // fármaco em EN); senão o valor base (PT). Dados clínicos dos cards não passam por aqui.
+    famText(f, campo) {
+      this.langTick;
+      if (!f) return '';
+      const lang = window.getLang ? window.getLang() : 'pt-br';
+      const loc = f.i18n && f.i18n[lang];
+      return (loc && loc[campo]) || f[campo] || '';
+    },
+    famIsCohort(f) { return TheraTrials.familyIsCohort ? TheraTrials.familyIsCohort(f) : !!(f && ((f.cohorts || []).length || (f.randomizations || []).length || (f.analyses || []).length)); },
+    famUnits(f) { return TheraTrials.familyUnits ? TheraTrials.familyUnits(f) : (!f ? [] : (f.cohorts || []).length ? f.cohorts : (f.randomizations || []).length ? f.randomizations : (f.analyses || []).length ? f.analyses : (f.arms || [])); },
     famKind(f) {
       if (TheraTrials.familyUnitKind) return TheraTrials.familyUnitKind(this.data, f);
       if (!this.famIsCohort(f)) return 'arm';
@@ -1675,6 +1696,17 @@ function databaseApp() {
         famArm: ['Braço', 'Coorte', 'Coorte / população', 'Randomização'],
         famTreatment: ['Tratamento', 'População e seleção', 'Análise e seleção', 'Comparação'],
       }[base] || [base, base, base, base];
+      // Rótulos próprios do tipo de família, quando o vocabulário genérico não serve
+      // (uma análise integrada não é protocolo nem tem coortes: tem análises e estudos contribuidores).
+      const porTipo = {
+        integrated_analysis: {
+          famArm: 'Análise', famTreatment: 'População',
+          famOpenProtocol: 'Ver a análise integrada e todas as análises',
+          famSeeOthers: 'Ver a análise integrada e as demais análises →',
+          famNote: 'Este registro descreve apenas a estrutura da análise integrada. Os resultados ficam no card de cada análise.',
+        },
+      }[f && f.design_type] || {};
+      if (porTipo[base]) return this.tt('db.' + base + '_' + f.design_type, porTipo[base]);
       const kind = this.famKind(f);
       if (kind === 'cohort') return this.tt('db.' + base + 'Cohort', fb[1]);
       if (kind === 'analysis') return this.tt('db.' + base + 'Analysis', fb[2]);

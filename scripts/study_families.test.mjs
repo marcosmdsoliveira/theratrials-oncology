@@ -239,6 +239,8 @@ const CHAVES = [...new Set([
   ...[...BLOCOS_FAM.join('\n').matchAll(/tt\('db\.(\w+)'/g)].map((m) => m[1]),
   ...[...BLOCOS_FAM.join('\n').matchAll(/famK\([^,]+, '(\w+)'\)/g)].flatMap((m) => [m[1], m[1] + 'Cohort', m[1] + 'Analysis', m[1] + 'Randomization']),
   'famRandomizations', 'famRandomizationsOne', 'famPartOf_master_protocol', 'famPartOf_multicohort',
+  'famContributing', 'famOverlap', 'famPartOf_integrated_analysis', 'famArm_integrated_analysis', 'famTreatment_integrated_analysis',
+  'famOpenProtocol_integrated_analysis', 'famSeeOthers_integrated_analysis', 'famNote_integrated_analysis',
   'famAnalyses', 'famAnalysesOne', 'famCohorts', 'famCohortsOne', 'famPartOf', 'famPartOfCohort', 'famPartOf_basket',
   'famSharedIntervention',
 ])];
@@ -510,7 +512,6 @@ test('multicoorte: filhos independentes, uid preservado, título distinto, rela�
 test('multicoorte: NCT compartilhado dentro da família sai dos avisos; grupos não migrados continuam', () => {
   const r = validarCom(() => {});
   assert.doesNotMatch(r.saida, /NCT NCT03785249 também está|NCT NCT03157128 também está/);
-  assert.match(r.saida, /NCT NCT02568267 também está/);     // NTRK/ROS1, ainda sem família
 });
 
 test('multicoorte: busca pelo acrônimo mostra a família; busca por tumor acha o filho', () => {
@@ -605,7 +606,7 @@ test('master protocol HR-NBL1/SIOPEN: randomizações R0–R4, só R1 e R2 com c
   assert.deepEqual(js(HRNBL.randomizations.filter((x) => x.card_uids.length).map((x) => [x.randomization, x.card_uids[0]])), [['R1', 'neuroblastoma_10'], ['R2', 'neuroblastoma_7']]);
   assert.deepEqual(js(HRNBL.member_uids), HR_MEMBROS);
   assert.equal(HRNBL.legacy_uids, undefined);
-  assert.equal(D.families.length, 8);
+  assert.ok(D.families.some((f) => f.family_id === 'hr-nbl1-siopen'));
 });
 
 test('master protocol: membros são randomizações; vocabulário vem da relação, não do design_type', () => {
@@ -642,12 +643,12 @@ test('master protocol: busca pelo acrônimo mostra a família; por tema acha o f
   }
 });
 
-test('master protocol: NCT01704716 sai dos avisos; sobram só os de NTRK/ROS1', () => {
+test('master protocol: NCT01704716 sai dos avisos de NCT compartilhado', () => {
   const r = validarCom(() => {});
   assert.equal(r.code, 0, r.saida);
   assert.doesNotMatch(r.saida, /NCT NCT01704716 também está/);
   const avisos = [...r.saida.matchAll(/NCT (NCT\d{8}) também está/g)].map((m) => m[1]);
-  assert.deepEqual([...new Set(avisos)].sort(), ['NCT02122913', 'NCT02568267']);
+  assert.ok(!avisos.includes('NCT01704716'));
 });
 reprova('master protocol sem randomizações (randomizations)', (d) => {
   const f = d.families.find((x) => x.family_id === 'hr-nbl1-siopen'); f.arms = f.randomizations; delete f.randomizations;
@@ -693,3 +694,164 @@ test('master protocol: contagem 1/N randomizações, badge e rótulos PT/EN', ()
   assert.equal(DICT.en.db.famPartOf_master_protocol, 'Part of the master protocol');
   assert.match(HTML_DB, /a\.arm \|\| a\.cohort \|\| a\.randomization/);
 });
+
+// ── análises integradas: entrectinibe e larotrectinibe ─────────────────────
+/* Análise integrada ≠ protocolo: vários estudos contribuem pacientes e cada publicação seleciona
+ * sua população (tumor/fusão). Os estudos ficam em `contributing_studies` (nome + registro, que
+ * pode ser NCT ou EudraCT); os cards são análises (`analysis`). */
+const ENT = T.familyById(D, 'entrectinib-integrated');
+const LARO = T.familyById(D, 'larotrectinib-integrated');
+const ENT_CARD = 'entrectinib-pooled-ros1-e-ntrk-em-nsclc';
+
+test('2 análises integradas: estudos contribuidores com NCT e EudraCT, sem linhas de protocolo', () => {
+  for (const f of [ENT, LARO]) {
+    assert.ok(f);
+    assert.equal(f.design_type, 'integrated_analysis');
+    for (const k of ['arms', 'cohorts', 'randomizations']) assert.equal(f[k], undefined, `${f.family_id}.${k}`);
+    assert.ok(f.registry_ids.length >= 3, 'vários registros, nenhum "principal"');
+    assert.deepEqual(js(f.contributing_studies.map((c) => c.registry_id)), js(f.registry_ids));
+    assert.match(f.design_summary, /Não é um protocolo único/);
+    assert.ok(f.overlap_note, 'nota de sobreposição/proveniência');
+    assert.equal(T.familyUnitKind(D, f), 'analysis');
+  }
+  assert.deepEqual(js(ENT.contributing_studies.map((c) => [c.study_name, c.registry_id])),
+    [['ALKA-372-001', 'EudraCT 2012-000148-88'], ['STARTRK-1', 'NCT02097810'], ['STARTRK-2', 'NCT02568267']]);
+  assert.deepEqual(js(LARO.contributing_studies.map((c) => [c.study_name, c.registry_id])),
+    [['LOXO-TRK-14001', 'NCT02122913'], ['SCOUT', 'NCT02637687'], ['NAVIGATE', 'NCT02576431']]);
+  assert.ok(!ENT.contributing_studies.some((c) => /STARTRK-NG|NCT02650401/.test(JSON.stringify(c))), 'STARTRK-NG só entrou na segurança');
+  assert.deepEqual(js(ENT.member_uids), [ENT_CARD, 'pancreas_9']);
+  assert.deepEqual(js(LARO.member_uids), ['tireoide_avancado_8']);
+  assert.equal(D.families.length, 10);
+});
+
+test('análise integrada: membros são análises; uids preservados; títulos inequívocos', () => {
+  for (const u of [ENT_CARD, 'pancreas_9', 'tireoide_avancado_8']) {
+    assert.equal(card(u).family_relation, 'analysis', u);
+    assert.equal(T.familyForHash(D, u), null, `#${u} abre o card`);
+  }
+  assert.equal(card(ENT_CARD).family_id, 'entrectinib-integrated');
+  assert.equal(card('pancreas_9').family_id, 'entrectinib-integrated');
+  assert.equal(card('tireoide_avancado_8').family_id, 'larotrectinib-integrated');
+  assert.equal(T.studyTitle(card(ENT_CARD).estudo), 'Entrectinibe · NSCLC ROS1+ — análise integrada');
+  assert.equal(T.studyTitle(card('pancreas_9').estudo), 'Entrectinibe · Pâncreas NTRK+ — subgrupo da análise integrada');
+  assert.equal(T.studyTitle(card('tireoide_avancado_8').estudo), 'Larotrectinibe · Tireoide NTRK+ — análise integrada');
+  assert.equal(D.studies.length, 507);
+});
+
+test('análise integrada: PMID correto por card e números da publicação representada', () => {
+  for (const [u, pmid, ano] of [[ENT_CARD, '31838015', 2020], ['pancreas_9', '31838007', 2020], ['tireoide_avancado_8', '35333737', 2022]]) {
+    assert.equal(card(u).citation.pmid, pmid, u);
+    assert.equal(card(u).pubmed_url, `https://pubmed.ncbi.nlm.nih.gov/${pmid}/`, u);
+    assert.equal(card(u).ano_pub, ano, u);
+  }
+  assert.match(card(ENT_CARD).primario, /ORR 77% \(41\/53/);
+  assert.match(card(ENT_CARD).primario, /24,6 m/);
+  assert.match(card('pancreas_9').primario, /2 de 3 pacientes \(67%/);
+  assert.match(card('tireoide_avancado_8').primario, /71%.*86%.*29%/);
+});
+
+test('análise integrada: correções não regridem (sem mistura de programas, ROS1 separado de NTRK)', () => {
+  const ent = JSON.stringify(card(ENT_CARD));
+  assert.doesNotMatch(ent, /NTRK\+: ORR 57%|N=54|31838007/, 'card ROS1 sem resultados NTRK pan-tumor');
+  assert.match(card(ENT_CARD).nct, /NCT02097810/);
+  assert.match(card(ENT_CARD).nct, /EudraCT 2012-000148-88/);
+  const pan = JSON.stringify(card('pancreas_9'));
+  assert.doesNotMatch(pan, /[Ll]arotrectin|NCT02122913|NCT02576431|NCT02637687|NAVIGATE|~70|n~10|Cabanillas/);
+  assert.match(card('pancreas_9').limit, /n=3/);
+  assert.match(card('pancreas_9').secundario, /não específico do pâncreas/);
+  const tir = JSON.stringify(card('tireoide_avancado_8'));
+  assert.doesNotMatch(tir, /\bDTC\b|Hong DS et al\. Lancet Oncol 2024|n=261|29466156/);
+  assert.match(card('tireoide_avancado_8').basal, /anaplásico 7/);
+});
+
+test('análise integrada: NCT compartilhado só dentro da família; zero avisos sem afrouxar o detector', () => {
+  const r = validarCom(() => {});
+  assert.equal(r.code, 0, r.saida);
+  assert.doesNotMatch(r.saida, /também está em/);
+  // o detector continua ativo: um NCT do programa larotrectinibe num card do entrectinibe volta a ser apontado
+  const r2 = validarCom((d) => { d.studies.find((s) => s.uid === 'pancreas_9').nct += ' / NCT02122913'; });
+  assert.match(r2.saida, /NCT NCT02122913 também está em/);
+});
+reprova('análise integrada com um único estudo contribuidor', (d) => {
+  d.families.find((f) => f.family_id === 'larotrectinib-integrated').contributing_studies.splice(1);
+}, /≥2 estudos contribuidores/);
+reprova('estudo contribuidor com registro inválido', (d) => {
+  d.families.find((f) => f.family_id === 'entrectinib-integrated').contributing_studies[0].registry_id = 'ALKA-372-001';
+}, /registro inválido/);
+reprova('membro de análise integrada com relação de coorte', (d) => {
+  d.studies.find((s) => s.uid === 'pancreas_9').family_relation = 'cohort';
+}, /family_relation "analysis"/);
+reprova('resultado clínico na nota de sobreposição', (d) => {
+  d.families.find((f) => f.family_id === 'entrectinib-integrated').overlap_note += ' ORR 57%.';
+}, /overlap_note traz resultado clínico/);
+
+test('análise integrada: busca, filtros e links família ↔ card', () => {
+  for (const [q, id] of [['entrectinib', 'entrectinib-integrated'], ['STARTRK', 'entrectinib-integrated'], ['larotrectinib', 'larotrectinib-integrated'], ['NAVIGATE', 'larotrectinib-integrated']]) {
+    assert.ok(T.familyMatchesQuery(T.familyById(D, id), q), q);
+  }
+  assert.ok(T.familiesToShow(D, busca('NCT02097810'), 'NCT02097810', false).some((f) => f.family_id === 'entrectinib-integrated'));
+  for (const [q, u] of [['ROS1', ENT_CARD], ['pâncreas', 'pancreas_9'], ['tireoide', 'tireoide_avancado_8'], ['entrectinibe', 'pancreas_9']]) {
+    assert.ok(busca(q).some((s) => s.uid === u), `${q} → ${u}`);
+  }
+  const esperado = { [ENT_CARD]: ['nsclc_alvo', 'pulmao'], pancreas_9: ['pancreas', 'pancreas'], tireoide_avancado_8: ['tireoide_avancado', 'tireoide'] };
+  for (const [u, [cat, tumor]] of Object.entries(esperado)) {
+    assert.equal(card(u).category_id, cat, u);
+    assert.deepEqual(js(T.tumorTypes.filter((t) => t.match(card(u))).map((t) => t.id)), [tumor], u);
+  }
+  assert.deepEqual(js(T.familyMembers(D, ENT).map((s) => s.uid)), [ENT_CARD, 'pancreas_9']);
+});
+
+test('análise integrada: contagem 1/N análises, badge, seção de estudos e rótulos PT/EN', () => {
+  const corpo = HTML_DB.match(/famCount\(f\) \{([\s\S]*?)\n    \},/)[1];
+  const vm2 = { tt: (k, f) => (k.endsWith('One') ? 'U:' : 'P:') + f, famKind: (f) => T.familyUnitKind(D, f), familyMembers: (f) => T.familyMembers(D, f) };
+  const famCount = new Function('f', corpo).bind(vm2);
+  assert.equal(famCount(ENT), '2 P:análises no Database');
+  assert.equal(famCount(LARO), '1 U:análise no Database');
+  assert.equal(DICT['pt-br'].db.famType_integrated_analysis, 'Análise integrada');
+  assert.equal(DICT.en.db.famType_integrated_analysis, 'Integrated analysis');
+  assert.equal(DICT['pt-br'].db.famContributing, 'Estudos contribuidores');
+  assert.equal(DICT.en.db.famContributing, 'Contributing studies');
+  assert.equal(DICT['pt-br'].db.famPartOf_integrated_analysis, 'Parte da análise integrada de');
+  assert.equal(DICT.en.db.famPartOf_integrated_analysis, 'Part of the integrated analysis of');
+  assert.equal(DICT.en.db.famAnalysesOne, 'analysis in the Database');
+  assert.match(HTML_DB, /tt\('db\.famContributing'/);
+  // análise integrada não é protocolo: rótulos próprios, sem "protocolo"/"coorte"
+  for (const k of ['famArm', 'famTreatment', 'famOpenProtocol', 'famSeeOthers', 'famNote']) {
+    for (const l of ['pt-br', 'en']) assert.doesNotMatch(DICT[l].db[`${k}_integrated_analysis`], /protocol|coorte|cohort/i, `${l} ${k}`);
+  }
+  assert.match(HTML_DB, /a\.arm \|\| a\.cohort \|\| a\.randomization \|\| a\.analysis/);
+});
+
+test('análise integrada: nome do fármaco localizado (PT/EN) por famText, sem hardcode no componente', () => {
+  assert.equal(ENT.family_name, 'Entrectinibe');
+  assert.equal(LARO.family_name, 'Larotrectinibe');
+  assert.equal(ENT.i18n.en.family_name, 'Entrectinib');
+  assert.equal(LARO.i18n.en.family_name, 'Larotrectinib');
+  const corpo = HTML_DB.match(/famText\(f, campo\) \{([\s\S]*?)\n    \},/)[1];
+  for (const [lang, ent, laro] of [['pt-br', 'Entrectinibe', 'Larotrectinibe'], ['en', 'Entrectinib', 'Larotrectinib']]) {
+    const famText = new Function('f', 'campo', `const window = { getLang: () => '${lang}' }; ${corpo}`).bind({ langTick: 0 });
+    assert.equal(famText(ENT, 'family_name'), ent, lang);
+    assert.equal(famText(LARO, 'family_name'), laro, lang);
+    assert.equal(famText(STAMPEDE, 'family_name'), 'STAMPEDE', 'sem i18n: valor base');
+  }
+  // título, chip, callout, modal e nota de sobreposição usam famText
+  for (const trecho of ["famText(f, 'family_name')", "famText(familyOf(selectedStudy), 'family_name')", "famText(selectedFamily, 'family_name')", "famText(selectedFamily, 'overlap_note')"]) {
+    assert.ok(HTML_DB.includes(trecho), trecho);
+  }
+  assert.ok(T.familyMatchesQuery(ENT, 'Entrectinib') && T.familyMatchesQuery(LARO, 'Larotrectinib'));
+});
+
+test('análise integrada: nota de sobreposição do entrectinibe descreve populações distintas (PT/EN)', () => {
+  assert.match(ENT.overlap_note, /populações distintas por tipo tumoral e alteração molecular/);
+  assert.match(ENT.overlap_note, /podem reutilizar pacientes desses mesmos estudos/);
+  assert.doesNotMatch(ENT.overlap_note, /não informam a sobreposição individual/);
+  assert.match(ENT.i18n.en.overlap_note, /distinct populations defined by tumor type and molecular alteration/);
+  assert.match(LARO.overlap_note, /grau exato de sobreposição com essas publicações não é quantificado na fonte/);
+  assert.match(LARO.i18n.en.overlap_note, /not quantified in the source/);
+});
+reprova('i18n da família com resultado clínico', (d) => {
+  d.families.find((f) => f.family_id === 'entrectinib-integrated').i18n.en.overlap_note += ' ORR 77%.';
+}, /i18n\.en\.overlap_note traz resultado clínico/);
+reprova('i18n da família com campo não estrutural', (d) => {
+  d.families.find((f) => f.family_id === 'entrectinib-integrated').i18n.en.primario = 'x';
+}, /não é campo estrutural traduzível/);

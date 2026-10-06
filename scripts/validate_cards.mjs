@@ -195,6 +195,7 @@ const FAMILY_TYPES = new Set(['platform', 'platform_mams', 'basket', 'umbrella',
 const FAMILY_RELATIONS = new Set(['comparison', 'cohort', 'analysis', 'randomization', 'substudy', 'integrated_analysis']);
 // "HR" seguido de hífen é nome de estudo (HR-NBL1), não hazard ratio
 const CLINICO_NA_FAMILIA = /\bHR\b(?!-)|hazard|\bIC ?95|\bCI ?95|mediana|\bORR\b|\bp ?[<=]|\d+(?:[.,]\d+)? ?%/i;
+const REGISTRO = /^(NCT\d{8}|ISRCTN\d{8}|EudraCT \d{4}-\d{6}-\d{2})$/;
 const FAM = Array.isArray(D.families) ? D.families : [];
 if (D.families !== undefined && !Array.isArray(D.families)) F('(families)', '`families` precisa ser uma lista');
 const famPorId = new Map();
@@ -208,21 +209,41 @@ for (const f of FAM) {
   if (uidsEstudo.has(id)) F(id, 'family_id colide com o uid de um card');
   if (!f.family_name) F(id, 'family_name ausente');
   if (!FAMILY_TYPES.has(f.design_type)) F(id, `design_type "${f.design_type}" fora de ${[...FAMILY_TYPES].join('/')}`);
-  for (const r of f.registry_ids || []) if (!/^(NCT\d{8}|ISRCTN\d{8})$/.test(r)) F(id, `registry_id inválido: ${r}`);
+  for (const r of f.registry_ids || []) if (!REGISTRO.test(r)) F(id, `registry_id inválido: ${r}`);
+  // Análise integrada: vários estudos contribuem pacientes; nenhum é "o" protocolo. Cada estudo tem nome e
+  // registro (NCT, ISRCTN ou EudraCT) e entra também em registry_ids.
+  if (f.design_type === 'integrated_analysis') {
+    const cs = f.contributing_studies || [];
+    if (cs.length < 2) F(id, 'análise integrada lista ≥2 estudos contribuidores (contributing_studies)');
+    if (!(f.analyses || []).length) F(id, 'análise integrada descreve as análises representadas (analyses)');
+    for (const c of cs) {
+      if (!c.study_name || !REGISTRO.test(String(c.registry_id))) F(id, `estudo contribuidor sem nome ou com registro inválido: ${JSON.stringify(c)}`);
+      else if (!(f.registry_ids || []).includes(c.registry_id)) F(id, `registro ${c.registry_id} do estudo contribuidor fora de registry_ids`);
+    }
+  } else if (f.contributing_studies !== undefined) F(id, 'contributing_studies só se aplica a design_type integrated_analysis');
   for (const u of f.legacy_uids || []) {
     if (uidsEstudo.has(u)) F(id, `legacy_uid ${u} ainda existe como card: o deep link abriria o card, não a família`);
     if (legados.has(u)) F(id, `legacy_uid ${u} repetido em outra família`);
     legados.add(u);
   }
-  for (const campo of ['family_name', 'full_name', 'period', 'population', 'design_summary', 'control_summary', 'shared_intervention', 'note']) {
+  for (const campo of ['family_name', 'full_name', 'period', 'population', 'design_summary', 'control_summary', 'shared_intervention', 'note', 'overlap_note']) {
     if (CLINICO_NA_FAMILIA.test(String(f[campo] ?? ''))) F(id, `campo ${campo} traz resultado clínico (HR, %, mediana…): ele pertence ao card da comparação`);
   }
   if ('resultado_chave' in f || 'primario' in f) F(id, 'família não tem resultado_chave nem primario');
-  if ([f.arms, f.cohorts, f.randomizations].filter((x) => x !== undefined).length > 1) F(id, 'família com mais de um tipo de linha (arms/cohorts/randomizations): use um só');
+  // versões por idioma de campos estruturais (i18n.<lang>.<campo>): só campos de texto da família, sem resultado clínico
+  for (const [lang, campos] of Object.entries(f.i18n || {})) {
+    if (!['pt-br', 'en'].includes(lang)) F(id, `i18n com idioma desconhecido: ${lang}`);
+    for (const [campo, v] of Object.entries(campos || {})) {
+      if (!['family_name', 'full_name', 'population', 'design_summary', 'note', 'overlap_note'].includes(campo)) F(id, `i18n.${lang}.${campo} não é campo estrutural traduzível`);
+      if (CLINICO_NA_FAMILIA.test(String(v))) F(id, `i18n.${lang}.${campo} traz resultado clínico`);
+    }
+  }
+  if ([f.arms, f.cohorts, f.randomizations, f.analyses].filter((x) => x !== undefined).length > 1) F(id, 'família com mais de um tipo de linha (arms/cohorts/randomizations/analyses): use um só');
   if (f.design_type === 'master_protocol' && !(f.randomizations || []).length) F(id, 'master protocol descreve as randomizações do protocolo (randomizations)');
   if (f.design_type === 'basket' && !(f.cohorts || []).length) F(id, 'basket descreve coortes (cohorts), não braços');
   const unidades = (f.cohorts || []).map((c) => ({ ...c, rot: `coorte ${c.cohort}`, texto: `${c.cohort ?? ''} ${c.label ?? ''} ${c.selection ?? ''} ${c.status ?? ''}` }))
     .concat((f.randomizations || []).map((c) => ({ ...c, rot: `randomização ${c.randomization}`, texto: `${c.randomization ?? ''} ${c.label ?? ''} ${c.selection ?? ''} ${c.status ?? ''}` })))
+    .concat((f.analyses || []).map((c) => ({ ...c, rot: `análise ${c.analysis}`, texto: `${c.analysis ?? ''} ${c.label ?? ''} ${c.selection ?? ''} ${c.status ?? ''}` })))
     .concat((f.arms || []).map((a) => ({ ...a, rot: `braço ${a.arm}`, texto: `${a.treatment ?? ''} ${a.status ?? ''}` })));
   for (const a of unidades) {
     if (CLINICO_NA_FAMILIA.test(a.texto)) F(id, `${a.rot}: resultado clínico no texto da linha`);
@@ -248,7 +269,7 @@ for (const s of S) {
   if (!f) { F(s.uid, `family_id "${s.family_id}" não existe em families[]`); continue; }
   if (!FAMILY_RELATIONS.has(s.family_relation)) F(s.uid, `family_relation "${s.family_relation}" fora de ${[...FAMILY_RELATIONS].join('/')}`);
   if (vazio(s.comparison_label)) F(s.uid, 'membro de família sem comparison_label');
-  const linhas = (f.cohorts || []).concat(f.randomizations || [], f.arms || []);
+  const linhas = (f.cohorts || []).concat(f.randomizations || [], f.analyses || [], f.arms || []);
   if (linhas.length && !linhas.some((a) => (a.card_uids || []).includes(s.uid))) {
     F(s.uid, `membro de ${f.family_id} não aparece em nenhum braço/coorte da família`);
   }
@@ -256,6 +277,9 @@ for (const s of S) {
   // em família com coortes, o membro declara explicitamente se é coorte protocolar ou análise.
   if ((f.cohorts || []).length && !['cohort', 'analysis'].includes(s.family_relation)) {
     F(s.uid, `membro de família basket/multicoorte precisa de family_relation "cohort" ou "analysis"`);
+  }
+  if ((f.analyses || []).length && s.family_relation !== 'analysis') {
+    F(s.uid, `membro de análise integrada precisa de family_relation "analysis"`);
   }
   if ((f.randomizations || []).length && !['randomization', 'analysis'].includes(s.family_relation)) {
     F(s.uid, `membro de master protocol precisa de family_relation "randomization" ou "analysis"`);
