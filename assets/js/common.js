@@ -84,7 +84,7 @@
    * `family_id`. `legacy_uids` mantém vivo o deep link de um card antigo que virou família.
    * Frontends antigos ignoram `families` e continuam funcionando. */
   TheraTrials.FAMILY_TYPES = ['platform', 'platform_mams', 'basket', 'umbrella', 'multicohort',
-    'master_protocol', 'integrated_analysis'];
+    'master_protocol', 'integrated_analysis', 'factorial'];
 
   TheraTrials.familyList = function(data) {
     return (data && Array.isArray(data.families)) ? data.families : [];
@@ -103,16 +103,19 @@
    * código, descrição, status, publicação e card_uids. */
   // Linhas que não são braços: `cohorts` (basket, multicoorte), `randomizations` (master protocol: randomizações
   // incorporadas ao protocolo em componentes e períodos diferentes — não fases sequenciais) ou `analyses`
-  // (análise integrada: populações selecionadas de vários estudos, listados em `contributing_studies`).
+  // (análise integrada: populações selecionadas de vários estudos, listados em `contributing_studies`) ou
+  // `comparisons` (fatorial: cada fator é uma pergunta randomizada; o desenho fica em `factors`/`cells`).
   TheraTrials.familyIsCohort = function(fam) {
     return !!fam && ((Array.isArray(fam.cohorts) && fam.cohorts.length > 0) || (Array.isArray(fam.randomizations) && fam.randomizations.length > 0) ||
-      (Array.isArray(fam.analyses) && fam.analyses.length > 0));
+      (Array.isArray(fam.analyses) && fam.analyses.length > 0) ||
+      (Array.isArray(fam.comparisons) && fam.comparisons.length > 0));
   };
   TheraTrials.familyUnits = function(fam) {
     if (!fam) return [];
     if (Array.isArray(fam.cohorts) && fam.cohorts.length) return fam.cohorts;
     if (Array.isArray(fam.randomizations) && fam.randomizations.length) return fam.randomizations;
     if (Array.isArray(fam.analyses) && fam.analyses.length) return fam.analyses;
+    if (Array.isArray(fam.comparisons) && fam.comparisons.length) return fam.comparisons;
     return fam.arms || [];
   };
   /* Vocabulário da família na interface: 'arm' (plataforma: braços/comparações), 'cohort' (todos os
@@ -126,7 +129,7 @@
     if (!TheraTrials.familyIsCohort(fam)) return 'arm';
     var m = TheraTrials.familyMembers(data, fam);
     var todos = function(r) { return m.length > 0 && m.every(function(s) { return s.family_relation === r; }); };
-    return todos('cohort') ? 'cohort' : todos('randomization') ? 'randomization' : 'analysis';
+    return todos('cohort') ? 'cohort' : todos('randomization') ? 'randomization' : todos('comparison') ? 'comparison' : 'analysis';
   };
   // Membros no Database, na ordem dos braços/coortes da família (os sem unidade vão para o fim).
   TheraTrials.familyMembers = function(data, fam) {

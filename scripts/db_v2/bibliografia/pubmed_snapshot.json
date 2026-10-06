@@ -47696,6 +47696,114 @@
 ],
 "retrieved_at": "2026-09-29"
 },
+"39580202": {
+"pmid": "39580202",
+"authors": [
+{
+"name": "Bossi A",
+"authtype": "Author"
+},
+{
+"name": "Foulon S",
+"authtype": "Author"
+},
+{
+"name": "Maldonado X",
+"authtype": "Author"
+},
+{
+"name": "Sargos P",
+"authtype": "Author"
+},
+{
+"name": "MacDermott R",
+"authtype": "Author"
+},
+{
+"name": "Kelly P",
+"authtype": "Author"
+},
+{
+"name": "Fléchon A",
+"authtype": "Author"
+},
+{
+"name": "Tombal B",
+"authtype": "Author"
+},
+{
+"name": "Supiot S",
+"authtype": "Author"
+},
+{
+"name": "Berthold D",
+"authtype": "Author"
+},
+{
+"name": "Ronchin P",
+"authtype": "Author"
+},
+{
+"name": "Kacso G",
+"authtype": "Author"
+},
+{
+"name": "Salem N",
+"authtype": "Author"
+},
+{
+"name": "Calabro F",
+"authtype": "Author"
+},
+{
+"name": "Berdah JF",
+"authtype": "Author"
+},
+{
+"name": "Hasbini A",
+"authtype": "Author"
+},
+{
+"name": "Silva M",
+"authtype": "Author"
+},
+{
+"name": "Boustani J",
+"authtype": "Author"
+},
+{
+"name": "Ribault H",
+"authtype": "Author"
+},
+{
+"name": "Fizazi K",
+"authtype": "Author"
+},
+{
+"name": "PEACE-1 investigators",
+"authtype": "CollectiveName"
+}
+],
+"title": "Efficacy and safety of prostate radiotherapy in de novo metastatic castration-sensitive prostate cancer (PEACE-1): a multicentre, open-label, randomised, phase 3 study with a 2 × 2 factorial design.",
+"source": "Lancet",
+"fulljournalname": "Lancet (London, England)",
+"pubdate": "2024 Nov 23",
+"epubdate": "",
+"volume": "404",
+"issue": "10467",
+"pages": "2065-2076",
+"elocationid": "doi: 10.1016/S0140-6736(24)01865-8",
+"doi": "10.1016/S0140-6736(24)01865-8",
+"pmcid": null,
+"pubtype": [
+"Journal Article",
+"Clinical Trial, Phase III",
+"Multicenter Study",
+"Randomized Controlled Trial",
+"Research Support, Non-U.S. Gov't"
+],
+"retrieved_at": "2026-10-06"
+},
 "39602630": {
 "pmid": "39602630",
 "authors": [

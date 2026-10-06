@@ -66,17 +66,17 @@
 <link rel="apple-touch-startup-image" media="(device-width: 1133px) and (device-height: 744px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)" href="assets/img/splash/splash-2266x1488.png">
 <!-- PWA:END -->
 <title>Database · TheraTrials Oncology</title>
-<meta name="description" content="Banco interativo de 508 estudos selecionados em oncologia moderna. Filtros por tumor, modalidade, fase e linha.">
+<meta name="description" content="Banco interativo de 509 estudos selecionados em oncologia moderna. Filtros por tumor, modalidade, fase e linha.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://theratrials.com/database.html">
 <meta property="og:title" content="Database · TheraTrials Oncology">
-<meta property="og:description" content="Banco interativo de 508 estudos selecionados em oncologia moderna. Filtre por tumor, modalidade, fase e linha terapêutica.">
+<meta property="og:description" content="Banco interativo de 509 estudos selecionados em oncologia moderna. Filtre por tumor, modalidade, fase e linha terapêutica.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://theratrials.com/database.html">
 <meta property="og:image" content="https://theratrials.com/assets/img/og-cover.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Database · TheraTrials Oncology">
-<meta name="twitter:description" content="Banco interativo de 508 estudos selecionados em oncologia moderna. Filtre por tumor, modalidade, fase e linha terapêutica.">
+<meta name="twitter:description" content="Banco interativo de 509 estudos selecionados em oncologia moderna. Filtre por tumor, modalidade, fase e linha terapêutica.">
 <meta name="twitter:image" content="https://theratrials.com/assets/img/og-cover.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -549,7 +549,7 @@
   "@context": "https://schema.org",
   "@type": "Dataset",
   "name": "TheraTrials Oncology Database",
-  "description": "Banco interativo de 508 estudos selecionados em oncologia moderna, incluindo teranóstico, terapias-alvo e imunoterapia.",
+  "description": "Banco interativo de 509 estudos selecionados em oncologia moderna, incluindo teranóstico, terapias-alvo e imunoterapia.",
   "url": "https://theratrials.com/database.html",
   "license": "https://theratrials.com/direitos-autorais.html",
   "inLanguage": "pt-BR",
@@ -600,7 +600,7 @@
 <!-- HERO -->
 <section class="db-hero">
   <div class="container">
-    <span class="eyebrow" data-i18n="db.heroEyebrow">Banco de evidências · 508 estudos analisados</span>
+    <span class="eyebrow" data-i18n="db.heroEyebrow">Banco de evidências · 509 estudos analisados</span>
     <h1 data-i18n-html="db.heroTitle">Encontre, compare e cite <span class="text-amber">com clareza</span></h1>
     <p data-i18n="db.heroSubtitle">Filtre por tumor, modalidade, fase ou linha. Clique em qualquer estudo para ver os 31 campos detalhados, salvar como favorito, anotar ou copiar a citação formatada.</p>
     <div class="search-wrap">
@@ -812,7 +812,7 @@
               </div>
               <h3 class="family-title" x-text="famText(f, 'family_name')"></h3>
               <div class="card-nct" x-text="(f.registry_ids || []).join(' · ')"></div>
-              <p class="family-summary" x-text="f.design_summary"></p>
+              <p class="family-summary" x-text="famText(f, 'design_summary')"></p>
               <div class="family-members-label" x-text="famK(f, 'famComparisons')"></div>
               <ul class="family-members">
                 <template x-for="m in familyMembers(f)" :key="m.uid">
@@ -958,7 +958,7 @@
         <div class="family-callout" x-show="familyOf(selectedStudy)" x-cloak>
           <i data-lucide="network" style="width:16px;height:16px"></i>
           <div>
-            <div><span x-text="famPartOf(familyOf(selectedStudy))"></span> <strong x-text="familyOf(selectedStudy) ? famText(familyOf(selectedStudy), 'family_name') : ''"></strong><template x-if="!famIsCohort(familyOf(selectedStudy))"><span>
+            <div><span x-text="famPartOfParts(familyOf(selectedStudy))[0]"></span> <strong x-text="familyOf(selectedStudy) ? famText(familyOf(selectedStudy), 'family_name') : ''"></strong><span x-text="famPartOfParts(familyOf(selectedStudy))[1]"></span><template x-if="!famIsCohort(familyOf(selectedStudy))"><span>
               (<span x-text="familyOf(selectedStudy) ? famType(familyOf(selectedStudy)) : ''"></span>)</span></template>: <span x-text="selectedStudy.comparison_label"></span></div>
             <button type="button" class="link-btn" @click="openFamily(familyOf(selectedStudy))" x-text="famK(familyOf(selectedStudy), 'famSeeOthers')"></button>
           </div>
@@ -1165,15 +1165,30 @@
         <p class="family-note" x-show="selectedFamily.note" x-text="selectedFamily.note"></p>
         <div class="section-block">
           <div class="section-block-title" x-text="tt('db.famDesign', 'Desenho')"></div>
-          <div class="field-text" x-text="selectedFamily.design_summary"></div>
+          <div class="field-text" x-text="famText(selectedFamily, 'design_summary')"></div>
         </div>
         <div class="section-block">
           <div class="section-block-title" x-text="tt('db.famPopulation', 'População')"></div>
-          <div class="field-text" x-text="selectedFamily.population"></div>
+          <div class="field-text" x-text="famText(selectedFamily, 'population')"></div>
         </div>
         <div class="section-block" x-show="selectedFamily.control_summary">
           <div class="section-block-title" x-text="tt('db.famControl', 'Controle e evolução do padrão')"></div>
           <div class="field-text" x-text="selectedFamily.control_summary"></div>
+        </div>
+        <div class="section-block" x-show="selectedFamily && (selectedFamily.factors || []).length === 2 && (selectedFamily.cells || []).length">
+          <div class="section-block-title" x-text="tt('db.famFactorialDesign', 'Desenho fatorial')"></div>
+          <div class="family-arms-wrap">
+            <table class="family-arms">
+              <thead><tr><th x-text="famFactors(selectedFamily)[0].factor + ' \\ ' + famFactors(selectedFamily)[1].factor"></th>
+                <template x-for="l2 in famFactors(selectedFamily)[1].levels" :key="l2"><th x-text="l2"></th></template></tr></thead>
+              <tbody>
+                <template x-for="(l1, i1) in famFactors(selectedFamily)[0].levels" :key="l1">
+                  <tr><td class="text-mono" x-text="l1"></td>
+                    <template x-for="(l2, i2) in famFactors(selectedFamily)[1].levels" :key="l2"><td x-text="famCell(selectedFamily, i1, i2)"></td></template></tr>
+                </template>
+              </tbody>
+            </table>
+          </div>
         </div>
         <div class="section-block" x-show="(selectedFamily.contributing_studies || []).length">
           <div class="section-block-title" x-text="tt('db.famContributing', 'Estudos contribuidores')"></div>
@@ -1205,9 +1220,9 @@
             <table class="family-arms">
               <thead><tr><th x-text="famK(selectedFamily, 'famArm')"></th><th x-text="famK(selectedFamily, 'famTreatment')"></th><th x-text="tt('db.famStatus', 'Status')"></th><th x-text="tt('db.famMainPub', 'Publicação principal')"></th><th x-text="tt('db.famInDb', 'No Database')"></th></tr></thead>
               <tbody>
-                <template x-for="a in famUnits(selectedFamily)" :key="a.arm || a.cohort || a.randomization || a.analysis">
+                <template x-for="a in famUnits(selectedFamily)" :key="a.arm || a.cohort || a.randomization || a.analysis || a.comparison">
                   <tr>
-                    <td class="text-mono" x-text="a.arm || a.cohort || a.randomization || a.analysis"></td>
+                    <td class="text-mono" x-text="a.arm || a.cohort || a.randomization || a.analysis || a.comparison"></td>
                     <td x-text="a.treatment || [a.label, a.selection].filter(Boolean).join(' · ')"></td>
                     <td x-text="a.status"></td>
                     <td>
@@ -1368,18 +1383,18 @@
 <footer class="site-footer">
   <div class="container">
     <div class="footer-bottom">
-      <span data-i18n="db.footerLine1">© 2026 TheraTrials Oncology · 508 estudos analisados · v1.0</span>
+      <span data-i18n="db.footerLine1">© 2026 TheraTrials Oncology · 509 estudos analisados · v1.0</span>
       <span data-i18n="db.footerLine2">Para uso educacional. Não substitui diretrizes oficiais.</span>
     </div>
   </div>
 </footer>
 
-<script src="assets/js/data.js?v=cb232b6507"></script>
+<script src="assets/js/data.js?v=cabc226d33"></script>
 <script src="assets/js/secondary-cards.js?v=18965990a2"></script>
-<script src="assets/js/common.js?v=68f651f327"></script>
+<script src="assets/js/common.js?v=0e356943a4"></script>
 <script src="assets/js/citation.js?v=e884983a80"></script>
 <script src="assets/js/glossario.js?v=cd226d8143"></script>
-<script src="assets/js/i18n.js?v=583ef9b2f3"></script>
+<script src="assets/js/i18n.js?v=e9ca8f070e"></script>
 <script>
 function databaseApp() {
   return {
@@ -1662,7 +1677,22 @@ function databaseApp() {
     // Famílias de estudo: a família descreve o protocolo; cada membro abre o seu card clínico.
     // Rótulos da interface de famílias pelo mecanismo de idiomas (dados científicos não são traduzidos)
     tt(k, f) { this.langTick; return window.t ? t(k, f) : f; },
-    famType(f) { return f ? this.tt('db.famType_' + f.design_type, f.design_label || f.design_type) : ''; },
+    // `{dims}` no rótulo do tipo vira as dimensões do fatorial (2×2, 2×3…), calculadas dos fatores.
+    famType(f) {
+      if (!f) return '';
+      const dims = (f.factors || []).map((x) => (x.levels || []).length).join('×');
+      return this.tt('db.famType_' + f.design_type, f.design_label || f.design_type).replace('{dims}', dims);
+    },
+    famFactors(f) { const v = f ? this.famText(f, 'factors') : null; return Array.isArray(v) && v.length ? v : [{ factor: '', levels: [] }, { factor: '', levels: [] }]; },
+    // célula do fatorial pelos índices dos níveis (independe do idioma dos rótulos)
+    famCell(f, i1, i2) {
+      if (!f) return '';
+      const base = (f.factors || []), cells = (f.cells || []), loc = this.famText(f, 'cells');
+      const k = cells.findIndex((c) => c.levels && c.levels[0] === (base[0] || {}).levels[i1] && c.levels[1] === (base[1] || {}).levels[i2]);
+      return k < 0 ? '—' : ((Array.isArray(loc) && loc[k] && loc[k].label) || cells[k].label);
+    },
+    // texto do callout com `{name}` opcional: [antes do nome, depois do nome]
+    famPartOfParts(f) { const t = this.famPartOf(f); const k = t.indexOf('{name}'); return k < 0 ? [t, ''] : [t.slice(0, k), t.slice(k + 6)]; },
     famTypeShort(f) { return f ? this.tt('db.famTypeShort_' + f.design_type, (f.design_label || '').split(' · ')[0]) : ''; },
     // Basket/multicoorte fala em "coortes"; plataforma, em "braços"/"comparações". Mesmo componente.
     // Fallback local: o service worker pode servir um common.js antigo (cache-first) na 1ª visita pós-deploy.
@@ -1675,8 +1705,8 @@ function databaseApp() {
       const loc = f.i18n && f.i18n[lang];
       return (loc && loc[campo]) || f[campo] || '';
     },
-    famIsCohort(f) { return TheraTrials.familyIsCohort ? TheraTrials.familyIsCohort(f) : !!(f && ((f.cohorts || []).length || (f.randomizations || []).length || (f.analyses || []).length)); },
-    famUnits(f) { return TheraTrials.familyUnits ? TheraTrials.familyUnits(f) : (!f ? [] : (f.cohorts || []).length ? f.cohorts : (f.randomizations || []).length ? f.randomizations : (f.analyses || []).length ? f.analyses : (f.arms || [])); },
+    famIsCohort(f) { return TheraTrials.familyIsCohort ? TheraTrials.familyIsCohort(f) : !!(f && ((f.cohorts || []).length || (f.randomizations || []).length || (f.analyses || []).length || (f.comparisons || []).length)); },
+    famUnits(f) { return TheraTrials.familyUnits ? TheraTrials.familyUnits(f) : (!f ? [] : (f.cohorts || []).length ? f.cohorts : (f.randomizations || []).length ? f.randomizations : (f.analyses || []).length ? f.analyses : (f.comparisons || []).length ? f.comparisons : (f.arms || [])); },
     famKind(f) {
       if (TheraTrials.familyUnitKind) return TheraTrials.familyUnitKind(this.data, f);
       if (!this.famIsCohort(f)) return 'arm';
@@ -1692,10 +1722,10 @@ function databaseApp() {
                   'Este registro descreve apenas o protocolo. Os resultados ficam no card de cada coorte.',
                   'Este registro descreve apenas o protocolo. Os resultados ficam no card de cada análise.',
                   'Este registro descreve apenas o protocolo. Os resultados ficam no card de cada randomização.'],
-        famArms: ['Braços do protocolo', 'Coortes representadas', 'Análises representadas', 'Randomizações do protocolo'],
-        famArm: ['Braço', 'Coorte', 'Coorte / população', 'Randomização'],
-        famTreatment: ['Tratamento', 'População e seleção', 'Análise e seleção', 'Comparação'],
-      }[base] || [base, base, base, base];
+        famArms: ['Braços do protocolo', 'Coortes representadas', 'Análises representadas', 'Randomizações do protocolo', 'Comparações representadas'],
+        famArm: ['Braço', 'Coorte', 'Coorte / população', 'Randomização', 'Fator'],
+        famTreatment: ['Tratamento', 'População e seleção', 'Análise e seleção', 'Comparação', 'Comparação'],
+      }[base] || [base, base, base, base, base];
       // Rótulos próprios do tipo de família, quando o vocabulário genérico não serve
       // (uma análise integrada não é protocolo nem tem coortes: tem análises e estudos contribuidores).
       const porTipo = {
@@ -1711,6 +1741,7 @@ function databaseApp() {
       if (kind === 'cohort') return this.tt('db.' + base + 'Cohort', fb[1]);
       if (kind === 'analysis') return this.tt('db.' + base + 'Analysis', fb[2]);
       if (kind === 'randomization') return this.tt('db.' + base + 'Randomization', fb[3]);
+      if (kind === 'comparison') return this.tt('db.' + base + 'Comparison', fb[4] || fb[0]);
       return this.tt('db.' + base, fb[0]);
     },
     famCount(f) {
@@ -1718,12 +1749,15 @@ function databaseApp() {
       const kind = this.famKind(f);
       const k = kind === 'cohort' ? (um ? ['famCohortsOne', 'coorte no Database'] : ['famCohorts', 'coortes no Database'])
               : kind === 'randomization' ? (um ? ['famRandomizationsOne', 'randomização no Database'] : ['famRandomizations', 'randomizações no Database'])
+              : kind === 'comparison' ? (um ? ['famComparisonsNOne', 'comparação no Database'] : ['famComparisonsN', 'comparações no Database'])
               : (um ? ['famAnalysesOne', 'análise no Database'] : ['famAnalyses', 'análises no Database']);
       return n + ' ' + this.tt('db.' + k[0], k[1]);
     },
     famPartOf(f) {
       if (!this.famIsCohort(f)) return this.tt('db.famPartOf', 'Comparação do protocolo');
-      return this.tt('db.famPartOf_' + f.design_type, this.tt('db.famPartOfCohort', 'Coorte do protocolo'));
+      // em PT o dicionário não é carregado: o fallback é o texto exibido (espelha pt-br.js)
+      const fb = { basket: 'Parte do estudo basket', multicohort: 'Parte do estudo multicoorte', factorial: 'Parte do estudo fatorial {name}', master_protocol: 'Parte do master protocol', integrated_analysis: 'Parte da análise integrada de' }[f.design_type];
+      return this.tt('db.famPartOf_' + f.design_type, fb || this.tt('db.famPartOfCohort', 'Coorte do protocolo'));
     },
     familyById(id) { return TheraTrials.familyById(this.data, id); },
     familyOf(s) { return s && s.family_id ? TheraTrials.familyById(this.data, s.family_id) : null; },

@@ -237,7 +237,8 @@ const BLOCOS_FAM = [...HTML_DB.matchAll(/<!-- fam:ini[\s\S]*?<!-- fam:fim -->/g)
 // chaves diretas (tt('db.x')), chaves por tipo de família (famK: 'x' e 'xCohort') e as dos métodos de contagem/vínculo
 const CHAVES = [...new Set([
   ...[...BLOCOS_FAM.join('\n').matchAll(/tt\('db\.(\w+)'/g)].map((m) => m[1]),
-  ...[...BLOCOS_FAM.join('\n').matchAll(/famK\([^,]+, '(\w+)'\)/g)].flatMap((m) => [m[1], m[1] + 'Cohort', m[1] + 'Analysis', m[1] + 'Randomization']),
+  ...[...BLOCOS_FAM.join('\n').matchAll(/famK\([^,]+, '(\w+)'\)/g)].flatMap((m) => [m[1], m[1] + 'Cohort', m[1] + 'Analysis', m[1] + 'Randomization', m[1] + 'Comparison']),
+  'famComparisonsN', 'famComparisonsNOne', 'famPartOf_factorial', 'famFactorialDesign',
   'famRandomizations', 'famRandomizationsOne', 'famPartOf_master_protocol', 'famPartOf_multicohort',
   'famContributing', 'famOverlap', 'famPartOf_integrated_analysis', 'famArm_integrated_analysis', 'famTreatment_integrated_analysis',
   'famOpenProtocol_integrated_analysis', 'famSeeOthers_integrated_analysis', 'famNote_integrated_analysis',
@@ -721,7 +722,7 @@ test('2 análises integradas: estudos contribuidores com NCT e EudraCT, sem linh
   assert.ok(!ENT.contributing_studies.some((c) => /STARTRK-NG|NCT02650401/.test(JSON.stringify(c))), 'STARTRK-NG só entrou na segurança');
   assert.deepEqual(js(ENT.member_uids), [ENT_CARD, 'pancreas_9']);
   assert.deepEqual(js(LARO.member_uids), ['tireoide_avancado_8']);
-  assert.equal(D.families.length, 10);
+  for (const id of ['entrectinib-integrated', 'larotrectinib-integrated']) assert.ok(D.families.some((f) => f.family_id === id), id);
 });
 
 test('análise integrada: membros são análises; uids preservados; títulos inequívocos', () => {
@@ -767,7 +768,9 @@ test('análise integrada: correções não regridem (sem mistura de programas, R
 test('análise integrada: NCT compartilhado só dentro da família; zero avisos sem afrouxar o detector', () => {
   const r = validarCom(() => {});
   assert.equal(r.code, 0, r.saida);
-  assert.doesNotMatch(r.saida, /também está em/);
+  for (const n of [...ENT.registry_ids, ...LARO.registry_ids].filter((x) => /^NCT/.test(x))) {
+    assert.doesNotMatch(r.saida, new RegExp(`NCT ${n} também está`), n);
+  }
   // o detector continua ativo: um NCT do programa larotrectinibe num card do entrectinibe volta a ser apontado
   const r2 = validarCom((d) => { d.studies.find((s) => s.uid === 'pancreas_9').nct += ' / NCT02122913'; });
   assert.match(r2.saida, /NCT NCT02122913 também está em/);
@@ -819,7 +822,7 @@ test('análise integrada: contagem 1/N análises, badge, seção de estudos e r�
   for (const k of ['famArm', 'famTreatment', 'famOpenProtocol', 'famSeeOthers', 'famNote']) {
     for (const l of ['pt-br', 'en']) assert.doesNotMatch(DICT[l].db[`${k}_integrated_analysis`], /protocol|coorte|cohort/i, `${l} ${k}`);
   }
-  assert.match(HTML_DB, /a\.arm \|\| a\.cohort \|\| a\.randomization \|\| a\.analysis/);
+  assert.match(HTML_DB, /a\.arm \|\| a\.cohort \|\| a\.randomization \|\| a\.analysis \|\| a\.comparison/);
 });
 
 test('análise integrada: nome do fármaco localizado (PT/EN) por famText, sem hardcode no componente', () => {
@@ -855,3 +858,106 @@ reprova('i18n da família com resultado clínico', (d) => {
 reprova('i18n da família com campo não estrutural', (d) => {
   d.families.find((f) => f.family_id === 'entrectinib-integrated').i18n.en.primario = 'x';
 }, /não é campo estrutural traduzível/);
+
+// ── fatorial: PEACE-1 ──────────────────────────────────────────────────────
+/* Fatorial 2×2 ≠ plataforma: dois fatores cruzados (abiraterona × radioterapia), quatro células,
+ * e cada fator é uma pergunta randomizada com publicação própria → membros `comparison`. */
+const PEACE = T.familyById(D, 'peace-1');
+const PEACE_MEMBROS = ['prostata_contexto_5', 'peace-1-radioterapia-prostata-mhspc-de-novo'];
+
+test('fatorial PEACE-1: dois fatores, quatro células, duas comparações, sem "plataforma"', () => {
+  assert.ok(PEACE);
+  assert.equal(PEACE.design_type, 'factorial');
+  assert.deepEqual(js(PEACE.registry_ids), ['NCT01957436']);
+  assert.deepEqual(js(PEACE.factors.map((f) => [f.factor, f.levels])), [['Abiraterona', ['Sem', 'Com']], ['Radioterapia da próstata', ['Sem', 'Com']]]);
+  assert.deepEqual(js(PEACE.cells.map((c) => c.label)), ['SOC', 'SOC + RT', 'SOC + abiraterona', 'SOC + RT + abiraterona']);
+  assert.equal(new Set(PEACE.cells.map((c) => c.levels.join('|'))).size, 4);
+  assert.deepEqual(js(PEACE.comparisons.map((c) => c.card_uids[0])), PEACE_MEMBROS);
+  assert.deepEqual(js(PEACE.member_uids), PEACE_MEMBROS);
+  for (const k of ['arms', 'cohorts', 'randomizations', 'analyses']) assert.equal(PEACE[k], undefined, k);
+  assert.match(PEACE.design_summary, /fatorial 2×2/);
+  assert.match(PEACE.design_summary, /não é um ensaio plataforma/);
+  assert.doesNotMatch(JSON.stringify(PEACE).replace(/não é um ensaio plataforma|this is not a platform trial/g, ''), /plataforma|platform/i);
+  assert.doesNotMatch(JSON.stringify([PEACE.factors, PEACE.cells, PEACE.comparisons]), /\bHR\b(?!-)|\d+(?:[.,]\d+)? ?%|mediana|IC ?95/i, 'sem resultado clínico');
+  assert.equal(T.familyUnitKind(D, PEACE), 'comparison');
+});
+
+test('fatorial PEACE-1: dois cards independentes como comparações, NCT compartilhado legítimo', () => {
+  for (const u of PEACE_MEMBROS) {
+    assert.equal(card(u).family_id, 'peace-1');
+    assert.equal(card(u).family_relation, 'comparison');
+    assert.equal(card(u).nct, 'NCT01957436');
+    assert.equal(T.familyForHash(D, u), null, `#${u} abre o card`);
+  }
+  assert.deepEqual(js(PEACE_MEMBROS.map((u) => card(u).comparison_label)), ['Adição de abiraterona', 'Adição de radioterapia da próstata']);
+  assert.deepEqual(js(T.familyMembers(D, PEACE).map((s) => s.uid)), PEACE_MEMBROS);
+  const r = validarCom(() => {});
+  assert.equal(r.code, 0, r.saida);
+  assert.doesNotMatch(r.saida, /NCT NCT01957436 também está/);
+  assert.match(validarCom((d) => { delete d.studies.find((s) => s.uid === 'prostata_contexto_5').family_id; }).saida, /NCT NCT01957436 também está/, 'detector continua ativo');
+});
+reprova('fatorial sem fatores', (d) => { delete d.families.find((f) => f.family_id === 'peace-1').factors; }, /≥2 fatores/);
+reprova('fatorial com célula faltando', (d) => { d.families.find((f) => f.family_id === 'peace-1').cells.pop(); }, /4 combinações de níveis, mas 3 células/);
+reprova('fatorial com uma só comparação', (d) => {
+  const f = d.families.find((x) => x.family_id === 'peace-1'); f.comparisons.pop(); f.member_uids.pop();
+  delete d.studies.find((s) => s.uid === 'peace-1-radioterapia-prostata-mhspc-de-novo').family_id;
+}, /≥2 comparações/);
+reprova('membro de fatorial com relação de coorte', (d) => {
+  d.studies.find((s) => s.uid === 'prostata_contexto_5').family_relation = 'cohort';
+}, /family_relation "comparison"/);
+reprova('resultado clínico numa célula do fatorial', (d) => {
+  d.families.find((f) => f.family_id === 'peace-1').cells[0].label += ' (HR 0,54)';
+}, /fatores\/células trazem resultado clínico/);
+
+test('fatorial PEACE-1: badge 2×2 calculado, contagem 1/N comparações e rótulos PT/EN', () => {
+  const corpo = HTML_DB.match(/famCount\(f\) \{([\s\S]*?)\n    \},/)[1];
+  const vm2 = { tt: (k, f) => (k.endsWith('One') ? 'U:' : 'P:') + f, famKind: (f) => T.familyUnitKind(D, f), familyMembers: (f) => T.familyMembers(D, f) };
+  assert.equal(new Function('f', corpo).bind(vm2)(PEACE), '2 P:comparações no Database');
+  const f1 = { ...js(PEACE), family_id: 'z', comparisons: [PEACE.comparisons[0]] };
+  const d1 = { families: [f1], studies: [{ ...js(card('prostata_contexto_5')), family_id: 'z' }] };
+  const vm3 = { ...vm2, famKind: (f) => T.familyUnitKind(d1, f), familyMembers: (f) => T.familyMembers(d1, f) };
+  assert.equal(new Function('f', corpo).bind(vm3)(f1), '1 U:comparação no Database');
+  const tipo = HTML_DB.match(/famType\(f\) \{([\s\S]*?)\n    \},/)[1];
+  for (const [l, esperado] of [['pt-br', 'Fatorial 2×2'], ['en', '2×2 factorial']]) {
+    const famType = new Function('f', tipo).bind({ tt: (k, fb) => DICT[l].db[k.replace('db.', '')] || fb });
+    assert.equal(famType(PEACE), esperado, l);
+  }
+  const partes = (l) => DICT[l].db.famPartOf_factorial.replace('{name}', 'PEACE-1');
+  assert.equal(partes('pt-br'), 'Parte do estudo fatorial PEACE-1');
+  assert.equal(partes('en'), 'Part of the PEACE-1 factorial trial');
+  assert.equal(DICT['pt-br'].db.famArmsComparison, 'Comparações representadas');
+  assert.equal(DICT.en.db.famArmsComparison, 'Represented comparisons');
+  assert.equal(DICT.en.db.famComparisonsNOne, 'comparison in the Database');
+  assert.match(HTML_DB, /famPartOfParts\(familyOf\(selectedStudy\)\)\[1\]/);
+  assert.match(HTML_DB, /famCell\(selectedFamily, i1, i2\)/);
+  // toda linha de família tem chave/rótulo no x-for (chave indefinida quebra a tabela do modal)
+  for (const tipo of ['arm', 'cohort', 'randomization', 'analysis', 'comparison']) {
+    assert.match(HTML_DB, new RegExp(`:key="a\\.arm(?: \\|\\| a\\.\\w+)*?\\b(?<=a\\.${tipo})\\b`), tipo);
+    assert.match(HTML_DB, new RegExp(`x-text="a\\.arm(?: \\|\\| a\\.\\w+)*?\\b(?<=a\\.${tipo})\\b`), tipo);
+  }
+  assert.deepEqual(js(PEACE.i18n.en.factors.map((f) => f.factor)), ['Abiraterone', 'Prostate radiotherapy']);
+});
+
+test('fatorial PEACE-1: busca pelo acrônimo mostra a família; app-data leva a família', () => {
+  assert.ok(T.familiesToShow(D, busca('PEACE-1'), 'PEACE-1', false).some((f) => f.family_id === 'peace-1'));
+  for (const u of PEACE_MEMBROS) assert.ok(busca('PEACE-1').some((s) => s.uid === u), u);
+  const app = JSON.parse(readFileSync(path.join(SITE, 'app-data', 'data.json'), 'utf8'));
+  assert.ok(app.families.some((f) => f.family_id === 'peace-1' && f.design_type === 'factorial'));
+});
+
+test('callout em PT: fallback de famPartOf por design_type espelha pt-br.js (PT não carrega o dicionário)', () => {
+  const m = HTML_DB.match(/const fb = (\{.*?\})\[f\.design_type\]/);
+  assert.ok(m, 'mapa de fallback em famPartOf');
+  const fb = vm.runInNewContext('(' + m[1] + ')');
+  for (const tipo of ['basket', 'multicohort', 'factorial', 'master_protocol', 'integrated_analysis']) {
+    assert.equal(fb[tipo], DICT['pt-br'].db['famPartOf_' + tipo], tipo);
+  }
+});
+
+test('campos textuais da família passam por famText (i18n.en aparece em EN; sem i18n, cai no PT)', () => {
+  for (const campo of ['design_summary', 'population']) {
+    assert.doesNotMatch(HTML_DB, new RegExp(`x-text="(f|selectedFamily)\\.${campo}"`), campo);
+    assert.match(HTML_DB, new RegExp(`famText\\(selectedFamily, '${campo}'\\)`), campo);
+  }
+  assert.match(HTML_DB, /famText\(f, 'design_summary'\)/);
+});

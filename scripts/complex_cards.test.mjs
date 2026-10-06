@@ -106,3 +106,66 @@ test('DESTINY-Lung: app-data leva os dois cards', () => {
   for (const u of [L01, L02]) assert.ok(app.studies.some((s) => s.uid === u), u);
   assert.equal(app.studies.length, D.studies.length);
 });
+
+// ── PEACE-1: fatorial 2×2 (abiraterona × radioterapia) ─────────────────────
+/* PEACE-1 (NCT01957436) é fatorial 2×2, não plataforma: SOC / SOC + RT / SOC + abiraterona /
+ * SOC + RT + abiraterona. A comparação da abiraterona (Lancet 2022) e a da radioterapia
+ * (Lancet 2024) são perguntas e publicações distintas; o uid antigo ficou com a abiraterona. */
+const PABI = 'prostata_contexto_5';
+const PRT = 'peace-1-radioterapia-prostata-mhspc-de-novo';
+
+test('PEACE-1: dois cards, mesmo NCT, PMIDs e títulos distintos; fatorial 2×2, sem "plataforma"', () => {
+  const a = card(PABI), r = card(PRT);
+  assert.ok(a && r);
+  for (const c of [a, r]) {
+    assert.equal(c.nct, 'NCT01957436');
+    assert.match(c.fase, /fatorial 2×2/);
+    assert.doesNotMatch(JSON.stringify(c), /plataforma|platform/i);
+    assert.match(c.desenho, /SOC; SOC \+ radioterapia; SOC \+ abiraterona; SOC \+ radioterapia \+ abiraterona/);
+    assert.equal(c.family_id, 'peace-1', 'comparações da família fatorial PEACE-1');
+    assert.equal(c.family_relation, 'comparison');
+    assert.equal(c.molecular, 'Sem critério molecular.');
+  }
+  assert.equal(a.citation.pmid, '35405085');
+  assert.equal(r.citation.pmid, '39580202');
+  assert.equal(a.ano_pub, 2022);
+  assert.equal(r.ano_pub, 2024);
+  assert.match(T.studyTitle(a.estudo), /^PEACE-1 · Abiraterona/);
+  assert.match(T.studyTitle(r.estudo), /^PEACE-1 · Radioterapia/);
+});
+
+test('PEACE-1: cada card só traz a sua comparação', () => {
+  const a = card(PABI), r = card(PRT);
+  assert.match(a.primario, /rPFS HR 0,54.*OS HR 0,82.*rPFS HR 0,50.*OS HR 0,75/);
+  assert.match(a.comparador, /sem abiraterona/);
+  assert.doesNotMatch(JSON.stringify(a), /RT prostática: ganho|HR (ajustado )?0,65|HR 0,98|74 Gy|39580202/, 'abiraterona sem resultado da RT');
+  assert.doesNotMatch(JSON.stringify(a), /HR 0,47|HR 0,72|HR 0,58|alto volume \+ Abi/, 'subgrupos não verificados removidos');
+  assert.match(r.primario, /interação qualitativa radioterapia × abiraterona \(p=0,026\)/);
+  assert.match(r.primario, /HR ajustado 0,65/);
+  assert.match(r.primario, /HR 0,98/);
+  assert.match(r.comparador, /sem radioterapia/);
+  assert.doesNotMatch(JSON.stringify(r), /HR 0,54|HR 0,82|HR 0,50|HR 0,75|35405085/, 'RT sem resultado da abiraterona');
+  assert.doesNotMatch(JSON.stringify(r), /STAMPEDE/, 'nada importado do STAMPEDE RT');
+});
+
+test('PEACE-1: tripleta descrita como efeito da randomização da abiraterona, não como comparação de tripletas', () => {
+  const a = card(PABI);
+  assert.match(a.impacto_reg, /pergunta randomizada é a adição de abiraterona/);
+  assert.match(a.limit, /docetaxel não foi randomizado/);
+  assert.match(a.limit, /não compara tripletas entre si/);
+  assert.match(a.esquema, /prednisona 5 mg VO 2×\/dia/);
+});
+
+test('PEACE-1: busca, categoria e deep links', () => {
+  for (const u of [PABI, PRT]) {
+    assert.ok(busca('PEACE-1').some((s) => s.uid === u), u);
+    assert.equal(card(u).category_id, 'prostata_contexto');
+    assert.deepEqual(js(T.tumorTypes.filter((t) => t.match(card(u))).map((t) => t.id)), ['prostata'], u);
+    assert.equal(T.familyForHash(D, u), null, `#${u} abre o card`);
+  }
+  assert.ok(busca('radioterapia da próstata').some((s) => s.uid === PRT));
+  const cat = D.categories.find((c) => c.id === 'prostata_contexto');
+  assert.equal(cat.count, D.studies.filter((s) => s.category_id === 'prostata_contexto').length);
+  const app = JSON.parse(readFileSync(path.join(SITE, 'app-data', 'data.json'), 'utf8'));
+  for (const u of [PABI, PRT]) assert.ok(app.studies.some((s) => s.uid === u), u);
+});

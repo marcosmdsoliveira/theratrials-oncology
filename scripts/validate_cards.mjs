@@ -191,7 +191,7 @@ for (const s of S) {
  * com o mesmo formato de linha. `member_uids`, se presente, tem de bater com as linhas e com os
  * cards que declaram a família. */
 const FAMILY_TYPES = new Set(['platform', 'platform_mams', 'basket', 'umbrella', 'multicohort',
-  'master_protocol', 'integrated_analysis']);
+  'master_protocol', 'integrated_analysis', 'factorial']);
 const FAMILY_RELATIONS = new Set(['comparison', 'cohort', 'analysis', 'randomization', 'substudy', 'integrated_analysis']);
 // "HR" seguido de hífen é nome de estudo (HR-NBL1), não hazard ratio
 const CLINICO_NA_FAMILIA = /\bHR\b(?!-)|hazard|\bIC ?95|\bCI ?95|mediana|\bORR\b|\bp ?[<=]|\d+(?:[.,]\d+)? ?%/i;
@@ -234,16 +234,32 @@ for (const f of FAM) {
   for (const [lang, campos] of Object.entries(f.i18n || {})) {
     if (!['pt-br', 'en'].includes(lang)) F(id, `i18n com idioma desconhecido: ${lang}`);
     for (const [campo, v] of Object.entries(campos || {})) {
-      if (!['family_name', 'full_name', 'population', 'design_summary', 'note', 'overlap_note'].includes(campo)) F(id, `i18n.${lang}.${campo} não é campo estrutural traduzível`);
-      if (CLINICO_NA_FAMILIA.test(String(v))) F(id, `i18n.${lang}.${campo} traz resultado clínico`);
+      if (!['family_name', 'full_name', 'population', 'design_summary', 'note', 'overlap_note', 'factors', 'cells'].includes(campo)) F(id, `i18n.${lang}.${campo} não é campo estrutural traduzível`);
+      if (CLINICO_NA_FAMILIA.test(typeof v === 'string' ? v : JSON.stringify(v))) F(id, `i18n.${lang}.${campo} traz resultado clínico`);
     }
   }
-  if ([f.arms, f.cohorts, f.randomizations, f.analyses].filter((x) => x !== undefined).length > 1) F(id, 'família com mais de um tipo de linha (arms/cohorts/randomizations/analyses): use um só');
+  if ([f.arms, f.cohorts, f.randomizations, f.analyses, f.comparisons].filter((x) => x !== undefined).length > 1) F(id, 'família com mais de um tipo de linha (arms/cohorts/randomizations/analyses/comparisons): use um só');
+  // Fatorial: declara os fatores (≥2, cada um com ≥2 níveis), as células (combinações de níveis) e ≥2
+  // comparações representadas. Tudo estrutural: nenhum resultado clínico nesses campos.
+  if (f.design_type === 'factorial') {
+    const fat = f.factors || [];
+    if (fat.length < 2 || fat.some((x) => !x.factor || !Array.isArray(x.levels) || x.levels.length < 2)) F(id, 'fatorial declara ≥2 fatores, cada um com ≥2 níveis (factors)');
+    const total = fat.reduce((n, x) => n * ((x.levels || []).length || 1), 1);
+    const cel = f.cells || [];
+    if (cel.length !== total) F(id, `fatorial com ${total} combinações de níveis, mas ${cel.length} células (cells)`);
+    for (const c of cel) {
+      if (!c.label || !Array.isArray(c.levels) || c.levels.length !== fat.length || c.levels.some((l, k) => !(fat[k].levels || []).includes(l))) F(id, `célula fatorial inválida: ${JSON.stringify(c)}`);
+    }
+    if (new Set(cel.map((c) => JSON.stringify(c.levels))).size !== cel.length) F(id, 'células fatoriais repetidas');
+    if ((f.comparisons || []).length < 2) F(id, 'fatorial representa ≥2 comparações (comparisons)');
+    if (CLINICO_NA_FAMILIA.test(JSON.stringify([fat, cel]))) F(id, 'fatores/células trazem resultado clínico');
+  } else if (f.factors !== undefined || f.cells !== undefined) F(id, 'factors/cells só se aplicam a design_type factorial');
   if (f.design_type === 'master_protocol' && !(f.randomizations || []).length) F(id, 'master protocol descreve as randomizações do protocolo (randomizations)');
   if (f.design_type === 'basket' && !(f.cohorts || []).length) F(id, 'basket descreve coortes (cohorts), não braços');
   const unidades = (f.cohorts || []).map((c) => ({ ...c, rot: `coorte ${c.cohort}`, texto: `${c.cohort ?? ''} ${c.label ?? ''} ${c.selection ?? ''} ${c.status ?? ''}` }))
     .concat((f.randomizations || []).map((c) => ({ ...c, rot: `randomização ${c.randomization}`, texto: `${c.randomization ?? ''} ${c.label ?? ''} ${c.selection ?? ''} ${c.status ?? ''}` })))
     .concat((f.analyses || []).map((c) => ({ ...c, rot: `análise ${c.analysis}`, texto: `${c.analysis ?? ''} ${c.label ?? ''} ${c.selection ?? ''} ${c.status ?? ''}` })))
+    .concat((f.comparisons || []).map((c) => ({ ...c, rot: `comparação ${c.comparison}`, texto: `${c.comparison ?? ''} ${c.label ?? ''} ${c.selection ?? ''} ${c.status ?? ''}` })))
     .concat((f.arms || []).map((a) => ({ ...a, rot: `braço ${a.arm}`, texto: `${a.treatment ?? ''} ${a.status ?? ''}` })));
   for (const a of unidades) {
     if (CLINICO_NA_FAMILIA.test(a.texto)) F(id, `${a.rot}: resultado clínico no texto da linha`);
@@ -269,7 +285,7 @@ for (const s of S) {
   if (!f) { F(s.uid, `family_id "${s.family_id}" não existe em families[]`); continue; }
   if (!FAMILY_RELATIONS.has(s.family_relation)) F(s.uid, `family_relation "${s.family_relation}" fora de ${[...FAMILY_RELATIONS].join('/')}`);
   if (vazio(s.comparison_label)) F(s.uid, 'membro de família sem comparison_label');
-  const linhas = (f.cohorts || []).concat(f.randomizations || [], f.analyses || [], f.arms || []);
+  const linhas = (f.cohorts || []).concat(f.randomizations || [], f.analyses || [], f.comparisons || [], f.arms || []);
   if (linhas.length && !linhas.some((a) => (a.card_uids || []).includes(s.uid))) {
     F(s.uid, `membro de ${f.family_id} não aparece em nenhum braço/coorte da família`);
   }
@@ -277,6 +293,9 @@ for (const s of S) {
   // em família com coortes, o membro declara explicitamente se é coorte protocolar ou análise.
   if ((f.cohorts || []).length && !['cohort', 'analysis'].includes(s.family_relation)) {
     F(s.uid, `membro de família basket/multicoorte precisa de family_relation "cohort" ou "analysis"`);
+  }
+  if ((f.comparisons || []).length && s.family_relation !== 'comparison') {
+    F(s.uid, `membro de família fatorial precisa de family_relation "comparison"`);
   }
   if ((f.analyses || []).length && s.family_relation !== 'analysis') {
     F(s.uid, `membro de análise integrada precisa de family_relation "analysis"`);
