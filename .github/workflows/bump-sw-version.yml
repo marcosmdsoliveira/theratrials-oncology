@@ -3,6 +3,11 @@ name: Auto-bump SW CACHE_VERSION
 # Sempre que houver push em main que altere assets, HTML ou JS,
 # bumpa automaticamente a versão de cache do service worker (sw.js).
 # Isso força os iPhones a baixarem CSS/JS/imagens novos quando você publica.
+#
+# Antes do bump, versiona os JS/CSS locais pelo hash do conteúdo (?v=<hash>
+# nas páginas, no mapa de dicionários do i18n.js e no pré-cache do sw.js):
+# HTML novo nunca carrega um JS antigo do cache, e arquivo que não mudou
+# mantém a URL. Tudo vai num único commit, para HTML e JS chegarem juntos.
 
 on:
   push:
@@ -10,6 +15,7 @@ on:
     paths:
       - 'assets/**'
       - '*.html'
+      - '**/*.html'
       - 'manifest.json'
       - '!sw.js'           # evita loop quando o próprio bot empurra sw.js
       - '!**/*.md'         # ignora mudanças só em docs
@@ -41,6 +47,9 @@ jobs:
           echo "new_version=${NEW_VERSION}" >> "$GITHUB_OUTPUT"
           echo "Nova versão: theratrials-v${NEW_VERSION}"
 
+      - name: Versionar assets (hash do conteúdo)
+        run: node scripts/asset_versions.mjs
+
       - name: Patch sw.js
         run: |
           NEW_VERSION="${{ steps.bump.outputs.new_version }}"
@@ -55,10 +64,10 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          if git diff --quiet sw.js; then
-            echo "sw.js já está atualizado · nenhum commit necessário"
+          if git diff --quiet; then
+            echo "sw.js e versões de assets já estão atualizados · nenhum commit necessário"
           else
-            git add sw.js
+            git add -u -- sw.js assets/js/i18n.js ':(glob)**/*.html'
             git commit -m "chore(sw): bump CACHE_VERSION para ${{ steps.bump.outputs.new_version }} [skip ci]"
             git push
             echo "✓ sw.js bumpado e empurrado"

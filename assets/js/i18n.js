@@ -18,6 +18,8 @@
   var SUPPORTED = ['pt-br', 'en'];
   var translations = {};
   var currentLang = DEFAULT_LANG;
+  // Versão (hash do conteúdo) de cada dicionário: URL nova quando o arquivo muda, para o cache do SW não servir o antigo
+  var LANG_VERSIONS = {"en":"0ffcbca2b9","pt-br":"abe458af03"}; // gerado por scripts/asset_versions.mjs
 
   // ── Detect preferred language ──
   function detectLang() {
@@ -46,7 +48,7 @@
     if (translations[lang]) { callback(); return; }
 
     var script = document.createElement('script');
-    script.src = getBasePath() + 'assets/lang/' + lang + '.js';
+    script.src = getBasePath() + 'assets/lang/' + lang + '.js' + (LANG_VERSIONS[lang] ? '?v=' + LANG_VERSIONS[lang] : '');
     script.onload = function () { callback(); };
     script.onerror = function () {
       console.warn('[i18n] Failed to load ' + lang + '.js');
