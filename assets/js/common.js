@@ -101,23 +101,29 @@
   /* Unidades do protocolo: `arms` (plataforma: braços comparados a um controle) ou `cohorts`
    * (basket, multicoorte: populações independentes, sem comparador). Mesmo formato de linha:
    * código, descrição, status, publicação e card_uids. */
+  // Linhas que não são braços: `cohorts` (basket, multicoorte) ou `randomizations` (master protocol: randomizações
+  // incorporadas ao protocolo em componentes e períodos diferentes — não fases sequenciais).
   TheraTrials.familyIsCohort = function(fam) {
-    return !!fam && Array.isArray(fam.cohorts) && fam.cohorts.length > 0;
+    return !!fam && ((Array.isArray(fam.cohorts) && fam.cohorts.length > 0) || (Array.isArray(fam.randomizations) && fam.randomizations.length > 0));
   };
   TheraTrials.familyUnits = function(fam) {
     if (!fam) return [];
-    return TheraTrials.familyIsCohort(fam) ? fam.cohorts : (fam.arms || []);
+    if (Array.isArray(fam.cohorts) && fam.cohorts.length) return fam.cohorts;
+    if (Array.isArray(fam.randomizations) && fam.randomizations.length) return fam.randomizations;
+    return fam.arms || [];
   };
   /* Vocabulário da família na interface: 'arm' (plataforma: braços/comparações), 'cohort' (todos os
-   * membros são coortes protocolares) ou 'analysis' (algum membro é análise/recorte de população,
-   * p. ex. tumor-específica dentro de uma coorte agnóstica). Derivado do family_relation dos membros.
+   * membros são coortes protocolares), 'randomization' (todos os membros são randomizações de um master
+   * protocol) ou 'analysis' (membros mistos, ou algum é análise/recorte de população, p. ex.
+   * tumor-específica dentro de uma coorte agnóstica). Derivado do family_relation dos membros.
    * Princípio: design_type descreve a arquitetura do PROTOCOLO (basket, multicoorte…); family_relation
    * descreve o que o CARD representa dentro dele. Um não implica o outro: uma família multicoorte pode
    * ter membros que são análises (recorte de coorte mista, ou várias populações num mesmo card). */
   TheraTrials.familyUnitKind = function(data, fam) {
     if (!TheraTrials.familyIsCohort(fam)) return 'arm';
     var m = TheraTrials.familyMembers(data, fam);
-    return m.length && m.every(function(s) { return s.family_relation === 'cohort'; }) ? 'cohort' : 'analysis';
+    var todos = function(r) { return m.length > 0 && m.every(function(s) { return s.family_relation === r; }); };
+    return todos('cohort') ? 'cohort' : todos('randomization') ? 'randomization' : 'analysis';
   };
   // Membros no Database, na ordem dos braços/coortes da família (os sem unidade vão para o fim).
   TheraTrials.familyMembers = function(data, fam) {

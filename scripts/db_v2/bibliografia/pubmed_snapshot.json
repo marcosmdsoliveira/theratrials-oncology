@@ -13142,6 +13142,127 @@
 ],
 "retrieved_at": "2026-09-29"
 },
+"30442501": {
+"pmid": "30442501",
+"authors": [
+{
+"name": "Ladenstein R",
+"authtype": "Author"
+},
+{
+"name": "Pötschger U",
+"authtype": "Author"
+},
+{
+"name": "Valteau-Couanet D",
+"authtype": "Author"
+},
+{
+"name": "Luksch R",
+"authtype": "Author"
+},
+{
+"name": "Castel V",
+"authtype": "Author"
+},
+{
+"name": "Yaniv I",
+"authtype": "Author"
+},
+{
+"name": "Laureys G",
+"authtype": "Author"
+},
+{
+"name": "Brock P",
+"authtype": "Author"
+},
+{
+"name": "Michon JM",
+"authtype": "Author"
+},
+{
+"name": "Owens C",
+"authtype": "Author"
+},
+{
+"name": "Trahair T",
+"authtype": "Author"
+},
+{
+"name": "Chan GCF",
+"authtype": "Author"
+},
+{
+"name": "Ruud E",
+"authtype": "Author"
+},
+{
+"name": "Schroeder H",
+"authtype": "Author"
+},
+{
+"name": "Beck Popovic M",
+"authtype": "Author"
+},
+{
+"name": "Schreier G",
+"authtype": "Author"
+},
+{
+"name": "Loibner H",
+"authtype": "Author"
+},
+{
+"name": "Ambros P",
+"authtype": "Author"
+},
+{
+"name": "Holmes K",
+"authtype": "Author"
+},
+{
+"name": "Castellani MR",
+"authtype": "Author"
+},
+{
+"name": "Gaze MN",
+"authtype": "Author"
+},
+{
+"name": "Garaventa A",
+"authtype": "Author"
+},
+{
+"name": "Pearson ADJ",
+"authtype": "Author"
+},
+{
+"name": "Lode HN",
+"authtype": "Author"
+}
+],
+"title": "Interleukin 2 with anti-GD2 antibody ch14.18/CHO (dinutuximab beta) in patients with high-risk neuroblastoma (HR-NBL1/SIOPEN): a multicentre, randomised, phase 3 trial.",
+"source": "Lancet Oncol",
+"fulljournalname": "The Lancet. Oncology",
+"pubdate": "2018 Dec",
+"epubdate": "2018 Nov 12",
+"volume": "19",
+"issue": "12",
+"pages": "1617-1629",
+"elocationid": "doi: 10.1016/S1470-2045(18)30578-3",
+"doi": "10.1016/S1470-2045(18)30578-3",
+"pmcid": null,
+"pubtype": [
+"Clinical Trial, Phase III",
+"Comparative Study",
+"Journal Article",
+"Multicenter Study",
+"Randomized Controlled Trial",
+"Research Support, Non-U.S. Gov't"
+],
+"retrieved_at": "2026-10-06"
+},
 "30509740": {
 "pmid": "30509740",
 "authors": [

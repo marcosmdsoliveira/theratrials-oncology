@@ -192,8 +192,9 @@ for (const s of S) {
  * cards que declaram a família. */
 const FAMILY_TYPES = new Set(['platform', 'platform_mams', 'basket', 'umbrella', 'multicohort',
   'master_protocol', 'integrated_analysis']);
-const FAMILY_RELATIONS = new Set(['comparison', 'cohort', 'analysis', 'substudy', 'integrated_analysis']);
-const CLINICO_NA_FAMILIA = /\bHR\b|hazard|\bIC ?95|\bCI ?95|mediana|\bORR\b|\bp ?[<=]|\d+(?:[.,]\d+)? ?%/i;
+const FAMILY_RELATIONS = new Set(['comparison', 'cohort', 'analysis', 'randomization', 'substudy', 'integrated_analysis']);
+// "HR" seguido de hífen é nome de estudo (HR-NBL1), não hazard ratio
+const CLINICO_NA_FAMILIA = /\bHR\b(?!-)|hazard|\bIC ?95|\bCI ?95|mediana|\bORR\b|\bp ?[<=]|\d+(?:[.,]\d+)? ?%/i;
 const FAM = Array.isArray(D.families) ? D.families : [];
 if (D.families !== undefined && !Array.isArray(D.families)) F('(families)', '`families` precisa ser uma lista');
 const famPorId = new Map();
@@ -217,9 +218,11 @@ for (const f of FAM) {
     if (CLINICO_NA_FAMILIA.test(String(f[campo] ?? ''))) F(id, `campo ${campo} traz resultado clínico (HR, %, mediana…): ele pertence ao card da comparação`);
   }
   if ('resultado_chave' in f || 'primario' in f) F(id, 'família não tem resultado_chave nem primario');
-  if (f.arms !== undefined && f.cohorts !== undefined) F(id, 'família tem arms e cohorts: use um só');
+  if ([f.arms, f.cohorts, f.randomizations].filter((x) => x !== undefined).length > 1) F(id, 'família com mais de um tipo de linha (arms/cohorts/randomizations): use um só');
+  if (f.design_type === 'master_protocol' && !(f.randomizations || []).length) F(id, 'master protocol descreve as randomizações do protocolo (randomizations)');
   if (f.design_type === 'basket' && !(f.cohorts || []).length) F(id, 'basket descreve coortes (cohorts), não braços');
   const unidades = (f.cohorts || []).map((c) => ({ ...c, rot: `coorte ${c.cohort}`, texto: `${c.cohort ?? ''} ${c.label ?? ''} ${c.selection ?? ''} ${c.status ?? ''}` }))
+    .concat((f.randomizations || []).map((c) => ({ ...c, rot: `randomização ${c.randomization}`, texto: `${c.randomization ?? ''} ${c.label ?? ''} ${c.selection ?? ''} ${c.status ?? ''}` })))
     .concat((f.arms || []).map((a) => ({ ...a, rot: `braço ${a.arm}`, texto: `${a.treatment ?? ''} ${a.status ?? ''}` })));
   for (const a of unidades) {
     if (CLINICO_NA_FAMILIA.test(a.texto)) F(id, `${a.rot}: resultado clínico no texto da linha`);
@@ -245,7 +248,7 @@ for (const s of S) {
   if (!f) { F(s.uid, `family_id "${s.family_id}" não existe em families[]`); continue; }
   if (!FAMILY_RELATIONS.has(s.family_relation)) F(s.uid, `family_relation "${s.family_relation}" fora de ${[...FAMILY_RELATIONS].join('/')}`);
   if (vazio(s.comparison_label)) F(s.uid, 'membro de família sem comparison_label');
-  const linhas = (f.cohorts || []).concat(f.arms || []);
+  const linhas = (f.cohorts || []).concat(f.randomizations || [], f.arms || []);
   if (linhas.length && !linhas.some((a) => (a.card_uids || []).includes(s.uid))) {
     F(s.uid, `membro de ${f.family_id} não aparece em nenhum braço/coorte da família`);
   }
@@ -253,6 +256,9 @@ for (const s of S) {
   // em família com coortes, o membro declara explicitamente se é coorte protocolar ou análise.
   if ((f.cohorts || []).length && !['cohort', 'analysis'].includes(s.family_relation)) {
     F(s.uid, `membro de família basket/multicoorte precisa de family_relation "cohort" ou "analysis"`);
+  }
+  if ((f.randomizations || []).length && !['randomization', 'analysis'].includes(s.family_relation)) {
+    F(s.uid, `membro de master protocol precisa de family_relation "randomization" ou "analysis"`);
   }
 }
 

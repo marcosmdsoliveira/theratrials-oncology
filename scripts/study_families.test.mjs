@@ -162,7 +162,7 @@ test('PMID, pubmed_url e citation de cada card STAMPEDE batem com a publicação
 test('família não traz resultado clínico', () => {
   for (const f of D.families) {
     assert.ok(!('resultado_chave' in f) && !('primario' in f), f.family_id);
-    assert.doesNotMatch(JSON.stringify(f), /\bHR\b|IC ?95|mediana/i, f.family_id);
+    assert.doesNotMatch(JSON.stringify(f), /\bHR\b(?!-)|IC ?95|mediana/i, f.family_id);   // HR-NBL1 é nome de estudo
   }
 });
 
@@ -237,7 +237,8 @@ const BLOCOS_FAM = [...HTML_DB.matchAll(/<!-- fam:ini[\s\S]*?<!-- fam:fim -->/g)
 // chaves diretas (tt('db.x')), chaves por tipo de família (famK: 'x' e 'xCohort') e as dos métodos de contagem/vínculo
 const CHAVES = [...new Set([
   ...[...BLOCOS_FAM.join('\n').matchAll(/tt\('db\.(\w+)'/g)].map((m) => m[1]),
-  ...[...BLOCOS_FAM.join('\n').matchAll(/famK\([^,]+, '(\w+)'\)/g)].flatMap((m) => [m[1], m[1] + 'Cohort', m[1] + 'Analysis']),
+  ...[...BLOCOS_FAM.join('\n').matchAll(/famK\([^,]+, '(\w+)'\)/g)].flatMap((m) => [m[1], m[1] + 'Cohort', m[1] + 'Analysis', m[1] + 'Randomization']),
+  'famRandomizations', 'famRandomizationsOne', 'famPartOf_master_protocol', 'famPartOf_multicohort',
   'famAnalyses', 'famAnalysesOne', 'famCohorts', 'famCohortsOne', 'famPartOf', 'famPartOfCohort', 'famPartOf_basket',
   'famSharedIntervention',
 ])];
@@ -487,7 +488,7 @@ test('2 famílias multicoorte: registro, coortes, member_uids e só coortes como
 
 test('multicoorte: filhos independentes, uid preservado, título distinto, relação declarada por card', () => {
   assert.equal(D.studies.length, 507);
-  assert.equal(D.families.length, 7);
+  for (const id of Object.keys(MULTI)) assert.ok(D.families.some((f) => f.family_id === id), id);
   for (const [id, m] of Object.entries(MULTI)) {
     const f = T.familyById(D, id);
     assert.deepEqual(js(T.familyMembers(D, f).map((s) => s.uid)), m.membros);
@@ -509,7 +510,6 @@ test('multicoorte: filhos independentes, uid preservado, título distinto, rela�
 test('multicoorte: NCT compartilhado dentro da família sai dos avisos; grupos não migrados continuam', () => {
   const r = validarCom(() => {});
   assert.doesNotMatch(r.saida, /NCT NCT03785249 também está|NCT NCT03157128 também está/);
-  assert.match(r.saida, /NCT NCT01704716 também está/);     // HR-NBL1/SIOPEN, ainda sem família
   assert.match(r.saida, /NCT NCT02568267 também está/);     // NTRK/ROS1, ainda sem família
 });
 
@@ -582,4 +582,114 @@ test('multicoorte: contagem 1/N, badge e rótulos em PT/EN', () => {
   assert.equal(DICT['pt-br'].db.famAnalyses, 'análises no Database');
   assert.equal(DICT['pt-br'].db.famPartOf_multicohort, 'Parte do estudo multicoorte');
   assert.equal(DICT.en.db.famPartOf_multicohort, 'Part of the multicohort trial');
+});
+
+// ── master protocol: HR-NBL1/SIOPEN ────────────────────────────────────────
+/* Master protocol = um protocolo de tratamento ao qual foram incorporadas randomizações (R0–R4) em
+ * componentes e períodos diferentes — não fases sequenciais —, cada uma com elegíveis e publicação
+ * próprios. A família lista todas as randomizações do protocolo;
+ * os cards são as randomizações R1 (BuMel vs CEM) e R2 (dinutuximabe beta ± IL-2). */
+const HRNBL = T.familyById(D, 'hr-nbl1-siopen');
+const HR_MEMBROS = ['neuroblastoma_10', 'neuroblastoma_7'];
+
+test('master protocol HR-NBL1/SIOPEN: randomizações R0–R4, só R1 e R2 com card, sem aposentar uid', () => {
+  assert.ok(HRNBL);
+  assert.equal(HRNBL.design_type, 'master_protocol');
+  assert.deepEqual(js(HRNBL.registry_ids), ['NCT01704716']);
+  assert.equal(HRNBL.arms, undefined);
+  assert.equal(HRNBL.cohorts, undefined);
+  assert.deepEqual(js(HRNBL.randomizations.map((x) => x.randomization)), ['R0', 'R1', 'R2', 'R3', 'R4']);
+  assert.equal(HRNBL.stages, undefined);
+  assert.match(HRNBL.design_summary, /Não são fases sequenciais/);
+  assert.doesNotMatch(JSON.stringify(HRNBL), /\betapas?\b|sucessivas/i, 'randomizações não são etapas sequenciais');
+  assert.deepEqual(js(HRNBL.randomizations.filter((x) => x.card_uids.length).map((x) => [x.randomization, x.card_uids[0]])), [['R1', 'neuroblastoma_10'], ['R2', 'neuroblastoma_7']]);
+  assert.deepEqual(js(HRNBL.member_uids), HR_MEMBROS);
+  assert.equal(HRNBL.legacy_uids, undefined);
+  assert.equal(D.families.length, 8);
+});
+
+test('master protocol: membros são randomizações; vocabulário vem da relação, não do design_type', () => {
+  for (const u of HR_MEMBROS) assert.equal(card(u).family_relation, 'randomization', u);
+  assert.equal(T.familyUnitKind(D, HRNBL), 'randomization');
+  const f = { family_id: 'x', design_type: 'master_protocol', randomizations: [{ randomization: 'A', card_uids: ['a'] }, { randomization: 'B', card_uids: ['b'] }] };
+  const dx = (rel) => ({ families: [f], studies: [{ uid: 'a', family_id: 'x', family_relation: 'randomization' }, { uid: 'b', family_id: 'x', family_relation: rel }] });
+  assert.equal(T.familyUnitKind(dx('randomization'), f), 'randomization');
+  assert.equal(T.familyUnitKind(dx('analysis'), f), 'analysis', 'mistura randomização + análise → análises');
+});
+
+test('master protocol: filhos independentes, títulos por randomização, links família ↔ card', () => {
+  const titulos = HR_MEMBROS.map((u) => T.studyTitle(card(u).estudo));
+  assert.deepEqual(js(titulos), ['HR-NBL1/SIOPEN · R1: BuMel vs CEM', 'HR-NBL1/SIOPEN · R2: dinutuximabe beta ± IL-2']);
+  assert.deepEqual(js(T.familyMembers(D, HRNBL).map((s) => s.uid)), HR_MEMBROS);
+  for (const u of HR_MEMBROS) {
+    assert.equal(card(u).family_id, 'hr-nbl1-siopen');
+    assert.equal(T.familyById(D, card(u).family_id).family_id, 'hr-nbl1-siopen');
+    assert.equal(T.familyForHash(D, u), null, `#${u} abre o card`);
+    assert.equal(card(u).nct, 'NCT01704716');
+    assert.equal(card(u).category_id, 'neuroblastoma');
+    assert.deepEqual(js(T.tumorTypes.filter((t) => t.match(card(u))).map((t) => t.id)), ['neuroblastoma'], u);
+  }
+  assert.equal(T.familyForHash(D, 'hr-nbl1-siopen').family_id, 'hr-nbl1-siopen');
+});
+
+test('master protocol: busca pelo acrônimo mostra a família; por tema acha o filho', () => {
+  for (const q of ['HR-NBL1', 'SIOPEN', 'NCT01704716']) {
+    assert.ok(T.familiesToShow(D, busca(q), q, false).some((f) => f.family_id === 'hr-nbl1-siopen'), q);
+    for (const u of HR_MEMBROS) assert.ok(busca(q).some((s) => s.uid === u), `${q} → ${u}`);
+  }
+  for (const [q, u] of [['BuMel', 'neuroblastoma_10'], ['dinutuximabe', 'neuroblastoma_7'], ['IL-2', 'neuroblastoma_7'], ['neuroblastoma', 'neuroblastoma_10']]) {
+    assert.ok(busca(q).some((s) => s.uid === u), `${q} → ${u}`);
+  }
+});
+
+test('master protocol: NCT01704716 sai dos avisos; sobram só os de NTRK/ROS1', () => {
+  const r = validarCom(() => {});
+  assert.equal(r.code, 0, r.saida);
+  assert.doesNotMatch(r.saida, /NCT NCT01704716 também está/);
+  const avisos = [...r.saida.matchAll(/NCT (NCT\d{8}) também está/g)].map((m) => m[1]);
+  assert.deepEqual([...new Set(avisos)].sort(), ['NCT02122913', 'NCT02568267']);
+});
+reprova('master protocol sem randomizações (randomizations)', (d) => {
+  const f = d.families.find((x) => x.family_id === 'hr-nbl1-siopen'); f.arms = f.randomizations; delete f.randomizations;
+}, /master protocol descreve as randomizações/);
+reprova('membro de master protocol com relação de coorte', (d) => {
+  d.studies.find((s) => s.uid === 'neuroblastoma_7').family_relation = 'cohort';
+}, /family_relation "randomization" ou "analysis"/);
+reprova('HR de verdade numa randomização da família (HR-NBL1 no nome não conta)', (d) => {
+  d.families.find((x) => x.family_id === 'hr-nbl1-siopen').randomizations[1].label += ' (HR 0,77)';
+}, /randomização R1: resultado clínico/);
+
+test('master protocol: PMID/citation da randomização representada e correções não regridem', () => {
+  for (const [u, pmid, ano] of [['neuroblastoma_10', '28259608', 2017], ['neuroblastoma_7', '30442501', 2018]]) {
+    const s = card(u);
+    assert.equal(s.citation.pmid, pmid, u);
+    assert.equal(s.pubmed_url, `https://pubmed.ncbi.nlm.nih.gov/${pmid}/`, u);
+    assert.equal(s.ano_pub, ano);
+    assert.equal(s.citation.year, ano);
+  }
+  const r2 = JSON.stringify(card('neuroblastoma_7'));
+  assert.doesNotMatch(r2, /10 dias|infusão contínua|1\.000 mg|HR-NBL1\.5|não-inferioridade|32013055/, 'esquema de 10 dias é da R4; Cancers 2020 é outra análise');
+  assert.match(card('neuroblastoma_7').esquema, /infusão de 8 h/);
+  const r1 = JSON.stringify(card('neuroblastoma_10'));
+  assert.doesNotMatch(r1, /HR 0,77|p=0,001|OS 3 anos|interina|<\/?strong>|defibrotide/);
+  assert.match(card('neuroblastoma_10').primario, /p=0,0005/);
+  assert.match(card('neuroblastoma_10').tox_g3, /4% \(BuMel\) vs 10% \(CEM\)/, 'BuMel teve MENOS toxicidade grave');
+});
+
+test('master protocol: contagem 1/N randomizações, badge e rótulos PT/EN', () => {
+  const corpo = HTML_DB.match(/famCount\(f\) \{([\s\S]*?)\n    \},/)[1];
+  const vm2 = { tt: (k, f) => (k.endsWith('One') ? 'U:' : 'P:') + f, famKind: (f) => T.familyUnitKind(D, f), familyMembers: (f) => T.familyMembers(D, f) };
+  assert.equal(new Function('f', corpo).bind(vm2)(HRNBL), '2 P:randomizações no Database');
+  const f1 = { ...js(HRNBL), family_id: 'y', randomizations: [{ randomization: 'R1', card_uids: ['neuroblastoma_10'] }] };
+  const d1 = { families: [f1], studies: [{ ...js(card('neuroblastoma_10')), family_id: 'y' }] };
+  const vm3 = { ...vm2, famKind: (f) => T.familyUnitKind(d1, f), familyMembers: (f) => T.familyMembers(d1, f) };
+  assert.equal(new Function('f', corpo).bind(vm3)(f1), '1 U:randomização no Database');
+  for (const l of ['pt-br', 'en']) assert.equal(DICT[l].db.famType_master_protocol, 'Master protocol', l);
+  assert.equal(DICT['pt-br'].db.famRandomizations, 'randomizações no Database');
+  assert.equal(DICT.en.db.famRandomizationsOne, 'randomization in the Database');
+  assert.equal(DICT['pt-br'].db.famArmsRandomization, 'Randomizações do protocolo');
+  assert.equal(DICT.en.db.famArmsRandomization, 'Protocol randomizations');
+  assert.equal(DICT['pt-br'].db.famPartOf_master_protocol, 'Parte do master protocol');
+  assert.equal(DICT.en.db.famPartOf_master_protocol, 'Part of the master protocol');
+  assert.match(HTML_DB, /a\.arm \|\| a\.cohort \|\| a\.randomization/);
 });

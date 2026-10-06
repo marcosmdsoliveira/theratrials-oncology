@@ -1193,9 +1193,9 @@
             <table class="family-arms">
               <thead><tr><th x-text="famK(selectedFamily, 'famArm')"></th><th x-text="famK(selectedFamily, 'famTreatment')"></th><th x-text="tt('db.famStatus', 'Status')"></th><th x-text="tt('db.famMainPub', 'Publicação principal')"></th><th x-text="tt('db.famInDb', 'No Database')"></th></tr></thead>
               <tbody>
-                <template x-for="a in famUnits(selectedFamily)" :key="a.arm || a.cohort">
+                <template x-for="a in famUnits(selectedFamily)" :key="a.arm || a.cohort || a.randomization">
                   <tr>
-                    <td class="text-mono" x-text="a.arm || a.cohort"></td>
+                    <td class="text-mono" x-text="a.arm || a.cohort || a.randomization"></td>
                     <td x-text="a.treatment || [a.label, a.selection].filter(Boolean).join(' · ')"></td>
                     <td x-text="a.status"></td>
                     <td>
@@ -1362,12 +1362,12 @@
   </div>
 </footer>
 
-<script src="assets/js/data.js?v=05d9238010"></script>
+<script src="assets/js/data.js?v=71f30138c8"></script>
 <script src="assets/js/secondary-cards.js?v=18965990a2"></script>
-<script src="assets/js/common.js?v=57e9f2fc7b"></script>
+<script src="assets/js/common.js?v=6cfd991409"></script>
 <script src="assets/js/citation.js?v=e884983a80"></script>
 <script src="assets/js/glossario.js?v=cd226d8143"></script>
-<script src="assets/js/i18n.js?v=5c6ca17cfe"></script>
+<script src="assets/js/i18n.js?v=08c0114a1a"></script>
 <script>
 function databaseApp() {
   return {
@@ -1654,35 +1654,39 @@ function databaseApp() {
     famTypeShort(f) { return f ? this.tt('db.famTypeShort_' + f.design_type, (f.design_label || '').split(' · ')[0]) : ''; },
     // Basket/multicoorte fala em "coortes"; plataforma, em "braços"/"comparações". Mesmo componente.
     // Fallback local: o service worker pode servir um common.js antigo (cache-first) na 1ª visita pós-deploy.
-    famIsCohort(f) { return TheraTrials.familyIsCohort ? TheraTrials.familyIsCohort(f) : !!(f && Array.isArray(f.cohorts) && f.cohorts.length); },
-    famUnits(f) { return TheraTrials.familyUnits ? TheraTrials.familyUnits(f) : (!f ? [] : this.famIsCohort(f) ? f.cohorts : (f.arms || [])); },
+    famIsCohort(f) { return TheraTrials.familyIsCohort ? TheraTrials.familyIsCohort(f) : !!(f && ((f.cohorts || []).length || (f.randomizations || []).length)); },
+    famUnits(f) { return TheraTrials.familyUnits ? TheraTrials.familyUnits(f) : (!f ? [] : (f.cohorts || []).length ? f.cohorts : (f.randomizations || []).length ? f.randomizations : (f.arms || [])); },
     famKind(f) {
       if (TheraTrials.familyUnitKind) return TheraTrials.familyUnitKind(this.data, f);
       if (!this.famIsCohort(f)) return 'arm';
-      const m = this.familyMembers(f);
-      return m.length && m.every(s => s.family_relation === 'cohort') ? 'cohort' : 'analysis';
+      const m = this.familyMembers(f), todos = r => m.length > 0 && m.every(s => s.family_relation === r);
+      return todos('cohort') ? 'cohort' : todos('randomization') ? 'randomization' : 'analysis';
     },
     famK(f, base) {
       const fb = {
-        famComparisons: ['Comparações no Database', 'Coortes no Database', 'Análises no Database'],
-        famOpenProtocol: ['Ver o protocolo e todos os braços', 'Ver o protocolo e todas as coortes', 'Ver o protocolo e todas as análises'],
-        famSeeOthers: ['Ver o protocolo e as demais comparações →', 'Ver o protocolo e as demais coortes →', 'Ver o protocolo e as demais análises →'],
+        famComparisons: ['Comparações no Database', 'Coortes no Database', 'Análises no Database', 'Randomizações no Database'],
+        famOpenProtocol: ['Ver o protocolo e todos os braços', 'Ver o protocolo e todas as coortes', 'Ver o protocolo e todas as análises', 'Ver o protocolo e todas as randomizações'],
+        famSeeOthers: ['Ver o protocolo e as demais comparações →', 'Ver o protocolo e as demais coortes →', 'Ver o protocolo e as demais análises →', 'Ver o protocolo e as demais randomizações →'],
         famNote: ['Este registro descreve apenas o protocolo. Os resultados ficam no card de cada comparação.',
                   'Este registro descreve apenas o protocolo. Os resultados ficam no card de cada coorte.',
-                  'Este registro descreve apenas o protocolo. Os resultados ficam no card de cada análise.'],
-        famArms: ['Braços do protocolo', 'Coortes representadas', 'Análises representadas'],
-        famArm: ['Braço', 'Coorte', 'Coorte / população'],
-        famTreatment: ['Tratamento', 'População e seleção', 'Análise e seleção'],
-      }[base] || [base, base, base];
+                  'Este registro descreve apenas o protocolo. Os resultados ficam no card de cada análise.',
+                  'Este registro descreve apenas o protocolo. Os resultados ficam no card de cada randomização.'],
+        famArms: ['Braços do protocolo', 'Coortes representadas', 'Análises representadas', 'Randomizações do protocolo'],
+        famArm: ['Braço', 'Coorte', 'Coorte / população', 'Randomização'],
+        famTreatment: ['Tratamento', 'População e seleção', 'Análise e seleção', 'Comparação'],
+      }[base] || [base, base, base, base];
       const kind = this.famKind(f);
       if (kind === 'cohort') return this.tt('db.' + base + 'Cohort', fb[1]);
       if (kind === 'analysis') return this.tt('db.' + base + 'Analysis', fb[2]);
+      if (kind === 'randomization') return this.tt('db.' + base + 'Randomization', fb[3]);
       return this.tt('db.' + base, fb[0]);
     },
     famCount(f) {
       const n = this.familyMembers(f).length, um = n === 1;
-      const k = this.famKind(f) === 'cohort' ? (um ? ['famCohortsOne', 'coorte no Database'] : ['famCohorts', 'coortes no Database'])
-                                    : (um ? ['famAnalysesOne', 'análise no Database'] : ['famAnalyses', 'análises no Database']);
+      const kind = this.famKind(f);
+      const k = kind === 'cohort' ? (um ? ['famCohortsOne', 'coorte no Database'] : ['famCohorts', 'coortes no Database'])
+              : kind === 'randomization' ? (um ? ['famRandomizationsOne', 'randomização no Database'] : ['famRandomizations', 'randomizações no Database'])
+              : (um ? ['famAnalysesOne', 'análise no Database'] : ['famAnalyses', 'análises no Database']);
       return n + ' ' + this.tt('db.' + k[0], k[1]);
     },
     famPartOf(f) {
