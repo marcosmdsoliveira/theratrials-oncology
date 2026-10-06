@@ -263,7 +263,9 @@ for (const f of FAM) {
     .concat((f.arms || []).map((a) => ({ ...a, rot: `braço ${a.arm}`, texto: `${a.treatment ?? ''} ${a.status ?? ''}` })));
   for (const a of unidades) {
     if (CLINICO_NA_FAMILIA.test(a.texto)) F(id, `${a.rot}: resultado clínico no texto da linha`);
-    if (a.publication && !/^\d{1,9}$/.test(String(a.publication.pmid))) F(id, `${a.rot}: PMID inválido`);
+    // publicação da linha: PMID ou, sem PMID (ex.: abstract de congresso), DOI
+    if (a.publication && a.publication.pmid != null && !/^\d{1,9}$/.test(String(a.publication.pmid))) F(id, `${a.rot}: PMID inválido`);
+    if (a.publication && a.publication.pmid == null && !/^10\.\d{4,9}\/\S+$/.test(String(a.publication.doi ?? ''))) F(id, `${a.rot}: publicação sem PMID nem DOI válido`);
     for (const u of a.card_uids || []) {
       const s = S.find((x) => x.uid === u);
       if (!s) F(id, `${a.rot}: card ${u} não existe`);

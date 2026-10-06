@@ -231,3 +231,94 @@ test('Natalie: busca, filtro de tumor, categoria e app-data', () => {
   const app = JSON.parse(readFileSync(path.join(SITE, 'app-data', 'data.json'), 'utf8'));
   assert.deepEqual(app.studies.find((s) => s.uid === NAT).primario, card(NAT).primario);
 });
+
+// ── RAMPART: plataforma MAMS, duas comparações apresentadas em congresso ───
+/* RAMPART (NCT03288532 · ISRCTN53348826): plataforma MAMS 3:2:2 — A monitoramento ativo;
+ * B durvalumabe; C durvalumabe + tremelimumabe. C vs A: ESMO 2025 LBA93 (Ann Oncol 2025;36:S1635);
+ * B vs A: ASCO 2026 LBA4511 (J Clin Oncol 2026;44(17_suppl)). Os dois são abstracts de congresso,
+ * sem publicação completa. O uid antigo (durvalumabe + tremelimumabe) ficou com C vs A. */
+const RC = 'rampart-durvalumabe-tremelimumabe-adjuvante-rcc';
+const RB = 'rampart-durvalumabe-monoterapia-adjuvante-rcc';
+const famR = () => D.families.find((f) => f.family_id === 'rampart');
+
+test('RAMPART: family platform_mams com três braços, dois cards e sem resultado clínico', () => {
+  const f = famR();
+  assert.ok(f);
+  assert.equal(f.design_type, 'platform_mams');
+  assert.deepEqual(js(f.registry_ids), ['NCT03288532', 'ISRCTN53348826']);
+  assert.deepEqual(js(f.arms.map((a) => a.arm)), ['A', 'B', 'C']);
+  assert.match(f.arms[0].treatment, /^Monitoramento ativo/);
+  assert.match(f.arms[1].treatment, /^Durvalumabe 1\.500 mg/);
+  assert.match(f.arms[2].treatment, /tremelimumabe 75 mg nos ciclos 1 e 2/);
+  assert.deepEqual(js(f.arms.map((a) => a.card_uids)), [[], [RB], [RC]]);
+  assert.equal(f.arms[1].publication.doi, '10.1200/JCO.2026.44.17_suppl.LBA4511');
+  assert.equal(f.arms[2].publication.doi, '10.1016/j.annonc.2025.09.110');
+  assert.match(f.design_summary, /multi-arm multi-stage \(MAMS\), randomizado 3:2:2/);
+  assert.match(f.i18n.en.design_summary, /multi-arm multi-stage \(MAMS\) platform trial randomised 3:2:2/);
+  assert.doesNotMatch(JSON.stringify(f), /HR |IC95%|DFS em \d|0,65|0,74|84%|78%/, 'family sem eficácia');
+  assert.equal(T.familyUnitKind(D, f), 'arm', 'mesma UX do STAMPEDE: braços do protocolo');
+  for (const u of [RC, RB]) {
+    assert.equal(card(u).family_id, 'rampart', u);
+    assert.equal(card(u).family_relation, 'comparison', u);
+    assert.equal(card(u).nct, 'NCT03288532', u);
+  }
+});
+
+test('RAMPART: títulos, fonte (DOI de abstract de congresso) e status de evidência', () => {
+  const c = card(RC), b = card(RB);
+  assert.equal(T.studyTitle(c.estudo), 'RAMPART · Durvalumabe + tremelimumabe vs monitoramento ativo — RCC adjuvante');
+  assert.equal(T.studyTitle(b.estudo), 'RAMPART · Durvalumabe vs monitoramento ativo — RCC adjuvante');
+  assert.match(c.ref, /Ann Oncol 2025;36\(suppl\):S1635 \(abstract de congresso, ESMO 2025; DOI 10\.1016\/j\.annonc\.2025\.09\.110\)/);
+  assert.match(b.ref, /J Clin Oncol 2026;44\(17_suppl\):LBA4511 \(abstract de congresso, ASCO 2026; DOI 10\.1200\/JCO\.2026\.44\.17_suppl\.LBA4511\)/);
+  for (const x of [c, b]) {
+    assert.equal(x.citation, undefined, 'convenção dos cards de congresso: sem citation (o v2 exige PMID)');
+    assert.equal(x.pubmed_url, '', 'abstract sem PMID');
+    assert.match(x.status, /^Apresentado \((ESMO 2025, LBA93|ASCO 2026, LBA4511)\) · publicação completa ainda não disponível$/);
+    assert.match(x.limit, /^Resultado de abstract de congresso; publicação completa da análise primária ainda não disponível/);
+    assert.match(x.ref, /abstract de congresso/);
+    assert.doesNotMatch(JSON.stringify(x), /cancernetwork|por publicar|NEGATIVO/i);
+  }
+  assert.equal(c.ano_pub, 2025);
+  assert.equal(b.ano_pub, 2026);
+});
+
+test('RAMPART C vs A: só dados do LBA93', () => {
+  const c = card(RC), j = JSON.stringify(c);
+  assert.equal(c.primario, 'DFS C vs A (n=565): HR 0,65 (IC95% 0,45–0,93; p unilateral 0,0094). DFS em 2 anos: 84% (C) vs 78% (A).');
+  assert.match(c.subgrupo, /Maior risco \(alto \+ M1NED; n=311\): HR 0,52 \(IC95% 0,34–0,80; p=0,0016\); DFS em 2 anos 81% vs 67%/);
+  assert.match(c.subgrupo, /Risco intermediário \(n=254\): HR 1,19 \(IC95% 0,61–2,32; p=0,309\)/);
+  assert.match(c.subgrupo, /Interação tratamento × risco: HR 0,43 \(IC95% 0,19–0,95; p=0,019\)/);
+  assert.match(c.basal, /intermediário 151 \/ 103 \(254\); alto 172 \/ 111 \(283\); M1NED 17 \/ 11 \(28\)/);
+  assert.match(c.estatistica, /HR de DFS de 0,55 em C vs A/);
+  assert.match(c.tox_interesse, /sinais de segurança inesperados/);
+  assert.doesNotMatch(c.tox_g3 + c.tox_interesse, /\d+%/, 'sem percentuais de toxicidade');
+  assert.doesNotMatch(j, /0,74|0,53–1,04|0,041|3 anos|0,77|0,30–1,34|0,60 em B/, 'sem números de B vs A');
+});
+
+test('RAMPART B vs A: só dados do LBA4511; sem "negativo"', () => {
+  const b = card(RB), j = JSON.stringify(b);
+  assert.equal(b.primario, 'DFS B vs A (n=565): HR 0,74 (IC95% 0,53–1,04; p unilateral 0,041), sem significância estatística convencional. DFS em 3 anos: 78% (B) vs 72% (A).');
+  assert.match(b.subgrupo, /Maior risco \(n=312\): HR 0,77 \(IC95% 0,53–1,12\)/);
+  assert.match(b.subgrupo, /Risco intermediário \(n=253\): HR 0,64 \(IC95% 0,30–1,34\)/);
+  assert.match(b.subgrupo, /Sem evidência de interação/);
+  assert.match(b.estatistica, /HR de DFS de 0,60 em B vs A/);
+  assert.match(b.centros, /^80 centros; .*Espanha \(4%\)/);
+  assert.equal(b.tox_g3, 'Não informada no abstract.');
+  assert.doesNotMatch(j, /0,65|0,45–0,93|0,0094|2 anos|0,52|0,0016|0,43|1,19|0,55 em C/, 'sem números de C vs A');
+});
+
+test('RAMPART: busca, filtros, deep links (card e family) e app-data', () => {
+  for (const q of ['RAMPART', 'NCT03288532']) for (const u of [RC, RB]) assert.ok(busca(q).some((s) => s.uid === u), `${q} → ${u}`);
+  assert.ok(busca('tremelimumabe').some((s) => s.uid === RC));
+  for (const u of [RC, RB]) {
+    assert.equal(card(u).category_id, 'rcc_adjuvante_naocc');
+    assert.deepEqual(js(T.tumorTypes.filter((t) => t.match(card(u))).map((t) => t.id)), ['ccrcc'], u);
+    assert.equal(T.familyForHash(D, u), null, `#${u} abre o card`);
+  }
+  assert.equal(T.familyForHash(D, 'rampart').family_id, 'rampart');
+  const cat = D.categories.find((c) => c.id === 'rcc_adjuvante_naocc');
+  assert.equal(cat.count, D.studies.filter((s) => s.category_id === 'rcc_adjuvante_naocc').length);
+  const app = JSON.parse(readFileSync(path.join(SITE, 'app-data', 'data.json'), 'utf8'));
+  for (const u of [RC, RB]) assert.equal(app.studies.find((s) => s.uid === u).primario, card(u).primario, u);
+  assert.ok((app.families || []).some((f) => f.family_id === 'rampart'));
+});

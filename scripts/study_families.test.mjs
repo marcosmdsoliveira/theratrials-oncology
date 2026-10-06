@@ -961,3 +961,11 @@ test('campos textuais da família passam por famText (i18n.en aparece em EN; sem
   }
   assert.match(HTML_DB, /famText\(f, 'design_summary'\)/);
 });
+
+// publicação de linha da família: PMID ou, sem PMID (abstract de congresso), DOI válido
+reprova('linha com publicação sem PMID nem DOI', (d) => {
+  d.families.find((f) => f.family_id === 'rampart').arms[1].publication = { label: 'abstract' };
+}, /publicação sem PMID nem DOI válido/);
+reprova('linha com PMID malformado', (d) => {
+  d.families.find((f) => f.family_id === 'rampart').arms[1].publication = { pmid: 'LBA4511', label: 'abstract' };
+}, /PMID inválido/);
