@@ -169,3 +169,65 @@ test('PEACE-1: busca, categoria e deep links', () => {
   const app = JSON.parse(readFileSync(path.join(SITE, 'app-data', 'data.json'), 'utf8'));
   for (const u of [PABI, PRT]) assert.ok(app.studies.some((s) => s.uid === u), u);
 });
+
+// ── Natalie Trial: cabozantinibe em PPGL (sem NCI-MATCH) ───────────────────
+/* ppgl_5 = Natalie Trial (NCT02302833): fase 2, braço único, centro único no MD Anderson
+ * (NCI só como colaborador); Jimenez, Lancet Oncol 2024 (PMID 38608693). O card dizia
+ * "NCI-MATCH/MD Anderson", mas o NCI-MATCH (NCT02465060) não tem subprotocolo de
+ * cabozantinibe nem PPGL; faixas sem fonte (ORR 25-35%, PFS 12-16 m, DE ~50%) foram removidas. */
+const NAT = 'ppgl_5';
+
+test('Natalie: NCT, PMID, título e desenho de um único estudo; sem NCI-MATCH; sem família', () => {
+  const c = card(NAT);
+  assert.equal(c.nct, 'NCT02302833');
+  assert.equal(c.nct_url, 'https://clinicaltrials.gov/study/NCT02302833');
+  assert.equal(c.citation.pmid, '38608693');
+  assert.equal(c.pubmed_url, 'https://pubmed.ncbi.nlm.nih.gov/38608693/');
+  assert.equal(c.ano_pub, 2024);
+  assert.match(T.studyTitle(c.estudo), /^Natalie Trial · Cabozantinibe em PPGL/);
+  assert.match(c.fase, /Fase 2, braço único, aberto, centro único/);
+  assert.match(c.centros, /^Centro único: MD Anderson/);
+  assert.doesNotMatch(c.fase + c.centros, /multic[eê]ntric|expansão/i);
+  assert.doesNotMatch(JSON.stringify(c), /NCI-MATCH|EAY131|NCT02465060/);
+  assert.match(c.sponsor, /colaborador: National Cancer Institute/);
+  assert.equal(c.family_id, undefined);
+  assert.equal(T.familyForHash(D, NAT), null, '#ppgl_5 abre o card');
+});
+
+test('Natalie: população, n, dose e biomarcador conforme registro/protocolo', () => {
+  const c = card(NAT);
+  assert.match(c.n, /^17 \(16 avaliáveis/);
+  assert.match(c.incl, /progressão por RECIST 1\.1 nos 12 meses anteriores; ECOG 0–2/);
+  assert.match(c.esquema, /^Cabozantinibe 60 mg VO 1×\/dia, em jejum/);
+  assert.match(c.esquema, /40 e 20 mg\/dia/);
+  assert.equal(c.molecular, 'Sem critério molecular de inclusão.');
+  assert.doesNotMatch(c.molecular + c.biomarc + c.incl, /SDH|RET|VHL|NF1/, 'sem seleção molecular atribuída');
+  assert.doesNotMatch(JSON.stringify(c), /SDHB\+ ~45%|60% PGL|Ga-DOTATATE|futilidade/, 'basais/estatística sem fonte removidos');
+});
+
+test('Natalie: eficácia e toxicidade só do próprio estudo, sem faixas sem fonte', () => {
+  const c = card(NAT);
+  assert.equal(c.primario, 'ORR avaliada pelo investigador (RECIST 1.1): 25,0% (IC95% 7,3–52,4; 4/16).');
+  assert.equal(c.resultado_chave, 'ORR 25,0% (4/16; IC95% 7,3–52,4)');
+  assert.doesNotMatch(JSON.stringify(c), /25-35%|12-16 m|~50%|~60%|HFS 15-20%/);
+  assert.match(c.tox_g3, /Sete eventos adversos G3 em seis pacientes/);
+  assert.match(c.tox_g3, /Sem eventos G4 e sem óbitos no estudo/);
+  assert.match(c.tox_interesse, /^Resultados postados no ClinicalTrials\.gov \(20 tratados/);
+  assert.match(c.limit, /20 pacientes tratados, número diferente do publicado/);
+  assert.doesNotMatch(c.impacto_reg + c.takehome, /pós-sunitinibe|SDHB/);
+  assert.match(c.takehome, /não evidência confirmatória/);
+  // referência com a lista real de autores (PubMed 38608693)
+  assert.match(c.ref, /Bassett R, Dantzer R, Balderrama-Brondani V, Varghese J, Lu Y\./);
+  assert.doesNotMatch(c.ref, /Fojo|Waguespack|Subbiah/);
+});
+
+test('Natalie: busca, filtro de tumor, categoria e app-data', () => {
+  for (const q of ['Natalie', 'cabozantinibe', 'NCT02302833']) assert.ok(busca(q).some((s) => s.uid === NAT), q);
+  assert.ok(!busca('NCI-MATCH').some((s) => s.uid === NAT));
+  assert.equal(card(NAT).category_id, 'ppgl');
+  assert.deepEqual(js(T.tumorTypes.filter((t) => t.match(card(NAT))).map((t) => t.id)), ['pheo_pgl']);
+  const cat = D.categories.find((c) => c.id === 'ppgl');
+  assert.equal(cat.count, D.studies.filter((s) => s.category_id === 'ppgl').length);
+  const app = JSON.parse(readFileSync(path.join(SITE, 'app-data', 'data.json'), 'utf8'));
+  assert.deepEqual(app.studies.find((s) => s.uid === NAT).primario, card(NAT).primario);
+});
