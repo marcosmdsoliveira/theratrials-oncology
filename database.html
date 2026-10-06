@@ -808,19 +808,19 @@
             <article class="family-card">
               <div class="family-card-top">
                 <span class="family-badge" x-text="famType(f)"></span>
-                <span class="family-count" x-text="familyMembers(f).length + ' ' + tt('db.famAnalyses', 'análises no Database')"></span>
+                <span class="family-count" x-text="famCount(f)"></span>
               </div>
               <h3 class="family-title" x-text="f.family_name"></h3>
               <div class="card-nct" x-text="(f.registry_ids || []).join(' · ')"></div>
               <p class="family-summary" x-text="f.design_summary"></p>
-              <div class="family-members-label" x-text="tt('db.famComparisons', 'Comparações no Database')"></div>
+              <div class="family-members-label" x-text="famK(f, 'famComparisons')"></div>
               <ul class="family-members">
                 <template x-for="m in familyMembers(f)" :key="m.uid">
                   <li><button type="button" @click="openStudy(m)"><span>→</span> <span x-text="m.comparison_label || TheraTrials.studyTitle(m.estudo)"></span></button></li>
                 </template>
               </ul>
               <button type="button" class="btn btn-secondary btn-sm" @click="openFamily(f)">
-                <i data-lucide="network" style="width:13px;height:13px"></i> <span x-text="tt('db.famOpenProtocol', 'Ver o protocolo e todos os braços')"></span>
+                <i data-lucide="network" style="width:13px;height:13px"></i> <span x-text="famK(f, 'famOpenProtocol')"></span>
               </button>
             </article>
           </template>
@@ -958,9 +958,9 @@
         <div class="family-callout" x-show="familyOf(selectedStudy)" x-cloak>
           <i data-lucide="network" style="width:16px;height:16px"></i>
           <div>
-            <div><span x-text="tt('db.famPartOf', 'Comparação do protocolo')"></span> <strong x-text="familyOf(selectedStudy) ? familyOf(selectedStudy).family_name : ''"></strong>
-              (<span x-text="familyOf(selectedStudy) ? famType(familyOf(selectedStudy)) : ''"></span>): <span x-text="selectedStudy.comparison_label"></span></div>
-            <button type="button" class="link-btn" @click="openFamily(familyOf(selectedStudy))" x-text="tt('db.famSeeOthers', 'Ver o protocolo e as demais comparações →')"></button>
+            <div><span x-text="famPartOf(familyOf(selectedStudy))"></span> <strong x-text="familyOf(selectedStudy) ? familyOf(selectedStudy).family_name : ''"></strong><template x-if="!famIsCohort(familyOf(selectedStudy))"><span>
+              (<span x-text="familyOf(selectedStudy) ? famType(familyOf(selectedStudy)) : ''"></span>)</span></template>: <span x-text="selectedStudy.comparison_label"></span></div>
+            <button type="button" class="link-btn" @click="openFamily(familyOf(selectedStudy))" x-text="famK(familyOf(selectedStudy), 'famSeeOthers')"></button>
           </div>
         </div>
         <!-- fam:fim -->
@@ -1161,7 +1161,7 @@
         </div>
       </div>
       <div class="modal-body">
-        <p class="family-note" x-text="tt('db.famNote', 'Este registro descreve apenas o protocolo. Os resultados ficam no card de cada comparação.')"></p>
+        <p class="family-note" x-text="famK(selectedFamily, 'famNote')"></p>
         <p class="family-note" x-show="selectedFamily.note" x-text="selectedFamily.note"></p>
         <div class="section-block">
           <div class="section-block-title" x-text="tt('db.famDesign', 'Desenho')"></div>
@@ -1171,28 +1171,32 @@
           <div class="section-block-title" x-text="tt('db.famPopulation', 'População')"></div>
           <div class="field-text" x-text="selectedFamily.population"></div>
         </div>
-        <div class="section-block">
+        <div class="section-block" x-show="selectedFamily.control_summary">
           <div class="section-block-title" x-text="tt('db.famControl', 'Controle e evolução do padrão')"></div>
           <div class="field-text" x-text="selectedFamily.control_summary"></div>
         </div>
+        <div class="section-block" x-show="selectedFamily.shared_intervention">
+          <div class="section-block-title" x-text="tt('db.famSharedIntervention', 'Intervenção compartilhada')"></div>
+          <div class="field-text" x-text="selectedFamily.shared_intervention"></div>
+        </div>
         <div class="section-block">
-          <div class="section-block-title" x-text="tt('db.famComparisons', 'Comparações no Database')"></div>
+          <div class="section-block-title" x-text="famK(selectedFamily, 'famComparisons')"></div>
           <ul class="family-members family-members-modal">
             <template x-for="m in familyMembers(selectedFamily)" :key="m.uid">
               <li><button type="button" @click="openMember(m)"><span>→</span> <span x-text="TheraTrials.studyTitle(m.estudo)"></span> <small x-show="m.linha" x-text="m.linha"></small></button></li>
             </template>
           </ul>
         </div>
-        <div class="section-block" x-show="(selectedFamily.arms || []).length">
-          <div class="section-block-title" x-text="tt('db.famArms', 'Braços do protocolo')"></div>
+        <div class="section-block" x-show="famUnits(selectedFamily).length">
+          <div class="section-block-title" x-text="famK(selectedFamily, 'famArms')"></div>
           <div class="family-arms-wrap">
             <table class="family-arms">
-              <thead><tr><th x-text="tt('db.famArm', 'Braço')"></th><th x-text="tt('db.famTreatment', 'Tratamento')"></th><th x-text="tt('db.famStatus', 'Status')"></th><th x-text="tt('db.famMainPub', 'Publicação principal')"></th><th x-text="tt('db.famInDb', 'No Database')"></th></tr></thead>
+              <thead><tr><th x-text="famK(selectedFamily, 'famArm')"></th><th x-text="famK(selectedFamily, 'famTreatment')"></th><th x-text="tt('db.famStatus', 'Status')"></th><th x-text="tt('db.famMainPub', 'Publicação principal')"></th><th x-text="tt('db.famInDb', 'No Database')"></th></tr></thead>
               <tbody>
-                <template x-for="a in selectedFamily.arms" :key="a.arm">
+                <template x-for="a in famUnits(selectedFamily)" :key="a.arm || a.cohort">
                   <tr>
-                    <td class="text-mono" x-text="a.arm"></td>
-                    <td x-text="a.treatment"></td>
+                    <td class="text-mono" x-text="a.arm || a.cohort"></td>
+                    <td x-text="a.treatment || [a.label, a.selection].filter(Boolean).join(' · ')"></td>
                     <td x-text="a.status"></td>
                     <td>
                       <template x-if="a.publication && /^\d{1,9}$/.test(a.publication.pmid)">
@@ -1648,6 +1652,43 @@ function databaseApp() {
     tt(k, f) { this.langTick; return window.t ? t(k, f) : f; },
     famType(f) { return f ? this.tt('db.famType_' + f.design_type, f.design_label || f.design_type) : ''; },
     famTypeShort(f) { return f ? this.tt('db.famTypeShort_' + f.design_type, (f.design_label || '').split(' · ')[0]) : ''; },
+    // Basket/multicoorte fala em "coortes"; plataforma, em "braços"/"comparações". Mesmo componente.
+    // Fallback local: o service worker pode servir um common.js antigo (cache-first) na 1ª visita pós-deploy.
+    famIsCohort(f) { return TheraTrials.familyIsCohort ? TheraTrials.familyIsCohort(f) : !!(f && Array.isArray(f.cohorts) && f.cohorts.length); },
+    famUnits(f) { return TheraTrials.familyUnits ? TheraTrials.familyUnits(f) : (!f ? [] : this.famIsCohort(f) ? f.cohorts : (f.arms || [])); },
+    famKind(f) {
+      if (TheraTrials.familyUnitKind) return TheraTrials.familyUnitKind(this.data, f);
+      if (!this.famIsCohort(f)) return 'arm';
+      const m = this.familyMembers(f);
+      return m.length && m.every(s => s.family_relation === 'cohort') ? 'cohort' : 'analysis';
+    },
+    famK(f, base) {
+      const fb = {
+        famComparisons: ['Comparações no Database', 'Coortes no Database', 'Análises no Database'],
+        famOpenProtocol: ['Ver o protocolo e todos os braços', 'Ver o protocolo e todas as coortes', 'Ver o protocolo e todas as análises'],
+        famSeeOthers: ['Ver o protocolo e as demais comparações →', 'Ver o protocolo e as demais coortes →', 'Ver o protocolo e as demais análises →'],
+        famNote: ['Este registro descreve apenas o protocolo. Os resultados ficam no card de cada comparação.',
+                  'Este registro descreve apenas o protocolo. Os resultados ficam no card de cada coorte.',
+                  'Este registro descreve apenas o protocolo. Os resultados ficam no card de cada análise.'],
+        famArms: ['Braços do protocolo', 'Coortes representadas', 'Análises representadas'],
+        famArm: ['Braço', 'Coorte', 'Coorte / população'],
+        famTreatment: ['Tratamento', 'População e seleção', 'Análise e seleção'],
+      }[base] || [base, base, base];
+      const kind = this.famKind(f);
+      if (kind === 'cohort') return this.tt('db.' + base + 'Cohort', fb[1]);
+      if (kind === 'analysis') return this.tt('db.' + base + 'Analysis', fb[2]);
+      return this.tt('db.' + base, fb[0]);
+    },
+    famCount(f) {
+      const n = this.familyMembers(f).length, um = n === 1;
+      const k = this.famKind(f) === 'cohort' ? (um ? ['famCohortsOne', 'coorte no Database'] : ['famCohorts', 'coortes no Database'])
+                                    : (um ? ['famAnalysesOne', 'análise no Database'] : ['famAnalyses', 'análises no Database']);
+      return n + ' ' + this.tt('db.' + k[0], k[1]);
+    },
+    famPartOf(f) {
+      if (!this.famIsCohort(f)) return this.tt('db.famPartOf', 'Comparação do protocolo');
+      return this.tt('db.famPartOf_' + f.design_type, this.tt('db.famPartOfCohort', 'Coorte do protocolo'));
+    },
     familyById(id) { return TheraTrials.familyById(this.data, id); },
     familyOf(s) { return s && s.family_id ? TheraTrials.familyById(this.data, s.family_id) : null; },
     familyMembers(f) { return TheraTrials.familyMembers(this.data, f); },

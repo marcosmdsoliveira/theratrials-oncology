@@ -186,10 +186,13 @@ for (const s of S) {
  * clínico: não entra em studies[], não tem resultado_chave e não pode trazer número de
  * desfecho — esse pertence ao card de cada comparação. Membros de uma mesma família podem
  * repetir o NCT legitimamente (é o mesmo protocolo). `legacy_uids` guarda o uid de um card
- * antigo que virou família, para o deep link continuar abrindo. */
+ * antigo que virou família, para o deep link continuar abrindo. Plataforma descreve `arms`
+ * (braços contra um controle); basket/multicoorte descreve `cohorts` (populações independentes),
+ * com o mesmo formato de linha. `member_uids`, se presente, tem de bater com as linhas e com os
+ * cards que declaram a família. */
 const FAMILY_TYPES = new Set(['platform', 'platform_mams', 'basket', 'umbrella', 'multicohort',
   'master_protocol', 'integrated_analysis']);
-const FAMILY_RELATIONS = new Set(['comparison', 'cohort', 'substudy', 'integrated_analysis']);
+const FAMILY_RELATIONS = new Set(['comparison', 'cohort', 'analysis', 'substudy', 'integrated_analysis']);
 const CLINICO_NA_FAMILIA = /\bHR\b|hazard|\bIC ?95|\bCI ?95|mediana|\bORR\b|\bp ?[<=]|\d+(?:[.,]\d+)? ?%/i;
 const FAM = Array.isArray(D.families) ? D.families : [];
 if (D.families !== undefined && !Array.isArray(D.families)) F('(families)', '`families` precisa ser uma lista');
@@ -210,18 +213,27 @@ for (const f of FAM) {
     if (legados.has(u)) F(id, `legacy_uid ${u} repetido em outra família`);
     legados.add(u);
   }
-  for (const campo of ['family_name', 'full_name', 'period', 'population', 'design_summary', 'control_summary', 'note']) {
+  for (const campo of ['family_name', 'full_name', 'period', 'population', 'design_summary', 'control_summary', 'shared_intervention', 'note']) {
     if (CLINICO_NA_FAMILIA.test(String(f[campo] ?? ''))) F(id, `campo ${campo} traz resultado clínico (HR, %, mediana…): ele pertence ao card da comparação`);
   }
   if ('resultado_chave' in f || 'primario' in f) F(id, 'família não tem resultado_chave nem primario');
-  for (const a of f.arms || []) {
-    if (CLINICO_NA_FAMILIA.test(`${a.treatment ?? ''} ${a.status ?? ''}`)) F(id, `braço ${a.arm}: resultado clínico no texto do braço`);
-    if (a.publication && !/^\d{1,9}$/.test(String(a.publication.pmid))) F(id, `braço ${a.arm}: PMID inválido`);
+  if (f.arms !== undefined && f.cohorts !== undefined) F(id, 'família tem arms e cohorts: use um só');
+  if (f.design_type === 'basket' && !(f.cohorts || []).length) F(id, 'basket descreve coortes (cohorts), não braços');
+  const unidades = (f.cohorts || []).map((c) => ({ ...c, rot: `coorte ${c.cohort}`, texto: `${c.cohort ?? ''} ${c.label ?? ''} ${c.selection ?? ''} ${c.status ?? ''}` }))
+    .concat((f.arms || []).map((a) => ({ ...a, rot: `braço ${a.arm}`, texto: `${a.treatment ?? ''} ${a.status ?? ''}` })));
+  for (const a of unidades) {
+    if (CLINICO_NA_FAMILIA.test(a.texto)) F(id, `${a.rot}: resultado clínico no texto da linha`);
+    if (a.publication && !/^\d{1,9}$/.test(String(a.publication.pmid))) F(id, `${a.rot}: PMID inválido`);
     for (const u of a.card_uids || []) {
       const s = S.find((x) => x.uid === u);
-      if (!s) F(id, `braço ${a.arm}: card ${u} não existe`);
-      else if (s.family_id !== id) F(id, `braço ${a.arm}: card ${u} não declara family_id "${id}"`);
+      if (!s) F(id, `${a.rot}: card ${u} não existe`);
+      else if (s.family_id !== id) F(id, `${a.rot}: card ${u} não declara family_id "${id}"`);
     }
+  }
+  if (f.member_uids !== undefined) {
+    const ord = (xs) => [...new Set(xs)].sort().join('|');
+    if (ord(f.member_uids) !== ord(unidades.flatMap((a) => a.card_uids || []))) F(id, 'member_uids não bate com os card_uids das linhas');
+    if (ord(f.member_uids) !== ord(S.filter((s) => s.family_id === id).map((s) => s.uid))) F(id, 'member_uids não bate com os cards que declaram a família');
   }
 }
 for (const f of FAM) for (const r of f.related || []) {
@@ -233,8 +245,32 @@ for (const s of S) {
   if (!f) { F(s.uid, `family_id "${s.family_id}" não existe em families[]`); continue; }
   if (!FAMILY_RELATIONS.has(s.family_relation)) F(s.uid, `family_relation "${s.family_relation}" fora de ${[...FAMILY_RELATIONS].join('/')}`);
   if (vazio(s.comparison_label)) F(s.uid, 'membro de família sem comparison_label');
-  if ((f.arms || []).length && !(f.arms || []).some((a) => (a.card_uids || []).includes(s.uid))) {
-    F(s.uid, `membro de ${f.family_id} não aparece em nenhum braço da família`);
+  const linhas = (f.cohorts || []).concat(f.arms || []);
+  if (linhas.length && !linhas.some((a) => (a.card_uids || []).includes(s.uid))) {
+    F(s.uid, `membro de ${f.family_id} não aparece em nenhum braço/coorte da família`);
+  }
+  if ((f.cohorts || []).length && !['cohort', 'analysis'].includes(s.family_relation)) {
+    F(s.uid, `membro de família basket/multicoorte precisa de family_relation "cohort" ou "analysis"`);
+  }
+}
+
+// ── 1c. NCT compartilhado ──────────────────────────────────────────────────
+/* O mesmo NCT em mais de um card é legítimo quando todos são membros da MESMA família
+ * (coortes de um basket, comparações de uma plataforma). Fora disso, é candidato a
+ * duplicata ou a NCT errado: aviso para revisão, nunca liberado automaticamente. */
+{
+  const porNct = new Map();
+  for (const s of S) for (const n of new Set(String(s.nct || '').match(/NCT\d{8}/g) || [])) {
+    if (!porNct.has(n)) porNct.set(n, []);
+    porNct.get(n).push(s);
+  }
+  for (const [n, grupo] of porNct) {
+    if (grupo.length < 2) continue;
+    const fams = new Set(grupo.map((s) => s.family_id));
+    if (fams.size === 1 && !fams.has(undefined)) continue;
+    for (const s of grupo) {
+      W(s.uid, `NCT ${n} também está em ${grupo.filter((o) => o !== s).map((o) => o.uid).join(', ')} sem família de estudo em comum: duplicata, NCT errado ou família a criar`);
+    }
   }
 }
 

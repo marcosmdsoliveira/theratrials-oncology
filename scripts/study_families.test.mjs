@@ -234,7 +234,13 @@ const regCtx = vm.createContext({ window: { _i18nRegister: (l, d) => { DICT[l] =
 for (const l of ['pt-br', 'en']) vm.runInContext(readFileSync(path.join(SITE, 'assets', 'lang', `${l}.js`), 'utf8'), regCtx);
 const HTML_DB = readFileSync(path.join(SITE, 'database.html'), 'utf8');
 const BLOCOS_FAM = [...HTML_DB.matchAll(/<!-- fam:ini[\s\S]*?<!-- fam:fim -->/g)].map((m) => m[0]);
-const CHAVES = [...new Set([...BLOCOS_FAM.join('\n').matchAll(/tt\('db\.(\w+)'/g)].map((m) => m[1]))];
+// chaves diretas (tt('db.x')), chaves por tipo de família (famK: 'x' e 'xCohort') e as dos métodos de contagem/vínculo
+const CHAVES = [...new Set([
+  ...[...BLOCOS_FAM.join('\n').matchAll(/tt\('db\.(\w+)'/g)].map((m) => m[1]),
+  ...[...BLOCOS_FAM.join('\n').matchAll(/famK\([^,]+, '(\w+)'\)/g)].flatMap((m) => [m[1], m[1] + 'Cohort', m[1] + 'Analysis']),
+  'famAnalyses', 'famAnalysesOne', 'famCohorts', 'famCohortsOne', 'famPartOf', 'famPartOfCohort', 'famPartOf_basket',
+  'famSharedIntervention',
+])];
 
 test('interface de famílias usa chaves existentes em PT-BR e EN, com tradução de fato', () => {
   assert.ok(BLOCOS_FAM.length >= 4, 'blocos fam:ini/fam:fim');
@@ -265,4 +271,164 @@ test('textos da interface de famílias recomputam quando o dicionário EN chega 
   assert.match(i18n, /new CustomEvent\('langready'/);
   assert.match(HTML_DB, /addEventListener\('langready', \(\) => \{ this\.langTick\+\+; \}\)/);
   assert.match(HTML_DB, /tt\(k, f\) \{ this\.langTick;/);
+});
+
+// ── famílias basket: KEYNOTE-158, ROAR, DESTINY-PanTumor02 ─────────────────
+/* Basket = protocolo com coortes independentes (uma população, uma intervenção, uma
+ * publicação por card). A família liga as coortes; o resultado fica em cada card. */
+const BASKET = {
+  'keynote-158': { nct: 'NCT02628067', membros: ['hepatobiliar_32', 'endometrio_6', 'cervix_8'] },
+  roar: { nct: 'NCT02034110', membros: ['hepatobiliar_34', 'tireoide_avancado_7'] },
+  'destiny-pantumor02': { nct: 'NCT04482309', membros: ['hepatobiliar_35', 'urotelial_avancado_6'] },
+};
+const PMID_COORTE = {
+  hepatobiliar_32: '31682550', endometrio_6: '39847999', cervix_8: '30943124', hepatobiliar_34: '32818466',
+  tireoide_avancado_7: '35026411', hepatobiliar_35: '37870536', urotelial_avancado_6: '37870536',
+};
+const TODOS_BASKET = Object.values(BASKET).flatMap((b) => b.membros);
+// KEYNOTE-158: só o colo do útero é coorte protocolar (E); BTC é recorte tumor-específico da população
+// MSI-H/dMMR e endométrio junta as coortes D + K → "analysis".
+const RELACAO = Object.fromEntries(TODOS_BASKET.map((u) => [u, 'cohort']));
+Object.assign(RELACAO, { hepatobiliar_32: 'analysis', endometrio_6: 'analysis' });
+
+test('vocabulário genérico da família: braços, coortes ou análises conforme os membros', () => {
+  assert.equal(T.familyUnitKind(D, STAMPEDE), 'arm');
+  assert.equal(T.familyUnitKind(D, T.familyById(D, 'keynote-158')), 'analysis');
+  assert.equal(T.familyUnitKind(D, T.familyById(D, 'roar')), 'cohort');
+  assert.equal(T.familyUnitKind(D, T.familyById(D, 'destiny-pantumor02')), 'cohort');
+  const kn = T.familyById(D, 'keynote-158');
+  assert.deepEqual(js(kn.cohorts.map((c) => [c.label, c.cohort])),
+    [['Colangiocarcinoma MSI-H/dMMR', 'MSI-H/dMMR'], ['Endométrio MSI-H/dMMR', 'D + K'], ['Colo do útero', 'E']]);
+  assert.match(kn.cohorts[0].selection, /^Análise tumor-específica da população MSI-H/);
+  assert.match(kn.cohorts[1].selection, /^Coortes D \+ K/);
+  assert.match(kn.cohorts[2].selection, /^Coorte E/);
+});
+
+test('3 famílias basket com coortes (não braços), registro próprio e member_uids coerente', () => {
+  for (const [id, b] of Object.entries(BASKET)) {
+    const f = T.familyById(D, id);
+    assert.ok(f, id);
+    assert.equal(f.design_type, 'basket');
+    assert.deepEqual(js(f.registry_ids), [b.nct]);
+    assert.equal(f.arms, undefined, `${id} não tem braços`);
+    assert.ok(T.familyIsCohort(f));
+    assert.deepEqual(js(f.member_uids), b.membros);
+    assert.deepEqual(js(f.cohorts.flatMap((c) => c.card_uids)), b.membros);
+    assert.ok(f.shared_intervention && f.design_summary && f.population, id);
+    assert.equal(f.legacy_uids, undefined, `${id} não aposenta uid`);
+  }
+});
+
+test('basket: membros abrem individualmente, com uid preservado e título distinto por coorte', () => {
+  assert.equal(D.studies.length, 507);
+  for (const [id, b] of Object.entries(BASKET)) {
+    const f = T.familyById(D, id);
+    assert.deepEqual(js(T.familyMembers(D, f).map((s) => s.uid)), b.membros);
+    const titulos = b.membros.map((u) => T.studyTitle(card(u).estudo));
+    assert.equal(new Set(titulos).size, titulos.length, `títulos distintos em ${id}`);
+    for (const u of b.membros) {
+      const s = card(u);
+      assert.equal(s.family_id, id);
+      assert.equal(s.family_relation, RELACAO[u], u);
+      assert.ok(s.comparison_label, u);
+      assert.ok(T.studyTitle(s.estudo).startsWith(f.family_name + ' · '), `título de ${u}`);
+      assert.equal(T.familyForHash(D, u), null, `#${u} abre o card, não a família`);
+    }
+  }
+});
+
+test('basket: NCT compartilhado só dentro da família; o validador não acusa duplicata', () => {
+  for (const [id, b] of Object.entries(BASKET)) {
+    const comNct = D.studies.filter((s) => s.nct === b.nct);
+    assert.deepEqual(js(comNct.map((s) => s.uid).sort()), [...b.membros].sort());
+    assert.ok(comNct.every((s) => s.family_id === id));
+  }
+  const r = validarCom(() => {});
+  for (const b of Object.values(BASKET)) assert.doesNotMatch(r.saida, new RegExp(`NCT ${b.nct} também está`));
+});
+
+test('validador: NCT repetido sem família em comum continua sendo apontado (não afrouxa)', () => {
+  const r = validarCom((d) => { delete d.studies.find((s) => s.uid === 'cervix_8').family_id; });
+  assert.match(r.saida, /NCT NCT02628067 também está em/);
+  const outro = D.studies.find((s) => !s.family_id && /^NCT\d{8}$/.test(s.nct || '')).uid;
+  const r2 = validarCom((d) => { d.studies.find((s) => s.uid === outro).nct = 'NCT02034110'; });
+  assert.match(r2.saida, new RegExp(`${outro} \\| NCT NCT02034110 também está em hepatobiliar_34, tireoide_avancado_7`));
+});
+reprova('resultado clínico numa coorte da família', (d) => {
+  d.families.find((f) => f.family_id === 'roar').cohorts[0].selection += ' (ORR 51%)';
+}, /coorte BTC: resultado clínico/);
+reprova('basket descrito com braços', (d) => {
+  const f = d.families.find((x) => x.family_id === 'roar'); f.arms = f.cohorts; delete f.cohorts;
+}, /basket descreve coortes/);
+reprova('member_uids divergente', (d) => { d.families.find((f) => f.family_id === 'roar').member_uids.pop(); }, /member_uids não bate/);
+reprova('membro de basket com family_relation de plataforma', (d) => {
+  d.studies.find((s) => s.uid === 'urotelial_avancado_6').family_relation = 'comparison';
+}, /family_relation "cohort"/);
+
+test('busca pelo acrônimo mostra a família e as coortes', () => {
+  for (const [q, id] of [['KEYNOTE-158', 'keynote-158'], ['ROAR', 'roar'], ['DESTINY-PanTumor02', 'destiny-pantumor02'], ['NCT04482309', 'destiny-pantumor02']]) {
+    assert.ok(T.familiesToShow(D, busca(q), q, false).some((f) => f.family_id === id), q);
+    for (const u of BASKET[id].membros) assert.ok(busca(q).some((s) => s.uid === u), `${q} → ${u}`);
+  }
+});
+
+test('busca por tumor encontra a coorte direto, sem bloco de família', () => {
+  for (const [q, u] of [['colangiocarcinoma', 'hepatobiliar_32'], ['endométrio', 'endometrio_6'], ['colo do útero', 'cervix_8'],
+    ['vias biliares', 'hepatobiliar_34'], ['anaplásic', 'tireoide_avancado_7'], ['vias biliares', 'hepatobiliar_35'], ['urotelial', 'urotelial_avancado_6']]) {
+    assert.ok(busca(q).some((s) => s.uid === u), `${q} → ${u}`);
+  }
+  assert.ok(!T.familiesToShow(D, busca('urotelial'), 'urotelial', false).some((f) => f.family_id in BASKET));
+});
+
+test('filtros de tumor e categoria das coortes continuam os mesmos', () => {
+  const esperado = {
+    hepatobiliar_32: ['hepatobiliar', 'colangiocarcinoma'], endometrio_6: ['endometrio', 'endometrio'], cervix_8: ['cervix', 'cervix'],
+    hepatobiliar_34: ['hepatobiliar', 'colangiocarcinoma'], tireoide_avancado_7: ['tireoide_avancado', 'tireoide'],
+    hepatobiliar_35: ['hepatobiliar', 'colangiocarcinoma'], urotelial_avancado_6: ['urotelial_avancado', 'urotelial'],
+  };
+  for (const [u, [cat, tumor]] of Object.entries(esperado)) {
+    assert.equal(card(u).category_id, cat, u);
+    assert.deepEqual(js(T.tumorTypes.filter((t) => t.match(card(u))).map((t) => t.id)), [tumor], u);
+  }
+});
+
+test('basket: PMID, citation e pubmed_url batem com a publicação representada', () => {
+  for (const [u, pmid] of Object.entries(PMID_COORTE)) {
+    const s = card(u);
+    assert.equal(s.citation.pmid, pmid, u);
+    assert.equal(s.pubmed_url, `https://pubmed.ncbi.nlm.nih.gov/${pmid}/`, u);
+    assert.equal(s.ano_pub, s.citation.year, `ano de ${u}`);
+    assert.match(s.estudo, new RegExp(`\\(${s.citation.year}\\)$`), `ano no título de ${u}`);
+  }
+});
+
+test('basket: correções científicas não regridem', () => {
+  const t = JSON.stringify(TODOS_BASKET.map(card));
+  assert.doesNotMatch(t, /<\/?strong>/, 'HTML cru');
+  for (const u of TODOS_BASKET) assert.notEqual(card(u).radiofarmaco.trim(), '—', `intervenção vazia em ${u}`);
+  assert.doesNotMatch(JSON.stringify(card('hepatobiliar_34')), /46-51|8,7 m|OS mediana 14 m/);   // ORR ambígua e números sem fonte
+  const btc = JSON.stringify(card('hepatobiliar_35'));
+  assert.doesNotMatch(btc, /Nat Med|~5%|~12 m/);                      // publicação inexistente; IHC 2+ e DoR errados
+  assert.match(btc, /IHC 2\+ central \(n=14\): nenhuma resposta/);
+  assert.match(JSON.stringify(card('hepatobiliar_32')), /PFS mediana 4,2 m/);
+  assert.doesNotMatch(JSON.stringify(card('cervix_8')), /2,6%|11,0 m/);
+  assert.doesNotMatch(JSON.stringify(card('urotelial_avancado_6')), /Ventana|44 centros/);
+  assert.doesNotMatch(JSON.stringify(card('tireoide_avancado_7')), /Mediana 72a|pirexia 28%/);
+});
+
+test('contagem do family card: 1 análise / N análises, 1 coorte / N coortes', () => {
+  const corpo = HTML_DB.match(/famCount\(f\) \{([\s\S]*?)\n    \},/)[1];
+  const vm2 = { tt: (k, f) => (k.endsWith('One') ? 'U:' : 'P:') + f, famKind: (f) => T.familyUnitKind(D, f), familyMembers: (f) => T.familyMembers(D, f) };
+  const famCount = new Function('f', corpo).bind(vm2);
+  assert.equal(famCount(T.familyById(D, 'stampede2')), '1 U:análise no Database');
+  assert.equal(famCount(STAMPEDE), '6 P:análises no Database');
+  assert.equal(famCount(T.familyById(D, 'keynote-158')), '3 P:análises no Database');
+  assert.equal(famCount(T.familyById(D, 'destiny-pantumor02')), '2 P:coortes no Database');
+  assert.equal(famCount(T.familyById(D, 'roar')), '2 P:coortes no Database');
+  for (const l of ['pt-br', 'en']) for (const k of ['famAnalyses', 'famAnalysesOne', 'famCohorts', 'famCohortsOne']) assert.ok(DICT[l].db[k], `${l} ${k}`);
+  assert.equal(DICT.en.db.famAnalysesOne, 'analysis in the Database');
+  assert.equal(DICT['pt-br'].db.famCohortsOne, 'coorte no Database');
+  assert.equal(DICT['pt-br'].db.famArmsAnalysis, 'Análises representadas');
+  assert.equal(DICT.en.db.famArmsAnalysis, 'Represented analyses');
+  assert.equal(DICT.en.db.famAnalyses, 'analyses in the Database');
 });

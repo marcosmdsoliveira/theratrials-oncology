@@ -98,11 +98,29 @@
       return f.family_id === h || (f.legacy_uids || []).indexOf(h) >= 0;
     }) || null;
   };
-  // Membros no Database, na ordem dos braços da família (os sem braço vão para o fim).
+  /* Unidades do protocolo: `arms` (plataforma: braços comparados a um controle) ou `cohorts`
+   * (basket, multicoorte: populações independentes, sem comparador). Mesmo formato de linha:
+   * código, descrição, status, publicação e card_uids. */
+  TheraTrials.familyIsCohort = function(fam) {
+    return !!fam && Array.isArray(fam.cohorts) && fam.cohorts.length > 0;
+  };
+  TheraTrials.familyUnits = function(fam) {
+    if (!fam) return [];
+    return TheraTrials.familyIsCohort(fam) ? fam.cohorts : (fam.arms || []);
+  };
+  /* Vocabulário da família na interface: 'arm' (plataforma: braços/comparações), 'cohort' (todos os
+   * membros são coortes protocolares) ou 'analysis' (algum membro é análise/recorte de população,
+   * p. ex. tumor-específica dentro de uma coorte agnóstica). Derivado do family_relation dos membros. */
+  TheraTrials.familyUnitKind = function(data, fam) {
+    if (!TheraTrials.familyIsCohort(fam)) return 'arm';
+    var m = TheraTrials.familyMembers(data, fam);
+    return m.length && m.every(function(s) { return s.family_relation === 'cohort'; }) ? 'cohort' : 'analysis';
+  };
+  // Membros no Database, na ordem dos braços/coortes da família (os sem unidade vão para o fim).
   TheraTrials.familyMembers = function(data, fam) {
     if (!fam || !data || !data.studies) return [];
     var ordem = [];
-    (fam.arms || []).forEach(function(a) { (a.card_uids || []).forEach(function(u) { if (ordem.indexOf(u) < 0) ordem.push(u); }); });
+    TheraTrials.familyUnits(fam).forEach(function(a) { (a.card_uids || []).forEach(function(u) { if (ordem.indexOf(u) < 0) ordem.push(u); }); });
     var pos = function(s) { var i = ordem.indexOf(s.uid); return i < 0 ? 1e6 : i; };
     return data.studies.filter(function(s) { return s.family_id === fam.family_id; })
       .sort(function(a, b) { return pos(a) - pos(b); });

@@ -456,6 +456,19 @@ class Bloqueios(Base):
         RC.bloquear(itens, {"u1": {"family_id": "f", "family_name": "F"}})
         self.assertEqual([i["fingerprint"] for i in itens], fps)
 
+    def test_familia_basket_sem_uid_aposentado_nao_bloqueia(self):
+        """Basket: os cards continuam com o mesmo uid e ganham family_id; nada vira OBSOLETE só pela família."""
+        antes = {i["decision_id"]: i["fingerprint"] for i in self.itens()}
+        reescrever_data_js(self.dj, lambda o: (o["studies"][0].update(family_id="teste-basket", family_relation="cohort",
+                                                                      comparison_label="Coorte X"),
+                                               o.update(families=[{"family_id": "teste-basket", "family_name": "TESTE-B",
+                                                                   "design_type": "basket", "cohorts": [
+                                                                       {"cohort": "X", "card_uids": ["u1"]}]}])))
+        itens = self.itens()
+        self.assertFalse([i for i in itens if (i.get("bloqueio") or {}).get("tipo") == "OBSOLETE"])
+        self.assertFalse([i for i in itens if i.get("bloqueio")])        # trechos ATUAIS intactos → ativos
+        self.assertEqual({i["decision_id"]: i["fingerprint"] for i in itens}, antes)
+
 
 class BloqueiosServidor(Base):
     req, post = Servidor.req, Servidor.post            # só os helpers HTTP, não os testes do Servidor
@@ -558,6 +571,23 @@ class DadosReais(unittest.TestCase):
                 self.assertFalse(i["proposed"])
         self.assertEqual(antes, (sha_pasta(ESTADO_REAL / "discovery"), sha_pasta(ESTADO_REAL / "delta"),
                                  sha_arquivo(DATA_JS), sha_arquivo(SECUNDARIOS)))
+
+    def test_familias_basket_nao_aposentam_uid(self):
+        """KEYNOTE-158, ROAR e DESTINY-PanTumor02: nenhum item OBSOLETE; só delta com trecho alterado fica STALE."""
+        basket = {"keynote-158", "roar", "destiny-pantumor02"}
+        txt = DATA_JS.read_text(encoding="utf-8")
+        obj = json.loads(txt[txt.index("{", txt.index("window.THERA_DATA")):].strip().rstrip(";"))
+        membros = {s["uid"] for s in obj["studies"] if s.get("family_id") in basket}
+        self.assertEqual(len(membros), 7)
+        self.assertFalse(membros & set(RC.familias_aposentadas(DATA_JS)))
+        for i in RC.carregar_itens(ESTADO_REAL, DATA_JS)["itens"]:
+            if i["uid"] not in membros:
+                continue
+            tipo = (i.get("bloqueio") or {}).get("tipo")
+            self.assertNotEqual(tipo, "OBSOLETE", i["decision_id"])
+            if tipo == "STALE":
+                self.assertEqual(i["tipo"], "delta")
+                self.assertIs(i["trecho_presente_hoje"], False)
 
 
 if __name__ == "__main__":
