@@ -322,3 +322,34 @@ test('RAMPART: busca, filtros, deep links (card e family) e app-data', () => {
   for (const u of [RC, RB]) assert.equal(app.studies.find((s) => s.uid === u).primario, card(u).primario, u);
   assert.ok((app.families || []).some((f) => f.family_id === 'rampart'));
 });
+
+// ── NOVA e MAGNITUDE: OS final substitui afirmações sem lastro ──────────────
+/* NOVA (NCT01847274): PFS primária de Mirza NEJM 2016 (PMID 27717299) e OS final de Matulonis,
+ * Gynecol Oncol 2025 (PMID 40139026), sem diferença em nenhuma coorte. MAGNITUDE (NCT03748641):
+ * rPFS de Chi JCO 2023 (PMID 36952634), BRCA1/2 testado primeiro; OS final (PMID 40328571) sem diferença. */
+test('NOVA: três comparações primárias de PFS, OS final sem diferença, sem "ganho de OS" em gBRCA', () => {
+  const c = card('ovario_4'), j = JSON.stringify(c);
+  assert.equal(c.citation.pmid, '27717299');
+  assert.match(c.primario, /gBRCA: 21,0 vs 5,5 m \(HR 0,27; IC95% 0,17–0,41\)/);
+  assert.match(c.primario, /HRD\+: 12,9 vs 3,8 m \(HR 0,38; IC95% 0,24–0,59\)/);
+  assert.match(c.primario, /Não-gBRCA geral: 9,3 vs 3,9 m \(HR 0,45; IC95% 0,34–0,61\)/);
+  assert.doesNotMatch(c.primario, /HRD−|HRD-/, 'HRD− não é comparação primária');
+  assert.match(c.subgrupo, /HRD− \(exploratório/);
+  assert.match(c.secundario, /gBRCA 40,9 vs 38,1 m \(HR 0,85; IC95% 0,61–1,20\); não-gBRCA 31,0 vs 34,8 m \(HR 1,06; IC95% 0,81–1,37\)/);
+  assert.match(c.ref, /PMID 40139026/);
+  assert.doesNotMatch(j, /HR 0,68|ASCO 2024|ganho de OS sustentado|8-yr/);
+  assert.match(c.molecular, /define a coorte; não é requisito de inclusão/);
+  assert.doesNotMatch(c.desenho, /ajustado por peso/, 'dose fixa de 300 mg no protocolo');
+});
+
+test('MAGNITUDE: rPFS BRCA primeiro, OS final 0,931/0,788 sem diferença, citation do JCO 2023', () => {
+  const c = card('prostata_contexto_20'), j = JSON.stringify(c);
+  assert.equal(c.citation.pmid, '36952634');
+  assert.equal(c.ano_pub, 2023);
+  assert.match(c.primario, /^rPFS BRCA1\/2: 16,6 vs 10,9 m \(HR 0,53; IC95% 0,36–0,79; p=0,001\)\. rPFS HRR\+: 16,5 vs 13,7 m \(HR 0,73; IC95% 0,56–0,96; p=0,022\)/);
+  assert.match(c.secundario, /OS final: HRR\+ HR 0,931 \(IC95% 0,720–1,203; p=0,585\); BRCA1\/2 HR 0,788 \(IC95% 0,554–1,120; p nominal=0,183\), sem diferença/);
+  assert.match(c.subgrupo, /HRR não-BRCA: rPFS HR 0,99 \(IC95% 0,68–1,44\), sem benefício demonstrado/);
+  assert.doesNotMatch(j, /HR 0,55 favorável|OS HRR\+ ITT: HR 0,79|LBA12|magnitude menor|mais frequente que com olaparib/);
+  assert.match(c.esquema, /prednisona 5 mg 2x\/dia/);
+  assert.match(c.ref, /PMID 40328571/);
+});
