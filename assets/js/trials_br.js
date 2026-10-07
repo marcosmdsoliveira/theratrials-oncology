@@ -3262,7 +3262,7 @@ window.THERA_TRIALS_BR = [
     centros: [
       'Hospital Sírio-Libanês (Brasília) — Brasília / DF',
       'Hospital Evangélico de Cachoeiro de Itapemirim — Cachoeiro de Itapemirim / ES',
-      'Hospital Mário Penna — Belo Horizonte / MG',
+      'Cenantron – Centro Avançado de Tratamento Oncológico — Belo Horizonte / MG',
       'IMIP – Instituto de Medicina Integral Prof. Fernando Figueira — Recife / PE',
       'Oncoclínicas Rio de Janeiro — Rio de Janeiro / RJ',
       'Liga Norte-Riograndense Contra o Câncer — Natal / RN',
