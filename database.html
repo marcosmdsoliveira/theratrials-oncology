@@ -1218,12 +1218,13 @@
           <div class="section-block-title" x-text="famK(selectedFamily, 'famArms')"></div>
           <div class="family-arms-wrap">
             <table class="family-arms">
-              <thead><tr><th x-text="famK(selectedFamily, 'famArm')"></th><th x-text="famK(selectedFamily, 'famTreatment')"></th><th x-text="tt('db.famStatus', 'Status')"></th><th x-text="tt('db.famMainPub', 'Publicação principal')"></th><th x-text="tt('db.famInDb', 'No Database')"></th></tr></thead>
+              <thead><tr><th x-text="famK(selectedFamily, 'famArm')"></th><th x-text="famK(selectedFamily, 'famTreatment')"></th><th x-show="famHasTreatment(selectedFamily)" x-text="tt('db.famTreatmentCol', 'Tratamento')"></th><th x-text="tt('db.famStatus', 'Status')"></th><th x-text="tt('db.famMainPub', 'Publicação principal')"></th><th x-text="tt('db.famInDb', 'No Database')"></th></tr></thead>
               <tbody>
                 <template x-for="a in famUnits(selectedFamily)" :key="a.arm || a.cohort || a.randomization || a.analysis || a.comparison">
                   <tr>
                     <td class="text-mono" x-text="a.arm || a.cohort || a.randomization || a.analysis || a.comparison"></td>
-                    <td x-text="a.treatment || [a.label, a.selection].filter(Boolean).join(' · ')"></td>
+                    <td x-text="famIsCohort(selectedFamily) ? [a.label, a.selection].filter(Boolean).join(' · ') : (a.treatment || [a.label, a.selection].filter(Boolean).join(' · '))"></td>
+                    <td x-show="famHasTreatment(selectedFamily)" x-text="a.treatment || '—'"></td>
                     <td x-text="a.status"></td>
                     <td>
                       <template x-if="a.publication && /^\d{1,9}$/.test(a.publication.pmid)">
@@ -1397,7 +1398,7 @@
 <script src="assets/js/common.js?v=0e356943a4"></script>
 <script src="assets/js/citation.js?v=e884983a80"></script>
 <script src="assets/js/glossario.js?v=cd226d8143"></script>
-<script src="assets/js/i18n.js?v=3dfd9002f9"></script>
+<script src="assets/js/i18n.js?v=404eabf2ed"></script>
 <script>
 function databaseApp() {
   return {
@@ -1738,6 +1739,14 @@ function databaseApp() {
           famSeeOthers: 'Ver a análise integrada e as demais análises →',
           famNote: 'Este registro descreve apenas a estrutura da análise integrada. Os resultados ficam no card de cada análise.',
         },
+        // umbrella: o genótipo do tumor define o braço; braços sem controle compartilhado, não comparações nem coortes de um fármaco
+        umbrella: {
+          famArms: 'Braços moleculares', famArm: 'Braço', famTreatment: 'Alteração requerida',
+          famComparisons: 'Braços no Database',
+          famOpenProtocol: 'Ver o protocolo e todos os braços moleculares',
+          famSeeOthers: 'Ver o protocolo e os demais braços →',
+          famNote: 'Este registro descreve apenas o protocolo. Os resultados ficam no card de cada braço.',
+        },
       }[f && f.design_type] || {};
       if (porTipo[base]) return this.tt('db.' + base + '_' + f.design_type, porTipo[base]);
       const kind = this.famKind(f);
@@ -1750,7 +1759,8 @@ function databaseApp() {
     famCount(f) {
       const n = this.familyMembers(f).length, um = n === 1;
       const kind = this.famKind(f);
-      const k = kind === 'cohort' ? (um ? ['famCohortsOne', 'coorte no Database'] : ['famCohorts', 'coortes no Database'])
+      const k = f && f.design_type === 'umbrella' ? (um ? ['famUmbrellaArmsOne', 'braço no Database'] : ['famUmbrellaArms', 'braços no Database'])
+              : kind === 'cohort' ? (um ? ['famCohortsOne', 'coorte no Database'] : ['famCohorts', 'coortes no Database'])
               : kind === 'randomization' ? (um ? ['famRandomizationsOne', 'randomização no Database'] : ['famRandomizations', 'randomizações no Database'])
               : kind === 'comparison' ? (um ? ['famComparisonsNOne', 'comparação no Database'] : ['famComparisonsN', 'comparações no Database'])
               : (um ? ['famAnalysesOne', 'análise no Database'] : ['famAnalyses', 'análises no Database']);
@@ -1759,12 +1769,14 @@ function databaseApp() {
     famPartOf(f) {
       if (!this.famIsCohort(f)) return this.tt('db.famPartOf', 'Comparação do protocolo');
       // em PT o dicionário não é carregado: o fallback é o texto exibido (espelha pt-br.js)
-      const fb = { basket: 'Parte do estudo basket', multicohort: 'Parte do estudo multicoorte', factorial: 'Parte do estudo fatorial {name}', master_protocol: 'Parte do master protocol', integrated_analysis: 'Parte da análise integrada de' }[f.design_type];
+      const fb = { basket: 'Parte do estudo basket', multicohort: 'Parte do estudo multicoorte', factorial: 'Parte do estudo fatorial {name}', master_protocol: 'Parte do master protocol', integrated_analysis: 'Parte da análise integrada de', umbrella: 'Braço do estudo umbrella' }[f.design_type];
       return this.tt('db.famPartOf_' + f.design_type, fb || this.tt('db.famPartOfCohort', 'Coorte do protocolo'));
     },
     familyById(id) { return TheraTrials.familyById(this.data, id); },
     familyOf(s) { return s && s.family_id ? TheraTrials.familyById(this.data, s.family_id) : null; },
     familyMembers(f) { return TheraTrials.familyMembers(this.data, f); },
+    // coluna "Tratamento" só quando as linhas são coortes com `treatment` (umbrella); braços de plataforma já trazem o tratamento na 2ª coluna
+    famHasTreatment(f) { return this.famIsCohort(f) && this.famUnits(f).some((a) => a.treatment); },
     familyArmCards(a) { return (a.card_uids || []).map(u => this.data.studies.find(s => s.uid === u)).filter(Boolean); },
     openFamily(f) {
       if (!f) return;

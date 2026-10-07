@@ -244,6 +244,8 @@ const CHAVES = [...new Set([
   'famOpenProtocol_integrated_analysis', 'famSeeOthers_integrated_analysis', 'famNote_integrated_analysis',
   'famAnalyses', 'famAnalysesOne', 'famCohorts', 'famCohortsOne', 'famPartOf', 'famPartOfCohort', 'famPartOf_basket',
   'famSharedIntervention',
+  'famPartOf_umbrella', 'famArms_umbrella', 'famArm_umbrella', 'famTreatment_umbrella', 'famComparisons_umbrella',
+  'famOpenProtocol_umbrella', 'famSeeOthers_umbrella', 'famNote_umbrella', 'famUmbrellaArms', 'famUmbrellaArmsOne', 'famTreatmentCol',
 ])];
 
 test('interface de famílias usa chaves existentes em PT-BR e EN, com tradução de fato', () => {
@@ -949,7 +951,7 @@ test('callout em PT: fallback de famPartOf por design_type espelha pt-br.js (PT 
   const m = HTML_DB.match(/const fb = (\{.*?\})\[f\.design_type\]/);
   assert.ok(m, 'mapa de fallback em famPartOf');
   const fb = vm.runInNewContext('(' + m[1] + ')');
-  for (const tipo of ['basket', 'multicohort', 'factorial', 'master_protocol', 'integrated_analysis']) {
+  for (const tipo of ['basket', 'multicohort', 'factorial', 'master_protocol', 'integrated_analysis', 'umbrella']) {
     assert.equal(fb[tipo], DICT['pt-br'].db['famPartOf_' + tipo], tipo);
   }
 });
@@ -969,3 +971,94 @@ reprova('linha com publicação sem PMID nem DOI', (d) => {
 reprova('linha com PMID malformado', (d) => {
   d.families.find((f) => f.family_id === 'rampart').arms[1].publication = { pmid: 'LBA4511', label: 'abstract' };
 }, /PMID inválido/);
+
+// ── umbrella: infraestrutura (sem família real; família sintética numa cópia) ──
+/* Umbrella = uma doença; o genótipo do tumor define o braço (fármaco). As linhas são `cohorts` com
+ * `selection` (alteração requerida) e `treatment` (fármaco); sem controle compartilhado; linhas sem card
+ * são permitidas; os membros são coortes protocolares (family_relation "cohort"). */
+const comoUmbrella = (d) => {
+  const f = d.families.find((x) => x.family_id === 'roar');
+  f.design_type = 'umbrella'; f.design_label = 'Umbrella · seleção molecular';
+  f.cohorts.forEach((c) => { c.treatment = 'dabrafenibe + trametinibe'; });
+  f.cohorts.push({ cohort: 'X', selection: 'outra alteração', treatment: 'outro fármaco', status: 'Sem publicação', card_uids: [] });
+  return f;
+};
+test('umbrella: validador aceita cohorts com selection + treatment, linha sem card e membros "cohort"', () => {
+  const r = validarCom((d) => { comoUmbrella(d); });
+  assert.equal(r.code, 0, r.saida);
+});
+reprova('umbrella usando arms', (d) => { const f = comoUmbrella(d); f.arms = f.cohorts; delete f.cohorts; }, /umbrella descreve os braços moleculares em cohorts/);
+reprova('umbrella com menos de 2 cohorts', (d) => {
+  const f = comoUmbrella(d); f.cohorts = f.cohorts.slice(0, 1); f.member_uids = ['hepatobiliar_34'];
+  d.studies.find((s) => s.uid === 'tireoide_avancado_7').family_id = undefined;
+}, /umbrella lista ≥2 braços/);
+reprova('umbrella sem selection', (d) => { delete comoUmbrella(d).cohorts[2].selection; }, /braço X sem selection/);
+reprova('umbrella sem treatment', (d) => { delete comoUmbrella(d).cohorts[1].treatment; }, /braço ATC sem treatment/);
+reprova('número clínico em treatment', (d) => { comoUmbrella(d).cohorts[0].treatment += ' (ORR 51%)'; }, /coorte BTC: resultado clínico/);
+reprova('membro de umbrella com family_relation incompatível', (d) => {
+  comoUmbrella(d); d.studies.find((s) => s.uid === 'hepatobiliar_34').family_relation = 'analysis';
+}, /membro de família umbrella precisa de family_relation "cohort"/);
+reprova('treatment vazio numa coorte de qualquer família', (d) => {
+  d.families.find((f) => f.family_id === 'krystal-1').cohorts[0].treatment = ' ';
+}, /treatment precisa ser texto não vazio/);
+
+test('umbrella: rótulos PT/EN próprios, sem "Guarda-chuva" e sem vocabulário de comparação/coorte/plataforma', () => {
+  const pt = DICT['pt-br'].db, en = DICT.en.db;
+  assert.equal(pt.famType_umbrella, 'Umbrella · seleção molecular');
+  assert.equal(en.famType_umbrella, 'Umbrella · molecular selection');
+  assert.equal(pt.famTypeShort_umbrella, 'Umbrella');
+  assert.equal(en.famTypeShort_umbrella, 'Umbrella');
+  assert.equal(pt.famArms_umbrella, 'Braços moleculares');
+  assert.equal(en.famArms_umbrella, 'Molecular arms');
+  assert.equal(pt.famArm_umbrella, 'Braço');
+  assert.equal(en.famArm_umbrella, 'Arm');
+  assert.equal(pt.famTreatment_umbrella, 'Alteração requerida');
+  assert.equal(en.famTreatment_umbrella, 'Required alteration');
+  assert.equal(pt.famTreatmentCol, 'Tratamento');
+  assert.equal(en.famTreatmentCol, 'Treatment');
+  assert.equal(pt.famPartOf_umbrella, 'Braço do estudo umbrella');
+  assert.equal(en.famPartOf_umbrella, 'Arm of the umbrella trial');
+  assert.doesNotMatch(JSON.stringify(Object.entries(pt).filter(([k]) => /umbrella/i.test(k))), /Guarda-chuva/);
+  for (const [k, v] of [...Object.entries(pt), ...Object.entries(en)].filter(([k]) => /_umbrella$|^famUmbrella/.test(k))) {
+    assert.doesNotMatch(v, /compara|coorte|cohort|plataforma|platform|multicoorte|multicohort/i, k);
+  }
+});
+
+test('umbrella: famK, famCount e famPartOf usam o vocabulário de braço molecular (fallback PT)', () => {
+  const umb = { family_id: 'u', design_type: 'umbrella', design_label: 'Umbrella · seleção molecular',
+    cohorts: [{ cohort: 'A', selection: 'X', treatment: 'a' }, { cohort: 'B', selection: 'Y', treatment: 'b', card_uids: ['c1'] }] };
+  const dx = { studies: [{ uid: 'c1', estudo: 'c1', family_id: 'u', family_relation: 'cohort' }], families: [umb] };
+  const metodo = (nome) => new Function('f', 'base', HTML_DB.match(new RegExp(`\\n    ${nome}\\(f(?:, base)?\\) \\{([\\s\\S]*?)\\n    \\},`))[1]);
+  const ctxUi = { tt: (k, f) => f, famKind: (f) => T.familyUnitKind(dx, f), familyMembers: (f) => T.familyMembers(dx, f), famIsCohort: (f) => T.familyIsCohort(f) };
+  const famK = metodo('famK').bind(ctxUi);
+  assert.equal(famK(umb, 'famArms'), 'Braços moleculares');
+  assert.equal(famK(umb, 'famArm'), 'Braço');
+  assert.equal(famK(umb, 'famTreatment'), 'Alteração requerida');
+  assert.equal(famK(umb, 'famComparisons'), 'Braços no Database');
+  assert.match(famK(umb, 'famNote'), /card de cada braço/);
+  assert.equal(metodo('famCount').bind(ctxUi)(umb), '1 braço no Database');
+  assert.equal(metodo('famPartOf').bind(ctxUi)(umb), 'Braço do estudo umbrella');
+  // frontend sem o dicionário: o badge cai no design_label
+  assert.equal(metodo('famType').bind(ctxUi)(umb), 'Umbrella · seleção molecular');
+});
+
+test('umbrella: coluna Tratamento só para coortes com treatment; famílias existentes renderizam igual', () => {
+  assert.match(HTML_DB, /famHasTreatment\(f\) \{ return this\.famIsCohort\(f\) && this\.famUnits\(f\)\.some\(\(a\) => a\.treatment\); \}/);
+  assert.match(HTML_DB, /<th x-show="famHasTreatment\(selectedFamily\)" x-text="tt\('db\.famTreatmentCol', 'Tratamento'\)"><\/th>/);
+  // nenhuma família não-umbrella usa treatment em coortes: a 2ª coluna delas continua label · selection
+  for (const f of D.families.filter((x) => x.design_type !== 'umbrella')) {
+    for (const c of f.cohorts || []) assert.equal(c.treatment, undefined, `${f.family_id}/${c.cohort}`);
+  }
+  const col2 = HTML_DB.match(/<td x-text="(famIsCohort\(selectedFamily\) \?[^"]+)"><\/td>/)[1];
+  const cel = new Function('a', 'famIsCohort', 'selectedFamily', `return ${col2};`);
+  const stampede = T.familyById(D, 'stampede'), roar = T.familyById(D, 'roar');
+  assert.equal(cel(stampede.arms[2], () => false, stampede), stampede.arms[2].treatment);
+  assert.equal(cel(roar.cohorts[0], () => true, roar), 'Vias biliares BRAF V600E · BRAF V600E');
+  assert.equal(cel({ cohort: 'D', selection: 'NF2', treatment: 'x' }, () => true, {}), 'NF2');
+});
+
+test('umbrella: busca do card não indexa linhas da família (tratamentos/alterações de outros braços)', () => {
+  const s = { estudo: 'e', acron: 'a', indicacao: 'i', radiofarmaco: 'r', nct: 'NCT0', category_name: 'c', family_id: 'u' };
+  assert.equal(T.studySearchText(s), 'e a i r NCT0 c'.toLowerCase());
+  assert.equal(T.familyMatchesQuery({ family_id: 'u', family_name: 'U', cohorts: [{ treatment: 'capivasertibe' }] }, 'capivasertibe'), false);
+});

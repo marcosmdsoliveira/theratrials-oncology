@@ -256,7 +256,22 @@ for (const f of FAM) {
   } else if (f.factors !== undefined || f.cells !== undefined) F(id, 'factors/cells só se aplicam a design_type factorial');
   if (f.design_type === 'master_protocol' && !(f.randomizations || []).length) F(id, 'master protocol descreve as randomizações do protocolo (randomizations)');
   if (f.design_type === 'basket' && !(f.cohorts || []).length) F(id, 'basket descreve coortes (cohorts), não braços');
-  const unidades = (f.cohorts || []).map((c) => ({ ...c, rot: `coorte ${c.cohort}`, texto: `${c.cohort ?? ''} ${c.label ?? ''} ${c.selection ?? ''} ${c.status ?? ''}` }))
+  // `treatment` é campo opcional de uma linha de `cohorts` (o fármaco da coorte); texto estrutural, sem número clínico.
+  for (const c of f.cohorts || []) if (c.treatment !== undefined && (typeof c.treatment !== 'string' || !c.treatment.trim())) F(id, `coorte ${c.cohort}: treatment precisa ser texto não vazio`);
+  // Umbrella: uma doença, e o genótipo do tumor define o braço (fármaco). As linhas são `cohorts` — braços sem
+  // controle compartilhado, cada um com a alteração exigida (`selection`) e o tratamento (`treatment`); linhas
+  // sem card são permitidas. Os membros são coortes protocolares.
+  if (f.design_type === 'umbrella') {
+    const cs = f.cohorts || [];
+    if (f.arms !== undefined || !cs.length) F(id, 'umbrella descreve os braços moleculares em cohorts, não em arms');
+    else if (cs.length < 2) F(id, 'umbrella lista ≥2 braços moleculares (cohorts)');
+    for (const c of cs) {
+      if (vazio(c.cohort)) F(id, `umbrella: linha sem cohort: ${JSON.stringify(c)}`);
+      if (vazio(c.selection)) F(id, `umbrella: braço ${c.cohort} sem selection (alteração requerida)`);
+      if (vazio(c.treatment)) F(id, `umbrella: braço ${c.cohort} sem treatment`);
+    }
+  }
+  const unidades = (f.cohorts || []).map((c) => ({ ...c, rot: `coorte ${c.cohort}`, texto: `${c.cohort ?? ''} ${c.label ?? ''} ${c.selection ?? ''} ${c.status ?? ''} ${c.treatment ?? ''}` }))
     .concat((f.randomizations || []).map((c) => ({ ...c, rot: `randomização ${c.randomization}`, texto: `${c.randomization ?? ''} ${c.label ?? ''} ${c.selection ?? ''} ${c.status ?? ''}` })))
     .concat((f.analyses || []).map((c) => ({ ...c, rot: `análise ${c.analysis}`, texto: `${c.analysis ?? ''} ${c.label ?? ''} ${c.selection ?? ''} ${c.status ?? ''}` })))
     .concat((f.comparisons || []).map((c) => ({ ...c, rot: `comparação ${c.comparison}`, texto: `${c.comparison ?? ''} ${c.label ?? ''} ${c.selection ?? ''} ${c.status ?? ''}` })))
@@ -293,7 +308,9 @@ for (const s of S) {
   }
   // design_type (arquitetura do protocolo) não determina family_relation (o que o card representa):
   // em família com coortes, o membro declara explicitamente se é coorte protocolar ou análise.
-  if ((f.cohorts || []).length && !['cohort', 'analysis'].includes(s.family_relation)) {
+  if (f.design_type === 'umbrella' && s.family_relation !== 'cohort') {
+    F(s.uid, `membro de família umbrella precisa de family_relation "cohort" (cada card é um braço molecular)`);
+  } else if ((f.cohorts || []).length && !['cohort', 'analysis'].includes(s.family_relation)) {
     F(s.uid, `membro de família basket/multicoorte precisa de family_relation "cohort" ou "analysis"`);
   }
   if ((f.comparisons || []).length && s.family_relation !== 'comparison') {
