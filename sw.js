@@ -49,7 +49,7 @@ const CORE_ASSETS = [
   './assets/js/secondary-cards.js?v=18965990a2',
   './assets/js/common.js?v=0e356943a4',
   './assets/js/citation.js?v=e884983a80',
-  './assets/js/trials_br.js?v=db0f1b97af',
+  './assets/js/trials_br.js?v=239070d97d',
   './assets/js/guidelines-data.js?v=1e1155fa38',
   './assets/js/cross-links.js?v=1363e640e8',
   './assets/data/explorer.json',
