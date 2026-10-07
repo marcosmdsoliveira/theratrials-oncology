@@ -581,3 +581,26 @@ test('GARNET: família multicoorte A1/A2, status MMR requerido por coorte, sem R
   assert.doesNotMatch(JSON.stringify(a2), /45,5% \(65|65\/143|n=103/, 'TMB-H 45,5% (5/11) é da própria A2');
   assert.match(a2.impacto_reg, /não descreve aprovação .* MMRp\/MSS/);
 });
+
+// ── KEYNOTE-057: coortes A (CIS ± papilar) e B (papilar sem CIS) ────────────
+/* KEYNOTE-057 (NCT02625961): coorte A, Balar, Lancet Oncol 2021 (PMID 34051177): CR 41%
+ * (IC95% 30,7–51,1); coorte B, Necchi, Lancet Oncol 2024 (PMID 38740030): SLD 12 m 43,5%. O card
+ * antigo citava o artigo da coorte B como "update" da coorte A e incluía papilar isolado na indicação. */
+const KA = 'urotelial_periop_nmibc_5', KB = 'keynote-057-pembrolizumabe-nmibc-papilar-sem-cis';
+test('KEYNOTE-057: família multicoorte A/B; cada card com sua população e publicação', () => {
+  const f = D.families.find((x) => x.family_id === 'keynote-057');
+  assert.equal(f.design_type, 'multicohort');
+  assert.deepEqual(js(f.cohorts.map((c) => [c.cohort, c.publication.pmid, c.card_uids])), [['A', '34051177', [KA]], ['B', '38740030', [KB]]]);
+  assert.doesNotMatch(JSON.stringify(f), /\bHR\b(?!-)|IC95%|\d+%/);
+  const a = card(KA), b = card(KB);
+  assert.equal(a.citation.pmid, '34051177');
+  assert.equal(b.citation.pmid, '38740030');
+  assert.match(a.indicacao, /^CIS vesical BCG-unresponsive, com ou sem tumor papilar/);
+  assert.match(b.indicacao, /papilar \(Ta alto grau ou T1 de qualquer grau\) sem CIS/);
+  assert.equal(a.primario, 'CR em 3 m: 41% (39/96; IC95% 30,7–51,1). Seguimento mediano 36,4 m (IQR 32,0–40,7).');
+  assert.match(b.primario, /^SLD em 12 m .*: 43,5% \(IC95% 34,9–51,9\)/);
+  assert.match(a.centros, /^54 centros, 14 países/);
+  assert.doesNotMatch(JSON.stringify(a), /Necchi|2021\/2024|32,9–49,1|65 centros|80% dos respondedores|artralgia 1%|Adstiladrin|TAR-200|Anktiva/);
+  assert.doesNotMatch(JSON.stringify(b), /41% \(39\/96|30,7–51,1/);
+  for (const c of [a, b]) { assert.equal(c.radiofarmaco, 'Pembrolizumabe'); assert.equal(c.family_relation, 'cohort'); }
+});

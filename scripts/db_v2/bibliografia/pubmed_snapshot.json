@@ -43331,6 +43331,117 @@
 ],
 "retrieved_at": "2026-09-29"
 },
+"38740030": {
+"pmid": "38740030",
+"authors": [
+{
+"name": "Necchi A",
+"authtype": "Author"
+},
+{
+"name": "Roumiguié M",
+"authtype": "Author"
+},
+{
+"name": "Kamat AM",
+"authtype": "Author"
+},
+{
+"name": "Shore ND",
+"authtype": "Author"
+},
+{
+"name": "Boormans JL",
+"authtype": "Author"
+},
+{
+"name": "Esen AA",
+"authtype": "Author"
+},
+{
+"name": "Lebret T",
+"authtype": "Author"
+},
+{
+"name": "Kandori S",
+"authtype": "Author"
+},
+{
+"name": "Bajorin DF",
+"authtype": "Author"
+},
+{
+"name": "Krieger LEM",
+"authtype": "Author"
+},
+{
+"name": "Niglio SA",
+"authtype": "Author"
+},
+{
+"name": "Uchio EM",
+"authtype": "Author"
+},
+{
+"name": "Seo HK",
+"authtype": "Author"
+},
+{
+"name": "de Wit R",
+"authtype": "Author"
+},
+{
+"name": "Singer EA",
+"authtype": "Author"
+},
+{
+"name": "Grivas P",
+"authtype": "Author"
+},
+{
+"name": "Nishiyama H",
+"authtype": "Author"
+},
+{
+"name": "Li H",
+"authtype": "Author"
+},
+{
+"name": "Baranwal P",
+"authtype": "Author"
+},
+{
+"name": "Van den Sigtenhorst-Fijlstra M",
+"authtype": "Author"
+},
+{
+"name": "Kapadia E",
+"authtype": "Author"
+},
+{
+"name": "Kulkarni GS",
+"authtype": "Author"
+}
+],
+"title": "Pembrolizumab monotherapy for high-risk non-muscle-invasive bladder cancer without carcinoma in situ and unresponsive to BCG (KEYNOTE-057): a single-arm, multicentre, phase 2 trial.",
+"source": "Lancet Oncol",
+"fulljournalname": "The Lancet. Oncology",
+"pubdate": "2024 Jun",
+"epubdate": "2024 May 10",
+"volume": "25",
+"issue": "6",
+"pages": "720-730",
+"elocationid": "doi: 10.1016/S1470-2045(24)00178-5",
+"doi": "10.1016/S1470-2045(24)00178-5",
+"pmcid": null,
+"pubtype": [
+"Journal Article",
+"Clinical Trial, Phase II",
+"Multicenter Study",
+"Research Support, Non-U.S. Gov't"
+],
+"retrieved_at": "2026-10-06"
+},
 "38749033": {
 "pmid": "38749033",
 "authors": [
