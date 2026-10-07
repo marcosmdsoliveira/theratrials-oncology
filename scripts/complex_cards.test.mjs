@@ -453,7 +453,7 @@ test('CheckMate-227: N 1189, estratificação por histologia, TMB atingido (não
   assert.doesNotMatch(c.estrat, /sexo/);
   assert.match(c.limit, /atingido, não abandonado/);
   assert.match(c.secundario, /^PD-L1 <1% \(análise descritiva pré-especificada\)/);
-  assert.match(c.impacto_reg, /PD-L1 ≥1% sem aberrações de EGFR\/ALK/);
+  assert.match(c.impacto_reg, /PD-L1 ≥1% .*sem aberrações de EGFR\/ALK/);
   assert.match(c.biomarc, /^PD-L1 central obrigatório/);
   assert.doesNotMatch(j, /N=1166|abandonado;|pneumonite prévia|sobretudo em PD-L1 <1%/);
 });
@@ -621,4 +621,21 @@ test('A071401: filtros só do braço FAK/NF2; título da publicação; n=36; sem
   assert.match(c.primario, /^PFS6 de 83% \(10\/12; IC95% 52–98\) no grau 1 e de 33% \(8\/24; IC95% 16–55\)/);
   assert.doesNotMatch(j, /genômico de sucesso|classe FAK|pesadamente pré-tratada|37 pacientes elegíveis/);
   assert.equal(c.family_id, undefined, 'família guarda-chuva fica para revisão humana');
+});
+
+// ── Fechamento pós-auditoria: regulatório NOVA e rótulo do coprimário TMB ────
+test('NOVA: regulatório FDA — indicação de 2017 sem restrição; restrita a gBRCAmut em 08/dez/2022 (S-025)', () => {
+  const c = card('ovario_4');
+  assert.match(c.impacto_reg, /^FDA 27\/mar\/2017: manutenção .* recidivado .* sem restrição por BRCA/);
+  assert.match(c.impacto_reg, /FDA 08\/dez\/2022 \(NDA 208447\/S-025\): indicação na doença recidivada restrita a mutação germinativa .* \(gBRCAmut\)/);
+  assert.doesNotMatch(c.impacto_reg, /NCCN/);
+  assert.match(c.secundario, /HR 0,85; IC95% 0,61–1,20/, 'OS final preservada');
+});
+
+test('CheckMate-227: TMB mantido como coprimário histórico, sem equivaler à indicação; FDA 15/mai/2020 por PD-L1', () => {
+  const c = card('checkmate-227-nivolumab-ipilimumab-em-nsclc-1l');
+  assert.match(c.primario, /Coprimário histórico baseado em TMB \(TMB ≥10 mut\/Mb, FoundationOne CDx; NEJM 2018\): mPFS 7,2 vs 5,5 m; HR 0,58/);
+  assert.match(c.primario, /não corresponde à indicação regulatória atual, que foi estruturada por PD-L1/);
+  assert.match(c.impacto_reg, /^FDA 15\/mai\/2020 \(BLA 125554\/S-080\): .* PD-L1 ≥1% .* não há indicação baseada em TMB/);
+  assert.equal(c.resultado_chave, 'mOS (PD-L1 ≥1%) 17,1 vs 14,9 m · P=0,007');
 });
