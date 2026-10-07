@@ -489,6 +489,8 @@ test('FIGHT-202: análise primária preservada; análise final (ESMO Open 2024) 
   // valores intermediários da análise primária não ficam como os mais maduros
   assert.doesNotMatch(c.secundario, /(?<![\d,])7,5 m|(?<![\d,])6,9 m|21,1 m|imatura/);
   assert.equal(c.citation.pmid, '32203698');
+  assert.doesNotMatch(c.limit, /imatur/i);
+  assert.match(c.limit, /^Braço único, sem grupo comparador ativo: a OS, mesmo na análise final, não permite inferir benefício de sobrevida atribuível ao pemigatinibe; predomínio de doença intra-hepática/);
   assert.match(c.ref, /^Abou-Alfa GK, .*Lancet Oncol 2020;21\(5\):671-684\. Análise final: Vogel A, et al\. .*ESMO Open 2024;9\(6\):103488 \(PMID 38838500\)\.$/);
 });
 
