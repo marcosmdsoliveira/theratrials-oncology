@@ -556,3 +556,28 @@ test('TALAPRO-2 HRR-deficiente: HRR em 12 genes requerido; rPFS HR 0,45; só nú
   assert.doesNotMatch(j, /HR 0,63|21,9 m|HR 0,80|45,8 m|p=0,016/);
   assert.equal(c.category_id, card(TA).category_id);
 });
+
+// ── GARNET: coortes A1 (dMMR/MSI-H) e A2 (MMRp/MSS) de endométrio ────────────
+/* GARNET (NCT02715284), Oaknin, Clin Cancer Res 2023 (PMID 37363992): A1 ORR 45,5% (65/143);
+ * A2 ORR 15,4% (24/156). O card antigo misturava as coortes sob "MMR" e trazia o RUBY. */
+const GA1 = 'endometrio_9', GA2 = 'garnet-dostarlimabe-endometrio-mmrp-mss';
+test('GARNET: família multicoorte A1/A2, status MMR requerido por coorte, sem RUBY', () => {
+  const f = D.families.find((x) => x.family_id === 'garnet');
+  assert.equal(f.design_type, 'multicohort');
+  assert.deepEqual(js(f.cohorts.map((c) => [c.cohort, c.selection, c.card_uids])), [['A1', 'dMMR/MSI-H', [GA1]], ['A2', 'MMRp/MSS', [GA2]]]);
+  assert.doesNotMatch(JSON.stringify(f), /\bORR\b|HR |IC95%|\d+%/);
+  const a1 = card(GA1), a2 = card(GA2);
+  for (const c of [a1, a2]) {
+    assert.equal(c.citation.pmid, '37363992');
+    assert.equal(c.ano_pub, 2023);
+    assert.equal(c.family_relation, 'cohort');
+    assert.doesNotMatch(JSON.stringify(c), /RUBY|\+ QT|Mirza/);
+  }
+  assert.match(a1.molecular, /^Requerido: dMMR .* ou MSI-H/);
+  assert.match(a2.molecular, /^Requerido: MMRp .* ou MSS/);
+  assert.match(a1.primario, /^ORR \(BICR, RECIST 1\.1\) 45,5% \(65\/143; IC95% 37,1–54,0\)/);
+  assert.match(a2.primario, /^ORR \(BICR, RECIST 1\.1\) 15,4% \(24\/156; IC95% 10,1–22,0\)/);
+  assert.doesNotMatch(JSON.stringify(a1), /15,4%|24\/156|n=156|pMMR n=/);
+  assert.doesNotMatch(JSON.stringify(a2), /45,5% \(65|65\/143|n=103/, 'TMB-H 45,5% (5/11) é da própria A2');
+  assert.match(a2.impacto_reg, /não descreve aprovação .* MMRp\/MSS/);
+});

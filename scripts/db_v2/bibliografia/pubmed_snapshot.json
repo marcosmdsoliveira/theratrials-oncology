@@ -37691,6 +37691,110 @@
 ],
 "retrieved_at": "2026-09-29"
 },
+"37363992": {
+"pmid": "37363992",
+"authors": [
+{
+"name": "Oaknin A",
+"authtype": "Author"
+},
+{
+"name": "Pothuri B",
+"authtype": "Author"
+},
+{
+"name": "Gilbert L",
+"authtype": "Author"
+},
+{
+"name": "Sabatier R",
+"authtype": "Author"
+},
+{
+"name": "Brown J",
+"authtype": "Author"
+},
+{
+"name": "Ghamande S",
+"authtype": "Author"
+},
+{
+"name": "Mathews C",
+"authtype": "Author"
+},
+{
+"name": "O'Malley DM",
+"authtype": "Author"
+},
+{
+"name": "Kristeleit R",
+"authtype": "Author"
+},
+{
+"name": "Boni V",
+"authtype": "Author"
+},
+{
+"name": "Gravina A",
+"authtype": "Author"
+},
+{
+"name": "Banerjee S",
+"authtype": "Author"
+},
+{
+"name": "Miller R",
+"authtype": "Author"
+},
+{
+"name": "Pikiel J",
+"authtype": "Author"
+},
+{
+"name": "Mirza MR",
+"authtype": "Author"
+},
+{
+"name": "Dewal N",
+"authtype": "Author"
+},
+{
+"name": "Antony G",
+"authtype": "Author"
+},
+{
+"name": "Dong Y",
+"authtype": "Author"
+},
+{
+"name": "Zografos E",
+"authtype": "Author"
+},
+{
+"name": "Veneris J",
+"authtype": "Author"
+},
+{
+"name": "Tinker AV",
+"authtype": "Author"
+}
+],
+"title": "Safety, Efficacy, and Biomarker Analyses of Dostarlimab in Patients with Endometrial Cancer: Interim Results of the Phase I GARNET Study.",
+"source": "Clin Cancer Res",
+"fulljournalname": "Clinical cancer research : an official journal of the American Association for Cancer Research",
+"pubdate": "2023 Nov 14",
+"epubdate": "",
+"volume": "29",
+"issue": "22",
+"pages": "4564-4574",
+"elocationid": "doi: 10.1158/1078-0432.CCR-22-3915",
+"doi": "10.1158/1078-0432.CCR-22-3915",
+"pmcid": "PMC10643997",
+"pubtype": [
+"Journal Article"
+],
+"retrieved_at": "2026-10-06"
+},
 "37369081": {
 "pmid": "37369081",
 "authors": [
