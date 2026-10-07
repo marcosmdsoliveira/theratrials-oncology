@@ -604,3 +604,21 @@ test('KEYNOTE-057: família multicoorte A/B; cada card com sua população e pub
   assert.doesNotMatch(JSON.stringify(b), /41% \(39\/96|30,7–51,1/);
   for (const c of [a, b]) { assert.equal(c.radiofarmaco, 'Pembrolizumabe'); assert.equal(c.family_relation, 'cohort'); }
 });
+
+// ── Alliance A071401: card restrito ao braço FAK/NF2 ─────────────────────────
+/* A071401 (NCT02523014) é protocolo multibraços guiado por genótipo; o card representa só o braço B
+ * (GSK2256098 em NF2-mutado; Brastianos, JCO 2023, PMID 36288512). Campos que alimentam filtros
+ * não podem citar drogas/biomarcadores dos outros braços. */
+test('A071401: filtros só do braço FAK/NF2; título da publicação; n=36; sem "de sucesso"', () => {
+  const c = card('meningioma_10'), j = JSON.stringify(c);
+  assert.equal(c.citation.pmid, '36288512');
+  assert.equal(c.titulo_full, 'Alliance A071401: Phase II Trial of Focal Adhesion Kinase Inhibition in Meningiomas With Somatic NF2 Mutations');
+  for (const k of ['molecular', 'biomarc', 'radiofarmaco', 'incl', 'indicacao', 'esquema']) {
+    assert.doesNotMatch(c[k], /vismodeg|capivasert|abemacicl|SMO|AKT1|PIK3CA|CDK/i, k);
+  }
+  assert.match(c.radiofarmaco, /^GSK2256098/);
+  assert.match(c.n, /^36 elegíveis e avaliáveis/);
+  assert.match(c.primario, /^PFS6 de 83% \(10\/12; IC95% 52–98\) no grau 1 e de 33% \(8\/24; IC95% 16–55\)/);
+  assert.doesNotMatch(j, /genômico de sucesso|classe FAK|pesadamente pré-tratada|37 pacientes elegíveis/);
+  assert.equal(c.family_id, undefined, 'família guarda-chuva fica para revisão humana');
+});
