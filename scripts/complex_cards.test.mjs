@@ -475,9 +475,21 @@ test('FIGHT-202: hipofosfatemia (não hiper) G≥3 12%, EAs de qualquer causa, s
   assert.match(c.tox_g3, /^EAs grau ≥3 de qualquer causa: 64% \(93\/146\)\. Mais frequentes: hipofosfatemia 12%/);
   assert.match(c.tox_interesse, /Hiperfosfatemia: EA mais comum \(60%\).*eventos grau 1–2/);
   assert.equal(c.comparador, 'Nenhum (braço único; sem grupo comparador ativo).');
-  assert.match(c.secundario, /OS imatura \(40\/107 óbitos, 37%\)/);
   assert.doesNotMatch(j, /controle externa|hiperfosfatemia 12%|CA 19-9|intra-hep 99%|FGFR mineraliza|gem\+cis ± durva|Bekaii-Saab|Aprovação completa após/);
   assert.match(c.incl, /≥1 terapia sistêmica prévia/);
+});
+
+test('FIGHT-202: análise primária preservada; análise final (ESMO Open 2024) rotulada no secundário', () => {
+  const c = card('hepatobiliar_16');
+  assert.match(c.primario, /^Coorte A \(fusão\/rearranjo FGFR2, n=107\): ORR confirmada por revisão central 35,5% \(38\/107; IC95% 26,5–45,4\)/);
+  assert.equal(c.resultado_chave, 'ORR 35,5% (IC95% 26,5–45,4) · 3 RC (2,8%) + 35 RP (32,7%) · fusão/rearranjo FGFR2 (n=107)');
+  assert.match(c.secundario, /^Análise primária \(Lancet Oncol 2020\)/);
+  assert.match(c.secundario, /Análise final\/madura \(Vogel, ESMO Open 2024, PMID 38838500; corte 08\/jul\/2021; seguimento mediano 45,4 m; coorte A n=108/);
+  assert.match(c.secundario, /ORR 37,0% \(IC95% 27,9–46,9\), 3 RC \+ 37 RP; DOR mediana 9,1 m \(IC95% 6,0–14,5\); PFS mediana 7,0 m \(IC95% 6,1–10,5\); OS mediana 17,5 m \(IC95% 14,4–22,9\)/);
+  // valores intermediários da análise primária não ficam como os mais maduros
+  assert.doesNotMatch(c.secundario, /(?<![\d,])7,5 m|(?<![\d,])6,9 m|21,1 m|imatura/);
+  assert.equal(c.citation.pmid, '32203698');
+  assert.match(c.ref, /^Abou-Alfa GK, .*Lancet Oncol 2020;21\(5\):671-684\. Análise final: Vogel A, et al\. .*ESMO Open 2024;9\(6\):103488 \(PMID 38838500\)\.$/);
 });
 
 test('THOR coorte 1: titulação <9 mg/dL, estratificação, RT-PCR/NGS, ORR da revisão FDA, FGFR3', () => {
@@ -512,6 +524,17 @@ test('IMpower150: co-primários incluindo Teff-high, ACP experimental, subgrupos
   assert.match(c.subgrupo, /^Exploratórios.*EGFR\+ \(n=124\).*HR 0,61; IC95% 0,29–1,28/);
   assert.match(c.ref, /PMID 30922878/);
   assert.doesNotMatch(j, /Único estudo|KEYNOTE-189/);
+});
+
+test('IMpower150: primário de 2018 preservado; OS atualizada (JTO 2021) rotulada como posterior, só ITT-WT', () => {
+  const c = card('impower150-atezo-bev-qt-em-nsclc-n-o-escamoso-1l');
+  assert.match(c.primario, /^ABCP vs BCP \(NEJM 2018\)\. .*ITT-WT: OS 19,2 vs 14,7 m \(HR 0,78; IC95% 0,64–0,96; p=0,02\)\. POSITIVO$/);
+  const [, upd] = c.secundario.split(/(?=Análise atualizada de OS)/);
+  assert.equal(upd, 'Análise atualizada de OS (posterior à primária; Socinski, J Thorac Oncol 2021, PMID 34311108; corte 13/set/2019), ITT-WT, ABCP vs BCP: 19,5 vs 14,7 m (HR 0,80; IC95% 0,67–0,95).');
+  assert.doesNotMatch(upd, /EGFR|ALK|fígado|hepát|Teff|subgrupo|final|primári[ao] de OS/i);
+  assert.match(c.secundario, /ACP vs BCP na ITT: HR 0,85 \(IC95% 0,71–1,03\), sem benefício de OS/);
+  assert.equal(c.citation.pmid, '29863955');
+  assert.match(c.ref, /^Socinski MA, et al\. Atezolizumab for First-Line .*\(PMID 29863955\)\. Reck M, .*\(PMID 30922878\)\. Análise atualizada de OS: Socinski MA, et al\. .*J Thorac Oncol 2021;16\(11\):1909-1924 \(PMID 34311108\)\.$/);
 });
 
 // ── TALAPRO-2: família multicoorte com duas populações de análise primária ──
