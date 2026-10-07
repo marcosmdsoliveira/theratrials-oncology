@@ -408,3 +408,52 @@ test('SunRISe-1: coorte 2, RC central vs investigador, toxicidade da coorte 2, s
   assert.match(c.desenho, /randomizados 2:1:1/);
   assert.doesNotMatch(j, /Lancet Oncol 2024|ESMO 2024|73,3%|CR em 12 m: 50%|mDOR NR|Priority Review|aprovação esperada|TARIS/);
 });
+
+// ── Lote de biomarcadores: CheckMate-358, MajesTEC-1, EV-103 K, CheckMate-227 ──
+test('CheckMate-358: fase 1/2, HPV não requerido, cérvix n=19, TRAE G3–4 21,1%', () => {
+  const c = card('cervix_9');
+  assert.match(c.fase, /^Fase 1\/2/);
+  assert.doesNotMatch(c.fase, /basket/i);
+  assert.match(c.biomarc, /^HPV não exigido: excluídos apenas tumores sabidamente HPV-negativos/);
+  assert.doesNotMatch(c.indicacao + c.incl, /HPV\+/);
+  assert.match(c.primario, /^Cérvix \(n=19\): ORR por investigador 26,3% \(IC95% 9,1–51,2; 5\/19\)/);
+  assert.match(c.tox_g3, /TRAE G3–4 21,1% \(4\/19\)/);
+  assert.doesNotMatch(c.sponsor, /Hollebecque/, 'PI sem lastro; ele é 2º autor na citation');
+  assert.doesNotMatch(JSON.stringify(c), /n=24 cérvix|pós ≥1 linha/);
+});
+
+test('MajesTEC-1: triple-class exposed, NCT fase 1/fase 2, toxicidade do NEJM, sem q2w/profilaxia sem fonte', () => {
+  const c = card('mieloma_6'), j = JSON.stringify(c);
+  assert.equal(c.nct, 'NCT03145181 (fase 1) / NCT04557098 (fase 2)');
+  assert.match(c.indicacao, /triple-class exposed/);
+  assert.doesNotMatch(c.acron + c.indicacao + c.incl, /refratário a IMID|triple-class refractory/i);
+  assert.match(c.basal, /triple-class refratário 77,6%/);
+  assert.match(c.tox_g3, /^EA G3–4 \(qualquer causalidade\) 94,5%\. Neutropenia G3–4 64,2%, anemia 37,0%, trombocitopenia 21,2%/);
+  assert.doesNotMatch(j, /88%|q2w|sulfa|fluconazol|IgG <400|profilaxia obrigatória|IGIV mensal/);
+  assert.match(c.biomarc, /^Sem biomarcador de seleção/);
+  assert.equal(c.primario, 'ORR 63,0% (IC95% 55,2–70,4; 104/165); ≥RC 39,4%.');
+});
+
+test('EV-103 coorte K: basal, estratificação, PD-L1 exploratório, sem comparação formal, neuropatia 2,6%', () => {
+  const c = card('urotelial_avancado_9'), j = JSON.stringify(c);
+  assert.equal(c.estrat, 'ECOG (0–1 vs 2) e metástase hepática (presente vs ausente)');
+  assert.match(c.basal, /mediana 71a .* metástases viscerais 84,2% \(hepáticas 17,1%\); PD-L1 CPS <10 57,9%/);
+  assert.match(c.molecular, /exploratórios$/);
+  assert.match(c.resultado_chave, /sem comparação formal/);
+  assert.match(c.tox_interesse, /neuropatia 2,6%/);
+  assert.match(c.tox_g3, /3 óbitos relacionados \(3,9%/);
+  assert.doesNotMatch(j, />22 m|12,7 m|neuropatia periférica 5%|Israel|Rosenberg/);
+});
+
+test('CheckMate-227: N 1189, estratificação por histologia, TMB atingido (não abandonado), PD-L1 <1% descritivo', () => {
+  const c = card('checkmate-227-nivolumab-ipilimumab-em-nsclc-1l'), j = JSON.stringify(c);
+  assert.equal(c.citation.pmid, '31562796');
+  assert.match(c.n, /PD-L1 ≥1% n=1189/);
+  assert.match(c.estrat, /^Histologia \(escamoso vs não escamoso\)/);
+  assert.doesNotMatch(c.estrat, /sexo/);
+  assert.match(c.limit, /atingido, não abandonado/);
+  assert.match(c.secundario, /^PD-L1 <1% \(análise descritiva pré-especificada\)/);
+  assert.match(c.impacto_reg, /PD-L1 ≥1% sem aberrações de EGFR\/ALK/);
+  assert.match(c.biomarc, /^PD-L1 central obrigatório/);
+  assert.doesNotMatch(j, /N=1166|abandonado;|pneumonite prévia|sobretudo em PD-L1 <1%/);
+});
