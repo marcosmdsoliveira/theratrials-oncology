@@ -41137,6 +41137,112 @@
 ],
 "retrieved_at": "2026-09-29"
 },
+"38049622": {
+"pmid": "38049622",
+"authors": [
+{
+"name": "Fizazi K",
+"authtype": "Author"
+},
+{
+"name": "Azad AA",
+"authtype": "Author"
+},
+{
+"name": "Matsubara N",
+"authtype": "Author"
+},
+{
+"name": "Carles J",
+"authtype": "Author"
+},
+{
+"name": "Fay AP",
+"authtype": "Author"
+},
+{
+"name": "De Giorgi U",
+"authtype": "Author"
+},
+{
+"name": "Joung JY",
+"authtype": "Author"
+},
+{
+"name": "Fong PCC",
+"authtype": "Author"
+},
+{
+"name": "Voog E",
+"authtype": "Author"
+},
+{
+"name": "Jones RJ",
+"authtype": "Author"
+},
+{
+"name": "Shore ND",
+"authtype": "Author"
+},
+{
+"name": "Dunshee C",
+"authtype": "Author"
+},
+{
+"name": "Zschäbitz S",
+"authtype": "Author"
+},
+{
+"name": "Oldenburg J",
+"authtype": "Author"
+},
+{
+"name": "Ye D",
+"authtype": "Author"
+},
+{
+"name": "Lin X",
+"authtype": "Author"
+},
+{
+"name": "Healy CG",
+"authtype": "Author"
+},
+{
+"name": "Di Santo N",
+"authtype": "Author"
+},
+{
+"name": "Laird AD",
+"authtype": "Author"
+},
+{
+"name": "Zohren F",
+"authtype": "Author"
+},
+{
+"name": "Agarwal N",
+"authtype": "Author"
+}
+],
+"title": "First-line talazoparib with enzalutamide in HRR-deficient metastatic castration-resistant prostate cancer: the phase 3 TALAPRO-2 trial.",
+"source": "Nat Med",
+"fulljournalname": "Nature medicine",
+"pubdate": "2024 Jan",
+"epubdate": "2023 Dec 4",
+"volume": "30",
+"issue": "1",
+"pages": "257-264",
+"elocationid": "doi: 10.1038/s41591-023-02704-x",
+"doi": "10.1038/s41591-023-02704-x",
+"pmcid": "PMC10803259",
+"pubtype": [
+"Randomized Controlled Trial",
+"Journal Article",
+"Research Support, Non-U.S. Gov't"
+],
+"retrieved_at": "2026-10-06"
+},
 "38055253": {
 "pmid": "38055253",
 "authors": [

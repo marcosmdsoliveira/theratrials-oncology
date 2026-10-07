@@ -513,3 +513,46 @@ test('IMpower150: co-primários incluindo Teff-high, ACP experimental, subgrupos
   assert.match(c.ref, /PMID 30922878/);
   assert.doesNotMatch(j, /Único estudo|KEYNOTE-189/);
 });
+
+// ── TALAPRO-2: família multicoorte com duas populações de análise primária ──
+/* TALAPRO-2 (NCT03395197): coorte all-comers (Agarwal, Lancet 2023, PMID 37285865; SG final PMID
+ * 40683290) e população HRR-deficiente (Fizazi, Nat Med 2024, PMID 38049622; SG final PMID 40683287).
+ * Os 169 HRR-deficientes da coorte 1 estão nas duas populações (overlap_note). */
+const TA = 'prostata_contexto_21', TH = 'talapro-2-talazoparibe-enzalutamida-hrr-deficiente';
+test('TALAPRO-2: família multicoorte, duas análises, sobreposição declarada e sem resultado clínico', () => {
+  const f = D.families.find((x) => x.family_id === 'talapro-2');
+  assert.ok(f);
+  assert.equal(f.design_type, 'multicohort');
+  assert.deepEqual(js(f.cohorts.map((c) => c.card_uids)), [[TA], [TH]]);
+  assert.deepEqual(js(f.cohorts.map((c) => c.publication.pmid)), ['37285865', '38049622']);
+  assert.match(f.overlap_note, /169 pacientes HRR-deficientes da coorte 1/);
+  assert.doesNotMatch(JSON.stringify(f), /HR |IC95%|mediana|\d+%/);
+  for (const u of [TA, TH]) {
+    assert.equal(card(u).family_id, 'talapro-2', u);
+    assert.equal(card(u).family_relation, 'analysis', u);
+    assert.equal(card(u).nct, 'NCT03395197', u);
+    assert.equal(T.familyForHash(D, u), null, `#${u} abre o card`);
+  }
+  assert.equal(T.familyForHash(D, 'talapro-2').family_id, 'talapro-2');
+});
+
+test('TALAPRO-2 all-comers: rPFS HR 0,63; SG final significativa (p=0,016); HRR só estratificação', () => {
+  const c = card(TA), j = JSON.stringify(c);
+  assert.equal(c.citation.pmid, '37285865');
+  assert.match(c.primario, /HR 0,63 \(IC95% 0,51–0,78\); p<0,0001/);
+  assert.match(c.secundario, /HR 0,80 \(IC95% 0,66–0,96\); p=0,016, estatisticamente significativa/);
+  assert.match(c.molecular, /^Não seletivo: status HRR .* fator de estratificação, não como critério de inclusão/);
+  assert.doesNotMatch(j, /tendência|p=0,055|HR 0,45|13,8 m|Pfizer não buscará|11 outros genes/);
+});
+
+test('TALAPRO-2 HRR-deficiente: HRR em 12 genes requerido; rPFS HR 0,45; só números das próprias publicações', () => {
+  const c = card(TH), j = JSON.stringify(c);
+  assert.equal(c.citation.pmid, '38049622');
+  assert.match(c.molecular, /^Requerido: ≥1 alteração em pelo menos 1 de 12 genes de HRR/);
+  assert.match(c.primario, /HR 0,45 \(IC95% 0,33–0,61\); p<0,0001/);
+  assert.match(c.secundario, /SG final .*HR 0,62 \(IC95% 0,48–0,81\); p=0,0005/);
+  assert.match(c.n, /399 randomizados .* = 169 da coorte 1 \+ 230 da coorte 2/);
+  assert.match(c.subgrupo, /^rPFS post hoc: BRCA1\/2 HR 0,20/);
+  assert.doesNotMatch(j, /HR 0,63|21,9 m|HR 0,80|45,8 m|p=0,016/);
+  assert.equal(c.category_id, card(TA).category_id);
+});
