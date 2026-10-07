@@ -457,3 +457,59 @@ test('CheckMate-227: N 1189, estratificação por histologia, TMB atingido (não
   assert.match(c.biomarc, /^PD-L1 central obrigatório/);
   assert.doesNotMatch(j, /N=1166|abandonado;|pneumonite prévia|sobretudo em PD-L1 <1%/);
 });
+
+// ── Lote de referências/atribuição: PROfound, FIGHT-202, THOR, CASPIAN, IMpower150 ──
+test('PROfound: OS 0,69 não ajustada (ajustada 0,42), taxano permitido, A+B como secundário', () => {
+  const c = card('prostata_contexto_17'), j = JSON.stringify(c);
+  assert.equal(c.primario, 'rPFS por BICR na coorte A: 7,4 vs 3,6 m (HR 0,34; IC95% 0,25–0,47; p<0,001).');
+  assert.match(c.secundario, /HR 0,69; IC95% 0,50–0,97; p=0,02; análise primária, não ajustada para crossover\)/);
+  assert.match(c.secundario, /ajustada por crossover: HR 0,42 \(IC95% 0,19–0,91\)/);
+  assert.match(c.secundario, /rPFS coortes A\+B \(secundário\)/);
+  assert.match(c.excl, /quimioterapia citotóxica que lesa DNA prévia.*taxano prévio permitido/);
+  assert.match(c.ref, /PMID 32955174/);
+  assert.doesNotMatch(j, /ajustado por crossover\)|HR ~0,73|~2-4%|TESTE GENÉTICO/);
+});
+
+test('FIGHT-202: hipofosfatemia (não hiper) G≥3 12%, EAs de qualquer causa, sem comparador externo', () => {
+  const c = card('hepatobiliar_16'), j = JSON.stringify(c);
+  assert.match(c.tox_g3, /^EAs grau ≥3 de qualquer causa: 64% \(93\/146\)\. Mais frequentes: hipofosfatemia 12%/);
+  assert.match(c.tox_interesse, /Hiperfosfatemia: EA mais comum \(60%\).*eventos grau 1–2/);
+  assert.equal(c.comparador, 'Nenhum (braço único; sem grupo comparador ativo).');
+  assert.match(c.secundario, /OS imatura \(40\/107 óbitos, 37%\)/);
+  assert.doesNotMatch(j, /controle externa|hiperfosfatemia 12%|CA 19-9|intra-hep 99%|FGFR mineraliza|gem\+cis ± durva|Bekaii-Saab|Aprovação completa após/);
+  assert.match(c.incl, /≥1 terapia sistêmica prévia/);
+});
+
+test('THOR coorte 1: titulação <9 mg/dL, estratificação, RT-PCR/NGS, ORR da revisão FDA, FGFR3', () => {
+  const c = card('urotelial_avancado_4'), j = JSON.stringify(c);
+  assert.match(c.esquema, /fosfato sérico <9 mg\/dL/);
+  assert.match(c.estrat, /^Região .* ECOG \(0–1 vs 2\); metástases viscerais ou ósseas/);
+  assert.match(c.molecular, /RT-PCR central .* em 75%; NGS local em 25%/);
+  assert.match(c.secundario, /ORR confirmada 35,3% .* \(revisão FDA\)/);
+  assert.match(c.impacto_reg, /FGFR3 .*Limitação de uso/);
+  assert.match(c.estatistica, /HR 0,65/);
+  assert.match(c.ref, /PMID 37871702/);
+  assert.doesNotMatch(j, /<5,5 mg|NGS central|HR 0,67|deterioração de QoL maior|ESMO 2023|78% qualquer grau/);
+});
+
+test('CASPIAN: dois primários (D+EP positivo; D+T+EP negativo) com cada número atribuído', () => {
+  const c = card('caspian-durva-treme-ep-em-sclc-extensivo-1l'), j = JSON.stringify(c);
+  assert.equal(c.citation.pmid, '31590988');
+  assert.match(c.estatistica, /^Dois endpoints primários/);
+  assert.match(c.primario, /interina \(Lancet 2019\): SG 13,0 vs 10,3 m \(HR 0,73; IC95% 0,59–0,91; p=0,0047\)/);
+  assert.match(c.primario, /Durva\+treme\+EP vs EP — análise primária \(Lancet Oncol 2021\): SG 10,4 vs 10,5 m \(HR 0,82; IC95% 0,68–1,00; p=0,045\), sem significância estatística\. NEGATIVO/);
+  assert.match(c.tox_g3, /62% \(163\/265\) durva\+EP vs 62% \(166\/266\) EP/);
+  assert.match(c.ref, /PMID 33285097.*PMID 35279527/);
+  assert.doesNotMatch(j, /IMpower133|benefício mantido em todos os subgrupos/);
+});
+
+test('IMpower150: co-primários incluindo Teff-high, ACP experimental, subgrupos exploratórios', () => {
+  const c = card('impower150-atezo-bev-qt-em-nsclc-n-o-escamoso-1l'), j = JSON.stringify(c);
+  assert.equal(c.citation.pmid, '29863955');
+  assert.match(c.estatistica, /co-primários: PFS \(investigador\) em ITT-WT e em Teff-high WT, e OS em ITT-WT/);
+  assert.match(c.primario, /Teff-high WT: PFS 11,3 vs 6,8 m \(HR 0,51/);
+  assert.match(c.comparador, /ACP .* é braço experimental/);
+  assert.match(c.subgrupo, /^Exploratórios.*EGFR\+ \(n=124\).*HR 0,61; IC95% 0,29–1,28/);
+  assert.match(c.ref, /PMID 30922878/);
+  assert.doesNotMatch(j, /Único estudo|KEYNOTE-189/);
+});
