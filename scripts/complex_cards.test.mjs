@@ -353,3 +353,19 @@ test('MAGNITUDE: rPFS BRCA primeiro, OS final 0,931/0,788 sem diferença, citati
   assert.match(c.esquema, /prednisona 5 mg 2x\/dia/);
   assert.match(c.ref, /PMID 40328571/);
 });
+
+// ── POSEIDON: primário é D+QT vs QT; tripleta é secundário-chave ─────────────
+/* POSEIDON (NCT03164616; Johnson JCO 2023, PMID 36327426): primários PFS e OS de D+QT vs QT
+ * (OS HR 0,86; p=0,0758, não significativa); T+D+QT vs QT é secundário-chave com controle de alfa. */
+test('POSEIDON: atribuição correta das comparações, toxicidade do comparador e estratificação', () => {
+  const c = card('poseidon-durva-treme-qt-vs-qt-em-nsclc-1l'), j = JSON.stringify(c);
+  assert.equal(c.citation.pmid, '36327426');
+  assert.match(c.primario, /^Primários \(D\+QT vs QT\): PFS \(BICR\) 5,5 vs 4,8 m, HR 0,74 \(IC95% 0,62–0,89; p=0,0009\); OS 13,3 vs 11,7 m, HR 0,86 \(IC95% 0,72–1,02; p=0,0758\), não significativo/);
+  assert.match(c.primario, /Secundários-chave com controle de alfa \(T\+D\+QT vs QT\): PFS 6,2 vs 4,8 m, HR 0,72/);
+  assert.match(c.resultado_chave, /^D\+QT vs QT \(primário\)/);
+  assert.match(c.tox_g3, /51,8% \(T\+D\+QT\) \/ 44,6% \(D\+QT\) \/ 44,4% \(QT\)/);
+  assert.doesNotMatch(j, /41,6|custo-benefício/);
+  assert.equal(c.estrat, 'PD-L1 (≥50% vs <50% das células tumorais), estádio (IVA vs IVB), histologia (escamosa vs não escamosa)');
+  assert.match(c.secundario, /ORR confirmada \(post hoc\)/);
+  assert.match(c.biomarc, /STK11\/KEAP1\/KRAS: análise exploratória posterior \(Skoulidis, Nature 2024; PMID 39385035\)/);
+});
