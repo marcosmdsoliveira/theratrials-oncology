@@ -1062,3 +1062,100 @@ test('umbrella: busca do card não indexa linhas da família (tratamentos/altera
   assert.equal(T.studySearchText(s), 'e a i r NCT0 c'.toLowerCase());
   assert.equal(T.familyMatchesQuery({ family_id: 'u', family_name: 'U', cohorts: [{ treatment: 'capivasertibe' }] }, 'capivasertibe'), false);
 });
+
+// ── umbrella Alliance A071401 (NCT02523014) ───────────────────────────────
+/* Primeira família umbrella: a genotipagem central define o braço. Quatro braços (A–D); só B (FAK,
+ * Brastianos JCO 2023) e D (abemaciclibe, Brastianos Nat Med 2026) têm publicação e card. */
+const A07 = T.familyById(D, 'a071401');
+const A07_B = 'meningioma_10', A07_D = 'a071401-abemaciclibe-meningioma-nf2-cdk';
+test('umbrella A071401: 4 braços A–D, 2 membros, sem eficácia, mapeamento alteração → tratamento', () => {
+  assert.ok(A07);
+  assert.equal(A07.design_type, 'umbrella');
+  assert.deepEqual(js(A07.registry_ids), ['NCT02523014']);
+  assert.match(A07.note, /NCI-2015-00546/);
+  assert.equal(A07.arms, undefined);
+  assert.deepEqual(js(A07.cohorts.map((c) => c.cohort)), ['A', 'B', 'C', 'D']);
+  assert.deepEqual(js(A07.member_uids), [A07_B, A07_D]);
+  assert.deepEqual(js(T.familyMembers(D, A07).map((s) => s.uid)), [A07_B, A07_D]);
+  const m = Object.fromEntries(A07.cohorts.map((c) => [c.cohort, c]));
+  assert.match(m.A.selection, /SMO ou PTCH1/); assert.equal(m.A.treatment, 'Vismodegibe'); assert.deepEqual(js(m.A.card_uids), []);
+  assert.match(m.B.selection, /^Mutação de NF2/); assert.match(m.B.treatment, /^GSK2256098/); assert.equal(m.B.publication.pmid, '36288512'); assert.deepEqual(js(m.B.card_uids), [A07_B]);
+  assert.match(m.C.selection, /AKT1, PIK3CA ou PTEN/); assert.equal(m.C.treatment, 'Capivasertibe'); assert.deepEqual(js(m.C.card_uids), []);
+  assert.match(m.C.status, /não informa encerramento/); assert.equal(m.C.publication, undefined); assert.equal(m.A.publication, undefined);
+  assert.match(m.D.selection, /^Mutação de NF2 ou alteração da via CDK/); assert.match(m.D.treatment, /^Abemaciclibe/); assert.equal(m.D.publication.pmid, '41545592'); assert.deepEqual(js(m.D.card_uids), [A07_D]);
+  // cada alteração no(s) braço(s) certo(s): NF2 em B e D; SMO só em A; AKT1 só em C; CDK só em D
+  const em = (re) => A07.cohorts.filter((c) => re.test(c.selection)).map((c) => c.cohort).join('');
+  assert.equal(em(/NF2/), 'BD'); assert.equal(em(/SMO/), 'A'); assert.equal(em(/AKT1/), 'C'); assert.equal(em(/CDK/), 'D');
+  const txt = JSON.stringify(A07);
+  assert.doesNotMatch(txt, /\bPFS6? (de )?\d|\d+(?:[.,]\d+)? ?%|\bHR\b|mediana|\bORR\b|83|58/);
+  assert.match(A07.design_summary, /Não há controle compartilhado; cada braço é avaliado separadamente, com regra de decisão própria/);
+  assert.match(A07.note, /São pacientes e períodos distintos/);
+  for (const u of [A07_B, A07_D]) assert.equal(card(u).family_relation, 'cohort', u);
+});
+
+test('umbrella A071401: B e D compartilham o NCT dentro da família (sem aviso); cada card só com o próprio braço', () => {
+  assert.equal(card(A07_B).nct, 'NCT02523014');
+  assert.equal(card(A07_D).nct, 'NCT02523014');
+  const r = validarCom(() => {});
+  assert.equal(r.code, 0);
+  assert.doesNotMatch(r.saida, /NCT NCT02523014 também está em/);
+  const r2 = validarCom((d) => { const s = d.studies.find((x) => x.uid === A07_D); delete s.family_id; delete s.family_relation; d.families.find((f) => f.family_id === 'a071401').cohorts[3].card_uids = []; d.families.find((f) => f.family_id === 'a071401').member_uids = [A07_B]; });
+  assert.match(r2.saida, /NCT NCT02523014 também está em/);
+  assert.doesNotMatch(JSON.stringify(card(A07_D)), /FAK|GSK2256098/);
+  assert.doesNotMatch(T.studySearchText(card(A07_B)), /cdk|abemacicl/);
+});
+
+test('umbrella A071401: busca — A071401 → família + B + D; NF2 → B + D; CDK → só D; SMO/capivasertib → nenhum', () => {
+  const doA07 = (q) => js(busca(q).map((s) => s.uid)).filter((u) => [A07_B, A07_D].includes(u)).sort();
+  assert.deepEqual(doA07('A071401'), [A07_D, A07_B].sort());
+  assert.ok(T.familiesToShow(D, busca('A071401'), 'A071401', false).some((f) => f.family_id === 'a071401'));
+  assert.deepEqual(doA07('NF2'), [A07_D, A07_B].sort());
+  assert.deepEqual(doA07('CDK'), [A07_D]);
+  assert.deepEqual(doA07('SMO'), []);
+  assert.deepEqual(doA07('capivasertib'), []);
+  assert.deepEqual(doA07('vismodegib'), []);
+  assert.deepEqual(doA07('GSK2256098'), [A07_B]);
+  assert.deepEqual(doA07('abemaciclib'), [A07_D]);
+});
+
+test('umbrella A071401: filtros de tumor/categoria — os dois em Meningioma', () => {
+  for (const u of [A07_B, A07_D]) assert.equal(card(u).category_id, 'meningioma', u);
+  assert.equal(D.categories.find((c) => c.id === 'meningioma').count, D.studies.filter((s) => s.category_id === 'meningioma').length);
+});
+
+test('umbrella A071401: deep links #meningioma_10, #a071401-abemaciclibe…, #a071401', () => {
+  assert.ok(card(A07_B)); assert.ok(card(A07_D));
+  assert.equal(T.familyForHash(D, A07_B), null);
+  assert.equal(T.familyForHash(D, 'a071401').family_id, 'a071401');
+});
+
+test('umbrella A071401: badge, contagem, callout e colunas em PT/EN', () => {
+  assert.equal(A07.design_label, 'Umbrella · seleção molecular');
+  assert.equal(DICT['pt-br'].db['famType_' + A07.design_type], 'Umbrella · seleção molecular');
+  assert.equal(DICT.en.db['famType_' + A07.design_type], 'Umbrella · molecular selection');
+  assert.equal(T.familyUnitKind(D, A07), 'cohort');
+  assert.deepEqual(js(T.familyUnits(A07)).map((c) => c.cohort), ['A', 'B', 'C', 'D']);
+  const corpo = HTML_DB.match(/famCount\(f\) \{([\s\S]*?)\n    \},/)[1];
+  assert.equal(new Function('f', corpo).bind({ tt: (k, f) => f, famKind: (f) => T.familyUnitKind(D, f), familyMembers: (f) => T.familyMembers(D, f) })(A07), '2 braços no Database');
+  assert.equal(DICT.en.db.famUmbrellaArms, 'arms in the Database');
+  assert.ok(A07.i18n.en.design_summary && A07.i18n.en.population);
+  assert.doesNotMatch(JSON.stringify(A07.i18n.en), /\d+(?:[.,]\d+)? ?%/);
+});
+
+test('umbrella A071401: app-data leva a família e os 2 cards', () => {
+  const app = JSON.parse(readFileSync(path.join(SITE, 'app-data', 'data.json'), 'utf8'));
+  const f = app.families.find((x) => x.family_id === 'a071401');
+  assert.ok(f && f.design_type === 'umbrella');
+  assert.deepEqual(f.cohorts.map((c) => c.treatment), js(A07.cohorts.map((c) => c.treatment)));
+  for (const u of [A07_B, A07_D]) assert.equal(app.studies.find((s) => s.uid === u).family_id, 'a071401', u);
+});
+
+test('umbrella A071401: frontend sem o bloco umbrella cai no vocabulário genérico de coorte, sem erro', () => {
+  // simula o famK antigo (sem porTipo.umbrella): os membros são "cohort", então o rótulo genérico é de coorte
+  const antigo = HTML_DB.match(/\n    famK\(f, base\) \{([\s\S]*?)\n    \},/)[1].replace(/umbrella: \{[\s\S]*?\n        \},\n/, '');
+  const famK = new Function('f', 'base', antigo).bind({ tt: (k, f) => f, famKind: (f) => T.familyUnitKind(D, f) });
+  assert.equal(famK(A07, 'famArms'), 'Coortes representadas');
+  assert.equal(famK(A07, 'famArm'), 'Coorte');
+  // e o badge, sem dicionário, cai no design_label
+  assert.equal(new Function('f', HTML_DB.match(/\n    famType\(f\) \{([\s\S]*?)\n    \},/)[1]).bind({ tt: (k, f) => f })(A07), 'Umbrella · seleção molecular');
+});

@@ -53992,6 +53992,155 @@
 ],
 "retrieved_at": "2026-09-29"
 },
+"41545592": {
+"pmid": "41545592",
+"authors": [
+{
+"name": "Brastianos PK",
+"authtype": "Author"
+},
+{
+"name": "Dooley K",
+"authtype": "Author"
+},
+{
+"name": "Geyer S",
+"authtype": "Author"
+},
+{
+"name": "Gerstner ER",
+"authtype": "Author"
+},
+{
+"name": "Kaufmann TJ",
+"authtype": "Author"
+},
+{
+"name": "Iafrate AJ",
+"authtype": "Author"
+},
+{
+"name": "Martinez-Lage M",
+"authtype": "Author"
+},
+{
+"name": "Milhem M",
+"authtype": "Author"
+},
+{
+"name": "Welch MR",
+"authtype": "Author"
+},
+{
+"name": "Kaley TJ",
+"authtype": "Author"
+},
+{
+"name": "Drappatz J",
+"authtype": "Author"
+},
+{
+"name": "Chan A",
+"authtype": "Author"
+},
+{
+"name": "Kumthekar P",
+"authtype": "Author"
+},
+{
+"name": "Matsuoka CK",
+"authtype": "Author"
+},
+{
+"name": "Strowd RE",
+"authtype": "Author"
+},
+{
+"name": "Cohen AL",
+"authtype": "Author"
+},
+{
+"name": "Jaeckle K",
+"authtype": "Author"
+},
+{
+"name": "Robell L",
+"authtype": "Author"
+},
+{
+"name": "Magge RS",
+"authtype": "Author"
+},
+{
+"name": "Nam JY",
+"authtype": "Author"
+},
+{
+"name": "Blondin N",
+"authtype": "Author"
+},
+{
+"name": "Shaikh N",
+"authtype": "Author"
+},
+{
+"name": "Rabinowitz I",
+"authtype": "Author"
+},
+{
+"name": "Thomas AA",
+"authtype": "Author"
+},
+{
+"name": "Piccioni DE",
+"authtype": "Author"
+},
+{
+"name": "Brown P",
+"authtype": "Author"
+},
+{
+"name": "Kaluziak S",
+"authtype": "Author"
+},
+{
+"name": "Codd E",
+"authtype": "Author"
+},
+{
+"name": "Cahill DP",
+"authtype": "Author"
+},
+{
+"name": "Santagata S",
+"authtype": "Author"
+},
+{
+"name": "Barker FG 2nd",
+"authtype": "Author"
+},
+{
+"name": "Galanis E",
+"authtype": "Author"
+}
+],
+"title": "Abemaciclib in meningiomas with somatic NF2 or CDK pathway alterations: the phase 2 Alliance A071401 trial.",
+"source": "Nat Med",
+"fulljournalname": "Nature medicine",
+"pubdate": "2026 Feb",
+"epubdate": "2026 Jan 16",
+"volume": "32",
+"issue": "2",
+"pages": "717-724",
+"elocationid": "doi: 10.1038/s41591-025-04141-4",
+"doi": "10.1038/s41591-025-04141-4",
+"pmcid": "PMC12920099",
+"pubtype": [
+"Journal Article",
+"Clinical Trial, Phase II"
+],
+"retrieved_at": "2026-10-07"
+},
 "41564397": {
 "pmid": "41564397",
 "authors": [

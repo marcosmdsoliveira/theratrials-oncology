@@ -645,8 +645,37 @@ test('A071401: filtros só do braço FAK/NF2; título da publicação; n=36; sem
   assert.match(c.n, /^36 elegíveis e avaliáveis/);
   assert.match(c.primario, /^PFS6 de 83% \(10\/12; IC95% 52–98\) no grau 1 e de 33% \(8\/24; IC95% 16–55\)/);
   assert.doesNotMatch(j, /genômico de sucesso|classe FAK|pesadamente pré-tratada|37 pacientes elegíveis/);
-  assert.equal(c.family_id, undefined, 'família guarda-chuva fica para revisão humana');
+  assert.equal(c.family_id, 'a071401');
+  assert.equal(c.family_relation, 'cohort');
+  assert.equal(c.comparison_label, 'Braço B: NF2 → GSK2256098 (inibidor de FAK)');
+  assert.doesNotMatch([c.estudo, c.acron, c.indicacao, c.radiofarmaco, c.molecular, c.biomarc, c.incl, c.esquema, c.primario, c.resultado_chave].join(' '), /abemacicl|\bCDK|SMO|AKT1|PIK3CA|PTEN|capivasert|vismodeg/i);
 });
+
+// ── A071401 braço D: abemaciclibe (Brastianos, Nat Med 2026, PMID 41545592) ──
+test('A071401 braço D: card próprio, PMID 41545592, grau 2/3, NF2 ou via CDK, só números do braço D', () => {
+  const c = card('a071401-abemaciclibe-meningioma-nf2-cdk'), j = JSON.stringify(c);
+  assert.equal(c.citation.pmid, '41545592');
+  assert.equal(c.pubmed_url, 'https://pubmed.ncbi.nlm.nih.gov/41545592/');
+  assert.equal(c.titulo_full, 'Abemaciclib in meningiomas with somatic NF2 or CDK pathway alterations: the phase 2 Alliance A071401 trial');
+  assert.equal(c.nct, 'NCT02523014');
+  assert.equal(c.family_id, 'a071401');
+  assert.equal(c.family_relation, 'cohort');
+  assert.equal(c.category_id, 'meningioma');
+  assert.match(c.indicacao, /OMS grau 2 ou 3, com mutação de NF2 ou alteração da via CDK$/);
+  assert.match(c.incl, /^Meningioma intracraniano grau 2 ou 3/);
+  assert.match(c.esquema, /^Abemaciclibe 200 mg VO duas vezes ao dia, em ciclos de 28 dias/);
+  assert.match(c.primario, /^Primeiros 24 avaliáveis: PFS6 de 58% \(14\/24; IC95% 36,6–77,9\), acima do limiar de sucesso \(≥8\/24\); o critério de PFS6 foi atingido\./);
+  assert.match(c.primario, /não atingiu a regra de decisão \(≥3\/24\): nenhuma resposta completa ou parcial; doença estável como melhor resposta em 16\/24/);
+  assert.match(c.secundario, /^Seguimento mediano de 21 m\. PFS mediana 10,1 m \(IC95% 3,6–20,2\).*OS mediana 29,1 m \(IC95% 26,3–NE\).*PFS6 de 57% \(12\/21\)\.$/);
+  assert.match(c.subgrupo, /^Exploratório, sem poder estatístico/);
+  assert.match(c.tox_g3, /^População de segurança \(n=36\): 9 pacientes com evento grau 3 e 2 com evento grau 4/);
+  // grau 1 só como o paciente registrado por erro
+  assert.equal([...j.matchAll(/grau 1\b/g)].length, 1);
+  assert.match(c.n, /1 paciente com tumor grau 1, registrado por erro, inavaliável/);
+  // nada do braço B nem dos braços A/C
+  assert.doesNotMatch(j, /FAK|GSK2256098|GlaxoSmithKline|SMO|PTCH1|AKT1|PIK3CA|PTEN|vismodeg|capivasert|83%|10\/12|8\/24 pacientes|36288512/);
+});
+
 
 // ── Fechamento pós-auditoria: regulatório NOVA e rótulo do coprimário TMB ────
 test('NOVA: regulatório FDA — indicação de 2017 sem restrição; restrita a gBRCAmut em 08/dez/2022 (S-025)', () => {

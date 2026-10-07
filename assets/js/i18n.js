@@ -19,7 +19,7 @@
   var translations = {};
   var currentLang = DEFAULT_LANG;
   // Versão (hash do conteúdo) de cada dicionário: URL nova quando o arquivo muda, para o cache do SW não servir o antigo
-  var LANG_VERSIONS = {"en":"c9e8474dc0","pt-br":"b316d74497"}; // gerado por scripts/asset_versions.mjs
+  var LANG_VERSIONS = {"en":"4ea4970916","pt-br":"ddc989cb02"}; // gerado por scripts/asset_versions.mjs
 
   // ── Detect preferred language ──
   function detectLang() {
