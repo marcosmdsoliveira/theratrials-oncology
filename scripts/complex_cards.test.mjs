@@ -369,3 +369,42 @@ test('POSEIDON: atribuição correta das comparações, toxicidade do comparador
   assert.match(c.secundario, /ORR confirmada \(post hoc\)/);
   assert.match(c.biomarc, /STK11\/KEAP1\/KRAS: análise exploratória posterior \(Skoulidis, Nature 2024; PMID 39385035\)/);
 });
+
+// ── FOENIX-CCA2, EMERALD-1, SunRISe-1 ───────────────────────────────────────
+test('FOENIX-CCA2: iCCA FGFR2, sem inibidor de FGFR prévio; sem enquadramento pós-pemigatinib', () => {
+  const c = card('hepatobiliar_18');
+  assert.equal(c.citation.pmid, '36652354');
+  assert.match(c.linha, /sem inibidor de FGFR prévio/);
+  assert.doesNotMatch(c.linha + c.acron + c.takehome, /pós-pemigatinib|após resistência|reverter resistência/);
+  assert.match(c.limit, /não informa eficácia após pemigatinib ou infigratinib/);
+  assert.match(c.periodo, /^Inclusão 16\/abr\/2018–29\/nov\/2019/);
+  assert.doesNotMatch(c.fase, /basket/i);
+  assert.match(c.tox_g3, /aumento de AST 7%/);
+  assert.doesNotMatch(JSON.stringify(c), /intra-hep 99%|AST 9%|coorte separada para retreatment|mais alta que pemigatinib/);
+  assert.equal(c.primario.startsWith('ORR (revisão central): 42% (43/103; IC95% 32–52)'), true);
+});
+
+test('EMERALD-1: ref Lancet 2025, sequência TACE → durva + bev, estratificação, Vp1/Vp2, hemorragia 9%', () => {
+  const c = card('hepatobiliar_26'), j = JSON.stringify(c);
+  assert.equal(c.citation.pmid, '39798579');
+  assert.equal(c.ano_pub, 2025);
+  assert.match(c.ref, /Lancet 2025;405\(10474\):216-232/);
+  assert.match(c.esquema, /A partir de ≥14 dias após a última TACE: durvalumabe 1120 mg q3w \+ bevacizumabe 15 mg\/kg/);
+  assert.match(c.estrat, /^Modalidade de TACE .* região .* invasão portal/);
+  assert.match(c.excl, /Vp1\/Vp2 permitidas/);
+  assert.match(c.tox_g3, /Hemorragia G3–4: 9% \(D\+B\)/);
+  assert.match(c.basal, /78% ♂/);
+  assert.doesNotMatch(j, /1521-1536|Lancet 2024|hemorragia 3%|>5 cm|83% ♂|UTI-disponível|durva isolada após indução/);
+  assert.match(c.primario, /HR 0,77 \(IC95% 0,61–0,98; p=0,032 bilateral\)/);
+});
+
+test('SunRISe-1: coorte 2, RC central vs investigador, toxicidade da coorte 2, sem referência inexistente', () => {
+  const c = card('urotelial_periop_nmibc_6'), j = JSON.stringify(c);
+  assert.equal(c.citation.pmid, '40737582');
+  assert.equal(c.ano_pub, 2025);
+  assert.match(c.primario, /^RC global confirmada centralmente: 82,4% \(70\/85; IC95% 72,6–89,8\); RC pelo investigador 83,5%/);
+  assert.match(c.primario, /RC aos 3, 6 e 12 m: 78,8%, 58,8% e 45,9%\. DOR mediana 25,8 m/);
+  assert.match(c.tox_g3, /^EAs relacionados G≥3: 12,9% \(11\/85\)/);
+  assert.match(c.desenho, /randomizados 2:1:1/);
+  assert.doesNotMatch(j, /Lancet Oncol 2024|ESMO 2024|73,3%|CR em 12 m: 50%|mDOR NR|Priority Review|aprovação esperada|TARIS/);
+});
