@@ -301,7 +301,12 @@
   .modal-close:hover { background: var(--graphite-3); }
 
   .modal-header { padding: 2rem; border-bottom: 1px solid var(--border-soft); }
-  .modal-cat { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.7rem; color: var(--stone); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.75rem; }
+  /* flex-wrap: no celular, selo de fase e pílula de linha descem para a linha seguinte em vez de se espremerem;
+     padding-right: espaço do .modal-close (absoluto no canto), que antes cobria a pílula de linha. */
+  .modal-cat { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; font-size: 0.7rem; color: var(--stone); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.75rem; padding-right: 2.5rem; }
+  .modal-cat > .pb, .modal-cat > .modal-linha { max-width: 100%; margin-left: 0.5rem; }
+  .modal-cat > .cat-dot + span { max-width: calc(100% - 1rem); }   /* o nome da categoria quebra ao lado do ponto, sem descer sozinho */
+  @media (max-width: 560px) { .modal-cat > .pb, .modal-cat > .modal-linha { margin-left: 0; } }
   .modal-title { font-family: var(--font-display); font-size: 1.75rem; font-weight: 700; color: var(--off-white); letter-spacing: -0.02em; margin-bottom: 0.5rem; line-height: 1.2; }
   .modal-fulltitle { color: var(--off-white-2, #cbd0d6); font-size: 0.9rem; font-weight: 500; line-height: 1.4; margin-bottom: 0.6rem; opacity: 0.92; }
   .modal-acron { color: var(--stone); font-size: 0.95rem; font-style: italic; margin-bottom: 1rem; }
@@ -309,7 +314,9 @@
   .modal-meta .sep { color: var(--stone-2); }
   .modal-actions { margin-top: 1.5rem; display: flex; flex-wrap: wrap; gap: 0.5rem; }
 
-  .modal-body { padding: 1.5rem 2rem 2rem; max-height: 65vh; overflow-y: auto; }
+  /* Sem rolagem interna: o card inteiro (cabeçalho incluído) rola dentro do .modal-backdrop, e o cabeçalho
+     não fica fixo cobrindo o conteúdo. O x-effect no backdrop volta ao topo quando outro card é aberto. */
+  .modal-body { padding: 1.5rem 2rem 2rem; }
   .section-block { margin-bottom: 1.75rem; }
   .section-block:last-child { margin-bottom: 0; }
   .section-block-title { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--amber); font-weight: 700; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
@@ -909,7 +916,7 @@
 </div>
 
 <!-- MODAL -->
-<div class="modal-backdrop" x-show="selectedStudy" @click.self="closeStudy()" @keydown.window.escape="!selectedSecondary && closeStudy()" x-transition.opacity x-cloak>
+<div class="modal-backdrop" x-show="selectedStudy" x-effect="selectedStudy && $nextTick(() => { $el.scrollTop = 0 })" @click.self="closeStudy()" @keydown.window.escape="!selectedSecondary && closeStudy()" x-transition.opacity x-cloak>
   <template x-if="selectedStudy">
     <div class="modal-content">
       <button class="modal-close" @click="closeStudy()"><i data-lucide="x" style="width:16px;height:16px"></i></button>
@@ -918,8 +925,8 @@
         <div class="modal-cat">
           <span class="cat-dot" :class="`cat-${selectedStudy.category_id}`"></span>
           <span x-text="selectedStudy.category_name"></span>
-          <span class="pb" :class="phaseClassShort(selectedStudy.fase)" x-text="selectedStudy.fase" style="margin-left: 0.5rem"></span>
-          <span class="modal-linha" x-show="selectedStudy.linha" x-text="selectedStudy.linha" style="margin-left: 0.5rem" x-cloak></span>
+          <span class="pb" :class="phaseClassShort(selectedStudy.fase)" x-text="selectedStudy.fase"></span>
+          <span class="modal-linha" x-show="selectedStudy.linha" x-text="selectedStudy.linha" x-cloak></span>
         </div>
         <h2 class="modal-title" x-text="selectedStudy.estudo"></h2>
         <p class="modal-fulltitle" x-show="selectedStudy.titulo_full" x-text="selectedStudy.titulo_full"></p>
@@ -1136,7 +1143,7 @@
 
 <!-- ===== Modal dedicado: publicação secundária / análise derivada ===== -->
 <!-- fam:ini — Modal de família de estudo: só o protocolo compartilhado; sem resultados clínicos -->
-<div class="modal-backdrop" x-show="selectedFamily" @click.self="closeFamily()" @keydown.window.escape="selectedFamily && closeFamily()" x-transition.opacity x-cloak>
+<div class="modal-backdrop" x-show="selectedFamily" x-effect="selectedFamily && $nextTick(() => { $el.scrollTop = 0 })" @click.self="closeFamily()" @keydown.window.escape="selectedFamily && closeFamily()" x-transition.opacity x-cloak>
   <template x-if="selectedFamily">
     <div class="modal-content">
       <button class="modal-close" @click="closeFamily()"><i data-lucide="x" style="width:16px;height:16px"></i></button>
@@ -1260,7 +1267,7 @@
 
 <!-- fam:fim -->
 
-<div class="modal-backdrop sec-modal-backdrop" x-show="selectedSecondary" @click.self="closeSecondary()" @keydown.window.escape="selectedSecondary && closeSecondary()" x-transition.opacity x-cloak>
+<div class="modal-backdrop sec-modal-backdrop" x-show="selectedSecondary" x-effect="selectedSecondary && $nextTick(() => { $el.scrollTop = 0 })" @click.self="closeSecondary()" @keydown.window.escape="selectedSecondary && closeSecondary()" x-transition.opacity x-cloak>
   <template x-if="selectedSecondary">
     <div class="modal-content sec-modal" :style="`border-color: ${secColor(selectedSecondary.recordType)}55`">
       <button class="modal-close" @click="closeSecondary()"><i data-lucide="x" style="width:16px;height:16px"></i></button>
