@@ -54693,6 +54693,150 @@
 ],
 "retrieved_at": "2026-09-29"
 },
+"42023169": {
+"pmid": "42023169",
+"authors": [
+{
+"name": "Guiu B",
+"authtype": "Author"
+},
+{
+"name": "Bailly C",
+"authtype": "Author"
+},
+{
+"name": "Vibert E",
+"authtype": "Author"
+},
+{
+"name": "Tlili G",
+"authtype": "Author"
+},
+{
+"name": "Mariano-Goulart D",
+"authtype": "Author"
+},
+{
+"name": "Edeline J",
+"authtype": "Author"
+},
+{
+"name": "Touchefeu Y",
+"authtype": "Author"
+},
+{
+"name": "Durand E",
+"authtype": "Author"
+},
+{
+"name": "Blanc JF",
+"authtype": "Author"
+},
+{
+"name": "Chalaye J",
+"authtype": "Author"
+},
+{
+"name": "Regnault H",
+"authtype": "Author"
+},
+{
+"name": "Bouvier A",
+"authtype": "Author"
+},
+{
+"name": "Sergent G",
+"authtype": "Author"
+},
+{
+"name": "Sengel C",
+"authtype": "Author"
+},
+{
+"name": "Renaud S",
+"authtype": "Author"
+},
+{
+"name": "Rode A",
+"authtype": "Author"
+},
+{
+"name": "Somma C",
+"authtype": "Author"
+},
+{
+"name": "Chevallier P",
+"authtype": "Author"
+},
+{
+"name": "Habouzit V",
+"authtype": "Author"
+},
+{
+"name": "Brenot-Rossi I",
+"authtype": "Author"
+},
+{
+"name": "Dohan A",
+"authtype": "Author"
+},
+{
+"name": "Tselikas L",
+"authtype": "Author"
+},
+{
+"name": "DeBaère T",
+"authtype": "Author"
+},
+{
+"name": "Manfredi S",
+"authtype": "Author"
+},
+{
+"name": "Dieudonné A",
+"authtype": "Author"
+},
+{
+"name": "Fowers K",
+"authtype": "Author"
+},
+{
+"name": "Boucher E",
+"authtype": "Author"
+},
+{
+"name": "Patel B",
+"authtype": "Author"
+},
+{
+"name": "Vicaut E",
+"authtype": "Author"
+},
+{
+"name": "Garin E",
+"authtype": "Author"
+},
+{
+"name": "PROACTIF Investigators Group",
+"authtype": "CollectiveName"
+}
+],
+"title": "Effectiveness and safety of selective internal radiation therapy using yttrium-90 glass microspheres for hepatocellular carcinoma: real-world results from the multi-center prospective PROACTIF cohort of 989 patients.",
+"source": "EClinicalMedicine",
+"fulljournalname": "EClinicalMedicine",
+"pubdate": "2026 May",
+"epubdate": "2026 Apr 17",
+"volume": "95",
+"issue": "",
+"pages": "103884",
+"elocationid": "doi: 10.1016/j.eclinm.2026.103884",
+"doi": "10.1016/j.eclinm.2026.103884",
+"pmcid": "PMC13098352",
+"pubtype": [
+"Journal Article"
+],
+"retrieved_at": "2026-10-19"
+},
 "42096662": {
 "pmid": "42096662",
 "authors": [
