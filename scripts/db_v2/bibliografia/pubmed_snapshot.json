@@ -24416,6 +24416,88 @@
 ],
 "retrieved_at": "2026-09-29"
 },
+"33812981": {
+"pmid": "33812981",
+"authors": [
+{
+"name": "Frantz S",
+"authtype": "Author"
+},
+{
+"name": "Matsuoka L",
+"authtype": "Author"
+},
+{
+"name": "Vaheesan K",
+"authtype": "Author"
+},
+{
+"name": "Petroziello M",
+"authtype": "Author"
+},
+{
+"name": "Golzarian J",
+"authtype": "Author"
+},
+{
+"name": "Wang E",
+"authtype": "Author"
+},
+{
+"name": "Gandhi R",
+"authtype": "Author"
+},
+{
+"name": "Collins Z",
+"authtype": "Author"
+},
+{
+"name": "Brower J",
+"authtype": "Author"
+},
+{
+"name": "Rachakonda VM",
+"authtype": "Author"
+},
+{
+"name": "Du L",
+"authtype": "Author"
+},
+{
+"name": "Kennedy AS",
+"authtype": "Author"
+},
+{
+"name": "Sze DY",
+"authtype": "Author"
+},
+{
+"name": "Lee J",
+"authtype": "Author"
+},
+{
+"name": "Brown DB",
+"authtype": "Author"
+}
+],
+"title": "Multicenter Evaluation of Survival and Toxicities of Hepatocellular Carcinoma following Radioembolization: Analysis of the RESiN Registry.",
+"source": "J Vasc Interv Radiol",
+"fulljournalname": "Journal of vascular and interventional radiology : JVIR",
+"pubdate": "2021 Jun",
+"epubdate": "2021 Apr 2",
+"volume": "32",
+"issue": "6",
+"pages": "845-852",
+"elocationid": "doi: 10.1016/j.jvir.2021.03.535",
+"doi": "10.1016/j.jvir.2021.03.535",
+"pmcid": null,
+"pubtype": [
+"Journal Article",
+"Multicenter Study",
+"Observational Study"
+],
+"retrieved_at": "2026-10-19"
+},
 "33882206": {
 "pmid": "33882206",
 "authors": [
