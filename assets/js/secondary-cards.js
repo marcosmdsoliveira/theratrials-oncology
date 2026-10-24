@@ -6,7 +6,7 @@
    Cada card confirmado em fonte Nível 1-2 (PubMed E-utilities + Crossref).
    Campo `deep` (objetivo/método/achados/interpretação/limitações) extraído dos
    abstracts oficiais — nenhum número inventado; linguagem cautelosa.
-   Atualizado: 2026-09-30 (24 cards enriquecidos e verificados; proveniência em scripts/db_secundarios_proveniencia.json).
+   Atualizado: 2026-10-24 (TheraP ctDNA → Nat Med 2025; 25 cards enriquecidos e verificados; proveniência em scripts/db_secundarios_proveniencia.json).
 ============================================================================= */
 window.THERA_SECONDARY = [
   {
@@ -532,37 +532,59 @@ window.THERA_SECONDARY = [
   },
   {
     "id": "therap-ctdna-fraction-asco-2024",
-    "title": "TheraP — Fração de ctDNA como preditor (abstract)",
-    "recordType": "congress_abstract",
+    "title": "TheraP — Fração de ctDNA e alterações genômicas",
+    "recordType": "exploratory_analysis",
     "parentUid": "lupsma_prostata_1",
     "parentTrialName": "TheraP (ANZUP 1603)",
     "parentTrialPublication": "Hofman MS, et al. Lancet 2021;397:797-804 (NCT03392428)",
-    "relationshipToParent": "Análise exploratória de ctDNA do TheraP apresentada em congresso",
-    "publicationStatus": "Congress abstract",
+    "relationshipToParent": "Análise post hoc de biomarcadores no DNA tumoral circulante (ctDNA) do ensaio randomizado fase II TheraP, publicada em artigo completo (resultados preliminares apresentados no ASCO 2024, abstract 5055)",
+    "publicationStatus": "Peer-reviewed full article",
     "analysisType": "Análise exploratória de biomarcador (ctDNA)",
-    "evidenceMaturity": "Abstract de congresso — não é artigo completo",
-    "year": 2024,
-    "journal": "Journal of Clinical Oncology (ASCO Annual Meeting, suppl)",
-    "titleOriginal": "Circulating tumour DNA fraction as a predictor of treatment efficacy in a randomized phase 2 trial of [177Lu]Lu-PSMA-617 (LuPSMA) versus cabazitaxel in metastatic castration-resistant prostate cancer (mCRPC) progressing after docetaxel (TheraP ANZUP 1603)",
-    "authors": "Kwan EM, Hofman MS, et al.",
-    "doi": "10.1200/JCO.2024.42.16_suppl.5055",
-    "pmid": null,
-    "sourceUrl": "https://ascopubs.org/doi/10.1200/JCO.2024.42.16_suppl.5055",
+    "evidenceMaturity": "Análise post hoc revisada por pares",
+    "year": 2025,
+    "journal": "Nature Medicine",
+    "titleOriginal": "Lutetium-177-PSMA-617 or cabazitaxel in metastatic prostate cancer: circulating tumor DNA analysis of the randomized phase 2 TheraP trial",
+    "authors": "Kwan EM, et al.",
+    "doi": "10.1038/s41591-025-03704-9",
+    "pmid": "40425844",
+    "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40425844/",
     "category": [
       "ctDNA",
       "Biomarcador",
       "Oncologia de precisão",
-      "Abstract"
+      "Resistência"
     ],
-    "clinicalTakeaway": "Análise exploratória de fração de ctDNA apresentada em congresso. Congress abstract — evitar conclusões definitivas; necessita confirmação.",
+    "clinicalTakeaway": "No TheraP, fração baixa de ctDNA antes do tratamento previu resposta de PSA superior (100% vs 58%) e SLP mais longa (mediana 14,7 vs 6,0 meses; HR 0,12) com 177Lu-PSMA-617, independentemente do PSMA-PET; segundo os autores, o benefício não se estendeu à SG. Na progressão, nenhuma alteração gênica isolada (nem FOLH1) explicou a resistência adquirida. Análise post hoc de ensaio fase II.",
+    "collapsedSummary": "Fração baixa de ctDNA antes do tratamento previu melhor resposta de PSA e SLP mais longa com 177Lu-PSMA-617, sem benefício em SG. Na progressão, nenhuma alteração gênica isolada explicou a resistência.",
     "deep": {
-      "objetivo": "Avaliar a fração de ctDNA como preditor de eficácia no TheraP (177Lu-PSMA-617 vs cabazitaxel).",
-      "metodo": "Análise exploratória de ctDNA apresentada em congresso (ASCO 2024).",
+      "objetivo": "Investigar no ctDNA dos pacientes do TheraP (177Lu-PSMA-617 vs cabazitaxel) biomarcadores genômicos preditivos e prognósticos e possíveis mecanismos de resistência adquirida.",
+      "metodo": "Análise post hoc de 290 amostras seriadas de DNA livre plasmático de 180 pacientes com mCRPC selecionados por imagem molecular (177Lu-PSMA-617 n=97; cabazitaxel n=83), com dissecção dos genes condutores do câncer de próstata e abordagem que considera a fração de ctDNA. Desfecho primário: resposta bioquímica PSA50; secundários: SLP e SG.",
       "achados": [
-        "Abstract de congresso — desfechos numéricos não extraídos de fonte primária direta nesta sessão (ver abstract oficial, JCO 2024 suppl, abstr 5055)."
+        "Fração baixa de ctDNA pré-tratamento previu resposta bioquímica superior com 177Lu-PSMA-617: 100% vs 58% (P=0,0067), conforme descrito no resumo.",
+        "SLP com 177Lu-PSMA-617: mediana 14,7 vs 6,0 meses; HR 0,12 (P=2,5×10⁻⁴), independente dos parâmetros preditivos do PSMA-PET.",
+        "Segundo os autores, esse benefício não se estendeu à sobrevida global.",
+        "Alterações deletérias de PTEN associaram-se a pior SLP e SG com cabazitaxel; defeitos de ATM foram observados em pacientes selecionados com evolução favorável ao 177Lu-PSMA-617.",
+        "Na comparação entre ctDNA pré-tratamento e na progressão houve fluxo populacional, sem evidência de que alterações em genes individuais (ou em FOLH1) sejam causa dominante da resistência adquirida a qualquer dos dois tratamentos."
       ],
-      "interpretacao": "Análise exploratória de biomarcador (ctDNA). Congress abstract — evitar conclusões definitivas; necessita confirmação.",
-      "limitacoes": "Abstract de congresso; valores não verificados em fonte primária direta nesta sessão."
+      "interpretacao": "Os autores propõem a fração de ctDNA como biomarcador candidato para a seleção ao 177Lu-PSMA-617, complementar ao PSMA-PET. A ausência de uma alteração dominante na progressão sugere que a resistência adquirida não depende de um único gene. São achados geradores de hipótese, sem impacto direto na indicação.",
+      "limitacoes": "Análise post hoc de ensaio fase II, com subgrupos pequenos; sem benefício em SG. O ponto de corte da fração de ctDNA, as proporções por grupo e os intervalos de confiança não constam do resumo (consultar o texto completo). Necessita validação prospectiva."
+    },
+    "analysis": {
+      "populacao": "180 pacientes com mCRPC selecionados por PSMA-PET e FDG-PET no TheraP (177Lu-PSMA-617 n=97; cabazitaxel n=83); 290 amostras de plasma seriadas.",
+      "desenho_relacao": "Análise post hoc de biomarcadores em ctDNA da coorte randomizada do ensaio fase II TheraP, com amostras pré-tratamento e na progressão.",
+      "endpoints": "Associação de fração de ctDNA e alterações genômicas com PSA50 (primário), SLP e SG; comparação de perfis pré-tratamento × progressão.",
+      "estatistica": "Detalhes não informados no resumo; análise que considera a fração de ctDNA.",
+      "cutoff_followup": "Não informado no resumo.",
+      "subgrupos": "Fração de ctDNA baixa × alta; alterações de PTEN e ATM.",
+      "seguranca": null,
+      "conclusao_autores": "Os resultados nomeiam novos biomarcadores candidatos para a seleção ao 177Lu-PSMA-617 e ampliam o repertório de biomarcadores preditivos no mCRPC."
+    },
+    "auditStatus": {
+      "classification": "TOO_SHALLOW",
+      "verification": "PASS",
+      "appliedChanges": 10,
+      "pendingChanges": 0,
+      "auditedAt": "2026-10-24"
     }
   },
   {

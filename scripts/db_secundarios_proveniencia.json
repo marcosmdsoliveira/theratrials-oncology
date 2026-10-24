@@ -3463,6 +3463,87 @@
      }
     ]
    }
+  },
+  "therap-ctdna-fraction-asco-2024": {
+   "pmid": "40425844",
+   "doi": "10.1038/s41591-025-03704-9",
+   "not_applied": {},
+   "production_status": "applied",
+   "atualizacao_2026_10_24": {
+    "decisao_humana": "Marcos autorizou em 24/10/2026 atualizar o card (antes só citava o abstract do ASCO 2024) com o artigo completo da Nature Medicine 2025; id mantido estável.",
+    "fonte_usada": "Somente o resumo do PubMed (texto completo com paywall). Ponto de corte da fração de ctDNA, proporções e IC não constam do resumo e ficaram fora do card.",
+    "nao_verificado_nesta_fonte": "Menção ao ASCO 2024 (abstract 5055) em relationshipToParent vem do card anterior."
+   },
+   "evidence": [
+    {
+     "claim": "n 290 amostras / 180 pacientes (97 vs 83)",
+     "source_id": "pmid_40425844_abstract",
+     "locator": "¶0001",
+     "snippet": "290 serial plasma cell-free DNA samples from 180 molecular imaging-selected patients with mCRPC from the randomized TheraP trial of [177Lu]Lu-PSMA-617 (n = 97) versus cabazitaxel chemotherapy (n = 83)"
+    },
+    {
+     "claim": "Desfechos",
+     "source_id": "pmid_40425844_abstract",
+     "locator": "¶0001",
+     "snippet": "The primary endpoint was PSA50 biochemical response, with secondary endpoints of progression-free survival (PFS) and overall survival (OS)"
+    },
+    {
+     "claim": "Post hoc; fração baixa → PSA50 100% vs 58%",
+     "source_id": "pmid_40425844_abstract",
+     "locator": "¶0001",
+     "snippet": "In this post-hoc biomarker analysis, a low pretreatment circulating tumor DNA (ctDNA) fraction predicted a superior biochemical response (100% versus 58%, P = 0.0067)"
+    },
+    {
+     "claim": "SLP 14,7 vs 6,0; HR 0,12; independente do PSMA-PET",
+     "source_id": "pmid_40425844_abstract",
+     "locator": "¶0001",
+     "snippet": "PFS (median 14.7 versus 6.0 months; hazard ratio 0.12, P = 2.5 × 10-4) on [177Lu]Lu-PSMA-617 independent of predictive PSMA-positron emission tomography imaging parameters"
+    },
+    {
+     "claim": "Sem benefício em SG",
+     "source_id": "pmid_40425844_abstract",
+     "locator": "¶0001",
+     "snippet": "although this benefit did not extend to OS"
+    },
+    {
+     "claim": "PTEN e ATM",
+     "source_id": "pmid_40425844_abstract",
+     "locator": "¶0001",
+     "snippet": "Deleterious PTEN alterations were associated with worse PFS and OS on cabazitaxel, whereas ATM defects were observed in select patients with favorable [177Lu]Lu-PSMA-617 outcomes"
+    },
+    {
+     "claim": "Resistência adquirida sem alteração dominante (inclui FOLH1)",
+     "source_id": "pmid_40425844_abstract",
+     "locator": "¶0001",
+     "snippet": "population flux but no evidence that alterations in individual mCRPC genes (or FOLH1) are dominant causes of acquired [177Lu]Lu-PSMA-617 or cabazitaxel resistance"
+    },
+    {
+     "claim": "Conclusão dos autores",
+     "source_id": "pmid_40425844_abstract",
+     "locator": "¶0001",
+     "snippet": "Our results nominate new candidate biomarkers for [177Lu]Lu-PSMA-617 selection and ultimately expand the mCRPC predictive biomarker repertoire"
+    }
+   ],
+   "applied": [
+    "title",
+    "recordType",
+    "relationshipToParent",
+    "publicationStatus",
+    "analysisType",
+    "evidenceMaturity",
+    "year",
+    "journal",
+    "titleOriginal",
+    "authors",
+    "doi",
+    "pmid",
+    "sourceUrl",
+    "category",
+    "clinicalTakeaway",
+    "collapsedSummary",
+    "deep",
+    "analysis"
+   ]
   }
  },
  "aplicado_em_producao": [
@@ -3482,6 +3563,7 @@
   "psmafore-final-os-safety-2025",
   "psmafore-hrqol-pain-skeletal-events-2025",
   "splash-lead-in-dosimetry-safety-efficacy-2024",
+  "therap-ctdna-fraction-asco-2024",
   "therap-overall-survival-2024",
   "therap-psma-fdg-pet-biomarkers-2022",
   "vision-baseline-psma-pet-biomarkers-2024",
