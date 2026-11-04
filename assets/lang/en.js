@@ -2346,6 +2346,9 @@ window._i18nRegister('en', {
     of: "of",
     remaining: "remaining",
     viewDetails: "View details",
+    btnShare: "Share",
+    toastLinkCopied: "Shareable link copied",
+    copyPrompt: "Copy the link:",
     footerLine1: "© 2026 TheraTrials Oncology · Trial Matcher · v1.3",
     footerLine2: "Educational tool. Does not replace formal eligibility assessment."
   },

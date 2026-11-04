@@ -390,6 +390,17 @@
   box-shadow: 0 6px 20px -4px rgba(14, 165, 183, 0.7); transform: translateY(-1px);
 }
 .tm-d-btn.contact:disabled { opacity: 0.55; cursor: not-allowed; box-shadow: none; }
+button.tm-d-btn.ghost { font-family: 'Inter', sans-serif; }
+.tm-toast {
+  position: fixed; bottom: 6rem; right: 1.5rem; z-index: 1200;
+  display: flex; align-items: center; gap: 0.5rem;
+  background: var(--graphite-3, #1B1E25); color: var(--off-white, #F5F6F7);
+  border: 1px solid var(--border-mid, rgba(143,148,156,0.3)); border-radius: 9px;
+  padding: 0.75rem 1rem; font-size: 0.85rem; box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+  opacity: 0; transform: translateY(6px); pointer-events: none; transition: opacity 0.2s, transform 0.2s;
+}
+.tm-toast.on { opacity: 1; transform: none; }
+.tm-toast i { width: 16px; height: 16px; color: var(--teal, #0EA5B7); }
 .tm-d-source {
   margin-top: 1.3rem; padding-top: 1rem; border-top: 1px solid var(--border-soft, rgba(143,148,156,0.18));
   font-size: 0.74rem; color: var(--stone, #8E949C); line-height: 1.55;
@@ -599,6 +610,9 @@
   </div>
 </div>
 
+<!-- Toast (ex.: link compartilhável copiado) -->
+<div class="tm-toast" id="tm-toast" role="status" aria-live="polite"><i data-lucide="check-circle-2"></i><span></span></div>
+
 <!-- Botão flutuante: legenda de siglas -->
 <button class="gloss-fab" onclick="if(window.TheraTrials)TheraTrials.openGlossaryModal()" title="Legenda das siglas e métricas">
   <i data-lucide="book-open-text"></i> <span data-i18n="tm.glossaryBtn">Siglas</span>
@@ -619,7 +633,7 @@
 <script src="assets/js/common.js?v=0e356943a4"></script>
 <script src="assets/js/glossario.js?v=cd226d8143"></script>
 <!-- i18n engine + lang files -->
-<script src="assets/js/i18n.js?v=d2bf3e1d47"></script>
+<script src="assets/js/i18n.js?v=b85353a5fc"></script>
 
 <script>
 /* ══════════════════════════════════════════════════════════
@@ -1244,6 +1258,8 @@
     // Contato com o centro recrutador — botão teal (padrão da antiga Ensaios Clínicos), visível porém desabilitado por enquanto
     actions += '<button type="button" class="tm-d-btn contact" disabled aria-disabled="true" title="Em breve — disponível quando firmarmos parcerias com os centros recrutadores"><i data-lucide="mail"></i> Entrar em contato com o centro recrutador</button>';
     actions += '<a href="database.html" class="tm-d-btn ghost"><i data-lucide="database"></i> Ver evidência no Database</a>';
+    // Link compartilhável (WhatsApp etc.) — mesmo padrão do Database: página + #id do card
+    if (s.id) actions += '<button type="button" class="tm-d-btn ghost" onclick="copyTrialLink(\'' + escHtml(s.id) + '\')"><i data-lucide="link-2"></i> ' + escHtml(t('tm.btnShare', 'Compartilhar')) + '</button>';
     actions += '</div>';
 
     var foot = s.data_atualizacao ? '<div class="tm-d-source"><strong>Fonte da curadoria:</strong> registros públicos (ClinicalTrials.gov, REBEC), patrocinadores e literatura primária. Última atualização: ' + escHtml(s.data_atualizacao) + '. <em>Confirme sempre com o centro responsável.</em></div>' : '';
@@ -1255,8 +1271,12 @@
     var idx = parseInt(cardEl.getAttribute('data-idx'), 10);
     var r = allResults[idx];
     if (!r || !r.raw) return;
+    showTrial(r.raw);
+  };
+  function showTrial(raw) {
     var content = document.getElementById('tm-modal-content');
-    content.innerHTML = renderBrasilDetail(r.raw);
+    content.innerHTML = renderBrasilDetail(raw);
+    if (raw.id && history.replaceState) history.replaceState(null, '', '#' + raw.id);
     var modal = document.getElementById('tm-modal');
     modal.classList.add('on');
     document.body.style.overflow = 'hidden';
@@ -1265,13 +1285,53 @@
     if (typeof lucide !== 'undefined') lucide.createIcons();
     var closeBtn = modal.querySelector('.tm-modal-close');
     if (closeBtn) closeBtn.focus();
-  };
+  }
   window.closeTrialDetail = function() {
     var modal = document.getElementById('tm-modal');
     if (modal && modal.classList.contains('on')) {
       modal.classList.remove('on');
       document.body.style.overflow = '';
+      if (location.hash && history.replaceState) history.replaceState(null, '', location.pathname + location.search);
     }
+  };
+
+  // ── Link compartilhável: trial-matcher.html#<id> (aceita também #NCTxxxxxxxx) ──
+  // Busca na base inteira, não em allResults: o estudo compartilhado pode estar
+  // fora do filtro padrão (ex.: deixou de recrutar depois do envio do link).
+  function findTrialByHash(h) {
+    if (!h || !window.THERA_TRIALS_BR) return null;
+    var key = decodeURIComponent(h).trim().toLowerCase();
+    return window.THERA_TRIALS_BR.find(function(x) {
+      return (x.id && x.id.toLowerCase() === key) || (x.nct && x.nct.toLowerCase() === key);
+    }) || null;
+  }
+  function handleHash() {
+    var t0 = findTrialByHash((location.hash || '').slice(1));
+    if (t0) showTrial(t0);
+  }
+  window.addEventListener('hashchange', handleHash);
+
+  var toastTimer;
+  function showToast(msg) {
+    var el = document.getElementById('tm-toast');
+    if (!el) return;
+    el.querySelector('span').textContent = msg;
+    el.classList.add('on');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function() { el.classList.remove('on'); }, 2400);
+  }
+  window.copyTrialLink = function(id) {
+    var url = location.origin + location.pathname + '#' + encodeURIComponent(id);
+    var ok = function() { showToast(t('tm.toastLinkCopied', 'Link compartilhável copiado')); };
+    var fallback = function() {
+      var ta = document.createElement('textarea');
+      ta.value = url; ta.setAttribute('readonly', ''); ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy'); ok(); } catch (e) { window.prompt(t('tm.copyPrompt', 'Copie o link:'), url); }
+      document.body.removeChild(ta);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(url).then(ok, fallback);
+    else fallback();
   };
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') closeTrialDetail();
@@ -1329,6 +1389,8 @@
     document.getElementById('tm-results').style.display = '';
     // Estado inicial: mostra os ensaios recrutando no Brasil (filtro de status padrão)
     if (window.THERA_TRIALS_BR && window.THERA_TRIALS_BR.length > 0) runMatcher();
+    // Abre direto o card quando a página chega por link compartilhado (#id)
+    handleHash();
   }
   if (document.readyState === 'complete') {
     initView();
