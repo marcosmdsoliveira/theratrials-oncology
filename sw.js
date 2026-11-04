@@ -53,7 +53,7 @@ const CORE_ASSETS = [
   './assets/js/guidelines-data.js?v=1e1155fa38',
   './assets/js/cross-links.js?v=1363e640e8',
   './assets/data/explorer.json',
-  './assets/data/explorer.js?v=7b38dd6c79',
+  './assets/data/explorer.js?v=28798b07cb',
   './assets/js/i18n.js?v=b85353a5fc',
   './assets/lang/pt-br.js?v=4eb03129d9',
   './assets/lang/en.js?v=b94016a5dd',
