@@ -300,6 +300,21 @@
 }
 .tm-modal-close:hover { color: var(--off-white); border-color: var(--border-mid); background: var(--graphite-4, #252932); }
 .tm-modal-close i { width: 16px; height: 16px; }
+/* Barra compacta: surge quando o cabeçalho sai da tela (altura 0 no fluxo). */
+.tm-compact { position: sticky; top: -4vh; height: 0; z-index: 20; }
+.tm-compact-inner {
+  position: absolute; top: 0; left: 0; right: 0; display: flex; align-items: center; gap: .6rem;
+  min-height: 48px; padding: .25rem .25rem .25rem 1.25rem; border-radius: 16px 16px 0 0;
+  background: var(--graphite-3, #1C1F26); border-bottom: 1px solid var(--border-mid, rgba(143,148,156,0.35));
+  box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+  opacity: 0; visibility: hidden; transform: translateY(-6px);
+  transition: opacity .15s ease, transform .15s ease, visibility .15s;
+}
+.tm-compact.on .tm-compact-inner { opacity: 1; visibility: visible; transform: none; border-radius: 0; }
+.tm-compact-title { flex: 1; min-width: 0; font-weight: 600; font-size: .92rem; color: var(--off-white); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tm-compact-close { flex: none; display: flex; align-items: center; justify-content: center; width: 44px; height: 40px; background: transparent; border: 0; color: var(--off-white); cursor: pointer; border-radius: 8px; }
+.tm-compact-close:hover { background: var(--graphite-4, #252932); }
+.tm-compact-close i { width: 16px; height: 16px; }
 .tm-modal-head {
   padding: 1.4rem 3.2rem 1rem 1.5rem;
   border-bottom: 1px solid var(--border-soft, rgba(143,148,156,0.18));
@@ -1175,7 +1190,9 @@ button.tm-d-btn.ghost { font-family: 'Inter', sans-serif; }
 
   // Ficha de um ensaio brasileiro (THERA_TRIALS_BR)
   function renderBrasilDetail(s) {
-    var head = '<div class="tm-modal-head">' +
+    var head = '<div class="tm-compact"><div class="tm-compact-inner"><span class="tm-compact-title">' + escHtml(s.nome || s.titulo || 'Ensaio') + '</span>' +
+      '<button type="button" class="tm-compact-close" onclick="closeTrialDetail()" aria-label="Fechar"><i data-lucide="x"></i></button></div></div>' +
+      '<div class="tm-modal-head">' +
       '<div><h2>' + escHtml(s.nome || s.titulo || 'Ensaio') + '</h2>' +
       (s.nct ? '<span class="tm-d-nct">' + escHtml(s.nct) + '</span>' : '') +
       (brStatus(s) === 'REVIEW_REQUIRED'
@@ -1286,6 +1303,10 @@ button.tm-d-btn.ghost { font-family: 'Inter', sans-serif; }
     var closeBtn = modal.querySelector('.tm-modal-close');
     if (closeBtn) closeBtn.focus();
   }
+  document.getElementById('tm-modal').addEventListener('scroll', function () {
+    var bar = this.querySelector('.tm-compact'), h = this.querySelector('.tm-modal-head');
+    if (bar && h) bar.classList.toggle('on', h.getBoundingClientRect().bottom < this.getBoundingClientRect().top + 48);
+  }, { passive: true });
   window.closeTrialDetail = function() {
     var modal = document.getElementById('tm-modal');
     if (modal && modal.classList.contains('on')) {

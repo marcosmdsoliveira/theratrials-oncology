@@ -296,9 +296,20 @@
 
   /* Modal */
   .modal-backdrop { position: fixed; inset: 0; background: rgba(14, 15, 18, 0.85); backdrop-filter: blur(8px); z-index: 100; overflow-y: auto; padding: 2rem; }
-  .modal-content { max-width: 1000px; margin: 2rem auto; background: var(--graphite-2); border: 1px solid var(--border-mid); border-radius: var(--radius-xl); overflow: hidden; position: relative; }
+  .modal-content { max-width: 1000px; margin: 2rem auto; background: var(--graphite-2); border: 1px solid var(--border-mid); border-radius: var(--radius-xl); overflow: hidden; overflow: clip; position: relative; }
   .modal-close { position: absolute; top: 1rem; right: 1rem; z-index: 10; background: var(--graphite-4); border: 1px solid var(--border-mid); color: var(--off-white); padding: 0.5rem; border-radius: var(--radius-sm); cursor: pointer; }
   .modal-close:hover { background: var(--graphite-3); }
+
+  /* Barra compacta: surge quando o cabeçalho sai da tela, com nome e botão de fechar. Altura 0 no fluxo; o sticky
+     exige overflow: clip no .modal-content (com hidden ele viraria o contêiner de rolagem). */
+  .modal-compact { position: sticky; top: -2rem; height: 0; z-index: 20; }
+  .modal-compact-inner { position: absolute; top: 0; left: 0; right: 0; display: flex; align-items: center; gap: 0.6rem; min-height: 48px; padding: 0.25rem 0.25rem 0.25rem 1.25rem; background: var(--graphite-3); border-bottom: 1px solid var(--border-mid); box-shadow: 0 6px 18px rgba(0,0,0,0.3); opacity: 0; visibility: hidden; transform: translateY(-6px); transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s; }
+  .modal-content.is-compact .modal-compact-inner { opacity: 1; visibility: visible; transform: none; }
+  .modal-compact-title { flex: 1; min-width: 0; font-family: var(--font-display); font-size: 0.92rem; font-weight: 600; color: var(--off-white); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .modal-compact-inner .pb { flex: 0 1 auto; max-width: 45%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  @media (max-width: 560px) { .modal-compact-inner .pb { display: none; } }
+  .modal-compact-close { flex: none; display: flex; align-items: center; justify-content: center; width: 44px; height: 40px; background: transparent; border: 0; color: var(--off-white); cursor: pointer; border-radius: var(--radius-sm); }
+  .modal-compact-close:hover { background: var(--graphite-4); }
 
   .modal-header { padding: 2rem; border-bottom: 1px solid var(--border-soft); }
   /* flex-wrap: no celular, selo de fase e pílula de linha descem para a linha seguinte em vez de se espremerem;
@@ -920,6 +931,11 @@
   <template x-if="selectedStudy">
     <div class="modal-content">
       <button class="modal-close" @click="closeStudy()"><i data-lucide="x" style="width:16px;height:16px"></i></button>
+      <div class="modal-compact"><div class="modal-compact-inner">
+        <span class="modal-compact-title" x-text="selectedStudy.estudo"></span>
+        <span class="pb" :class="phaseClassShort(selectedStudy.fase)" x-text="selectedStudy.fase"></span>
+        <button class="modal-compact-close" @click="closeStudy()" aria-label="Fechar"><i data-lucide="x" style="width:16px;height:16px"></i></button>
+      </div></div>
 
       <div class="modal-header" :style="`background: linear-gradient(135deg, ${categoryColor(selectedStudy.category_id)}11, transparent 80%)`">
         <div class="modal-cat">
@@ -1147,6 +1163,10 @@
   <template x-if="selectedFamily">
     <div class="modal-content">
       <button class="modal-close" @click="closeFamily()"><i data-lucide="x" style="width:16px;height:16px"></i></button>
+      <div class="modal-compact"><div class="modal-compact-inner">
+        <span class="modal-compact-title" x-text="famText(selectedFamily, 'family_name')"></span>
+        <button class="modal-compact-close" @click="closeFamily()" aria-label="Fechar"><i data-lucide="x" style="width:16px;height:16px"></i></button>
+      </div></div>
       <div class="modal-header">
         <div class="modal-cat">
           <span class="family-badge" x-text="famType(selectedFamily)"></span>
@@ -1271,6 +1291,10 @@
   <template x-if="selectedSecondary">
     <div class="modal-content sec-modal" :style="`border-color: ${secColor(selectedSecondary.recordType)}55`">
       <button class="modal-close" @click="closeSecondary()"><i data-lucide="x" style="width:16px;height:16px"></i></button>
+      <div class="modal-compact"><div class="modal-compact-inner">
+        <span class="modal-compact-title" x-text="selectedSecondary.title"></span>
+        <button class="modal-compact-close" @click="closeSecondary()" aria-label="Fechar"><i data-lucide="x" style="width:16px;height:16px"></i></button>
+      </div></div>
 
       <div class="modal-header" :style="`background: linear-gradient(135deg, ${secColor(selectedSecondary.recordType)}1f, transparent 80%)`">
         <div class="modal-cat">
@@ -1405,6 +1429,15 @@
 <script src="assets/js/common.js?v=0e356943a4"></script>
 <script src="assets/js/citation.js?v=e884983a80"></script>
 <script src="assets/js/glossario.js?v=cd226d8143"></script>
+<script>
+// Barra compacta das fichas: liga quando o cabeçalho sai da área visível do backdrop.
+document.addEventListener('scroll', function (e) {
+  var b = e.target;
+  if (!b.classList || !b.classList.contains('modal-backdrop')) return;
+  var c = b.querySelector('.modal-content'), h = b.querySelector('.modal-header');
+  if (c && h) c.classList.toggle('is-compact', h.getBoundingClientRect().bottom < b.getBoundingClientRect().top + 48);
+}, { capture: true, passive: true });
+</script>
 <script src="assets/js/i18n.js?v=b85353a5fc"></script>
 <script>
 function databaseApp() {
