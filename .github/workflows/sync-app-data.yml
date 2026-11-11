@@ -1,0 +1,89 @@
+name: Sync app-data (app iOS)
+
+# O app iOS baixa os dados de app-data/manifest.json e confere o SHA-256 de
+# cada arquivo. Sem regenerar app-data/, um card novo publicado no site só
+# chegaria ao app no refresh mensal do Explorer (dia 1).
+#
+# Este fluxo regenera app-data/ a cada push em main que altere um dataset e
+# só commita quando o conteúdo de algum dataset mudou de fato (o generatedAt
+# sozinho não conta), para não gerar commit vazio quando app-data/ já veio
+# atualizado no próprio push.
+#
+# Não há loop: push feito com GITHUB_TOKEN não dispara outros workflows, e
+# app-data/ não está na lista de paths abaixo.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'assets/js/data.js'
+      - 'assets/js/guidelines-data.js'
+      - 'assets/js/trials_br.js'
+      - 'assets/js/secondary-cards.js'
+      - 'assets/data/explorer.json'
+      - 'scripts/export_app_data.mjs'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-app-data
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    if: "github.actor != 'github-actions[bot]'"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Regenerar e validar app-data
+        run: |
+          node scripts/export_app_data.mjs
+          node scripts/validate_app_data.mjs
+
+      - name: Algum dataset mudou?
+        id: diff
+        run: |
+          CHANGED=$(node -e '
+            const fs = require("fs");
+            const { execSync } = require("child_process");
+            let old = { datasets: {} };
+            try { old = JSON.parse(execSync("git show HEAD:app-data/manifest.json", { encoding: "utf8" })); } catch (e) {}
+            const neu = JSON.parse(fs.readFileSync("app-data/manifest.json", "utf8"));
+            const keys = new Set([...Object.keys(old.datasets || {}), ...Object.keys(neu.datasets || {})]);
+            const changed = [...keys].filter(k => (old.datasets[k] || {}).sha256 !== (neu.datasets[k] || {}).sha256);
+            console.log(changed.join(" "));
+          ')
+          echo "changed=${CHANGED}" >> "$GITHUB_OUTPUT"
+          echo "Datasets alterados: ${CHANGED:-nenhum}"
+
+      - name: Commit e push
+        if: steps.diff.outputs.changed != ''
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add app-data/
+          git commit -m "data(app): regenera app-data (${{ steps.diff.outputs.changed }})"
+          for i in 1 2 3; do
+            git pull --rebase origin main && git push && exit 0
+            sleep 5
+          done
+          echo "push falhou após 3 tentativas" >&2
+          exit 1
+
+      - name: Nada a fazer
+        if: steps.diff.outputs.changed == ''
+        run: |
+          git checkout -- app-data/
+          echo "app-data/ já estava em dia com os datasets."
