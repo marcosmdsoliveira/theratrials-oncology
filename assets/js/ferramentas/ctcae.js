@@ -182,13 +182,17 @@
           iconBox.style.background = 'rgba(251, 191, 36, 0.15)';
           iconBox.innerHTML = '<i data-lucide="' + data.icon + '" style="width:20px;height:20px;color:#FBBF24"></i>';
           let html = '<table class="stage-tbl" style="margin-top:0.5rem"><thead><tr><th>Evento</th><th>G1</th><th>G2</th><th>G3</th><th>G4</th></tr></thead><tbody>';
+          // Os valores são texto, não HTML: "<LIN-1,5" e "<LSN-10,0" viravam uma
+          // tag desconhecida e a célula saía vazia (G1 de anemia, neutropenia,
+          // plaquetas, linfopenia, leucopenia e IgG).
+          const cel = (v) => String(v || '—').replace(/</g, '&lt;');
           for (const ev of data.events) {
             html += '<tr>';
-            html += '<td class="stg" style="color:var(--off-white)">' + ev.name + '</td>';
-            html += '<td style="color:#6EE7B7">' + (ev.g1 || '—') + '</td>';
-            html += '<td style="color:#FCD34D">' + (ev.g2 || '—') + '</td>';
-            html += '<td style="color:#FBA74A">' + (ev.g3 || '—') + '</td>';
-            html += '<td style="color:#F87171">' + (ev.g4 || '—') + '</td>';
+            html += '<td class="stg" style="color:var(--off-white)">' + cel(ev.name) + '</td>';
+            html += '<td style="color:#6EE7B7">' + cel(ev.g1) + '</td>';
+            html += '<td style="color:#FCD34D">' + cel(ev.g2) + '</td>';
+            html += '<td style="color:#FBA74A">' + cel(ev.g3) + '</td>';
+            html += '<td style="color:#F87171">' + cel(ev.g4) + '</td>';
             html += '</tr>';
           }
           html += '</tbody></table>';
