@@ -169,6 +169,14 @@ window.FT_FONTES = {
   "krenning": {
     "fontes": [
       {
+        "cit": "Kwekkeboom DJ, Teunissen JJ, Bakker WH, et al. Radiolabeled somatostatin analog [177Lu-DOTA0,Tyr3]octreotate in patients with endocrine gastroenteropancreatic tumors. J Clin Oncol. 2005;23(12):2754-62.",
+        "pmid": "15837990"
+      },
+      {
+        "cit": "Hope TA, Abbott A, Colucci K, et al. NANETS/SNMMI Procedure Standard for Somatostatin Receptor-Based Peptide Receptor Radionuclide Therapy with 177Lu-DOTATATE. J Nucl Med. 2019;60(7):937-943.",
+        "pmid": "31263080"
+      },
+      {
         "cit": "Krenning EP, Kwekkeboom DJ, Bakker WH, et al. Somatostatin receptor scintigraphy with [111In-DTPA-D-Phe1]- and [123I-Tyr3]-octreotide: the Rotterdam experience with more than 1000 patients. Eur J Nucl Med. 1993;20(8):716-731.",
         "pmid": "8404961"
       }
