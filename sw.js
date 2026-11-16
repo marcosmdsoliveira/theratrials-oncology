@@ -8,7 +8,7 @@
    ============================================================================= */
 
 // GitHub Actions bumps this line on each deploy
-const CACHE_VERSION = 'theratrials-v2026.11.09-9cbecaa';
+const CACHE_VERSION = 'theratrials-v2026.11.16-32a2c13';
 const CACHE_STATIC  = `${CACHE_VERSION}-static`;
 const CACHE_PAGES   = `${CACHE_VERSION}-pages`;
 const CACHE_RUNTIME = `${CACHE_VERSION}-runtime`;
@@ -43,14 +43,14 @@ const CORE_PAGES = [
 ];
 
 const CORE_ASSETS = [
-  './assets/css/theratrials.css?v=2f0c43fbbd',
-  './assets/css/radiofarmaco.css?v=a213814c03',
+  './assets/css/theratrials.css?v=ab6f6d2f62',
+  './assets/css/radiofarmaco.css?v=1e4ea1dba6',
   './assets/js/data.js?v=f4d72738ab',
   './assets/js/secondary-cards.js?v=4556757ae1',
-  './assets/js/common.js?v=0e356943a4',
+  './assets/js/common.js?v=62472500df',
   './assets/js/citation.js?v=e884983a80',
   './assets/js/trials_br.js?v=239070d97d',
-  './assets/js/guidelines-data.js?v=1e1155fa38',
+  './assets/js/guidelines-data.js?v=ea06ff2b89',
   './assets/js/cross-links.js?v=1363e640e8',
   // ferramentas.html: o JS deixou de ser inline em 26/set/2026. Sem estas
   // entradas a página (que está em CORE_PAGES) abriria offline sem modais nem

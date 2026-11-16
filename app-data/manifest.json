@@ -1,7 +1,7 @@
 {
   "schema": "theratrials-app-data/1",
   "site": "https://theratrials.com",
-  "generatedAt": "2026-11-16T16:16:10.755Z",
+  "generatedAt": "2026-11-16T16:57:18.476Z",
   "datasets": {
     "data": {
       "url": "https://theratrials.com/app-data/data.json",
@@ -9,8 +9,8 @@
       "global": "THERA_DATA",
       "bytes": 2246272,
       "sha256": "08234c92fc71287ef109f350ca3f85bd88ce5d9da0460cfcd41f2d938fecf4a5",
-      "version": "2026-11-16T16:16:10.755Z",
-      "generatedAt": "2026-11-16T16:16:10.755Z"
+      "version": "2026-11-16T16:57:18.476Z",
+      "generatedAt": "2026-11-16T16:57:18.476Z"
     },
     "guidelines-data": {
       "url": "https://theratrials.com/app-data/guidelines-data.json",
@@ -18,8 +18,8 @@
       "global": "GUIDELINES_DATA",
       "bytes": 352961,
       "sha256": "56acabe36aacf5c72100d70e186aa29c992dbf9702bc98e2779c1fb14bc7e763",
-      "version": "2026-11-16T16:16:10.755Z",
-      "generatedAt": "2026-11-16T16:16:10.755Z"
+      "version": "2026-11-16T16:57:18.476Z",
+      "generatedAt": "2026-11-16T16:57:18.476Z"
     },
     "trials_br": {
       "url": "https://theratrials.com/app-data/trials_br.json",
@@ -30,8 +30,8 @@
       ],
       "bytes": 847479,
       "sha256": "77371cec7ae158a7f33538a857e5d896d692aa8235daf0e445fedf54b504db9d",
-      "version": "2026-11-16T16:16:10.755Z",
-      "generatedAt": "2026-11-16T16:16:10.755Z"
+      "version": "2026-11-16T16:57:18.476Z",
+      "generatedAt": "2026-11-16T16:57:18.476Z"
     },
     "secondary-cards": {
       "url": "https://theratrials.com/app-data/secondary-cards.json",
@@ -39,16 +39,16 @@
       "global": "THERA_SECONDARY",
       "bytes": 133320,
       "sha256": "7d6bbbd2bd4aabf427cb2706ae27c1122e597d9af85dc8e2696906d67d0978e2",
-      "version": "2026-11-16T16:16:10.755Z",
-      "generatedAt": "2026-11-16T16:16:10.755Z"
+      "version": "2026-11-16T16:57:18.476Z",
+      "generatedAt": "2026-11-16T16:57:18.476Z"
     },
     "explorer": {
       "url": "https://theratrials.com/assets/data/explorer.json",
       "file": "assets/data/explorer.json",
       "bytes": 1654207,
       "sha256": "bdf9b8259eff67b65759e4f5e9175514aafabb9cea4ac5b99d4269d22e057c91",
-      "version": "2026-11-16T16:16:10.755Z",
-      "generatedAt": "2026-11-16T16:16:10.755Z",
+      "version": "2026-11-16T16:57:18.476Z",
+      "generatedAt": "2026-11-16T16:57:18.476Z",
       "referenced": true
     }
   }
