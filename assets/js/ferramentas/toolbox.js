@@ -448,6 +448,17 @@
     var h = document.querySelector('.site-header');
     document.documentElement.style.setProperty('--ft-header-h', (h ? Math.round(h.getBoundingClientRect().height) : 64) + 'px');
   }
+  // O header muda de altura depois do init: no app iOS a área segura (relógio e
+  // Dynamic Island) entra no padding só após a primeira medição, e ele passava de
+  // 64 para 126 px sem que a barra de busca soubesse — ao rolar, ela ficava
+  // escondida atrás do header. O ResizeObserver acompanha qualquer mudança.
+  function watchHeader() {
+    var h = document.querySelector('.site-header');
+    // border-box: o que cresce é o padding (área segura), e o padrão do observador
+    // é a caixa de conteúdo, que não muda.
+    if (h && window.ResizeObserver) new ResizeObserver(syncHeader).observe(h, { box: 'border-box' });
+    window.addEventListener('load', syncHeader);
+  }
 
   function init() {
     root = document.getElementById('ftb');
@@ -459,6 +470,7 @@
     chipsInline = document.getElementById('ftb-chips');
 
     syncHeader(); labels();
+    watchHeader();
     window.addEventListener('resize', function () { syncHeader(); fitPanel(); });
     var tick = false;
     window.addEventListener('scroll', function () {

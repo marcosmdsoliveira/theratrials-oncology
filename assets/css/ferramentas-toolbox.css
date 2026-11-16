@@ -258,6 +258,9 @@
 .ft-single section.tool:not(.is-active) { display: none; }
 .ft-single section.tool.is-active { opacity: 1; transform: none; padding-top: 0.5rem; }
 .ft-single section.tool .tool-num { display: none; }
+/* Rolagem até o grupo (link direto, fechar uma ficha): o topo do grupo para abaixo
+   do header, da barra de busca e do botão de voltar, e não escondido atrás deles. */
+.ft-single section.tool { scroll-margin-top: calc(var(--ft-header-h, 64px) + 8.5rem); }
 
 /* Com um grupo aberto (ou enquanto um link direto ainda está sendo resolvido),
    a apresentação e a lista saem de cena; a busca continua. */
