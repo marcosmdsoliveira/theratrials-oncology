@@ -100,7 +100,13 @@ const snap = { errors: {} };
                 'calcChildPugh','hexToRgbStr','toolsApp','_dcCalc']
                .map(n => [n, (() => { try { return typeof eval(n); } catch (e) { return 'ERR'; } })()]),
       sectionText: Object.fromEntries([...document.querySelectorAll('section.tool')]
-                     .map(s => [s.id, s.innerText.replace(/\s+/g, ' ').trim()])),
+                     // Um grupo por vez (home.js) esconde os demais grupos e o número do
+                     // grupo, e innerText ignora o que está escondido: a classe ft-single
+                     // sai só durante a leitura, para o texto continuar comparável.
+                     .map(s => { const R = document.documentElement, had = R.classList.contains('ft-single');
+                                 R.classList.remove('ft-single');
+                                 const t = s.innerText.replace(/\s+/g, ' ').trim();
+                                 if (had) R.classList.add('ft-single'); return [s.id, t]; })),
     };
   }));
   snap.data = Object.fromEntries(Object.entries(snap.data).map(([k, v]) => [k, v && { sha: sha(v), len: v.length }]));

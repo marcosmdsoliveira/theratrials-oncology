@@ -2175,6 +2175,7 @@ window._i18nRegister('pt-br', {
     heroTitle: "Critérios, escores e <span class=\"text-amber\">classificações</span>",
     heroLead: "Estadiamento, resposta, toxicidade e escores de imagem usados em oncologia e medicina nuclear. Cada ficha traz a fonte e a versão do critério.",
     tbRecent: "Recentes",
+    tbBack: "Todas as ferramentas",
 
     /* Hub tiles */
     hub01h: "Estadiamento AJCC",

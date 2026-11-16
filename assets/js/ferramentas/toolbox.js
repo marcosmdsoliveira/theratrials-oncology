@@ -281,6 +281,9 @@
 
   function activate(e) {
     closePanel();
+    // Um grupo por vez (home.js): o grupo do alvo precisa estar visível antes
+    // de rolar até ele ou de clicar no botão da ficha.
+    if (window.FTView) window.FTView.show(e.group);
     if (e.kind === 'modal') {
       // Rola até o grupo ANTES de abrir: ao fechar o modal, o usuário já está
       // no contexto da ferramenta, não no topo da página.

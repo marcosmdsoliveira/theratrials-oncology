@@ -134,7 +134,7 @@ console.log('== busca ==');
   ok(await pg.evaluate(() => document.getElementById('ftb-q').getAttribute('aria-activedescendant')) === 'ftb-opt-0', 'setas movem a seleção (aria-activedescendant)');
 
   // "/" dentro de um campo de calculadora NÃO pode ser sequestrado
-  await pg.evaluate(() => { document.querySelectorAll('dialog[open]').forEach(d=>d.close()); document.getElementById('renal-age').focus(); });
+  await pg.evaluate(() => { document.querySelectorAll('dialog[open]').forEach(d=>d.close()); if (window.FTView) window.FTView.show('renal'); document.getElementById('renal-age').focus(); });
   await pg.keyboard.press('/');
   ok(await pg.evaluate(() => document.activeElement.id) === 'renal-age', '"/" digitado dentro de um campo não rouba o foco');
 
@@ -213,6 +213,9 @@ console.log('\n== links diretos ==');
 
   // clique MANUAL num card também gera URL própria
   await p2.goto(`${BASE}/ferramentas.html`, { waitUntil: 'networkidle0' });
+  await p2.click('.tools-hub a.tool-link[href="#hcc"]');   // um grupo por vez: abre o grupo, depois o card
+  ok(await p2.evaluate(() => [...document.querySelectorAll('section.tool')].filter(x => getComputedStyle(x).display !== 'none').map(x => x.id).join(',')) === 'hcc',
+     'abrir um grupo pelo índice mostra só esse grupo');
   await p2.click(`button[onclick="openCrit('meld')"]`);
   ok(await hash(p2) === '#meld', `clique manual no card também atualiza a URL (${await hash(p2)})`);
   ok(e2.length === 0, `nenhum erro de página${e2.length ? ': ' + e2.join(' | ') : ''}`);

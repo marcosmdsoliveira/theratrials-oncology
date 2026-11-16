@@ -2175,6 +2175,7 @@ window._i18nRegister('en', {
     heroTitle: "Criteria, scores and <span class=\"text-amber\">classifications</span>",
     heroLead: "Staging, response, toxicity and imaging scores used in oncology and nuclear medicine. Each entry states the source and version of the criterion.",
     tbRecent: "Recent",
+    tbBack: "All tools",
 
     /* Hub tiles */
     hub01h: "AJCC staging",

@@ -260,3 +260,30 @@
   }
   .tools-hub .tl-count::after { content: "\203A"; font-family: system-ui, sans-serif; font-size: 1.25rem; line-height: 1; color: var(--stone-2); }
 }
+
+/* ============================================================================
+ * Um grupo por vez (home.js) — a classe ft-single entra no <head>, por script;
+ * sem JavaScript, nada aqui se aplica e todos os grupos ficam visíveis.
+ * ==========================================================================*/
+.ft-single section.tool:not(.is-active) { display: none; }
+.ft-single section.tool.is-active { opacity: 1; transform: none; padding-top: 0.5rem; }
+.ft-single section.tool .tool-num { display: none; }
+
+/* Com um grupo aberto (ou enquanto um link direto ainda está sendo resolvido),
+   a apresentação e a lista saem de cena; a busca continua. */
+.ft-group .ft-hero, .ft-boot .ft-hero,
+.ft-group .tools-hub, .ft-boot .tools-hub,
+.ft-group .ft-recents, .ft-boot .ft-recents,
+.ft-group .ftb-chips, .ft-boot .ftb-chips { display: none; }
+.ft-group #ftb, .ft-boot #ftb { margin-top: 1rem; }
+
+.ft-back { margin: 0.9rem 0 0; }
+.ft-back[hidden] { display: none; }
+.ft-back-btn {
+  display: inline-flex; align-items: center; gap: 0.35rem;
+  min-height: 40px; padding: 0.35rem 0.8rem 0.35rem 0.45rem; border-radius: 999px;
+  background: var(--graphite-2); border: 1px solid var(--border-soft);
+  color: var(--off-white); font: inherit; font-size: 0.85rem; cursor: pointer;
+}
+.ft-back-btn svg { width: 18px; height: 18px; color: var(--stone); }
+.ft-back-btn:hover { border-color: var(--amber); }
