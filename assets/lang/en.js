@@ -2176,6 +2176,11 @@ window._i18nRegister('en', {
     heroLead: "Staging, response, toxicity and imaging scores used in oncology and nuclear medicine. Each entry states the source and version of the criterion.",
     tbRecent: "Recent",
     tbBack: "All tools",
+    fonteTitulo: "Source and version",
+    fonteAbrir: "Open source",
+    fonteVersao: "Criterion version",
+    fonteRevisao: "Editorial review",
+    fonteAviso: "Reference material for healthcare professionals. Check the original source and the version required by the study protocol; clinical decisions rest with the treating physician.",
 
     /* Hub tiles */
     hub01h: "AJCC staging",

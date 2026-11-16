@@ -2176,6 +2176,11 @@ window._i18nRegister('pt-br', {
     heroLead: "Estadiamento, resposta, toxicidade e escores de imagem usados em oncologia e medicina nuclear. Cada ficha traz a fonte e a versão do critério.",
     tbRecent: "Recentes",
     tbBack: "Todas as ferramentas",
+    fonteTitulo: "Fonte e versão",
+    fonteAbrir: "Abrir fonte",
+    fonteVersao: "Versão do critério",
+    fonteRevisao: "Revisão editorial",
+    fonteAviso: "Material de referência para profissionais de saúde. Confira a fonte original e a versão exigida pelo protocolo do estudo; a decisão clínica é do médico assistente.",
 
     /* Hub tiles */
     hub01h: "Estadiamento AJCC",

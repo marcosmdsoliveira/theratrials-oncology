@@ -277,3 +277,33 @@
 }
 .ft-back-btn svg { width: 18px; height: 18px; color: var(--stone); }
 .ft-back-btn:hover { border-color: var(--amber); }
+
+/* ============================================================================
+ * Rodapé "Fonte e versão" da ficha (fontes.js)
+ * ==========================================================================*/
+.ft-fonte {
+  margin-top: 1.6rem; padding: 1rem 1.1rem;
+  background: var(--graphite-3); border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md); font-size: 0.8rem; line-height: 1.55;
+}
+.ft-fonte-h {
+  font-family: var(--font-mono); font-size: 0.66rem; font-weight: 600; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--stone); margin-bottom: 0.6rem;
+}
+.ft-fonte-lista { list-style: none; margin: 0 0 0.7rem; padding: 0; display: grid; gap: 0.55rem; }
+.ft-fonte-cit { color: var(--off-white); overflow-wrap: anywhere; }
+p.ft-fonte-cit { margin: 0 0 0.7rem; }
+.ft-fonte-link {
+  white-space: nowrap; color: var(--amber); text-decoration: none; font-weight: 600;
+  border-bottom: 1px solid rgba(255, 132, 0, 0.35);
+}
+.ft-fonte-link:hover { border-bottom-color: var(--amber); }
+.ft-fonte-meta { display: flex; flex-wrap: wrap; gap: 0.5rem 1.6rem; margin: 0 0 0.7rem; }
+.ft-fonte-meta dt {
+  font-size: 0.64rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--stone);
+}
+.ft-fonte-meta dd { margin: 0.1rem 0 0; color: var(--off-white); font-family: var(--font-mono); font-size: 0.78rem; }
+.ft-fonte-aviso {
+  margin: 0; padding-top: 0.7rem; border-top: 1px dashed var(--border-soft);
+  color: var(--stone); font-size: 0.74rem;
+}

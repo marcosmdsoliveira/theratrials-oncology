@@ -133,7 +133,9 @@ const snap = { errors: {} };
         dialog: dlg.id,
         title: (dlg.querySelector('[id$="-modal-title"]') || {}).textContent,
         ed: (dlg.querySelector('[id$="-modal-ed"]') || {}).textContent,
-        body: body ? body.innerHTML : null,
+        // O rodapé "Fonte e versão" (fontes.js) é acrescentado depois do conteúdo da ficha;
+        // fica fora da comparação para o corpo continuar igual à referência.
+        body: body ? (() => { const c = body.cloneNode(true); c.querySelectorAll('[data-ft-fonte]').forEach(x => x.remove()); return c.innerHTML; })() : null,
       };
       dlg.close();
     }
