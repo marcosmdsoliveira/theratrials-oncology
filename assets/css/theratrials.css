@@ -204,6 +204,21 @@ section.compact { padding: 3rem 0; }
 .brand-name { font-size: 1.15rem; font-weight: 700; letter-spacing: -0.02em; color: var(--off-white); }
 .brand-sub { font-size: 1.15rem; letter-spacing: -0.02em; color: var(--amber); font-weight: 700; }
 
+/* Smartphone: a marca encolhe para o header caber na tela. Estas regras viviam
+ * só no <style> de index.html; as outras 15 páginas com o header completo
+ * estouravam a viewport (22px no iPhone 375, 77px no 320) — e como o <dialog>
+ * centraliza na viewport de LAYOUT, todo modal abria deslocado e cortado. */
+@media (max-width: 480px) {
+  .site-header .brand { gap: 0.55rem; min-width: 0; }
+  .site-header .brand-text { min-width: 0; }
+  .site-header .brand-name,
+  .site-header .brand-sub { font-size: 0.92rem; line-height: 1.1; }
+  .site-header .brand-logo { width: 32px; height: 32px; }
+}
+@media (max-width: 360px) {
+  .site-header .brand-name { font-size: 0.85rem; }
+}
+
 .nav { display: flex; align-items: center; gap: 0.1rem; }
 .nav a {
   color: var(--stone);
@@ -532,7 +547,7 @@ section.compact { padding: 3rem 0; }
    ============================================================ */
 .concept-row {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
   gap: 2rem;
 }
 .concept-item {
@@ -782,8 +797,39 @@ abbr.gloss-term:hover, abbr.gloss-term:focus-visible {
   font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em;
   color: var(--amber, #FF8400); font-weight: 700; margin: 0 0 0.7rem;
 }
-.tgloss-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 0.35rem 1.25rem; margin: 0; }
+.tgloss-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr)); gap: 0.35rem 1.25rem; margin: 0; }
 .tgloss-item { display: flex; gap: 0.55rem; align-items: baseline; padding: 0.3rem 0; border-bottom: 1px solid var(--border-soft, rgba(143,148,156,0.18)); }
 .tgloss-item dt { font-family: var(--font-mono, monospace); font-size: 0.8rem; color: var(--off-white, #F5F6F7); font-weight: 600; min-width: 64px; flex-shrink: 0; }
 .tgloss-item dd { margin: 0; font-size: 0.8rem; color: var(--stone, #8E949C); line-height: 1.4; }
 @media (max-width: 560px) { .gloss-fab span { display: none; } .gloss-fab { padding: 0.6rem; } }
+
+/* ============================================================================
+ * Tabelas no celular — sem rolagem lateral (common.js marca .tt-stack na tabela
+ * que não cabe na tela). Cada linha vira um cartão; a 1ª célula é o título.
+ * ==========================================================================*/
+@media (max-width: 640px) {
+  table.tt-stack { display: block; width: 100% !important; min-width: 0 !important; border-collapse: separate; }
+  table.tt-stack tfoot { display: block; }
+  table.tt-stack thead, table.tt-stack tr.tt-head { display: none; }
+  table.tt-stack tbody { display: block; }
+  table.tt-stack tr {
+    display: block; padding: 0.75rem 0.9rem;
+    border-bottom: 1px solid var(--border-soft);
+  }
+  table.tt-stack tr:last-child { border-bottom: 0; }
+  table.tt-stack td {
+    display: grid; grid-template-columns: minmax(4.75rem, 32%) minmax(0, 1fr); column-gap: 0.7rem;
+    width: auto !important; padding: 0.2rem 0 !important; border: 0 !important;
+    white-space: normal !important; overflow-wrap: anywhere;
+  }
+  table.tt-stack td::before {
+    content: attr(data-label);
+    font-family: var(--font-body, inherit); font-size: 0.66rem; font-weight: 600; line-height: 1.5;
+    text-transform: uppercase; letter-spacing: 0.06em; color: var(--stone); padding-top: 0.12rem;
+  }
+  table.tt-stack td:first-child {
+    display: block; margin-bottom: 0.3rem; font-weight: 600; font-size: 0.95rem;
+  }
+  table.tt-stack td:first-child::before { content: none; }
+  table.tt-stack td:empty { display: none; }
+}

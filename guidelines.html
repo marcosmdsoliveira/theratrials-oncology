@@ -112,7 +112,7 @@
 /* ── How-to cards ── */
 .howto-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
   gap: 1rem;
   margin: 2.5rem 0 3rem;
 }
@@ -233,7 +233,7 @@
 }
 .gl-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(340px, 100%), 1fr));
   gap: 0.75rem;
 }
 
@@ -252,6 +252,12 @@
   color: inherit;
 }
 .gl-card:hover { border-color: rgba(255,132,0,0.35); transform: translateY(-1px); }
+/* Celular: os selos descem para a linha de baixo em vez de empurrar o card para fora da tela. */
+@media (max-width: 640px) {
+  .gl-card-top { flex-wrap: wrap; }
+  .gl-card-title { flex: 1 1 100%; min-width: 0; }
+  .gl-card-badges { flex-shrink: 1; min-width: 0; }
+}
 .gl-card-top {
   display: flex;
   align-items: flex-start;

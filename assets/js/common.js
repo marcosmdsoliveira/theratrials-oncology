@@ -891,3 +891,103 @@
   };
 
 })();
+
+/* ============================================================================
+ * Tabelas no celular — sem rolagem lateral
+ *
+ * Em tela estreita (≤ 640 px), uma tabela que não cabe na largura disponível
+ * vira uma lista de cartões: cada linha é um cartão, a 1ª célula é o título e
+ * as demais levam o nome da coluna ao lado (data-label, lido do cabeçalho).
+ * Tabela que cabe continua tabela. A decisão é medida no navegador e refeita
+ * quando a largura muda (girar o aparelho, abrir um grupo ou uma ficha).
+ *
+ * Só entram as famílias de tabela de conteúdo listadas em SEL. Tabelas de
+ * aplicativo (Database, Explorer, calculadoras) têm tratamento próprio.
+ * O estilo está em theratrials.css (.tt-stack).
+ * ==========================================================================*/
+(function () {
+  'use strict';
+  if (!window.matchMedia || !window.ResizeObserver) return;
+
+  var SEL = '.dose-table, .risk-table, .vs-table, .tnm-modal-body table, .prose table, #decay-calc table';
+  var MQ = window.matchMedia('(max-width: 640px)');
+
+  function rotular(table) {
+    var head = table.querySelector('thead tr') || table.querySelector('tr');
+    if (!head || !head.querySelector('th')) return false;
+    var nomes = [];
+    Array.prototype.forEach.call(head.children, function (c) {
+      var t = c.textContent.replace(/\s+/g, ' ').trim();
+      for (var k = 0; k < (c.colSpan || 1); k++) nomes.push(t);
+    });
+    if (!head.closest('thead')) head.classList.add('tt-head');
+    Array.prototype.forEach.call(table.querySelectorAll('tr'), function (tr) {
+      if (tr === head) return;
+      var col = 0;
+      Array.prototype.forEach.call(tr.children, function (c) {
+        if (c.tagName === 'TD') c.setAttribute('data-label', nomes[col] || '');
+        col += c.colSpan || 1;
+      });
+    });
+    return true;
+  }
+
+  function ajustar(table) {
+    if (!MQ.matches) { table.classList.remove('tt-stack'); table._ttLarg = null; return; }
+    var caixa = table.parentElement;
+    if (!caixa) return;
+    var cs = getComputedStyle(caixa);
+    var disp = caixa.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+    if (!(disp > 0)) return;               // escondida: o ResizeObserver volta quando aparecer
+    if (table._ttLarg === disp) return;    // mesma largura: decisão já tomada
+    table._ttLarg = disp;
+    table.classList.remove('tt-stack');
+    if (table.offsetWidth > disp + 1 || table.scrollWidth > disp + 1) {
+      if (rotular(table)) table.classList.add('tt-stack');
+    }
+  }
+
+  var ro = new ResizeObserver(function (entries) {
+    entries.forEach(function (e) {
+      Array.prototype.forEach.call(e.target.children, function (c) {
+        if (c.tagName === 'TABLE' && c._ttVista) ajustar(c);
+      });
+    });
+  });
+
+  function vigiar(table) {
+    if (!table._ttVista && table.parentElement) {
+      table._ttVista = true;
+      ro.observe(table.parentElement);
+      // Linhas reescritas depois (calculadora de decaimento refaz o corpo a cada
+      // cálculo): os nomes das colunas voltam às células novas. Só childList —
+      // escrever o data-label não dispara o observador de novo.
+      new MutationObserver(function () { if (table.classList.contains('tt-stack')) rotular(table); })
+        .observe(table, { childList: true, subtree: true });
+    }
+    ajustar(table);
+  }
+  function varrer(raiz) {
+    Array.prototype.forEach.call((raiz || document).querySelectorAll(SEL), vigiar);
+  }
+
+  function init() {
+    varrer(document);
+    // Fichas das Ferramentas: o corpo do modal é reescrito a cada abertura.
+    Array.prototype.forEach.call(document.querySelectorAll('.tnm-modal-body'), function (corpo) {
+      new MutationObserver(function () { varrer(corpo.parentElement); })
+        .observe(corpo, { childList: true, subtree: true });
+    });
+    var refazer = function () {
+      Array.prototype.forEach.call(document.querySelectorAll(SEL), function (t) { t._ttLarg = null; ajustar(t); });
+    };
+    if (MQ.addEventListener) MQ.addEventListener('change', refazer); else if (MQ.addListener) MQ.addListener(refazer);
+    // Troca de idioma: os cabeçalhos mudam, os rótulos das células acompanham.
+    window.addEventListener('langchange', function () {
+      Array.prototype.forEach.call(document.querySelectorAll('table.tt-stack'), rotular);
+    });
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
