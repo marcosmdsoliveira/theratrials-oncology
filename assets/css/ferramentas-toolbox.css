@@ -188,3 +188,75 @@
   .ftb-flash { animation: none; outline: 2px solid var(--amber); outline-offset: 2px; }
   .ftb-bar, .ftb-chip { transition: none; }
 }
+
+/* ============================================================================
+ * Tela inicial — índice compacto dos grupos e "Recentes" (home.js)
+ * ==========================================================================*/
+.tools-hub .tool-link { position: relative; }
+.tl-count {
+  position: absolute; top: 1rem; right: 1rem;
+  font-family: var(--font-mono); font-size: 0.7rem; color: var(--stone-2);
+}
+
+/* Vence o <style> inline da página, que vem depois deste arquivo na cascata:
+   por isso os seletores abaixo levam um nível a mais de especificidade. */
+.ft-recents { display: flex; align-items: center; gap: 0.6rem; margin: 0.9rem 0 0; min-width: 0; }
+.ft-recents[hidden] { display: none; }
+.ft-recents-label {
+  flex: none; font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--stone-2);
+}
+.ft-recents-list {
+  display: flex; gap: 0.4rem; overflow-x: auto; min-width: 0; padding-bottom: 2px;
+  scrollbar-width: none; -webkit-overflow-scrolling: touch;
+}
+.ft-recents-list::-webkit-scrollbar { display: none; }
+.ft-recent {
+  flex: none; display: inline-flex; align-items: center; gap: 0.4rem;
+  min-height: 34px; padding: 0.3rem 0.7rem; border-radius: 999px;
+  background: var(--graphite-2); border: 1px solid var(--border-soft);
+  color: var(--off-white); font: inherit; font-size: 0.8rem; cursor: pointer; white-space: nowrap;
+}
+.ft-recent::before {
+  content: ""; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent, var(--amber));
+}
+.ft-recent:hover { border-color: var(--accent, var(--amber)); }
+
+@media (max-width: 640px) {
+  section.ft-hero { padding: 1.75rem 0 1.1rem; }
+  section.ft-hero h1 { font-size: 1.7rem; line-height: 1.15; margin-bottom: 0.55rem; }
+  section.ft-hero p { font-size: 0.92rem; line-height: 1.5; }
+
+  /* Os 12 grupos viram uma lista: cabem em pouco mais de uma tela. */
+  div.tools-hub {
+    grid-template-columns: 1fr; gap: 0; margin: 1.1rem 0 3rem;
+    background: var(--graphite-2); border: 1px solid var(--border-soft);
+    border-radius: var(--radius-md); overflow: hidden;
+  }
+  .tools-hub .tool-link {
+    display: grid; grid-template-columns: 40px minmax(0, 1fr) auto;
+    grid-template-areas: "icon title count" "icon desc count";
+    column-gap: 0.85rem; row-gap: 0.1rem; align-items: center;
+    min-height: 64px; padding: 0.7rem 0.85rem;
+    background: transparent; border: 0; border-radius: 0;
+    border-bottom: 1px solid var(--border-soft);
+  }
+  .tools-hub .tool-link:last-child { border-bottom: 0; }
+  .tools-hub .tool-link:hover { transform: none; background: var(--graphite-3); }
+  .tools-hub .tool-link .num { display: none; }
+  .tools-hub .tool-link .icon {
+    grid-area: icon; width: 40px; height: 40px; padding: 9px; box-sizing: border-box;
+    border-radius: 10px; background: color-mix(in srgb, var(--accent, var(--amber)) 14%, transparent);
+  }
+  .tools-hub .tool-link h3 { grid-area: title; font-size: 0.95rem; align-self: end; }
+  .tools-hub .tool-link p {
+    grid-area: desc; font-size: 0.76rem; align-self: start;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .tools-hub .tl-count {
+    grid-area: count; position: static; display: inline-flex; align-items: center; gap: 0.45rem;
+    font-size: 0.72rem;
+  }
+  .tools-hub .tl-count::after { content: "\203A"; font-family: system-ui, sans-serif; font-size: 1.25rem; line-height: 1; color: var(--stone-2); }
+}

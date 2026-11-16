@@ -77,7 +77,13 @@ const snap = { errors: {} };
     return {
       title: document.title,
       sections: [...document.querySelectorAll('section.tool')].map(s => s.id),
-      hub: [...document.querySelectorAll('a.tool-link')].map(a => [a.getAttribute('href'), txt(a)]),
+      // A contagem de fichas (.tl-count, home.js) é enfeite de interface lido do
+      // DOM; fica fora da comparação para o card continuar igual à referência.
+      hub: [...document.querySelectorAll('a.tool-link')].map(a => {
+        const c = a.cloneNode(true);
+        c.querySelectorAll('.tl-count').forEach(x => x.remove());
+        return [a.getAttribute('href'), txt(c)];
+      }),
       // `const` de topo em script clássico não vai para window, mas é visível
       // pelo nome no escopo global — é exatamente o que o evaluate enxerga.
       data: {

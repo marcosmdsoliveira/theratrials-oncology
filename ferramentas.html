@@ -468,8 +468,8 @@
 <section class="ft-hero">
   <div class="container">
     <span class="eyebrow" data-i18n="fr.heroEyebrow">Ferramentas clínicas</span>
-    <h1 data-i18n-html="fr.heroTitle">Calcule, converta, <span class="text-amber">decida</span></h1>
-    <p data-i18n="fr.heroLead">Estadiamento, eventos adversos, calculadora de dose, planejamento PET/CT, scores de imagem, escalas clínicas e função renal — 12 ferramentas em uma única tela.</p>
+    <h1 data-i18n-html="fr.heroTitle">Critérios, escores e <span class="text-amber">classificações</span></h1>
+    <p data-i18n="fr.heroLead">Estadiamento, resposta, toxicidade e escores de imagem usados em oncologia e medicina nuclear. Cada ficha traz a fonte e a versão do critério.</p>
   </div>
 </section>
 
@@ -500,6 +500,12 @@
       <button type="button" class="ftb-chip" data-chip="renal" aria-pressed="false" data-i18n="fr.tbChRenal">Função renal</button>
       <button type="button" class="ftb-chip" data-chip="fig" aria-pressed="false" data-i18n="fr.tbChFig">Fígado</button>
       <button type="button" class="ftb-chip" data-chip="pat" aria-pressed="false" data-i18n="fr.tbChPat">Patologia</button>
+    </div>
+
+    <!-- RECENTES — preenchido por assets/js/ferramentas/home.js; fica só no aparelho -->
+    <div class="ft-recents" id="ft-recents" hidden>
+      <span class="ft-recents-label" data-i18n="fr.tbRecent">Recentes</span>
+      <div class="ft-recents-list" id="ft-recents-list"></div>
     </div>
 
     <!-- HUB -->
@@ -1875,5 +1881,6 @@
 <script src="assets/js/ferramentas/criterios.js"></script>
 <script src="assets/js/ferramentas/chc-calculadoras.js"></script>
 <script src="assets/js/ferramentas/toolbox.js"></script>
+<script src="assets/js/ferramentas/home.js"></script>
 </body>
 </html>

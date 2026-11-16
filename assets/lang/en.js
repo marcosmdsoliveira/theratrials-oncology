@@ -2172,8 +2172,9 @@ window._i18nRegister('en', {
   fr: {
     /* Hero */
     heroEyebrow: "Clinical tools",
-    heroTitle: "Calculate, convert, <span class=\"text-amber\">decide</span>",
-    heroLead: "Staging, adverse events, dose calculator, PET/CT planning, imaging scores, clinical scales and renal function — 12 tools on a single screen.",
+    heroTitle: "Criteria, scores and <span class=\"text-amber\">classifications</span>",
+    heroLead: "Staging, response, toxicity and imaging scores used in oncology and nuclear medicine. Each entry states the source and version of the criterion.",
+    tbRecent: "Recent",
 
     /* Hub tiles */
     hub01h: "AJCC staging",

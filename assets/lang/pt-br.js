@@ -2172,8 +2172,9 @@ window._i18nRegister('pt-br', {
   fr: {
     /* Hero */
     heroEyebrow: "Ferramentas clínicas",
-    heroTitle: "Calcule, converta, <span class=\"text-amber\">decida</span>",
-    heroLead: "Estadiamento, eventos adversos, calculadora de dose, planejamento PET/CT, scores de imagem, escalas clínicas e função renal — 12 ferramentas em uma única tela.",
+    heroTitle: "Critérios, escores e <span class=\"text-amber\">classificações</span>",
+    heroLead: "Estadiamento, resposta, toxicidade e escores de imagem usados em oncologia e medicina nuclear. Cada ficha traz a fonte e a versão do critério.",
+    tbRecent: "Recentes",
 
     /* Hub tiles */
     hub01h: "Estadiamento AJCC",
