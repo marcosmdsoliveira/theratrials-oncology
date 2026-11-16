@@ -2179,6 +2179,7 @@ window._i18nRegister('en', {
     fonteTitulo: "Source and version",
     fonteAbrir: "Open source",
     fonteVersao: "Criterion version",
+    fonteConferida: "Source checked on",
     fonteRevisao: "Editorial review",
     fonteAviso: "Reference material for healthcare professionals. Check the original source and the version required by the study protocol; clinical decisions rest with the treating physician.",
 

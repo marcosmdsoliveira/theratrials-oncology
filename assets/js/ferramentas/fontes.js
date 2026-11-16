@@ -16,7 +16,8 @@
  *     fontes: [ { cit: 'Autor A, et al. Título. Revista. Ano;vol(n):pp.',
  *                 pmid: '12345678', doi: '10.…', url: 'https://…' } ],
  *     versao: '1.1',
- *     revisado: '2026-11-16'        // AAAA-MM-DD — data da revisão editorial
+ *     conferido: '2026-11-16',      // AAAA-MM-DD — referências conferidas na fonte
+ *     revisado: '2026-11-16'        // AAAA-MM-DD — revisão editorial do conteúdo
  *   }
  *
  * O slug é o do link direto: 'recist', 'ajcc-prostata', 'ctcae-hema'.
@@ -25,6 +26,7 @@
 (function () {
   'use strict';
 
+  // Os dados ficam em fontes-dados.js, carregado antes deste arquivo.
   var FT_FONTES = window.FT_FONTES = window.FT_FONTES || {};
 
   var OPENERS = { openTNM: 'ajcc-', openCTCAE: 'ctcae-', openCrit: '' };
@@ -78,6 +80,7 @@
 
     var meta = '';
     if (info && info.versao) meta += '<div><dt>' + esc(T('fr.fonteVersao', 'Versão do critério')) + '</dt><dd>' + esc(info.versao) + '</dd></div>';
+    if (info && info.conferido) meta += '<div><dt>' + esc(T('fr.fonteConferida', 'Fonte conferida em')) + '</dt><dd>' + esc(dataLocal(info.conferido)) + '</dd></div>';
     if (info && info.revisado) meta += '<div><dt>' + esc(T('fr.fonteRevisao', 'Revisão editorial')) + '</dt><dd>' + esc(dataLocal(info.revisado)) + '</dd></div>';
     if (meta) html += '<dl class="ft-fonte-meta">' + meta + '</dl>';
 

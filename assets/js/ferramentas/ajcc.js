@@ -144,7 +144,7 @@
         },
         nsclc: {
           title: 'Pulmão · NSCLC',
-          edition: 'AJCC 9ª (2024)',
+          edition: 'AJCC 9ª (em vigor desde 2025)',
           icon: 'wind',
           color: '#22d3ee',
           body: `
@@ -254,7 +254,7 @@
         },
         net: {
           title: 'NETs (GEP-NET)',
-          edition: 'AJCC 8ª · WHO 2019',
+          edition: 'AJCC 8ª (Version 9 em vigor desde 2024) · WHO 2019',
           icon: 'heart-pulse',
           color: '#0EA5B7',
           body: `
@@ -634,7 +634,7 @@
         },
         hnscc: {
           title: 'Cabeça e Pescoço (HNSCC)',
-          edition: 'AJCC 8ª · HPV+ vs HPV-',
+          edition: 'AJCC 8ª · HPV+ vs HPV- (orofaringe HPV+: Version 9 desde 2026)',
           icon: 'user',
           color: '#A855F7',
           body: `

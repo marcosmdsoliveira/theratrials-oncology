@@ -2179,6 +2179,7 @@ window._i18nRegister('pt-br', {
     fonteTitulo: "Fonte e versão",
     fonteAbrir: "Abrir fonte",
     fonteVersao: "Versão do critério",
+    fonteConferida: "Fonte conferida em",
     fonteRevisao: "Revisão editorial",
     fonteAviso: "Material de referência para profissionais de saúde. Confira a fonte original e a versão exigida pelo protocolo do estudo; a decisão clínica é do médico assistente.",
 

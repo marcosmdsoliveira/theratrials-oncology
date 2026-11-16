@@ -65,6 +65,7 @@ const CORE_ASSETS = [
   './assets/js/ferramentas/chc-calculadoras.js',
   './assets/js/ferramentas/toolbox.js',
   './assets/js/ferramentas/home.js',
+  './assets/js/ferramentas/fontes-dados.js',
   './assets/js/ferramentas/fontes.js',
   './assets/data/explorer.json',
   './assets/data/explorer.js?v=28798b07cb',
