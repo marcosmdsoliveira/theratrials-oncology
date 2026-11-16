@@ -925,7 +925,19 @@
       if (tr === head) return;
       var col = 0;
       Array.prototype.forEach.call(tr.children, function (c) {
-        if (c.tagName === 'TD') c.setAttribute('data-label', nomes[col] || '');
+        if (c.tagName === 'TD') {
+          c.setAttribute('data-label', nomes[col] || '');
+          // No cartão a célula é um grid de duas colunas (rótulo | valor). Texto com
+          // <strong>, <sup> ou links vira vários itens de grid e se espalha; por isso o
+          // conteúdo vai dentro de um único invólucro. Os nós são movidos, não recriados.
+          var v = c.firstElementChild;
+          if (!(v && c.childNodes.length === 1 && v.classList.contains('tt-v'))) {
+            v = document.createElement('span');
+            v.className = 'tt-v';
+            while (c.firstChild) v.appendChild(c.firstChild);
+            c.appendChild(v);
+          }
+        }
         col += c.colSpan || 1;
       });
     });

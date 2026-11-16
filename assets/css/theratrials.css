@@ -831,5 +831,6 @@ abbr.gloss-term:hover, abbr.gloss-term:focus-visible {
     display: block; margin-bottom: 0.3rem; font-weight: 600; font-size: 0.95rem;
   }
   table.tt-stack td:first-child::before { content: none; }
-  table.tt-stack td:empty { display: none; }
+  table.tt-stack td > .tt-v { min-width: 0; }
+  table.tt-stack td:empty, table.tt-stack td > .tt-v:only-child:empty { display: none; }
 }
