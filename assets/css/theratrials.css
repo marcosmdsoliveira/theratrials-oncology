@@ -31,7 +31,7 @@
   /* Tipografia */
   --font-sans: 'Outfit', 'Inter', system-ui, -apple-system, sans-serif;
   --font-display: 'Outfit', 'Inter', system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace, sans-serif; /* sans-serif: glifos que a monoespaçada do Android não tem (ex.: ⁻ U+207B) */
 
   /* Layout */
   --radius-sm: 6px;
