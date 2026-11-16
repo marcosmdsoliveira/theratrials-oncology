@@ -121,6 +121,9 @@
 }
 .toc a:hover { opacity: 1; background: var(--graphite-3); border-left-color: var(--amber); }
 
+/* Itens de grid têm min-width:auto: sem isto, a coluna cresce até a largura do
+   conteúdo mais largo (uma tabela) e a página inteira passa da tela no celular. */
+.rf-layout > * { min-width: 0; }
 .rf-layout {
   display: grid;
   grid-template-columns: 220px 1fr;
@@ -213,7 +216,7 @@
 }
 .mech-stages {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
   gap: 1rem;
   margin-top: 1.5rem;
 }
@@ -268,6 +271,10 @@
   gap: 0.5rem;
   margin-top: 1.5rem;
 }
+/* Celular: 6 ciclos em uma linha não cabem; viram duas linhas de 3. */
+@media (max-width: 640px) {
+  .cycle-bar { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
 .cycle {
   background: var(--graphite-3);
   border: 1px solid rgba(255, 132, 0, 0.3);
@@ -282,7 +289,7 @@
 /* Ensaios pivotais */
 .trials-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
   gap: 1.25rem;
   margin-top: 1.5rem;
 }
@@ -301,8 +308,8 @@
 .trial-name .name { font-size: 1.15rem; font-weight: 700; color: var(--amber); font-family: var(--font-display); }
 .trial-name .year { color: var(--stone); font-size: 0.85rem; font-family: var(--font-mono); }
 .trial-card .pop { color: var(--stone); font-size: 0.88rem; margin: 0 0 0.85rem; }
-.trial-card .results { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-bottom: 0.75rem; }
-.trial-card .stat-row { background: var(--graphite-3); padding: 0.55rem 0.75rem; border-radius: var(--radius-sm); }
+.trial-card .results { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0.5rem; margin-bottom: 0.75rem; }
+.trial-card .stat-row { background: var(--graphite-3); padding: 0.55rem 0.75rem; border-radius: var(--radius-sm); min-width: 0; overflow-wrap: anywhere; }
 .trial-card .stat-row .lbl { font-size: 0.7rem; color: var(--stone); text-transform: uppercase; letter-spacing: 0.05em; }
 .trial-card .stat-row .val { font-family: var(--font-mono); font-size: 0.92rem; color: var(--off-white); margin-top: 0.15rem; font-weight: 500; }
 .trial-card .takeaway {
@@ -380,7 +387,7 @@
 /* Toxicidade */
 .tox-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
   gap: 0.85rem;
   margin: 1.5rem 0;
 }
@@ -443,7 +450,8 @@
   gap: 1.25rem;
   margin: 1.5rem 0;
 }
-@media (max-width: 700px) { .ab-compare { grid-template-columns: 1fr; } }
+@media (max-width: 700px) { .ab-compare { grid-template-columns: minmax(0, 1fr); } }
+.ab-compare > * { min-width: 0; overflow-wrap: anywhere; }
 .ab-card {
   background: var(--graphite-2);
   border: 1px solid var(--border-soft);
@@ -479,7 +487,7 @@
 /* Link cards no fim */
 .next-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
   gap: 1rem;
   margin-top: 1.5rem;
 }
@@ -501,7 +509,7 @@
 /* Cards genéricos para imagem teranóstica */
 .imaging-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
   gap: 1rem;
   margin: 1.5rem 0;
 }

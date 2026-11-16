@@ -239,7 +239,7 @@ console.log('\n== mobile (390×844, toque) ==');
   }));
   ok(!r.ftbEstica, 'barra e chips não esticam a página');
   ok(r.overflow <= 0, `largura da página = largura da tela (excesso ${r.overflow}px)`);
-  ok(r.chipsWrap === 'nowrap', 'chips numa linha rolável, sem quebrar');
+  ok(r.chipsWrap === 'wrap', 'chips quebram em linhas — sem rolagem lateral no celular');
   ok(r.kbd === 'none', 'atalho "/" escondido em tela de toque');
   ok(parseFloat(r.fonte) >= 16, `campo com ${r.fonte} — evita o zoom automático do iOS ao focar`);
   await pg.screenshot({ path: `${SHOTS}/mobile-topo.png` });

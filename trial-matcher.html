@@ -90,7 +90,7 @@
   border-radius: 16px; padding: 1.5rem; margin-bottom: 2rem;
 }
 .tm-filters-grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); gap: 1rem;
 }
 .tm-field label {
   display: block; font-family: 'Outfit', sans-serif; font-size: 0.78rem;
@@ -221,7 +221,7 @@
 
 /* ── Cards no estilo "Ensaios Clínicos" (.ea-card) ── */
 .tm-cards {
-  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(360px, 100%), 1fr));
   gap: 1.15rem;
 }
 .ea-card {
@@ -338,7 +338,7 @@
 }
 .tm-d-section h3 i { width: 14px; height: 14px; }
 .tm-d-text { font-size: 0.86rem; color: var(--off-white, #F5F6F7); line-height: 1.6; margin: 0; }
-.tm-d-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.6rem; }
+.tm-d-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); gap: 0.6rem; }
 .tm-d-card {
   background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06);
   border-radius: 10px; padding: 0.7rem 0.85rem;
@@ -359,7 +359,7 @@
 /* Centros agrupados por UF: grade de estados em vez de uma fila de pills
    repetindo a sigla em cada cidade. */
 /* 240px, não 190px: cada célula agora traz nomes de hospital, não só cidade. */
-.tm-d-pills.tm-d-uf { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); align-items: stretch; }
+.tm-d-pills.tm-d-uf { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(240px, 100%), 1fr)); align-items: stretch; }
 .tm-d-uf .tm-d-pill .lbl { color: var(--amber); font-size: 0.66rem; letter-spacing: 0.08em; }
 .tm-d-uf .tm-d-pill .val { font-weight: 400; line-height: 1.45; font-size: 0.78rem; }
 /* Cada UF lista suas cidades; sob a cidade, as instituições. A cidade é o

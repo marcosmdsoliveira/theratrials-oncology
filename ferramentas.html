@@ -608,7 +608,7 @@
       </p>
 
       <!-- Princípios gerais -->
-      <div class="tnm-principles" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-bottom: 2rem">
+      <div class="tnm-principles" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); gap: 1rem; margin-bottom: 2rem">
         <div style="background:var(--graphite-2); border:1px solid var(--border-soft); border-radius:var(--radius-md); padding:1.1rem 1.25rem">
           <div style="font-family:var(--font-mono); color:#38BDF8; font-size:1.4rem; font-weight:700; margin-bottom:0.25rem">T</div>
           <div style="font-size:0.78rem; color:var(--stone); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.4rem">Tumor primário</div>
@@ -633,7 +633,7 @@
 
       <style>
         .tnm-grid {
-          display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+          display: grid; grid-template-columns: repeat(auto-fill, minmax(min(220px, 100%), 1fr));
           gap: 0.85rem; margin: 1.2rem 0 0;
         }
         .tnm-card {
@@ -784,8 +784,12 @@
           }
           dialog.tnm-modal .tnm-modal-body {
             flex: 1 1 auto; min-height: 0; max-height: none;
+            padding-left: 1rem; padding-right: 1rem; overflow-x: hidden;
             padding-bottom: max(1.6rem, env(safe-area-inset-bottom));
           }
+          /* Células mais justas: as tabelas de 3–4 colunas cabem sem virar cartões. */
+          dialog.tnm-modal .tnm-modal-body table.stage-tbl th,
+          dialog.tnm-modal .tnm-modal-body table.stage-tbl td { padding: 0.45rem 0.5rem; }
           .tnm-grid { grid-template-columns: 1fr 1fr; gap: 0.6rem; }
           .tnm-card { padding: 0.85rem 0.95rem; }
         }
@@ -1165,7 +1169,7 @@
       </div>
 
       <!-- Result cards -->
-      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:1rem; margin-bottom:1.5rem">
+      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap:1rem; margin-bottom:1.5rem">
         <!-- EANM card -->
         <div style="background:var(--graphite-2); border:1px solid var(--border-soft); border-radius:var(--radius-md); padding:1.25rem 1.4rem">
           <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.9rem">
@@ -1717,7 +1721,7 @@
         </div>
       </div>
 
-      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:1rem; margin-bottom:1.5rem">
+      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap:1rem; margin-bottom:1.5rem">
 
         <div style="background:var(--graphite-2); border:1px solid var(--border-soft); border-radius:var(--radius-md); padding:1.25rem 1.4rem">
           <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.9rem">

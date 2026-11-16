@@ -107,7 +107,7 @@
   /* Grid de tumores */
   .tumor-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
     gap: 1.25rem;
     padding: 2rem 0 4rem;
   }
@@ -331,7 +331,7 @@
   /* Mini cards de estudo na detail view */
   .study-mini-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
     gap: 0.875rem;
   }
   .study-mini {
@@ -460,7 +460,7 @@
   /* Grid de mapas (hub) */
   .tumor-map-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(310px, 100%), 1fr));
     gap: 1.25rem;
     padding: 0.5rem 0 1rem;
   }
@@ -554,6 +554,11 @@
     text-decoration: none; transition: all 0.15s ease;
   }
   .mm-nav a:hover { color: var(--off-white); border-color: var(--accent-color); }
+  /* Celular: as seções do mapa quebram em linhas, sem rolagem lateral. Deixa de ser
+     fixa no topo — com 13 atalhos em várias linhas, cobriria o conteúdo. */
+  @media (max-width: 640px) {
+    .mm-nav { position: static; flex-wrap: wrap; overflow-x: visible; }
+  }
 
   /* Blocos de seção do mapa */
   .pm-block { padding: 1.75rem 0; border-bottom: 1px solid var(--border-soft); scroll-margin-top: 80px; }
@@ -569,7 +574,7 @@
   .pm-lead strong { color: var(--off-white); font-weight: 600; }
 
   /* Cards de conceito (teoria) */
-  .concept-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 0.85rem; }
+  .concept-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(250px, 100%), 1fr)); gap: 0.85rem; }
   .concept-card {
     background: var(--graphite-3); border: 1px solid var(--border-soft);
     border-radius: var(--radius-md); padding: 1.1rem;
@@ -579,7 +584,7 @@
   .concept-card p { font-size: 0.82rem; color: var(--stone); line-height: 1.55; margin: 0; }
 
   /* Perguntas do board (grupos) */
-  .q-groups { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 0.85rem; }
+  .q-groups { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr)); gap: 0.85rem; }
   .q-group { background: var(--graphite-3); border: 1px solid var(--border-soft); border-radius: var(--radius-md); padding: 1.1rem; }
   .q-group-title { display: flex; align-items: center; gap: 0.5rem; font-family: var(--font-display); font-size: 0.9rem; font-weight: 700; color: var(--off-white); margin-bottom: 0.7rem; }
   .q-group-title i { color: var(--accent-color); width: 16px; height: 16px; }
@@ -603,7 +608,7 @@
   .tt-mat.none { background: var(--graphite-4); color: var(--stone); }
 
   /* Mapa de evidências — cards de cenário */
-  .evidence-map { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 1rem; }
+  .evidence-map { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(290px, 100%), 1fr)); gap: 1rem; }
   .evidence-scenario-card {
     background: var(--graphite-3); border: 1px solid var(--border-soft);
     border-left: 3px solid var(--sc-color, var(--amber));
@@ -622,12 +627,14 @@
   .esc-msg { font-size: 0.8rem; color: var(--stone); line-height: 1.55; margin: 0; }
 
   /* Estudos-chave — grid de cards */
-  .keystudy-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 0.9rem; }
+  .keystudy-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr)); gap: 0.9rem; }   /* min(…,100%): em tela de 320 px a coluna não passa da tela */
   .keystudy-card {
     background: var(--graphite-3); border: 1px solid var(--border-soft);
     border-radius: var(--radius-md); padding: 1.15rem; display: flex; flex-direction: column; gap: 0.5rem;
   }
-  .ks-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 0.5rem; }
+  .ks-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 0.5rem; flex-wrap: wrap; }
+  .ks-top > * { min-width: 0; }
+  @media (max-width: 640px) { .ks-scn { white-space: normal !important; } }
   .ks-name { font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; color: var(--off-white); letter-spacing: -0.01em; }
   .ks-scn { font-size: 0.62rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--stone); background: var(--graphite-4); padding: 0.15rem 0.45rem; border-radius: 6px; white-space: nowrap; }
   .ks-row { font-size: 0.8rem; color: var(--stone); line-height: 1.5; }
@@ -655,13 +662,13 @@
 
   /* Checklist copiável */
   .board-checklist { background: var(--graphite-3); border: 1px solid var(--border-soft); border-radius: var(--radius-md); padding: 1.25rem; }
-  .bc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 0.4rem 1.25rem; margin-bottom: 1rem; }
-  .bc-item { display: flex; align-items: flex-start; gap: 0.5rem; font-size: 0.83rem; color: var(--stone); line-height: 1.45; padding: 0.2rem 0; }
+  .bc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(240px, 100%), 1fr)); gap: 0.4rem 1.25rem; margin-bottom: 1rem; }
+  .bc-item { display: flex; align-items: flex-start; gap: 0.5rem; font-size: 0.83rem; color: var(--stone); line-height: 1.45; padding: 0.2rem 0; min-width: 0; overflow-wrap: anywhere; }   /* termo longo sem espaço ("escamoso/não-escamoso") quebra em vez de alargar a página */
   .bc-item i { color: var(--accent-color); flex-shrink: 0; margin-top: 2px; width: 14px; height: 14px; }
   .copy-checklist-btn { cursor: pointer; }
 
   /* Cards de links finais */
-  .link-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 0.75rem; }
+  .link-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(220px, 100%), 1fr)); gap: 0.75rem; }
   .link-card {
     display: flex; align-items: center; gap: 0.7rem; text-decoration: none;
     background: var(--graphite-3); border: 1px solid var(--border-soft);
@@ -688,6 +695,16 @@
   /* ---- Jornada do paciente: sub-headers internos ---- */
   .pm-subhead { display: flex; align-items: center; gap: 0.5rem; margin: 1.75rem 0 0.5rem; padding-top: 1.25rem; border-top: 1px dashed var(--border-soft); }
   .pm-subhead i { color: var(--accent-color, var(--amber)); }
+  .pm-subhead h4 { min-width: 0; }
+  .pm-subhead > svg, .pm-subhead > i { flex-shrink: 0; }
+  /* Celular: título e seta na 1ª linha; a contagem ("10 gargalos + indicadores") desce
+     para a 2ª, em vez de espremer o título ou sair da tela. */
+  @media (max-width: 640px) {
+    .pm-collapse > summary.pm-subhead { flex-wrap: wrap; }
+    .pm-collapse > summary.pm-subhead h4 { flex: 1 1 0; }
+    .pm-collapse > summary.pm-subhead .pm-collapse-chev { order: 2; }
+    .pm-collapse > summary.pm-subhead .pm-collapse-hint { order: 3; flex: 1 1 100%; margin-left: 26px; white-space: normal; }
+  }
   .pm-subhead h4 { font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; color: var(--off-white); letter-spacing: -0.01em; }
 
   /* ---- Jornada do paciente: timeline de etapas (accordion) ---- */
@@ -710,7 +727,7 @@
   .js-link:hover { color: var(--amber); border-color: var(--amber); }
 
   /* ---- Gargalos e indicadores ---- */
-  .bottleneck-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 0.85rem; margin-top: 0.85rem; }
+  .bottleneck-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(290px, 100%), 1fr)); gap: 0.85rem; margin-top: 0.85rem; }
   .journey-bottleneck-card { background: var(--graphite-3); border: 1px solid var(--border-soft); border-left: 3px solid #FBBF24; border-radius: var(--radius-md); padding: 1rem 1.1rem; display: flex; flex-direction: column; gap: 0.5rem; }
   .jb-title { font-family: var(--font-display); font-weight: 700; font-size: 0.9rem; color: var(--off-white); line-height: 1.3; display: flex; align-items: baseline; gap: 0.45rem; }
   .jb-n { font-family: var(--font-mono); font-size: 0.7rem; color: #FCD34D; flex-shrink: 0; }
@@ -721,8 +738,8 @@
   .institutional-metric { font-size: 0.66rem; font-weight: 600; line-height: 1.3; color: #93C5FD; background: rgba(96,165,250,0.08); border: 1px solid rgba(96,165,250,0.22); padding: 0.2rem 0.5rem; border-radius: 6px; }
 
   /* ---- Elementos do laudo PSMA ---- */
-  .psma-report-elements { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 0.3rem 1.25rem; background: var(--graphite-3); border: 1px solid var(--border-soft); border-radius: var(--radius-md); padding: 1.1rem 1.25rem; }
-  .pre-item { display: flex; align-items: center; gap: 0.35rem; font-size: 0.83rem; color: var(--stone); line-height: 1.5; }
+  .psma-report-elements { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr)); gap: 0.3rem 1.25rem; background: var(--graphite-3); border: 1px solid var(--border-soft); border-radius: var(--radius-md); padding: 1.1rem 1.25rem; }
+  .pre-item { display: flex; align-items: center; gap: 0.35rem; font-size: 0.83rem; color: var(--stone); line-height: 1.5; min-width: 0; overflow-wrap: anywhere; }
   .pre-item i { color: var(--accent-color, var(--amber)); flex-shrink: 0; }
 
   /* ---- Checklists múltiplos ---- */

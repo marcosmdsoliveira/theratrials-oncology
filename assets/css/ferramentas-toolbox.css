@@ -165,20 +165,10 @@
     border-bottom: 1px solid var(--border-soft);
   }
   .ftb.is-stuck .ftb-bar { box-shadow: none; }
-  .ftb-pchips {
-    flex-wrap: nowrap; overflow-x: auto;
-    -webkit-mask-image: linear-gradient(to right, #000 88%, transparent);
-    mask-image: linear-gradient(to right, #000 88%, transparent);
-  }
+  /* .ftb-pchips: quebra em linhas também dentro do painel da busca (sem rolagem lateral). */
   .ftb-kbd { display: none; }
-  .ftb-chips {
-    flex-wrap: nowrap; justify-content: flex-start;
-    overflow-x: auto; -webkit-overflow-scrolling: touch;
-    scrollbar-width: none; padding-bottom: 0.2rem; margin-bottom: 1.2rem;
-    /* há mais chips à direita — o esmaecimento avisa */
-    -webkit-mask-image: linear-gradient(to right, #000 86%, transparent);
-    mask-image: linear-gradient(to right, #000 86%, transparent);
-  }
+  /* Os filtros quebram em linhas: nada de rolagem lateral no celular. */
+  .ftb-chips { justify-content: flex-start; margin-bottom: 1.2rem; }
   .ftb-chips::-webkit-scrollbar { display: none; }
   .ftb-panel { max-height: calc(100dvh - var(--ft-header-h, 64px) - 96px); }
   .ftb-t { white-space: normal; }
