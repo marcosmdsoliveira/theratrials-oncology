@@ -653,10 +653,10 @@
     { id: 'teranostico', name: 'Teranóstico', short: 'Teranóstico',
       match: (s) => ['lupsma_prostata', 'ra223_prostata', 'net_gep', 'lupsma_ccrcc', 'hepatobiliar', 'novos_psma', 'ppgl', 'neuroblastoma', 'lung_radio_dev', 'breast_radio_dev', 'teranostico_emergente'].includes(s.category_id),
       subs: [
-        { id: 'lupsma_prostata', name: '177Lu-PSMA · Próstata', short: 'Lu-PSMA' },
+        { id: 'lupsma_prostata', name: '177Lu-PSMA · Próstata', short: '¹⁷⁷Lu-PSMA' },
         { id: 'ra223_prostata', name: '223Ra · Próstata', short: 'Ra-223' },
         { id: 'net_gep', name: 'NETs · GEP e brônquicos (PRRT)', short: 'NETs' },
-        { id: 'lupsma_ccrcc', name: '177Lu-PSMA · ccRCC', short: 'Lu-PSMA-RCC' },
+        { id: 'lupsma_ccrcc', name: '177Lu-PSMA · ccRCC', short: '¹⁷⁷Lu-PSMA-RCC' },
         { id: 'hepatobiliar', name: 'Hepatobiliar (CHC, colangio · inclui TARE Y-90)', short: 'Hepatobiliar' },
         { id: 'novos_psma', name: 'Novos PSMA (α / 161Tb / RIT)', short: 'α-PSMA' },
         { id: 'ppgl', name: 'PPGL · 131I-MIBG e 177Lu-DOTATATE', short: 'PPGL' },
@@ -862,7 +862,7 @@
     },
     ccrcc: {
       name: 'Carcinoma renal (ccRCC e não-clear)',
-      tagline: '1L IO+TKI/IO+IO · adjuvante · 2L+ HIF-2α · não-clear · teranóstico Lu-PSMA exploratório',
+      tagline: '1L IO+TKI/IO+IO · adjuvante · 2L+ HIF-2α · não-clear · teranóstico ¹⁷⁷Lu-PSMA exploratório',
       icon: 'bean',
       color: '#38BDF8',
       categorias: ['lupsma_ccrcc', 'rcc_avancado', 'rcc_adjuvante_naocc']

@@ -261,7 +261,7 @@ def normalize(study: dict) -> dict | None:
         name = (iv.get("name") or "").strip()
         itype = iv.get("type") or ""
         if name:
-            interventions.append({"name": name, "type": itype})
+            interventions.append({"name": name, "type": itype, "description": (iv.get("description") or "")[:400]})
 
     interv_names_str = " | ".join(iv["name"] for iv in interventions)
     cond_str = " | ".join(conditions + keywords)
@@ -305,7 +305,7 @@ def normalize(study: dict) -> dict | None:
     target = TARGET_FROM_LIGAND.get(ligand or "", "")
 
     # "Drug" — a melhor representação curta
-    drug_display = pick_drug_display(brief_title, interventions, isotope, ligand)
+    drug_display = pick_drug_display(brief_title, interventions, isotope, ligand, official_title)
 
     return {
         "nct": nct,
@@ -333,7 +333,55 @@ def normalize(study: dict) -> dict | None:
     }
 
 
-def pick_drug_display(title: str, interventions: list[dict], isotope: str | None, ligand: str | None) -> str:
+# Isótopos plausíveis por elemento em medicina nuclear. A massa só é aceita se estiver
+# aqui — evita ler o "617" de PSMA-617 como massa. Elementos com um único isótopo em
+# uso clínico podem ser completados mesmo sem fonte no registro.
+ISOTOPOS = {"Lu": ["177"], "Ga": ["68", "67"], "F": ["18"], "Ac": ["225"], "Sm": ["153"], "Ra": ["223"],
+            "Tb": ["161", "149", "152", "155"], "Cu": ["61", "64", "67"], "Pb": ["212", "203"],
+            "I": ["131", "123", "124", "125"], "Y": ["90", "86"], "In": ["111"], "Tc": ["99m"],
+            "Th": ["227"], "Bi": ["213"], "At": ["211"], "Ho": ["166"], "Re": ["188", "186"],
+            "Sr": ["89"], "Zr": ["89"], "Sc": ["44", "47"]}
+NOME_ELEMENTO = {"Lu": "Lutetium", "Ga": "Gallium", "F": "Fluorine", "Ac": "Actinium", "Sm": "Samarium",
+                 "Ra": "Radium", "Tb": "Terbium", "Cu": "Copper", "Pb": "Lead", "I": "Iodine",
+                 "Y": "Yttrium", "In": "Indium", "Tc": "Technetium", "Th": "Thorium", "Bi": "Bismuth",
+                 "At": "Astatine", "Ho": "Holmium", "Re": "Rhenium", "Sr": "Strontium", "Zr": "Zirconium",
+                 "Sc": "Scandium"}
+
+
+def completar_isotopo(nome: str, isotope: str | None, contexto: str = "") -> str:
+    """Completa o número de massa quando o nome do registro omite ('Lu-PSMA-617' →
+    '177Lu-PSMA-617'). Fonte da massa, nesta ordem: o isótopo identificado (se for do
+    mesmo elemento), o próprio registro (título/descrição: '161Tb', 'Terbium-161') e,
+    só para elementos com um único isótopo clínico, ISOTOPOS. Sem fonte, fica como está."""
+    m = re.match(r"([A-Z][a-z]?)-(?=[A-Za-z])", nome or "")
+    if not m or m.group(1) not in ISOTOPOS:
+        return nome
+    simbolo = m.group(1)
+    validos = ISOTOPOS[simbolo]
+    iso = re.fullmatch(r"(\d+m?)([A-Z][a-z]?)", isotope or "")
+    if iso and iso.group(2) == simbolo and iso.group(1) in validos:
+        return iso.group(1) + nome
+    for padrao, flags in ((rf"(?<![\w.\-])(\d{{1,3}}m?)\s?-?{simbolo}(?![a-z])", 0),
+                          (rf"{NOME_ELEMENTO[simbolo]}[\s-]?(\d{{1,3}}m?)\b", re.IGNORECASE)):
+        for achado in re.finditer(padrao, contexto, flags):
+            if achado.group(1) in validos:
+                return achado.group(1) + nome
+    if len(validos) == 1:
+        return validos[0] + nome
+    # Gálio em peptídeo/ligante de PET (DOTA-*, PSMA, FAPI, Pentixa*) é sempre 68Ga.
+    if simbolo == "Ga" and re.match(r"Ga-(DOTA|PSMA|FAPI|Pentixa|NeoB)", nome, re.IGNORECASE):
+        return "68" + nome
+    return nome
+
+
+def pick_drug_display(title: str, interventions: list[dict], isotope: str | None, ligand: str | None,
+                      official_title: str = "") -> str:
+    """Nome curto do radiofármaco, com o número de massa completado quando faltar."""
+    contexto = " ".join([title, official_title] + [(iv.get("name") or "") + " " + (iv.get("description") or "") for iv in interventions])
+    return completar_isotopo(_pick_drug_display(title, interventions, isotope, ligand), isotope, contexto)
+
+
+def _pick_drug_display(title: str, interventions: list[dict], isotope: str | None, ligand: str | None) -> str:
     """Tenta isolar o radiofármaco principal a partir das intervenções; cai pra título se necessário."""
     drug_iv = [iv["name"] for iv in interventions if iv.get("type") == "DRUG" or iv.get("type") == "RADIATION"]
     candidates = drug_iv or [iv["name"] for iv in interventions]

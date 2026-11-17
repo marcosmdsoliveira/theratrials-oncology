@@ -4461,7 +4461,7 @@
    "ligand": "PSMA-617",
    "target": "PSMA",
    "drug_class": "Outro",
-   "drug": "Lu-PSMA-617",
+   "drug": "177Lu-PSMA-617",
    "sponsor": "Angela Y. Jia, MD PhD",
    "sponsor_class": "OTHER",
    "conditions": [
@@ -4495,7 +4495,7 @@
    "ligand": "PSMA-617",
    "target": "PSMA",
    "drug_class": "Beta-",
-   "drug": "Lu-PSMA-617",
+   "drug": "177Lu-PSMA-617",
    "sponsor": "Case Comprehensive Cancer Center",
    "sponsor_class": "OTHER",
    "conditions": [
@@ -5873,7 +5873,7 @@
    "ligand": "PSMA-I&T",
    "target": "PSMA",
    "drug_class": "Outro",
-   "drug": "Tb-PSMA-I&T (Tb-PSMA)",
+   "drug": "161Tb-PSMA-I&T (Tb-PSMA)",
    "sponsor": "Rabin Medical Center",
    "sponsor_class": "OTHER",
    "conditions": [
@@ -6383,7 +6383,7 @@
    "ligand": "PSMA-617",
    "target": "PSMA",
    "drug_class": "Outro",
-   "drug": "Lu-PSMA-617",
+   "drug": "177Lu-PSMA-617",
    "sponsor": "Melissa Lumish",
    "sponsor_class": "OTHER",
    "conditions": [
@@ -15681,7 +15681,7 @@
    "ligand": "PSMA-I&T",
    "target": "PSMA",
    "drug_class": "Outro",
-   "drug": "Cu-NU101",
+   "drug": "61Cu-NU101",
    "sponsor": "Hoag Memorial Hospital Presbyterian",
    "sponsor_class": "OTHER",
    "conditions": [
@@ -18884,7 +18884,7 @@
    "ligand": "PSMA-617",
    "target": "PSMA",
    "drug_class": "Outro",
-   "drug": "Lu-PSMA",
+   "drug": "177Lu-PSMA",
    "sponsor": "Australian and New Zealand Urogenital and Prostate Cancer Trials Group",
    "sponsor_class": "OTHER",
    "conditions": [
@@ -19553,7 +19553,7 @@
    "ligand": "DOTATATE",
    "target": "SSTR",
    "drug_class": "Beta-",
-   "drug": "Lu-DOTA-TATE",
+   "drug": "177Lu-DOTA-TATE",
    "sponsor": "London Health Sciences Centre Research Institute OR Lawson Research Institute of St. Joseph's",
    "sponsor_class": "OTHER",
    "conditions": [
@@ -47252,7 +47252,7 @@
    "ligand": "",
    "target": "",
    "drug_class": "Beta-",
-   "drug": "Sm-EDTMP",
+   "drug": "153Sm-EDTMP",
    "sponsor": "Sidney Kimmel Comprehensive Cancer Center at Johns Hopkins",
    "sponsor_class": "OTHER",
    "conditions": [
@@ -52617,7 +52617,7 @@
    "ligand": "",
    "target": "",
    "drug_class": "Alfa",
-   "drug": "Ac-Lintuzumab",
+   "drug": "225Ac-Lintuzumab",
    "sponsor": "Joseph Jurcic",
    "sponsor_class": "OTHER",
    "conditions": [
@@ -59514,7 +59514,7 @@
    "ligand": "DOTATATE",
    "target": "SSTR",
    "drug_class": "Outro",
-   "drug": "Ga-DOTATATE PETMRI scan",
+   "drug": "68Ga-DOTATATE PETMRI scan",
    "sponsor": "University Health Network, Toronto",
    "sponsor_class": "OTHER",
    "conditions": [
@@ -60360,7 +60360,7 @@
    "ligand": "PSMA-other",
    "target": "PSMA",
    "drug_class": "Beta-",
-   "drug": "F-MISO PET",
+   "drug": "18F-MISO PET",
    "sponsor": "Cigdem Soydal",
    "sponsor_class": "OTHER",
    "conditions": [
