@@ -28,7 +28,7 @@
             { name: 'TVP / TEP', g1: 'TVP venosa superficial', g2: 'TVP de extremidade · anticoagulação', g3: 'TEP estável · anticoagulação ativa', g4: 'TEP com instabilidade · trombólise/UTI' },
             { name: 'CIVD', g1: '—', g2: '—', g3: 'Coagulopatia laboratorial · transfusão de plasma/plaquetas', g4: 'Sangramento grave + falência multi-orgânica' }
           ],
-          manage: '<strong>G1-G2:</strong> manter terapia, monitorar 1-2x/sem; suporte (ferro, folato, EPO conforme indicação). <strong>G3:</strong> suspender ciclo até recuperação ≥G1; transfusão (Hb &lt;7-8, plaquetas &lt;10 ou &lt;20 com sangramento, neutrófilos com FN); G-CSF profilático em risco alto. <strong>G4:</strong> suspender permanente em maioria das terapias. <strong>Em teranóstico:</strong> Lu-PSMA — mielossupressão acumulativa em ciclos 4-6; Lu-DOTATATE — neutropenia tardia leve; Y-90 — pancitopenia rara (REILD).'
+          manage: '<strong>G1-G2:</strong> manter terapia, monitorar 1-2x/sem; suporte (ferro, folato, EPO conforme indicação). <strong>G3:</strong> suspender ciclo até recuperação ≥G1; transfusão (Hb &lt;7-8, plaquetas &lt;10 ou &lt;20 com sangramento, neutrófilos com FN); G-CSF profilático em risco alto. <strong>G4:</strong> suspender permanente em maioria das terapias. <strong>Em teranóstico:</strong> ¹⁷⁷Lu-PSMA — mielossupressão acumulativa em ciclos 4-6; ¹⁷⁷Lu-DOTATATE — neutropenia tardia leve; Y-90 — pancitopenia rara (REILD).'
         },
         gi: {
           title: 'Gastrointestinal',
@@ -78,7 +78,7 @@
             { name: 'Acidose metabólica', g1: 'pH 7,3-7,35', g2: 'pH 7,2-7,3', g3: 'pH <7,2 · intervenção médica', g4: 'Risco de vida · ventilação' },
             { name: 'Nefrite tubulointersticial', g1: 'Assintomática · só labs', g2: 'Sintomas leves · interferência mínima AVDs', g3: 'Hospitalização · biópsia/corticoide', g4: 'Risco de vida · diálise' }
           ],
-          manage: '<strong>Lu-PSMA / Lu-DOTATATE:</strong> nefrotoxicidade dose-dependente. Lu-DOTATATE — proteção com aminoácidos (lisina 25 g + arginina 25 g em 2 L SF) iniciados 30 min antes e por 4h. <strong>Y-90 TARE:</strong> precaução em CrCl &lt;30. <strong>Cisplatina:</strong> hidratação 2-3 L/d com manitol; CrCl ≥60 mL/min obrigatório. <strong>Nefrite IO G2:</strong> suspender ICI · prednisona 0,5-1 mg/kg/d. <strong>G3-G4:</strong> metilprednisolona 1-2 mg/kg/d EV; refratário → micofenolato.'
+          manage: '<strong>¹⁷⁷Lu-PSMA / ¹⁷⁷Lu-DOTATATE:</strong> nefrotoxicidade dose-dependente. ¹⁷⁷Lu-DOTATATE — proteção com aminoácidos (lisina 25 g + arginina 25 g em 2 L SF) iniciados 30 min antes e por 4h. <strong>Y-90 TARE:</strong> precaução em CrCl &lt;30. <strong>Cisplatina:</strong> hidratação 2-3 L/d com manitol; CrCl ≥60 mL/min obrigatório. <strong>Nefrite IO G2:</strong> suspender ICI · prednisona 0,5-1 mg/kg/d. <strong>G3-G4:</strong> metilprednisolona 1-2 mg/kg/d EV; refratário → micofenolato.'
         },
         irae: {
           title: 'Imuno-mediado (irAEs)',
@@ -127,12 +127,12 @@
             { name: 'REILD (Y-90)', g1: 'Achado lab assintomático', g2: 'Bili 2-3× LSN · ascite leve · ictericía', g3: 'Bili >3× LSN · ascite refratária · falência hepática progressiva', g4: 'Coma hepático · risco de vida' },
             { name: 'Hipotireoidismo (MIBG)', g1: 'Assintomático · TSH ↑ leve', g2: 'Sintomático · substituição com levotiroxina', g3: 'Sintomas severos · hospitalização', g4: 'Coma mixedematoso' },
             { name: 'Mielossupressão tardia', g1: 'Cito leve · sem intervenção', g2: 'Cito moderada · transfusão pontual', g3: 'Cito severa · transfusão recorrente · suspender próximos ciclos', g4: 'SMD / leucemia secundária · risco de vida' },
-            { name: 'Hematúria pós Lu-PSMA', g1: 'Microscópica · sem coágulos', g2: 'Macroscópica · sem instabilidade', g3: 'Coágulos · cateterismo · transfusão', g4: 'Risco de vida · intervenção urgente' },
+            { name: 'Hematúria pós ¹⁷⁷Lu-PSMA', g1: 'Microscópica · sem coágulos', g2: 'Macroscópica · sem instabilidade', g3: 'Coágulos · cateterismo · transfusão', g4: 'Risco de vida · intervenção urgente' },
             { name: 'Crise carcinoide pós-PRRT', g1: '—', g2: 'Sintomas leves · flushing · diarreia', g3: 'Sintomas severos · taquicardia · hipotensão · hospitalização', g4: 'Choque · risco de vida' },
             { name: 'Tumor flare (pós-MIBG/PRRT)', g1: 'Dor leve no sítio tumoral · sem analgésico', g2: 'Dor moderada · analgésico simples', g3: 'Dor severa · opioide · hospitalização', g4: 'Edema obstrutivo (medular, encefálico) · risco de vida' },
             { name: 'Tox alfa-emissor (225Ac)', g1: 'Xerostomia leve', g2: 'Xerostomia moderada · queratite', g3: 'Xerostomia severa irreversível · falha medular', g4: 'Múltiplas falências · risco de vida' }
           ],
-          manage: '<strong>Xerostomia:</strong> proteção com gelo parotídeo durante e 30 min após Lu-PSMA reduz dose absorvida. Pilocarpina 5 mg 3x/d; saliva artificial; hidratação. 225Ac-PSMA — xerostomia é dose-limitante e cumulativa; reduzir kBq/kg em ciclos subsequentes. <strong>REILD:</strong> ocorre 4-8 sem pós-Y-90 em pacientes com função hepática limítrofe (Child A/B); manejo de suporte. <strong>Crise carcinoide:</strong> octreotida 100-500 µg SC/EV antes de PRRT em pacientes com sintomas; manter LAR durante (mas suspender 4-6 sem antes do ciclo). <strong>Tumor flare:</strong> aumentar dexa peri-infusão.'
+          manage: '<strong>Xerostomia:</strong> proteção com gelo parotídeo durante e 30 min após ¹⁷⁷Lu-PSMA reduz dose absorvida. Pilocarpina 5 mg 3x/d; saliva artificial; hidratação. 225Ac-PSMA — xerostomia é dose-limitante e cumulativa; reduzir kBq/kg em ciclos subsequentes. <strong>REILD:</strong> ocorre 4-8 sem pós-Y-90 em pacientes com função hepática limítrofe (Child A/B); manejo de suporte. <strong>Crise carcinoide:</strong> octreotida 100-500 µg SC/EV antes de PRRT em pacientes com sintomas; manter LAR durante (mas suspender 4-6 sem antes do ciclo). <strong>Tumor flare:</strong> aumentar dexa peri-infusão.'
         },
         crs: {
           title: 'CRS / ICANS (CAR-T e BiTE)',
