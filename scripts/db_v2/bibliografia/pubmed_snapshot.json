@@ -57188,6 +57188,126 @@
 "Multicenter Study"
 ],
 "retrieved_at": "2026-09-29"
+},
+"42966675": {
+"pmid": "42966675",
+"authors": [
+{
+"name": "Briganti A",
+"authtype": "Author"
+},
+{
+"name": "Steuber T",
+"authtype": "Author"
+},
+{
+"name": "Shore ND",
+"authtype": "Author"
+},
+{
+"name": "Gleave M",
+"authtype": "Author"
+},
+{
+"name": "Kretschmer A",
+"authtype": "Author"
+},
+{
+"name": "Wetherhold L",
+"authtype": "Author"
+},
+{
+"name": "Efstathiou E",
+"authtype": "Author"
+},
+{
+"name": "Cahn DJ",
+"authtype": "Author"
+},
+{
+"name": "Damião R",
+"authtype": "Author"
+},
+{
+"name": "De La Taille A",
+"authtype": "Author"
+},
+{
+"name": "Byun SS",
+"authtype": "Author"
+},
+{
+"name": "Hadaschik BA",
+"authtype": "Author"
+},
+{
+"name": "Imbroda BH",
+"authtype": "Author"
+},
+{
+"name": "Soto ÁJ",
+"authtype": "Author"
+},
+{
+"name": "Merseburger AS",
+"authtype": "Author"
+},
+{
+"name": "Simone G",
+"authtype": "Author"
+},
+{
+"name": "Rooney B",
+"authtype": "Author"
+},
+{
+"name": "Mikerin D",
+"authtype": "Author"
+},
+{
+"name": "Li Z",
+"authtype": "Author"
+},
+{
+"name": "Miladinovic B",
+"authtype": "Author"
+},
+{
+"name": "McCarthy SA",
+"authtype": "Author"
+},
+{
+"name": "Wildgust M",
+"authtype": "Author"
+},
+{
+"name": "Mundle SD",
+"authtype": "Author"
+},
+{
+"name": "Kibel AS",
+"authtype": "Author"
+},
+{
+"name": "Taplin ME",
+"authtype": "Author"
+}
+],
+"title": "Treatment Effect of Perioperative (Neoadjuvant and Adjuvant) Apalutamide plus Androgen-deprivation Therapy Versus Radical Prostatectomy Alone in Patients with High-risk Localized or Locally Advanced Prostate Cancer from the PROTEUS Substudy.",
+"source": "Eur Urol",
+"fulljournalname": "European urology",
+"pubdate": "2026 Oct 24",
+"epubdate": "2026 Oct 24",
+"volume": "",
+"issue": "",
+"pages": "",
+"elocationid": "pii: S0302-2838(26)02476-0. doi: 10.1016/j.eururo.2026.10.016",
+"doi": "10.1016/j.eururo.2026.10.016",
+"pmcid": null,
+"pubtype": [
+"Journal Article"
+],
+"retrieved_at": "2026-11-18"
 }
 }
 }
