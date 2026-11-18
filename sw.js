@@ -8,7 +8,7 @@
    ============================================================================= */
 
 // GitHub Actions bumps this line on each deploy
-const CACHE_VERSION = 'theratrials-v2026.11.17-f2d9dcf';
+const CACHE_VERSION = 'theratrials-v2026.11.18-f88e34b';
 const CACHE_STATIC  = `${CACHE_VERSION}-static`;
 const CACHE_PAGES   = `${CACHE_VERSION}-pages`;
 const CACHE_RUNTIME = `${CACHE_VERSION}-runtime`;
@@ -45,7 +45,7 @@ const CORE_PAGES = [
 const CORE_ASSETS = [
   './assets/css/theratrials.css?v=e0b339f907',
   './assets/css/radiofarmaco.css?v=1e4ea1dba6',
-  './assets/js/data.js?v=eebb91afa9',
+  './assets/js/data.js?v=78010b02da',
   './assets/js/secondary-cards.js?v=063bc38548',
   './assets/js/common.js?v=2ecfadb6b3',
   './assets/js/citation.js?v=e884983a80',
@@ -54,9 +54,9 @@ const CORE_ASSETS = [
   './assets/js/cross-links.js?v=1363e640e8',
   './assets/data/explorer.json',
   './assets/data/explorer.js?v=c9a0d2aa0d',
-  './assets/js/i18n.js?v=a25c19a268',
-  './assets/lang/pt-br.js?v=f9dc1c59f3',
-  './assets/lang/en.js?v=c6c50dcf39',
+  './assets/js/i18n.js?v=b3724afbd3',
+  './assets/lang/pt-br.js?v=b97eb109ba',
+  './assets/lang/en.js?v=263d68463c',
   './assets/js/pwa-install.js?v=3ecc6ba4d5',
   './assets/img/logo-app.png',
   './assets/img/logo-circular.png',
