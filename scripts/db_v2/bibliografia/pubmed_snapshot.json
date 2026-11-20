@@ -53751,6 +53751,318 @@
 ],
 "retrieved_at": "2026-09-29"
 },
+"40997296": {
+"pmid": "40997296",
+"authors": [
+{
+"name": "Wang ES",
+"authtype": "Author"
+},
+{
+"name": "Montesinos P",
+"authtype": "Author"
+},
+{
+"name": "Foran J",
+"authtype": "Author"
+},
+{
+"name": "Erba H",
+"authtype": "Author"
+},
+{
+"name": "Rodríguez-Arbolí E",
+"authtype": "Author"
+},
+{
+"name": "Fedorov K",
+"authtype": "Author"
+},
+{
+"name": "Heiblig M",
+"authtype": "Author"
+},
+{
+"name": "Heidel FH",
+"authtype": "Author"
+},
+{
+"name": "Altman JK",
+"authtype": "Author"
+},
+{
+"name": "Baer MR",
+"authtype": "Author"
+},
+{
+"name": "Ades L",
+"authtype": "Author"
+},
+{
+"name": "Pettit K",
+"authtype": "Author"
+},
+{
+"name": "Peterlin P",
+"authtype": "Author"
+},
+{
+"name": "Papayannidis C",
+"authtype": "Author"
+},
+{
+"name": "Berthon C",
+"authtype": "Author"
+},
+{
+"name": "Walter RB",
+"authtype": "Author"
+},
+{
+"name": "Shah MV",
+"authtype": "Author"
+},
+{
+"name": "Balasubramanian S",
+"authtype": "Author"
+},
+{
+"name": "Khawandanah M",
+"authtype": "Author"
+},
+{
+"name": "Salamero Garcia O",
+"authtype": "Author"
+},
+{
+"name": "Bergeron J",
+"authtype": "Author"
+},
+{
+"name": "Madanat YF",
+"authtype": "Author"
+},
+{
+"name": "Roboz GJ",
+"authtype": "Author"
+},
+{
+"name": "Ulrickson M",
+"authtype": "Author"
+},
+{
+"name": "Redner RL",
+"authtype": "Author"
+},
+{
+"name": "McCloskey J",
+"authtype": "Author"
+},
+{
+"name": "Pigneux A",
+"authtype": "Author"
+},
+{
+"name": "de la Fuente Burguera A",
+"authtype": "Author"
+},
+{
+"name": "Mitra A",
+"authtype": "Author"
+},
+{
+"name": "Soifer HS",
+"authtype": "Author"
+},
+{
+"name": "Tabachri M",
+"authtype": "Author"
+},
+{
+"name": "Zhang Z",
+"authtype": "Author"
+},
+{
+"name": "Riches M",
+"authtype": "Author"
+},
+{
+"name": "Corum D",
+"authtype": "Author"
+},
+{
+"name": "Leoni M",
+"authtype": "Author"
+},
+{
+"name": "Issa GC",
+"authtype": "Author"
+},
+{
+"name": "Fathi AT",
+"authtype": "Author"
+},
+{
+"name": "KOMET-001",
+"authtype": "CollectiveName"
+}
+],
+"title": "Ziftomenib in Relapsed or Refractory NPM1-Mutated AML.",
+"source": "J Clin Oncol",
+"fulljournalname": "Journal of clinical oncology : official journal of the American Society of Clinical Oncology",
+"pubdate": "2025 Nov",
+"epubdate": "2025 Sep 25",
+"volume": "43",
+"issue": "31",
+"pages": "3381-3390",
+"elocationid": "doi: 10.1200/JCO-25-01694",
+"doi": "10.1200/JCO-25-01694",
+"pmcid": "PMC12573682",
+"pubtype": [
+"Journal Article",
+"Clinical Trial, Phase II",
+"Clinical Trial, Phase I",
+"Multicenter Study",
+"Research Support, Non-U.S. Gov't"
+],
+"retrieved_at": "2026-11-20"
+},
+"41037766": {
+"pmid": "41037766",
+"authors": [
+{
+"name": "Budde LE",
+"authtype": "Author"
+},
+{
+"name": "Zhang H",
+"authtype": "Author"
+},
+{
+"name": "Kim WS",
+"authtype": "Author"
+},
+{
+"name": "Maruyama D",
+"authtype": "Author"
+},
+{
+"name": "Rego EM",
+"authtype": "Author"
+},
+{
+"name": "Norasetthada L",
+"authtype": "Author"
+},
+{
+"name": "Hong H",
+"authtype": "Author"
+},
+{
+"name": "Ozcan M",
+"authtype": "Author"
+},
+{
+"name": "Jeon YW",
+"authtype": "Author"
+},
+{
+"name": "Leão Cordeiro de Farias D",
+"authtype": "Author"
+},
+{
+"name": "Fogliatto LM",
+"authtype": "Author"
+},
+{
+"name": "Pavlovsky A",
+"authtype": "Author"
+},
+{
+"name": "Goto H",
+"authtype": "Author"
+},
+{
+"name": "Olszewski AJ",
+"authtype": "Author"
+},
+{
+"name": "Shah N",
+"authtype": "Author"
+},
+{
+"name": "Hu B",
+"authtype": "Author"
+},
+{
+"name": "Yin S",
+"authtype": "Author"
+},
+{
+"name": "Wu H",
+"authtype": "Author"
+},
+{
+"name": "To I",
+"authtype": "Author"
+},
+{
+"name": "Ead WS",
+"authtype": "Author"
+},
+{
+"name": "Ashby J",
+"authtype": "Author"
+},
+{
+"name": "Janousek M",
+"authtype": "Author"
+},
+{
+"name": "Pham S",
+"authtype": "Author"
+},
+{
+"name": "Wang J",
+"authtype": "Author"
+},
+{
+"name": "Kwan A",
+"authtype": "Author"
+},
+{
+"name": "Batlevi CL",
+"authtype": "Author"
+},
+{
+"name": "Wei MC",
+"authtype": "Author"
+},
+{
+"name": "Westin J",
+"authtype": "Author"
+}
+],
+"title": "Mosunetuzumab Plus Polatuzumab Vedotin in Transplant-Ineligible Refractory/Relapsed Large B-Cell Lymphoma: Primary Results of the Phase III SUNMO Trial.",
+"source": "J Clin Oncol",
+"fulljournalname": "Journal of clinical oncology : official journal of the American Society of Clinical Oncology",
+"pubdate": "2025 Dec 20",
+"epubdate": "2025 Oct 2",
+"volume": "43",
+"issue": "36",
+"pages": "3799-3811",
+"elocationid": "doi: 10.1200/JCO-25-01957",
+"doi": "10.1200/JCO-25-01957",
+"pmcid": "PMC12711268",
+"pubtype": [
+"Journal Article",
+"Clinical Trial, Phase III",
+"Randomized Controlled Trial",
+"Multicenter Study",
+"Research Support, Non-U.S. Gov't"
+],
+"retrieved_at": "2026-11-20"
+},
 "41073165": {
 "pmid": "41073165",
 "authors": [
@@ -53900,6 +54212,130 @@
 "Research Support, N.I.H., Extramural"
 ],
 "retrieved_at": "2026-09-29"
+},
+"41115436": {
+"pmid": "41115436",
+"authors": [
+{
+"name": "De Santis M",
+"authtype": "Author"
+},
+{
+"name": "Palou Redorta J",
+"authtype": "Author"
+},
+{
+"name": "Nishiyama H",
+"authtype": "Author"
+},
+{
+"name": "Krawczyński M",
+"authtype": "Author"
+},
+{
+"name": "Seyitkuliev A",
+"authtype": "Author"
+},
+{
+"name": "Novikov A",
+"authtype": "Author"
+},
+{
+"name": "Guerrero-Ramos F",
+"authtype": "Author"
+},
+{
+"name": "Zukov R",
+"authtype": "Author"
+},
+{
+"name": "Kato M",
+"authtype": "Author"
+},
+{
+"name": "Kawahara T",
+"authtype": "Author"
+},
+{
+"name": "Goeman L",
+"authtype": "Author"
+},
+{
+"name": "Puente J",
+"authtype": "Author"
+},
+{
+"name": "Hellmis E",
+"authtype": "Author"
+},
+{
+"name": "Powles T",
+"authtype": "Author"
+},
+{
+"name": "Radziszewski P",
+"authtype": "Author"
+},
+{
+"name": "Gust KM",
+"authtype": "Author"
+},
+{
+"name": "Vasey P",
+"authtype": "Author"
+},
+{
+"name": "Bigot P",
+"authtype": "Author"
+},
+{
+"name": "Fradet Y",
+"authtype": "Author"
+},
+{
+"name": "Hunting J",
+"authtype": "Author"
+},
+{
+"name": "Armstrong J",
+"authtype": "Author"
+},
+{
+"name": "Boulos S",
+"authtype": "Author"
+},
+{
+"name": "Hois S",
+"authtype": "Author"
+},
+{
+"name": "Shore ND",
+"authtype": "Author"
+},
+{
+"name": "POTOMAC Investigators",
+"authtype": "CollectiveName"
+}
+],
+"title": "Durvalumab in combination with BCG for BCG-naive, high-risk, non-muscle-invasive bladder cancer (POTOMAC): final analysis of a randomised, open-label, phase 3 trial.",
+"source": "Lancet",
+"fulljournalname": "Lancet (London, England)",
+"pubdate": "2025 Nov 8",
+"epubdate": "2025 Oct 17",
+"volume": "406",
+"issue": "10516",
+"pages": "2221-2234",
+"elocationid": "doi: 10.1016/S0140-6736(25)01897-5",
+"doi": "10.1016/S0140-6736(25)01897-5",
+"pmcid": null,
+"pubtype": [
+"Journal Article",
+"Randomized Controlled Trial",
+"Clinical Trial, Phase III",
+"Multicenter Study",
+"Research Support, Non-U.S. Gov't"
+],
+"retrieved_at": "2026-11-20"
 },
 "41119954": {
 "pmid": "41119954",
@@ -54138,6 +54574,157 @@
 ],
 "retrieved_at": "2026-09-29"
 },
+"41124204": {
+"pmid": "41124204",
+"authors": [
+{
+"name": "Powles T",
+"authtype": "Author"
+},
+{
+"name": "Kann AG",
+"authtype": "Author"
+},
+{
+"name": "Castellano D",
+"authtype": "Author"
+},
+{
+"name": "Gross-Goupil M",
+"authtype": "Author"
+},
+{
+"name": "Nishiyama H",
+"authtype": "Author"
+},
+{
+"name": "Bracarda S",
+"authtype": "Author"
+},
+{
+"name": "Bjerggaard Jensen J",
+"authtype": "Author"
+},
+{
+"name": "Makaroff L",
+"authtype": "Author"
+},
+{
+"name": "Jiang S",
+"authtype": "Author"
+},
+{
+"name": "Ku JH",
+"authtype": "Author"
+},
+{
+"name": "Park SH",
+"authtype": "Author"
+},
+{
+"name": "Reig Torras O",
+"authtype": "Author"
+},
+{
+"name": "Ye D",
+"authtype": "Author"
+},
+{
+"name": "Maruzzo M",
+"authtype": "Author"
+},
+{
+"name": "Necchi A",
+"authtype": "Author"
+},
+{
+"name": "Morales-Barrera R",
+"authtype": "Author"
+},
+{
+"name": "Giunta EF",
+"authtype": "Author"
+},
+{
+"name": "Lee JL",
+"authtype": "Author"
+},
+{
+"name": "Tortora G",
+"authtype": "Author"
+},
+{
+"name": "Ürün Y",
+"authtype": "Author"
+},
+{
+"name": "Dolowy L",
+"authtype": "Author"
+},
+{
+"name": "Erdem D",
+"authtype": "Author"
+},
+{
+"name": "Pinto A",
+"authtype": "Author"
+},
+{
+"name": "Grando F",
+"authtype": "Author"
+},
+{
+"name": "Zou W",
+"authtype": "Author"
+},
+{
+"name": "Assaf ZJ",
+"authtype": "Author"
+},
+{
+"name": "Vuky J",
+"authtype": "Author"
+},
+{
+"name": "Degaonkar V",
+"authtype": "Author"
+},
+{
+"name": "Steinberg EE",
+"authtype": "Author"
+},
+{
+"name": "Bellmunt J",
+"authtype": "Author"
+},
+{
+"name": "Gschwend JE",
+"authtype": "Author"
+},
+{
+"name": "IMvigor011 Investigators",
+"authtype": "CollectiveName"
+}
+],
+"title": "ctDNA-Guided Adjuvant Atezolizumab in Muscle-Invasive Bladder Cancer.",
+"source": "N Engl J Med",
+"fulljournalname": "The New England journal of medicine",
+"pubdate": "2025 Dec 18",
+"epubdate": "2025 Oct 20",
+"volume": "393",
+"issue": "24",
+"pages": "2395-2408",
+"elocationid": "doi: 10.1056/NEJMoa2511885",
+"doi": "10.1056/NEJMoa2511885",
+"pmcid": null,
+"pubtype": [
+"Journal Article",
+"Randomized Controlled Trial",
+"Clinical Trial, Phase III",
+"Multicenter Study"
+],
+"retrieved_at": "2026-11-20"
+},
 "41124233": {
 "pmid": "41124233",
 "authors": [
@@ -54236,6 +54823,133 @@
 "Multicenter Study"
 ],
 "retrieved_at": "2026-09-29"
+},
+"41130363": {
+"pmid": "41130363",
+"authors": [
+{
+"name": "Harbeck N",
+"authtype": "Author"
+},
+{
+"name": "Modi S",
+"authtype": "Author"
+},
+{
+"name": "Pusztai L",
+"authtype": "Author"
+},
+{
+"name": "Ohno S",
+"authtype": "Author"
+},
+{
+"name": "Wu J",
+"authtype": "Author"
+},
+{
+"name": "Kim SB",
+"authtype": "Author"
+},
+{
+"name": "Yoshida A",
+"authtype": "Author"
+},
+{
+"name": "Fabi A",
+"authtype": "Author"
+},
+{
+"name": "Cao X",
+"authtype": "Author"
+},
+{
+"name": "Joseph R",
+"authtype": "Author"
+},
+{
+"name": "Li R",
+"authtype": "Author"
+},
+{
+"name": "Żurawski B",
+"authtype": "Author"
+},
+{
+"name": "Escrivá-de-Romaní S",
+"authtype": "Author"
+},
+{
+"name": "Meneguetti R",
+"authtype": "Author"
+},
+{
+"name": "Supavavej A",
+"authtype": "Author"
+},
+{
+"name": "Chen SC",
+"authtype": "Author"
+},
+{
+"name": "Liu Z",
+"authtype": "Author"
+},
+{
+"name": "Kelly C",
+"authtype": "Author"
+},
+{
+"name": "Curigliano G",
+"authtype": "Author"
+},
+{
+"name": "Symmans WF",
+"authtype": "Author"
+},
+{
+"name": "Gufran M",
+"authtype": "Author"
+},
+{
+"name": "Ke J",
+"authtype": "Author"
+},
+{
+"name": "Konpa A",
+"authtype": "Author"
+},
+{
+"name": "Herbolsheimer P",
+"authtype": "Author"
+},
+{
+"name": "Boileau JF",
+"authtype": "Author"
+},
+{
+"name": "DESTINY-Breast11 Trial Investigators",
+"authtype": "CollectiveName"
+}
+],
+"title": "Neoadjuvant trastuzumab deruxtecan alone or followed by paclitaxel, trastuzumab, and pertuzumab for high-risk HER2-positive early breast cancer (DESTINY-Breast11): a randomised, open-label, multicentre, phase III trial.",
+"source": "Ann Oncol",
+"fulljournalname": "Annals of oncology : official journal of the European Society for Medical Oncology",
+"pubdate": "2026 Feb",
+"epubdate": "2025 Oct 21",
+"volume": "37",
+"issue": "2",
+"pages": "166-179",
+"elocationid": "doi: 10.1016/j.annonc.2025.10.019",
+"doi": "10.1016/j.annonc.2025.10.019",
+"pmcid": null,
+"pubtype": [
+"Journal Article",
+"Clinical Trial, Phase III",
+"Multicenter Study",
+"Randomized Controlled Trial"
+],
+"retrieved_at": "2026-11-20"
 },
 "41160818": {
 "pmid": "41160818",
@@ -54491,6 +55205,595 @@
 "Research Support, N.I.H., Extramural"
 ],
 "retrieved_at": "2026-09-29"
+},
+"41275879": {
+"pmid": "41275879",
+"authors": [
+{
+"name": "Reni M",
+"authtype": "Author"
+},
+{
+"name": "Macchini M",
+"authtype": "Author"
+},
+{
+"name": "Orsi G",
+"authtype": "Author"
+},
+{
+"name": "Procaccio L",
+"authtype": "Author"
+},
+{
+"name": "Malleo G",
+"authtype": "Author"
+},
+{
+"name": "Carconi C",
+"authtype": "Author"
+},
+{
+"name": "Rapposelli IG",
+"authtype": "Author"
+},
+{
+"name": "Bencardino K",
+"authtype": "Author"
+},
+{
+"name": "Scartozzi M",
+"authtype": "Author"
+},
+{
+"name": "Balzano G",
+"authtype": "Author"
+},
+{
+"name": "Tamburrino D",
+"authtype": "Author"
+},
+{
+"name": "Merelli B",
+"authtype": "Author"
+},
+{
+"name": "Sperti E",
+"authtype": "Author"
+},
+{
+"name": "Belfiori G",
+"authtype": "Author"
+},
+{
+"name": "Liscia N",
+"authtype": "Author"
+},
+{
+"name": "Bozzarelli S",
+"authtype": "Author"
+},
+{
+"name": "Di Marco M",
+"authtype": "Author"
+},
+{
+"name": "Tamburini E",
+"authtype": "Author"
+},
+{
+"name": "Milella M",
+"authtype": "Author"
+},
+{
+"name": "Lonardi S",
+"authtype": "Author"
+},
+{
+"name": "Ercolani G",
+"authtype": "Author"
+},
+{
+"name": "Mazzola M",
+"authtype": "Author"
+},
+{
+"name": "Palumbo D",
+"authtype": "Author"
+},
+{
+"name": "Torri V",
+"authtype": "Author"
+},
+{
+"name": "Falconi M",
+"authtype": "Author"
+}
+],
+"title": "Preoperative mFOLFIRINOX versus PAXG for stage I-III resectable and borderline resectable pancreatic ductal adenocarcinoma (PACT-21 CASSANDRA): results of the first randomisation analysis of a randomised, open-label, 2 × 2 factorial phase 3 trial.",
+"source": "Lancet",
+"fulljournalname": "Lancet (London, England)",
+"pubdate": "2026 Dec 20",
+"epubdate": "2025 Nov 20",
+"volume": "406",
+"issue": "10522",
+"pages": "2945-2956",
+"elocationid": "doi: 10.1016/S0140-6736(25)01685-X",
+"doi": "10.1016/S0140-6736(25)01685-X",
+"pmcid": null,
+"pubtype": [
+"Journal Article",
+"Randomized Controlled Trial",
+"Clinical Trial, Phase III",
+"Multicenter Study",
+"Comparative Study",
+"Research Support, Non-U.S. Gov't"
+],
+"retrieved_at": "2026-11-20"
+},
+"41363801": {
+"pmid": "41363801",
+"authors": [
+{
+"name": "Costa LJ",
+"authtype": "Author"
+},
+{
+"name": "Bahlis NJ",
+"authtype": "Author"
+},
+{
+"name": "Perrot A",
+"authtype": "Author"
+},
+{
+"name": "Nooka AK",
+"authtype": "Author"
+},
+{
+"name": "Lu J",
+"authtype": "Author"
+},
+{
+"name": "Pawlyn C",
+"authtype": "Author"
+},
+{
+"name": "Mina R",
+"authtype": "Author"
+},
+{
+"name": "Caeiro G",
+"authtype": "Author"
+},
+{
+"name": "Kentos A",
+"authtype": "Author"
+},
+{
+"name": "Hungria V",
+"authtype": "Author"
+},
+{
+"name": "Reece D",
+"authtype": "Author"
+},
+{
+"name": "Niu T",
+"authtype": "Author"
+},
+{
+"name": "Mylin AK",
+"authtype": "Author"
+},
+{
+"name": "Hansen CT",
+"authtype": "Author"
+},
+{
+"name": "Teipel R",
+"authtype": "Author"
+},
+{
+"name": "Besemer B",
+"authtype": "Author"
+},
+{
+"name": "Dimopoulos MA",
+"authtype": "Author"
+},
+{
+"name": "Zamagni E",
+"authtype": "Author"
+},
+{
+"name": "Yoshihara S",
+"authtype": "Author"
+},
+{
+"name": "Kim K",
+"authtype": "Author"
+},
+{
+"name": "Min CK",
+"authtype": "Author"
+},
+{
+"name": "Geerts P",
+"authtype": "Author"
+},
+{
+"name": "Van Leeuwen-Segarceanu E",
+"authtype": "Author"
+},
+{
+"name": "Tyczynska A",
+"authtype": "Author"
+},
+{
+"name": "Reguera JL",
+"authtype": "Author"
+},
+{
+"name": "Johansson M",
+"authtype": "Author"
+},
+{
+"name": "Hansson M",
+"authtype": "Author"
+},
+{
+"name": "Turgut M",
+"authtype": "Author"
+},
+{
+"name": "Grey M",
+"authtype": "Author"
+},
+{
+"name": "Sidana S",
+"authtype": "Author"
+},
+{
+"name": "Rodriguez-Otero P",
+"authtype": "Author"
+},
+{
+"name": "Martinez-Lopez J",
+"authtype": "Author"
+},
+{
+"name": "Hashmi H",
+"authtype": "Author"
+},
+{
+"name": "Carson R",
+"authtype": "Author"
+},
+{
+"name": "Kobos R",
+"authtype": "Author"
+},
+{
+"name": "Sun W",
+"authtype": "Author"
+},
+{
+"name": "Lantz K",
+"authtype": "Author"
+},
+{
+"name": "Seifert A",
+"authtype": "Author"
+},
+{
+"name": "Briseno-Toomey D",
+"authtype": "Author"
+},
+{
+"name": "O'Rourke L",
+"authtype": "Author"
+},
+{
+"name": "Rubin M",
+"authtype": "Author"
+},
+{
+"name": "Vieyra D",
+"authtype": "Author"
+},
+{
+"name": "Kang L",
+"authtype": "Author"
+},
+{
+"name": "Mateos MV",
+"authtype": "Author"
+},
+{
+"name": "MajesTEC-3 Trial Investigators",
+"authtype": "CollectiveName"
+}
+],
+"title": "Teclistamab plus Daratumumab in Relapsed or Refractory Multiple Myeloma.",
+"source": "N Engl J Med",
+"fulljournalname": "The New England journal of medicine",
+"pubdate": "2026 Feb 19",
+"epubdate": "2025 Dec 9",
+"volume": "394",
+"issue": "8",
+"pages": "739-752",
+"elocationid": "doi: 10.1056/NEJMoa2514663",
+"doi": "10.1056/NEJMoa2514663",
+"pmcid": "PMC13218738",
+"pubtype": [
+"Journal Article",
+"Randomized Controlled Trial",
+"Clinical Trial, Phase III",
+"Multicenter Study",
+"Comparative Study"
+],
+"retrieved_at": "2026-11-20"
+},
+"41369677": {
+"pmid": "41369677",
+"authors": [
+{
+"name": "Dieras V",
+"authtype": "Author"
+},
+{
+"name": "Curigliano G",
+"authtype": "Author"
+},
+{
+"name": "Martin M",
+"authtype": "Author"
+},
+{
+"name": "Lerebours F",
+"authtype": "Author"
+},
+{
+"name": "Tsurutani J",
+"authtype": "Author"
+},
+{
+"name": "Savard MF",
+"authtype": "Author"
+},
+{
+"name": "Jerzak KJ",
+"authtype": "Author"
+},
+{
+"name": "Hu X",
+"authtype": "Author"
+},
+{
+"name": "Martins de Aquino Pimentel LC",
+"authtype": "Author"
+},
+{
+"name": "O'Sullivan CC",
+"authtype": "Author"
+},
+{
+"name": "Tokunaga E",
+"authtype": "Author"
+},
+{
+"name": "Okines A",
+"authtype": "Author"
+},
+{
+"name": "Huang CS",
+"authtype": "Author"
+},
+{
+"name": "Jacot W",
+"authtype": "Author"
+},
+{
+"name": "Sohn J",
+"authtype": "Author"
+},
+{
+"name": "Cronemberger Silva E",
+"authtype": "Author"
+},
+{
+"name": "Mueller V",
+"authtype": "Author"
+},
+{
+"name": "Yang S",
+"authtype": "Author"
+},
+{
+"name": "Granata G",
+"authtype": "Author"
+},
+{
+"name": "Shen Q",
+"authtype": "Author"
+},
+{
+"name": "Santarpia L",
+"authtype": "Author"
+},
+{
+"name": "Hamilton E",
+"authtype": "Author"
+},
+{
+"name": "HER2CLIMB-05 Investigators",
+"authtype": "CollectiveName"
+}
+],
+"title": "HER2CLIMB-05: A Phase III Study of Tucatinib Versus Placebo in Combination With Trastuzumab and Pertuzumab as First-Line Maintenance Therapy for HER2+ Metastatic Breast Cancer.",
+"source": "J Clin Oncol",
+"fulljournalname": "Journal of clinical oncology : official journal of the American Society of Clinical Oncology",
+"pubdate": "2026 Jun 10",
+"epubdate": "2025 Dec 10",
+"volume": "44",
+"issue": "17",
+"pages": "1597-1607",
+"elocationid": "doi: 10.1200/JCO-25-02600",
+"doi": "10.1200/JCO-25-02600",
+"pmcid": "PMC13258094",
+"pubtype": [
+"Journal Article",
+"Clinical Trial, Phase III",
+"Randomized Controlled Trial",
+"Multicenter Study",
+"Research Support, Non-U.S. Gov't"
+],
+"retrieved_at": "2026-11-20"
+},
+"41370739": {
+"pmid": "41370739",
+"authors": [
+{
+"name": "Loibl S",
+"authtype": "Author"
+},
+{
+"name": "Park YH",
+"authtype": "Author"
+},
+{
+"name": "Shao Z",
+"authtype": "Author"
+},
+{
+"name": "Huang CS",
+"authtype": "Author"
+},
+{
+"name": "Barrios C",
+"authtype": "Author"
+},
+{
+"name": "Abraham J",
+"authtype": "Author"
+},
+{
+"name": "Prat A",
+"authtype": "Author"
+},
+{
+"name": "Niikura N",
+"authtype": "Author"
+},
+{
+"name": "Im SA",
+"authtype": "Author"
+},
+{
+"name": "Li W",
+"authtype": "Author"
+},
+{
+"name": "Li H",
+"authtype": "Author"
+},
+{
+"name": "Wang Y",
+"authtype": "Author"
+},
+{
+"name": "Yao H",
+"authtype": "Author"
+},
+{
+"name": "Kim SB",
+"authtype": "Author"
+},
+{
+"name": "Geng CZ",
+"authtype": "Author"
+},
+{
+"name": "Rodriguez Pantigoso W",
+"authtype": "Author"
+},
+{
+"name": "Ramírez Godinez FJ",
+"authtype": "Author"
+},
+{
+"name": "Song C",
+"authtype": "Author"
+},
+{
+"name": "Ching Chang Y",
+"authtype": "Author"
+},
+{
+"name": "Antoniazzi A",
+"authtype": "Author"
+},
+{
+"name": "Chen SC",
+"authtype": "Author"
+},
+{
+"name": "Li Z",
+"authtype": "Author"
+},
+{
+"name": "Nowecki Z",
+"authtype": "Author"
+},
+{
+"name": "Lim J",
+"authtype": "Author"
+},
+{
+"name": "Mathias E",
+"authtype": "Author"
+},
+{
+"name": "Sato Y",
+"authtype": "Author"
+},
+{
+"name": "Lu W",
+"authtype": "Author"
+},
+{
+"name": "Abdel-Monem H",
+"authtype": "Author"
+},
+{
+"name": "Untch M",
+"authtype": "Author"
+},
+{
+"name": "Geyer CE Jr",
+"authtype": "Author"
+},
+{
+"name": "DESTINY-Breast05 Trial Investigators",
+"authtype": "CollectiveName"
+}
+],
+"title": "Trastuzumab Deruxtecan in Residual HER2-Positive Early Breast Cancer.",
+"source": "N Engl J Med",
+"fulljournalname": "The New England journal of medicine",
+"pubdate": "2026 Feb 26",
+"epubdate": "2025 Dec 10",
+"volume": "394",
+"issue": "9",
+"pages": "845-857",
+"elocationid": "doi: 10.1056/NEJMoa2514661",
+"doi": "10.1056/NEJMoa2514661",
+"pmcid": null,
+"pubtype": [
+"Journal Article"
+],
+"retrieved_at": "2026-11-20"
 },
 "41380962": {
 "pmid": "41380962",
@@ -54834,6 +56137,150 @@
 "Research Support, Non-U.S. Gov't"
 ],
 "retrieved_at": "2026-09-29"
+},
+"41449145": {
+"pmid": "41449145",
+"authors": [
+{
+"name": "van den Heerik ASVM",
+"authtype": "Author"
+},
+{
+"name": "Horeweg N",
+"authtype": "Author"
+},
+{
+"name": "Haverkort MAD",
+"authtype": "Author"
+},
+{
+"name": "Kuijsters N",
+"authtype": "Author"
+},
+{
+"name": "Kommoss S",
+"authtype": "Author"
+},
+{
+"name": "Koppe FLA",
+"authtype": "Author"
+},
+{
+"name": "Nowee ME",
+"authtype": "Author"
+},
+{
+"name": "Westerveld H",
+"authtype": "Author"
+},
+{
+"name": "De Jong MAA",
+"authtype": "Author"
+},
+{
+"name": "Frühauf F",
+"authtype": "Author"
+},
+{
+"name": "Cnossen JS",
+"authtype": "Author"
+},
+{
+"name": "Mens JWM",
+"authtype": "Author"
+},
+{
+"name": "Beukema JC",
+"authtype": "Author"
+},
+{
+"name": "Chargari C",
+"authtype": "Author"
+},
+{
+"name": "Gillham C",
+"authtype": "Author"
+},
+{
+"name": "Jurgenliemk-Schulz IM",
+"authtype": "Author"
+},
+{
+"name": "Vandecasteele K",
+"authtype": "Author"
+},
+{
+"name": "Hamann M",
+"authtype": "Author"
+},
+{
+"name": "Kiderlen M",
+"authtype": "Author"
+},
+{
+"name": "Staebler A",
+"authtype": "Author"
+},
+{
+"name": "Nijman HW",
+"authtype": "Author"
+},
+{
+"name": "Wortman BG",
+"authtype": "Author"
+},
+{
+"name": "Asteinidou E",
+"authtype": "Author"
+},
+{
+"name": "de Boer SM",
+"authtype": "Author"
+},
+{
+"name": "van den Hout WB",
+"authtype": "Author"
+},
+{
+"name": "Verhoeven-Adema KW",
+"authtype": "Author"
+},
+{
+"name": "Nout RA",
+"authtype": "Author"
+},
+{
+"name": "Putter H",
+"authtype": "Author"
+},
+{
+"name": "Bosse T",
+"authtype": "Author"
+},
+{
+"name": "Creutzberg CL",
+"authtype": "Author"
+}
+],
+"title": "Molecular profile-based adjuvant treatment for women with high-intermediate risk endometrial cancer (PORTEC-4a): results of a randomised, open-label, phase 3, multicentre, non-inferiority trial.",
+"source": "Lancet Oncol",
+"fulljournalname": "The Lancet. Oncology",
+"pubdate": "2026 Jan",
+"epubdate": "",
+"volume": "27",
+"issue": "1",
+"pages": "23-35",
+"elocationid": "doi: 10.1016/S1470-2045(25)00612-6",
+"doi": "10.1016/S1470-2045(25)00612-6",
+"pmcid": null,
+"pubtype": [
+"Journal Article",
+"Multicenter Study",
+"Clinical Trial, Phase III",
+"Randomized Controlled Trial",
+"Equivalence Trial"
+],
+"retrieved_at": "2026-11-20"
 },
 "41515606": {
 "pmid": "41515606",
@@ -55243,6 +56690,316 @@
 ],
 "retrieved_at": "2026-09-29"
 },
+"41604639": {
+"pmid": "41604639",
+"authors": [
+{
+"name": "Metzger O",
+"authtype": "Author"
+},
+{
+"name": "Mandrekar S",
+"authtype": "Author"
+},
+{
+"name": "Goel S",
+"authtype": "Author"
+},
+{
+"name": "Gligorov J",
+"authtype": "Author"
+},
+{
+"name": "Lim E",
+"authtype": "Author"
+},
+{
+"name": "Ciruelos E",
+"authtype": "Author"
+},
+{
+"name": "Loibl S",
+"authtype": "Author"
+},
+{
+"name": "Dockter T",
+"authtype": "Author"
+},
+{
+"name": "Gonzàlez Farré X",
+"authtype": "Author"
+},
+{
+"name": "Francis PA",
+"authtype": "Author"
+},
+{
+"name": "Lynce F",
+"authtype": "Author"
+},
+{
+"name": "Lanzillotti J",
+"authtype": "Author"
+},
+{
+"name": "DuFrane C",
+"authtype": "Author"
+},
+{
+"name": "Wall A",
+"authtype": "Author"
+},
+{
+"name": "Strand C",
+"authtype": "Author"
+},
+{
+"name": "Krop I",
+"authtype": "Author"
+},
+{
+"name": "Vaz-Luis I",
+"authtype": "Author"
+},
+{
+"name": "Tripathy D",
+"authtype": "Author"
+},
+{
+"name": "Loi S",
+"authtype": "Author"
+},
+{
+"name": "Prat A",
+"authtype": "Author"
+},
+{
+"name": "Goetz M",
+"authtype": "Author"
+},
+{
+"name": "Escrivá-de-Romaní S",
+"authtype": "Author"
+},
+{
+"name": "Porter D",
+"authtype": "Author"
+},
+{
+"name": "Spoenlein J",
+"authtype": "Author"
+},
+{
+"name": "Stover DG",
+"authtype": "Author"
+},
+{
+"name": "Sardesai S",
+"authtype": "Author"
+},
+{
+"name": "Heudel P",
+"authtype": "Author"
+},
+{
+"name": "Koehler M",
+"authtype": "Author"
+},
+{
+"name": "Huang Bartlett C",
+"authtype": "Author"
+},
+{
+"name": "Holynskyj A",
+"authtype": "Author"
+},
+{
+"name": "Gopalakrishna P",
+"authtype": "Author"
+},
+{
+"name": "Gauthier E",
+"authtype": "Author"
+},
+{
+"name": "Delaloge S",
+"authtype": "Author"
+},
+{
+"name": "Miller K",
+"authtype": "Author"
+},
+{
+"name": "Winer EP",
+"authtype": "Author"
+},
+{
+"name": "Gianni L",
+"authtype": "Author"
+},
+{
+"name": "Partridge AH",
+"authtype": "Author"
+},
+{
+"name": "DeMichele A",
+"authtype": "Author"
+},
+{
+"name": "Carey LA",
+"authtype": "Author"
+}
+],
+"title": "Palbociclib for Hormone-Receptor-Positive, HER2-Positive Advanced Breast Cancer.",
+"source": "N Engl J Med",
+"fulljournalname": "The New England journal of medicine",
+"pubdate": "2026 Jan 29",
+"epubdate": "",
+"volume": "394",
+"issue": "5",
+"pages": "451-462",
+"elocationid": "doi: 10.1056/NEJMoa2511218",
+"doi": "10.1056/NEJMoa2511218",
+"pmcid": null,
+"pubtype": [
+"Journal Article",
+"Randomized Controlled Trial",
+"Clinical Trial, Phase III",
+"Multicenter Study"
+],
+"retrieved_at": "2026-11-20"
+},
+"41707170": {
+"pmid": "41707170",
+"authors": [
+{
+"name": "Vulsteke C",
+"authtype": "Author"
+},
+{
+"name": "Adra N",
+"authtype": "Author"
+},
+{
+"name": "Danchaivijitr P",
+"authtype": "Author"
+},
+{
+"name": "Sabadash M",
+"authtype": "Author"
+},
+{
+"name": "Rodriguez-Vida A",
+"authtype": "Author"
+},
+{
+"name": "Zhang Z",
+"authtype": "Author"
+},
+{
+"name": "Atduev V",
+"authtype": "Author"
+},
+{
+"name": "Göger YE",
+"authtype": "Author"
+},
+{
+"name": "Rausch S",
+"authtype": "Author"
+},
+{
+"name": "Kang SH",
+"authtype": "Author"
+},
+{
+"name": "Loriot Y",
+"authtype": "Author"
+},
+{
+"name": "Bedke J",
+"authtype": "Author"
+},
+{
+"name": "Galsky MD",
+"authtype": "Author"
+},
+{
+"name": "O'Donnell PH",
+"authtype": "Author"
+},
+{
+"name": "von Amsberg G",
+"authtype": "Author"
+},
+{
+"name": "Alimohamed N",
+"authtype": "Author"
+},
+{
+"name": "Sulimka G",
+"authtype": "Author"
+},
+{
+"name": "Gupta S",
+"authtype": "Author"
+},
+{
+"name": "Paramonov V",
+"authtype": "Author"
+},
+{
+"name": "Nakane K",
+"authtype": "Author"
+},
+{
+"name": "Mihm M",
+"authtype": "Author"
+},
+{
+"name": "Meng C",
+"authtype": "Author"
+},
+{
+"name": "Huang CD",
+"authtype": "Author"
+},
+{
+"name": "Ramamurthy C",
+"authtype": "Author"
+},
+{
+"name": "Homet Moreno B",
+"authtype": "Author"
+},
+{
+"name": "Ullén A",
+"authtype": "Author"
+},
+{
+"name": "KEYNOTE-905/EV-303 Investigators",
+"authtype": "CollectiveName"
+}
+],
+"title": "Perioperative Enfortumab Vedotin and Pembrolizumab in Bladder Cancer.",
+"source": "N Engl J Med",
+"fulljournalname": "The New England journal of medicine",
+"pubdate": "2026 Apr 2",
+"epubdate": "2026 Feb 18",
+"volume": "394",
+"issue": "13",
+"pages": "1257-1269",
+"elocationid": "doi: 10.1056/NEJMoa2511674",
+"doi": "10.1056/NEJMoa2511674",
+"pmcid": null,
+"pubtype": [
+"Journal Article",
+"Randomized Controlled Trial",
+"Clinical Trial, Phase III",
+"Multicenter Study"
+],
+"retrieved_at": "2026-11-20"
+},
 "41779980": {
 "pmid": "41779980",
 "authors": [
@@ -55364,6 +57121,490 @@
 "Clinical Trial, Phase I"
 ],
 "retrieved_at": "2026-09-29"
+},
+"41802242": {
+"pmid": "41802242",
+"authors": [
+{
+"name": "Hurvitz SA",
+"authtype": "Author"
+},
+{
+"name": "Layman RM",
+"authtype": "Author"
+},
+{
+"name": "Curigliano G",
+"authtype": "Author"
+},
+{
+"name": "André F",
+"authtype": "Author"
+},
+{
+"name": "Cristofanilli M",
+"authtype": "Author"
+},
+{
+"name": "Kim SB",
+"authtype": "Author"
+},
+{
+"name": "Martínez Rodríguez JL",
+"authtype": "Author"
+},
+{
+"name": "Nadal JC",
+"authtype": "Author"
+},
+{
+"name": "Kim GM",
+"authtype": "Author"
+},
+{
+"name": "Lo L",
+"authtype": "Author"
+},
+{
+"name": "Remolina-Bonilla YA",
+"authtype": "Author"
+},
+{
+"name": "Rosselli G",
+"authtype": "Author"
+},
+{
+"name": "Emile G",
+"authtype": "Author"
+},
+{
+"name": "Korbenfeld E",
+"authtype": "Author"
+},
+{
+"name": "Puig JM",
+"authtype": "Author"
+},
+{
+"name": "Wesolowski R",
+"authtype": "Author"
+},
+{
+"name": "Martin M",
+"authtype": "Author"
+},
+{
+"name": "Ring A",
+"authtype": "Author"
+},
+{
+"name": "Han HS",
+"authtype": "Author"
+},
+{
+"name": "Giordano A",
+"authtype": "Author"
+},
+{
+"name": "Mutka SC",
+"authtype": "Author"
+},
+{
+"name": "Moss K",
+"authtype": "Author"
+},
+{
+"name": "Suzuki S",
+"authtype": "Author"
+},
+{
+"name": "Sullivan B",
+"authtype": "Author"
+},
+{
+"name": "Gorbatchevsky I",
+"authtype": "Author"
+},
+{
+"name": "Pistilli B",
+"authtype": "Author"
+},
+{
+"name": "VIKTORIA-1 Study Group",
+"authtype": "CollectiveName"
+}
+],
+"title": "VIKTORIA-1 Trial of Gedatolisib Plus Fulvestrant With or Without Palbociclib in Hormone Receptor-Positive/HER2-/PIK3CA Wild-Type Advanced Breast Cancer.",
+"source": "J Clin Oncol",
+"fulljournalname": "Journal of clinical oncology : official journal of the American Society of Clinical Oncology",
+"pubdate": "2026 Apr 20",
+"epubdate": "2026 Mar 9",
+"volume": "44",
+"issue": "12",
+"pages": "1108-1119",
+"elocationid": "doi: 10.1200/JCO-25-02643",
+"doi": "10.1200/JCO-25-02643",
+"pmcid": "PMC13075786",
+"pubtype": [
+"Journal Article",
+"Randomized Controlled Trial",
+"Clinical Trial, Phase III",
+"Multicenter Study"
+],
+"retrieved_at": "2026-11-20"
+},
+"41880608": {
+"pmid": "41880608",
+"authors": [
+{
+"name": "Langley RE",
+"authtype": "Author"
+},
+{
+"name": "Gilbert DC",
+"authtype": "Author"
+},
+{
+"name": "Mangar S",
+"authtype": "Author"
+},
+{
+"name": "Rosen S",
+"authtype": "Author"
+},
+{
+"name": "Bourmaki E",
+"authtype": "Author"
+},
+{
+"name": "Rush HL",
+"authtype": "Author"
+},
+{
+"name": "Kananga Sundaram S",
+"authtype": "Author"
+},
+{
+"name": "Alhasso A",
+"authtype": "Author"
+},
+{
+"name": "Kockelbergh R",
+"authtype": "Author"
+},
+{
+"name": "Abdel-Aty H",
+"authtype": "Author"
+},
+{
+"name": "Amos CL",
+"authtype": "Author"
+},
+{
+"name": "Brown L",
+"authtype": "Author"
+},
+{
+"name": "Brown S",
+"authtype": "Author"
+},
+{
+"name": "Carvalho C",
+"authtype": "Author"
+},
+{
+"name": "Chan K",
+"authtype": "Author"
+},
+{
+"name": "Collins G",
+"authtype": "Author"
+},
+{
+"name": "Cross W",
+"authtype": "Author"
+},
+{
+"name": "Deighan J",
+"authtype": "Author"
+},
+{
+"name": "Dixit S",
+"authtype": "Author"
+},
+{
+"name": "Duong T",
+"authtype": "Author"
+},
+{
+"name": "Dyer J",
+"authtype": "Author"
+},
+{
+"name": "Gale J",
+"authtype": "Author"
+},
+{
+"name": "Gillessen S",
+"authtype": "Author"
+},
+{
+"name": "Griffiths A",
+"authtype": "Author"
+},
+{
+"name": "Laniado M",
+"authtype": "Author"
+},
+{
+"name": "Lydon A",
+"authtype": "Author"
+},
+{
+"name": "McPhail N",
+"authtype": "Author"
+},
+{
+"name": "MacNair A",
+"authtype": "Author"
+},
+{
+"name": "Madaan S",
+"authtype": "Author"
+},
+{
+"name": "Marshall J",
+"authtype": "Author"
+},
+{
+"name": "Matheson D",
+"authtype": "Author"
+},
+{
+"name": "Millman R",
+"authtype": "Author"
+},
+{
+"name": "Mohamed W",
+"authtype": "Author"
+},
+{
+"name": "Murphy L",
+"authtype": "Author"
+},
+{
+"name": "Narahari K",
+"authtype": "Author"
+},
+{
+"name": "Parker C",
+"authtype": "Author"
+},
+{
+"name": "Panades M",
+"authtype": "Author"
+},
+{
+"name": "Pope A",
+"authtype": "Author"
+},
+{
+"name": "Raval A",
+"authtype": "Author"
+},
+{
+"name": "Robinson A",
+"authtype": "Author"
+},
+{
+"name": "Russell M",
+"authtype": "Author"
+},
+{
+"name": "Scrase C",
+"authtype": "Author"
+},
+{
+"name": "Sydes M",
+"authtype": "Author"
+},
+{
+"name": "Turo R",
+"authtype": "Author"
+},
+{
+"name": "Venkitaraman R",
+"authtype": "Author"
+},
+{
+"name": "Wade S",
+"authtype": "Author"
+},
+{
+"name": "Kynaston H",
+"authtype": "Author"
+},
+{
+"name": "Attard G",
+"authtype": "Author"
+},
+{
+"name": "James ND",
+"authtype": "Author"
+},
+{
+"name": "Clarke N",
+"authtype": "Author"
+},
+{
+"name": "Parmar MK",
+"authtype": "Author"
+},
+{
+"name": "Nankivell M",
+"authtype": "Author"
+},
+{
+"name": "STAMPEDE-1 and PATCH Investigators",
+"authtype": "CollectiveName"
+}
+],
+"title": "Transdermal Estradiol Patches in Locally Advanced Prostate Cancer.",
+"source": "N Engl J Med",
+"fulljournalname": "The New England journal of medicine",
+"pubdate": "2026 Apr 23",
+"epubdate": "2026 Mar 25",
+"volume": "394",
+"issue": "16",
+"pages": "1595-1607",
+"elocationid": "doi: 10.1056/NEJMoa2511781",
+"doi": "10.1056/NEJMoa2511781",
+"pmcid": "PMC7619680",
+"pubtype": [
+"Adaptive Clinical Trial",
+"Clinical Trial, Phase III",
+"Equivalence Trial",
+"Journal Article",
+"Multicenter Study",
+"Randomized Controlled Trial"
+],
+"retrieved_at": "2026-11-20"
+},
+"41880612": {
+"pmid": "41880612",
+"authors": [
+{
+"name": "Sinicrope FA",
+"authtype": "Author"
+},
+{
+"name": "Ou FS",
+"authtype": "Author"
+},
+{
+"name": "Arnold D",
+"authtype": "Author"
+},
+{
+"name": "Peters WR",
+"authtype": "Author"
+},
+{
+"name": "Behrens RJ",
+"authtype": "Author"
+},
+{
+"name": "Lieu CH",
+"authtype": "Author"
+},
+{
+"name": "Matin K",
+"authtype": "Author"
+},
+{
+"name": "Cohen DJ",
+"authtype": "Author"
+},
+{
+"name": "Potter SL",
+"authtype": "Author"
+},
+{
+"name": "Nixon AB",
+"authtype": "Author"
+},
+{
+"name": "Kottschade LA",
+"authtype": "Author"
+},
+{
+"name": "Kathol E",
+"authtype": "Author"
+},
+{
+"name": "Frankel WL",
+"authtype": "Author"
+},
+{
+"name": "Shergill A",
+"authtype": "Author"
+},
+{
+"name": "Hsu D",
+"authtype": "Author"
+},
+{
+"name": "Reinacher-Schick A",
+"authtype": "Author"
+},
+{
+"name": "Mehan P",
+"authtype": "Author"
+},
+{
+"name": "Gold PJ",
+"authtype": "Author"
+},
+{
+"name": "Khalil MF",
+"authtype": "Author"
+},
+{
+"name": "Zemla T",
+"authtype": "Author"
+},
+{
+"name": "Gatten C",
+"authtype": "Author"
+},
+{
+"name": "O'Reilly EM",
+"authtype": "Author"
+},
+{
+"name": "Meyerhardt JA",
+"authtype": "Author"
+}
+],
+"title": "Atezolizumab plus FOLFOX for Stage III Mismatch Repair-Deficient Colon Cancer.",
+"source": "N Engl J Med",
+"fulljournalname": "The New England journal of medicine",
+"pubdate": "2026 Mar 26",
+"epubdate": "",
+"volume": "394",
+"issue": "12",
+"pages": "1155-1166",
+"elocationid": "doi: 10.1056/NEJMoa2507874",
+"doi": "10.1056/NEJMoa2507874",
+"pmcid": "PMC13020640",
+"pubtype": [
+"Clinical Trial, Phase III",
+"Comparative Study",
+"Journal Article",
+"Multicenter Study",
+"Randomized Controlled Trial"
+],
+"retrieved_at": "2026-11-20"
 },
 "41926960": {
 "pmid": "41926960",
@@ -56080,6 +58321,150 @@
 ],
 "retrieved_at": "2026-09-29"
 },
+"42202319": {
+"pmid": "42202319",
+"authors": [
+{
+"name": "Shitara K",
+"authtype": "Author"
+},
+{
+"name": "Elimova E",
+"authtype": "Author"
+},
+{
+"name": "Liu T",
+"authtype": "Author"
+},
+{
+"name": "Tabernero J",
+"authtype": "Author"
+},
+{
+"name": "Lee KW",
+"authtype": "Author"
+},
+{
+"name": "Schenker M",
+"authtype": "Author"
+},
+{
+"name": "Tebbutt NC",
+"authtype": "Author"
+},
+{
+"name": "Ajani J",
+"authtype": "Author"
+},
+{
+"name": "Salimin N",
+"authtype": "Author"
+},
+{
+"name": "Ku G",
+"authtype": "Author"
+},
+{
+"name": "Gwang Kim J",
+"authtype": "Author"
+},
+{
+"name": "Ales Diaz I",
+"authtype": "Author"
+},
+{
+"name": "Zhang J",
+"authtype": "Author"
+},
+{
+"name": "Pietrantonio F",
+"authtype": "Author"
+},
+{
+"name": "Bai LY",
+"authtype": "Author"
+},
+{
+"name": "Le Sourd S",
+"authtype": "Author"
+},
+{
+"name": "Zhao J",
+"authtype": "Author"
+},
+{
+"name": "Hierro C",
+"authtype": "Author"
+},
+{
+"name": "Kiberu A",
+"authtype": "Author"
+},
+{
+"name": "Van Herpe F",
+"authtype": "Author"
+},
+{
+"name": "Bao Y",
+"authtype": "Author"
+},
+{
+"name": "Zhang H",
+"authtype": "Author"
+},
+{
+"name": "Yang L",
+"authtype": "Author"
+},
+{
+"name": "Li V",
+"authtype": "Author"
+},
+{
+"name": "Gartner EM",
+"authtype": "Author"
+},
+{
+"name": "Chen Y",
+"authtype": "Author"
+},
+{
+"name": "Grim J",
+"authtype": "Author"
+},
+{
+"name": "Rha SY",
+"authtype": "Author"
+},
+{
+"name": "Shen L",
+"authtype": "Author"
+},
+{
+"name": "HERIZON-GEA-01 Investigators",
+"authtype": "CollectiveName"
+}
+],
+"title": "Zanidatamab with and without Tislelizumab in HER2-Positive Gastroesophageal Cancer.",
+"source": "N Engl J Med",
+"fulljournalname": "The New England journal of medicine",
+"pubdate": "2026 May 28",
+"epubdate": "",
+"volume": "394",
+"issue": "20",
+"pages": "2002-2014",
+"elocationid": "doi: 10.1056/NEJMoa2517729",
+"doi": "10.1056/NEJMoa2517729",
+"pmcid": null,
+"pubtype": [
+"Clinical Trial, Phase III",
+"Equivalence Trial",
+"Journal Article",
+"Multicenter Study",
+"Randomized Controlled Trial"
+],
+"retrieved_at": "2026-11-20"
+},
 "42212913": {
 "pmid": "42212913",
 "authors": [
@@ -56447,6 +58832,174 @@
 "Comparative Study"
 ],
 "retrieved_at": "2026-09-29"
+},
+"42214392": {
+"pmid": "42214392",
+"authors": [
+{
+"name": "Xiong A",
+"authtype": "Author"
+},
+{
+"name": "Yao W",
+"authtype": "Author"
+},
+{
+"name": "Zheng W",
+"authtype": "Author"
+},
+{
+"name": "Yu Y",
+"authtype": "Author"
+},
+{
+"name": "Chen P",
+"authtype": "Author"
+},
+{
+"name": "Zhong H",
+"authtype": "Author"
+},
+{
+"name": "Ge J",
+"authtype": "Author"
+},
+{
+"name": "Wang H",
+"authtype": "Author"
+},
+{
+"name": "Chen B",
+"authtype": "Author"
+},
+{
+"name": "Wang H",
+"authtype": "Author"
+},
+{
+"name": "Fan Y",
+"authtype": "Author"
+},
+{
+"name": "Yang Y",
+"authtype": "Author"
+},
+{
+"name": "Pu X",
+"authtype": "Author"
+},
+{
+"name": "Song X",
+"authtype": "Author"
+},
+{
+"name": "Wang Q",
+"authtype": "Author"
+},
+{
+"name": "Du X",
+"authtype": "Author"
+},
+{
+"name": "Huang Z",
+"authtype": "Author"
+},
+{
+"name": "Li X",
+"authtype": "Author"
+},
+{
+"name": "Luo H",
+"authtype": "Author"
+},
+{
+"name": "Yao Y",
+"authtype": "Author"
+},
+{
+"name": "Yu Q",
+"authtype": "Author"
+},
+{
+"name": "Su C",
+"authtype": "Author"
+},
+{
+"name": "He L",
+"authtype": "Author"
+},
+{
+"name": "Jiang G",
+"authtype": "Author"
+},
+{
+"name": "Cui J",
+"authtype": "Author"
+},
+{
+"name": "Liu C",
+"authtype": "Author"
+},
+{
+"name": "Yi T",
+"authtype": "Author"
+},
+{
+"name": "Che G",
+"authtype": "Author"
+},
+{
+"name": "Liu Z",
+"authtype": "Author"
+},
+{
+"name": "Zhang L",
+"authtype": "Author"
+},
+{
+"name": "Zhou M",
+"authtype": "Author"
+},
+{
+"name": "Fang Y",
+"authtype": "Author"
+},
+{
+"name": "Wei Y",
+"authtype": "Author"
+},
+{
+"name": "Qing Y",
+"authtype": "Author"
+},
+{
+"name": "Jin X",
+"authtype": "Author"
+},
+{
+"name": "Zhou C",
+"authtype": "Author"
+}
+],
+"title": "Sacituzumab tirumotecan plus pembrolizumab versus pembrolizumab in PD-L1-positive advanced non-small-cell lung cancer (OptiTROP-Lung05): interim analysis of a randomised, open-label, phase 3 trial.",
+"source": "Lancet",
+"fulljournalname": "Lancet (London, England)",
+"pubdate": "2026 Jun 27",
+"epubdate": "2026 May 29",
+"volume": "407",
+"issue": "10548",
+"pages": "2607-2619",
+"elocationid": "doi: 10.1016/S0140-6736(26)00968-2",
+"doi": "10.1016/S0140-6736(26)00968-2",
+"pmcid": null,
+"pubtype": [
+"Journal Article",
+"Randomized Controlled Trial",
+"Clinical Trial, Phase III",
+"Multicenter Study",
+"Research Support, Non-U.S. Gov't"
+],
+"retrieved_at": "2026-11-20"
 },
 "42217458": {
 "pmid": "42217458",
@@ -57740,6 +60293,121 @@
 ],
 "retrieved_at": "2026-11-19"
 },
+"42235013": {
+"pmid": "42235013",
+"authors": [
+{
+"name": "Roboz GJ",
+"authtype": "Author"
+},
+{
+"name": "Zeidan AM",
+"authtype": "Author"
+},
+{
+"name": "Mannis GN",
+"authtype": "Author"
+},
+{
+"name": "Montesinos P",
+"authtype": "Author"
+},
+{
+"name": "Arnan M",
+"authtype": "Author"
+},
+{
+"name": "Savona MR",
+"authtype": "Author"
+},
+{
+"name": "Odenike O",
+"authtype": "Author"
+},
+{
+"name": "McCloskey JK",
+"authtype": "Author"
+},
+{
+"name": "Amin HV",
+"authtype": "Author"
+},
+{
+"name": "Fathi AT",
+"authtype": "Author"
+},
+{
+"name": "Bernal Del Castillo T",
+"authtype": "Author"
+},
+{
+"name": "Rodríguez-Macías G",
+"authtype": "Author"
+},
+{
+"name": "Liesveld JL",
+"authtype": "Author"
+},
+{
+"name": "Im AP",
+"authtype": "Author"
+},
+{
+"name": "Cerny J",
+"authtype": "Author"
+},
+{
+"name": "Gentile TC",
+"authtype": "Author"
+},
+{
+"name": "Oganesian A",
+"authtype": "Author"
+},
+{
+"name": "Chan D",
+"authtype": "Author"
+},
+{
+"name": "Wan Y",
+"authtype": "Author"
+},
+{
+"name": "Dijkstra M",
+"authtype": "Author"
+},
+{
+"name": "Keer HN",
+"authtype": "Author"
+},
+{
+"name": "Griffiths EA",
+"authtype": "Author"
+},
+{
+"name": "DiNardo CD",
+"authtype": "Author"
+}
+],
+"title": "All-Oral Treatment of Newly Diagnosed Acute Myeloid Leukemia.",
+"source": "N Engl J Med",
+"fulljournalname": "The New England journal of medicine",
+"pubdate": "2026 Jun 4",
+"epubdate": "",
+"volume": "394",
+"issue": "21",
+"pages": "2107-2116",
+"elocationid": "doi: 10.1056/NEJMoa2510223",
+"doi": "10.1056/NEJMoa2510223",
+"pmcid": null,
+"pubtype": [
+"Journal Article",
+"Multicenter Study",
+"Clinical Trial, Phase II",
+"Clinical Trial, Phase I"
+],
+"retrieved_at": "2026-11-20"
+},
 "42241967": {
 "pmid": "42241967",
 "authors": [
@@ -58169,6 +60837,266 @@
 ],
 "retrieved_at": "2026-09-29"
 },
+"42294841": {
+"pmid": "42294841",
+"authors": [
+{
+"name": "Mina R",
+"authtype": "Author"
+},
+{
+"name": "Beksac M",
+"authtype": "Author"
+},
+{
+"name": "Rodríguez-Otero P",
+"authtype": "Author"
+},
+{
+"name": "Chen W",
+"authtype": "Author"
+},
+{
+"name": "Mateos MV",
+"authtype": "Author"
+},
+{
+"name": "Li J",
+"authtype": "Author"
+},
+{
+"name": "Moreau P",
+"authtype": "Author"
+},
+{
+"name": "Cohen YC",
+"authtype": "Author"
+},
+{
+"name": "Min CK",
+"authtype": "Author"
+},
+{
+"name": "Jelinek T",
+"authtype": "Author"
+},
+{
+"name": "Ye JC",
+"authtype": "Author"
+},
+{
+"name": "Magen H",
+"authtype": "Author"
+},
+{
+"name": "Rubinstein SM",
+"authtype": "Author"
+},
+{
+"name": "Fu W",
+"authtype": "Author"
+},
+{
+"name": "Hungria V",
+"authtype": "Author"
+},
+{
+"name": "Cengiz Seval G",
+"authtype": "Author"
+},
+{
+"name": "Farias JS",
+"authtype": "Author"
+},
+{
+"name": "Radocha J",
+"authtype": "Author"
+},
+{
+"name": "Maral S",
+"authtype": "Author"
+},
+{
+"name": "Turgut M",
+"authtype": "Author"
+},
+{
+"name": "Koh Y",
+"authtype": "Author"
+},
+{
+"name": "O'Leary D",
+"authtype": "Author"
+},
+{
+"name": "Schmidt Filho J",
+"authtype": "Author"
+},
+{
+"name": "Thertulien R",
+"authtype": "Author"
+},
+{
+"name": "An G",
+"authtype": "Author"
+},
+{
+"name": "Huang SY",
+"authtype": "Author"
+},
+{
+"name": "Grosicki S",
+"authtype": "Author"
+},
+{
+"name": "Tyczyńska A",
+"authtype": "Author"
+},
+{
+"name": "Banerjee R",
+"authtype": "Author"
+},
+{
+"name": "Pianko MJ",
+"authtype": "Author"
+},
+{
+"name": "Martínez-López J",
+"authtype": "Author"
+},
+{
+"name": "Steckiewicz P",
+"authtype": "Author"
+},
+{
+"name": "Maruyama D",
+"authtype": "Author"
+},
+{
+"name": "Fukushima K",
+"authtype": "Author"
+},
+{
+"name": "Oriol A",
+"authtype": "Author"
+},
+{
+"name": "Lopez Pardo J",
+"authtype": "Author"
+},
+{
+"name": "Goldschmidt H",
+"authtype": "Author"
+},
+{
+"name": "Pawlyn C",
+"authtype": "Author"
+},
+{
+"name": "Perrot A",
+"authtype": "Author"
+},
+{
+"name": "Zamagni E",
+"authtype": "Author"
+},
+{
+"name": "Dimopoulos MA",
+"authtype": "Author"
+},
+{
+"name": "Rasche L",
+"authtype": "Author"
+},
+{
+"name": "Tolbert J",
+"authtype": "Author"
+},
+{
+"name": "Terry W",
+"authtype": "Author"
+},
+{
+"name": "Courtoux C",
+"authtype": "Author"
+},
+{
+"name": "Liu X",
+"authtype": "Author"
+},
+{
+"name": "Vasey SY",
+"authtype": "Author"
+},
+{
+"name": "Connors K",
+"authtype": "Author"
+},
+{
+"name": "Festa M",
+"authtype": "Author"
+},
+{
+"name": "Heuck C",
+"authtype": "Author"
+},
+{
+"name": "Langlois A",
+"authtype": "Author"
+},
+{
+"name": "O'Rourke L",
+"authtype": "Author"
+},
+{
+"name": "Zhou J",
+"authtype": "Author"
+},
+{
+"name": "Qin X",
+"authtype": "Author"
+},
+{
+"name": "Lu J",
+"authtype": "Author"
+},
+{
+"name": "Gong J",
+"authtype": "Author"
+},
+{
+"name": "Vieyra D",
+"authtype": "Author"
+},
+{
+"name": "Voorhees PM",
+"authtype": "Author"
+},
+{
+"name": "MonumenTAL-3 Investigators",
+"authtype": "CollectiveName"
+}
+],
+"title": "Talquetamab-Daratumumab in Relapsed or Refractory Myeloma.",
+"source": "N Engl J Med",
+"fulljournalname": "The New England journal of medicine",
+"pubdate": "2026 Aug 13",
+"epubdate": "2026 Jun 13",
+"volume": "395",
+"issue": "7",
+"pages": "671-683",
+"elocationid": "doi: 10.1056/NEJMoa2604657",
+"doi": "10.1056/NEJMoa2604657",
+"pmcid": null,
+"pubtype": [
+"Journal Article",
+"Randomized Controlled Trial",
+"Clinical Trial, Phase III",
+"Multicenter Study",
+"Comparative Study"
+],
+"retrieved_at": "2026-11-20"
+},
 "42315639": {
 "pmid": "42315639",
 "authors": [
@@ -58225,6 +61153,141 @@
 "Clinical Trial"
 ],
 "retrieved_at": "2026-09-29"
+},
+"42384869": {
+"pmid": "42384869",
+"authors": [
+{
+"name": "Choueiri TK",
+"authtype": "Author"
+},
+{
+"name": "Motzer RJ",
+"authtype": "Author"
+},
+{
+"name": "Karam JA",
+"authtype": "Author"
+},
+{
+"name": "Yip W",
+"authtype": "Author"
+},
+{
+"name": "Suárez C",
+"authtype": "Author"
+},
+{
+"name": "Ye D",
+"authtype": "Author"
+},
+{
+"name": "He Z",
+"authtype": "Author"
+},
+{
+"name": "Caglevic C",
+"authtype": "Author"
+},
+{
+"name": "Ferguson T",
+"authtype": "Author"
+},
+{
+"name": "Chang YH",
+"authtype": "Author"
+},
+{
+"name": "Rojas C",
+"authtype": "Author"
+},
+{
+"name": "Iacovelli R",
+"authtype": "Author"
+},
+{
+"name": "Ürün Y",
+"authtype": "Author"
+},
+{
+"name": "Verzoni E",
+"authtype": "Author"
+},
+{
+"name": "Vázquez Limón JC",
+"authtype": "Author"
+},
+{
+"name": "Porta C",
+"authtype": "Author"
+},
+{
+"name": "Uzzo RG",
+"authtype": "Author"
+},
+{
+"name": "Lee JL",
+"authtype": "Author"
+},
+{
+"name": "Venugopal B",
+"authtype": "Author"
+},
+{
+"name": "McKay RR",
+"authtype": "Author"
+},
+{
+"name": "Hammers H",
+"authtype": "Author"
+},
+{
+"name": "Miyake H",
+"authtype": "Author"
+},
+{
+"name": "Chahoud J",
+"authtype": "Author"
+},
+{
+"name": "Liu H",
+"authtype": "Author"
+},
+{
+"name": "Burgents JE",
+"authtype": "Author"
+},
+{
+"name": "Sharma M",
+"authtype": "Author"
+},
+{
+"name": "Powles TB",
+"authtype": "Author"
+},
+{
+"name": "LITESPARK-022 Investigators",
+"authtype": "CollectiveName"
+}
+],
+"title": "Adjuvant Pembrolizumab plus Belzutifan for Renal-Cell Carcinoma.",
+"source": "N Engl J Med",
+"fulljournalname": "The New England journal of medicine",
+"pubdate": "2026 Jul 2",
+"epubdate": "",
+"volume": "395",
+"issue": "1",
+"pages": "32-43",
+"elocationid": "doi: 10.1056/NEJMoa2518245",
+"doi": "10.1056/NEJMoa2518245",
+"pmcid": null,
+"pubtype": [
+"Journal Article",
+"Randomized Controlled Trial",
+"Clinical Trial, Phase III",
+"Multicenter Study"
+],
+"retrieved_at": "2026-11-20"
 },
 "42392118": {
 "pmid": "42392118",
@@ -58370,6 +61433,616 @@
 ],
 "retrieved_at": "2026-09-29"
 },
+"42407012": {
+"pmid": "42407012",
+"authors": [
+{
+"name": "Matasar M",
+"authtype": "Author"
+},
+{
+"name": "Li Z",
+"authtype": "Author"
+},
+{
+"name": "Vassilakopoulos TP",
+"authtype": "Author"
+},
+{
+"name": "Sancho JM",
+"authtype": "Author"
+},
+{
+"name": "Viardot A",
+"authtype": "Author"
+},
+{
+"name": "McMillan A",
+"authtype": "Author"
+},
+{
+"name": "Dal MS",
+"authtype": "Author"
+},
+{
+"name": "Pereira J",
+"authtype": "Author"
+},
+{
+"name": "Kim JS",
+"authtype": "Author"
+},
+{
+"name": "Qiu L",
+"authtype": "Author"
+},
+{
+"name": "Batlevi CL",
+"authtype": "Author"
+},
+{
+"name": "Ibrahim R",
+"authtype": "Author"
+},
+{
+"name": "Hernandez J",
+"authtype": "Author"
+},
+{
+"name": "McCall B",
+"authtype": "Author"
+},
+{
+"name": "Jiang Y",
+"authtype": "Author"
+},
+{
+"name": "Yan M",
+"authtype": "Author"
+},
+{
+"name": "Harris W",
+"authtype": "Author"
+},
+{
+"name": "Musick L",
+"authtype": "Author"
+},
+{
+"name": "Haioun C",
+"authtype": "Author"
+}
+],
+"title": "Polatuzumab Vedotin Plus Rituximab, Gemcitabine, and Oxaliplatin in Relapsed or Refractory Diffuse Large B-Cell Lymphoma: Results From the Phase III, Randomized POLARGO Trial.",
+"source": "J Clin Oncol",
+"fulljournalname": "Journal of clinical oncology : official journal of the American Society of Clinical Oncology",
+"pubdate": "2026 Sep",
+"epubdate": "2026 Jul 6",
+"volume": "44",
+"issue": "25",
+"pages": "2435-2446",
+"elocationid": "doi: 10.1200/JCO-25-02849",
+"doi": "10.1200/JCO-25-02849",
+"pmcid": "PMC13528845",
+"pubtype": [
+"Journal Article",
+"Randomized Controlled Trial",
+"Clinical Trial, Phase III",
+"Multicenter Study",
+"Research Support, Non-U.S. Gov't"
+],
+"retrieved_at": "2026-11-20"
+},
+"42418775": {
+"pmid": "42418775",
+"authors": [
+{
+"name": "Yue D",
+"authtype": "Author"
+},
+{
+"name": "Huang M",
+"authtype": "Author"
+},
+{
+"name": "Song P",
+"authtype": "Author"
+},
+{
+"name": "Chen Y",
+"authtype": "Author"
+},
+{
+"name": "Li B",
+"authtype": "Author"
+},
+{
+"name": "Fu J",
+"authtype": "Author"
+},
+{
+"name": "Guo J",
+"authtype": "Author"
+},
+{
+"name": "Cheng C",
+"authtype": "Author"
+},
+{
+"name": "Chen Q",
+"authtype": "Author"
+},
+{
+"name": "Xu S",
+"authtype": "Author"
+},
+{
+"name": "Liu H",
+"authtype": "Author"
+},
+{
+"name": "Lv F",
+"authtype": "Author"
+},
+{
+"name": "Hu J",
+"authtype": "Author"
+},
+{
+"name": "Jiang K",
+"authtype": "Author"
+},
+{
+"name": "Mao W",
+"authtype": "Author"
+},
+{
+"name": "Shen B",
+"authtype": "Author"
+},
+{
+"name": "Ye F",
+"authtype": "Author"
+},
+{
+"name": "Li J",
+"authtype": "Author"
+},
+{
+"name": "Zhang X",
+"authtype": "Author"
+},
+{
+"name": "Guo S",
+"authtype": "Author"
+},
+{
+"name": "Yu B",
+"authtype": "Author"
+},
+{
+"name": "Zhu Y",
+"authtype": "Author"
+},
+{
+"name": "Wu M",
+"authtype": "Author"
+},
+{
+"name": "Zheng W",
+"authtype": "Author"
+},
+{
+"name": "Chen F",
+"authtype": "Author"
+},
+{
+"name": "He Z",
+"authtype": "Author"
+},
+{
+"name": "Bai Y",
+"authtype": "Author"
+},
+{
+"name": "Xin H",
+"authtype": "Author"
+},
+{
+"name": "Chen K",
+"authtype": "Author"
+},
+{
+"name": "Mao N",
+"authtype": "Author"
+},
+{
+"name": "Zhang Y",
+"authtype": "Author"
+},
+{
+"name": "Wang B",
+"authtype": "Author"
+},
+{
+"name": "Zhang L",
+"authtype": "Author"
+},
+{
+"name": "Chen X",
+"authtype": "Author"
+},
+{
+"name": "Mei X",
+"authtype": "Author"
+},
+{
+"name": "Miao L",
+"authtype": "Author"
+},
+{
+"name": "Wang R",
+"authtype": "Author"
+},
+{
+"name": "Li G",
+"authtype": "Author"
+},
+{
+"name": "Yao J",
+"authtype": "Author"
+},
+{
+"name": "Zhao J",
+"authtype": "Author"
+},
+{
+"name": "Chen C",
+"authtype": "Author"
+},
+{
+"name": "Liu J",
+"authtype": "Author"
+},
+{
+"name": "Wei L",
+"authtype": "Author"
+},
+{
+"name": "Yan X",
+"authtype": "Author"
+},
+{
+"name": "Jin B",
+"authtype": "Author"
+},
+{
+"name": "Liu X",
+"authtype": "Author"
+},
+{
+"name": "Liu Z",
+"authtype": "Author"
+},
+{
+"name": "Tian H",
+"authtype": "Author"
+},
+{
+"name": "Xing W",
+"authtype": "Author"
+},
+{
+"name": "Yang L",
+"authtype": "Author"
+},
+{
+"name": "Ge D",
+"authtype": "Author"
+},
+{
+"name": "Li X",
+"authtype": "Author"
+},
+{
+"name": "Li S",
+"authtype": "Author"
+},
+{
+"name": "Song Y",
+"authtype": "Author"
+},
+{
+"name": "Zang A",
+"authtype": "Author"
+},
+{
+"name": "Zhang D",
+"authtype": "Author"
+},
+{
+"name": "Zhuang W",
+"authtype": "Author"
+},
+{
+"name": "Liu Z",
+"authtype": "Author"
+},
+{
+"name": "Yuan X",
+"authtype": "Author"
+},
+{
+"name": "Fu T",
+"authtype": "Author"
+},
+{
+"name": "Shen Z",
+"authtype": "Author"
+},
+{
+"name": "Zhang X",
+"authtype": "Author"
+},
+{
+"name": "Cao Q",
+"authtype": "Author"
+},
+{
+"name": "Zhao L",
+"authtype": "Author"
+},
+{
+"name": "Mao L",
+"authtype": "Author"
+},
+{
+"name": "Ding L",
+"authtype": "Author"
+},
+{
+"name": "Lu Y",
+"authtype": "Author"
+},
+{
+"name": "Wang C",
+"authtype": "Author"
+},
+{
+"name": "ELEVATE Study Group",
+"authtype": "CollectiveName"
+}
+],
+"title": "Ensartinib in Resected ALK-Positive Non-Small-Cell Lung Cancer.",
+"source": "N Engl J Med",
+"fulljournalname": "The New England journal of medicine",
+"pubdate": "2026 Jul 9",
+"epubdate": "",
+"volume": "395",
+"issue": "2",
+"pages": "151-161",
+"elocationid": "doi: 10.1056/NEJMoa2518990",
+"doi": "10.1056/NEJMoa2518990",
+"pmcid": null,
+"pubtype": [
+"Journal Article",
+"Randomized Controlled Trial",
+"Clinical Trial, Phase III",
+"Multicenter Study"
+],
+"retrieved_at": "2026-11-20"
+},
+"42442381": {
+"pmid": "42442381",
+"authors": [
+{
+"name": "Gao M",
+"authtype": "Author"
+},
+{
+"name": "Park YJ",
+"authtype": "Author"
+},
+{
+"name": "Lin CC",
+"authtype": "Author"
+},
+{
+"name": "Krzyzanowska MK",
+"authtype": "Author"
+},
+{
+"name": "Li Z",
+"authtype": "Author"
+},
+{
+"name": "Tsai HJ",
+"authtype": "Author"
+},
+{
+"name": "Shi F",
+"authtype": "Author"
+},
+{
+"name": "Qin J",
+"authtype": "Author"
+},
+{
+"name": "Choong SH",
+"authtype": "Author"
+},
+{
+"name": "Lin Y",
+"authtype": "Author"
+},
+{
+"name": "Zhang Y",
+"authtype": "Author"
+},
+{
+"name": "Kang JH",
+"authtype": "Author"
+},
+{
+"name": "Hoff AO",
+"authtype": "Author"
+},
+{
+"name": "Tan M",
+"authtype": "Author"
+},
+{
+"name": "Roughton M",
+"authtype": "Author"
+},
+{
+"name": "Paul M",
+"authtype": "Author"
+},
+{
+"name": "Wirth LJ",
+"authtype": "Author"
+}
+],
+"title": "Efficacy and safety of dabrafenib plus trametinib in adults with differentiated thyroid cancer: a randomised, double-blind, placebo-controlled, phase 3 trial.",
+"source": "Lancet Oncol",
+"fulljournalname": "The Lancet. Oncology",
+"pubdate": "2026 Aug",
+"epubdate": "2026 Jul 13",
+"volume": "27",
+"issue": "8",
+"pages": "994-1003",
+"elocationid": "doi: 10.1016/S1470-2045(26)00133-6",
+"doi": "10.1016/S1470-2045(26)00133-6",
+"pmcid": null,
+"pubtype": [
+"Journal Article",
+"Randomized Controlled Trial",
+"Clinical Trial, Phase III",
+"Multicenter Study"
+],
+"retrieved_at": "2026-11-20"
+},
+"42456135": {
+"pmid": "42456135",
+"authors": [
+{
+"name": "Kumar S",
+"authtype": "Author"
+},
+{
+"name": "Jacobus S",
+"authtype": "Author"
+},
+{
+"name": "Cohen A",
+"authtype": "Author"
+},
+{
+"name": "Weiss M",
+"authtype": "Author"
+},
+{
+"name": "Callander N",
+"authtype": "Author"
+},
+{
+"name": "Singh A",
+"authtype": "Author"
+},
+{
+"name": "Parker T",
+"authtype": "Author"
+},
+{
+"name": "Green M",
+"authtype": "Author"
+},
+{
+"name": "Thertulien R",
+"authtype": "Author"
+},
+{
+"name": "Parsons B",
+"authtype": "Author"
+},
+{
+"name": "Kumar P",
+"authtype": "Author"
+},
+{
+"name": "Kapoor P",
+"authtype": "Author"
+},
+{
+"name": "Rosenberg A",
+"authtype": "Author"
+},
+{
+"name": "Dib E",
+"authtype": "Author"
+},
+{
+"name": "Almquist D",
+"authtype": "Author"
+},
+{
+"name": "Zonder J",
+"authtype": "Author"
+},
+{
+"name": "Faber E",
+"authtype": "Author"
+},
+{
+"name": "Wei Z",
+"authtype": "Author"
+},
+{
+"name": "Anderson K",
+"authtype": "Author"
+},
+{
+"name": "Lonial S",
+"authtype": "Author"
+},
+{
+"name": "Richardson P",
+"authtype": "Author"
+},
+{
+"name": "Orlowski R",
+"authtype": "Author"
+},
+{
+"name": "Wagner L",
+"authtype": "Author"
+},
+{
+"name": "Rajkumar SV",
+"authtype": "Author"
+}
+],
+"title": "Continuous or Fixed-Duration Maintenance Therapy in Multiple Myeloma.",
+"source": "N Engl J Med",
+"fulljournalname": "The New England journal of medicine",
+"pubdate": "2026 Jul 16",
+"epubdate": "",
+"volume": "395",
+"issue": "3",
+"pages": "221-232",
+"elocationid": "doi: 10.1056/NEJMoa2600157",
+"doi": "10.1056/NEJMoa2600157",
+"pmcid": "PMC13374710",
+"pubtype": [
+"Journal Article",
+"Randomized Controlled Trial",
+"Clinical Trial, Phase III",
+"Multicenter Study",
+"Comparative Study"
+],
+"retrieved_at": "2026-11-20"
+},
 "42485097": {
 "pmid": "42485097",
 "authors": [
@@ -58464,6 +62137,396 @@
 "pubtype": [
 "Journal Article",
 "Clinical Trial, Phase I"
+],
+"retrieved_at": "2026-11-20"
+},
+"42485627": {
+"pmid": "42485627",
+"authors": [
+{
+"name": "Galsky MD",
+"authtype": "Author"
+},
+{
+"name": "Valderrama BP",
+"authtype": "Author"
+},
+{
+"name": "Maruzzo M",
+"authtype": "Author"
+},
+{
+"name": "Font A",
+"authtype": "Author"
+},
+{
+"name": "Ciuleanu T",
+"authtype": "Author"
+},
+{
+"name": "Chatzkel J",
+"authtype": "Author"
+},
+{
+"name": "Koie T",
+"authtype": "Author"
+},
+{
+"name": "Hoimes CJ",
+"authtype": "Author"
+},
+{
+"name": "Puente J",
+"authtype": "Author"
+},
+{
+"name": "Zakharia Y",
+"authtype": "Author"
+},
+{
+"name": "Rosenbaum E",
+"authtype": "Author"
+},
+{
+"name": "Boehm K",
+"authtype": "Author"
+},
+{
+"name": "Loriot Y",
+"authtype": "Author"
+},
+{
+"name": "Bedke J",
+"authtype": "Author"
+},
+{
+"name": "Powles TB",
+"authtype": "Author"
+},
+{
+"name": "Necchi A",
+"authtype": "Author"
+},
+{
+"name": "Wiechno P",
+"authtype": "Author"
+},
+{
+"name": "Álvarez-Fernández C",
+"authtype": "Author"
+},
+{
+"name": "Kim TH",
+"authtype": "Author"
+},
+{
+"name": "Oliveira N",
+"authtype": "Author"
+},
+{
+"name": "Flaig TW",
+"authtype": "Author"
+},
+{
+"name": "Wirtz HS",
+"authtype": "Author"
+},
+{
+"name": "Mihm M",
+"authtype": "Author"
+},
+{
+"name": "Huang Q",
+"authtype": "Author"
+},
+{
+"name": "Rogiers A",
+"authtype": "Author"
+},
+{
+"name": "Homet Moreno B",
+"authtype": "Author"
+},
+{
+"name": "Gómez de Liaño A",
+"authtype": "Author"
+},
+{
+"name": "KEYNOTE-B15/EV-304 Investigators",
+"authtype": "CollectiveName"
+}
+],
+"title": "Enfortumab Vedotin and Pembrolizumab in Cisplatin-Eligible Bladder Cancer.",
+"source": "N Engl J Med",
+"fulljournalname": "The New England journal of medicine",
+"pubdate": "2026 Jul 23",
+"epubdate": "",
+"volume": "395",
+"issue": "4",
+"pages": "338-348",
+"elocationid": "doi: 10.1056/NEJMoa2601486",
+"doi": "10.1056/NEJMoa2601486",
+"pmcid": null,
+"pubtype": [
+"Clinical Trial, Phase III",
+"Comparative Study",
+"Journal Article",
+"Multicenter Study",
+"Randomized Controlled Trial",
+"Video-Audio Media"
+],
+"retrieved_at": "2026-11-20"
+},
+"42486133": {
+"pmid": "42486133",
+"authors": [
+{
+"name": "Illerhaus G",
+"authtype": "Author"
+},
+{
+"name": "Ferreri AJM",
+"authtype": "Author"
+},
+{
+"name": "Wendler J",
+"authtype": "Author"
+},
+{
+"name": "Binder M",
+"authtype": "Author"
+},
+{
+"name": "Borchmann P",
+"authtype": "Author"
+},
+{
+"name": "Hasenkamp J",
+"authtype": "Author"
+},
+{
+"name": "Stilgenbauer S",
+"authtype": "Author"
+},
+{
+"name": "Röth A",
+"authtype": "Author"
+},
+{
+"name": "Egerer G",
+"authtype": "Author"
+},
+{
+"name": "Ernst T",
+"authtype": "Author"
+},
+{
+"name": "Weber T",
+"authtype": "Author"
+},
+{
+"name": "Hertenstein B",
+"authtype": "Author"
+},
+{
+"name": "Lenz G",
+"authtype": "Author"
+},
+{
+"name": "Dreyling M",
+"authtype": "Author"
+},
+{
+"name": "Möhle R",
+"authtype": "Author"
+},
+{
+"name": "Kobbe G",
+"authtype": "Author"
+},
+{
+"name": "Schmidt CA",
+"authtype": "Author"
+},
+{
+"name": "Brunnberg U",
+"authtype": "Author"
+},
+{
+"name": "Panse J",
+"authtype": "Author"
+},
+{
+"name": "Kneba M",
+"authtype": "Author"
+},
+{
+"name": "Heinicke T",
+"authtype": "Author"
+},
+{
+"name": "Schroll S",
+"authtype": "Author"
+},
+{
+"name": "Larsen TS",
+"authtype": "Author"
+},
+{
+"name": "Thurner L",
+"authtype": "Author"
+},
+{
+"name": "Pukrop T",
+"authtype": "Author"
+},
+{
+"name": "Salwender H",
+"authtype": "Author"
+},
+{
+"name": "Naumann R",
+"authtype": "Author"
+},
+{
+"name": "Hess G",
+"authtype": "Author"
+},
+{
+"name": "Kroschinsky FP",
+"authtype": "Author"
+},
+{
+"name": "Blystad AK",
+"authtype": "Author"
+},
+{
+"name": "Keller U",
+"authtype": "Author"
+},
+{
+"name": "Pulczynski EJ",
+"authtype": "Author"
+},
+{
+"name": "Pedersen MB",
+"authtype": "Author"
+},
+{
+"name": "Re F",
+"authtype": "Author"
+},
+{
+"name": "Orsucci L",
+"authtype": "Author"
+},
+{
+"name": "Pospiech L",
+"authtype": "Author"
+},
+{
+"name": "La Rosée P",
+"authtype": "Author"
+},
+{
+"name": "Deckert M",
+"authtype": "Author"
+},
+{
+"name": "Ponzoni M",
+"authtype": "Author"
+},
+{
+"name": "Gmehlin D",
+"authtype": "Author"
+},
+{
+"name": "Backenstrass M",
+"authtype": "Author"
+},
+{
+"name": "Jensch A",
+"authtype": "Author"
+},
+{
+"name": "Valk E",
+"authtype": "Author"
+},
+{
+"name": "Calimeri T",
+"authtype": "Author"
+},
+{
+"name": "Kasenda B",
+"authtype": "Author"
+},
+{
+"name": "Trepel M",
+"authtype": "Author"
+},
+{
+"name": "Fricker H",
+"authtype": "Author"
+},
+{
+"name": "Semenova I",
+"authtype": "Author"
+},
+{
+"name": "Scherer F",
+"authtype": "Author"
+},
+{
+"name": "von Gottberg P",
+"authtype": "Author"
+},
+{
+"name": "Burger E",
+"authtype": "Author"
+},
+{
+"name": "Grishina O",
+"authtype": "Author"
+},
+{
+"name": "Hader C",
+"authtype": "Author"
+},
+{
+"name": "Ihorst G",
+"authtype": "Author"
+},
+{
+"name": "Finke J",
+"authtype": "Author"
+},
+{
+"name": "Zucca E",
+"authtype": "Author"
+},
+{
+"name": "Schorb E",
+"authtype": "Author"
+}
+],
+"title": "High-dose chemotherapy followed by autologous stem-cell transplantation versus non-myeloablative consolidation in primary CNS lymphoma (MATRix/IELSG43): a randomised phase 3 trial.",
+"source": "Lancet",
+"fulljournalname": "Lancet (London, England)",
+"pubdate": "2026 Aug 8",
+"epubdate": "2026 Jul 22",
+"volume": "408",
+"issue": "10554",
+"pages": "532-544",
+"elocationid": "doi: 10.1016/S0140-6736(26)00917-7",
+"doi": "10.1016/S0140-6736(26)00917-7",
+"pmcid": null,
+"pubtype": [
+"Journal Article",
+"Randomized Controlled Trial",
+"Clinical Trial, Phase III",
+"Multicenter Study",
+"Comparative Study",
+"Research Support, Non-U.S. Gov't"
 ],
 "retrieved_at": "2026-11-20"
 },
@@ -58602,6 +62665,304 @@
 "Multicenter Study"
 ],
 "retrieved_at": "2026-09-29"
+},
+"42586114": {
+"pmid": "42586114",
+"authors": [
+{
+"name": "Motzer RJ",
+"authtype": "Author"
+},
+{
+"name": "McDermott R",
+"authtype": "Author"
+},
+{
+"name": "Park SH",
+"authtype": "Author"
+},
+{
+"name": "Burotto M",
+"authtype": "Author"
+},
+{
+"name": "Iacovelli R",
+"authtype": "Author"
+},
+{
+"name": "Verzoni E",
+"authtype": "Author"
+},
+{
+"name": "Suárez C",
+"authtype": "Author"
+},
+{
+"name": "Eto M",
+"authtype": "Author"
+},
+{
+"name": "Cutuli HJ",
+"authtype": "Author"
+},
+{
+"name": "Porta C",
+"authtype": "Author"
+},
+{
+"name": "Kopp RM",
+"authtype": "Author"
+},
+{
+"name": "Rottey S",
+"authtype": "Author"
+},
+{
+"name": "Velasco G",
+"authtype": "Author"
+},
+{
+"name": "Valderrama BP",
+"authtype": "Author"
+},
+{
+"name": "Azad AA",
+"authtype": "Author"
+},
+{
+"name": "Giorgi U",
+"authtype": "Author"
+},
+{
+"name": "Pavic M",
+"authtype": "Author"
+},
+{
+"name": "Tomczak P",
+"authtype": "Author"
+},
+{
+"name": "Figlin R",
+"authtype": "Author"
+},
+{
+"name": "Westgeest HM",
+"authtype": "Author"
+},
+{
+"name": "Guida A",
+"authtype": "Author"
+},
+{
+"name": "Necchi A",
+"authtype": "Author"
+},
+{
+"name": "Schutz FA",
+"authtype": "Author"
+},
+{
+"name": "Suelmann BBM",
+"authtype": "Author"
+},
+{
+"name": "Haanen JBAG",
+"authtype": "Author"
+},
+{
+"name": "Yuan SS",
+"authtype": "Author"
+},
+{
+"name": "Perini RF",
+"authtype": "Author"
+},
+{
+"name": "Wang D",
+"authtype": "Author"
+},
+{
+"name": "Heng DYC",
+"authtype": "Author"
+},
+{
+"name": "Schmidinger M",
+"authtype": "Author"
+},
+{
+"name": "LITESPARK-011 Investigators",
+"authtype": "CollectiveName"
+}
+],
+"title": "Belzutifan plus lenvatinib versus cabozantinib in patients with previously treated advanced renal cell carcinoma (LITESPARK-011): an open-label, randomised, controlled, phase 3 trial.",
+"source": "Lancet",
+"fulljournalname": "Lancet (London, England)",
+"pubdate": "2026 Aug 29",
+"epubdate": "2026 Aug 12",
+"volume": "408",
+"issue": "10557",
+"pages": "808-820",
+"elocationid": "doi: 10.1016/S0140-6736(26)01089-5",
+"doi": "10.1016/S0140-6736(26)01089-5",
+"pmcid": null,
+"pubtype": [
+"Journal Article",
+"Clinical Trial, Phase III",
+"Randomized Controlled Trial",
+"Multicenter Study",
+"Comparative Study",
+"Research Support, N.I.H., Extramural"
+],
+"retrieved_at": "2026-11-20"
+},
+"42593775": {
+"pmid": "42593775",
+"authors": [
+{
+"name": "Ellis RJ",
+"authtype": "Author"
+},
+{
+"name": "Pugh SL",
+"authtype": "Author"
+},
+{
+"name": "Yu JB",
+"authtype": "Author"
+},
+{
+"name": "Feng FY",
+"authtype": "Author"
+},
+{
+"name": "Konski AA",
+"authtype": "Author"
+},
+{
+"name": "Grubb RL 3rd",
+"authtype": "Author"
+},
+{
+"name": "Wallace RE",
+"authtype": "Author"
+},
+{
+"name": "Gladstone DJ",
+"authtype": "Author"
+},
+{
+"name": "Ménard C",
+"authtype": "Author"
+},
+{
+"name": "Miccio JA",
+"authtype": "Author"
+},
+{
+"name": "Frazier AJ",
+"authtype": "Author"
+},
+{
+"name": "Pennington JD",
+"authtype": "Author"
+},
+{
+"name": "Michalski JM",
+"authtype": "Author"
+},
+{
+"name": "Spratt DE",
+"authtype": "Author"
+},
+{
+"name": "Martinez A",
+"authtype": "Author"
+},
+{
+"name": "Morgan SC",
+"authtype": "Author"
+},
+{
+"name": "Mihai A",
+"authtype": "Author"
+},
+{
+"name": "Solanki AA",
+"authtype": "Author"
+},
+{
+"name": "Amjad A",
+"authtype": "Author"
+},
+{
+"name": "Straza MW",
+"authtype": "Author"
+},
+{
+"name": "Delouya G",
+"authtype": "Author"
+},
+{
+"name": "Schroeder TM",
+"authtype": "Author"
+},
+{
+"name": "Marshall DT",
+"authtype": "Author"
+},
+{
+"name": "Kapadia N",
+"authtype": "Author"
+},
+{
+"name": "Patel AN",
+"authtype": "Author"
+},
+{
+"name": "Cescon TP",
+"authtype": "Author"
+},
+{
+"name": "El-Gayed A",
+"authtype": "Author"
+},
+{
+"name": "Yoon HA",
+"authtype": "Author"
+},
+{
+"name": "Paulus R",
+"authtype": "Author"
+},
+{
+"name": "Sandler HM",
+"authtype": "Author"
+},
+{
+"name": "NRG-GU005 Collaborative Authors",
+"authtype": "CollectiveName"
+}
+],
+"title": "Stereotactic Body Radiotherapy vs Moderately Hypofractionated IMRT for Localized Intermediate-Risk Prostate Cancer: A Randomized Clinical Trial.",
+"source": "JAMA",
+"fulljournalname": "JAMA",
+"pubdate": "2026 Sep 22",
+"epubdate": "",
+"volume": "336",
+"issue": "12",
+"pages": "1029-1038",
+"elocationid": "doi: 10.1001/jama.2026.12627",
+"doi": "10.1001/jama.2026.12627",
+"pmcid": "PMC13474103",
+"pubtype": [
+"Clinical Trial, Phase III",
+"Comparative Study",
+"Equivalence Trial",
+"Journal Article",
+"Multicenter Study",
+"Randomized Controlled Trial"
+],
+"retrieved_at": "2026-11-20"
 },
 "42636832": {
 "pmid": "42636832",
@@ -59025,6 +63386,758 @@
 ],
 "retrieved_at": "2026-11-20"
 },
+"42702214": {
+"pmid": "42702214",
+"authors": [
+{
+"name": "Daly ME",
+"authtype": "Author"
+},
+{
+"name": "Simone CB 2nd",
+"authtype": "Author"
+},
+{
+"name": "Redman MW",
+"authtype": "Author"
+},
+{
+"name": "Hsieh MH",
+"authtype": "Author"
+},
+{
+"name": "Hesketh PJ",
+"authtype": "Author"
+},
+{
+"name": "Hu C",
+"authtype": "Author"
+},
+{
+"name": "Monjazeb AM",
+"authtype": "Author"
+},
+{
+"name": "Steuer CE",
+"authtype": "Author"
+},
+{
+"name": "Ganti AK",
+"authtype": "Author"
+},
+{
+"name": "Kashani R",
+"authtype": "Author"
+},
+{
+"name": "Bauman JR",
+"authtype": "Author"
+},
+{
+"name": "Feliciano JL",
+"authtype": "Author"
+},
+{
+"name": "Moon J",
+"authtype": "Author"
+},
+{
+"name": "Ku K",
+"authtype": "Author"
+},
+{
+"name": "Le-Lindqwister N",
+"authtype": "Author"
+},
+{
+"name": "Baschnagel AM",
+"authtype": "Author"
+},
+{
+"name": "Maraboyina S",
+"authtype": "Author"
+},
+{
+"name": "Sherwood GB",
+"authtype": "Author"
+},
+{
+"name": "Almquist D",
+"authtype": "Author"
+},
+{
+"name": "Higgins KA",
+"authtype": "Author"
+},
+{
+"name": "Gray JE",
+"authtype": "Author"
+},
+{
+"name": "Bradley JD",
+"authtype": "Author"
+},
+{
+"name": "Kelly K",
+"authtype": "Author"
+}
+],
+"title": "Induction and consolidation atezolizumab with stereotactic body radiation therapy versus radiation alone in high-risk, early-stage non-small-cell lung cancer (SWOG/NRG S1914): a multicentre, open-label, superiority, phase 3, randomised controlled trial.",
+"source": "Lancet",
+"fulljournalname": "Lancet (London, England)",
+"pubdate": "2026 Oct 3",
+"epubdate": "2026 Sep 6",
+"volume": "408",
+"issue": "10562",
+"pages": "1313-1325",
+"elocationid": "doi: 10.1016/S0140-6736(26)01655-7",
+"doi": "10.1016/S0140-6736(26)01655-7",
+"pmcid": null,
+"pubtype": [
+"Journal Article",
+"Multicenter Study",
+"Randomized Controlled Trial",
+"Clinical Trial, Phase III",
+"Equivalence Trial"
+],
+"retrieved_at": "2026-11-20"
+},
+"42734213": {
+"pmid": "42734213",
+"authors": [
+{
+"name": "Zhao Y",
+"authtype": "Author"
+},
+{
+"name": "Liu H",
+"authtype": "Author"
+},
+{
+"name": "Meng X",
+"authtype": "Author"
+},
+{
+"name": "Liu Z",
+"authtype": "Author"
+},
+{
+"name": "Yu Y",
+"authtype": "Author"
+},
+{
+"name": "Zheng Y",
+"authtype": "Author"
+},
+{
+"name": "Sun L",
+"authtype": "Author"
+},
+{
+"name": "Yang R",
+"authtype": "Author"
+},
+{
+"name": "Liu J",
+"authtype": "Author"
+},
+{
+"name": "Zhao Y",
+"authtype": "Author"
+},
+{
+"name": "Wu L",
+"authtype": "Author"
+},
+{
+"name": "Yang L",
+"authtype": "Author"
+},
+{
+"name": "Zhang Z",
+"authtype": "Author"
+},
+{
+"name": "Li M",
+"authtype": "Author"
+},
+{
+"name": "Zhang P",
+"authtype": "Author"
+},
+{
+"name": "Zhang Y",
+"authtype": "Author"
+},
+{
+"name": "Zhong H",
+"authtype": "Author"
+},
+{
+"name": "Cui J",
+"authtype": "Author"
+},
+{
+"name": "Huang Z",
+"authtype": "Author"
+},
+{
+"name": "Yin Y",
+"authtype": "Author"
+},
+{
+"name": "Li M",
+"authtype": "Author"
+},
+{
+"name": "Tong F",
+"authtype": "Author"
+},
+{
+"name": "Xue D",
+"authtype": "Author"
+},
+{
+"name": "Lv D",
+"authtype": "Author"
+},
+{
+"name": "Li X",
+"authtype": "Author"
+},
+{
+"name": "Zhang X",
+"authtype": "Author"
+},
+{
+"name": "Chin S",
+"authtype": "Author"
+},
+{
+"name": "Cai J",
+"authtype": "Author"
+},
+{
+"name": "Xue T",
+"authtype": "Author"
+},
+{
+"name": "Huang Y",
+"authtype": "Author"
+},
+{
+"name": "Zhao H",
+"authtype": "Author"
+},
+{
+"name": "Zhang L",
+"authtype": "Author"
+},
+{
+"name": "TAISHAN-302 Investigators",
+"authtype": "CollectiveName"
+}
+],
+"title": "Tambotatug Pelitecan in Small-Cell Lung Cancer after Platinum-Based Therapy.",
+"source": "N Engl J Med",
+"fulljournalname": "The New England journal of medicine",
+"pubdate": "2026 Oct 22",
+"epubdate": "2026 Sep 12",
+"volume": "395",
+"issue": "16",
+"pages": "1610-1620",
+"elocationid": "doi: 10.1056/NEJMoa2610229",
+"doi": "10.1056/NEJMoa2610229",
+"pmcid": null,
+"pubtype": [
+"Clinical Trial, Phase III",
+"Comparative Study",
+"Equivalence Trial",
+"Journal Article",
+"Multicenter Study",
+"Randomized Controlled Trial"
+],
+"retrieved_at": "2026-11-20"
+},
+"42790445": {
+"pmid": "42790445",
+"authors": [
+{
+"name": "Lonial S",
+"authtype": "Author"
+},
+{
+"name": "Dimopoulos MA",
+"authtype": "Author"
+},
+{
+"name": "Gavriatopoulou M",
+"authtype": "Author"
+},
+{
+"name": "Kim K",
+"authtype": "Author"
+},
+{
+"name": "Min CK",
+"authtype": "Author"
+},
+{
+"name": "Oriol A",
+"authtype": "Author"
+},
+{
+"name": "Moreira CCC",
+"authtype": "Author"
+},
+{
+"name": "Quach H",
+"authtype": "Author"
+},
+{
+"name": "Qiu L",
+"authtype": "Author"
+},
+{
+"name": "Xia Z",
+"authtype": "Author"
+},
+{
+"name": "Schjesvold F",
+"authtype": "Author"
+},
+{
+"name": "Casas-Avilés I",
+"authtype": "Author"
+},
+{
+"name": "Xu Y",
+"authtype": "Author"
+},
+{
+"name": "Hungria V",
+"authtype": "Author"
+},
+{
+"name": "Seval GC",
+"authtype": "Author"
+},
+{
+"name": "Fang B",
+"authtype": "Author"
+},
+{
+"name": "Kyriakou C",
+"authtype": "Author"
+},
+{
+"name": "Prince HM",
+"authtype": "Author"
+},
+{
+"name": "Zhuang J",
+"authtype": "Author"
+},
+{
+"name": "Lin HC",
+"authtype": "Author"
+},
+{
+"name": "Mateos MV",
+"authtype": "Author"
+},
+{
+"name": "Špička I",
+"authtype": "Author"
+},
+{
+"name": "Maiolino A",
+"authtype": "Author"
+},
+{
+"name": "Vural F",
+"authtype": "Author"
+},
+{
+"name": "Basu S",
+"authtype": "Author"
+},
+{
+"name": "Dytfeld D",
+"authtype": "Author"
+},
+{
+"name": "Fu C",
+"authtype": "Author"
+},
+{
+"name": "Ho PJ",
+"authtype": "Author"
+},
+{
+"name": "Joseph N",
+"authtype": "Author"
+},
+{
+"name": "Low M",
+"authtype": "Author"
+},
+{
+"name": "Pour L",
+"authtype": "Author"
+},
+{
+"name": "Girnius S",
+"authtype": "Author"
+},
+{
+"name": "Berdeja JG",
+"authtype": "Author"
+},
+{
+"name": "Otero PR",
+"authtype": "Author"
+},
+{
+"name": "Cheng Y",
+"authtype": "Author"
+},
+{
+"name": "Amatangelo M",
+"authtype": "Author"
+},
+{
+"name": "Hersey S",
+"authtype": "Author"
+},
+{
+"name": "Kazanecki C",
+"authtype": "Author"
+},
+{
+"name": "Weisskopf MB",
+"authtype": "Author"
+},
+{
+"name": "Kyada MJ",
+"authtype": "Author"
+},
+{
+"name": "Abad PC",
+"authtype": "Author"
+},
+{
+"name": "Chu S",
+"authtype": "Author"
+},
+{
+"name": "Morando J",
+"authtype": "Author"
+},
+{
+"name": "Maciag P",
+"authtype": "Author"
+},
+{
+"name": "Richardson PG",
+"authtype": "Author"
+},
+{
+"name": "van de Donk NW",
+"authtype": "Author"
+},
+{
+"name": "EXCALIBER-RRMM Investigators",
+"authtype": "CollectiveName"
+}
+],
+"title": "Iberdomide plus daratumumab and dexamethasone versus daratumumab, bortezomib, and dexamethasone in patients with relapsed or refractory multiple myeloma (EXCALIBER-RRMM): an open-label, randomised, controlled, phase 3 trial.",
+"source": "Lancet Oncol",
+"fulljournalname": "The Lancet. Oncology",
+"pubdate": "2026 Nov",
+"epubdate": "2026 Sep 25",
+"volume": "27",
+"issue": "11",
+"pages": "1367-1381",
+"elocationid": "doi: 10.1016/S1470-2045(26)00450-X",
+"doi": "10.1016/S1470-2045(26)00450-X",
+"pmcid": null,
+"pubtype": [
+"Journal Article",
+"Randomized Controlled Trial",
+"Clinical Trial, Phase III",
+"Multicenter Study",
+"Comparative Study"
+],
+"retrieved_at": "2026-11-20"
+},
+"42790456": {
+"pmid": "42790456",
+"authors": [
+{
+"name": "Jenkinson MD",
+"authtype": "Author"
+},
+{
+"name": "Rosala-Hallas A",
+"authtype": "Author"
+},
+{
+"name": "Sahm F",
+"authtype": "Author"
+},
+{
+"name": "Andratschke N",
+"authtype": "Author"
+},
+{
+"name": "Ashkan K",
+"authtype": "Author"
+},
+{
+"name": "Balestrini D",
+"authtype": "Author"
+},
+{
+"name": "Bulbeck H",
+"authtype": "Author"
+},
+{
+"name": "Comas S",
+"authtype": "Author"
+},
+{
+"name": "Culeddu G",
+"authtype": "Author"
+},
+{
+"name": "Das K",
+"authtype": "Author"
+},
+{
+"name": "Fariselli L",
+"authtype": "Author"
+},
+{
+"name": "Foweraker K",
+"authtype": "Author"
+},
+{
+"name": "Francis P",
+"authtype": "Author"
+},
+{
+"name": "Gkioni E",
+"authtype": "Author"
+},
+{
+"name": "Golfinopoulos V",
+"authtype": "Author"
+},
+{
+"name": "Gorlia T",
+"authtype": "Author"
+},
+{
+"name": "Haghighi N",
+"authtype": "Author"
+},
+{
+"name": "Haylock BJ",
+"authtype": "Author"
+},
+{
+"name": "Hughes DA",
+"authtype": "Author"
+},
+{
+"name": "Javadpour M",
+"authtype": "Author"
+},
+{
+"name": "Martinive P",
+"authtype": "Author"
+},
+{
+"name": "Mayles HMO",
+"authtype": "Author"
+},
+{
+"name": "Moore P",
+"authtype": "Author"
+},
+{
+"name": "Le Rhun E",
+"authtype": "Author"
+},
+{
+"name": "Rosenfelder N",
+"authtype": "Author"
+},
+{
+"name": "Ryan G",
+"authtype": "Author"
+},
+{
+"name": "Weller M",
+"authtype": "Author"
+},
+{
+"name": "Gamble C",
+"authtype": "Author"
+},
+{
+"name": "Preusser M",
+"authtype": "Author"
+},
+{
+"name": "Weber DC",
+"authtype": "Author"
+},
+{
+"name": "ROAM/1308 Study Collaborators",
+"authtype": "CollectiveName"
+}
+],
+"title": "Radiotherapy versus observation following surgical resection of WHO grade 2 atypical meningioma (ROAM/EORTC-1308): an international, multicentre, open-label, phase 3, randomised controlled trial.",
+"source": "Lancet",
+"fulljournalname": "Lancet (London, England)",
+"pubdate": "2026 Oct 10",
+"epubdate": "2026 Sep 25",
+"volume": "408",
+"issue": "10563",
+"pages": "1473-1484",
+"elocationid": "doi: 10.1016/S0140-6736(26)01804-0",
+"doi": "10.1016/S0140-6736(26)01804-0",
+"pmcid": null,
+"pubtype": [
+"Journal Article",
+"Randomized Controlled Trial",
+"Multicenter Study",
+"Clinical Trial, Phase III",
+"Comparative Study"
+],
+"retrieved_at": "2026-11-20"
+},
+"42814929": {
+"pmid": "42814929",
+"authors": [
+{
+"name": "Mayer EL",
+"authtype": "Author"
+},
+{
+"name": "Tolaney SM",
+"authtype": "Author"
+},
+{
+"name": "Martín M",
+"authtype": "Author"
+},
+{
+"name": "Vidal GA",
+"authtype": "Author"
+},
+{
+"name": "Moscetti L",
+"authtype": "Author"
+},
+{
+"name": "Jhaveri KL",
+"authtype": "Author"
+},
+{
+"name": "Brufsky A",
+"authtype": "Author"
+},
+{
+"name": "Gradishar WJ",
+"authtype": "Author"
+},
+{
+"name": "Schneeweiss A",
+"authtype": "Author"
+},
+{
+"name": "Niikura N",
+"authtype": "Author"
+},
+{
+"name": "Favret A",
+"authtype": "Author"
+},
+{
+"name": "Alfie M",
+"authtype": "Author"
+},
+{
+"name": "Lee KS",
+"authtype": "Author"
+},
+{
+"name": "Khan S",
+"authtype": "Author"
+},
+{
+"name": "Feldman MB",
+"authtype": "Author"
+},
+{
+"name": "Day BM",
+"authtype": "Author"
+},
+{
+"name": "Lam LH",
+"authtype": "Author"
+},
+{
+"name": "Darbonne WC",
+"authtype": "Author"
+},
+{
+"name": "Shah MD",
+"authtype": "Author"
+},
+{
+"name": "Griffiths KL",
+"authtype": "Author"
+},
+{
+"name": "DiLallo G",
+"authtype": "Author"
+},
+{
+"name": "Pérez-Moreno PD",
+"authtype": "Author"
+},
+{
+"name": "Rugo HS",
+"authtype": "Author"
+},
+{
+"name": "evERA Breast Cancer Investigators",
+"authtype": "CollectiveName"
+}
+],
+"title": "Giredestrant plus Everolimus in Advanced Breast Cancer.",
+"source": "N Engl J Med",
+"fulljournalname": "The New England journal of medicine",
+"pubdate": "2026 Oct 1",
+"epubdate": "",
+"volume": "395",
+"issue": "13",
+"pages": "1285-1298",
+"elocationid": "doi: 10.1056/NEJMoa2602457",
+"doi": "10.1056/NEJMoa2602457",
+"pmcid": "PMC13674676",
+"pubtype": [
+"Journal Article",
+"Randomized Controlled Trial",
+"Clinical Trial, Phase III",
+"Multicenter Study"
+],
+"retrieved_at": "2026-11-20"
+},
 "42842849": {
 "pmid": "42842849",
 "authors": [
@@ -59168,6 +64281,170 @@
 "Multicenter Study"
 ],
 "retrieved_at": "2026-11-19"
+},
+"42918421": {
+"pmid": "42918421",
+"authors": [
+{
+"name": "Panday SSGG",
+"authtype": "Author"
+},
+{
+"name": "van der Wilk BJ",
+"authtype": "Author"
+},
+{
+"name": "Lagarde SM",
+"authtype": "Author"
+},
+{
+"name": "Eyck BM",
+"authtype": "Author"
+},
+{
+"name": "Rosman C",
+"authtype": "Author"
+},
+{
+"name": "Noordman BJ",
+"authtype": "Author"
+},
+{
+"name": "Valkema MJ",
+"authtype": "Author"
+},
+{
+"name": "Bisseling TM",
+"authtype": "Author"
+},
+{
+"name": "Coene PPLO",
+"authtype": "Author"
+},
+{
+"name": "van Det MJ",
+"authtype": "Author"
+},
+{
+"name": "Dekker JWT",
+"authtype": "Author"
+},
+{
+"name": "van Dieren JM",
+"authtype": "Author"
+},
+{
+"name": "Doukas M",
+"authtype": "Author"
+},
+{
+"name": "van Esser S",
+"authtype": "Author"
+},
+{
+"name": "Fiets WE",
+"authtype": "Author"
+},
+{
+"name": "Hartgrink HH",
+"authtype": "Author"
+},
+{
+"name": "Heisterkamp J",
+"authtype": "Author"
+},
+{
+"name": "Holster IL",
+"authtype": "Author"
+},
+{
+"name": "Klarenbeek B",
+"authtype": "Author"
+},
+{
+"name": "Kouw E",
+"authtype": "Author"
+},
+{
+"name": "Kouwenhoven EA",
+"authtype": "Author"
+},
+{
+"name": "Luyer MD",
+"authtype": "Author"
+},
+{
+"name": "Mostert B",
+"authtype": "Author"
+},
+{
+"name": "Nieuwenhuijzen GAP",
+"authtype": "Author"
+},
+{
+"name": "Oostenbrug LE",
+"authtype": "Author"
+},
+{
+"name": "Pierie JP",
+"authtype": "Author"
+},
+{
+"name": "van Sandick JW",
+"authtype": "Author"
+},
+{
+"name": "Sosef MN",
+"authtype": "Author"
+},
+{
+"name": "Spaander MCW",
+"authtype": "Author"
+},
+{
+"name": "Valkema R",
+"authtype": "Author"
+},
+{
+"name": "van der Zaag ES",
+"authtype": "Author"
+},
+{
+"name": "Steyerberg EW",
+"authtype": "Author"
+},
+{
+"name": "van Klaveren D",
+"authtype": "Author"
+},
+{
+"name": "Wijnhoven BPL",
+"authtype": "Author"
+},
+{
+"name": "van Lanschot JJB",
+"authtype": "Author"
+},
+{
+"name": "SANO Study Group",
+"authtype": "CollectiveName"
+}
+],
+"title": "Active surveillance versus standard surgery after neoadjuvant chemoradiotherapy for oesophageal cancer: long-term results of a cluster-randomised controlled trial (SANO).",
+"source": "Ann Oncol",
+"fulljournalname": "Annals of oncology : official journal of the European Society for Medical Oncology",
+"pubdate": "2026 Oct 23",
+"epubdate": "2026 Oct 23",
+"volume": "",
+"issue": "",
+"pages": "",
+"elocationid": "pii: S0923-7534(26)08642-4. doi: 10.1016/j.annonc.2026.10.1290",
+"doi": "10.1016/j.annonc.2026.10.1290",
+"pmcid": null,
+"pubtype": [
+"Journal Article"
+],
+"retrieved_at": "2026-11-20"
 },
 "42918422": {
 "pmid": "42918422",
@@ -59377,6 +64654,434 @@
 ],
 "retrieved_at": "2026-11-19"
 },
+"42927856": {
+"pmid": "42927856",
+"authors": [
+{
+"name": "Rini BI",
+"authtype": "Author"
+},
+{
+"name": "Choueiri TK",
+"authtype": "Author"
+},
+{
+"name": "Voss MH",
+"authtype": "Author"
+},
+{
+"name": "Burotto M",
+"authtype": "Author"
+},
+{
+"name": "Oldenburg J",
+"authtype": "Author"
+},
+{
+"name": "Gurney HP",
+"authtype": "Author"
+},
+{
+"name": "Ferguson TR",
+"authtype": "Author"
+},
+{
+"name": "Hammers H",
+"authtype": "Author"
+},
+{
+"name": "Albiges L",
+"authtype": "Author"
+},
+{
+"name": "Ürün Y",
+"authtype": "Author"
+},
+{
+"name": "Romero Diaz RI",
+"authtype": "Author"
+},
+{
+"name": "Özgüroğlu M",
+"authtype": "Author"
+},
+{
+"name": "Weber PY",
+"authtype": "Author"
+},
+{
+"name": "Verzoni E",
+"authtype": "Author"
+},
+{
+"name": "Porta C",
+"authtype": "Author"
+},
+{
+"name": "Drakaki A",
+"authtype": "Author"
+},
+{
+"name": "Guo J",
+"authtype": "Author"
+},
+{
+"name": "Matsubara N",
+"authtype": "Author"
+},
+{
+"name": "Chen A",
+"authtype": "Author"
+},
+{
+"name": "Burgents JE",
+"authtype": "Author"
+},
+{
+"name": "Rodriguez-Lopez KG",
+"authtype": "Author"
+},
+{
+"name": "Powles TB",
+"authtype": "Author"
+}
+],
+"title": "Pembrolizumab plus lenvatinib with belzutifan or quavonlimab as first-line therapy for advanced renal-cell carcinoma: randomized open-label phase 3 LITESPARK-012 study.",
+"source": "Ann Oncol",
+"fulljournalname": "Annals of oncology : official journal of the European Society for Medical Oncology",
+"pubdate": "2026 Oct 25",
+"epubdate": "2026 Oct 25",
+"volume": "",
+"issue": "",
+"pages": "",
+"elocationid": "pii: S0923-7534(26)08071-3. doi: 10.1016/j.annonc.2026.10.1281",
+"doi": "10.1016/j.annonc.2026.10.1281",
+"pmcid": null,
+"pubtype": [
+"Journal Article"
+],
+"retrieved_at": "2026-11-20"
+},
+"42927858": {
+"pmid": "42927858",
+"authors": [
+{
+"name": "Cercek A",
+"authtype": "Author"
+},
+{
+"name": "Bachet JB",
+"authtype": "Author"
+},
+{
+"name": "Folprecht G",
+"authtype": "Author"
+},
+{
+"name": "Bando H",
+"authtype": "Author"
+},
+{
+"name": "Seligmann J",
+"authtype": "Author"
+},
+{
+"name": "Starling N",
+"authtype": "Author"
+},
+{
+"name": "Riesco-Martinez MC",
+"authtype": "Author"
+},
+{
+"name": "Alfonso PG",
+"authtype": "Author"
+},
+{
+"name": "Smith D",
+"authtype": "Author"
+},
+{
+"name": "Salvatore L",
+"authtype": "Author"
+},
+{
+"name": "Flores EG",
+"authtype": "Author"
+},
+{
+"name": "Mitry E",
+"authtype": "Author"
+},
+{
+"name": "Chen E",
+"authtype": "Author"
+},
+{
+"name": "Castillon JC",
+"authtype": "Author"
+},
+{
+"name": "Morano F",
+"authtype": "Author"
+},
+{
+"name": "Keränen SR",
+"authtype": "Author"
+},
+{
+"name": "Aubin F",
+"authtype": "Author"
+},
+{
+"name": "López CL",
+"authtype": "Author"
+},
+{
+"name": "Lonardi S",
+"authtype": "Author"
+},
+{
+"name": "Buchschacher G Jr",
+"authtype": "Author"
+},
+{
+"name": "Roderburg C",
+"authtype": "Author"
+},
+{
+"name": "Gerlinger M",
+"authtype": "Author"
+},
+{
+"name": "Modest D",
+"authtype": "Author"
+},
+{
+"name": "Heinemann V",
+"authtype": "Author"
+},
+{
+"name": "Goetze TO",
+"authtype": "Author"
+},
+{
+"name": "Kato T",
+"authtype": "Author"
+},
+{
+"name": "Park YS",
+"authtype": "Author"
+},
+{
+"name": "Perkins G",
+"authtype": "Author"
+},
+{
+"name": "Lemay F",
+"authtype": "Author"
+},
+{
+"name": "Vickers M",
+"authtype": "Author"
+},
+{
+"name": "Szijgyarto Z",
+"authtype": "Author"
+},
+{
+"name": "Stjepanovic N",
+"authtype": "Author"
+},
+{
+"name": "Haftchenary S",
+"authtype": "Author"
+},
+{
+"name": "Diaz LA Jnr",
+"authtype": "Author"
+},
+{
+"name": "Roodhart JML",
+"authtype": "Author"
+}
+],
+"title": "Clinical Complete Response with Dostarlimab Monotherapy in dMMR/MSI-H Locally Advanced Rectal Cancer: First Results from the Global AZUR-1 Trial.",
+"source": "Ann Oncol",
+"fulljournalname": "Annals of oncology : official journal of the European Society for Medical Oncology",
+"pubdate": "2026 Oct 25",
+"epubdate": "2026 Oct 25",
+"volume": "",
+"issue": "",
+"pages": "",
+"elocationid": "pii: S0923-7534(26)08070-1. doi: 10.1016/j.annonc.2026.10.1280",
+"doi": "10.1016/j.annonc.2026.10.1280",
+"pmcid": null,
+"pubtype": [
+"Journal Article"
+],
+"retrieved_at": "2026-11-20"
+},
+"42929675": {
+"pmid": "42929675",
+"authors": [
+{
+"name": "Skoulidis F",
+"authtype": "Author"
+},
+{
+"name": "Ahn MJ",
+"authtype": "Author"
+},
+{
+"name": "Gadgeel S",
+"authtype": "Author"
+},
+{
+"name": "Popat S",
+"authtype": "Author"
+},
+{
+"name": "Reinmuth N",
+"authtype": "Author"
+},
+{
+"name": "van Veggel B",
+"authtype": "Author"
+},
+{
+"name": "Bozorgmehr F",
+"authtype": "Author"
+},
+{
+"name": "Bray VJ",
+"authtype": "Author"
+},
+{
+"name": "Duruisseaux M",
+"authtype": "Author"
+},
+{
+"name": "Iams WT",
+"authtype": "Author"
+},
+{
+"name": "Mazieres J",
+"authtype": "Author"
+},
+{
+"name": "Bonanno L",
+"authtype": "Author"
+},
+{
+"name": "Decoster L",
+"authtype": "Author"
+},
+{
+"name": "Niu J",
+"authtype": "Author"
+},
+{
+"name": "Pantarotto M",
+"authtype": "Author"
+},
+{
+"name": "Teixeira CHA",
+"authtype": "Author"
+},
+{
+"name": "Uzun S",
+"authtype": "Author"
+},
+{
+"name": "Wang B",
+"authtype": "Author"
+},
+{
+"name": "Chan BA",
+"authtype": "Author"
+},
+{
+"name": "Felip E",
+"authtype": "Author"
+},
+{
+"name": "Li MSC",
+"authtype": "Author"
+},
+{
+"name": "Akamatsu H",
+"authtype": "Author"
+},
+{
+"name": "Cuppens K",
+"authtype": "Author"
+},
+{
+"name": "Kim TM",
+"authtype": "Author"
+},
+{
+"name": "Reck M",
+"authtype": "Author"
+},
+{
+"name": "Hu Y",
+"authtype": "Author"
+},
+{
+"name": "Shagan SM",
+"authtype": "Author"
+},
+{
+"name": "Lin MT",
+"authtype": "Author"
+},
+{
+"name": "Osaghae U",
+"authtype": "Author"
+},
+{
+"name": "Hoang T",
+"authtype": "Author"
+},
+{
+"name": "Wu F",
+"authtype": "Author"
+},
+{
+"name": "Meng R",
+"authtype": "Author"
+},
+{
+"name": "Mathisen MS",
+"authtype": "Author"
+},
+{
+"name": "Solomon BJ",
+"authtype": "Author"
+},
+{
+"name": "Krascendo 1 Trial Investigators",
+"authtype": "CollectiveName"
+}
+],
+"title": "Divarasib as Compared with Sotorasib or Adagrasib in KRAS G12C-Mutated NSCLC.",
+"source": "N Engl J Med",
+"fulljournalname": "The New England journal of medicine",
+"pubdate": "2026 Oct 25",
+"epubdate": "2026 Oct 25",
+"volume": "",
+"issue": "",
+"pages": "",
+"elocationid": "doi: 10.1056/NEJMoa2605703",
+"doi": "10.1056/NEJMoa2605703",
+"pmcid": null,
+"pubtype": [
+"Journal Article"
+],
+"retrieved_at": "2026-11-20"
+},
 "42929692": {
 "pmid": "42929692",
 "authors": [
@@ -59501,6 +65206,573 @@
 ],
 "retrieved_at": "2026-11-19"
 },
+"42929693": {
+"pmid": "42929693",
+"authors": [
+{
+"name": "Lu S",
+"authtype": "Author"
+},
+{
+"name": "Girard N",
+"authtype": "Author"
+},
+{
+"name": "Yang JC",
+"authtype": "Author"
+},
+{
+"name": "Shepherd FA",
+"authtype": "Author"
+},
+{
+"name": "Dong X",
+"authtype": "Author"
+},
+{
+"name": "Arulananda S",
+"authtype": "Author"
+},
+{
+"name": "Metro G",
+"authtype": "Author"
+},
+{
+"name": "Hayashi H",
+"authtype": "Author"
+},
+{
+"name": "Bonanno L",
+"authtype": "Author"
+},
+{
+"name": "Kim YJ",
+"authtype": "Author"
+},
+{
+"name": "Liu Z",
+"authtype": "Author"
+},
+{
+"name": "Ahn MJ",
+"authtype": "Author"
+},
+{
+"name": "Sun Y",
+"authtype": "Author"
+},
+{
+"name": "Le TV",
+"authtype": "Author"
+},
+{
+"name": "Novello S",
+"authtype": "Author"
+},
+{
+"name": "Kim SW",
+"authtype": "Author"
+},
+{
+"name": "Zhao Y",
+"authtype": "Author"
+},
+{
+"name": "Nguyen P",
+"authtype": "Author"
+},
+{
+"name": "Brandão M",
+"authtype": "Author"
+},
+{
+"name": "Wang Y",
+"authtype": "Author"
+},
+{
+"name": "Haigentz M",
+"authtype": "Author"
+},
+{
+"name": "Misch D",
+"authtype": "Author"
+},
+{
+"name": "Provencio Pulla M",
+"authtype": "Author"
+},
+{
+"name": "Huang WT",
+"authtype": "Author"
+},
+{
+"name": "Baldotto C",
+"authtype": "Author"
+},
+{
+"name": "Tatangelo M",
+"authtype": "Author"
+},
+{
+"name": "Lindsay CR",
+"authtype": "Author"
+},
+{
+"name": "Hartmaier RJ",
+"authtype": "Author"
+},
+{
+"name": "Lolo R",
+"authtype": "Author"
+},
+{
+"name": "Swaminathan B",
+"authtype": "Author"
+},
+{
+"name": "Gont A",
+"authtype": "Author"
+},
+{
+"name": "Esposito FM",
+"authtype": "Author"
+},
+{
+"name": "Okuma Y",
+"authtype": "Author"
+},
+{
+"name": "SAFFRON Investigators",
+"authtype": "CollectiveName"
+}
+],
+"title": "Osimertinib-Savolitinib in Advanced NSCLC after Progression during EGFR-TKI Therapy.",
+"source": "N Engl J Med",
+"fulljournalname": "The New England journal of medicine",
+"pubdate": "2026 Oct 25",
+"epubdate": "2026 Oct 25",
+"volume": "",
+"issue": "",
+"pages": "",
+"elocationid": "doi: 10.1056/NEJMoa2611335",
+"doi": "10.1056/NEJMoa2611335",
+"pmcid": null,
+"pubtype": [
+"Journal Article"
+],
+"retrieved_at": "2026-11-20"
+},
+"42929702": {
+"pmid": "42929702",
+"authors": [
+{
+"name": "Pérol M",
+"authtype": "Author"
+},
+{
+"name": "Yoshida T",
+"authtype": "Author"
+},
+{
+"name": "Ahn MJ",
+"authtype": "Author"
+},
+{
+"name": "Gay CM",
+"authtype": "Author"
+},
+{
+"name": "Schuler M",
+"authtype": "Author"
+},
+{
+"name": "Liu H",
+"authtype": "Author"
+},
+{
+"name": "Sezer A",
+"authtype": "Author"
+},
+{
+"name": "Bilici A",
+"authtype": "Author"
+},
+{
+"name": "Korantzis I",
+"authtype": "Author"
+},
+{
+"name": "Lim SM",
+"authtype": "Author"
+},
+{
+"name": "Otsubo K",
+"authtype": "Author"
+},
+{
+"name": "Juan-Vidal O",
+"authtype": "Author"
+},
+{
+"name": "Chen Y",
+"authtype": "Author"
+},
+{
+"name": "Schvartsman G",
+"authtype": "Author"
+},
+{
+"name": "Wang H",
+"authtype": "Author"
+},
+{
+"name": "Dingemans AC",
+"authtype": "Author"
+},
+{
+"name": "Clarke JM",
+"authtype": "Author"
+},
+{
+"name": "Desai A",
+"authtype": "Author"
+},
+{
+"name": "Marigil M",
+"authtype": "Author"
+},
+{
+"name": "Chen Y",
+"authtype": "Author"
+},
+{
+"name": "Abidi B",
+"authtype": "Author"
+},
+{
+"name": "Wang J",
+"authtype": "Author"
+},
+{
+"name": "Sands J",
+"authtype": "Author"
+},
+{
+"name": "DeLLphi-305 Investigators",
+"authtype": "CollectiveName"
+}
+],
+"title": "Tarlatamab-Durvalumab Maintenance for Extensive-Stage Small-Cell Lung Cancer.",
+"source": "N Engl J Med",
+"fulljournalname": "The New England journal of medicine",
+"pubdate": "2026 Oct 24",
+"epubdate": "2026 Oct 24",
+"volume": "",
+"issue": "",
+"pages": "",
+"elocationid": "doi: 10.1056/NEJMoa2609482",
+"doi": "10.1056/NEJMoa2609482",
+"pmcid": null,
+"pubtype": [
+"Journal Article"
+],
+"retrieved_at": "2026-11-20"
+},
+"42933458": {
+"pmid": "42933458",
+"authors": [
+{
+"name": "Slomovitz BM",
+"authtype": "Author"
+},
+{
+"name": "Zhu J",
+"authtype": "Author"
+},
+{
+"name": "Yin R",
+"authtype": "Author"
+},
+{
+"name": "Backes F",
+"authtype": "Author"
+},
+{
+"name": "Bidziński M",
+"authtype": "Author"
+},
+{
+"name": "Gilbert L",
+"authtype": "Author"
+},
+{
+"name": "Willmott LJ",
+"authtype": "Author"
+},
+{
+"name": "Hasegawa K",
+"authtype": "Author"
+},
+{
+"name": "Kim JW",
+"authtype": "Author"
+},
+{
+"name": "Kroep JR",
+"authtype": "Author"
+},
+{
+"name": "Romero I",
+"authtype": "Author"
+},
+{
+"name": "Gultekin M",
+"authtype": "Author"
+},
+{
+"name": "Wang PH",
+"authtype": "Author"
+},
+{
+"name": "Baron-Hay S",
+"authtype": "Author"
+},
+{
+"name": "Klát J",
+"authtype": "Author"
+},
+{
+"name": "Rosengarten O",
+"authtype": "Author"
+},
+{
+"name": "Polignano M",
+"authtype": "Author"
+},
+{
+"name": "Berrios M",
+"authtype": "Author"
+},
+{
+"name": "Cadoo K",
+"authtype": "Author"
+},
+{
+"name": "Lassus H",
+"authtype": "Author"
+},
+{
+"name": "Maćkowiak-Matejczyk B",
+"authtype": "Author"
+},
+{
+"name": "Lorusso D",
+"authtype": "Author"
+},
+{
+"name": "Reyners AKL",
+"authtype": "Author"
+},
+{
+"name": "Burton ER",
+"authtype": "Author"
+},
+{
+"name": "Makker V",
+"authtype": "Author"
+},
+{
+"name": "Yao L",
+"authtype": "Author"
+},
+{
+"name": "Meng R",
+"authtype": "Author"
+},
+{
+"name": "Orlowski R",
+"authtype": "Author"
+},
+{
+"name": "Pignata S",
+"authtype": "Author"
+}
+],
+"title": "First-line pembrolizumab versus carboplatin plus paclitaxel in participants with mismatch repair-deficient advanced or recurrent endometrial cancer (KEYNOTE-C93/GOG-3064/ENGOT-en15): interim analysis of a multicentre, open-label, randomised, active-comparator controlled, phase 3 trial.",
+"source": "Lancet",
+"fulljournalname": "Lancet (London, England)",
+"pubdate": "2026 Nov 14",
+"epubdate": "2026 Oct 26",
+"volume": "408",
+"issue": "10568",
+"pages": "2081-2096",
+"elocationid": "doi: 10.1016/S0140-6736(26)02095-7",
+"doi": "10.1016/S0140-6736(26)02095-7",
+"pmcid": null,
+"pubtype": [
+"Journal Article",
+"Multicenter Study",
+"Clinical Trial, Phase III",
+"Randomized Controlled Trial"
+],
+"retrieved_at": "2026-11-20"
+},
+"42933460": {
+"pmid": "42933460",
+"authors": [
+{
+"name": "Lorusso D",
+"authtype": "Author"
+},
+{
+"name": "Martin-Babau J",
+"authtype": "Author"
+},
+{
+"name": "Backes F",
+"authtype": "Author"
+},
+{
+"name": "Ginesta MPB",
+"authtype": "Author"
+},
+{
+"name": "Korach J",
+"authtype": "Author"
+},
+{
+"name": "Nicum S",
+"authtype": "Author"
+},
+{
+"name": "Wampfler J",
+"authtype": "Author"
+},
+{
+"name": "Zhu J",
+"authtype": "Author"
+},
+{
+"name": "Ducceschi M",
+"authtype": "Author"
+},
+{
+"name": "Van Gorp T",
+"authtype": "Author"
+},
+{
+"name": "Frödin-Bolling M",
+"authtype": "Author"
+},
+{
+"name": "Zagouri F",
+"authtype": "Author"
+},
+{
+"name": "Kroep JR",
+"authtype": "Author"
+},
+{
+"name": "Ray-Coquard I",
+"authtype": "Author"
+},
+{
+"name": "Salutari V",
+"authtype": "Author"
+},
+{
+"name": "Lightfoot MDS",
+"authtype": "Author"
+},
+{
+"name": "Tillmanns T",
+"authtype": "Author"
+},
+{
+"name": "O'Malley DM",
+"authtype": "Author"
+},
+{
+"name": "Hasegawa K",
+"authtype": "Author"
+},
+{
+"name": "Lee JY",
+"authtype": "Author"
+},
+{
+"name": "Giornelli GH",
+"authtype": "Author"
+},
+{
+"name": "Samouëlian V",
+"authtype": "Author"
+},
+{
+"name": "Antill Y",
+"authtype": "Author"
+},
+{
+"name": "Li J",
+"authtype": "Author"
+},
+{
+"name": "Nishio S",
+"authtype": "Author"
+},
+{
+"name": "Chan JJ",
+"authtype": "Author"
+},
+{
+"name": "Monk BJ",
+"authtype": "Author"
+},
+{
+"name": "Li C",
+"authtype": "Author"
+},
+{
+"name": "Woodhouse K",
+"authtype": "Author"
+},
+{
+"name": "Orlowski R",
+"authtype": "Author"
+},
+{
+"name": "García-Duran C",
+"authtype": "Author"
+},
+{
+"name": "Pothuri B",
+"authtype": "Author"
+},
+{
+"name": "TroFuse-005/ENGOT-en23/GOG-3095 Investigators",
+"authtype": "CollectiveName"
+}
+],
+"title": "Sacituzumab tirumotecan versus treatment of physician's choice in previously treated endometrial cancer (TroFuse-005/ENGOT-en23/GOG-3095): a randomised, open-label, phase 3 trial.",
+"source": "Lancet",
+"fulljournalname": "Lancet (London, England)",
+"pubdate": "2026 Nov 21",
+"epubdate": "2026 Oct 26",
+"volume": "408",
+"issue": "10569",
+"pages": "2224-2238",
+"elocationid": "doi: 10.1016/S0140-6736(26)02099-4",
+"doi": "10.1016/S0140-6736(26)02099-4",
+"pmcid": null,
+"pubtype": [
+"Journal Article",
+"Randomized Controlled Trial",
+"Clinical Trial, Phase III",
+"Multicenter Study",
+"Comparative Study"
+],
+"retrieved_at": "2026-11-20"
+},
 "42966675": {
 "pmid": "42966675",
 "authors": [
@@ -59620,6 +65892,146 @@
 "Journal Article"
 ],
 "retrieved_at": "2026-11-18"
+},
+"43013837": {
+"pmid": "43013837",
+"authors": [
+{
+"name": "Long GV",
+"authtype": "Author"
+},
+{
+"name": "Khattak MA",
+"authtype": "Author"
+},
+{
+"name": "Gogas HJ",
+"authtype": "Author"
+},
+{
+"name": "Schadendorf D",
+"authtype": "Author"
+},
+{
+"name": "Arance A",
+"authtype": "Author"
+},
+{
+"name": "Carlino MS",
+"authtype": "Author"
+},
+{
+"name": "Rutkowski P",
+"authtype": "Author"
+},
+{
+"name": "Rivalland G",
+"authtype": "Author"
+},
+{
+"name": "Ribas A",
+"authtype": "Author"
+},
+{
+"name": "Mehnert JM",
+"authtype": "Author"
+},
+{
+"name": "Ott PA",
+"authtype": "Author"
+},
+{
+"name": "Dummer R",
+"authtype": "Author"
+},
+{
+"name": "Queirolo P",
+"authtype": "Author"
+},
+{
+"name": "Gebhardt C",
+"authtype": "Author"
+},
+{
+"name": "Dutriaux C",
+"authtype": "Author"
+},
+{
+"name": "Rojas C",
+"authtype": "Author"
+},
+{
+"name": "Chen Y",
+"authtype": "Author"
+},
+{
+"name": "Tachiki LM",
+"authtype": "Author"
+},
+{
+"name": "Shapira-Frommer R",
+"authtype": "Author"
+},
+{
+"name": "Bechter O",
+"authtype": "Author"
+},
+{
+"name": "Sullivan RJ",
+"authtype": "Author"
+},
+{
+"name": "Eggermont AMM",
+"authtype": "Author"
+},
+{
+"name": "Ojalvo LS",
+"authtype": "Author"
+},
+{
+"name": "Brown M",
+"authtype": "Author"
+},
+{
+"name": "Zhang J",
+"authtype": "Author"
+},
+{
+"name": "Grebennik DO",
+"authtype": "Author"
+},
+{
+"name": "Fukunaga-Kalabis M",
+"authtype": "Author"
+},
+{
+"name": "Ascierto PA",
+"authtype": "Author"
+},
+{
+"name": "Del Vecchio M",
+"authtype": "Author"
+},
+{
+"name": "INTerpath-001 Investigators",
+"authtype": "CollectiveName"
+}
+],
+"title": "Intismeran Autogene plus Pembrolizumab for Resected Stage IIB to IV Melanoma.",
+"source": "N Engl J Med",
+"fulljournalname": "The New England journal of medicine",
+"pubdate": "2026 Nov 11",
+"epubdate": "2026 Nov 11",
+"volume": "",
+"issue": "",
+"pages": "",
+"elocationid": "doi: 10.1056/NEJMoa2609762",
+"doi": "10.1056/NEJMoa2609762",
+"pmcid": null,
+"pubtype": [
+"Journal Article"
+],
+"retrieved_at": "2026-11-20"
 }
 }
 }

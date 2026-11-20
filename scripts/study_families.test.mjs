@@ -38,10 +38,11 @@ const js = (x) => JSON.parse(JSON.stringify(x));   // arrays do contexto vm vêm
 const busca = (q) => D.studies.filter((s) => T.studySearchText(s).includes(q.toLowerCase()));
 
 const MEMBROS = ['stampede-docetaxel-m1', 'stampede-abiraterona-m1', 'stampede-abi-enza-m0-alto-risco',
-  'rt_sbrt_oligo_4', 'stampede-abi-enza-m1', 'stampede-metformina-m1'];
+  'rt_sbrt_oligo_4', 'stampede-abi-enza-m1', 'stampede-metformina-m1', 'patch-stampede-estradiol-transdermico-m0'];
 const PMIDS = {
   'stampede-docetaxel-m1': '31560068', 'stampede-abiraterona-m1': '37142371', 'stampede-abi-enza-m1': '37142371',
   'stampede-abi-enza-m0-alto-risco': '34953525', 'stampede-metformina-m1': '40639383', rt_sbrt_oligo_4: '30355464',
+  'patch-stampede-estradiol-transdermico-m0': '41880608',
 };
 const STAMPEDE = T.familyById(D, 'stampede');
 const textoFamilia = () => JSON.stringify([STAMPEDE, ...MEMBROS.map(card)]);
@@ -427,7 +428,7 @@ test('contagem do family card: 1 análise / N análises, 1 coorte / N coortes', 
   const vm2 = { tt: (k, f) => (k.endsWith('One') ? 'U:' : 'P:') + f, famKind: (f) => T.familyUnitKind(D, f), familyMembers: (f) => T.familyMembers(D, f) };
   const famCount = new Function('f', corpo).bind(vm2);
   assert.equal(famCount(T.familyById(D, 'stampede2')), '1 U:análise no Database');
-  assert.equal(famCount(STAMPEDE), '6 P:análises no Database');
+  assert.equal(famCount(STAMPEDE), '7 P:análises no Database');
   assert.equal(famCount(T.familyById(D, 'keynote-158')), '3 P:análises no Database');
   assert.equal(famCount(T.familyById(D, 'destiny-pantumor02')), '2 P:coortes no Database');
   assert.equal(famCount(T.familyById(D, 'roar')), '2 P:coortes no Database');
