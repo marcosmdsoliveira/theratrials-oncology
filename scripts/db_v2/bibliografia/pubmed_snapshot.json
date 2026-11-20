@@ -58370,6 +58370,103 @@
 ],
 "retrieved_at": "2026-09-29"
 },
+"42485097": {
+"pmid": "42485097",
+"authors": [
+{
+"name": "Tagawa ST",
+"authtype": "Author"
+},
+{
+"name": "Thomas C",
+"authtype": "Author"
+},
+{
+"name": "Arham AB",
+"authtype": "Author"
+},
+{
+"name": "Holmes A",
+"authtype": "Author"
+},
+{
+"name": "Marulanda Corzo V",
+"authtype": "Author"
+},
+{
+"name": "Okobi T",
+"authtype": "Author"
+},
+{
+"name": "Vallabhajosula S",
+"authtype": "Author"
+},
+{
+"name": "Avlonitis V",
+"authtype": "Author"
+},
+{
+"name": "Huicochea Castellanos S",
+"authtype": "Author"
+},
+{
+"name": "Nauseef JT",
+"authtype": "Author"
+},
+{
+"name": "O'Dwyer E",
+"authtype": "Author"
+},
+{
+"name": "Fatima M",
+"authtype": "Author"
+},
+{
+"name": "Gregos P",
+"authtype": "Author"
+},
+{
+"name": "Yuan S",
+"authtype": "Author"
+},
+{
+"name": "Sternberg CN",
+"authtype": "Author"
+},
+{
+"name": "Molina A",
+"authtype": "Author"
+},
+{
+"name": "Nanus DM",
+"authtype": "Author"
+},
+{
+"name": "Bander NH",
+"authtype": "Author"
+},
+{
+"name": "Osborne JR",
+"authtype": "Author"
+}
+],
+"title": "A Phase I Dose-Escalation/Expansion Study of Fractionated-Dose and Multiple-Cycle Anti-PSMA-Targeted α-Emitter 225Ac-J591 in Patients with Prostate Cancer.",
+"source": "Clin Cancer Res",
+"fulljournalname": "Clinical cancer research : an official journal of the American Association for Cancer Research",
+"pubdate": "2026 Oct 15",
+"epubdate": "",
+"volume": "32",
+"issue": "20",
+"pages": "4552-4562",
+"elocationid": "doi: 10.1158/1078-0432.CCR-26-0689",
+"doi": "10.1158/1078-0432.CCR-26-0689",
+"pmcid": "PMC13579537",
+"pubtype": [
+"Journal Article",
+"Clinical Trial, Phase I"
+],
+"retrieved_at": "2026-11-20"
+},
 "42561994": {
 "pmid": "42561994",
 "authors": [
@@ -58636,6 +58733,297 @@
 "Multicenter Study"
 ],
 "retrieved_at": "2026-11-19"
+},
+"42636977": {
+"pmid": "42636977",
+"authors": [
+{
+"name": "Garber JE",
+"authtype": "Author"
+},
+{
+"name": "Cameron D",
+"authtype": "Author"
+},
+{
+"name": "Campbell C",
+"authtype": "Author"
+},
+{
+"name": "Yothers G",
+"authtype": "Author"
+},
+{
+"name": "Taboada M",
+"authtype": "Author"
+},
+{
+"name": "El-Abed S",
+"authtype": "Author"
+},
+{
+"name": "Rastogi P",
+"authtype": "Author"
+},
+{
+"name": "McConnell R",
+"authtype": "Author"
+},
+{
+"name": "Correa A",
+"authtype": "Author"
+},
+{
+"name": "Delaloge S",
+"authtype": "Author"
+},
+{
+"name": "Liu WT",
+"authtype": "Author"
+},
+{
+"name": "Sharma P",
+"authtype": "Author"
+},
+{
+"name": "Bergh J",
+"authtype": "Author"
+},
+{
+"name": "Janni W",
+"authtype": "Author"
+},
+{
+"name": "Balmaña J",
+"authtype": "Author"
+},
+{
+"name": "Loman N",
+"authtype": "Author"
+},
+{
+"name": "Španić T",
+"authtype": "Author"
+},
+{
+"name": "Friedman S",
+"authtype": "Author"
+},
+{
+"name": "Freeman T",
+"authtype": "Author"
+},
+{
+"name": "Armstrong A",
+"authtype": "Author"
+},
+{
+"name": "Korde L",
+"authtype": "Author"
+},
+{
+"name": "Im S",
+"authtype": "Author"
+},
+{
+"name": "Sagara Y",
+"authtype": "Author"
+},
+{
+"name": "Viale G",
+"authtype": "Author"
+},
+{
+"name": "Bliss J",
+"authtype": "Author"
+},
+{
+"name": "Gianni L",
+"authtype": "Author"
+},
+{
+"name": "Jóhannsson Ó",
+"authtype": "Author"
+},
+{
+"name": "Zoppoli G",
+"authtype": "Author"
+},
+{
+"name": "Martinez De Dueñas E",
+"authtype": "Author"
+},
+{
+"name": "Marmé F",
+"authtype": "Author"
+},
+{
+"name": "Fein L",
+"authtype": "Author"
+},
+{
+"name": "Arnedos M",
+"authtype": "Author"
+},
+{
+"name": "Ford J",
+"authtype": "Author"
+},
+{
+"name": "Schmutzler R",
+"authtype": "Author"
+},
+{
+"name": "Loibl S",
+"authtype": "Author"
+},
+{
+"name": "Linderholm B",
+"authtype": "Author"
+},
+{
+"name": "Lakhani SR",
+"authtype": "Author"
+},
+{
+"name": "Gnant M",
+"authtype": "Author"
+},
+{
+"name": "Gelmon K",
+"authtype": "Author"
+},
+{
+"name": "Domchek SM",
+"authtype": "Author"
+},
+{
+"name": "Senkus E",
+"authtype": "Author"
+},
+{
+"name": "Eisen A",
+"authtype": "Author"
+},
+{
+"name": "Jager A",
+"authtype": "Author"
+},
+{
+"name": "Piccart M",
+"authtype": "Author"
+},
+{
+"name": "Phillips KA",
+"authtype": "Author"
+},
+{
+"name": "Traina T",
+"authtype": "Author"
+},
+{
+"name": "Stickeler E",
+"authtype": "Author"
+},
+{
+"name": "Singer CF",
+"authtype": "Author"
+},
+{
+"name": "Shao Z",
+"authtype": "Author"
+},
+{
+"name": "Liu X",
+"authtype": "Author"
+},
+{
+"name": "Tipping H",
+"authtype": "Author"
+},
+{
+"name": "Aktan G",
+"authtype": "Author"
+},
+{
+"name": "Martinez M",
+"authtype": "Author"
+},
+{
+"name": "Canon JL",
+"authtype": "Author"
+},
+{
+"name": "Takahashi M",
+"authtype": "Author"
+},
+{
+"name": "Yasojima H",
+"authtype": "Author"
+},
+{
+"name": "Middleton K",
+"authtype": "Author"
+},
+{
+"name": "Pristauz-Telsnigg G",
+"authtype": "Author"
+},
+{
+"name": "Pfeiler G",
+"authtype": "Author"
+},
+{
+"name": "Virani S",
+"authtype": "Author"
+},
+{
+"name": "Valdes-Albini F",
+"authtype": "Author"
+},
+{
+"name": "Wolmark N",
+"authtype": "Author"
+},
+{
+"name": "Diaz Mesa I",
+"authtype": "Author"
+},
+{
+"name": "Paterson V",
+"authtype": "Author"
+},
+{
+"name": "Gelber RD",
+"authtype": "Author"
+},
+{
+"name": "Geyer CE Jr",
+"authtype": "Author"
+},
+{
+"name": "Tutt ANJ",
+"authtype": "Author"
+}
+],
+"title": "Sustained benefit of adjuvant olaparib in women with germline BRCA1- and BRCA2-associated high-risk HER2-negative early breast cancer: updated results from the OlympiA phase III trial.",
+"source": "Ann Oncol",
+"fulljournalname": "Annals of oncology : official journal of the European Society for Medical Oncology",
+"pubdate": "2026 Nov",
+"epubdate": "2026 Aug 24",
+"volume": "37",
+"issue": "11",
+"pages": "1467-1479",
+"elocationid": "doi: 10.1016/j.annonc.2026.08.002",
+"doi": "10.1016/j.annonc.2026.08.002",
+"pmcid": "PMC13729705",
+"pubtype": [
+"Journal Article",
+"Clinical Trial, Phase III",
+"Randomized Controlled Trial",
+"Multicenter Study"
+],
+"retrieved_at": "2026-11-20"
 },
 "42842849": {
 "pmid": "42842849",
