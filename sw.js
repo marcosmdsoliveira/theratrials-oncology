@@ -8,7 +8,7 @@
    ============================================================================= */
 
 // GitHub Actions bumps this line on each deploy
-const CACHE_VERSION = 'theratrials-v2026.11.20-af8bc9e';
+const CACHE_VERSION = 'theratrials-v2026.11.20-a8a3d44';
 const CACHE_STATIC  = `${CACHE_VERSION}-static`;
 const CACHE_PAGES   = `${CACHE_VERSION}-pages`;
 const CACHE_RUNTIME = `${CACHE_VERSION}-runtime`;
@@ -45,7 +45,7 @@ const CORE_PAGES = [
 const CORE_ASSETS = [
   './assets/css/theratrials.css?v=e0b339f907',
   './assets/css/radiofarmaco.css?v=1e4ea1dba6',
-  './assets/js/data.js?v=bb18676d51',
+  './assets/js/data.js?v=ed87f3b9a0',
   './assets/js/secondary-cards.js?v=063bc38548',
   './assets/js/common.js?v=2ecfadb6b3',
   './assets/js/citation.js?v=e884983a80',
