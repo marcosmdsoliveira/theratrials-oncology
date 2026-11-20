@@ -50695,6 +50695,211 @@
 ],
 "retrieved_at": "2026-11-19"
 },
+"40057343": {
+"pmid": "40057343",
+"authors": [
+{
+"name": "Xiong A",
+"authtype": "Author"
+},
+{
+"name": "Wang L",
+"authtype": "Author"
+},
+{
+"name": "Chen J",
+"authtype": "Author"
+},
+{
+"name": "Wu L",
+"authtype": "Author"
+},
+{
+"name": "Liu B",
+"authtype": "Author"
+},
+{
+"name": "Yao J",
+"authtype": "Author"
+},
+{
+"name": "Zhong H",
+"authtype": "Author"
+},
+{
+"name": "Li J",
+"authtype": "Author"
+},
+{
+"name": "Cheng Y",
+"authtype": "Author"
+},
+{
+"name": "Sun Y",
+"authtype": "Author"
+},
+{
+"name": "Ge H",
+"authtype": "Author"
+},
+{
+"name": "Yao J",
+"authtype": "Author"
+},
+{
+"name": "Shi Q",
+"authtype": "Author"
+},
+{
+"name": "Zhou M",
+"authtype": "Author"
+},
+{
+"name": "Chen B",
+"authtype": "Author"
+},
+{
+"name": "Han Z",
+"authtype": "Author"
+},
+{
+"name": "Wang J",
+"authtype": "Author"
+},
+{
+"name": "Bu Q",
+"authtype": "Author"
+},
+{
+"name": "Zhao Y",
+"authtype": "Author"
+},
+{
+"name": "Chen J",
+"authtype": "Author"
+},
+{
+"name": "Nie L",
+"authtype": "Author"
+},
+{
+"name": "Li G",
+"authtype": "Author"
+},
+{
+"name": "Li X",
+"authtype": "Author"
+},
+{
+"name": "Yu X",
+"authtype": "Author"
+},
+{
+"name": "Ji Y",
+"authtype": "Author"
+},
+{
+"name": "Sun D",
+"authtype": "Author"
+},
+{
+"name": "Ai X",
+"authtype": "Author"
+},
+{
+"name": "Chu Q",
+"authtype": "Author"
+},
+{
+"name": "Lin Y",
+"authtype": "Author"
+},
+{
+"name": "Hao J",
+"authtype": "Author"
+},
+{
+"name": "Huang D",
+"authtype": "Author"
+},
+{
+"name": "Zhou C",
+"authtype": "Author"
+},
+{
+"name": "Shan J",
+"authtype": "Author"
+},
+{
+"name": "Yang H",
+"authtype": "Author"
+},
+{
+"name": "Liu X",
+"authtype": "Author"
+},
+{
+"name": "Wang J",
+"authtype": "Author"
+},
+{
+"name": "Shang Y",
+"authtype": "Author"
+},
+{
+"name": "Mei X",
+"authtype": "Author"
+},
+{
+"name": "Yang J",
+"authtype": "Author"
+},
+{
+"name": "Lu D",
+"authtype": "Author"
+},
+{
+"name": "Hu M",
+"authtype": "Author"
+},
+{
+"name": "Wang ZM",
+"authtype": "Author"
+},
+{
+"name": "Li B",
+"authtype": "Author"
+},
+{
+"name": "Xia M",
+"authtype": "Author"
+},
+{
+"name": "Zhou C",
+"authtype": "Author"
+}
+],
+"title": "Ivonescimab versus pembrolizumab for PD-L1-positive non-small cell lung cancer (HARMONi-2): a randomised, double-blind, phase 3 study in China.",
+"source": "Lancet",
+"fulljournalname": "Lancet (London, England)",
+"pubdate": "2025 Mar 8",
+"epubdate": "",
+"volume": "405",
+"issue": "10481",
+"pages": "839-849",
+"elocationid": "doi: 10.1016/S0140-6736(24)02722-3",
+"doi": "10.1016/S0140-6736(24)02722-3",
+"pmcid": null,
+"pubtype": [
+"Journal Article",
+"Randomized Controlled Trial",
+"Clinical Trial, Phase III",
+"Multicenter Study",
+"Comparative Study",
+"Research Support, Non-U.S. Gov't"
+],
+"retrieved_at": "2026-11-20"
+},
 "40198358": {
 "pmid": "40198358",
 "authors": [
